@@ -3,11 +3,28 @@
 {% include "header_new.html" %}
 
 <style>
-  .branch_company{
+  .lunbo,.branch_company{
     display: flex;
     width: 1200px;
     margin: 0 auto;
+    margin-top: 10px;
   }
+  .lunbo_lift{
+     width: 800px;
+     height: 270px;
+    background: #34c360;
+   }
+  .lunbo_right{
+    width: 400px;
+    height: 270px;
+    background: #fbd238;
+  }
+  /*.branch_company{*/
+    /*display: flex;*/
+    /*width: 1200px;*/
+    /*margin: 0 auto;*/
+    /*margin-top: 10px;*/
+  /*}*/
   .branch_company_img{
     width: 190px;
     height: 146px;
@@ -25,13 +42,104 @@
     border-radius: 12px;
     margin:5px;
     text-align: center;
-    line-height: 24px;
+    line-height: 22px;
     font-size: 14px;
     float: left;
   }
+  .nationality_guoqi_warp{
+    width: 1200px;
+    left: 50%;
+    margin-left: -600px;
+    position: fixed;
+    z-index: 999999;
+    display: none;
+  }
+  .nationality_guoqi{
+    display: flex;
+    width: 1154px;
+    height: 194px;
+    border: 3px solid #c13232;
+    background: #f1f4f6;
+    padding: 0 20px;
+    position: relative;
+    margin: 0 auto;
+  }
+  .liuxue-guoqi{
+    width: 100%;
+    height: auto;
+  }
+  .liuxue-guoqi p{
+    color:#333 ;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  .liuxue-guoqi a{
+    width: auto;
+    margin: 20px 50px 47px 0;
+  }
+  .liuxue-guojia-title{
+    position: absolute;
+    width: 174px;
+    height: 30px;
+    border: 3px solid #c13232;
+    border-top: 3px solid #f1f4f6;
+    color: #c13232;
+    font-size: 16px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 15px;
+    /*margin: 0 auto;*/
+    /*margin-top: -3px;*/
+    /*z-index: 999999;*/
+    background: #f1f4f6;
+    bottom: -32px;
+    left: 50%;
+    margin-left: -77px;
+  }
 </style>
 <body style="background: #f5f5f5">
+<!--留学国家-->
+<div class="nationality_guoqi_warp">
+  <div class="nationality_guoqi">
+    <div class="liuxue-guoqi">
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=1') }}"><img src="{{helper.cdnhost}}/assets/img/America.png" alt="美国留学"><p>美国</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=2') }}"><img src="{{helper.cdnhost}}/assets/img/England.png" alt="英国留学"><p>英国</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=4') }}"><img src="{{helper.cdnhost}}/assets/img/Australia.png" alt="澳大利亚留学"><p>澳大利亚</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=3') }}"><img src="{{helper.cdnhost}}/assets/img/Canada.png" alt="加拿大留学"><p>加拿大</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=5') }}"><img src="{{helper.cdnhost}}/assets/img/NEW ZEALAND.png" alt="新西兰留学"><p>新西兰</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=50') }}"><img src="{{helper.cdnhost}}/assets/img/Korea.png" alt="韩国留学"><p>韩国</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=51') }}"><img src="{{helper.cdnhost}}/assets/img/Japan.png" alt="日本留学"><p>日本</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=101') }}"><img src="{{helper.cdnhost}}/assets/img/Ukraine.png" alt="乌克兰留学"><p>乌克兰</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=100') }}"><img src="{{helper.cdnhost}}/assets/img/Russia.png" alt="俄罗斯留学"><p>俄罗斯</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=108') }}"><img src="{{helper.cdnhost}}/assets/img/eire.png" alt="爱尔兰留学"><p>爱尔兰</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=111') }}"><img src="{{helper.cdnhost}}/assets/img/Italy.png" alt="意大利留学"><p>意大利</p></a>
+      <a style="margin-right: 0" target="_blank"    href="{{ helper.urlgen('nationrank','n=112') }}"><img src="{{helper.cdnhost}}/assets/img/Spanish.png" alt="西班牙留学"><p>西班牙</p></a><br>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=102') }}"><img src="{{helper.cdnhost}}/assets/img/blr.png" alt="白俄罗斯留学"><p>白俄罗斯</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=52') }}"><img src="{{helper.cdnhost}}/assets/img/Singapore.png" alt="新加披留学"><p>新加披</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=53') }}"><img src="{{helper.cdnhost}}/assets/img/malaysia.png" alt="马来西亚留学"><p>马来西亚</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=54') }}"><img src="{{helper.cdnhost}}/assets/img/HongKong.png" alt="中国香港留学"><p>中国香港</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=110') }}"><img src="{{helper.cdnhost}}/assets/img/danmark.png" alt="丹麦留学"><p>丹麦</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=103') }}"><img src="{{helper.cdnhost}}/assets/img/germany.png" alt="德国留学"><p>德国</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=104') }}"><img src="{{helper.cdnhost}}/assets/img/France.png" alt="法国留学"><p>法国</p></a>
+      <a target="_blank"  href="{{ helper.urlgen('nationrank','n=105') }}"><img src="{{helper.cdnhost}}/assets/img/Norway.png" alt="挪威留学"><p>挪威</p></a>
+      <a target="_blank"  href="{{ helper.urlgen('nationrank','n=106') }}"><img src="{{helper.cdnhost}}/assets/img/Sweden.png" alt="瑞典留学"><p>瑞典</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=107') }}"><img src="{{helper.cdnhost}}/assets/img/Finland.png" alt="芬兰留学"><p>芬兰</p></a>
+      <a target="_blank"    href="{{ helper.urlgen('nationrank','n=109') }}"><img src="{{helper.cdnhost}}/assets/img/Holland.png" alt="荷兰留学"><p>荷兰</p></a>
+      <a  style="margin-right: 0" target="_blank"    href="{{ helper.urlgen('nationrank','n=113') }}"><img src="{{helper.cdnhost}}/assets/img/Swiss.png" alt="瑞士留学"><p>瑞士</p></a>
+    </div>
+    <div class="liuxue-guojia-title">
+      留学国家及地区
+    </div>
+  </div>
+</div>
 {% include "widget/top/top.html" %}
+<!--轮播图-->
+<div class="lunbo">
+  <div class="lunbo_lift">
+  </div>
+  <div class="lunbo_right"></div>
+</div>
 <!--50家分公司-->
 <div class="branch_company">
   <div class="branch_company_img">
