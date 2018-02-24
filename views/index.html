@@ -1,8 +1,247 @@
 <!DOCTYPE html>
 <html>
 {% include "header_new.html" %}
+
+<style>
+  .branch_company{
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+  }
+  .branch_company_img{
+    width: 190px;
+    height: 146px;
+    background: #007aff;
+  }
+  .branch_company_text{
+    width:1010px;
+    height: 146px;
+    background: #fafafa;
+  }
+  .branch_company_text_tilte{
+    width: 58px;
+    height: 22px;
+    border: 1px solid #333333;
+    border-radius: 12px;
+    margin:5px;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    float: left;
+  }
+</style>
 <body style="background: #f5f5f5">
 {% include "widget/top/top.html" %}
+<!--50家分公司-->
+<div class="branch_company">
+  <div class="branch_company_img">
+  </div>
+  <div class="branch_company_text">
+      <div style="margin: 5px 15px">
+        {% set cityList=[
+        {
+        "companyName": "北京",
+        "companyId": "1"
+        },
+        {
+        "companyName": "成都",
+        "companyId": "5"
+        },
+        {
+        "companyName": "重庆",
+        "companyId": "7"
+        },
+        {
+        "companyName": "长沙",
+        "companyId": "19"
+        },
+        {
+        "companyName": "长春",
+        "companyId": "25"
+        },
+        {
+        "companyName": "常州",
+        "companyId": "41"
+        },
+        {
+        "companyName": "大连",
+        "companyId": "13"
+        },
+        {
+        "companyName": "东莞",
+        "companyId": "43"
+        },
+        {
+        "companyName": "佛山",
+        "companyId": "37"
+        },
+        {
+        "companyName": "福州",
+        "companyId": "39"
+        },
+        {
+        "companyName": "广州",
+        "companyId": "3"
+        },
+        {
+        "companyName": "贵阳",
+        "companyId": "35"
+        },
+        {
+        "companyName": "杭州",
+        "companyId": "6"
+        },
+        {
+        "companyName": "合肥",
+        "companyId": "22"
+        },
+        {
+        "companyName": "哈尔滨",
+        "companyId": "24"
+        },
+        {
+        "companyName": "呼市",
+        "companyId": "26"
+        },
+        {
+        "companyName": "邯郸",
+        "companyId": "32"
+        },
+        {
+        "companyName": "海南",
+        "companyId": "46"
+        },
+        {
+        "companyName": "济南",
+        "companyId": "9"
+        },
+        {
+        "companyName": "吉林",
+        "companyId": "30"
+        },
+        {
+        "companyName": "昆明",
+        "companyId": "21"
+        },
+        {
+        "companyName": "兰州",
+        "companyId": "27"
+        },
+        {
+        "companyName": "洛阳",
+        "companyId": "48"
+        },
+        {
+        "companyName": "南京",
+        "companyId": "16"
+        },
+        {
+        "companyName": "南昌",
+        "companyId": "29"
+        },
+        {
+        "companyName": "宁波",
+        "companyId": "34"
+        },
+        {
+        "companyName": "南宁",
+        "companyId": "38"
+        },
+        {
+        "companyName": "青岛",
+        "companyId": "10"
+        },
+        {
+        "companyName": "上海",
+        "companyId": "2"
+        },
+        {
+        "companyName": "沈阳",
+        "companyId": "8"
+        },
+        {
+        "companyName": "石家庄",
+        "companyId": "12"
+        },
+        {
+        "companyName": "深圳",
+        "companyId": "20"
+        },
+        {
+        "companyName": "苏州",
+        "companyId": "23"
+        },
+        {
+        "companyName": "天津",
+        "companyId": "4"
+        },
+        {
+        "companyName": "太原",
+        "companyId": "17"
+        },
+        {
+        "companyName": "唐山",
+        "companyId": "18"
+        },
+        {
+        "companyName": "武汉",
+        "companyId": "14"
+        },
+        {
+        "companyName": "无锡",
+        "companyId": "33"
+        },
+        {
+        "companyName": "温州",
+        "companyId": "42"
+        },
+        {
+        "companyName": "西安",
+        "companyId": "15"
+        },
+        {
+        "companyName": "厦门",
+        "companyId": "28"
+        },
+        {
+        "companyName": "徐州",
+        "companyId": "36"
+        },
+        {
+        "companyName": "西宁",
+        "companyId": "45"
+        },
+        {
+        "companyName": "新疆",
+        "companyId": "47"
+        },
+        {
+        "companyName": "烟台",
+        "companyId": "31"
+        },
+        {
+        "companyName": "银川",
+        "companyId": "40"
+        },
+        {
+        "companyName": "宜昌",
+        "companyId": "44"
+        },
+        {
+        "companyName": "郑州",
+        "companyId": "11"
+        },
+        {
+        "companyName": "温哥华",
+        "companyId": "49"
+        }
+        ] %}
+        {% for item in cityList %}
+        <div class="branch_company_text_tilte">{{item.companyName}}</div>
+        {% endfor %}
+      </div>
+  </div>
+</div>
 {% include "widget/footer/footer.html" %}
 </body>
 </html>
