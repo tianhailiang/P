@@ -2,7 +2,10 @@
 <html>
 {% include "header_new.html" %}
 <body style="background: #f5f5f5">
-{% include "widget/top/top.html" %}
+<div class="main" style="width: 1200px;margin: 0 auto;">
+    {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+    {{ new_nav_first.new_nav_first(helper) }}
+</div>
 {% include "widget/footer/footer.html" %}
 </body>
 </html>
