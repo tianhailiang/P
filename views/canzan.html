@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+<!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/layout.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy2.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/colleges_recommend.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/xSlider.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_fifth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/slide.css" >-->
+<style>
+  .canzan {
+    height: 330px;
+    margin-top: 20px;
+  }
+  .canzan img {
+    height: 204px;
+    width: 270px;
+    display: block;
+    background: #dfdfdf;
+  }
+  .canzan-p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+  }
+  .canzan-p2 {
+    font-size: 12px;
+    height: 84px;
+    line-height: 24px;
+    padding: 9px 14px 0px 14px;
+    background: #eeeeee;
+  }
+  .canzan-p2 a {
+    color: #C13232;
+  }
+
+</style>
+<body style="background: #ffffff">
+{# 大学排名 #}
+{# 头部导航 #}
+{% include "widget/top/top.html" %}
+{# 头部首页 搜索框 #}
+{% include "widget/nav_first/nav_first.html" %}
+{# 头部导航2 搜索框 #}
+{% include "widget/nav_ninth/nav_ninth.html" %}{# 筛选 #}
+{# 筛选 #}
+{# 轮播 #}
+
+<div class="dui-layout-lg clearfix">
+  <p style="font-size: 14px;margin-left: 20px;margin-top: 20px;"><i class="iconfont" style="color: #C13232">&#xe60d;</i>>><span style="color: #C13232">留学消费教育特约专家</span></p>
+</div>
+
+<div class="dui-layout-lg clearfix ">
+  {% for item in canzanlist.list %}
+   <div class="canzan dui-layout-col4 dui-box-shadow">
+     <a target="_blank"  href="{{ helper.urlgen('blog', item.uid | string ) }}" rel="nofollow">
+        <img src="{{ helper.avaterimg(item.uid, 'big') }}" alt="{{ item.realname }}">
+     </a>
+      <p class="canzan-p"><span>{{ item.job_number | ellipsis(17) }}</span></p>
+      <p class="canzan-p2">简介: {{ item.introduce | ellipsis(49) }}<a target="_blank"  href="{{ helper.urlgen('blog', item.uid | string ) }}" rel="nofollow">【查看详情】</a></p>
+   </div>
+  {% endfor %}
+</div>
+<div class="dui-layout-lg clearfix branch-advertising-map" style="width:1180px; height: 130px;margin-top: 20px; background: #dcdcdc" id="AD_COUNSELLER_SEAT1">
+</div>
+{% include "widget/footer/footer.html" %}
+{% import "widget/slide/slide.html" as  slide %}
+{{slide.leyu_slide("AD_COUNSELLER_SEAT10") }}
+</body>
+<script>
+  var AD_PAGE_NAME = "COUNSELLER"; //设置页面对应的名字
+</script>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_ninth.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_fifth.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js" ></script>
+<script>
+    $('.slider').xSlider({
+        //轮播图配置
+        current: 0,
+        speed: 500,
+        intervalTime: 5000,
+        pagination: true
+    });
+</script>
+</html>

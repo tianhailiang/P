@@ -27,6 +27,50 @@ function split_array(arr, len) {
   }
   return result;
 }
+
+//参赞聚合页面
+exports.canzan = function (req, res, next) {
+  log.debug(req.params);
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+  var articleId = req.params.id;
+  var page =req.query.page || 1;
+  var order =req.query.article || 1;
+  data.login_info = ''
+  if ( req.cookies.login_ss !== undefined) {
+    console.log('aaaaaa');
+    data.login_info = JSON.parse(req.cookies.login_ss);
+    console.log('data.login_info', data.login_info);
+  }else{
+    data.login_info ={};
+    data.login_info.uid = 0;
+    //res.redirect(config.wwhost+'/login');
+    //return false;
+  }
+  async.parallel({
+    canzanlist:function (callback) {
+      cms.canzanlist({"usertype":"3","pagesize":100},callback);
+    },
+  }, function (err, result){
+    data.canzanlist = returnData(result.canzanlist,'canzanlist');
+    data.country=country;
+    data.route = 'team';
+    data.pageType = '文案团队';
+    data.path = 'TEAMDETAIL';
+    data.pageroute='team';
+    data.area=area;
+    data.tdk = {
+      pagekey: 'COUNSELLER', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    res.render('canzan', data);
+
+  });
+}
+
 //社区首页
 exports.community_index = function (req, res, next) {
   console.log('community_index');

@@ -6,6 +6,9 @@ exports = module.exports = function (app) {// routes
     res.send('<p>我是社区启动页面</p>');
   });
 
+
+  //参赞聚合页
+  app.get('/blog/canzan', controller.canzan);
   //社区首页
   app.get('/blog', controller.community_index);
   //用户视角 顾问主页
