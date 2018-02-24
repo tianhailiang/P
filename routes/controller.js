@@ -28,6 +28,7 @@ function split_array(arr, len) {
   return result;
 }
 
+
 //参赞聚合页面
 exports.canzan = function (req, res, next) {
   log.debug(req.params);
@@ -70,6 +71,19 @@ exports.canzan = function (req, res, next) {
 
   });
 }
+
+
+exports.index = function (req, res, next) {
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var data = [];
+    data.tdk = {
+        pagekey: 'INDEX',
+        cityid: area,
+        nationid: ''
+    };
+    //data.esikey = esihelper.esikey();
+    res.render('index', data);
+};
 
 //社区首页
 exports.community_index = function (req, res, next) {
