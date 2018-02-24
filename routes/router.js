@@ -2,9 +2,7 @@ var controller = require('./controller.js');
 var user = require('./user.js');
 exports = module.exports = function (app) {// routes
   //nav
-  app.get('/', function (req, res) {
-    res.send('<p>我是社区启动页面</p>');
-  });
+  app.get('/', controller.index);
 
   //社区首页
   app.get('/blog', controller.community_index);
