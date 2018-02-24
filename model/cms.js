@@ -473,6 +473,29 @@ exports.zhuanjiajiedu = function (data, callback) {
   api.apiRequest(url ,callback);
   //log.debug('zhuanjiajiedu----url', url)
 }
+//企业文化--媒体播报
+exports.media_broadcast = function (data, callback) {
+  var url = _api_url_path(data, config.apis.get_media_broadcast);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
+/**
+ * 关于我们联系我们--->
+ * @param data
+ * @param callback
+ */
+exports.contact = function (data, callback) {
+  //var param = {"country": "1", "organid": "1", "pagesize": 12};
+  var url = _api_url_path(data, config.apis.get_contact);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
 exports.shengqinganli_list = function (data, callback) {
   var url = _api_url_path(data, config.apis.get_shengqinganli_list);
   if (url == null){

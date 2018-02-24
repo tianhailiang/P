@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+<!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_ninth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_tenth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/contacts.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/layout.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy6.css">
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/expertunscramble.css"-->
+<style>
+  .voucher {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100009;
+  }
+  .voucherLink {
+    position: fixed;
+    width: 766px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    margin: -250px 0 0 -382px;
+    z-index: 100010;
+  }
+  .voucherLink .voucherclose {
+    display: block;
+    background: url({{helper.cdnhost}}/assets/img/indexpop_close.png) no-repeat 50% 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    cursor: pointer;
+  }
+  .searchs {
+    z-index: 500;
+  }
+</style>
+<body style="background: #f5f5f5;">
+{% include "widget/top/top.html" %}
+<div style="background: #ffffff;">
+  {% include "widget/nav_first/nav_first.html" %}
+</div>
+
+{% include "widget/nav_ninth/nav_ninth.html" %}
+<div style="margin:20px 0">
+  {% include "widget/nav_tenth/nav_tenth.html" %}
+</div>
+
+<div class="dui-layout-lg clearfix " style="padding-bottom: 20px;">
+  {# 华北地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 0 20px;">
+      <i></i>
+      <h3><span style="color:#c13232;">华北地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;padding-top: 20px;background: #ffffff">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact.list)}}
+    </div>
+  </div>
+  {# 华东地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 20px 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">华东地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;padding-top: 20px;background: #ffffff">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact2.list)}}
+    </div>
+  </div>
+  {# 华中地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff;height: 100%">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 20px 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">华中地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;background: #ffffff;padding-top: 20px">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact3.list)}}
+    </div>
+  </div>
+
+  {# 华南地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff;height: 100%">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 20px 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">华南地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;background: #ffffff;padding-top: 20px">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact4.list)}}
+    </div>
+  </div>
+
+  {# 西北地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff;height: 100%">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 20px 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">西北地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;background: #ffffff;padding-top: 20px">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact5.list)}}
+    </div>
+  </div>
+
+  {# 东北地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff;height: 100%">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 20px 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">东北地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;background: #ffffff;padding-top: 20px">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact6.list)}}
+    </div>
+  </div>
+
+  {# 西南地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff;height: 100%">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 20px 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">西南地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;background: #ffffff;padding-top: 20px">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact7.list)}}
+    </div>
+  </div>
+
+  {# 港澳台地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff;height: 100%">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 20px 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">港澳台地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;background: #ffffff;padding-top: 20px">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact8.list)}}
+    </div>
+  </div>
+
+  {# 海外地区 #}
+  <div class="dui-layout-lg" style="background: #ffffff;height: 100%">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 20px 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">海外地区</span></h3>
+    </div>
+    <div class="clearfix" style="width: 1180px;background: #ffffff;padding-top: 20px">
+      {% import  "widget/contacts/contacts.html" as contact1 %}
+      {{contact1.contact1(contact9.list)}}
+    </div>
+  </div>
+</div>
+
+
+<div class="voucher" id="voucherLink" style="display:block"></div>
+<div class="voucherLink" style="display:none">
+  <div class="left clearfix">
+    <div id="container1" class="container" style="height: 500px;width: 100%">
+    </div>
+  </div>
+  <div class="voucherclose"></div>
+</div>
+
+
+{# 地图页面 #}
+
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/slide/slide.html" as  slide %}
+{{slide.leyu_slide("AD_CONTACT_SEAT10") }}
+<script src="{{helper.cdnhost}}/assets/js/nav_ninth.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
+<script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
+<script>
+
+  $(function(){
+    $(".contact-vv").click(function(){
+      $(".voucherLink").css("display","block");
+      //console.log('map')
+      // console.log(BaiduMap);
+      new BaiduMap({
+        id: "container1",
+        title: {
+          text: $(this).parents('p').find('.contactingcc').html(),
+          className: "title"
+        },
+        /* content: {
+         className: "content",
+         text: ["地址：北京市建国门外大街", "电话：(010)65131892"]
+         },*/
+        point: {
+          lng: Number($(this).parents('.contacting').next('.contacts-ing').html()),
+          lat:Number($(this).parents('.contacting').next('.contacts-ing').next('.contacts-con').html())
+        },
+        zoom:true
+      });
+    })
+    $(".voucherclose").click(function(){
+      $(".voucherLink").css("display","none");
+    })
+  })
+</script>
+</body>
+</html>

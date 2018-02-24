@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+<!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_ninth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_tenth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/layout.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/expertunscramble.css">-->
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/about.css">
+<!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy3.css"/>-->
+<script>
+  var AD_PAGE_NAME = "PROFILE";
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<body style="background: #f5f5f5;">
+{% include "widget/top/top.html" %}
+<div style="background: #ffffff;">
+  {% include "widget/nav_first/nav_first.html" %}
+</div>
+{% include "widget/nav_ninth/nav_ninth.html" %}
+<div class="dui-layout-lg clearfix" style="margin: 20px auto;">
+  <div class="dui-layout-lg about-guanggao" id="AD_PROFILE_SEAT1">
+</div>
+<div style="margin:20px 0">
+  {% include "widget/nav_tenth/nav_tenth.html" %}
+</div>
+
+
+<div class="dui-layout-lg clearfix dui-box-shadow profile">
+  <div class="profile-con">
+    <p>金吉列出国留学咨询服务有限公司是获得教育部、公安部和国家工商行政管理总局资质认证的留学服务企业，是留学行业3.15标志服务品牌的企业,是全国诚信企业奖牌获得者、全国用户满意服务明星单位平均m每年向数千万个家庭提供数十个国家（数千所海外院校）的免费咨询国外留学。</p>
+    <p style="margin-top: 15px;">并且是中国消费者协会《社会责任导则》全国教育行业签署单位。我们拥有数十年留学管理经验的驻外十国使馆前大使、教育参赞作为特约咨询专家，千余名专业咨询师,数十万海外留学成功案例留学服务企业，是留学行业3.15标志服务品牌的企业,是全国诚信企业奖牌获得者。</p>
+  </div>
+  <div class="profile-img clearfix">
+    <img src="{{helper.cdnhost}}/assets/img/profile1.jpg" alt="">
+    <img src="{{helper.cdnhost}}/assets/img/profile2.jpg" alt="">
+    <img src="{{helper.cdnhost}}/assets/img/profile3.jpg" alt="">
+    <img src="{{helper.cdnhost}}/assets/img/profile4.jpg" alt="">
+  </div>
+</div>
+<div class="dui-layout-lg  dui-box-shadow boss-info" style="background: #ffffff">
+  <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #c13232;
+  width: 1140px; margin: 0px 20px 0;">
+    <i></i>
+    <h3>董事长简介</h3>
+  </div>
+  <dl class="clearfix">
+    <dt>
+      <img src="{{helper.cdnhost}}/assets/img/boss.jpg" alt="">
+    </dt>
+    <dd>
+      <p style="margin-top:12px;">张世杰，金吉列企业集团董事长，现任政协北京市第十二届委员会委员、北京市工商业联合会（商会）副会长，北京侨商会常务副会长、北京市企业发展促进会副会长、北京市私营个体经济协会副会长、全国教育服务标准化技术委员会委员、北京市工商联企业家高尔夫球会副会长，时任全国青联委员、北京市人大代表、
+      朝阳区政协常委、北京市工商联常委、北京市青年企业家协会理事、北京海外联谊会理事、北京国际友好联络会常务理事、北京市人民对外友好协会理事等社会职务。曾先后荣获中国优秀民营企业家、
+      全国用户满意杰出管理者、北京市优秀青年企业家银奖、首都五一劳动奖章、五四青年奖章、首都精神文明建设奖、中国教育机构影响力品牌领袖、60年60人中国教育成就奖、教育产业十大领军人物、改革开放30年中国10大民营教育家、2010中国杰出教育家等多项荣誉,金吉列出国留学咨询服务有限公司是获得教育部、公安部和国家工商行政管理总局资质认证的留学服务企业，是留学行业3.15标志服务品牌的企业,是全国诚信企业奖牌获得者、全国用户满意服务明星单位，并且是中国消费者协会《社会责任导则》全国教育行业签署单位吉列出国留学咨询服务有限公司是获得教育部、公安部和国家工商行政管理总局资质认证的留学服务企改革开放30年中国10大民营教育家、2010中国杰出。</p>
+    </dd>
+  </dl>
+</div>
+<div class="dui-layout-lg clearfix dui-box-shadow" style="margin-top:20px;background: #ffffff;" id="honor">
+  <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #c13232;width: 1140px; margin: 0px 20px 0;">
+    <i></i>
+    <h3>企业荣誉</h3>
+  </div>
+  <div style="background: #ffffff;" >
+    {% include "widget/academy/academy3_2.html" %}
+  </div>
+</div>
+</div>
+
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/slide/slide.html" as  slide %}
+{{slide.leyu_slide("AD_PROFILE_SEAT10") }}
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_ninth.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js" ></script>-->
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+</body>
+</html>
