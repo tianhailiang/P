@@ -1,0 +1,93 @@
+.list{
+    width : 280px;
+    margin: 20px auto;
+    background:#fff;
+}
+.list ul{
+    list-style: none;
+}
+.list ul li{
+    width        : 100%;
+    cursor: pointer;
+}
+.list ul li .title{
+    height     : 42px;
+    line-height: 42px;
+    padding    : 6px 0;
+    border     : none;
+    position   : relative;
+    font-size  : 16px;
+    text-indent: 50px;
+    color: #333;
+    display: block;
+}
+.list ul li .title .opc{
+    position: absolute;
+    height: 42px;
+    line-height: 42px;
+    width: 100%;
+    left: 0;
+    top: 6px;
+    color: #333;
+    z-index: 2;
+}
+.list ul li .title .bg{
+    position: absolute;
+    width: 100%;
+    height: 54px;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+.list ul li.checked{
+    border-bottom: 1px solid #dcdcdc;
+}
+.list ul li.checked .title .opc{
+    color: #C13232;
+    opacity: 1;
+}
+.list ul li.checked .title .bg{
+    background-color: #C13232;
+    opacity: 0.3;
+    filter: alpha(opacity=30);/*IE*/
+}
+.list ul li.checked .title .opc:after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    content: '';
+    width: 2px;
+    height: 42px;
+    background-color: #C13232;
+}
+.list ul li .title .opc span{
+    position: absolute;
+    font-size: 14px;
+    top: 2px;
+    right: 20px;
+}
+.list ul li .title .opc i{
+    font-size: 18px;
+    margin-right: 40px;
+    color: #C13232;
+}
+.list-se{
+    overflow: hidden;
+    display: none;
+}
+.list-se li{
+    position: relative;
+    text-indent: 110px;
+    height      : 54px;
+    line-height : 54px;
+}
+.list-se li a{
+    color       : #666666;
+    height      : 54px;
+    line-height : 54px;
+    font-size: 14px;
+}
+.list-se li.choose a{
+    color: #C13232;
+    text-decoration: underline;
+}

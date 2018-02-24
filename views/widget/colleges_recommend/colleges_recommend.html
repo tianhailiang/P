@@ -1,0 +1,24 @@
+<!--院校推荐-->
+{% macro cooper1(items,helper) %}
+  <div class="colleges_recommend_content">
+    {% for item in items %}
+    <div class="overseas_apply_item_r_c">
+      {% if loop.index == 1 %}
+      <span class="dian" src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">{{loop.index}}</span><a style="color:#C13232;margin-left: 8px;" href="{{helper.urlgen('schoolranknews',item.id | string, 'n=' + item.country)}}" target="_blank">{{ item.title}}</a>
+      {% elif loop.index == 2  %}
+
+      <span class="dian1" src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">{{loop.index}}</span><a style="color: #ef8b55;margin-left: 8px;" href="{{helper.urlgen('schoolranknews',item.id | string, 'n=' + item.country)}}" target="_blank">{{ item.title}}</a>
+      {% elif loop.index == 3%}
+
+      <span class="dian2" src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">{{loop.index}}</span><a style="color: #f3b053;margin-left: 8px;" href="{{helper.urlgen('schoolranknews',item.id | string, 'n=' + item.country)}}" target="_blank">{{ item.title}}</a>
+      {% else %}
+      <span src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">{{loop.index}}</span>
+      <a style="margin-left: 5px;" href="{{helper.urlgen('schoolranknews',item.id | string, 'n=' + item.country)}}" target="_blank">{{ item.title}}</a>
+      {% endif %}
+    </div>
+
+    {% endfor %}
+  </div>
+
+
+{% endmacro %}

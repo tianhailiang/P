@@ -1,0 +1,103 @@
+
+.adviser-case-detail-map{
+	width:100%;
+	height:130px;
+}
+.adviser-case-detail-map-3{
+  width:100%;
+  height:375px;
+  background:green;
+  margin-top: 20px;
+}
+/*========右边内容区=========*/
+.adviser-case-detail-con{
+   padding:20px 20px 0 20px;
+   background:#fff;
+   margin-top: 20px;
+}
+.adviser-case-detail-h3{
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 18px;
+  color:#c13232;
+  padding-top:20px;
+  padding-bottom: 16px;
+}
+.adviser-case-detail-come{
+  font-size:12px;
+  line-height: 12px;
+  color:#666;
+  padding-bottom:16px;
+}
+.adviser-case-detail-offer{
+  border-top:1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  padding-top:20px;
+}
+.adviser-case-offer-list{
+  padding-bottom:40px;
+  position: relative;
+}
+.adviser-case-offer-h4{
+  font-size: 16px;
+  font-weight: bold;
+  color:#333;
+  padding-bottom: 8px;
+  line-height: 16px;
+}
+.adviser-case-offer-strip{
+  font-size: 14px;
+  color:#333;
+  line-height: 14px;
+  margin-top:12px;
+}
+.adviser-case-offer-btn{
+  position: absolute;
+  right:0;
+  bottom: 40px;
+  padding:3px 13px;
+}
+.adviser-case-offer-ul{
+  padding-top:12px;
+}
+.adviser-case-offer-ul li{
+  float:left;
+  border:10px solid #c13232;
+  margin-left: 30px;
+}
+.adviser-case-offer-ul li img{
+   width:345px;
+   height:466px;
+   display: block;
+} 
+.adviser-case-operation-bar{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.adviser-case-operation-bar span{
+  float:left;
+  width:115px;
+  height:30px;
+  font-size: 14px;
+  color:#fff;
+  text-align:center;
+  line-height: 30px;
+  background:#c13232;
+  margin-right: 60px;
+}
+.community-nav-con{
+  margin:0;
+}
+
+.adviser-case-offer-list p{
+  font-size: 14px;
+  color:#333;
+  line-height: 26px;
+}
+
+.adviser-case-detail-offer i{
+  font-style: italic;
+}
+.adviser-case-detail-offer em{
+  font-style: italic;
+}

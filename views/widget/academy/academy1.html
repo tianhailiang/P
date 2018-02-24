@@ -1,0 +1,24 @@
+
+{% macro academy(items, helper) %}
+
+    <div class="dui-layout-border dui-layout-padding clearfix">
+      {% for val in items %}
+
+      {% if loop.index <= 6%}
+      <a href="{{helper.urlgen('values', val.id | string)}}" rel="nofollow">
+      <div class="dui-con-col3">
+        <div style="width: 266px; height: 200px; background: #CCCCCC ">
+          <img class="col3-p1-p1-a1" src="{{helper.imageThumb(val.thumb,'266x200')}}" alt="{{val.title}}">
+        </div>
+        <p class="col3-p1-p1-a2"><a class="dui-text-warning-ss" href="{{helper.urlgen('values', val.id | string )}}"> {{val.title | shorten(18) }}</a></p>
+      </div>
+      </a>
+      {% endif %}
+
+      {% endfor %}
+    </div>
+
+{% endmacro %}
+
+
+

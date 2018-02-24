@@ -1,0 +1,90 @@
+/*公用标题*/
+.white-bg{
+    background-color: #fff;
+}
+.gray-bg{
+    background-color: #f3f3f3;
+}
+.common-title {
+    width: 100%;
+    height: 47px;
+    line-height: 47px;
+    border-bottom: 1px solid #dcdcdc;
+    position: relative;
+}
+.line-top-title{
+    height: 45px;
+    line-height: 45px;
+    border-top: 2px solid #C13232;
+    border-bottom: 1px solid #dcdcdc;
+}
+.red-bg-title{
+    height: 48px;
+    background-color: #C13232;
+    border: none;
+}
+
+.common-title i{
+    width: 2px;
+    height: 22px;
+    display: block;
+    background: #C13232;
+    position: absolute;
+    top:50%;
+    left:0;
+    margin-top: -11px;
+}
+.common-title h3{
+    line-height: 47px;
+    font-weight: 400;
+    font-size: 18px;
+    color:#333;
+    margin-left: 18px;
+    float: left;
+}
+.common-title a{
+    float: right;
+    color: #666;
+    font-size: 16px;
+    margin-right: 19px;
+}
+.red-bg-title a{
+    color: #fff;
+}
+.line-top-title h3{
+    line-height: 45px;
+}
+.red-bg-title h3{
+    line-height: 48px;
+    margin-left: 20px;
+    color: #fff;
+}
+
+.main-title{
+    height: 40px;
+    border: none;
+}
+.main-title h3{
+    margin-left: 0;
+    clear: both;
+    display: inline-block;
+    line-height: 40px;
+    color:#fff;
+    background: #C13232;
+    padding:0 20px;
+    font-weight: normal;
+}
+
+.main-title a{
+    float: right;
+    color: #666;
+    font-size: 16px;
+    margin-right: 19px;
+    line-height: 40px;
+}
+
+/*IE67推荐*/
+.main-title h3{
+    *zoom:1;
+    *display: inline;
+}

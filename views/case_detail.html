@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include "header_new.html" %}
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/case_detail.css" >
+  <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
+  <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+</head>
+<body style="background:#f5f5f5;">
+  <!-- ===头部=== -->
+ {% include "widget/top/top.html" %}
+ <!-- ====导航===== -->
+ {% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+ {{nav_seventh.nav_seventh("#",tdk.cityid,helper)}}
+<div class="dui-layout-lg clearfix dui-layout-padding" >
+  <div class="dui-layout-silde ">
+    <!-- ====广告图1==== -->
+    <div class="adviser-case-detail-map" id="AD_ADVISOR_P_CASE_DETAIL_SEAT1"></div>   
+    <!-- =======顾问头像关注====== -->
+    <div style="margin-top: 20px;" >
+      {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+      {% if userinfo.status == 1 %} {#离职#}
+        {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
+      {% else %} {#在职#}
+        {{community_advisor.advisor(userinfo,helper,login_info)}}
+      {% endif %}
+    </div>
+    <!-- =======作者精选======= -->
+    <div style="margin-top: 20px;" class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;">
+    		<i></i>
+    		<h3>作者精选</h3>
+	    </div>
+      {% esi helper.include(esikey,'fragment/author_selection','uid='+memberId) %}
+    </div>
+    <!-- ========猜你喜欢======= -->
+    <div style="margin-top: 20px;" class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;">
+        <i></i>
+        <h3>猜你喜欢</h3>
+      </div>
+      {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+    </div>
+    <!-- ==活动预告== -->
+    <div style="margin-top:20px;background:#fff;" class="clearfix dui-box-shadow">
+      <div class="common-title gray-bg">
+        <i></i>
+        <h3>活动预告</h3>
+        <a target="_blank" href="{{helper.active_urlgen('activity', 'c='+tdk.cityid)}}" class="iconfont">&#xe602;</a>
+      </div>
+      {% esi helper.include(esikey,'fragment/huodongyugao','pos=cmslist','c='+tdk.cityid,'n='+hcountry) %}
+    </div>
+    <!--=====广告图3====-->
+    <div class="adviser-case-detail-map" id="AD_ADVISOR_P_CASE_DETAIL_SEAT3" style="margin-top:20px;height:374px;"></div> 
+  </div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-con" >
+    <!--=====广告图2====-->
+    <div class="adviser-case-detail-map" id="AD_ADVISOR_P_CASE_DETAIL_SEAT2"></div> 
+    <div class="dui-box-shadow" >
+      <div class="adviser-case-detail-con" >
+        {% import "widget2/community_nav/community_nav.html" as community_nav %}
+        {% if userinfo.status == 1 %} {#离职顾问#}
+          {{community_nav.adviser_nav_leave('案例', userinfo.uid, helper)}}
+        {% else %} {#在职顾问#}
+          {{community_nav.adviser_nav('案例',userinfo.uid,helper)}}
+        {% endif %}
+        <h1 class="adviser-case-detail-h3">
+          {{article.article_info.title}}
+        </h1>
+        <div class="adviser-case-detail-come" >
+          <span style="margin-right:20px;" >来自{{article.article_info.from}}</span>
+          <span>时间：{{article.article_info.add_time}}</span>
+          <span style="float:right;">阅读量：<i style="font-style: normal;" id="detail_views_num"></i></span>
+        </div>
+        <div class="adviser-case-detail-offer" >
+          <div class="adviser-case-offer-list" >
+             <h4 class="adviser-case-offer-h4" >
+               一、学生录取情况
+             </h4>
+             <div class="adviser-case-offer-strip" >
+               学生姓名：{{article.article_info.introduce.stu_name}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               录取院校：
+               {{article.article_info.introduce.school_1}}&nbsp;&nbsp;
+               {{article.article_info.introduce.school_2}}&nbsp;&nbsp; {{article.article_info.introduce.school_3}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               录取专业：
+               {{article.article_info.introduce.dep_1}}&nbsp;&nbsp;
+               {{article.article_info.introduce.dep_2}}&nbsp;&nbsp;
+               {{article.article_info.introduce.dep_3}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               留学层级：{{ article.article_info.edu_id | getEdu()}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               录取时间：{{article.article_info.introduce.admission_time}}
+             </div>
+             <a target="_blank" href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}" class="dui-btn btn-xlarge btn-consult_ylw adviser-case-offer-btn"  >检测我的录取情况</a>
+          </div>
+          <div class="adviser-case-offer-list" >
+             <h4 class="adviser-case-offer-h4" >
+               二、学生背景
+             </h4>
+             <div class="adviser-case-offer-strip" >
+               就读院校：{{article.article_info.introduce.pre_school}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               所学专业：{{article.article_info.introduce.pre_dep}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               成绩概况：{{article.article_info.introduce.score}}
+             </div>
+             <a target="_blank" href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}" class="dui-btn btn-xlarge btn-consult_blue adviser-case-offer-btn">想要高分</a>
+          </div>
+          <div class="adviser-case-offer-list" >
+            <h4 class="adviser-case-offer-h4" >
+               三、offer展示
+            </h4>
+            <ul class="adviser-case-offer-ul clearfix">
+              {% for item in article.article_info.introduce.offer_img %}
+                <li>
+                  <a target="_blank" href="{{item}}"  >
+                    <img src="{{helper.imageThumb(item,'330x466')}}" />
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="adviser-case-offer-list" >
+             <h4 class="adviser-case-offer-h4" >
+               四、申请思路及专家分析
+             </h4>
+                {{ article.article_info.message | safe}}
+          </div>
+        </div>
+        <div class="adviser-case-operation-bar clearfix" data-artId = "{{article_id}}" id="articleId" data-memberId ="{{memberId}}" style="padding-top: 40px;
+  padding-bottom: 40px;">
+          <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
+          {% if article.article_info.user_follow_check %}
+            已收藏
+          {% else %}
+            收藏
+          {% endif %}
+          </span>  
+          <span id="fabulous" style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;">
+            <i class="iconfont">
+            {% if article.article_info.vote_info |length %}
+              &#xe604;
+            {% else %}
+              &#xe651;
+            {% endif %}  
+            </i>点赞
+          </span> 
+          <span class="share-btn" data-title="{{article.article_info.title}}" style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;">转发</span>
+        </div>
+        <!-- ========评论===== -->
+        {% if userinfo.status == 0 %} 
+          {% include "widget2/comment/comment.html" %}
+        {% endif %}
+      </div>  
+    </div>
+  </div>
+</div>
+<div class="dui-layout-lg clearfix" >
+    <!-- ========热门留学方案======== -->
+    <div class="dui-box-shadow" style="margin-top: 20px;background:#fff;" >
+      <div class="common-title">
+          <i></i>
+          <h3>热门留学方案</h3>
+          <a target="_blank" href="{{helper.urlgen('productrank')}}" class="iconfont">&#xe602;</a>
+      </div>  
+      {% esi helper.include(esikey,'fragment/hot_liuxuefangan_list') %}
+    </div>
+    <div class="dui-box-shadow" style="margin-top: 20px;background:#fff;margin-bottom: 20px;">
+      <div class="common-title gray-bg">
+        <i></i>
+        <h3>明星顾问</h3>
+        <a target="_blank" href="{{helper.urlgen('adviser')}}" class="iconfont">&#xe602;</a>
+      </div>
+        {% esi helper.include(esikey,'fragment/community_guwen','n='+hcountry) %}
+    </div>
+</div>
+{% import "widget/slide/slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+{% include 'widget/footer/footer.html' %}
+  <div>
+      <input type="hidden" id="detail_catid" value="{{catid}}"/>
+      <input type="hidden" id="detail_id" value="{{id}}"/>
+  </div>
+<script>
+    var login_ss = null; //获取用户信息
+    if($.cookie('login_ss') != undefined){
+      login_ss = JSON.parse($.cookie('login_ss'));  
+    }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
+<script>
+  $(function(){
+    //明星顾问轮播
+    $('.advisor_star_bar .slider').xSlider();
+    $("#collection").on("click",function(){
+      //文章收藏按钮
+      var that =this;
+      $.ajax({
+        url: '/soapi/favorite_article',
+        type:'POST',
+        data:{
+          article_id:$("#articleId").attr("data-artId")
+        },
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success:function(result){
+         console.log(result)
+           if(result.code == 0){
+            if(result.data.action=='add'){
+              layer.msg('收藏成功');
+              $(that).html('已收藏');
+            }else if(result.data.action=='remove'){
+              layer.msg('取消收藏成功');
+              $(that).html('收藏');
+            }
+          }else if(result.code == 1){
+            layer.msg('你还没有去登录');
+            window.setTimeout(function(){
+              window.location.href =fn.curlgen('login','h='+window.location.href);
+            },1000);
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+           console.log(errorThrown)
+        }
+      });
+    });
+
+    $("#fabulous").on("click",function(){
+      //点赞
+      if( login_ss == undefined){
+        layer.msg('你还没有登录')
+        window.setTimeout(function(){
+          window.location.href =fn.curlgen('login','h='+window.location.href);
+        },1000);
+        return false;
+      }
+      if(login_ss.uid == $("#articleId").attr('data-memberId')){
+        layer.msg('不能对自己发表的内容进行投票')
+        return false;
+      } 
+      var that =this;
+      $.ajax({
+        url: '/soapi/article_vote',
+        type:'POST',
+        data:{
+          item_id:$("#articleId").attr("data-artId"),
+          item_type:'article'
+        },
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success:function(result){
+         console.log(result)
+          if(result.code == 0){
+            if(result.data.action=='add'){
+              layer.msg('点赞成功');
+              $(that).find('i').html('&#xe604;');
+            }else if(result.data.action == 'remove'){
+              layer.msg('取消点赞成功');
+              $(that).find('i').html('&#xe651;');
+            }  
+          }else{
+            layer.msg(result.err)
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+           console.log(errorThrown)
+        }
+      });
+    });
+    $('.share-btn').on('click',share); //点击分享
+    function share(){
+      //调取分享函数
+      var that =this;
+      layer.open({
+        type: 2,
+        title: '分享到',
+        area: ['262px', '327px'],
+        content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+fn.urlgen("article",$("#articleId").attr("data-artId").toString()), 'no']
+      });
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+
+
+.author-sel{
+	padding:20px 20px 0 20px;
+	background:#fff;
+}	
+
+.author-sel-img{
+	display: block;
+	width:240px;
+	height:135px;
+    margin-bottom: 20px;
+}
+
+.author-sel-ul li a{
+	display: block;
+	font-size: 14px;
+	color:#333;
+	padding-bottom: 16px;
+	line-height: 14px;
+}
+.author-sel-title{
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	display: block;
+	width:224px;
+	float:right;
+}
+
+.author-sel-txt{
+	font-size: 12px;
+	line-height: 18px;
+	margin-top: 5px;
+}
+
+
+

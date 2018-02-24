@@ -1,0 +1,165 @@
+.nav-fourth{
+  height: 44px;
+  background: url(../img/bg1.png)  repeat-x;
+  position: relative;
+  color:#ffffff;
+  font-size:14px;
+  position: relative;
+  z-index: 999;
+}
+.nav-fourth a{
+  color:#333333;
+  font-size:16px;
+}
+
+.nav-fourth .home-nav-fourth{
+  display: block;
+  width: 80px;
+  font-size:16px;
+  line-height: 44px;
+  text-align: center;
+  float:left
+}
+
+.nav-fourth .home-nav-fourth:hover{
+  text-decoration: underline;
+}
+.nav-fourth .nav-fourth-list{
+  float:left;
+}
+.nav-fourth-list .abroad-education{
+  float:left;
+  position: relative;
+  z-index:998;
+  width: 198px;
+  border-right:1px solid #ffffff;
+  border-left:1px solid #ffffff;
+  text-align: center;
+  height: 40px;
+  margin-top: 4px;
+  background: #ffffff;
+  margin-left: 10px;
+  border-radius:5px 5px 0px 0px;
+  box-shadow: 2px 1px 3px 2px rgba(0,0,0,0.2);
+}
+.abroad-education span{
+  font-size: 20px;
+  line-height: 44px;
+  display: block;
+  float:left;
+  width:198px;
+  text-align: center;
+}
+.abroad-education span a{
+  display: inline-block;
+  margin-right:4px;
+  font-size:16px;
+
+}
+.abroad-education .abroad-education-list{
+  position: absolute;
+  width: 198px;
+  border-right:1px solid #ffffff;
+  border-left:1px solid #ffffff;
+  text-align: center;
+  top:44px;
+  left: -1px;
+  *left:-1px;
+  z-index:999;
+}
+.abroad-education-list ul{
+  background:#ffffff;
+  box-shadow: 0 1px 3px 3px rgba(0,0,0,0.1);
+}
+.abroad-education-list ul li{
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+}
+.abroad-education-list ul li a{
+  color:#333333;
+  font-size: 16px;
+  /*height: 40px;
+  line-height: 40px;
+  font-size: 16px;*/
+}
+.abroad-education .abroad-education-list ul a{
+  color:#333333;
+}
+.abroad-education .abroad-education-list ul a:hover{
+  color:#c13232;
+}
+.abroad-education .go-down{
+  font-size: 10px;
+  display: inline-block;
+  color:#c13232;
+}
+
+.nav-fourth .nav-fourth-a{
+  display: block;
+  float: left;
+  line-height:44px;
+  padding:0 20px;
+  color:#ffffff;
+  background: url(../img/bg2.png) no-repeat right center;
+}
+.nav-fourth-list .nav-fourth-a:hover{
+  text-decoration: underline;
+  color:#ffffff;
+}
+.abroad-education-liuxue{
+  float:left;
+  width: 120px;
+  position: relative;
+  text-align: center;
+  background: url(../img/bg2.png) no-repeat right center;
+}
+.abroad-education-liuxue span{
+  display: block;
+  width: 120px;
+  text-align: center;
+  line-height: 44px;
+}
+.abroad-education-liuxue .abroad-coutry{
+  position: absolute;
+  top:44px;
+  width: 120px;
+  z-index:999;
+  *left:0;
+  box-shadow: 2px 1px 3px 2px rgba(0,0,0,0.2);
+}
+.abroad-education-liuxue .abroad-coutry ul{
+  background:#ffffff;
+}
+.abroad-coutry ul li{
+  line-height: 40px;
+  text-align: center;
+  height: 40px;
+}
+
+.abroad-education-liuxue span a{
+  display: inline-block;
+  margin-right:4px;
+  font-size:16px;
+
+}
+.liuxue-xq{
+  display: none;
+}
+.liuxue-xq-tit .go-down{
+  font-size: 10px;
+  display: inline-block;
+}
+.liuxue-xq-tit .nav-fourth-zhou{
+  color:#ffffff;
+}
+.nav-fourth-list .abroad-education ul a:hover{
+  color:#c13232;
+  display: block;
+  background: #f6f6f6;
+}
+.nav-fourth-list .abroad-education-liuxue ul a:hover{
+  color:#c13232;
+  display: block;
+  background: #f6f6f6;
+}

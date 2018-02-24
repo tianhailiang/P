@@ -1,0 +1,30 @@
+/*热门院校*/
+.dui-layout-col6 {
+  width: 266px;
+  margin-left: 23px;
+  float: left;
+}
+.col5-t-p1-p2 {
+  width: 266px;
+  height: 100%;
+  float: left;
+  margin-left: 20px;
+}
+.col5-p1-p2-a2 {
+  font-size: 14px;
+}
+.col5-p1-p2-a1 {
+  width: 266px;
+  margin-bottom: 19px;
+  height: 200px;
+}
+.col5-p1-p2-a3 {
+  width: 266px;
+  height: 36px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  margin-top: 4px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,76 @@
+{%
+set abroadcountrylist=[
+{
+"id":1,
+"type":"美国留学",
+"name":"usa"
+},
+{
+"id":2,
+"type":"英国留学",
+"name":"gbr"
+},
+{
+"id":3,
+"type":"加拿大留学",
+"name":"can"
+},
+{
+"id":4,
+"type":"澳洲留学",
+"name":"aus"
+},
+{
+"id":5,
+"type":"新西兰留学",
+"name":"nzl"
+},
+{
+"id":201,
+"type":"亚洲留学",
+"name":"Asia"
+},
+{
+"id":202,
+"type":"欧洲留学",
+"name":"Eur"
+}
+]
+
+
+%}
+<div class="nav-fifth-w">
+  <div class="dui-layout-lg  clearfix nav-fifth" >
+    <a rel="nofollow" href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}" class="home-nav-fifth">首页</a>
+    <div class="nav-fifth-list">
+      <div class="abroad-fifth">
+        <span><a href="#">留学国家</a><i class="iconfont go-down">&#xe60b;</i></span>
+        <div class="abroad-fifth-list">
+          <ul>
+            {% for item in abroadcountrylist %}
+            <li><a data-id="{{ item.id }}" href="#{{ item.name }}">{{ item.type }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <a href="{{helper.urlgen('edu','e=19','n=1')}}" class="nav-fifth-a nav-fifth-a-f">中小学</a>
+      <a href="{{helper.urlgen('edu','e=1','n=1')}}" class="nav-fifth-a">本科生</a>
+      <a href="{{helper.urlgen('edu','e=2','n=1')}}" class="nav-fifth-a">研究生</a>
+      <span class="fifth-shu">|</span>
+      <a href="{{helper.urlgen('glue')}}" class="nav-fifth-a">申请攻略</a>
+      <a href="{{helper.urlgen('visa')}}" class="nav-fifth-a">签证指导</a>
+      <a href="{{helper.urlgen('prereq')}}" class="nav-fifth-a">申请条件</a>
+      <a href="{{helper.urlgen('cost')}}" class="nav-fifth-a">留学费用</a>
+      <span class="fifth-shu">|</span>
+      <a href="{{helper.urlgen('cases')}}" class="nav-fifth-a">经典案例</a>
+      <a href="{{helper.urlgen('productrank')}}" class="nav-fifth-a">留学方案</a>
+      <a href="{{helper.urlgen('schoollib')}}" class="nav-fifth-a">院校库</a>
+      <a href="{{helper.urlgen('schoolrank')}}" class="nav-fifth-a">大学排名</a>
+      <span class="fifth-shu">|</span>
+      <a href="{{helper.urlgen('community_index')}}" class="nav-fifth-a">留学社区</a>
+      <a rel="nofollow" href="{{helper.urlgen('about')}}"  rel="nofollow"  class="nav-fifth-a">关于金吉列</a>
+    </div>
+  </div>
+</div>
+{#<script src="/views/widget/nav_fifth/nav_fifth.js"></script>#}

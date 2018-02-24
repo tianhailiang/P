@@ -1,0 +1,54 @@
+
+.community-nav-con{
+  height: 40px;
+  background: #f3f3f3;
+  margin: 20px 20px 0;
+}
+.community-nav-con .community-nav-list{
+  display: inline-block;
+  font-size: 16px;
+  color:#666666;
+  line-height: 40px;
+  width:96px;
+  height: 40px;
+  text-align: center;
+}
+.community-nav-con .nav-active{
+  background: #c13232;
+  color:#ffffff;
+}
+.nav-phone{
+  width: 170px;
+  float:right;
+  color:#666666;
+}
+.nav-phone .phone-bg{
+  width: 36px;
+  height: 36px;
+  display: block;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 36px;
+  margin-top:2px;
+  background: #c13232;
+  color:#ffffff;
+  float:left;
+
+}
+.phone-bg i{
+  font-size:22px;
+}
+.community-zixun{
+  float:left;
+  display: block;
+  height: 20px;
+  width: 124px;
+  line-height: 20px;
+  font-size:12px;
+}
+.community-tel{
+  display: block;
+  font-size:14px;
+}
+
+

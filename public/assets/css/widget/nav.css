@@ -1,0 +1,250 @@
+form, input {
+	margin: 0;
+	padding: 0;
+}
+
+.nav1-logo{
+	height: 140px;
+	margin: 0 auto;
+
+}
+.loadings{
+	width:1180px;
+	height: 140px;
+	float: left;
+}
+.logo-left{
+	width:306px;
+	height: 140px;
+	float: left;
+	
+}
+.logo-left img{
+	width:260px;
+	height: 86px;
+	float: left;
+	margin-top: 28px;
+}
+
+.nav1-logo .city{
+	width:100px;
+	height: 44px;
+	margin-top:45px;
+	float:left;
+	position: relative;
+}
+#city-on{
+	font-size: 16px;
+}
+.nav1-logo .city  .icon-top{
+	font-size: 18px;
+	color: #C13232;
+	position: absolute;
+	top: 2px;
+	left: -19px;
+}
+.nav1-logo .city .city-cc{
+	width:100px;
+	height: 21px;
+	line-height: 21px;
+}
+.nav1-logo .city .city-cc i{
+	display: block;
+	float: left;
+	width:31px;
+	height: 21px;
+}
+.nav1-logo .city p{
+	margin-top:8px;
+	font-weight:600 ;
+	color: #C13232;
+	font-size: 16px;
+	margin-left: -14px;
+}
+.nav1-logo .city p span{
+	font-size: 12px;
+	color:#333333;
+	font-weight:500;
+}
+.citynames i{
+	margin-right: 6px;
+	font-size:14px;
+	position: relative;
+	top:-2px;
+	left: 0;
+}
+
+
+.city-box{position: absolute;z-index: 999;display:none;left:-14px;top:46px; width: 584px; background: #fff; border-top: 4px solid #D41B2B;}
+.city-box .arrow{position: absolute; top:-9px; left: 112px; width: 5px; height: 9px; display: inline-block;}
+.city-box .city-cont{border: 1px solid #D2D2D2; border-top: none; padding: 18px 0;}
+.city-box .city-cont a{float: left; width: 70px; text-align: center; padding: 0 5px; display: block; color: #666; font-size:14px; line-height: 28px;cursor: pointer}
+.city-box .city-cont a:hover{color: #C13232;}
+.city:hover .city-box{
+	display: block;
+}
+
+
+/*搜索*/
+.searchdif{
+	margin-left: 4px;
+}
+.searchs{
+	width:400px;
+	height: 140px;
+	float: left;
+	
+}
+.search{
+	width:400px;
+	height: 40px;
+	margin-top: 45px;
+	border: 2px solid #c13232;
+}
+.submit-select{
+	height: 40px;
+	border: none;
+	float: left;
+	background: #FFFFFF;
+	outline-style: none;
+}
+.home-search .text{
+	width: 267px;
+	height: 40px;
+	line-height: 42px;
+	border: none;
+	padding-left: 10px;
+	float: left;
+	font-size: 13px;
+	outline-style: none;
+
+}
+.home-search .search-btn{
+	width:48px;
+	height: 40px;
+	float: right;
+	border: none;
+	background: #C13232;
+	outline-style: none;
+	line-height: 40px;
+	text-align: center;
+}
+.search-btn i{
+	font-size:30px;
+	color:#fff;
+	line-height: 40px;
+}
+.tags{
+	width:400px;
+	height: 30px;
+	margin-top: 10px;
+}
+.tags span{
+	font-size: 13px;
+	line-height: 30px;
+}
+.tags span a{
+	margin: 0 3px;
+	color: #c13232;
+}
+/*电话*/
+.phone{
+	width:230px;
+	height: 140px;
+	float: left;
+}
+.phones{
+	width:216px;
+	height: 44px;
+	margin: 45px 0 0 20px;
+}
+.phone-left{
+	width:44px;
+	height: 44px;
+	background: #C13232;
+	float: left;
+	line-height: 44px;
+	text-align: center;
+}
+.phone-left i{
+	font-size: 24px;
+	color:#fff;
+
+}
+.phone-right{
+	margin-left: 10px;
+	float: left;
+}
+.phone-right p{
+	font-size:16px;
+	line-height: 20px;
+	margin-bottom: 5px;
+}
+.phone-right span{
+	font-size: 22px;
+	color:#c13232;
+}
+.top-div{
+	width: 100%;
+	height: 54px;
+	border-bottom: 1px dashed #dcdcdc;
+	font-size: 14px;
+	color: #333;
+}
+
+.top-div-1{
+	height: 18px;
+	margin-left: 15px;
+	margin-bottom: 10px;
+	overflow: hidden;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.top-div-1 i{
+	font-size: 16px;
+	color:#C13232;
+	margin-right:2px;
+}
+.top_sec{
+	width:70px;
+	float:left;
+	font-size:14px;
+	color:#666666;
+}
+.top_sec .will-read-list li{
+	line-height: 40px;
+	text-align: center;
+}
+.top_sec a{
+	color:#666666;
+	line-height: 40px;
+}
+.please-sec{
+	width: 69px;
+	padding: 0 5px;
+	border-right:1px solid #666666;
+}
+.searchs{
+	position: relative;
+}
+.sec-xq{
+	border:2px solid #c13232;
+	left:0px;
+	*margin-top:30px;
+	width: 52px;
+	border-top:none;
+	background: #ffffff;
+	text-align: center;
+	position: absolute;
+	display: none;
+	z-index: 999;
+}
+.sec-xq a:hover{
+	color:#c13232;
+}
+.top_sec:hover .sec-xq{
+	display: block;
+}

@@ -1,0 +1,83 @@
+.book-activities-box{
+  display: block;
+  color:#333333;
+}
+.booking-activities{
+  background: #ffffff;
+  margin-bottom: 2px;
+}
+.booking-activities-box{
+    margin:0 20px;
+  height: 158px;
+}
+.booking-activities-box:hover{
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.15)
+}
+.booking-activities-title{
+  height:40px;
+  background: #f3f3f3;
+ /* margin:0 20px;*/
+}
+
+.booking-activities-title h6{
+  font-size: 18px;
+  padding: 0 16px 0 14px;
+  box-sizing: border-box;
+  color:#333333;
+  font-weight: normal;
+  line-height: 40px;
+}
+.act-time{
+  font-size: 16px;
+  font-weight: normal;
+  color:#333333;
+}
+.booking-act-con-xq{
+  float:right;
+  font-size:14px;
+  font-weight: normal;
+}
+.activities-content{
+  padding:20px 0 0px 40px;
+  box-sizing: border-box;
+}
+.book-activities-con{
+  width:680px;
+  float:left;
+}
+
+.book-activities-con p{
+  width: 670px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size:14px;
+
+}
+.mar-top{
+  margin-top:15px;
+}
+.dui-text-warning-s:hover{
+  color:#333333;
+}
+.person-num{
+  margin-right:40px;
+}
+.destination{
+  margin-left:40px;
+}
+.book-activities-btn{
+  float:right;
+  margin-top:44px;
+  *margin-top:-44px;
+}
+.book-activities-btn .btn-detail{
+  width: 115px;
+}
+.activity-on{
+  color:#333333;
+}
+
+.activity-on:hover{
+  color:#333333;
+}

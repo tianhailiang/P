@@ -1,0 +1,39 @@
+.pagenation{
+	width: 100%;
+}
+.pagenation div{
+	font-size: 14px;
+	font-family: proxima-nova,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Wenquanyi Micro Hei","WenQuanYi Micro Hei Mono","WenQuanYi Zen Hei","WenQuanYi Zen Hei","Apple LiGothic Medium",SimHei,"ST Heiti","WenQuanYi Zen Hei Sharp";
+	padding: 0px 10px 0px 0px;
+}
+.pagenation span{
+	display:block;
+	border-radius: 10%;
+	float: left;
+	text-align:center;
+	padding: 2px;
+	cursor: pointer;
+	margin-left: 15px;
+	min-width: 20px;
+}
+.pagenation .pageSelect{
+	background-color: #34abf2;
+	color: #FFFFFF;
+}
+.pagenation .items{
+	float: left;
+}
+.pagenation .jumpTo{
+	font-size: 14px;
+	-moz-border-radius: 5px 5px 5px 5px;     /* Gecko browsers */
+	-webkit-border-radius: 5px 5px 5px 5px;   /* Webkit browsers */
+	border-radius:5px 5px 5px 5px;            /* W3C syntax */
+	border: 1px solid gainsboro;
+	padding: 2px 2px 2px 2px;
+	max-width: 250px;
+	width: 30px;
+}
+.pagenation .auto{
+	padding: 2px 3px 2px 3px;
+	cursor: pointer;
+}

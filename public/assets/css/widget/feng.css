@@ -1,0 +1,74 @@
+.hotact {
+  width: 438px;
+  height: 370px;
+  border: 1px solid #dcdcdc;
+}
+.hotacts {
+  width: 440px;
+  height: 420px;
+}
+.hotacts h2 {
+  height: 48px;
+  line-height: 48px;
+  background: url("../../img/hot.png");
+  font-weight: 500;
+  color: #ffffff;
+}
+.hotact-con img {
+  width: 180px;
+  height: 120px;
+  float: left;
+  margin: 20px 20px 12px 20px;
+}
+.hotact-ing .hotact-p {
+   font-size: 16px;
+   color: #C13232;
+   width:200px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+
+}
+.hotact-ing .hotact-p2 {
+  color: #666666;
+  display: -webkit-box;
+    -webkit-box-orient: vertical;
+    // -webkit-line-clamp: 5;
+    // overflow: hidden;
+
+}
+.hotact-ing {
+  width: 200px;
+  height: 120px;
+  float: left;
+  margin: 14px 0;
+}
+.hotact-ing p {
+  font-size: 14px;
+  line-height: 24px;
+}
+.hotact-ing p a {
+ color: #C13232;
+}
+.hotact-ul {
+  width: 398px;
+  margin: 0 20px;
+}
+.hotact-ul span {
+  float: right;
+}
+.hotact-ul li {
+  font-size: 14px;
+  line-height: 30px;
+  position: relative;
+}
+.hotact-ul li a {
+  color: #333333;
+ 
+}
+.hotact-ul li:hover a {
+  color: #C13232;
+}
+.hotact-ul li span {
+  color: #999999;
+}

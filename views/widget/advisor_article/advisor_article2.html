@@ -1,0 +1,57 @@
+
+<div class="dui-layout-con jinpai-advisor " >
+      <dl class="clearfix">
+        <dt>
+        {% for item in wecenter %}
+          <div class="guwen-info">
+        <a target="_blank" href="{{ helper.urlgen('p', item.user_info.uid | string ) }}" class="guwen-img"><img src="{{ helper.avaterimg(item.user_info.uid, 'small',item.user_info.status,item.user_info.version) }}" alt=""></a>
+              <p class="guwen-xq">
+                <span class="guwen-name">{{ item.user_info.realname }}</span>
+                <a target="_blank" href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{item.user_info.job_number}}" target="_blank" class="dui-btn btn-xlarge btn-appointment btn-detail zixun-guwen">在线咨询</a>
+              </p>
+              <p class="enjoy-country">
+                <span>擅长国家：{{ item.user_info.skilful_country  }}</span>
+              </p>
+              <p class="guwen-jianjie">{{ item.user_info.introduce | ellipsis(74) }}</p>
+          </div>
+        {% endfor %}
+        </dt>
+        <dd>
+          {% for item in wecenter %}
+           
+          <div class="guwen-article" >
+            <p class="article-title"><a  class="dui-text-warning-s" href="{{ helper.urlgen('p', item.user_info.uid | string) }}" target="_blank">{{ item.article_info[0].title }}</a></p>
+            <p class="article-info">
+              <span class="fabiao-time" style="margin-right: 38px;">时间：{{ item.article_info[0].add_time }}</span>
+              <span class="editor" style="margin-right: 25px;">作者：{{ item.user_info.realname }}</span>
+              <span class="goodat">擅长国家：{{ item.user_info.skilful_country | ellipsis(9) }}</span>
+            </p>
+          </div>
+          {% endfor %}
+        </dd>
+
+      </dl>
+ 
+</div>
+<script>
+  $(document).ready(function(){
+    //顾问滑动切换
+    $(".guwen-info").eq(0).css({"display":"block"});
+   
+    $(".guwen-article:last").css({"border":"none"});
+
+     $(".guwen-article").hover(
+      function(){
+        var ind=$(this).index();
+        $(".guwen-info").css({"display":"none"});
+        $(".guwen-info").eq(ind).css({"display":"block"});
+        
+      }
+
+  )
+
+
+  });
+
+ 
+</script>

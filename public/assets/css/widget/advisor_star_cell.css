@@ -1,0 +1,97 @@
+.advisor-star-cell{
+    width: 92px;
+}
+.advisor-star-cell dt{
+    width: 92px;
+    height: 116px;
+    overflow: hidden;
+}
+.advisor-star-cell img{
+    display: block;
+    width: 100%;
+}
+.advisor-star-cell dd{
+    color: #333;
+    text-align: center;
+}
+.advisor-star-cell dd.name{
+    font-size: 14px;
+    line-height: 14px;
+    margin: 10px 0;
+}
+.advisor-star-cell dd.area{
+    font-size: 12px;
+    line-height: 12px;
+}
+/*�����ĸ񲼾�*/
+.advisor-star-cont{
+    width: 244px;
+    padding: 16px 17px;
+    background-color: #fff;
+}
+.advisor-star-cont .advisor-star-cell-box{
+    width: 92px;
+    margin: 16px 15px;
+    float: left;
+}
+.advisor-star-cont .advisor-star-cell-box a{
+    display: block;
+}
+
+/*�����б�*/
+
+.advisor-star-list{
+    padding-top:10px;
+}
+
+.advisor-star-list .star-item{
+    display: block;
+    width: 240px;
+    margin: 0 19px;
+    padding: 11px 0;
+}
+.advisor-star-list .star-item dl{
+    width: 100%;
+}
+.advisor-star-list .star-item dl dt{
+    width: 92px;
+    height: 116px;
+    float: left;
+    margin-right: 20px;
+}
+
+.advisor-star-list .star-item dl dt img{
+    width:92px;
+    height:116px;
+    display: block;
+}
+
+.advisor-star-list .star-item dl dd{
+    width: 128px;
+    float: left;
+}
+.advisor-star-list .star-item dl dd .star_name{
+    font-size: 14px;
+    color: #333;
+    line-height: 14px;
+}
+.advisor-star-list .star-item dl dd .star_info{
+    font-size: 12px;
+    line-height: 24px;
+    height: 72px;
+    color: #666;
+    margin: 8px 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+}
+.advisor-star-list .star-item dl dd .star_btn{
+    font-size: 12px;
+    line-height: 12px;
+    color: #C13232;
+    cursor: pointer;
+}
+.hover-color:hover{
+    color: #C13232;
+}

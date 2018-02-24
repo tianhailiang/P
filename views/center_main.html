@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+{% include "header_new.html" %}
+  <!--[if lt IE 10]>
+  <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+  <![endif]-->
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/upload_photo.css"/>
+<style>
+    .pagination-box{
+        float: left;
+        position: relative;
+        left: 50%;
+        margin-top: 54px;
+        margin-bottom: 54px;
+    }
+    .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+</style>
+<body style="background: #f5f5f5">
+{% include "widget/top/top.html" %}
+{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+{% if userinfo.usertype == 2 %} {#顾问#}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_ADVISOR_CENTER_SEAT1"></div>
+{% elif userinfo.usertype == 3 %} {#参赞#}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_CANZAN_CENTER_SEAT1"></div>
+{% endif %}
+<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+    <div class="dui-layout-silde">
+        <div class="clearfix">
+            {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+            {% if userinfo.usertype == 1 %} {#用户#}
+            {{ community_advisor.user(userinfo,helper) }}
+            {% elif userinfo.usertype == 2 %} {#顾问#}
+            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {% elif userinfo.usertype == 3 %} {#参赞#}
+            {{ community_advisor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+        </div>
+        {% if userinfo.usertype == 1 %} {#用户#}
+        {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+        {{ user_side_menu.user_side_menu('我的主页', helper) }}
+        {% elif userinfo.usertype == 2 %} {#顾问#}
+        {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+        {{ adviser_side_menu.adviser_side_menu('我的主页', ' ', helper) }}
+        {% elif userinfo.usertype == 3 %} {#参赞#}
+        {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+        {{ canzan_side_menu.canzan_side_menu('我的主页', ' ', helper) }}
+        {% endif %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con">
+        <div class="right-cont" style="border: none">
+            <!--收到的评论 开始-->
+            <div class="cont-block dui-box-shadow" style="margin-bottom: 20px;background: #fff">
+                <div style="padding: 20px 20px 0;">
+                    <div class="common-title main-title gray-bg">
+                        <h3>收到的评论</h3>
+                        <a target="_blank" href="{{helper.urlgen('advisor_center', 'revcomment')}}" class="iconfont">&#xe602;</a>
+                    </div>
+                </div>
+                {% if comment_list.list.length > 0 %}
+                    <div class="my-comment clearfix">
+                        {% for item in comment_list.list %}
+                        {% include "widget2/my_comment/my_comment.html" %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {% include "widget2/blank/blank.html" %}
+                {% endif %}
+            </div>
+            <!--收到的评论 结束-->
+            <!--关注我的 开始-->
+            <div class="cont-block dui-box-shadow" style="padding: 0 0 20px;margin-bottom: 20px;background: #fff">
+                <div style="padding: 20px 20px 0;">
+                <div class="common-title main-title gray-bg">
+                    <h3>关注我的</h3>
+                    <a target="_blank" href="{{helper.urlgen('advisor_center', 'follow')}}" class="iconfont">&#xe602;</a>
+                </div>
+                </div>
+                {% if follow_list and follow_list.list.length > 0 %}
+                <div class="follow-me clearfix">
+                    {% for fItem in follow_list.list %}
+                    {% if loop.index%2 == 0 %}
+                    <div class="dui-con-col2" style="margin-right: 0;">
+                        {% import "widget2/follow/follow.html" as follow %}
+                        {{follow.follow_no('btnno', fItem, helper)}}
+                    </div>
+                    {% else %}
+                    <div class="dui-con-col2">
+                        {% import "widget2/follow/follow.html" as follow %}
+                        {{follow.follow_no('btnno', fItem, helper)}}
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                {% else %}
+                    {% include "widget2/blank/blank.html" %}
+                {% endif %}
+            </div>
+            <!--关注我的 结束-->
+            <!--我的收藏开始-->
+            <div class="cont-block dui-box-shadow" style="padding: 0 0 20px;margin-bottom: 20px;background: #fff">
+                <div style="padding: 20px 20px 0;">
+                    <div class="common-title main-title gray-bg">
+                        <h3>我的收藏</h3>
+                        <a target="_blank" href="{{helper.urlgen('advisor_center', 'collection')}}" class="iconfont">&#xe602;</a>
+                    </div>
+                </div>
+                {% if collection_list and collection_list.list.length > 0 %}
+                <div class="follow-me clearfix">
+                    {% for item in collection_list.list %}
+                    {% if item.category_id == 17 %} {# 案例 #}
+                    {% import "widget2/offer/offer.html" as case_show %}
+                    {{ case_show.case_show(item, helper) }}
+                    {% elif item.category_id < 17 %} {# 专栏 #}
+                    {% import "widget2/article/article.html" as article_show %}
+                    {{ article_show.article_show(item, helper) }}
+                    {% endif %}
+                    {% include "widget2/bottom_comment/bottom_comment.html" %}
+                    {% endfor %}
+                </div>
+                {% else %}
+                {% include "widget2/blank/blank.html" %}
+                {% endif %}
+            </div>
+            <!--我的收藏结束-->
+            <!--我的相册开始-->
+            <div class="cont-block dui-box-shadow" style="padding: 0 19px 0;background: #fff">
+                <div style="padding: 20px 0 0;">
+                <div class="common-title main-title gray-bg">
+                    <h3>我的相册</h3>
+                    <a target="_blank" href="{{helper.urlgen('advisor_center', 'album')}}" class="iconfont">&#xe602;</a>
+                </div>
+                </div>
+                <div class="my-photo clearfix" id="photoBox" style="display: none;">
+
+                </div>
+                <div id="photo-blank" style="display: none;">
+                    {% include "widget2/blank/blank.html" %}
+                </div>
+            </div>
+            <!--我的相册结束-->
+        </div>
+    </div>
+</div>
+{% include "widget/footer/footer.html" %}
+<div id="photoDialog" style="display: none;"><!---->
+    <!--上传pop-->
+    <div class="upload-photo-container" id="upload-photo-container" style="display: none">
+        <div class="close-pop" id="close-upload-pop">x</div>
+        <div class="photos clearfix" id="preview">
+        </div>
+        <div class="btns">
+            <div class="save-btn save-photos" id="fileSubmit">开始上传</div>
+        </div>
+    </div>
+    <!--确认pop-->
+    <div class="dialog-cont" id="dialog-cont" style="display: none;">
+    </div>
+    <!--编辑pop-->
+    <div class="edit-pop" id="edit-pop" style="display: none;">
+    </div>
+</div>
+<script>
+    var login_ss = null; 
+    if($.cookie('login_ss') != undefined){
+        login_ss = JSON.parse($.cookie('login_ss'));  
+    }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+<script>
+    $(function () {
+        function limitDisplay(kaishi,changdu,maxLine,lastMonth){
+            curM = lastMonth;
+            var length = photoArr.length > (kaishi + changdu) ? (kaishi + changdu) : photoArr.length;
+            for (var i = kaishi; i < length; i++) {
+                if (curM != fn.getFormatDate(photoArr[i].add_time,2) || linePhotoNum == 4) {//换行条件
+                    linePhotoNum = 0;
+                    line++;
+                    if (line > maxLine) {
+                        break;
+                    }
+                    if(curM != fn.getFormatDate(photoArr[i].add_time,2)) {
+                        curM = fn.getFormatDate(photoArr[i].add_time,2);
+                        var disPlayMonth = curM == '01' ? fn.getFormatDate(photoArr[i].add_time,1) + '年' : curM + '月';
+                        htmlstr += '</ul></div>';
+                        htmlstr += '<div class="album-bar bar-border clearfix">';
+                        htmlstr += '<div class="album-left-box"><div class="album-time"><i class="iconfont">&#xe768;</i><span>' + disPlayMonth + '</span></div></div><ul class="album-list">';
+                    }
+                    else {
+                        htmlstr += '</ul></div>';
+                        htmlstr += '<div class="album-bar clearfix">';
+                        htmlstr += '<div class="album-left-box"></div><ul class="album-list">';
+                    }
+                }
+                htmlstr += '<li class="photo-item"><dl><dt><img src="'+photoArr[i]['url']+'" alt=""/><div class="opt-bar clearfix" data-photo_id="'+ photoArr[i]['id'] +'"><div class="opt-btn btn-border delete-btn"><i class="iconfont">&#xe8c1;</i>';
+                htmlstr += '<span>删除</span></div>';
+                htmlstr += '<div class="opt-btn edit-btn"><i class="iconfont">&#xe61c;</i><span>编辑</span></div></div></dt>';
+                htmlstr += '<dd>'+photoArr[i]['desc']+'</dd></dl></li>';
+                linePhotoNum++;
+                pNum++;
+            }
+            var newstr = htmlstr.slice(11) + htmlstr.slice(0,11);
+            $('.my-photo').append($(newstr));
+            /*划过相册动效*/
+            $('.album-bar').find('dt').hover(function() {
+                $(this).find('.opt-bar').slideDown();
+            },function () {
+                $(this).find('.opt-bar').hide();
+            })
+        }
+        var photoArr = [];//存储所有相片的数组
+        var line = 0;//行数
+        var pNum = 0;//已经展示的相片条数
+        var curM = 0;//上一个月份
+        var htmlstr = '';//HTML字符串
+        var pageLineInit = 2; //第一次请求的行数
+        var pageSizeInit = pageLineInit * 4; //第一次请求的相片数量
+        $.ajax({
+            url: '/soapi/get_photos',
+            type:'GET',
+            data:{
+                u_id: login_ss.uid,
+                page: 1,
+                per_page: pageSizeInit
+            },
+            dataType:'json',
+            success:function (msg) {
+                console.log(msg)
+                if (msg.code == 0) {
+                    if (msg.data.list.length > 0) {
+                        $("#photoBox").show();
+                        photoArr = photoArr.concat(msg.data.list);
+                        limitDisplay(0,pageSizeInit,pageLineInit,0);
+                        // $('.loadMore').attr('page',pageSizeInit/8);
+
+                        $(".delete-btn").click(function() {
+                            /*删除*/
+                            var photoId = $(this).parents('.opt-bar').data('photo_id');
+                            to_album_del(login_ss.uid,photoId);
+                        });
+                        $(".edit-btn").click(function() {
+                            /*编辑*/
+                            var photoId = $(this).parents('.opt-bar').data('photo_id');
+                            var photoImg = $(this).parents('.photo-item').find('img').attr('src');
+                            var photoTitle = $(this).parents('.photo-item').find('dd').text();
+                            var descLen = photoTitle.length;
+                            var defaultHtml = '';
+                            defaultHtml += '<div class="close-pop" id="close-edit-pop">x</div>'+
+                            '<div class="edit-box clearfix">'+
+                            '<div class="photo-cell">'+
+                            '<div class="photo-img">'+
+                            '<img src="'+ photoImg +'"/>'+
+                            '</div>'+
+                            '<div class="photo-desc">'+
+                            '<input type="text" placeholder="请输入照片描述" class="desc-item" value="'+ photoTitle +'" maxlength="30" />'+
+                            '<div><span class="input-num">'+ descLen +'</span>/30</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '</div>'+
+                            '<div class="btns">'+
+                            '<div class="save-btn save-photos" id="saveEdit">保存</div>'+
+                            '</div>';
+
+                            $("#photoDialog").show();
+                            $("#edit-pop").show();
+                            $("#edit-pop").html($(defaultHtml));
+
+                            $("#close-edit-pop").click(function(){
+                                $("#photoDialog").hide();
+                                $("#edit-pop").html('');
+                                $("#edit-pop").hide();
+                            });
+                               //输入描述
+                            $('.desc-item')
+                            .blur(function(event){
+                                var curInputValLen = $(this).val().length;
+                            })
+                            .keyup(function(event){
+                                var curInputValLen = $(this).val().length;
+                                if (curInputValLen > 30) {
+                                    alert('描述不能超过30个字');
+                                    $(this).val($(this).val().substring(0, 30));
+                                    $(this).next().find('.input-num').text(30);
+                                }
+                                else {
+                                    $(this).next().find('.input-num').text(curInputValLen);
+                                }
+                            });
+                            //保存照片
+                            $("#saveEdit").click(function() {
+                                var newPhotoTitle = $(this).parents('.btns').prev('.edit-box').find('input').val();
+                                if (newPhotoTitle.length == 0) {
+                                    layer.msg('照片描述不能为空！')
+                                }
+                                else {
+                                    to_album_update(login_ss.uid, photoId, newPhotoTitle);
+                                    $("#close-edit-pop").trigger('click');  
+                                }
+                            })
+                        });
+                    }
+                    else {
+                        $("#photo-blank").show();
+                    }
+                }
+                else {
+                    $("#photo-blank").show();
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                console.log('相册列表获取失败');
+            }
+        });
+        function to_album_del(uid,photoid) {
+            $.ajax({
+                url: '/soapi/album_del',
+                type: 'POST',
+                datatype: 'json',
+                data: {
+                    u_id: uid,
+                    album_id: photoid
+                },
+                success: function (result) {
+                    console.log(result)
+                    if(result.code == 0){
+                      layer.msg('删除成功')
+                      window.setTimeout(function(){
+                        window.location.reload();
+                      },1000);    
+                    }   
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            })
+        }
+        function to_album_update(uid, photoid, title) {
+            $.ajax({
+                url: '/soapi/album_update',
+                type: 'POST',
+                datatype: 'json',
+                data: {
+                    u_id: uid,
+                    album_id: photoid,
+                    title: title
+                },
+                success: function (result) {
+                    if(result.code == 0){
+                      layer.msg('修改成功');
+                      window.setTimeout(function(){
+                        window.location.reload();
+                      },1000);  
+                    }else{
+                      
+                    }      
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('修改照片出错了！！');
+                }
+            })
+        }
+
+        $('.report-btn').on("click",report); //点击举报
+        $('.share-btn').on('click',share); //点击分享
+        function report(){
+            //举报调取函数
+            var report_content = null;
+            var that =this;
+            layer.open({
+                type: 1,
+                title:'举报理由',
+                area: ['700px'], //宽高
+                content:'<div class="report-con">'+
+                           '<ul class="report-ul clearfix">'+
+                             '<li>'+
+                               '<span class="circle"></span>'+
+                               '<i class="iconfont">&#xe62a;</i>'+
+                               '<span class="sp-con">垃圾、广告信息</span>'+
+                              '</li>'+
+                              '<li>'+
+                                '<span class="circle"></span>'+
+                                '<i class="iconfont">&#xe62a;</i>'+
+                                '<span class="sp-con">色情、低俗内容</span>'+
+                              '</li>'+
+                              '<li>'+
+                                '<span class="circle"></span>'+
+                                '<i class="iconfont">&#xe62a;</i>'+
+                                '<span class="sp-con">时政敏感话题</span>'+
+                              '</li>'+
+                              '<li>'+
+                                '<span class="circle"></span>'+
+                                '<i class="iconfont">&#xe62a;</i>'+
+                                '<span class="sp-con">其它原因</span>'+
+                              '</li>'+
+                            '</ul>'+
+                            '<textarea class="report-txt"></textarea>'+
+                        '</div>',
+                btn:'确定',
+                closeBtn:'2',
+                yes: function(index, layero){
+                  // console.log($('.report-txt').val())
+                  if($('.report-txt').val()!= ''){
+                    report_content = $('.report-txt').val();
+                  }
+                  if(report_content ==undefined || report_content == ''){
+                    layer.msg('请选择举报理由');
+                    return false;
+                  }
+                  // console.log(report_content)
+                  $.ajax({
+                    // url: ajaxUrlPrefix.cmsapi+'/api/userReport',
+                    url:'/soapi/userReport',
+                    type:'POST',
+                    data:{
+                      report_source:'1',
+                      report_type:'1',
+                      report_content:report_content,
+                      userid:login_ss.uid,
+                      artecle_id:$(that).attr("data-artId"),
+                      catid:$(that).attr("data-catid")
+                    },
+                    dataType:'json',
+                    // jsonpCallback:'callback',
+                    success:function(result){
+                      console.log(result)
+                      if(result.code == 0){
+                        layer.msg('举报成功');
+                        layer.close(index); 
+                      }
+                    },
+                    error:function(XMLHttpRequest, textStatus, errorThrown){
+                      console.log(errorThrown)
+                    }  
+                  });
+                }         
+            });
+            $(".report-ul li").on("click",function(){
+                //选择举报内容
+                $(".report-ul li i").hide();
+                $(".report-ul li .circle").show();
+                $(this).find("i").show();
+                $(this).find(".circle").hide();
+                if($(this).index() == 3){
+                  $(".report-txt").show();
+                  $(".layui-layer-content").css({"height":"115px"});
+                }else{
+                  $(".report-txt").hide();
+                  $(".layui-layer-content").css({"height":"39px"});
+                  report_content = $(this).find('.sp-con').text();
+                }
+            });
+            $('.report-txt').on('change',function(){
+                if($('.report-txt').val()!= ''){
+                  report_content = $('.report-txt').val();
+                }else{
+                   report_content ='';
+                }
+            });
+        }
+        function share(){
+            //调取分享函数
+            var that =this;
+            layer.open({
+              type: 2,
+              title: '分享到',
+              area: ['262px', '327px'],
+              content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+$(that).attr('data-url'), 'no']
+            });
+        }
+    })
+</script>
+</body>
+</html>

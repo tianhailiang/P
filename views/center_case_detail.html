@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% include "header_new.html" %}
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/center_case_detail.css" >
+  <!--[if lt IE 10]>
+  <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+  <![endif]-->
+</head>
+<body style="background:#f5f5f5;">
+  <!-- ===头部=== -->
+ {% include "widget/top/top.html" %}
+ <!-- ====导航===== -->
+ {% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+ {{nav_seventh.nav_seventh("#",tdk.cityid,helper)}}
+  <div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+    <!-- ==广告1== -->
+    <div class="adviser-case-detail-map" id="AD_ADVISOR_CENTER_ARTICLEDETAIL_SEAT1">
+    </div>
+  </div>
+<div class="dui-layout-lg clearfix dui-layout-padding" >
+  <div class="dui-layout-silde ">
+    <!-- =======顾问头像关注====== -->
+    <div style="margin-top: 20px;" >
+      {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+      {{community_advisor.advisor(userinfo,helper,login_info)}}
+    </div>
+    <!-- ========引入顾问侧边栏按钮======== -->
+    {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+    {{ adviser_side_menu.adviser_side_menu('我的主页','我的案例',helper) }} 
+  </div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-con" >
+    <div class="dui-box-shadow" >
+      <div class="adviser-case-detail-con" >
+        <div class="main-title gray-bg">
+          <h3 style="font-size: 18px;">案例详情</h3>
+          <div class="nav-phone">
+            <span class="phone-bg"><i class="iconfont">&#xe618;</i></span>
+            <span class="community-zixun" >留学咨询热线：</span>
+            <span class="community-tel">400-010-8000</span>
+          </div>
+        </div> 
+        <h1 class="adviser-case-detail-h3">
+          {{article.article_info.title}}
+        </h1>
+        <div class="adviser-case-detail-come" >
+          <span style="margin-right:20px;" >来自{{article.article_info.from}}</span>
+          <span>时间：{{article.article_info.add_time}}</span>
+          {% if preview == 0 %}
+            <span style="float:right;">阅读量：<i style="font-style: normal;" id="detail_views_num"></i></span>
+          {% endif %}
+        </div>
+        <div class="adviser-case-detail-offer" >
+          <div class="adviser-case-offer-list" >
+             <h4 class="adviser-case-offer-h4" >
+               一、学生录取情况
+             </h4>
+             <div class="adviser-case-offer-strip" >
+               学生姓名：{{article.article_info.introduce.stu_name}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               录取院校：
+               {{article.article_info.introduce.school_1}}&nbsp;&nbsp;
+               {{article.article_info.introduce.school_2}}&nbsp;&nbsp;
+               {{article.article_info.introduce.school_3}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               录取专业：
+               {{article.article_info.introduce.dep_1}}&nbsp;&nbsp; {{article.article_info.introduce.dep_2}}&nbsp;&nbsp;
+               {{article.article_info.introduce.dep_3}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               留学层级：{{ article.article_info.edu_id | getEdu()}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               录取时间：{{article.article_info.introduce.admission_time}}
+             </div>
+             <a href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}" class="dui-btn btn-xlarge btn-consult_ylw adviser-case-offer-btn" target="_blank">检测我的录取情况</a>
+          </div>
+          <div class="adviser-case-offer-list" >
+             <h4 class="adviser-case-offer-h4" >
+               二、学生背景
+             </h4>
+             <div class="adviser-case-offer-strip" >
+               就读院校：{{article.article_info.introduce.pre_school}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               所学专业：{{article.article_info.introduce.pre_dep}}
+             </div>
+             <div class="adviser-case-offer-strip" >
+               成就概况：{{article.article_info.introduce.score}}
+             </div>
+             <a href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}" class="dui-btn btn-xlarge btn-consult_blue adviser-case-offer-btn" target="_blank">想要高分</a>
+          </div>
+          <div class="adviser-case-offer-list" >
+            <h4 class="adviser-case-offer-h4" >
+               三、offer展示
+            </h4>
+            <ul class="adviser-case-offer-ul clearfix">
+              {% for item in article.article_info.introduce.offer_img %}
+                 <li>
+                    <a href="{{item}}" target="_blank" >
+                      <img src="{{helper.imageThumb(item,'330x466')}}" />
+                    </a>
+                 </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="adviser-case-offer-list" >
+             <h4 class="adviser-case-offer-h4" >
+               四、申请思路及专家分析
+             </h4>
+                {{ article.article_info.message | safe}}
+          </div>
+        </div>
+        {% if preview == 0 %}
+          <div class="adviser-case-operation-bar clearfix" style="padding-top: 40px;
+  padding-bottom: 40px;">
+            <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
+              {% if article.article_info.user_follow_check %}
+                已收藏
+              {% else %}
+                收藏
+              {% endif %}
+            </span>   
+            <!-- <span id="fabulous"><i class="iconfont">&#xe604;</i>点赞</span> --> 
+            <span class="share-btn" data-title="{{article.article_info.title}}" style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;">转发</span>
+          </div>
+          <!-- ========评论===== -->
+          {% include "widget2/comment/center_comment.html" %}
+        {% endif %}  
+      </div>  
+    </div>
+  </div>
+</div>
+{% include "widget/footer/footer.html" %}
+  <div>
+      <input type="hidden" id="detail_catid" value="{{catid}}"/>
+      <input type="hidden" id="detail_id" value="{{id}}"/>
+  </div>
+<script>
+  var login_ss = null; 
+  if($.cookie('login_ss') != undefined){
+      login_ss = JSON.parse($.cookie('login_ss'));  
+  }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
+<script>
+  $(function(){
+    $("#collection").on("click",function(){
+      //文章收藏按钮
+      var that =this;
+      $.ajax({
+        url: '/soapi/favorite_article',
+        type:'POST',
+        data:{
+          article_id:$(".comment-list-box").attr("data-artId")
+        },
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success:function(result){
+          console.log(result)
+          if(result.code == 0){
+            if(result.data.action=='add'){
+              layer.msg('收藏成功');
+              $(that).html('已收藏');
+            }else if(result.data.action=='remove'){
+              layer.msg('取消收藏成功');
+              $(that).html('收藏');
+            }
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+           console.log(errorThrown)
+        }
+      });
+    });
+    $('.share-btn').on('click',share); //点击分享
+    function share(){
+      //调取分享函数
+      var that =this;
+      layer.open({
+        type: 2,
+        title: '分享到',
+        area: ['262px', '327px'],
+        content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+fn.urlgen('case',$(".comment-list-box").attr("data-artId")), 'no']
+      });
+    }
+  })
+</script>
+</body>
+</html>

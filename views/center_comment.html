@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+{% include "header_new.html" %}
+  <!--[if lt IE 10]>
+  <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+  <![endif]-->
+<style>
+    .pagination-box{
+        float: left;
+        position: relative;
+        left: 50%;
+        margin-top: 54px;
+        margin-bottom: 54px;
+    }
+    .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+</style>
+<body style="background: #f5f5f5">
+
+{% include "widget/top/top.html" %}
+
+{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+
+{% if login_info.usertype == 1 %} {#用户#}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_USER_CENTER_REVCOMMENT_SEAT1"></div>
+{% elif login_info.usertype == 2 %} {#顾问#}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_ADVISOR_CENTER_REVCOMMENT_SEAT1"></div>
+{% elif login_info.usertype == 3 %} {#参赞#}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_CANZAN_CENTER_REVCOMMENT_SEAT1"></div>
+{% endif %}
+
+<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+    <div class="dui-layout-silde">
+        <div class="clearfix">
+            {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+            {% if login_info.usertype == 1 %} {#用户#}
+            {{ community_advisor.user(userinfo,helper) }}
+            {% elif login_info.usertype == 2 %} {#顾问#}
+            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {% elif login_info.usertype == 3 %} {#参赞#}
+            {{ community_advisor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+        </div>
+        {% if login_info.usertype == 1 %} {#用户#}
+            {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+            {{ user_side_menu.user_side_menu('收到的评论', helper) }}
+        {% elif login_info.usertype == 2 %} {#顾问#}
+            {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+            {{ adviser_side_menu.adviser_side_menu('收到的评论', ' ', helper) }}
+        {% elif login_info.usertype == 3 %} {#参赞#}
+            {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+            {{ canzan_side_menu.canzan_side_menu('收到的评论', ' ', helper) }}
+        {% endif %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con dui-box-shadow">
+        <div class="right-cont">
+            <div class="right-title" style="background: #f3f3f3"><div class="tit">收到的评论</div></div>
+            {% if comment_data.list.length > 0 %}
+            <div class="right-main clearfix">
+                {% for item in comment_data.list %}
+                {% if login_info.usertype == 1 %} {#用户#}
+                {% include "widget2/my_comment/my_answer.html" %}
+                {% else %}
+                {% include "widget2/my_comment/my_comment.html" %}
+                {% endif %}
+                {% endfor %}
+            </div>
+
+            <!--分页器 start-->
+            <div class="pagination-box" data-pagenum="{{comment_data.totalpage}}">
+                <!--<div class="dui-pagination pagination-large">
+                </div>-->
+              {% import "widget2/pagtion/pagtion.html" as pagtion %}
+              {{pagtion.pagtion(pagination)}}
+            </div>
+            <!--分页器 end-->
+          {% else %}
+          {% include "widget2/blank/blank.html" %}
+          {% endif %}
+        </div>
+    </div>
+</div>
+
+{% include "widget/footer/footer.html" %}
+<script>
+    var login_ss = null; 
+    if($.cookie('login_ss') != undefined){
+        login_ss = JSON.parse($.cookie('login_ss'));  
+    }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/common/select.js"></script>
+<script>
+    $(function () {
+      //让分页器居中显示
+      $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
+      /*var cur_order=Number(getQueryString('order'))||1;
+        if (total_num >= 1) {
+            /!*分页器*!/
+            $('.pagination-box').show();
+            $('.pagination-box').pagination({
+                pages: total_num,
+                styleClass: ['pagination-large'],
+                showCtrl: true,
+                currentPage: cur_page,
+                displayPage: 7,
+                onSelect: function (num) {
+                  var h = window.location.href
+                    window.location.href = fn.curlgen('advisor_center/revcomment', 'order=' + cur_order, 'page=' + num);
+                }
+            });
+
+        }*/
+    })
+</script>
+</body>
+</html>

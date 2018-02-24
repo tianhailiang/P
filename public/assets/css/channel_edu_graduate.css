@@ -1,0 +1,36 @@
+.remen-tuijian{
+  width:100%;
+  height: 430px;
+  margin-top:20px;
+}
+.remen-zhuanye{
+  width:428px;
+  height: 429px;
+  float:left;
+  border:1px solid #dcdcdc;
+  border-top:none;
+}
+.zhuanye-tuijian{
+  width:428px;
+  height: 429px;
+  float:right;
+  border:1px solid #dcdcdc;
+  border-top:none;
+}
+.liuxue-header-border-new{
+  background: #ffffff;
+}
+.zhuanye-tuijian .tui-con{
+  padding:12px  20px;
+}
+.zhuanye-tuijian p{
+  font-size: 14px;
+  line-height: 30px;
+  color:#333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.zhuanye-tuijian p:hover{
+  color:#C13232;
+}

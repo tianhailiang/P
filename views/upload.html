@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+</head>
+<body>
+    
+		<label class="ui_button " for="upload">上传文件</label>
+		<input type="file" id = "upload" name="upload"  accept="image/*" >
+    <button id ="btn">上传</button>
+  
+	<!-- <script  src="{{helper.cdnhost}}/dep/js/jquery.js"></script> -->
+  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+  <!-- <script src="{{helper.cdnhost}}/assets/js/upload/jquery-3.2.1.js" ></script> -->
+  <script src="{{helper.cdnhost}}/assets/js/upload/jquery-1.11.3.min.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/upload/jquery.ui.widget.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/upload/jquery.iframe-transport.js"></script>
+	<script  src="{{helper.cdnhost}}/assets/js/upload/jquery.fileupload.js"></script>
+<!-- <script  src="{{helper.cdnhost}}/assets/js/upload/fileupload.js"></script>  -->
+	<script type="text/javascript">
+  console.log(100)
+     $('#upload').fileupload({
+        url:"http://i.jjl.cn/api/ckupload?module=content&catid=11&dosubmit=1",
+        dataType: 'text',
+        done: function (e, data) {
+          // console.log(e)
+          console.log(data)
+           
+        },
+        fail:function(e,data){
+          console.log(data)
+        }
+    });
+
+	</script>
+</body>
+</html>

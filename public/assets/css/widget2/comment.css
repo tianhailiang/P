@@ -1,0 +1,170 @@
+
+.saytext-box{
+	position: relative;
+}	
+
+.saytext{
+	width:100%;
+	height:115px;
+	resize: none;
+    padding: 0;
+   overflow: hidden;
+
+}
+
+.sub-btn-box{
+	margin-top:20px;
+	margin-bottom: 20px;
+}
+
+.emotion{
+	float:left;
+    width:20px;
+    height:20px;
+    background:url(/views/widget2/comment/img/face.png) no-repeat 0 0;
+    background-size: 20px 20px;
+}
+.qqFace {
+ margin-top: 4px; 
+ background: #fff; 
+ padding: 2px; 
+ border: 1px #dfe6f6 solid;
+  }
+.qqFace table td {
+ padding: 0px; 
+}
+.qqFace table td img { 
+	cursor: pointer; 
+	border: 1px #fff solid; 
+}
+
+.sub-btn{
+	float:right;
+	padding: 3px 25px;
+}
+
+.word-num{
+	position: absolute;
+	right: 10px;
+    top: 95px;
+	z-index:100;
+	color:#666;
+}
+
+#word-num{
+	color:#c13232;
+}
+
+.comment-list-box{
+	
+	background:#fafafa;
+	padding:20px 20px 0;
+	border-bottom: 1px solid #dcdcdc;
+	
+}
+
+.comment-list{
+	margin-bottom: 40px;
+}
+
+.comment-head{
+	width:60px;
+	height:60px;
+	/*background:url(http://www.jjl.cn/statics//njjlmt/img/banner_down_2.jpg) no-repeat 0 0;
+	background-size:60px 60px;*/
+	margin-right: 10px;
+	float:left;
+}
+
+.comment-info{
+	float:left;
+}
+
+.comment-info-name-box{
+	padding-top: 10px;
+}
+
+.comment-info-name{
+	font-size: 14px;
+	color:#666;
+	margin-right: 10px;
+}
+
+.comment-info-time{
+	font-size: 12px;
+	color:#999;
+}
+
+.comment-info-txt{
+	font-size: 14px;
+	color:#666;
+	line-height: 27px;
+	width:730px;
+}
+
+.comment-btn-bar{
+	margin-top: 5px;
+}
+
+.comment-btn-bar span{
+	margin-right: 20px;
+	font-size: 12px;
+	color:#b2b8c2;
+}
+
+.comment-btn-bar i{
+	margin-right:2px;
+} 
+
+.reply-text{
+	width:100%;
+	height:30px;
+	resize: none;
+    padding: 0;
+    overflow: hidden;
+    line-height: 30px;
+    border-color: #ff8547;
+}
+
+.reply-box{
+	margin-top: 10px;
+	display: none;
+}
+
+.sub-btn1{
+	float: right;
+    padding: 3px 25px;
+}
+
+.sub-btn2{
+	float: right;
+    padding: 3px 25px;
+}
+
+.reply-list{
+	margin-top: 20px;
+	background:#f3f3f3;
+	padding:0 20px;
+	display: none;
+}
+
+.reply-list-info{
+	border-bottom: 1px dashed #dcdcdc;
+	padding-top:8px;
+	padding-bottom: 8px;
+}
+
+.reply-list-info-top span{
+	color:#c13232;
+}
+
+.load-more{
+	height:53px;
+	border-top:1px solid #dcdcdc;
+	cursor: pointer;
+	text-align: center;
+	line-height: 53px;
+	font-size: 14px;
+	color:#333;
+	
+}

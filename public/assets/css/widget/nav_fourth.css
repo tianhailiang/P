@@ -1,0 +1,125 @@
+.nav-fourth{
+  height: 44px;
+  background:#C13232;
+  color:#ffffff;
+  font-size:14px;
+}
+.nav-fourth a{
+  color:#ffffff;
+  font-size:14px;
+}
+
+.nav-fourth .home-nav-fourth{
+  display: block;
+  width: 80px;
+  font-size:18px;
+  line-height: 44px;
+  text-align: center;
+  float:left
+}
+.nav-fourth .home-nav-fourth:hover{
+  text-decoration: underline;
+}
+.nav-fourth .nav-fourth-list{
+  float:left;
+}
+.nav-fourth-list .abroad-education{
+  float:left;
+  position: relative;
+  width: 120px;
+  border-right:1px solid #ffffff;
+  border-left:1px solid #ffffff;
+  text-align: center;
+}
+.abroad-education span{
+  font-size: 20px;
+  line-height: 44px;
+  display: block;
+  float:left;
+  width: 120px;
+  text-align: center;
+}
+.abroad-education span a{
+  display: inline-block;
+  margin-right:4px;
+  font-size:18px;
+
+}
+.abroad-education .abroad-education-list{
+  position: absolute;
+  width: 120px;
+  border-right:1px solid #ffffff;
+  border-left:1px solid #ffffff;
+  text-align: center;
+  top:44px;
+  left: -1px;
+  *left:-1px;
+  z-index:999;
+}
+.abroad-education-list ul{
+  background:#C13232;
+}
+.abroad-education-list ul li{
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+}
+.abroad-education .go-down{
+  font-size: 10px;
+  display: inline-block;
+}
+.abroad-education ul li:hover{
+  background:#a82a2a;;
+}
+.nav-fourth-a{
+  display: block;
+  float: left;
+  line-height:44px;
+  padding:0 20px;
+}
+.nav-fourth-a:hover{
+  text-decoration: underline;
+}
+.abroad-education-liuxue{
+  float:left;
+  width: 120px;
+  position: relative;
+  text-align: center;
+}
+.abroad-education-liuxue span{
+  display: block;
+  width: 120px;
+  text-align: center;
+  line-height: 44px;
+}
+.abroad-education-liuxue .abroad-coutry{
+  position: absolute;
+  top:44px;
+  width: 120px;
+  z-index:999;
+  *left:0;
+}
+.abroad-education-liuxue .abroad-coutry ul{
+  background:#C13232;
+}
+.abroad-coutry ul li{
+  line-height: 40px;
+  text-align: center;
+  height: 40px;
+}
+.abroad-coutry ul li:hover{
+  background:#a82a2a;;
+}
+.abroad-education-liuxue span a{
+  display: inline-block;
+  margin-right:4px;
+  font-size:14px;
+
+}
+.liuxue-xq{
+  display: none;
+}
+.liuxue-xq-tit .go-down{
+  font-size: 10px;
+  display: inline-block;
+}

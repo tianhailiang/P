@@ -1,0 +1,21 @@
+
+<!--院校咨询-->
+
+{% for item in unscramblexiao.data %}
+<div class="unuversitiescon clearfix  ">
+  <a class="" href="javascript:void(0);" target="_blank"><img src="{{item.img}}" alt=""/></a>
+  <div class="unuversitiescon_content">
+    <div class="universitiescon_content_title clearfix">
+      <a class="dui-text-warning-s title" href="javascript:void(0);" target="_blank">{{item.expertId}}</a>
+      <a class="but" href="javascript:void(0);">在线咨询</a>
+    </div>
+    <div class="unuversitiescon_content_con">
+      {{item.scription}}
+    </div>
+    <a class="universitiescon_content_det" href="javascript:void(0);" target="_blank">【查看详情】</a>
+    <div class="universitiescon_content_fu">作者：{{item.popularity}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;时间：{{item.ctime}}</div>
+  </div>
+</div>
+{% endfor %}
+
+

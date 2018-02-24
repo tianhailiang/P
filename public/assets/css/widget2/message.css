@@ -1,0 +1,56 @@
+.msg-item{
+    width: 840px;
+    margin: 0 19px;
+    border-bottom: 1px solid #dcdcdc;
+}
+.msg-item .msg-img{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    float: left;
+    margin-right: 20px;
+    margin-top:20px;
+    margin-bottom: 19px;
+    background-color: lightpink;
+}
+.msg-item .msg-info{
+    width: 840px;
+    float: right;
+    padding: 15px 0 19px;
+}
+.msg-item .msg-info .msg-info-txt span{
+    font-size: 14px;
+    line-height: 24px;
+    color: #333;
+}
+.msg-item .msg-info .msg-info-txt .btn-text{
+    color: blue;
+    cursor: pointer;
+}
+.msg-item .msg-info .msg-info-time{
+    font-size: 12px;
+    color: #666;
+    line-height: 12px;
+    margin-top: 5px;
+}
+.right-cont{
+    width: 878px;
+    /*height: 1365px;*/
+    border: 1px #eee solid;
+}
+.right-title{
+    width: 840px;
+    height: 40px;
+    background: #eee;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.right-title div{
+    width: 115px;
+    height: 40px;
+    background: #C13232;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}

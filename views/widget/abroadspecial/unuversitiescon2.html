@@ -1,0 +1,15 @@
+{% for item3 in liuxuefangan_list.list %}
+<div class="unuversitiescon clearfix">
+  <a class="" href="{{helper.urlgen('product', item3.id | string, 'n=' + item3.country)}}" rel="nofollow" target="_blank"><img class="new_xiao" src="{{ helper.imageThumb(item3.thumb,'228x172') }}" alt="{{item3.title}}"/></a>
+  <div class="unuversitiescon_content unuversitiescon_content_conss">
+    <div class="universitiescon_content_title clearfix">
+      <a class="dui-text-warning-s title" target="_blank" href="{{helper.urlgen('product', item3.id | string, 'n=' + item3.country)}}">{{item3.title}}</a>
+      <a class="but" target="_blank" href="javascript:void(0);" onclick="rand_zixun('{{  item3.country | getCountry }}',146,'{{item3.id}}')">立即咨询</a>
+    </div>
+    <div class="unuversitiescon_content_con">
+      {{item3.description}}
+    </div>
+    <a class="universitiescon_content_det" target="_blank" href="{{helper.urlgen('product', item3.id | string, 'n=' + item3.country)}}">【查看详情】</a>
+  </div>
+</div>
+{% endfor %}

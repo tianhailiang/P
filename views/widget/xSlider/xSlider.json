@@ -1,0 +1,29 @@
+
+
+{
+"items" :[
+
+  {
+  "linkUrl":"http://www.jjl.cn/zt/2017/zonghe/20170816_ranking/ranking.html",
+  "imgUrl":"http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg"
+ 
+  },
+  {
+  "linkUrl":"http://www.jjl.cn/zt/2016/20161122_gb/default.html",
+  "imgUrl":"http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg"
+ 
+  },
+  {
+  "linkUrl":"http://www.jjl.cn/zt/2017/zonghe/20170830_meixi/default.html",
+  "imgUrl":"http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg"
+ 
+  },
+  {
+  "linkUrl":"http://www.jjl.cn/zt/2017/zonghe/20170730_fb/default.html",
+  "imgUrl":"http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg"
+ 
+  }
+   
+
+ ]
+}

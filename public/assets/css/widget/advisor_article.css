@@ -1,0 +1,52 @@
+.adivisor-article{
+  width:538px;
+  height: 439px;
+  border:1px solid #dcdcdc;
+  border-top:2px solid #C13232;
+  padding:10px 20px 20px 20px;
+  float:left;
+}
+.adivisor-article dl dt{
+  float: left;
+  margin-right:20px;
+  width: 300px;
+  height: 431px;
+  margin-top:8px;
+}
+.adivisor-article img{
+ display: block;
+  width:300px;
+  height: 377px;
+
+}
+
+.adivisor-article .adivisor-article-editor{
+  margin-top:20px;
+}
+.adivisor-article-editor .adivisor-article-name {
+  font-size: 16px;
+  color:#333333;
+}
+.adivisor-article-editor .adivisor-article-bumen{
+  font-size: 14px;
+  color:#666666;
+  float:right;
+}
+.adivisor-article dl dd{
+  float:right;
+  width:218px;
+}
+.adivisor-article  .adivisor-article-title{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  color:#333333;
+  line-height: 30px;
+}
+.article-dt{
+  display: none;
+}
+.adivisor-article-title:hover{
+  color:#C13232;
+}

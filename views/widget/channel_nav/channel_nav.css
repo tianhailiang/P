@@ -1,0 +1,120 @@
+.channel-nav{
+    height: 44px;
+}
+.channel-nav .channel-nav-left{
+    width: 900px;
+    float: left;
+}
+.channel-nav .channel-nav-left a{
+    text-decoration: none;
+}
+.tag{
+    width: 96px;
+    float: left;
+    text-align: center;
+}
+.tag{
+    position: relative;
+}
+.tag-item:hover{
+    background-color: #C13232;
+}
+.tag-item:hover a{
+    color:#fff;
+}
+.tag-item.active{
+    background-color: #C13232;
+}
+.tag-item.active a{
+    color: #fff;
+}
+.tag-item{
+    width: 96px;
+    height: 44px;
+    float: left;
+    text-align: center;
+    line-height: 44px;
+}
+.tag-item a{
+    font-size: 16px;
+    color: #333;
+}
+.tag-two{
+    position: absolute;
+    top: 44px;
+}
+
+
+
+
+
+
+
+
+.channel-nav .channel-nav-left .country{
+    float: left;
+}
+.channel-nav .channel-nav-left .country li {
+    width: 96px;
+    height: 44px;
+    float: left;
+    text-align: center;
+    line-height: 44px;
+}
+.channel-nav .channel-nav-left .country li a {
+    display: block;
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+}
+.channel-nav .channel-nav-left .country li.active a {
+    display: block;
+    text-decoration: none;
+    background-color: #C13232;
+    color: #fff;
+}
+.channel-nav .channel-nav-left .area {
+    width: 238px;
+    float: left;
+    padding-top: 9px;
+}
+.channel-nav .channel-nav-left .area .select {
+    float: left;
+    margin-left: 20px;
+    width: 94px;
+    height: 24px;
+    border: 1px solid #dcdcdc;
+    -webkit-box-sizing: content-box;
+}
+.phoneBox{
+    width: 134px;
+    float: right;
+    padding-right: 30px;
+    padding-top: 8px;
+}
+.phoneBox dl {
+
+}
+.phoneBox dl dt {
+    width: 28px;
+    height: 28px;
+    background-color: #C13232;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    float: left;
+    margin-right: 8px;
+}
+.phoneBox dl dt span {
+    font-size: 18px;
+}
+.phoneBox dl dd{
+    font-size: 12px;
+    color: #666;
+    line-height: 14px;
+}
+.phoneBox dl dd.phone-number{
+    color: #C13232;
+    font-size: 14px;
+    line-height: 18px;
+}

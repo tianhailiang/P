@@ -1,0 +1,17 @@
+<div class="dui-layout-border advisor-item advisor-item2">
+  <div class="advisor-item-in">
+    <dl class="advisor-infoL">
+      <dt>
+        <a target="_blank" href="{{ helper.urlgen('p', advisor_item.id | string ) }}"><img src="{{ helper.avaterimg(advisor_item.id, 'big',advisor_item.status,advisor_item.version) }}" alt=""/></a>
+      </dt>
+      <dd class="dui-btn btn-appointment" >
+        <a target="_blank" href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{advisor_item.job_number}}" target="_blank"  style="color:#ffffff;">我要咨询</a></dd>
+    </dl>
+    <div class="advisor-infoR">
+      <p class="advisor-name">{{advisor_item.realname}}</p>
+      <p class="advisor-expert-country">擅长国家：{{advisor_item.skilful_country}}
+      </p>
+      <p class="advisor-description">{{advisor_item.introduce}}<a target="_blank" href="{{ helper.urlgen('p', advisor_item.id | string ) }}">【<span>点击查看详情</span>】</a></p>
+    </div>
+  </div>
+</div>

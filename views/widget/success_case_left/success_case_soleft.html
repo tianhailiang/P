@@ -1,0 +1,16 @@
+<div class="case-item">
+    <a target="_blank" href="{{helper.urlgen('case',caseItem.id | string)}}">
+        <div class="case-img">
+            <span></span>
+            <img src="{{caseItem.thumb}}" alt=""/>
+        </div>
+        <div class="case-info">
+            <!--<p class="case-title">{{caseItem.student_name}}成功圆梦<span>{{caseItem.school}}</span></p>-->
+            <p class="case-title">{{caseItem.title}}</p>
+            <p class="case-advisor"><span>顾问：<em>{{caseItem.user_info.nickname}}</em></span><span class="degree">学位：<em>{{caseItem.edu_id | getEdu}}</em></span></p>
+            <p class="country">录取国家：{{caseItem.country_id | getCountry}}</p>
+            <p class="time">录取时间：{{caseItem.add_time | shorten(10) }}</p>
+            <p class="case-btn"><span target="_blank" href="" class="dui-btn btn-appointment" style="padding: 2px 8px;">案例咨询</span></p>
+        </div>
+    </a>
+</div>

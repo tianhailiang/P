@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widgettop.css" >
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_sec.css" >
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/side_menu.css"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2community_advisor.css"/>
+
+  {% include "header_new.html" %}
+  <!--[if lt IE 10]>
+  <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+  <![endif]-->
+<style>
+  .content_title{
+    margin-top: 20px;margin-left: 20px;margin-bottom: 30px;background: #f3f3f3;width: 840px;height: 40px
+  }
+  .content_title_t {
+    float: left;width: 136px;height: 40px;background: #C13232;color: #fff;font-size: 18px;text-align: center;line-height: 40px
+  }
+  .content_title_b{
+    margin-bottom: 50px;margin-left: 20px;border-bottom: 1px solid #ededed;width: 840px;height: 30px;
+  }
+  .content_title_b i{
+    width: 2px;height: 20px;background: #C13232;float: left;display: block;margin-right: 10px;
+  }
+  .content_title_b span{
+    font-size: 16px;color: #333;float: left;
+  }
+  .content_title_b em{
+    font-size: 12px;color: #C13232;float: right;font-style: normal;
+  }
+  .content_title_bb{
+    margin-bottom: 50px;margin-left: 70px;
+  }
+  .content_title_bb img{
+    width: 92px;height: 116px;background: red;float: left;margin-right: 20px;
+  }
+  .content_title_bb .con{
+    font-size: 13px;color: #333;margin-bottom: 30px;
+  }
+  .content_title_bb .con span{
+    margin-right: 60px;  float: left;  width: 260px;overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+  .content_title_bbb{
+    margin-left: 70px;margin-bottom: 20px;position: relative;
+  }
+  .content_title_bbb span{
+    font-size: 14px;color: #333;
+  }
+  .content_title_bbb textarea{
+    width: 630px;height: 160px;border: 1px solid #dcdcdc;resize : none;
+  }
+   .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+  .word-num {
+    position: absolute;
+    right: 90px;
+    top: 145px;
+    z-index: 100;
+    color: #666;
+  }
+  .word-num span{
+    color: #c13232;
+  }
+</style>
+</head>
+<body style="background: #f5f5f5">
+
+{% include "widget/top/top.html" %}
+
+{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_CANZAN_CENTER_PROFILE_SEAT1"></div>
+
+<div class="dui-layout-lg clearfix">
+  <div class="dui-layout-silde right">
+    <div class="clearfix" style="margin-top: 20px">
+      {% import "widget2/community_advisor/community_advisor.html" as advisor %}
+      {{ advisor.counsellor(userinfo,helper,login_info) }}
+    </div>
+    {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+    {{ canzan_side_menu.canzan_side_menu('个人信息设置', ' ', helper) }}
+  </div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-con left" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
+    <div class="content_title clearfix">
+      <div class="content_title_t">
+        编辑个人资料
+      </div>
+    </div>
+
+    <div class="content_title_b clearfix" >
+      <i></i><span>不可更改项</span><em>不可更改内容错误请联系总部编辑</em>
+    </div>
+
+    <div class="content_title_bb clearfix">
+      <img src="{{helper.avaterimg(userinfo.uid, 'small',userinfo.status,userinfo.version)}}" alt=""/>
+      <div style="float: left">
+        <div class="con"><span>姓名：{{userinfo.realname}}</span><i>所在分公司：{{ userinfo.organid | getCity() }}分公司</i></div>
+        <div class="con"><span>所在部门：{{userinfo.dept}}</span><i>工号：{{userinfo.job_number}}</i></div>
+        <div class="con" style="margin-bottom: 0px">擅长国家：{{userinfo.skilful_country}}</div>
+      </div>
+    </div>
+
+    <div class="content_title_b clearfix" >
+      <i></i><span>可更改项</span>
+    </div>
+
+    <div class="content_title_bbb clearfix">
+      <span>个 人 介 绍： </span>
+      <textarea id="gerenjieshao" maxlength="500"></textarea>
+      <div class="word-num">还可以输入<span id="word-num">500</span>字</div>
+    </div>
+
+    <input type="button" style="border:none;font-size: 14px;color: #fff;width: 80px;height: 30px;float: right;background: #C13232;color: #fff;text-align: center;line-height: 30px;margin-right: 80px" onclick="baocunSubmit()" value="确定保存"/>
+  </div>
+</div>
+<script>
+  var login_ss = null; 
+  if($.cookie('login_ss') != undefined){
+      login_ss = JSON.parse($.cookie('login_ss'));  
+  }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script>
+  $(function(){
+    $("#gerenjieshao").on("change",function(){
+      this.value = this.value.substring(0, 500);
+    });
+    $("#gerenjieshao").on("keydown",function(){
+      this.value  = this.value.substring(0, 500);
+    });
+    $("#gerenjieshao").on("keyup",function(){
+      var strLength = $.trim($(this).val()).length;
+      $("#word-num").html(500-strLength);
+      if(strLength > 500){
+        $("#word-num").html(0);
+        this.value  = this.value.substring(0, 500);
+      }
+    });
+  });
+  function baocunSubmit () {
+    $.ajax({
+      url: '/soapi/user_ziliao',
+      type:'POST',
+      data:{
+        introduce: $('#gerenjieshao').val()
+      },
+      dataType:'jsonp',
+      jsonpCallback:'cb',
+      success:function(msg){
+        console.log('aaaaaaaaa');
+        console.log('msg ajax', msg);
+        if(msg.code === 0){
+//          alert('成功');
+//          window.location.reload();
+          window.location = '/advisor_center';
+        } else {
+          alert(msg.message);
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  }
+</script>
+</body>
+</html>

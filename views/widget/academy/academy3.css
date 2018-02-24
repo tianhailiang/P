@@ -1,0 +1,28 @@
+/*热门院校 通栏1180px 3格  一图  2个p*/
+.col3-t-p1-p2-a1 {
+  width: 366.5px;
+  margin-bottom: 20px;
+  height: 206px;
+  display: block;
+}
+.col3-t-p1-p2-a3 {
+  width: 366px;
+  height: 36px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.col3-t-p1-p2-a2{
+  font-size: 14px;
+  margin-bottom: 12px;
+}
+.col3-t-p1-p2-a6 {
+  width: 366px;
+  line-height: 24px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  margin-bottom: 14px;
+}

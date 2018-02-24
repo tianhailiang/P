@@ -1,0 +1,18 @@
+{
+  "code": 200,
+  "message": "获取成功",
+  "data": [
+    {
+      "imgUrl":"http://www.jjl.cn/uploadfile/2015/1116/20151116100109144.jpg",
+      "xueyuan":"麻省理工",
+      "jianjie":"Massachusetts Institute of Technology",
+      "shi":"12:35",
+      "riqi":"8月15日",
+      "liu":"留学方案",
+      "xiao":"哈弗大学",
+      "jisuan":"计算机专业",
+      "luqu":"2017年6月",
+      "xing":"李佳文"
+    }
+  ]
+}

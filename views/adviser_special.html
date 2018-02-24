@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head lang="en"> 
+  {% include "header_new.html" %}
+  <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
+  <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+  <style>
+    .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+  </style>
+</head>
+<body style="background: #f5f5f5">
+{% include "widget/top/top.html" %}
+{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_{% if userinfo.usertype == 2 %}ADVISOR{% elif userinfo.usertype == 3 %}CANZAN{% endif %}_P_ARTICLE_SEAT1"></div>
+<div class="dui-layout-lg clearfix">
+  <div class="dui-layout-silde right">
+    <div class="clearfix" style="margin-top: 20px">
+        {% if userinfo.status == 1 %} {#离职#}
+        {% import "widget2/community_advisor/community_advisor.html" as advisor_leave %}
+        {{ advisor_leave.advisor_leave(userinfo,helper,login_info) }}
+        {% else %} {#在职#}
+        {% if userinfo.usertype == 2 %}
+        {% import "widget2/community_advisor/community_advisor.html" as advisor %}
+        {{ advisor.advisor(userinfo,helper,login_info) }}
+        {% elseif userinfo.usertype == 3 %}
+        {% import "widget2/community_advisor/community_advisor.html" as counsellor %}
+        {{ counsellor.counsellor(userinfo,helper,login_info) }}
+        {% endif %}
+        {% endif %}
+    </div>
+    <div style="margin-top: 20px;" class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;">
+        <i></i>
+        <h3>作者精选</h3>
+      </div>
+      {% esi helper.include(esikey,'fragment/author_selection','uid='+to_uid) %}
+    </div>
+    <div style="margin-top: 20px;" class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;">
+        <i></i>
+        <h3>猜你喜欢</h3>
+      </div>
+      {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+    </div>
+    <div class="huod-lod clearfix dui-box-shadow" style="margin-top: 20px">
+      <div class="expert_unscramble_title expert_unscramble_title_new">
+        <i></i><h3>活动预告</h3> <a target="_blank" href="javascript:void(0);"></a>
+      </div>
+      <div style="background:#fff;" >
+        {% esi helper.include(esikey,'fragment/huodongyugao','pos=cmslist','c='+tdk.cityid,'n='+hcountry) %}
+      </div>
+    </div>
+  </div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-con left" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
+    <div style="margin-top: 20px">
+      <div style="">
+          {% if userinfo.status == 1 %} {#离职顾问#}
+          {% import "widget2/community_nav/community_nav.html" as adviser_nav_leave %}
+          {{adviser_nav_leave.adviser_nav_leave('专栏', userinfo.uid, helper)}}
+          {% else %} {#在职顾问#}
+          {% if userinfo.usertype == 2 %}
+          {% import "widget2/community_nav/community_nav.html" as adviser_nav %}
+          {{adviser_nav.adviser_nav('专栏', userinfo.uid, helper)}}
+          {% elif userinfo.usertype == 3 %}
+          {% import "widget2/community_nav/community_nav.html" as canzan_nav %}
+          {{canzan_nav.canzan_nav('专栏', userinfo.uid, helper)}}
+          {% endif %}
+          {% endif %}
+      </div>
+      {% if zhuanlanlist.list.length > 0 %}
+      <div id="con_zhuanlan" >
+        {% for item in zhuanlanlist.list %}
+        {% import "widget2/article/article.html" as article %}
+        {{article.article_show(item, helper)}}
+        <div>
+          {% include "widget2/bottom_comment/bottom_comment_zhuanlan.html" %}
+        </div>
+        {% endfor %}
+      </div>
+      <div onclick="jiazaigengduo({{to_uid}})" style="cursor:pointer;width: 100%;height: 54px;text-align: center;line-height: 54px;border-bottom: 1px solid #dcdcdc;border-left: 1px solid #dcdcdc;border-right: 1px solid #dcdcdc">
+      <span id="jiazaigengduo" style="font-size: 14px;color: #666">点击加载更多</span><i id="jiazaigengduo1" class="iconfont" style="font-size: 14px;color: #666">&#xe60b;</i>
+      </div>
+      {% else %}
+      {% include "widget2/blank/blank.html" %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="dui-layout-lg clearfix">
+  <div class="dui-box-shadow" style="margin-top: 20px;background:#fff;" >
+    <div class="common-title">
+      <i></i>
+      <h3>热门留学方案</h3>
+      <a target="_blank" href="{{helper.urlgen('productrank')}}" class="iconfont">&#xe602;</a>
+    </div>
+    {% esi helper.include(esikey,'fragment/hot_liuxuefangan_list') %}
+  </div>
+  <div class="dui-box-shadow clearfix" style="margin-top: 20px;background:#fff;margin-bottom: 20px;">
+    <div class="common-title clearfix">
+      <i></i>
+      <h3>明星顾问</h3>
+      <a target="_blank" href="{{helper.urlgen('adviser')}}" class="iconfont">&#xe602;</a>
+    </div>
+      {% esi helper.include(esikey,'fragment/community_guwen','n='+hcountry) %}
+  </div>
+</div>
+{% include "widget/footer/footer.html" %}
+{% import "widget/slide/slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+<script>
+  var login_ss = null; 
+  if($.cookie('login_ss') != undefined){
+      login_ss = JSON.parse($.cookie('login_ss'));  
+  }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+<script>
+  $(function(){
+    //明星顾问轮播
+    $('.advisor_star_bar .slider').xSlider();
+    $('.report-btn').on("click",report); //点击举报
+    $('.share-btn').on('click',share); //点击分享
+    
+  })
+  function report(){
+        //举报调取函数
+        if(login_ss == undefined){
+            layer.msg('你还没有登录')
+            window.setTimeout(function(){
+              window.location.href =fn.curlgen('login','h='+window.location.href);
+            },1000);
+            return false;
+        }
+        var report_content = null;
+        var that =this;
+        layer.open({
+            type: 1,
+            title:'举报理由',
+            area: ['700px'], //宽高
+            content:'<div class="report-con">'+
+                       '<ul class="report-ul clearfix">'+
+                         '<li>'+
+                           '<span class="circle"></span>'+
+                           '<i class="iconfont">&#xe62a;</i>'+
+                           '<span class="sp-con">垃圾、广告信息</span>'+
+                          '</li>'+
+                          '<li>'+
+                            '<span class="circle"></span>'+
+                            '<i class="iconfont">&#xe62a;</i>'+
+                            '<span class="sp-con">色情、低俗内容</span>'+
+                          '</li>'+
+                          '<li>'+
+                            '<span class="circle"></span>'+
+                            '<i class="iconfont">&#xe62a;</i>'+
+                            '<span class="sp-con">时政敏感话题</span>'+
+                          '</li>'+
+                          '<li>'+
+                            '<span class="circle"></span>'+
+                            '<i class="iconfont">&#xe62a;</i>'+
+                            '<span class="sp-con">其它原因</span>'+
+                          '</li>'+
+                        '</ul>'+
+                        '<textarea class="report-txt"></textarea>'+
+                    '</div>',
+            btn:'确定',
+            closeBtn:'2',
+            yes: function(index, layero){
+              if(report_content ==undefined || report_content == ''){
+                layer.msg('请选择举报理由');
+                return false;
+              }
+              $.ajax({
+                // url: ajaxUrlPrefix.cmsapi+'/api/userReport',
+                url:'/soapi/userReport',
+                type:'POST',
+                data:{
+                  report_source:'1',
+                  report_type:'1',
+                  report_content:report_content,
+                  userid:login_ss.uid,
+                  artecle_id:$(that).attr("data-artId"),
+                  catid:$(that).attr("data-catid")
+                },
+                dataType:'json',
+                // jsonpCallback:'callback',
+                success:function(result){
+                  console.log(result)
+                  if(result.code == 0){
+                    layer.msg('举报成功');
+                    layer.close(index); 
+                  }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                  console.log(errorThrown)
+                }  
+              });
+            }         
+        });
+        $(".report-ul li").on("click",function(){
+            //选择举报内容
+            $(".report-ul li i").hide();
+            $(".report-ul li .circle").show();
+            $(this).find("i").show();
+            $(this).find(".circle").hide();
+            if($(this).index() == 3){
+              $(".report-txt").show();
+              $(".layui-layer-content").css({"height":"115px"});
+            }else{
+              $(".report-txt").hide();
+              $(".layui-layer-content").css({"height":"39px"});
+              report_content = $(this).find('.sp-con').text();
+            }
+        });
+        $('.report-txt').on('change',function(){
+            if($('.report-txt').val()!= ''){
+              report_content = $('.report-txt').val();
+            }else{
+               report_content ='';
+            }
+        });
+  }
+  function share(){
+    //调取分享函数
+    var that =this;
+    layer.open({
+      type: 2,
+      title: '分享到',
+      area: ['262px', '327px'],
+      content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+$(that).attr('data-url'), 'no']
+    });
+  }
+</script>
+</body>
+</html>

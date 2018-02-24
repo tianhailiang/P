@@ -1,0 +1,176 @@
+
+{% macro doubleSlider(sliderArr,helper) %}
+<div class="star-slider-double">
+    <div class="slider">
+        <div class="slider-img">
+            <ul class="slider-img-ul">
+                <!--最后一个开始-->
+                <li>
+                    {% for item in sliderArr %}
+                    {% if loop.index > 12 and loop.index < 18 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="top-item" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index == 18 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="top-item-last" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index > 18 and loop.index < 24 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="bot-item" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index == 24 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="bot-item-last" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </li>
+                <!--最后一个结束-->
+                <!--中间开始-->
+
+                <li>
+                    {% for item in sliderArr %}
+                    {% if loop.index > 0 and loop.index < 6 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="top-item" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index == 6 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="top-item-last" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index > 6 and loop.index < 12 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="bot-item" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index == 12 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="bot-item-last" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </li>
+                <li>
+                    {% for item in sliderArr %}
+                    {% if loop.index > 12 and loop.index < 18 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="top-item" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index == 18 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="top-item-last" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index > 18 and loop.index < 24 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="bot-item" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index == 24 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="bot-item-last" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </li>
+
+                <!--中间结束
+                <!--第一个开始-->
+                <li>
+                    {% for item in sliderArr %}
+                    {% if loop.index > 0 and loop.index < 6 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="top-item" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index == 6 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="top-item-last" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index > 6 and loop.index < 12 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="bot-item" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% elseif loop.index == 12 %}
+                    <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="bot-item-last" style="color: #333333;">
+                        <!--<span>{{item.username}}</span>-->
+                        <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt="{{ item.username }}"/>
+                    </a>
+                    {% endif %}
+                    {% endfor %}
+                </li>
+                <!--第一个结束-->
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endmacro %}
+{% macro singleSlider(sliderArr, helper) %}
+<div class="advisor_star_bar">
+<div class="slider">
+    <div class="slider-img">
+        <ul class="slider-img-ul">
+            <li>
+                {% for item in sliderArr[sliderArr.length-1] %}
+                <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="advisor-star-cella">
+                    <dl class="advisor-star-cell">
+                        <dt>
+                            <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt=""/>
+                        </dt>
+                        <dd class="name">{{item.realname}}</dd>
+                        <dd class="area">{{item.job_number}}</dd>
+                    </dl>
+                </a>
+                {% endfor %}
+            </li>
+            {% for slidBar in sliderArr%}
+            <li>
+                {% for item in slidBar %}
+                <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="advisor-star-cella">
+                    <dl class="advisor-star-cell">
+                        <dt>
+                            <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt=""/>
+                        </dt>
+                        <dd class="name">{{item.realname}}</dd>
+                        <dd class="area">{{item.job_number}}</dd>
+                    </dl>
+                </a>
+                {% endfor %}
+            </li>
+            {% endfor %}
+            <li>
+                {% for item in sliderArr[0] %}
+                <a target="_blank" href="{{ helper.urlgen('p', item.uid | string ) }}" class="advisor-star-cella">
+                    <dl class="advisor-star-cell">
+                        <dt>
+                            <img src="{{ helper.avaterimg(item.uid, 'small',item.status,item.version) }}" alt=""/>
+                        </dt>
+                        <dd class="name">{{item.realname}}</dd>
+                        <dd class="area">{{item.job_number}}</dd>
+                    </dl>
+                </a>
+                {% endfor %}
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+<!--<script src="/views/widget/xSlider/xSlider.js" ></script>-->
+{% endmacro %}
+<!--
+<script>
+    $('父级div类名 .slider').xSlider();
+</script>-->

@@ -1,0 +1,18 @@
+
+
+  <!--媒体报道-->
+  <div class="mediareport clearfix">
+    <div class="mediareport_title">
+      <i></i><h3>媒体报道</h3> <a target="_blank" href="javascript:void(0);"><em class="iconfont">&#xe602;</em></a>
+    </div>
+    <div class="mediareport_content">
+      {% for item1 in data %}
+      <div class="overseas_apply_item_r_c">
+        <img class="dian" src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">
+        <a target="_blank" href="javascript:void(0)">{{item1.name}}</a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+

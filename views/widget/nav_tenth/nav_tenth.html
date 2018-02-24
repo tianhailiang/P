@@ -1,0 +1,50 @@
+{% set aboutone=[
+{
+"pageroute": "about",
+"navtext": "金吉列简介"
+},
+{
+"pageroute": "about/culture",
+"navtext": "金吉列文化"
+}
+] %}
+{%
+  set aboutUs=[
+  {
+  "pageroute": "about/events",
+  "navtext": "金吉列大事记"
+  },
+  {
+  "pageroute": "media",
+  "navtext": "媒体播报"
+  },
+  {
+  "pageroute": "about/cooperation",
+  "navtext": "商务合作"
+  },
+  {
+  "pageroute": "about/contact",
+  "navtext": "联系我们"
+  }
+]
+%}
+  <div class="dui-layout-lg nav-tenth dui-box-shadow">
+      <div class="nav-tenth-con">
+        {% for item in aboutone %}
+        {% if item.pageroute != pageroute  %}
+        <a href="{{ helper.urlgen(item.pageroute) }}" rel="nofollow">{{ item.navtext }}</a>
+        {% else %}
+        <a href="{{ helper.urlgen(item.pageroute) }}" rel="nofollow" class="nav-tenth-on" style="color:#ffffff;">{{ item.navtext }}</a>
+        {% endif %}
+        {% endfor %}
+        <a href="{{ helper.urlgen('about') }}#honor" rel="nofollow">企业荣誉</a>
+        {% for item in aboutUs %}
+          {% if item.pageroute != pageroute  %}
+          <a href="{{ helper.urlgen(item.pageroute) }}" rel="nofollow">{{ item.navtext }}</a>
+          {% else %}
+          <a href="{{ helper.urlgen(item.pageroute) }}" rel="nofollow" class="nav-tenth-on" style="color:#ffffff;">{{ item.navtext }}</a>
+          {% endif %}
+        {% endfor %}
+        <a href="http://special.zhaopin.com/bj/2015/jjl032714/enter.html" rel="nofollow">诚聘英才</a>
+      </div>
+  </div>

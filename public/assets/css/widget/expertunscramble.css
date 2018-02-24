@@ -1,0 +1,182 @@
+/*专家解读*/
+.expert_unscramble {
+  width: 278px;
+  /*height: 383px;*/
+  float: left;
+  border: 1px #dcdcdc solid;
+  background: #fff;
+}
+.expert_unscramble_new {
+  width: 278px;
+  /*height: 383px;*/
+  float: left;
+  border: 1px #dcdcdc solid;
+  background: #fafafa;
+}
+.expert_unscramble_new{
+  width: 278px;
+  /*height: 383px;*/
+  float: left;
+  border: 1px #dcdcdc solid;
+  background: #fafafa;
+}
+.expert_unscramble_title {
+  width: 278px;
+  height: 48px;
+  display: inline-block;
+  font-weight: 600;
+  border-bottom: 1px solid #dcdcdc;
+  font-size: 16px;
+  color: #333;
+  background: #f5f5f5;
+}
+.expert_unscramble_title i {
+  width: 2px;
+  height: 22px;
+  display: block;
+  background: #C13232;
+  margin-right: 18px;
+  float: left;
+  margin-top: 15px;
+}
+.expert_unscramble_title h3 {
+  font-weight:normal;
+  float: left;
+  line-height: 50px;
+}
+.expert_unscramble_title em {
+  color: #666;
+}
+.expert_unscramble_title a {
+  width: 16px;
+  display: inline;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+.expert_unscramble_title a:hover {
+  text-decoration:none;
+}
+.expert_unscramble_content {
+  width: 278px;
+  padding: 8px 0;
+  position: relative;
+}
+.expert_unscramble_content div{
+  width: 238px;
+  height: 30px;
+  line-height: 30px;
+  color: #333;
+  font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  padding:0 20px;
+}
+
+.overseas_apply_item_r_c a{
+   width: 223px;
+   height: 30px;
+   color: #333;
+   font-size: 14px;
+   line-height: 30px;
+ }
+.overseas_apply_item_r_c a:hover{
+  color: #C13232;
+}
+
+/*国家频道页*/
+.country_top{
+  width: 100%;
+}
+.country_top img{
+  width: 400px;
+  height: 300px;
+  margin-right: 20px;
+}
+.country_con{
+  width: 460px;
+  font-size: 12px;
+  line-height: 24px;
+  color: #666;
+  float: right;
+  position: relative;
+}
+.country_con_title{
+  width: 100%;
+  font-size: 16px;
+  height: 28px;
+  color: #333;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.country_con_{
+  height: 236px;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;
+  line-height: 24px;
+  margin-top: 10px;
+}
+.country_con_more{
+  background: #fff;
+  color: #C13232;
+  position: absolute;
+  right: 0px;
+  bottom: -2px;
+  z-index: 10;
+  font-size: 12px;
+}
+.country_con_more:hover{
+  color: #C13232;
+}
+.country_title{
+  width: 100%;
+}
+.country_title li{
+  width: 280px;
+  margin-top: 20px;
+  margin-right: 20px;
+  float: left;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.country_title li a{
+  font-size: 14px;
+  line-height: 30px;
+  color: #333;
+  text-decoration: underline ;
+}
+.major_con{
+  width: 100%;
+}
+.major_con p {
+  height: 23px;
+  padding: 4.4px 20px;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.major_con p:hover {
+  color: #C13232;
+}
+.major_con a{
+  font-size: 14px;
+  line-height: 28px;
+  color: #333;
+}
+.major_con a:hover{
+  color: #C13232;
+}

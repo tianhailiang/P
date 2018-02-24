@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "header_new.html" %}
+    <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
+    <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+    <style>
+		.rel-case-map{
+		 	width:100%;
+		 	height:130px;
+		}
+		.rel-case-map img{
+		 	width:100%;
+		 	height:100%;
+		 	display: block;
+		 }
+    </style>
+</head>
+<body style="background:#f5f5f5;">
+<!-- ===头部=== -->
+{% include "widget/top/top.html" %}
+<!-- ====导航===== -->
+{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+{{nav_seventh.nav_seventh("#",tdk.cityid,helper)}}
+<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+	<!-- ==广告1== -->
+	<div class="rel-case-map" id="AD_{% if userinfo.usertype == 2 %}ADVISOR{% elif userinfo.usertype == 3 %}CANZAN{% endif %}_P_ALBUM_SEAT1">
+	</div>
+</div>
+<div class="dui-layout-lg clearfix dui-layout-padding" >
+    <div class="dui-layout-silde ">
+        <!-- =======顾问头像关注====== -->
+        <div>
+            {% import "widget2/community_advisor/community_advisor.html" as advisor %}
+            {% if userinfo.usertype == 2 %} {#顾问#}
+            {{ advisor.advisor(userinfo,helper,login_info) }}
+            {% elif userinfo.usertype == 3 %} {#参赞#}
+            {{ advisor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+        </div>
+        <!-- =======作者精选======= -->
+        <div style="margin-top: 20px;" class="dui-box-shadow">
+            <div class="common-title" style="border:1px solid #dcdcdc;">
+                <i></i>
+                <h3>作者精选</h3>
+            </div>
+           {% esi helper.include(esikey,'fragment/author_selection','uid='+to_uid) %}
+        </div>
+        <!-- ========猜你喜欢======= -->
+        <div style="margin-top: 20px;" class="dui-box-shadow">
+            <div class="common-title" style="border:1px solid #dcdcdc;">
+                <i></i>
+                <h3>猜你喜欢</h3>
+            </div>
+            {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+        </div>
+        <!-- ==活动预告== -->
+        <div style="margin-top:20px" class="clearfix dui-box-shadow">
+            <div class="common-title ">
+                <i></i>
+                <h3>活动预告</h3>
+                <a target="_blank" href="{{helper.active_urlgen('activity', 'c='+tdk.cityid)}}" class="iconfont">&#xe602;</a>
+            </div>
+            <div style="background:#fff" >
+               {% esi helper.include(esikey,'fragment/huodongyugao','pos=cmslist','c='+tdk.cityid,'n='+hcountry) %}
+            </div>
+        </div>
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con dui-box-shadow">
+        <div class="right-cont" style="background-color: #fff;">
+            {% import "widget2/community_nav/community_nav.html" as community_nav %}
+            {% if userinfo.usertype == 2 %} {#顾问#}
+            {{community_nav.adviser_nav('相册', userinfo.uid, helper)}}
+            {% elif userinfo.usertype == 3 %} {#参赞#}
+            {{community_nav.canzan_nav('相册', userinfo.uid, helper)}}
+            {% endif %}
+            <div class="right-main clearfix" id="photoContainer">
+            </div>
+            <div id="photo-blank" style="display: none;">
+                {% include "widget2/blank/blank.html" %}
+            </div>
+            <div class="loadMore" data-page="">
+                <span>加载更多</span>
+                <i class="iconfont">&#xe60b;</i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dui-layout-lg clearfix" >
+    <!-- ========热门留学方案======== -->
+    <div class="dui-box-shadow" style="margin-top: 20px;background:#fff;" >
+        <div class="common-title">
+            <i></i>
+            <h3>热门留学方案</h3>
+            <a target="_blank" href="{{helper.urlgen('productrank')}}" class="iconfont">&#xe602;</a>
+        </div>
+        {% esi helper.include(esikey,'fragment/hot_liuxuefangan_list') %}
+    </div>
+    <div class="dui-box-shadow" style="margin-top: 20px;background:#fff;margin-bottom: 20px;">
+        <div class="common-title">
+            <i></i>
+            <h3>明星顾问</h3>
+            <a target="_blank" href="{{helper.urlgen('adviser')}}" class="iconfont">&#xe602;</a>
+        </div>
+          {% esi helper.include(esikey,'fragment/community_guwen','n='+hcountry) %}
+    </div>
+</div>
+{% import "widget/slide/slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+{% include "widget/footer/footer.html" %}
+<script>
+    var login_ss = null;
+    if($.cookie('login_ss') != undefined){
+      login_ss = JSON.parse($.cookie('login_ss'));
+    }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bigPhotoSlider.js"></script>
+<script>
+    $(function () {
+        //明星顾问轮播
+        $('.advisor_star_bar .slider').xSlider();
+        var to_uid = window.location.pathname.split('/')[2];
+        function limitDisplay(kaishi,changdu,maxLine,lastMonth){
+            curM = lastMonth;
+            var length = photoArr.length > (kaishi + changdu) ? (kaishi + changdu) : photoArr.length;
+            for (var i = kaishi; i < length; i++) {
+                if (curM != fn.getFormatDate(photoArr[i].add_time,2) || linePhotoNum == 4) {//换行条件
+                    linePhotoNum = 0;
+                    line++;
+                    if (line > maxLine) {
+                        break;
+                    }
+                    if(curM != fn.getFormatDate(photoArr[i].add_time,2)) {
+                        curM = fn.getFormatDate(photoArr[i].add_time,2);
+                        var disPlayMonth = curM == '01' ? fn.getFormatDate(photoArr[i].add_time,1) + '年' : curM + '月';
+                        htmlstr += '</ul></div>';
+                        htmlstr += '<div class="album-bar bar-border clearfix">';
+                        htmlstr += '<div class="album-left-box"><div class="album-time"><i class="iconfont">&#xe768;</i><span>' + disPlayMonth + '</span></div></div><ul class="album-list">';
+                    }
+                    else {
+                        htmlstr += '</ul></div>';
+                        htmlstr += '<div class="album-bar clearfix">';
+                        htmlstr += '<div class="album-left-box"></div><ul class="album-list">';
+                    }
+                }
+                htmlstr += '<li class="photo-item" data-photoid="' + i + '">'+
+                             '<dl>'+
+                               '<dt>'+
+                                  '<a target="_blank" href="'+photoArr[i]['url']+'" target="_blank" >'+
+                                    '<img src="'+photoArr[i]['url']+'" alt=""/>'+
+                                  '</a>'+
+                                '</dt>';
+                htmlstr += '<dd>'+photoArr[i]['desc']+'</dd></dl></li>';
+                linePhotoNum++;
+                pNum++;
+            }
+            var newstr = htmlstr.slice(11) + htmlstr.slice(0,11);
+            $('.right-main').append($(newstr));
+        }
+        var photoArr = [];//存储所有相片的数组
+        var line = 0;//行数
+        var pNum = 0;//已经展示的相片条数
+        var curM = 0;//上一个月份
+        var htmlstr = '';//HTML字符串
+        var linePhotoNum = 0; //每一行相片数量
+        var pageLineInit = 8; //第一次请求的行数1
+        var pageSizeInit = pageLineInit * 4; //第一次请求的相片数量
+        $.ajax({
+            url: '/soapi/get_photos',
+            type:'GET',
+            data:{
+                u_id: to_uid,
+                page: 1,
+                per_page: pageSizeInit
+            },
+            dataType:'json',
+            success:function (msg) {
+                console.log(msg)
+                if(msg.code == 0){
+                    if (msg.data.list.length == 0) {
+                       $("#photo-blank").show();
+                        $('.loadMore').hide();
+                    }
+                    else if (msg.data.list.length < pageSizeInit) {
+                        $('.loadMore').show().html('已展示全部照片');
+                    }
+                    photoArr = photoArr.concat(msg.data.list);
+                    limitDisplay(0,pageSizeInit,pageLineInit,0);
+                    $('.loadMore').attr('page',pageSizeInit/8);
+                }else{
+                    console.log(msg.err)
+                }
+               
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(errorThrown)
+            }
+        });
+        function loadmore () {
+            line = 0;
+            htmlstr = '';
+            var curPage = $('.loadMore').attr('page')*1+1;
+            $.ajax({
+                url: '/soapi/get_photos',
+                type:'GET',
+                data:{
+                    u_id: to_uid,
+                    page: curPage,
+                    per_page: 8
+                },
+                dataType:'json',
+                success:function (msg) {
+                    var loadMoreLine = 2;
+                    var loadMoreSize = loadMoreLine * 4;
+                    if (msg.list.length < loadMoreSize) {
+                        $('.loadMore').html('已展示全部照片');
+                    }
+                    linePhotoNum = 4;
+                    photoArr = photoArr.concat(msg.list);
+                    limitDisplay(pNum,8,2,curM);
+                    $('.loadMore').attr('page', curPage);
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    console.log(errorThrown)
+                }
+            });
+        }
+        $('.loadMore').on('click',function () {
+            loadmore();
+        });
+        // /*点击放大图片*/
+        // $("#photoContainer").on("click",".photo-item", function() {
+        //     var curIndex = $(this).attr('data-photoid');
+        //     bigPhoto(photoArr, curIndex);
+        // });
+    })
+</script>
+</body>
+</html>

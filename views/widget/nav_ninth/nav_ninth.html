@@ -1,0 +1,153 @@
+{%
+set countrylist=[
+{
+"id":1,
+"type":"美国留学"
+},
+{
+"id":2,
+"type":"英国留学"
+},
+{
+"id":3,
+"type":"加拿大留学"
+},
+{
+"id":4,
+"type":"澳洲留学"
+},
+{
+"id":201,
+"type":"亚洲留学",
+"countries":[
+{
+"id": 50,
+"country": "韩国留学"
+},
+{
+"id": 51,
+"country": "日本留学"
+},
+{
+"id": 52,
+"country": "新加坡留学"
+},
+{
+"id": 53,
+"country": "马来西亚留学"
+},
+{
+"id": 54,
+"country": "中国香港留学"
+}
+]
+},
+{
+"id":202,
+"type":"欧洲留学",
+"countries":[
+{
+"id": 100,
+"country": "俄罗斯留学"
+},
+{
+"id": 101,
+"country": "乌克兰留学"
+},
+{
+"id": 102,
+"country": "白俄罗斯留学"
+},
+{
+"id": 103,
+"country": "德国留学"
+},
+{
+"id": 104,
+"country": "法国留学"
+},
+{
+"id": 105,
+"country": "挪威留学"
+},
+{
+"id": 106,
+"country": "瑞典留学"
+},
+{
+"id": 107,
+"country": "芬兰留学"
+},
+{
+"id": 108,
+"country": "爱尔兰留学"
+},
+{
+"id": 109,
+"country": "荷兰留学"
+},
+{
+"id": 110,
+"country": "丹麦留学"
+},
+{
+"id": 111,
+"country": "意大利留学"
+},
+{
+"id": 112,
+"country": "西班牙留学"
+},
+{
+"id": 113,
+"country": "瑞士留学"
+}
+]
+}
+]
+
+
+%}
+<div class="nav-ninth-w">
+  <div class="dui-layout-lg  clearfix nav-ninth" >
+    <a rel="nofollow" href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}" class="home-nav-ninth">首页</a>
+    <div class="nav-ninth-list">
+      <div class="abroad-ninth">
+        <span><a href="#">留学国家</a><i class="iconfont go-down">&#xe60b;</i></span>
+        <div class="abroad-ninth-list">
+          <ul>
+            {% for item in countrylist %}
+            <li class="navsec-li"><a data-id="{{ item.id }}" href="{{helper.urlgen('nationrank','n='+item.id)}}">{{ item.type }}</a>
+              {% if item.countries!=false %}
+              <ol class="navsec-ol">
+                {% for list in item.countries %}
+                <li><a data-id="{{ list.id }}" href="{{helper.urlgen('nationrank','n='+list.id)}}">{{ list.country }}</a>
+                  {% endfor %}
+              </ol>
+              {%  endif %}
+            </li>
+
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+
+      <a href="{{helper.urlgen('edu','e=19','n=1')}}" class="nav-ninth-a nav-ninth-a-f">中小学</a>
+      <a href="{{helper.urlgen('edu','e=1','n=1')}}" class="nav-ninth-a">本科生</a>
+      <a href="{{helper.urlgen('edu','e=2','n=1')}}" class="nav-ninth-a">研究生</a>
+      <span class="ninth-shu">|</span>
+      <a href="{{helper.urlgen('glue')}}" class="nav-ninth-a">申请攻略</a>
+      <a href="{{helper.urlgen('visa')}}" class="nav-ninth-a">签证指导</a>
+      <a href="{{helper.urlgen('prereq')}}" class="nav-ninth-a">申请条件</a>
+      <a href="{{helper.urlgen('cost')}}" class="nav-ninth-a">留学费用</a>
+      <span class="ninth-shu">|</span>
+      <a href="{{helper.urlgen('cases')}}" class="nav-ninth-a">经典案例</a>
+      <a href="{{helper.urlgen('productrank')}}" class="nav-ninth-a">留学方案</a>
+      <a href="{{helper.urlgen('schoollib')}}" class="nav-ninth-a">院校库</a>
+      <a href="{{helper.urlgen('schoolrank')}}" class="nav-ninth-a">大学排名</a>
+      <span class="ninth-shu">|</span>
+      <a href="{{helper.urlgen('community_index')}}" class="nav-ninth-a">留学社区</a>
+      <a rel="nofollow" href="{{helper.urlgen('about')}}" class="nav-ninth-a">关于金吉列</a>
+    </div>
+  </div>
+</div>

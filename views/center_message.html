@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+{% include "header_new.html" %}
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/message.css"/>
+  <!--[if lt IE 10]>
+  <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+  <![endif]-->
+<style>
+    .pagination-box{
+        float: left;
+        position: relative;
+        left: 50%;
+        margin-top: 54px;
+        margin-bottom: 54px;
+    }
+    .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+</style>
+<body style="background: #f5f5f5">
+{% include "widget/top/top.html" %}
+{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+{% if login_info.usertype == 1 %} {#用户#}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_USER_CENTER_REVMESSAGE_SEAT1"></div>
+{% elif login_info.usertype == 2 %} {#顾问#}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_ADVISOR_CENTER_REVMESSAGE_SEAT1"></div>
+{% elif login_info.usertype == 3 %} {#参赞#}
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_CANZAN_CENTER_REVMESSAGE_SEAT1"></div>
+{% endif %}
+<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+    <div class="dui-layout-silde">
+        <div class="clearfix">
+            {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+            {% if login_info.usertype == 1 %} {#用户#}
+            {{ community_advisor.user(userinfo,helper) }}
+            {% elif login_info.usertype == 2 %} {#顾问#}
+            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {% elif login_info.usertype == 3 %} {#参赞#}
+            {{ community_advisor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+        </div>
+        {% if login_info.usertype == 1 %} {#用户#}
+        {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+        {{ user_side_menu.user_side_menu('收到的消息', helper) }}
+        {% elif login_info.usertype == 2 %} {#顾问#}
+        {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+        {{ adviser_side_menu.adviser_side_menu('收到的消息', ' ', helper) }}
+        {% elif login_info.usertype == 3 %} {#参赞#}
+        {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+        {{ canzan_side_menu.canzan_side_menu('收到的消息', ' ', helper) }}
+        {% endif %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con dui-box-shadow">
+        <div class="right-cont" style="border: none">
+            <div class="right-title" style="background: #f3f3f3"><div class="tit">收到的消息</div></div>
+            {% if msg_data.list.length > 0 %}
+            <div class="right-main clearfix">
+                {% for msgItem in msg_data.list %}
+                {% include "widget2/message/message.html" %}
+                {% endfor %}
+            </div>
+            <!--分页器 start-->
+            <div class="pagination-box" data-pagenum="{{msg_data.totalpage}}">
+                <!--<div class="dui-pagination pagination-large">
+                </div>-->
+              {% import "widget2/pagtion/pagtion.html" as pagtion %}
+              {{pagtion.pagtion(pagination)}}
+            </div>
+            <!--分页器 end-->
+          {% else %}
+          {% include "widget2/blank/blank.html" %}
+          {% endif %}
+        </div>
+    </div>
+</div>
+{% include "widget/footer/footer.html" %}
+<script>
+    if($.cookie('login_ss') != undefined){
+        login_ss = JSON.parse($.cookie('login_ss'));  
+    }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/select.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script>
+    $(function () {
+      //让分页器居中显示
+      $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
+
+      /*var cur_is_draft = Number(getQueryString('is_draft')) || 2;
+        /!*分页器*!/
+        if (total_num >= 1) {
+            $('.pagination-box').pagination({
+                pages: total_num,
+                styleClass: ['pagination-large'],
+                showCtrl: true,
+                currentPage: cur_page,
+                displayPage: 7,
+                onSelect: function (num) {
+                    window.location.href = fn.curlgen('canzan_center/revmsg', 'is_draft=' + cur_is_draft, 'page=' + num);
+                }
+            });
+
+
+        }*/
+    })
+</script>
+<script>
+    $(document).ready(function($)
+    {
+        var msgItemList = $('.msg-info-txt');
+        $.each(msgItemList, function (i,v) {
+            click($(this));
+        });
+        function click (obj) {
+            var box = obj;
+            var textbox = box.find('.text');
+            var texthtml = box.find('.text').html();
+            var btn = box.find(".btn-text");
+            textbox.html(texthtml.substring(0,100));
+            btn.html(texthtml.length > 100 ? "展开" : "");
+            btn.click(function () {
+                if (btn.html() == '展开') {
+                    btn.html('收起');
+                    textbox.html(texthtml);
+                }
+                else {
+                    btn.html('展开');
+                    textbox.html(texthtml.substring(0,100));
+                }
+            });
+        }
+    });
+</script>
+</body>
+</html>

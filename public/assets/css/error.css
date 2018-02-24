@@ -1,0 +1,15 @@
+.error-con{
+  margin:0 auto;
+  margin-top:180px;
+  width:424px;
+  height:364px;
+}
+.error-con img{
+  display: block;
+}
+.error-btn{
+  text-align: center;
+}
+.error-btn .go-back-btn{
+  width: 100px
+}

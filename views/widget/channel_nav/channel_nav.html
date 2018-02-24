@@ -1,0 +1,52 @@
+<div class="dui-layout-lg channel-nav clearfix" style="margin-top: 20px;">
+    <div class="channel-nav-left">
+        <ul class="tag">
+            <li class="tag-item tag-one active" data-id="0"><a target="_blank" href="#">主页</a></li>
+        </ul>
+        <ul class="tag">
+            <li class="tag-item tag-one" data-id="1"><a target="_blank" href="#">美国</a></li>
+        </ul>
+        <ul class="tag">
+            <li class="tag-item tag-one" data-id="2"><a target="_blank" href="#">英国</a></li>
+        </ul>
+        <ul class="tag">
+            <li class="tag-item tag-one" data-id="3"><a target="_blank" href="#">加拿大</a></li>
+        </ul>
+        <ul class="tag">
+            <li class="tag-item tag-one" data-id="4"><a target="_blank" href="#">澳大利亚</a></li>
+        </ul>
+        <ul class="tag">
+            <li class="tag-item tag-one" data-id="5"><a target="_blank" href="#">新西兰</a></li>
+        </ul>
+        <ul class="tag">
+            <li class="tag-item tag-one"><a target="_blank" href="#">亚洲</a><i class="iconfont">&#xe60b;</i></li>
+            <ul class="tag-two" style="display: none;">
+                <li class="tag-item" data-id="6"><a target="_blank" href="#">中国</a></li>
+                <li class="tag-item" data-id="7"><a target="_blank" href="#">日本</a></li>
+                <li class="tag-item" data-id="8"><a target="_blank" href="#">韩国</a></li>
+            </ul>
+        </ul>
+        <ul class="tag">
+            <li class="tag-item tag-one"><a target="_blank" href="#">欧洲</a><i class="iconfont">&#xe60b;</i></li>
+            <ul class="tag-two" style="display: none;">
+                <li class="tag-item" data-id="9"><a target="_blank" href="#">挪威</a></li>
+                <li class="tag-item" data-id="10"><a target="_blank" href="#">瑞典</a></li>
+            </ul>
+        </ul>
+    </div>
+    <div class="phoneBox">
+        <dl>
+            <dt><span class="iconfont">&#xe618;</span></dt>
+            <dd>留学咨询热线</dd>
+            <dd class="phone-number">400-010-8000</dd>
+        </dl>
+    </div>
+</div>
+<script>
+    console.log('777');
+    $('.channel-nav-left .tag').hover(function () {
+        $(this).find('.tag-two').slideDown();
+    }, function () {
+        $(this).find('.tag-two').slideUp();
+    })
+</script>

@@ -1,0 +1,24 @@
+<!--成功案例/合作机构-->
+<div class="successfulcase">
+  <div class="successfulcasecon">
+    <div></div><h3 class="dui-text-xlarge">成功案例</h3><a href="{{helper.urlgen('cases')}}" target="_blank" rel="nofollow"><em class="iconfont">&#xe602;</em></a>
+  </div>
+  <div class="successfulcaseing">
+    {% if chenggonganli | length%}
+    <a target="_blank" href="{{ helper.urlgen('case', chenggonganli[0].id | string) }}" rel="nofollow">
+    <img src="{{ helper.imageThumb(chenggonganli[0].thumb,'240x136')}}" alt="{{chenggonganli.title}}"></a>
+    {% else %}
+    <p style="text-align: center";>没有数据！</p>
+    {% endif %}
+  </div>
+  <div class="successfulcases" style="background: #fff">
+    {% for item in chenggonganli %}
+  <div class="overseas_apply_item_r_c">
+    <img class="dian" src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">
+    <a target="_blank" href="{{ helper.urlgen('case', item.id | string ) }}">{{item.title | ellipsis(14)}}</a>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+
+

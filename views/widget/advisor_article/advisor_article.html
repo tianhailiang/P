@@ -1,0 +1,38 @@
+<div class="adivisor-article" style="clear: both">
+
+  <dl>
+    {% for item in wecenter_guwen %}
+    <dt class="article-dt">
+      <a target="_blank" rel="nofollow" href="{{ helper.urlgen('p', item.user_info.uid | string ) }}" style="color:#333333;">
+      <img  src="{{ helper.avaterimg(item.user_info.uid, 'small',item.user_info.status,item.user_info.version) }}" alt="金吉列留学顾问{{ item.user_info.nickname }}"></a>
+      <p class="adivisor-article-editor" style="margin-top: 38px;">
+        <span class="adivisor-article-name"><a target="_blank" style="color:#333333;" href="{{ helper.urlgen('p', item.user_info.uid | string ) }}">{{ item.user_info.nickname }}</a></span>
+        <span class="adivisor-article-bumen">{{ item.user_info.dept }}</span>
+     </p>
+
+    </dt>
+    {% endfor %}
+    <dd>
+      {% for item in  wecenter_guwen %}
+      <p class="adivisor-article-title"><a style="display: block;line-height: 30px;" class="dui-text-warning-s" href="{{ helper.urlgen('p', item.user_info.uid | string) }}" target="_blank">{{ item.article_info[0].title |  ellipsis(15)  }}</a></p>
+      {% endfor %}
+    </dd>
+  </dl>
+</div>
+<script>
+  $(document).ready(function(){
+    $(".article-dt").eq(0).css({"display":"block"})
+  });
+
+  $(".adivisor-article-title").hover(
+    function(){
+      var ind=$(this).index();
+      $(".article-dt").eq(ind).css({"display":"block"})
+      $(".article-dt").eq(ind).siblings("dt").css({"display":"none"})
+    },function(){
+      $(".article-dt").eq(0).css({"display":"block"});
+      $(".article-dt").eq(0).siblings("dt").css({"display":"none"})
+    }
+
+  )
+</script>

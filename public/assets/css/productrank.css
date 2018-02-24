@@ -1,0 +1,10 @@
+.pagination-box{
+  float:left;
+  margin-top: 82px;
+  margin-bottom:82px;
+  position: relative;
+  left:50%;
+}
+.pagination-box .pagination-large{
+  margin:0;
+}

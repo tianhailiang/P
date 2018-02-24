@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+  <link rel="stylesheet" href="../../widget/base.css"/>
+  <link rel="stylesheet" href="../../.package/css/dui.min.css"/>
+  <link rel="stylesheet" href="../../.package/css/dui-append.min.css"/>
+  <link rel="stylesheet" href="../../widget2/community_advisor/community_advisor.css"/>
+</head>
+<body>
+<!--顾问-->
+{% import "community_advisor/community_advisor.html" as advisor_list %}
+{{ advisor_list.advisor(advisor) }}
+<!--参赞-->
+{% import "community_advisor/community_advisor.html" as counsellor_list %}
+{{ counsellor_list.counsellor(advisor) }}
+</body>
+</html>

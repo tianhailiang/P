@@ -1,0 +1,108 @@
+.album-mask{
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+.album-box{
+    position: absolute;
+    width: 860px;
+    height: 440px;
+    background-color: #000;
+    left: 50%;
+    top: 50%;
+    margin-left: -430px;
+    margin-top: -220px;
+}
+.album-box .close-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    background-color: #fff;
+    position: absolute;
+    right: -15px;
+    top: -15px;
+    font-size: 29px;
+    line-height: 30px;
+    text-align: center;
+}
+.album-box .album-top{
+    width: 448px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -224px;
+    margin-top: -170px;
+}
+.album-box .album-top .change-btn{
+    /*width: 14px;
+    height: 26px;*/
+    position: absolute;
+    top: 50%;
+    margin-top: -13px;
+    font-size: 26px;
+    line-height: 26px;
+    color: #999;
+}
+.album-box .album-top .change-btn.prev-btn{
+    left: 0;
+}
+.album-box .album-top .change-btn.next-btn{
+    right: 0;
+}
+.album-box .album-top .photo{
+    width: 300px;
+    height: 300px;
+    line-height: 300px;
+    overflow: hidden;
+    background-color: green;
+    margin-left: 60px;
+}
+.album-box .album-top .photo img{
+    display: inline-block;
+    width: 100%;
+}
+.album-box .album-bot{
+    position: absolute;
+    bottom: 0;
+    width: 860px;
+    height: 40px;
+    background-color: #333;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+.album-box .album-bot .time{
+    color:#999;
+    padding-right: 20px;
+}
+.album-box .album-bot .desc{
+    color:#fff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

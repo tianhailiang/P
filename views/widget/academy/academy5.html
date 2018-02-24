@@ -1,0 +1,15 @@
+<div class="dui-layout-border dui-layout-padding clearfix">
+  {% for item in remenyuanxiao %}
+  {% if loop.index <= 8%}
+<div class="dui-layout-col6">
+  <div>
+    <a href="{{helper.urlgen('schoollib', item.id | string, 'n=' + item.country)}}" rel="nofollow" style="display: block;color: #333;">
+      <img class="col5-p1-p2-a1" src="{{helper.imageThumb(item.images,'212x160')}}" alt="{{ item.title }}" style="display: block">
+    </a>
+  </div>
+  <p class="col5-p1-p2-a2"><a class="dui-text-warning-s" href="{{helper.urlgen('schoollib', item.id | string, 'n=' + item.country)}}">{{ item.title | shorten(15)  }}</a></p>
+  <p class="col5-p1-p2-a3"><a class="dui-text-warning-ss" href="{{helper.urlgen('schoollib', item.id | string, 'n=' + item.country)}}">{{ item.schoolenname | shorten(34) }}</a></p>
+</div>
+  {% endif %}
+  {% endfor %}
+</div>

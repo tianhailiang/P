@@ -1,0 +1,112 @@
+.nav-twelfth {
+  height: 44px;
+  background: url(../../img/bg1.png) repeat-x;
+  position: relative;
+  color: #ffffff;
+  font-size: 14px;
+}
+.nav-twelfth .nav-twelfth-home{
+  color:#ffffff;
+  font-size: 16px;
+  float:left;
+  display: inline-block;
+  width: 16px;
+  text-align: center;
+  margin-top:6px;
+  line-height: 38px;
+  margin-left:20px;
+  margin-right:10px;
+}
+.twelfth-country-list{
+  margin-top:6px;
+  height: 38px;
+  float:left;
+  width:860px;
+}
+
+.twelfth-country-list li{
+  float:left;
+  display: inline-block;
+  line-height: 38px;
+}
+.nav-twelfth  .twelfth-list{
+  padding:0 22px;
+  color:#ffffff;
+  font-size: 16px;
+  display: block;
+  float:left;
+}
+.twelfth-country-list .nav-twelfth-down{
+  color:#ffffff;
+  font-size: 10px;
+  padding-left:10px;
+  float:right;
+}
+.twelfth-country-list li .twelfth-list:hover{
+  background: #ffffff;
+  border-radius:5px 5px 0px 0px;
+  box-shadow: 2px 1px 3px 2px rgba(0,0,0,0.2);
+  color:#c13232;
+}
+.twelfth-country-list li .twelfth-list:hover .nav-twelfth-down{
+  color:#c13232;
+}
+
+.nav-twelfth .nav-twel{
+  background: #ffffff;
+  border-radius:5px 5px 0px 0px;
+  box-shadow: 2px 1px 3px 2px rgba(0,0,0,0.2);
+  color:#c13232;
+}
+.nav-twelfth-zhou .twelfth-list{
+  padding:0 22px;
+}
+.twelfth-country-list li ol{
+  display: none;
+}
+.twelfth-country-list li:hover ol{
+  display: block;
+  box-shadow: 2px 1px 3px 2px rgba(0,0,0,0.2);
+}
+.nav-twelfth-zhou{
+  position: relative;
+}
+.nav-twelfth-zhou ol{
+  position: absolute;
+  top:38px;
+  width:130px;
+  background: #ffffff;
+}
+.nav-twelfth-zhou ol a{
+  color:#333333;
+}
+.nav-twelfth-zhou ol li{
+  text-align: center;
+}
+.nav-twelfth-zhou ol li a{
+  display: block;
+  width:130px;
+  text-align: center;
+  font-size: 16px;
+}
+.nav-twelfth-zhou ol li a:hover{
+  color:#c13232;
+}
+.twelfth-tel{
+  width: 266px;
+  float:left;
+  color:#ffffff;
+  margin-top:6px;
+}
+.twelfth-tel i{
+  color:#ffffff;
+  font-size: 22px;
+  width: 22px;
+  display: inline-block;
+  padding-right:10px;
+}
+.twelfth-tel span{
+  font-size: 16px;
+  display: inline-block;
+  line-height: 38px;
+}

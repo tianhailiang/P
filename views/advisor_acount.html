@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css" >
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_sec.css" >
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/side_menu.css"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/community_advisor.css"/>
+  <link href="{{helper.cdnhost}}/assets/css/widget/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+  <link href="{{helper.cdnhost}}/assets/css/widget/style.css?v=4.1.0" rel="stylesheet">
+  {% include "header_new.html" %}
+  <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+  <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+
+  <style>
+    .content_title{
+      margin-top: 20px;margin-left: 20px;margin-bottom: 30px;background: #f3f3f3;width: 840px;height: 40px
+    }
+    .content_title_t {
+      float: left;width: 136px;height: 40px;background: #C13232;color: #fff;font-size: 18px;text-align: center;line-height: 40px
+    }
+    .content_title_b{
+      margin-bottom: 50px;margin-left: 20px;border-bottom: 1px solid #ededed;width: 840px;height: 30px;
+    }
+    .content_title_b i{
+      width: 2px;height: 20px;background: #C13232;float: left;display: block;margin-right: 10px;
+    }
+    .content_title_b span{
+      font-size: 16px;color: #333;float: left;
+    }
+    .register_nei_content_s {
+      margin-left: 188px; float: left;
+    }
+    .register_nei_content_s .register_nei_form input{
+      padding-left: 5px;  float: left;  margin-left: 10px;  margin-bottom: 30px;  width: 276px;  height: 30px;
+    }
+    .register_nei_content_s .title{
+      font-size: 14px;  color: #333;  float: left;  margin-top: 5px;line-height: 30px;
+    }
+    .register_nei_content_s .title span{
+      color: #C13232;
+    }
+    .register_nei_content_s .ti{
+      width: 240px;  font-size: 12px;  color: #999;  float: left;  margin-top: 10px;  margin-left: 10px;
+    }
+    .register_r img{
+      width: 410px;  height: 292px;
+    }
+    .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+  </style>
+</head>
+<body style="background: #f5f5f5">
+
+{% include "widget/top/top.html" %}
+
+{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 1 %}USER{% endif %}_CENTER_ACOUNT_SEAT1"></div>
+
+<div class="dui-layout-lg clearfix">
+  <div class="dui-layout-silde right">
+    <div class="clearfix" style="margin-top: 20px">
+      {% if userinfo %}
+      {% if login_info.usertype == 1 %} {#用户#}
+      {% import "widget2/community_advisor/community_advisor.html" as user %}
+      {{ user.user(userinfo,helper) }}
+      {% elif login_info.usertype == 2 %} {#顾问#}
+      {% import "widget2/community_advisor/community_advisor.html" as advisor %}
+      {{ advisor.advisor(userinfo,helper,login_info) }}
+      {% elif login_info.usertype == 3 %} {#参赞#}
+      {% import "widget2/community_advisor/community_advisor.html" as counsellor %}
+      {{ counsellor.counsellor(userinfo,helper,login_info) }}
+      {% endif %}
+      {% endif %}
+    </div>
+    {% if login_info.usertype == 1 %} {#用户#}
+    {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+    {{ user_side_menu.user_side_menu('账号设置', helper) }}
+    {% elif login_info.usertype == 2 %} {#顾问#}
+    {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+    {{ adviser_side_menu.adviser_side_menu('账号设置', '', helper) }}
+    {% elif login_info.usertype == 3 %} {#参赞#}
+    {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+    {{ canzan_side_menu.canzan_side_menu('账号设置', '', helper) }}
+    {% endif %}
+  </div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-con left" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
+    <div class="content_title clearfix">
+      <div class="content_title_t">
+        账号设置
+      </div>
+    </div>
+    <div class="content_title_b clearfix" >
+      <i></i><span>密码修改</span>
+    </div>
+
+    <div class="register_nei_content_s clearfix">
+      <form class="m-t register_nei_form" role="form">
+        <div class="form-group clearfix" style="position: relative;height: 28px">
+          <div class="title">当前登录密码：</div>
+          <input type="password" class="form-control" id="old_password" required data-vaild="^[a-zA-Z0-9]{6,16}$" data-errmsg="当前登录密码不正确" />
+          <div class="ti">请输入当前登录密码</div>
+        </div>
+
+        <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
+          <div class="title">新登录密码  ： &nbsp;</div>
+          <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="new_password" data-errmsg="新密码不正确，请输入8-16位数字或字母">
+          <div class="ti" style="">密码8-16位，数字、字母字符至少包含两种</div>
+        </div>
+
+        <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
+          <div class="title">重复新密码  ： &nbsp;</div>
+          <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="qie_password" data-errmsg="确认密码不正确，请输入8-16位数字或字母">
+          <div class="ti">请再次输入密码</div>
+        </div>
+
+        <input type="button" id="baocunSubmit" value="保 存" style="margin-left: 115px;background: #C13232;border: none;font-size: 14px;color: #fff"/>
+      </form>
+    </div>
+  </div>
+</div>
+<script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
+<script>
+  $(document).ready(function () {
+
+    $("form").Vaild();
+    var lS = document.getElementById('baocunSubmit');
+    console.log('loginS', lS);
+    if (lS.addEventListener) {
+      console.log('ffff');
+      lS.addEventListener('click', baocun, false);
+    } else {
+      console.log('eeeee');
+      lS.attachEvent('onclick', baocun, false);
+    }
+
+  })
+
+  function baocun () {
+    if ($('#old_password').val() === '') {
+      $('#old_password').parent().addClass("has-error").removeClass("has-success");
+      $('#old_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '当前登录密码不正确').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    if ($('#new_password').val() === '') {
+      $('#new_password').parent().addClass("has-error").removeClass("has-success");
+      $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '新密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    if ($('#qie_password').val() === '') {
+      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
+      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    if ($('#new_password').val() !== $('#qie_password').val()) {
+      console.log('dddddd')
+      $('#new_password').parent().addClass("has-error").removeClass("has-success");
+      $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
+      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
+      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    var sha1 = hex_sha1($('#old_password').val());
+    console.log('sha1', sha1);
+    if ($('#username').val() !== '' && $('#nicheng').val() !== '') {
+      $.ajax({
+        url: '/soapi/user_password',
+        type:'POST',
+        data:{
+          oldpass: hex_sha1($('#old_password').val()),
+          newpass: hex_sha1($('#new_password').val())
+        },
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success:function(msg){
+          console.log('aaaaaaaaa');
+          console.log('msg ajax', msg);
+          if(msg.code === 0){
+
+            alert('成功');
+          } else {
+            alert(msg.message);
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+        }
+      });
+    }
+  }
+</script>
+<script>
+  var login_ss = null; 
+  if($.cookie('login_ss') != undefined){
+      login_ss = JSON.parse($.cookie('login_ss'));  
+  }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+</body>
+</html>

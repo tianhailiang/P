@@ -1,0 +1,87 @@
+/*专家解读*/
+.exp_unscramble {
+  width: 278px;
+  height: 428px;
+  float: left;
+  border: 1px #dcdcdc solid;
+  background: #fff;
+}
+.expert_unscramble_title {
+  width: 278px;
+  height: 48px;
+  display: inline-block;
+  font-weight: 600;
+  border-bottom: 1px solid #dcdcdc;
+  font-size: 16px;
+  color: #333;
+  background: #f3f3f3;
+}
+.expert_unscramble_title_new {
+  width: 278px;
+  height: 48px;
+  display: inline-block;
+  font-weight: 600;
+  border-bottom: 1px solid #dcdcdc;
+  font-size: 16px;
+  color: #fff;
+  background: #C13232;
+}
+.expert_unscramble_title i {
+  width: 2px;
+  height: 22px;
+  display: block;
+  background: #C13232;
+  margin-right: 18px;
+  float: left;
+  margin-top: 15px;
+}
+.expert_unscramble_title h3 {
+  font-weight: normal;
+  float: left;
+  line-height: 50px;
+}
+.expert_unscramble_title em {
+  color: #666;
+}
+.expert_unscramble_title em.new {
+  color: #fff;
+}
+.expert_unscramble_title_new a {
+  width: 16px;
+  display: inline;
+  float: right;
+  margin-right: 20px;
+  margin-top: 17px;
+}
+.expert_unscramble_title a:hover {
+  text-decoration:none;
+}
+.expert_unscramble_content {
+  width: 278px;
+  padding: 8px 0;
+  position: relative;
+}
+.expert_unscramble_content div{
+  width: 238px;
+  height: 30.6px;
+  line-height: 30px;
+  color: #333;
+  font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  padding:0 20px;
+}
+
+.overseas_apply_item_r_c a{
+   width: 223px;
+   height: 30px;
+   color: #333;
+   font-size: 14px;
+   line-height: 30px;
+ }
+.overseas_apply_item_r_c a:hover{
+  color: #C13232;
+}

@@ -1,0 +1,195 @@
+{% macro article_show(item,helper) %}
+<div class="art-box clearfix" >
+  <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+    <div class="adviser-head" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 60px 76px;"></div>
+  </a>
+  <div class="adviser-info" >
+     <div class="adviser-info-name" style="font-size: 14px">
+       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #333;">{{item.user_info.realname}}</a>
+     </div>
+     <div class="adviser-info-date clearfix" >
+         <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
+         <span>来自：{{item.from}}</span>
+     </div>
+     <div class="adviser-info-title">
+       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #C13232">{{item.title}}</a>
+     </div>
+     <div class="offer-xialas">
+        <span class="offer-xialadd iconfont">&#xe60b;</span>
+        <ul class="offer-xiala">
+          <li><a target="_blank" class="dui-text-warning-s report-btn" data-artId="{{item.id}}" data-catid="{{item.category_id}}">举报</a></li>
+          <li><a target="_blank" class="dui-text-warning-s share-btn" data-url="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" data-title ="{{item.title}}">分享</a></li>
+        </ul>
+     </div>
+     <p class="adviser-info-p">
+       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" class="dui-text-warning" rel="nofollow">
+         {{item.introduce}} <span>【查看详情】</span>
+       </a>
+     </p>
+      <ul id="adviser-info-ul" class="adviser-info-ul clearfix" >
+        {% for val in item.img_list %}
+          <li>
+          	<img src="{{helper.imageThumb(val,'150x150')}}" >
+          </li>
+        {% endfor %}
+      </ul>
+  </div>
+</div>
+{% endmacro %}
+{% macro article_edit(item,helper) %}
+<div class="art-box clearfix" >
+  {% if item.user_info.usertype == 2 %}
+  <a target="_blank" href="{{helper.urlgen('advisor_center/article',item.id | string)}}">
+  {% elif item.user_info.usertype == 3 %}
+  <a target="_blank" href="{{helper.urlgen('canzan_center/article',item.id | string)}}">
+  {% endif %}
+    <div class="adviser-head" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 60px 76px;">
+    </div>
+  </a>
+  <div class="adviser-info" >
+    <div class="adviser-info-name" style="font-size: 14px" >
+      <a target="_blank" href="/{% if item.user_info.usertype == 2 %}advisor_center{% elif item.user_info.usertype == 3 %}canzan_center{% endif %}/article/{{item.id}}" style="color: #333">{{item.user_info.realname}}</a>
+    </div>
+    <div class="adviser-info-date clearfix" >
+      <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
+      <span>来自：{{item.from}}</span>
+    </div>
+    <div class="adviser-info-title">
+      <a target="_blank" href="/{% if item.user_info.usertype == 2 %}advisor_center{% elif item.user_info.usertype == 3 %}canzan_center{% endif %}/article/{{item.id}}" style="color: #C13232">{{item.title}}</a>
+    </div>
+    <div class="offer-opt-bar clearfix">
+      <div class="opt-btn red-border delete" onclick="deleteOffer($(this), {{item.uid}}, {{item.id}})">
+        <i class="iconfont">&#xe8c1;</i>
+        <span>删除</span>
+      </div>
+      <div class="opt-btn edit">
+        <i class="iconfont">&#xe61c;</i>
+        <a target="_blank" href="{% if item.user_info.usertype == 2 %}{{helper.urlgen('advisor_center/postarticle', item.id | string)}}{% elif item.user_info.usertype == 3 %}{{helper.urlgen('canzan_center/postarticle', item.id | string)}}{% endif %}">编辑</a>
+      </div>
+    </div>
+    <div class="offer-xialas">
+      <span class="offer-xialadd iconfont">&#xe60b;</span>
+      <ul class="offer-xiala">
+        <li><a target="_blank" class="dui-text-warning-s report-btn" data-artId="{{item.id}}" data-catid="{{item.category_id}}">举报</a></li>
+        <li><a target="_blank" class="dui-text-warning-s share-btn" data-url="{{helper.urlgen('article',item.id | string)}}" data-title ="{{item.title}}">分享</a></li>
+      </ul>
+    </div>
+    <p class="adviser-info-p">
+      <a target="_blank" href="/{% if item.user_info.usertype == 2 %}advisor_center{% elif item.user_info.usertype == 3 %}canzan_center{% endif %}/article/{{item.id}}" class="dui-text-warning" rel="nofollow">
+        {{item.introduce}} <span>【查看详情】</span>
+      </a>
+    </p>
+    <ul id="adviser-info-ul" class="adviser-info-ul clearfix" >
+      {% for val in item.img_list %}
+      <li>
+        <img src="{{helper.imageThumb(val,'150x150')}}" >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<script>
+  function deleteOffer (thisObj, uId, articleId) { //删除文章
+    // console.log('删除文章' + uId + articleId);
+    $.ajax({
+      url: '/soapi/delete_article',
+      type: 'POST',
+      datatype: 'json',
+      data: {
+        u_id: uId,
+        article_id: articleId
+      },
+      success: function (result) {
+        console.log(result);
+        if(result.code == 0){
+          layer.msg('删除成功');
+          window.setTimeout(function(){
+            window.location.reload();
+          },1000);
+        }else{
+          layer.msg('删除失败')
+        }
+        
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log(errorThrown)
+      }
+    })
+  }
+</script>
+{% endmacro %}
+
+{% macro article_fav(item,helper) %}
+<div class="art-box clearfix" >
+  <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+    <div class="adviser-head" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 60px 76px;"></div>
+  </a>
+  <div class="adviser-info" >
+    <div class="adviser-info-name" style="font-size: 14px" >
+      <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #333">{{item.user_info.realname}}</a>
+    </div>
+    <div class="adviser-info-date clearfix" >
+      <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
+      <span>来自：{{item.from}}</span>
+    </div>
+    <div class="adviser-info-title">
+      <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #C13232">{{item.title}}</a>
+    </div>
+    <div class="offer-opt-bar clearfix">
+      <div class="opt-btn delete" onclick="cancelFav($(this), {{item.id}})">
+        <i class="iconfont">&#xe8c1;</i>
+        <span>删除</span>
+      </div>
+    </div>
+    <div class="offer-xialas">
+      <span class="offer-xialadd iconfont">&#xe60b;</span>
+      <ul class="offer-xiala">
+        <li>
+          <a target="_blank" class="dui-text-warning-s report-btn" data-artId="{{item.id}}" data-catid="{{item.category_id}}">举报</a>
+          </li>
+        <li><a target="_blank" class="dui-text-warning-s share-btn" data-url="{{helper.urlgen('article',item.id | string)}}" data-title ="{{item.title}}">分享</a></li>
+      </ul>
+    </div>
+    <p class="adviser-info-p">
+      <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" class="dui-text-warning" rel="nofollow">
+        {{item.introduce}} <span>【查看详情】</span>
+      </a>
+    </p>
+    <ul id="adviser-info-ul" class="adviser-info-ul clearfix" >
+      {% for val in item.img_list %}
+      <li>
+        <img src="{{helper.imageThumb(val,'150x150')}}" >
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+<script>
+  function cancelFav (thisObj, articleId) { //取消案例收藏
+    $.ajax({
+      url: '/soapi/favorite_article',
+      type: 'POST',
+      datatype: 'json',
+      data: {
+        article_id: articleId
+      },
+      dataType:'jsonp',
+      jsonpCallback:'cb',
+      success: function (result) {
+//        var msg = JSON.parse(result)
+//        console.log(msg)
+        console.log('fav', result);
+        if(result.code == 0){
+          layer.msg('删除收藏成功');
+          window.location.reload();
+        }else{
+          layer.msg('删除失败')
+        }
+      },
+      error: function(XMLHttpRequest, textStatus, errorThrown) {
+        console.log(errorThrown)
+      }
+    })
+  }
+</script>
+{% endmacro %}

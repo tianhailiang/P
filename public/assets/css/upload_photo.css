@@ -1,0 +1,214 @@
+#photoDialog{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+.dialog-cont{
+    width: 772px;
+    height: 436px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -386px;
+    margin-top: -218px;
+    background-color: #fff;
+}
+.dialog-cont .success-info{
+    width: 100%;
+    padding: 20px;
+    font-size: 18px;
+    color: #333;
+    line-height: 18px;
+}
+.dialog-cont .success-info sapn{
+    color: #C13232;
+}
+.dialog-cont .all-desc{
+    padding: 0 20px;
+    font-size: 14px;
+    color: #333;
+}
+.dialog-cont .all-desc .desc{
+    margin-top: 10px;
+    padding-bottom: 19px;
+    border-bottom: 1px dashed #dcdcdc;
+}
+.dialog-cont .all-desc .desc .left{
+    float: left;
+    height: 24px;
+    line-height: 24px;
+}
+.dialog-cont .all-desc .desc .left label{
+    font-style: normal;
+    font-weight: normal;
+}
+.dialog-cont .all-desc .desc .left input{
+    display: inline-block;
+    width: 278px;
+    height: 22px;
+    border: 1px solid #DCDCDC;
+    line-height: 22px;
+}
+.dialog-cont .all-desc .desc .save-all-desc{
+    float: right;
+}
+#photoDialog .dialog-cont .photos {
+    width: 100%;
+    max-height: 240px;
+    overflow-y: scroll;
+    box-sizing: border-box;
+}
+
+#photoDialog .upload-photo-container .photos {
+    width: 100%;
+    max-height: 380px;
+    overflow-y: scroll;
+}
+/*按钮*/
+#photoDialog .save-btn{
+    width: 80px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+    background-color: #C13232;
+    float: right;
+    cursor: pointer;
+}
+#photoDialog .btns{
+    margin: 20px;
+    height: 26px;
+}
+#photoDialog .btns .cancel-btn{
+    background-color: #DCDCDC;
+    margin-left: 20px;
+}
+/*每一个照片细胞*/
+.photo-cell{
+    width: 150px;
+    /*height: 198px;*/
+    border: 1px solid #dcdcdc;
+    float: left;
+    margin: 20px 0 0 20px;
+    padding: 9px 7px;
+}
+.photo-cell .photo-img{
+    width: 150px;
+    height: 150px;
+    position: relative;
+    background:#dcdcdc;
+}
+.photo-cell .photo-img img{
+    height:100%;
+}
+.photo-cell .photo-img .delete-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    background-color: grey;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    line-height: 14px;
+    cursor: pointer;
+}
+.photo-cell .photo-desc{
+    /*width: 144px;*/
+    height: 34px;
+    margin-top: 10px;
+    border: 1px solid #dcdcdc;
+    padding: 2px;
+}
+.photo-cell .photo-desc input {
+    display: block;
+    width: 100%;
+    outline: none;
+    border: none;
+    font-size: 12px;
+    color: #999;
+    overflow: hidden;
+}
+.photo-cell .photo-desc div{
+    text-align: right;
+    height: 14px;
+    font-size: 12px;
+    color: #999;
+}
+.photo-cell .photo-desc div span{
+    color: #333;
+}
+/*添加图片框*/
+.upload-photo-container{
+    width: 772px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -386px;
+    background-color: #fff;
+}
+#photoDialog .close-pop{
+    padding-top: 20px;
+    font-size: 12px;
+    line-height: 12px;
+    text-align: right;
+    color: #C13232;
+    font-weight: bold;
+    padding-right: 20px;
+    cursor: pointer;
+}
+/*编辑照片*/
+.edit-pop{
+    width: 534px;
+    height: 424px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -267px;
+    margin-top: -211px;
+}
+.edit-pop .photo-cell{
+    width: 210px;
+    float: none;
+    margin: 20px auto;
+    padding: 11px 10px;
+}
+.edit-pop .photo-cell .photo-img{
+    width: 208px;
+    height: 208px;
+}
+.edit-pop .photo-cell .photo-desc{
+    height: 53px;
+    margin-top: 12px;
+}
+.edit-pop .photo-cell input{
+    font-size: 14px;
+    line-height: 14px;
+    color: #333;
+}
+.edit-pop .photo-cell div{
+    line-height: 22px;
+    height: 22px;
+}
+
+.upload-label{
+    width:150px;
+    height:219px;
+    background:#f3f3f3;
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 219px;
+    margin-top: 20px;
+    float: left;
+    margin-left: 20px;
+}
+.add-icon{
+    font-size: 78px;
+    color: #fff;
+}

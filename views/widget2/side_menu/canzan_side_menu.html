@@ -1,0 +1,142 @@
+{% macro canzan_side_menu(menu_name,sub_menu_name, helper) %}
+{%
+set side_ul = [
+{
+"li_name": "我的主页",
+"li_url": "canzan_center",
+"sub_ul": [
+{
+"sub_name": "关注我的",
+"sub_url": "canzan_center/follow"
+},
+{
+"sub_name": "我的收藏",
+"sub_url": "canzan_center/collection"
+},
+{
+"sub_name": "我的专栏",
+"sub_url": "canzan_center/article"
+},
+{
+"sub_name": "我的相册",
+"sub_url": "canzan_center/album"
+},
+{
+"sub_name": "我的草稿箱",
+"sub_url": "canzan_center/draft"
+}
+]
+},
+{
+"li_name": "收到的消息",
+"li_url": "canzan_center/revmsg"
+},
+{
+"li_name": "收到的评论",
+"li_url": "canzan_center/revcomment"
+},
+{
+"li_name": "发布专栏",
+"li_url": "canzan_center/postarticle"
+},
+{
+"li_name": "个人信息设置",
+"li_url": "canzan_center/profile"
+},
+{
+"li_name": "账号设置",
+"li_url": "canzan_center/acount"
+}
+]
+%}
+<div class="list dui-box-shadow">
+    <ul>
+        {% for mItem in side_ul %}
+        {% if menu_name == mItem.li_name and (sub_menu_name == '我关注的问题' or sub_menu_name == '关注我的' or sub_menu_name == '我的收藏' or sub_menu_name == '我的专栏' or sub_menu_name == '我的相册' or sub_menu_name == '我的草稿箱' or sub_menu_name == ' ' or sub_menu_name == '') %}
+        <li class="checked">
+            <div class="title">
+                {% if mItem.li_name == '我的主页' %}
+                <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                    <i class="iconfont">&#xe600;</i>我的主页<span class="iconfont"></span>
+                </a>
+                {% else %}
+                <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                    <i class="iconfont">
+                        {% if mItem.li_name == '收到的消息' %}
+                        &#xe6a9;
+                        {% elif  mItem.li_name == '收到的评论' %}
+                        &#xe61b;
+                        {% elif  mItem.li_name == '发布专栏' %}
+                        &#xe768;
+                        {% elif  mItem.li_name == '发布案例' %}
+                        &#xe631;
+                        {% elif  mItem.li_name == '个人信息设置' %}
+                        &#xe621;
+                        {% elif  mItem.li_name == '账号设置' %}
+                        &#xe605;
+                        {% endif %}
+                    </i>
+                    {{mItem.li_name}}
+                </a>
+                {% endif %}
+                <div class="bg"></div>
+            </div>
+            {% if mItem.sub_ul %}
+            <ul class='list-se'>
+                {% for item in mItem.sub_ul %}
+                {% if item.sub_name == sub_menu_name %}
+                <li class="choose"><a target="_blank" href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
+                {% else %}
+                <li><a target="_blank" href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% else %}
+        <li>
+            <div class="title">
+                {% if mItem.li_name == '我的主页' %}
+                <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                    <i class="iconfont">&#xe600;</i>我的主页<span class="iconfont"></span>
+                </a>
+                {% else %}
+                <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                    <i class="iconfont">
+                        {% if mItem.li_name == '收到的消息' %}
+                        &#xe6a9;
+                        {% elif  mItem.li_name == '收到的评论' %}
+                        &#xe61b;
+                        {% elif  mItem.li_name == '发布专栏' %}
+                        &#xe768;
+                        {% elif  mItem.li_name == '发布案例' %}
+                        &#xe631;
+                        {% elif  mItem.li_name == '个人信息设置' %}
+                        &#xe621;
+                        {% elif  mItem.li_name == '账号设置' %}
+                        &#xe605;
+                        {% endif %}
+                    </i>
+                    {{mItem.li_name}}
+                </a>
+                {% endif %}
+                <div class="bg"></div>
+            </div>
+            {% if mItem.sub_ul %}
+            <ul class='list-se'>
+                {% for item in mItem.sub_ul %}
+                {% if item.sub_name == sub_menu_name %}
+                <li class="choose"><a target="_blank" href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
+                {% else %}
+                <li><a target="_blank" href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+<script src="{{helper.cdnhost}}/assets/js/side_menu.js"></script>
+{% endmacro %}

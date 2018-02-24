@@ -1,0 +1,146 @@
+{% macro nav_fourth(eduid,countryid,area,helper) %}
+{% set edu_country = {
+    "1":{
+        "1":"美国",
+        "2":"英国",
+        "3":"加拿大",
+        "4":"澳洲",
+        "5":"新西兰",
+        "201":{
+            "50":"韩国",
+            "51":"日本",
+            "52":"新加坡",
+            "53":"马来西亚",
+            "54":"中国香港"
+        },
+        "202":{
+            "100":"俄罗斯",
+            "101":"乌克兰",
+            "102":"白俄罗斯",
+            "103":"德国",
+            "104":"法国",
+            "105":"挪威",
+            "106":"瑞典",
+            "107":"芬兰",
+            "108":"爱尔兰",
+            "109":"荷兰",
+            "110":"丹麦",
+            "111":"意大利",
+            "112":"西班牙",
+            "113":"瑞士"
+        }
+    },
+    "2":{
+        "1":"美国",
+        "2":"英国",
+        "3":"加拿大",
+        "4":"澳洲",
+        "5":"新西兰",
+        "201":{
+            "50":"韩国",
+            "51":"日本",
+            "52":"新加坡",
+            "53":"马来西亚",
+            "54":"中国香港"
+        },
+        "202":{
+            "103":"德国",
+            "104":"法国",
+            "105":"挪威",
+            "106":"瑞典",
+            "107":"芬兰",
+            "108":"爱尔兰",
+            "109":"荷兰",
+            "110":"丹麦",
+            "111":"意大利",
+            "112":"西班牙",
+            "113":"瑞士"
+        }
+    },
+    "19":{
+        "1":"美国",
+        "2":"英国",
+        "4":"澳洲",
+        "5":"新西兰",
+        "202":{
+            "103":"德国"
+        }
+    }
+}
+%}
+
+{%
+  set education=[
+      {
+      "id": "1",
+      "type": "本科"
+      },
+      {
+      "id": "2",
+      "type": "研究生"
+      },
+      {
+      "id": "19",
+      "type": "中小学"
+      }
+    ]
+%}
+<div class="dui-layout-lg  clearfix nav-fourth" >
+  <a rel="nofollow" href="{{helper.urlgen('branch_home','c='+area) }}" class="home-nav-fourth">首页</a>
+  <div class="nav-fourth-list">
+    <div class="abroad-education liuxue-xq-tit">
+      {% for item in education %}
+      {% if item.id == eduid %}
+      <span><a href="#">{{ item.type }}</a><i class="iconfont go-down">&#xe60b;</i></span>
+      {% endif %}
+      {% endfor %}
+      <div class="abroad-education-list liuxue-xq">
+        <ul>
+          {% for item in education %}
+          <li><a href="{{ helper.urlgen('edu','e='+item.id,'n=1') }}" >{{ item.type }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    {% for key,val in edu_country %}
+       {% if key == eduid %}
+          {% for key1,val1 in val %}
+               {% if key1 ==201%}
+                    <div class="abroad-education-liuxue liuxue-xq-tit">
+                      <span><a href="#">亚洲留学</a><i class="iconfont go-down">&#xe60b;</i></span>
+                      <div class="abroad-coutry liuxue-xq">
+                      <ul>
+                         {% for key2,val2 in val1 %}
+                          <li><a href="{{ helper.urlgen('edu','e='+eduid,'n='+key2) }}">{{val2}}</a></li>
+                         {% endfor %}
+                      </ul>
+                      </div>
+                    </div>
+               {% elif key1 == 202 %}
+                    <div class="abroad-education-liuxue liuxue-xq-tit">
+                    <span><a href="#">欧洲留学</a><i class="iconfont go-down">&#xe60b;</i></span>
+                    <div class="abroad-coutry liuxue-xq">
+                    <ul>
+                      {% for key2,val2 in val1 %}
+                      <li><a href="{{ helper.urlgen('edu','e='+eduid,'n='+key2) }}">{{val2}}</a></li>
+                      {% endfor %}
+                    </ul>
+                    </div>
+                    </div>
+
+              {% else %}
+              {% if key1==countryid %}
+               <a href="{{ helper.urlgen('edu','e='+eduid,'n='+key1) }}" style="background:#a82a2a;" class="nav-fourth-a" >{{val1}}</a>
+              {% else %}
+               <a href="{{ helper.urlgen('edu','e='+eduid,'n='+key1) }}" class="nav-fourth-a">{{val1}}</a>
+              {% endif %}
+              {% endif %}
+          {% endfor %}
+
+       {% endif %}
+    {% endfor %}
+
+  </div>
+</div>
+{#<script src="{{helper.cdnhost}}/assets/js/nav_fourth.js"></script>#}
+{% endmacro %}

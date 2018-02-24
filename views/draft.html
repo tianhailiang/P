@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include "header_new.html" %}
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/draft.css" >
+  <!--[if lt IE 10]>
+  <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+  <![endif]-->
+</head>
+<body style="background:#f5f5f5;">
+	<!-- ===头部=== -->
+	{% include "widget/top/top.html" %}
+	<!-- ====导航===== -->
+	{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+	{{nav_seventh.nav_seventh("#",tdk.cityid,helper)}}
+	<div class="dui-layout-lg clearfix" style="margin-top: 20px;margin-bottom:20px;">
+		<!-- ==广告1== -->
+		<div class="rel-case-map" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 3 %}CANZAN{% endif %}_CENTER_DRAFT_SEAT1">
+		</div>
+	</div>
+	<div class="dui-layout-lg clearfix" >
+	  <div class="dui-layout-silde ">
+	    <!-- =======顾问头像关注====== -->
+      {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+      {% if userinfo.usertype == 2 %}
+        {{community_advisor.advisor(userinfo,helper,login_info)}}
+      {% elif userinfo.usertype == 3 %}  
+        {{community_advisor.counsellor(userinfo,helper,login_info)}}
+      {% else %}  
+      {% endif %}
+	    <!-- ========引入顾问侧边栏按钮======== -->
+      {% if login_info.usertype ==2 %}
+        {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+        {{ adviser_side_menu.adviser_side_menu('我的主页','我的草稿箱',helper) }} 
+      {% elif login_info.usertype == 3 %}
+        {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+        {{ canzan_side_menu.canzan_side_menu('我的主页','我的草稿箱',helper) }} 
+      {% endif %}
+	  </div>
+	  <div class="dui-layout-div"></div>
+    <div class="dui-layout-con dui-box-shadow" >
+        <div class="rel-case-con clearfix" >
+	        <div class="main-title gray-bg">
+		        <h3 style ="font-size: 18px;">我的草稿箱</h3>
+            {% if login_info.usertype == 2%}
+            <div class="main-title-right clearfix" >
+              <span class="draft-btn {% if is_draft ==2 %} draft-btn-active {% endif %}" style="margin-right: 10px;" data-id="2">手动保存</span>
+              <span class="draft-btn {% if is_draft ==9 %} draft-btn-active {% endif %}" data-id ="9">系统驳回</span>
+            </div>
+            {% endif %}
+	        </div>
+          <!-- =====草稿列表==== -->
+          {% if channel_list and channel_list.list.length > 0 %}
+            <ul class="draft-list-ul" >
+            {% for item in channel_list.list %}
+              <li>
+                <div >
+                  <span class="draft-list-title">{{item.title}}</span>
+                  <span class="draft-list-time">{{item.add_time}}</span>
+                </div>
+                <div class="clearfix" style="margin-top: 15px;">
+                {% if is_draft ==9 %}
+                  <span class="draft-reason" >
+                    系统驳回原因：{{item.reason}}
+                  </span>
+                {% endif %}
+                  <div class="draft-list-bar clearfix" data-articleId = "{{item.id}}">
+                    <span class="draft-delete-btn" >
+                      <i class="iconfont" style="margin-right: 5px;">&#xe8c1;</i>
+                      <i >删除</i>
+                    </span>
+                    <span class="draft-edit-btn" data-type="{{item.type}}">
+                      <i class="iconfont" style="margin-right: 5px;">&#xe61c;</i>
+                      <i >编辑</i>
+                    </span>
+                    <span style="padding-right:0;border-right:none;" class="draft-push-btn">
+                      <i class="iconfont" style="margin-right: 5px;">&#xe62e;</i>
+                      <i >发布</i>
+                    </span>
+                  </div>
+                </div>
+              </li>
+            {% endfor %}
+            </ul>
+            <!-- ===分页器=== -->
+            <div class="pagination-box"  data-pagenum="{{channel_list.totalpage}}">
+             <!--  <div class="dui-pagination pagination-large">
+              </div> -->
+              {% import "widget2/pagtion/pagtion.html" as pagtion %}
+              {{pagtion.pagtion(pagination)}}
+            </div>
+          {% else %}
+            {% include "widget2/blank/blank.html" %}
+          {% endif %}
+          <!-- ====rel-case-con end===== -->
+        </div>
+    </div>
+	</div>
+  {% include "widget/footer/footer.html" %}
+  <script>
+  var login_ss = null; //获取用户信息
+  if($.cookie('login_ss') != undefined){
+    login_ss = JSON.parse($.cookie('login_ss'));  
+  }
+  </script>
+  <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+  <script src="{{helper.cdnhost}}/assets/js/select.js" ></script>
+  <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+  <script>
+    $(function(){
+      console.log($.cookie('login_ss'))
+      var login_ss = null; //获取用户信息
+      if($.cookie('login_ss') != undefined){
+        login_ss = JSON.parse($.cookie('login_ss'));  
+      }
+      var cur_is_draft = Number(getQueryString('is_draft')) || 2;
+      $(".main-title-right span").on("click",function(){
+        //点击筛选手动保存 
+        $(".main-title-right span").removeClass('draft-btn-active');
+        $(this).addClass('draft-btn-active');
+        var go_is_draft = $(this).attr("data-id");
+        window.location.href = fn.curlgen('advisor_center/draft','is_draft=' + go_is_draft);
+      });
+      /*分页器*/
+      // $('.pagination-box').pagination({
+      //   pages: total_num,
+      //   styleClass: ['pagination-large'],
+      //   showCtrl: true,
+      //   currentPage: cur_page,
+      //   displayPage: 7,
+      //   onSelect: function (num) {
+      //     window.location.href = fn.curlgen('advisor_center/draft','is_draft=' + cur_is_draft,'page=' + num);
+      //   }
+      // });
+      //让分页器居中显示
+      $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
+      $(".draft-delete-btn").on("click",function(){
+        //删除文章
+        var that =this;
+        $.ajax({
+          url:'/soapi/delete_article',
+          type:"POST",
+          data:{
+            u_id:login_ss.uid,
+            article_id:$(that).parent().attr("data-articleId")
+          },
+          dataType:"json",
+          success:function(result){
+            console.log(result)
+            if(result.code == 0){
+              layer.msg('删除成功')
+              window.setTimeout(function(){
+                window.location.reload();
+              },1000);
+              
+            }else{
+              layer.msg('删除失败')
+            }
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+            console.log(errorThrown)
+          }
+        })
+      });
+      $(".draft-edit-btn").on("click",function(){
+        //点击编辑 跳转编辑页面
+        // console.log($(this).attr("data-type")) //1 是案例 2 是专栏
+        if($(this).attr("data-type") == 1){
+          window.location.href = fn.curlgen('advisor_center/postcase/'+$(this).parent().attr("data-articleId"));
+        }else if($(this).attr("data-type") == 2){
+          if(login_ss.usertype == 2){
+            window.location.href = fn.curlgen('advisor_center/postarticle/'+$(this).parent().attr("data-articleId"));
+          }else if(login_ss.usertype == 3){
+            window.location.href = fn.curlgen('canzan_center/postarticle/'+$(this).parent().attr("data-articleId"));
+          }
+        }
+      });
+      $(".draft-push-btn").on("click",function(){
+        //发布文章
+        var that =this;
+        $.ajax({
+          url:'/soapi/draft_to_article',
+          type:"POST",
+          data:{
+            u_id:login_ss.uid,
+            article_id:$(that).parent().attr("data-articleId")
+          },
+          dataType:"json",
+          success:function(result){
+            console.log(result)
+            if(result.code == 0){
+              layer.msg('发布成功')
+              window.setTimeout(function(){
+                window.location.reload();
+              },1000);
+            }else{
+              layer.msg(result.err)
+            }
+          },
+           error:function(XMLHttpRequest, textStatus, errorThrown){
+            console.log(errorThrown)
+          }
+
+        });
+      });
+
+    });
+
+  </script>
+</body>
+</html>

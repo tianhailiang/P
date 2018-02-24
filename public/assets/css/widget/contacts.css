@@ -1,0 +1,36 @@
+.contact {
+  width: 270px;
+  height: 153px;
+  border: 1px solid #C13232;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  float: left;
+}
+.contact h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-top: 8px;
+}
+.contact p {
+  font-size: 14px;
+}
+.contactcs,.contactp1,.contactp2 {
+  margin: 0 8px;
+  float: left;
+}
+.contactpp {
+  margin: 9px 0 9px 0;
+}
+.contacting p {
+  width: 210px;
+  line-height: 20px;
+  font-size: 14px;
+  float: left;
+}
+.contacting p a {
+  color: #C13232;
+  margin-left: 10px;
+}
+.contact-vv {
+  color: #C13232;
+}

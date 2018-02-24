@@ -1,0 +1,90 @@
+
+.rel-case-map{
+ 	width:100%;
+ 	height:130px;
+}
+.rel-case-map img{
+ 	width:100%;
+ 	height:100%;
+ 	display: block;
+ }
+
+.rel-case-con{
+  background:#fff;
+  padding:20px 20px 0;
+}	
+
+.main-title-right{
+  float:right;
+  margin-right: 5px;
+}
+
+.draft-btn{
+  float:left;
+  width:74px;
+  height:30px;
+  box-sizing: border-box;
+  font-size: 14px;
+  line-height: 30px;
+  color:#c13232;
+  border:1px solid #dcdcdc;
+  background:#fff;
+  margin-top: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.draft-btn-active{
+  background:#c13232;
+  color:#fff;
+}
+
+/*=======草稿箱列表======*/
+.draft-list-ul li{
+  padding:20px 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.draft-list-title{
+  font-size: 16px;
+  color:#333;
+
+}
+
+.draft-list-time{
+  font-size: 12px;
+  color:#666;
+  float:right;
+}
+.draft-list-bar{
+  float:right;
+}
+
+.draft-list-bar span{
+  float:left;
+  border-right: 1px solid #c13232;
+  height:12px;
+  line-height: 12px;
+  padding:0 20px;
+  cursor: pointer;
+}
+
+.draft-list-bar i{
+  font-size: 12px;
+  color:#c13232;
+}
+
+.pagination-box{
+  float:left;
+  margin-top: 77px;
+  margin-bottom:77px;
+  position: relative;
+  left:50%;
+}
+.pagination-box .pagination-large{
+  margin:0;
+}
+.draft-reason{
+  color:#c13232;
+  font-size: 12px;
+}

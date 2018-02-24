@@ -1,0 +1,39 @@
+
+
+   <div class="dui-layout-con clearfix  dui-layout-padding" >
+
+            {% for item in hotLXFA %}
+
+            <div class="dui-con-col2" >
+
+		          <div class="hlf-content clearfix">
+
+					  <a target="_blank" href="{{helper.urlgen('product',item[0].id | string, 'n=' + item[0].country)}}" rel="nofollow" class="dui-text-warning-s"><img src="{{helper.imageThumb(item[0].thumb,'228x172')}}" title="{{item[0].title}}" alt="{{item[0].title}}" class="liuxue-hot-content-img"></a>
+
+	                     <div class="liuxue-hot-div" >
+			                {% for list in item %}
+
+									{% if loop.last==false %}
+									   <div >
+											<a target="_blank" href="{{helper.urlgen('product',list.id | string, 'n=' + list.country)}}" class="dui-text-warning-s">  {{list.title}}
+											</a>
+										</div>
+									{% else %}
+
+									 <div style="margin-bottom: 0">
+										<a target="_blank" href="{{helper.urlgen('product',list.id | string, 'n=' + list.country)}}" class="dui-text-warning-s">  {{list.title}}
+										</a>
+									</div>
+							       {% endif %}
+
+							 {% endfor %}
+				         </div>
+
+
+		         </div>
+
+		    </div>     
+
+           {% endfor %}
+
+   </div>

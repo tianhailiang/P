@@ -1,0 +1,17 @@
+<!--国家频道&#45;&#45;专家解读-->
+{% macro zhuanjiajiedu(zhuanjiajiedu,country,helper) %}
+<div class="expert_unscramble_new clearfix">
+  <div class="expert_unscramble_title expert_unscramble_title_new">
+    <i></i><h3 style="font-size: 18px">专家解读</h3> <a target="_blank" href="{{helper.urlgen('interpret','n='+country)}}"><em class="new iconfont">&#xe602;</em></a>
+  </div>
+  <div class="expert_unscramble_content">
+    {% for item in zhuanjiajiedu %}
+    <div class="overseas_apply_item_r_c">
+      <img class="dian" src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">
+      <a target="_blank" href="{{ helper.urlgen('article', item.id | string ) }}">{{item.title}}</a>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+{% endmacro %}

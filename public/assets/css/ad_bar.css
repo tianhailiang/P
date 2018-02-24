@@ -1,0 +1,12 @@
+.banner-bar{
+    height: 130px;
+}
+.banner-bar div{
+    overflow: hidden;
+    height: 100%;
+    background-color: paleturquoise;
+}
+.banner-bar div img{
+    display: block;
+    width: 100%;
+}

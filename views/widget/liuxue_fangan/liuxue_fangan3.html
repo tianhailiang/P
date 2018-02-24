@@ -1,0 +1,63 @@
+<!--中小学-->
+<div class="liuxue-box" >
+  <ul class="liuxue-ul" >
+    {% for item in country_liuxuefangan_list[3] %}
+    <li class="clearfix">
+      <div class="liuxue-li-left" >
+        <img src="{{item.thumb}}" class="liuxue-img">
+        <div class="liuxue-btn-box" >
+          <a target="_blank" href="javascript:void(0);" class="dui-btn btn-consult_ylw liuxue-btn-first">
+            方案详情
+          </a>
+          <a target="_blank" href="javascript:void(0);" class="dui-btn btn-consult_blue">
+            留学评估
+          </a>
+        </div>
+      </div>
+
+      <div class="liuxue-li-right" >
+        <div class="liuxue-title" >
+          {{item.title}}
+        </div>
+        <p class="liuxue-country">所属国家：{{item.country}}</p>
+        <p>适宜学历：{{item.suitable_education}}</p>
+        <p>适用专业：{{item.suitable_major | join(" ") }}</p>
+        <p class="liuxue-counts">
+          <span class="liuxue-follow-counts">关注人数：{{item.follow_peoples}}</span>
+          <span>资讯人数：{{item.consult_peoples}}</span>
+        </p>
+
+      </div>
+    </li >
+    <li class="liuxue-li-last clearfix">
+      <div class="liuxue-li-left" >
+        <img src="{{item.thumb}}" class="liuxue-img">
+        <div class="liuxue-btn-box" >
+          <a target="_blank" href="javascript:void(0);" class="dui-btn btn-consult_ylw liuxue-btn-first">
+            方案详情
+          </a>
+          <a target="_blank" href="javascript:void(0);" class="dui-btn btn-consult_blue">
+            留学评估
+          </a>
+        </div>
+      </div>
+
+      <div class="liuxue-li-right" >
+        <div class="liuxue-title" >
+          {{item.title}}
+        </div>
+        <p class="liuxue-country">所属国家：{{item.country}}</p>
+        <p>适宜学历：{{item.suitable_education}}</p>
+        <p>适用专业：{{item.suitable_major | join(" ") }}</p>
+        <p class="liuxue-counts">
+          <span class="liuxue-follow-counts">关注人数：{{item.follow_peoples}}</span>
+          <span>资讯人数：{{item.consult_peoples}}</span>
+        </p>
+
+      </div>
+
+    </li>
+
+    {% endfor %}
+  </ul>
+</div>

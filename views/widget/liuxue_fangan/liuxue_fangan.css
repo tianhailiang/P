@@ -1,0 +1,77 @@
+
+/*
+ * 留学方案组件样式    start
+ */
+
+ .liuxue-box{
+ 	border:1px solid #dcdcdc;
+ }	
+
+ .liuxue-ul li{
+ 	padding:10px 0;
+ 	border-bottom: 1px dashed #dcdcdc;
+ }
+
+ .liuxue-ul .liuxue-li-last{
+ 	border-bottom: 0;
+ }
+
+ .liuxue-li-left{
+ 	padding:10px 20px 0;
+ 	border-right:1px dashed #dcdcdc;
+ 	float: left;
+ }
+
+ .liuxue-img{
+ 	display: block;
+ 	width:160px;
+ 	height:120px;
+ }
+
+ .liuxue-btn-box{
+ 	margin-top: 13px;
+ }
+
+/*推荐:IE6、7 display:inline-block不支持=======*/
+.liuxue-btn-first{
+  *margin-right: 4px;
+}
+
+
+
+.liuxue-li-right{
+	padding:10px 20px 0;
+	float:left;
+}
+
+.liuxue-title{
+  height: 20px;
+font-size: 16px;
+line-height: 31px;
+padding-bottom: 18px;
+border-bottom:1px dashed #dcdcdc;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.liuxue-li-right p{
+	line-height: 14px;
+	color:#333;
+	font-size: 14px;
+  margin-bottom: 16px;
+}
+
+.liuxue-country{
+	margin-top: 20px;
+}
+
+.liuxue-li-right .liuxue-counts{
+	margin-bottom: 0;
+}
+
+.liuxue-follow-counts{
+	margin-right: 70px;
+}

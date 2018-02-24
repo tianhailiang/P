@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{title}}</title>
+</head>
+<body>
+	<div class="bdsharebuttonbox" data-url="{{url}}">
+      <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+      <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+      <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    </div>
+    <script  src="{{helper.cdnhost}}/dep/js/jquery.js"></script>
+    {% if helper.version == 'development' %}
+    <script  src="{{helper.cdnhost}}/assets/js/common/common_dev.js"></script>
+    {% elif helper.version == 'production' %}
+    <script  src="{{helper.cdnhost}}/assets/js/common/common_pro.js"></script>
+    {% endif %}
+    <script src="{{helper.cdnhost}}/assets/js/common/common_base.js"></script>
+    <script >
+        var url = $('.bdsharebuttonbox').attr('data-url')+'.html';
+    	window._bd_share_config={
+            "common":{
+                "bdSnsKey":{},
+                "bdText":"",
+                "bdMini":"1",
+                "bdMiniList":false,
+                "bdPic":"",
+                "bdStyle":"0",
+                "bdSize":"32",
+                "bdUrl":js_api_config.wwhost+url
+            },
+            "share":{},
+            "image":{
+                "viewList":["tsina","weixin","qzone"],
+                "viewText":"分享到：","viewSize":"16"
+            },
+            "selectShare":{
+                "bdContainerClass":null,
+                "bdSelectMiniList":["tsina","weixin","qzone"]
+            }
+        };
+        console.log(_bd_share_config.common.bdUrl)
+        with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+    </script>
+</body>
+</html>

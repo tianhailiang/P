@@ -1,0 +1,24 @@
+{% for item in liuxuehuodong_list.list %}
+<div  class=" activity-on" >
+  <div class="dui-layout-con booking-activities booking-activities1">
+    <div class="booking-activities-box">
+    <div class="booking-activities-title">
+      <h6><a class="act-time dui-text-danger-s" target="_blank" href="{{helper.urlgen('activity',item.id | string,'c='+item.hold_city)}}">【{{ item.start_time | getDefaultFormat()}}】{{ item.title }}</a><a target="_blank" href="{{helper.urlgen('activity',item.id | string,'c='+item.hold_city)}}" rel="nofollow" class="booking-act-con-xq dui-text-danger-s">【查看详情】</a></h6>
+    </div>
+    <div class="activities-content">
+      <div class="book-activities-con">
+        <p>{{ item.description }}</p>
+        <p class="mar-top"><span class="person-num">报名人数：{{ item.enroll_num }}</span><span>城市：{{ item.hold_city
+| getCity}}</span><span class="destination">留学目的地：{{ item.country | getCountry }}</span></p>
+        <p class="mar-top activities-address">活动地址：{{ item.address_des }}</p>
+      </div>
+      <div class="book-activities-btn">
+        <a target="_blank" rel="nofollow" href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment btn-detail" onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')">预约活动</a>
+      </div>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+{% endfor %}

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/bootstrap.min.css?v=3.3.6"/>
+  {% include "header_new.html" %}
+  <!--[if lt IE 10]>
+  <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+  <![endif]-->
+  <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+  <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+
+  <style>
+    .content_title{
+      margin-top: 20px;margin-left: 20px;margin-bottom: 30px;background: #f3f3f3;width: 840px;height: 40px;
+    }
+    .content_title_t {
+      float: left;width: 136px;height: 40px;background: #C13232;color: #fff;font-size: 18px;text-align: center;line-height: 40px;
+    }
+    .register_nei_content_s {
+      margin-left: 46px; float: left;
+    }
+    .register_nei_content_s .title{
+      font-size: 14px;  color: #C13232;  float: left;  margin-top: 5px;line-height: 30px;
+    }
+    .register_nei_content_s .register_nei_form .form-group input{
+      padding-left: 5px;  float: left;  margin-left: 10px;  margin-bottom: 30px;  width: 276px;  height: 30px;
+    }
+    .wrap-con  {
+      -webkit-appearance: radio;  -moz-appearance: radio;  appearance: radio;  position: relative;  top:-3px;  left: 18px;  border: 0;  border:none;
+    }
+    .wrap-ing  {
+      -webkit-appearance: radio;   -moz-appearance: radio;  appearance: radio;  position: relative;  top:-3px;  left: 18px;  border:none;  outline:none;
+    }
+
+    .register_nei_content_s .register_nei_form .form-group textarea{
+      width: 630px;height: 160px;border: 1px solid #dcdcdc;resize : none;
+    }
+    .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+  </style>
+</head>
+<body style="background: #f5f5f5">
+
+{% include "widget/top/top.html" %}
+
+{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_USER_CENTER_PROFILE_SEAT1"></div>
+
+<div class="dui-layout-lg clearfix">
+  <div class="dui-layout-silde right">
+    <div class="clearfix" style="margin-top: 20px">
+      {% import "widget2/community_advisor/community_advisor.html" as advisor %}
+      {{ advisor.user(userinfo,helper,1) }}
+    </div>
+    {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+    {{ user_side_menu.user_side_menu('个人信息', helper) }}
+  </div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-con left" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
+    <div class="content_title clearfix">
+      <div class="content_title_t">
+        编辑个人资料
+      </div>
+    </div>
+    <div class="register_nei_content_s clearfix">
+      <form class="m-t register_nei_form" role="form">
+        <div class="form-group clearfix" style="position: relative;height: 28px">
+          <div class="title">*姓 名：&nbsp;&nbsp;&nbsp;</div>
+          <input type="text" class="form-control" id="username" required data-vaild="" data-errmsg="姓名不能为空" />
+        </div>
+
+        <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
+          <div class="title">*昵 称：&nbsp;&nbsp;&nbsp;</div>
+          <input type="text" class="form-control" required="" data-vaild="" id="nicheng" data-errmsg="昵称不能为空">
+        </div>
+
+        <div class=" clearfix" id="xingbie">
+          <div class="title" style="margin-top: -5px;color: #333"> 性 别：&nbsp;&nbsp;</div>
+          <input class="wrap-con" type="radio" name="payMethod" value="1" checked/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;男
+          <input class="wrap-ing" type="radio" name="payMethod" value="2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;女
+        </div>
+
+        <div class="form-group rel-case-text1 clearfix" style="margin-top: 20px;">
+          <label class="title active" for="adm-time" style="font-weight: 500;color: #333"> 生 日：&nbsp;&nbsp;&nbsp;&nbsp;</label>
+          <input  id="shengri" type="text" data-toggle="datepicker" class="quick-date" >
+          <span class="numTip" ></span>
+        </div>
+
+        <div class="form-group clearfix">
+          <div class="title" style="color: #333">个人介绍：</div>
+          <textarea id="gerenjieshao"></textarea>
+        </div>
+
+
+          <input type="button" style="border:none;font-size: 14px;color: #fff;width: 80px;height: 30px;float: right;background: #C13232;color: #fff;text-align: center;line-height: 30px;" id="baocunSubmit" value="确定保存"/>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  var login_ss = null;
+  if($.cookie('login_ss') != undefined){
+    login_ss = JSON.parse($.cookie('login_ss'));
+  }
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+<script>
+  $(document).ready(function () {
+    $("form").Vaild();
+    var lS = document.getElementById('baocunSubmit');
+    console.log('loginS', lS);
+    if (lS.addEventListener) {
+      console.log('ffff');
+      lS.addEventListener('click', baocun, false);
+    } else {
+      console.log('eeeee');
+      lS.attachEvent('onclick', baocun, false);
+    }
+
+  });
+  function baocun () {
+    if ($('#username').val() === '') {
+      $('#username').parent().addClass("has-error").removeClass("has-success");
+      $('#username').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '姓名不能为空').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    if ($('#nicheng').val() === '') {
+      $('#nicheng').parent().addClass("has-error").removeClass("has-success");
+      $('#nicheng').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '昵称不能为空').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    if ($('#username').val() !== '' && $('#nicheng').val() !== '') {
+      $.ajax({
+        url: '/soapi/user_info',
+        type:'POST',
+        data:{
+          realname: $('#username').val(),
+          nickname: $('#nicheng').val(),
+          sex: $('#xingbie input[name="payMethod"]:checked ').val(),
+          birthday: $('#shengri').val(),
+          introduce: $('#gerenjieshao').val()
+        },
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success:function(msg){
+          console.log('aaaaaaaaa');
+          console.log('msg ajax', msg);
+          if(msg.code === 0){
+//            window.parent.location.reload();//刷新父页面
+//            alert('成功');
+            window.location = '/user_center/revcomment'
+          } else {
+            alert(msg.message);
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+        }
+      });
+    }
+  }
+</script>
+
+<script>
+  $(document).ready(function () {
+    function updateAvatar (uid,callback) {
+      $.ajax({
+        url: ajaxUrlPrefix.nodeapi + "/cmsapi/user_edit_avatar",
+        type: 'GET',
+        data: {
+          uid: uid
+        },
+        dataType:'json',
+        success: function (res) {
+          if (res.code == 0) {
+            callback();
+          }
+        }
+      })
+    }
+    $('.advisor-img').on('click', function () {
+    var layopen = layer.open({
+        type: 1,
+        shade: [0.4,'#000'],
+        shadeClose: true,
+        closeBtn: 1,
+        area: ['310px', '470px'],
+        title: false,
+        border: [0],
+        bgcolor: "#fff",
+        scrollbar : false,
+        content: '<div class="tou_div">'+
+      '<div class="tou_title">'+
+      '<span class="tou_title1">头像设置</span><span class="tou_title2">X</span>'+
+      '</div>'+
+      '<form method="post"  enctype="multipart/form-data" class="clearfix" id="upload-form">'+
+      '<div class="tou_con">'+
+      '<div id="previewBox" style="position:relative;">'+
+      '<img src="" id="preview" />'+
+      '<label class="upload-label" for="upload-btn">选择图片</label>'+
+      '<input type="file" id="upload-btn" class="upload-btn" accept="image/*" multiple>'+
+      '<div style="width: 60px;height: 60px;position:absolute;left: 50%;margin-left: -30px;top: 50%;margin-top: -30px;display: none;z-index: 999;" id="loading">'+
+      '<img src="{{helper.cdnhost}}/assets/img/xubox_loading1.gif" alt="" style="width: 100%;height: 100%;"/></div>'+
+      '</div>'+
+      '</div>'+
+      '<div class="tou_but">'+
+      '<input type="button" value="确定" id ="fileSubmit" />'+
+      '</div>'+
+      '</form>'+
+      '</div>',
+        success : function(){
+          console.log('tan kuang ',$("#upload-btn").get(0))
+          var params = {
+            uid: login_ss.uid,
+            maxfileNum:1,
+            fileInput: $("#upload-btn").get(0),
+            upButton: $("#fileSubmit").get(0),
+            url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+            onSureBtnCb: function () {
+              $('#loading').show();
+            },
+            filter: function(files) {
+              if(files.length > ZXXFILE.maxfileNum){
+                layer.msg('最多上传几'+ZXXFILE.maxfileNum+'照片');
+                return false;
+              }
+              var arrFiles = [];
+              for (var i = 0, file; file = files[i]; i++) {
+                if (file.type.indexOf("image") == 0) {
+                  if (file.size >= 512000) {
+                    layer.msg('您这张"'+ file.name +'"图片大小过大，应小于500k');
+                  } else {
+                    arrFiles.push(file);
+                  }
+                } else {
+                  layer.msg('文件"' + file.name + '"不是图片。');
+                }
+              }
+              return arrFiles;
+            },
+            onSelect: function(files) {
+              if (files.length <= 0) return;
+              var html = '';
+              /*if(ZXXFILE.fileFilter.length >=ZXXFILE.maxfileNum ){
+                $(".upload-label").hide();
+              }*/
+              $(".upload-label").hide();
+              $("#preview").show();
+              for(var i =0;i<files.length;i++) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                  $("#preview").attr('src', e.target.result);
+                }
+                reader.readAsDataURL(files[0]);
+                /*html+='<div class="upload_append_list" data-file="'+files[i].name+'" data-index="'+ZXXFILE.num+'">'+
+                '<span class="upload_progress"></span>' +
+                '</div>';*/
+              }
+//              $("#previewBox").append(html);
+            },
+            onProgress: function(file, loaded, total) {
+              var percent = '头像正在上传……';//(loaded / total * 100).toFixed(2) + '%';
+              $(".upload_append_list[data-index="+ZXXFILE.num+"]").each(function(){
+                if($(this).attr('data-file') == file.name){
+                  $(this).find('.upload_progress').show().html(percent);
+                }
+              });
+            },
+            onSuccess: function(file, response) {
+              console.log('onSuccess',response);
+              var res = JSON.parse(response);
+              if (res.errno === 0) {
+                $('#loading').hide();
+                layer.close(layopen);
+                $('.advisor-img').find('img').attr('src',ajaxUrlPrefix.avatercdn+'/'+ res.localpath.replace(/\//, '/'));
+              } else {
+                $('#loading').hide();
+                layer.msg(res.message);
+              }
+            },
+            onFailure: function(file) {
+              console.log(file)
+            },
+            onComplete:function(){
+              //提交按钮隐藏
+              $("#fileSubmit").hide();
+
+            }
+          };
+          ZXXFILE = $.extend(ZXXFILE, params);
+          ZXXFILE.init();
+        },
+        cancel:function(){
+          $("#preview").attr('src','');
+          $("#preview").hide();
+          $(".upload-label").show();
+
+        },
+        end:function() {
+          $("#preview").attr('src','');
+          $("#preview").hide();
+          $(".upload-label").show();
+        }
+      });
+    })
+  });
+</script>
+</body>
+</html>

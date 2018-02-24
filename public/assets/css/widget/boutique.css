@@ -1,0 +1,55 @@
+/*精品问答*/
+.boutique {
+  width: 240px;
+  height: 76px;
+  margin: 20px;
+}
+.boutique dl {
+  width: 240px;
+  height: 50px;
+  margin-top: 8px;
+}
+.boutique dl dt{
+  width: 50px;
+  height: 50px;
+  float: left;
+  margin-right: 20px;
+}
+.boutique dl dt img {
+  width: 50px;
+  height: 50px;
+}
+.boutique dl dd {
+  width: 170px;
+  height: 50px;
+  float: left;
+}
+.boutique dl dd p {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+.boutiqueing {
+  width: 170px;
+  height: 30px;
+  background: #f3f3f3;
+  float: right;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+  line-height: 30px;
+  margin-top: 3px;
+}
+.boutiqueing p {
+  margin:0 0 0 6px;
+}
+.boutiquecon {
+  width: 18px;
+  height: 18px;
+  background: #C13232;
+  color: #ffffff;
+  float: left;
+  text-align: center;
+  border-radius: 2px ;
+  margin-right: 10px;
+}

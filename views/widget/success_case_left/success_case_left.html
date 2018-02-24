@@ -1,0 +1,18 @@
+<div class="case-item">
+    <div class="case-con">
+        <div class="case-img">
+            <span></span>
+            <a target="_blank" rel="nofollow" href="{{ helper.urlgen('case', caseItem.id | string) }}"><img src="{{helper.school_logo(caseItem.school_id)}}" alt="{{caseItem.title}}"/></a>
+        </div>
+        <div class="case-info">
+            <!--<p class="case-title">{{caseItem.student_name}}成功圆梦<span>{{caseItem.school}}</span></p>-->
+            <p class="case-title">{{caseItem.title | ellipsis(12)}}</p>
+            <p class="case-advisor"><span>顾问：<em>{{caseItem.user_info.nickname}}</em></span><span class="degree">
+                学位：<em>{{caseItem.edu_id | getEdu}}</em>
+            </span></p>
+            <p class="country">录取国家：{{caseItem.country_id | getCountry}}</p>
+            <p class="time">录取时间：{{caseItem.add_time | shorten(10) }}</p>
+            <p class="case-btn"><a target="_blank" href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{caseItem.user_info.job_number}}" target="_blank"  class="dui-btn btn-appointment" style="padding: 2px 8px;" rel="nofollow">案例咨询</a></p>
+        </div>
+    </div>
+</div>

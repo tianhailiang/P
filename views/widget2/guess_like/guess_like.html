@@ -1,0 +1,12 @@
+  
+  <ul class="guess-like-ul" >
+    {% for item in guess_like.list %}
+      <li>
+      	<a target="_blank" href="{{helper.urlgen('article',item.id | string)}}" class="dui-text-warning-s" >
+          <i class="iconfont">&#xe609;</i>
+           <span class="guess-like-title">{{item.title}}</span>
+      	</a>
+      </li>
+    {% endfor %}
+  </ul>
+

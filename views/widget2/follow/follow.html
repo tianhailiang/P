@@ -1,0 +1,101 @@
+<!--我关注的-->
+{% macro follow(f_type,fItem,helper) %}
+<div class="follow-con clearfix">
+  <a target="_blank" href="{{helper.urlgen('blog', fItem.friend_uid.toString())}}"><img class="img-left" src="{{helper.avaterimg(fItem.friend_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/></a>
+  <div class="content">
+    <div class="content-title">{{fItem.user_info.realname}}</div>
+    <div class="content-des">个人简介：{{fItem.user_info.introduce}}</div>
+    <div class="content-nun clearfix">
+      <div class="num-show clearfix">
+        <div class="iconfont">&#xe622;</div>
+        <div>关注：<span>{{fItem.fans_count}}</span></div>
+      </div>
+      <!--<div class="num-show clearfix">
+        <div class="iconfont">&#xe6a9;</div>
+        <div>评论:<span>{{fItem.answer_count}}</span></div>
+      </div>-->
+      {% if f_type == 'btnyes' %}
+      <div class="follow-btn" data-to_uid="{{fItem.friend_uid}}" onclick="cancelFollow($(this), {{fItem.friend_uid}})">取消关注</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<script>
+  function cancelFollow (thisObj, toUid) {
+    var uid = JSON.parse($.cookie('login_ss')).uid;
+    $.ajax({
+      url: '/soapi/follow_people',
+      type:'POST',
+      data:{
+        u_id: uid,
+        to_uid: toUid
+      },
+      dataType:'json',
+      success:function(msg){
+        if (msg.code == 0) {
+          if (msg.data.type == 'add') {
+            thisObj.text('取消关注');
+          }
+          else if ( msg.data.type == 'remove') {
+            thisObj.text('+关注');
+          }
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  }
+</script>
+{% endmacro %}
+
+<!--我关注的-顾问、参赞去掉跳转链接-->
+{% macro follow_no(f_type,fItem,helper) %}
+<div class="follow-con clearfix">
+  <img class="img-left" src="{{helper.avaterimg(fItem.fans_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/>
+  <div class="content">
+    <div class="content-title">{{fItem.user_info.realname}}</div>
+    <div class="content-des">个人简介：{{fItem.user_info.introduce}}</div>
+    <div class="content-nun clearfix">
+      <div class="num-show clearfix">
+        <div class="iconfont">&#xe622;</div>
+        <div>关注：<span>{{fItem.fans_count}}</span></div>
+      </div>
+      <!--<div class="num-show clearfix">
+        <div class="iconfont">&#xe6a9;</div>
+        <div>评论:<span>{{fItem.answer_count}}</span></div>
+      </div>-->
+      {% if f_type == 'btnyes' %}
+      <div class="follow-btn" data-to_uid="{{fItem.friend_uid}}" onclick="cancelFollow($(this), {{fItem.friend_uid}})">取消关注</div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<script>
+  function cancelFollow (thisObj, toUid) {
+    var uid = JSON.parse($.cookie('login_ss')).uid;
+    $.ajax({
+      url: '/soapi/follow_people',
+      type:'POST',
+      data:{
+        u_id: uid,
+        to_uid: toUid
+      },
+      dataType:'json',
+      success:function(msg){
+        if (msg.code == 0) {
+          if (msg.data.type == 'add') {
+            thisObj.text('取消关注');
+          }
+          else if ( msg.data.type == 'remove') {
+            thisObj.text('+关注');
+          }
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  }
+</script>
+{% endmacro %}

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>侧边栏</title>
+    <link rel="stylesheet" href="../../widget2/side_menu/side_menu.css"/>
+    <link rel="stylesheet" href="../../widget/base.css"/>
+    <link rel="stylesheet" href="../../.package/css/dui.min.css"/>
+    <link rel="stylesheet" href="../../.package/css/dui-append.min.css"/>
+</head>
+<body>
+{% include 'side_menu/side_menu.html' %}
+</body>
+<script src="../../widget2/side_menu/jquery.js"></script>
+<script src="../../widget2/side_menu/side_menu.js"></script>
+<script>
+    jQuery(document).ready(function($)
+    {
+        $('.list ul li .title').checkItem();
+        $('.list-se li').checkList();
+    });
+</script>
+</html>

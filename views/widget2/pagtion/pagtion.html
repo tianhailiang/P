@@ -1,0 +1,140 @@
+{% macro pagtion(obj) %}
+	<div class="dui-pagination pagination-large" data-pages ="{{obj.pages}}" >
+		<ul>
+			{% if obj.currentPage - 1 <= 0 %}
+				<li class="prev disabled">
+					<span >«上一页</span>
+				</li>
+			{% else %}
+				<li class="prev">
+					<a href="{{obj.hrefFormer}}{{obj.currentPage - 1}}" data="{{obj.currentPage - 1}}">«上一页</a>
+				</li>
+			{% endif %}
+
+			{% if obj.pages <= obj.displayPage or obj.pages == (obj.displayPage + 1) %}  
+				{% for i in range(1, (obj.pages+1)) -%}
+					{% if i == obj.currentPage %}
+						<li class="active">
+							<span >{{i}}</span>
+						</li>
+					{% else %}
+						<li >
+							<a href="{{obj.hrefFormer}}{{i}}" data="{{i}}">{{i}}</a>
+						</li>
+					{% endif %}
+				{%- endfor %}
+			{% else %}
+				{% if obj.currentPage < obj.displayPage - 1 %}
+					{% for i in range(1, obj.displayPage) -%}
+						{% if i == obj.currentPage %}
+							<li class="active">
+								<span >{{i}}</span>
+							</li>
+						{% else %}
+							<li >
+								<a href="{{obj.hrefFormer}}{{i}}" data="{{i}}">{{i}}</a>
+							</li>
+						{% endif %}
+					{%- endfor %}
+					<li class="dotted"><span>...</span></li>
+					<li>
+						<a href="{{obj.hrefFormer}}{{obj.pages}}" data="{{obj.pages}}">{{obj.pages}}</a>
+					</li>
+				{% elif obj.currentPage >(obj.pages - obj.displayPage + 2) and obj.currentPage <= obj.pages %}
+					<li><a href="{{obj.hrefFormer}}1" data="1">1</a></li>
+					<li class="dotted"><span>...</span></li>
+					{% for i in range((obj.pages - obj.displayPage + 2), (obj.pages+1)) -%}
+						{% if i == obj.currentPage %}
+							<li class="active">
+								<span >{{i}}</span>
+							</li>
+						{% else %}
+							<li >
+								<a href="{{obj.hrefFormer}}{{i}}" data="{{i}}">{{i}}</a>
+							</li>
+						{% endif %}
+					{%- endfor %}
+				{% else %}
+					<li><a href="{{obj.hrefFormer}}1" data="1">1</a></li>
+					<li class="dotted"><span>...</span></li>
+					{% set middle = (obj.displayPage - 3) / 2 %}
+					{% if (obj.displayPage - 3) % 2 == 0 %}
+						{% set frontPage,backPage = middle %}
+					{% else %}
+						{% set frontPage = middle | round(0, 'floor') %}
+						{% set backPage = middle |round|int %}
+						<div>{{frontPage | dump}}</div>
+					{% endif %}
+					{% for i in range(obj.currentPage - frontPage,(obj.currentPage + backPage+1)) -%}
+						{% if i == obj.currentPage %}
+							<li class="active">
+								<span >{{i}}</span>
+							</li>
+						{% else %}
+							<li >
+								<a href="{{obj.hrefFormer}}{{i}}" data="{{i}}">{{i}}</a>
+							</li>
+						{% endif %}
+					{%- endfor %}
+					<li class="dotted"><span>...</span></li>
+					<li>
+						<a href="{{obj.hrefFormer}}{{obj.pages}}" data="{{obj.pages}}">{{obj.pages}}</a>
+					</li>
+				{% endif %}
+				
+			{% endif %}
+			
+			{% if (obj.currentPage+1) > obj.pages %}
+				<li class="next disabled">
+					<span >下一页»</span>
+				</li>
+			{% else %}
+				<li class="next">
+					<a href="{{obj.hrefFormer}}{{(obj.currentPage+1)}}" data="{{(obj.currentPage+1)}}">下一页»</a>
+				</li>
+			{% endif %}
+		</ul>
+		{% if obj.showCtrl %}
+			<div>
+				<form method="get" action="{{obj.hrefFormer}}" id ="pageform">
+				&nbsp;<span>共{{obj.pages}}页</span>&nbsp;
+	            <span>&nbsp;到&nbsp;
+	            {% for item,val in obj.order %}
+	            	<input type="hidden"  name ="{{item}}" value="{{val}}"/>
+	            {% endfor %}
+	            <input type="text" class="page-num" name ="page"  />
+	            <button class="page-confirm">确定</button>&nbsp;页</span>
+	            </form>
+            </div>
+		{% endif %}
+	</div>
+	<script>
+      	var pag = $(".dui-pagination");
+      	// console.log(pag)
+      	function doPagination() {
+	        var tmpNum = parseInt(pag.find('.page-num').val());
+	        var pages = pag.attr("data-pages");
+	        var pageForm = $("#pageform");
+	        // console.log(tmpNum)
+	        // console.log(pages)
+	        if(!$.isNumeric(tmpNum)){
+	        	pag.find('.page-num').val(1);
+	        }
+	        if(tmpNum > pages){
+	        	pag.find('.page-num').val(pages);
+	        }
+	        if(tmpNum <= 0){
+	        	pag.find('.page-num').val(1);
+	        }
+	       
+	        // pageForm.submit(); //提交表单
+	    }
+       	pag.on('click', '.page-confirm', function (e) {
+       		// e.preventDefault(); 
+	        doPagination.call(this)
+	    })
+	    pag.on('keypress', '.page-num', function (e) {
+	        e.which == 13 && doPagination.call(this)
+	    })
+	</script>
+{% endmacro %}

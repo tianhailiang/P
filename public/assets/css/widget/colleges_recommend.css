@@ -1,0 +1,90 @@
+/*ԺУ�Ƽ�*/
+
+.colleges_recommend {
+  width: 278px;
+  height: 566px;
+  float: left;
+  border: 1px #dcdcdc solid;
+}
+.colleges_recommend_title {
+  width: 278px;
+  height: 48px;
+  display: inline-block;
+  font-weight: 600;
+  border-bottom: 1px solid #dcdcdc;
+  font-size: 16px;
+  color: #333;
+  background: #fafafa;
+}
+.colleges_recommend_title i {
+  width: 2px;
+  height: 22px;
+  display: block;
+  background: #C13232;
+  margin-right: 18px;
+  float: left;
+  margin-top: 15px;
+}
+.colleges_recommend_title h3 {
+  font-weight: 600;
+  float: left;
+  line-height: 50px;
+}
+.colleges_recommend_title em {
+  color: #666;
+}
+.colleges_recommend_title a {
+  width: 16px;
+  display: inline;
+  float: right;
+  margin-right: 20px;
+  margin-top: 17px;
+}
+.colleges_recommend_title a:hover {
+  text-decoration:none;
+}
+.colleges_recommend_content {
+  width: 278px;
+  padding: 8px 20px;
+  position: relative;
+}
+.colleges_recommend_content div{
+  width: 238px;
+  height: 31px;
+  line-height: 26px;
+  color: #333;
+  font-size: 14px;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.overseas_apply_item_r_c a{
+  width: 223px;
+  height: 20px;
+  color: #333;
+  font-size: 14px;
+  line-height: 26px;
+}
+.overseas_apply_item_r_c a:hover{
+  color: #C13232;
+}
+.overseas_apply_item_r_c span{
+  width: 16px;
+  height: 14px;
+  text-align: center;
+  color: #fff;
+  background: #96b9f0;
+  display: inline-block;
+  line-height: 14px;
+}
+.overseas_apply_item_r_c span.dian{
+  background: #C13232;
+}
+.overseas_apply_item_r_c span.dian1{
+  background: #ef8b55;
+}
+.overseas_apply_item_r_c span.dian2{
+  background: #f3b053;
+}

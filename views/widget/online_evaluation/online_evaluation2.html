@@ -1,0 +1,139 @@
+{% macro online_evaluation2(path) %}
+<div class="talkBox">
+  <div class="top-booking" id="{{path}}">
+   {# <img src="{{helper.cdnhost}}/assets/img/shijingwei1.png" />#}
+  </div>
+  <div class="talkCon" id="talkCon2">
+    <div class="record" id="chatDiv2">
+
+      <div class="leaveField clearfix" style="padding-left:6px;">
+        <div class="title">您的姓名：</div>
+        <div class="text1">
+          <input name="name2" id="name2" type="text" placeholder="请输入您的称呼"/><i style="font-size: 14px;color: #c13232;line-height: 24px;padding-left: 4px;">*</i>
+        </div>
+        <div class="textNum clearfix" style="margin-left:76px;"><span style="line-height: 20px;" class="numTip"  id="name-num2"></span></div>
+      </div>
+      <div class="leaveField clearfix" style="padding-left:6px;margin-top:0;">
+        <div class="title">手机号码：</div>
+        <div class="text1"><input name="phone2" id="phone2" type="text" placeholder="请留下您的电话号码" /><i style="font-size: 14px;color: #c13232;line-height: 24px;padding-left: 4px;">*</i></div>
+        <div class="textNum clearfix" style="margin-left: 76px;"><span style="line-height: 20px;" id="phoneTip2" class="numTip"></span></div>
+      </div>
+
+      <div class="leaveField clearfix" style="padding-left:6px;margin-top:0;">
+        <div class="title">意向国家：</div>
+        <div class="text1">
+          <select id="department2" name="department2" style="color:#333;">
+            <option value='1'>美国</option>
+            <option value='2'>英国</option>
+            <option value='3'>加拿大</option>
+            <option value='4'>澳大利亚</option>
+            <option value='5'>新西兰</option>
+            <option value='50'>韩国</option>
+            <option value='51'>日本</option>
+            <option value='101'>乌克兰</option>
+            <option value='100'>俄罗斯</option>
+            <option value='108'>爱尔兰</option>
+            <option value='111'>意大利</option>
+            <option value='112'>西班牙</option>
+            <option value='102'>白俄罗斯</option>
+            <option value='52'>新加坡</option>
+            <option value='53'>马来西亚</option>
+            <option value='54'>中国香港</option>
+            <option value='110'>丹麦</option>
+            <option value='103'>德国</option>
+            <option value='104'>法国</option>
+            <option value='105'>挪威</option>
+            <option value='106'>瑞典</option>
+            <option value='107'>芬兰</option>
+            <option value='109'>荷兰</option>
+            <option value='113'>瑞士</option>
+          </select>
+        </div>
+        <div class="textNum"><span class="numTip" id="department-num2"></span></div>
+      </div>
+
+      <div class="leaveField clearfix" style="padding-left:6px;">
+        <div class="title">所属区域：</div>
+        <div class="text1">
+          <select id="city2" name="city2" style="overflow-y:auto;color:#333;">
+            <option value="1">(B)北京金吉列</option>
+            <option value="7">(C)重庆金吉列</option>
+            <option value="5">(C)成都金吉列</option>
+            <option value="19">(C)长沙金吉列</option>
+            <option value="25">(C)长春金吉列</option>
+            <option value="41">(C)常州金吉列</option>
+            <option value="13">(D)大连金吉列</option>
+            <option value="43">(D)东莞金吉列</option>
+            <option value="37">(F)佛山金吉列</option>
+            <option value="39">(F)福州金吉列</option>
+            <option value="3">(G)广州金吉列</option>
+            <option value="35">(G)贵阳金吉列</option>
+            <option value="24">(H)哈尔滨金吉列</option>
+            <option value="32">(H)邯郸金吉列</option>
+            <option value="26">(H)呼和浩特金吉列</option>
+            <option value="6">(H)杭州金吉列</option>
+            <option value="22">(H)合肥金吉列</option>
+            <option value="46">(H)海南金吉列</option>
+            <option value="9">(J)济南金吉列</option>
+            <option value="30">(J)吉林金吉列</option>
+            <option value="21">(K)昆明金吉列</option>
+            <option value="27">(L)兰州金吉列</option>
+            <option value="48">(L)洛阳金吉列</option>
+            <option value="16">(N)南京金吉列</option>
+            <option value="29">(N)南昌金吉列</option>
+            <option value="38">(N)南宁金吉列</option>
+            <option value="34">(N)宁波金吉列</option>
+            <option value="10">(Q)青岛金吉列</option>
+            <option value="2">(S)上海金吉列</option>
+            <option value="8">(S)沈阳金吉列</option>
+            <option value="12">(S)石家庄金吉列</option>
+            <option value="20">(S)深圳金吉列</option>
+            <option value="23">(S)苏州金吉列</option>
+            <option value="4">(T)天津金吉列</option>
+            <option value="17">(T)太原金吉列</option>
+            <option value="18">(T)唐山金吉列</option>
+            <!--<option value="49">(W)武昌金吉列</option>-->
+            <option value="14">(W)武汉金吉列</option>
+            <option value="33">(W)无锡金吉列</option>
+            <option value="42">(W)温州金吉列</option>
+            <option value="28">(X)厦门金吉列</option>
+            <option value="36">(X)徐州金吉列</option>
+            <option value="15">(X)西安金吉列</option>
+            <option value="45">(X)西宁金吉列</option>
+            <option value="47">(X)乌鲁木齐金吉列</option>
+            <option value="31">(Y)烟台金吉列</option>
+            <option value="40">(Y)银川金吉列</option>
+            <option value="44">(Y)宜昌金吉列</option>
+            <option value="11">(Z)郑州金吉列</option>
+          </select>
+        </div>
+        <div class="textNum"><span class="numTip" id="city-num2"></span></div>
+      </div>
+
+
+
+
+      <div class="leaveField clearfix" style="padding-left:6px;">
+        <div class="title">留学需求：</div>
+        <div class="text1">
+          <textarea maxlength="500" onchange="this.value=this.value.substring(0, 500)" onkeydown="this.value=this.value.substring(0, 500)" onkeyup="this.value=this.value.substring(0, 500)" name="context2" style="height: 42px;color:#333333;" id="context2" placeholder="留言内容最多为500个字符"></textarea><i style="font-size: 14px;color: #c13232;line-height: 24px;padding-left: 4px;">*</i>
+        </div>
+        <div class="textNum clearfix" style="margin-left: 76px;"><span style="line-height: 20px;" class="numTip" id="context-num2"></span></div>
+      </div>
+
+      <div  class="leaveField1 clearfix"style="margin-top: 0;width: 278px;">
+        <div class="btn"><button  style="margin-top: 0;width: 100px; margin-left: 89px;" class="commit" id="evaluation-btn2">提交</button></div>
+        <!--<div class="btn"><button style="margin-top: 0"  class="reset" id="reset-btn2">重置</button></div>-->
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+
+</div>
+{% endmacro %}
+<!--<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>-->

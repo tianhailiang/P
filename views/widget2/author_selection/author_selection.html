@@ -1,0 +1,30 @@
+
+<div class="author-sel" >
+  {% if channel_list.list[0].img_list[0] | length %}
+   <img src="{{channel_list.list[0].img_list[0]}}" class="author-sel-img" />
+  {% else %}
+  <p style="text-align: center"></p>
+  {% endif %}
+   <ul class="author-sel-ul" >
+    {% for item in channel_list.list %}
+      {% if loop.index > 1 %}
+      {% if loop.index ==2 %}
+      <li>
+      	<a target="_blank" href="/article/{{item.id}}" class="dui-text-warning-s" >
+             <i class="iconfont">&#xe609;</i>
+             <span class="author-sel-title">{{item.title}}</span>
+             <p class="author-sel-txt">{{item.title_fulltext}}</p>
+      	</a>
+      </li>
+      {% else %}
+      <li>
+      	<a target="_blank" href="/article/{{item.id}}" class="dui-text-warning-s" >
+            <i class="iconfont">&#xe609;</i>
+            <span class="author-sel-title">{{item.title}}</span>
+      	</a>
+      </li>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+     </ul>
+</div>

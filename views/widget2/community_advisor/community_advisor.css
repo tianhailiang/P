@@ -1,0 +1,114 @@
+.community-advisor{
+  border-top:2px solid #c13232;
+  box-shadow:1px 0 5px rgba(0,0,0,0.4);
+  width:100%;
+  background:#fff;
+}
+.community-advisor ul{
+  height: 37px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.community-advisor ul li{
+  float:left;
+  width:139.5px;
+  text-align: center;
+  margin-top:12px;
+  font-size:14px;
+  color:#666666;
+}
+.community-advisor .guanzhu{
+  border-right:1px solid #dcdcdc;
+  margin-right: 0;
+}
+.community-advisor .guanzhu-num,.community-advisor .article-num{
+  color:#333333;
+  padding-left:10px;
+}
+.community-advisor dl{
+  padding:0 80px;
+  text-align: center;
+  margin-top:20px;
+}
+.community-advisor .advisor-img img{
+ display: block;
+  width: 100px;
+  height:126px;
+  margin-bottom:20px;
+  margin-left:10px;
+
+}
+.community-advisor .advisor-name{
+  font-size: 18px;
+  text-align: center;
+  color:#c13232;
+  line-height: 18px;
+}
+.community-advisor .user-name{
+  font-size: 18px;
+  line-height: 18px;
+  text-align: center;
+  margin-bottom: 20px;
+  color:#333;
+}
+.community-advisor .advisor-bumen,.community-advisor .advisor-enjoy{
+  height: 14px;
+  margin-top:10px;
+  font-size: 14px;
+  color:#666666;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  line-height: 14px;
+}
+.community-advisor .advisor-sushu{
+  height: 16px;
+  font-size: 14px;
+  color:#666666;
+  margin-top: 16px;
+  text-align: center;
+}
+.community-advisor .advisor-intro{
+  padding:13px 20px;
+  font-size: 12px;
+  color:#666666;
+}
+.community-advisor .counsellor-intro{
+  text-indent: 2em;
+  padding:15px 20px;
+  font-size: 12px;
+  color:#666666;
+
+}
+.community-advisor .counsellor-intro p{
+  line-height: 24px;
+}
+.community-advisor .advisor-intro p{
+  line-height: 24px;
+}
+.community-advisor .advisor-btn{
+  height: 40px;
+  background: #ff8547;
+  font-size:20px;
+  color:#ffffff;
+  line-height: 40px;
+}
+.community-advisor .advisor-btn-gray{
+  background:#dcdcdc;
+}
+
+.community-advisor .advisor-zixun,.community-advisor .advisor-guanzhu{
+  font-size: 14px;
+  padding:1px  42px;
+  cursor: pointer;
+  color: #fff
+}
+.community-advisor .advisor-zixun{
+  border-right:1px solid #ffffff;
+}
+.community-advisor .counsellor-guanzhu{
+  font-size: 14px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+}
+

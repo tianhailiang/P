@@ -1,0 +1,246 @@
+<style>
+  /*登录内容*/
+  .login_nei *{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing:border-box
+  }
+  .login_nei{
+    width: 238px;
+    height: 270px;
+    /*height: 326px;*/
+    background: #fff;
+    padding: 40px 20px 0 20px;
+    margin-top: 0;
+    float: none;
+  }
+  .login_nei_title{
+    font-size: 18px;
+    color: #333;
+  }
+  .login_nei_title a{
+    line-height: 18px;
+    float: right;
+    color: #C13232;
+    font-size: 12px;
+  }
+  .login_nei_title a:hover{
+    color: #C13232;
+  }
+  .login_nei input{
+    padding-left: 34px;
+  }
+  .login_nei .login_check{
+    color: #999;
+  }
+  .login_nei .login_check a{
+    color: #C13232;
+    line-height: 20px;
+  }
+  .login_nei .text-center a:hover{
+    color: #C13232;
+  }
+  .login_nei .login-primary{
+    background: #C13232;
+    color: #fff;
+  }
+  .login_nei .login-primary:hover{
+    background: #C13232;
+    color: #fff;
+  }
+  .login_nei .new_deng {
+    margin-top: 10px;
+  }
+  .login_nei .new_deng h4 {
+    font-size: 14px;
+    color: #333;
+    float: left;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27px;
+  }
+  .new_deng .login_tsina{
+    background: url("../../widget/nav_login/weibo_login.png") no-repeat 0 0;
+    width: 22px;
+    height: 22px;
+    background-size: 22px 22px;
+  }
+  .new_deng .login_weixin{
+    background: url("../../widget/nav_login/weixin_login.png") no-repeat 0 0;
+    width: 22px;
+    height: 22px;
+    background-size: 22px 22px;
+  }
+  .new_deng .login_qzone{
+    background: url("../../widget/nav_login/QQ_login.png") no-repeat 0 0;
+    width: 22px;
+    height: 22px;
+    background-size: 22px 22px;
+  }
+
+  .form-control{
+    display: inline-block;
+    line-height: 25px;
+  }
+  .new_deng img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    cursor:pointer;
+  }
+</style>
+
+
+<div class="login_nei">
+  <h3 class="login_nei_title">登录金吉列<a target="_blank" href="{{helper.urlgen('register')}}">立即注册</a></h3>
+
+  <form class="m-t" role="form" style="margin-top: 20px">
+    <div class="form-group inputtext_isr" style="position: relative;height: 28px">
+      <input type="text" class="form-control" placeholder="手机号" id="newEmail"/>
+      <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
+    </div>
+    <div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
+      <input type="password" class="form-control" placeholder="密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
+      <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 11px" class="iconfont">&#xe606;</i>
+    </div>
+  </form>
+
+  <!--<div class="form-group text-left" style="float: left;color: #999;margin-top: -10px">
+    <div class="checkbox i-checks" style="">
+      <label class="no-padding">
+        <input type="checkbox"><i></i> 我同意注册协议</label>
+    </div>
+  </div>-->
+  <div class="login_check clearfix" style="">
+    <a target="_blank" href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了？</small></a>
+  </div>
+
+  <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0" id="loginSubmit" value="立 即 登 录"/>
+
+
+
+  <div class="new_deng">
+    <h4>第三方快速登录：</h4>
+    <div class="" id="fx" style="float: left">
+      <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo"/>
+
+      <a target="_blank" href="{{helper.wwhost}}/weixin_login?h={{url}}" target="_blank">
+        <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
+      </a>
+      <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq"/>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $("form").Vaild();
+
+    var lS = document.getElementById('loginSubmit');
+    console.log('loginS', lS);
+    if (lS.addEventListener) {
+      console.log('ffff');
+      lS.addEventListener('click', loginS, false);
+    } else {
+      console.log('eeeee');
+      lS.attachEvent('onclick', loginS, false);
+    }
+    $('#weibo').on('click', function () {
+      var h = window.location.href;//获取全部的url
+      console.log('h', h);
+      var hh = h.split("?");
+      console.log('hh', hh[1])
+      if (hh[1] !== undefined) {
+        var str = hh[1].substr(1);
+        var strs = str.split("=");
+        console.log('strs', strs)
+
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      } else {
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost + '/p', "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      }
+    })
+    $('#qq').on('click', function () {
+      //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
+      //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
+      var h = window.location.href;//获取全部的url
+      console.log('h', h);
+      var hh = h.split("?");
+      console.log('hh', hh)
+      if (hh[1] !== undefined) {
+        var str = hh[1].substr(1);
+        var strs = str.split("=");
+        console.log('strs', strs)
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      } else {
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost + '/p', "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      }
+    })
+
+  })
+
+  function loginS () {
+    console.log('login_ssssss')
+    if ($('#newEmail').val() === '') {
+      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1[3|4|5|7|8]\d{9}$/.test($('#newEmail').val())) {
+      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号或工号后六位').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    if ($('#password').val() === '') {
+      $('#password').parent().addClass("has-error").removeClass("has-success");
+      $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入密码').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    /*if (!$("input[type='checkbox']").is(':checked')) {
+     layer.msg('请同意注册协议');
+     return
+     }*/
+    var sha1 = hex_sha1($('#password').val());
+    console.log('sha1'+sha1);
+    if ($('#newEmail').val() !== '' && $('#password').val() !== ''&& /^[a-zA-Z0-9]{6,16}$/.test($("#password").val()) && /^1[3|4|5|7|8]\d{9}$/.test($("#newEmail").val()) || /^[A-Za-z0-9]{6}$/.test($('#newEmail').val())) {
+      console.log('ajax');
+      $.ajax({
+        url: '/login_s',
+        type:'POST',
+        data:{
+          username: $('#newEmail').val(),
+          password: hex_sha1($('#password').val())
+        },
+        dataType:'json',
+        success:function(msg){
+          console.log('aaaaaaaaa')
+          console.log('msg ajax', msg);
+          if(msg.code === 0){
+            //var h = location.search;//获取？后面的字符串
+            /*var h = window.location.href;//获取全部的url
+            console.log('h', h);
+            var hh = h.split("?");
+            console.log('hh', hh)
+            if (hh[1] !== undefined) {
+              var str = hh[1].substr(1);
+              console.log('str', str);
+              var strs = str.split("=");
+              console.log('strs', strs[1]);
+              window.location= strs[1];
+            } else {
+              console.log('')
+              window.location = '/';
+            }*/
+//            alert('成功');
+            window.parent.location.reload();
+          } else {
+            alert(msg.message);
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+        }
+      });
+
+    }
+  }
+</script>

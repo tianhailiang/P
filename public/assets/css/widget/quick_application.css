@@ -1,0 +1,116 @@
+
+
+.quick-application-box{
+	margin-top:20px;
+	width:100%;
+	margin-bottom: 20px;
+	border:1px solid #dcdcdc;
+}
+
+.quick-application-box h3{
+	width:100%;
+	height:45px;
+	border-bottom:1px solid #dcdcdc;
+	text-align: center;
+	line-height: 45px;
+	font-size: 20px;
+	color:#535353;
+
+}
+
+
+.quick-application-con{
+	padding:20px;
+}
+
+.quick-application-con .quick-text1{
+	
+	float:left;
+	height:50px;
+
+}
+
+.quick-application-con .title{
+	font-size: 14px;
+	color:#333;
+	line-height: 30px;
+	vertical-align: middle;
+	
+}
+
+
+
+.quick-application-con .title span{
+	color:#ff7d31;
+	display: inline-block;
+	margin-right: 4px;
+	width:7px;
+	
+}			 
+.quick-application-con .quick-text1 select{
+	outline: none;
+	height: 30px;
+    color: #333;
+    text-indent: 10px;
+    border: 1px solid #dcdcdc;
+    width: 224px;
+    background:#f3f3f3 url(img/select-down1.png) no-repeat 201px 0;
+    background-size: 22px 32px;
+   
+}
+
+.quick-application-con .quick-text1 input{
+	outline: none;
+	height: 28px;
+    color: #333;
+   padding-left: 10px;
+    border: 1px solid #dcdcdc;
+    width: 212px;
+    line-height: 28px;
+    
+}
+
+.quick-application-con .quick-text1 .numTip{
+   height:20px;
+   line-height: 20px;
+   color:#ff7d31;
+}
+
+
+.quick-application-con .quick-text1 .quick-date{
+	background:#f3f3f3 url(img/select-down1.png) no-repeat 201px 0;
+    background-size: 22px 32px;
+}
+
+
+.quick-get-phone-code,.quick-get-phone-code-act{
+	display: inline-block;
+	width:108px;
+	height:28px;
+	border:1px solid #ff7d31;
+	color:#ff7d31;
+	text-align: center;
+	line-height: 28px;
+	margin-left: 10px;
+	vertical-align: middle;
+
+}
+
+.quick-btn-box{
+	width:100%;
+	margin-top: 20px;
+	float:left;
+	
+}
+.quick-btn{
+	
+	position: relative;
+	width:140px;
+	height:30px;
+	background:#d21b29;
+	color:#fff;
+	text-align: center;
+	line-height: 30px;
+	left:50%;
+	margin-left: -70px;
+}

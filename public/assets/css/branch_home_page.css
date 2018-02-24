@@ -1,0 +1,715 @@
+
+ html,body{
+ 	width:100%;
+ 	height:100%;
+ }
+	/*====国家导航===*/
+
+  .country-nav-box{
+  	width:100%;
+  	background:#f8f8f8;
+  }	
+
+ .country-nav-ul{
+ 	width:1180px;
+ 	margin:0 auto;
+ 	
+ }
+
+ .country-nav-ul li{
+ 	float:left;
+ 	
+ 	margin-right: 13px;
+ }
+
+ .country-nav-ul li a{
+ 	display: block;
+ 
+ 	font-size: 14px;
+ 	color:#333;
+ 	line-height: 44px;
+ 	height:44px;	
+ }
+
+/*==========*/
+.branch-hot{
+	width:440px;
+	
+	float:left;
+	margin-right:20px;
+
+}
+
+
+.branch-lunbo{
+	width:720px;
+	float:left;
+}
+
+.branch-lunbo-slider{
+	width:100%;
+	height:300px;
+}
+
+.branch-lunbo-ul{
+	margin-top: 10px;
+}
+
+.branch-lunbo-ul li{
+	float:left;
+	margin-right: 10px;
+}
+
+.branch-lunbo-ul li a{
+	width:172px;
+	display: block;
+	height:110px;
+}
+
+
+/*=======留学专区 ========*/
+
+.branch-liuxue-top{
+	width:100%;
+	background:#f3f3f3;
+	height:42px;
+	margin-top: 20px;
+}
+
+.branch-liuxue-top-h3{
+	float:left;
+	padding:0 20px;
+	line-height: 42px;
+	color:#fff;
+	background:#C13232;
+	font-weight: normal;
+	font-size: 18px;
+}
+
+.branch-liuxue-top-ul{
+	float:right;
+}
+
+.branch-liuxue-top-ul li{
+	float:left;
+}
+
+.branch-liuxue-top-ul li a{
+	padding:0 25px;
+	line-height: 42px;
+	font-size: 16px;
+   
+    color: #333;
+    border-right: 2px #333 solid;
+    cursor: pointer;
+}
+
+.branch-liuxue-top-ul li a.active{
+	color:#c13232;
+}
+
+.branch-liuxue-con{
+	margin-top: 20px;
+}
+
+/*===========申请案列============*/
+.branch-liuxue-case{
+	width:433px;
+	float:left;
+	border:1px solid #dcdcdc;
+}
+
+.branch-liuxue-case-ul{
+	padding:0 8px;
+}
+
+.branch-liuxue-case-ul li{
+	padding:20px 0 20px 12px;
+	border-bottom:1px dashed #dcdcdc;
+}
+
+.branch-liuxue-case-img{
+	width:120px;
+	height:160px;
+	float:left;
+	margin-right: 20px;
+}
+
+.branch-liuxue-case-right{
+	float:left;
+	
+	width:265px;
+}
+
+.branch-liuxue-case-list{
+	 width:100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 12px;
+    font-size: 14px;
+   
+    color: #666;
+}
+
+.branch-liuxue-case-title{
+	
+    
+   line-height: 16px;
+  
+    font-size: 16px;
+    margin-top: 0;
+
+}
+
+.branch-liuxue-case-title a{
+	color: #c13232;
+
+}
+
+/*===========留学专区  中间内容===========*/
+
+.branch-liuxue-center{
+  	margin-right: 20px;
+  	margin-left: 20px;
+  	float:left;
+  	width:462px;
+}
+
+.branch-liuxue-center-top{
+	display: block;
+
+}
+
+.branch-liuxue-center-top-title{
+	font-size: 20px;
+    color: #c13232;
+}
+
+.branch-liuxue-center-top-con{
+	padding:20px 0;
+	border-bottom:1px dashed #dcdcdc;
+}
+
+.branch-liuxue-major-img{
+	float:left;
+	width:185px;
+	height:120px;
+	margin-right: 20px;
+}
+
+.branch-liuxue-major-p{
+	font-size: 14px;
+    color: #666;
+    line-height: 30px;
+    overflow: hidden;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+   
+}
+
+
+.branch-liuxue-center-case{
+	padding:20px 0;
+	border-bottom: 1px dashed #dcdcdc;
+}
+
+.branch-liuxue-center-case-title{
+	 font-size: 16px;
+    color: #c13232;
+}
+
+.branch-liuxue-center-case-gd{
+	width: 60px;
+    height: 22px;
+    float: right;
+    line-height: 20px;
+    font-size: 12px;
+    color: #666666;
+    border: 1px solid #dcdcdc;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.branch-liuxue-center-case-ul li{
+	margin-top: 15px;
+}
+
+.branch-liuxue-center-case-ul li a{
+	font-size: 14px;
+    color: #666;
+    display: block;
+}
+
+.branch-liuxue-center-case-date{
+	float:right;
+}
+
+.branch-liuxue-center-college{
+	padding:15px 20px 0 20px;
+}
+
+
+.college-country{
+	background: #EFEFEF;
+    padding: 13px 20px;
+    position: relative;
+}
+
+.college-select-box{
+	width:180px;
+    position: relative;
+    height:30px;
+    padding-left: 20px;
+    background:#fff;
+     font-size: 12px;
+    color: #333;
+    cursor: pointer;
+    background: #fff url(../img/drop-down_img.png) 92% center no-repeat;
+    line-height: 30px;
+    border:none;
+    outline-style: none;
+
+}
+
+
+
+.college-country .text{
+	line-height: 30px;
+    height: 30px;
+    color: #333;
+    
+    width: 270px;
+    padding-left:20px;
+    -moz-border-radius: 4%;
+    -webkit-border-radius: 4%;
+    border-radius: 4%;
+    font-family: 'Helvetica','Microsoft YaHei';
+    font-size: 12px;
+    border: 0;
+   outline-style: none;
+   margin-right: 5px;
+}
+
+
+/*==========留学专区 侧边栏 大学排名===============*/
+
+.branch-liuxue-sidebar{
+	float:left;
+	width:243px;
+}
+
+.branch-ranking{
+	border:1px solid #dcdcdc;
+}
+
+.branch-ranking-title{
+	margin-top: 10px;
+	padding:0 15px;
+}
+
+.branch-ranking-slect{
+	border:none;
+	outline-style: none;
+	width: auto;
+     padding: 0 77px;
+	height:30px;
+	color:#fff;
+	font-size: 14px;
+
+	background: #c13232 url(../img/overseas_watch_top_img.png) 92% center no-repeat;
+}
+
+.branch-ranking-slect option{
+	background:#fff;
+	text-align: center;
+	outline-style: none;
+	color:#333;
+	height: 30px;
+	border:none;
+}
+
+
+.branch-ranking-ul li{
+	height:30px;
+	
+
+}
+
+.branch-ranking-ul li a{
+	display: block;
+	padding-left: 20px;
+	font-size: 14px;
+    color: #666;
+    line-height: 30px;
+}
+
+/*===========留学奖学金=========*/
+
+.branch-scholarship{
+	border:1px solid #dcdcdc;
+	margin-top: 20px;
+}
+
+.branch-scholarship-img{
+	width:100%;
+	height:140px;
+	display: block;
+}
+
+.branch-scholarship-list a{
+	display: block;
+	height:30px;
+	color:#666;
+	font-size: 14px;
+	line-height: 30px;
+	padding-left: 20px;
+}
+
+
+/*========广告=======*/
+
+.branch-advertising-map{
+	height:130px;
+	margin-top:20px;
+	margin-bottom: 20px;
+}
+
+.branch-advertising-map img{
+  width:100%;
+  height:130px;
+}
+
+/*============留学方案==========*/
+
+.branch-product{
+	border:1px solid #dcdcdc;
+	margin-top:20px;
+	
+}
+
+.branch-product-list{
+	display: none;
+}
+
+.branch-product-left-ul{
+	float:left;
+	border-right: 1px solid #dcdcdc;
+	width:800px;
+}
+
+
+.branch-product-left-ul li{
+	padding:20px;
+	border-bottom:1px solid #dcdcdc;
+}
+
+.branch-product-left-ul li a{
+	display: block;
+	
+}
+
+.branch-product-left-img{
+	float:left;
+	width:180px;
+	height:140px;
+	margin-right:20px;
+
+}
+
+
+.branch-product-left-div{
+	float:left;
+	width:560px;
+}
+
+.branch-product-left-title{
+	height:40px;
+	border-bottom: 1px dashed #dcdcdc
+}
+
+.branch-product-left-title span{
+	font-size: 15px;
+    color: #333;
+}
+
+.branch-product-left-txt{
+	padding:5px 0;
+}
+
+.branch-product-left-txt span{
+	display: inline-block;
+	width:49%;
+	font-size: 14px;
+	color:#666;
+	line-height: 14px;
+	margin-top: 15px;
+}
+
+
+
+.branch-product-right{
+	float:left;
+	width:377px;
+}
+
+.branch-product-right-ul{
+	padding-left:20px;
+}
+
+.branch-product-right-ul li{
+	margin-top: 15px;
+}
+
+.branch-product-right-ul li a{
+	display: block;
+	font-size: 14px;
+	color:#666;
+	line-height: 15px;
+	width:357px;
+    
+}
+
+.ellipsis{
+	overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.branch-product-right-img{
+	width:140px;
+	height:140px;
+	float:left;
+	margin-right: 20px;
+}
+
+.branch-product-right-info{
+	float:left;
+
+}
+
+.branch-product-right-info div{
+	font-size: 12px;
+	margin-top:15px;
+	color:#333;
+	line-height: 15px;
+}
+
+.branch-product-right-info .branch-info-title{
+	margin-top: 0;
+	color:#c13232;
+	font-size: 15px;
+	width:197px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+
+.branch-product-right-info p{
+	font-size: 12px;
+	line-height: 30px;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    color:#666;
+}
+
+/*=========媒体播报========*/
+
+.branch-media{
+	border:1px solid #dcdcdc;
+	width:378px;
+	float:left;
+}
+
+
+.branch-media-img{
+	width:130px;
+	height:130px;
+}
+
+
+
+.branch-media-ul{
+	padding:0 20px;
+}
+
+.branch-media-ul li{
+	margin-top:15px;
+}
+
+
+.branch-media-ul li a{
+	display: block;
+	font-size: 14px;
+	color:#666;
+	line-height: 15px;
+	width:338px;
+    
+}
+
+.branch-media-info {
+	float:left;
+	width:188px;
+}
+
+.branch-media-info div{
+	font-size: 12px;
+	margin-top:15px;
+	color:#333;
+	line-height: 15px;
+}
+    
+.branch-media-info .branch-media-info-title{
+	margin-top: 0;
+	color:#c13232;
+	font-size: 15px;
+	
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+
+.branch-media-info p{
+
+	font-size: 12px;
+	line-height: 30px;
+	display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    color:#666;
+}
+
+
+
+/*=======广告4=====*/
+
+.branch-media-map{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	width:340px;
+	height:190px;
+	margin-left: 20px;
+}
+
+.branch-media-map img{
+	width:100%;
+	height:190px;
+	display: block;
+}
+
+
+/*========增值服务===========*/
+
+.branch-service{
+	width:378px;
+	border:1px solid #dcdcdc;
+	margin-left: 20px;
+	margin-right:20px;
+	float:left;
+}
+
+.branch-service-ul{
+	padding:0 10px;
+}
+
+.branch-service-ul li{
+	padding:20px 10px;
+	border-bottom: 1px dashed #dcdcdc;
+}
+
+.branch-service-ul li a{
+	display: block;
+}
+
+.branch-service-title{
+	font-size: 15px;
+    color: #c13232;
+    display: -webkit-box;
+    overflow:hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    margin-bottom: 10px;
+
+}
+
+.branch-service-p{
+	font-size: 14px;
+    color: #666;
+    line-height: 24px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+
+.branch-service-img{
+	width:157px;
+	height:90px;
+	margin-top: 10px;
+}
+
+
+/*============留学社区===================*/
+
+.branch-community{
+	width:378px;
+	border:1px solid #dcdcdc;
+	float:left;
+}
+
+
+.branch-community-img{
+	width:105px;
+	height:140px;
+}
+
+.branch-community-info p{
+	line-height: 24px;
+	margin-top: 5px;
+	 overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+
+
+/*=============专家==================*/
+.branch-expert{
+	width:398px;
+	border:1px solid #dcdcdc;
+	padding:20px;
+	position: relative;
+	float:left;
+	margin-right: 20px;
+}
+
+.branch-expert-title{
+	font-size: 16px;
+	color:#c13232;
+	margin-bottom: 8px;
+}
+
+.branch-expert p{
+	font-size: 14px;
+	line-height: 25px;
+	 overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+
+}
+
+
+.branch-expert-lunbo{
+	float:left;
+}
+

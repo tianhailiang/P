@@ -1,0 +1,29 @@
+
+{% macro cooper(items,helper) %}
+
+<!--成功案例/合作机构-->
+<div class="successfulcase">
+  <div class="successfulcasecon">
+    <div></div><h3 class="dui-text-xlarge">合作机构</h3><a target="_blank" href="javascript:void(0);"></a>
+  </div>
+  <div class="successfulcases" style="background: #fff">
+    {% for vas in items %}
+    {% if loop.index >=7 and loop.index <=17 %}
+      {% if loop.index==7 %}
+      <a title="{{vas.title}}" target="_blank"  href="{{helper.urlgen('values', vas.id | string)}}">
+          <div class="successfulcaseing" style="width: 240px;height: 135px; background: #CCCCCC; margin: 20.6px 20px">
+           <img src="{{helper.imageThumb(vas.thumb,'240x180')}}" alt="">
+          </div>
+      </a>
+      {% else %}
+        <div class="overseas_apply_item_r_c">
+          <img title="{{vas.title}}" class="dian" src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">
+          <a target="_blank" href="{{helper.urlgen('values', vas.id | string)}}" title="{{vas.title}}">{{vas.title | ellipsis(15)}}</a>
+        </div>
+      {% endif %}
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endmacro %}

@@ -1,0 +1,15 @@
+<!--最新资讯-->
+<div class="expert_unscramble clearfix">
+  <div class="expert_unscramble_title">
+    <i></i><h3>最新资讯</h3> <a target="_blank" href="{{ helper.urlgen('news') }}" rel="nofollow"><em class="iconfont">&#xe602;</em></a>
+  </div>
+  <div class="expert_unscramble_content">
+    {% for item in zuixinzixun %}
+    <div class="overseas_apply_item_r_c">
+      <img class="dian" src="{{helper.cdnhost}}/assets/img/apply_item_r.png" alt="">
+      <a target="_blank" href="{{helper.urlgen('news', item.id | string,'n='+item.country)}}">{{item.title}}</a>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>

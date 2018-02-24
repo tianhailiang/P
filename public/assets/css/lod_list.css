@@ -1,0 +1,58 @@
+.list-h{
+  height:130px;
+  margin-top: 20px;
+}
+.study-foc{
+  background: #ffffff;
+}
+
+.rexian{
+  margin-top:20px;
+}
+.rexian p{
+  height: 36px;
+  line-height: 36px;
+  font-size:16px;
+  color:#333333;
+}
+.rexian p span{
+  display:block;
+  width: 36px;
+  height:36px;
+  background: #C13232;
+  float:left;
+  line-height: 36px;
+  text-align: center;
+  margin-right:10px;
+}
+.rexian p i{
+  color:#ffffff;
+  font-size:18px;
+
+}
+
+.rexian p em{
+  font-style:normal;
+  display:block;
+  float:left
+}
+.booking{
+  margin-top:20px;
+}
+.last-news{
+  margin-top:20px;
+}
+.huod-lod{
+  margin-top:20px;
+  border:1px solid #dcdcdc;
+}
+.star-expert{
+  margin-top: 20px;
+}
+.successcase{
+  margin-top: 20px;
+
+}
+.page{
+  background: #ffffff;
+}

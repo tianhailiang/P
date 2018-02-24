@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% include "header_new.html" %}
+ <!--[if lt IE 10]>
+  <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+  <![endif]-->
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/upload_photo.css"/>
+<style>
+	.rel-case-map{
+	 	width:100%;
+	 	height:130px;
+	}
+	.rel-case-map img{
+	 	width:100%;
+	 	height:100%;
+	 	display: block;
+	 }
+</style>
+</head>
+<body style="background: #f5f5f5">
+  <div id="photoDialog" style="display: none;"><!---->
+    <!--确认pop-->
+    <div class="dialog-cont" id="dialog-cont" style="display: none;">
+      <div class="success-info">
+        <i class="iconfont" style="color:#0093d2;font-size: 18px;">&#xe617;
+        </i>
+        已成功上传<span id="success-num" style="color:#c13232;">0</span>张照片
+      </div>
+      <div class="all-desc">
+        <div style="font-size: 16px;">统一添加照片信息</div>
+        <div class="desc clearfix">
+          <div class="left">
+          <label for="all-desc-info">照片描述：</label>
+          <input type="text" id="all-desc-info" placeholder="请输入照片描述……" maxlength="30" />
+        </div>
+        <div class="save-btn save-all-desc">保存</div>
+        </div>
+      </div>
+
+      <div class="photos" >
+        <div class="clearfix">
+            <label for="photoImage" class="upload-label" id="surePreview">
+              <i class="iconfont add-icon">&#xe616;</i>
+            </label>
+        </div>
+      </div>
+      <div class="btns">
+        <div class="save-btn cancel-btn" id="return-album">清空并退出</div>
+        <div class="save-btn save-photos" id="save-photos">保存</div>
+      </div>
+    </div>
+    <!--编辑pop-->
+    <div class="edit-pop" id="edit-pop" style="display: none;">
+    </div>
+  </div>
+  {% include "widget/top/top.html" %}
+  {% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+  {{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+  <div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+	<!-- ==广告1== -->
+	<div class="rel-case-map" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 3 %}CANZAN{% endif %}_CENTER_ALBUM_SEAT1">
+	</div>
+  </div>
+  <div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+    <div class="dui-layout-silde right">
+        <div class="clearfix">
+            {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+            {% if login_info.usertype == 1 %} {#用户#}
+            {{ community_advisor.user(userinfo,helper) }}
+            {% elif login_info.usertype == 2 %} {#顾问#}
+            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {% elif login_info.usertype == 3 %} {#参赞#}
+            {{ community_advisor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+        </div>
+        {% if login_info.usertype == 1 %} {#用户#}
+        {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+        {{ user_side_menu.user_side_menu('我的主页', helper) }}
+        {% elif login_info.usertype == 2 %} {#顾问#}
+        {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+        {{ adviser_side_menu.adviser_side_menu('我的主页', '我的相册', helper) }}
+        {% elif login_info.usertype == 3 %} {#参赞#}
+        {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+        {{ canzan_side_menu.canzan_side_menu('我的主页', '我的相册', helper) }}
+        {% endif %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con dui-box-shadow">
+        <div class="photo-cont right-cont">
+            <div class="right-title clearfix">
+                <div class="tit">我的相册</div>
+<!--                <div class="photo-upload-box">
+                    <form id="uploadForm" method="post" enctype="multipart/form-data" action="http://apis.jjlvip.cn:3600/cmsapi/input_upload">
+                        <input id="photoImage" type="file" multiple="multiple" name="upload" style="display: none;"/>
+                        <label class="album-time tit-time-btn" for="photoImage">
+                            <i class="iconfont" style="margin-right: 0px;font-size: 14px;">&#xe6c6;</i>
+                            <span style="font-size: 14px;line-height: 24px;vertical-align: baseline;">上传照片</span>
+                        </label>
+                        <input type="submit"/>
+                    </form>
+                </div>-->
+                <div class="photo-upload-box">
+                    <form id="uploadForm">
+                        <input id="photoImage" type="file" multiple="multiple" name="upload" style="display: none;"/>
+                        <label class="album-time tit-time-btn" for="photoImage">
+                            <i class="iconfont" style="margin-right: 0px;font-size: 14px;">&#xe6c6;</i>
+                            <span style="font-size: 14px;line-height: 24px;vertical-align: baseline;">上传照片</span>
+                        </label>
+                    </form>
+                </div>
+            </div>
+            <div class="right-main clearfix">
+                <!--图片-->
+            </div>
+            <div id="photo-blank" style="display: none;">
+                {% include "widget2/blank/blank.html" %}
+            </div>
+            <div class="loadMore" data-page="" style="display: none;">
+                <span>加载更多</span>
+                <i class="iconfont">&#xe60b;</i>
+            </div>
+        </div>
+    </div>
+  </div>
+  {% include "widget/footer/footer.html" %}
+  <script>
+    var login_ss = null;
+    if($.cookie('login_ss') != undefined){
+        login_ss = JSON.parse($.cookie('login_ss'));  
+    }
+  </script>
+  <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/select.js"></script>
+  <script  src="{{helper.cdnhost}}/assets/js/upload_photoFile.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+  <script>
+    $(function () {
+        function to_album_add(advisor_id, arr) {
+            $.ajax({
+                url: '/soapi/album_add',
+                type: 'POST',
+                datatype: 'json',
+                data: {
+                    u_id: advisor_id,
+                    data: JSON.stringify(arr)
+                },
+                success: function (result) {
+                    console.log(result)
+                    if(result.code == 0){
+                      layer.msg('保存成功');
+                      window.setTimeout(function(){
+                        window.location.reload();
+                      },1000);  
+                    }else{
+                      layer.msg(result.err)    
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('保存照片出错了！！');
+                }
+            })
+        }
+        function to_album_update(uid, photoid, title) {
+            $.ajax({
+                url: '/soapi/album_update',
+                type: 'POST',
+                datatype: 'json',
+                data: {
+                    u_id: uid,
+                    album_id: photoid,
+                    title: title
+                },
+                success: function (result) {
+                    if(result.code == 0){
+                      layer.msg('修改成功');
+                      window.setTimeout(function(){
+                        window.location.reload();
+                      },1000);  
+                    }else{
+                      
+                    }      
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('修改照片出错了！！');
+                }
+            })
+        }
+        function to_album_del(uid,photoid) {
+            $.ajax({
+                url: '/soapi/album_del',
+                type: 'POST',
+                datatype: 'json',
+                data: {
+                    u_id:uid,
+                    album_id: photoid
+                },
+                success: function (result) {
+                    console.log(result)
+                    if(result.code == 0){
+                      layer.msg('删除成功')
+                      window.setTimeout(function(){
+                        window.location.reload();
+                      },1000);    
+                    }   
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(errorThrown);
+                }
+            })
+        }
+        //图片上传
+        var params = {
+            fileInput: $("#photoImage").get(0),
+            upButton: $("#fileSubmit").get(0),
+            url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+            filter: function(files) {
+                var arrFiles = [];
+                for (var i = 0, file; file = files[i]; i++) {
+                    if (file.type.indexOf("image") == 0) {
+                        if (file.size >= 1024000) {
+                            layer.msg('您这张"'+ file.name +'"图片大小过大，应小于1M');
+                        } else {
+                            arrFiles.push(file);
+                        }
+                    } else {
+                        layer.msg('文件"' + file.name + '"不是图片。');
+                    }
+                }
+                return arrFiles;
+            },
+            onSelect: function(files) {
+                $('#photoDialog').show();
+                $('#dialog-cont').show();
+                var html = '';
+                for(var i =0;i<files.length;i++){
+                   html +='<div class="photo-cell" data-file="'+files[i].name+'" data-index="'+ZXXFILE.num+'">'+
+                          '<div class="photo-img">'+
+                            '<span class="delete-btn sure_delete" >x'+
+                            '</span>'+
+                            '<img src="" />'+
+                          '</div>'+
+                          '<div class="photo-desc">'+
+                            '<input type="text" placeholder="请输入照片描述" class="desc-item" maxlength="30" />'+
+                            '<div><span class="input-num">0</span>/30</div>'+
+                         '</div>'+
+                        '</div>';
+                }
+
+                $("#surePreview").after(html);
+                  //删除方法
+                $(".sure_delete").click(function() {
+                  $(this).parent().parent().remove();
+                  ZXXFILE.uploadNum--;
+                  $("#success-num").text(ZXXFILE.uploadNum);
+                });
+                //输入整体描述
+                $('.desc-item').blur(function(event){
+                    var curInputValLen = $(this).val().length;
+                    }).keyup(function(event){
+                    var curInputValLen = $(this).val().length;
+                    if (curInputValLen > 30) {
+                      $(this).val($(this).val().substring(0, 30));
+                      $(this).next().find('.input-num').text(30);
+                    }
+                    else {
+                      $(this).next().find('.input-num').text(curInputValLen);
+                    }
+                });
+                //保存整体描述
+                $(".save-all-desc").click(function() {
+                    var descInput = $("#all-desc-info");
+                    var allDescValue = descInput.val();
+                    var upSureList = $('.photo-cell');
+                    if (allDescValue == '') {
+                        layer.msg("照片描述不能为空");
+                    }
+                    else {
+                      $.each(upSureList, function(index,value) {
+                        $(this).find('input').val(allDescValue);
+                        $(this).find('.input-num').text(allDescValue.length);
+                      })
+                    }
+                });    
+            },
+            onDragOver: function() {
+                $(this).addClass("upload_drag_hover");
+            },
+            onDragLeave: function() {
+                $(this).removeClass("upload_drag_hover");
+            },
+            onProgress: function(file, loaded, total) {
+                var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+                eleProgress.show().html(percent);
+            },
+            onSuccess: function(file, response) {
+                console.log('onSuccess~~~thl', file, response);
+                $("#uploadForm").get(0).reset();
+                $("#success-num").text(ZXXFILE.uploadNum);
+                // console.log($(".photo-cell[data-index="+ZXXFILE.num+"]"))
+                $(".photo-cell[data-index="+ZXXFILE.num+"]").each(function(){
+                  if($(this).attr('data-file') == file.name){
+                    $(this).find('img').attr('src',fn.imageThumb(JSON.parse(response).data[0],'150x150'));
+                    $(this).find('img').attr('data-src',JSON.parse(response).data[0]);
+                  }
+                });
+            },
+            onFailure: function(file) {
+                
+            }
+        };
+        ZXXFILE = $.extend(ZXXFILE, params);
+        ZXXFILE.init();
+        $("#return-album").click(function() {
+          //返回相册
+          // window.location.reload();
+           layer.open({
+            type: 0,
+            title:'温馨提示',
+            btn:['确定','取消'],
+            closeBtn:'2',
+            content:'删除后无法撤消，确认要清空已经上传的照片吗?',
+            yes: function(index, layero){
+                $('#photoDialog').hide();
+                $('#dialog-cont').hide();
+                $(".photo-cell").each(function(){
+                  $(this).remove();
+                })
+                $("#success-num").text(0);
+                layer.close(index); 
+                ZXXFILE.uploadNum= 0;
+                ZXXFILE.num =0;
+            }         
+          });
+        });
+        //保存图片
+        $("#save-photos").click(function() {
+            var needSavePhotoArr = [];
+            var photoList = $(".photos .photo-cell");
+            var flag = true;
+            var descWarn = '';
+            $.each(photoList, function (n,vl) {
+                var curImg = $(this).find('img').attr('data-src');
+                var curDesc = $(this).find('.desc-item').val();
+                var curObj = {};
+                if (curDesc == '') {
+                    flag = false;
+                    descWarn += (n+1) + '、'; 
+                }
+                else {
+                    curObj.url = curImg;
+                    curObj.title = curDesc;
+                    needSavePhotoArr.push(curObj);
+                }
+            });
+          
+            if (flag) { //符合要求,请求后台接口
+                to_album_add(login_ss.uid,needSavePhotoArr);
+            }
+            else {
+                layer.msg('第' + descWarn.substring(0,descWarn.length-1)+ '张照片的描述不能为空！')
+            }
+        });
+        //照片分行显示
+        function limitDisplay(kaishi,changdu,maxLine,lastMonth){
+            curM = lastMonth;
+            var length = photoArr.length > (kaishi + changdu) ? (kaishi + changdu) : photoArr.length;
+            for (var i = kaishi; i < length; i++) {
+                if (curM != fn.getFormatDate(photoArr[i].add_time,2) || linePhotoNum == 4) {//换行条件
+                    linePhotoNum = 0;
+                    line++;
+                    if (line > maxLine) {
+                        break;
+                    }
+                    if(curM != fn.getFormatDate(photoArr[i].add_time,2)) {
+                        curM = fn.getFormatDate(photoArr[i].add_time,2);
+                        var disPlayMonth = curM == '01' ? fn.getFormatDate(photoArr[i].add_time,1) + '年' : curM + '月';
+                        htmlstr += '</ul></div>';
+                        htmlstr += '<div class="album-bar bar-border clearfix">';
+                        htmlstr += '<div class="album-left-box"><div class="album-time"><i class="iconfont">&#xe768;</i><span>' + disPlayMonth + '</span></div></div><ul class="album-list">';
+                    }
+                    else {
+                        htmlstr += '</ul></div>';
+                        htmlstr += '<div class="album-bar clearfix">';
+                        htmlstr += '<div class="album-left-box"></div><ul class="album-list">';
+                    }
+                }
+                htmlstr += '<li class="photo-item"><dl><dt><img src="'+photoArr[i]['url']+'" alt=""/><div class="opt-bar clearfix" data-photo_id="'+ photoArr[i]['id'] +'"><div class="opt-btn btn-border delete-btn"><i class="iconfont">&#xe8c1;</i>';
+                htmlstr += '<span>删除</span></div>';
+                htmlstr += '<div class="opt-btn edit-btn"><i class="iconfont">&#xe61c;</i><span>编辑</span></div></div></dt>';
+                htmlstr += '<dd>'+photoArr[i]['desc']+'</dd></dl></li>';
+                linePhotoNum++;
+                pNum++;
+            }
+            var newstr = htmlstr.slice(11) + htmlstr.slice(0,11);
+            // console.log(newstr);
+            $('.right-main').append($(newstr));
+            /*划过相册动效*/
+            $('.album-bar').find('dt').hover(function() {
+                $(this).find('.opt-bar').slideDown();
+            },function () {
+                $(this).find('.opt-bar').hide();
+            });
+            /*删除*/
+            $(".delete-btn").click(function() {
+                var photoId = $(this).parents('.opt-bar').data('photo_id');
+                to_album_del(login_ss.uid,photoId);
+            });
+            /*编辑*/
+            $(".edit-btn").click(function() {
+                var photoId = $(this).parents('.opt-bar').data('photo_id');
+                var photoImg = $(this).parents('.photo-item').find('img').attr('src');
+                var photoTitle = $(this).parents('.photo-item').find('dd').text();
+                var descLen = photoTitle.length;
+                var defaultHtml = '';
+                defaultHtml += '<div class="close-pop" id="close-edit-pop">x</div>'+
+                '<div class="edit-box clearfix">'+
+                '<div class="photo-cell">'+
+                '<div class="photo-img">'+
+                '<img src="'+ photoImg +'"/>'+
+                '</div>'+
+                '<div class="photo-desc">'+
+                '<input type="text" placeholder="请输入照片描述" class="desc-item" value="'+ photoTitle +'" maxlength="30" />'+
+                '<div><span class="input-num">'+ descLen +'</span>/30</div>'+
+                '</div>'+
+                '</div>'+
+                '</div>'+
+                '<div class="btns">'+
+                '<div class="save-btn save-photos" id="saveEdit">保存</div>'+
+                '</div>';
+
+                $("#photoDialog").show();
+                $("#edit-pop").show();
+                $("#edit-pop").html($(defaultHtml));
+
+                $("#close-edit-pop").click(function(){
+                    $("#photoDialog").hide();
+                    $("#edit-pop").html('');
+                    $("#edit-pop").hide();
+                });
+
+                //输入描述
+                $('.desc-item')
+                        .blur(function(event){
+                            var curInputValLen = $(this).val().length;
+                        })
+                        .keyup(function(event){
+                            var curInputValLen = $(this).val().length;
+                            if (curInputValLen > 30) {
+                                alert('描述不能超过30个字');
+                                $(this).val($(this).val().substring(0, 30));
+                                $(this).next().find('.input-num').text(30);
+                            }
+                            else {
+                                $(this).next().find('.input-num').text(curInputValLen);
+                            }
+                        });
+                //保存照片
+                $("#saveEdit").click(function() {
+                    var newPhotoTitle = $(this).parents('.btns').prev('.edit-box').find('input').val();
+                    if (newPhotoTitle.length == 0) {
+                        layer.msg('照片描述不能为空！')
+                    }
+                    else {
+                        to_album_update(login_ss.uid, photoId, newPhotoTitle);
+                        $("#close-edit-pop").trigger('click');  
+                    }
+                })
+            })
+        }
+        var photoArr = [];//存储所有相片的数组
+        var line = 0;//行数
+        var pNum = 0;//已经展示的相片条数
+        var curM = 0;//上一个月份
+        var htmlstr = '';//HTML字符串
+        var linePhotoNum = 0; //每一行相片数量
+        var pageLineInit = 8; //第一次请求的行数
+        var pageSizeInit = pageLineInit * 4; //第一次请求的相片数量
+        $.ajax({
+            url: '/soapi/get_photos',/*http://test.wecenter.com/?/api/account/album_list*/
+            type:'GET',
+            data:{
+                u_id: login_ss.uid,
+                page: 1,
+                per_page: pageSizeInit
+            },
+            dataType:'json',
+            success:function (msg) {
+                // console.log(msg)
+                if (msg.code == 0) {
+                    if (msg.data.list.length == 0) {
+                        $("#photo-blank").show();
+                    }else if (msg.data.list.length < pageSizeInit) {
+                        $('.loadMore').show().html('已展示全部照片');
+                    }
+
+                    photoArr = photoArr.concat(msg.data.list);
+                    limitDisplay(0,pageSizeInit,pageLineInit,0);
+                    $('.loadMore').attr('page',pageSizeInit/8);
+                }else {
+                    $("#photo-blank").show();
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                $("#photo-blank").show();
+                console.log('初始化出错了');
+            }
+        });
+        function loadmore () {
+            line = 0;
+            htmlstr = '';
+            var curPage = $('.loadMore').attr('page')*1+1;
+            $.ajax({
+                url: '/soapi/get_photos',
+                type:'GET',
+                data:{
+                    u_id: uid,
+                    page: curPage,
+                    per_page: 8
+                },
+                dataType:'json',
+                success:function (msg) {
+                    if (msg.code == 0) {
+                        var loadMoreLine = 2;
+                        var loadMoreSize = loadMoreLine * 4;
+                        if (msg.data.list.length < loadMoreSize) {
+                            $('.loadMore').html('已展示全部照片');
+                        }
+                        linePhotoNum = 4;
+                        photoArr = photoArr.concat(msg.data.list);
+                        limitDisplay(pNum,8,2,curM);
+                        $('.loadMore').attr('page', curPage);
+                    }
+                    else {
+                        $('.loadMore').html('加载更多出错了，请刷新');
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    console.log('加载更多出错了')
+                }
+            });
+        }
+        $('.loadMore').on('click',function () {
+            loadmore();
+        });
+    })
+  </script>
+</body>
+</html>

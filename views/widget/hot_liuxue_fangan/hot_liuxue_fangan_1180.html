@@ -1,0 +1,45 @@
+ <div class="dui-layout-lg clearfix dui-layout-padding " >
+
+    {% for item in hotLXFA %}
+
+	    <div class="hlf-col" >
+             <div class="hlf-content clearfix">
+               <a target="_blank" href="{{helper.urlgen('product',item[0].id | string, 'n=' + item[0].country)}}"><img src="{{item[0].thumb}}" class="liuxue-hot-content-img"></a>
+		        <div class="liuxue-hot-div-1">
+	                {% for list in item %}
+	                   {% if loop.first !=true %}
+
+			           <div >
+			            	<a target="_blank" href="{{helper.urlgen('product',list.id | string, 'n=' + list.country)}}" class="dui-text-warning-s">
+			            	  {{list.title}}
+			            	</a>
+			            </div>
+				      
+                      {% endif %}
+			        {% endfor %}   
+			           
+			    </div>   
+                 
+
+               </div>
+         </div>
+ 
+   {% endfor %}    
+
+</div>
+
+<script>
+	$(function(){
+		$(".hlf-col:last").css({"width":"250px"});
+		$(".liuxue-hot-div-1").each(function(){
+			$(this).find("div:last").css({"marginBottom":0});
+		});
+		
+	})
+
+</script>
+           
+
+     
+       
+

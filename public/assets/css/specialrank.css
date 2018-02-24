@@ -1,0 +1,118 @@
+/*精彩专题*/
+.splendidneescc {
+  margin: -6px 0px 18px 20px ;
+  font-size: 18px;
+}
+.splendidneesaa {
+  width: 2px;
+  height: 24px;
+  background: #C13232;
+  position: relative;
+  left: 0px;
+  top: 14px;
+}
+.splendidess {
+  width: 1180px;
+  height: 300px;
+}
+.splendidesscon {
+  width: 720px;
+  height: 300px;
+  background: blue;
+  float: left;
+}
+.splendidessing {
+  width: 440px;
+  height: 300px;
+  float: left;
+}
+.splendidessing p a {
+  font-size: 18px;
+}
+.splendidessing img {
+  position: relative;
+  top:-3px;
+  left: 0;
+}
+.splendidessing ul li {
+  font-size: 14px;
+  margin-top: 12px;
+}
+.splendidessing-li {
+  border-bottom: 1px solid #DCDCDC;
+  padding-bottom: 9px;
+}
+.splendidessing h2 {
+ margin-top: 16px;
+  font-weight: 500;
+}
+.splendidessing h2 a {
+  color: #C13232;
+}
+.splendidess-left {
+  width: 120px;
+  height: 470px;
+  float: left;
+}
+.splendidess-left a {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.splendidess-maguo {
+  background: url(../mockImg/prod-country-usa.jpg) no-repeat 0 0;
+  background-size:120px 470px;
+}
+.splendidess-yingguo {
+  background: url(../mockImg/prod-country-uk.jpg) no-repeat 0 0;
+  background-size:120px 470px;
+}
+.splendidess-jianada {
+  background: url(../mockImg/prod-country-jnd.jpg) no-repeat 0 0;
+  background-size:120px 470px;
+}
+.splendidess-ao {
+  background: url(../mockImg/prod-country-oz.jpg) no-repeat 0 0;
+  background-size:120px 470px;
+}
+.splendidess-xin{
+  background: url(../mockImg/prod-country-xxl.jpg) no-repeat 0 0;
+  background-size:120px 470px;
+}
+.splendidess-ya {
+  background: url(../mockImg/prod-country-yz.jpg) no-repeat 0 0;
+  background-size:120px 470px;
+}
+.splendidess-ou {
+  background: url(../mockImg/prod-country-oz.jpg) no-repeat 0 0;
+  background-size:120px 470px;
+}
+.splendidess-left img {
+  width: 120px;
+  height: 470px;
+}
+.splendidess-right {
+  width: 1160px;
+  *width:1060px;
+  height: 470px;
+}
+.splendidess-ing {
+  width: 326px;
+  margin-left: 20px;
+  float: left;
+}
+.splendidess-ing img{
+  width: 326px;
+  height: 182px;
+  margin-top: 19px;
+  margin-bottom: 17px;
+}
+.splendidess-ing p {
+  text-align: center;
+  font-size: 14px;
+  width: 326px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}

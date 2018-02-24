@@ -1,0 +1,93 @@
+/*�Сģ��*/
+.activity-item{
+    display: block;
+    padding:19px 0;
+}
+.activity-item .act-img img{
+    display: block;
+    width: 100%;
+    height:100%;
+}
+.activity-item .act-title{
+    font-size: 14px;
+    margin-top: 14px;
+    line-height: 26px;
+    margin-bottom: 4px;
+    color:#333;
+}
+.activity-item .act-time{
+    font-size: 12px;
+    line-height: 14px;
+    text-align: left;
+    color: #666;
+}
+.activity-item .act-btn{
+    display: block;
+    width: 115px;
+    margin: 50px auto 0;
+    height: 30px;
+    background: #C13232;
+    position: relative;
+}
+/*880���4�ָ�*/
+.activity-con-col4{
+    width: 878px;
+}
+.activity-con-col4 .activity-item {
+    width: 195px;
+}
+.activity-con-col4 .activity-item .act-img{
+    width: 195px;
+    height: 110px;
+    overflow: hidden;
+}
+/*ͨ��5�ָ�*/
+.activity-lg-col5 .activity-item {
+    width: 180px;
+    padding: 19px 19px 0 19px;
+    float: left;
+}
+.activity-lg-col5 .activity-item .act-img{
+    width: 180px;
+    height: 136px;
+    overflow: hidden;
+}
+/*�����б�*/
+.activity-con-col4{
+    width: 878px;
+}
+.activity-lg-col5{
+  
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+.act-li-list{
+    padding: 11px 0;
+}
+.act-li-list li{
+    height: 30px;
+    line-height: 30px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.act-li-list li a{
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 14px;
+    color: #333;
+}
+.activity-item .hover-color:hover{
+    color: #C13232;
+}
+.nation-act .act-img-nation img{
+    width: 195px;
+    height: 110px;
+}
+.nation-act .act-img-nation a{
+    display: block;
+    width: 197px;
+    height: 110px;
+    margin: 20px 0 16px 0
+}

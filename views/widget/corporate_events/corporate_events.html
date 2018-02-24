@@ -1,0 +1,85 @@
+{% for yearnum, yearamount in memorabilia_list.list %}
+<div class="dui-layout-lg curyear" style="background:#ffffff">
+  <div class="year-box"><h6 class="year-num">{{ yearnum | shorten(-1)}}</h6> <i class="city-icon iconfont down xiangxia">&#xe623;</i> <i class="city-icon iconfont dian">&#xe609;</i></div>
+  <div class="kong"></div>
+  {% for monthnum, monthamount in yearamount %}
+
+  <div class="month-box clearfix">
+    <div class="month-left">
+      {% if monthnum | shorten(-1)<=9 %}
+      <p class="month-num">0{{ monthnum | shorten(-1) }}</p>
+      {% else %}
+      <p class="month-num">{{ monthnum | shorten(-1) }}</p>
+      {% endif %}
+    </div>
+    <div class="month-right">
+      <i class="city-icon iconfont dian">&#xe609;</i>
+      {% for item in monthamount %}
+      <p>{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe623;</i></p>
+      <div class="dashiji-con">
+        {{ item.description }}
+      </div>
+      {% endfor %}
+    </div>
+    <div class="shiji-pic">
+      {% for item in monthamount %}
+      {% if loop.index==1 %}
+      <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+ <div class="kong"></div>
+  {% endfor %}
+  </div>
+{% endfor %}
+<script>
+  $(document).ready(function(){
+    $(".curyear").eq(0).children(".month-box").css("display","block");
+    $(".curyear").eq(0).children(".kong").css("display","block");
+    $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe60b;")
+    $(".curyear").eq(0).children(".year-box").find(".down").css("color","#c13232");
+    $(".curyear").eq(0).siblings().children(".year-box").find(".down").css("color","#999999");
+   /* $(".curyear").eq(1).children(".kong").eq(0).css("display","block");*/
+
+    $.each($(".curyear").siblings(".curyear"),function(){
+      $(this).find(".kong").eq(0).css("display","block");
+    });
+
+    $(".curyear:last").find(".kong").eq(0).css("display","none");
+    $(".year-box").eq(0).css("padding-top","20px");
+    $(document).scrollTop(0);
+  });
+  $(".down").on("click",function(){
+    $(this).html("&#xe60b;");
+    $(this).css("color","#c13232");
+    $(this) .parents(".curyear").children(".month-box").css("display","block");
+    $(document).scrollTop(500);
+    $(this).parents(".curyear").children(".kong").css("display","block");
+    $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
+    $(this).parents(".curyear").siblings().children(".kong").css("display","none");
+    $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe623;");
+    $(this).parents(".curyear").siblings().children(".year-box").find(".down").css("color","#999999");
+    $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+      $(this).find(".kong").eq(0).css("display","block");
+    });
+    $(".curyear:last").find(".kong").eq(0).css("display","none");
+    $(".curyear:last").find(".kong:last").css("display","none");
+  })
+  $(".curyear:last").find(".down").on("click",function(){
+    $(this).parents(".curyear").find(".kong").eq(0).css("display","block");
+  })
+  $(".con-btn").on("click",function(){
+    if($(this).hasClass('con-up')){
+      $(this).removeClass('con-up');
+      $(this).html("&#xe60b;").css("color","#c13232");
+      $(this).parent("p").next(".dashiji-con").css("display","block");
+    }else{
+      $(this).addClass('con-up');
+      $(this).html("&#xe623;").css("color","#999999");
+      $(this).parent("p").next(".dashiji-con").css("display","none");
+    }
+
+  })
+</script>
+

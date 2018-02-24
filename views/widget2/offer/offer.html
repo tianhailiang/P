@@ -1,0 +1,306 @@
+{% macro case_show(item, helper) %}
+<div class="offers clearfix">
+    <div class="offers-left">
+        <div class="offers-left-img">
+            <a target="_blank" href="{{helper.urlgen('case', item.id | string)}}"><img src="{{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}" alt=""></a>
+        </div>
+        <div class="offers-left-off">
+            <p class="off-p1">{{item.user_info.realname}}</p>
+            <p class="off-p2">{{item.add_time}}&nbsp;&nbsp;<span>来自 : {{item.from}}</span></p>
+            <a target="_blank" href="{{helper.urlgen('case', item.id | string)}}" class="offer-title">
+              {{item.title}}
+            </a>
+            <p class="off-p3">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:&nbsp;{{item.introduce.stu_name}}</p>
+            <p class="off-p3">录取院校&nbsp;:&nbsp;{{item.introduce.school_1}}&nbsp;&nbsp;
+            {{item.introduce.school_2}}&nbsp;&nbsp;
+            {{item.introduce.school_3}}
+            </p>
+            <p class="off-p3">录取专业&nbsp;:&nbsp;
+            {{item.introduce.dep_1}}&nbsp;&nbsp;
+            {{item.introduce.dep_2}}&nbsp;&nbsp;
+            {{item.introduce.dep_3}}
+            </p>
+            <p class="off-p3">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;{{item.edu_id | getEdu()}}</p>
+            <p class="off-p3">录取时间&nbsp;:&nbsp;{{item.introduce.admission_time}}</p>
+            <p class="off-p4">
+              <a target="_blank" href="{{helper.urlgen('case', item.id | string)}}" rel="nofollow">【查询详情】</a>
+            </p>
+        </div>
+    </div>
+    <div class="offers-right">
+        <div class="offers-right-xiala">
+            <div class="offer-xialas">
+                <span class="offer-xialadd iconfont">&#xe60b;</span>
+                <ul class="offer-xiala" >
+                    <li><a target="_blank" class="dui-text-warning-s report-btn" data-artId="{{item.id}}" data-catid="{{item.category_id}}">举报</a></li>
+                    <li><a target="_blank" class="dui-text-warning-s share-btn" data-url="{{helper.urlgen('case', item.id | string)}}" data-title ="{{item.title}}">分享</a></li>
+                </ul>
+            </div>
+        </div>
+        {% if item.introduce.offer_img.length > 0 %}
+        <div class="offers-right-off">
+            <div class="offers-right-offs">
+                <span>Offer展示:</span>
+            </div>
+            <div class="offers-right-offh">
+                {% for imgItem in item.introduce.offer_img %}
+                <div class="img-box" >
+                  <img src="{{helper.imageThumb(imgItem,'110x130')}}" alt="{{item.title}}" title="{{item.title}}">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<!-- <script>
+    function bigOffer(thisObj) {
+        var nowImg = $(thisObj).attr('src');
+        var imgList = $(thisObj).parents('.offers-right-offh').find('img');
+        layer.open({
+            title: 'offer',
+            area: '500px',
+            content: '<img src="'+ nowImg +'" style="width:100%;"/>',
+            success: function(layero, index){
+                console.log(layero, index);
+            }
+        });
+    }
+</script> -->
+{% endmacro %}
+
+{% macro case_edit(item, helper) %}
+<div class="offers clearfix">
+    <div class="offers-left">
+        <div class="offers-left-img">
+          <a target="_blank" href="{{helper.urlgen('advisor_center/case', item.id | string)}}">
+            <img src="{{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}" alt="">
+          </a>
+        </div>
+        <div class="offers-left-off">
+            <p class="off-p1">{{item.user_info.realname}}</p>
+            <p class="off-p2">{{item.add_time}}&nbsp;&nbsp;<span>来自 : {{item.from}}</span></p>
+            <a target="_blank" href="{{helper.urlgen('advisor_center/case', item.id | string)}}" class="offer-title">
+              {{item.title}}
+            </a>
+            <p class="off-p3">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:&nbsp;{{item.introduce.stu_name}}</p>
+            <p class="off-p3">录取院校&nbsp;:&nbsp;{{item.introduce.school_1}}&nbsp;&nbsp;
+            {{item.introduce.school_2}}&nbsp;&nbsp;
+            {{item.introduce.school_3}}
+            </p>
+            <p class="off-p3">录取专业&nbsp;:&nbsp;
+            {{item.introduce.dep_1}}&nbsp;&nbsp;
+            {{item.introduce.dep_2}}&nbsp;&nbsp;
+            {{item.introduce.dep_3}}
+            </p>
+            <p class="off-p3">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;{{item.edu_id | getEdu()}}</p>
+            <p class="off-p3">录取时间&nbsp;:&nbsp;{{item.introduce.admission_time}}</p>
+            <p class="off-p4"><a target="_blank" href="{{helper.urlgen('advisor_center/case', item.id | string)}}" rel="nofollow">【查询详情】</a></p>
+        </div>
+    </div>
+    <div class="offers-right">
+        <div class="offers-right-xiala">
+            <div class="offer-opt-bar clearfix">
+                <div class="opt-btn red-border delete deleteArticleBtn" onclick="deleteOffer($(this), {{item.uid}}, {{item.id}})">
+                    <i class="iconfont">&#xe8c1;</i>
+                    <span>删除</span>
+                </div>
+                <div class="opt-btn edit">
+                    <i class="iconfont">&#xe61c;</i>
+                    <a target="_blank" href="{{helper.urlgen('advisor_center/postcase', item.id | string)}}">编辑</a>
+                </div>
+            </div>
+            <div class="offer-xialas">
+                <span class="offer-xialadd iconfont">&#xe60b;</span>
+                <ul class="offer-xiala" >
+                    <li><a target="_blank" class="dui-text-warning-s report-btn" data-artId="{{item.id}}" data-catid="{{item.category_id}}">举报</a></li>
+                    <li><a target="_blank" class="dui-text-warning-s share-btn" data-url="{{helper.urlgen('case', item.id | string)}}" data-title ="{{item.title}}">分享</a></li>
+                </ul>
+            </div>
+        </div>
+        {% if item.introduce.offer_img.length > 0 %}
+        <div class="offers-right-off">
+            <div class="offers-right-offs">
+                <span>Offer展示:</span>
+            </div>
+            <div class="offers-right-offh">
+                {% for imgItem in item.introduce.offer_img %}
+                <div class="img-box" >
+                  <img src="{{helper.imageThumb(imgItem,'110x130')}}" alt="">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    function deleteOffer (thisObj, uId, articleId) { //删除文章
+        $.ajax({
+            url: '/soapi/delete_article',
+            type: 'POST',
+            datatype: 'json',
+            data: {
+                u_id: uId,
+                article_id: articleId
+            },
+            success: function (result) {
+                console.log(result);
+                if(result.code == 0){
+                   layer.msg('删除成功');
+                   window.setTimeout(function(){
+                     window.location.reload();
+                   },1000);
+                }else{
+                    layer.msg('删除失败')
+                }
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log(errorThrown)
+            }
+        })
+    }
+</script>
+{% endmacro %}
+
+{% macro case_fav(item, helper) %}
+<div class="offers clearfix">
+    <div class="offers-left">
+        <div class="offers-left-img">
+          <a target="_blank" href="{{helper.urlgen('case', item.id | string)}}">
+            <img src="{{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}" alt="">
+          </a>
+        </div>
+        <div class="offers-left-off">
+          <a target="_blank" href="{{helper.urlgen('blog', item.id | string)}}"><p class="off-p1">{{item.user_info.realname}}</p></a>
+            <p class="off-p2">{{item.add_time}}&nbsp;&nbsp;<span>来自 : {{item.from}}</span></p>
+            <a target="_blank" href="{{helper.urlgen('case', item.id | string)}}" class="offer-title">
+              {{item.title}}
+            </a>
+            <p class="off-p3">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:&nbsp;{{item.introduce.stu_name}}</p>
+            <p class="off-p3">录取院校&nbsp;:&nbsp;{{item.introduce.school_1}}&nbsp;&nbsp;
+            {{item.introduce.school_2}}&nbsp;&nbsp;
+            {{item.introduce.school_3}}
+            </p>
+            <p class="off-p3">录取专业&nbsp;:&nbsp;
+            {{item.introduce.dep_1}}&nbsp;&nbsp;
+            {{item.introduce.dep_2}}&nbsp;&nbsp;
+            {{item.introduce.dep_3}}
+            </p>
+            <p class="off-p3">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;{{item.edu_id | getEdu()}}</p>
+            <p class="off-p3">录取时间&nbsp;:&nbsp;{{item.introduce.admission_time}}</p>
+            <p class="off-p4"><a target="_blank" href="{{helper.urlgen('case', item.id | string)}}" rel="nofollow">【查询详情】</a></p>
+        </div>
+    </div>
+    <div class="offers-right">
+        <div class="offer-opt-bar clearfix" style="z-index: 1000">
+            <div class="opt-btn delete" onclick="cancelFav($(this), {{item.id}})">
+                <i class="iconfont">&#xe8c1;</i>
+                <span>删除</span>
+            </div>
+        </div>
+        <div class="offers-right-xiala">
+            <div class="offer-xialas">
+                <span class="offer-xialadd iconfont">&#xe60b;</span>
+                <ul class="offer-xiala" >
+                    <li>
+                      <a target="_blank" class="dui-text-warning-s report-btn" data-artId="{{item.id}}" data-catid="{{item.category_id}}">举报
+                      </a>
+                    </li>
+                    <li><a target="_blank" class="dui-text-warning-s share-btn" data-url="{{helper.urlgen('case', item.id | string)}}" data-title ="{{item.title}}">分享</a></li>
+                </ul>
+            </div>
+        </div>
+        {% if item.introduce.offer_img.length > 0 %}
+        <div class="offers-right-off">
+            <div class="offers-right-offs">
+                <span>Offer展示:</span>
+            </div>
+            <div class="offers-right-offh">
+                {% for imgItem in item.introduce.offer_img %}
+                <div class="img-box" >
+                  <img src="{{helper.imageThumb(imgItem,'110x130')}}" alt="">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+<script>
+    function cancelFav (thisObj, articleId) { //取消案例收藏
+        $.ajax({
+            url: '/soapi/favorite_article',
+            type: 'POST',
+            data: {
+                article_id: articleId
+            },
+            dataType:'jsonp',
+            jsonpCallback:'cb',
+            success: function (result) {
+                if(result.code == 0){
+                  layer.msg('删除收藏成功');
+                  window.setTimeout(function(){
+                    window.location.reload();
+                  },1000); 
+                }else{
+                  layer.msg('删除失败')
+                } 
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                console.log(errorThrown)
+            }
+        })
+    }
+</script>
+{% endmacro %}
+
+{% macro case_leave(item, helper) %}
+<div class="offers clearfix">
+    <div class="offers-left">
+        <div class="offers-left-off">
+            <a target="_blank" href="{{helper.urlgen('case', item.id | string)}}" class="offer-title">
+              {{item.title}}
+            </a>
+            <p class="off-p3">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:&nbsp;{{item.introduce.stu_name}}</p>
+            <p class="off-p3">录取院校&nbsp;:&nbsp;{{item.introduce.school_1}}&nbsp;&nbsp;
+            {{item.introduce.school_2}}&nbsp;&nbsp;
+            {{item.introduce.school_3}}
+            </p>
+            <p class="off-p3">录取专业&nbsp;:&nbsp;
+            {{item.introduce.dep_1}}&nbsp;&nbsp;
+            {{item.introduce.dep_2}}&nbsp;&nbsp;
+            {{item.introduce.dep_3}}
+            </p>
+            <p class="off-p3">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;{{item.edu_id | getEdu()}}</p>
+            <p class="off-p3">录取时间&nbsp;:&nbsp;{{item.introduce.admission_time}}</p>
+            <p class="off-p4"><a target="_blank" href="{{helper.urlgen('case', item.id | string)}}" rel="nofollow">【查询详情】{{item.introduce.offer_img}}</a></p>
+        </div>
+    </div> 
+    <div class="offers-right">
+        <div class="offers-right-xiala">
+            <div class="offer-xialas">
+                <span class="offer-xialadd iconfont">&#xe60b;</span>
+                <ul class="offer-xiala" >
+                    <li><a target="_blank" class="dui-text-warning-s report-btn" data-artId="{{item.id}}" data-catid="{{item.category_id}}">举报</a></li>
+                    <li><a target="_blank" class="dui-text-warning-s share-btn" data-url="{{helper.urlgen('case', item.id | string)}}" data-title ="{{item.title}}">分享</a></li>
+                </ul>
+            </div>
+        </div>
+        {% if item.introduce.offer_img.length > 0 %}
+        <div class="offers-right-off">
+            <div class="offers-right-offs">
+                <span>Offer展示:</span>
+            </div>
+            <div class="offers-right-offh">
+                {% for imgItem in item.introduce.offer_img %}
+                <div class="img-box" >
+                  <img src="{{helper.imageThumb(imgItem,'110x130')}}" alt="">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endmacro %}

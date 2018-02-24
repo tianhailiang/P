@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title></title>
+  <!--<link rel="shortcut icon" href="/favicon.ico">-->
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+  <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+  <link rel="stylesheet" href="../../widget/base.css"/>
+  <link rel="stylesheet" href="../../../public/statics/jjl/css/dui.min.css"/>
+  <link rel="stylesheet" href="../../../public/statics/jjl/css/dui-append.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../widget/academy/academy.css">
+  <link rel="stylesheet" type="text/css" href="../../widget/academy/academy1.css">
+  <link rel="stylesheet" type="text/css" href="../../widget/academy/academy2.css">
+  <link rel="stylesheet" type="text/css" href="../../widget/academy/academy3.css">
+
+</head>
+<body>
+<div class="dui-layout-lg clearfix">
+  <div class="dui-layout-border dui-layout-padding clearfix">
+{% for item in data %}
+    <div class="dui-layout-col5">
+      <div><a target="_blank" href=""><img class="col5-p1-p2-a1" src="{{ item.imgUrl }}" alt=""></a></div>
+      <p class="col5-p1-p2-a2"><a class="dui-text-warning-s" href="">{{ item.xueyuan }}</a></p>
+      <p class="col5-p1-p2-a3"><a class="dui-text-warning-ss" href="">{{ item.jianjie }}</a></p>
+    </div>
+{% endfor %}
+    </div>
+</div>
+
+
+<div class="dui-layout-lg clearfix">
+  <div class="dui-layout-con">
+    <div class="dui-layout-border dui-layout-padding clearfix">
+  {% for item in data %}
+  {% if loop.index <=6%}
+  <div class="dui-con-col3">
+    <div><a target="_blank" href=""><img class="col3-p1-p1-a1" src="{{ item.imgUrl }}" alt=""></a></div>
+    <p class="col3-p1-p1-a2"><a class="dui-text-warning-ss" href="" target="_blank">{{ item.xueyuan }}</a></p>
+  </div>
+  {% endif %}
+  {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+<div class="dui-layout-lg clearfix">
+  <div class="dui-layout-con ">
+     <div class="dui-layout-border dui-layout-padding clearfix">
+    {% for item in data %}
+    {% if loop.index <=6 %}
+     <div class="dui-con-col3">
+        <div><a target="_blank" href=""><img class="col3-p1-p2-a1" src="{{ item.imgUrl }}" alt=""></a></div>
+            <p class="col3-p1-p2-a2"><div class="col3-p1-p2-a4">{{ loop.index }}</div><a class="dui-text-warning-s col3-p1-p2-a5" target="_blank" href="">{{ item.xueyuan }}</a></p>
+            <p class="col3-p1-p2-a3"><a class="dui-text-warning-ss" href="" target="_blank">{{ item.jianjie }}</a></p>
+     </div>
+  {% endif %}
+  {% endfor %}
+     </div>
+   </div>
+</div>
+
+
+<div class="dui-layout-lg  clearfix">
+  <div class="dui-layout-border dui-layout-padding clearfix">
+  {% for item in data %}
+  {% if loop.index <=3%}
+  <div class="dui-layout-col3">
+    <div><a target="_blank" href=""><img class="col3-t-p1-p2-a1" src="{{ item.imgUrl }}" alt=""></a></div>
+    <p class="col3-t-p1-p2-a2"><a class="dui-text-warning-s" href="" target="_blank">{{ item.xueyuan }}</a></p>
+    <p class="col3-t-p1-p2-a6"><a class="dui-text-warning-ss" href="" target="_blank">{{ item.jianjie }}</a></p>
+  </div>
+  {% endif %}
+  {% endfor %}
+     </div>
+</div>
+</body>
+</html>

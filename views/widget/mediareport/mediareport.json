@@ -1,0 +1,36 @@
+{
+  "code": 200,
+  "message": "获取成功",
+  "data": [
+    {
+      "id": 55,
+      "name": "您拥有该产品的版权您拥有该产品的版权您拥有该产品的版权您拥有该产品的版权您拥有该产品的版权您拥有该产品的版权您拥有该产品的版权您拥有该产品的版权您拥有该产品的版权",
+      "bannerImgUrl": "",
+      "startTime": "2016-09-16 04:00:00",
+      "endTime": "2016-08-08 20:00:00",
+      "view_url": "http://view.csslcloud.net/api/view/index?roomid=81C22ACD365505CD9C33DC5901307461&userid=71F3B92A41D00F3F",
+      "is_remind": 2,
+      "is_start": 1
+    },
+    {
+      "id": 56,
+      "name": "七夕哈",
+      "bannerImgUrl": "",
+      "startTime": "2016-09-16 08:25:00",
+      "endTime": "2016-07-28 21:50:00",
+      "view_url": "http://view.csslcloud.net/api/view/index?roomid=81C22ACD365505CD9C33DC5901307461&userid=71F3B92A41D00F3F",
+      "is_remind": 2,
+      "is_start": 1
+    },
+    {
+      "id": 57,
+      "name": "活动类型视频直播",
+      "bannerImgUrl": "",
+      "startTime": "2016-09-17 13:00:00",
+      "endTime": "2016-08-11 13:00:00",
+      "view_url": "http://view.csslcloud.net/api/view/index?roomid=81C22ACD365505CD9C33DC5901307461&userid=71F3B92A41D00F3F",
+      "is_remind": 2,
+      "is_start": 1
+    }
+  ]
+}

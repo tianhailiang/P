@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+{% include "header_new.html" %}
+<style>
+    .right-cont{
+        width: 878px;
+        /*height: 1365px;*/
+        /*border: 1px #dcdcdc solid;*/
+    }
+    .right-cont .loadMore{
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border-top: 1px solid #dcdcdc;
+        cursor: pointer;
+        font-size: 14px;
+        color: #666;
+    }
+    .right-title{
+        width: 840px;
+        height: 40px;
+        background: #eee;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+    .right-title .tit{
+        width: 115px;
+        height: 40px;
+        background: #C13232;
+        font-size: 18px;
+        color: #fff;
+        text-align: center;
+        line-height: 40px;
+        float: left;
+
+    }
+    .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+</style>
+<body style="background: #f5f5f5">
+  {% include "widget/top/top.html" %}
+  {% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
+  {{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+  <div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_ADVISOR_CENTER_CASE_SEAT1"></div>
+  <div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+    <div class="dui-layout-silde right">
+        <div class="clearfix">
+            {% import "widget2/community_advisor/community_advisor.html" as advisor %}
+            {% if login_info.usertype == 1 %} {#用户#}
+            {{ advisor.user(userinfo,helper) }}
+            {% elif login_info.usertype == 2 %} {#顾问#}
+            {{ advisor.advisor(userinfo,helper,login_info) }}
+            {% elif login_info.usertype == 3 %} {#参赞#}
+            {{ advisor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+        </div>
+        {% if login_info.usertype == 1 %} {#用户#}
+        {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+        {{ user_side_menu.user_side_menu('我的主页', helper) }}
+        {% elif login_info.usertype == 2 %} {#顾问#}
+        {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+        {{ adviser_side_menu.adviser_side_menu('我的主页', '我的案例', helper) }}
+        {% elif login_info.usertype == 3 %} {#参赞#}
+        {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+        {{ canzan_side_menu.canzan_side_menu('我的主页', '我的案例', helper) }}
+        {% endif %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con dui-box-shadow">
+        <div class="right-cont case-cont">
+            <div class="right-title clearfix">
+                <div class="tit">我的案例</div>
+            </div>
+            {% if case_data.list.length > 0 %}
+            <div class="right-main clearfix case-list-box">
+                {% for item in case_data.list %}
+                <div class="case-list-item">
+                {% import "widget2/offer/offer.html" as case_edit %}
+                {{ case_edit.case_edit(item, helper) }}
+                {% include "widget2/bottom_comment/bottom_comment.html" %}
+                </div>
+                {% endfor %}
+            </div>
+            <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}">
+                <span>加载更多</span>
+                <i class="iconfont">&#xe60b;</i>
+            </div>
+            {% else %}
+            <div style="width: 100%; height: 400px;text-align: center;line-height: 400px;font-size: 30px;">您还未发布案例,快去<a target="_blank" href="{{helper.urlgen('advisor_center', 'postcase')}}">发布案例</a>发布吧！</div>
+            {% endif %}
+        </div>
+    </div>
+  </div>
+  {% include "widget/footer/footer.html" %}
+  <script>
+    var login_ss = null; 
+    if($.cookie('login_ss') != undefined){
+      login_ss = JSON.parse($.cookie('login_ss'));  
+    }
+  </script>
+  <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/common/select.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script>
+    $(function() {
+        function appendCase (caseArr) {
+            var caseHtml = '';
+            for (var i = 0; i < caseArr.length; i++) {
+                 if(caseArr[i].introduce==undefined){
+                      caseArr[i].introduce ={
+                        stu_name:'',
+                        school_1:'',
+                        school_2:'',
+                        school_3:'',
+                        dep_1:'',
+                        dep_2:'',
+                        dep_3:'',
+                        admission_time:'',
+                        offer_img:[]
+                      };
+                  }
+                caseHtml += '<div class="offers clearfix"><div class="offers-left"><div class="offers-left-img">';
+                caseHtml += '<a target="_blank" href="'+fn.curlgen("advisor_center/case" + caseArr[i].id)+'">'+
+            '<img src="'+fn.avaterimg(caseArr[i].uid,'small',caseArr[i].user_info.status,caseArr[i].user_info.version)+'" ></a>'+
+          '</div><div class="offers-left-off">';
+                caseHtml += '<p class="off-p1">' + caseArr[i].user_info.realname + '</p>';
+                caseHtml += '<p class="off-p2"> '+ caseArr[i].add_time +'&nbsp;&nbsp;<span>来自 : '+  caseArr[i].from +'</span></p>';
+                caseHtml += '<a target="_blank" href="'+ fn.curlgen("advisor_center/case", caseArr[i].id.toString()) +'" class="offer-title">'+ caseArr[i].title +'</a>';
+                caseHtml += '<p class="off-p3">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:&nbsp;'+ caseArr[i].introduce.stu_name +'</p>';
+                caseHtml += '<p class="off-p3">录取院校&nbsp;:&nbsp;'+ caseArr[i].introduce.school_1+'&nbsp;&nbsp;'+caseArr[i].introduce.school_2+'&nbsp;&nbsp;'+caseArr[i].introduce.school_3+'</p>';
+                caseHtml += '<p class="off-p3">录取专业&nbsp;:&nbsp;'+ caseArr[i].introduce.dep_1+'&nbsp;&nbsp;'+caseArr[i].introduce.dep_2+'&nbsp;&nbsp;'+caseArr[i].introduce.dep_3 +'</p>';
+                caseHtml += '<p class="off-p3">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;'+ fn.getEdu(caseArr[i].edu_id) +'</p>';
+                caseHtml += '<p class="off-p3">录取时间&nbsp;:&nbsp;'+ caseArr[i].introduce.admission_time +'</p>';
+                caseHtml += '<p class="off-p4"><a target="_blank" href="'+ fn.curlgen("advisor_center/case", caseArr[i].id.toString()) +'">【查询详情】</a></p>';
+                caseHtml += '</div> </div> <div class="offers-right"> <div class="offers-right-xiala"><div class="offer-opt-bar clearfix"><div class="opt-btn red-border delete deleteArticleBtn" onclick="deleteOffer($(this), '+caseArr[i].uid+',' +caseArr[i].id+')"><i class="iconfont">&#xe8c1;</i><span>删除</span></div><div class="opt-btn edit"><i class="iconfont">&#xe61c;</i><a target="_blank" href="'+  fn.curlgen("advisor_center/postcase/" + caseArr[i].id)+'">编辑</a></div></div><div class="offer-xialas"> <span class="offer-xialadd iconfont">&#xe60b;</span> <ul class="offer-xiala"> <li><a  class="dui-text-warning-s report-btn" data-artId="'+caseArr[i].id+'" data-catid="'+caseArr[i].category_id+'" >举报</a></li> <li><a  class="dui-text-warning-s share-btn" data-url="'+fn.urlgen('case',caseArr[i].id.toString())+'" data-title ="'+caseArr[i].title+'">分享</a></li> </ul> </div> </div>';
+                if (caseArr[i].introduce.offer_img.length > 0) {
+                    caseHtml += '<div class="offers-right-off"> <div class="offers-right-offs"> <span>Offer展示:</span></div><div class="offers-right-offh">';
+                    caseHtml += addImg(caseArr[i].introduce.offer_img);
+                    caseHtml += '</div></div>';
+                }
+                caseHtml += '</div></div>';
+              caseHtml += '<div class="bot_comment clearfix"><ul><li onclick="showbottom(1, '+caseArr[i].id+')" id="yuedu_li_'+caseArr[i].id+'"><i class="iconfont " id="yuedu_'+caseArr[i].id+'">&#xe9ca;</i><span id="yuedu_span_'+caseArr[i].id+'">阅读（<em id="yuedu_em_'+ caseArr[i].id +'">'+ caseArr[i].views +'</em>）</span></li><li onclick="showbottom(2, '+caseArr[i].id+')" id="shoucang_li_'+caseArr[i].id+'"><i class="iconfont " id="shoucang_'+caseArr[i].id+'">&#xe7ed;</i><span id="shoucang_span_'+caseArr[i].id+'">收藏（<em id="shoucang_em_'+ caseArr[i].id +'">'+ caseArr[i].favorites +'</em>）</span></li><li onclick="showbottom(3, '+caseArr[i].id+')" id="pinglun_li_'+caseArr[i].id+'"><i class="iconfont " id="pinglun_'+caseArr[i].id+'">&#xe61f;</i><span id="pinglun_span_'+caseArr[i].id+'">评论（<em id="pinglun_em_'+ caseArr[i].id +'">'+ caseArr[i].comments +'</em>）</span></li><li class="dian" onclick="showbottom(4, '+caseArr[i].id+')" id="dianzan_li_'+caseArr[i].id+'"><i class="iconfont " id="dianzan_'+caseArr[i].id+'">&#xe651;</i><span id="dianzan_span_'+caseArr[i].id+'">点赞（<em id="dianzan_em_'+ caseArr[i].id +'">'+ caseArr[i].votes +'</em>）</span></li></ul></div>';
+            }
+            $('.right-main').append($(caseHtml));
+            $('.report-btn').on("click",report); //点击举报
+            $('.share-btn').on('click',share); //点击分享
+        }
+        function addImg (imgList) {
+            var html = '';
+            for (var j=0; j<imgList.length; j++) {
+                html += '<div class="img-box" ><img src="'+ fn.imageThumb(imgList[j],'110x130') +'" alt=""></div>';
+            }
+            return html;
+        }
+        $('.loadMore').on('click', function () {
+            var page = $(this).data('page')*1+1;
+            var uid = $(this).data('uid');
+            var per_page = 4;
+            var thisObj = $(this);
+            $.ajax({
+                url: '/soapi/article_list',
+                type: 'GET',
+                datatype: 'json',
+                data: {
+                    u_id: uid,
+                    type: 1,
+                    page: page,
+                    per_page: per_page
+                },
+                success: function (revmsg) {
+                  console.log(revmsg);
+                    if (revmsg.code == 0) {
+                        var len = revmsg.data.list.length;
+                        if (len == 0) {
+                            thisObj.html('案例加载完毕')
+                        }
+                        else if (0 < len && len < per_page) {
+                            thisObj.html('案例加载完毕');
+                            appendCase(revmsg.data.list);
+                            thisObj.data('page', page);
+                        }
+                        else {
+                            appendCase(revmsg.data.list);
+                            thisObj.data('page', page);
+                        }
+                    }
+                    else {
+                        thisObj.html('加载更多出错了，请刷新');
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    console.log(errorThrown)
+                }
+            })
+        });
+        $('.report-btn').on("click",report); //点击举报
+        $('.share-btn').on('click',share); //点击分享
+        function report(){
+            //举报调取函数
+            var report_content = null;
+            var that =this;
+            layer.open({
+                type: 1,
+                title:'举报理由',
+                area: ['700px'], //宽高
+                content:'<div class="report-con">'+
+                           '<ul class="report-ul clearfix">'+
+                             '<li>'+
+                               '<span class="circle"></span>'+
+                               '<i class="iconfont">&#xe62a;</i>'+
+                               '<span class="sp-con">垃圾、广告信息</span>'+
+                              '</li>'+
+                              '<li>'+
+                                '<span class="circle"></span>'+
+                                '<i class="iconfont">&#xe62a;</i>'+
+                                '<span class="sp-con">色情、低俗内容</span>'+
+                              '</li>'+
+                              '<li>'+
+                                '<span class="circle"></span>'+
+                                '<i class="iconfont">&#xe62a;</i>'+
+                                '<span class="sp-con">时政敏感话题</span>'+
+                              '</li>'+
+                              '<li>'+
+                                '<span class="circle"></span>'+
+                                '<i class="iconfont">&#xe62a;</i>'+
+                                '<span class="sp-con">其它原因</span>'+
+                              '</li>'+
+                            '</ul>'+
+                            '<textarea class="report-txt"></textarea>'+
+                        '</div>',
+                btn:'确定',
+                closeBtn:'2',
+                yes: function(index, layero){
+                  if(report_content ==undefined || report_content == ''){
+                    layer.msg('请选择举报理由');
+                    return false;
+                  }
+                  $.ajax({
+                    // url: ajaxUrlPrefix.cmsapi+'/api/userReport',
+                    url:'/soapi/userReport',
+                    type:'POST',
+                    data:{
+                      report_source:'1',
+                      report_type:'1',
+                      report_content:report_content,
+                      userid:login_ss.uid,
+                      artecle_id:$(that).attr("data-artId"),
+                      catid:$(that).attr("data-catid")
+                    },
+                    dataType:'json',
+                    // jsonpCallback:'callback',
+                    success:function(result){
+                      console.log(result)
+                      if(result.code == 0){
+                        layer.msg('举报成功');
+                        layer.close(index); 
+                      }
+                    },
+                    error:function(XMLHttpRequest, textStatus, errorThrown){
+                      console.log(errorThrown)
+                    }  
+                  });
+                }         
+            });
+            $(".report-ul li").on("click",function(){
+                //选择举报内容
+                $(".report-ul li i").hide();
+                $(".report-ul li .circle").show();
+                $(this).find("i").show();
+                $(this).find(".circle").hide();
+                if($(this).index() == 3){
+                  $(".report-txt").show();
+                  $(".layui-layer-content").css({"height":"115px"});
+                }else{
+                  $(".report-txt").hide();
+                  $(".layui-layer-content").css({"height":"39px"});
+                  report_content = $(this).find('.sp-con').text();
+                }
+            });
+            $('.report-txt').on('change',function(){
+                if($('.report-txt').val()!= ''){
+                  report_content = $('.report-txt').val();
+                }else{
+                   report_content ='';
+                }
+            });
+        }
+        function share(){
+            //调取分享函数
+            var that =this;
+            layer.open({
+              type: 2,
+              title: '分享到',
+              area: ['262px', '327px'],
+              content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+$(that).attr('data-url'), 'no']
+            });
+        }
+    })
+  </script>
+</body>
+</html>

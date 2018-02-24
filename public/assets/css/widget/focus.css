@@ -1,0 +1,99 @@
+.study-focus{
+  background:#ffffff;
+}
+.foucus-public{
+  margin-left:20px;
+  width:840px;
+  font-size:14px;
+  color:#333333;
+  border-bottom: 1px dashed #dcdcdc;
+}
+.foucus-public p{
+  float:left;
+  height:20px;
+  line-height:20px;
+}
+.study-focus-tit{
+  // margin-top:14px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.study-focus-tit i{
+  margin-right: 10px;
+}
+.study-focus-country{
+  /*height:86px;*/
+
+}
+.select-list{
+  float:left;
+  width: 770px;
+}
+.select-list li{
+  float:left;
+  margin-right:5px;
+  height: 20px;
+  line-height: 20px;
+}
+.select-list li a{
+  font-size:14px;
+  color:#333333;
+  display: block;
+  padding: 0 10px;
+  height: 20px;
+  line-height:20px;
+}
+.select-list li .focus-on{
+  background: #c13232;
+  color:#ffffff;
+}
+.select-list a:hover{
+  background: #c13232;
+  color:#ffffff;
+}
+.foucus-public-h{
+  padding: 16px 0;
+}
+.foucus-public-d{
+  padding: 12px 0 11px 0;
+}
+.foucus-public-d li {
+  margin:5px 3px 5px 0;
+}
+.foucus-public-d p {
+  padding-top:5px;
+}
+/*�������ͷ*/
+.search-result-tag{
+  font-size: 14px;
+  line-height: 14px;
+  color: #333;
+  padding: 20px 0 19px;
+  margin: 0 20px;
+  border-bottom: 1px solid #dcdcdc;
+}
+.search-result-tag span {
+  color: #C13232;
+}
+
+/*底页大学排名*/
+.deye-cos h2{
+  font-weight: 500;
+  font-size: 16px;
+  color: #C13232;
+}
+.deye {
+  height: 42px;
+  line-height: 42px;
+  color: #333333;
+}
+.deye a {
+  color: #C13232;
+}
+.deye-p {
+  padding: 10px 0;
+  color: #666666;
+  border-bottom: 1px solid #dcdcdc ;
+}
+.deye-p span {
+  float: right;
+}

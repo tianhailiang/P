@@ -1,0 +1,79 @@
+
+/*成功案例successfulcase*/
+.successfulcase a:active {
+  color: #C13232
+}
+.successfulcase {
+  width: 278px;
+  height: auto;
+  /*float: left;*/
+  border: 1px solid #dcdcdc;
+  background: #fff;
+}
+.successfulcasees {
+  width: 280px;
+  height: 454px;
+  float: left;
+  border: 1px solid #dcdcdc;
+}
+.successfulcasecon {
+  width:100%;
+  height: 48px;
+  border-bottom: 1px solid #dcdcdc;
+  background: #f3f3f3;
+}
+.successfulcasecon_new {
+  width:100%;
+  height: 48px;
+  border-bottom: 1px solid #dcdcdc;
+  border-top: none;
+  background: #fff;
+}
+.successfulcasecon h3{
+  line-height: 48px;
+  float: left;
+  font-weight: normal;
+  font-weight: 400;
+  font-size: 18px;
+}
+.successfulcasecon div {
+  width: 2px;
+  height: 22px;
+  background: #C13232;
+  float: left;
+  margin: 13px 8px 0 0;
+}
+.successfulcaseing {
+  width: 240px;
+  height: 135px;
+  margin: 20px;
+}
+.successfulcaseing img {
+  width: 240px;
+  height: 135px;
+}
+.successfulcases div{
+  margin: 0 20px;
+  width: 238px;
+  height: 30px;
+  line-height: 30px;
+  color: #333;
+  font-size: 14px;
+
+}
+.overseas_apply_item_r_c a{
+  width: 223px;
+  height: 20px;
+  color: #333;
+  font-size: 14px;
+  line-height: 26px;
+}
+.overseas_apply_item_r_c a:hover{
+  color: #C13232;
+}
+.successfulcasecon em {
+  float: right;
+  margin:16px 20px 0 0;
+  color: #666;
+  /*font-weight: bold;*/
+}

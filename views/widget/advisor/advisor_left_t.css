@@ -1,0 +1,55 @@
+.advisor-item2{
+    width: 800px;
+}
+.advisor-item{
+   /* width: 800px;*/
+    padding: 19px 20px;
+    background-color: #fafafa;
+}
+.advisor-item:hover{
+    background-color: #f1f4f6;
+    box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.14);
+}
+.advisor-item-in{
+    height: 155px;
+    border-top: 1px solid #c13232;
+    padding-top: 19px;
+    overflow: hidden;
+}
+.advisor-item .advisor-infoL{
+    width: 92px;
+    float: left;
+    height: 100%;
+    margin-right: 20px;
+}
+.advisor-item .advisor-infoL dt {
+    width: 100%;
+    height: 116px;
+    overflow: hidden;
+}
+.advisor-item .advisor-infoL dt img{
+    width: 100%;
+}
+.advisor-item .advisor-infoL dd{
+    width: 92px;
+    margin-top: 15px;
+}
+.advisor-item .advisor-infoR .advisor-name{
+    font-size: 14px;
+    color: #333;
+}
+.advisor-item .advisor-infoR .advisor-expert-country{
+    font-size: 12px;
+    line-height: 12px;
+    margin: 20px 0 14px;
+}
+.advisor-item .advisor-infoR .advisor-description{
+    font-size: 12px;
+    line-height: 24px;
+    color: #666;
+}
+.advisor-item .advisor-infoR .advisor-description a{
+    font-size: 12px;
+    color: #C13232;
+}
+

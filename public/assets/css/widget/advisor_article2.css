@@ -1,0 +1,75 @@
+.jinpai-advisor{
+  border:1px solid #dcdcdc;
+  background: #ffffff;
+  width:878px;
+}
+.jinpai-advisor dl dt{
+  float:left;
+  border-right:1px dashed #dcdcdc;
+  width: 340px;
+  height: 566px;
+}
+.guwen-info .guwen-img{
+  display: block;
+  width: 300px;
+  height: 377px;
+  background: #CCCCCC;
+}
+.jinpai-advisor .guwen-info{
+  padding:20px 19px 20px 19px;
+  display: none;
+
+}
+.jinpai-advisor .guwen-info img{
+  width:300px;
+  height:377px;
+}
+.guwen-xq{
+  font-size: 18px;
+  color:#333333;
+  height: 30px;
+  line-height: 30px;
+  padding-top:10px;
+  padding-bottom: 9px;
+  border-bottom: 1px dashed #dcdcdc;
+
+}
+.guwen-xq .zixun-guwen{
+  float: right;
+}
+.enjoy-country{
+  margin-top:20px;
+  color:#333333;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.guwen-jianjie{
+  line-height: 24px;
+  font-size: 12px;
+  color:#666666;
+  width: 300px;
+}
+.jinpai-advisor dl dd{
+  width:480px;
+  padding-left:19px;
+  float:left;
+
+}
+ .jinpai-advisor  .guwen-article{
+   padding:19px 0 19px 0px;
+   border-bottom:1px dashed #dcdcdc;
+   cursor: pointer;
+ }
+
+ 
+.guwen-article .article-title{
+  font-size: 14px;
+  line-height: 14px;
+  color:#333333;
+}
+.guwen-article .article-info{
+  margin-top:10px;
+  font-size: 12px;
+  line-height: 12px;
+  color:#666666;
+}

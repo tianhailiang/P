@@ -1,0 +1,50 @@
+
+
+   <div class="dui-layout-con dui-layout-con-border">
+
+
+	       <div class="liuxue-prob-content-div clearfix">
+			   {% for list in lxcjquestion %}
+			   {% if loop.index==1 %}
+			   <a target="_blank" href="{{helper.urlgen('eduquestion',list.id | string)}}" class="dui-text-warning-s" ><img src="{{ helper.imageThumb(list.thumb,'196x262') }}" alt=" {{list.title}}" class="liuxue-prob-content-img"></a>
+			   {% endif %}
+			   {% endfor %}
+	       	   <ul class="liuxue-prob-content-ul" style="margin-top: 7px;">
+	                {% for list in lxcjquestion %}
+
+                   
+		                {% if loop.index==7 %}
+
+			       	       <li style="margin-bottom:0;">
+				       	   	     <a target="_blank" href="{{helper.urlgen('eduquestion',list.id | string)}}" class="dui-text-warning-s" >
+				       	   	      {{list.title}}
+				       	   	     </a>
+
+					       </li>
+
+					    {% elif loop.index==14 %}
+					       <li style="margin-bottom:0;">
+				       	   	     <a target="_blank" href="{{helper.urlgen('eduquestion',list.id | string)}}" class="dui-text-warning-s" >
+				       	   	      {{list.title}}
+				       	   	     </a>
+
+					       </li>
+
+		               {% else %}
+
+			       	       <li style="margin-bottom: 14px;">
+				       	   	     <a target="_blank" href="{{helper.urlgen('eduquestion',list.id | string)}}" class="dui-text-warning-s" >
+				       	   	      {{list.title}}
+				       	   	     </a>
+				       	   </li>
+			       	   {% endif %}
+
+		       	   {% endfor %}
+		       	   
+	       	   </ul>
+	       	 
+	       </div>
+	 
+   	   
+   </div>
+

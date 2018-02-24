@@ -1,0 +1,120 @@
+/*¹Ø×¢ÎÒµÄ*/
+
+.follow-con{
+  width: 369px;
+  height: 82px;
+  border-left: 1px solid #C13232;
+  background: #fafafa;
+  padding: 20px;
+  margin-top: 20px;
+}
+.follow-con:hover{
+  background: #f0f4f6;
+  box-shadow: 0 3px 7px 0 rgba(0,0,0 ,0.14 );
+}
+.follow-con img.img-left{
+  width: 60px;
+  height: 60px;
+  float: left;
+  margin-right: 20px;
+}
+.follow-con .content{
+  width: 289px;
+  height: 82px;
+  float: right;
+}
+.follow-con .content-title{
+  line-height: 16px;
+  font-size: 14px;
+  line-height: 14px;
+  color: #333;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+}
+.follow-con .content-des{
+  margin-top: 14px;
+  line-height: 12px;
+  font-size: 12px;
+  height: 12px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.follow-con .content-nun{
+  width: 289px;
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #666;
+  position: relative;
+}
+.follow-con .content-nun .num-show{
+  float: left;
+  margin-right: 20px;
+}
+.follow-con .content-nun .num-show div{
+  float: left;
+}
+.follow-con .content-nun .num-show div.iconfont{
+  font-size: 16px;
+  line-height: 16px;
+  margin-right: 10px;
+}
+/*.follow-con .content-nun img.img-f{
+  width: 16px;
+  height: 14px;
+  float: left;
+}
+.follow-con .content-nun img.img-c{
+  width: 16px;
+  height: 16px;
+  float: left;
+}*/
+/*.follow-con .content-nun div{
+  float: left;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}*/
+.follow-con .content-nun div.follow-btn{
+  width: 66px;
+  height: 24px;
+  background: #C13232;
+  color: #fff;
+  text-align: center;
+  line-height: 24px;
+  font-size: 13px;
+  position: absolute;
+  bottom: -6px;
+  right: 0px;
+  cursor: pointer;
+}
+.right-cont{
+  width: 878px;
+  /*height: 1365px;*/
+  border: 1px #eee solid;
+}
+.right-title{
+  width: 840px;
+  height: 40px;
+  background: #eee;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.right-title .tit{
+  width: 115px;
+  height: 40px;
+  background: #C13232;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+}
+.right-cont .right-main{
+  padding-bottom: 20px;
+}

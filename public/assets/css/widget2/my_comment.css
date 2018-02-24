@@ -1,0 +1,63 @@
+.cmt-item{
+    width: 840px;
+    margin: 0 19px;
+    border-bottom: 1px solid #dcdcdc;
+}
+.cmt-item .cmt-img{
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    float: left;
+    margin-right: 20px;
+    margin-top:20px;
+    margin-bottom: 19px;
+    background-color: lightpink;
+}
+.cmt-item .cmt-info{
+    width: 740px;
+    float: right;
+    padding: 15px 20px 19px 0;
+}
+.cmt-item .cmt-info .cmt-info-txt{
+    font-size: 14px;
+    line-height: 24px;
+    height: 48px;
+    color: #333;
+}
+.cmt-item .cmt-info .cmt-info-txt .reply{
+    float: right;
+    font-size: 14px;
+    line-height: 24px;
+    color: #C13232;
+}
+.cmt-item .cmt-info .cmt-info-txt .reply .iconfont{
+    font-size: 14px;
+    margin-right: 4px;
+}
+.cmt-item .cmt-info .cmt-info-time{
+    font-size: 12px;
+    color: #666;
+    line-height: 12px;
+    margin-top: 5px;
+}
+.right-cont{
+    width: 878px;
+    /*height: 1365px;*/
+    border: 1px #eee solid;
+}
+.right-title{
+    width: 840px;
+    height: 40px;
+    background: #eee;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.right-title div{
+    width: 115px;
+    height: 40px;
+    background: #C13232;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+}

@@ -1,0 +1,162 @@
+.offers{
+  width: 880px;
+  position: relative;
+  margin-bottom: 10px;
+}
+.offers-left {
+  width: 448px;
+  height: 100%;
+  float: left;
+}
+.offers-left-img {
+  width: 60px;
+  height: 100%;
+  float: left;
+  margin:0 20px;
+}
+.offers-left-img img {
+  width: 60px;
+  height: 76px;
+  float: left;
+  margin-top: 20px;
+}
+.offers-left-off {
+  width: 348px;
+  height: 100%;
+  float: left;
+}
+.off-p1 {
+  font-size: 14px;
+  color: #333333;
+  margin-top: 27px;
+}
+.off-p2 {
+  font-size: 12px;
+  color: #666666;
+  margin: 10px 0 13px 0;
+}
+.offers-left-off .offer-title{
+  font-size: 16px;
+  color: #C13232;
+  font-weight: 500;
+  margin-bottom: 6px;
+  cursor: pointer;
+}
+.offers-left-off a{
+  font-size: 16px;
+  color: #C13232;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+.off-p3 {
+  margin-bottom: 9px;
+  color: #666666;
+}
+.off-p4 {
+  position: relative;
+  left: -6px;
+  top: 0;
+}
+.off-p4 a {
+  color: #C13232;
+}
+
+.offers-right {
+  width: 432px;
+  height: 100%;
+  float: left;
+}
+.offers .offers-right-xiala {
+  width: 432px;
+  height: 116px;
+  position: relative;
+}
+.offers-right-off {
+  width: 431px;
+  height: 140px;
+  border-left: 1px dashed #dcdcdc;
+}
+.offers-right-offs {
+  margin: 0 20px;
+  float: left;
+}
+.offers-right-offs span {
+  color: #666666;
+}
+.offers-right-offh .img-box{
+  border:5px solid #c13232;
+  margin-right: 20px;
+  float:left;
+}
+.offers-right-offh img {
+  width: 110px;
+  height: 130px;
+  display: block;
+}
+/*举报*/
+.offer-xiala {
+  width: 70px;
+  height: 88px;
+  /*float: left;*/
+  display: none;
+  box-shadow:1px 0 4px rgba(0,0,0,0.2);
+  position: absolute;
+  right: 0;
+  top: 13px;
+}
+
+.offer-xiala li {
+  text-align: center;
+  margin-top: 13px;
+}
+.offer-xialas .offer-xialadd {
+  float: right;
+  font-size:14px;
+  line-height: 14px;
+  color:#333;
+}
+.offer-xialas {
+  position: absolute;
+  right: 20px;
+  top:20px;
+  z-index: 500;
+}
+
+.offer-xialas:hover .offer-xiala{
+  display: block;
+}
+/*功能按钮栏*/
+.offer-opt-bar{
+  position: absolute;
+  right: 60px;
+  top: 20px;
+}
+.offer-opt-bar .opt-btn{
+  float: left;
+  color: #C13232;
+  font-size: 12px;
+  line-height: 12px;
+  cursor: pointer;
+}
+.offer-opt-bar .opt-btn.red-border{
+  border-right: 1px solid #C13232;
+  padding-right: 20px;
+}
+.offer-opt-bar .opt-btn i{
+  margin-left: 20px;
+}
+.offer-opt-bar .opt-btn span{
+  margin-left: 10px;
+}
+.offer-opt-bar .opt-btn a{
+  margin-left: 10px;
+  color: #C13232;
+  font-size: 12px;
+}
+
+.case-cont{
+  background-color: #fff;
+}
+.case-cont .right-main{
+  padding-bottom: 0;
+}
