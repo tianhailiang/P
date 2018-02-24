@@ -131,15 +131,6 @@ function getSoUrl (searchType) {
 }
 /*设置初始化展示函数*/
 setSoType(curSeaType, curKeyWord);
-/*热门搜索*/
-$(".tags a").click(function(e){
-  e.preventDefault();
-  $("#search").val($(this).html());
-  var so_type = $("#searchType").text();
-  var so_key_word = $.trim($("#search").val());
-  console.log(fn.no_urlgen(getSoUrl(so_type), 'q=' + so_key_word));
-  window.open(fn.no_urlgen(getSoUrl(so_type), 'q=' + so_key_word));
-});
 //点击搜索按钮
 $("#searchBtn").click(function () {
   var so_type = $("#searchType").text();
