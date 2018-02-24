@@ -29,12 +29,13 @@ function split_array(arr, len) {
 }
 exports.index = function (req, res, next) {
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var data = [];
     data.tdk = {
         pagekey: 'INDEX',
         cityid: area,
         nationid: ''
     };
-    data.esikey = esihelper.esikey();
+    //data.esikey = esihelper.esikey();
     res.render('index', data);
 };
 //社区首页
