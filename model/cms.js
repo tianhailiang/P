@@ -16,6 +16,18 @@ function _api_url_path(data, url) {
   return url;
 }
 
+function _api_url_path2(data, url) {
+
+  if (url == null || url == undefined || url == "") {
+    log.debug(url + '　接口不存在！');
+    return null;
+  }
+  for (var item in data) {
+    url += '&' + item + '=' + data[item];
+  }
+  return url;
+}
+
 function _api_path_url_shequ(data, url) {
   if (url == null || url == undefined || url == "") {
     log.debug(url + '　接口不存在！');
@@ -1042,3 +1054,13 @@ exports.assessment = function(data,callback){
   }
   api.apiRequest_post(url ,data ,callback);
 };
+
+//参赞列表
+exports.canzanlist = function (data, callback) {
+  var url = _api_url_path2(data, config.apis.get_canzanlist);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}

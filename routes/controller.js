@@ -27,6 +27,8 @@ function split_array(arr, len) {
   }
   return result;
 }
+
+
 exports.index = function (req, res, next) {
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var data = [];
@@ -38,6 +40,7 @@ exports.index = function (req, res, next) {
     //data.esikey = esihelper.esikey();
     res.render('index', data);
 };
+
 //社区首页
 exports.community_index = function (req, res, next) {
   console.log('community_index');

@@ -16,6 +16,8 @@ var shequ_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazon
 var imageshost = 'http://images.jjl.cn';
 var cms_out_prefix = prefix;
 var apis = {
+
+  "get_canzanlist":uc_prefix+'index.php?m=userlist',//参赞列表
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
   "adviser_main": shequ_prefix + 'article/list/', //
