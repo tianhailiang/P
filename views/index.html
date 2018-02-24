@@ -99,6 +99,7 @@
   }
 </style>
 <body style="background: #f5f5f5">
+
 <!--留学国家-->
 <div class="nationality_guoqi_warp">
   <div class="nationality_guoqi">
@@ -348,8 +349,11 @@
         <div class="branch_company_text_tilte">{{item.companyName}}</div>
         {% endfor %}
       </div>
-  </div>
+<div class="main" style="width: 1200px;margin: 0 auto;">
+  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+  {{ new_nav_first.new_nav_first(helper) }}
+  {% include "widget/liuxue_item/liuxue_item.html" %}
 </div>
-{% include "widget/footer/footer.html" %}
+{% include "widget/new_footer/new_footer.html" %}
 </body>
 </html>

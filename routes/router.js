@@ -1,12 +1,13 @@
 var controller = require('./controller.js');
 var user = require('./user.js');
+var about = require('./about.js')
 exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
 
 
   //参赞聚合页
-  app.get('/blog/canzan', controller.canzan);
+  app.get('/blog/canzan', about.canzan);
   //社区首页
   app.get('/blog', controller.community_index);
   //用户视角 顾问主页
