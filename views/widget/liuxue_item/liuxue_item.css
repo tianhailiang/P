@@ -1,4 +1,4 @@
-#lxContaniner{margin:30px 0 0 50px;width:1200px}
+#lxContaniner{margin-top:30px;width:1200px;overflow: hidden;}
 .lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc}
 .lx-head h1{float:left;margin-right:70px;color:#333;font-size:22px}
 .lx-tabitems{float:left;margin-top:5px}
