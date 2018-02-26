@@ -8,20 +8,10 @@
     var login_nickname = JSON.parse($.cookie('login_ss'));
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con">'+
-                '<div class="top-con-left">'+
-                '<i class="iconfont">&#xe60d;</i>'+
-                '<span><a target="_blank" href="' + fn.urlgen('') + '" >金吉列留学首页</a></span>'+
-                '</div>'+
                 '<div class="top-con-right">'+
-                '<span><i class="msg-icon iconfont nav-name">&#xe675;</i><a target="_blank" href="/register" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
-                '<span class="bor">|</span>'+
+                '<span><a target="_blank" href="/register" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                '<span class="bor"></span>'+
                 '<span><a href="javascript:void(0);" onclick="getlogin()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
-                '<span class="bor">|</span>'+
-                '<span><a rel="nofollow" target="_blank" href="'+ fn.urlgen('advisor_center', 'revmsg') +'">消息</a></span>'+
-                '<span class="bor">|</span>'+
-                '<span><a target="_blank" href="http://www.jjl.cn/english/?tag=2" class="dui-text-warning-ss" rel="nofollow">English Website</a></span>'+
-                '<span class="bor">|</span>'+
-                '<span><a target="_blank" href="http://special.zhaopin.com/bj/2015/jjl032714/job.html" class="dui-text-warning-ss" rel="nofollow">诚聘英才</a></span>'+
                 '</div>'+
                 '</div>'
       $(".top").append(val);

@@ -143,9 +143,9 @@
   </div>
 </div>
 {% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+{{ new_nav_first.new_nav_first(helper) }}
 <div class="main" style="width: 1200px;margin: 0 auto;">
-  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-  {{ new_nav_first.new_nav_first(helper) }}
   <!--轮播图-->
   <div class="lunbo">
     <div class="lunbo_lift">
