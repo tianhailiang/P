@@ -54,10 +54,10 @@
    </div>
   {% endfor %}
 </div>
-<div class="dui-layout-lg clearfix branch-advertising-map" style="width:1180px; height: 130px;margin-top: 20px; background: #dcdcdc" id="AD_COUNSELLER_SEAT1">
-</div>
-{% include "widget/new_footer/new_footer.html" %}
 
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/slide/slide.html" as  slide %}
+{{slide.leyu_slide("AD_COUNSELLER_SEAT10") }}
 </body>
 <script>
   var AD_PAGE_NAME = "COUNSELLER"; //设置页面对应的名字
