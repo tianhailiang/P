@@ -1,0 +1,28 @@
+<div class="slider">
+        <div class="slider-img">
+              <ul class="slider-img-ul">
+                  <li>
+                    {% if xSlider[xSlider.length-1] | length  %}
+                      <a href="{{xSlider[xSlider.length-1].linkurl}}" data-pid="{{xSlider[xSlider.length-1].pid}}" target="_blank" >
+                          <img src="{{xSlider[xSlider.length-1].imageurl}}" alt="{{xSlider[xSlider.length-1].alt}}">
+                       </a>
+                    {% endif %}
+                  </li>
+                 {% for item in xSlider %}
+                  <li>
+                    <a href="{{item.linkurl}}" data-pid="{{item.pid}}" target="_blank">
+                        <img src="{{item.imageurl}}" alt="{{item.alt}}">
+                     </a>
+                  </li>
+                  {% endfor %}
+                  <li>
+                    {% if xSlider[0] | length %}
+                      <a href="{{xSlider[0].linkurl}}" data-pid="{{xSlider[0].pid}}" target="_blank">
+                          <img src="{{xSlider[0].imageurl}}"  alt="{{xSlider[0].alt}}">
+                       </a>
+                    {% endif %}
+                  </li>
+              </ul>
+        </div>     
+</div>
+
