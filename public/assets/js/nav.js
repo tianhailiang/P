@@ -78,6 +78,13 @@ $('.city-cont').on('click',"a", function(e){
 
 });
 
+$('.branch_company_text').on('click',".branch_company_text_tilte", function(e){
+  e.preventDefault();
+  currentarea = $(this).attr("data-id");
+  $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
+  window.location.reload();
+
+});
 
 
 
