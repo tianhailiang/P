@@ -30,10 +30,10 @@
       {% else %}  
       {% endif %}
 	    <!-- ========引入顾问侧边栏按钮======== -->
-      {% if login_info.usertype ==2 %}
+      {% if userinfo.usertype ==2 %}
         {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
-        {{ adviser_side_menu.adviser_side_menu('发布专栏','',helper) }} 
-      {% elif login_info.usertype == 3 %}
+        {{ adviser_side_menu.adviser_side_menu('发布我的文章','',helper) }} 
+      {% elif userinfo.usertype == 3 %}
         {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
         {{ canzan_side_menu.canzan_side_menu('发布专栏','',helper) }} 
       {% endif %}
@@ -42,7 +42,7 @@
       <div class="dui-layout-con dui-box-shadow" >
         <div class="rel-case-con" >
 	        <div class="main-title gray-bg">
-		        <h3 style="font-size: 18px;">专栏发布</h3>
+		        <h3 style="font-size: 18px;">发布我的文章</h3>
 	        </div>
   	      <div class="rel-case-list" >
             <div class="rel-case-text1" style="margin-top: 20px;">
@@ -189,7 +189,7 @@
       </div>
     </div>
   </div>
-  {% include "widget/footer/footer.html" %}
+  {% include "widget/new_footer/new_footer.html" %}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){

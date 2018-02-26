@@ -1486,9 +1486,12 @@ exports.release_article = function(req,res,next){
        return false;
     }
   }else{
-    res.redirect(config.wwhost+'/login')
-    return false;
+    // res.redirect(config.wwhost+'/login')
+    // return false;
   }
+  data.login_info ={};
+  data.login_info.uid=1;
+  log.info(data.login_info.uid)
   //获取用户信息（普通用户，顾问，参赞）
   wec.userinfo({
     "u_id":data.login_info.uid,
