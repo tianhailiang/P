@@ -18,11 +18,14 @@ var config = require('./config/config');
 var viewcache = require('./middleware/viewcache');
 var url_rewrite = require("./middleware/url_decode");
 var esihelper = require('./middleware/esihelper');
+
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
 // view engine setup
 var viewspath = 'views';
 if(process.env.NODE_ENV == 'production'){
   viewspath = 'dist/views'
 }
+
 app.set('views', path.join(__dirname, viewspath));
 var env = nunjucks.configure(viewspath, {
   autoescape: true
@@ -41,7 +44,7 @@ customfilters.load(env);
 app.locals.helper = helper;
 env.express(app);
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false,limit:"1024kb" }));

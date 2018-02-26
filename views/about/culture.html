@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+<!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_ninth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_tenth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/xSlider.css"/>
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/layout.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy6.css">
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/expertunscramble.css">-->
+<body style="background: #f5f5f5;">
+{% include "widget/top/top.html" %}
+<div style="background: #ffffff;">
+  {% include "widget/nav_first/nav_first.html" %}
+</div>
+
+{% include "widget/nav_ninth/nav_ninth.html" %}
+<div style="margin:20px 0">
+  {% include "widget/nav_tenth/nav_tenth.html" %}
+</div>
+
+<div class="dui-layout-lg clearfix">
+  <div class="branch-lunbo-slider" style="width:100%;height: 360px;" >
+    {% include "widget/xSlider/xSlider.html" %}
+  </div>
+</div>
+<div class="dui-layout-lg clearfix dui-box-shadow" style="background: #ffffff;margin-top:20px;    padding-bottom: 20px;">
+  <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #c13232;width: 1140px; margin: 0px 20px 0;">
+    <i></i>
+    <h3><span style="color:#c13232;">"金"</span>彩时刻</h3>
+
+  </div>
+  {% import "widget/academy/academy6.html" as culture %}
+  {{ culture.culture(jincaishike.list,helper) }}
+</div>
+<div class="dui-layout-lg clearfix dui-box-shadow" style="background: #ffffff;margin-top:20px;    padding-bottom: 20px;">
+  <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #c13232;width: 1140px; margin: 0px 20px 0;">
+    <i></i>
+    <h3><span style="color:#c13232;">"金"</span>色力量</h3>
+
+
+  </div>
+  {% import "widget/academy/academy6.html" as culture %}
+  {{ culture.culture(jinseliliang.list,helper) }}
+</div>
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/slide/slide.html" as  slide %}
+{{slide.leyu_slide("AD_CULTURE_SEAT10") }}
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_ninth.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js" ></script>-->
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script>
+  $('.branch-lunbo-slider .slider').xSlider({
+    //轮播图配置
+    current: 0,
+    speed: 500,
+    intervalTime: 5000,
+    pagination: true
+  });
+
+</script>
+</body>
+</html>

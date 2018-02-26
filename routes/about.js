@@ -10,6 +10,7 @@ var esihelper = require('../middleware/esihelper');
 var code = '1220000006'; // not found
 var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
+var helperfunc = require('../common/helper');
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -70,3 +71,335 @@ exports.canzan = function (req, res, next) {
 
   });
 }
+
+//企业文化
+exports.culture = function (req, res, next){
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var qianzhengzhinan_currentPage=req.query.page || 1;
+    var country = req.query.n || 0;
+  
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+      var login_a = JSON.parse(req.cookies.login_ss);
+      //log.debug("login_a-------" + login_a.nickname)
+      data.login_nickname = login_a;
+    }
+    async.parallel({
+      lunbo_list: function (callback) {
+        // 轮播图接口
+        cms.lunbo_list({"ad_page":"CULTURE","ad_seat":"SEAT5","cityid":area},callback);
+      },
+      company_culture1:function(callback){
+        cms.company_culture_list({
+          "culture_type":1,
+          "page":1,
+          "pagesize":3
+        }, callback)
+      },
+      company_culture2:function(callback){
+        cms.company_culture_list({
+          "culture_type":2,
+          "page":1,
+          "pagesize":3
+        }, callback)
+      },
+      zuixinzixun: function (callback) {
+        cms.zuixinzixun({
+          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
+        }, callback);
+      },
+      media_broadcast:function(callback){
+        cms.media_broadcast({
+          "position": "about", "catid": 49,"cityid": area,"perpage": 10
+        }, callback)
+      },
+      zhuanjiajiedu: function (callback) {
+      cms.zhuanjiajiedu({
+        "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
+      }, callback);
+    },
+  
+    }, function (err, result){
+      log.info(result)
+      data.xSlider =returnData(result.lunbo_list,'lunbo_list');
+      data.jincaishike =returnData(result.company_culture1,'company_culture1');
+      data.zuixinzixun =returnData(result.zuixinzixun,'zuixinzixun');
+      data.jinseliliang =returnData(result.company_culture2,'company_culture2');
+      data.media_broadcast =returnData(result.media_broadcast,'media_broadcast');
+      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
+     data.pageroute="about/culture";
+      data.tdk = {
+        pagekey: 'CULTURE', //key
+        cityid: area, //cityid
+        nationid: country//nationi
+      };
+      res.render('about/culture', data);
+  
+    });
+  }
+
+  //金吉列简介
+exports.about = function (req, res, next){
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var qianzhengzhinan_currentPage=req.query.page || 1;
+    var country = req.query.n || 0;
+  
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+      var login_a = JSON.parse(req.cookies.login_ss);
+      //log.debug("login_a-------" + login_a.nickname)
+      data.login_nickname = login_a;
+    }
+    async.parallel({
+      zuixinzixun: function (callback) {
+        cms.zuixinzixun({
+          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
+        }, callback);
+      },
+      media_broadcast:function(callback){
+        cms.media_broadcast({
+          "position": "about", "catid": 49,"cityid": area,"perpage": 10
+        }, callback)
+      },
+      zhuanjiajiedu: function (callback) {
+        cms.zhuanjiajiedu({
+          "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
+        }, callback);
+      },
+  
+    }, function (err, result){
+      log.info(result)
+      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
+      data.zuixinzixun =returnData(result.zuixinzixun,'zuixinzixun');
+      data.media_broadcast =returnData(result.media_broadcast,'media_broadcast');
+      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
+      data.pageroute="about";
+      data.tdk = {
+        pagekey: 'PROFILE', //key
+        cityid: area, //cityid
+        nationid: country//nationi
+      };
+      res.render('about/about', data);
+  
+    });
+  }
+
+  //金吉列大事记
+exports.events = function (req, res, next){
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var qianzhengzhinan_currentPage=req.query.page || 1;
+    var country = req.query.n || 0;
+  
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+      var login_a = JSON.parse(req.cookies.login_ss);
+      //log.debug("login_a-------" + login_a.nickname)
+      data.login_nickname = login_a;
+    }
+    async.parallel({
+  
+      memorabilia_list:function(callback){
+        cms.memorabilia_list({
+          "page":1,
+          "pagesize":100
+        }, callback);
+      },
+      zuixinzixun: function (callback) {
+        cms.zuixinzixun({
+          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
+        }, callback);
+      },
+      media_broadcast:function(callback){
+        cms.media_broadcast({
+          "position": "about", "catid": 49,"cityid": area,"perpage": 10
+        }, callback)
+      },
+      zhuanjiajiedu: function (callback) {
+        cms.zhuanjiajiedu({
+          "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
+        }, callback);
+      },
+  
+    }, function (err, result){
+      log.info(result)
+      data.zuixinzixun = returnData(result.zuixinzixun,'zuixinzixun');
+      data.media_broadcast=returnData(result.media_broadcast,'media_broadcast');
+      data.zhuanjiajiedu=returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
+      data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
+      data.pageroute="about/events";
+      data.tdk = {
+        pagekey: 'EVENTS', //key
+        cityid: area, //cityid
+        nationid: country//nationi
+      };
+      res.render('about/events', data);
+  
+    });
+  }
+
+  //商务合作
+exports.cooperation = function (req, res, next){
+    var data = [];
+  
+  
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var qianzhengzhinan_currentPage=req.query.page || 1;
+    var country = req.query.n || 0;
+  
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+      var login_a = JSON.parse(req.cookies.login_ss);
+      //log.debug("login_a-------" + login_a.nickname)
+      data.login_nickname = login_a;
+    }
+    async.parallel({
+      lunbo_list: function (callback) {
+        // 轮播图接口
+        cms.lunbo_list({"ad_page":"COOPERATION","ad_seat":"SEAT5","cityid":area},callback);
+      },
+      company_culture1:function(callback){
+        cms.company_culture_list({
+          "culture_type":1
+        }, callback)
+      },
+      company_culture2:function(callback){
+        cms.company_culture_list({
+          "culture_type":2
+        }, callback)
+      },
+      zuixinzixun: function (callback) {
+        cms.zuixinzixun({
+          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
+        }, callback);
+      },
+      media_broadcast:function(callback){
+        cms.media_broadcast({
+          "position": "about", "catid": 49,"cityid": area,"perpage": 10
+        }, callback)
+      },
+      zhuanjiajiedu: function (callback) {
+        cms.zhuanjiajiedu({
+          "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
+        }, callback);
+      }
+  
+    }, function (err, result){
+      log.info(result)
+      data.xSlider =returnData(result.lunbo_list,'lunbo_list');
+      data.jincaishike =returnData(result.company_culture1,'company_culture1');
+      data.zuixinzixun =returnData(result.zuixinzixun,'zuixinzixun');
+      data.media_broadcast =returnData(result.media_broadcast,'media_broadcast');
+      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
+      data.jinseliliang =returnData(result.company_culture2,'company_culture2');
+      data.pageroute="about/cooperation";
+      data.tdk = {
+        pagekey: 'COOPERATION', //key
+        cityid: area, //cityid
+        nationid: country//nationi
+      };
+      res.render('about/cooperation', data);
+  
+    });
+  }
+
+  //contact 联系我们
+exports.contact = function (req, res, next){
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var qianzhengzhinan_currentPage=req.query.page || 1;
+    var country = req.query.n || 0;
+  
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+      var login_a = JSON.parse(req.cookies.login_ss);
+      //log.debug("login_a-------" + login_a.nickname)
+      data.login_nickname = login_a;
+    }
+    async.parallel({
+      contact: function (callback) {
+        cms.contact( {
+          "area_type":1,
+        }, callback);
+      },
+      contact2: function (callback) {
+          cms.contact( {
+            "area_type":2,
+          }, callback);
+      },
+      contact3: function (callback) {
+          cms.contact( {
+            "area_type":3,
+          }, callback);
+      },
+      contact4: function (callback) {
+        cms.contact( {
+          "area_type":4,
+        }, callback);
+      },
+      contact5: function (callback) {
+        cms.contact( {
+          "area_type":5,
+        }, callback);
+      },
+      contact6: function (callback) {
+        cms.contact( {
+          "area_type":6,
+        }, callback);
+      },
+      contact7: function (callback) {
+        cms.contact( {
+          "area_type":7,
+        }, callback);
+      },
+      contact8: function (callback) {
+        cms.contact( {
+          "area_type":8,
+        }, callback);
+      },
+      contact9: function (callback) {
+        cms.contact( {
+          "area_type":9,
+        }, callback);
+      },
+      zuixinzixun: function (callback) {
+        cms.zuixinzixun({
+          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
+        }, callback);
+      },
+      media_broadcast:function(callback){
+        cms.media_broadcast({
+          "position": "about", "catid": 49,"cityid": area,"perpage": 10
+        }, callback)
+      },
+      zhuanjiajiedu: function (callback) {
+        cms.zhuanjiajiedu({
+          "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
+        }, callback);
+      }
+    }, function (err, result){
+      log.info(result)
+      data.contact =returnData(result.contact,'contact');
+      data.contact2 =returnData(result.contact2,'contact2');
+      data.contact3 =returnData(result.contact3,'contact3');
+      data.contact4 =returnData(result.contact4,'contact4');
+      data.contact5 =returnData(result.contact5,'contact5');
+      data.contact6 =returnData(result.contact6,'contact6');
+      data.contact7 =returnData(result.contact7,'contact7');
+      data.contact8 =returnData(result.contact8,'contact8');
+      data.contact9 =returnData(result.contact9,'contact9');
+      data.zuixinzixun =returnData(result.zuixinzixun,'zuixinzixun');
+      data.media_broadcast =returnData(result.media_broadcast,'media_broadcast');
+      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
+      data.pageroute="about/contact";
+      data.tdk = {
+        pagekey: 'CONTACT', //key
+        cityid: area, //cityid
+        nationid: country//nationi
+      };
+      res.render('about/contact', data);
+  
+    });
+  };

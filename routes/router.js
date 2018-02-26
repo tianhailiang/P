@@ -5,9 +5,7 @@ exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
 
-
-  //参赞聚合页
-  app.get('/blog/canzan', about.canzan);
+  
   //社区首页
   app.get('/blog', controller.community_index);
   //用户视角 顾问主页
@@ -171,4 +169,14 @@ exports = module.exports = function (app) {// routes
   //浏览量接口
   app.get('/cmsapi/article_count', controller.article_count);
   app.post('/cmsapi/assessment', controller.assessment);//在线评估
+
+
+  //参赞聚合页
+  app.get('/blog/canzan', about.canzan);
+  //关于我们
+  app.get('/about',about.about);//金吉列简介
+  app.get('/about/culture',about.culture);//企业文化
+  app.get('/about/events',about.events);//金吉列大事记
+  app.get('/about/cooperation',about.cooperation);//商务合作
+  app.get('/about/contact',about.contact);//联系我们
 };

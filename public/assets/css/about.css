@@ -1,0 +1,56 @@
+.profile{
+  nargin-top:20px;
+  background: #ffffff;
+}
+.profile-con{
+  padding:12px 20px 20px 20px;
+}
+.about-guanggao img{
+  width: 1180px;
+  height: 360px;
+}
+.events-guanggao img{
+  width: 1180px;
+  height: 360px;
+}
+.profile p{
+  font-size:14px;
+  color:#333333;
+  text-indent: 2em;
+  line-height: 30px;
+}
+.profile-img{
+  padding-bottom: 20px;
+}
+.profile-img img{
+ display: inline-block;
+  margin-left:20px;
+  width: 270px;
+  height: 204px;
+  float:left;
+}
+.boss-info{
+  margin-top:20px;
+}
+.boss-info dl{
+  padding: 20px;
+  background: #ffffff;
+}
+.boss-info dl dt{
+  width: 300px;
+  height: 379px;
+  float:left
+}
+.boss-info dl dd{
+  float:right;
+  width: 820px;
+}
+.boss-info p{
+  text-indent: 2em;
+  line-height: 36px;
+  font-size:14px;
+  color:#333333;
+}
+#honor img{
+  cursor: default;
+}

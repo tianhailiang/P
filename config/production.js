@@ -16,7 +16,9 @@ var shequ_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazon
 var imageshost = 'http://images.jjl.cn';
 var cms_out_prefix = prefix;
 var apis = {
-
+  "get_contact": prefix + 'contact_way_list',//关于我们(联系我们)
+  "get_media_broadcast": prefix + 'common_recommend',//企业文化--媒体播报
+  "get_business_cooperation_list": prefix + 'business_cooperation_list',
   "get_canzanlist":uc_prefix+'index.php?m=userlist',//参赞列表
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
