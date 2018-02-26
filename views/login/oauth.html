@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/style.css?v=4.1.0" rel="stylesheet">
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/layer.css"/>
+  {% include "header_new.html" %}
+  <script src="{{helper.cdnhost}}/assets/js/layer.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+  <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/icheck.min.js"></script>
+</head>
+<body>
+{% include "widget/top/top.html" %}
+{% include "widget/nav_login/nav_login.html" %}
+
+<div class="register_overseas clearfix" style="margin-top: 30px">
+  <div class="register_content">
+    <input type="hidden" id="login_type" value="{{oauth_data.befrom}}"/>
+    <input type="hidden" id="herf_h" value="{{oauth_data.h}}"/>
+  </div>
+  <div class="login_footer">
+    ©2009 金吉列出国留学咨询服务有限公司 版权所有 京ICP备05010035号&nbsp;&nbsp;&nbsp;&nbsp;留学投诉电话4006-213-315&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：315@jjl.cn
+  </div>
+</div>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
+<script>
+  if($("#login_type").val() == "weixin"){
+    window.location.href = $("#herf_h").val();
+  }else{
+    window.opener.location.href = $("#herf_h").val();
+    window.close();
+  }
+</script>
+</body>
+</html>

@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include "header_new.html" %}
-<!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/layout.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy2.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/colleges_recommend.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/xSlider.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_fifth.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/slide.css" >-->
+
 <style>
   .canzan {
     height: 330px;
@@ -41,12 +34,8 @@
 {# 大学排名 #}
 {# 头部导航 #}
 {% include "widget/top/top.html" %}
-{# 头部首页 搜索框 #}
-{% include "widget/nav_first/nav_first.html" %}
-{# 头部导航2 搜索框 #}
-{% include "widget/nav_ninth/nav_ninth.html" %}{# 筛选 #}
-{# 筛选 #}
-{# 轮播 #}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(helper) }}
 
 <div class="dui-layout-lg clearfix">
   <p style="font-size: 14px;margin-left: 20px;margin-top: 20px;"><i class="iconfont" style="color: #C13232">&#xe60d;</i>>><span style="color: #C13232">留学消费教育特约专家</span></p>
@@ -55,17 +44,16 @@
 <div class="dui-layout-lg clearfix ">
   {% for item in canzanlist.list %}
    <div class="canzan dui-layout-col4 dui-box-shadow">
-     <a target="_blank"  href="{{ helper.urlgen('blog', item.uid | string ) }}" rel="nofollow">
+     <!-- <a target="_blank"  href="{{ helper.urlgen('blog', item.uid | string ) }}" rel="nofollow"> -->
         <img src="{{ helper.avaterimg(item.uid, 'big') }}" alt="{{ item.realname }}">
-     </a>
+     <!-- </a> -->
       <p class="canzan-p"><span>{{ item.job_number | ellipsis(17) }}</span></p>
-      <p class="canzan-p2">简介: {{ item.introduce | ellipsis(49) }}<a target="_blank"  href="{{ helper.urlgen('blog', item.uid | string ) }}" rel="nofollow">【查看详情】</a></p>
+      <p class="canzan-p2">简介: {{ item.introduce | ellipsis(49) }}</p>
    </div>
   {% endfor %}
 </div>
-<div class="dui-layout-lg clearfix branch-advertising-map" style="width:1180px; height: 130px;margin-top: 20px; background: #dcdcdc" id="AD_COUNSELLER_SEAT1">
-</div>
-{% include "widget/footer/footer.html" %}
+
+{% include "widget/new_footer/new_footer.html" %}
 {% import "widget/slide/slide.html" as  slide %}
 {{slide.leyu_slide("AD_COUNSELLER_SEAT10") }}
 </body>

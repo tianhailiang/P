@@ -1,6 +1,7 @@
 var controller = require('./controller.js');
 var user = require('./user.js');
-var about = require('./about.js')
+var about = require('./about.js');
+var login = require('./login.js');
 exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
@@ -172,11 +173,17 @@ exports = module.exports = function (app) {// routes
 
 
   //参赞聚合页
-  app.get('/blog/canzan', about.canzan);
+  app.get('/canzan', about.canzan);
   //关于我们
-  app.get('/about',about.about);//金吉列简介
+  app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化
   app.get('/about/events',about.events);//金吉列大事记
   app.get('/about/cooperation',about.cooperation);//商务合作
   app.get('/about/contact',about.contact);//联系我们
+  //顾问登录
+  app.get('/login', login.login);
+  //顾问忘记密码
+  app.get('/forget', login.forget);
+  //普通用户绑定手机号
+  app.get('/binding', login.binding);
 };

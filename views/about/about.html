@@ -14,10 +14,10 @@
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <body style="background: #f5f5f5;">
 {% include "widget/top/top.html" %}
-<div style="background: #ffffff;">
-  {% include "widget/nav_first/nav_first.html" %}
-</div>
-{% include "widget/nav_ninth/nav_ninth.html" %}
+
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(helper) }}
+
 <div class="dui-layout-lg clearfix" style="margin: 20px auto;">
   <div class="dui-layout-lg about-guanggao" id="AD_PROFILE_SEAT1">
 </div>

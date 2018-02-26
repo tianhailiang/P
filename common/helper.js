@@ -129,7 +129,7 @@ function urlgen() {
   }
   //liuxue
   if (!isyimin && config.version == 'development') { //如果是開發環境
-    if( (chan.indexOf('/p/') != -1 || chan.indexOf('/p1/') != -1 || chan.indexOf('/article/') != -1 || chan.indexOf('/case/') != -1 || chan.indexOf('center') != -1 || chan.match(/^\/p$/) || chan.indexOf('/blog/') != -1) && chan.indexOf('/yimin/')==-1) {
+    if( (chan.match('/about') != -1 || chan.indexOf('/p/') != -1 || chan.indexOf('/p1/') != -1 || chan.indexOf('/article/') != -1 || chan.indexOf('/case/') != -1 || chan.indexOf('center') != -1 || chan.match(/^\/p$/) || chan.indexOf('/blog/') != -1) && chan.indexOf('/yimin/')==-1) {
       url = config.wwhost + ':4000' + url;//social
     }
     else {

@@ -2,11 +2,25 @@ form, input {
     margin: 0;
     padding: 0;
 }
-
-.new_nav_first{
-    width: 1200px;
+.new_nav_first_white{
+    width: 100%;
     height: 82px;
     background-color: #fff;
+}
+.new_nav_first_red{
+    width: 100%;
+    height: 82px;
+    background-color: #C13232;
+}
+.new_nav_first_white .new_nav_first{
+    width: 1200px;
+}
+.new_nav_first_red .new_nav_first{
+    width: 1180px;
+}
+.new_nav_first{
+    margin: 0 auto;
+    height: 82px;
 }
 .new_nav_first .new-logo-left{
     width:217px;
@@ -57,7 +71,7 @@ form, input {
 }
 .new_nav_first .new-city{
     width:60px;
-    height: 30px;
+    height: 50px;
     margin-top:32px;
     float:left;
     position: relative;
@@ -68,12 +82,17 @@ form, input {
     font-size: 16px;
     padding: 0 2px;
 }
+.new_nav_first_white .new-city .icon-top {
+    color: #C13232;
+}
+.new_nav_first_red .new-city .icon-top {
+    color: #fff;
+}
 .new_nav_first .new-city  .icon-top{
     font-size: 20px;
-    color: #C13232;
     position: absolute;
     top: 1px;
-    left: -19px;
+    left: -24px;
 }
 .new_nav_first .new-city .city-cc{
     width:100px;
@@ -98,6 +117,12 @@ form, input {
     font-weight:500;
     *line-height: 30px;
 }
+.new_nav_first_red .citynames{
+    color: #fff;
+}
+.new_nav_first_white .citynames{
+    color: #333;
+}
 .citynames i{
     margin-right: 6px;
     font-size:14px;
@@ -107,7 +132,7 @@ form, input {
 }
 
 
-.new-city-box{position: absolute;z-index: 999;display:none;left:-140px;top:34px;*top:56px; width: 584px; background: #fff; border-top: 2px solid #D41B2B;}
+.new-city-box{position: absolute;z-index: 999;display:none;left:-138px;top:34px;*top:56px; width: 584px; background: #fff; border-top: 2px solid #D41B2B;}
 .new-city-box .arrow{position: absolute; top:-9px; left: 112px; width: 5px; height: 9px; display: inline-block;}
 .new-city-box .city-cont{border: 1px solid #D2D2D2; border-top: none; padding: 18px 0 10px 0;}
 .new-city-box .city-cont a{float: left; width: 70px; text-align: center; padding: 0 5px; display: block; color: #666; font-size:14px; line-height: 28px;cursor: pointer}
@@ -147,12 +172,17 @@ form, input {
     outline-style: none;
     color:#999999;
 }
+.new_nav_first_white .new_nav_first .new-home-search .search-btn {
+    background-color: #C13232;
+}
+.new_nav_first_red .new_nav_first .new-home-search .search-btn {
+    background-color: #821313;
+}
 .new_nav_first .new-home-search .search-btn{
     width:44px;
     height: 30px;
     float: right;
     border: none;
-    background: #C13232;
     outline-style: none;
     line-height: 30px;
     text-align: center;
