@@ -41,11 +41,10 @@
 </style>
 <body style="background: #f5f5f5;">
 {% include "widget/top/top.html" %}
-<div style="background: #ffffff;">
-  {% include "widget/nav_first/nav_first.html" %}
-</div>
 
-{% include "widget/nav_ninth/nav_ninth.html" %}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(helper) }}
+
 <div style="margin:20px 0">
   {% include "widget/nav_tenth/nav_tenth.html" %}
 </div>
@@ -196,7 +195,7 @@
           text: $(this).parents('p').find('.contactingcc').html(),
           className: "title"
         },
-        /* content: {
+        /* content: {s
          className: "content",
          text: ["地址：北京市建国门外大街", "电话：(010)65131892"]
          },*/

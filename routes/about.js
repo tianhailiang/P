@@ -31,7 +31,7 @@ function split_array(arr, len) {
 
 //参赞聚合页面
 exports.canzan = function (req, res, next) {
-  log.debug(req.params);
+  log.info('参赞聚合页',req.params);
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var qianzhengzhinan_currentPage=req.query.page || 1;
