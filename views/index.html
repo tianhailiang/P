@@ -45,6 +45,7 @@
     line-height: 22px;
     font-size: 14px;
     float: left;
+    cursor: pointer;
   }
   .nationality_guoqi_warp{
     width: 1200px;
@@ -348,7 +349,7 @@
         }
         ] %}
         {% for item in cityList %}
-        <div class="branch_company_text_tilte">{{item.companyName}}</div>
+        <div class="branch_company_text_tilte" data-id="{{item.companyId}}">{{item.companyName}}</div>
         {% endfor %}
       </div>
     </div>
