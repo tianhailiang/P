@@ -82,12 +82,17 @@ form, input {
     font-size: 16px;
     padding: 0 2px;
 }
+.new_nav_first_white .new-city .icon-top {
+    color: #C13232;
+}
+.new_nav_first_red .new-city .icon-top {
+    color: #fff;
+}
 .new_nav_first .new-city  .icon-top{
     font-size: 20px;
-    color: #C13232;
     position: absolute;
     top: 1px;
-    left: -19px;
+    left: -24px;
 }
 .new_nav_first .new-city .city-cc{
     width:100px;
@@ -111,6 +116,12 @@ form, input {
     color:#333333;
     font-weight:500;
     *line-height: 30px;
+}
+.new_nav_first_red .citynames{
+    color: #fff;
+}
+.new_nav_first_white .citynames{
+    color: #333;
 }
 .citynames i{
     margin-right: 6px;
@@ -161,12 +172,17 @@ form, input {
     outline-style: none;
     color:#999999;
 }
+.new_nav_first_white .new_nav_first .new-home-search .search-btn {
+    background-color: #C13232;
+}
+.new_nav_first_red .new_nav_first .new-home-search .search-btn {
+    background-color: #821313;
+}
 .new_nav_first .new-home-search .search-btn{
     width:44px;
     height: 30px;
     float: right;
     border: none;
-    background: #C13232;
     outline-style: none;
     line-height: 30px;
     text-align: center;
