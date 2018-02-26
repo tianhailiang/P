@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 {% include "header_new.html" %}
-
+<link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
+<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
 <style>
   .lunbo,.branch_company{
     width: 1200px;
@@ -23,6 +24,9 @@
     height: 270px;
     background: #fbd238;
     float: left;
+  }
+  .lunbo_right .slider:hover .slider-btn{
+    /*display: none;*/
   }
   .branch_company{
     height: 146px;
@@ -145,8 +149,11 @@
   <!--轮播图-->
   <div class="lunbo">
     <div class="lunbo_lift">
+      {% include "widget/xSlider/xSlider.html" %}
     </div>
-    <div class="lunbo_right"></div>
+    <div class="lunbo_right">
+      {% include "widget/xSlider/xSlider2.html" %}
+    </div>
   </div>
   <!--50家分公司-->
   <div class="branch_company">
@@ -361,15 +368,38 @@
   {% include "widget/liuxue_item/liuxue_item.html" %}
 </div>
 {% include "widget/new_footer/new_footer.html" %}
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
-    $(window).on('scroll',function() {
-        var $scroll = $(this).scrollTop();
-        if ($scroll >= 200) {
-            $('.nationality_guoqi_warp').show();
-        } else {
-            $('.nationality_guoqi_warp').hide();
-        }
-    })
+  $(function () {
+      $(window).on('scroll',function() {
+          var $scroll = $(this).scrollTop();
+          if ($scroll >= 200) {
+              $('.nationality_guoqi_warp').show();
+          } else {
+              $('.nationality_guoqi_warp').hide();
+          }
+      });
+      $('.lunbo_lift .slider').xSlider({
+          //轮播图配置
+          autoplay : 500,
+          current: 0,
+          speed: 500,
+          intervalTime: 5000,
+          pagination: true
+      });
+      $('.lunbo_right .slider').xSlider({
+          //轮播图配置
+          autoplay : 500,
+          mode:'vertical',
+          current: 0,
+          speed: 1000,
+          intervalTime: 5000,
+          slidesPerView : 2,
+          slidesPerGroup : 2,
+//          pagination: true
+      });
+  })
+
 </script>
 </body>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
