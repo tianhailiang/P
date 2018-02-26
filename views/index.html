@@ -356,5 +356,15 @@
   {% include "widget/liuxue_item/liuxue_item.html" %}
 </div>
 {% include "widget/new_footer/new_footer.html" %}
+<script>
+    $(window).on('scroll',function() {
+        var $scroll = $(this).scrollTop();
+        if ($scroll >= 200) {
+            $('.nationality_guoqi_warp').show();
+        } else {
+            $('.nationality_guoqi_warp').hide();
+        }
+    })
+</script>
 </body>
 </html>
