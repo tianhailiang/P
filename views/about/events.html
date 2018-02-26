@@ -19,11 +19,11 @@
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <body style="background: #f5f5f5;">
 {% include "widget/top/top.html" %}
-<div style="background: #ffffff;">
-  {% include "widget/nav_first/nav_first.html" %}
-</div>
 
-{% include "widget/nav_ninth/nav_ninth.html" %}
+<div class="main" style="width: 1200px;margin: 0 auto;">
+  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+  {{ new_nav_first.new_nav_first(helper) }}
+</div>
 
 <div style="margin:20px 0">
   {% include "widget/nav_tenth/nav_tenth.html" %}

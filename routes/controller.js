@@ -927,7 +927,7 @@ exports.article_detail= function(req,res,next){
 
 //顾问主页-用户视角
 exports.adviser_main = function (req, res, next) {
-  log.debug('this adviser_main-----------------------');
+  log.debug('this adviser_main-----------------------',req.params);
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   data.uid = req.params.id;
