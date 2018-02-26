@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+{% include "header_new.html" %}
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/bootstrap.min.css?v=3.3.6"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/style.css?v=4.1.0"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/custom.css"/>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/layer.css"/>
+
+
+  <script src="{{helper.cdnhost}}/assets/js/layer.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+  <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/icheck.min.js"></script>
+  <style>
+    .inputtext_isr{
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .form-control{
+      display: inline-block;
+      line-height: 25px;
+    }
+    .fen img{
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      cursor:pointer;
+    }
+  </style>
+
+<body>
+  {% include "widget/top/top.html" %}
+
+  <div class="main" style="width: 1180px;margin: 0 auto;">
+    {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+    {{ new_nav_first.new_nav_first(helper) }}
+  </div>
+
+  <div class="login_overseas clearfix">
+    <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;min-width: 1920px;"/>
+    <div class="login_content">
+      <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
+        <h3 class="login_nei_title">登录金吉列<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a></h3>
+
+        <form class="m-t" role="form" style="margin-top: 20px">
+          <div class="form-group inputtext_isr" style="position: relative;height: 28px">
+            <input type="text" class="form-control" placeholder="手机号" id="newEmail"/>
+            <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
+          </div>
+          <div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
+            <input type="password" class="form-control" placeholder="密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
+            <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
+          </div>
+        </form>
+
+            <!--<div class="form-group text-left" style="float: left;color: #999;margin-top: -10px">
+              <div class="checkbox i-checks" style="">
+                <label class="no-padding">
+                  <input type="checkbox"><i></i> 我同意注册协议</label>
+              </div>
+            </div>-->
+            <div class="login_check clearfix" style="">
+              <a target="_blank"  href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了？</small></a>
+            </div>
+
+          <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0" id="loginSubmit" value="立 即 登 录"/>
+
+
+
+        <div class="fen">
+          <h4>第三方快速登录：</h4>
+          <div class="bdsharebuttonbox" id="fx" style="float: left;margin-top: 7px">
+            <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo"/>
+
+            <a target="_blank"  href="{{helper.wwhost}}/weixin_login?h={{url}}" >
+              <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
+            </a>
+            <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq"/>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="login_footer">
+      <div id="login_data">{{login_ss}}</div>
+      ©2009 金吉列出国留学咨询服务有限公司 版权所有 京ICP备05010035号&nbsp;&nbsp;&nbsp;&nbsp;留学投诉电话4006-213-315&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：315@jjl.cn
+    </div>
+  </div>
+  <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav_login.js" type="text/javascript" charset="utf-8"></script>
+
+
+</body>
+</html>
