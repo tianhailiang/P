@@ -17,6 +17,10 @@ var imageshost = 'http://images.jjl.cn';
 var cms_out_prefix = prefix;
 var apis = {
   
+  "oauth": uc_prefix + 'index.php',
+  "bind_phone": uc_prefix + 'index.php?m=bind_phone',// 绑定手机号
+  "forget": uc_prefix + 'index.php?m=forgetpassword',//忘记密码
+  "sendcode": uc_prefix + 'index.php',//发送手机验证码
   "get_contact": prefix + 'contact_way_list',//关于我们(联系我们)
   "get_media_broadcast": prefix + 'common_recommend',//企业文化--媒体播报
   "get_business_cooperation_list": prefix + 'business_cooperation_list',

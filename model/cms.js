@@ -1087,3 +1087,39 @@ exports.canzanlist = function (data, callback) {
   }
   api.apiRequest(url, callback);
 }
+
+/*发送手机验证码*/
+exports.sendcode_ss = function (data, callback) {
+  log.debug('000');
+  var url = _api_url_path(data, config.apis.sendcode);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+  log.debug('url', url)
+}
+
+/*忘记密码*/
+exports.forget = function (data, callback) {
+  log.debug(444);
+  var url = config.apis.forget;
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url, data, callback);
+  console.log('url++++++', url)
+}
+
+/*绑定手机号*/
+exports.bind_phone = function (data, callback) {
+  log.debug(333);
+  var url = config.apis.bind_phone;
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url, data, callback);
+  console.log('url-----', url)
+}
