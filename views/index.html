@@ -173,6 +173,11 @@
           <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></div>
           <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></div>
           <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></div>
+        </div>
         </div>
       </div>
     </div>
@@ -397,6 +402,7 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
+    //
       $(window).on('scroll',function() {
           var $scroll = $(this).scrollTop();
           if ($scroll >= 200) {
@@ -405,9 +411,10 @@
               $('.nationality_guoqi_warp').hide();
           }
       });
+     
       $('.lunbo_lift .slider').xSlider({
           //轮播图配置
-//          autoplay : 500,
+          autoplay : 500,
           current: 0,
           speed: 500,
           intervalTime: 5000,
