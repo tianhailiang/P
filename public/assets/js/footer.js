@@ -70,22 +70,3 @@ function showcity2(){
 
   }
 }
-function top_city2 (a,t) {
-  // console.log(a)
-  $('#address').html(a);
-  $('#tel').html(t);
-}
-
-$(".liuxue-guoqi img").hover(function(){
-  var index = $(this).parent("a").index();
-  if(index<2){
-    $(this).prev("span").addClass("guoqi-top1");
-  }else if( index>=2 && index<12){
-    $(this).prev("span").addClass("guoqi-top2");
-  }else{
-    $(this).prev("span").addClass("guoqi-bot");
-  }
-  $(this).prev("span").css("display","block");
-},function(){
-  $(this).prev("span").css("display","none");
-});

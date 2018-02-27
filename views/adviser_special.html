@@ -113,9 +113,9 @@
       {% esi helper.include(esikey,'fragment/community_guwen','n='+hcountry) %}
   </div>
 </div>
-{% include "widget/footer/footer.html" %}
 {% import "widget/slide/slide.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+{% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null; 
   if($.cookie('login_ss') != undefined){
