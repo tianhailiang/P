@@ -32,19 +32,37 @@ function split_array(arr, len) {
 exports.index = function (req, res, next) {
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var data = [];
-    data.xSlider=lunbo;
-    data.xSlider2=lunbo;
-    data.xSlider=data.xSlider.items;
-    data.xSlider2=data.xSlider2.items;
-    data.tdk = {
-        pagekey: 'INDEX',
-        cityid: area,
-        nationid: ''
-    };
-    //data.esikey = esihelper.esikey();
-    log.info(data.xSlider);
-    log.info(data.xSlider2);
-    res.render('index', data);
+    async.parallel({
+        lunbo_list:function(callback) {
+         cms.lunbo_list({
+           "ad_page": "HOME",
+           "ad_seat": "SEAT1"
+         }, callback);
+        },
+        lunbo_list2:function(callback) {
+         cms.lunbo_list({
+           "ad_page": "HOME",
+           "ad_seat": "SEAT2"
+         }, callback);
+        },
+    },function (err, result) {
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.tdk = {
+            pagekey: 'index',
+            cityid: area,
+            nationid: ''
+        };
+        //data.esikey = esihelper.esikey();
+        log.info(data.xSlider);
+        log.info(data.xSlider2);
+        res.render('index', data);
+    })
+    // data.xSlider=lunbo;
+    // data.xSlider2=lunbo;
+    // data.xSlider=data.xSlider.items;
+    // data.xSlider2=data.xSlider2.items;
+
 };
 
 //社区首页
