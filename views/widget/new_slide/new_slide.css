@@ -600,6 +600,12 @@ i.ibar_recharge-arrow {
   padding:6px;
   box-sizing: border-box;
 }
+#r_comment{
+  background: #9a9a9a;
+}
+#r_comment:hover{
+  background: #C13232;
+}
 .quick_links_panel ul li:hover{
   background: #C13232;
 }
@@ -661,3 +667,27 @@ i.ibar_recharge-arrow {
    margin-left:4px;
    margin-top:4px;
  }
+ .quick_links_panel ul li.weixin-slide{
+     position: relative;
+   }
+.quick_links_panel ul li.qq-slide{
+  position: relative;
+}
+.weixin-slide-img{
+  position: absolute;
+  width: 240px;
+  height: 320px;
+  background: #f0ad4e;
+  right:44px;
+  top:-184px;
+  display: none;
+}
+.qq-slide-img{
+  position: absolute;
+  width: 240px;
+  height: 320px;
+  background: #00A000;
+  right:44px;
+  top:-230px;
+  display: none;
+}
