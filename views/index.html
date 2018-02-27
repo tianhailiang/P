@@ -376,6 +376,10 @@
   {% include "widget/liuxue_item/liuxue_item.html" %}
 </div>
 {% include "widget/new_footer/new_footer.html" %}
+</div>
+{% import "widget/new_slide/new_slide2.html" as  slide %}
+{{slide.leyu_slide("AD_BRANCH_HOME_SEAT10") }}
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {

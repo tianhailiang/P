@@ -347,10 +347,12 @@ function get_location(_type){
     $(this).children(".mp_qrcode").hide();
   });
 
-  $(".weixin_ewm").hover(function () {
-    $(this).parents(".quick_links_panel").find(".weixin").css("display", "block")
-  }, function () {
-    $(this).parents(".quick_links_panel").find(".weixin").css("display", "none")
+  $(".my").hover(function () {
+    $(this).find("img").css("display","none");
+    $(this).find("p").css("display","block");
+  },function(){
+    $(this).find("p").css("display","none");
+    $(this).find("img").css("display","block");
   })
 // right: 40px; margin-top: -200px; display: block; width: 170px;
   $(".zixun").on("click", function () {
@@ -367,18 +369,40 @@ function get_location(_type){
   })
 
   /*右侧-评论*/
-  $("#r_comment").on("click", function () {
+/*  $("#r_comment").on("click", function () {
     $("#comment_con").css("display", "block");
-    $("#r_comment").css("background", "#d41821");
+    $("#r_comment").css("background", "#C13232");
     $("#quick_links_pop").css("display", "none");
     return false
-  });
-  $("#comment_close,#zxzx").on("click", function () {
+  });*/
+$("#r_comment").hover(function(){
+  $("#comment_con").css("display", "block");
+  $("#r_comment").css("background", "#C13232");
+  $("#quick_links_pop").css("display", "none");
+},function(){
+  $("#comment_con").css("display", "none");
+  $("#r_comment").css("background", "#9a9a9a");
+})
+/*  $("#comment_close,#zxzx").on("click", function () {
     $("#comment_con").css("display", "none");
-    $("#r_comment").css("background", "#616161");
+    $("#r_comment").css("background", "#9a9a9a");
     return false
-  })
+  })*/
+$("#comment_close,#zxzx").hover(function(){
+  $("#quick_links_pop").css("display", "block");
+},function(){
 
+});
+$(".weixin-slide").hover(function(){
+  $(".weixin-slide-img").css("display","block")
+},function(){
+  $(".weixin-slide-img").css("display","none")
+});
+$(".qq-slide").hover(function(){
+  $(".qq-slide-img").css("display","block")
+},function(){
+  $(".qq-slide-img").css("display","none")
+});
   $('#to_top').click(function(){
     $('html , body').animate({scrollTop: 0},'slow');
   });
