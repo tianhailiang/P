@@ -1,7 +1,4 @@
 /**
- * Created by DXZ-Shuqin.Wang on 2018/2/24.
- */
-/**
  * Created by DXZ-Hui.Cao on 2017/8/25.
  */
 
@@ -81,6 +78,13 @@ $('.city-cont').on('click',"a", function(e){
 
 });
 
+$('.branch_company_text').on('click',".branch_company_text_tilte", function(e){
+    e.preventDefault();
+    currentarea = $(this).attr("data-id");
+    $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
+    window.location.reload();
+
+});
 
 
 
@@ -95,71 +99,14 @@ $(".top_sec").hover(function(){
     $(this).find(".sec-xq").slideUp(100);
     $(this).find(".go-down").html("&#xe60b;")
 });
-
-var page_keyword = $("#so_keyword").text();
-var page_seaType = $('#pagekey').val();
-var curSeaType = getSoType(page_seaType) ? getSoType(page_seaType) : '顾问';
-var curKeyWord = page_keyword ? page_keyword : '请输入你想了解的关键字';
-/*设置展示函数*/
-function setSoType (searchType, searchKeyWord) {
-    $("#searchType").text(searchType);
-    if (searchKeyWord == '' || searchKeyWord == 'undefined' || searchKeyWord == undefined) {
-        $("#search").attr('placeholder', '请输入你想了解的关键字');
-    }
-    else {
-        $("#search").val(searchKeyWord);
-    }
-}
-/*获取搜索类型函数*/
-function getSoType (pagekey) {
-    var soTypeObj = {
-        "SEARCHNEWS": "资讯",
-        "SEARCHADVISER": "顾问",
-        "SEARCHACTIVITY": "活动",
-        "SEARCHCASE": "案例",
-        "SEARCHSCHOOL": "院校"
-    };
-    return soTypeObj[pagekey];
-}
-/*获取搜索url函数*/
-function getSoUrl (searchType) {
-    var soUrlObj = {
-        "资讯": "so_news",
-        "顾问": "so_advisor",
-        "活动": "so_activity",
-        "案例": "so_case",
-        "院校": "so_school"
-    };
-    return soUrlObj[searchType]
-}
-/*设置初始化展示函数*/
-setSoType(curSeaType, curKeyWord);
-/*热门搜索*/
-$(".tags a").click(function(e){
-    e.preventDefault();
-    $("#search").val($(this).html());
-    var so_type = $("#searchType").text();
-    var so_key_word = $.trim($("#search").val());
-    console.log(fn.no_urlgen(getSoUrl(so_type), 'q=' + so_key_word));
-    window.open(fn.no_urlgen(getSoUrl(so_type), 'q=' + so_key_word));
-});
 //点击搜索按钮
 $("#searchBtn").click(function () {
-    var so_type = $("#searchType").text();
     var so_key_word = $.trim($("#search").val());
     if (so_key_word.length == 0 || so_key_word == '请输入你想了解的关键字') {
         alert('请输入你想了解的关键词');
         $('#search').focus();
     }
     else {
-        window.open(fn.no_urlgen(getSoUrl(so_type), 'q=' + so_key_word));
+        window.open(fn.no_urlgen('so_article','q=' + so_key_word));
     }
-});
-//下拉菜单选择类型
-$("#searchTypeList li a").click('li a', function (e) {
-    e.preventDefault();
-    var checkedType = $(this).html();
-    setSoType(checkedType);
-    $(".sec-xq").slideUp(100);
-    $(".go-down").html("&#xe60b;")
 });

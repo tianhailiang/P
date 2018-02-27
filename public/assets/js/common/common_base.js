@@ -169,6 +169,7 @@
         },
         /*生成栏目页不需要静态化的跳转链接*/
         no_urlgen: function () {
+            console.log(arguments);
             var url = '',chan = '',param = '',nation = '',city = '',nationid='',cityid='';
             if(arguments.length == 0){
                 return ;
