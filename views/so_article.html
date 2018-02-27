@@ -46,6 +46,9 @@
         line-height: 54px;
         height: 54px;
     }
+    .main-left .result-bar span{
+        color: #C13232;
+    }
     .main-left .result-type-bar {
         border: 1px solid #dcdcdc;
         padding: 16px 0;
@@ -158,7 +161,7 @@
                 <div class="search-btn" id="searchBtn-page" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
             </div>
             <div class="result-bar">
-                搜索<span></span>共搜索到<span></span>个结果
+                搜索<span id="result-keyword">关键词</span>共搜索到<span id="result-num">3322</span>个结果
             </div>
             <div class="result-type-bar">
                 <a href="" class="active">综合</a>
@@ -168,7 +171,7 @@
             <div class="result-conent">
                 <div class="result-item clearfix">
                     <div class="item-adviser">
-                        <img src="../assets/img/profile3.jpg" alt="" class="adviser-avatar"/><span>张珂</span><img src="../assets/img/1v.png" alt="" class="flag"/>
+                        <a href=""><img src="../assets/img/profile3.jpg" alt="" class="adviser-avatar"/></a><span>张珂</span><img src="../assets/img/1v.png" alt="" class="flag"/>
                     </div>
                     <div class="item-info">
                         <div class="info-top clearfix">
@@ -177,7 +180,8 @@
                                 <span>留学时讯</span>
                             </div>
                         </div>
-                        <div class="info-desc">邵东富ID见覅圣诞节基地的积分等级绝地反击的减肥死的积分是的奇偶的及时交付is登记的交付的司法电视剧邵东富ID见覅圣诞节基地的积分等级绝地反击的减肥死的积分是的奇偶的及时交付is登记的交付的司法电视剧<a>【查看详情】</a></div>
+                        {% set aa = '邵东富ID见覅圣诞节基地的积分等级绝地反击的减肥死的积分是的奇偶的及时交付is登记的交付的司法电视剧邵东富见覅圣诞节基地的积分等级绝地反击的减肥死的积分是的奇偶的及时交付is登记的交付的司法电视剧 '%}
+                        <div class="info-desc">{{aa|ellipsis(90)}}<a>【查看详情】</a></div>
                         <div class="time">今天13:19</div>
                     </div>
                 </div>
@@ -194,14 +198,6 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
     $(function () {
-        $(window).on('scroll',function() {
-            var $scroll = $(this).scrollTop();
-            if ($scroll >= 200) {
-                $('.nationality_guoqi_warp').show();
-            } else {
-                $('.nationality_guoqi_warp').hide();
-            }
-        });
         $('.lunbo_lift .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
