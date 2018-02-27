@@ -675,19 +675,33 @@ i.ibar_recharge-arrow {
 }
 .weixin-slide-img{
   position: absolute;
-  width: 240px;
-  height: 320px;
-  background: #f0ad4e;
+  width: 226px;
+  height: 292px;
+  border-right:7px solid #f8f8f8;
+  border-left:7px solid #f8f8f8;
+  border-top:14px solid #f8f8f8;
+  border-bottom:14px solid #f8f8f8;
+  background: #f8f8f8 ;
   right:44px;
   top:-184px;
   display: none;
 }
+.weixin-slide-img img{
+  width: 226px;
+}
 .qq-slide-img{
   position: absolute;
-  width: 240px;
-  height: 320px;
-  background: #00A000;
+  width: 216px;
+  height:296px;
+  border:12px solid #f8f8f8;
+  background: #f8f8f8 ;
   right:44px;
   top:-230px;
   display: none;
+}
+.qq-slide-img img{
+  width: 216px;
+}
+.quick_links_panel ul li.weichuan:hover{
+  background: #9a9a9a;
 }

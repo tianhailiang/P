@@ -393,15 +393,15 @@ $("#r_comment").hover(function(){
   $("#comment_con").css("display", "none");
   $("#r_comment").css("background", "#9a9a9a");
 })
-/*  $("#comment_close,#zxzx").on("click", function () {
+  $("#comment_close").on("click", function () {
     $("#comment_con").css("display", "none");
     $("#r_comment").css("background", "#9a9a9a");
     return false
-  })*/
-$("#comment_close,#zxzx").hover(function(){
+  })
+$("#zxzx").hover(function(){
   $("#quick_links_pop").css("display", "block");
 },function(){
-
+/*  $("#quick_links_pop").css("display", "none");*/
 });
 $(".weixin-slide").hover(function(){
   $(".weixin-slide-img").css("display","block");
