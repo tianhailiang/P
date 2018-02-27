@@ -98,24 +98,6 @@ var ZXXFILE = {
                     xhr.send(formData);
                 }
             })(file);
-/*            var sendfile = file;
-            var formData = new FormData(file);
-            formData.append("avatar", file);//设置key为avartar,value为上述的File对象
-            $.ajax({
-                url: ajaxUrlPrefix.nodeapi + '/cmsapi/input_upload',
-                type:'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (data) {
-                    var resObj = JSON.stringify({"errno":0,"data":[data]});
-                    self.uploadNum++;
-                    self.onSuccess(sendfile, resObj);
-                },
-                error: function (err) {
-                    console.log(err.message);
-                }
-            });*/
         }
 
     },
@@ -131,7 +113,6 @@ var ZXXFILE = {
         if (this.fileInput) {
             if(document.addEventListener){
                 this.fileInput.addEventListener("change", function(e) {
-                    console.log('change 要选择了')
                     self.funGetFiles(e);
                 }, false);
             }else{

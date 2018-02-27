@@ -144,7 +144,7 @@ form, input {
 
 /*搜索*/
 .new_nav_first .nav-right .new-searchs{
-    width: 356px;
+    width: 300px;
     height: 30px;
     position: relative;
     z-index: 100;

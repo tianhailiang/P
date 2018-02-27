@@ -73,7 +73,33 @@ exports.index = function (req, res, next) {
     // data.xSlider=data.xSlider.items;
     // data.xSlider2=data.xSlider2.items;
 };
+//搜索页
+exports.so_article = function (req, res, next) {
+    log.debug('搜索结果文章');
+    var data = {};
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
+    var order = nquery && nquery.order ? nquery.order : "add_time";
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+    }, function (err, result) {
+        data.order = order;
+        data.keyword=keyword;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'SEARCHNEWS', //key
+            cityid: area
+        };
+        res.render('so_article', data);
 
+    });
+};
 //社区首页
 exports.community_index = function (req, res, next) {
   console.log('community_index');
@@ -305,6 +331,53 @@ exports.center_main = function (req, res, next) {
         };
         res.render('center_main', data);
     });
+};
+//顾问中心 上传我的二维码
+exports.post_code = function (req, res, next) {
+    log.debug('顾问中心 上传我的二维码')
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var page = req.query.page || 1;
+    data.tdk = {
+        pagekey: 'ADVISOR_CENTER_CASE',
+        cityid: area,
+    };
+    res.render('center_post_code', data);
+/*    if ( req.cookies.login_ss !== undefined) {
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        if(data.login_info.usertype ==1){
+            res.redirect('/404');
+            return false;
+        }
+    }else{
+        res.redirect(config.wwhost+'/login');
+        return false;
+    }
+    async.parallel({
+        //获取用户信息（普通用户，顾问，参赞）
+        userinfo:function(callback){
+            wec.userinfo({
+                "u_id":data.login_info.uid,
+                "to_uid":data.login_info.uid
+            },callback);
+        },
+        case_list: function (callback) {
+            wec.user_article_list({
+                "u_id": data.login_info.uid,
+                "page": page,
+                "per_page": 4,
+                "type": 1
+            }, callback);
+        }
+    }, function (err, result) {
+        data.userinfo =returnData(result.userinfo,'userinfo');
+        data.case_data =returnData(result.case_list,'case_list');
+        data.tdk = {
+            pagekey: 'ADVISOR_CENTER_CASE',
+            cityid: area,
+        };
+        res.render('center_post_ode', data);
+    });*/
 };
 //个人中心 我的案例
 exports.center_case = function (req, res, next) {
