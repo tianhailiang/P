@@ -144,12 +144,9 @@
 
 <script>
   $(function() {
-    var login_nickname = JSON.parse($.cookie('login_user'));
+    var login_nickname = JSON.parse($.cookie('login_ss'));
     var user_type;
-    console.log('login_nickname', login_nickname);
-    if (login_nickname != null) {
-      user_type = 1
-    }
+    console.log('login_ss', login_nickname);
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con">'+
                 '<div class="top-con-right">'+
@@ -163,14 +160,15 @@
       var val = '<div class="dui-layout-lg top-con">'+
                 '<div class="top-con-right">'+
                 '<ul>';
-      if (user_type == 1) {
+      if (login_nickname.usertype == 1) {
         val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
-      } else if (user_type == 2) {
+      } else if (login_nickname.usertype == 2) {
         val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("advisor_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
-      }else if (user_type == 3) {
+      }else if (login_nickname.usertype == 3) {
         val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("canzan_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
       }
-      val += '<li><a href="javascript:void(0)" onclick="outlogin()" rel="nofollow">退出</a></li>'+
+      val += '<li><span class="bor">|</span></li>'+
+              '<li><a href="javascript:void(0)" onclick="outlogin()" rel="nofollow">退出</a></li>'+
                 '</ul>'+
                 '</div>'+
                 '</div>';
@@ -345,8 +343,9 @@
       success:function(msg) {
         console.log('msg', msg);
         if (msg.code == 0) {
-          layer.msg('登录成功')
+          layer.msg('登录成功');
           layer.close(layeropen);
+          window.location.reload();
         } else {
           console.log(msg)
           layer.msg(msg.message)
@@ -357,7 +356,7 @@
 //普通用户退出
 function outlogin () {
     $.ajax({
-      url: '/login_user_out',
+      url: '/login_out',
       type: 'GET',
       datatype: 'json',
       success:function(msg){

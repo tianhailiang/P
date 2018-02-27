@@ -35,7 +35,7 @@ var apis = {
   "favorite_article": shequ_prefix + 'article/favorite_article/',//社区 文章收藏
   "article_vote": shequ_prefix + 'article/article_vote/',//社区 文章点赞
   "user_article_list": shequ_prefix + 'account/user_article_list/',//社区 专栏列表
-  "post_login": uc_prefix + 'index.php?m=login',
+  "post_login": uc_prefix + 'index.php?m=adviserLogin',//顾问登录
   "post_register": uc_prefix + 'index.php?m=register',
   "lists": prefix + 'lists',
   "get_city_list": prefix + 'city_list',
