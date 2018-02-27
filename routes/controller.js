@@ -949,26 +949,11 @@ exports.adviser_main = function (req, res, next) {
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
-        "u_id":data.login_info.uid, "to_uid":data.uid},callback);
+         "uid":data.uid},callback);
     },
-    //作者精选
-    // channel_list:function(callback){
-    //   cms.channel_list({
-    //     "u_id":uid, "per_page":6, "order":"views desc"},callback);
-    // },
-    //热门留学方案
-    // hot_liuxuefangan_list: function (callback) {
-    //   cms.hot_liuxuefangan_list({
-    //     "position":"blog", "catid": "47", "cityid": area, "perpage": 15}, callback);
-    // },
-    //明星顾问
-    // mingxingguwen: function (callback) {
-    //   cms.mingxingguwen({
-    //     "position": "blog", "catid": 101, "cityid":area, "perpage":20}, callback);
-    // },
     guwen_list:function (callback){
       wec.adviser_main({
-        "u_id":data.login_info.uid ,"per_page":6, "order":"views desc", "uid": data.uid}, callback)
+        "per_page":6, "order":"views desc", "uid": data.uid}, callback)
     }
   },function(err, result){
     data.userinfo =returnData(result.userinfo,'userinfo');
@@ -977,55 +962,22 @@ exports.adviser_main = function (req, res, next) {
       res.redirect('/404');
       return false;
     }
-    // data.channel_list =returnData(result.channel_list,'channel_list');
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
-    //切割成 二维数组
-    // data.hotLXFA  = split_array(returnData(result.hot_liuxuefangan_list,'hot_liuxuefangan_list'), 7);
-    // var sliderArr = [];
-    // data.mingxingguwen = returnData(result.mingxingguwen,'mingxingguwen');
-    // var sliderArrLen = (data.mingxingguwen.length%10 == 0) ? parseInt(data.mingxingguwen.length/10) : (parseInt(data.mingxingguwen.length/10) + 1);
-    // for (i= 0; i < sliderArrLen; i++) {
-    //   sliderArr.push(data.mingxingguwen.slice(i*10, (i+1)*10));
-    // }
-    // data.sliderArr = sliderArr;
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
-    async.parallel({
-      //猜你喜欢
-      // guess_like:function(callback){
-      //   cms.channel_list({
-      //     "per_page":12,
-      //     "order":"views",
-      //     "country_id":country
-      //   },callback);
-      // },
-      //活动预告
-      // huodongyugao: function (callback) {
-      //   cms.huodongyugao({
-      //     "position": "cmslist",
-      //     "catid": 64,
-      //     "cityid": area,
-      //     "country": hcountry.split(',')[0],
-      //     "perpage": "4"
-      //   }, callback);
-      // }   
-    },function(err,result){
-        // data.huodongyugao =returnData(result.huodongyugao,'huodongyugao');
-        // data.guess_like = returnData(result.guess_like,'guess_like');
-      var pagekey = ''
-      if(data.userinfo.usertype == 2){
-        pagekey = 'ADVISOR_P_MAIN';
-      }else if(data.userinfo.usertype == 3){
-        pagekey = 'CANZAN_P_MAIN';
-      }
-        data.tdk = {
-          pagekey: pagekey,
-          cityid: area, 
-          realname: data.login_info.realname,
-        };
-        data.esikey = esihelper.esikey();
-        res.render('adviser_main', data);
-    });
+    var pagekey = ''
+    if(data.userinfo.usertype == 2){
+      pagekey = 'ADVISOR_P_MAIN';
+    }else if(data.userinfo.usertype == 3){
+      pagekey = 'CANZAN_P_MAIN';
+    }
+    data.tdk = {
+      pagekey: pagekey,
+      cityid: area,
+      realname: data.login_info.realname,
+    };
+    data.esikey = esihelper.esikey();
+    res.render('adviser_main', data);
   });
 }
 //用户 顾问专栏加载更多
