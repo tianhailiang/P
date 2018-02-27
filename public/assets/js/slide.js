@@ -350,12 +350,12 @@ function get_location(_type){
   $(".my").hover(function () {
     $(this).find("img").css("display","none");
     $(this).find("p").css("display","block");
+    $("#quick_links_pop").css("display", "none");
   },function(){
     $(this).find("p").css("display","none");
     $(this).find("img").css("display","block");
   });
   $(".my").find("p").on("click",function(){
-    console.log('aaaaaa')
     var login_nickname = JSON.parse($.cookie('login_ss'));
     if(login_nickname){
       winddow.location.href=''
@@ -393,23 +393,25 @@ $("#r_comment").hover(function(){
   $("#comment_con").css("display", "none");
   $("#r_comment").css("background", "#9a9a9a");
 })
-/*  $("#comment_close,#zxzx").on("click", function () {
+  $("#comment_close").on("click", function () {
     $("#comment_con").css("display", "none");
     $("#r_comment").css("background", "#9a9a9a");
     return false
-  })*/
-$("#comment_close,#zxzx").hover(function(){
+  })
+$("#zxzx").hover(function(){
   $("#quick_links_pop").css("display", "block");
 },function(){
-
+/*  $("#quick_links_pop").css("display", "none");*/
 });
 $(".weixin-slide").hover(function(){
-  $(".weixin-slide-img").css("display","block")
+  $(".weixin-slide-img").css("display","block");
+  $("#quick_links_pop").css("display", "none");
 },function(){
   $(".weixin-slide-img").css("display","none")
 });
 $(".qq-slide").hover(function(){
-  $(".qq-slide-img").css("display","block")
+  $(".qq-slide-img").css("display","block");
+  $("#quick_links_pop").css("display", "none");
 },function(){
   $(".qq-slide-img").css("display","none")
 });

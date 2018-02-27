@@ -32,6 +32,16 @@ function split_array(arr, len) {
 exports.index = function (req, res, next) {
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var data = [];
+    if ( req.cookies.login_ss !== undefined) {
+        console.log('aaaaaa');
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        console.log('data.login_info', data.login_info);
+    }else{
+        data.login_info ={};
+        data.login_info.uid = 0;
+        //res.redirect(config.wwhost+'/login');
+        //return false;
+    }
     async.parallel({
         lunbo_list:function(callback) {
          cms.lunbo_list({
@@ -62,7 +72,6 @@ exports.index = function (req, res, next) {
     // data.xSlider2=lunbo;
     // data.xSlider=data.xSlider.items;
     // data.xSlider2=data.xSlider2.items;
-
 };
 
 //社区首页
