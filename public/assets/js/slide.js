@@ -350,12 +350,12 @@ function get_location(_type){
   $(".my").hover(function () {
     $(this).find("img").css("display","none");
     $(this).find("p").css("display","block");
+    $("#quick_links_pop").css("display", "none");
   },function(){
     $(this).find("p").css("display","none");
     $(this).find("img").css("display","block");
   });
   $(".my").find("p").on("click",function(){
-    console.log('aaaaaa')
     var login_nickname = JSON.parse($.cookie('login_ss'));
     if(login_nickname){
       winddow.location.href=''
@@ -404,12 +404,14 @@ $("#comment_close,#zxzx").hover(function(){
 
 });
 $(".weixin-slide").hover(function(){
-  $(".weixin-slide-img").css("display","block")
+  $(".weixin-slide-img").css("display","block");
+  $("#quick_links_pop").css("display", "none");
 },function(){
   $(".weixin-slide-img").css("display","none")
 });
 $(".qq-slide").hover(function(){
-  $(".qq-slide-img").css("display","block")
+  $(".qq-slide-img").css("display","block");
+  $("#quick_links_pop").css("display", "none");
 },function(){
   $(".qq-slide-img").css("display","none")
 });
