@@ -60,7 +60,7 @@
     left: 50%;
     margin-left: -600px;
     position: fixed;
-    z-index: 999999;
+    z-index: 999;
     display: none;
   }
   .nationality_guoqi{
@@ -72,6 +72,11 @@
     padding: 0 20px;
     position: relative;
     margin: 0 auto;
+  }
+  .liuxue-guoqi img{
+    width:46px;
+    height:30px;
+
   }
   .liuxue-guoqi{
     width: 100%;
@@ -86,6 +91,9 @@
   .liuxue-guoqi a{
     width: auto;
     margin: 20px 50px 47px 0;
+    height:30px;
+    display: inline-block;
+    position: relative;
   }
   .liuxue-guojia-title{
     position: absolute;
@@ -382,6 +390,10 @@
   {% include "widget/liuxue_item/liuxue_item.html" %}
 </div>
 {% include "widget/new_footer/new_footer.html" %}
+</div>
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_BRANCH_HOME_SEAT10") }}
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
