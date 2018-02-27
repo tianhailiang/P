@@ -106,21 +106,6 @@
   *margin-top:0px!important;
   padding-left:22px;
 }
-.liuxue-guoqi{
-  height: 98px;
-  width: 1044px;
-
-}
-.liuxue-guoqi a{
-  width:46px;
-  height:30px;
-  display: inline-block;
-  margin:16px 30px 0 0;
-  position: relative;
-}
-.liuxue-guoqi a span{
-  display: none;
-}
 .guoqi-top2{
   background: url(../img/guoqi-name-top.png) no-repeat;
   width:56px;
@@ -160,13 +145,6 @@
   font-size: 12px;
   text-align: center;
   line-height: 40px;
-}
-.liuxue-guoqi img{
-  width:46px;
-  height:30px;
-  /*display: inline-block;
-  margin:16px 30px 0 0;*/
-
 }
 .footer-bot{
   height: 66px;
