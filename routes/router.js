@@ -192,4 +192,8 @@ exports = module.exports = function (app) {// routes
   app.post('/forget_s', login.forget_s);
   //绑定手机号
   app.post('/bind_phone', login.bind_phone);
+  //普通用户登录
+  app.post('/login_user', login.login_user);
+  //普通用户退出
+  app.get('/login_user_out', login.login_user_out);
 };

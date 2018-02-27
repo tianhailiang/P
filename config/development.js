@@ -17,6 +17,7 @@ var imageshost = 'http://images.jjl.cn';
 var cms_out_prefix = prefix;
 var apis = {
   
+  "login_user":  uc_prefix + 'index.php?m=login',// 普通用户登录
   "oauth": uc_prefix + 'index.php',
   "bind_phone": uc_prefix + 'index.php?m=bind_phone',// 绑定手机号
   "forget": uc_prefix + 'index.php?m=forgetpassword',//忘记密码
