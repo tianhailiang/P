@@ -171,6 +171,8 @@ exports = module.exports = function (app) {// routes
   app.get('/cmsapi/article_count', controller.article_count);
   app.post('/cmsapi/assessment', controller.assessment);//在线评估
 
+  //顾问中心 上传我的二维码
+  app.get('/advisor_center/post_code', controller.post_code);
 
   //参赞聚合页
   app.get('/canzan', about.canzan);

@@ -316,6 +316,53 @@ exports.center_main = function (req, res, next) {
         res.render('center_main', data);
     });
 };
+//顾问中心 上传我的二维码
+exports.post_code = function (req, res, next) {
+    log.debug('顾问中心 上传我的二维码')
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var page = req.query.page || 1;
+    data.tdk = {
+        pagekey: 'ADVISOR_CENTER_CASE',
+        cityid: area,
+    };
+    res.render('center_post_code', data);
+/*    if ( req.cookies.login_ss !== undefined) {
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        if(data.login_info.usertype ==1){
+            res.redirect('/404');
+            return false;
+        }
+    }else{
+        res.redirect(config.wwhost+'/login');
+        return false;
+    }
+    async.parallel({
+        //获取用户信息（普通用户，顾问，参赞）
+        userinfo:function(callback){
+            wec.userinfo({
+                "u_id":data.login_info.uid,
+                "to_uid":data.login_info.uid
+            },callback);
+        },
+        case_list: function (callback) {
+            wec.user_article_list({
+                "u_id": data.login_info.uid,
+                "page": page,
+                "per_page": 4,
+                "type": 1
+            }, callback);
+        }
+    }, function (err, result) {
+        data.userinfo =returnData(result.userinfo,'userinfo');
+        data.case_data =returnData(result.case_list,'case_list');
+        data.tdk = {
+            pagekey: 'ADVISOR_CENTER_CASE',
+            cityid: area,
+        };
+        res.render('center_post_ode', data);
+    });*/
+};
 //个人中心 我的案例
 exports.center_case = function (req, res, next) {
     log.debug('个人中心 我的案例')
