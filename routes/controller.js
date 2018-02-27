@@ -32,6 +32,17 @@ function split_array(arr, len) {
 exports.index = function (req, res, next) {
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var data = [];
+    if ( req.cookies.login_user !== undefined) {
+      console.log('aaaaaa');
+      data.login_info = JSON.parse(req.cookies.login_user);
+      console.log('data.login_info', data.login_info);
+      data.user_type = 1
+    }else{
+      data.login_info ={};
+      data.login_info.uid = 0;
+      //res.redirect(config.wwhost+'/login');
+      //return false;
+    }
     data.xSlider=lunbo;
     data.xSlider2=lunbo;
     data.xSlider=data.xSlider.items;
