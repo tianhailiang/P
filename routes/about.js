@@ -104,30 +104,11 @@ exports.culture = function (req, res, next){
           "pagesize":3
         }, callback)
       },
-      zuixinzixun: function (callback) {
-        cms.zuixinzixun({
-          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
-        }, callback);
-      },
-      media_broadcast:function(callback){
-        cms.media_broadcast({
-          "position": "about", "catid": 49,"cityid": area,"perpage": 10
-        }, callback)
-      },
-      zhuanjiajiedu: function (callback) {
-      cms.zhuanjiajiedu({
-        "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
-      }, callback);
-    },
-  
     }, function (err, result){
       log.info(result)
       data.xSlider =returnData(result.lunbo_list,'lunbo_list');
       data.jincaishike =returnData(result.company_culture1,'company_culture1');
-      data.zuixinzixun =returnData(result.zuixinzixun,'zuixinzixun');
       data.jinseliliang =returnData(result.company_culture2,'company_culture2');
-      data.media_broadcast =returnData(result.media_broadcast,'media_broadcast');
-      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
      data.pageroute="about/culture";
       data.tdk = {
         pagekey: 'CULTURE', //key
@@ -153,28 +134,9 @@ exports.about = function (req, res, next){
       data.login_nickname = login_a;
     }
     async.parallel({
-      zuixinzixun: function (callback) {
-        cms.zuixinzixun({
-          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
-        }, callback);
-      },
-      media_broadcast:function(callback){
-        cms.media_broadcast({
-          "position": "about", "catid": 49,"cityid": area,"perpage": 10
-        }, callback)
-      },
-      zhuanjiajiedu: function (callback) {
-        cms.zhuanjiajiedu({
-          "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
-        }, callback);
-      },
   
     }, function (err, result){
       log.info(result)
-      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
-      data.zuixinzixun =returnData(result.zuixinzixun,'zuixinzixun');
-      data.media_broadcast =returnData(result.media_broadcast,'media_broadcast');
-      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
       data.pageroute="about";
       data.tdk = {
         pagekey: 'PROFILE', //key
@@ -207,27 +169,9 @@ exports.events = function (req, res, next){
           "pagesize":100
         }, callback);
       },
-      zuixinzixun: function (callback) {
-        cms.zuixinzixun({
-          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
-        }, callback);
-      },
-      media_broadcast:function(callback){
-        cms.media_broadcast({
-          "position": "about", "catid": 49,"cityid": area,"perpage": 10
-        }, callback)
-      },
-      zhuanjiajiedu: function (callback) {
-        cms.zhuanjiajiedu({
-          "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
-        }, callback);
-      },
   
     }, function (err, result){
       log.info(result)
-      data.zuixinzixun = returnData(result.zuixinzixun,'zuixinzixun');
-      data.media_broadcast=returnData(result.media_broadcast,'media_broadcast');
-      data.zhuanjiajiedu=returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
       data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
       data.pageroute="about/events";
       data.tdk = {
@@ -270,29 +214,11 @@ exports.cooperation = function (req, res, next){
           "culture_type":2
         }, callback)
       },
-      zuixinzixun: function (callback) {
-        cms.zuixinzixun({
-          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
-        }, callback);
-      },
-      media_broadcast:function(callback){
-        cms.media_broadcast({
-          "position": "about", "catid": 49,"cityid": area,"perpage": 10
-        }, callback)
-      },
-      zhuanjiajiedu: function (callback) {
-        cms.zhuanjiajiedu({
-          "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
-        }, callback);
-      }
   
     }, function (err, result){
       log.info(result)
       data.xSlider =returnData(result.lunbo_list,'lunbo_list');
       data.jincaishike =returnData(result.company_culture1,'company_culture1');
-      data.zuixinzixun =returnData(result.zuixinzixun,'zuixinzixun');
-      data.media_broadcast =returnData(result.media_broadcast,'media_broadcast');
-      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
       data.jinseliliang =returnData(result.company_culture2,'company_culture2');
       data.pageroute="about/cooperation";
       data.tdk = {
@@ -364,21 +290,6 @@ exports.contact = function (req, res, next){
           "area_type":9,
         }, callback);
       },
-      zuixinzixun: function (callback) {
-        cms.zuixinzixun({
-          "position": "about", "catid": 45, "subcatid": 0, "cityid": area, "country": country, "perpage": 10
-        }, callback);
-      },
-      media_broadcast:function(callback){
-        cms.media_broadcast({
-          "position": "about", "catid": 49,"cityid": area,"perpage": 10
-        }, callback)
-      },
-      zhuanjiajiedu: function (callback) {
-        cms.zhuanjiajiedu({
-          "position": "about", "catid": 16, "subcatid": 0, "cityid": area, "country": country, "perpage":10
-        }, callback);
-      }
     }, function (err, result){
       log.info(result)
       data.contact =returnData(result.contact,'contact');
@@ -390,9 +301,6 @@ exports.contact = function (req, res, next){
       data.contact7 =returnData(result.contact7,'contact7');
       data.contact8 =returnData(result.contact8,'contact8');
       data.contact9 =returnData(result.contact9,'contact9');
-      data.zuixinzixun =returnData(result.zuixinzixun,'zuixinzixun');
-      data.media_broadcast =returnData(result.media_broadcast,'media_broadcast');
-      data.zhuanjiajiedu =returnData(result.zhuanjiajiedu,'zhuanjiajiedu');
       data.pageroute="about/contact";
       data.tdk = {
         pagekey: 'CONTACT', //key
