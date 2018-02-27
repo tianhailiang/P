@@ -904,9 +904,19 @@ exports.lunbo_list = function (data,callback) {
   api.apiRequest(url ,callback);
 }
 
-/*登录*/
+/*顾问登录*/
 exports.login_ss = function (data, callback) {
   var url = config.apis.post_login;
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url ,data ,callback);
+}
+
+/*普通用户登录*/
+exports.login_user = function (data, callback) {
+  var url = config.apis.login_user;
   if (url == null){
     callback('404');
     return;

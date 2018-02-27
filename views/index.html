@@ -12,6 +12,8 @@
   }
   .lunbo{
     height: 270px;
+    position: relative;
+    overflow: hidden;
   }
   .lunbo_lift{
      width: 800px;
@@ -24,6 +26,7 @@
     height: 270px;
     background: #fbd238;
     float: left;
+    overflow: hidden;
   }
   .lunbo_right .slider:hover .slider-btn{
     /*display: none;*/
@@ -90,9 +93,10 @@
   }
   .liuxue-guoqi a{
     width: auto;
-    margin: 20px 50px 47px 0;
+    margin: 20px 54px 47px 0;
     height:30px;
-    display: inline-block;
+    display:block;
+    float: left;
     position: relative;
   }
   .liuxue-guojia-title{
@@ -116,9 +120,35 @@
   }
   .swiper-slide{
     height: 135px;
+    width: 400px;
+  }
+  .swiper-slide img{
+    height: 100%;
+    width: 100%;
   }
   .slider .slider-dot ul li{
     border-radius: 50%;
+  }
+  #lunbo1{
+    width: 400px;
+    height: 270px;
+    /*background: #000;*/
+    position: absolute;
+    /*overflow: hidden;*/
+    top: -270px;
+  }
+  #lunbo1 li{
+    display: block;
+    /*float: left;*/
+    width: 400px;
+    height: 135px;
+    background: #ccc;
+    list-style: none;
+    cursor: pointer;
+  }
+  #lunbo1 li img{
+    width: 100%;
+    height: 100%;
   }
 </style>
 <body style="background: #f5f5f5">
@@ -131,17 +161,17 @@
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Australia.png" alt="澳大利亚留学"><p>澳大利亚</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Canada.png" alt="加拿大留学"><p>加拿大</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/NEW ZEALAND.png" alt="新西兰留学"><p>新西兰</p></a>
-      <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Korea.png" alt="韩国留学"><p>韩国</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Japan.png" alt="日本留学"><p>日本</p></a>
+      <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Korea.png" alt="韩国留学"><p>韩国</p></a>
+      <a  href="#"><img src="{{helper.cdnhost}}/assets/img/HongKong.png" alt="中国香港留学"><p>中国香港</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Ukraine.png" alt="乌克兰留学"><p>乌克兰</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Russia.png" alt="俄罗斯留学"><p>俄罗斯</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/eire.png" alt="爱尔兰留学"><p>爱尔兰</p></a>
-      <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Italy.png" alt="意大利留学"><p>意大利</p></a>
-      <a style="margin-right: 0" href="#"><img src="{{helper.cdnhost}}/assets/img/Spanish.png" alt="西班牙留学"><p>西班牙</p></a><br>
+      <a style="margin-right: 0"  href="#"><img src="{{helper.cdnhost}}/assets/img/Italy.png" alt="意大利留学"><p>意大利</p></a>
+      <a  href="#"><img src="{{helper.cdnhost}}/assets/img/Spanish.png" alt="西班牙留学"><p>西班牙</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/blr.png" alt="白俄罗斯留学"><p>白俄罗斯</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/Singapore.png" alt="新加披留学"><p>新加披</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/malaysia.png" alt="马来西亚留学"><p>马来西亚</p></a>
-      <a  href="#"><img src="{{helper.cdnhost}}/assets/img/HongKong.png" alt="中国香港留学"><p>中国香港</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/danmark.png" alt="丹麦留学"><p>丹麦</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/germany.png" alt="德国留学"><p>德国</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/France.png" alt="法国留学"><p>法国</p></a>
@@ -167,14 +197,24 @@
     </div>
     <div class="lunbo_right">
      {# {% include "widget/xSlider/xSlider2.html" %}  #}
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></div>
-          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></div>
-          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></div>
-          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></div>
-        </div>
-      </div>
+      <!--<div class="swiper-container">-->
+        <!--<div class="swiper-wrapper">-->
+          <!--<div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></div>-->
+          <!--<div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></div>-->
+          <!--<div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></div>-->
+          <!--<div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <ul id="lunbo1">
+        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></li>
+        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></li>
+        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></li>
+        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></li>
+        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></li>
+        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></li>
+        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></li>
+        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></li>
+      </ul>
     </div>
   </div>
   <!--50家分公司-->
@@ -391,12 +431,13 @@
 </div>
 {% include "widget/new_footer/new_footer.html" %}
 </div>
-{% import "widget/new_slide/new_slide2.html" as  slide %}
-{{slide.leyu_slide("AD_BRANCH_HOME_SEAT10") }}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_HOME_SEAT10") }}
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
+    //
       $(window).on('scroll',function() {
           var $scroll = $(this).scrollTop();
           if ($scroll >= 200) {
@@ -405,14 +446,30 @@
               $('.nationality_guoqi_warp').hide();
           }
       });
+     
       $('.lunbo_lift .slider').xSlider({
           //轮播图配置
-//          autoplay : 500,
+          autoplay : 500,
           current: 0,
           speed: 500,
           intervalTime: 5000,
           pagination: true
-      })
+      });
+      var timer=null;
+      var num=0;
+      function lonbo() {
+          if(num>1){
+              num=0;
+//              $("#lunbo1").css({top:-270*num+(-270)+'px'})
+             $("#lunbo1").css({top:(-270)+'px'})
+
+          }else {
+              num++;
+              $("#lunbo1").animate({top:-270*num+(-270)+'px'})
+              console.log(-270*num+'px')
+          }
+      }
+      setInterval(lonbo,1000)
 //      $('.lunbo_right .slider').xSlider({
 //          //轮播图配置
 ////          autoplay : 500,

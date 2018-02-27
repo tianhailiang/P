@@ -35,6 +35,43 @@ exports.login = function (req, res, next) {
   res.render('login/login', data)
 };
 
+//普通用户登录
+exports.login_user = function (req, res, next) {
+  log.debug('this router login_s~~');
+  var username = req.body.username;
+  var password = req.body.password;
+
+  log.debug(req.body);
+  var data = [];
+  var async = require('async');
+  async.parallel({
+    //签证指南
+    login_user: function (callback) {
+      cms.login_user(req.body, callback);
+    }
+  }, function (err, result) {
+
+    data.login_user = result.login_user;
+    log.debug('result.login_user----------', result.login_user);
+
+    //res.render('login', data)
+    if (result.login_user.code === 0) {
+      log.debug('ok', result.login_user.code);
+      if (config.version == 'development' && result.login_user.code === 0) {//开发环境
+        res.cookie("login_user", JSON.stringify(result.login_user.data), {domain: '.jjlvip.cn'});//保存cookie
+      } else {
+        res.cookie("login_user", JSON.stringify(result.login_user.data), {domain: '.jjlvip.cn'});
+      }
+      res.send(result.login_user);
+      //log.debug('config', config.wwhost);
+      //res.redirect(301,config.wwhost);
+      //res.end()
+    }else {
+      res.send(result.login_user);
+    }
+  });
+}
+
 //登录
 exports.login_s = function (req, res, next) {
   log.debug('this router login_s~~');
@@ -433,3 +470,13 @@ exports.login_out = function (req, res, next) {
   //res.redirect(req.query.h);
 };
 
+//普通用户登出
+exports.login_user_out = function (req, res, next) {
+  console.log('login_out');
+  //console.log('req', req);
+  res.clearCookie("login_user", {domain: '.jjlvip.cn'});
+  //res.cookie(prop, 'login_ss', {expires: new Date(0)});
+  console.log('login_out1');
+  res.send('ok')
+  //res.redirect(req.query.h);
+};

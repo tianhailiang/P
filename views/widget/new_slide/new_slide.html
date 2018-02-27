@@ -16,12 +16,8 @@
             <img src="{{helper.cdnhost}}/assets/img/yijian.png" alt="在线评估" class="quick-img">
             <span>在线评估</span>
             <div id="comment_con"
-                 style="width: 280px;height: 600px;background: #fff;right:42px;top: -100px;position: absolute;border: 1px solid #dcdcdc;display: none">
-              <div id="comment_close" style="margin-left: 5px;font-size: 15px;cursor: pointer; color:#333333;">x</div>
-              <!--  <iframe id="floatUrls" style="width: 100%;height:100%;" frameborder="no" border="0"
-                       marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"
-                       src="http://im.jjl.cn/live/chat.dll?c=1&command=butiong"></iframe> -->
-
+                 style="width: 280px;height: 600px;background: #fff;right:40px;top: -100px;position: absolute;border: 1px solid #dcdcdc;display: none">
+              <div id="comment_close" style="margin-left: 5px;font-size: 15px;cursor: pointer;color:#333333;">x</div>
               {% import '../online_evaluation/online_evaluation.html' as online_evaluation%}
               {{ online_evaluation.online_evaluation(path) }}
             </div>
