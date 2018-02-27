@@ -19,7 +19,7 @@
     background: #34c360;
     float: left;
    }
-  .lunbo_right{
+  .lunbo_right,.swiper-container{
     width: 400px;
     height: 270px;
     background: #fbd238;
@@ -60,7 +60,7 @@
     left: 50%;
     margin-left: -600px;
     position: fixed;
-    z-index: 999999;
+    z-index: 999;
     display: none;
   }
   .nationality_guoqi{
@@ -114,6 +114,12 @@
     left: 50%;
     margin-left: -77px;
   }
+  .swiper-slide{
+    height: 135px;
+  }
+  .slider .slider-dot ul li{
+    border-radius: 50%;
+  }
 </style>
 <body style="background: #f5f5f5">
 <!--留学国家-->
@@ -161,6 +167,14 @@
     </div>
     <div class="lunbo_right">
      {# {% include "widget/xSlider/xSlider2.html" %}  #}
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></div>
+          <div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></div>
+        </div>
+      </div>
     </div>
   </div>
   <!--50家分公司-->
@@ -175,136 +189,64 @@
         "companyId": "1"
         },
         {
-        "companyName": "成都",
-        "companyId": "5"
-        },
-        {
-        "companyName": "重庆",
-        "companyId": "7"
-        },
-        {
-        "companyName": "长沙",
-        "companyId": "19"
-        },
-        {
-        "companyName": "长春",
-        "companyId": "25"
-        },
-        {
-        "companyName": "常州",
-        "companyId": "41"
-        },
-        {
-        "companyName": "大连",
-        "companyId": "13"
-        },
-        {
-        "companyName": "东莞",
-        "companyId": "43"
-        },
-        {
-        "companyName": "佛山",
-        "companyId": "37"
-        },
-        {
-        "companyName": "福州",
-        "companyId": "39"
+        "companyName": "上海",
+        "companyId": "2"
         },
         {
         "companyName": "广州",
         "companyId": "3"
         },
         {
-        "companyName": "贵阳",
-        "companyId": "35"
+        "companyName": "天津",
+        "companyId": "4"
+        },
+        {
+        "companyName": "成都",
+        "companyId": "5"
         },
         {
         "companyName": "杭州",
         "companyId": "6"
         },
         {
-        "companyName": "合肥",
-        "companyId": "22"
-        },
-        {
-        "companyName": "哈尔滨",
-        "companyId": "24"
-        },
-        {
-        "companyName": "呼市",
-        "companyId": "26"
-        },
-        {
-        "companyName": "邯郸",
-        "companyId": "32"
-        },
-        {
-        "companyName": "海南",
-        "companyId": "46"
-        },
-        {
-        "companyName": "济南",
-        "companyId": "9"
-        },
-        {
-        "companyName": "吉林",
-        "companyId": "30"
-        },
-        {
-        "companyName": "昆明",
-        "companyId": "21"
-        },
-        {
-        "companyName": "兰州",
-        "companyId": "27"
-        },
-        {
-        "companyName": "洛阳",
-        "companyId": "48"
-        },
-        {
-        "companyName": "南京",
-        "companyId": "16"
-        },
-        {
-        "companyName": "南昌",
-        "companyId": "29"
-        },
-        {
-        "companyName": "宁波",
-        "companyId": "34"
-        },
-        {
-        "companyName": "南宁",
-        "companyId": "38"
-        },
-        {
-        "companyName": "青岛",
-        "companyId": "10"
-        },
-        {
-        "companyName": "上海",
-        "companyId": "2"
+        "companyName": "重庆",
+        "companyId": "7"
         },
         {
         "companyName": "沈阳",
         "companyId": "8"
         },
         {
+        "companyName": "济南",
+        "companyId": "9"
+        },
+        {
+        "companyName": "青岛",
+        "companyId": "10"
+        },
+        {
+        "companyName": "郑州",
+        "companyId": "11"
+        },
+        {
         "companyName": "石家庄",
         "companyId": "12"
         },
         {
-        "companyName": "深圳",
-        "companyId": "20"
+        "companyName": "大连",
+        "companyId": "13"
         },
         {
-        "companyName": "苏州",
-        "companyId": "23"
+        "companyName": "武汉",
+        "companyId": "14"
         },
         {
-        "companyName": "天津",
-        "companyId": "4"
+        "companyName": "西安",
+        "companyId": "15"
+        },
+        {
+        "companyName": "南京",
+        "companyId": "16"
         },
         {
         "companyName": "太原",
@@ -315,52 +257,124 @@
         "companyId": "18"
         },
         {
-        "companyName": "武汉",
-        "companyId": "14"
+        "companyName": "长沙",
+        "companyId": "19"
         },
         {
-        "companyName": "无锡",
-        "companyId": "33"
+        "companyName": "深圳",
+        "companyId": "20"
         },
         {
-        "companyName": "温州",
-        "companyId": "42"
+        "companyName": "昆明",
+        "companyId": "21"
         },
         {
-        "companyName": "西安",
-        "companyId": "15"
+        "companyName": "合肥",
+        "companyId": "22"
+        },
+        {
+        "companyName": "苏州",
+        "companyId": "23"
+        },
+        {
+        "companyName": "哈尔滨",
+        "companyId": "24"
+        },
+        {
+        "companyName": "长春",
+        "companyId": "25"
+        },
+        {
+        "companyName": "呼市",
+        "companyId": "26"
+        },
+        {
+        "companyName": "兰州",
+        "companyId": "27"
         },
         {
         "companyName": "厦门",
         "companyId": "28"
         },
         {
-        "companyName": "徐州",
-        "companyId": "36"
+        "companyName": "南昌",
+        "companyId": "29"
         },
         {
-        "companyName": "西宁",
-        "companyId": "45"
-        },
-        {
-        "companyName": "新疆",
-        "companyId": "47"
+        "companyName": "吉林",
+        "companyId": "30"
         },
         {
         "companyName": "烟台",
         "companyId": "31"
         },
         {
+        "companyName": "邯郸",
+        "companyId": "32"
+        },
+        {
+        "companyName": "无锡",
+        "companyId": "33"
+        },
+        {
+        "companyName": "宁波",
+        "companyId": "34"
+        },
+        {
+        "companyName": "贵阳",
+        "companyId": "35"
+        },
+        {
+        "companyName": "徐州",
+        "companyId": "36"
+        },
+        {
+        "companyName": "佛山",
+        "companyId": "37"
+        },
+        {
+        "companyName": "南宁",
+        "companyId": "38"
+        },
+        {
+        "companyName": "福州",
+        "companyId": "39"
+        },
+        {
         "companyName": "银川",
         "companyId": "40"
+        },
+        {
+        "companyName": "常州",
+        "companyId": "41"
+        },
+        {
+        "companyName": "温州",
+        "companyId": "42"
+        },
+        {
+        "companyName": "东莞",
+        "companyId": "43"
         },
         {
         "companyName": "宜昌",
         "companyId": "44"
         },
         {
-        "companyName": "郑州",
-        "companyId": "11"
+        "companyName": "西宁",
+        "companyId": "45"
+        },
+        {
+        "companyName": "海南",
+        "companyId": "46"
+        },
+        {
+        "companyName": "新疆",
+        "companyId": "47"
+        },
+        {
+        "companyName": "洛阳",
+        "companyId": "48"
         },
         {
         "companyName": "温哥华",
@@ -398,20 +412,32 @@
           speed: 500,
           intervalTime: 5000,
           pagination: true
-      });
-      $('.lunbo_right .slider').xSlider({
-          //轮播图配置
-//          autoplay : 500,
-          mode:'vertical',
-//          current: 0,
-          speed: 1000,
-          intervalTime: 5000,
-          slidesPerView : 2,
-          slidesPerGroup : 2,
-//          pagination: true
-      });
-  })
+      })
+//      $('.lunbo_right .slider').xSlider({
+//          //轮播图配置
+////          autoplay : 500,
+//          mode:'vertical',
+////          current: 0,
+//          speed: 1000,
+//          intervalTime: 5000,
+//          slidesPerView : 2,
+//          slidesPerGroup : 2,
+////          pagination: true
+//      });
 
+  })
+//  $(function () {
+//      var mySwiper = new Swiper('.swiper-container',{
+//          autoplay : 500,
+//          loop: true,
+//          mode:'vertical',
+//          speed: 1000,
+//          slidesPerView : 2,
+//          slidesPerGroup : 2,
+//          pagination: true
+//          //其他设置
+//      });
+//  })
 </script>
 </body>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
