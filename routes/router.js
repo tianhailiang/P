@@ -1,6 +1,7 @@
 var controller = require('./controller.js');
 var user = require('./user.js');
-var about = require('./about.js')
+var about = require('./about.js');
+var login = require('./login.js');
 exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
@@ -179,4 +180,16 @@ exports = module.exports = function (app) {// routes
   app.get('/about/events',about.events);//金吉列大事记
   app.get('/about/cooperation',about.cooperation);//商务合作
   app.get('/about/contact',about.contact);//联系我们
+  //顾问登录
+  app.get('/login', login.login);
+  //顾问忘记密码
+  app.get('/forget', login.forget);
+  //普通用户绑定手机号
+  app.get('/binding', login.binding);
+  //手机验证码
+  app.get('/sendcode_s', login.sendcode_s);
+  //忘记密码
+  app.post('/forget_s', login.forget_s);
+  //绑定手机号
+  app.post('/bind_phone', login.bind_phone);
 };

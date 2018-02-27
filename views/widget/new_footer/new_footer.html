@@ -1,24 +1,17 @@
 <div class="liuxue-footer">
   <div class="liuxue-footer-content" style="margin-bottom: 0;">
-    {% set linkList = helper.getLink(tdk.pagekey) %}
-    {% if linkList %}
-    <div class="footer-top" style="height: 20px;">
-      <h2>友情链接:</h2>
-      {% for item in  linkList%}
-      <a target="_blank"  rel="nofollow" href="{{item.url}}" title="{{item.name}}">{{item.name}}</a>
-      {% endfor %}
-    </div>
-    {% endif %}
-    <div class="foot-map">
+    <div class="foot-map clearfix">
       <div class="sitemap sitemap01">
         <h2>关于金吉列</h2>
-        <ul class="clearfix">
+        <ul class="left-ul">
           <li><a target="_blank"  rel="nofollow"  href="{{ helper.urlgen('about') }}"> 公司简介</a></li>
-          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/events') }}">大事记</a></li>
           <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/culture') }}">企业文化</a></li>
           <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about') }}#honor">企业荣誉</a></li>
-          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/cooperation') }}">商务合作</a></li>
           <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/contact') }}">联系我们</a></li>
+        </ul>
+        <ul>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/events') }}">大事记</a></li>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/cooperation') }}">商务合作</a></li>
           <li><a target="_blank"  rel="nofollow"   href="http://special.zhaopin.com/bj/2015/jjl032714/enter.html">诚聘英才</a></li>
         </ul>
       </div>
@@ -29,9 +22,9 @@
         </ul>
       </div>
 
-      <div class="sitemap sitemap04 foot-eweima-x">
+      <div class="sitemap sitemap04">
         <h2 class="guanzhu">关注金吉列:</h2>
-          <div class="ewm">
+          <div class="clearfix">
             <dl class="foot-weibo">
               <dt><img src="{{helper.cdnhost}}/assets/img/weibo.png" alt="微博"></dt>
               <dd>官方微博</dd>
@@ -46,13 +39,11 @@
     <div class="address">
       <h2>欢迎来访</h2>
       <ol class="xiangxi-address one">
-        <li><dl><dt><i class="iconfont">&#xe684;</i></dt><dd id="complain-tel">400-101-8000</dd></dl></li>
-        <li class="footer-phone"><dl><dt><i class="iconfont">&#xe611;</i></dt><dd id="tel">010-65685656</dd></dl></li>
-        <li class="xiangxi-map"><dl><dt><i class="iconfont">&#xe603;</i></dt><dd id="address">北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米) </dd></dl></li>
+        <li><i class="iconfont">&#xe679;</i><span>400-101-8000</span></li>
+        <li><i class="iconfont">&#xe611;</i><span id="tel">010-65685656</span></li>
+        <li><i class="iconfont">&#xe603;</i><span id="address">北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米) </span></li>
       </ol>
     </div>
-    <div class="foot-banben">
-      <p>©2009金吉列出国留学咨询服务有限公司 &nbsp;版权所有&nbsp;京ICP备05010035号&nbsp;&nbsp;留学投诉电话：4006-213-315&nbsp;&nbsp;投诉邮箱：315@jjl.cn</p>
-    </div>
+    <p class="copyright">©2009金吉列出国留学咨询服务有限公司 &nbsp;版权所有&nbsp;京ICP备05010035号&nbsp;&nbsp;留学投诉电话：4006-213-315&nbsp;&nbsp;投诉邮箱：315@jjl.cn</p>
   </div>
 </div>
