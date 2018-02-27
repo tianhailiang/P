@@ -218,7 +218,7 @@
                     url = js_api_config.wwhost + ':4000' + url;
                 }
                 else {
-                    url = js_api_config.wwhost + ':3000' + url;
+                    url = js_api_config.wwhost + ':4000' + url;
                 }
             }
             return url;
@@ -247,11 +247,10 @@
           var url = '';
           if (js_api_config.version == 'development') { //������_�l�h��
             if(chan.indexOf('/login')!=-1){
-              url += js_api_config.wwhost + ':3000' + chan + param;   
-            }else if (chan.indexOf('/p/') != -1 || chan.indexOf('/article/') != -1 || chan.indexOf('/case/') != -1 || chan.indexOf('center') != -1) {
               url += js_api_config.wwhost + ':4000' + chan + param;
-            }else {
-              url += js_api_config.wwhost + ':3000' + chan + param;
+            }
+            else {
+              url += js_api_config.wwhost + ':4000' + chan + param;
             }
 
           }else {

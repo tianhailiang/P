@@ -110,3 +110,13 @@ $("#searchBtn").click(function () {
         window.open(fn.no_urlgen('so_article','q=' + so_key_word));
     }
 });
+$("#searchBtn-page").click(function () {
+    var so_key_word = $.trim($("#search-page").val());
+    if (so_key_word.length == 0 || so_key_word == '请输入你想了解的关键字') {
+        alert('请输入你想了解的关键词');
+        $('#search').focus();
+    }
+    else {
+        window.open(fn.no_urlgen('so_article','q=' + so_key_word));
+    }
+});

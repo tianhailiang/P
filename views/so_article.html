@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+{% include "header_new.html" %}
+<link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
+<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+<style>
+    .banner-box{
+        margin-top: 20px;
+        height: 130px;
+        background-color: yellow;
+    }
+    .main-left{
+        padding: 20px 20px 0;
+    }
+    .main-left .main-searchbox{
+        width: 100%;
+        height: 40px;
+    }
+    .main-left .main-searchbox .search-text{
+        display: block;
+        float: left;
+        width: 779px;
+        height: 38px;
+        border: 1px solid #DCDCDC;
+        border-right: none;
+        line-height: 38px;
+        color: #333;
+        font-size: 14px;
+        text-indent: 20px;
+        background-color: #f8f8f8;
+    }
+    .main-left .main-searchbox .search-btn {
+        float: left;
+        width: 60px;
+        height: 40px;
+        text-align: center;
+        background-color: #c13232;
+        font-size: 18px;
+    }
+    .main-left .main-searchbox .search-btn i {
+        font-size: 22px;
+    }
+    .main-left .result-bar{
+        font-size: 14px;
+        color: #333;
+        line-height: 54px;
+        height: 54px;
+    }
+    .main-left .result-type-bar {
+        border: 1px solid #dcdcdc;
+        padding: 16px 0;
+        border-right: none;
+        border-left: none;
+    }
+    .main-left .result-type-bar a {
+        display: inline-block;
+        width: 78px;
+        height: 24px;
+        margin-right: 20px;
+        border: 1px solid #C13232;
+        text-align: center;
+        line-height: 24px;
+        color: #C13232;
+    }
+    .main-left .result-type-bar a.active {
+        color: #fff;
+        background-color: #C13232;
+    }
+    .result-item{
+
+    }
+</style>
+<body style="background: #f5f5f5">
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(helper) }}
+<div class="dui-layout-lg clearfix banner-box">
+    <div class="dui-layout-con"></div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-silde"></div>
+</div>
+<div class="dui-layout-lg clearfix">
+    <div class="dui-layout-con" style="background-color: #fff;">
+        <div class="main-left">
+            <div class="main-searchbox clearfix">
+                <input type="text" id="search-page" placeholder="请输入搜索关键词" class="search-text"
+                       onfocus="if(this.placeholder == '请输入搜索关键词'){this.value = '';}"
+                       onblur="if(this.value == ''){this.placeholder= '请输入搜索关键词';}">
+                <div class="search-btn" id="searchBtn-page" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
+            </div>
+            <div class="result-bar">
+                搜索<span></span>共搜索到<span></span>个结果
+            </div>
+            <div class="result-type-bar">
+                <a href="" class="active">综合</a>
+                <a href="">最新new</a>
+                <a href="">最热hot</a>
+            </div>
+            <div class="result-conent">
+                <div class="result-item">
+                    <div class="item-adviser">
+                        <img src="" alt=""/>
+                        <span>张珂</span>
+                    </div>
+                    <div class="item-info"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-silde" style="background-color: #fff;"></div>
+</div>
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/new_slide/new_slide2.html" as  slide %}
+{{slide.leyu_slide("AD_BRANCH_HOME_SEAT10") }}
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script>
+    $(function () {
+        $(window).on('scroll',function() {
+            var $scroll = $(this).scrollTop();
+            if ($scroll >= 200) {
+                $('.nationality_guoqi_warp').show();
+            } else {
+                $('.nationality_guoqi_warp').hide();
+            }
+        });
+        $('.lunbo_lift .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+            current: 0,
+            speed: 500,
+            intervalTime: 5000,
+            pagination: true
+        });
+        $('.lunbo_right .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+            mode:'vertical',
+//          current: 0,
+            speed: 1000,
+            intervalTime: 5000,
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+//          pagination: true
+        });
+    })
+
+</script>
+</body>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+</html>

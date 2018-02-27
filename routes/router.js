@@ -5,8 +5,8 @@ var login = require('./login.js');
 exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
-
-  
+  //搜索页
+  app.get(/^\/so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article);
   //社区首页
   app.get('/blog', controller.community_index);
   //用户视角 顾问主页

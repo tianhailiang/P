@@ -46,7 +46,33 @@ exports.index = function (req, res, next) {
     log.info(data.xSlider2);
     res.render('index', data);
 };
+//搜索页
+exports.so_article = function (req, res, next) {
+    log.debug('搜索结果文章');
+    var data = {};
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
+    var order = nquery && nquery.order ? nquery.order : "add_time";
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+    }, function (err, result) {
+        data.order = order;
+        data.keyword=keyword;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'SEARCHNEWS', //key
+            cityid: area
+        };
+        res.render('so_article', data);
 
+    });
+};
 //社区首页
 exports.community_index = function (req, res, next) {
   console.log('community_index');
