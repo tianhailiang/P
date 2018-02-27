@@ -186,4 +186,10 @@ exports = module.exports = function (app) {// routes
   app.get('/forget', login.forget);
   //普通用户绑定手机号
   app.get('/binding', login.binding);
+  //手机验证码
+  app.get('/sendcode_s', login.sendcode_s);
+  //忘记密码
+  app.post('/forget_s', login.forget_s);
+  //绑定手机号
+  app.post('/bind_phone', login.bind_phone);
 };

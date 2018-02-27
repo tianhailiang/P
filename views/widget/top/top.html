@@ -1,7 +1,146 @@
 <div class="top">
 
 </div>
+<style>
+  .l_u{
+    width: 420px;
+    height: 400px;
+    background-color: #fff;
+  }
+  .l_u_top{
+    width: 100%;
+    height: 56px;
+    background-color: #c13232;
+    padding: 5px 0
+  }
+  .l_u_top img {
+    display: block;
+    width: 150px;
+    height: 52px;
+    margin: 0 auto;
+  }
+  .l_u_con{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-left: 45px;
+  }
+  .l_u_con p{
+    width: 72px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 2px #c13232 solid;
+  }
+  .l_u_con_{
+    width: 330px;
+    height: 1px;
+    background-color: #dcdcdc;
+  }
+  .inputtext_isr{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .form-control{
+    display: inline-block;
+    line-height: 25px;
+  }
+  .l_u_com_phone{
+    width: 281px;
+    height: 26px;
+    padding-left: 35px;
+    font-size: 14px;
+    color: #999;
+  }
+  .l_u_com_yan{
+    width: 169px;
+    height: 26px;
+    padding-left: 35px;
+    font-size: 14px;
+    color: #999;
+  }
+  .l_u_com_bang{
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    float: right;
+    margin-right: 45px;
+    margin-top: -2px;
+  }
+  .l_u_com_but{
+    width: 330px;
+    height: 40px;
+    background-color: #c13232;
+    color: #fff;
+  }
+  .l_u_com_she{
+    width: 330px;
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+  }
+  .l_u_com_she div{
+    width: 330px;
+    height: 1px;
+    background-color: #999;
+    line-height: 0px;
+  }
+  .l_u_com_she i{
+    font-style: normal;
+    font-size: 14px;
+    color: #999;
+    background-color: #fff;
+    z-index: 10;
+  }
+  .l_u_com_fen{
+    width: 330px;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .l_u_com_fen img{
+    width: 32px;
+    height: 32px;
+  }
+</style>
+<div class="l_u" style="display: none;">
+  <div class="l_u_top"><img src="{{helper.cdnhost}}/assets/img/logo_login.png" alt=""></div>
+  <div class="l_u_con">
+    <p>验证码登录</p>
+    <div class="l_u_con_"></div>
+    <form class="m-t" role="form" style="margin-top: 20px">
+      <div class="form-group inputtext_isr" style="position: relative;">
+        <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="newphone" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
+      </div>
+      <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
+        <input placeholder="请输入短信验证码" type="text" id="verify" class="form-control l_u_com_yan" required data-vaild="^\d{4}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe653;</i>
+        <div class="l_u_com_bang">
+          <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+          <input type="button" class="btn btn-primary" style="width: 90px;height: 40px;text-align: center;padding: 6px 2px;background: #fff;color: #c13232;border: 1px solid #c13232;border-radius: 3px;line-height: 0px" id="sendcun" value="发送验证码"/>
+        </div>
+      </div>
+    </form>
+    <div style="margin-top: 20px;">
+      <input type="button" class="btn l_u_com_but" style="width: 330px;padding-left: 0;padding-right: 0" id="loginSubmit" value="登 录"/>
+    </div>
+    <div class="l_u_com_she">
+      <div><i>社交账号登录</i></div>
+    </div>
+    <div class="l_u_com_fen" id="fx" >
+        <img style="margin-right: 76px;" src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo"/>
 
+        <a target="_blank"  href="{{helper.wwhost}}/weixin_login?h={{url}}" >
+          <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
+        </a>
+        <img style="margin-left: 76px;" src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq"/>
+      </div>
+  </div>
+</div>
 
 <script>
   $(function() {
@@ -11,16 +150,12 @@
                 '<div class="top-con-right">'+
                 '<span><a target="_blank" href="/register" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
-                '<span><a href="javascript:void(0);" onclick="getlogin()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
+                '<span><a href="javascript:void(0);" id="getlogin" onclick="getlogin()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '</div>'+
                 '</div>'
       $(".top").append(val);
     } else {
       var val = '<div class="dui-layout-lg top-con">'+
-                '<div class="top-con-left">'+
-                '<i class="iconfont">&#xe60d;</i>'+
-                '<span><a target="_blank" href="' + fn.urlgen("") +'" >金吉列留学首页</a></span>'+
-                '</div>'+
                 '<div class="top-con-right">'+
                 '<ul>';
       if (login_nickname.usertype == 1) {
@@ -31,9 +166,6 @@
         val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("canzan_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
       }
       val += '<li><a href="javascript:void(0)" onclick="outlogin()" rel="nofollow">退出</a></li>'+
-                '<li><a target="_blank" href="'+ fn.urlgen('advisor_center', 'revmsg') +'" rel="nofollow">消息</a></li>'+
-                '<li><a href="http://www.jjl.cn/english/?tag=2" target="_blank" rel="nofollow">English Website</a></li>'+
-                '<li class="topss"><a href="http://special.zhaopin.com/bj/2015/jjl032714/job.html" target="_blank" rel="nofollow">诚聘英才</a></li>'+
                 '</ul>'+
                 '</div>'+
                 '</div>';
@@ -42,44 +174,45 @@
 
   })
 </script>
-
+<script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script>
+
+  $(document).ready(function () {
+
+    $("form").Vaild();
+    
+  })
   function getlogin () {
-    var h = window.location.href;
-    console.log('h', h);
-    var hh = h.split("/");
-    console.log('hh[1]', hh[3]);
-    var hhh = h.split("?");
-    console.log('hhh', hhh[1])
-    if (hh[3] != 'register' && hh[3] != 'forget') {
-      console.log('11111')
-//      window.location.href = '/login?h=' + h
-      window.open('/login?h=' + h);
-    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login') {
-      console.log('aaaa')
-      window.location.reload();
-    } else {
-      console.log('22222')
-//      window.location.href = '/login'
-      window.open('/login');
-    }
+
+        layer.open({
+	            type: 1,
+	            shade: [0.4,'#000'],
+	            shadeClose: true,
+	            closeBtn: true,
+	            area: ['420px', '400px'],
+	            title: false,
+	            border: [0],
+	            bgcolor: "#fff",
+	            scrollbar : false,
+	            content: $('.l_u'),
+	            success : function(){
+	            	
+              },
+              cancel:function(){
+                $("#newphone").parent().removeClass("has-error").addClass("has-success");
+                $("#newphone").popover("destroy");
+              },
+              end:function() {
+                $("#newphone").parent().removeClass("has-error").addClass("has-success");
+                $("#newphone").popover("destroy");
+              }
+	        });
+    
   }
-  function outlogin () {
-    $.ajax({
-      url: '/login_out',
-      type: 'GET',
-      datatype: 'json',
-      success:function(msg){
-        if (msg == 'ok') {
-          console.log('登出')
-          window.location.reload()
-        }
-      },
-      error:function(XMLHttpRequest, textStatus, errorThrown){
-        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
-      }
-    })
-  }
+
 </script>
 
 {#{% if login_nickname == '' %}

@@ -29,6 +29,26 @@
     {% endfor %}
 </div>
 {% endmacro %}
+<!--明星顾问侧栏五格-->
+{% macro advisor_star_block() %}
+<ul class="gw-list">
+    <li>
+        <a href="javascript::">
+            <img src="https://imgsa.baidu.com/news/q%3D100/sign=e8fe84bc8e26cffc6f2abbb289004a7d/a1ec08fa513d26970655fa7859fbb2fb4316d815.jpg" alt="">
+            <div class="artical-info">
+                <div class="user-infos">
+                    <span class="people-name">张三</span>
+                    <span class="people-action">美国留学顾问</span>
+                </div>
+                <div class="guwen-info">
+                    <span class="pull-left">粉丝<em>222</em></span>
+                    <span class="pull-right">文章<em>111</em></span>
+                </div>
+            </div>
+        </a>
+    </li>
+</ul>
+{% endmacro %}
 
 <!--明星顾问侧栏竖列表-->
 {% macro advisor_star_list(star_list, helper) %}

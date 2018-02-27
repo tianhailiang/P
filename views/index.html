@@ -73,6 +73,11 @@
     position: relative;
     margin: 0 auto;
   }
+  .liuxue-guoqi img{
+    width:46px;
+    height:30px;
+
+  }
   .liuxue-guoqi{
     width: 100%;
     height: auto;
@@ -86,6 +91,9 @@
   .liuxue-guoqi a{
     width: auto;
     margin: 20px 50px 47px 0;
+    height:30px;
+    display: inline-block;
+    position: relative;
   }
   .liuxue-guojia-title{
     position: absolute;
@@ -152,7 +160,7 @@
       {% include "widget/xSlider/xSlider.html" %}
     </div>
     <div class="lunbo_right">
-      {% include "widget/xSlider/xSlider2.html" %}
+     {# {% include "widget/xSlider/xSlider2.html" %}  #}
     </div>
   </div>
   <!--50家分公司-->
@@ -385,7 +393,7 @@
       });
       $('.lunbo_lift .slider').xSlider({
           //轮播图配置
-          autoplay : 500,
+//          autoplay : 500,
           current: 0,
           speed: 500,
           intervalTime: 5000,
@@ -393,9 +401,9 @@
       });
       $('.lunbo_right .slider').xSlider({
           //轮播图配置
-          autoplay : 500,
+//          autoplay : 500,
           mode:'vertical',
-          current: 0,
+//          current: 0,
           speed: 1000,
           intervalTime: 5000,
           slidesPerView : 2,

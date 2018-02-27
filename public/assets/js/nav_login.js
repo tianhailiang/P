@@ -51,7 +51,7 @@ function loginS () {
           //window.location= '/';
           alert('成功');
         } else {
-          alert('注册出错啦');
+          alert(msg.message);
         }
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
