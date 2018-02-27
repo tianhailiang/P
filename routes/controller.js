@@ -32,32 +32,74 @@ function split_array(arr, len) {
 exports.index = function (req, res, next) {
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var data = [];
-    if ( req.cookies.login_user !== undefined) {
-      console.log('aaaaaa');
-      data.login_info = JSON.parse(req.cookies.login_user);
-      console.log('data.login_info', data.login_info);
-      data.user_type = 1
+    if ( req.cookies.login_ss !== undefined) {
+        console.log('aaaaaa');
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        console.log('data.login_info', data.login_info);
     }else{
-      data.login_info ={};
-      data.login_info.uid = 0;
-      //res.redirect(config.wwhost+'/login');
-      //return false;
+        data.login_info ={};
+        data.login_info.uid = 0;
+        //res.redirect(config.wwhost+'/login');
+        //return false;
     }
-    data.xSlider=lunbo;
-    data.xSlider2=lunbo;
-    data.xSlider=data.xSlider.items;
-    data.xSlider2=data.xSlider2.items;
-    data.tdk = {
-        pagekey: 'INDEX',
-        cityid: area,
-        nationid: ''
-    };
-    //data.esikey = esihelper.esikey();
-    log.info(data.xSlider);
-    log.info(data.xSlider2);
-    res.render('index', data);
+    async.parallel({
+        lunbo_list:function(callback) {
+         cms.lunbo_list({
+           "ad_page": "HOME",
+           "ad_seat": "SEAT1"
+         }, callback);
+        },
+        lunbo_list2:function(callback) {
+         cms.lunbo_list({
+           "ad_page": "HOME",
+           "ad_seat": "SEAT2"
+         }, callback);
+        },
+    },function (err, result) {
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.tdk = {
+            pagekey: 'index',
+            cityid: area,
+            nationid: ''
+        };
+        //data.esikey = esihelper.esikey();
+        log.info(data.xSlider);
+        log.info(data.xSlider2);
+        res.render('index', data);
+    })
+    // data.xSlider=lunbo;
+    // data.xSlider2=lunbo;
+    // data.xSlider=data.xSlider.items;
+    // data.xSlider2=data.xSlider2.items;
 };
+//搜索页
+exports.so_article = function (req, res, next) {
+    log.debug('搜索结果文章');
+    var data = {};
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
+    var order = nquery && nquery.order ? nquery.order : "add_time";
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+    }, function (err, result) {
+        data.order = order;
+        data.keyword=keyword;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'SEARCHNEWS', //key
+            cityid: area
+        };
+        res.render('so_article', data);
 
+    });
+};
 //社区首页
 exports.community_index = function (req, res, next) {
   console.log('community_index');
@@ -289,6 +331,53 @@ exports.center_main = function (req, res, next) {
         };
         res.render('center_main', data);
     });
+};
+//顾问中心 上传我的二维码
+exports.post_code = function (req, res, next) {
+    log.debug('顾问中心 上传我的二维码')
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var page = req.query.page || 1;
+    data.tdk = {
+        pagekey: 'ADVISOR_CENTER_CASE',
+        cityid: area,
+    };
+    res.render('center_post_code', data);
+/*    if ( req.cookies.login_ss !== undefined) {
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        if(data.login_info.usertype ==1){
+            res.redirect('/404');
+            return false;
+        }
+    }else{
+        res.redirect(config.wwhost+'/login');
+        return false;
+    }
+    async.parallel({
+        //获取用户信息（普通用户，顾问，参赞）
+        userinfo:function(callback){
+            wec.userinfo({
+                "u_id":data.login_info.uid,
+                "to_uid":data.login_info.uid
+            },callback);
+        },
+        case_list: function (callback) {
+            wec.user_article_list({
+                "u_id": data.login_info.uid,
+                "page": page,
+                "per_page": 4,
+                "type": 1
+            }, callback);
+        }
+    }, function (err, result) {
+        data.userinfo =returnData(result.userinfo,'userinfo');
+        data.case_data =returnData(result.case_list,'case_list');
+        data.tdk = {
+            pagekey: 'ADVISOR_CENTER_CASE',
+            cityid: area,
+        };
+        res.render('center_post_ode', data);
+    });*/
 };
 //个人中心 我的案例
 exports.center_case = function (req, res, next) {
@@ -960,26 +1049,11 @@ exports.adviser_main = function (req, res, next) {
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
-        "u_id":data.login_info.uid, "to_uid":data.uid},callback);
+         "uid":data.uid},callback);
     },
-    //作者精选
-    // channel_list:function(callback){
-    //   cms.channel_list({
-    //     "u_id":uid, "per_page":6, "order":"views desc"},callback);
-    // },
-    //热门留学方案
-    // hot_liuxuefangan_list: function (callback) {
-    //   cms.hot_liuxuefangan_list({
-    //     "position":"blog", "catid": "47", "cityid": area, "perpage": 15}, callback);
-    // },
-    //明星顾问
-    // mingxingguwen: function (callback) {
-    //   cms.mingxingguwen({
-    //     "position": "blog", "catid": 101, "cityid":area, "perpage":20}, callback);
-    // },
     guwen_list:function (callback){
       wec.adviser_main({
-        "u_id":data.login_info.uid ,"per_page":6, "order":"views desc", "uid": data.uid}, callback)
+        "per_page":6, "order":"views desc", "uid": data.uid}, callback)
     }
   },function(err, result){
     data.userinfo =returnData(result.userinfo,'userinfo');
@@ -988,55 +1062,22 @@ exports.adviser_main = function (req, res, next) {
       res.redirect('/404');
       return false;
     }
-    // data.channel_list =returnData(result.channel_list,'channel_list');
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
-    //切割成 二维数组
-    // data.hotLXFA  = split_array(returnData(result.hot_liuxuefangan_list,'hot_liuxuefangan_list'), 7);
-    // var sliderArr = [];
-    // data.mingxingguwen = returnData(result.mingxingguwen,'mingxingguwen');
-    // var sliderArrLen = (data.mingxingguwen.length%10 == 0) ? parseInt(data.mingxingguwen.length/10) : (parseInt(data.mingxingguwen.length/10) + 1);
-    // for (i= 0; i < sliderArrLen; i++) {
-    //   sliderArr.push(data.mingxingguwen.slice(i*10, (i+1)*10));
-    // }
-    // data.sliderArr = sliderArr;
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
-    async.parallel({
-      //猜你喜欢
-      // guess_like:function(callback){
-      //   cms.channel_list({
-      //     "per_page":12,
-      //     "order":"views",
-      //     "country_id":country
-      //   },callback);
-      // },
-      //活动预告
-      // huodongyugao: function (callback) {
-      //   cms.huodongyugao({
-      //     "position": "cmslist",
-      //     "catid": 64,
-      //     "cityid": area,
-      //     "country": hcountry.split(',')[0],
-      //     "perpage": "4"
-      //   }, callback);
-      // }   
-    },function(err,result){
-        // data.huodongyugao =returnData(result.huodongyugao,'huodongyugao');
-        // data.guess_like = returnData(result.guess_like,'guess_like');
-      var pagekey = ''
-      if(data.userinfo.usertype == 2){
-        pagekey = 'ADVISOR_P_MAIN';
-      }else if(data.userinfo.usertype == 3){
-        pagekey = 'CANZAN_P_MAIN';
-      }
-        data.tdk = {
-          pagekey: pagekey,
-          cityid: area, 
-          realname: data.login_info.realname,
-        };
-        data.esikey = esihelper.esikey();
-        res.render('adviser_main', data);
-    });
+    var pagekey = ''
+    if(data.userinfo.usertype == 2){
+      pagekey = 'ADVISOR_P_MAIN';
+    }else if(data.userinfo.usertype == 3){
+      pagekey = 'CANZAN_P_MAIN';
+    }
+    data.tdk = {
+      pagekey: pagekey,
+      cityid: area,
+      realname: data.login_info.realname,
+    };
+    data.esikey = esihelper.esikey();
+    res.render('adviser_main', data);
   });
 }
 //用户 顾问专栏加载更多

@@ -67,16 +67,16 @@
       float: left;
     }
     .homepage-title div {
-      width: 80px;
+      padding: 0 10px;
       height: 24px;
       float: left;
       margin-left: 20px;
       background: #C13232;
       opacity: 0.6;
-      text-align: center;
-      line-height: 24px;
       border-radius:12px ;
       margin-top: -3px;
+      text-align: center;
+      line-height: 24px;
     }
     .homepage-p {
       width: 840px;
@@ -100,8 +100,47 @@
       width: 880px;
       height: 44px;
       line-height: 44px;
-      background: purple;
     }
+
+
+
+
+    /*�Ķ�/�ղ�/����/����*/
+
+    .bot_comment{
+      width: 880px;
+      height: 44px;
+      border-bottom: 1px solid #dcdcdc;
+    }
+    .bot_comment ul{
+      height: 100%;
+      float: right;
+    }
+    .bot_comment li{
+      height: 20px;
+      text-align: center;
+      float: left;
+      margin-top: 11px;
+      cursor: pointer;
+    }
+    .bot_comment li:hover i,.bot_comment li:hover span{
+      color: #C13232;
+    }
+    .bot_comment li i{
+      margin-right: 10px;
+    }
+    .bot_comment li span{
+      font-size: 14px;
+      color: #666;
+      margin-right: 16px;
+    }
+    .bot_comment li em{
+      font-style: normal;
+    }
+    .bot_comment li.dian{
+      border-right: none;
+    }
+
   </style>
 </head>
 <body style="background: #f5f5f5">
@@ -164,15 +203,16 @@
       {% if guwen_list.list.length > 0 %}
       <div class="right-main clearfix">
           {% for item in guwen_list.list %}
-            {% if item.category_id == 17 %} {# 案例 #}         
-              {% import "widget2/offer/offer.html" as case_show %}
-              {{ case_show.case_show(item, helper) }}
-            {% elif item.category_id < 17 %} {# 专栏 #}
+
               {% import "widget2/article/article.html" as article_show %}
               {{ article_show.article_show(item, helper) }}
-            {% endif %}
+        <div class="bot_comment clearfix">
+          <ul class="clearfix" style="position: relative">
+           <div style="float: left;width: 100px;line-height: 44px;position: absolute;left: -530px">{{1111111}}</div>
             {% include "widget2/bottom_comment/bottom_comment.html" %}
-          {% endfor %}
+          </ul>
+        </div>
+        {% endfor %}
       </div>
       <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
         <span>加载更多</span>
@@ -183,24 +223,6 @@
       {% endif %}
     </div>
   </div>
-</div>
-<div class="dui-layout-lg clearfix">
-<div class="dui-box-shadow" style="margin-top: 20px;background:#fff;" >
-  <div class="common-title">
-    <i></i>
-    <h3>热门留学方案</h3>
-    <a  target="_blank" href="{{helper.urlgen('productrank')}}" class="iconfont">&#xe602;</a>
-  </div>
-  {% esi helper.include(esikey,'fragment/hot_liuxuefangan_list') %}
-</div>
-<div class="dui-box-shadow clearfix" style="margin-top: 20px;background:#fff;margin-bottom: 20px;">
-  <div class="common-title clearfix">
-    <i></i>
-    <h3>明星顾问</h3>
-    <a  target="_blank" href="{{helper.urlgen('adviser')}}" class="iconfont">&#xe602;</a>
-  </div>
-    {% esi helper.include(esikey,'fragment/community_guwen','n='+hcountry) %}
-</div>
 </div>
 {% import "widget/slide/slide.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
@@ -223,62 +245,6 @@
 <script>
   $(function(){
     //明星顾问轮播
-    $('.advisor_star_bar .slider').xSlider();
-    function appendCaseItem (citem) {
-      if(citem.introduce==undefined){
-          citem.introduce ={
-            stu_name:'',
-            school_1:'',
-            school_2:'',
-            school_3:'',
-            dep_1:'',
-            dep_2:'',
-            dep_3:'',
-            admission_time:'',
-            offer_img:[]
-          };
-      }
-      var cItemHtml ='<div class="offers clearfix">'+
-        '<div class="offers-left">'+
-          '<div class="offers-left-img">'+
-            '<a  target="_blank" href="'+ fn.urlgen("case", citem.id.toString()) +'">'+
-              '<img src="'+fn.avaterimg(citem.uid,'small',citem.user_info.status,citem.user_info.version)+'" >'+
-            '</a>'+
-          '</div>'+
-          '<div class="offers-left-off">'+
-            '<p class="off-p1">' + citem.user_info.realname + '</p>'+
-            '<p class="off-p2"> '+ citem.add_time +'&nbsp;&nbsp;<span>来自 : '+  citem.from +'</span></p>'+
-            '<a  target="_blank" href="'+ fn.urlgen("case", citem.id.toString()) +'" class="offer-title">'+ citem.title +'</a>'+
-            '<p class="off-p3">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:&nbsp;'+ citem.introduce.stu_name +'</p>'+
-            '<p class="off-p3">录取院校&nbsp;:&nbsp;'+ citem.introduce.school_1+'&nbsp;&nbsp;'+citem.introduce.school_2+'&nbsp;&nbsp;'+citem.introduce.school_3+'</p>'+
-            '<p class="off-p3">录取专业&nbsp;:&nbsp;'+ citem.introduce.dep_1+'&nbsp;&nbsp;'+citem.introduce.dep_2+'&nbsp;&nbsp;'+citem.introduce.dep_3+'</p>'+
-            '<p class="off-p3">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;'+ fn.getEdu(citem.edu_id) +'</p>'+
-            '<p class="off-p3">录取时间&nbsp;:&nbsp;'+ citem.introduce.admission_time +'</p>'+
-            '<p class="off-p4"><a  target="_blank" href="'+ fn.urlgen("case", citem.id.toString()) +'">【查询详情】</a></p>'+
-          '</div>'+
-        '</div>'+
-        '<div class="offers-right">'+
-          '<div class="offers-right-xiala">'+
-            '<div class="offer-xialas">'+
-              '<span class="offer-xialadd iconfont">&#xe60b;</span>'+
-              '<ul class="offer-xiala">'+
-                '<li>'+
-                  '<a class="dui-text-warning-s report-btn" data-artId="'+citem.id+'" data-catid="'+citem.category_id+'">举报'+
-                  '</a>'+
-                '</li>'+
-                '<li>'+
-                  '<a class="dui-text-warning-s share-btn" data-url="'+fn.urlgen("case", citem.id.toString())+'" data-title ="'+citem.title+'">分享'+
-                  '</a>'+
-                '</li>'+
-              '</ul>'+
-            '</div>'+
-          '</div>'+
-          addCaseImg(citem.img_list)+
-        '</div>'+
-      '</div>'+
-      addBottom(citem);
-      return cItemHtml; //返回案例小模块html
-    }
     function appendArticleItem (aitem) {
       var aItemHtml ='<div class="art-box clearfix" >'+
         '<a  target="_blank" href="'+fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'">'+
