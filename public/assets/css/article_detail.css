@@ -95,3 +95,20 @@
 .adviser-case-detail-offer em{
   font-style: italic;
 }
+
+.adviser-touxiang{
+  width:50px;
+  height:50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  float:left;
+}
+.adviser-v-i{
+  display: inline-block;
+  width:14px;
+  height:14px;
+  background:url(../img/1v.png) no-repeat 0 0;
+  background-size:14px 14px;
+  vertical-align: middle;
+  margin-left: 4px;
+}

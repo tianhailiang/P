@@ -52,15 +52,16 @@ exports.login_user = function (req, res, next) {
   }, function (err, result) {
 
     data.login_user = result.login_user;
+    data.login_user.data.usertype = 1;
     log.debug('result.login_user----------', result.login_user);
 
     //res.render('login', data)
     if (result.login_user.code === 0) {
       log.debug('ok', result.login_user.code);
       if (config.version == 'development' && result.login_user.code === 0) {//开发环境
-        res.cookie("login_user", JSON.stringify(result.login_user.data), {domain: '.jjlvip.cn'});//保存cookie
+        res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjlvip.cn'});//保存cookie
       } else {
-        res.cookie("login_user", JSON.stringify(result.login_user.data), {domain: '.jjlvip.cn'});
+        res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjlvip.cn'});
       }
       res.send(result.login_user);
       //log.debug('config', config.wwhost);
@@ -77,34 +78,34 @@ exports.login_s = function (req, res, next) {
   log.debug('this router login_s~~');
   var username = req.body.username;
   var password = req.body.password;
+  var adviser = req.body.adviser;
 
   //log.debug(JSON.stringify(req.body));
   log.debug(req.body);
+  log.debug('adviser', adviser);
   //res.render('login', '')
   var data = [];
   var async = require('async');
-  //var cookie = require('cookie-parser');
-  //var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  //var qianzhengzhinan_currentPage=req.query.page || 1;
-  //var qianzhengzhinan_pagesizee=req.query.pagesize || 12;
-  //var country = req.query.country || 1;
   async.parallel({
     //签证指南
     login_ss: function (callback) {
-      cms.login_ss(req.body, callback);
+      cms.login_ss({username: username, password: password}, callback);
     }
   }, function (err, result) {
-
+    
     data.login_ss = result.login_ss;
-    log.debug('result.login_ss----------', result.login_ss);
+    data.login_ss.data.usertype = 2;
+    data.login_ss.data.adviser = adviser;
+
+    log.debug('result.login_ss----------', data.login_ss.data);
 
     //res.render('login', data)
     if (result.login_ss.code === 0) {
       log.debug('ok', result.login_ss.code);
       if (config.version == 'development' && result.login_ss.code === 0) {//开发环境
-        res.cookie("login_ss", JSON.stringify(result.login_ss.data), {domain: '.jjlvip.cn'});//保存cookie
+        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjlvip.cn'});//保存cookie
       } else {
-        res.cookie("login_ss", JSON.stringify(result.login_ss.data), {domain: '.jjlvip.cn'});
+        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjlvip.cn'});
       }
       res.send(result.login_ss);
       //log.debug('config', config.wwhost);
@@ -470,13 +471,3 @@ exports.login_out = function (req, res, next) {
   //res.redirect(req.query.h);
 };
 
-//普通用户登出
-exports.login_user_out = function (req, res, next) {
-  console.log('login_out');
-  //console.log('req', req);
-  res.clearCookie("login_user", {domain: '.jjlvip.cn'});
-  //res.cookie(prop, 'login_ss', {expires: new Date(0)});
-  console.log('login_out1');
-  res.send('ok')
-  //res.redirect(req.query.h);
-};
