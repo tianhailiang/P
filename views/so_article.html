@@ -177,33 +177,41 @@
                 <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
                 <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
             </div>
-            <div class="result-conent">
+            <div class="result-conent" id="result-content">
                 {% for item in article_list.list %}
                 <div class="result-item clearfix">
                     <div class="item-adviser">
-                        <a href="{{helper.urlgen('p',item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/></a><span>{{item.user_info.nickname}}</span><img src="../assets/img/1v.png" alt="" class="flag"/>
+                        <a href="{{helper.articleUrlgen('blog',item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/></a><span>{{item.user_info.nickname}}</span><img src="../assets/img/1v.png" alt="" class="flag"/>
                     </div>
                     <div class="item-info">
                         <div class="info-top clearfix">
-                            <a class="info-title" href="">{{item.title}}</a>
+                            <a class="info-title" href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">{{item.title}}</a>
                             <div class="info-tags">
                                 <span>{{item.tag_list}}</span>
                             </div>
                         </div>
-                        <div class="info-desc">{{item.introduce|ellipsis(90)}}<a>【查看详情】</a></div>
-                        <div class="time">今天13:19</div>
+                        <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">【查看详情】</a></div>
+                        <div class="time">{{item.update_time}}</div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            <div class="load-more-article" id="load-more-article" data-cur_page="{{cur_page}}">
+            <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
                 加载更多
                 <i class="city-icon iconfont">&#xe60b;</i>
             </div>
         </div>
     </div>
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-silde" style="background-color: #fff;"></div>
+    <div class="dui-layout-silde">
+        <div class="guess-like-right" style="margin-top: 20px;background-color: #fff;">
+            <div class="common-title" style="border:1px solid #dcdcdc;">
+                <i></i>
+                <h3>猜你喜欢</h3>
+            </div>
+            {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+        </div>
+    </div>
 </div>
 {% include "widget/new_footer/new_footer.html" %}
 {% import "widget/new_slide/new_slide2.html" as  slide %}
@@ -234,19 +242,60 @@
         var area = $.cookie('currentarea') ? $.cookie('currentarea') : 1;
         var keyword = $('#result-keyword').text();
         var load_page = $('#load-more-article').attr('data-cur_page')*1+1;
+        function more_artice (art_list) {
+            var artHtml = '';
+            for (var i = 0; i < art_list.length; i++) {
+                var item = art_list[i];
+                artHtml+='<div class="result-item clearfix">'+
+                            '<div class="item-adviser">'+
+                            '<a href="'+fn.urlgen('blog',item.user_info.uid.toString())+'"><img src="'+fn.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)+'" alt="" class="adviser-avatar"/></a><span>'+ item.user_info.nickname+ '</span><img src="../assets/img/1v.png" alt="" class="flag"/>'+
+                            '</div>'+
+                            '<div class="item-info">'+
+                            '<div class="info-top clearfix">'+
+                            '<a class="info-title" href="'+fn.articleUrlgen('blog',item.user_info.uid.toString(),'article='+item.id.toString())+'">'+ item.title +'</a>'+
+                        '<div class="info-tags">'+
+                        '<span>'+ item.tag_list +'</span>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="info-desc">'+ item.introduce +'<a href="'+fn.articleUrlgen('blog',item.user_info.uid.toString(),'article='+item.id.toString())+'">【查看详情】</a></div>'+
+                '<div class="time">'+ item.update_time +'</div>'+
+                '</div>'+
+                '</div>';
+            }
+            $('#result-content').append($(artHtml));
+        }
         $('#load-more-article').on('click', function () {
+            var page = $(this).data('page')*1+1;
+            var thisObj = $(this);
+            var per_page = 15;
             $.ajax({
                 url: ajaxUrlPrefix.nodeapi + '/cmsapi/load_more_article',
                 datatype: 'json',
                 data: {
                     key_word: keyword,
                     city_id: area,
-                    "per_page": "15",
-                    "page": load_page
+                    "per_page": per_page,
+                    "page": page
                 },
-                success: function (result) {
-                    $('#load-more-article').attr('cur_page', load_page);
-                    console.log(result)
+                success: function (revmsg) {
+                    if (revmsg.code == 0) {
+                        var len = revmsg.data.list.length;
+                        if (len == 0) {
+                            thisObj.html('文章加载完毕')
+                        }
+                        else if (0 < len && len < per_page) {
+                            thisObj.html('文章加载完毕');
+                            more_artice(revmsg.data.list);
+                            thisObj.data('page', page);
+                        }
+                        else {
+                            more_artice(revmsg.data.list);
+                            thisObj.data('page', page);
+                        }
+                    }
+                    else {
+                        thisObj.html('加载更多出错了，请刷新');
+                    }
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {
                     console.log('加载更多出错了！');
