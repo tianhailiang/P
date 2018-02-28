@@ -9,7 +9,7 @@ $(function(){
   var validate_leyu = {
     //phone
     phone: function(phone){
-      if(!/^(13[0-9]|15[0|1|2|3|5|6|7|8|9]|18[0-9 ]|177)\d{8}$/.test(phone)){
+      if(!/^1(3|4|5|7|8)\d{9}$/.test(phone)){
         return false;
       }
       return true;
@@ -77,7 +77,7 @@ $(function(){
       $("#city-num").html('');
     };
 
-  //留学需求
+    //留学需求
     if($("#context").val()==''){
       $("#context-num").html("请填写留学需求");
       return false;
@@ -86,7 +86,7 @@ $(function(){
     };
 
     $.ajax({
-      url: ajaxUrlPrefix.nodeapi+'/cmsapi/assessment',
+      url: ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
       type:'POST',
       dataType:'json',
       //jsonpCallback: 'callback',

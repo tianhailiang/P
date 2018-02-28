@@ -408,6 +408,7 @@ $("#r_comment").hover(function(){
 $("#zxzx").hover(function(){
   $("#quick_links_pop").css("display", "block");
   $("#comment_con").css("display", "none");
+  $("#r_comment").css("background", "#9a9a9a");
 },function(){
 /*  $("#quick_links_pop").css("display", "none");*/
 });
