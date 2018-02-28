@@ -46,26 +46,8 @@
 	        </div>
   	      <div class="rel-case-list" >
             <div class="rel-case-text1" style="margin-top: 20px;">
-              <label class="title active" for="art_type"><span>*</span> 选择文章发布类型：</label>
-              {% set artType = [
-                {"id":"11","txt":"留学聚焦"},
-                {"id":"12","txt":"申请攻略"},
-                {"id":"13","txt":"签证指导"},
-                {"id":"14","txt":"申请条件"},
-                {"id":"15","txt":"留学费用"},
-                {"id":"16","txt":"专家解读"}
-              ] %}
-              <select id="art_type">
-                <option value="" >请选择文章发布类型</option>
-                {% for item in artType %}
-                  <option value="{{item.id}}">{{item.txt}}</option>
-                {% endfor %}
-              </select>
-              <span class="numTip" ></span>
-            </div>  
-            <div class="rel-case-text1" style="margin-top: 20px;">
               <label class="title active" for="apply-country">
-                <span>*</span> 选择文章对应国家：
+                <span>*</span> 选择对应国家：
               </label>
               {% set countryList = [
                 {"countryId":"1","txt":"美国"},
@@ -94,28 +76,88 @@
                 {"countryId":"113","txt":"瑞士"}
               ] %}
               <select id="apply-country" >
-                <option value="">请选择国家</option>
+                <option value="">请选择</option>
                 {% for item in countryList %}
                   <option value="{{item.countryId}}">{{item.txt}}</option>
                 {% endfor %}
               </select>
               <span class="numTip" ></span>
             </div>
-            <div class="rel-case-text1 clearfix" style="margin-top: 20px;height: auto;">
-              <label class="title active" style="float:left;" >
-                <span>*</span> 点击选择文章配图：
+            <div class="rel-case-text1" style="margin-top: 20px;">
+              <label class="title active" for="art_type"><span>*</span> 选择文章类型：</label>
+              <span  class="art-type-sel" >
+                <i class="iconfont art-type-i"></i>
+                <i >时讯</i>
+              </span>
+              <span class="art-type-sel">
+                <i class="iconfont art-type-i" ></i>
+                <i >非时讯</i>
+              </span>
+              <span class="numTip" ></span>
+            </div>  
+            <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;">
+              <label class="title active" for="level">
+                <span>*</span> 选择学历标签：
               </label>
-              <div class="figure">
-                <img src="" id ="figure-img" />
-                <a  href="javascript:" class="figure_delete iconfont" title="删除" >
-                  &#xe8c1;
-                </a>
-              </div>
-              <label class="figure-label" >
-                <i class="iconfont add-icon">&#xe616;</i>
+              <span class="level-sel" data-id="1">
+                <i class="level-sel-i iconfont"></i>
+                <i>中学</i>
+              </span>
+              <span class="level-sel iconfont" data-id="2">
+                <i class="level-sel-i"></i>
+                <i>本科</i>
+              </span>
+              <span class="level-sel" data-id="3">
+                <i class="level-sel-i iconfont"></i>
+                <i>研究生</i>
+              </span>
+              <span class="level-sel" data-id="4">
+                <i class="level-sel-i iconfont"></i>
+                <i>研究生</i>
+              </span>
+               <span class="numTip" style="display: block;margin-left: 128px;">
+                  学历标签可多选
+               </span>
+            </div>
+            <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;">
+              <label class="title active" for="recommend">
+                <span>*</span> 选择推荐标签：
               </label>
-              <span class="numTip" style="float:left;margin-left:10px;margin-top:120px;">
-                 注：选择图片库对应的文章配图
+              <span class="recommend-sel" data-id="11">
+                <i class="recommend-sel-i iconfont"></i>
+                <i>留学聚焦</i>
+              </span>
+              <span class="recommend-sel" data-id="12">
+                <i class="recommend-sel-i iconfont"></i>
+                <i>申请攻略</i>
+              </span>
+              <span class="recommend-sel" data-id="13">
+                <i class="recommend-sel-i iconfont"></i>
+                <i>签证指导</i>
+              </span>
+              <span class="recommend-sel" data-id="14">
+                <i class="recommend-sel-i iconfont"></i>
+                <i>申请条件</i>
+              </span>
+              <span class="recommend-sel" data-id="15">
+                <i class="recommend-sel-i iconfont"></i>
+                <i>留学费用</i>
+              </span>
+              <span class="recommend-sel" data-id="16">
+                <i class="recommend-sel-i iconfont"></i>
+                <i>专家解读</i>
+              </span>
+              <span class="recommend-sel" data-id="17" style="display: inline-block;
+    margin-left: 130px;">
+                <i class="recommend-sel-i iconfont"></i>
+                <i>留学案例</i>
+              </span>
+              <span class="numTip">
+                注：选中【留学案例】标签及发布至顾问个人主页-案例中
+              </span>
+              <span class="numTip" style="display:block;
+    margin-left: 130px;margin-top:5px;">
+                推荐标签最多选择3个
               </span>
             </div>
   	        <div class="rel-case-text1" style="margin-top: 20px;">
@@ -123,24 +165,15 @@
                 <span>*</span> 文章标题：
               </label>
       			  <input  id="rel-case-title" type="text" maxlength="30">
-      			  <span class="numTip" style="display: block;margin-left: 97px;">填写文章标题，字数限30个汉字</span>
+      			  <span class="numTip" style="display: block;margin-left: 97px;margin-top: 8px;">填写文章标题，字数限30个汉字</span>
       		  </div>
-            <div class="rel-case-text1" style="margin-top: 20px;">
-              <label class="title active" for="rel-keyword" style="letter-spacing: 4.8px;">
-                <span>*</span> 关键词：
-              </label>
-              <input  id="rel-keyword" type="text" >
-              <span class="numTip" style="display: block;margin-left: 97px;">
-                多关键词之间用 "," 隔开
-              </span>
-            </div>
             <div class="rel-case-text1" style="margin-top: 20px;">
               <label class="title active" for="art_abs" >
                 <span>*</span> 文章摘要：
               </label>
               <textarea class="art_abs" id="art_abs" maxlength="200"></textarea>
               <div class="word-num">还可以输入<span id="word-num">200</span>字</div>
-              <span class="numTip" style="display: block;margin-left: 97px;">
+              <span class="numTip" style="display: block;margin-left: 97px;margin-top: 8px;">
                 填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写
               </span>
             </div>
@@ -160,7 +193,7 @@
                     保存到草稿
               </a>
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" id="sureBtn">
-                   	确定发布
+                   	立即发布
               </a>
             </div>
           </div>  
@@ -168,27 +201,6 @@
         </div>
       </div>
 	</div>
-  <!-- ====弹窗图片库==== -->
-  <div class="pic-lib" >
-    <div class="pic-lib-top" >
-      文章配图上传
-    </div> 
-    <div class="pic-lib-con" >
-      <div class="pic-con-top clearfix" >
-        <span class="pic-con-top-left">图库</span>
-        <span class="pic-con-top-right" id= "paging">
-          <i class="iconfont">&#xe65f;</i>
-          换一批
-        </span>
-      </div>
-      <ul class="pic-con-ul clearfix">
-      </ul>
-      <div class="pic-lib-btn" >
-        <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment pic-srue-btn">确定</a>
-        <a  href="javascript:void(0);" class="dui-btn btn-xlarge pic-cancel-btn">取消</a>
-      </div>
-    </div>
-  </div>
   {% include "widget/new_footer/new_footer.html" %}
   <script>
     var login_ss = null; //获取用户信息
@@ -205,6 +217,9 @@
   <script >
     $(function(){
       var city_id =null;
+      login_ss ={};
+      login_ss.uid =1596;
+      login_ss.usertype=2;
       if(login_ss.usertype ==2){
         //获取顾问的组织id
         city_id = $(".advisor-bumen").attr("data-cityId");
@@ -226,92 +241,56 @@
           this.value  = this.value.substring(0, 200);
         }
       }); 
-      var picFlag = false;
-      var picSrc = null;
-      var picDataSrc =null;
-      var page = 0;
-      //点击弹出图片选择框
-      $(".figure-label").on("click",getPicData);
-      function getPicData(){
-        if($("#art_type").val()==''){
-          // 判断文章发布类型
-          layer.msg('请选择文章发布类型');
-          return false;
+      //选择文章类型
+      var newsletterType = null;
+      $(".art-type-sel").on("click",function(){
+        newsletterType = $(this).index();
+        $('.art-type-i').html('').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'});
+        $('.art-type-i').next().css({'color':'#333'});
+        $(this).find('.art-type-i').html('&#xe626;').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'});
+        $(this).find('.art-type-i').next().css({'color':'#c13232'});
+        if($(this).index()==2){
+          $('.newsletter-hide').slideDown();
         }else{
-          page++;
-          // console.log(page)
-          $.ajax({
-            url:'/soapi/attachment',
-            type:"GET",
-            dataType:"json",
-            data:{
-              catid:$("#art_type").val(),
-              page:page
-            },
-            success:function(result){
-              console.log(result)
-              if(result.code == 0){
-                $('.pic-con-ul').html(null);//清空一次
-                var html = '';
-                for(var i =0;i<result.data.list.length;i++){
-                  html += '<li>'+
-                            '<img src="'+fn.imageThumb(result.data.list[i].thumb,'150x150')+'" data-src="'+result.data.list[i].thumb+'">'+
-                            '<span class="check-box iconfont" ></span>'+
-                         '</li>';
-                }
-                $('.pic-con-ul').append(html);
-                $(".pic-con-ul li").eq(3).css({marginRight:0});
-                $(".pic-con-ul li").eq(7).css({marginRight:0});
-                $(".pic-lib").show();
-                $(".pic-con-ul li").on("click",function(){
-                  //图片选择点击
-                  $(".pic-con-ul li").find("span").removeClass('sel-active');
-                  $(".pic-con-ul li").find("span").html('');
-                  $(".pic-con-ul li").removeAttr('data-checked');
-                  $(this).find("span").addClass('sel-active');
-                  $(this).find("span").html('<i class="iconfont check-mark-icon" >&#xe652;</i>');
-                  picFlag = true;
-                  picSrc = $(this).find('img').attr("src");
-                  picDataSrc = $(this).find('img').attr("data-src");
-                });
-
-              }else{
-                
-              }
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
-              console.log(errorThrown)
-            }  
-          })
-        }  
-      }
-      $(".pic-srue-btn").on("click",function(){
-        //点击确定
-        if(picFlag){
-          $(".pic-lib").hide();
-          $(".figure-label").hide();
-          $('.figure').show();
-          $('.figure').find("img").attr("src",picSrc);
-          $('.figure').find("img").attr("data-src",picDataSrc);
-        }else{
-          layer.msg("请选择一张图片");
+          $('.newsletter-hide').slideUp();
         }
       });
-      $(".pic-cancel-btn").on("click",function(){
-        //点击取消
-        $(".pic-lib").hide();
+      //选择学历标签
+      $('.level-sel').on('click',function(){
+        console.log($(this).attr('checked'))
+        if($(this).attr('checked')){
+          console.log('false');
+          $(this).find('.level-sel-i').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.level-sel-i').next().css({'color':'#333'});
+          $(this).attr('checked',false);
+        }else{
+          console.log('true')
+          $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
+          $(this).find('.level-sel-i').next().css({'color':'#c13232'});
+          $(this).attr('checked',true);
+        }
+        
       });
-      $('.figure_delete').on("click",function(){
-        // 删除
-        $(this).prev().attr("src",'');
-        $(this).parent().hide();
-        $(".figure-label").show();
-        $(".pic-con-ul li").removeAttr('data-checked');
-        $(".pic-con-ul li span").removeClass('sel-active');
-        $(".pic-con-ul li span").html('');
-        picFlag = false;
+      //选择推荐标签
+      var recNumber = 0;
+      $('.recommend-sel').on('click',function(){
+        if($(this).attr('checked')){
+          // console.log('false');
+          $(this).find('.recommend-sel-i').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.recommend-sel-i').next().css({'color':'#333'});
+          $(this).attr('checked',false);
+        }else{
+          // console.log('true')
+          if(recNumber<3){
+            $(this).find('.recommend-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
+            $(this).find('.recommend-sel-i').next().css({'color':'#c13232'});
+            $(this).attr('checked',true);
+          }
+        }
+        recNumber =$('.recommend-sel[checked=checked]').length;
+        // console.log(recNumber)
       });
-      $("#paging").on("click",getPicData); //点击换一批 
+
       //编辑器
       var E = window.wangEditor;
       var editor = new E('#editor','#editor1');
@@ -369,14 +348,6 @@
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
-        if($("#art_type").val()==''){
-          // 判断文章发布类型
-          $("#art_type").focus();
-          $("#art_type").next().html("请选择文章发布类型");
-          return false;
-        }else{
-          $("#art_type").next().html('');
-        }  
         if($("#apply-country").val()==''){
         	// 判断国家
         	$("#apply-country").focus();
@@ -385,35 +356,17 @@
         }else{
         	 $("#apply-country").next().html('');
         } 
-        if($("#figure-img").attr('data-src')=='' || $("#figure-img").attr('data-src')==undefined){
-          // 判断文章配图
-          layer.msg('请选择文章配图');
+        if(newsletterType ==undefined){
+          layer.msg('请选择文章类型');
           return false;
         }
+
         if($("#rel-case-title").val()==''){
           // 判断title
           $("#rel-case-title").focus();
-          $("#rel-case-title").next().html("请填写文章标题，字数限30个汉字");
           return false;
-        }else{
-          $("#rel-case-title").next().html('填写文章标题，字数限30个汉字');
         }
-        if($("#rel-keyword").val()==''){
-          //判断关键词
-          $("#rel-keyword").focus();
-          $("#rel-keyword").next().html("请填写关键词");
-          return false;
-        }else{
-          $("#rel-keyword").next().html('多关键词之间用空格或者 "," 隔开');
-        }
-        if($("#art_abs").val()==''){
-          // 判断文章摘要
-          $("#art_abs").focus();
-          $("#art_abs").next().next().html("请填写文章摘要");
-          return false;
-        }else{
-          $("#art_abs").next().next().html('填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写');
-        }
+       
         if($("#editor1").find("p").html() == '<br>'){
           //判断正文
           layer.msg("请输入正文内容");
@@ -431,14 +384,9 @@
           data:{
             city_id:city_id,
             u_id:login_ss.uid,
-            category_id:$("#art_type").val(),
-            thumb:$("#figure-img").attr('data-src'),	
             title:$.trim($("#rel-case-title").val()),
-            keywords:$.trim($("#rel-keyword").val()),
             country_id:$("#apply-country").val(),
-            type:2,
             is_draft:1,
-            desc:$.trim($("#art_abs").val()),
             messasge:data,
             region:region
           },
@@ -466,15 +414,6 @@
       $("#save-draft").on("click",function(){
         //保存草稿箱
         var data = editor.txt.html();
-        if($("#art_type").val()==''){
-          // 判断title
-          $("#art_type").focus();
-          $("#art_type").next().html("请选择文章发布类型");
-          return false;
-        }else{
-          $("#art_type").next().html('');
-        }  
-
         if($("#apply-country").val()==''){
           // 判断国家
           $("#apply-country").focus();
@@ -482,11 +421,6 @@
           return false;
         }else{
           $("#apply-country").next().html('');
-        }
-        if($("#figure-img").attr('data-src')=='' || $("#figure-img").attr('data-src')==undefined){
-          // 判断文章配图
-          layer.msg('请选择文章配图');
-          return false;
         }
         if($("#rel-case-title").val()==''){
           // 判断title
@@ -496,23 +430,7 @@
         }else{
           $("#rel-case-title").next().html('填写文章标题，字数限30个汉字');
         }
-        if($("#rel-keyword").val()==''){
-          //判断关键词
-          $("#rel-keyword").focus();
-          $("#rel-keyword").next().html("请填写关键词");
-          return false;
-        }else{
-          $("#rel-keyword").next().html('多关键词之间用空格或者 "," 隔开');
-        }
-        if($("#art_abs").val()==''){
-          // 判断文章摘要
-          $("#art_abs").focus();
-          $("#art_abs").next().next().html("请填写文章摘要");
-          return false;
-        }else{
-          $("#art_abs").next().next().html('填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写');
-        }
-
+        
         if($("#editor1").find("p").html() == '<br>'){
           //判断正文
           layer.msg("请输入正文内容");
@@ -531,14 +449,10 @@
           data:{
               city_id:city_id,
               u_id:login_ss.uid,
-              category_id:$("#art_type").val(),
-              thumb:$("#figure-img").attr('data-src'), 
               title:$.trim($("#rel-case-title").val()),
-              keywords:$.trim($("#rel-keyword").val()),
               country_id:$("#apply-country").val(),
               type:2,
               is_draft:2,
-              desc:$.trim($("#art_abs").val()),
               messasge:data,
               region:region
           },

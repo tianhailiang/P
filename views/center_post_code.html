@@ -106,6 +106,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            overflow: hidden;
+        }
+        .code-box-in .has-code {
+            background-position: center;
+            -webkit-background-size: contain;
+            background-size: 100%;
+            background-repeat: no-repeat;
         }
         .code-box-in .has-code .code-mask{
             position: absolute;
@@ -167,7 +174,7 @@
         </div>
         <div class="post-box">
             <div class="post-box-in">
-                <div class="code-box weixin-box">
+                <div class="code-box weixin-box" id="weixin-box">
                     <div class="code-box-in">
                         <input id="post-wx-code" type="file" multiple="multiple" name="upload" style="display: none;"/>
                         <div class="no-code">
@@ -175,15 +182,15 @@
                             <label class="upload-code-btn" for="post-wx-code">上传我的微信二维码</label>
                             <div class="info">方便用户随时联系我</div>
                         </div>
-                        <!--<div class="has-code">
-                            <img src="" alt=""/>
+                        <div class="has-code" style="display: none;">
+                            <!--<img src="" alt=""/>-->
                             <div class="code-mask">
-                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</div>
+                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
-                <div class="code-box qq-box">
+                <div class="code-box qq-box" id="qq-box">
                     <div class="code-box-in">
                         <input id="post-qq-code" type="file" multiple="multiple" name="upload" style="display: none;"/>
                         <div class="no-code">
@@ -192,7 +199,7 @@
                             <div class="info">方便用户随时联系我</div>
                         </div>
                         <div class="has-code">
-                            <img src="" alt=""/>
+                            <!--<img src="http://images.jjl.cn/ugc/2018/0228/20180228134613939.jpeg" alt=""/>-->
                             <div class="code-mask">
                                 <label class="upload-code-btn" for="post-qq-code">修改我的QQ二维码</label>
                             </div>
@@ -203,16 +210,18 @@
         </div>
     </div>
 </div>
-<script  src="{{helper.cdnhost}}/assets/js/upload_photoFile.js"></script>
+<script  src="{{helper.cdnhost}}/assets/js/upload_wx_code.js"></script>
+<script  src="{{helper.cdnhost}}/assets/js/upload_qq_code.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script>
     var login_ss = null;
     if($.cookie('login_ss') != undefined){
         login_ss = JSON.parse($.cookie('login_ss'));
     }
-    //图片上传
+    //微信图片上传
     var params = {
+        uid: login_ss.uid,
         fileInput: $("#post-wx-code").get(0),
-        upButton: $("#fileSubmit").get(0),
         url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
         filter: function(files) {
             var arrFiles = [];
@@ -230,58 +239,58 @@
             return arrFiles;
         },
         onSelect: function(files) {
-            $('#photoDialog').show();
-            $('#dialog-cont').show();
-            var html = '';
-            for(var i =0;i<files.length;i++){
-                html +='<div class="photo-cell" data-file="'+files[i].name+'" data-index="'+ZXXFILE.num+'">'+
-                '<div class="photo-img">'+
-                '<span class="delete-btn sure_delete" >x'+
-                '</span>'+
-                '<img src="" />'+
-                '</div>'+
-                '<div class="photo-desc">'+
-                '<input type="text" placeholder="请输入照片描述" class="desc-item" maxlength="30" />'+
-                '<div><span class="input-num">0</span>/30</div>'+
-                '</div>'+
-                '</div>';
+            console.log('onSelect回调');
+        },
+        onDragOver: function() {
+            $(this).addClass("upload_drag_hover");
+        },
+        onDragLeave: function() {
+            $(this).removeClass("upload_drag_hover");
+        },
+        onProgress: function(file, loaded, total) {
+            var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+            eleProgress.show().html(percent);
+        },
+        onSuccess: function(file, response) {
+            var resData = JSON.parse(response);
+            console.log('onSuccess~~~thl', resData);
+            if (resData.errno == 0) {
+                $('#weixin-box').find('.no-code').hide();
+                $('#weixin-box').find('.has-code').show().css("background-image","url(" + resData.data[0] + ")");
+                //$('#weixin-box').find('.has-code').find('img').attr('src',resData.data[0]);
             }
-
-            $("#surePreview").after(html);
-            //删除方法
-            $(".sure_delete").click(function() {
-                $(this).parent().parent().remove();
-                ZXXFILE.uploadNum--;
-                $("#success-num").text(ZXXFILE.uploadNum);
-            });
-            //输入整体描述
-            $('.desc-item').blur(function(event){
-                var curInputValLen = $(this).val().length;
-            }).keyup(function(event){
-                var curInputValLen = $(this).val().length;
-                if (curInputValLen > 30) {
-                    $(this).val($(this).val().substring(0, 30));
-                    $(this).next().find('.input-num').text(30);
+            else {
+                layer.msg(resData.message);
+            }
+        },
+        onFailure: function(file) {
+            console.log('失败回调')
+        }
+    };
+    ZXXFILE = $.extend(ZXXFILE, params);
+    ZXXFILE.init();
+    //qq图片上传
+    var paramsQQ = {
+        uid: login_ss.uid,
+        fileInput: $("#post-qq-code").get(0),
+        url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+        filter: function(files) {
+            var arrFiles = [];
+            for (var i = 0, file; file = files[i]; i++) {
+                if (file.type.indexOf("image") == 0) {
+                    if (file.size >= 1024000) {
+                        layer.msg('您这张"'+ file.name +'"图片大小过大，应小于1M');
+                    } else {
+                        arrFiles.push(file);
+                    }
+                } else {
+                    layer.msg('文件"' + file.name + '"不是图片。');
                 }
-                else {
-                    $(this).next().find('.input-num').text(curInputValLen);
-                }
-            });
-            //保存整体描述
-            $(".save-all-desc").click(function() {
-                var descInput = $("#all-desc-info");
-                var allDescValue = descInput.val();
-                var upSureList = $('.photo-cell');
-                if (allDescValue == '') {
-                    layer.msg("照片描述不能为空");
-                }
-                else {
-                    $.each(upSureList, function(index,value) {
-                        $(this).find('input').val(allDescValue);
-                        $(this).find('.input-num').text(allDescValue.length);
-                    })
-                }
-            });
+            }
+            return arrFiles;
+        },
+        onSelect: function(files) {
+            console.log('onSelect回调');
         },
         onDragOver: function() {
             $(this).addClass("upload_drag_hover");
@@ -295,22 +304,15 @@
         },
         onSuccess: function(file, response) {
             console.log('onSuccess~~~thl', file, response);
-            $("#uploadForm").get(0).reset();
-            $("#success-num").text(ZXXFILE.uploadNum);
-            // console.log($(".photo-cell[data-index="+ZXXFILE.num+"]"))
-            $(".photo-cell[data-index="+ZXXFILE.num+"]").each(function(){
-                if($(this).attr('data-file') == file.name){
-                    $(this).find('img').attr('src',fn.imageThumb(JSON.parse(response).data[0],'150x150'));
-                    $(this).find('img').attr('data-src',JSON.parse(response).data[0]);
-                }
-            });
+            var resData = JSON.parse(response);
+            $('')
         },
         onFailure: function(file) {
-
+            console.log('失败回调')
         }
     };
-    ZXXFILE = $.extend(ZXXFILE, params);
-    ZXXFILE.init();
+    ZXXFILEQQ = $.extend(ZXXFILEQQ, paramsQQ);
+    ZXXFILEQQ.init();
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>

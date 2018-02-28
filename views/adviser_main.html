@@ -165,24 +165,9 @@
     <div style="margin-top: 20px;" class="dui-box-shadow">
       <div class="common-title" style="border:1px solid #dcdcdc;">
         <i></i>
-        <h3>作者精选</h3>
-      </div>
-      {% esi helper.include(esikey,'fragment/author_selection','uid='+uid) %}
-    </div>
-    <div style="margin-top: 20px;" class="dui-box-shadow">
-      <div class="common-title" style="border:1px solid #dcdcdc;">
-        <i></i>
         <h3>猜你喜欢</h3>
       </div>
       {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
-    </div>
-    <div class="huod-lod clearfix dui-box-shadow" style="margin-top: 20px">
-      <div class="expert_unscramble_title">
-        <i></i><h3>活动预告</h3> <a  target="_blank" href="javascript:void(0);"></a>
-      </div>
-      <div style="background:#fff">
-       {% esi helper.include(esikey,'fragment/huodongyugao','pos=cmslist','c='+tdk.cityid,'n='+hcountry) %}
-      </div>
     </div>
   </div>
   <div class="dui-layout-div"></div>
@@ -203,12 +188,11 @@
       {% if guwen_list.list.length > 0 %}
       <div class="right-main clearfix">
           {% for item in guwen_list.list %}
-
               {% import "widget2/article/article.html" as article_show %}
               {{ article_show.article_show(item, helper) }}
         <div class="bot_comment clearfix">
           <ul class="clearfix" style="position: relative">
-           <div style="float: left;width: 100px;line-height: 44px;position: absolute;left: -530px">{{1111111}}</div>
+           <div style="float: left;width: 200px;line-height: 45px;position: absolute;left: -530px">{{item.add_time}}</div>
             {% include "widget2/bottom_comment/bottom_comment.html" %}
           </ul>
         </div>
@@ -246,81 +230,48 @@
   $(function(){
     //明星顾问轮播
     function appendArticleItem (aitem) {
-      var aItemHtml ='<div class="art-box clearfix" >'+
-        '<a  target="_blank" href="'+fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'">'+
-          '<div class="adviser-head" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 60px 76px;"></div>'+
-        '</a>'+
-        '<div class="adviser-info" >'+
-          '<div class="adviser-info-name" >'+ aitem.user_info.realname +'</div>'+
-          '<div class="adviser-info-date clearfix" >'+
-            '<span class="adviser-info-date-s">'+ aitem.add_time +'</span>'+
-            '<span>来自：'+ aitem.from +'</span>'+
+      var aItemHtml = '<div class="homepage">'+
+          '<div class="homepagecon">'+
+          '<div class="homepageing" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;"></div>'+
+          '<h3>'+ aitem.user_info.realname +'<img src="../assets/img/1v.png" alt=""></h3>'+
+          '<ul>'+
+          '<li class="share-btn"><img src="../assets/img/wx.png" alt=""></li>'+
+          '<li class="share-btn"><img src="../assets/img/pyq.png" alt=""></li>'+
+          '<li class="share-btn"><img src="../assets/img/xl.png" alt=""></li>'+
+          '<li class="share-btn"><img src="../assets/img/qq.png" alt=""></li>'+
+          '<li class="report-btn" style="color: #666;font-size: 12px">举报</li>'+
+          '</ul>'+
           '</div>'+
-          '<div class="adviser-info-title">'+
-            '<a  target="_blank" href="'+fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString())+'" style="color: #333">'+
-              aitem.title+
-            '</a>'+
+          '<div class="homepage-title">'+
+          '<p>'+aitem.title+'<div>'+aitem.tag_list+'</div></p>'+
           '</div>'+
-          '<div class="offer-xialas">'+
-            '<span class="offer-xialadd iconfont">&#xe60b;</span>'+
-            '<ul class="offer-xiala">'+
-              '<li>'+
-                '<a class="dui-text-warning-s report-btn" data-artId="'+aitem.id+'" data-catid="'+aitem.category_id+'">举报'+
-                '</a>'+
-              '</li>'+
-              '<li>'+
-                '<a class="dui-text-warning-s share-btn" data-url="'+fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString())+'" data-title ="'+aitem.title+'">分享'+
-                '</a>'+
-              '</li>'+
-            '</ul>'+
-          '</div>'+
-          '<p class="adviser-info-p">'+
-            '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span>【查看详情】</span>'+
-            '</a>'+
+          '<div class="homepage-p">'+
+          '<p>' +
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span style="color: #C13232">【查看详情】</span>'+
+          '</a>'+
           '</p>'+
           addArticleImg(aitem.img_list)+
-        '</div>'+
-      '</div>'+
+          '</div>'+
+          '</div>'+
       addBottom(aitem);
       return aItemHtml;
     }
     function appendFav (favArr) {
-        var favHtml = '';
-        for (var i = 0; i < favArr.length; i++) {
-            if (favArr[i].category_id == 17) { //案例
-                favHtml += appendCaseItem(favArr[i]);
-            }
-            else if (favArr[i].category_id < 17) { //专栏
-                favHtml += appendArticleItem(favArr[i]);
-            }
+      var favHtml = '';
+      for (var i = 0; i < favArr.length; i++) {
+          favHtml += appendArticleItem(favArr[i]);
         }
-        $('.right-main').append(favHtml);
-        $('.report-btn').on("click",report); //点击举报
-        $('.share-btn').on('click',share); //点击分享
-    }
-    function addCaseImg (imgList) {
-      if(imgList==undefined){
-        return '';
-      }
-      var html ='<div class="offers-right-off">'+
-            '<div class="offers-right-offs">'+
-              '<span>Offer展示:</span>'+
-            '</div>'+
-            '<div class="offers-right-offh">';
-      
-      for (var j=0;j<imgList.length;j++) {
-          html += '<div class="img-box" ><img src="'+ fn.imageThumb(imgList[j],'110x130') +'" alt=""></div>';
-      }
-      html +='</div></div>';  
-      return html;
+      $('.right-main').append(favHtml);
+      $('.report-btn').on("click",report); //点击举报
+      $('.share-btn').on('click',share); //点击分享
     }
     function addArticleImg (imgList) {
       if(imgList==undefined){
         return '';
       }
-      var html = '<ul id="adviser-info-ul" class="adviser-info-ul clearfix" >';
+      var html = '<ul id="adviser-info-ul" class="homepage-li clearfix" >';
       for (var j=0; j<imgList.length; j++) {
-          html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+        html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
       }
       html += '</ul>';
       return html;
