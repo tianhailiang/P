@@ -105,9 +105,18 @@ exports.so_article = function (req, res, next) {
                 "per_page": "15",
                 "page": page
             }, callback);
+        },
+        guess_like: function (callback) {
+            cms.get_channel_list({
+                order: 'comments desc',
+                city_id:area,
+                "per_page": "10",
+                "page": 1
+            }, callback)
         }
     }, function (err, result) {
         data.article_list = returnData(result.so_article_list,'so_article_list');
+        data.guess_like = returnData(result.guess_like,'guess_like');
         data.order = order;
         data.keyword=keyword;
         data.cur_page = page;
