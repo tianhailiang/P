@@ -56,6 +56,9 @@
     float: left;
     cursor: pointer;
 }
+.branch_company_text_tilte a{
+    color: #333;
+}
 .nationality_guoqi_warp{
     width: 1200px;
     left: 50%;

@@ -94,14 +94,24 @@ exports.so_article = function (req, res, next) {
     var nquery = comfunc.getReqQuery(req.params[1]);
     var page = nquery && nquery.page ? nquery.page : 1;
     var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    var order = nquery && nquery.order ? nquery.order : "add_time";
+    var order = nquery && nquery.order ? nquery.order : "";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
         data.login_nickname = login_a;
     }
     async.parallel({
+        so_article_list:function(callback) {
+            cms.so_article_list({
+                order: order,
+                key_word:encodeURI(keyword),
+                city_id:area,
+                "per_page": "15",
+                "page": page
+            }, callback);
+        }
     }, function (err, result) {
+        data.article_list = returnData(result.so_article_list,'so_article_list');
         data.order = order;
         data.keyword=keyword;
         data.cur_page = page;
@@ -351,12 +361,7 @@ exports.post_code = function (req, res, next) {
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var page = req.query.page || 1;
-    data.tdk = {
-        pagekey: 'ADVISOR_CENTER_CASE',
-        cityid: area,
-    };
-    res.render('center_post_code', data);
-/*    if ( req.cookies.login_ss !== undefined) {
+    if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
             res.redirect('/404');
@@ -389,8 +394,8 @@ exports.post_code = function (req, res, next) {
             pagekey: 'ADVISOR_CENTER_CASE',
             cityid: area,
         };
-        res.render('center_post_ode', data);
-    });*/
+        res.render('center_post_code', data);
+    });
 };
 //个人中心 我的案例
 exports.center_case = function (req, res, next) {

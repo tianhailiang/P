@@ -278,8 +278,15 @@
         }
         ] %}
         {% for item in cityList %}
-        <div class="branch_company_text_tilte" data-id="{{item.companyId}}">{{item.companyName}}</div>
+        {% if loop.index<50 %}
+        <div class="branch_company_text_tilte">
+          <a  target="_blank" href="{{helper.urlgen('branch_home','c='+item.companyId)}}" data-id="{{item.companyId}}">{{item.companyName}}</a>
+        </div>
+        {% endif %}
         {% endfor %}
+        <div class="branch_company_text_tilte">
+          <a  target="_blank" href="http://www.jjl.cn/zt/overseas/vancouver/index.html" data-id="{{cityList[49].companyId}}" >{{cityList[49].companyName}}</a>
+        </div>
       </div>
     </div>
   </div>
