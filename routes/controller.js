@@ -101,7 +101,14 @@ exports.so_article = function (req, res, next) {
         data.login_nickname = login_a;
     }
     async.parallel({
+        so_article_list:function(callback) {
+            cms.so_article_list({
+                key_word:encodeURI(keyword),
+                city_id:area
+            }, callback);
+        }
     }, function (err, result) {
+        data.article_list = returnData(result.so_article_list,'so_article_list');
         data.order = order;
         data.keyword=keyword;
         data.cur_page = page;

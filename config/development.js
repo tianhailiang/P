@@ -232,6 +232,8 @@ var apis = {
   //在线评估
   "assessment": cms_out_prefix +'assessment',
   //顾问主页 个人视角
+  //get_so_article_list
+  "get_so_article_list": shequ_prefix + 'search/search_article/'
 };
 module.exports = {
   redisCache: redisCache,
