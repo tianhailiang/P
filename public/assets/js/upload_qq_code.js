@@ -1,9 +1,16 @@
+/**
+ * Created by DXZ-Shuqin.Wang on 2018/2/28.
+ */
+/**
+ * Created by DXZ-Shuqin.Wang on 2018/2/28.
+ */
 /*
  * zxxFile.js 基于HTML5 文件上传的核心脚本 http://www.zhangxinxu.com/wordpress/?p=1923
  * by zhangxinxu 2011-09-12
  */
 
-var ZXXFILE = {
+var ZXXFILEQQ = {
+    uid: '',
     num:0,
     uploadNum: 0,
     fileInput: null,				//html file控件
@@ -67,8 +74,8 @@ var ZXXFILE = {
                 if (xhr.upload) {
                     // 上传中
                     /*xhr.upload.addEventListener("progress", function(e) {
-                        self.onProgress(file, e.loaded, e.total);
-                    }, false);*/
+                     self.onProgress(file, e.loaded, e.total);
+                     }, false);*/
                     if(document.addEventListener){
                         xhr.upload.addEventListener("progress", function(e) {
                             self.onProgress(file, e.loaded, e.total);
@@ -94,7 +101,8 @@ var ZXXFILE = {
                     // 开始上传
                     xhr.open("POST", self.url, true);
                     var formData = new FormData(file);
-                    formData.append("upload", file);//设置key为avartar,value为上述的File对象
+                    formData.append("qqcode", file);//设置key为avartar,value为上述的File对象
+                    formData.append("uid", self.uid);
                     xhr.send(formData);
                 }
             })(file);
@@ -116,8 +124,8 @@ var ZXXFILE = {
                     self.funGetFiles(e);
                 }, false);
             }else{
-                this.fileInput.attachEvent("onchange", function(e) { 
-                    self.funGetFiles(e); 
+                this.fileInput.attachEvent("onchange", function(e) {
+                    self.funGetFiles(e);
                 }, false);
             }
         }

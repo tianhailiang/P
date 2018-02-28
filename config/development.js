@@ -29,13 +29,13 @@ var apis = {
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
-  "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
+  "adviser_main": shequ_prefix + 'article/list/is_news_1', // 社区 首页
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
   "xiugai_info": uc_prefix + 'index.php?m=edituserinfo', //社区 修改用户信息
   "favorite_article": shequ_prefix + 'article/favorite_article/',//社区 文章收藏
   "article_vote": shequ_prefix + 'article/article_vote/',//社区 文章点赞
   "user_article_list": shequ_prefix + 'account/user_article_list/',//社区 专栏列表
-  "post_login": uc_prefix + 'index.php?m=login',
+  "post_login": uc_prefix + 'index.php?m=adviserLogin',//顾问登录
   "post_register": uc_prefix + 'index.php?m=register',
   "lists": prefix + 'lists',
   "get_city_list": prefix + 'city_list',
@@ -230,8 +230,8 @@ var apis = {
   //举报接口
   "post_userReport":prefix +'userReport',
   //在线评估
-  "assessment": cms_out_prefix +'assessment'
-
+  "assessment": cms_out_prefix +'assessment',
+  //顾问主页 个人视角
 };
 module.exports = {
   redisCache: redisCache,

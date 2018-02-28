@@ -358,7 +358,13 @@ function get_location(_type){
   $(".my").find("p").on("click",function(){
     var login_nickname = JSON.parse($.cookie('login_ss'));
     if(login_nickname){
-      winddow.location.href=''
+      if(login_nickname.usertype==1){
+        window.open(fn.no_urlgen('user_center', 'revcomment'));
+      }else if(login_nickname.usertype==2){
+        window.open(fn.no_urlgen('advisor_center'));
+      }else if(login_nickname.usertype==3){
+        window.open(fn.no_urlgen('canzan_center'));
+      }
     }else{
       getlogin();
 

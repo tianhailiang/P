@@ -29,29 +29,54 @@ function loginS () {
     $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
     return
   }
+  if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1[3|4|5|7|8]\d{9}$/.test($('#newEmail').val())) {
+    $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+    $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号或工号后六位').popover({"trigger":"manual"}).popover("show");
+    return
+  }
   if ($('#password').val() === '') {
     $('#password').parent().addClass("has-error").removeClass("has-success");
     $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入密码').popover({"trigger":"manual"}).popover("show");
     return
   }
-  if ($('#newEmail').val() !== '' && $('#password').val() !== ''&& /^[a-zA-Z0-9]{6,16}$/.test($("#password").val()) && /^1[3|4|5|7|8]\d{9}$/.test($("#newEmail").val())) {
-    console.log('ajax')
+  /*if (!$("input[type='checkbox']").is(':checked')) {
+    layer.msg('请同意注册协议');
+    return
+  }*/
+  var sha1 = hex_sha1($('#password').val());
+  console.log('sha1'+sha1);
+  if ($('#newEmail').val() !== '' && $('#password').val() !== ''&& /^[a-zA-Z0-9]{6,16}$/.test($("#password").val()) && /^1[3|4|5|7|8]\d{9}$/.test($("#newEmail").val()) || /^[A-Za-z0-9]{6}$/.test($('#newEmail').val())) {
+    console.log('ajax');
     $.ajax({
       url: '/login_s',
       type:'POST',
       data:{
         username: $('#newEmail').val(),
-        password: $('#password').val()
+        password: hex_sha1($('#password').val()),
+        adviser: $('#guwen input[name="payMethod"]:checked ').val()//0 留学，1 移民
       },
       dataType:'json',
       success:function(msg){
         console.log('aaaaaaaaa')
         console.log('msg ajax', msg);
         if(msg.code === 0){
-          //window.location= '/';
-          alert('成功');
+          //var h = location.search;//获取？后面的字符串
+          var h = window.location.href;//获取全部的url
+          console.log('h', h);
+          var hh = h.split("?");
+          console.log('hh', hh)
+          if (hh[1] !== undefined) {
+            var str = hh[1].substr(1);
+            console.log('str', str);
+            var strs = str.split("=");
+            console.log('strs', strs[1]);
+            window.location= strs[1];
+          } else {
+            window.location = '/';
+          }
+          //alert('成功');
         } else {
-          alert(msg.message);
+          alert('金吉列留学提醒您：'+msg.message);
         }
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -60,4 +85,4 @@ function loginS () {
     });
 
   }
-}
+};

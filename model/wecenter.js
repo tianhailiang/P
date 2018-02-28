@@ -329,7 +329,6 @@ exports.adviser_main=function(data,callback){
     callback('404');
     return;
   }
-  console.log('url++++++', url);
   api.apiRequest(url, callback);
 }
 

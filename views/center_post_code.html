@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css" >
+    <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_sec.css" >
+    <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/side_menu.css"/>
+    <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/community_advisor.css"/>
+    <link href="{{helper.cdnhost}}/assets/css/widget/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="{{helper.cdnhost}}/assets/css/widget/style.css?v=4.1.0" rel="stylesheet">
+    {% include "header_new.html" %}
+    <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+
+    <style>
+        .content_title{
+            margin-top: 20px;margin-left: 20px;margin-bottom: 30px;background: #f3f3f3;width: 840px;height: 40px
+        }
+        .content_title_t {
+            float: left;width: 136px;height: 40px;background: #C13232;color: #fff;font-size: 18px;text-align: center;line-height: 40px
+        }
+        .list-h{
+            height:130px;
+        }
+        .list-h img{
+            display: block;
+            width:100%;
+            height:100%;
+        }
+        .post-box{
+            width: 840px;
+            padding: 10px 20px 20px;
+            background-color: #fff;
+        }
+        .post-box-in {
+            width: 100%;
+            height: 440px;
+            background-color: #f8f8f8;
+            padding: 60px 0 0 140px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .code-box{
+            width: 240px;
+            height: 320px;
+            float: left;
+            background-color: #eee;
+            position: relative;
+        }
+        .code-box-in {
+            position: absolute;
+            background-color: #fff;
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+        }
+        .code-box-in .icon{
+            display: block;
+            width: 120px;
+            height: 120px;
+            margin: 40px auto;
+        }
+        .code-box-in .info {
+            margin: 20px auto 0;
+        }
+        .code-box-in .upload-code-btn{
+            width: 160px;
+            height: 30px;
+            color: #fff;
+            text-align: center;
+            line-height: 30px;
+            -webkit-border-radius: 15px;
+            -moz-border-radius: 15px;
+            border-radius: 15px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+        .code-box.weixin-box{
+            margin-right: 80px;
+        }
+        .code-box.weixin-box .code-box-in {
+            width: 226px;
+            height: 292px;
+            left: 50%;
+            top: 50%;
+            margin-left: -113px;
+            margin-top: -146px;
+        }
+        .code-box.weixin-box .code-box-in .upload-code-btn {
+            background-color: #51c332;
+        }
+        .code-box.qq-box .code-box-in .upload-code-btn {
+            background-color: #2a9cd5;
+        }
+        .code-box.qq-box .code-box-in {
+            width: 216px;
+            height: 296px;
+            left: 50%;
+            top: 50%;
+            margin-left: -108px;
+            margin-top: -148px;
+        }
+        .code-box-in .has-code,.code-box-in .no-code {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        .code-box-in .has-code {
+            background-position: center;
+            -webkit-background-size: contain;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+        .code-box-in .has-code .code-mask{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            background-color: rgba(0,0,0,0.4);
+        }
+        .code-box-in .has-code .code-mask .upload-code-btn {
+            position: absolute;
+            left: 28px;
+            bottom: 66px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body style="background: #f5f5f5">
+
+{% include "widget/top/top.html" %}
+
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(helper) }}
+
+<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 1 %}USER{% endif %}_CENTER_ACOUNT_SEAT1"></div>
+
+<div class="dui-layout-lg clearfix">
+    <div class="dui-layout-silde right">
+        <div class="clearfix" style="margin-top: 20px">
+            {% if userinfo %}
+            {% if login_info.usertype == 1 %} {#用户#}
+            {% import "widget2/community_advisor/community_advisor.html" as user %}
+            {{ user.user(userinfo,helper) }}
+            {% elif login_info.usertype == 2 %} {#顾问#}
+            {% import "widget2/community_advisor/community_advisor.html" as advisor %}
+            {{ advisor.advisor(userinfo,helper,login_info) }}
+            {% elif login_info.usertype == 3 %} {#参赞#}
+            {% import "widget2/community_advisor/community_advisor.html" as counsellor %}
+            {{ counsellor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+            {% endif %}
+        </div>
+        {% if login_info.usertype == 1 %} {#用户#}
+        {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+        {{ user_side_menu.user_side_menu('账号设置', helper) }}
+        {% elif login_info.usertype == 2 %} {#顾问#}
+        {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+        {{ adviser_side_menu.adviser_side_menu('账号设置', '', helper) }}
+        {% elif login_info.usertype == 3 %} {#参赞#}
+        {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+        {{ canzan_side_menu.canzan_side_menu('账号设置', '', helper) }}
+        {% endif %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con left" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
+        <div class="content_title clearfix">
+            <div class="content_title_t">
+                上传我的二维码
+            </div>
+        </div>
+        <div class="post-box">
+            <div class="post-box-in">
+                <div class="code-box weixin-box" id="weixin-box">
+                    <div class="code-box-in">
+                        <input id="post-wx-code" type="file" multiple="multiple" name="upload" style="display: none;"/>
+                        <div class="no-code">
+                            <img src="../assets/img/post_weixin.png" alt="" class="icon"/>
+                            <label class="upload-code-btn" for="post-wx-code">上传我的微信二维码</label>
+                            <div class="info">方便用户随时联系我</div>
+                        </div>
+                        <div class="has-code" style="display: none;">
+                            <!--<img src="" alt=""/>-->
+                            <div class="code-mask">
+                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="code-box qq-box" id="qq-box">
+                    <div class="code-box-in">
+                        <input id="post-qq-code" type="file" multiple="multiple" name="upload" style="display: none;"/>
+                        <div class="no-code">
+                            <img src="../assets/img/post_qq.png" alt="" class="icon"/>
+                            <label class="upload-code-btn" for="post-qq-code">上传我的QQ二维码</label>
+                            <div class="info">方便用户随时联系我</div>
+                        </div>
+                        <div class="has-code">
+                            <!--<img src="http://images.jjl.cn/ugc/2018/0228/20180228134613939.jpeg" alt=""/>-->
+                            <div class="code-mask">
+                                <label class="upload-code-btn" for="post-qq-code">修改我的QQ二维码</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script  src="{{helper.cdnhost}}/assets/js/upload_wx_code.js"></script>
+<script  src="{{helper.cdnhost}}/assets/js/upload_qq_code.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+<script>
+    var login_ss = null;
+    if($.cookie('login_ss') != undefined){
+        login_ss = JSON.parse($.cookie('login_ss'));
+    }
+    //微信图片上传
+    var params = {
+        uid: login_ss.uid,
+        fileInput: $("#post-wx-code").get(0),
+        url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+        filter: function(files) {
+            var arrFiles = [];
+            for (var i = 0, file; file = files[i]; i++) {
+                if (file.type.indexOf("image") == 0) {
+                    if (file.size >= 1024000) {
+                        layer.msg('您这张"'+ file.name +'"图片大小过大，应小于1M');
+                    } else {
+                        arrFiles.push(file);
+                    }
+                } else {
+                    layer.msg('文件"' + file.name + '"不是图片。');
+                }
+            }
+            return arrFiles;
+        },
+        onSelect: function(files) {
+            console.log('onSelect回调');
+        },
+        onDragOver: function() {
+            $(this).addClass("upload_drag_hover");
+        },
+        onDragLeave: function() {
+            $(this).removeClass("upload_drag_hover");
+        },
+        onProgress: function(file, loaded, total) {
+            var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+            eleProgress.show().html(percent);
+        },
+        onSuccess: function(file, response) {
+            var resData = JSON.parse(response);
+            console.log('onSuccess~~~thl', resData);
+            if (resData.errno == 0) {
+                $('#weixin-box').find('.no-code').hide();
+                $('#weixin-box').find('.has-code').show().css("background-image","url(" + resData.data[0] + ")");
+                //$('#weixin-box').find('.has-code').find('img').attr('src',resData.data[0]);
+            }
+            else {
+                layer.msg(resData.message);
+            }
+        },
+        onFailure: function(file) {
+            console.log('失败回调')
+        }
+    };
+    ZXXFILE = $.extend(ZXXFILE, params);
+    ZXXFILE.init();
+    //qq图片上传
+    var paramsQQ = {
+        uid: login_ss.uid,
+        fileInput: $("#post-qq-code").get(0),
+        url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+        filter: function(files) {
+            var arrFiles = [];
+            for (var i = 0, file; file = files[i]; i++) {
+                if (file.type.indexOf("image") == 0) {
+                    if (file.size >= 1024000) {
+                        layer.msg('您这张"'+ file.name +'"图片大小过大，应小于1M');
+                    } else {
+                        arrFiles.push(file);
+                    }
+                } else {
+                    layer.msg('文件"' + file.name + '"不是图片。');
+                }
+            }
+            return arrFiles;
+        },
+        onSelect: function(files) {
+            console.log('onSelect回调');
+        },
+        onDragOver: function() {
+            $(this).addClass("upload_drag_hover");
+        },
+        onDragLeave: function() {
+            $(this).removeClass("upload_drag_hover");
+        },
+        onProgress: function(file, loaded, total) {
+            var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+            eleProgress.show().html(percent);
+        },
+        onSuccess: function(file, response) {
+            console.log('onSuccess~~~thl', file, response);
+            var resData = JSON.parse(response);
+            $('')
+        },
+        onFailure: function(file) {
+            console.log('失败回调')
+        }
+    };
+    ZXXFILEQQ = $.extend(ZXXFILEQQ, paramsQQ);
+    ZXXFILEQQ.init();
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+</body>
+</html>

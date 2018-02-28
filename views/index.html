@@ -93,9 +93,10 @@
   }
   .liuxue-guoqi a{
     width: auto;
-    margin: 20px 50px 47px 0;
+    margin: 20px 54px 47px 0;
     height:30px;
-    display: inline-block;
+    display:block;
+    float: left;
     position: relative;
   }
   .liuxue-guojia-title{
@@ -117,14 +118,6 @@
     left: 50%;
     margin-left: -77px;
   }
-  .swiper-slide{
-    height: 135px;
-    width: 400px;
-  }
-  .swiper-slide img{
-    height: 100%;
-    width: 100%;
-  }
   .slider .slider-dot ul li{
     border-radius: 50%;
   }
@@ -143,6 +136,7 @@
     height: 135px;
     background: #ccc;
     list-style: none;
+    cursor: pointer;
   }
   #lunbo1 li img{
     width: 100%;
@@ -159,17 +153,17 @@
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Australia.png" alt="澳大利亚留学"><p>澳大利亚</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Canada.png" alt="加拿大留学"><p>加拿大</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/NEW ZEALAND.png" alt="新西兰留学"><p>新西兰</p></a>
-      <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Korea.png" alt="韩国留学"><p>韩国</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Japan.png" alt="日本留学"><p>日本</p></a>
+      <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Korea.png" alt="韩国留学"><p>韩国</p></a>
+      <a  href="#"><img src="{{helper.cdnhost}}/assets/img/HongKong.png" alt="中国香港留学"><p>中国香港</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Ukraine.png" alt="乌克兰留学"><p>乌克兰</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Russia.png" alt="俄罗斯留学"><p>俄罗斯</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/eire.png" alt="爱尔兰留学"><p>爱尔兰</p></a>
-      <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Italy.png" alt="意大利留学"><p>意大利</p></a>
-      <a style="margin-right: 0" href="#"><img src="{{helper.cdnhost}}/assets/img/Spanish.png" alt="西班牙留学"><p>西班牙</p></a><br>
+      <a style="margin-right: 0"  href="#"><img src="{{helper.cdnhost}}/assets/img/Italy.png" alt="意大利留学"><p>意大利</p></a>
+      <a  href="#"><img src="{{helper.cdnhost}}/assets/img/Spanish.png" alt="西班牙留学"><p>西班牙</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/blr.png" alt="白俄罗斯留学"><p>白俄罗斯</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/Singapore.png" alt="新加披留学"><p>新加披</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/malaysia.png" alt="马来西亚留学"><p>马来西亚</p></a>
-      <a  href="#"><img src="{{helper.cdnhost}}/assets/img/HongKong.png" alt="中国香港留学"><p>中国香港</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/danmark.png" alt="丹麦留学"><p>丹麦</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/germany.png" alt="德国留学"><p>德国</p></a>
       <a  href="#"><img src="{{helper.cdnhost}}/assets/img/France.png" alt="法国留学"><p>法国</p></a>
@@ -435,8 +429,8 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
-    //
-      $(window).on('scroll',function() {
+      //
+      $(window).on('scroll', function () {
           var $scroll = $(this).scrollTop();
           if ($scroll >= 200) {
               $('.nationality_guoqi_warp').show();
@@ -444,55 +438,28 @@
               $('.nationality_guoqi_warp').hide();
           }
       });
-     
+
       $('.lunbo_lift .slider').xSlider({
           //轮播图配置
-          autoplay : 500,
+          autoplay: 500,
           current: 0,
           speed: 500,
           intervalTime: 5000,
           pagination: true
       });
-      var timer=null;
-      var num=0;
-      function lonbo() {
-          if(num>1){
-              num=0;
-//              $("#lunbo1").css({top:-270*num+(-270)+'px'})
-             $("#lunbo1").css({top:(-270)+'px'})
-
+      var lunbotimer = null;
+      var num = 0;
+      lunbotimer = setInterval(function () {
+          num++;
+          if (num == 3) {
+              $("#lunbo1").css({top: (-270) + 'px'})
+              num = 0;
           }else {
               num++;
               $("#lunbo1").animate({top:-270*num+(-270)+'px'})
-              //console.log(-270*num+'px')
           }
-      }
-      setInterval(lonbo,1000)
-//      $('.lunbo_right .slider').xSlider({
-//          //轮播图配置
-////          autoplay : 500,
-//          mode:'vertical',
-////          current: 0,
-//          speed: 1000,
-//          intervalTime: 5000,
-//          slidesPerView : 2,
-//          slidesPerGroup : 2,
-////          pagination: true
-//      });
-
+      }, 2000)
   })
-//  $(function () {
-//      var mySwiper = new Swiper('.swiper-container',{
-//          autoplay : 500,
-//          loop: true,
-//          mode:'vertical',
-//          speed: 1000,
-//          slidesPerView : 2,
-//          slidesPerGroup : 2,
-//          pagination: true
-//          //其他设置
-//      });
-//  })
 </script>
 </body>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>

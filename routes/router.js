@@ -5,8 +5,8 @@ var login = require('./login.js');
 exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
-
-  
+  //搜索页
+  app.get(/^\/so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article);
   //社区首页
   app.get('/blog', controller.community_index);
   //用户视角 顾问主页
@@ -34,9 +34,9 @@ exports = module.exports = function (app) {// routes
   //修改用户头像
   app.post('/soapi/modify_portrait', user.modify_portrait);
   //登出
-  app.get('/login_out', user.login_out);
+  app.get('/login_out', login.login_out);
   //登录
-  app.post('/login_s', user.login_s);
+  app.post('/login_s', login.login_s);
   //参赞中心 编辑个人资料
   app.get('/canzan_center/profile',controller.counsellor_personal);
   //参赞中心 账户设置
@@ -171,6 +171,8 @@ exports = module.exports = function (app) {// routes
   app.get('/cmsapi/article_count', controller.article_count);
   app.post('/cmsapi/assessment', controller.assessment);//在线评估
 
+  //顾问中心 上传我的二维码
+  app.get('/advisor_center/post_code', controller.post_code);
 
   //参赞聚合页
   app.get('/canzan', about.canzan);
@@ -194,6 +196,8 @@ exports = module.exports = function (app) {// routes
   app.post('/bind_phone', login.bind_phone);
   //普通用户登录
   app.post('/login_user', login.login_user);
-  //普通用户退出
-  app.get('/login_user_out', login.login_user_out);
+  //退出
+  app.get('/login_out', login.login_out);
+  
+
 };
