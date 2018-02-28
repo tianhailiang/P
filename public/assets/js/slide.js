@@ -352,6 +352,8 @@ function get_location(_type){
     $(this).find("img").css("display","none");
     $(this).find("p").css("display","block");
     $("#quick_links_pop").css("display", "none");
+    $("#comment_con").css("display", "none");
+    $("#r_comment").css("background", "#9a9a9a");
   },function(){
     $(this).find("p").css("display","none");
     $(this).find("img").css("display","block");
@@ -395,8 +397,8 @@ $("#r_comment").hover(function(){
   $("#r_comment").css("background", "#C13232");
   $("#quick_links_pop").css("display", "none");
 },function(){
-  $("#comment_con").css("display", "none");
-  $("#r_comment").css("background", "#9a9a9a");
+ /* $("#comment_con").css("display", "none");
+  $("#r_comment").css("background", "#9a9a9a");*/
 })
   $("#comment_close").on("click", function () {
     $("#comment_con").css("display", "none");
@@ -405,18 +407,23 @@ $("#r_comment").hover(function(){
   })
 $("#zxzx").hover(function(){
   $("#quick_links_pop").css("display", "block");
+  $("#comment_con").css("display", "none");
 },function(){
 /*  $("#quick_links_pop").css("display", "none");*/
 });
 $(".weixin-slide").hover(function(){
   $(".weixin-slide-img").css("display","block");
   $("#quick_links_pop").css("display", "none");
+  $("#comment_con").css("display", "none");
+  $("#r_comment").css("background", "#9a9a9a");
 },function(){
   $(".weixin-slide-img").css("display","none")
 });
 $(".qq-slide").hover(function(){
   $(".qq-slide-img").css("display","block");
   $("#quick_links_pop").css("display", "none");
+  $("#comment_con").css("display", "none");
+  $("#r_comment").css("background", "#9a9a9a");
 },function(){
   $(".qq-slide-img").css("display","none")
 });
@@ -457,13 +464,13 @@ if("undefined" == typeof _areaCode){
   if(_areaCode==1||_areaCode=="1"){
 
     //createStr += '<img src="http://www.jjl.cn/statics/images/tanchu1_bj.jpg" usemap="#Map" width="630" height="350" /><map name="Map" id="Map"><area id="us_tc_bt" shape="circle" coords="77,206,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_us+'\')" /><area id="uk_tc_bt" shape="circle" coords="193,206,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_uk+'\')" /><area id="ca_tc_bt" shape="circle" coords="308,206,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_ca+'\')" /><area id="au_tc_bt" shape="circle" coords="424,207,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_au+'\')" /><area id="hk_tc_bt" shape="circle" coords="539,207,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',472)" /><area id="ko_tc_bt" shape="circle" coords="77,291,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',46)" /><area id="ru_tc_bt" shape="circle" coords="193,291,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',51)" /><area id="xm_tc_bt" shape="circle" coords="308,291,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',52)" /><area id="jp_tc_bt" shape="circle" coords="424,291,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',56)" /><area id="eu_tc_bt" shape="circle" coords="539,291,37" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',874)" /><area shape="rect" coords="601,1,625,21" style="display:block;cursor:pointer;" onclick="javascript:closeDiv()" /></map>';
-    createStr += '<img src="http://www.jjl.cn/statics/images/tanchu1_bj1129.png" usemap="#Map" width="550" height="388" /><map name="Map" id="Map"><area id="us_tc_bt" shape="rect" coords="24,208,119,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_us+'\')" /><area id="uk_tc_bt" shape="rect" coords="128,210,220,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_uk+'\')" /><area id="ca_tc_bt" shape="rect" coords="228,212,321,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_ca+'\')" /><area id="au_tc_bt" shape="rect" coords="330,212,423,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_au+'\')" /><area id="hk_tc_bt" shape="rect" coords="433,211,524,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',472)" /><area id="ko_tc_bt" shape="rect" coords="25,271,118,310" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',46)" /><area id="ru_tc_bt" shape="rect" coords="127,271,220,310" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',51)" /><area id="xm_tc_bt" shape="rect" coords="227,271,320,310" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',52)" /><area id="jp_tc_bt" shape="rect" coords="329,270,423,312" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',56)" /><area id="eu_tc_bt" shape="rect" coords="431,271,524,310" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',874)" /><area shape="rect" coords="510,8,537,33" style="display:block;cursor:pointer;" onclick="javascript:closeDiv()" /></map>';
+   /* createStr += '<img src="http://www.jjl.cn/statics/images/tanchu1_bj1129.png" usemap="#Map" width="550" height="388" /><map name="Map" id="Map"><area id="us_tc_bt" shape="rect" coords="24,208,119,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_us+'\')" /><area id="uk_tc_bt" shape="rect" coords="128,210,220,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_uk+'\')" /><area id="ca_tc_bt" shape="rect" coords="228,212,321,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_ca+'\')" /><area id="au_tc_bt" shape="rect" coords="330,212,423,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_au+'\')" /><area id="hk_tc_bt" shape="rect" coords="433,211,524,251" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',472)" /><area id="ko_tc_bt" shape="rect" coords="25,271,118,310" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',46)" /><area id="ru_tc_bt" shape="rect" coords="127,271,220,310" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',51)" /><area id="xm_tc_bt" shape="rect" coords="227,271,320,310" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',52)" /><area id="jp_tc_bt" shape="rect" coords="329,270,423,312" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',56)" /><area id="eu_tc_bt" shape="rect" coords="431,271,524,310" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',874)" /><area shape="rect" coords="510,8,537,33" style="display:block;cursor:pointer;" onclick="javascript:closeDiv()" /></map>';*/
 
 
   }else{
 
     //createStr += '<img src="http://www.jjl.cn/statics/images/tanchu1.jpg" usemap="#Map" width="630" height="350" /><map name="Map" id="Map"><area id="us_tc_bt" shape="circle" coords="69,207,40" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_us+'\')" /><area id="uk_tc_bt" shape="circle" coords="166,206,40" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_uk+'\')" /><area id="ca_tc_bt" shape="circle" coords="266,208,40" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_ca+'\')" /><area id="au_tc_bt" shape="circle" coords="366,207,40" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_au+'\')" /><area id="as_tc_bt" shape="circle" coords="465,207,40" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_as+'\')" /><area id="eu_tc_bt" shape="circle" coords="564,207,40" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',874)" /><area shape="rect" coords="601,1,625,21" style="display:block;cursor:pointer;" onclick="javascript:closeDiv()" /></map>';
-    createStr += '<img src="http://www.jjl.cn/statics/images/tanchu2_bj1129.png" usemap="#Map" width="550" height="388" /><map name="Map" id="Map"><area shape="rect" coords="604,3,628,23" style="display:block;cursor:pointer;" onclick="javascript:closeDiv()"><area id="us_tc_bt" shape="rect" coords="105,209,203,250" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_us+'\')" /><area id="uk_tc_bt" shape="rect" coords="225,211,322,250" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_uk+'\')" /><area id="ca_tc_bt" shape="rect" coords="344,211,442,250" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_ca+'\')" /><area id="au_tc_bt" shape="rect" coords="103,269,202,308" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_au+'\')"  /><area id="as_tc_bt" shape="rect" coords="225,269,321,308" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_as+'\')" /><area id="eu_tc_bt" shape="rect" coords="343,269,442,308" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\'874\')" /><area shape="rect" coords="510,5,539,34" style="display:block;cursor:pointer;" onclick="javascript:closeDiv()" /></map>';
+    /*createStr += '<img src="http://www.jjl.cn/statics/images/tanchu2_bj1129.png" usemap="#Map" width="550" height="388" /><map name="Map" id="Map"><area shape="rect" coords="604,3,628,23" style="display:block;cursor:pointer;" onclick="javascript:closeDiv()"><area id="us_tc_bt" shape="rect" coords="105,209,203,250" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_us+'\')" /><area id="uk_tc_bt" shape="rect" coords="225,211,322,250" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_uk+'\')" /><area id="ca_tc_bt" shape="rect" coords="344,211,442,250" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_ca+'\')" /><area id="au_tc_bt" shape="rect" coords="103,269,202,308" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_au+'\')"  /><area id="as_tc_bt" shape="rect" coords="225,269,321,308" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\''+myjson1[_areaCode].a_as+'\')" /><area id="eu_tc_bt" shape="rect" coords="343,269,442,308" style="display:block;cursor:pointer;" onclick="onclick_ly(\'g\',\'874\')" /><area shape="rect" coords="510,5,539,34" style="display:block;cursor:pointer;" onclick="javascript:closeDiv()" /></map>';*/
 
   }
 }

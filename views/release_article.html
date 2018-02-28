@@ -55,24 +55,24 @@
                 {"countryId":"3","txt":"加拿大"},
                 {"countryId":"4","txt":"澳大利亚"},
                 {"countryId":"5","txt":"新西兰"},
-                {"countryId":"50","txt":"韩国"},
                 {"countryId":"51","txt":"日本"},
-                {"countryId":"52","txt":"新加坡"},
-                {"countryId":"53","txt":"马来西亚"},
+                {"countryId":"50","txt":"韩国"},
                 {"countryId":"54","txt":"中国香港"},
                 {"countryId":"100","txt":"俄罗斯"},
                 {"countryId":"101","txt":"乌克兰"},
+                {"countryId":"108","txt":"爱尔兰"},
+                {"countryId":"111","txt":"意大利"},
+                {"countryId":"112","txt":"西班牙"},
                 {"countryId":"102","txt":"白俄罗斯"},
+                {"countryId":"52","txt":"新加坡"},
+                {"countryId":"53","txt":"马来西亚"},
+                {"countryId":"110","txt":"丹麦"},
                 {"countryId":"103","txt":"德国"},
                 {"countryId":"104","txt":"法国"},
                 {"countryId":"105","txt":"挪威"},
                 {"countryId":"106","txt":"瑞典"},
                 {"countryId":"107","txt":"芬兰"},
-                {"countryId":"108","txt":"爱尔兰"},
                 {"countryId":"109","txt":"荷兰"},
-                {"countryId":"110","txt":"丹麦"},
-                {"countryId":"111","txt":"意大利"},
-                {"countryId":"112","txt":"西班牙"},
                 {"countryId":"113","txt":"瑞士"}
               ] %}
               <select id="apply-country" >
@@ -345,6 +345,7 @@
         layer.msg(info)
       }
       editor.create();
+      var artType = 2; 
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
@@ -362,10 +363,10 @@
         }else{
           if(newsletterType==1){
             //选择时讯
-            var is_news =1;
+            var is_news =2;
           }else{
             //选择非时讯
-            is_news =0 ;
+            is_news =1 ;
             //判断学历
             var eduList = '';
             $('.level-sel[checked=checked]').each(function(){
@@ -379,7 +380,6 @@
             // console.log(eduStr)
             //判断标签
             var tagStr = '';
-            var artType = 2;
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
               if($(this).find('i').eq(1).text()=='留学案例'){
@@ -391,7 +391,7 @@
               return false;
             }
             var newTagStr =tagStr.substring(0,tagStr.length-1);
-            console.log(newTagStr)
+            // console.log(newTagStr)
           }
         }
         
@@ -425,7 +425,8 @@
             introduce:$.trim($("#art_abs").val()),
             edu_id:eduStr,
             is_news:is_news,
-            tag_list:newTagStr
+            tag_list:newTagStr,
+            is_immi:1
           },
           dataType:'json',
           success:function(result){
@@ -459,39 +460,75 @@
         }else{
           $("#apply-country").next().html('');
         }
+        if(newsletterType ==undefined){
+          layer.msg('请选择文章类型');
+          return false;
+        }else{
+          if(newsletterType==1){
+            //选择时讯
+            var is_news =2;
+          }else{
+            //选择非时讯
+            is_news =1 ;
+            //判断学历
+            var eduList = '';
+            $('.level-sel[checked=checked]').each(function(){
+              eduList+=$(this).find('i').eq(1).text()+',';
+            });
+            if(eduList == ''){
+              layer.msg('请选择学历标签');
+              return false;
+            }
+            var eduStr = eduList.substring(0,eduList.length-1);
+            // console.log(eduStr)
+            //判断标签
+            var tagStr = '';
+            $('.recommend-sel[checked=checked]').each(function(){
+              tagStr+=$(this).find('i').eq(1).text()+',';
+              if($(this).find('i').eq(1).text()=='留学案例'){
+                artType =1;
+              }
+            });
+            if(tagStr == ''){
+              layer.msg('请选择推荐标签');
+              return false;
+            }
+            var newTagStr =tagStr.substring(0,tagStr.length-1);
+            // console.log(newTagStr)
+          }
+        }
         if($("#rel-case-title").val()==''){
           // 判断title
           $("#rel-case-title").focus();
-          $("#rel-case-title").next().html("填写文章标题，字数限30个汉字");
           return false;
-        }else{
-          $("#rel-case-title").next().html('填写文章标题，字数限30个汉字');
         }
-        
+        if($("#art_abs").val()==''){
+          // 判断文章摘要
+          $("#art_abs").focus();
+          return false;
+        }
         if($("#editor1").find("p").html() == '<br>'){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
-        } 
-        var region = '';
-        if(Number($("#apply-country").val()) >=50 && Number($("#apply-country").val()) <100){
-          region = 201;
-        }else if(Number($("#apply-country").val()) >= 100){
-          region =202;
-        }       
+        }   
 
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
           data:{
-              city_id:city_id,
-              u_id:login_ss.uid,
-              title:$.trim($("#rel-case-title").val()),
-              country_id:$("#apply-country").val(),
-              type:2,
-              is_draft:2,
-              messasge:data,
-              region:region
+            city_id:city_id,
+            u_id:login_ss.uid,
+            title:$.trim($("#rel-case-title").val()),
+            country_id:$("#apply-country").val(),
+            is_draft:2,
+            messasge:data,
+            type:artType,
+            introduce:$.trim($("#art_abs").val()),
+            edu_id:eduStr,
+            is_news:is_news,
+            tag_list:newTagStr,
+            is_immi:1
           },
           dataType:'json',
           success:function(result){
