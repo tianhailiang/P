@@ -71,12 +71,13 @@
       height: 24px;
       float: left;
       margin-left: 20px;
-      background: #C13232;
-      opacity: 0.6;
+      background: url("../assets/img/yanse.png");
+      background-size:cover ;
       border-radius:12px ;
       margin-top: -3px;
       text-align: center;
       line-height: 24px;
+      color: #C13232;
     }
     .homepage-p {
       width: 840px;
@@ -192,7 +193,6 @@
               {{ article_show.article_show(item, helper) }}
         <div class="bot_comment clearfix">
           <ul class="clearfix" style="position: relative">
-           <div style="float: left;width: 200px;line-height: 45px;position: absolute;left: -530px">{{item.add_time}}</div>
             {% include "widget2/bottom_comment/bottom_comment.html" %}
           </ul>
         </div>
@@ -251,6 +251,7 @@
           '</a>'+
           '</p>'+
           addArticleImg(aitem.img_list)+
+          '<div style="float: left;width: 200px;line-height: 45px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
           '</div>'+
           '</div>'+
       addBottom(aitem);
@@ -279,7 +280,7 @@
     function addBottom(item){
       var html ='<div class="bot_comment clearfix">'+
         '<ul>'+
-          '<li onclick="showbottom(1, '+item.id+')" id="yuedu_li_'+item.id+'">'+
+      '<li onclick="showbottom(1, '+item.id+')" id="yuedu_li_'+item.id+'">'+
             '<i class="iconfont " id="yuedu_'+item.id+'">&#xe9ca;</i>'+
             '<span id="yuedu_span_'+item.id+'">阅读（<em id="yuedu_em_'+ item.id +'">'+ item.views +'</em>）</span>'+
           '</li>'+
