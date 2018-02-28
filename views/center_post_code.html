@@ -174,33 +174,37 @@
                 <div class="code-box weixin-box" id="weixin-box">
                     <div class="code-box-in">
                         <input id="post-wx-code" type="file" multiple="multiple" name="upload" style="display: none;"/>
+                        {% if userinfo.weixin_qrcode %}
+                        <div class="has-code" style="background-image: url('{{userinfo.weixin_qrcode}}')">
+                            <div class="code-mask">
+                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>
+                            </div>
+                        </div>
+                        {% else %}
                         <div class="no-code">
                             <img src="../assets/img/post_weixin.png" alt="" class="icon"/>
                             <label class="upload-code-btn" for="post-wx-code">上传我的微信二维码</label>
                             <div class="info">方便用户随时联系我</div>
                         </div>
-                        <div class="has-code" style="display: none;">
-                            <!--<img src="" alt=""/>-->
-                            <div class="code-mask">
-                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>
-                            </div>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="code-box qq-box" id="qq-box">
                     <div class="code-box-in">
                         <input id="post-qq-code" type="file" multiple="multiple" name="upload" style="display: none;"/>
+                        {% if userinfo.qq_qrcode %}
+                        <div class="has-code" style="background-image: url('{{userinfo.qq_qrcode}}')">
+                            <div class="code-mask">
+                                <label class="upload-code-btn" for="post-qq-code">修改我的QQ二维码</label>
+                            </div>
+                        </div>
+                        {% else %}
                         <div class="no-code">
                             <img src="../assets/img/post_qq.png" alt="" class="icon"/>
                             <label class="upload-code-btn" for="post-qq-code">上传我的QQ二维码</label>
                             <div class="info">方便用户随时联系我</div>
                         </div>
-                        <div class="has-code">
-                            <!--<img src="http://images.jjl.cn/ugc/2018/0228/20180228134613939.jpeg" alt=""/>-->
-                            <div class="code-mask">
-                                <label class="upload-code-btn" for="post-qq-code">修改我的QQ二维码</label>
-                            </div>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
