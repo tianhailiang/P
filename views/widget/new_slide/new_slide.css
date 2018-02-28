@@ -681,7 +681,7 @@ i.ibar_recharge-arrow {
   border-left:7px solid #f8f8f8;
   border-top:14px solid #f8f8f8;
   border-bottom:14px solid #f8f8f8;
-  background: #f8f8f8 ;
+  background: #ffffff;
   right:44px;
   top:-184px;
   display: none;
@@ -694,7 +694,7 @@ i.ibar_recharge-arrow {
   width: 216px;
   height:296px;
   border:12px solid #f8f8f8;
-  background: #f8f8f8 ;
+  background: #ffffff;
   right:44px;
   top:-230px;
   display: none;
