@@ -71,7 +71,7 @@ var apiRequest_post = function (url, data, callback) {
   request.post(url, {
     json: true,
     headers: {
-      "content-type": "application/json"
+      "content-type": "application/x-www-form-urlencoded"
     },
     body: data
   }, function (err, response, receiveData) {
