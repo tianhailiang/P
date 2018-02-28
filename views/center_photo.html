@@ -55,8 +55,8 @@
     </div>
   </div>
   {% include "widget/top/top.html" %}
-  {% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-  {{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+  {{ new_nav_first.new_nav_first(helper) }}
   <div class="dui-layout-lg clearfix" style="margin-top: 20px;">
 	<!-- ==广告1== -->
 	<div class="rel-case-map" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 3 %}CANZAN{% endif %}_CENTER_ALBUM_SEAT1">
@@ -123,7 +123,7 @@
         </div>
     </div>
   </div>
-  {% include "widget/footer/footer.html" %}
+  {% include "widget/new_footer/new_footer.html" %}
   <script>
     var login_ss = null;
     if($.cookie('login_ss') != undefined){

@@ -1,6 +1,6 @@
 <!--右侧在线咨询-->
 
-{% macro leyu_slide(path) %}
+{% macro leyu_slide(path,user) %}
 <div class="mui-mbar-tabs" style="z-index:999">
   <div class="quick_links_wrap quick_links_dockright">
     <div class="quick_link_mian">
@@ -30,21 +30,30 @@
             <img src="{{helper.cdnhost}}/assets/img/geren.png" alt="" class="quick-img">
             <p class="mine" >我的</p>
           </li>
-        {#  <li class="weixin_ewm weixin-slide">
+          {% if user.weixin_qrcode %}
+          <li class="weixin_ewm weixin-slide">
             <img src="{{helper.cdnhost}}/assets/img/weixin_slide.png" alt="" class="quick-img" style="height: 22px;margin-top: 3px;">
             <div class="weixin-slide-img">
-              <img src="" alt="">
+              <img src="{{user.weixin_qrcode}}" alt="">
             </div>
-          </li>#}
+          </li>
+          {% else %}
           <li class="weixin_ewm weixin-slide weichuan">
             <img src="{{helper.cdnhost}}/assets/img/weixin_slide.png" alt="" class="quick-img" style="height: 22px;margin-top: 3px;">
           </li>
+          {% endif %}
+          {% if user.qq_qrcode %}
           <li class="weixin_ewm qq-slide">
             <img src="{{helper.cdnhost}}/assets/img/qq_slide.png" alt="" class="quick-img">
             <div class="qq-slide-img">
-              <img src="" alt="">
+              <img src="{{user.qq_qrcode}}" alt="">
             </div>
           </li>
+          {% else %}
+          <li class="weixin_ewm qq-slide weichuan">
+            <img src="{{helper.cdnhost}}/assets/img/qq_slide.png" alt="" class="quick-img">
+          </li>
+          {% endif %}
           <li id="to_top">
             <img src="{{helper.cdnhost}}/assets/img/top.png" alt="" class="quick-img">
           </li>

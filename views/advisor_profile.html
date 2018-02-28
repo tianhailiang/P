@@ -77,8 +77,8 @@
 
 {% include "widget/top/top.html" %}
 
-{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+{{ new_nav_first.new_nav_first(helper) }}
 
 <div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_ADVISOR_CENTER_PROFILE_SEAT1"></div>
 
@@ -126,7 +126,7 @@
 
   </div>
 </div>
-
+{% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null; 
   if($.cookie('login_ss') != undefined){
@@ -136,6 +136,7 @@
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script>
   $(function(){
     $("#gerenjieshao").on("change",function(){
