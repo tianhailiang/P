@@ -50,29 +50,22 @@
     </div>
     <div class="lunbo_right">
      {# {% include "widget/xSlider/xSlider2.html" %}  #}
-      <!--<div class="swiper-container">-->
-        <!--<div class="swiper-wrapper">-->
-          <!--<div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></div>-->
-          <!--<div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></div>-->
-          <!--<div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></div>-->
-          <!--<div class="swiper-slide"><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></div>-->
-        <!--</div>-->
-      <!--</div>-->
       <ul id="lunbo1">
-        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></li>
-        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></li>
-        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></li>
-        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></li>
-        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-9.jpg" alt=""></li>
-        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-6.jpg" alt=""></li>
-        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-8.jpg" alt=""></li>
-        <li><img src="http://www.jjl.cn/statics//njjlmt/img/slider-10.jpg" alt=""></li>
+        <li><a href="{{xSlider2[2].linkurl}}" data-pid="{{xSlider2[2].pid}}"><img src="{{ xSlider2[2].imageurl }}" alt="{{xSlider2[2].alt}}3"></a></li>
+        <li><a href="{{xSlider2[3].linkurl}}" data-pid="{{xSlider2[3].pid}}"><img src="{{ xSlider2[3].imageurl }}" alt="{{xSlider2[3].alt}}4"></a></li>
+        <li><a href="{{xSlider2[0].linkurl}}" data-pid="{{xSlider2[0].pid}}"><img src="{{ xSlider2[0].imageurl }}" alt="{{xSlider2[0].alt}}1"></a></li>
+        <li><a href="{{xSlider2[1].linkurl}}" data-pid="{{xSlider2[1].pid}}"><img src="{{ xSlider2[1].imageurl }}" alt="{{xSlider2[1].alt}}2"></a></li>
+        <li><a href="{{xSlider2[2].linkurl}}" data-pid="{{xSlider2[2].pid}}"><img src="{{ xSlider2[2].imageurl }}" alt="{{xSlider2[2].alt}}3"></a></li>
+        <li><a href="{{xSlider2[3].linkurl}}" data-pid="{{xSlider2[3].pid}}"><img src="{{ xSlider2[3].imageurl }}" alt="{{xSlider2[3].alt}}4"></a></li>
+        <li><a href="{{xSlider2[0].linkurl}}" data-pid="{{xSlider2[0].pid}}"><img src="{{ xSlider2[0].imageurl }}" alt="{{xSlider2[0].alt}}1"></a></li>
+        <li><a href="{{xSlider2[1].linkurl}}" data-pid="{{xSlider2[1].pid}}"><img src="{{ xSlider2[1].imageurl }}" alt="{{xSlider2[1].alt}}2"></a></li>
       </ul>
     </div>
   </div>
   <!--50家分公司-->
   <div class="branch_company">
     <div class="branch_company_img">
+      <img src="{{helper.cdnhost}}/assets/img/branch-company.png" alt="五十家分公司">
     </div>
     <div class="branch_company_text">
       <div style="margin: 5px 15px">
@@ -277,8 +270,15 @@
         }
         ] %}
         {% for item in cityList %}
-        <div class="branch_company_text_tilte" data-id="{{item.companyId}}">{{item.companyName}}</div>
+        {% if loop.index<50 %}
+        <div class="branch_company_text_tilte" data-id="{{item.companyId}}">
+          <a  target="_blank" href="{{helper.urlgen('branch_home','c='+item.companyId)}}" data-id="{{item.companyId}}">{{item.companyName}}</a>
+        </div>
+        {% endif %}
         {% endfor %}
+        <div class="branch_company_text_tilte" data-id="{{cityList[49].companyId}}">
+          <a  target="_blank" href="http://www.jjl.cn/zt/overseas/vancouver/index.html" data-id="{{cityList[49].companyId}}" >{{cityList[49].companyName}}</a>
+        </div>
       </div>
     </div>
   </div>
@@ -321,13 +321,12 @@
       var lunbotimer = null;
       var num = 0;
       lunbotimer = setInterval(function () {
-          num++;
           if (num == 3) {
-              $("#lunbo1").css({top: (-270) + 'px'})
+              $("#lunbo1").css({top: (-0) + 'px'})
               num = 0;
           }else {
               num++;
-              $("#lunbo1").animate({top:-270*num+(-270)+'px'})
+              $("#lunbo1").animate({top:-270*num+'px'})
           }
       }, 2000)
   })
