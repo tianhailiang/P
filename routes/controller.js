@@ -320,6 +320,7 @@ exports.center_main = function (req, res, next) {
         data.comment_list =returnData(result.comment_list,'comment_list');
         data.collection_list = returnData(result.collection_list,'collection_list');
         var pagekey = null;
+        console.log('userinfo',data.userinfo)
         if(data.userinfo.usertype == 2){
           pagekey = 'ADVISOR_CENTER';
         }else if(data.userinfo.usertype == 3){
@@ -1049,8 +1050,8 @@ exports.adviser_main = function (req, res, next) {
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
-         "uid":data.uid},callback);
-    },
+        "u_id":data.login_info.uid, "to_uid":data.uid},callback)
+      },
     guwen_list:function (callback){
       wec.adviser_main({
         "per_page":6, "order":"views desc", "uid": data.uid}, callback)
@@ -1548,7 +1549,7 @@ exports.release_article = function(req,res,next){
     // return false;
   }
   data.login_info ={};
-  data.login_info.uid=1;
+  data.login_info.uid=1596;
   log.info(data.login_info.uid)
   //获取用户信息（普通用户，顾问，参赞）
   wec.userinfo({

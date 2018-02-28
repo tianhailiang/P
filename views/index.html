@@ -455,10 +455,9 @@
 //              $("#lunbo1").css({top:-270*num+(-270)+'px'})
               $("#lunbo1").css({top: (-270) + 'px'})
               num = 0;
-          } else {
-
-              $("#lunbo1").animate({top: -270 * num + (-270) + 'px'})
-//                  console.log(-270*num+'px')
+          }else {
+              num++;
+              $("#lunbo1").animate({top:-270*num+(-270)+'px'})
           }
       }, 2000)
   })
