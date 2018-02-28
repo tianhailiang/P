@@ -4,6 +4,7 @@
     {% include "header_new.html" %}
     <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
     <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+    <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
 </head>
 <style>
     .right-cont .loadMore{
@@ -87,42 +88,25 @@
             {% if case_data.list.length > 0 %}
                 <div class="right-main clearfix">
                     {% for item in case_data.list %}
-                        {% import "widget2/offer/offer.html" as case_show %}
-                          {{ case_show.case_show(item, helper) }}
-                        {% include "widget2/bottom_comment/bottom_comment.html" %}
+                      {% import "widget2/article/article.html" as article_show %}
+                      {{ article_show.article_show(item, helper) }}
+
+                      {% include "widget2/bottom_comment/bottom_comment.html" %}
                     {% endfor %}
                 </div>
-                <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
-                    <span>加载更多</span>
-                    <i class="iconfont">&#xe60b;</i>
-                </div>
+            <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
+              <span>加载更多</span>
+              <i class="iconfont">&#xe60b;</i>
+            </div>
             {% else %}
               {% include "widget2/blank/blank.html" %}
             {% endif %}
         </div>
     </div>
 </div>
-<div class="dui-layout-lg clearfix">
-    <div class="dui-box-shadow clearfix" style="margin-top: 20px;background:#fff;" >
-        <div class="common-title">
-            <i></i>
-            <h3>热门留学方案</h3>
-            <a target="_blank" href="{{helper.urlgen('productrank')}}" class="iconfont">&#xe602;</a>
-        </div>
-        {% esi helper.include(esikey,'fragment/hot_liuxuefangan_list') %}
-    </div>
-    <div class="dui-box-shadow" style="margin-top: 20px;background:#fff;margin-bottom: 20px;">
-        <div class="common-title">
-            <i></i>
-            <h3>明星顾问</h3>
-            <a target="_blank" href="{{helper.urlgen('adviser')}}" class="iconfont">&#xe602;</a>
-        </div>
-            {% esi helper.include(esikey,'fragment/community_guwen','n='+hcountry) %}
-    </div>
-</div>
 {% import "widget/slide/slide.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
-{% include "widget/footer/footer.html" %}
+{% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null; 
   if($.cookie('login_ss') != undefined){
@@ -139,196 +123,230 @@
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
-    $(function() {
-        console.log(fn.getEdu);
-        function appendCase (caseArr) {
-            var caseHtml = '';
-            for (var i = 0; i < caseArr.length; i++) {
-                if(caseArr[i].introduce==undefined){
-                    caseArr[i].introduce ={
-                      stu_name:'',
-                      school_1:'',
-                      school_2:'',
-                      school_3:'',
-                      dep_1:'',
-                      dep_2:'',
-                      dep_3:'',
-                      admission_time:'',
-                      offer_img:[]
-                    };
-                }
-                caseHtml += '<div class="offers clearfix"><div class="offers-left"><div class="offers-left-img">';
-                caseHtml += '<img src="'+fn.avaterimg(caseArr[i].uid,'small',caseArr[i].user_info.status,caseArr[i].user_info.status.version)+'" alt=""></div><div class="offers-left-off">';
-                caseHtml += '<p class="off-p1">' + caseArr[i].user_info.realname + '</p>';
-                caseHtml += '<p class="off-p2"> '+ caseArr[i].add_time +'&nbsp;&nbsp;<span>来自 : '+  caseArr[i].from +'</span></p>';
-                caseHtml += '<a target="_blank" href="'+ fn.urlgen("case", caseArr[i].id.toString()) +'" class="offer-title">'+ caseArr[i].title +'</a>';
-                caseHtml += '<p class="off-p3">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名&nbsp;:&nbsp;'+ caseArr[i].introduce.stu_name +'</p>';
-                caseHtml += '<p class="off-p3">录取院校&nbsp;:&nbsp;'+ caseArr[i].introduce.school_1+'&nbsp;&nbsp;'+caseArr[i].introduce.school_2+'&nbsp;&nbsp;'+caseArr[i].introduce.school_3+'</p>';
-                caseHtml += '<p class="off-p3">录取专业&nbsp;:&nbsp;'+ caseArr[i].introduce.dep_1+'&nbsp;&nbsp;'+caseArr[i].introduce.dep_2+'&nbsp;&nbsp;'+caseArr[i].introduce.dep_3+'</p>';
-                caseHtml += '<p class="off-p3">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;'+ fn.getEdu(caseArr[i].edu_id) +'</p>';
-                caseHtml += '<p class="off-p3">录取时间&nbsp;:&nbsp;'+ caseArr[i].introduce.admission_time +'</p>';
-                caseHtml += '<p class="off-p4"><a target="_blank" href="'+ fn.urlgen("case", caseArr[i].id.toString()) +'">【查询详情】</a></p>';
-                caseHtml += '</div> </div> <div class="offers-right"> <div class="offers-right-xiala"> <div class="offer-xialas"> <span class="offer-xialadd iconfont">&#xe60b;</span> <ul class="offer-xiala"> <li><a  class="dui-text-warning-s report-btn" data-artId="'+caseArr[i].id+'" data-catid="'+caseArr[i].category_id+'">举报</a></li> <li><a  class="dui-text-warning-s share-btn" data-url="'+fn.urlgen('case',caseArr[i].id.toString())+'" data-title ="'+caseArr[i].title+'">分享</a></li> </ul> </div> </div>';
-                if (caseArr[i].introduce.offer_img !== null) {
-                    caseHtml += '<div class="offers-right-off"> <div class="offers-right-offs"> <span>Offer展示:</span></div><div class="offers-right-offh">';
-                    caseHtml += addImg(caseArr[i].introduce.offer_img);
-                    caseHtml += '</div></div>';
-                }
-                caseHtml += '</div></div>';
-                caseHtml += '<div class="bot_comment clearfix"><ul><li onclick="showbottom(1, '+caseArr[i].id+')" id="yuedu_li_'+caseArr[i].id+'"><i class="iconfont " id="yuedu_'+caseArr[i].id+'">&#xe9ca;</i><span id="yuedu_span_'+caseArr[i].id+'">阅读（<em id="yuedu_em_'+ caseArr[i].id +'">'+ caseArr[i].views +'</em>）</span></li><li onclick="showbottom(2, '+caseArr[i].id+')" id="shoucang_li_'+caseArr[i].id+'"><i class="iconfont " id="shoucang_'+caseArr[i].id+'">&#xe7ed;</i><span id="shoucang_span_'+caseArr[i].id+'">收藏（<em id="shoucang_em_'+ caseArr[i].id +'">'+ caseArr[i].favorites +'</em>）</span></li><li onclick="showbottom(3, '+caseArr[i].id+')" id="pinglun_li_'+caseArr[i].id+'"><i class="iconfont " id="pinglun_'+caseArr[i].id+'">&#xe61f;</i><span id="pinglun_span_'+caseArr[i].id+'">评论（<em id="pinglun_em_'+ caseArr[i].id +'">'+ caseArr[i].comments +'</em>）</span></li><li class="dian" onclick="showbottom(4, '+caseArr[i].id+')" id="dianzan_li_'+caseArr[i].id+'"><i class="iconfont " id="dianzan_'+caseArr[i].id+'">&#xe651;</i><span id="dianzan_span_'+caseArr[i].id+'">点赞（<em id="dianzan_em_'+ caseArr[i].id +'">'+ caseArr[i].votes +'</em>）</span></li></ul></div>';
+  $(function(){
+    //明星顾问轮播
+    function appendArticleItem (aitem) {
+      var aItemHtml = '<div class="homepage">'+
+          '<div class="homepagecon">'+
+          '<div class="homepageing" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;"></div>'+
+          '<h3>'+ aitem.user_info.realname +'<img src="../assets/img/1v.png" alt=""></h3>'+
+          '<ul>'+
+          '<li class="share-btn"><img src="../assets/img/wx.png" alt=""></li>'+
+          '<li class="share-btn"><img src="../assets/img/pyq.png" alt=""></li>'+
+          '<li class="share-btn"><img src="../assets/img/xl.png" alt=""></li>'+
+          '<li class="share-btn"><img src="../assets/img/qq.png" alt=""></li>'+
+          '<li class="report-btn" style="color: #666;font-size: 12px">举报</li>'+
+          '</ul>'+
+          '</div>'+
+          '<div class="homepage-title">'+
+          '<p>'+aitem.title+'<div>'+aitem.tag_list+'</div></p>'+
+          '</div>'+
+          '<div class="homepage-p">'+
+          '<p>' +
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span style="color: #C13232">【查看详情】</span>'+
+          '</a>'+
+          '</p>'+
+          addArticleImg(aitem.img_list)+
+          '<div style="float: left;width: 200px;line-height: 45px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
+          '</div>'+
+          '</div>'+
+          addBottom(aitem);
+      return aItemHtml;
+    }
+    function appendFav (favArr) {
+      var favHtml = '';
+      for (var i = 0; i < favArr.length; i++) {
+        favHtml += appendArticleItem(favArr[i]);
+      }
+      $('.right-main').append(favHtml);
+      $('.report-btn').on("click",report); //点击举报
+      $('.share-btn').on('click',share); //点击分享
+    }
+    function addArticleImg (imgList) {
+      if(imgList==undefined){
+        return '';
+      }
+      var html = '<ul id="adviser-info-ul" class="homepage-li clearfix" >';
+      for (var j=0; j<imgList.length; j++) {
+        html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+      }
+      html += '</ul>';
+      return html;
+    }
+    function addBottom(item){
+      var html ='<div class="bot_comment clearfix">'+
+          '<ul>'+
+          '<li onclick="showbottom(1, '+item.id+')" id="yuedu_li_'+item.id+'">'+
+          '<i class="iconfont " id="yuedu_'+item.id+'">&#xe9ca;</i>'+
+          '<span id="yuedu_span_'+item.id+'">阅读<em id="yuedu_em_'+ item.id +'">'+ item.views +'</em></span>'+
+          '</li>'+
+          '<li onclick="showbottom(2, '+item.id+')" id="shoucang_li_'+item.id+'">'+
+          '<i class="iconfont " id="shoucang_'+item.id+'">&#xe7ed;</i>'+
+          '<span id="shoucang_span_'+item.id+'">收藏<em id="shoucang_em_'+ item.id +'">'+ item.favorites +'</em></span>'+
+          '</li>'+
+          '<li onclick="showbottom(3, '+item.id+')" id="pinglun_li_'+item.id+'">'+
+          '<i class="iconfont " id="pinglun_'+item.id+'">&#xe61f;</i>'+
+          '<span id="pinglun_span_'+item.id+'">评论<em id="pinglun_em_'+ item.id +'">'+ item.comments +'</em></span>'+
+          '</li>'+
+          '<li class="dian" onclick="showbottom(4, '+item.id+')" id="dianzan_li_'+item.id+'">'+
+          '<i class="iconfont " id="dianzan_'+item.id+'">&#xe651;</i>'+
+          '<span id="dianzan_span_'+item.id+'">点赞<em id="dianzan_em_'+ item.id +'">'+ item.votes +'</em></span>'+
+          '</li>'+
+          '</ul>'+
+          '</div>';
+      return html;
+    }
+    $('.loadMore').on('click', function () {
+      var page = $(this).data('page')*1+1;
+      var per_page = 4;
+      var thisObj = $(this);
+      $.ajax({
+        url: '/soapi/loadmore',
+        type: 'GET',
+        datatype: 'json',
+        data: {
+          order:"views desc",
+          page: page,
+          type: 1,
+          per_page: per_page,
+          uid:thisObj.attr("data-uid")
+        },
+        success: function (revmsg) {
+          console.log(revmsg)
+          if (revmsg.code == 0) {
+            var revList = revmsg.data.list;
+            var len = revList.length;
+            if (len == 0) {
+              thisObj.html('已展示全部收藏');
             }
-            $('.right-main').append($(caseHtml));
-            $('.report-btn').on("click",report); //点击举报
-            $('.share-btn').on('click',share); //点击分享
-        }
-        function addImg (imgList) {
-            var html = '';
-            for (var j=0; j<imgList.length; j++) {
-                html += '<div class="img-box" ><img src="'+ fn.imageThumb(imgList[j],'110x130') +'" alt="" ></div>';
+            if (len < per_page) {
+              thisObj.html('已展示全部收藏');
+              appendFav(revList);
+              thisObj.data('page', page);
+            }else {
+              appendFav(revList);
+              thisObj.data('page', page);
             }
-            return html;
+          }
+          else {
+            thisObj.html('加载更多出错了，请刷新');
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          console.log(errorThrown)
         }
-        $('.loadMore').on('click', function () {
-            var page = $(this).data('page')*1+1;
-            var uid = $(this).data('uid');
-            var per_page = 4;
-            var thisObj = $(this);
-            $.ajax({
-                url: '/soapi/article_list',
-                type: 'GET',
-                datatype: 'json',
-                data: {
-                    u_id: uid,
-                    type: 1,
-                    page: page,
-                    per_page: per_page
-                },
-                success: function (revmsg) {
-                  console.log(revmsg)
-                    var len = revmsg.data.list.length;
-                    if (len < per_page) {
-                        thisObj.html('案例加载完毕')
-                    }
-                    else {
-                        appendCase(revmsg.data.list);
-                        thisObj.data('page', page);
-                    }
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
-                    console.log(errorThrown)
-                }
-            })
-        });
-        $('.report-btn').on("click",report); //点击举报
-        $('.share-btn').on('click',share); //点击分享
-        function report(){
-            //举报调取函数
-            if(login_ss == undefined){
-                layer.msg('你还没有登录')
-                window.setTimeout(function(){
-                  window.location.href =fn.curlgen('login','h='+window.location.href);
-                },1000);
-                return false;
+      })
+    });
+    $('.report-btn').on("click",report); //点击举报
+    $('.share-btn').on('click',share); //点击分享
+    function report(){
+      //举报调取函数
+      if(login_ss == undefined){
+        layer.msg('你还没有登录')
+        window.setTimeout(function(){
+          window.location.href =fn.curlgen('login','h='+window.location.href);
+        },1000);
+        return false;
+      }
+      var report_content = null;
+      var that =this;
+      layer.open({
+        type: 1,
+        title:'举报理由',
+        area: ['700px'], //宽高
+        content:'<div class="report-con">'+
+        '<ul class="report-ul clearfix">'+
+        '<li>'+
+        '<span class="circle"></span>'+
+        '<i class="iconfont">&#xe62a;</i>'+
+        '<span class="sp-con">垃圾、广告信息</span>'+
+        '</li>'+
+        '<li>'+
+        '<span class="circle"></span>'+
+        '<i class="iconfont">&#xe62a;</i>'+
+        '<span class="sp-con">色情、低俗内容</span>'+
+        '</li>'+
+        '<li>'+
+        '<span class="circle"></span>'+
+        '<i class="iconfont">&#xe62a;</i>'+
+        '<span class="sp-con">时政敏感话题</span>'+
+        '</li>'+
+        '<li>'+
+        '<span class="circle"></span>'+
+        '<i class="iconfont">&#xe62a;</i>'+
+        '<span class="sp-con">其它原因</span>'+
+        '</li>'+
+        '</ul>'+
+        '<textarea class="report-txt"></textarea>'+
+        '</div>',
+        btn:'确定',
+        closeBtn:'2',
+        yes: function(index, layero){
+          if(report_content ==undefined || report_content == ''){
+            layer.msg('请选择举报理由');
+            return false;
+          }
+          $.ajax({
+            // url: ajaxUrlPrefix.cmsapi+'/api/userReport',
+            url:'/soapi/userReport',
+            type:'POST',
+            data:{
+              report_source:'1',
+              report_type:'1',
+              report_content:report_content,
+              userid:login_ss.uid,
+              artecle_id:$(that).attr("data-artId"),
+              catid:$(that).attr("data-catid")
+            },
+            dataType:'json',
+            // jsonpCallback:'callback',
+            success:function(result){
+              console.log(result)
+              if(result.code == 0){
+                layer.msg('举报成功');
+                layer.close(index);
+              }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+              console.log(errorThrown)
             }
-            var report_content = null;
-            var that =this;
-            layer.open({
-                type: 1,
-                title:'举报理由',
-                area: ['700px'], //宽高
-                content:'<div class="report-con">'+
-                           '<ul class="report-ul clearfix">'+
-                             '<li>'+
-                               '<span class="circle"></span>'+
-                               '<i class="iconfont">&#xe62a;</i>'+
-                               '<span class="sp-con">垃圾、广告信息</span>'+
-                              '</li>'+
-                              '<li>'+
-                                '<span class="circle"></span>'+
-                                '<i class="iconfont">&#xe62a;</i>'+
-                                '<span class="sp-con">色情、低俗内容</span>'+
-                              '</li>'+
-                              '<li>'+
-                                '<span class="circle"></span>'+
-                                '<i class="iconfont">&#xe62a;</i>'+
-                                '<span class="sp-con">时政敏感话题</span>'+
-                              '</li>'+
-                              '<li>'+
-                                '<span class="circle"></span>'+
-                                '<i class="iconfont">&#xe62a;</i>'+
-                                '<span class="sp-con">其它原因</span>'+
-                              '</li>'+
-                            '</ul>'+
-                            '<textarea class="report-txt"></textarea>'+
-                        '</div>',
-                btn:'确定',
-                closeBtn:'2',
-                yes: function(index, layero){
-                  if(report_content ==undefined || report_content == ''){
-                    layer.msg('请选择举报理由');
-                    return false;
-                  }
-                  $.ajax({
-                    // url: ajaxUrlPrefix.cmsapi+'/api/userReport',
-                    url:'/soapi/userReport',
-                    type:'POST',
-                    data:{
-                      report_source:'1',
-                      report_type:'1',
-                      report_content:report_content,
-                      userid:login_ss.uid,
-                      artecle_id:$(that).attr("data-artId"),
-                      catid:$(that).attr("data-catid")
-                    },
-                    dataType:'json',
-                    // jsonpCallback:'callback',
-                    success:function(result){
-                      console.log(result)
-                      if(result.code == 0){
-                        layer.msg('举报成功');
-                        layer.close(index); 
-                      }
-                    },
-                    error:function(XMLHttpRequest, textStatus, errorThrown){
-                      console.log(errorThrown)
-                    }  
-                  });
-                }         
-            });
-            $(".report-ul li").on("click",function(){
-                //选择举报内容
-                $(".report-ul li i").hide();
-                $(".report-ul li .circle").show();
-                $(this).find("i").show();
-                $(this).find(".circle").hide();
-                if($(this).index() == 3){
-                  $(".report-txt").show();
-                  $(".layui-layer-content").css({"height":"115px"});
-                }else{
-                  $(".report-txt").hide();
-                  $(".layui-layer-content").css({"height":"39px"});
-                  report_content = $(this).find('.sp-con').text();
-                }
-            });
-            $('.report-txt').on('change',function(){
-                if($('.report-txt').val()!= ''){
-                  report_content = $('.report-txt').val();
-                }else{
-                   report_content ='';
-                }
-            });
+          });
         }
-        function share(){
-            //调取分享函数
-            var that =this;
-            layer.open({
-              type: 2,
-              title: '分享到',
-              area: ['262px', '327px'],
-              content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+$(that).attr('data-url'), 'no']
-            });
+      });
+      $(".report-ul li").on("click",function(){
+        //选择举报内容
+        $(".report-ul li i").hide();
+        $(".report-ul li .circle").show();
+        $(this).find("i").show();
+        $(this).find(".circle").hide();
+        if($(this).index() == 3){
+          $(".report-txt").show();
+          $(".layui-layer-content").css({"height":"115px"});
+        }else{
+          $(".report-txt").hide();
+          $(".layui-layer-content").css({"height":"39px"});
+          report_content = $(this).find('.sp-con').text();
         }
-    })
+      });
+      $('.report-txt').on('change',function(){
+        if($('.report-txt').val()!= ''){
+          report_content = $('.report-txt').val();
+        }else{
+          report_content ='';
+        }
+      });
+    }
+    function share(){
+      //调取分享函数
+      var that =this;
+      layer.open({
+        type: 2,
+        title: '分享到',
+        area: ['262px', '327px'],
+        content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+$(that).attr('data-url'), 'no']
+      });
+    }
+  })
 </script>
 </body>
 </html>
