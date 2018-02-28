@@ -106,6 +106,13 @@
             position: absolute;
             width: 100%;
             height: 100%;
+            overflow: hidden;
+        }
+        .code-box-in .has-code {
+            background-position: center;
+            -webkit-background-size: contain;
+            background-size: 100%;
+            background-repeat: no-repeat;
         }
         .code-box-in .has-code .code-mask{
             position: absolute;
@@ -175,12 +182,12 @@
                             <label class="upload-code-btn" for="post-wx-code">上传我的微信二维码</label>
                             <div class="info">方便用户随时联系我</div>
                         </div>
-                        <!--<div class="has-code">
-                            <img src="" alt=""/>
+                        <div class="has-code" style="display: none;">
+                            <!--<img src="" alt=""/>-->
                             <div class="code-mask">
-                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</div>
+                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>
                             </div>
-                        </div>-->
+                        </div>
                     </div>
                 </div>
                 <div class="code-box qq-box" id="qq-box">
@@ -192,7 +199,7 @@
                             <div class="info">方便用户随时联系我</div>
                         </div>
                         <div class="has-code">
-                            <img src="" alt=""/>
+                            <!--<img src="http://images.jjl.cn/ugc/2018/0228/20180228134613939.jpeg" alt=""/>-->
                             <div class="code-mask">
                                 <label class="upload-code-btn" for="post-qq-code">修改我的QQ二维码</label>
                             </div>
@@ -213,6 +220,7 @@
     }
     //微信图片上传
     var params = {
+        uid: login_ss.uid,
         fileInput: $("#post-wx-code").get(0),
         url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
         filter: function(files) {
@@ -247,8 +255,9 @@
             var resData = JSON.parse(response);
             console.log('onSuccess~~~thl', resData);
             if (resData.errno == 0) {
-                $('#weixin-box').find('.no-code').hide().find('.has-code').show();
-                $('#weixin-box').find('has-code').find('img').attr('src',resData.data);
+                $('#weixin-box').find('.no-code').hide();
+                $('#weixin-box').find('.has-code').show().css("background-image","url(" + resData.data[0] + ")");
+                //$('#weixin-box').find('.has-code').find('img').attr('src',resData.data[0]);
             }
             else {
                 layer.msg(resData.message);
@@ -262,6 +271,7 @@
     ZXXFILE.init();
     //qq图片上传
     var paramsQQ = {
+        uid: login_ss.uid,
         fileInput: $("#post-qq-code").get(0),
         url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
         filter: function(files) {

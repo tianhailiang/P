@@ -10,6 +10,7 @@
  */
 
 var ZXXFILEQQ = {
+    uid: '',
     num:0,
     uploadNum: 0,
     fileInput: null,				//html file控件
@@ -101,6 +102,7 @@ var ZXXFILEQQ = {
                     xhr.open("POST", self.url, true);
                     var formData = new FormData(file);
                     formData.append("qqcode", file);//设置key为avartar,value为上述的File对象
+                    formData.append("uid", self.uid);
                     xhr.send(formData);
                 }
             })(file);
