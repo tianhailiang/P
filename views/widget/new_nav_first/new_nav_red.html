@@ -335,7 +335,7 @@
 
                         <div class="citys-box clearfix" style="padding: 4px 0;">
                             {% for item in cityList %}
-                            {% if loop.index<49 %}
+                            {% if loop.index<50 %}
                             <a  target="_blank" href="{{helper.urlgen('branch_home','c='+item.companyId)}}" data-id="{{item.companyId}}" onmouseover="top_city1('{{item.companyAddress}}','{{item.companyTel}}')" onmouseout="showcity()">{{item.companyName}}</a>
                             {% endif %}
                             {% endfor %}
@@ -345,7 +345,7 @@
               <span>
                 <i class="iconfont">&#xe6bd;</i>海外分公司：
               </span>
-                            <a  target="_blank" target="_blank" href="http://www.jjl.cn/zt/overseas/vancouver/index.html" class="nav-oversea-on"  data-id="{{cityList[48].companyId}}" onmouseover="top_city1('{{cityList[48].companyAddress}}','{{cityList[48].companyTel}}')" onmouseout="showcity()">{{cityList[48].companyName}}</a>
+                            <a  target="_blank" target="_blank" href="http://www.jjl.cn/zt/overseas/vancouver/index.html" class="nav-oversea-on"  data-id="{{cityList[49].companyId}}" onmouseover="top_city1('{{cityList[49].companyAddress}}','{{cityList[49].companyTel}}')" onmouseout="showcity()">{{cityList[49].companyName}}</a>
                         </div>
                     </div>
                 </div>
