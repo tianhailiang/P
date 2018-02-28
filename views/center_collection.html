@@ -178,12 +178,13 @@
         function appendFav (favArr) {
             var favHtml = '';
             for (var i = 0; i < favArr.length; i++) {
-                if (favArr[i].category_id == 17) { //案例
-                    favHtml += appendCaseItem(favArr[i]);
-                }
-                else if (favArr[i].category_id < 17) { //专栏
-                    favHtml += appendArticleItem(favArr[i]);
-                }
+                // if (favArr[i].category_id == 17) { //案例
+                //     favHtml += appendCaseItem(favArr[i]);
+                // }
+                // else if (favArr[i].category_id < 17) { //专栏
+                //     favHtml += appendArticleItem(favArr[i]);
+                // }
+                favHtml += appendArticleItem(favArr[i]);
             }
             $('.right-main').append($(favHtml));
             $('.report-btn').on("click",report); //点击举报
