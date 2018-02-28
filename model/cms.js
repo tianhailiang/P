@@ -1001,67 +1001,26 @@ exports.userReport = function(data,callback){
   api.apiRequest_post(url ,data ,callback);
 };
 
-var redisPool = require('redis-connection-pool')('viewNumberCache', {
+var redisPool = require('redis-connection-pool')('home_all_city_id', {
   host: config.redisCache.host,
   port: config.redisCache.port || 6379,
   max_clients: config.redisCache.max || 30,
   perform_checks: false,
-  database: 3 // database number to use
+  database: 7 // database number to use
 });
 /*
  浏览量统计detail_count
  * */
-exports.detail_count = function (data, callback) {
+exports.shouye = function (data, callback) {
   //redis 缓存文章浏览数````·
   //判断用户访问是否在限制条件内 10min 5
-  var condition_time = 60;
-  var condition_num = 5;
-  if(!data.uuid){
-    var UUID = require('uuid');
-    var uuidstr = UUID.v1();
-    redisPool.set(uuidstr+"_"+data.catid+"_"+data.id+"_time", Date.parse(new Date()), function(){});
-    redisPool.set(uuidstr+"_"+data.catid+"_"+data.id+"_viewnum", 1, function(){});
-    redisPool.expire(uuidstr+"_"+data.catid+"_"+data.id+"_time", 600);
-    redisPool.expire(uuidstr+"_"+data.catid+"_"+data.id+"_viewnum", 600);
-    update_viewnum(data.catid, data.id, uuidstr, callback);
-    //callback(null, uuidstr);
-  }else{
-    redisPool.get(data.uuid+"_"+data.catid+"_"+data.id+"_time", function(err, reply){
+    redisPool.get('home_all_' + data.city_id, function(err, reply){
       if(reply){
-        var nowTime = Date.parse(new Date());
-        if(Number.parseInt((nowTime - reply)/60000) >= condition_time){
-          redisPool.set(uuidstr+"_"+data.catid+"_"+data.id+"_time", Date.parse(new Date()), function(){});
-          redisPool.set(uuidstr+"_"+data.catid+"_"+data.id+"_viewnum", 1, function(){});
-          redisPool.expire(uuidstr+"_"+data.catid+"_"+data.id+"_time", 600);
-          redisPool.expire(uuidstr+"_"+data.catid+"_"+data.id+"_viewnum", 600);
-          update_viewnum(data.catid, data.id, data.uuid, callback);
-        }else{
-          redisPool.get(data.uuid+"_"+data.catid+"_"+data.id+"_viewnum", function(err, reply){
-            if(!reply || reply < condition_num){
-              redisPool.incr(data.uuid+"_"+data.catid+"_"+data.id+"_viewnum", function(){});
-              update_viewnum(data.catid, data.id, data.uuid, callback);
-            }else{
-              var viewNumKey = "WEB:HITS:cat_"+data.catid+"_"+data.id;
-              redisPool.get(viewNumKey, function(err, reply){
-                if(reply){
-                  callback(null, {"uuid":data.uuid, "num":reply});
-                }
-              });
-            }
-          });
-        }
+        callback(null, reply);
       }else{
-        redisPool.set(data.uuid+"_"+data.catid+"_"+data.id+"_time", Date.parse(new Date()), function(){});
-        redisPool.set(data.uuid+"_"+data.catid+"_"+data.id+"_viewnum", 1, function(){});
-        redisPool.expire(uuidstr+"_"+data.catid+"_"+data.id+"_time", 600);
-        redisPool.expire(uuidstr+"_"+data.catid+"_"+data.id+"_viewnum", 600);
-        update_viewnum(data.catid, data.id, data.uuid, callback);
+        callback(null, '暂无数据');
       }
-    });
-    //callback(null, data.uuid);
-
-  }
-
+    })
 };
 
 

@@ -1,5 +1,5 @@
 <style type="text/css">
-#lxContaniner{margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
+.lxContaniner{margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
 .lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc}
 .lx-head h1{float:left;margin-right:70px;color:#333;font-size:22px}
 .lx-tabitems{float:left;margin-top:5px}
@@ -9,157 +9,77 @@
 .gw-items li{float:left;margin-right:20px;margin-bottom:10px;padding-bottom:14px;width:385px;*width:380px;width:380px\0;border-bottom:solid 1px #dcdcdc}
 .gw-topitems{position:relative;overflow:hidden;margin-bottom:20px;box-shadow:0 3px 5px #e2e5e6}
 .gw-topitems li{margin-right:0;margin-bottom:0;padding-top:10px;width:400px;border-bottom:none;background-color:#f1f4f6}
-.Triangle{position:absolute;top:0;right:0;width:0;height:0;border-top:20px solid #c13232;border-left:20px solid transparent}
+.triangle{position:absolute;top:0;right:0;width:0;height:0;border-top:20px solid #c13232;border-left:20px solid transparent}
 .gw-topitems .gw-people{margin-left:20px}
 .gw-topitems .gw-news{ margin-right: 16px;}
 .gw-items li:nth-child(3n){margin-right:0}
 .gw-people{position:relative;float:left;margin-left:20px}
 .gw-people img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
-.gw-people span{position:absolute;top:18px;left:66px;width:45px;color:#333;font-size:14px}
-.gw-people .pepple-icon{background:url(../assets/img/1v.png) no-repeat;background-position:right center}
-.gw-people p{color:#333;font-size:16px;margin-top: 10px;}
+.gw-people span{color:#333;font-size:14px}
+.gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
+.gw-items p{color:#333;font-size:16px;padding-top: 10px;text-indent: 20px;}
 .gw-legend{float:right;margin-top:18px;background:#f9f6f1;color:#c13232;font-size:12px}
 .gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
 </style>
-<div id="lxContaniner" style="overflow:hidden">
+{% for floor in shouye %} {#国家#}
+<div class="lxContaniner" style="overflow:hidden" id="country_{{floor.country_id}}">
 	<div class="lx-head">
-		<h1>美国留学</h1>
+		<h1>{{floor.country_name}}留学</h1>
 		<ul class="lx-tabitems">
 			<li class="active">推荐<em></em></li>
-			<li>中学<em></em></li>
-			<li>本科<em></em></li>
+			<li >中学<em></em></li>
+			<!-- <li >本科<em></em></li> -->
 			<li>研究生<em></em></li>
 			<li>博士<em></em></li>
 		</ul>
 	</div>
-	<!--  -->
-	<div class="lx-groupitems">
-			<ul class="gw-items gw-topitems">
-					<li>
+	{% for type in  floor.list %}{#类别#}
+	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
+		{% for line in type.list %} {#行数#}
+		{% if loop.index == 1 %} {#第一行#}
+		<ul class="gw-items gw-topitems">
+			{% for item in line %}
+			<li>
+				<a href="javascript:;">
+					<div class="gw-people">
+						<img src="../assets/img/profile4.jpg" alt="">
+						<!-- <img src="{{item.img_list}}" alt=""> -->
+						<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
+					</div>
+					<div class="gw-legend gw-news">留学时讯</div>
+					<p style="clear:both">{{ item.title }}</p>
+				</a>
+			</li>
+			{% endfor %}
+			<em class="triangle"></em>
+		</ul>
+		{% else %}
+		<ul class="gw-items">
+				{% for item in line %}
+				<li class="gw-newslist">
 						<a href="javascript:;">
 							<div class="gw-people">
 								<img src="../assets/img/profile4.jpg" alt="">
-								<span class="pepple-icon">张山</span>
-								<p>美国研究生双录取（法语授课）申请方案</p>
+								<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
 							</div>
-							<div class="gw-legend gw-news">留学时讯</div>
+							<div class="gw-legend">{{item.tag_list}}</div>
+							<p style="clear:both">{{item.title}}</p>
 						</a>
-					</li>
-					<li>
-						<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>美国研究生双录取（法语授课）申请方案</p>
-								</div>
-								<div class="gw-legend gw-news">留学时讯</div>
-							</a>
-					</li>
-					<li>
-							<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>美国研究生双录取（法语授课）申请方案</p>
-								</div>
-								<div class="gw-legend gw-news">留学时讯</div>
-							</a>
-						</li>
-						<em class="Triangle"></em>
-					</ul>
-				<!--  -->
-			<ul class="gw-items">
-					<li class="gw-newslist">
-							<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>美国本科新生双录取申请方案</p>
-								</div>
-								<div class="gw-legend">签证申请/奖学金/签证申请</div>
-							</a>
-					</li>
-					<li class="gw-newslist">
-							<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>习近平引领中国迎春再出发</p>
-								</div>
-								<div class="gw-legend">奖学金/签证申请</div>
-							</a>
-					</li>
-					<li class="gw-newslist">
-							<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>习近平引领中国迎春再出发</p>
-								</div>
-								<div class="gw-legend">奖学金/签证申请</div>
-							</a>
-						</li>
-						<li class="gw-newslist">
-								<a href="javascript:;">
-									<div class="gw-people">
-										<img src="../assets/img/profile4.jpg" alt="">
-										<span class="pepple-icon">张山</span>
-										<p>习近平引领中国迎春再出发</p>
-									</div>
-									<div class="gw-legend">奖学金/签证申请</div>
-								</a>
-							</li>
-							<li class="gw-newslist">
-									<a href="javascript:;">
-										<div class="gw-people">
-											<img src="../assets/img/profile4.jpg" alt="">
-											<span class="pepple-icon">张山</span>
-											<p>习近平引领中国迎春再出发</p>
-										</div>
-										<div class="gw-legend">奖学金/签证申请</div>
-									</a>
-								</li>
-						<li class="gw-newslist">
-							<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>习近平引领中国迎春再出发</p>
-								</div>
-								<div class="gw-legend">奖学金/签证申请</div>
-							</a>
-						</li>
-						<li class="gw-newslist">
-							<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>习近平引领中国迎春再出发</p>
-								</div>
-								<div class="gw-legend">奖学金/签证申请</div>
-							</a>
-						</li>
-						<li class="gw-newslist">
-							<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>习近平引领中国迎春再出发</p>
-								</div>
-								<div class="gw-legend">奖学金/签证申请</div>
-							</a>
-						</li>
-						<li class="gw-newslist">
-							<a href="javascript:;">
-								<div class="gw-people">
-									<img src="../assets/img/profile4.jpg" alt="">
-									<span class="pepple-icon">张山</span>
-									<p>习近平引领中国迎春再出发</p>
-								</div>
-								<div class="gw-legend">奖学金/签证申请</div>
-							</a>
-						</li>
-			</ul>
+				</li>
+				{% endfor %}
+		</ul>
+		{% endif %}
+		{% endfor %}
 	</div>
+	{% endfor %}{#类别end#}
 </div>
+{% endfor %} {#国家end#}
+<script>
+	$(".lxContaniner").on('click', '.lx-tabitems li', function(){
+		var cur_index=$(this).index();
+		$(this).addClass('active').siblings().removeClass('active')
+		$(this).parents(".lxContaniner").find('.lx-groupitems').hide().eq(cur_index).show();
+	})
+</script>
+
 
