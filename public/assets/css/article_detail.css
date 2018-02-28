@@ -112,3 +112,25 @@
   vertical-align: middle;
   margin-left: 4px;
 }
+
+.bdshare-button-style0-16 a{
+     padding-left:0; 
+    width: 20px;
+    line-height: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin:0;
+    margin-right: 10px;
+}
+.bdshare-button-style0-16 .bds_weixin{
+  background:url(../img/wx.png) no-repeat 0 0;
+  background-size: 20px 20px;
+}
+.bdshare-button-style0-16 .bds_tsina{
+  background:url(../img/xl.png) no-repeat 0 0;
+  background-size: 20px 20px;
+}
+.bdshare-button-style0-16 .bds_sqq{
+  background:url(../img/qq.png) no-repeat 0 0;
+  background-size: 20px 20px;
+}

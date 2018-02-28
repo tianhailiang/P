@@ -70,10 +70,10 @@
               </span>
             </div>
             <div style="float:right;" >
-              <div class="bdsharebuttonbox" >
-                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <div class="bdsharebuttonbox" style="margin-top: 15px;">
                 <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
               </div>
             </div>
           </div>
@@ -146,7 +146,7 @@
               "bdMiniList":false,
               "bdPic":"",
               "bdStyle":"0",
-              "bdSize":"32",
+              "bdSize":"16",
               "bdUrl":window.location.href
           },
           "share":{},
@@ -235,18 +235,7 @@
         }
       });
     });
-    $('.share-btn').on('click',share); //点击分享
-    function share(){
-      //调取分享函数
-      // console.log(fn.urlgen("article",$("#articleId").attr("data-artId").toString()))
-      var that =this;
-      layer.open({
-        type: 2,
-        title: '分享到',
-        area: ['262px', '327px'],
-        content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+fn.urlgen("article",$("#articleId").attr("data-artId").toString()), 'no']
-      });
-    }
+   
   })
   </script>
 </body>

@@ -167,6 +167,16 @@
       			  <input  id="rel-case-title" type="text" maxlength="30">
       			  <span class="numTip" style="display: block;margin-left: 97px;margin-top: 8px;">填写文章标题，字数限30个汉字</span>
       		  </div>
+            <div class="rel-case-text1" style="margin-top: 20px;">
+              <label class="title active" for="art_abs" >
+                <span>*</span> 文章摘要：
+              </label>
+              <textarea class="art_abs" id="art_abs" maxlength="200"></textarea>
+              <div class="word-num">还可以输入<span id="word-num">200</span>字</div>
+              <span class="numTip" style="display: block;margin-left: 97px;margin-top: 8px;">
+                填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写
+              </span>
+            </div>
     		    <div class="rel-case-text1 clearfix" style="margin-top: 20px;" >
     			    <label class="title active" style="float:left">
                 <span>*</span> 正文内容：
@@ -207,6 +217,9 @@
   <script >
     $(function(){
       var city_id =null;
+      login_ss ={};
+      login_ss.uid =1596;
+      login_ss.usertype=2;
       if(login_ss.usertype ==2){
         //获取顾问的组织id
         city_id = $(".advisor-bumen").attr("data-cityId");
@@ -214,6 +227,20 @@
         //参赞默认为1 北京分公司
         city_id =1;
       }
+      $("#art_abs").on("change",function(){
+        this.value = this.value.substring(0, 200);
+      }); 
+      $("#art_abs").on("keydown",function(){
+        this.value  = this.value.substring(0, 200);
+      }); 
+      $("#art_abs").on("keyup",function(){
+        var strLength = $.trim($(this).val()).length; 
+        $("#word-num").html(200-strLength);
+        if(strLength > 200){
+          $("#word-num").html(0);
+          this.value  = this.value.substring(0, 200);
+        }
+      }); 
       //选择文章类型
       var newsletterType = null;
       $(".art-type-sel").on("click",function(){
@@ -247,7 +274,6 @@
       //选择推荐标签
       var recNumber = 0;
       $('.recommend-sel').on('click',function(){
-        
         if($(this).attr('checked')){
           // console.log('false');
           $(this).find('.recommend-sel-i').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
