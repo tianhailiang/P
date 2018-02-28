@@ -51,11 +51,17 @@ exports.canzan = function (req, res, next) {
     //return false;
   }
   async.parallel({
+    userinfo:function(callback){
+      wec.userinfo({
+        "u_id":data.login_info.uid, "to_uid":data.login_info.uid},callback);
+    },
     canzanlist:function (callback) {
       cms.canzanlist({"usertype":"3","pagesize":100},callback);
     },
   }, function (err, result){
+    data.userinfo = returnData(result.userinfo,'userinfo');
     data.canzanlist = returnData(result.canzanlist,'canzanlist');
+    log.info('个人信息',data.userinfo)
     data.country=country;
     data.route = 'team';
     data.pageType = '文案团队';

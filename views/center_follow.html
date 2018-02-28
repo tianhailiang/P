@@ -25,8 +25,8 @@
 
 {% include "widget/top/top.html" %}
 
-{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+{{ new_nav_first.new_nav_first(helper) }}
 
 {% if login_info.usertype == 2 %} {#顾问#}
 <div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_ADVISOR_CENTER_FOLLOW_SEAT1"></div>
@@ -86,7 +86,7 @@
     </div>
 
 </div>
-{% include "widget/footer/footer.html" %}
+{% include "widget/new_footer/new_footer.html" %}
 
 <script>
     var login_ss = null; 

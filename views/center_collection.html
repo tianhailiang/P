@@ -49,8 +49,8 @@
 </style>
 <body style="background: #f5f5f5">
   {% include "widget/top/top.html" %}
-  {% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-  {{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+  {{ new_nav_first.new_nav_first(helper) }}
 
 	<!-- ==广告1== -->
 	<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_{% if login_info.usertype == 1 %}USER{% elif login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 3 %}CANZAN{% endif %}_CENTER_COLLECTION_SEAT1"></div>
@@ -86,14 +86,20 @@
             </div>
             {% if collection_data.list.length > 0 %}
             <div class="right-main clearfix collection-list-box">
-                {% for item in collection_data.list %}
-                    {% if item.category_id == 17 %} {# 案例 #}
+                {#{% for item in collection_data.list %}
+                    {% if item.category_id == 17 %}  案例 
                         {% import "widget2/offer/offer.html" as case_fav %}
                         {{ case_fav.case_fav(item, helper) }}
-                    {% elif item.category_id < 17 %} {# 专栏 #}
+                    {% elif item.category_id < 17 %}  专栏 
                         {% import "widget2/article/article.html" as article_fav %}
                         {{ article_fav.article_fav(item, helper) }}
                     {% endif %}
+                    {% include "widget2/bottom_comment/bottom_comment.html" %}
+                {% endfor %}#}
+                
+                {% for item in collection_data.list %}
+                    {% import "widget2/article/article.html" as article_fav %}
+                    {{ article_fav.article_fav(item, helper) }}
                     {% include "widget2/bottom_comment/bottom_comment.html" %}
                 {% endfor %}
             </div>
@@ -107,7 +113,7 @@
         </div>
     </div>
   </div>
-  {% include "widget/footer/footer.html" %}
+  {% include "widget/new_footer/new_footer.html" %}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){
