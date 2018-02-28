@@ -9,6 +9,12 @@
         height: 130px;
         background-color: yellow;
     }
+    .banner-box-left{
+        position: relative;
+    }
+    .banner-box-right{
+        position: relative;
+    }
     .main-left{
         padding: 20px 20px 0;
     }
@@ -156,9 +162,9 @@
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
 {{ new_nav_red.new_nav_red(helper) }}
 <div class="dui-layout-lg clearfix banner-box">
-    <div class="dui-layout-con"></div>
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-silde"></div>
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
 </div>
 <div class="dui-layout-lg clearfix">
     <div class="dui-layout-con" style="background-color: #fff;">
@@ -220,7 +226,7 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
     $(function () {
-        $('.lunbo_lift .slider').xSlider({
+        $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
             current: 0,
@@ -228,11 +234,11 @@
             intervalTime: 5000,
             pagination: true
         });
-        $('.lunbo_right .slider').xSlider({
+        $('.banner-box-right .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
-            mode:'vertical',
-//          current: 0,
+//            mode:'vertical',
+            current: 0,
             speed: 1000,
             intervalTime: 5000,
             slidesPerView : 2,

@@ -97,6 +97,18 @@ exports.so_article = function (req, res, next) {
         data.login_nickname = login_a;
     }
     async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "SEARCHNEWS",
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "SEARCHNEWS",
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
         so_article_list:function(callback) {
             cms.so_article_list({
                 order: order,
@@ -108,6 +120,8 @@ exports.so_article = function (req, res, next) {
         }
     }, function (err, result) {
         data.article_list = returnData(result.so_article_list,'so_article_list');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.order = order;
         data.keyword=keyword;
         data.cur_page = page;
