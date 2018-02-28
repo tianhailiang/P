@@ -118,14 +118,6 @@
     left: 50%;
     margin-left: -77px;
   }
-  .swiper-slide{
-    height: 135px;
-    width: 400px;
-  }
-  .swiper-slide img{
-    height: 100%;
-    width: 100%;
-  }
   .slider .slider-dot ul li{
     border-radius: 50%;
   }
@@ -156,8 +148,8 @@
 <div class="nationality_guoqi_warp">
   <div class="nationality_guoqi">
     <div class="liuxue-guoqi">
-      <a  href="#lxContaniner"><img src="{{helper.cdnhost}}/assets/img/America.png" alt="美国留学"><p>美国</p></a>
-      <a   href="#"><img src="{{helper.cdnhost}}/assets/img/England.png" alt="英国留学"><p>英国</p></a>
+      <a  href="#country_1"><img src="{{helper.cdnhost}}/assets/img/America.png" alt="美国留学"><p>美国</p></a>
+      <a   href="#country_2"><img src="{{helper.cdnhost}}/assets/img/England.png" alt="英国留学"><p>英国</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Australia.png" alt="澳大利亚留学"><p>澳大利亚</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/Canada.png" alt="加拿大留学"><p>加拿大</p></a>
       <a   href="#"><img src="{{helper.cdnhost}}/assets/img/NEW ZEALAND.png" alt="新西兰留学"><p>新西兰</p></a>
@@ -275,10 +267,12 @@
         {
         "companyName": "大连",
         "companyId": "13"
-        },
-        {
-        "companyName": "武汉",
-        "companyId": "14"
+        },  {
+        "companyName": "武昌",
+        "companyId": "50"
+        },  {
+        "companyName": "汉口",
+        "companyId": "51"
         },
         {
         "companyName": "西安",
@@ -433,12 +427,14 @@
 </div>
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_HOME_SEAT10") }}
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
-    //
-      $(window).on('scroll',function() {
+      //
+      $(window).on('scroll', function () {
           var $scroll = $(this).scrollTop();
           if ($scroll >= 200) {
               $('.nationality_guoqi_warp').show();
@@ -446,55 +442,28 @@
               $('.nationality_guoqi_warp').hide();
           }
       });
-     
+
       $('.lunbo_lift .slider').xSlider({
           //轮播图配置
-          autoplay : 500,
+          autoplay: 500,
           current: 0,
           speed: 500,
           intervalTime: 5000,
           pagination: true
       });
-      var timer=null;
-      var num=0;
-      function lonbo() {
-          if(num>1){
-              num=0;
-//              $("#lunbo1").css({top:-270*num+(-270)+'px'})
-             $("#lunbo1").css({top:(-270)+'px'})
-
+      var lunbotimer = null;
+      var num = 0;
+      lunbotimer = setInterval(function () {
+          num++;
+          if (num == 3) {
+              $("#lunbo1").css({top: (-270) + 'px'})
+              num = 0;
           }else {
               num++;
               $("#lunbo1").animate({top:-270*num+(-270)+'px'})
-
           }
-      }
-      setInterval(lonbo,1000)
-//      $('.lunbo_right .slider').xSlider({
-//          //轮播图配置
-////          autoplay : 500,
-//          mode:'vertical',
-////          current: 0,
-//          speed: 1000,
-//          intervalTime: 5000,
-//          slidesPerView : 2,
-//          slidesPerGroup : 2,
-////          pagination: true
-//      });
-
+      }, 2000)
   })
-//  $(function () {
-//      var mySwiper = new Swiper('.swiper-container',{
-//          autoplay : 500,
-//          loop: true,
-//          mode:'vertical',
-//          speed: 1000,
-//          slidesPerView : 2,
-//          slidesPerGroup : 2,
-//          pagination: true
-//          //其他设置
-//      });
-//  })
 </script>
 </body>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
