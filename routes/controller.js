@@ -1205,7 +1205,7 @@ exports.adviser_case = function (req, res, next) {
         //     }, callback);
         // },
         case_list: function (callback) {
-            wec.user_article_list({
+            wec.adviser_main({
                 "u_id": data.to_uid,
                 "page": 1,
                 "per_page": 4,
