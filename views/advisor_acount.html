@@ -61,8 +61,8 @@
 
 {% include "widget/top/top.html" %}
 
-{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+{{ new_nav_first.new_nav_first(helper) }}
 
 <div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 1 %}USER{% endif %}_CENTER_ACOUNT_SEAT1"></div>
 
@@ -129,7 +129,9 @@
     </div>
   </div>
 </div>
+{% include "widget/new_footer/new_footer.html" %}
 <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script>
   $(document).ready(function () {
 
