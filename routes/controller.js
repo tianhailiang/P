@@ -55,17 +55,30 @@ exports.index = function (req, res, next) {
            "ad_seat": "SEAT2"
          }, callback);
         },
+        shouye:function(callback) {
+          cms.shouye({
+            "city_id": 1,
+          }, callback);
+         }
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.shouye = JSON.parse(result.shouye);
+        // data.shouye = result.shouye;
+
+
+        
         data.tdk = {
             pagekey: 'index',
             cityid: area,
             nationid: ''
         };
+        // console.log(result.shouye);
+
         //data.esikey = esihelper.esikey();
-        log.info(data.xSlider);
-        log.info(data.xSlider2);
+        //log.info(data.xSlider);
+        //log.info(data.xSlider2);
+        // log.info('shouye~~',data.shouye[0]);
         res.render('index', data);
     })
     // data.xSlider=lunbo;
@@ -320,6 +333,7 @@ exports.center_main = function (req, res, next) {
         data.comment_list =returnData(result.comment_list,'comment_list');
         data.collection_list = returnData(result.collection_list,'collection_list');
         var pagekey = null;
+        console.log('userinfo',data.userinfo)
         if(data.userinfo.usertype == 2){
           pagekey = 'ADVISOR_CENTER';
         }else if(data.userinfo.usertype == 3){
