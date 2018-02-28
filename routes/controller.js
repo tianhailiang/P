@@ -1548,7 +1548,7 @@ exports.release_article = function(req,res,next){
     // return false;
   }
   data.login_info ={};
-  data.login_info.uid=1596;
+  data.login_info.uid=1605;
   log.info(data.login_info.uid)
   //获取用户信息（普通用户，顾问，参赞）
   wec.userinfo({

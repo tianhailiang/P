@@ -99,19 +99,19 @@
               <label class="title active" for="level">
                 <span>*</span> 选择学历标签：
               </label>
-              <span class="level-sel" data-id="1">
+              <span class="level-sel" >
                 <i class="level-sel-i iconfont"></i>
                 <i>中学</i>
               </span>
-              <span class="level-sel iconfont" data-id="2">
+              <span class="level-sel iconfont">
                 <i class="level-sel-i"></i>
                 <i>本科</i>
               </span>
-              <span class="level-sel" data-id="3">
+              <span class="level-sel">
                 <i class="level-sel-i iconfont"></i>
                 <i>研究生</i>
               </span>
-              <span class="level-sel" data-id="4">
+              <span class="level-sel">
                 <i class="level-sel-i iconfont"></i>
                 <i>研究生</i>
               </span>
@@ -218,7 +218,7 @@
     $(function(){
       var city_id =null;
       login_ss ={};
-      login_ss.uid =1596;
+      login_ss.uid =1605;
       login_ss.usertype=2;
       if(login_ss.usertype ==2){
         //获取顾问的组织id
@@ -227,6 +227,7 @@
         //参赞默认为1 北京分公司
         city_id =1;
       }
+      //文章摘要
       $("#art_abs").on("change",function(){
         this.value = this.value.substring(0, 200);
       }); 
@@ -257,19 +258,18 @@
       });
       //选择学历标签
       $('.level-sel').on('click',function(){
-        console.log($(this).attr('checked'))
+        // console.log($(this).attr('checked'))
         if($(this).attr('checked')){
-          console.log('false');
+          // console.log('false');
           $(this).find('.level-sel-i').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
           $(this).find('.level-sel-i').next().css({'color':'#333'});
           $(this).attr('checked',false);
         }else{
-          console.log('true')
+          // console.log('true')
           $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
           $(this).find('.level-sel-i').next().css({'color':'#c13232'});
           $(this).attr('checked',true);
         }
-        
       });
       //选择推荐标签
       var recNumber = 0;
@@ -359,25 +359,58 @@
         if(newsletterType ==undefined){
           layer.msg('请选择文章类型');
           return false;
+        }else{
+          if(newsletterType==1){
+            //选择时讯
+            var is_news =1;
+          }else{
+            //选择非时讯
+            is_news =0 ;
+            //判断学历
+            var eduList = '';
+            $('.level-sel[checked=checked]').each(function(){
+              eduList+=$(this).find('i').eq(1).text()+',';
+            });
+            if(eduList == ''){
+              layer.msg('请选择学历标签');
+              return false;
+            }
+            var eduStr = eduList.substring(0,eduList.length-1);
+            // console.log(eduStr)
+            //判断标签
+            var tagStr = '';
+            var artType = 2;
+            $('.recommend-sel[checked=checked]').each(function(){
+              tagStr+=$(this).find('i').eq(1).text()+',';
+              if($(this).find('i').eq(1).text()=='留学案例'){
+                artType =1;
+              }
+            });
+            if(tagStr == ''){
+              layer.msg('请选择推荐标签');
+              return false;
+            }
+            var newTagStr =tagStr.substring(0,tagStr.length-1);
+            console.log(newTagStr)
+          }
         }
-
+        
         if($("#rel-case-title").val()==''){
           // 判断title
           $("#rel-case-title").focus();
           return false;
         }
-       
+        if($("#art_abs").val()==''){
+          // 判断文章摘要
+          $("#art_abs").focus();
+          return false;
+        }
         if($("#editor1").find("p").html() == '<br>'){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
         }
-        var region = '';
-        if(Number($("#apply-country").val()) >=50 && Number($("#apply-country").val()) <100){
-          region = 201;
-        }else if(Number($("#apply-country").val()) >= 100){
-          region =202;
-        }    
+       
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
@@ -388,7 +421,11 @@
             country_id:$("#apply-country").val(),
             is_draft:1,
             messasge:data,
-            region:region
+            type:artType,
+            introduce:$.trim($("#art_abs").val()),
+            edu_id:eduStr,
+            is_news:is_news,
+            tag_list:newTagStr
           },
           dataType:'json',
           success:function(result){
