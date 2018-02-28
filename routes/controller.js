@@ -320,6 +320,7 @@ exports.center_main = function (req, res, next) {
         data.comment_list =returnData(result.comment_list,'comment_list');
         data.collection_list = returnData(result.collection_list,'collection_list');
         var pagekey = null;
+        console.log('userinfo',data.userinfo)
         if(data.userinfo.usertype == 2){
           pagekey = 'ADVISOR_CENTER';
         }else if(data.userinfo.usertype == 3){
