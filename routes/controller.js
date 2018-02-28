@@ -76,15 +76,11 @@ exports.index = function (req, res, next) {
         // console.log(result.shouye);
 
         //data.esikey = esihelper.esikey();
-        //log.info(data.xSlider);
-        //log.info(data.xSlider2);
+        // log.info(data.xSlider);
+        // log.info(data.xSlider2);
         // log.info('shouye~~',data.shouye[0]);
         res.render('index', data);
     })
-    // data.xSlider=lunbo;
-    // data.xSlider2=lunbo;
-    // data.xSlider=data.xSlider.items;
-    // data.xSlider2=data.xSlider2.items;
 };
 //搜索页
 exports.so_article = function (req, res, next) {
