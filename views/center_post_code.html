@@ -30,7 +30,7 @@
         }
         .post-box{
             width: 840px;
-            padding: 10px 20px 20px;
+            padding: 10px 19px 20px;
             background-color: #fff;
         }
         .post-box-in {
@@ -154,12 +154,9 @@
             {% endif %}
             {% endif %}
         </div>
-        {% if login_info.usertype == 1 %} {#用户#}
-        {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
-        {{ user_side_menu.user_side_menu('账号设置', helper) }}
-        {% elif login_info.usertype == 2 %} {#顾问#}
+        {% if login_info.usertype == 2 %} {#顾问#}
         {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
-        {{ adviser_side_menu.adviser_side_menu('账号设置', '', helper) }}
+        {{ adviser_side_menu.adviser_side_menu('上传我的二维码', '', helper) }}
         {% elif login_info.usertype == 3 %} {#参赞#}
         {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
         {{ canzan_side_menu.canzan_side_menu('账号设置', '', helper) }}
@@ -210,6 +207,7 @@
         </div>
     </div>
 </div>
+{% include "widget/new_footer/new_footer.html" %}
 <script  src="{{helper.cdnhost}}/assets/js/upload_wx_code.js"></script>
 <script  src="{{helper.cdnhost}}/assets/js/upload_qq_code.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
