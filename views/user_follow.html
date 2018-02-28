@@ -25,8 +25,8 @@
 
 {% include "widget/top/top.html" %}
 
-{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-{{ nav_seventh.nav_seventh(route,tdk.cityid,helper) }}
+{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+{{ new_nav_first.new_nav_first(helper) }}
 
 <div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_USER_CENTER_FOLLOWEE_SEAT1"></div>
 
@@ -74,7 +74,7 @@
     </div>
 
 </div>
-{% include "widget/footer/footer.html" %}
+{% include "widget/new_footer/new_footer.html" %}
 <script>
     var login_ss = null; 
     if($.cookie('login_ss') != undefined){

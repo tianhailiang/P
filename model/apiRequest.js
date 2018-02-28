@@ -70,6 +70,9 @@ var apiRequest_post = function (url, data, callback) {
   log.info(url)
   request.post(url, {
     json: true,
+    /*headers: {
+      "content-type": "application/x-www-form-urlencoded"
+    },*/
     body: data
   }, function (err, response, receiveData) {
     if (!err && response.statusCode == 200) {

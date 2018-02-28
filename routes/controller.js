@@ -63,28 +63,16 @@ exports.index = function (req, res, next) {
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        data.shouye = JSON.parse(result.shouye);
-        // data.shouye = result.shouye;
-
-
-        
+        data.shouye = JSON.parse(result.shouye);        
         data.tdk = {
             pagekey: 'index',
             cityid: area,
             nationid: ''
         };
         // console.log(result.shouye);
-
         //data.esikey = esihelper.esikey();
-        //log.info(data.xSlider);
-        //log.info(data.xSlider2);
-        // log.info('shouye~~',data.shouye[0]);
         res.render('index', data);
     })
-    // data.xSlider=lunbo;
-    // data.xSlider2=lunbo;
-    // data.xSlider=data.xSlider.items;
-    // data.xSlider2=data.xSlider2.items;
 };
 //搜索页
 exports.so_article = function (req, res, next) {
@@ -94,14 +82,38 @@ exports.so_article = function (req, res, next) {
     var nquery = comfunc.getReqQuery(req.params[1]);
     var page = nquery && nquery.page ? nquery.page : 1;
     var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    var order = nquery && nquery.order ? nquery.order : "add_time";
+    var order = nquery && nquery.order ? nquery.order : "";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
         data.login_nickname = login_a;
     }
     async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "SEARCHNEWS",
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "SEARCHNEWS",
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
+        so_article_list:function(callback) {
+            cms.so_article_list({
+                order: order,
+                key_word:encodeURI(keyword),
+                city_id:area,
+                "per_page": "15",
+                "page": page
+            }, callback);
+        }
     }, function (err, result) {
+        data.article_list = returnData(result.so_article_list,'so_article_list');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.order = order;
         data.keyword=keyword;
         data.cur_page = page;
@@ -351,12 +363,7 @@ exports.post_code = function (req, res, next) {
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var page = req.query.page || 1;
-    data.tdk = {
-        pagekey: 'ADVISOR_CENTER_CASE',
-        cityid: area,
-    };
-    res.render('center_post_code', data);
-/*    if ( req.cookies.login_ss !== undefined) {
+    if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
             res.redirect('/404');
@@ -389,8 +396,8 @@ exports.post_code = function (req, res, next) {
             pagekey: 'ADVISOR_CENTER_CASE',
             cityid: area,
         };
-        res.render('center_post_ode', data);
-    });*/
+        res.render('center_post_code', data);
+    });
 };
 //个人中心 我的案例
 exports.center_case = function (req, res, next) {
@@ -1067,6 +1074,14 @@ exports.adviser_main = function (req, res, next) {
     guwen_list:function (callback){
       wec.adviser_main({
         "per_page":6, "order":"views desc", "uid": data.uid}, callback)
+    },
+    likelist:function (callback){ //猜你喜欢
+      wec.likelist({
+        "country_id":1,
+        "city_id":1,
+        "per_page":5
+    }, 
+    callback)
     }
   },function(err, result){
     data.userinfo =returnData(result.userinfo,'userinfo');
@@ -1076,6 +1091,7 @@ exports.adviser_main = function (req, res, next) {
       return false;
     }
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
+    data.likelist = returnData(result.likelist,'likelist');
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
     var pagekey = ''
@@ -1130,64 +1146,18 @@ exports.adviser_special = function (req, res, next) {
     userinfo:function(callback){
       wec.userinfo({"u_id": data.login_info.uid, "to_uid":data.to_uid},callback);
     },
-    //作者精选
-    // channel_list:function(callback){
-    //   cms.channel_list({"u_id": data.to_uid, "per_page":6, "order":"views desc"},callback);
-    // },
-    //热门留学方案
-    // hot_liuxuefangan_list: function (callback) {
-    //   cms.hot_liuxuefangan_list({"position": "blog", "catid": "47", "cityid": area, "perpage": 15}, callback);
-    // },
-    //明星顾问
-    // mingxingguwen: function (callback) {
-    //   cms.mingxingguwen({"position": "blog", "catid": 101, "cityid": area, "perpage": 20}, callback);
-    // },
     zhuanlanlist: function (callback) {
-      wec.user_article_list({"u_id": data.to_uid, "page": 1, "per_page": 10, "type": 2}, callback);
+      wec.adviser_main({"u_id": data.to_uid, "page": 1, "per_page": 10, "type": 2}, callback);
     }
   },function(err, result){
     data.userinfo =returnData(result.userinfo,'userinfo');
     // data.channel_list =returnData(result.channel_list,'channel_list');
     data.zhuanlanlist =returnData(result.zhuanlanlist,'zhuanlanlist');
-      //切割成 二维数组
-      // data.hotLXFA  = split_array( returnData(result.hot_liuxuefangan_list,'hot_liuxuefangan_list'), 7);
-      // var sliderArr = [];
-      // data.mingxingguwen = returnData(result.mingxingguwen,'mingxingguwen');
-      // var sliderArrLen = (data.mingxingguwen.length%10 == 0) ? parseInt(data.mingxingguwen.length/10) : (parseInt(data.mingxingguwen.length/10) + 1);
-      // for (i= 0; i < sliderArrLen; i++) {
-      //     sliderArr.push(data.mingxingguwen.slice(i*10, (i+1)*10));
-      // }
-      // data.sliderArr = sliderArr;
       data.country =data.userinfo.country || '1';
       data.hcountry = (data.userinfo.country || '1,').split(',')[0];
       async.parallel({
-          //猜你喜欢
-          // guess_like:function(callback){
-          //     cms.channel_list({
-          //         "per_page":12,
-          //         "order":"views",
-          //         "country_id":country
-          //     },callback);
-          // },
-          //活动预告
-          // huodongyugao: function (callback) {
-          //     cms.huodongyugao({
-          //         "position": "cmslist",
-          //         "catid": 64,
-          //         "cityid": area,
-          //         "country": hcountry.split(',')[0],
-          //         "perpage": "4"
-          //     }, callback);
-          // }
       },function(err,result){
-          // data.huodongyugao =returnData(result.huodongyugao,'huodongyugao');
-          // data.guess_like = returnData(result.guess_like,'guess_like');
           var pagekey = null;
-          /*if(data.userinfo.status == 1){
-            pagekey = 'PREAD_ARTICLE_LIST';
-          }else if(data.userinfo.status == 0){
-            pagekey = 'ADVISOR_P_ARTICLE';
-          }*/
         if(data.userinfo.usertype == 2){
           pagekey = 'ADVISOR_P_ARTICLE';
         }else if(data.userinfo.usertype == 3){
@@ -1251,7 +1221,7 @@ exports.adviser_case = function (req, res, next) {
         //     }, callback);
         // },
         case_list: function (callback) {
-            wec.user_article_list({
+            wec.adviser_main({
                 "u_id": data.to_uid,
                 "page": 1,
                 "per_page": 4,

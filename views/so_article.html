@@ -9,6 +9,12 @@
         height: 130px;
         background-color: yellow;
     }
+    .banner-box-left{
+        position: relative;
+    }
+    .banner-box-right{
+        position: relative;
+    }
     .main-left{
         padding: 20px 20px 0;
     }
@@ -141,15 +147,24 @@
         bottom: 2px;
         font-size: 12px;
     }
+    .load-more-article{
+        width: 100%;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        font-size: 14px;
+        color: #333;
+        cursor: pointer;
+    }
 </style>
 <body style="background: #f5f5f5">
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
 {{ new_nav_red.new_nav_red(helper) }}
 <div class="dui-layout-lg clearfix banner-box">
-    <div class="dui-layout-con"></div>
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-silde"></div>
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
 </div>
 <div class="dui-layout-lg clearfix">
     <div class="dui-layout-con" style="background-color: #fff;">
@@ -157,39 +172,52 @@
             <div class="main-searchbox clearfix">
                 <input type="text" id="search-page" placeholder="请输入搜索关键词" class="search-text"
                        onfocus="if(this.placeholder == '请输入搜索关键词'){this.value = '';}"
-                       onblur="if(this.value == ''){this.placeholder= '请输入搜索关键词';}">
+                       onblur="if(this.value == ''){this.placeholder= '请输入搜索关键词';}" value="{{keyword}}">
                 <div class="search-btn" id="searchBtn-page" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
             </div>
             <div class="result-bar">
-                搜索<span id="result-keyword">关键词</span>共搜索到<span id="result-num">3322</span>个结果
+                搜索<span id="result-keyword">{{keyword}}</span>共搜索到<span id="result-num">{{article_list.total}}</span>个结果
             </div>
             <div class="result-type-bar">
-                <a href="" class="active">综合</a>
-                <a href="">最新new</a>
-                <a href="">最热hot</a>
+                <a href="{{helper.urlgen('so_article','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
+                <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
+                <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
             </div>
-            <div class="result-conent">
+            <div class="result-conent" id="result-content">
+                {% for item in article_list.list %}
                 <div class="result-item clearfix">
                     <div class="item-adviser">
-                        <a href=""><img src="../assets/img/profile3.jpg" alt="" class="adviser-avatar"/></a><span>张珂</span><img src="../assets/img/1v.png" alt="" class="flag"/>
+                        <a href="{{helper.articleUrlgen('blog',item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/></a><span>{{item.user_info.nickname}}</span><img src="../assets/img/1v.png" alt="" class="flag"/>
                     </div>
                     <div class="item-info">
                         <div class="info-top clearfix">
-                            <a class="info-title" href="">美国研究生双录取（汉语授课）申请方案</a>
+                            <a class="info-title" href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">{{item.title}}</a>
                             <div class="info-tags">
-                                <span>留学时讯</span>
+                                <span>{{item.tag_list}}</span>
                             </div>
                         </div>
-                        {% set aa = '邵东富ID见覅圣诞节基地的积分等级绝地反击的减肥死的积分是的奇偶的及时交付is登记的交付的司法电视剧邵东富见覅圣诞节基地的积分等级绝地反击的减肥死的积分是的奇偶的及时交付is登记的交付的司法电视剧 '%}
-                        <div class="info-desc">{{aa|ellipsis(90)}}<a>【查看详情】</a></div>
-                        <div class="time">今天13:19</div>
+                        <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">【查看详情】</a></div>
+                        <div class="time">{{item.update_time}}</div>
                     </div>
                 </div>
+                {% endfor %}
+            </div>
+            <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
+                加载更多
+                <i class="city-icon iconfont">&#xe60b;</i>
             </div>
         </div>
     </div>
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-silde" style="background-color: #fff;"></div>
+    <div class="dui-layout-silde">
+        <div class="guess-like-right" style="margin-top: 20px;background-color: #fff;">
+            <div class="common-title" style="border:1px solid #dcdcdc;">
+                <i></i>
+                <h3>猜你喜欢</h3>
+            </div>
+            {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+        </div>
+    </div>
 </div>
 {% include "widget/new_footer/new_footer.html" %}
 {% import "widget/new_slide/new_slide2.html" as  slide %}
@@ -198,7 +226,7 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
     $(function () {
-        $('.lunbo_lift .slider').xSlider({
+        $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
             current: 0,
@@ -206,17 +234,80 @@
             intervalTime: 5000,
             pagination: true
         });
-        $('.lunbo_right .slider').xSlider({
+        $('.banner-box-right .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
-            mode:'vertical',
-//          current: 0,
+//            mode:'vertical',
+            current: 0,
             speed: 1000,
             intervalTime: 5000,
             slidesPerView : 2,
             slidesPerGroup : 2,
 //          pagination: true
         });
+        var area = $.cookie('currentarea') ? $.cookie('currentarea') : 1;
+        var keyword = $('#result-keyword').text();
+        var load_page = $('#load-more-article').attr('data-cur_page')*1+1;
+        function more_artice (art_list) {
+            var artHtml = '';
+            for (var i = 0; i < art_list.length; i++) {
+                var item = art_list[i];
+                artHtml+='<div class="result-item clearfix">'+
+                            '<div class="item-adviser">'+
+                            '<a href="'+fn.urlgen('blog',item.user_info.uid.toString())+'"><img src="'+fn.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)+'" alt="" class="adviser-avatar"/></a><span>'+ item.user_info.nickname+ '</span><img src="../assets/img/1v.png" alt="" class="flag"/>'+
+                            '</div>'+
+                            '<div class="item-info">'+
+                            '<div class="info-top clearfix">'+
+                            '<a class="info-title" href="'+fn.articleUrlgen('blog',item.user_info.uid.toString(),'article='+item.id.toString())+'">'+ item.title +'</a>'+
+                        '<div class="info-tags">'+
+                        '<span>'+ item.tag_list +'</span>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="info-desc">'+ item.introduce +'<a href="'+fn.articleUrlgen('blog',item.user_info.uid.toString(),'article='+item.id.toString())+'">【查看详情】</a></div>'+
+                '<div class="time">'+ item.update_time +'</div>'+
+                '</div>'+
+                '</div>';
+            }
+            $('#result-content').append($(artHtml));
+        }
+        $('#load-more-article').on('click', function () {
+            var page = $(this).data('page')*1+1;
+            var thisObj = $(this);
+            var per_page = 15;
+            $.ajax({
+                url: ajaxUrlPrefix.nodeapi + '/cmsapi/load_more_article',
+                datatype: 'json',
+                data: {
+                    key_word: keyword,
+                    city_id: area,
+                    "per_page": per_page,
+                    "page": page
+                },
+                success: function (revmsg) {
+                    if (revmsg.code == 0) {
+                        var len = revmsg.data.list.length;
+                        if (len == 0) {
+                            thisObj.html('文章加载完毕')
+                        }
+                        else if (0 < len && len < per_page) {
+                            thisObj.html('文章加载完毕');
+                            more_artice(revmsg.data.list);
+                            thisObj.data('page', page);
+                        }
+                        else {
+                            more_artice(revmsg.data.list);
+                            thisObj.data('page', page);
+                        }
+                    }
+                    else {
+                        thisObj.html('加载更多出错了，请刷新');
+                    }
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log('加载更多出错了！');
+                }
+            })
+        })
     })
 
 </script>

@@ -30,7 +30,7 @@
         }
         .post-box{
             width: 840px;
-            padding: 10px 20px 20px;
+            padding: 10px 19px 20px;
             background-color: #fff;
         }
         .post-box-in {
@@ -154,12 +154,9 @@
             {% endif %}
             {% endif %}
         </div>
-        {% if login_info.usertype == 1 %} {#用户#}
-        {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
-        {{ user_side_menu.user_side_menu('账号设置', helper) }}
-        {% elif login_info.usertype == 2 %} {#顾问#}
+        {% if login_info.usertype == 2 %} {#顾问#}
         {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
-        {{ adviser_side_menu.adviser_side_menu('账号设置', '', helper) }}
+        {{ adviser_side_menu.adviser_side_menu('上传我的二维码', '', helper) }}
         {% elif login_info.usertype == 3 %} {#参赞#}
         {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
         {{ canzan_side_menu.canzan_side_menu('账号设置', '', helper) }}
@@ -177,39 +174,44 @@
                 <div class="code-box weixin-box" id="weixin-box">
                     <div class="code-box-in">
                         <input id="post-wx-code" type="file" multiple="multiple" name="upload" style="display: none;"/>
+                        {% if userinfo.weixin_qrcode %}
+                        <div class="has-code" style="background-image: url('{{userinfo.weixin_qrcode}}')">
+                            <div class="code-mask">
+                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>
+                            </div>
+                        </div>
+                        {% else %}
                         <div class="no-code">
                             <img src="../assets/img/post_weixin.png" alt="" class="icon"/>
                             <label class="upload-code-btn" for="post-wx-code">上传我的微信二维码</label>
                             <div class="info">方便用户随时联系我</div>
                         </div>
-                        <div class="has-code" style="display: none;">
-                            <!--<img src="" alt=""/>-->
-                            <div class="code-mask">
-                                <label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>
-                            </div>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
                 <div class="code-box qq-box" id="qq-box">
                     <div class="code-box-in">
                         <input id="post-qq-code" type="file" multiple="multiple" name="upload" style="display: none;"/>
+                        {% if userinfo.qq_qrcode %}
+                        <div class="has-code" style="background-image: url('{{userinfo.qq_qrcode}}')">
+                            <div class="code-mask">
+                                <label class="upload-code-btn" for="post-qq-code">修改我的QQ二维码</label>
+                            </div>
+                        </div>
+                        {% else %}
                         <div class="no-code">
                             <img src="../assets/img/post_qq.png" alt="" class="icon"/>
                             <label class="upload-code-btn" for="post-qq-code">上传我的QQ二维码</label>
                             <div class="info">方便用户随时联系我</div>
                         </div>
-                        <div class="has-code">
-                            <!--<img src="http://images.jjl.cn/ugc/2018/0228/20180228134613939.jpeg" alt=""/>-->
-                            <div class="code-mask">
-                                <label class="upload-code-btn" for="post-qq-code">修改我的QQ二维码</label>
-                            </div>
-                        </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+{% include "widget/new_footer/new_footer.html" %}
 <script  src="{{helper.cdnhost}}/assets/js/upload_wx_code.js"></script>
 <script  src="{{helper.cdnhost}}/assets/js/upload_qq_code.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
@@ -255,6 +257,7 @@
             var resData = JSON.parse(response);
             console.log('onSuccess~~~thl', resData);
             if (resData.errno == 0) {
+                console.log('上传成功！')
                 $('#weixin-box').find('.no-code').hide();
                 $('#weixin-box').find('.has-code').show().css("background-image","url(" + resData.data[0] + ")");
                 //$('#weixin-box').find('.has-code').find('img').attr('src',resData.data[0]);

@@ -903,7 +903,15 @@ exports.lunbo_list = function (data,callback) {
   }
   api.apiRequest(url ,callback);
 }
-
+//搜索结果页so_article_list
+exports.so_article_list = function (data,callback) {
+  var url = _api_path_url_shequ(data, config.apis.get_so_article_list);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
+}
 /*顾问登录*/
 exports.login_ss = function (data, callback) {
   var url = config.apis.post_login;
