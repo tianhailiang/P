@@ -94,7 +94,7 @@ exports.so_article = function (req, res, next) {
     var nquery = comfunc.getReqQuery(req.params[1]);
     var page = nquery && nquery.page ? nquery.page : 1;
     var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    var order = nquery && nquery.order ? nquery.order : "add_time";
+    var order = nquery && nquery.order ? nquery.order : "";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -103,8 +103,11 @@ exports.so_article = function (req, res, next) {
     async.parallel({
         so_article_list:function(callback) {
             cms.so_article_list({
+                order: order,
                 key_word:encodeURI(keyword),
-                city_id:area
+                city_id:area,
+                "per_page": "15",
+                "page": page
             }, callback);
         }
     }, function (err, result) {
