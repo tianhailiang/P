@@ -1049,8 +1049,8 @@ exports.adviser_main = function (req, res, next) {
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
-         "uid":data.uid},callback);
-    },
+        "u_id":data.login_info.uid, "to_uid":data.uid},callback)
+      },
     guwen_list:function (callback){
       wec.adviser_main({
         "per_page":6, "order":"views desc", "uid": data.uid}, callback)
