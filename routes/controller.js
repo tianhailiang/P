@@ -63,22 +63,16 @@ exports.index = function (req, res, next) {
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        data.shouye = JSON.parse(result.shouye);
-        // data.shouye = result.shouye;
-
-
-        
+        data.shouye = JSON.parse(result.shouye);        
         data.tdk = {
             pagekey: 'index',
             cityid: area,
             nationid: ''
         };
         // console.log(result.shouye);
-
         //data.esikey = esihelper.esikey();
         //log.info(data.xSlider);
         //log.info(data.xSlider2);
-        // log.info('shouye~~',data.shouye[0]);
         res.render('index', data);
     })
     // data.xSlider=lunbo;
@@ -1067,6 +1061,14 @@ exports.adviser_main = function (req, res, next) {
     guwen_list:function (callback){
       wec.adviser_main({
         "per_page":6, "order":"views desc", "uid": data.uid}, callback)
+    },
+    likelist:function (callback){ //猜你喜欢
+      wec.likelist({
+        "country_id":1,
+        "city_id":1,
+        "per_page":5
+    }, 
+    callback)
     }
   },function(err, result){
     data.userinfo =returnData(result.userinfo,'userinfo');
@@ -1076,6 +1078,7 @@ exports.adviser_main = function (req, res, next) {
       return false;
     }
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
+    data.likelist = returnData(result.likelist,'likelist');
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
     var pagekey = ''
