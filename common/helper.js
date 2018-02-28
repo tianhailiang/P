@@ -396,6 +396,48 @@ function getLink(pageKey) {
   }
 }
 
+//学历标签选中函数
+function eduChecked(val,checkedList){
+  var html =`<span class="level-sel" >
+              <i class="level-sel-i iconfont"></i>
+              <i>${val}</i>
+            </span>`;
+  if(checkedList==undefined){
+     checkedList = []
+  }else{
+    checkedList =checkedList.split('/');
+  }
+  for (let item of checkedList) {
+    if(val == item){
+      html = `<span class="level-sel" checked="checked">
+                <i class="level-sel-i iconfont" style="border:none;color:#c13232;margin-right:7px;font-size:16px;">&#xe640;</i>
+                <i>${val}</i>
+              </span>`;
+    }
+  }
+  return html;
+}
+//推荐标签选中函数
+function tagChecked(val,checkedList){
+  var html =`<span class="recommend-sel" >
+              <i class="level-sel-i iconfont"></i>
+              <i>${val}</i>
+            </span>`;
+  if(checkedList==undefined){
+     checkedList = []
+  }else{
+    checkedList =checkedList.split('/');
+  }
+  for (let item of checkedList) {
+    if(val == item){
+      html = `<span class="recommend-sel" checked="checked">
+                <i class="level-sel-i iconfont" style="border:none;color:#c13232;margin-right:7px;font-size:16px;">&#xe640;</i>
+                <i>${val}</i>
+              </span>`;
+    }
+  }
+  return html;
+}
 module.exports = {
   cut: strcut ,
   getDefault: getDefaultFormat,
@@ -409,5 +451,7 @@ module.exports = {
   include: esinclude,
   school_logo: school_logo,
   getLink: getLink,
-  articleUrlgen:articleUrlgen
+  articleUrlgen:articleUrlgen,
+  eduChecked:eduChecked,
+  tagChecked:tagChecked
 };
