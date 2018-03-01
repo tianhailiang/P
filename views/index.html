@@ -377,7 +377,7 @@
 
     });
     //正确
-    $('#selByIp').on('click', 'a',function (e) {
+    $('#selByIp').on('click',function (e) {
       e.preventDefault();
       var currentarea = $(this).attr("data-id");
       $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});

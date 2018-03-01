@@ -71,8 +71,7 @@ exports.index = function (req, res, next) {
             }, callback);
         },
     },function (err, result) {
-        //var resIp = data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
-        var resIp = 14;
+        var resIp = data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
         if (resIp == 14) {
             var areaArr = [50,51];
             data.nowIp = areaArr[Math.round(Math.random())];
