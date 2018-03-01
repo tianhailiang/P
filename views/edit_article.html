@@ -12,8 +12,8 @@
 	<!-- ===头部=== -->
 	{% include "widget/top/top.html" %}
 	<!-- ====导航===== -->
-	{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-	{{nav_seventh.nav_seventh("#",tdk.cityid,helper)}}
+	{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+  {{ new_nav_red.new_nav_red(helper) }}
 	<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
   	<!-- ==广告1== -->
   	<div class="rel-case-map" id="AD_{% if login_info.usertype ==2 %}ADVISOR{% elif login_info.usertype ==3 %}CANZAN{% endif %}_CENTER_ARTICLEEDIT_SEAT1">
@@ -181,7 +181,7 @@
               </div>
             </div>
             <div class="editor-btn-box" data-articleId ="{{article.article_info.id}}">
-              <a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="article-preview">
+              <a href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="article-preview">
                    	文章预览
               </a>
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="save-draft">
