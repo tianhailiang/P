@@ -71,16 +71,15 @@ exports.index = function (req, res, next) {
             }, callback);
         },
     },function (err, result) {
-        /*var resIp = data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
+        var resIp = data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
         if (resIp == 14) {
             var areaArr = [50,51];
-            data.nowIp = areaArr[math.]
+            data.nowIp = areaArr[Math.round(Math.random())];
         }
         else {
             data.nowIp = resIp;
-        }*/
+        }
         data.iparea = iparea;
-        console.log('iparea', iparea);
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
