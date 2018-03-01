@@ -149,10 +149,16 @@
           '<p>' + aitem.title + '<div>' + aitem.tag_list + '</div></p>' +
           '</div>' +
           '<div class="homepage-p">' +
-          '<p>' +
-          '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
-          '</a>' +
-          '</p>' +
+          '<p>' ;
+          if(aitem.type==1){
+            aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "case=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
+              '</a>' ;
+          }else if(aitem.type==2){
+            aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
+              '</a>' ;
+          }
+
+      aItemHtml+=  '</p>' +
           addArticleImg(aitem.img_list) +
           '<div style="float: left;width: 200px;line-height: 45px;position: absolute;left: 446px;margin-top: 11px;">' + aitem.add_time + '</div>' +
           '</div>' +
