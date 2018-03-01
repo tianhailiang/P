@@ -1258,7 +1258,7 @@ exports.adviser_case = function (req, res, next) {
             wec.adviser_main({
                 "u_id": data.to_uid,
                 "page": 1,
-                "per_page": 4,
+                "per_page": 6,
                 "type": 1
             }, callback);
         }
