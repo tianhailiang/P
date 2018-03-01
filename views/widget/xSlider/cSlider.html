@@ -1,0 +1,44 @@
+{% macro doubleSlider(sliderArr,helper) %}
+<!-- ==========专家右侧轮播========= -->
+	<div class="branch-expert-lunbo" style="width:400px;position: relative;height:270px;">
+	    <!--<a class="arrow-left arrow-btn" href="javacript:void(0);"></a>-->
+	    <!--<a class="arrow-right arrow-btn" href="javacript:void(0);"></a>-->
+		<div class="swiper-container" style="width:400px;height:270px;">
+		  	<div class="swiper-wrapper">
+		    {% for item in sliderArr %}
+			    <div class="swiper-slide canzan-slide" style="{% if loop.index%6 ==0 %}padding-right:0;{% endif %}">
+				        <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
+			                 <img src="{{ item.imageurl }}" alt="{{ item.alt }}"/>
+			            </a>
+			    </div>
+	        {% endfor %}
+		  	</div>
+		</div>
+	</div>
+	<script>
+		var mySwiper = new Swiper('.swiper-container',{
+			autoplay : 4000,
+				loop : true,
+        mode : 'vertical',
+        slidesPerView : 2,
+        slidesPerGroup : 2,
+		})
+		$('.arrow-left').on('click', function(e){
+		    e.preventDefault()
+		    mySwiper.swipePrev()
+		})
+	  	$('.arrow-right').on('click', function(e){
+	    	e.preventDefault()
+	    	mySwiper.swipeNext()
+	  	})
+      
+      	$(".branch-expert-lunbo").on("mouseover",function(){
+      		$(".arrow-btn").show();
+      		mySwiper.stopAutoplay(); //暂停自动滚动
+      	})
+ 	  	$(".branch-expert-lunbo").on("mouseout",function(){
+ 	  		$(".arrow-btn").hide();
+ 	  		mySwiper.startAutoplay(); //开始自动滚动
+ 	  	})	
+	</script>
+{% endmacro %}

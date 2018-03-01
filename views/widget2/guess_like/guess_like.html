@@ -3,14 +3,16 @@
     <ul class="gw-likelist">
         {% for item in likelist.list %}
         <li>
-          <a href="javascript:;">
-            <div class="likes-item">
-              <img src="../assets/img/profile3.jpg" alt="">
-              <span class="people-name">{{item.user_info.realname }}</span>
-              <span class="people-action">{{item.tag_list | substrs(5)}}</span>
-            </div>
-            <div class="article">{{item.title}}</div>
+          <a href="{{helper.articleUrlgen('blog',item.uid|string)}}" style="display:inline-block;width:51px;height:51px;float:left;">
+            <img src="../assets/img/profile3.jpg" alt="" class="img-responsive">
           </a>
+            <div class="likes-item"style="padding-top:12px;">
+              <span class="people-name" style="margin-right:45px;margin-top:0;">{{item.user_info.realname }}</span>
+              <span class="people-action" style="margin-top:0">{{item.tag_list | substrs(5)}}</span>
+            </div>
+            <a style="margin:20px 0 10px 0" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+              <div class="article">{{item.title}}</div>
+            </a>
         </li>
         {% endfor %}
     </ul>

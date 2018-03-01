@@ -49,17 +49,9 @@
       {% include "widget/xSlider/xSlider.html" %}
     </div>
     <div class="lunbo_right">
-     {# {% include "widget/xSlider/xSlider2.html" %}  #}
-      <ul id="lunbo1">
-        <li><a href="{{xSlider2[2].linkurl}}" data-pid="{{xSlider2[2].pid}}"><img src="{{ xSlider2[2].imageurl }}" alt="{{xSlider2[2].alt}}3"></a></li>
-        <li><a href="{{xSlider2[3].linkurl}}" data-pid="{{xSlider2[3].pid}}"><img src="{{ xSlider2[3].imageurl }}" alt="{{xSlider2[3].alt}}4"></a></li>
-        <li><a href="{{xSlider2[0].linkurl}}" data-pid="{{xSlider2[0].pid}}"><img src="{{ xSlider2[0].imageurl }}" alt="{{xSlider2[0].alt}}1"></a></li>
-        <li><a href="{{xSlider2[1].linkurl}}" data-pid="{{xSlider2[1].pid}}"><img src="{{ xSlider2[1].imageurl }}" alt="{{xSlider2[1].alt}}2"></a></li>
-        <li><a href="{{xSlider2[2].linkurl}}" data-pid="{{xSlider2[2].pid}}"><img src="{{ xSlider2[2].imageurl }}" alt="{{xSlider2[2].alt}}3"></a></li>
-        <li><a href="{{xSlider2[3].linkurl}}" data-pid="{{xSlider2[3].pid}}"><img src="{{ xSlider2[3].imageurl }}" alt="{{xSlider2[3].alt}}4"></a></li>
-        <li><a href="{{xSlider2[0].linkurl}}" data-pid="{{xSlider2[0].pid}}"><img src="{{ xSlider2[0].imageurl }}" alt="{{xSlider2[0].alt}}1"></a></li>
-        <li><a href="{{xSlider2[1].linkurl}}" data-pid="{{xSlider2[1].pid}}"><img src="{{ xSlider2[1].imageurl }}" alt="{{xSlider2[1].alt}}2"></a></li>
-      </ul>
+      <!--四大优势-->
+      {% import "widget/xSlider/cSlider.html" as cSlider %}
+      {{cSlider.doubleSlider(xSlider2,helper)}}
     </div>
   </div>
   <!--50家分公司-->
@@ -312,23 +304,12 @@
       });
       $('.lunbo_lift .slider').xSlider({
           //轮播图配置
-          autoplay: 500,
+          autoplay: 2000,
           current: 0,
           speed: 500,
           intervalTime: 5000,
           pagination: true
       });
-      var lunbotimer = null;
-      var num = 0;
-      lunbotimer = setInterval(function () {
-          if (num == 3) {
-              $("#lunbo1").css({top: (-0) + 'px'})
-              num = 0;
-          }else {
-              num++;
-              $("#lunbo1").animate({top:-270*num+'px'})
-          }
-      }, 2000)
   })
 </script>
 </body>

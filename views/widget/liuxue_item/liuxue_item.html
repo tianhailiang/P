@@ -40,12 +40,14 @@
 		<ul class="gw-items gw-topitems">
 			{% for item in line %}
 			<li>
-				<a href="javascript:;">
-					<div class="gw-people">
+				<div class="gw-people">
+					<a href="{{helper.articleUrlgen('blog',item.uid|string)}}" style="display:inline-block;">
 						<img src="../assets/img/profile4.jpg" alt="">
-						<!-- <img src="{{item.img_list}}" alt=""> -->
-						<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
-					</div>
+					</a>
+					<!-- <img src="{{item.img_list}}" alt=""> -->
+					<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
+				</div>
+				<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
 					<div class="gw-legend gw-news">留学时讯</div>
 					<p style="clear:both">{{ item.title }}</p>
 				</a>
@@ -57,14 +59,16 @@
 		<ul class="gw-items">
 				{% for item in line %}
 				<li class="gw-newslist">
-						<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
-							<div class="gw-people">
-								<img src="../assets/img/profile4.jpg" alt="">
-								<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
-							</div>
-							<div class="gw-legend">{{item.tag_list}}</div>
-							<p style="clear:both">{{item.title}}</p>
+					<div class="gw-people">
+						<a href="{{helper.articleUrlgen('blog',item.uid|string)}}">
+							<img src="../assets/img/profile4.jpg" alt="">
 						</a>
+						<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
+					</div>
+					<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+						<div class="gw-legend">{{item.tag_list}}</div>
+						<p style="clear:both">{{item.title}}</p>
+					</a>
 				</li>
 				{% endfor %}
 		</ul>
