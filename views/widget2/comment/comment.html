@@ -12,11 +12,11 @@
 <div class="comment-list-box" >
   {% for item in article.comments.list %}
   <div class="comment-list clearfix" >
-    <div class="comment-head" style="background:url({{helper.avaterimg(item.uid,'small',item.userinfo.status,item.userinfo.version)}}) no-repeat 0 0;background-size:60px 76px;">
+    <div class="comment-head" style="background:url({{helper.avaterimg(item.uid,'small',item.userinfo.status,item.userinfo.version)}}) no-repeat 0 0;background-size:50px 50px;">
     </div>
     <div class="comment-info" >
       <div  class="comment-info-name-box">
-        <span class="comment-info-name">{{item.nickname}}</span>
+        <span class="comment-info-name">{{item.nickname}}<i class="adviser-v-i"></i></span>
         <span class="comment-info-time">
           {{item.add_time | getDefaultFormat('YYYY年MM月D日 HH:mm')}}
         </span>
@@ -196,11 +196,11 @@ $(function(){
 	              color = 'b2b8c2';
 	            }
 	            html += '<div class="comment-list clearfix" >'+
-	                      '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version)+') no-repeat 0 0;background-size:60px 76px;">'+
+	                      '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version)+') no-repeat 0 0;background-size:50px 50px;">'+
 	                      '</div>'+
 	                      '<div class="comment-info" >'+
 	                        '<div  class="comment-info-name-box">'+
-	                          '<span class="comment-info-name">'+result.data.list[i].nickname+
+	                          '<span class="comment-info-name">'+result.data.list[i].nickname+'<i class="adviser-v-i"></i>'+
 	                          '</span>'+
 	                          '<span class="comment-info-time">'+
 	                           result.data.list[i].add_time+ 
