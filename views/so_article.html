@@ -7,7 +7,24 @@
     .banner-box{
         margin-top: 20px;
         height: 130px;
-        background-color: yellow;
+        /*background-color: yellow;*/
+    }
+    .banner-box-left{
+        background: #dcdcdc;
+        height: 130px;
+    }
+    .banner-box-right{
+        background: #dcdcdc;
+        height: 130px;
+    }
+    .slider .slider-dot ul{
+        left:97%;
+    }
+    .slider .slider-dot ul li{
+        border-radius: 50%;
+    }
+    .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
+        margin-top: -33px
     }
     .main-left{
         padding: 20px 20px 0;
@@ -156,9 +173,9 @@
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
 {{ new_nav_red.new_nav_red(helper) }}
 <div class="dui-layout-lg clearfix banner-box">
-    <div class="dui-layout-con"></div>
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-silde"></div>
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
 </div>
 <div class="dui-layout-lg clearfix">
     <div class="dui-layout-con" style="background-color: #fff;">
@@ -205,22 +222,35 @@
     <div class="dui-layout-div"></div>
     <div class="dui-layout-silde">
         <div class="guess-like-right" style="margin-top: 20px;background-color: #fff;">
-            <div class="common-title" style="border:1px solid #dcdcdc;">
+            <div class="common-title" style="border:1px solid #dcdcdc;height: 48px;background-color: #f8f8f8;">
                 <i></i>
                 <h3>猜你喜欢</h3>
             </div>
-            {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+            <ul class="gw-likelist">
+                <li>
+                    <a href="javascript:;">
+                        <div class="likes-item">
+                            <img src="../assets/img/profile3.jpg" alt="">
+                            <span class="people-name">张三</span>
+                            <span class="people-action">指导</span>
+                        </div>
+                        <div class="article">冬奥会正式进入北京时间揭秘</div>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
 {% include "widget/new_footer/new_footer.html" %}
-{% import "widget/new_slide/new_slide2.html" as  slide %}
-{{slide.leyu_slide("AD_BRANCH_HOME_SEAT10") }}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
     $(function () {
-        $('.lunbo_lift .slider').xSlider({
+        $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
             current: 0,
@@ -228,11 +258,11 @@
             intervalTime: 5000,
             pagination: true
         });
-        $('.lunbo_right .slider').xSlider({
+        $('.banner-box-right .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
-            mode:'vertical',
-//          current: 0,
+//            mode:'vertical',
+            current: 0,
             speed: 1000,
             intervalTime: 5000,
             slidesPerView : 2,
