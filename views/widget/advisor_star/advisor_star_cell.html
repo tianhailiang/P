@@ -35,7 +35,7 @@
     {% for gw_item in xiangguan_guwen %}
         <li>
             <a href="{{helper.articleUrlgen('blog',item.uid|string)}}">
-                <img src="../assets/img/profile3.jpg" alt="">
+                <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
                 <div class="artical-info">
                     <div class="user-infos">
                         <span class="people-name">{{gw_item.user_info.nickname}}</span>

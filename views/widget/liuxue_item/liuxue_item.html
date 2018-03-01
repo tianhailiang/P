@@ -26,53 +26,58 @@
 	<div class="lx-head">
 		<h1>{{floor.country_name}}留学</h1>
 		<ul class="lx-tabitems">
-			<li class="active">推荐<em></em></li>
-			<li >中学<em></em></li>
-			<!-- <li >本科<em></em></li> -->
+			{% for tagitem in floor.list %}
+					<li>{{tagitem.edu_name}}<em></em></li>
+			{% endfor %}
+			<!-- <li >中学<em></em></li>
+			<li >本科<em></em></li>
 			<li>研究生<em></em></li>
-			<li>博士<em></em></li>
+			<li>博士<em></em></li> -->
 		</ul>
 	</div>
 	{% for type in  floor.list %}{#类别#}
 	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
 		{% for line in type.list %} {#行数#}
-		{% if loop.index == 1 %} {#第一行#}
-		<ul class="gw-items gw-topitems">
-			{% for item in line %}
-			<li>
-				<div class="gw-people">
-					<a href="{{helper.articleUrlgen('blog',item.uid|string)}}" style="display:inline-block;">
-						<img src="../assets/img/profile4.jpg" alt="">
-					</a>
-					<!-- <img src="{{item.img_list}}" alt=""> -->
-					<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
-				</div>
-				<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
-					<div class="gw-legend gw-news">留学时讯</div>
-					<p style="clear:both">{{ item.title }}</p>
-				</a>
-			</li>
-			{% endfor %}
-			<em class="triangle"></em>
-		</ul>
-		{% else %}
-		<ul class="gw-items">
-				{% for item in line %}
-				<li class="gw-newslist">
-					<div class="gw-people">
-						<a href="{{helper.articleUrlgen('blog',item.uid|string)}}">
-							<img src="../assets/img/profile4.jpg" alt="">
+			{% if loop.index == 1 %} {#第一行#}
+				<ul class="gw-items gw-topitems">
+					{% for item in line %}
+					{% if item.uid != null %}
+					<li>
+						<div class="gw-people">
+							<a href="{{helper.articleUrlgen('blog',item.uid|string)}}" style="display:inline-block;">
+								<img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
+							</a>
+							<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
+						</div>
+						<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+							<div class="gw-legend gw-news">留学时讯</div>
+							<p style="clear:both">{{ item.title }}</p>
 						</a>
-						<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
-					</div>
-					<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
-						<div class="gw-legend">{{item.tag_list}}</div>
-						<p style="clear:both">{{item.title}}</p>
-					</a>
-				</li>
-				{% endfor %}
-		</ul>
-		{% endif %}
+					</li>
+					{% endif %}
+					{% endfor %}
+					<em class="triangle"></em>
+				</ul>
+			{% else %}
+				<ul class="gw-items">
+						{% for item in line %}
+							{% if item.uid != null %}
+							<li class="gw-newslist">
+								<div class="gw-people">
+									<a href="{{helper.articleUrlgen('blog',item.uid|string)}}">
+										<img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
+									</a>
+									<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
+								</div>
+								<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+									<div class="gw-legend">{{item.tag_list}}</div>
+									<p style="clear:both">{{item.title}}</p>
+								</a>
+							</li>
+							{% endif %}
+						{% endfor %}
+				</ul>
+			{% endif %}
 		{% endfor %}
 	</div>
 	{% endfor %}{#类别end#}

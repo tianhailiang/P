@@ -5,7 +5,7 @@
     var ajaxUrlPrefix = global.ajaxUrlPrefix = {
         ucapi: 'http://api.jjlvip.cn/uc',
         cmsapi: 'http://api.jjlvip.cn/cms',
-        cdnhost: 'http://cdn2.jjl.cn',
+        cdnhost: 'http://cdn4.jjl.cn',
         shequ_prefix:'http://api.jjlvip.cn/so',
         imageshost: 'http://images.jjl.cn',
         nodeapi: 'http://api.jjlvip.cn',

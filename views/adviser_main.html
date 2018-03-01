@@ -133,9 +133,9 @@
       var aItemHtml = '<div class="homepage">' +
           '<div class="homepagecon">' +
           '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: 50px 50px;"></div>' +
-          '<h3>' + aitem.user_info.realname + '<i></i></h3>' +
+          '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
           '<ul>' +
-          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 15px;">' +
+          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 4px;">' +
           '<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>' +
           '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
           '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>' +
@@ -160,7 +160,7 @@
 
       aItemHtml+=  '</p>' +
           addArticleImg(aitem.img_list) +
-          '<div style="float: left;width: 200px;line-height: 45px;position: absolute;left: 446px;margin-top: 11px;">' + aitem.add_time + '</div>' +
+          '<div style="float: left;width: 200px;line-height: 37px;position: absolute;left: 446px;margin-top: 11px;">' + aitem.add_time + '</div>' +
           '</div>' +
           '</div>' +
           addBottom(aitem);
@@ -185,7 +185,7 @@
       }
       var html = '<ul id="adviser-info-ul" class="homepage-li clearfix" >';
       for (var j = 0; j < imgList.length; j++) {
-        html += '<li><img src="' + fn.imageThumb(imgList[j], '150x150') + '" ></li>';
+        html += '<li style="margin-top: 14px"><img src="' + fn.imageThumb(imgList[j], '150x150') + '" ></li>';
       }
       html += '</ul>';
       return html;
@@ -312,8 +312,7 @@
               report_type: '1',
               report_content: report_content,
               userid: login_ss.uid,
-              artecle_id: $(that).attr("data-artId"),
-              catid: $(that).attr("data-catid")
+              artecle_id: $(that).attr("data-artId")
             },
             dataType: 'json',
             // jsonpCallback:'callback',
