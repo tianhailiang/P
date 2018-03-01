@@ -15,8 +15,8 @@
     <h1 id="guanbi-tankuang">欢迎来到金吉列留学、请选择合适的金吉列分公司所在地<span>全国热线电话:400-010-8000</span></h1>
     <div class="xuanze-ing">
       <div style="float: left;line-height: 40px"> <i class="iconfont icon-top" style="margin: 24px 6px 0px 14px;color: #C13232">&#xe603;</i>猜你所在的城市</div>
-      <span id="fengongsi" style="float: left;margin: 0 10px;line-height: 40px;color: #C13232;text-decoration:underline">{{tdk.cityid | getCity()}}</span>
-      <div class="xuanze-anniu" id="selByIp"><a target="_blank" href="{{helper.urlgen('branch_home','c='+ tdk.cityid)}}">正确</a></div>
+      <span id="fengongsi" style="float: left;margin: 0 10px;line-height: 40px;color: #C13232;text-decoration:underline">{{nowIp | getCity()}}</span>
+      <div class="xuanze-anniu"><a target="_blank" href="" data-id="{{nowIp}}" id="selByIp">正确</a></div>
     </div>
     <div class="xuanze-xianxian"></div>
     <div class="xuanze-chengshi">
@@ -367,13 +367,22 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
-    $('.xuanzechengshi').on('click',"a", function(e){
-      e.preventDefault();
-      currentarea = $(this).attr("data-id");
+    $('.xuanze-chengshi').on('click',"a", function(e){
+      var currentarea = $(this).attr("data-id");
+      if (currentarea) {
+        e.preventDefault();
+      }
       $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
       window.location.reload();
 
     });
+    //正确
+    $('#selByIp').on('click',function (e) {
+      e.preventDefault();
+      var currentarea = $(this).attr("data-id");
+      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
+      window.location.reload();
+    })
       //
       $(window).on('scroll', function () {
           var $scroll = $(this).scrollTop();
