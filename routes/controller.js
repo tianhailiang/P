@@ -48,9 +48,9 @@ exports.index = function (req, res, next) {
         //return false;
     }
     async.parallel({
-        /*getNowCity: function (callback) {
+        getNowCity: function (callback) {
             cms.ip_geter(ip,callback);
-        },*/
+        },
         lunbo_list:function(callback) {
             cms.lunbo_list({
                 "ad_page": "HOME",
@@ -71,7 +71,14 @@ exports.index = function (req, res, next) {
             }, callback);
         },
     },function (err, result) {
-        //data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
+        /*var resIp = data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
+        if (resIp == 14) {
+            var areaArr = [50,51];
+            data.nowIp = areaArr[math.]
+        }
+        else {
+            data.nowIp = resIp;
+        }*/
         data.iparea = iparea;
         console.log('iparea', iparea);
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
