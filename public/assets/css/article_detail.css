@@ -122,8 +122,12 @@
     margin:0;
     margin-right: 10px;
 }
-.bdshare-button-style0-16 .bds_weixin{
+.bdshare-button-style0-16 .wx{
   background:url(../img/wx.png) no-repeat 0 0;
+  background-size: 20px 20px;
+}
+.bdshare-button-style0-16 .weixin-pengyouquan{
+  background:url(../img/pyq.png) no-repeat 0 0;
   background-size: 20px 20px;
 }
 .bdshare-button-style0-16 .bds_tsina{
