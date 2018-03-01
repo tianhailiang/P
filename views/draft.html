@@ -14,12 +14,12 @@
 	<!-- ====导航===== -->
 	{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
   {{ new_nav_first.new_nav_first(helper) }}
-	<div class="dui-layout-lg clearfix" style="margin-top: 20px;margin-bottom:20px;">
-		<!-- ==广告1== -->
-		<div class="rel-case-map" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 3 %}CANZAN{% endif %}_CENTER_DRAFT_SEAT1">
-		</div>
-	</div>
-	<div class="dui-layout-lg clearfix" >
+  <div class="dui-layout-lg clearfix banner-box">
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
+  </div>
+	<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
 	  <div class="dui-layout-silde ">
 	    <!-- =======顾问头像关注====== -->
       {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
@@ -97,7 +97,9 @@
         </div>
     </div>
 	</div>
-  {% include "widget/new_footer/new_footer.html" %}
+    {% include "widget/new_footer/new_footer.html" %}
+    {% import "widget/new_slide/new_slide.html" as  slide %}
+    {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
   <script>
   var login_ss = null; //获取用户信息
   if($.cookie('login_ss') != undefined){
@@ -105,13 +107,35 @@
   }
   </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+  <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+  <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/select.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
   <script>
     $(function(){
+        $('.banner-box-left .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+            current: 0,
+            speed: 500,
+            intervalTime: 5000,
+            pagination: true
+        });
+        $('.banner-box-right .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+            current: 0,
+            speed: 1000,
+            intervalTime: 5000,
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+//          pagination: true
+        });
       console.log($.cookie('login_ss'))
       var login_ss = null; //获取用户信息
       if($.cookie('login_ss') != undefined){
@@ -125,18 +149,6 @@
         var go_is_draft = $(this).attr("data-id");
         window.location.href = fn.curlgen('advisor_center/draft','is_draft=' + go_is_draft);
       });
-      /*分页器*/
-      // $('.pagination-box').pagination({
-      //   pages: total_num,
-      //   styleClass: ['pagination-large'],
-      //   showCtrl: true,
-      //   currentPage: cur_page,
-      //   displayPage: 7,
-      //   onSelect: function (num) {
-      //     window.location.href = fn.curlgen('advisor_center/draft','is_draft=' + cur_is_draft,'page=' + num);
-      //   }
-      // });
-      //让分页器居中显示
       $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
       $(".draft-delete-btn").on("click",function(){
         //删除文章
@@ -198,7 +210,7 @@
                 window.location.reload();
               },1000);
             }else{
-              layer.msg(result.err)
+              layer.msg('发布失败')
             }
           },
            error:function(XMLHttpRequest, textStatus, errorThrown){

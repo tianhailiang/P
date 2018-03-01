@@ -54,7 +54,7 @@ $(function(){
 
       $("#name-num").html('');
     };
-    if(!validate_leyu.phone($.trim($("#phone").val()))){
+    if(!validate_leyu.phone($.trim($("#phone-slide").val()))){
       //判断手机号
       $('#phoneTip').html("您输入的手机号不正确");
       return false;
@@ -92,7 +92,7 @@ $(function(){
       //jsonpCallback: 'callback',
       data:{
         name: $("#name").val(),
-        phone: $("#phone").val(),
+        phone: $("#phone-slide").val(),
         country: $('#department').val(),
         city: $('#city').val(),
         need:$("#context").val()
@@ -116,7 +116,7 @@ $(function(){
   $("#reset-btn").on("click",function(){
     $("#name").val("");
     $('#name-num').html("");
-    $("#phone").val("");
+    $("#phone-slide").val("");
     $('#phoneTip').html('');
     $("#context").val("")
   })

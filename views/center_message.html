@@ -27,13 +27,11 @@
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
 {{ new_nav_first.new_nav_first(helper) }}
-{% if login_info.usertype == 1 %} {#用户#}
-<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_USER_CENTER_REVMESSAGE_SEAT1"></div>
-{% elif login_info.usertype == 2 %} {#顾问#}
-<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_ADVISOR_CENTER_REVMESSAGE_SEAT1"></div>
-{% elif login_info.usertype == 3 %} {#参赞#}
-<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_CANZAN_CENTER_REVMESSAGE_SEAT1"></div>
-{% endif %}
+<div class="dui-layout-lg clearfix banner-box">
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
+</div>
 <div class="dui-layout-lg clearfix" style="margin-top: 20px;">
     <div class="dui-layout-silde">
         <div class="clearfix">
@@ -82,19 +80,42 @@
     </div>
 </div>
 {% include "widget/new_footer/new_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
 <script>
     if($.cookie('login_ss') != undefined){
         login_ss = JSON.parse($.cookie('login_ss'));  
     }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/select.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
     $(function () {
+        $('.banner-box-left .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+            current: 0,
+            speed: 500,
+            intervalTime: 5000,
+            pagination: true
+        });
+        $('.banner-box-right .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+            current: 0,
+            speed: 1000,
+            intervalTime: 5000,
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+//          pagination: true
+        });
       //让分页器居中显示
       $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
 

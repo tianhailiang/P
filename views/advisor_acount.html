@@ -55,6 +55,29 @@
         width:100%;
         height:100%;
     }
+    /*轮播图*/
+    .banner-box{
+      margin-top: 20px;
+      height: 130px;
+      /*background-color: yellow;*/
+    }
+    .banner-box-left{
+      background: #dcdcdc;
+      height: 130px;
+    }
+    .banner-box-right{
+      background: #dcdcdc;
+      height: 130px;
+    }
+    .slider .slider-dot ul{
+      left:95%;
+    }
+    .slider .slider-dot ul li{
+      border-radius: 50%;
+    }
+    .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left {
+      margin-top: -33px
+    }
   </style>
 </head>
 <body style="background: #f5f5f5">
@@ -64,8 +87,11 @@
 {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
 {{ new_nav_first.new_nav_first(helper) }}
 
-<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 1 %}USER{% endif %}_CENTER_ACOUNT_SEAT1"></div>
-
+<div class="dui-layout-lg clearfix banner-box">
+  <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
+</div>
 <div class="dui-layout-lg clearfix">
   <div class="dui-layout-silde right">
     <div class="clearfix" style="margin-top: 20px">
@@ -133,9 +159,29 @@
 <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+
 <script>
   $(document).ready(function () {
-
+      $('.banner-box-left .slider').xSlider({
+          //轮播图配置
+//          autoplay : 500,
+          current: 0,
+          speed: 500,
+          intervalTime: 5000,
+          pagination: true
+      });
+      $('.banner-box-right .slider').xSlider({
+          //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+          current: 0,
+          speed: 1000,
+          intervalTime: 5000,
+          slidesPerView : 2,
+          slidesPerGroup : 2,
+//          pagination: true
+      });
     $("form").Vaild();
     var lS = document.getElementById('baocunSubmit');
     console.log('loginS', lS);
@@ -209,7 +255,7 @@
   }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 </body>
 </html>

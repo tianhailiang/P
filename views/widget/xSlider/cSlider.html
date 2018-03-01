@@ -5,13 +5,11 @@
 	    <!--<a class="arrow-right arrow-btn" href="javacript:void(0);"></a>-->
 		<div class="swiper-container" style="width:400px;height:270px;">
 		  	<div class="swiper-wrapper">
-		    {% for list in sliderArr %}
+		    {% for item in sliderArr %}
 			    <div class="swiper-slide canzan-slide" style="{% if loop.index%6 ==0 %}padding-right:0;{% endif %}">
-			        {% for item in list %}
-				        <a target="_blank"   href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
+				        <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
 			                 <img src="{{ item.imageurl }}" alt="{{ item.alt }}"/>
 			            </a>
-		            {% endfor %}
 			    </div>
 	        {% endfor %}
 		  	</div>
@@ -43,4 +41,4 @@
  	  		mySwiper.startAutoplay(); //开始自动滚动
  	  	})	
 	</script>
-{% endmacro %} 
+{% endmacro %}

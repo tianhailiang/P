@@ -128,6 +128,21 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function(){
+    window._bd_share_config = {
+      "common": {
+        "bdSnsKey": {},
+        "bdText": "",
+        "bdMini": "1",
+        "bdMiniList": false,
+        "bdPic": "",
+        "bdStyle": "0",
+        "bdSize": "16",
+        "bdUrl": window.location.href
+      },
+      "share": {}
+    };
+    console.log(_bd_share_config.common.bdUrl)
+    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
       $('.banner-box-left .slider').xSlider({
           //轮播图配置
 //          autoplay : 500,
@@ -152,14 +167,14 @@
       var aItemHtml = '<div class="homepage">'+
           '<div class="homepagecon">'+
           '<div class="homepageing" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;"></div>'+
-          '<h3>'+ aitem.user_info.realname +'<i></i></h3>'+
+          '<h3>'+ aitem.user_info.realname +'<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>'+
           '<ul>'+
-          '<div class="bdsharebuttonbox" style="margin-top: 15px;">'+
+          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 4px;">'+
           '<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>'+
-          '<a href="#" class="bds_tsinas" data-cmd="weixin" title="分享到朋友圈"></a>'+
+          '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
           '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>'+
           '<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>'+
-          '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px">举报</div>'+
+          '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px;" data-artId="'+aitem.id+'">举报</div>'+
           '</div>'+
           '</div>'+
           '</ul>'+
@@ -169,11 +184,11 @@
           '</div>'+
           '<div class="homepage-p">'+
           '<p>' +
-          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"case="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span style="color: #C13232">【查看详情】</span>'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span style="color: #C13232">【查看详情】</span>'+
           '</a>'+
           '</p>'+
           addArticleImg(aitem.img_list)+
-          '<div style="float: left;width: 200px;line-height: 45px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
+          '<div style="float: left;width: 200px;line-height: 37px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
           '</div>'+
           '</div>'+
           addBottom(aitem);
@@ -185,8 +200,8 @@
         favHtml += appendArticleItem(favArr[i]);
       }
       $('.right-main').append(favHtml);
+      window._bd_share_main.init();
       $('.report-btn').on("click",report); //点击举报
-      $('.share-btn').on('click',share); //点击分享
     }
     function addArticleImg (imgList) {
       if(imgList==undefined){
@@ -194,7 +209,7 @@
       }
       var html = '<ul id="adviser-info-ul" class="homepage-li clearfix" >';
       for (var j=0; j<imgList.length; j++) {
-        html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+        html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
       }
       html += '</ul>';
       return html;
@@ -264,7 +279,6 @@
       })
     });
     $('.report-btn').on("click",report); //点击举报
-    $('.share-btn').on('click',share); //点击分享
     function report(){
       //举报调取函数
       if(login_ss == undefined){
@@ -321,8 +335,7 @@
               report_type:'1',
               report_content:report_content,
               userid:login_ss.uid,
-              artecle_id:$(that).attr("data-artId"),
-              catid:$(that).attr("data-catid")
+              artecle_id:$(that).attr("data-artId")
             },
             dataType:'json',
             // jsonpCallback:'callback',
@@ -360,16 +373,6 @@
         }else{
           report_content ='';
         }
-      });
-    }
-    function share(){
-      //调取分享函数
-      var that =this;
-      layer.open({
-        type: 2,
-        title: '分享到',
-        area: ['262px', '327px'],
-        content: ['/share?title='+encodeURI($(that).attr('data-title'))+'&url='+$(that).attr('data-url'), 'no']
       });
     }
   })

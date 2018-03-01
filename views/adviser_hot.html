@@ -21,13 +21,13 @@
     <div class="clearfix" style="margin-top: 20px">
       {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
       {% if userinfo.status == 1 %} {#离职#}
-        {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
+      {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
       {% else %} {#在职#}
-        {% if userinfo.usertype == 2 %}
-        {{ community_advisor.advisor(userinfo,helper,login_info) }}
-        {% elif userinfo.usertype == 3 %}
-        {{ community_advisor.counsellor(userinfo,helper,login_info) }}
-        {% endif %}
+      {% if userinfo.usertype == 2 %}
+      {{ community_advisor.advisor(userinfo,helper,login_info) }}
+      {% elif userinfo.usertype == 3 %}
+      {{ community_advisor.counsellor(userinfo,helper,login_info) }}
+      {% endif %}
       {% endif %}
     </div>
     <div style="margin-top: 20px;" class="dui-box-shadow">
@@ -41,25 +41,25 @@
   <div class="dui-layout-div"></div>
   <div class="dui-layout-con left dui-box-shadow" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
     <div class="" style="margin-top: 20px">
-    <div>
-      {% import "widget2/community_nav/community_nav.html" as community_nav %}
-      {% if userinfo.status == 1 %} {#离职顾问#}
-        {{community_nav.adviser_nav_leave('主页', userinfo.uid, helper)}}
-      {% else %} {#在职顾问#}
+      <div>
+        {% import "widget2/community_nav/community_nav.html" as community_nav %}
+        {% if userinfo.status == 1 %} {#离职顾问#}
+        {{community_nav.adviser_nav_leave('精华', userinfo.uid, helper)}}
+        {% else %} {#在职顾问#}
         {% if userinfo.usertype == 2 %}
-        {{community_nav.adviser_nav('主页', userinfo.uid, helper)}}
+        {{community_nav.adviser_nav('精华', userinfo.uid, helper)}}
         {% elif userinfo.usertype == 3 %}
-        {{community_nav.canzan_nav('主页', userinfo.uid, helper)}}
+        {{community_nav.canzan_nav('精华', userinfo.uid, helper)}}
         {% endif %}
-      {% endif %}
-    </div>
+        {% endif %}
+      </div>
       {% if guwen_list.list.length > 0 %}
       <div class="right-main clearfix">
-          {% for item in guwen_list.list %}
-              {% import "widget2/article/article.html" as article_show %}
-              {{ article_show.article_show(item, helper) }}
+        {% for item in guwen_list.list %}
+        {% import "widget2/article/article.html" as article_show %}
+        {{ article_show.article_show(item, helper) }}
 
-            {% include "widget2/bottom_comment/bottom_comment.html" %}
+        {% include "widget2/bottom_comment/bottom_comment.html" %}
 
         {% endfor %}
       </div>
@@ -77,9 +77,9 @@
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo) }}
 {% include "widget/new_footer/new_footer.html" %}
 <script>
-  var login_ss = null; 
+  var login_ss = null;
   if($.cookie('login_ss') != undefined){
-    login_ss = JSON.parse($.cookie('login_ss'));  
+    login_ss = JSON.parse($.cookie('login_ss'));
   }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
@@ -135,7 +135,7 @@
           '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: 50px 50px;"></div>' +
           '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
           '<ul>' +
-          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 4px;">' +
+          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 15px;">' +
           '<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>' +
           '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
           '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>' +
@@ -149,16 +149,10 @@
           '<p>' + aitem.title + '<div>' + aitem.tag_list + '</div></p>' +
           '</div>' +
           '<div class="homepage-p">' +
-          '<p>' ;
-          if(aitem.type==1){
-            aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "case=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
-              '</a>' ;
-          }else if(aitem.type==2){
-            aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
-              '</a>' ;
-          }
-
-      aItemHtml+=  '</p>' +
+          '<p>' +
+          '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
+          '</a>' +
+          '</p>' +
           addArticleImg(aitem.img_list) +
           '<div style="float: left;width: 200px;line-height: 37px;position: absolute;left: 446px;margin-top: 11px;">' + aitem.add_time + '</div>' +
           '</div>' +
@@ -174,7 +168,6 @@
       }
 
       $('.right-main').append(favHtml);
-        window._bd_share_main.init();
       $('.report-btn').on("click", report); //点击举报
       window._bd_share_main.init();
     }
@@ -312,7 +305,8 @@
               report_type: '1',
               report_content: report_content,
               userid: login_ss.uid,
-              artecle_id: $(that).attr("data-artId")
+              artecle_id: $(that).attr("data-artId"),
+              catid: $(that).attr("data-catid")
             },
             dataType: 'json',
             // jsonpCallback:'callback',

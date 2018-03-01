@@ -2,7 +2,7 @@
 <div class="homepage">
   <div class="homepagecon">
     <div class="homepageing" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 50px 50px;"></div>
-    <h3>{{item.user_info.realname}}<i></i></h3>
+    <h3>{{item.user_info.realname}}<img src="{{helper.cdnhost}}/assets/img/1v.png" alt=""></h3>
     <ul>
       <div>
         <div class="bdsharebuttonbox" style="margin-top: 15px;">
@@ -10,7 +10,7 @@
           <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
           <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
           <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
-          <div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px">举报</div>
+          <div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px;" data-artId="{{item.id}}">举报</div>
         </div>
       </div>
     </ul>
@@ -20,11 +20,11 @@
   </div>
   <div class="homepage-p">
     <p>
-      {% if item.user_info.usertype == 1 %}
+      {% if item.type == 1 %}
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'case='+item.id | string)}}" class="dui-text-warning" rel="nofollow">
         {{item.introduce}} <span style="color: #C13232">【查看详情】</span>
       </a>
-      {% elif item.user_info.usertype == 2 %}
+      {% elif item.type == 2 %}
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" class="dui-text-warning" rel="nofollow">
         {{item.introduce}} <span style="color: #C13232">【查看详情】</span>
       </a>
