@@ -3,199 +3,21 @@
 <pre>{{ error.stack }}</pre>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-
-    <meta charset="UTF-8">
-    <link rel="shortcut icon" href="/favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
-    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/base.css">
-    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/dui.min.css">
-    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/dui-append.min.css">
-    <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/nodemain2.min.css">
-    <!--[if lt IE 9]>
-    <script src="{{helper.cdnhost}}/dep/js/html5.js"></script>
-    <![endif]-->
-    <script  src="{{helper.cdnhost}}/dep/js/jquery.js"></script>
-    <script src="{{helper.cdnhost}}/dep/js/jquery.cookie.js" ></script>
-    <script src="{{helper.cdnhost}}/dep/js/dui.js"></script>
-    <script src="{{helper.cdnhost}}/assets/font/iconfont.js"></script>
-    <script src="{{helper.cdnhost}}/assets/js/json2.js" ></script>
-    {% if helper.version == 'development' %}
-    <script  src="{{helper.cdnhost}}/assets/js/common/common_dev.js"></script>
-    {% elif helper.version == 'production' %}
-    <script  src="{{helper.cdnhost}}/assets/js/common/common_pro.js"></script>
-    {% endif %}
-    <script src="{{helper.cdnhost}}/assets/js/common/common_base.js"></script>
-</head>
+{% include "header_new.html" %}
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/index.css">
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/error.css">
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/branch_home_page.css" >
 <body>
-{% include "widget/nav_first/nav_first.html" %}
-<!-- =====nav 导航===== -->
-<div class="nav-fifth-w clearfix">
-    <div class="dui-layout-lg  clearfix nav-fifth" >
-        <div class="nav-fifth-list clearfix">
-            <a href="{{ helper.urlgen('edu','e=19','n=1') }}" class="nav-fifth-a nav-fifth-a-f">中小学</a>
-            <a href="{{ helper.urlgen('edu','e=1','n=1') }}" class="nav-fifth-a">本科生</a>
-            <a href="{{ helper.urlgen('edu','e=2','n=1') }}" class="nav-fifth-a">研究生</a>
-            <span class="fifth-shu">|</span>
-            <a href="{{ helper.urlgen('glue') }}" class="nav-fifth-a">申请攻略</a>
-            <a href="{{ helper.urlgen('visa') }}" class="nav-fifth-a">签证指导</a>
-            <a href="{{ helper.urlgen('prereq') }}" class="nav-fifth-a">申请条件</a>
-            <a href="{{ helper.urlgen('cost') }}" class="nav-fifth-a">留学费用</a>
-            <span class="fifth-shu">|</span>
-            <a href="{{ helper.urlgen('cases') }}" class="nav-fifth-a">经典案例</a>
-            <a href="{{ helper.urlgen('productrank') }}" class="nav-fifth-a">留学方案</a>
-            <a href="{{ helper.urlgen('schoollib') }}" class="nav-fifth-a">院校库</a>
-            <a href="{{ helper.urlgen('schoolrank') }}" class="nav-fifth-a">大学排名</a>
-            <span class="fifth-shu">|</span>
-            <a href="{{helper.urlgen('p')}}" class="nav-fifth-a">留学社区</a>
-            {% if helper.version=='development' %}
-            <a href="{{ helper.urlgen('yimin') }}" class="nav-fifth-a">移民站</a>
-            {% else %}
-            <a href="http://yimin.jjlvip.cn{{ helper.urlgen('yimin') }}" class="nav-fifth-a">移民站</a>
-            {%  endif %}
-            <a href="{{ helper.urlgen('about') }}" class="nav-fifth-a" rel="nofollow">关于金吉列</a>
-            <a href="http://www.jjl.cn/english/?tag=2" class="nav-fifth-a" rel="nofollow">English site</a>
-        </div>
-    </div>
-</div>
-<!-- ====国家导航=== -->
-<div class="country-nav-box " >
-    {%
-    set countryList = [
-    {
-    "id": 1,
-    "country": "美国"
-    },
-    {
-    "id": 2,
-    "country": "英国"
-    },
-    {
-    "id": 3,
-    "country": "加拿大"
-    },
-    {
-    "id": 4,
-    "country": "澳州"
-    },
-    {
-    "id": 5,
-    "country": "新西兰"
-    },
-    {
-    "id": 50,
-    "country": "韩国"
-    },
-    {
-    "id": 51,
-    "country": "日本"
-    },
-    {
-    "id": 52,
-    "country": "新加坡"
-    },
-    {
-    "id": 53,
-    "country": "马来西亚"
-    },
-    {
-    "id": 54,
-    "country": "中国香港"
-    },
-    {
-    "id": 103,
-    "country": "德国"
-    },
-    {
-    "id": 104,
-    "country": "法国"
-    },
-
-    {
-    "id": 105,
-    "country": "挪威"
-    },
-    {
-    "id": 106,
-    "country": "瑞典"
-    },
-    {
-    "id": 107,
-    "country": "芬兰"
-    },
-    {
-    "id": 109,
-    "country": "荷兰"
-    },
-    {
-    "id": 110,
-    "country": "丹麦"
-    },
-    {
-    "id": 113,
-    "country": "瑞士"
-    },
-    {
-    "id": 101,
-    "country": "乌克兰"
-    },
-
-    {
-    "id": 100,
-    "country": "俄罗斯"
-    },
-    {
-    "id": 108,
-    "country": "爱尔兰"
-    },
-
-    {
-    "id": 111,
-    "country": "意大利"
-    },
-    {
-    "id": 112,
-    "country": "西班牙"
-    },
-
-    {
-    "id": 102,
-    "country": "白俄罗斯"
-    }
-
-
-    ]
-    %}
-
-    <ul class="country-nav-ul clearfix" >
-        {% for item in countryList %}
-        <li>
-            <a class="dui-text-warning-s" href="{{ helper.urlgen('nationrank','n='+item.id)}}">{{item.country}}</a>
-        </li>
-
-        {% endfor %}
-    </ul>
-</div>
+{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+{{ new_nav_first.new_nav_first(helper) }}
 <div class="error-con"><img src="{{helper.cdnhost}}/assets/img/404.png" alt=""></div>
 <p class="error-btn">
     <a  href="javascript:history.go(-1);" class="dui-btn btn-xlarge btn-appointment go-back-btn liuxue-back-btn">返回上页</a>
-    <a  href="{{helper.urlgen('site_map')}}" class="dui-btn btn-xlarge btn-appointment go-back-btn">网站地图</a></p>
 </p>
 {%esi helper.include(esikey,'fragment/fangan_liuxue')%}
 <script src="{{helper.cdnhost}}/assets/js/nav_home.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script>
-    // 留学方案列表 切换
-    $(".branch-product-country li").on("click",function(){
-        $(".branch-product-country li").find("a").removeClass("active");
-        $(this).find("a").addClass("active");
-        $(".branch-product-list").css({"display":"none"});
-        $(".branch-product-list").eq($(this).index()).css({"display":"block"});
-    });
-
     $('.liuxue-back-btn').on('click',function(e) {
         e.preventDefault();
         if (window.history.length == 1) {
