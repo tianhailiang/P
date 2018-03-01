@@ -20,11 +20,11 @@
   </div>
   <div class="homepage-p">
     <p>
-      {% if item.user_info.usertype == 1 %}
+      {% if item.type == 1 %}
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'case='+item.id | string)}}" class="dui-text-warning" rel="nofollow">
         {{item.introduce}} <span style="color: #C13232">【查看详情】</span>
       </a>
-      {% elif item.user_info.usertype == 2 %}
+      {% elif item.type == 2 %}
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" class="dui-text-warning" rel="nofollow">
         {{item.introduce}} <span style="color: #C13232">【查看详情】</span>
       </a>
