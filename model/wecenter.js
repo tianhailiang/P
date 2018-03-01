@@ -340,6 +340,15 @@ exports.likelist=function(data,callback){
   }
   api.apiRequest(url, callback);
 }
+// 顾问主页-相关顾问
+exports.xiangguan_guwen=function(data,callback){
+  var url = _api_url_path(data, config.apis.xiangguan_guwen);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
 //删除评论接口
 exports.remove_comment = function(data,callback){
   var url = config.apis.post_remove_comment;

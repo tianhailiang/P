@@ -29,24 +29,26 @@
     {% endfor %}
 </div>
 {% endmacro %}
-<!--明星顾问侧栏五格-->
-{% macro advisor_star_block() %}
+<!--相关顾问侧栏五个-->
+{% macro advisor_starblock(xiangguan_guwen) %}
 <ul class="gw-list">
-    <li>
-        <a href="javascript::">
-            <img src="../assets/img/profile3.jpg" alt="">
-            <div class="artical-info">
-                <div class="user-infos">
-                    <span class="people-name">张三</span>
-                    <span class="people-action">美国留学顾问</span>
+    {% for gw_item in xiangguan_guwen %}
+        <li>
+            <a href="javascript:;">
+                <img src="../assets/img/profile3.jpg" alt="">
+                <div class="artical-info">
+                    <div class="user-infos">
+                        <span class="people-name">{{gw_item.user_info.nickname}}</span>
+                        <span class="people-action">{{gw_item.user_info.dept}}</span>
+                    </div>
+                    <div class="guwen-info">
+                        <span class="pull-left">粉丝<em>{{gw_item.user_info.fans_count}}</em></span>
+                        <span class="pull-right">文章<em>{{gw_item.user_info.article_count}}</em></span>
+                    </div>
                 </div>
-                <div class="guwen-info">
-                    <span class="pull-left">粉丝<em>222</em></span>
-                    <span class="pull-right">文章<em>111</em></span>
-                </div>
-            </div>
-        </a>
-    </li>
+            </a>
+        </li>
+    {% endfor %}
 </ul>
 {% endmacro %}
 

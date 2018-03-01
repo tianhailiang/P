@@ -130,8 +130,8 @@
         </div>
     </div>
 </div>
-{% import "widget/slide/slide.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+{% import "widget/new_slide/new_slide2.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo) }}
 {% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null; 
@@ -174,13 +174,16 @@
       var aItemHtml = '<div class="homepage">'+
           '<div class="homepagecon">'+
           '<div class="homepageing" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;"></div>'+
-          '<h3>'+ aitem.user_info.realname +'<img src="../assets/img/1v.png" alt=""></h3>'+
+          '<h3>'+ aitem.user_info.realname +'<i></i></h3>'+
           '<ul>'+
-          '<li class="share-btn"><img src="../assets/img/wx.png" alt=""></li>'+
-          '<li class="share-btn"><img src="../assets/img/pyq.png" alt=""></li>'+
-          '<li class="share-btn"><img src="../assets/img/xl.png" alt=""></li>'+
-          '<li class="share-btn"><img src="../assets/img/qq.png" alt=""></li>'+
-          '<li class="report-btn" style="color: #666;font-size: 12px">举报</li>'+
+          '<div class="bdsharebuttonbox" style="margin-top: 15px;">'+
+          '<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>'+
+          '<a href="#" class="bds_tsinas" data-cmd="weixin" title="分享到朋友圈"></a>'+
+          '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>'+
+          '<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>'+
+          '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px">举报</div>'+
+          '</div>'+
+          '</div>'+
           '</ul>'+
           '</div>'+
           '<div class="homepage-title">'+

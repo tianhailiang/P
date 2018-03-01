@@ -106,7 +106,7 @@
 .likes-item+.article{font-size:16px;margin:8px 0 18px;color:#333}
 .likes-item img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%;float:left}
 .gw-list .people-action{font-size:12px;color:#c13232;background:#fdf3f2;height:24px;line-height:24px;width:80px;text-align:center;-webkit-border-radius:10px;border-radius:10px}
-.gw-list .people-name{font-size:14px;margin-left:10px;margin-right:64px;background:url(1v.png) no-repeat;background-position:right center;padding-right:20px}
+.gw-list .user-infos .people-name{font-size:14px;margin-left:10px;display:inline-block;margin-right:75px;background:url(/assets/img/1v.png) no-repeat;background-position:right center;padding-right:20px}
 .gw-list img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%;float:left}
 .artical-info{margin-left:60px;overflow:hidden;font-size:14px;margin-bottom:20px}
 .guwen-info{overflow:hidden;margin-left:10px;margin-top:8px;position:relative}
