@@ -1927,6 +1927,20 @@ exports.center_article_detail = function(req,res,next){
   // log.info(data.article_id )
   data.preview = req.query.preview || 0; //获取是否预览 1是预览 0 不是
   async.parallel({
+      lunbo_list: function (callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER_CASEDETAIL",
+              "ad_seat": "SEAT1",
+              "cityid":area
+          }, callback);
+      },
+      lunbo_list2: function (callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER_CASEDETAIL",
+              "ad_seat": "SEAT2",
+              "cityid":area
+          }, callback);
+      },
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
@@ -1942,6 +1956,8 @@ exports.center_article_detail = function(req,res,next){
       },callback);  
     } 
   },function(err, result){
+      data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
+      data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article =  returnData(result.article,'article');
     data.id = data.article_id;
@@ -1977,6 +1993,20 @@ exports.center_case_detail = function(req,res,next){
   data.article_id = req.params.id; //获取文章id
   data.preview = req.query.preview || 0; //获取是否预览 1是预览 0 不是
   async.parallel({
+      lunbo_list: function (callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER_CASEDETAIL",
+              "ad_seat": "SEAT1",
+              "cityid":area
+          }, callback);
+      },
+      lunbo_list2: function (callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER_CASEDETAIL",
+              "ad_seat": "SEAT2",
+              "cityid":area
+          }, callback);
+      },
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
@@ -1992,6 +2022,8 @@ exports.center_case_detail = function(req,res,next){
       },callback);  
     } 
   },function(err, result){
+      data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
+      data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article = returnData(result.article,'article');
     data.id = data.article_id;
