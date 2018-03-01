@@ -198,6 +198,7 @@ exports = module.exports = function (app) {// routes
   app.post('/login_user', login.login_user);
   //退出
   app.get('/login_out', login.login_out);
-  
+  //用户视角 精华
+  app.get('/blog/:id/hot', controller.hot);
 
 };
