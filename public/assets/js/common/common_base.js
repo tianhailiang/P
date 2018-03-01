@@ -361,6 +361,20 @@
               return imageUrl;
             }
           }
+        },
+        //显示一定长度的字符，超过一定长度显示省略号
+        ellipsis: function (str, count) {
+            var resultStr = '';
+            if (str) {
+                if (str.length > (count || 116)) {
+                    var sliceStr = str.slice(0, count || 116);
+                    resultStr = sliceStr + '...';
+                }
+                else {
+                    resultStr = str;
+                }
+            }
+            return resultStr;
         }
     }
     function seo_to_url(arguments, agtype) {
