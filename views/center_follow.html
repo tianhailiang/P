@@ -87,7 +87,8 @@
 
 </div>
 {% include "widget/new_footer/new_footer.html" %}
-
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
 <script>
     var login_ss = null; 
     if($.cookie('login_ss') != undefined){
@@ -95,6 +96,8 @@
     }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/select.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
