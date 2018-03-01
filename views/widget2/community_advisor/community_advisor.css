@@ -29,13 +29,23 @@
   text-align: center;
   margin-top:20px;
 }
-.community-advisor .advisor-img img{
- display: block;
-  width: 100px;
+/*.community-advisor .advisor-img img{
+   display: block;
+   width: 100px;
+   height:126px;
+   margin-bottom:20px;
+   margin-left:10px;
+
+ }*/
+.community-advisor .advisor-img{
+  width: 126px;
   height:126px;
   margin-bottom:20px;
-  margin-left:10px;
-
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 .community-advisor .advisor-name{
   font-size: 18px;
