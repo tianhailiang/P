@@ -122,8 +122,12 @@
     margin:0;
     margin-right: 10px;
 }
-.bdshare-button-style0-16 .bds_weixin{
+.bdshare-button-style0-16 .wx{
   background:url(../img/wx.png) no-repeat 0 0;
+  background-size: 20px 20px;
+}
+.bdshare-button-style0-16 .weixin-pengyouquan{
+  background:url(../img/pyq.png) no-repeat 0 0;
   background-size: 20px 20px;
 }
 .bdshare-button-style0-16 .bds_tsina{
@@ -133,4 +137,27 @@
 .bdshare-button-style0-16 .bds_sqq{
   background:url(../img/qq.png) no-repeat 0 0;
   background-size: 20px 20px;
+}
+/*轮播图*/
+.banner-box{
+  margin-top: 20px;
+  height: 130px;
+  /*background-color: yellow;*/
+}
+.banner-box-left{
+  background: #dcdcdc;
+  height: 130px;
+}
+.banner-box-right{
+  background: #dcdcdc;
+  height: 130px;
+}
+.slider .slider-dot ul{
+  left:97%;
+}
+.slider .slider-dot ul li{
+  border-radius: 50%;
+}
+.slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left {
+  margin-top: -33px
 }

@@ -189,55 +189,50 @@
             <div class="result-bar">
                 搜索<span id="result-keyword">{{keyword}}</span>共搜索到<span id="result-num">{{article_list.total}}</span>个结果
             </div>
-            <div class="result-type-bar">
-                <a href="{{helper.urlgen('so_article','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
-                <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
-                <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
+            {% if article_list.total == 0 %}
+            <!--没有搜索到数据-->
+            <div class="no-result page-blank">
+                <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
+                <span class="blank-info">没有搜索到相关内容，换个关键词试试吧</span>
             </div>
-            <div class="result-conent" id="result-content">
-                {% for item in article_list.list %}
-                <div class="result-item clearfix">
-                    <div class="item-adviser">
-                        <a href="{{helper.articleUrlgen('blog',item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/></a><span>{{item.user_info.nickname}}</span><img src="../assets/img/1v.png" alt="" class="flag"/>
-                    </div>
-                    <div class="item-info">
-                        <div class="info-top clearfix">
-                            <a class="info-title" href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">{{item.title}}</a>
-                            <div class="info-tags">
-                                <span>{{item.tag_list}}</span>
-                            </div>
-                        </div>
-                        <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">【查看详情】</a></div>
-                        <div class="time">{{item.update_time}}</div>
-                    </div>
+            {% else %}
+            <div class="has-result">
+                <div class="result-type-bar">
+                    <a href="{{helper.urlgen('so_article','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
+                    <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
                 </div>
-                {% endfor %}
+                <div class="result-conent" id="result-content">
+                    {% for item in article_list.list %}
+                    <div class="result-item clearfix">
+                        <div class="item-adviser">
+                            <a href="{{helper.articleUrlgen('blog',item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/></a><span>{{item.user_info.nickname}}</span><img src="../assets/img/1v.png" alt="" class="flag"/>
+                        </div>
+                        <div class="item-info">
+                            <div class="info-top clearfix">
+                                <a class="info-title" href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">{{item.title}}</a>
+                                <div class="info-tags">
+                                    <span>{{item.tag_list}}</span>
+                                </div>
+                            </div>
+                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">【查看详情】</a></div>
+                            <div class="time">{{item.update_time}}</div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
+                    加载更多
+                    <i class="city-icon iconfont">&#xe60b;</i>
+                </div>
             </div>
-            <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
-                加载更多
-                <i class="city-icon iconfont">&#xe60b;</i>
-            </div>
+            {% endif %}
         </div>
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-silde">
         <div class="guess-like-right" style="margin-top: 20px;background-color: #fff;">
-            <div class="common-title" style="border:1px solid #dcdcdc;height: 48px;background-color: #f8f8f8;">
-                <i></i>
-                <h3>猜你喜欢</h3>
-            </div>
-            <ul class="gw-likelist">
-                <li>
-                    <a href="javascript:;">
-                        <div class="likes-item">
-                            <img src="../assets/img/profile3.jpg" alt="">
-                            <span class="people-name">张三</span>
-                            <span class="people-action">指导</span>
-                        </div>
-                        <div class="article">冬奥会正式进入北京时间揭秘</div>
-                    </a>
-                </li>
-            </ul>
+            {% include "widget2/guess_like/guess_like.html" %}
         </div>
     </div>
 </div>

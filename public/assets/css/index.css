@@ -15,15 +15,15 @@
     background: #34c360;
     float: left;
 }
-.lunbo_right,.swiper-container{
+.lunbo_right{
     width: 400px;
     height: 270px;
     background: #fbd238;
     float: left;
     overflow: hidden;
 }
-.lunbo_right .slider:hover .slider-btn{
-    /*display: none;*/
+.slider .slider-dot ul li{
+    border-radius: 50%;
 }
 .branch_company{
     height: 146px;
@@ -118,28 +118,4 @@
     bottom: -32px;
     left: 50%;
     margin-left: -77px;
-}
-.slider .slider-dot ul li{
-    border-radius: 50%;
-}
-#lunbo1{
-    width: 400px;
-    height: 270px;
-    /*background: #000;*/
-    position: absolute;
-    /*overflow: hidden;*/
-    top: -270px;
-}
-#lunbo1 li{
-    display: block;
-    /*float: left;*/
-    width: 400px;
-    height: 135px;
-    background: #ccc;
-    list-style: none;
-    cursor: pointer;
-}
-#lunbo1 li img{
-    width: 100%;
-    height: 100%;
 }
