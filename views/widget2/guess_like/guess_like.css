@@ -19,6 +19,17 @@
 	vertical-align: middle;
 	margin-right: 16px;
 }
+.gw-likelist .img-responsive{
+	display: inline-block;
+	height: 51px;
+	width:51px;
+	border-radius: 50%;
+	-webkit-border-radius:50%;
+}
+.gw-likelist .article{
+	margin-top:20px;
+	margin-bottom:8px;
+}
 
 
 
