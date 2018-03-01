@@ -1,11 +1,11 @@
 
-.gw-likelist{width:280px;list-style:none}
-.gw-likelist li{margin-top:20px;border-bottom:solid 1px #dcdcdc}
-.gw-likelist li:first-child{margin-top:0}
-.gw-likelist a{color:#333;text-decoration:none}
+.gw-likelist{width:280px;list-style:none;padding-bottom: 10px;}
+.gw-likelist li{margin-top:20px;border-bottom:solid 1px #dcdcdc;margin-left: 10px;margin-right: 10px;}
+/* .gw-likelist li:first-child{margin-top:0} */
+.gw-likelist a{color:#333;text-decoration:none;}
 .likes-item{overflow:hidden}
 .likes-item span{display:inline-block;margin-top:18px}
-.likes-item+.article{margin:8px 0 18px;color:#333;font-size:16px}
+.likes-item+.article{margin:8px 0 10px;color:#333;font-size:16px}
 .likes-item img{float:left;width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
 .gw-list .people-action,.likes-item .people-action{width:80px;height:24px;-webkit-border-radius:10px;border-radius:10px;background:#fdf3f2;color:#c13232;text-align:center;font-size:12px;line-height:24px}
 .gw-list .people-name,.likes-item .people-name{margin-right:64px;margin-left:10px;padding-right:20px;background:url(/assets/img/1v.png) no-repeat;background-position:right center;font-size:14px}
