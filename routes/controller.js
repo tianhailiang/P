@@ -59,7 +59,7 @@ exports.index = function (req, res, next) {
           cms.shouye({
             "city_id": 1,
           }, callback);
-         }
+         },
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -71,6 +71,7 @@ exports.index = function (req, res, next) {
         };
         // console.log(result.shouye);
         //data.esikey = esihelper.esikey();
+        //log.info(data.xiangguan_guwen)
         res.render('index', data);
     })
 };
@@ -91,13 +92,13 @@ exports.so_article = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "SEARCHNEWS",
+                "ad_page": "SEARCH_ARTICLE",
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "SEARCHNEWS",
+                "ad_page": "SEARCH_ARTICLE",
                 "ad_seat": "SEAT2"
             }, callback);
         },
@@ -795,6 +796,18 @@ exports.adviser_photo_p = function(req,res,next){
       data.login_info.uid = 0;
     }
     async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ADVISOR_CENTER",
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ADVISOR_CENTER",
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
         //获取用户信息（普通用户，顾问，参赞）
         userinfo:function(callback){
             wec.userinfo({
@@ -829,6 +842,8 @@ exports.adviser_photo_p = function(req,res,next){
         //     }, callback);
         // }
     },function(err, result){
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
         // data.channel_list =returnData(result.channel_list,'channel_list');
         //切割成 二维数组
@@ -1101,10 +1116,18 @@ exports.adviser_main = function (req, res, next) {
         "country_id":1,
         "city_id":1,
         "per_page":5
-    }, 
-    callback)
-    }
+    },callback)
+    },
+    xiangguan_guwen:function (callback){ //相关顾问
+      wec.xiangguan_guwen({
+        "country_id":1,
+        "city_id":1,
+        "per_page":5
+    },callback)
+    },
   },function(err, result){
+      data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+      data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.userinfo =returnData(result.userinfo,'userinfo');
     if(result.userinfo.code == '1210000006'){
       //顾问不存在的时候  跳到404
@@ -1113,6 +1136,7 @@ exports.adviser_main = function (req, res, next) {
     }
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
     data.likelist = returnData(result.likelist,'likelist');
+    data.xiangguan_guwen = returnData(result.xiangguan_guwen,'xiangguan_guwen');
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
     var pagekey = ''
@@ -1127,6 +1151,7 @@ exports.adviser_main = function (req, res, next) {
       realname: data.login_info.realname,
     };
     data.esikey = esihelper.esikey();
+    //log.info(data.xiangguan_guwen)
     res.render('adviser_main', data);
   });
 }
@@ -1163,6 +1188,18 @@ exports.adviser_special = function (req, res, next) {
     data.login_info.uid = 0;
   }
   async.parallel({
+      lunbo_list:function(callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER",
+              "ad_seat": "SEAT1"
+          }, callback);
+      },
+      lunbo_list2:function(callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER",
+              "ad_seat": "SEAT2"
+          }, callback);
+      },
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({"u_id": data.login_info.uid, "to_uid":data.to_uid},callback);
@@ -1171,6 +1208,8 @@ exports.adviser_special = function (req, res, next) {
       wec.adviser_main({"u_id": data.to_uid, "page": 1, "per_page": 10, "type": 2}, callback);
     }
   },function(err, result){
+      data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+      data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.userinfo =returnData(result.userinfo,'userinfo');
     // data.channel_list =returnData(result.channel_list,'channel_list');
     data.zhuanlanlist =returnData(result.zhuanlanlist,'zhuanlanlist');
@@ -1208,6 +1247,18 @@ exports.adviser_case = function (req, res, next) {
       data.login_info.uid = 0;
     }
     async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ADVISOR_CENTER",
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ADVISOR_CENTER",
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
         //获取用户信息（普通用户，顾问，参赞）
         userinfo:function(callback){
             wec.userinfo({
@@ -1251,6 +1302,8 @@ exports.adviser_case = function (req, res, next) {
         }
 
     },function(err, result){
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
         // data.channel_list =returnData(result.channel_list,'channel_list');
         data.case_data = returnData(result.case_list,'case_list');
