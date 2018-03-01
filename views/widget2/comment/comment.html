@@ -16,7 +16,11 @@
     </div>
     <div class="comment-info" >
       <div  class="comment-info-name-box">
-        <span class="comment-info-name">{{item.nickname}}<i class="adviser-v-i"></i></span>
+        <span class="comment-info-name">{{item.nickname}}
+          {% if item.user_info.usertype ==2 %}
+            <i class="adviser-v-i"></i>
+          {% endif %}
+        </span>
         <span class="comment-info-time">
           {{item.add_time | getDefaultFormat('YYYY年MM月D日 HH:mm')}}
         </span>
@@ -116,13 +120,17 @@ $(function(){
   	       console.log(result)
   	        if(result.code == 0){
   	          layer.msg('评论成功')   
+              var vHtml = '';
+              if(login_ss.usertype ==2){
+                vHtml = '<i class="adviser-v-i"></i>';
+              }
   	          var html ='<div class="comment-list clearfix" >'+
   	                       '<div class="comment-head" style="background:url('+fn.avaterimg(login_ss.uid,'small',0)+') no-repeat 0 0;background-size:60px 76px;" >'+
   	                       '</div>'+
   	                       '<div class="comment-info" >'+
   	                         '<div  class="comment-info-name-box">'+
   	                            '<span class="comment-info-name">'+ 
-  	                            result.data.comment_id.nickname +
+  	                            result.data.comment_id.nickname +vHtml+
   	                            '</span>'+
   	                            '<span class="comment-info-time">'+
   	                             moment.unix(result.data.time).format('YYYY年MM月D日 HH:mm') +
@@ -195,12 +203,16 @@ $(function(){
 	            }else{
 	              color = 'b2b8c2';
 	            }
+              var vHtml = '';
+              if(result.data.list[i].user_info.usertype ==2){
+                vHtml = '<i class="adviser-v-i"></i>';
+              }
 	            html += '<div class="comment-list clearfix" >'+
 	                      '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version)+') no-repeat 0 0;background-size:50px 50px;">'+
 	                      '</div>'+
 	                      '<div class="comment-info" >'+
 	                        '<div  class="comment-info-name-box">'+
-	                          '<span class="comment-info-name">'+result.data.list[i].nickname+'<i class="adviser-v-i"></i>'+
+	                          '<span class="comment-info-name">'+result.data.list[i].nickname+vhtml+
 	                          '</span>'+
 	                          '<span class="comment-info-time">'+
 	                           result.data.list[i].add_time+ 

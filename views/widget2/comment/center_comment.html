@@ -6,7 +6,11 @@
     </div>
     <div class="comment-info" >
       <div  class="comment-info-name-box">
-        <span class="comment-info-name">{{item.nickname}}<i class="adviser-v-i"></i></span>
+        <span class="comment-info-name">{{item.nickname}}
+          {% if item.user_info.usertype ==2 %}
+            <i class="adviser-v-i"></i>
+          {% endif %}
+        </span>
         <span class="comment-info-time">
           {{item.add_time | getDefaultFormat('YYYY年MM月D日 HH:mm')}}
         </span>
@@ -88,12 +92,16 @@
               }else{
                 color = 'b2b8c2';
               }
+              var vHtml = '';
+              if(result.data.list[i].user_info.usertype ==2){
+                vHtml = '<i class="adviser-v-i"></i>';
+              }
               html += '<div class="comment-list clearfix" >'+
                         '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version)+') no-repeat 0 0;background-size:50px 50px;">'+
                         '</div>'+
                         '<div class="comment-info" >'+
                           '<div  class="comment-info-name-box">'+
-                            '<span class="comment-info-name">'+result.data.list[i].nickname+'<i class="adviser-v-i"></i>'+
+                            '<span class="comment-info-name">'+result.data.list[i].nickname+vHtml+
                             '</span>'+
                             '<span class="comment-info-time">'+
                              result.data.list[i].add_time+ 
