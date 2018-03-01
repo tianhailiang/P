@@ -21,11 +21,7 @@ function _api_path_url_shequ(data, url) {
     return null;
   }
   for(var item in data){
-    if (item == 'country'){
-      url += item + '-' + data[item];
-    }else{
-      url += '__' + item + '-' + data[item];
-    }
+    url += '__' + item + '-' + data[item];
   }
   return url;
 }
@@ -324,7 +320,7 @@ exports.draft_to_article = function(data,callback){
 
 // 顾问主页列表
 exports.adviser_main=function(data,callback){
-  var url = _api_url_path(data, config.apis.adviser_main);
+  var url = _api_path_url_shequ(data, config.apis.adviser_main);
   if (url == null) {
     callback('404');
     return;
