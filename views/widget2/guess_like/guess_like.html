@@ -4,7 +4,7 @@
         {% for item in likelist.list %}
         <li>
           <a href="{{helper.articleUrlgen('blog',item.uid|string)}}" style="display:inline-block;width:51px;height:51px;float:left;">
-            <img src="../assets/img/profile3.jpg" alt="" class="img-responsive">
+            <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="img-responsive">
           </a>
             <div class="likes-item"style="padding-top:12px;">
               <span class="people-name" style="margin-right:45px;margin-top:0;">{{item.user_info.realname }}</span>
