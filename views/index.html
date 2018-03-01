@@ -1,10 +1,91 @@
 <!DOCTYPE html>
 <html>
 {% include "header_new.html" %}
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/logo.css" >
 <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/index.css">
 <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
 <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
 <body>
+{% if iparea %}
+{% else %}
+<div class="zhezhao" id="zhezhaox">
+</div>
+<div id="zhezhaos" style="position: fixed;left: 50%; margin-left: -350px;z-index: 1000000;top: 50%;margin-top: -215px">
+  <div class="xuanze-con">
+    <h1 id="guanbi-tankuang">欢迎来到金吉列留学、请选择合适的金吉列分公司所在地<span>全国热线电话:400-010-8000</span></h1>
+    <div class="xuanze-ing">
+      <div style="float: left;line-height: 40px"> <i class="iconfont icon-top" style="margin: 24px 6px 0px 14px;color: #C13232">&#xe603;</i>猜你所在的城市</div>
+      <span id="fengongsi" style="float: left;margin: 0 10px;line-height: 40px;color: #C13232;text-decoration:underline">{{tdk.cityid | getCity()}}</span>
+      <div class="xuanze-anniu" id="selByIp"><a target="_blank" href="{{helper.urlgen('branch_home','c='+ tdk.cityid)}}">正确</a></div>
+    </div>
+    <div class="xuanze-xianxian"></div>
+    <div class="xuanze-chengshi">
+      <div class="xuanze-chengshi-left">
+        <p><span>B</span><a target="_blank" class="dui-text-warning-s" data-id="1"  href="{{helper.urlgen('branch_home','c=1')}}">北京</a></p>
+        <p><span>C</span><a target="_blank" class="dui-text-warning-s" data-id="5"  href="{{helper.urlgen('branch_home','c=5')}}">成都</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="7"  href="{{helper.urlgen('branch_home','c=7')}}">重庆</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="19"  href="{{helper.urlgen('branch_home','c=19')}}">长沙</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="25"  href="{{helper.urlgen('branch_home','c=25')}}">长春</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="41"   href="{{helper.urlgen('branch_home','c=41')}}">常州</a>
+        </p>
+        <p><span>D</span><a target="_blank" class="dui-text-warning-s" data-id="13"  href="{{helper.urlgen('branch_home','c=13')}}">大连</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="43"  href="{{helper.urlgen('branch_home','c=43')}}">东莞</a></p>
+        <p><span>F</span><a target="_blank" class="dui-text-warning-s" data-id="37"  href="{{helper.urlgen('branch_home','c=37')}}">佛山</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="39"  href="{{helper.urlgen('branch_home','c=39')}}">福州</a></p>
+        <p><span>G</span><a target="_blank" class="dui-text-warning-s" data-id="3"  href="{{helper.urlgen('branch_home','c=3')}}">广州</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="35"  href="{{helper.urlgen('branch_home','c=35')}}">贵州</a></p>
+        <p><span>H</span><a target="_blank" class="dui-text-warning-s" data-id="6"  href="{{helper.urlgen('branch_home','c=6')}}">杭州</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="51"  href="{{helper.urlgen('branch_home','c=51')}}">汉口</a>
+          <a target="_blank" class="dui-text-warning-s"  data-id="22"  href="{{helper.urlgen('branch_home','c=22')}}">合肥</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="24"  href="{{helper.urlgen('branch_home','c=24')}}">哈尔滨</a>
+          <a target="_blank" class="dui-text-warning-s"  data-id="26"  href="{{helper.urlgen('branch_home','c=26')}}">呼市</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="32"  href="{{helper.urlgen('branch_home','c=32')}}">邯郸</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="46"  href="{{helper.urlgen('branch_home','c=46')}}">海南</a></p>
+        <p><span>J</span><a target="_blank" class="dui-text-warning-s" data-id="9"  href="{{helper.urlgen('branch_home','c=9')}}">济南</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="30"   href="{{helper.urlgen('branch_home','c=30')}}">吉林</a></p>
+        <p><span>K</span><a target="_blank" class="dui-text-warning-s" data-id="21"   href="{{helper.urlgen('branch_home','c=21')}}">昆明</a></p>
+        <p><span>L</span><a target="_blank" class="dui-text-warning-s" data-id="27"   href="{{helper.urlgen('branch_home','c=27')}}">兰州</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="48"   href="{{helper.urlgen('branch_home','c=48')}}">洛阳</a></p>
+      </div>
+      <div class="xuanze-chengshi-right">
+        <p><span>N</span><a target="_blank" class="dui-text-warning-s" data-id="16"   href="{{helper.urlgen('branch_home','c=16')}}">南京</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="29"   href="{{helper.urlgen('branch_home','c=29')}}">南昌</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="34"   href="{{helper.urlgen('branch_home','c=34')}}">宁波</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="38"   href="{{helper.urlgen('branch_home','c=38')}}">南宁</a></p>
+        <p><span>Q</span><a target="_blank" class="dui-text-warning-s" data-id="10"   href="{{helper.urlgen('branch_home','c=10')}}">青岛</a></p>
+        <p><span>S</span><a target="_blank" class="dui-text-warning-s" data-id="2"   href="{{helper.urlgen('branch_home','c=2')}}">上海</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="8"   href="{{helper.urlgen('branch_home','c=8')}}">沈阳</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="12"   href="{{helper.urlgen('branch_home','c=12')}}">石家庄</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="20"   href="{{helper.urlgen('branch_home','c=20')}}">深圳</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="23"   href="{{helper.urlgen('branch_home','c=23')}}">苏州</a></p>
+        <p><span>T</span><a target="_blank" class="dui-text-warning-s" data-id="4"   href="{{helper.urlgen('branch_home','c=4')}}">天津</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="17"   href="{{helper.urlgen('branch_home','c=17')}}">太原</a>
+          <a target="_blank" class="dui-text-warning-s"  data-id="18"  href="{{helper.urlgen('branch_home','c=18')}}">唐山</a></p>
+        <!--<p><span>W</span><a target="_blank" class="dui-text-warning-s" href="{{helper.urlgen('branch_home','c=14')}}">武汉</a>-->
+        <p><span>W</span><a target="_blank" class="dui-text-warning-s" data-id="50"   href="{{helper.urlgen('branch_home','c=50')}}">武昌</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="33"   href="{{helper.urlgen('branch_home','c=33')}}">无锡</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="42"   href="{{helper.urlgen('branch_home','c=42')}}">温州</a>
+        </p>
+        <p><span>X</span><a target="_blank" class="dui-text-warning-s" data-id="15"   href="{{helper.urlgen('branch_home','c=15')}}">西安</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="28"  href="{{helper.urlgen('branch_home','c=28')}}">厦门</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="36"   href="{{helper.urlgen('branch_home','c=36')}}">徐州</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="45"   href="{{helper.urlgen('branch_home','c=45')}}">西宁</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="47"   href="{{helper.urlgen('branch_home','c=47')}}">新疆</a></p>
+        <p><span>Y</span><a target="_blank" class="dui-text-warning-s" data-id="31"   href="{{helper.urlgen('branch_home','c=31')}}">烟台</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="40"   href="{{helper.urlgen('branch_home','c=40')}}">银川</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="44"   href="{{helper.urlgen('branch_home','c=44')}}">宜昌</a></p>
+        <p><span>Z</span><a target="_blank" class="dui-text-warning-s" data-id="11"   href="{{helper.urlgen('branch_home','c=11')}}">郑州</a></p>
+      </div>
+    </div>
+    <div class="xuanze-haiwai-bikuang"></div>
+    <div class="xuanze-haiwai">
+      <h2><i class="iconfont icon-top" style="margin: 26px 6px 0px 14px;color: #C13232;">&#xe6bd;</i>海外分公司:
+        <a target="_blank" class="dui-text-warning-s"  href="http://www2.jjlvip.cn/specialrank/zt/overseas/vancouver/index.html">温哥华</a></h2>
+    </div>
+  </div>
+
+</div>
+{% endif %}
 <!--留学国家-->
 <div class="nationality_guoqi_warp">
   <div class="nationality_guoqi">
@@ -286,6 +367,13 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
+    $('.xuanzechengshi').on('click',"a", function(e){
+      e.preventDefault();
+      currentarea = $(this).attr("data-id");
+      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
+      window.location.reload();
+
+    });
       //
       $(window).on('scroll', function () {
           var $scroll = $(this).scrollTop();

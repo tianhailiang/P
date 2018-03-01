@@ -26,11 +26,13 @@
 	<div class="lx-head">
 		<h1>{{floor.country_name}}留学</h1>
 		<ul class="lx-tabitems">
-			<li class="active">推荐<em></em></li>
-			<li >中学<em></em></li>
-			<!-- <li >本科<em></em></li> -->
+			{% for tagitem in floor.list %}
+					<li>{{tagitem.edu_name}}<em></em></li>
+			{% endfor %}
+			<!-- <li >中学<em></em></li>
+			<li >本科<em></em></li>
 			<li>研究生<em></em></li>
-			<li>博士<em></em></li>
+			<li>博士<em></em></li> -->
 		</ul>
 	</div>
 	{% for type in  floor.list %}{#类别#}
@@ -39,6 +41,7 @@
 			{% if loop.index == 1 %} {#第一行#}
 				<ul class="gw-items gw-topitems">
 					{% for item in line %}
+					{% if item.uid != null %}
 					<li>
 						<div class="gw-people">
 							<a href="{{helper.articleUrlgen('blog',item.uid|string)}}" style="display:inline-block;">
@@ -51,12 +54,14 @@
 							<p style="clear:both">{{ item.title }}</p>
 						</a>
 					</li>
+					{% endif %}
 					{% endfor %}
 					<em class="triangle"></em>
 				</ul>
 			{% else %}
 				<ul class="gw-items">
 						{% for item in line %}
+							{% if item.uid != null %}
 							<li class="gw-newslist">
 								<div class="gw-people">
 									<a href="{{helper.articleUrlgen('blog',item.uid|string)}}">
@@ -69,6 +74,7 @@
 									<p style="clear:both">{{item.title}}</p>
 								</a>
 							</li>
+							{% endif %}
 						{% endfor %}
 				</ul>
 			{% endif %}
