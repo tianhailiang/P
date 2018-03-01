@@ -73,6 +73,7 @@
 	background-size:60px 60px;*/
 	margin-right: 10px;
 	float:left;
+	border-radius: 50%;
 }
 
 .comment-info{
@@ -165,5 +166,5 @@
 	line-height: 53px;
 	font-size: 14px;
 	color:#333;
-	
 }
+

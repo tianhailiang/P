@@ -22,6 +22,11 @@
     float: left;
     overflow: hidden;
 }
+.canzan-slide a{
+    width: 400px;
+    height: 135px;
+    margin: 0;
+}
 .slider .slider-dot ul li{
     border-radius: 50%;
 }
