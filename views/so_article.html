@@ -232,22 +232,7 @@
     <div class="dui-layout-div"></div>
     <div class="dui-layout-silde">
         <div class="guess-like-right" style="margin-top: 20px;background-color: #fff;">
-            <div class="common-title" style="border:1px solid #dcdcdc;height: 48px;background-color: #f8f8f8;">
-                <i></i>
-                <h3>猜你喜欢</h3>
-            </div>
-            <ul class="gw-likelist">
-                <li>
-                    <a href="javascript:;">
-                        <div class="likes-item">
-                            <img src="../assets/img/profile3.jpg" alt="">
-                            <span class="people-name">张三</span>
-                            <span class="people-action">指导</span>
-                        </div>
-                        <div class="article">冬奥会正式进入北京时间揭秘</div>
-                    </a>
-                </li>
-            </ul>
+            {% include "widget2/guess_like/guess_like.html" %}
         </div>
     </div>
 </div>
