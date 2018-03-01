@@ -111,7 +111,7 @@
         .code-box-in .has-code {
             background-position: center;
             -webkit-background-size: contain;
-            background-size: 100%;
+            background-size: contain;
             background-repeat: no-repeat;
         }
         .code-box-in .has-code .code-mask{
@@ -257,10 +257,8 @@
             var resData = JSON.parse(response);
             console.log('onSuccess~~~thl', resData);
             if (resData.errno == 0) {
-                console.log('上传成功！')
                 $('#weixin-box').find('.no-code').hide();
                 $('#weixin-box').find('.has-code').show().css("background-image","url(" + resData.data[0] + ")");
-                //$('#weixin-box').find('.has-code').find('img').attr('src',resData.data[0]);
             }
             else {
                 layer.msg(resData.message);
@@ -306,9 +304,15 @@
             eleProgress.show().html(percent);
         },
         onSuccess: function(file, response) {
-            console.log('onSuccess~~~thl', file, response);
             var resData = JSON.parse(response);
-            $('')
+            console.log('onSuccess~~~thl', resData);
+            if (resData.errno == 0) {
+                $('#qq-box').find('.no-code').hide();
+                $('#qq-box').find('.has-code').show().css("background-image","url(" + resData.data[0] + ")");
+            }
+            else {
+                layer.msg(resData.message);
+            }
         },
         onFailure: function(file) {
             console.log('失败回调')

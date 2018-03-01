@@ -174,19 +174,6 @@
   cursor: pointer;
   margin-right: 30px;
 }
-.recommend-sel-i{
-  display: inline-block;
-  width:12px;
-  height:12px;
-  border-radius: 2.5px;
-  border: 1px solid #333;
-  vertical-align: text-top;
-  margin-right: 5px;
-}
-.recommend-sel i{
-  font-size: 14px;
-  color:#333;
-}
 .newsletter-hide{
   display: none;
 }
