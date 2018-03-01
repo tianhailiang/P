@@ -128,6 +128,9 @@
     <input type="button" style="border:none;font-size: 14px;color: #fff;width: 80px;height: 30px;float: right;background: #C13232;color: #fff;text-align: center;line-height: 30px;margin-right: 80px" onclick="baocunSubmit()" value="确定保存"/>
   </div>
 </div>
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
 <script>
   var login_ss = null; 
   if($.cookie('login_ss') != undefined){
@@ -135,8 +138,11 @@
   }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script>
   $(function(){
     $("#gerenjieshao").on("change",function(){

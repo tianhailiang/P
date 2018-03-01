@@ -12,8 +12,8 @@
 	<!-- ===头部=== -->
 	{% include "widget/top/top.html" %}
 	<!-- ====导航===== -->
-	{% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-	{{nav_seventh.nav_seventh("#",tdk.cityid,helper)}}
+	{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+  {{ new_nav_red.new_nav_red(helper) }}
 	<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
   	<!-- ==广告1== -->
   	<div class="rel-case-map" id="AD_{% if login_info.usertype == 2 %}ADVISOR{% elif login_info.usertype == 3 %}CANZAN{% endif %}_CENTER_POSTARTICLE_SEAT1">
@@ -202,6 +202,8 @@
       </div>
 	</div>
   {% include "widget/new_footer/new_footer.html" %}
+  {% import "widget/new_slide/new_slide.html" as  slide %}
+  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){
@@ -210,6 +212,8 @@
     console.log(login_ss)
   </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+  <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>

@@ -555,9 +555,9 @@
   </div>
 </div>
 
-{% import "widget/slide/slide.html" as  slide %}
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
-{% include "widget/footer/footer.html" %}
 <script>
   var login_ss = null; 
   if($.cookie('login_ss') != undefined){
@@ -565,6 +565,8 @@
   }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
 <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>

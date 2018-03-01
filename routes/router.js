@@ -198,6 +198,8 @@ exports = module.exports = function (app) {// routes
   app.post('/login_user', login.login_user);
   //退出
   app.get('/login_out', login.login_out);
+  //用户视角 精华
+  app.get('/blog/:id/hot', controller.hot);
   app.get('/qq_login', login.qq_login);//第三方登录
   app.get('/sina_login', login.sina_login);//第三方登录
   app.get('/weixin_login', login.weixin_login);//第三方登录
