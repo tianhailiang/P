@@ -21,7 +21,7 @@
     <p>{{ advisor.introduce | ellipsis(80) }}</p>
   </div>
   <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}">
-    <a target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{advisor.job_number}}" class="advisor-zixun" target="_blank" rel="nofollow">在线咨询</a>
+    <a target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{advisor.job_number}}" class="advisor-zixun"  rel="nofollow">在线咨询</a>
     {% if advisor.is_follow %}
       <span class="advisor-guanzhu guanzhu-btn" data-uid="{{advisor.uid}}">已关注</span>
     {% else %}

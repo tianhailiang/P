@@ -28,14 +28,6 @@
           {% endif %}
         {% endif %}
       </div>
-      <!-- =======作者精选======= -->
-      <div style="margin-top: 20px;" class="dui-box-shadow">
-        <div class="common-title" style="border:1px solid #dcdcdc;">
-      		<i></i>
-      		<h3>作者精选</h3>
-  	    </div>
-        {% esi helper.include(esikey,'fragment/author_selection','uid='+memberId) %}
-      </div>
       <!-- ========猜你喜欢======= -->
       <div style="margin-top: 20px;" class="dui-box-shadow">
         <div class="common-title" style="border:1px solid #dcdcdc;">
@@ -52,13 +44,21 @@
       <div class="dui-box-shadow" >
         <div class="adviser-case-detail-con" >
           {% import "widget2/community_nav/community_nav.html" as community_nav %}
-          {% if userinfo.status == 1 %} {#离职顾问#}
-            {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
-          {% else %} {#在职顾问#}
-            {% if userinfo.usertype == 2 %}
-            {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
-            {% elif userinfo.usertype == 3 %}
-            {{community_nav.canzan_nav('专栏', userinfo.uid, helper)}}
+          {% if article.article_info.type == 2 %} {# 专栏 #}
+            {% if userinfo.status == 1 %} {#离职顾问#}
+              {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
+            {% else %} {#在职顾问#}
+              {% if userinfo.usertype == 2 %}
+               {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
+              {% endif %}
+            {% endif %}
+          {% else %} {# 案例 #}
+            {% if userinfo.status == 1 %} {#离职顾问#}
+              {{community_nav.adviser_nav_leave('案例', userinfo.uid, helper)}}
+            {% else %} {#在职顾问#}
+              {% if userinfo.usertype == 2 %}
+               {{community_nav.adviser_nav('案例', userinfo.uid, helper)}}
+              {% endif %}
             {% endif %}
           {% endif %}
           <div class="adviser-top clearfix" style="margin-top: 20px;">
@@ -71,7 +71,8 @@
             </div>
             <div style="float:right;" >
               <div class="bdsharebuttonbox" style="margin-top: 15px;">
-                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
+                <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
                 <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
                 <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
               </div>
@@ -82,7 +83,18 @@
           </h1>
           <div class="adviser-case-detail-come" >
             <span>时间：{{article.article_info.add_time}}</span>
-            <span style="float:right;">阅读量：<i style="font-style: normal;" id="detail_views_num"></i></span>
+            <span style="float:right;margin-left: 20px;">
+              阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
+            </span>
+            <span style="float:right;margin-left:20px;">
+              收藏{{article.article_info.favorites}}
+            </span>
+            <span style="float:right;margin-left:20px;">
+              评论{{article.article_info.comments}}
+            </span>
+            <span style="float:right;margin-left:20px;">
+              点赞{{article.article_info.votes}}
+            </span>
           </div>
           <div class="adviser-case-detail-offer" >
             {{article.article_info.message | safe}}
@@ -104,7 +116,7 @@
                 &#xe651;
               {% endif %}  
               </i>点赞</span> 
-            <span class="share-btn" data-title="{{article.article_info.title}}" style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;">转发</span>
+            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}"  rel="nofollow">立即咨询</a>
           </div>
           <!-- ========评论===== -->
           {% if userinfo.status == 0 %} 
@@ -137,7 +149,6 @@
   <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
   <script>
   $(function(){
-    
     window._bd_share_config={
           "common":{
               "bdSnsKey":{},
@@ -149,15 +160,7 @@
               "bdSize":"16",
               "bdUrl":window.location.href
           },
-          "share":{},
-          "image":{
-              "viewList":["tsina","weixin","qzone"],
-              "viewText":"分享到：","viewSize":"16"
-          },
-          "selectShare":{
-              "bdContainerClass":null,
-              "bdSelectMiniList":["tsina","weixin","qzone"]
-          }
+          "share":{}
       };
       console.log(_bd_share_config.common.bdUrl)
       with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
@@ -235,7 +238,6 @@
         }
       });
     });
-   
   })
   </script>
 </body>

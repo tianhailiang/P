@@ -1536,11 +1536,11 @@ exports.release_article = function(req,res,next){
        return false;
     }
   }else{
-    // res.redirect(config.wwhost+'/login')
-    // return false;
+    res.redirect(config.wwhost+'/login')
+    return false;
   }
-  data.login_info ={};
-  data.login_info.uid=1605;
+  // data.login_info ={};
+  // data.login_info.uid=1605;
   //获取用户信息（普通用户，顾问，参赞）
   wec.userinfo({
     "u_id":data.login_info.uid,
@@ -1674,7 +1674,7 @@ exports.center_article_detail = function(req,res,next){
     return false;
   }
   data.article_id = req.params.id; //获取文章id
-  log.info(data.article_id )
+  // log.info(data.article_id )
   data.preview = req.query.preview || 0; //获取是否预览 1是预览 0 不是
   async.parallel({
     //获取用户信息（普通用户，顾问，参赞）
@@ -1694,8 +1694,8 @@ exports.center_article_detail = function(req,res,next){
   },function(err, result){
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article =  returnData(result.article,'article');
-      data.id = data.article_id;
-      data.catid = data.article.article_info.category_id;
+    data.id = data.article_id;
+    data.catid = data.article.article_info.category_id;
     var pagekey = null;
     if(data.userinfo.usertype ==2){
       pagekey = 'ADVISOR_CENTER_ARTICLEDETAIL';
