@@ -34,7 +34,7 @@
 <ul class="gw-list">
     {% for gw_item in xiangguan_guwen %}
         <li>
-            <a href="javascript:;">
+            <a href="{{helper.articleUrlgen('blog',item.uid|string)}}">
                 <img src="../assets/img/profile3.jpg" alt="">
                 <div class="artical-info">
                     <div class="user-infos">
