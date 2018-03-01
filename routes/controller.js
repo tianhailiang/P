@@ -1031,6 +1031,18 @@ exports.article_detail= function(req,res,next){
   data.article_id = req.params[1]; //获取文章id 
   data.memberId = req.params[0];
   async.parallel({
+      lunbo_list:function(callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER",
+              "ad_seat": "SEAT1"
+          }, callback);
+      },
+      lunbo_list2:function(callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER",
+              "ad_seat": "SEAT2"
+          }, callback);
+      },
     //文章详情
     article:function(callback){
       wec.article({
@@ -1046,6 +1058,8 @@ exports.article_detail= function(req,res,next){
         },callback);
     }     
   },function(err,result){
+      data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+      data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.article =returnData(result.article,'article');
     if(result.article.code == code){
       //文章不存在的时候  跳到404
