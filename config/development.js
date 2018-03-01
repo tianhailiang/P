@@ -235,7 +235,9 @@ var apis = {
   "assessment": cms_out_prefix +'assessment',
   //顾问主页 个人视角
   //get_so_article_list
-  "get_so_article_list": shequ_prefix + 'search/search_article/'
+  "get_so_article_list": shequ_prefix + 'search/search_article/',
+  //根据ip 获取城市code码
+  "get_ip_geter":prefix + 'ip_geter'
 };
 module.exports = {
   redisCache: redisCache,

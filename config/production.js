@@ -228,7 +228,11 @@ var apis = {
   //举报接口
   "post_userReport":prefix +'userReport',
   //在线评估
-  "assessment": cms_out_prefix +'assessment'
+  "assessment": cms_out_prefix +'assessment',
+  //get_so_article_list
+  "get_so_article_list": shequ_prefix + 'search/search_article/',
+  //根据ip 获取城市code码
+  "get_ip_geter":prefix + 'ip_geter'
 };
 module.exports = {
   redisCache: redisCache,
