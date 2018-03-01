@@ -157,7 +157,7 @@
           '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
           '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>'+
           '<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>'+
-          '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px" data-artId="'+aitem.id+'">举报</div>'+
+          '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px;" data-artId="'+aitem.id+'">举报</div>'+
           '</div>'+
           '</div>'+
           '</ul>'+
@@ -171,7 +171,7 @@
           '</a>'+
           '</p>'+
           addArticleImg(aitem.img_list)+
-          '<div style="float: left;width: 200px;line-height: 45px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
+          '<div style="float: left;width: 200px;line-height: 37px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
           '</div>'+
           '</div>'+
           addBottom(aitem);
@@ -192,7 +192,7 @@
       }
       var html = '<ul id="adviser-info-ul" class="homepage-li clearfix" >';
       for (var j=0; j<imgList.length; j++) {
-        html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+        html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
       }
       html += '</ul>';
       return html;
