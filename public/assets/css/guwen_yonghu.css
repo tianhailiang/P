@@ -40,9 +40,19 @@
   font-size: 14px;
   color: #333;
   float: left;
+  position: relative;
 }
-.homepagecon h3 img {
+.homepagecon h3 i{
   margin-left: 4px;
+  display: block;
+  background:url(../img/1v.png) no-repeat 0 0;
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
+  float: left;
+  position: absolute;
+  top:32px;
+  left: 44px;
 }
 .homepagecon ul li {
   float: left;
@@ -95,7 +105,30 @@
   height: 44px;
   line-height: 44px;
 }
-
+.bdshare-button-style0-16 .bds_weixin{
+  background:url(../img/wx.png) no-repeat 0 0;
+  background-size: 20px 20px;
+  width: 6px;
+  height: 20px;
+}
+.bdshare-button-style0-16 .bds_tsina{
+  background:url(../img/xl.png) no-repeat 0 0;
+  background-size: 20px 20px;
+  width: 4px;
+  height: 20px;
+}
+.bdshare-button-style0-16 .bds_sqq{
+  background:url(../img/qq.png) no-repeat 0 0;
+  background-size: 20px 20px;
+  width: 4px;
+  height: 20px;
+}
+.bdshare-button-style0-16 .bds_tsinas {
+  background:url(../img/pyq.png) no-repeat 0 0;
+  background-size: 20px 20px;
+  width: 4px;
+  height: 20px;
+}
 
 
 
