@@ -1308,7 +1308,7 @@ exports.adviser_special = function (req, res, next) {
       wec.userinfo({"u_id": data.login_info.uid, "to_uid":data.to_uid},callback);
     },
     zhuanlanlist: function (callback) {
-      wec.adviser_main({"u_id": data.to_uid, "page": 1, "per_page": 6, "type": 2}, callback);
+      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2}, callback);
     }
   },function(err, result){
       data.xSlider = returnData(result.lunbo_list,'lunbo_list');
@@ -1399,7 +1399,7 @@ exports.adviser_case = function (req, res, next) {
         // },
         case_list: function (callback) {
             wec.adviser_main({
-                "u_id": data.to_uid,
+                "uid": data.to_uid,
                 "page": 1,
                 "per_page": 6,
                 "type": 1
