@@ -2,11 +2,12 @@
 {% macro advisor(advisor, helper,login_info) %}
 <div class="community-advisor dui-box-shadow">
   <ul style="height: 40px">
-    <li class="guanzhu">关注<span class="guanzhu-num">{{ advisor.fans_count }}</span></li>
+    <li class="guanzhu">粉丝<span class="guanzhu-num">{{ advisor.fans_count }}</span></li>
     <li style="width: 135px">文章<span class="article-num">{{ advisor.article_count }}</span></li>
   </ul>
   <dl>
-    <dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>
+    <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}')"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"></a></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
@@ -14,7 +15,8 @@
       {% else %}
       <p class="advisor-bumen" data-cityId ="" >分公司</p>
       {% endif %}
-      <p class="advisor-enjoy">{{ advisor.skilful_country }}</p>
+      <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else advisor.dept
+}}</p>
     </dd>
   </dl>
   <div class="advisor-intro">
@@ -34,11 +36,12 @@
 {% macro advisor_leave(advisor, helper,login_info) %}
 <div class="community-advisor dui-box-shadow">
   <ul>
-    <li class="guanzhu">关注<span class="guanzhu-num">{{ advisor.fans_count }}</span></li>
+    <li class="guanzhu">粉丝<span class="guanzhu-num">{{ advisor.fans_count }}</span></li>
     <li>文章<span class="article-num">{{ advisor.article_count }}</span></li>
   </ul>
   <dl>
-    <dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 1,advisor.version)}}" alt=""></a></dt>
+    <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 1,advisor.version)}}" alt=""></a></dt>-->
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 1,advisor.version)}}')"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"></a></dt>
     <dd>
       <p class="advisor-name">金吉列</p>
     </dd>
@@ -52,7 +55,7 @@
 {% macro counsellor(advisor,helper,login_info) %}
 <div class="community-advisor dui-box-shadow">
   <ul>
-    <li class="guanzhu">关注<span class="guanzhu-num">{{ advisor.fans_count }}</span></li>
+    <li class="guanzhu">粉丝<span class="guanzhu-num">{{ advisor.fans_count }}</span></li>
     <li style="width: 135px">文章<span class="article-num">{{ advisor.article_count }}</span></li>
   </ul>
   <dl>
@@ -151,7 +154,8 @@
 </style>
 <div class="community-advisor dui-box-shadow">
   <dl>
-    <dt class="advisor-img"><a target="_blank" ><img src="{{helper.avaterimg(userinfo.uid, 'small', 0,userinfo.version,versionflag)}}" alt=""></a></dt>
+    <!--<dt class="advisor-img"><a target="_blank" ><img src="{{helper.avaterimg(userinfo.uid, 'small', 0,userinfo.version,versionflag)}}" alt=""></a></dt>-->
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(userinfo.uid, 'small', 0,userinfo.version,versionflag)}}')"><a target="_blank"></a></dt>
     <dd>
       <p class="user-name">{{ userinfo.nickname }}</p>
     </dd>
