@@ -3,9 +3,7 @@
 <html lang="en">
 <head>
 	{% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/case_detail.css" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
-  <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/article_detail.css" >
 </head>
 <body style="background:#f5f5f5;">
   <!-- ===头部=== -->
@@ -34,25 +32,6 @@
 	    </div>
       {% esi helper.include(esikey,'fragment/author_selection','uid='+memberId) %}
     </div>
-    <!-- ========猜你喜欢======= -->
-    <div style="margin-top: 20px;" class="dui-box-shadow">
-      <div class="common-title" style="border:1px solid #dcdcdc;">
-        <i></i>
-        <h3>猜你喜欢</h3>
-      </div>
-      {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
-    </div>
-    <!-- ==活动预告== -->
-    <div style="margin-top:20px;background:#fff;" class="clearfix dui-box-shadow">
-      <div class="common-title gray-bg">
-        <i></i>
-        <h3>活动预告</h3>
-        <a target="_blank" href="{{helper.active_urlgen('activity', 'c='+tdk.cityid)}}" class="iconfont">&#xe602;</a>
-      </div>
-      {% esi helper.include(esikey,'fragment/huodongyugao','pos=cmslist','c='+tdk.cityid,'n='+hcountry) %}
-    </div>
-    <!--=====广告图3====-->
-    <div class="adviser-case-detail-map" id="AD_ADVISOR_P_CASE_DETAIL_SEAT3" style="margin-top:20px;height:374px;"></div> 
   </div>
   <div class="dui-layout-div"></div>
   <div class="dui-layout-con" >

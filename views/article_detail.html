@@ -9,14 +9,18 @@
   <!-- ===头部=== -->
   {% include "widget/top/top.html" %}
   <!-- ====导航===== -->
-  {% import "widget/nav_seventh/nav_seventh.html" as nav_seventh %}
-  {{nav_seventh.nav_seventh("#",tdk.cityid,helper)}}
+  {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+  {{ new_nav_red.new_nav_red(helper) }}
+  <!--轮播图广告-->
+  <div class="dui-layout-lg clearfix banner-box">
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider2.html" %}</div>
+  </div>
   <div class="dui-layout-lg clearfix dui-layout-padding" >
     <div class="dui-layout-silde">
-      <!-- ====广告图1==== -->
-      <div class="adviser-case-detail-map" id="AD_{% if userinfo.usertype == 2 %}ADVISOR{% elif userinfo.usertype == 3 %}CANZAN{% endif %}_P_ARTICLE_DETAIL_SEAT1"></div>
       <!-- =======顾问头像关注====== -->
-      <div style="margin-top: 20px;" data-usertype="{{userinfo.usertype}}" id="userinfo">
+      <div data-usertype="{{userinfo.usertype}}" id="userinfo">
         {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
         {% if userinfo.status == 1 %} {#离职#}
           {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
@@ -27,14 +31,6 @@
             {{community_advisor.counsellor(userinfo,helper,login_info)}}
           {% endif %}
         {% endif %}
-      </div>
-      <!-- =======作者精选======= -->
-      <div style="margin-top: 20px;" class="dui-box-shadow">
-        <div class="common-title" style="border:1px solid #dcdcdc;">
-      		<i></i>
-      		<h3>作者精选</h3>
-  	    </div>
-        {% esi helper.include(esikey,'fragment/author_selection','uid='+memberId) %}
       </div>
       <!-- ========猜你喜欢======= -->
       <div style="margin-top: 20px;" class="dui-box-shadow">
@@ -47,31 +43,27 @@
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con" >
-      <!--=====广告图2====-->
-      <div class="adviser-case-detail-map" id="AD_{% if userinfo.usertype == 2 %}ADVISOR_P_ARTICLE_DETAIL{% elif userinfo.usertype == 3 %}CANZAN_P_ARTICLE_DETAIL{% endif %}_SEAT2"></div>   
-      <div class="dui-box-shadow" >
-        <div class="adviser-case-detail-con" >
+        <div class="adviser-case-detail-con" style="margin-top: 0" >
           {% import "widget2/community_nav/community_nav.html" as community_nav %}
-          {% if userinfo.status == 1 %} {#离职顾问#}
-            {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
-          {% else %} {#在职顾问#}
-            {% if userinfo.usertype == 2 %}
-            {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
-            {% elif userinfo.usertype == 3 %}
-            {{community_nav.canzan_nav('专栏', userinfo.uid, helper)}}
+            {% if userinfo.status == 1 %} {#离职顾问#}
+              {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
+            {% else %} {#在职顾问#}
+              {% if userinfo.usertype == 2 %}
+               {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
+              {% endif %}
             {% endif %}
-          {% endif %}
           <div class="adviser-top clearfix" style="margin-top: 20px;">
             <div style="float:left;line-height: 50px;" >
               <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat center;background-size:50px 50px;">
               </div>
               <span style="font-size: 14px;color:#333;">
-                李佳文<i class="adviser-v-i"></i>
+                {{userinfo.realname}}<i class="adviser-v-i"></i>
               </span>
             </div>
             <div style="float:right;" >
               <div class="bdsharebuttonbox" style="margin-top: 15px;">
-                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
+                <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
                 <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
                 <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
               </div>
@@ -82,7 +74,18 @@
           </h1>
           <div class="adviser-case-detail-come" >
             <span>时间：{{article.article_info.add_time}}</span>
-            <span style="float:right;">阅读量：<i style="font-style: normal;" id="detail_views_num"></i></span>
+            <span style="float:right;margin-left: 20px;">
+              阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
+            </span>
+            <span style="float:right;margin-left:20px;">
+              收藏{{article.article_info.favorites}}
+            </span>
+            <span style="float:right;margin-left:20px;">
+              评论{{article.article_info.comments}}
+            </span>
+            <span style="float:right;margin-left:20px;">
+              点赞{{article.article_info.votes}}
+            </span>
           </div>
           <div class="adviser-case-detail-offer" >
             {{article.article_info.message | safe}}
@@ -104,7 +107,7 @@
                 &#xe651;
               {% endif %}  
               </i>点赞</span> 
-            <span class="share-btn" data-title="{{article.article_info.title}}" style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;">转发</span>
+            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}"  rel="nofollow">立即咨询</a>
           </div>
           <!-- ========评论===== -->
           {% if userinfo.status == 0 %} 
@@ -128,16 +131,35 @@
     }
   </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
   <script>
   $(function(){
-    
+      $('.banner-box-left .slider').xSlider({
+          //轮播图配置
+//          autoplay : 500,
+          current: 0,
+          speed: 500,
+          intervalTime: 5000,
+          pagination: true
+      });
+      $('.banner-box-right .slider').xSlider({
+          //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+          current: 0,
+          speed: 1000,
+          intervalTime: 5000,
+          slidesPerView : 2,
+          slidesPerGroup : 2,
+//          pagination: true
+      });
     window._bd_share_config={
           "common":{
               "bdSnsKey":{},
@@ -149,15 +171,7 @@
               "bdSize":"16",
               "bdUrl":window.location.href
           },
-          "share":{},
-          "image":{
-              "viewList":["tsina","weixin","qzone"],
-              "viewText":"分享到：","viewSize":"16"
-          },
-          "selectShare":{
-              "bdContainerClass":null,
-              "bdSelectMiniList":["tsina","weixin","qzone"]
-          }
+          "share":{}
       };
       console.log(_bd_share_config.common.bdUrl)
       with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
@@ -235,7 +249,6 @@
         }
       });
     });
-   
   })
   </script>
 </body>
