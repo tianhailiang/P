@@ -4,22 +4,13 @@ var RedisCache = require("node-cache-redis");
 var cache = new RedisCache(apiconfig.redisCache);
 var log4js = require('../log/log');
 var log = log4js.getLogger();
-//旧版本
-//var httpRequest = function(url, callback){
-//  request.get(url, function (err, response, receiveData) {
-//    log.info(url)
 
 //新版本
 //request connection pool;
 var separateDefPool = {maxSockets: 200};
 var httpRequest = function(requrl, callback){
-
-  // if(separateDefPool === undefined || separateDefPool.maxSockets === undefined){
-  //   separateDefPool = {maxSockets: 200};
-  // }
-
+  log.info(requrl)
   request.get({url: requrl, pool: separateDefPool}, function (err, response, receiveData){
-    log.info(requrl)
     if (!err && response.statusCode == 200) {
       var res = JSON.parse(receiveData);
       callback(null, res);
@@ -67,6 +58,7 @@ var apiRequest = function (url, callback, isCache = 0, cacheKey = "") {
  * @param data 请求数据
  */
 var apiRequest_post = function (url, data, callback) {
+  log.info(url);
   request.post({url:url, form:data}, function (err, response, receiveData) {
     if (!err && response.statusCode == 200) {
       callback(null, JSON.parse(receiveData));
