@@ -1070,7 +1070,6 @@ exports.case_detail = function(req,res,next){
       }
       data.memberId = data.article.article_info.uid; //获取顾问id
       data.id = data.article_id;
-      data.catid = data.article.article_info.category_id;
       async.parallel({
         //获取用户信息（普通用户，顾问，参赞）
         userinfo:function(callback){
@@ -1139,15 +1138,14 @@ exports.article_detail= function(req,res,next){
         },callback);
     }     
   },function(err,result){
-      data.xSlider = returnData(result.lunbo_list,'lunbo_list');
-      data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+    data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+    data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.article =returnData(result.article,'article');
     if(result.article.code == code){
       //文章不存在的时候  跳到404
       res.redirect('/404');
       return false;
     }
-    data.catid = data.article.article_info.category_id;
     data.userinfo = returnData(result.userinfo,'userinfo');
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
@@ -1861,7 +1859,6 @@ exports.center_article_detail = function(req,res,next){
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article =  returnData(result.article,'article');
     data.id = data.article_id;
-    data.catid = data.article.article_info.category_id;
     var pagekey = null;
     if(data.userinfo.usertype ==2){
       pagekey = 'ADVISOR_CENTER_ARTICLEDETAIL';
@@ -1911,8 +1908,7 @@ exports.center_case_detail = function(req,res,next){
   },function(err, result){
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article = returnData(result.article,'article');
-      data.id = data.article_id;
-      data.catid = data.article.article_info.category_id;
+    data.id = data.article_id;
     data.tdk = {
       pagekey:'ADVISOR_CENTER_CASEDETAIL',
       cityid: area,
