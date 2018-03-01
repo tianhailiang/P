@@ -813,14 +813,14 @@ exports.adviser_photo_p = function(req,res,next){
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "ADVISOR_CENTER",
+                "ad_page": "ADVISOR_P_ALBUM",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "ADVISOR_CENTER",
+                "ad_page": "ADVISOR_P_ALBUM",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
@@ -926,6 +926,20 @@ exports.case_detail = function(req,res,next){
     }
     data.article_id = req.params.id; //获取文章id
     async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ADVISOR_P_CASE_DETAIL",
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ADVISOR_P_CASE_DETAIL",
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
       //文章详情
       article:function(callback){
         wec.article({
@@ -934,6 +948,8 @@ exports.case_detail = function(req,res,next){
         },callback);
       }  
     },function(err,result){
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
       data.article =returnData(result.article,'article');
       if(result.article.code == code){
         //文章不存在的时候  跳到404
@@ -984,14 +1000,14 @@ exports.article_detail= function(req,res,next){
   async.parallel({
       lunbo_list:function(callback) {
           cms.lunbo_list({
-              "ad_page": "ADVISOR_CENTER",
+              "ad_page": "ADVISOR_P_ARTICLE_DETAIL",
               "cityid":area,
               "ad_seat": "SEAT1"
           }, callback);
       },
       lunbo_list2:function(callback) {
           cms.lunbo_list({
-              "ad_page": "ADVISOR_CENTER",
+              "ad_page": "ADVISOR_P_ARTICLE_DETAIL",
               "cityid":area,
               "ad_seat": "SEAT2"
           }, callback);
@@ -1059,14 +1075,14 @@ exports.adviser_main = function (req, res, next) {
   async.parallel({
       lunbo_list:function(callback) {
           cms.lunbo_list({
-              "ad_page": "ADVISOR_CENTER",
+              "ad_page": "ADVISOR_P_MAIN",
               "cityid":area,
               "ad_seat": "SEAT1"
           }, callback);
       },
       lunbo_list2:function(callback) {
           cms.lunbo_list({
-              "ad_page": "ADVISOR_CENTER",
+              "ad_page": "ADVISOR_P_MAIN",
               "cityid":area,
               "ad_seat": "SEAT2"
           }, callback);
@@ -1159,14 +1175,14 @@ exports.adviser_special = function (req, res, next) {
   async.parallel({
       lunbo_list:function(callback) {
           cms.lunbo_list({
-              "ad_page": "ADVISOR_CENTER",
+              "ad_page": "ADVISOR_P_ARTICLE",
               "cityid":area,
               "ad_seat": "SEAT1"
           }, callback);
       },
       lunbo_list2:function(callback) {
           cms.lunbo_list({
-              "ad_page": "ADVISOR_CENTER",
+              "ad_page": "ADVISOR_P_ARTICLE",
               "cityid":area,
               "ad_seat": "SEAT2"
           }, callback);
@@ -1220,14 +1236,14 @@ exports.adviser_case = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "ADVISOR_CENTER",
+                "ad_page": "ADVISOR_P_CASE",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "ADVISOR_CENTER",
+                "ad_page": "ADVISOR_P_CASE",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
@@ -2137,13 +2153,15 @@ exports.hot = function (req, res, next) {
     lunbo_list: function (callback) {
       cms.lunbo_list({
         "ad_page": "ADVISOR_HOT",
-        "ad_seat": "SEAT1"
+        "ad_seat": "SEAT1",
+          "cityid":area
       }, callback);
     },
     lunbo_list2: function (callback) {
       cms.lunbo_list({
         "ad_page": "ADVISOR_HOT",
-        "ad_seat": "SEAT2"
+        "ad_seat": "SEAT2",
+         "cityid":area
       }, callback);
     },
     //获取用户信息（普通用户，顾问，参赞）
