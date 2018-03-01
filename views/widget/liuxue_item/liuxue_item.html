@@ -57,7 +57,7 @@
 		<ul class="gw-items">
 				{% for item in line %}
 				<li class="gw-newslist">
-						<a href="{{helper.urlgen('activity', item.id | string,'c='+item.hold_city)}}">
+						<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
 							<div class="gw-people">
 								<img src="../assets/img/profile4.jpg" alt="">
 								<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>

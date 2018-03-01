@@ -31,6 +31,7 @@ var apis = {
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
   "adviser_main": shequ_prefix + 'article/list/is_news_1', // 社区 首页
   "likelist": shequ_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
+  "xiangguan_guwen": shequ_prefix + 'article/related_adviser/', // 社区 相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
   "xiugai_info": uc_prefix + 'index.php?m=edituserinfo', //社区 修改用户信息
   "favorite_article": shequ_prefix + 'article/favorite_article/',//社区 文章收藏
