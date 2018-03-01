@@ -44,7 +44,6 @@
       <div class="dui-box-shadow" >
         <div class="adviser-case-detail-con" >
           {% import "widget2/community_nav/community_nav.html" as community_nav %}
-          {% if article.article_info.type == 2 %} {# 专栏 #}
             {% if userinfo.status == 1 %} {#离职顾问#}
               {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
             {% else %} {#在职顾问#}
@@ -52,21 +51,12 @@
                {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
               {% endif %}
             {% endif %}
-          {% else %} {# 案例 #}
-            {% if userinfo.status == 1 %} {#离职顾问#}
-              {{community_nav.adviser_nav_leave('案例', userinfo.uid, helper)}}
-            {% else %} {#在职顾问#}
-              {% if userinfo.usertype == 2 %}
-               {{community_nav.adviser_nav('案例', userinfo.uid, helper)}}
-              {% endif %}
-            {% endif %}
-          {% endif %}
           <div class="adviser-top clearfix" style="margin-top: 20px;">
             <div style="float:left;line-height: 50px;" >
               <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat center;background-size:50px 50px;">
               </div>
               <span style="font-size: 14px;color:#333;">
-                李佳文<i class="adviser-v-i"></i>
+                {{userinfo.realname}}<i class="adviser-v-i"></i>
               </span>
             </div>
             <div style="float:right;" >

@@ -212,9 +212,6 @@
   <script >
     $(function(){
       var city_id =null;
-      login_ss ={};
-      login_ss.uid =1605;
-      login_ss.usertype=2;
       if(login_ss.usertype ==2){
         //获取顾问的组织id
         city_id = $(".advisor-bumen").attr("data-cityId");
@@ -404,7 +401,7 @@
             edu_id:eduStr,
             is_news:newsletterType,
             tag_list:newTagStr,
-            is_immi:1,
+            is_immi:login_ss.adviser,
             article_id:$(".editor-btn-box").attr("data-articleId")
           },
           dataType:'json',
@@ -493,7 +490,7 @@
             edu_id:eduStr,
             is_news:newsletterType,
             tag_list:newTagStr,
-            is_immi:1,
+            is_immi:login_ss.adviser,
             article_id:$(".editor-btn-box").attr("data-articleId")
           },
           dataType:'json',

@@ -207,6 +207,7 @@
     if($.cookie('login_ss') != undefined){
       login_ss = JSON.parse($.cookie('login_ss'));  
     }
+    console.log(login_ss)
   </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
@@ -217,9 +218,6 @@
   <script >
     $(function(){
       var city_id =null;
-      // login_ss ={};
-      // login_ss.uid =1605;
-      // login_ss.usertype=2;
       if(login_ss.usertype ==2){
         //获取顾问的组织id
         city_id = $(".advisor-bumen").attr("data-cityId");
@@ -423,7 +421,7 @@
             edu_id:eduStr,
             is_news:newsletterType,
             tag_list:newTagStr,
-            is_immi:1
+            is_immi:login_ss.adviser
           },
           dataType:'json',
           success:function(result){
@@ -522,7 +520,7 @@
             edu_id:eduStr,
             is_news:newsletterType,
             tag_list:newTagStr,
-            is_immi:1
+            is_immi:login_ss.adviser
           },
           dataType:'json',
           success:function(result){
