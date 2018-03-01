@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
 <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
 <body>
+{% if iparea %}
+{% else %}
 <div class="zhezhao" id="zhezhaox">
 </div>
 <div id="zhezhaos" style="position: fixed;left: 50%; margin-left: -350px;z-index: 1000000;top: 50%;margin-top: -215px">
@@ -83,6 +85,7 @@
   </div>
 
 </div>
+{% endif %}
 <!--留学国家-->
 <div class="nationality_guoqi_warp">
   <div class="nationality_guoqi">
@@ -364,6 +367,13 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
+    $('.xuanzechengshi').on('click',"a", function(e){
+      e.preventDefault();
+      currentarea = $(this).attr("data-id");
+      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
+      window.location.reload();
+
+    });
       //
       $(window).on('scroll', function () {
           var $scroll = $(this).scrollTop();
