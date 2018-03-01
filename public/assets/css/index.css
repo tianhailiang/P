@@ -12,13 +12,13 @@
 .lunbo_lift{
     width: 800px;
     height: 270px;
-    background: #34c360;
+    background: #dcdcdc;
     float: left;
 }
 .lunbo_right{
     width: 400px;
     height: 270px;
-    background: #fbd238;
+    background: #f6f6f6;
     float: left;
     overflow: hidden;
 }
