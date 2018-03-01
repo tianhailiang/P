@@ -89,6 +89,80 @@
               </select>
               <span class="numTip" ></span>
             </div>
+            <div class="rel-case-text1" style="margin-top: 20px;" id="art-type" data-id ="{{article.article_info.is_news}}">
+              <label class="title active" for="art_type"><span>*</span> 选择文章类型：</label>
+              {% set artType = [
+                {
+                  "name":"时讯",
+                  "id":2
+                },
+                {
+                  "name":"非时讯",
+                  "id":1
+                }
+              ] %}
+              {% for item in artType %}
+                <span  class="art-type-sel" data-id="{{item.id}}">
+                  {% if article.article_info.is_news == item.id %}
+                    <i class="iconfont art-type-i" style="border:none;color:#c13232;margin-right: 7px;font-size:16px;">&#xe626;</i>
+                    <i style="color:#c13232;">{{item.name}}</i>
+                  {% else %}
+                    <i class="iconfont art-type-i"></i>
+                    <i >{{item.name}}</i>
+                  {% endif %}
+                </span>
+              {% endfor %}
+              <span class="numTip" ></span>
+            </div> 
+            <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;{% if article.article_info.is_news ==1 %}display: block;{% endif %}">
+              <label class="title active" for="level">
+                <span>*</span> 选择学历标签：
+              </label>
+              {% set levelList = [
+                {
+                  "name":"中学"
+                },
+                {
+                  "name":"本科"
+                },
+                {
+                  "name":"研究生"
+                },
+                {
+                  "name":"博士"
+                }
+              ] %}
+              {% for item in levelList %}
+                {{helper.eduChecked(item.name,article.article_info.edu_id) |safe }}
+              {% endfor %}
+              <span class="numTip" style="display: block;margin-left: 128px;">
+                学历标签可多选
+              </span>
+            </div>
+            <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;{% if article.article_info.is_news ==1 %}display: block;{% endif %}">
+              <label class="title active" for="recommend">
+                <span>*</span> 选择推荐标签：
+              </label>
+              {% set recommendList = [
+                {'name':'留学聚焦'},
+                {'name':'申请攻略'},
+                {'name':'签证指导'},
+                {'name':'申请条件'},
+                {'name':'留学费用'},
+                {'name':'专家解读'},
+                {'name':'留学案例'}
+              ]  %}
+              {% for item in recommendList %}
+                {{helper.tagChecked(item.name,article.article_info.tag_list) |safe }}              
+              {% endfor %}
+              <span class="numTip">
+                注：选中【留学案例】标签及发布至顾问个人主页-案例中
+              </span>
+              <span class="numTip" style="display:block;
+    margin-left: 130px;margin-top:5px;">
+                推荐标签最多选择3个
+              </span>
+            </div>
   	        <div class="rel-case-text1" style="margin-top: 20px;">
       			  <label class="title active" for="rel-case-title"><span>*</span> 文章标题：</label>
       			  <input  id="rel-case-title" type="text" maxlength="30" value="{{article.article_info.title}}">
@@ -138,6 +212,9 @@
   <script >
     $(function(){
       var city_id =null;
+      login_ss ={};
+      login_ss.uid =1605;
+      login_ss.usertype=2;
       if(login_ss.usertype ==2){
         //获取顾问的组织id
         city_id = $(".advisor-bumen").attr("data-cityId");
@@ -145,6 +222,71 @@
         //参赞默认为1 北京分公司
         city_id =1;
       }
+      //文章摘要
+      $("#art_abs").on("change",function(){
+        this.value = this.value.substring(0, 200);
+      }); 
+      $("#art_abs").on("keydown",function(){
+        this.value  = this.value.substring(0, 200);
+      }); 
+      $("#art_abs").on("keyup",function(){
+        var strLength = $.trim($(this).val()).length; 
+        $("#word-num").html(200-strLength);
+        if(strLength > 200){
+          $("#word-num").html(0);
+          this.value  = this.value.substring(0, 200);
+        }
+      }); 
+      //选择文章类型
+      var newsletterType = $("#art-type").attr('data-id');
+      // console.log(newsletterType)
+      $(".art-type-sel").on("click",function(){
+        newsletterType = $(this).attr('data-id');
+        $('.art-type-i').html('').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'});
+        $('.art-type-i').next().css({'color':'#333'});
+        $(this).find('.art-type-i').html('&#xe626;').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'});
+        $(this).find('.art-type-i').next().css({'color':'#c13232'});
+        if($(this).index()==2){
+          $('.newsletter-hide').slideDown();
+        }else{
+          $('.newsletter-hide').slideUp();
+        }
+      });
+       //选择学历标签
+      $('.level-sel').on('click',function(){
+        // console.log($(this).attr('checked'))
+        if($(this).attr('checked')){
+          // console.log('false');
+          $(this).find('.level-sel-i').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.level-sel-i').next().css({'color':'#333'});
+          $(this).attr('checked',false);
+        }else{
+          // console.log('true')
+          $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
+          $(this).find('.level-sel-i').next().css({'color':'#c13232'});
+          $(this).attr('checked',true);
+        }
+      });
+      //选择推荐标签
+      $('.recommend-sel:last').css({"display":"inline-block","marginLeft":"130px"});
+      var recNumber = 0;
+      $('.recommend-sel').on('click',function(){
+        if($(this).attr('checked')){
+          // console.log('false');
+          $(this).find('.level-sel-i').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.level-sel-i').next().css({'color':'#333'});
+          $(this).attr('checked',false);
+        }else{
+          // console.log('true')
+          if(recNumber<3){
+            $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
+            $(this).find('.level-sel-i').next().css({'color':'#c13232'});
+            $(this).attr('checked',true);
+          }
+        }
+        recNumber =$('.recommend-sel[checked=checked]').length;
+        // console.log(recNumber)
+      });
   
       //编辑器
       var E = window.wangEditor;
@@ -199,9 +341,39 @@
         layer.msg(info)
       }
       editor.create();
+      var artType = 2; 
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
+        if(newsletterType==1){
+          //选择非时讯
+          //判断学历
+          var eduList = '';
+          $('.level-sel[checked=checked]').each(function(){
+            eduList+=$(this).find('i').eq(1).text()+',';
+          });
+          if(eduList == ''){
+            layer.msg('请选择学历标签');
+            return false;
+          }
+          var eduStr = eduList.substring(0,eduList.length-1);
+          // console.log(eduStr)
+          //判断标签
+          var tagStr = '';
+          $('.recommend-sel[checked=checked]').each(function(){
+            tagStr+=$(this).find('i').eq(1).text()+',';
+            if($(this).find('i').eq(1).text()=='留学案例'){
+              artType =1;
+            }
+          });
+          if(tagStr == ''){
+            layer.msg('请选择推荐标签');
+            return false;
+          }
+          var newTagStr =tagStr.substring(0,tagStr.length-1);
+          // console.log(newTagStr)
+        }
+
         if($("#rel-case-title").val()==''){
           // 判断title
           $("#rel-case-title").focus();
@@ -212,12 +384,11 @@
           layer.msg("请输入正文内容");
           return false;
         }
-        var region = '';
-        if(Number($("#apply-country").val()) >=50 && Number($("#apply-country").val()) <100){
-          region = 201;
-        }else if(Number($("#apply-country").val()) >= 100){
-          region =202;
-        }   
+        if($("#art_abs").val()==''){
+          // 判断文章摘要
+          $("#art_abs").focus();
+          return false;
+        }
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
@@ -226,12 +397,15 @@
             u_id:login_ss.uid,
             title:$.trim($("#rel-case-title").val()),
             country_id:$("#apply-country").val(),
-            type:2,
             is_draft:1,
-            desc:$.trim($("#art_abs").val()),
             messasge:data,
-            article_id:$(".editor-btn-box").attr("data-articleId"),
-            region:region
+            type:artType,
+            introduce:$.trim($("#art_abs").val()),
+            edu_id:eduStr,
+            is_news:newsletterType,
+            tag_list:newTagStr,
+            is_immi:1,
+            article_id:$(".editor-btn-box").attr("data-articleId")
           },
           dataType:'json',
           success:function(result){
@@ -257,63 +431,70 @@
       $("#save-draft").on("click",function(){
         //保存草稿箱
         var data = editor.txt.html();
-        if($("#figure-img").attr('data-src')=='' || $("#figure-img").attr('data-src')==undefined){
-          // 判断文章配图
-          layer.msg('请选择文章配图');
-          return false;
+        if(newsletterType==1){
+          //选择非时讯
+          //判断学历
+          var eduList = '';
+          $('.level-sel[checked=checked]').each(function(){
+            eduList+=$(this).find('i').eq(1).text()+',';
+          });
+          if(eduList == ''){
+            layer.msg('请选择学历标签');
+            return false;
+          }
+          var eduStr = eduList.substring(0,eduList.length-1);
+          // console.log(eduStr)
+          //判断标签
+          var tagStr = '';
+          $('.recommend-sel[checked=checked]').each(function(){
+            tagStr+=$(this).find('i').eq(1).text()+',';
+            if($(this).find('i').eq(1).text()=='留学案例'){
+              artType =1;
+            }
+          });
+          if(tagStr == ''){
+            layer.msg('请选择推荐标签');
+            return false;
+          }
+          var newTagStr =tagStr.substring(0,tagStr.length-1);
+          // console.log(newTagStr)
         }
+
         if($("#rel-case-title").val()==''){
           // 判断title
           $("#rel-case-title").focus();
-          $("#rel-case-title").next().html("填写文章标题，字数限30个汉字");
           return false;
-        }else{
-          $("#rel-case-title").next().html('填写文章标题，字数限30个汉字');
         }
-        if($("#rel-keyword").val()==''){
-          //判断关键词
-          $("#rel-keyword").focus();
-          $("#rel-keyword").next().html("请填写关键词");
-          return false;
-        }else{
-          $("#rel-keyword").next().html('多关键词之间用空格或者 "," 隔开');
-        }
+        
         if($("#art_abs").val()==''){
           // 判断文章摘要
           $("#art_abs").focus();
-          $("#art_abs").next().next().html("请填写文章摘要");
           return false;
-        }else{
-           $("#art_abs").next().next().html('填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写');
         }
+
         if($("#editor1").find("p").html() == '<br>'){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
         }   
-        var region = '';
-        if(Number($("#apply-country").val()) >=50 && Number($("#apply-country").val()) <100){
-          region = 201;
-        }else if(Number($("#apply-country").val()) >= 100){
-          region =202;
-        }         
+        
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
           data:{
-            city_id:city_id,
+             city_id:city_id,
             u_id:login_ss.uid,
-            category_id:$("#art_type").val(),
-            thumb:$("#figure-img").attr('data-src'), 
             title:$.trim($("#rel-case-title").val()),
-            keywords:$.trim($("#rel-keyword").val()),
             country_id:$("#apply-country").val(),
-            type:2,
             is_draft:2,
-            desc:$.trim($("#art_abs").val()),
             messasge:data,
-            article_id:$(".editor-btn-box").attr("data-articleId"),
-            region:region
+            type:artType,
+            introduce:$.trim($("#art_abs").val()),
+            edu_id:eduStr,
+            is_news:newsletterType,
+            tag_list:newTagStr,
+            is_immi:1,
+            article_id:$(".editor-btn-box").attr("data-articleId")
           },
           dataType:'json',
           success:function(result){
@@ -348,19 +529,15 @@
         if($("#rel-case-title").val()==''){
           // 判断title
           $("#rel-case-title").focus();
-          $("#rel-case-title").next().html("填写文章标题，字数限30个汉字");
           return false;
-        }else{
-           $("#rel-case-title").next().html('填写文章标题，字数限30个汉字');
         }
+
         if($("#art_abs").val()==''){
           // 判断文章摘要
           $("#art_abs").focus();
-          $("#art_abs").next().next().html("请填写文章摘要");
           return false;
-        }else{
-          $("#art_abs").next().next().html('填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写');
         }
+
         if($("#editor1").find("p").html() == '<br>'){
           //判断正文
           layer.msg("请输入正文内容");
