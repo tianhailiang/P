@@ -1075,6 +1075,18 @@ exports.adviser_main = function (req, res, next) {
   }
   
   async.parallel({
+      lunbo_list:function(callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER",
+              "ad_seat": "SEAT1"
+          }, callback);
+      },
+      lunbo_list2:function(callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER",
+              "ad_seat": "SEAT2"
+          }, callback);
+      },
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
