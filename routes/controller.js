@@ -30,8 +30,13 @@ function split_array(arr, len) {
 
 
 exports.index = function (req, res, next) {
+    var iparea = req.cookies.currentarea;
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var data = [];
+    var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+    if(ip.split(',').length>0){
+        ip = ip.split(',')[0]
+    }
     if ( req.cookies.login_ss !== undefined) {
         console.log('aaaaaa');
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -43,29 +48,35 @@ exports.index = function (req, res, next) {
         //return false;
     }
     async.parallel({
+        /*getNowCity: function (callback) {
+            cms.ip_geter(ip,callback);
+        },*/
         lunbo_list:function(callback) {
-         cms.lunbo_list({
-           "ad_page": "HOME",
-           "ad_seat": "SEAT1",
-           "cityid":area
-         }, callback);
+            cms.lunbo_list({
+                "ad_page": "HOME",
+                "ad_seat": "SEAT1",
+                "cityid":area
+            }, callback);
         },
         lunbo_list2:function(callback) {
-         cms.lunbo_list({
-           "ad_page": "HOME",
-           "ad_seat": "SEAT2",
-            "cityid":area
-         }, callback);
+            cms.lunbo_list({
+                "ad_page": "HOME",
+                "ad_seat": "SEAT2",
+                "cityid":area
+            }, callback);
         },
         shouye:function(callback) {
-          cms.shouye({
-            "city_id": 1,
-          }, callback);
-         },
+            cms.shouye({
+                "city_id": 1,
+            }, callback);
+        },
     },function (err, result) {
+        //data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
+        data.iparea = iparea;
+        console.log('iparea', iparea);
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        data.shouye = JSON.parse(result.shouye);        
+        data.shouye = JSON.parse(result.shouye);
         data.tdk = {
             pagekey: 'index',
             cityid: area,
@@ -325,6 +336,20 @@ exports.center_main = function (req, res, next) {
         return false;    
     }
     async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ADVISOR_CENTER",
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ADVISOR_CENTER",
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
         //获取用户信息（普通用户，顾问，参赞）
         userinfo:function(callback){
             wec.userinfo({
@@ -354,6 +379,8 @@ exports.center_main = function (req, res, next) {
             },callback)
         }
     }, function (err, result) {
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
         data.follow_list = returnData(result.follow_list,'follow_list');
         data.comment_list =returnData(result.comment_list,'comment_list');
@@ -2137,14 +2164,14 @@ exports.hot = function (req, res, next) {
   async.parallel({
     lunbo_list: function (callback) {
       cms.lunbo_list({
-        "ad_page": "ADVISOR_HOT",
+        "ad_page": "ADVISOR_P_ARTICLE_HOT",
         "ad_seat": "SEAT1",
           "cityid":area
       }, callback);
     },
     lunbo_list2: function (callback) {
       cms.lunbo_list({
-        "ad_page": "ADVISOR_HOT",
+        "ad_page": "ADVISOR_P_ARTICLE_HOT",
         "ad_seat": "SEAT2",
          "cityid":area
       }, callback);
@@ -2190,7 +2217,7 @@ exports.hot = function (req, res, next) {
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
     var pagekey = ''
     if (data.userinfo.usertype == 2) {
-      pagekey = 'ADVISOR_P_MAIN';
+      pagekey = 'ADVISOR_P_ARTICLE_HOT';
     } else if (data.userinfo.usertype == 3) {
       pagekey = 'CANZAN_P_MAIN';
     }

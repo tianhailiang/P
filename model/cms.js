@@ -1100,3 +1100,12 @@ exports.bind_phone = function (data, callback) {
   api.apiRequest_post(url, data, callback);
   console.log('url-----', url)
 }
+//获取城市接口
+exports.ip_geter =function(data,callback){
+  var url = config.apis.get_ip_geter+"?ip="+data;
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
+}
