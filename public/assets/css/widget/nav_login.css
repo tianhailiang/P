@@ -1,4 +1,4 @@
-/*µÇÂ¼¡¢×¢²áÍ·²¿*/
+/*ï¿½ï¿½Â¼ï¿½ï¿½×¢ï¿½ï¿½Í·ï¿½ï¿½*/
 .nav_login{
   width: 100%;
   background: #fff;
@@ -36,7 +36,7 @@
 .nav_login i{
   color: #C13232;
 }
-/*µÇÂ¼ÄÚÈÝ*/
+/*ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½*/
 .login_overseas{
   width: 100%;
   min-width: 1180px;
@@ -134,7 +134,7 @@
   color: #666;
   margin-top: 20px;
 }
-/*×¢²áÄÚÈÝ*/
+/*×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .register_overseas {
   width: 100%;
   min-width: 1180px;
@@ -211,8 +211,8 @@
 }
 .register_r{
   float: left;
-  margin-left: 35px;
   margin-top: 50px;
+  margin-left: 0px;
 }
 .register_r img{
   width: 410px;
