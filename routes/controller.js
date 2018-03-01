@@ -65,7 +65,7 @@ exports.index = function (req, res, next) {
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        data.shouye = JSON.parse(result.shouye);        
+        data.shouye = JSON.parse(result.shouye);
         data.tdk = {
             pagekey: 'index',
             cityid: area,
