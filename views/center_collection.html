@@ -160,7 +160,7 @@
   <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
   <script>
-    $(function() {
+    $(function () {
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
@@ -180,6 +180,10 @@
             slidesPerGroup : 2,
 //          pagination: true
         });
+    })
+  </script>
+  <script>
+    $(function() {
         function appendCaseItem (citem) {
             if(citem.introduce==undefined){
                   citem.introduce ={
