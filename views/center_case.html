@@ -72,8 +72,8 @@
 </style>
 <body style="background: #f5f5f5">
   {% include "widget/top/top.html" %}
-  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-  {{ new_nav_first.new_nav_first(tdk,helper) }}
+  {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+  {{ new_nav_red.new_nav_red(tdk,helper) }}
   <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
@@ -116,7 +116,7 @@
                 {{ case_edit.case_edit(item, helper) }}#}
                 {% import "widget2/article/article.html" as article_show %}
                 {{ article_show.article_edit(item, helper) }}
-                {% include "widget2/bottom_comment/bottom_comment.html" %}
+                {% include "widget2/bottom_comment/bottom_comment_zhuanlan.html" %}
                 </div>
                 {% endfor %}
             </div>
@@ -125,7 +125,7 @@
                 <i class="iconfont">&#xe60b;</i>
             </div>
             {% else %}
-            <div style="width: 100%; height: 400px;text-align: center;line-height: 400px;font-size: 30px;">您还未发布案例,快去<a target="_blank" href="{{helper.urlgen('advisor_center', 'postcase')}}">发布案例</a>发布吧！</div>
+            <div style="width: 100%; height: 400px;text-align: center;line-height: 400px;font-size: 30px;">您还未发布案例,快去<a target="_blank" href="{{helper.urlgen('advisor_center', 'postarticle')}}">发布案例</a>发布吧！</div>
             {% endif %}
         </div>
     </div>
@@ -146,7 +146,7 @@
   <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/common/select.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
@@ -225,7 +225,7 @@
                 type: 'GET',
                 datatype: 'json',
                 data: {
-                    u_id: uid,
+                    uid: uid,
                     type: 1,
                     page: page,
                     per_page: per_page,
