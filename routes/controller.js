@@ -558,7 +558,8 @@ exports.center_case = function (req, res, next) {
                 "uid": data.login_info.uid,
                 "page": 1,
                 "per_page": 4,
-                "type": 1
+                "type": 1,
+                "order":"add_time desc"
             }, callback);
         }
     }, function (err, result) {
@@ -984,7 +985,8 @@ exports.center_article = function (req, res, next) {
                 "uid": data.login_info.uid,
                 "page": 1,
                 "per_page": 4,
-                "type": 2
+                "type": 2,
+                "order":"add_time desc"
             }, callback);
         }
     }, function (err, result) {
