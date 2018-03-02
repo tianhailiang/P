@@ -78,7 +78,7 @@ exports.login_s = function (req, res, next) {
   log.debug('this router login_s~~');
   var username = req.body.username;
   var password = req.body.password;
-  var adviser = req.body.adviser;
+  var adviser = req.body.adviser_type;
 
   //log.debug(JSON.stringify(req.body));
   log.debug(req.body);
@@ -89,7 +89,7 @@ exports.login_s = function (req, res, next) {
   async.parallel({
     //签证指南
     login_ss: function (callback) {
-      cms.login_ss({username: username, password: password}, callback);
+      cms.login_ss(req.body, callback);
     }
   }, function (err, result) {
     
