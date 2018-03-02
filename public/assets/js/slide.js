@@ -397,7 +397,7 @@ function get_location(_type){
 $("#r_comment").hover(function(){
  /* $("#comment_con").css("display", "block");*/
   $("#r_comment").css("background", "#C13232");
-  $("#quick_links_pop").css("display", "none");
+/*  $("#quick_links_pop").css("display", "none");*/
 },function(){
  /* $("#comment_con").css("display", "none");
   $("#r_comment").css("background", "#9a9a9a");*/
