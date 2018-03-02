@@ -36,7 +36,7 @@
         <textarea class="reply-text saytext" maxlength="250"></textarea>
         <div class="clearfix emotion-box" style="margin-top: 10px;">
           <span class="emotion"></span>
-          <a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "{{item.id}}" data-uid ="{{item.uid}}" onclick="replyComment1(this)">
+          <a href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "{{item.id}}" data-uid ="{{item.uid}}" onclick="replyComment1(this)">
              评论
           </a>
        </div>
@@ -129,7 +129,7 @@
                             '</textarea>'+
                             '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
                               '<span class="emotion"></span>'+
-                              '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "'+result.data.list[i].id+'" data-uid ="'+result.data.list[i].uid+'" onclick="replyComment1(this)">评论'+
+                              '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "'+result.data.list[i].id+'" data-uid ="'+result.data.list[i].uid+'" onclick="replyComment1(this)">评论'+
                               '</a>'+
                             '</div>'+
                           '</div>'+
@@ -217,7 +217,7 @@ function reply1(obj){
                             '</textarea>'+
                             '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
                               '<span class="emotion"></span>'+
-                              '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+result.data.list[i].comment_id+'" onclick="replyComment2(this)">评论'+
+                              '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+result.data.list[i].comment_id+'" onclick="replyComment2(this)">评论'+
                               '</a>'+
                            '</div>'+
                           '</div>'+
@@ -304,7 +304,7 @@ function replyComment1(obj){
                         '</textarea>'+
                         '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
                           '<span class="emotion"></span>'+
-                          '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
+                          '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
                           '</a>'+
                        '</div>'+
                       '</div>'+
@@ -376,7 +376,7 @@ function replyComment2(obj){
                         '</textarea>'+
                         '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
                           '<span class="emotion"></span>'+
-                          '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
+                          '<a href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
                           '</a>'+
                        '</div>'+
                       '</div>'+
