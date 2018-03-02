@@ -22,6 +22,10 @@
     float: left;
     overflow: hidden;
 }
+.canzan-slide{
+    width: 400px;
+    height: 135px;
+}
 .canzan-slide a{
     width: 400px;
     height: 135px;
