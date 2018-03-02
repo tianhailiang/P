@@ -404,6 +404,7 @@ $("#r_comment").hover(function(){
 })
 $("#r_comment").on("click",function(){
   $("#comment_con").css("display", "block");
+  $("#quick_links_pop").css("display", "none")
 })
   $("#comment_close").on("click", function () {
     $("#comment_con").css("display", "none");
