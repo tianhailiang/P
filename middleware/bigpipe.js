@@ -21,7 +21,7 @@ resproto.pipe = function (selector, html, replace) {
     '("' + html.replace(/"/g, '\\"').replace(/<\/script>/g, '<\\/script>') +
     '")'
 
-  var layjs = '<script>' + 'require(["' + '\/static\/htmlaz.js' +'"],function (lz) {' +
+  var layjs = '<script>' + 'require(["' + '\/public\/assets\/js\/htmlaz.js' +'"],function (lz) {' +
     'lz.add(document.getElementById("' + selector + '"),function() {' + defjs + '})})</script>'
 
   this.write(layjs)
