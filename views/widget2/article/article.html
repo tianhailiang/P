@@ -31,11 +31,11 @@
     <p>
       {% if item.type == 1 %}
       <a target="_blank" href="{{helper.urlgen('case', item.id | string)}}" class="dui-text-warning" rel="nofollow">
-        {{item.introduce}} <span style="color: #C13232">【查看详情】</span>
+        {{item.introduce}}...<span style="color: #C13232">【查看详情】</span>
       </a>
       {% elif item.type == 2 %}
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" class="dui-text-warning" rel="nofollow">
-        {{item.introduce}} <span style="color: #C13232">【查看详情】</span>
+        {{item.introduce}}...<span style="color: #C13232">【查看详情】</span>
       </a>
       {% endif %}
     </p>
