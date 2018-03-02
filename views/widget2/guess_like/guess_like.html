@@ -7,7 +7,7 @@
             <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="img-responsive">
           </a>
             <div class="likes-item" style="padding-top:12px;">
-              <span class="people-name" style="margin-right:45px;margin-top:0;">{{item.user_info.realname }}</span>
+              <span class="people-name" style="margin-right:35px;margin-top:0;">{{item.user_info.realname }}</span>
               <span class="people-action" style="margin-top:0">{{item.tag_list | stringSub()}}</span>
             </div>
             <a style="margin:20px 0 10px 0" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
