@@ -344,7 +344,7 @@
         ] %}
         {% for item in cityList %}
         {% if loop.index<50 %}
-        <div class="branch_company_text_tilte" data-id="{{item.companyId}}">
+        <div class="branch_company_text_tilte needJump" data-id="{{item.companyId}}">
           <a  target="_blank" href="{{helper.urlgen('branch_home','c='+item.companyId)}}" data-id="{{item.companyId}}">{{item.companyName}}</a>
         </div>
         {% endif %}
