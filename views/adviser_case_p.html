@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head lang="en"> 
-  {% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
-  <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
-  <style>
+<head lang="en">
+    {% include "header_new.html" %}
+    <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
+    <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+    <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
+</head>
+<style>
+    .right-cont .loadMore{
+        width: 100%;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        border-top: 1px solid #dcdcdc;
+        cursor: pointer;
+        font-size: 14px;
+        color: #666;
+    }
     .list-h{
         height:130px;
     }
@@ -14,8 +25,7 @@
         width:100%;
         height:100%;
     }
-  </style>
-</head>
+</style>
 <body style="background: #f5f5f5">
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
@@ -25,72 +35,78 @@
   <div class="dui-layout-div"></div>
   <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider2.html" %}</div>
 </div>
-<div class="dui-layout-lg clearfix">
-  <div class="dui-layout-silde right">
-    <div class="clearfix" style="margin-top: 20px">
-        {% if userinfo.status == 1 %} {#离职#}
-        {% import "widget2/community_advisor/community_advisor.html" as advisor_leave %}
-        {{ advisor_leave.advisor_leave(userinfo,helper,login_info) }}
-        {% else %} {#在职#}
-        {% if userinfo.usertype == 2 %}
-        {% import "widget2/community_advisor/community_advisor.html" as advisor %}
-        {{ advisor.advisor(userinfo,helper,login_info) }}
-        {% elseif userinfo.usertype == 3 %}
-        {% import "widget2/community_advisor/community_advisor.html" as counsellor %}
-        {{ counsellor.counsellor(userinfo,helper,login_info) }}
-        {% endif %}
-        {% endif %}
-    </div>
-    <div style="margin-top: 20px;" class="dui-box-shadow">
-      <div class="common-title" style="border:1px solid #dcdcdc;">
-        <i></i>
-        <h3>作者精选</h3>
+<div class="dui-layout-lg clearfix" style="margin-top: 20px">
+    <div class="dui-layout-silde">
+        <div class="clearfix">
+            {% if userinfo.status == 1 %} {#离职#}
+            {% import "widget2/community_advisor/community_advisor.html" as advisor_leave %}
+            {{ advisor_leave.advisor_leave(userinfo,helper,login_info) }}
+            {% else %} {#在职#}
+            {% if userinfo.usertype == 2 %}
+            {% import "widget2/community_advisor/community_advisor.html" as advisor %}
+            {{ advisor.advisor(userinfo,helper,login_info) }}
+            {% elseif userinfo.usertype == 3 %}
+            {% import "widget2/community_advisor/community_advisor.html" as counsellor %}
+            {{ counsellor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+            {% endif %}
+        </div>
+        <div style="margin-top: 20px;" class="dui-box-shadow">
+            <div class="common-title" style="border:1px solid #dcdcdc;">
+                <i></i>
+                <h3>作者精选</h3>
+            </div>
+            {% esi helper.include(esikey,'fragment/author_selection','uid='+to_uid) %}
+        </div>
+      <div style="margin-top: 20px;" class="dui-box-shadow">
+        <div class="common-title" style="border:1px solid #dcdcdc;">
+          <i></i>
+          <h3>猜你喜欢</h3>
+        </div>
+        {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
       </div>
-      {% esi helper.include(esikey,'fragment/author_selection','uid='+to_uid) %}
+        <div class="huod-lod clearfix dui-box-shadow" style="margin-top: 20px">
+            <div class="expert_unscramble_title expert_unscramble_title_new">
+                <i></i><h3>活动预告</h3> <a target="_blank" href="javascript:void(0);"></a>
+            </div>
+            <div style="background:#fff;" >
+               {% esi helper.include(esikey,'fragment/huodongyugao','pos=cmslist','c='+tdk.cityid,'n='+hcountry) %}
+            </div>
+        </div>
     </div>
-    <div style="margin-top: 20px;" class="dui-box-shadow">
-      <div class="common-title" style="border:1px solid #dcdcdc;">
-        <i></i>
-        <h3>猜你喜欢</h3>
-      </div>
-      {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
-    </div>
-  </div>
-  <div class="dui-layout-div"></div>
-  <div class="dui-layout-con left" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
-    <div style="margin-top: 20px">
-      <div style="">
-          {% if userinfo.status == 1 %} {#离职顾问#}
-          {% import "widget2/community_nav/community_nav.html" as adviser_nav_leave %}
-          {{adviser_nav_leave.adviser_nav_leave('专栏', userinfo.uid, helper)}}
-          {% else %} {#在职顾问#}
-          {% if userinfo.usertype == 2 %}
-          {% import "widget2/community_nav/community_nav.html" as adviser_nav %}
-          {{adviser_nav.adviser_nav('专栏', userinfo.uid, helper)}}
-          {% elif userinfo.usertype == 3 %}
-          {% import "widget2/community_nav/community_nav.html" as canzan_nav %}
-          {{canzan_nav.canzan_nav('专栏', userinfo.uid, helper)}}
-          {% endif %}
-          {% endif %}
-      </div>
-      {% if zhuanlanlist.list.length > 0 %}
-      <div class="right-main clearfix">
-        {% for item in zhuanlanlist.list %}
-        {% import "widget2/article/article.html" as article_show %}
-        {{ article_show.article_show(item, helper) }}
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con dui-box-shadow" style="background-color: #fff;">
+        <div class="right-cont case-cont">
+            {% if userinfo.status == 1 %} {#离职顾问#}
+            {% import "widget2/community_nav/community_nav.html" as adviser_nav_leave %}
+            {{adviser_nav_leave.adviser_nav_leave('案例', userinfo.uid, helper)}}
+            {% else %} {#在职顾问#}
+            {% if userinfo.usertype == 2 %}
+            {% import "widget2/community_nav/community_nav.html" as adviser_nav %}
+            {{adviser_nav.adviser_nav('案例', userinfo.uid, helper)}}
+            {% elif userinfo.usertype == 3 %}
+            {% import "widget2/community_nav/community_nav.html" as canzan_nav %}
+            {{canzan_nav.canzan_nav('案例', userinfo.uid, helper)}}
+            {% endif %}
+            {% endif %}
+            {% if case_data.list.length > 0 %}
+          <div class="right-main clearfix">
+                    {% for item in case_data.list %}
+                      {% import "widget2/article/article.html" as article_show %}
+                      {{ article_show.article_show(item, helper) }}
 
-        {% include "widget2/bottom_comment/bottom_comment.html" %}
-        {% endfor %}
-      </div>
-      <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
-        <span>加载更多</span>
-        <i class="iconfont">&#xe60b;</i>
-      </div>
-      {% else %}
-      {% include "widget2/blank/blank.html" %}
-      {% endif %}
+                      {% include "widget2/bottom_comment/bottom_comment.html" %}
+                    {% endfor %}
+                </div>
+          <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
+            <span>加载更多</span>
+            <i class="iconfont">&#xe60b;</i>
+          </div>
+            {% else %}
+              {% include "widget2/blank/blank.html" %}
+            {% endif %}
+        </div>
     </div>
-  </div>
 </div>
 {% import "widget/new_slide/new_slide3.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo) }}
@@ -98,17 +114,18 @@
 <script>
   var login_ss = null; 
   if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));  
+    login_ss = JSON.parse($.cookie('login_ss'));
   }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function(){
     window._bd_share_config = {
@@ -126,25 +143,25 @@
     };
     console.log(_bd_share_config.common.bdUrl)
     with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
-    $('.banner-box-left .slider').xSlider({
-      //轮播图配置
+      $('.banner-box-left .slider').xSlider({
+          //轮播图配置
 //          autoplay : 500,
-      current: 0,
-      speed: 500,
-      intervalTime: 5000,
-      pagination: true
-    });
-    $('.banner-box-right .slider').xSlider({
-      //轮播图配置
+          current: 0,
+          speed: 500,
+          intervalTime: 5000,
+          pagination: true
+      });
+      $('.banner-box-right .slider').xSlider({
+          //轮播图配置
 //          autoplay : 500,
 //            mode:'vertical',
-      current: 0,
-      speed: 1000,
-      intervalTime: 5000,
-      slidesPerView : 2,
-      slidesPerGroup : 2,
+          current: 0,
+          speed: 1000,
+          intervalTime: 5000,
+          slidesPerView : 2,
+          slidesPerGroup : 2,
           pagination: true
-    });
+      });
     //明星顾问轮播
     function appendArticleItem (aitem) {
       var aItemHtml = '<div class="homepage">'+
@@ -166,16 +183,16 @@
           '</div>'+
           '<div class="homepage-title">'+
           '<p>'+
-          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"case="+aitem.id.toString()) +'" class="dui-text-warning">'+aitem.title+'<div>'+aitem.tag_list+'</div>'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+aitem.title+'<div>'+aitem.tag_list+'</div>'+
           '</a>'+
           '</p>'+
           '</div>'+
           '<div class="homepage-p">'+
           '<p>' +
-          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"case="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'...<span style="color: #C13232">【查看详情】</span>'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'...<span style="color: #C13232">【查看详情】</span>'+
           '</a>'+
           '</p>'+
-          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"case="+aitem.id.toString()) +'" class="dui-text-warning">'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+
           addArticleImg(aitem.img_list)+
           '</a>'+
           '<div style="width: 200px;line-height: 38px;float: left;position: relative">'+
@@ -240,7 +257,7 @@
         data: {
           order:"add_time desc",
           page: page,
-          type: 2,
+          type: 1,
           per_page: per_page,
           uid:thisObj.attr("data-uid")
         },
