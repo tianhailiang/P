@@ -216,7 +216,7 @@
                                 </div>
                             </div>
                             <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">【查看详情】</a></div>
-                            <div class="time">{{item.update_time}}</div>
+                            <div class="time">{{item.add_time | getDefaultFormat('YYYY-MM-DD hh:mm:ss')}}</div>
                         </div>
                     </div>
                     {% endfor %}
@@ -283,7 +283,7 @@
                     '</div>'+
                     '</div>'+
                     '<div class="info-desc">'+ fn.ellipsis(item.introduce) +'<a href="'+fn.articleUrlgen('blog',item.user_info.uid.toString(),'article='+item.id.toString())+'">【查看详情】</a></div>'+
-                '<div class="time">'+ item.update_time +'</div>'+
+                '<div class="time">'+ fn.getFormatDate(item.add_time,5) +'</div>'+
                 '</div>'+
                 '</div>';
             }

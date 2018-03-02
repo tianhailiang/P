@@ -27,12 +27,12 @@
 		<h1>{{floor.country_name}}留学</h1>
 		<ul class="lx-tabitems">
 			{% for tagitem in floor.list %}
-					<li>{{tagitem.edu_name}}<em></em></li>
+				{% if loop.index == 1 %}
+				<li class="active">{{tagitem.edu_name}}<em></em></li>
+				{% else %}
+				<li>{{tagitem.edu_name}}<em></em></li>
+				{% endif %}
 			{% endfor %}
-			<!-- <li >中学<em></em></li>
-			<li >本科<em></em></li>
-			<li>研究生<em></em></li>
-			<li>博士<em></em></li> -->
 		</ul>
 	</div>
 	{% for type in  floor.list %}{#类别#}
@@ -44,14 +44,14 @@
 					{% if item.uid != null %}
 					<li>
 						<div class="gw-people">
-							<a href="{{helper.articleUrlgen('blog',item.uid|string)}}" style="display:inline-block;">
+							<a href="{{helper.articleUrlgen('blog',item.uid | string)}}" style="display:inline-block;">
 								<img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
 							</a>
 							<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
 						</div>
 						<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
 							<div class="gw-legend gw-news">留学时讯</div>
-							<p style="clear:both">{{ item.title }}</p>
+							<p style="clear:both">{{ item.title | ellipsis(13) }}</p>
 						</a>
 					</li>
 					{% endif %}
@@ -71,7 +71,7 @@
 								</div>
 								<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
 									<div class="gw-legend">{{item.tag_list}}</div>
-									<p style="clear:both">{{item.title}}</p>
+									<p style="clear:both">{{item.title | ellipsis(13)}}</p>
 								</a>
 							</li>
 							{% endif %}
