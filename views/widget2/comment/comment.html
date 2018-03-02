@@ -3,7 +3,7 @@
   <textarea class="saytext1 saytext" id="saytext"  maxlength="500"></textarea>
   <div class="sub-btn-box clearfix emotion-box">
     <span class="emotion"></span>
-    <a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn" data-artId = "{{article_id}}" data-memberId ="{{memberId}}" id="commentBtn" data-catid="{{article.article_info.category_id}}">
+    <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn" data-artId = "{{article_id}}" data-memberId ="{{memberId}}" id="commentBtn" data-catid="{{article.article_info.category_id}}">
        评论
     </a>
   </div>
@@ -41,7 +41,7 @@
         <textarea class="reply-text saytext" maxlength="250"></textarea>
         <div class="clearfix emotion-box" style="margin-top: 10px;">
           <span class="emotion"></span>
-          <a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "{{item.id}}" data-uid ="{{item.uid}}" onclick="replyComment1(this)">
+          <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "{{item.id}}" data-uid ="{{item.uid}}" onclick="replyComment1(this)">
              评论
           </a>
        </div>
@@ -154,13 +154,14 @@ $(function(){
   	                            '<textarea class="reply-text" maxlength="250"></textarea>'+
   	                            '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
   	                              '<span class="emotion"></span>'+
-  	                              '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "'+result.data.comment_id.comment_id+'" data-uid ="'+login_ss.uid+'" onclick="replyComment1(this)">评论</a>'+
+  	                              '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "'+result.data.comment_id.comment_id+'" data-uid ="'+login_ss.uid+'" onclick="replyComment1(this)">评论</a>'+
   	                            '</div>'+
   	                          '</div>'+
   	                          '<div class="reply-list" ></div>'+
   	                        '</div>'+
   	                    '</div>';
   	          $("#saytext").val(null);
+              $("#word-num").html(500);
   	          $(".comment-list-box").prepend(html);
   	          $('.emotion').qqFace({ 
   	            path:ajaxUrlPrefix.cdnhost+'/assets/img/gif/' //表情存放的路径
@@ -237,7 +238,7 @@ $(function(){
 	                          '</textarea>'+
 	                          '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
 	                            '<span class="emotion"></span>'+
-	                            '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "'+result.data.list[i].id+'" data-uid ="'+result.data.list[i].uid+'" onclick="replyComment1(this)">评论'+
+	                            '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn1" data-commentId = "'+result.data.list[i].id+'" data-uid ="'+result.data.list[i].uid+'" onclick="replyComment1(this)">评论'+
 	                            '</a>'+
 	                          '</div>'+
 	                        '</div>'+
@@ -331,7 +332,7 @@ function reply1(obj){
                             '</textarea>'+
                             '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
                               '<span class="emotion"></span>'+
-                              '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+result.data.list[i].comment_id+'" onclick="replyComment2(this)">评论'+
+                              '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+result.data.list[i].comment_id+'" onclick="replyComment2(this)">评论'+
                               '</a>'+
                            '</div>'+
                           '</div>'+
@@ -448,7 +449,7 @@ function replyComment1(obj){
                         '</textarea>'+
                         '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
                           '<span class="emotion"></span>'+
-                          '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
+                          '<a href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
                           '</a>'+
                        '</div>'+
                       '</div>'+
@@ -517,7 +518,7 @@ function replyComment2(obj){
                         '</textarea>'+
                         '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
                           '<span class="emotion"></span>'+
-                          '<a target="_blank" href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
+                          '<a href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
                           '</a>'+
                        '</div>'+
                       '</div>'+
