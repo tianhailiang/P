@@ -74,7 +74,7 @@
           {% endif %}
       </div>
       {% if zhuanlanlist.list.length > 0 %}
-      <div id="con_zhuanlan" >
+      <div class="right-main clearfix">
         {% for item in zhuanlanlist.list %}
         {% import "widget2/article/article.html" as article_show %}
         {{ article_show.article_show(item, helper) }}
