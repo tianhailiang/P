@@ -150,21 +150,19 @@
           '<div class="homepage-title">' +
           '<p>' ;
       if(aitem.type==1){
-        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div>' + aitem.tag_list + '</div>' +
-            '</a>' ;
+        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
       }else if(aitem.type==2){
-        aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div>' + aitem.tag_list + '</div>' +
-            '</a>' ;
+        aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
       }
       aItemHtml+=  '</p>' +
           '</div>' +
           '<div class="homepage-p">' +
           '<p>' ;
       if(aitem.type==1){
-        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
+        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">...【查看详情】</span>' +
             '</a>' ;
       }else if(aitem.type==2){
-        aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
+        aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">...【查看详情】</span>' +
             '</a>' ;
       }
       aItemHtml+=  '</p>' +
