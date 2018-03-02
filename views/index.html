@@ -127,7 +127,7 @@
 </div>
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(helper) }}
+{{ new_nav_first.new_nav_first(tdk,helper) }}
 <div class="main" style="width: 1200px;margin: 0 auto;">
   <!--轮播图-->
   <div class="lunbo">
@@ -378,7 +378,7 @@
         e.preventDefault();
       }
       $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
-      window.location.reload();
+      window.location.href= fn.urlgen('branch_home','c=' + currentarea);
 
     });
     //正确
