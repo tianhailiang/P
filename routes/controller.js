@@ -1432,7 +1432,6 @@ exports.adviser_case = function (req, res, next) {
         case_list: function (callback) {
             wec.adviser_main({
                 "uid": data.to_uid,
-                "page": 1,
                 "per_page": 6,
                 "type": 1
             }, callback);

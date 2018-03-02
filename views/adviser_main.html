@@ -146,20 +146,37 @@
           '</ul>' +
           '</div>' +
           '<div class="homepage-title">' +
-          '<p>' + aitem.title + '<div>' + aitem.tag_list + '</div></p>' +
+          '<p>' ;
+          if(aitem.type==1){
+            aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div>' + aitem.tag_list + '</div>' +
+                '</a>' ;
+          }else if(aitem.type==2){
+            aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div>' + aitem.tag_list + '</div>' +
+                '</a>' ;
+          }
+          aItemHtml+=  '</p>' +
           '</div>' +
           '<div class="homepage-p">' +
           '<p>' ;
           if(aitem.type==1){
-            aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "case=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
+            aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
               '</a>' ;
           }else if(aitem.type==2){
             aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">【查看详情】</span>' +
               '</a>' ;
           }
-
-      aItemHtml+=  '</p>' +
-          addArticleImg(aitem.img_list) +
+          aItemHtml+=  '</p>' +
+              '<p>' ;
+          if(aitem.type==1){
+            aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' +
+                addArticleImg(aitem.img_list) +
+                '</a>' ;
+          }else if(aitem.type==2){
+            aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' +
+                addArticleImg(aitem.img_list) +
+                '</a>' ;
+          }
+          aItemHtml+=  '</p>' +
           '<div style="float: left;width: 200px;line-height: 37px;position: absolute;left: 446px;margin-top: 11px;">' + aitem.add_time + '</div>' +
           '</div>' +
           '</div>' +
