@@ -266,6 +266,7 @@
       }); 
       //选择文章类型
       var newsletterType = null;
+      var newTagStr = '';
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
         $('.art-type-i').html('').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'});
@@ -274,8 +275,10 @@
         $(this).find('.art-type-i').next().css({'color':'#c13232'});
         if($(this).index()==2){
           $('.newsletter-hide').slideDown();
+          newTagStr = '';
         }else{
           $('.newsletter-hide').slideUp();
+          newTagStr = '留学时讯';
         }
       });
       //选择学历标签
@@ -409,8 +412,7 @@
               layer.msg('请选择推荐标签');
               return false;
             }
-            var newTagStr =tagStr.substring(0,tagStr.length-1);
-            // console.log(newTagStr)
+            newTagStr =tagStr.substring(0,tagStr.length-1);
           }
         }
         
@@ -429,7 +431,7 @@
           layer.msg("请输入正文内容");
           return false;
         }
-       
+
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
@@ -496,7 +498,6 @@
               return false;
             }
             var eduStr = eduList.substring(0,eduList.length-1);
-            // console.log(eduStr)
             //判断标签
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
@@ -509,8 +510,7 @@
               layer.msg('请选择推荐标签');
               return false;
             }
-            var newTagStr =tagStr.substring(0,tagStr.length-1);
-            // console.log(newTagStr)
+            newTagStr =tagStr.substring(0,tagStr.length-1);
           }
         }
         if($("#rel-case-title").val()==''){

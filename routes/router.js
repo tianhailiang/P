@@ -69,6 +69,8 @@ exports = module.exports = function (app) {// routes
   app.get('/advisor_center', controller.center_main);
   //顾问中心 我的案例
   app.get('/advisor_center/case', controller.center_case);
+  //顾问中心 我的案例/我的专栏 加载更多
+  app.get('/soapi/advisor_list', controller.advisor_list);
   //顾问中心 收到的评论
   app.get('/advisor_center/revcomment', controller.center_comment);
   //参赞中心 收到的评论

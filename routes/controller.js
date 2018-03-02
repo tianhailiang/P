@@ -501,6 +501,20 @@ exports.post_code = function (req, res, next) {
         res.render('center_post_code', data);
     });
 };
+
+exports.advisor_list = function (req, res, next) {
+    log.debug('个人中心 加载更多');
+    var data = req.query;
+    wec.adviser_main(data,function(err,result){
+      if(err){
+        res.send(err);
+      }else{
+        console.log('result', result.data.list);
+        res.send(result);
+      }
+    })
+}
+
 //个人中心 我的案例
 exports.center_case = function (req, res, next) {
     log.debug('个人中心 我的案例')
