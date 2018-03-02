@@ -74,7 +74,7 @@ exports.index = function (req, res, next) {
         },
         shouye:function(callback) {
             cms.shouye({
-                "city_id": 1,
+                "city_id": area,
             }, callback);
         },
     },function (err, result) {
@@ -91,7 +91,7 @@ exports.index = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
         data.tdk = {
-            pagekey: 'index',
+            pagekey: 'HOME',
             cityid: area,
             nationid: ''
         };
@@ -552,6 +552,7 @@ exports.center_case = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
         data.case_data =returnData(result.case_list,'case_list');
+        console.log('case_data',data.case_data);
         data.tdk = {
           pagekey: 'ADVISOR_CENTER_CASE', 
           cityid: area,
@@ -763,14 +764,14 @@ exports.center_message = function (req, res, next) {
     async.parallel({
         // lunbo_list:function(callback) {
         //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_CENTER_CASE",
+        //         "ad_page": "ADVISOR_CENTER_REVMESSAGE",
         //         "cityid":area,
         //         "ad_seat": "SEAT1"
         //     }, callback);
         // },
         // lunbo_list2:function(callback) {
         //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_CENTER_CASE",
+        //         "ad_page": "ADVISOR_CENTER_REVMESSAGE",
         //         "cityid":area,
         //         "ad_seat": "SEAT2"
         //     }, callback);

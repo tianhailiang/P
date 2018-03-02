@@ -166,7 +166,7 @@ exports.binding = function (req, res, next) {
   var data = [];
   data.login_nickname = '';
   console.log("oauth_login", req.cookies.oauth_login);
-//   data.oauth_data = JSON.parse(req.cookies.oauth_login);
+  data.oauth_data = JSON.parse(req.cookies.oauth_login);
   data.tdk = {
     pagekey: 'BINDING', //key
     cityid: '', //cityid

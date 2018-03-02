@@ -326,6 +326,7 @@ exports.adviser_main=function(data,callback){
     return;
   }
   api.apiRequest(url, callback);
+  console.log('url-----', url);
 }
 // 顾问主页列表踩你喜欢
 exports.likelist=function(data,callback){

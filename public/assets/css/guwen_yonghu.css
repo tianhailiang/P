@@ -82,12 +82,12 @@
   color: #666;
 }
 .homepage-li {
-  width: 840px;
+  width: 840px; position: relative;
 }
 .homepage-li li img {
   width: 150px;
   height: 150px;
-  margin-left: 20px;
+  margin-right: 20px;
   float: left;
 }
 .homepage-span {
@@ -179,6 +179,9 @@
 }
 .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
   margin-top: -33px
+}
+.banner-box-right .slider .slider-dot ul{
+  left: 50%;
 }
 .report-btn {
   cursor: pointer;

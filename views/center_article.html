@@ -69,6 +69,9 @@
   .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
     margin-top: -33px
   }
+  .banner-box-right .slider .slider-dot ul{
+    left: 50%;
+  }
 </style>
 <body style="background: #f5f5f5">
   {% include "widget/top/top.html" %}
@@ -166,7 +169,7 @@
             intervalTime: 5000,
             slidesPerView : 2,
             slidesPerGroup : 2,
-//          pagination: true
+          pagination: true
         });
         function appendArticleItem (aitem) {
             var aItemHtml = '';
