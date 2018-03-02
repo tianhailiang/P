@@ -76,17 +76,24 @@ exports.user_info = function (req, res, next) {
     data.login_nickname = login_a;
   }
   console.log(req.body);
+  console.log('u_id',data.login_nickname.uid)
   res.setHeader("Access-Control-Allow-Methods","GET,POST");
-  wecent.xiugai_info({uid: data.login_nickname.uid, realname: realname, nickname: nickname, birthday: birthday, sex: sex, introduce: introduce}, function (err,result) {
+  wecent.xiugai_info({u_id: data.login_nickname.uid, realname: realname, nickname: nickname, birthday: birthday, sex: sex, introduce: introduce}, function (err,result) {
     if(err){
       res.send("cb("+JSON.stringify(err)+")");
     }else{
       console.log('result',result);
-      if (config.version == 'development' && result.code === 0) {//开发环境
-        res.cookie("login_ss", JSON.stringify(result.data), {domain: '.jjlvip.cn'});//保存cookie
-      } else {
-        res.cookie("login_ss", JSON.stringify(result.data), {domain: '.jjlvip.cn'});
+
+      if(result.code === 0){
+        data.login_nickname.nickname = nickname
+        if (config.version == 'development') {//开发环境
+          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: '.jjlvip.cn'});//保存cookie
+        } else {
+          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: '.jjlvip.cn'});
+        }
       }
+
+      
       res.send("cb("+JSON.stringify(result)+")");
     }
   });
@@ -104,7 +111,7 @@ exports.user_ziliao = function (req, res, next) {
   }
   console.log(req.body);
   res.setHeader("Access-Control-Allow-Methods","GET,POST");
-  wecent.xiugai_info({uid: data.login_nickname.uid, introduce: introduce}, function (err,result) {
+  wecent.xiugai_info({u_id: data.login_nickname.uid, introduce: introduce}, function (err,result) {
     if(err){
       res.send("cb("+JSON.stringify(err)+")");
     }else{
