@@ -56,6 +56,8 @@ exports.favorite_article = function (req, res, next) {
     if(err){
       res.send("cb("+JSON.stringify(err)+")");
     }else{
+      
+      console.log('result', result)
       res.send("cb("+JSON.stringify(result)+")");
     }
   });

@@ -277,7 +277,7 @@
       });
       //选择推荐标签
       $('.recommend-sel:last').css({"display":"inline-block","marginLeft":"130px"});
-      var recNumber = 0;
+      var recNumber = $('.recommend-sel[checked=checked]').length;
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
           // console.log('false');
@@ -293,7 +293,6 @@
           }
         }
         recNumber =$('.recommend-sel[checked=checked]').length;
-        // console.log(recNumber)
       });
   
       //编辑器
