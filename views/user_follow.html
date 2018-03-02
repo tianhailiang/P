@@ -36,6 +36,9 @@
     .slider .slider-dot ul{
         left:95%;
     }
+    .banner-box-right .slider .slider-dot ul{
+        left: 50%;
+    }
     .slider .slider-dot ul li{
         border-radius: 50%;
     }
@@ -48,7 +51,7 @@
 {% include "widget/top/top.html" %}
 
 {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(helper) }}
+{{ new_nav_first.new_nav_first(tdk,helper) }}
 
 <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
@@ -137,7 +140,7 @@
             intervalTime: 5000,
             slidesPerView : 2,
             slidesPerGroup : 2,
-//          pagination: true
+          pagination: true
         });
         /*分页器*/
         if (total_num >= 1) {

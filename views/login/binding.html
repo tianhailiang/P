@@ -27,7 +27,7 @@
 {% include "widget/top/top.html" %}
 <div class="main" style="width: 1180px;margin: 0 auto;">
   {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-  {{ new_nav_first.new_nav_first(helper) }}
+  {{ new_nav_first.new_nav_first(tdk,helper) }}
 </div>
 
 <div class="register_overseas clearfix">
@@ -126,7 +126,7 @@
       dataType:'json',
       data: {
         phone: $('#newEmail').val(),
-        code: $('#verify').val(),
+        code: $('#verify_binding').val(),
         oauthid: $('#oauthid').val()
       },
       success:function(msg) {

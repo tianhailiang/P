@@ -38,6 +38,9 @@
   .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
     margin-top: -33px
   }
+  .banner-box-right .slider .slider-dot ul{
+    left: 50%;
+  }
 </style>
 </head>
 <body style="background: #f5f5f5">
@@ -78,7 +81,7 @@
   </div>
   {% include "widget/top/top.html" %}
   {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-  {{ new_nav_first.new_nav_first(helper) }}
+  {{ new_nav_first.new_nav_first(tdk,helper) }}
   <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
@@ -183,7 +186,7 @@
             intervalTime: 5000,
             slidesPerView : 2,
             slidesPerGroup : 2,
-//          pagination: true
+          pagination: true
         });
         function to_album_add(advisor_id, arr) {
             $.ajax({
