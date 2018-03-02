@@ -32,7 +32,7 @@
 }
 .homepagecon ul{
   float: right;
-  margin-top: 12px;
+  margin-top: 10px;
   margin-right: 20px;
 }
 .homepagecon h3 {
@@ -179,6 +179,9 @@
 }
 .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
   margin-top: -33px
+}
+.banner-box-right .slider .slider-dot ul{
+  left: 50%;
 }
 .report-btn {
   cursor: pointer;

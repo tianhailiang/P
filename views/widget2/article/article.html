@@ -1,9 +1,9 @@
 {% macro article_show(item,helper) %}
 <div class="homepage">
   <div class="homepagecon">
-    <div class="homepageing" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 50px 50px;"></div>
-    <h3>{{item.user_info.realname}}<img src="{{helper.cdnhost}}/assets/img/1v.png" alt=""></h3>
-    <ul>
+    <a target="_blank" href="{{helper.urlgen('blog', item.uid | string)}}"><div class="homepageing" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 50px 50px;"></div>
+    <h3>{{item.user_info.realname}}<img src="{{helper.cdnhost}}/assets/img/1v.png" alt=""></h3></a>
+      <ul>
       <div>
         <div class="bdsharebuttonbox" style="margin-top: 15px;">
           <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
@@ -114,7 +114,7 @@
     </div>
     <div class="adviser-info-date clearfix" >
       <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
-      <span>来自：{{item.from}}</span>
+      <span>{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
       <a target="_blank" href="/{% if item.user_info.usertype == 2 %}advisor_center{% elif item.user_info.usertype == 3 %}canzan_center{% endif %}/article/{{item.id}}" style="color: #C13232">{{item.title}}</a>
@@ -192,7 +192,7 @@
     </div>
     <div class="adviser-info-date clearfix" >
       <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
-      <span>来自：{{item.from}}</span>
+      <span>{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #C13232">{{item.title}}</a>

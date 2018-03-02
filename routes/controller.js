@@ -32,6 +32,13 @@ function split_array(arr, len) {
 exports.index = function (req, res, next) {
     var iparea = req.cookies.currentarea;
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    if (req.params[0]) {
+        var cityId = comfunc.getCityId(req.params[0]);
+        if(cityId && cityId !== comfunc.INVALID_ID){
+            area = cityId;
+            res.cookie("currentarea", cityId, {domain: '.jjlvip.cn'});
+        }
+    }
     var data = [];
     var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
     if(ip.split(',').length>0){
@@ -84,7 +91,7 @@ exports.index = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
         data.tdk = {
-            pagekey: 'index',
+            pagekey: 'HOME',
             cityid: area,
             nationid: ''
         };
@@ -545,6 +552,7 @@ exports.center_case = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
         data.case_data =returnData(result.case_list,'case_list');
+        console.log('case_data',data.case_data);
         data.tdk = {
           pagekey: 'ADVISOR_CENTER_CASE', 
           cityid: area,
@@ -1334,7 +1342,7 @@ exports.adviser_main = function (req, res, next) {
       },
     guwen_list:function (callback){
       wec.adviser_main({
-        "per_page":6, "order":"views desc", "uid": data.uid}, callback)
+        "per_page":6, "order":"add_time desc", "uid": data.uid}, callback)
     },
     likelist:function (callback){ //猜你喜欢
       wec.likelist({
@@ -1432,7 +1440,7 @@ exports.adviser_special = function (req, res, next) {
       wec.userinfo({"u_id": data.login_info.uid, "to_uid":data.to_uid},callback);
     },
     zhuanlanlist: function (callback) {
-      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2}, callback);
+      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2,"order":"add_time desc"}, callback);
     }
   },function(err, result){
       data.xSlider = returnData(result.lunbo_list,'lunbo_list');
@@ -1525,7 +1533,8 @@ exports.adviser_case = function (req, res, next) {
             wec.adviser_main({
                 "uid": data.to_uid,
                 "per_page": 6,
-                "type": 1
+                "type": 1,
+                "order":"add_time desc"
             }, callback);
         }
 

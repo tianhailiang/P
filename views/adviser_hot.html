@@ -9,7 +9,7 @@
 <body style="background: #f5f5f5">
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
-{{ new_nav_red.new_nav_red(helper) }}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
 <div class="dui-layout-lg clearfix banner-box">
   <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
   <div class="dui-layout-div"></div>
@@ -126,16 +126,18 @@
       intervalTime: 5000,
       slidesPerView: 2,
       slidesPerGroup: 2,
-//          pagination: true
+          pagination: true
     });
     //明星顾问轮播
     function appendArticleItem(aitem) {
       var aItemHtml = '<div class="homepage">' +
           '<div class="homepagecon">' +
+          '<a target="_blank"  href="' + fn.urlgen("blog", aitem.uid.toString()) + '" >'+
           '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: 50px 50px;"></div>' +
           '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
+          '</a>'+
           '<ul>' +
-          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 16px;">' +
+          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 12px;">' +
           '<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>' +
           '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
           '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>' +
