@@ -91,7 +91,7 @@ exports.index = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
         data.tdk = {
-            pagekey: 'index',
+            pagekey: 'HOME',
             cityid: area,
             nationid: ''
         };
