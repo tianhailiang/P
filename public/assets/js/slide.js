@@ -326,7 +326,7 @@ function get_location(_type){
   $("#lylist").html(get_zxbarHtml());
 
   if (_areaCode == 1) {
-    $("#quick_links_pop").css('margin-top', '-300px');
+    $("#quick_links_pop").css('margin-top', '-345px');
   } else {
     $("#quick_links_pop").css('margin-top', '-170px');
   }
@@ -375,7 +375,7 @@ function get_location(_type){
 
 // right: 40px; margin-top: -200px; display: block; width: 170px;
   $(".zixun").on("click", function () {
-    $("#quick_links_pop").css({"display": "block", "right": "40px", "margin-top": "-300px", "width": "170px"})
+    $("#quick_links_pop").css({"display": "block", "right": "40px", "margin-top": "-345px", "width": "170px"})
   })
   
 //关闭弹框
