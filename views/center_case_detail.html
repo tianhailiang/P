@@ -60,9 +60,15 @@
               </div>
             </div>
         </div>
-        <h1 class="adviser-case-detail-h3">
-          {{article.article_info.title}}
-        </h1>
+        <div class="clearfix" >
+          <h1 class="adviser-case-detail-h3">
+            {{article.article_info.title}}
+          </h1>
+          <div class="art-tag">
+            <span class="art-tag-bg" ></span>
+            <span class="art-tag-list">{{article.article_info.tag_list}}</span>
+          </div>
+        </div>
         <div class="adviser-case-detail-come" >
           <span>时间：{{article.article_info.add_time}}</span>
           <span style="float:right;margin-left: 20px;">
