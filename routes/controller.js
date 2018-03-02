@@ -552,6 +552,7 @@ exports.center_case = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
         data.case_data =returnData(result.case_list,'case_list');
+        console.log('case_data',data.case_data);
         data.tdk = {
           pagekey: 'ADVISOR_CENTER_CASE', 
           cityid: area,
