@@ -111,3 +111,6 @@
 .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left {
   margin-top: -33px
 }
+.banner-box-right .slider .slider-dot ul{
+  left: 50%;
+}

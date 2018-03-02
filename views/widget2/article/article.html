@@ -41,7 +41,7 @@
       {% endif %}
     </p>
   </div>
-  <ul class="homepage-li">
+  <ul class="homepage-li" style="float: left;margin-left: 20px">
     {% for val in item.img_list %}
     <li>
       {% if item.type == 1 %}
@@ -56,7 +56,9 @@
     </li>
     {% endfor %}
   </ul>
-  <div style="float: left;width: 200px;line-height: 45px;position: absolute;left: 446px;margin-top: 2px;">{{item.add_time}}</div>
+  <div style="width: 200px;line-height: 38px;float: left;position: relative">
+    <div style="float: left;position: absolute;left: 20px">{{item.add_time}}</div>
+  </div>
 </div>
 {% endmacro %}
 //顾问、个人中心
@@ -114,7 +116,7 @@
     </div>
     <div class="adviser-info-date clearfix" >
       <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
-      <span>来自：{{item.from}}</span>
+      <span>{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
       <a target="_blank" href="/{% if item.user_info.usertype == 2 %}advisor_center{% elif item.user_info.usertype == 3 %}canzan_center{% endif %}/article/{{item.id}}" style="color: #C13232">{{item.title}}</a>
@@ -192,7 +194,7 @@
     </div>
     <div class="adviser-info-date clearfix" >
       <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
-      <span>来自：{{item.from}}</span>
+      <span>{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #C13232">{{item.title}}</a>
