@@ -180,3 +180,6 @@
 .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
   margin-top: -33px
 }
+.report-btn {
+  cursor: pointer;
+}

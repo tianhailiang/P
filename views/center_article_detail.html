@@ -13,10 +13,11 @@
  <!-- ====导航===== -->
  {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
  {{ new_nav_red.new_nav_red(helper) }}
-<div class="dui-layout-lg clearfix" >
-   <!--=====广告图1====-->
-  <div class="adviser-case-detail-map" style="margin-top: 20px;" id="AD_{% if login_info.usertype ==2 %}ADVISOR{% elif login_info.usertype ==3 %}CANZAN{% endif %}_CENTER_ARTICLEDETAIL_SEAT1"></div> 
-</div> 
+  <div class="dui-layout-lg clearfix banner-box">
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
+  </div>
 <div class="dui-layout-lg clearfix" >
   <div class="dui-layout-silde ">
     <!-- =======顾问头像关注====== -->
@@ -129,8 +130,28 @@
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function(){
+      $('.banner-box-left .slider').xSlider({
+          //轮播图配置
+//          autoplay : 500,
+          current: 0,
+          speed: 500,
+          intervalTime: 5000,
+          pagination: true
+      });
+      $('.banner-box-right .slider').xSlider({
+          //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+          current: 0,
+          speed: 1000,
+          intervalTime: 5000,
+          slidesPerView : 2,
+          slidesPerGroup : 2,
+//          pagination: true
+      });
     window._bd_share_config={
           "common":{
               "bdSnsKey":{},

@@ -1,5 +1,5 @@
 
-  $(document).ready(function () {
+  $(function() {
 
     $("form").Vaild();
     var sP = document.getElementById('sendcun');

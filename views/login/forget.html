@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
 {% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css"/>
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/style.css?v=4.1.0" rel="stylesheet">
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/custom.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/bootstrap.min.css?v=3.3.6">
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/style.css?v=4.1.0">
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/custom.css">
 
   <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
@@ -58,10 +57,10 @@
           </div>
           <div class="form-group clearfix">
             <div class="title"><span>*&nbsp;</span>验&nbsp;证&nbsp;码&nbsp;：</div>
-            <input  type="text" id="verify" class="form-control" style="width: 114px;display: inline-block;" required data-vaild="^\d{4}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <input  type="text" id="verify_forget" class="form-control" style="width: 114px;display: inline-block;" required data-vaild="^\d{4}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
             <div class="bind-button" style="width: 100px;float: left">
               <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
-              <input type="button" class="btn btn-primary" style="width: 100px;text-align: center;padding: 6px 2px;background: #fff;color: #c6a770;border: 1px solid #c6a770;border-radius: 3px;line-height: 0px" id="sendcun" value="发送验证码"/>
+              <input type="button" class="btn btn-primary" style="width: 100px;text-align: center;padding: 6px 2px;background: #fff;color: #c6a770;border: 1px solid #c6a770;border-radius: 3px;line-height: 0px" id="sendcun_forget" value="发送验证码"/>
             </div>
           </div>
           <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
@@ -172,6 +171,7 @@
 <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/nav_forget.js" type="text/javascript" charset="utf-8"></script>-->
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
 <script>
   $(document).ready(function () {
 
@@ -180,11 +180,11 @@
       checkboxClass: 'icheckbox_square-green',
       radioClass: 'iradio_square-green'
     });
-    var sP = document.getElementById('sendcun');
+    var sP = document.getElementById('sendcun_forget');
     if (sP.addEventListener) {
-      sP.addEventListener('click', sendphone, false)
+      sP.addEventListener('click', sendphone_for, false)
     }else {
-      sP.attachEvent('onclick', sendphone, false)
+      sP.attachEvent('onclick', sendphone_for, false)
     }
     var fP = document.getElementById('forgetSubmit');
     if (fP.addEventListener) {
@@ -248,7 +248,7 @@
       $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次密码输入不一致').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if ($('#verify').val() === '') {
+    if ($('#verify_forget').val() === '') {
       layer.msg('请请输入手机验证码');
       return
     }
@@ -265,7 +265,7 @@
         type:'POST',
         data:{
           phone: $('#newEmail').val(),//手机号
-          code: $('#verify').val(),//验证码
+          code: $('#verify_forget').val(),//验证码
           newpwd: hex_sha1($('#password').val()),//新密码
           qrnewpwd: hex_sha1($('#qie_password').val())//确认新密码
         },
@@ -288,7 +288,7 @@
     }
   }
 
-  function sendphone () {
+  function sendphone_for () {
     if ($('#newEmail').val() === '') {
 //            let butp = document.getElementById('phone')
       $('#newEmail').parent().addClass("has-error").removeClass("has-success");
@@ -328,13 +328,13 @@
     var downcount = 60;
     var time = setInterval(function (){
       if (downcount === 0) {
-        $("#sendcun").attr("value", "发送验证码");
-        $("#sendcun").removeAttr("disabled");
+        $("#sendcun_forget").attr("value", "发送验证码");
+        $("#sendcun_forget").removeAttr("disabled");
         clearInterval(time);
         return
       }else {
-        $("#sendcun").attr("disabled", "disabled");
-        $("#sendcun").attr("value", downcount + "s");
+        $("#sendcun_forget").attr("disabled", "disabled");
+        $("#sendcun_forget").attr("value", downcount + "s");
         downcount--;
       }
     }, 1000);
