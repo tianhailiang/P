@@ -155,12 +155,7 @@
             }
 
             if (!isyimin && js_api_config.version == 'development') { //如果是開發環境
-                if( (chan.indexOf('/p/') != -1 || chan.indexOf('/p1/') != -1 || chan.indexOf('/article/') != -1 || chan.indexOf('/case/') != -1 || chan.indexOf('center') != -1 || chan.indexOf('/blog/') != -1) && chan.indexOf('/yimin/')==-1) {
-                    url = js_api_config.wwhost + ':4000' + url;//social
-                }
-                else {
-                    url = js_api_config.wwhost + ':3000' + url;//web
-                }
+                url = js_api_config.wwhost + ':4000' + url;//social
             }
 
           if (isyimin && js_api_config.version == 'development') { //如果是開發環境
