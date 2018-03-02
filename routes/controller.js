@@ -1985,7 +1985,7 @@ exports.article_list = function (req, res, next) {
     var data = {};
     data = req.query;
 
-    wec.article_list(data, function(err,result){
+    wec.adviser_main(data, function(err,result){
         res.send(result);
     });
 };
