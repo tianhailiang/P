@@ -74,7 +74,7 @@ exports.index = function (req, res, next) {
         },
         shouye:function(callback) {
             cms.shouye({
-                "city_id": 1,
+                "city_id": area,
             }, callback);
         },
     },function (err, result) {
