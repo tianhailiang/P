@@ -90,7 +90,7 @@
             {% endif %}
             {% endif %}
             {% if case_data.list.length > 0 %}
-                <div class="right-main clearfix">
+          <div class="right-main clearfix">
                     {% for item in case_data.list %}
                       {% import "widget2/article/article.html" as article_show %}
                       {{ article_show.article_show(item, helper) }}
@@ -98,10 +98,10 @@
                       {% include "widget2/bottom_comment/bottom_comment.html" %}
                     {% endfor %}
                 </div>
-            <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
-              <span>加载更多</span>
-              <i class="iconfont">&#xe60b;</i>
-            </div>
+          <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
+            <span>加载更多</span>
+            <i class="iconfont">&#xe60b;</i>
+          </div>
             {% else %}
               {% include "widget2/blank/blank.html" %}
             {% endif %}
@@ -169,7 +169,7 @@
           '<div class="homepageing" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;"></div>'+
           '<h3>'+ aitem.user_info.realname +'<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>'+
           '<ul>'+
-          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 4px;">'+
+          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 16px;">'+
           '<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>'+
           '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
           '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>'+
@@ -180,14 +180,19 @@
           '</ul>'+
           '</div>'+
           '<div class="homepage-title">'+
-          '<p>'+aitem.title+'<div>'+aitem.tag_list+'</div></p>'+
+          '<p>'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+aitem.title+'<div>'+aitem.tag_list+'</div>'+
+          '</a>'+
+          '</p>'+
           '</div>'+
           '<div class="homepage-p">'+
           '<p>' +
           '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span style="color: #C13232">【查看详情】</span>'+
           '</a>'+
           '</p>'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+
           addArticleImg(aitem.img_list)+
+          '</a>'+
           '<div style="float: left;width: 200px;line-height: 37px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
           '</div>'+
           '</div>'+
@@ -207,7 +212,7 @@
       if(imgList==undefined){
         return '';
       }
-      var html = '<ul id="adviser-info-ul" class="homepage-li clearfix" >';
+      var html = '<ul>';
       for (var j=0; j<imgList.length; j++) {
         html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
       }

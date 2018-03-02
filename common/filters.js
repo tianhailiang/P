@@ -46,6 +46,14 @@ var customFilters = {
   substrs:function(str,count){
     return str.substring(count)
   },
+  stringSub:function(str){
+    if (str) {
+      return str.split('/')[0];
+    }
+    else {
+      return ''
+    }
+  },
   //根据id获取国家名
   getCountry: common.getCountryChinese,
   //根据id获取国家名
