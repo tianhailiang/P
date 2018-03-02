@@ -71,7 +71,7 @@ var iDcity1 = {
 };
 
 
-$('.city-cont').on('click',"a", function(e){
+$('.citys-box').on('click',"a", function(e){
     e.preventDefault();
     currentarea = $(this).attr("data-id");
     $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
