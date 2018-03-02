@@ -98,7 +98,7 @@ function urlgen() {
       /*过滤默认参数 start*/
       var can_type = arguments[i].split('=')[0];
       var can_val = arguments[i].split('=')[1];
-      if (((can_type == 'order') && (can_val == 1 || can_val == 'inputtime' ||  can_val == 'inputtime desc' ||  can_val == 'add_time desc')) || ((can_type == 'page') && (can_val == 1)) || ((can_type == 'crowd') && (can_val == 0))  || ((can_type == 'time') && (can_val == 0)) || ((can_type == 'e') && (can_val == 0)) || ((can_type == 'serve') && (can_val == 0)) || ((can_type == 't') && (can_val == 1)) ) {
+      if (((can_type == 'order') && (can_val == 1 || can_val == 'inputtime' || can_val == 'add_time' ||  can_val == 'inputtime desc' ||  can_val == 'add_time desc')) || ((can_type == 'page') && (can_val == 1)) || ((can_type == 'crowd') && (can_val == 0))  || ((can_type == 'time') && (can_val == 0)) || ((can_type == 'e') && (can_val == 0)) || ((can_type == 'serve') && (can_val == 0)) || ((can_type == 't') && (can_val == 1)) ) {
         continue;
       }
       /*过滤默认参数 end*/
@@ -113,7 +113,15 @@ function urlgen() {
   if(chan.match(/yimin/g)){
     url += "/yimin"+(city?"/"+city:"") + ((nation && nation != 'all')?"/"+nation:"") + chan.replace(/\/yimin/, "") + param + ".html";
   }else{
-    url += ((city && city != 0)?"/"+city:"") + ((nation && nation != 'all')?"/"+nation:"") + chan + param + ".html";
+    if (chan.match(/^(.*)schoollib(.*)$/)) {
+      url += ((nation && nation != 'all')?"/"+nation:"/") + chan.replace(/\//,"") + param + ".html";
+    }
+    else if (chan == '/nationrank'&& !isyimin) {
+      url += ((nation && nation != 'all')?"/"+nation:"");
+    }
+    else {
+      url += ((city && city != 0)?"/"+city:"") + ((nation && nation != 'all')?"/"+nation:"") + chan + param + ".html";
+    }
   }
   //url += (city?"/"+city:"") + (nation?"/"+nation:"") + chan + param + ".html";
   if(url == "/.html"  ||  url=='.html'){
@@ -129,12 +137,7 @@ function urlgen() {
   }
   //liuxue
   if (!isyimin && config.version == 'development') { //如果是開發環境
-    if( (chan.match('/about') != -1 || chan.indexOf('/p/') != -1 || chan.indexOf('/p1/') != -1 || chan.indexOf('/article/') != -1 || chan.indexOf('/case/') != -1 || chan.indexOf('center') != -1 || chan.match(/^\/p$/) || chan.indexOf('/blog/') != -1) && chan.indexOf('/yimin/')==-1) {
-      url = config.wwhost + ':4000' + url;//social
-    }
-    else {
-      url = config.wwhost + ':3000' + url;//web
-    }
+    url = config.wwhost + ':4000' + url;//social
   }
 
   //yimin
@@ -198,15 +201,15 @@ function exits_static_page(path) {
   var reg_list = path.match(/^((?!yimin).*)\/(glue|news|countrynews|focus|visa|prereq|cost|nation|recommand|interpret|scholarship|media|eduquestion|school|adviser|activity|case|schoollib|yimin|product|special)(\/*)((?![0-9])[0-9A-Za-z\-_%]*).html$/g);
 
   var rank = path.match(/^(.*)\/(nationrank|productrank|schoolrank).html$/g);
-  var edu = path.match(/^(.*)\/(under|middle|master|team).html$/g);
-  var so_reg = path.match(/^\/(blog|p1)\/(\d+).html$/g);
+  var edu = path.match(/^(.*)\/(under|middle|master|team|canzan|blog).html$/g);
+  var so_reg = path.match(/^\/(blog)\/(\d+).html$/g);
   var so_center = path.match(/^\/(advisor_center|canzan_center|user_center|login|register|forget|blog)((?!rereq)(?!roduct).*).html$/g);
   //移民好文精选
   var yimin_reg = path.match(/^\/(news|case)\/order-hits.html$/g);
   var yimin_list_reg = path.match(/^\/(news|interpret|activity|case).html$/g);
 
   var schoolrank_list = path.match(/^\/(schoolrank)[0-9A-Za-z\-_/]*.html$/g);
-  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor||so_article)(.*).html$/g);
+  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor)(.*).html$/g);
   if((reg_list || so_reg || so_center || yimin_reg || yimin_list_reg || schoolrank_list || so_pigination || edu) && !rank){
     return false;
   }
