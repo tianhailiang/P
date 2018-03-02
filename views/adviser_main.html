@@ -202,16 +202,11 @@
       if (imgList == undefined) {
         return '';
       }
-<<<<<<< HEAD
-      var html = '<ul>';
-      for (var j = 0; j < imgList.length; j++) {
-        html += '<li style="margin-top: 14px"><img style="margin-right: 20px;float: left;" src="' + fn.imageThumb(imgList[j], '150x150') + '" ></li>';
-=======
+
       var html = '<ul class="homepage-li" style="float: left;">';
       for (var j=0; j<imgList.length; j++) {
         html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
->>>>>>> develop
-      }
+
       html += '</ul>';
       return html;
     }
