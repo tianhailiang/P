@@ -373,7 +373,7 @@
         e.preventDefault();
       }
       $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
-      window.location.reload();
+      window.location.href= fn.urlgen('branch_home','c=' + currentarea);
 
     });
     //正确

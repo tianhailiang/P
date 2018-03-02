@@ -32,6 +32,13 @@ function split_array(arr, len) {
 exports.index = function (req, res, next) {
     var iparea = req.cookies.currentarea;
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    if (req.params[0]) {
+        var cityId = comfunc.getCityId(req.params[0]);
+        if(cityId && cityId !== comfunc.INVALID_ID){
+            area = cityId;
+            res.cookie("currentarea", cityId, {domain: '.jjlvip.cn'});
+        }
+    }
     var data = [];
     var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
     if(ip.split(',').length>0){
