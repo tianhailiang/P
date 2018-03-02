@@ -1,9 +1,9 @@
 {% macro article_show(item,helper) %}
 <div class="homepage">
   <div class="homepagecon">
-    <div class="homepageing" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 50px 50px;"></div>
-    <h3>{{item.user_info.realname}}<img src="{{helper.cdnhost}}/assets/img/1v.png" alt=""></h3>
-    <ul>
+    <a target="_blank" href="{{helper.urlgen('blog', item.uid | string)}}"><div class="homepageing" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 50px 50px;"></div>
+    <h3>{{item.user_info.realname}}<img src="{{helper.cdnhost}}/assets/img/1v.png" alt=""></h3></a>
+      <ul>
       <div>
         <div class="bdsharebuttonbox" style="margin-top: 15px;">
           <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
