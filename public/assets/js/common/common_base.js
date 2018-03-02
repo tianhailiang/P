@@ -351,6 +351,8 @@
                 return newDate.format('dd');
             }else if(p==4){
                 return newDate.format('yyyy-MM');
+            }else if (p==5) {
+                return newDate.format('yyyy-MM-dd hh:mm:ss');
             }
         },
         //图片缩略图 拼装

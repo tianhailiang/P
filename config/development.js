@@ -29,7 +29,7 @@ var apis = {
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
-  "adviser_main": shequ_prefix + 'article/list/is_news-1', // 社区 首页
+  "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
   "likelist": shequ_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
   "xiangguan_guwen": shequ_prefix + 'article/related_adviser/', // 社区 相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码

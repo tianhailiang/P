@@ -533,9 +533,9 @@ exports.center_case = function (req, res, next) {
             },callback);
         },
         case_list: function (callback) {
-            wec.user_article_list({
-                "u_id": data.login_info.uid,
-                "page": page,
+            wec.adviser_main({
+                "uid": data.login_info.uid,
+                "page": 1,
                 "per_page": 4,
                 "type": 1
             }, callback);
@@ -958,9 +958,9 @@ exports.center_article = function (req, res, next) {
             },callback);
         },
         article_list: function (callback) {
-            wec.user_article_list({
-                "u_id": data.login_info.uid,
-                "page": page,
+            wec.adviser_main({
+                "uid": data.login_info.uid,
+                "page": 1,
                 "per_page": 4,
                 "type": 2
             }, callback);
@@ -1524,7 +1524,6 @@ exports.adviser_case = function (req, res, next) {
         case_list: function (callback) {
             wec.adviser_main({
                 "uid": data.to_uid,
-                "page": 1,
                 "per_page": 6,
                 "type": 1
             }, callback);
