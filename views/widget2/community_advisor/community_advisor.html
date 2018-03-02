@@ -23,7 +23,7 @@
     <p>{{ advisor.introduce | ellipsis(80) }}</p>
   </div>
   <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}">
-    <a target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{advisor.job_number}}" class="advisor-zixun"  rel="nofollow">在线咨询</a>
+    <a onclick="openchat_new('{{ advisor.job_number}}')"class="advisor-zixun"  rel="nofollow">立即咨询</a>
     {% if advisor.is_follow %}
       <span class="advisor-guanzhu guanzhu-btn" data-uid="{{advisor.uid}}">已关注</span>
     {% else %}
@@ -31,6 +31,11 @@
     {% endif %}  
   </div>
 </div>
+<script>
+  function  openchat_new(jobnum){
+    window.open('http://jesong.jjl.cn/live/chat.dll?c=1&n='+jobnum,'','height=500,width=320,directories=no,location=no,menubar=no,resizeable=no,status=no,toolbar=no,top=100,left=200')
+  }
+</script>
 {% endmacro %}
 <!--离职顾问-->
 {% macro advisor_leave(advisor, helper,login_info) %}
@@ -47,9 +52,14 @@
     </dd>
   </dl>
   <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}" style="margin-top: 10px;text-align: center;">
-    <a target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{advisor.job_number}}" target="_blank" style="font-size: 14px;color: #fff;">在线咨询</a>
+    <a onclick="openchat_new('{{ advisor.job_number}}')" style="font-size: 14px;color: #fff;">立即咨询</a>
   </div>
 </div>
+<script>
+  function  openchat_new(jobnum){
+    window.open('http://jesong.jjl.cn/live/chat.dll?c=1&n='+jobnum,'','height=500,width=320,directories=no,location=no,menubar=no,resizeable=no,status=no,toolbar=no,top=100,left=200')
+  }
+</script>
 {% endmacro %}
 <!--参赞-->
 {% macro counsellor(advisor,helper,login_info) %}

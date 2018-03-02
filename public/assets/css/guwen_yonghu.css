@@ -82,12 +82,12 @@
   color: #666;
 }
 .homepage-li {
-  width: 840px;
+  width: 840px; position: relative;
 }
 .homepage-li li img {
   width: 150px;
   height: 150px;
-  margin-left: 20px;
+  margin-right: 20px;
   float: left;
 }
 .homepage-span {

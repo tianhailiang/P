@@ -74,7 +74,7 @@ exports.index = function (req, res, next) {
         },
         shouye:function(callback) {
             cms.shouye({
-                "city_id": 1,
+                "city_id": area,
             }, callback);
         },
     },function (err, result) {
@@ -778,14 +778,14 @@ exports.center_message = function (req, res, next) {
     async.parallel({
         // lunbo_list:function(callback) {
         //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_CENTER_CASE",
+        //         "ad_page": "ADVISOR_CENTER_REVMESSAGE",
         //         "cityid":area,
         //         "ad_seat": "SEAT1"
         //     }, callback);
         // },
         // lunbo_list2:function(callback) {
         //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_CENTER_CASE",
+        //         "ad_page": "ADVISOR_CENTER_REVMESSAGE",
         //         "cityid":area,
         //         "ad_seat": "SEAT2"
         //     }, callback);
@@ -2000,7 +2000,7 @@ exports.article_list = function (req, res, next) {
     var data = {};
     data = req.query;
 
-    wec.article_list(data, function(err,result){
+    wec.adviser_main(data, function(err,result){
         res.send(result);
     });
 };
