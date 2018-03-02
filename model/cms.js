@@ -922,6 +922,21 @@ exports.login_ss = function (data, callback) {
   api.apiRequest_post(url ,data ,callback);
 }
 
+/**
+ * 第三方登录接口调用封装
+ * @param data
+ * @param callback
+ */
+exports.oauth = function (data, callback) {
+  var url = _api_url_path(data, config.apis.oauth);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+  log.debug('url', url)
+}
+
 /*普通用户登录*/
 exports.login_user = function (data, callback) {
   var url = config.apis.login_user;
