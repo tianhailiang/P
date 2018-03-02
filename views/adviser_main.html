@@ -204,7 +204,7 @@
       }
       var html = '<ul>';
       for (var j = 0; j < imgList.length; j++) {
-        html += '<li style="margin-top: 14px"><img src="' + fn.imageThumb(imgList[j], '150x150') + '" ></li>';
+        html += '<li style="margin-top: 14px"><img style="margin-right: 20px;float: left;" src="' + fn.imageThumb(imgList[j], '150x150') + '" ></li>';
       }
       html += '</ul>';
       return html;
@@ -243,7 +243,7 @@
         type: 'GET',
         datatype: 'json',
         data: {
-          order: "views desc",
+          order: "add_time desc",
           page: page,
           per_page: per_page,
           uid: thisObj.attr("data-uid")
