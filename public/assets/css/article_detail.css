@@ -21,6 +21,31 @@
   color:#c13232;
   padding-top:20px;
   padding-bottom: 16px;
+  float:left;
+}
+.art-tag{
+  float:left;
+  position: relative;
+  margin-left: 20px;
+  margin-top: 17px;
+  padding:0 15px;
+}
+.art-tag-bg{
+  position: absolute;
+  left:0;
+  top:0;
+  background:#c13232;
+  opacity: 0.06;
+  filter: alpha(opacity=6); 
+  display: block;
+  width: 100%;
+  height: 24px;
+  border-radius: 12px;
+}
+.art-tag-list{
+  font-size: 12px;
+  color:#c13232;
+  line-height: 24px;
 }
 .adviser-case-detail-come{
   font-size:12px;
