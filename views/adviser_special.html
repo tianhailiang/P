@@ -74,7 +74,7 @@
           {% endif %}
       </div>
       {% if zhuanlanlist.list.length > 0 %}
-      <div id="con_zhuanlan" >
+      <div class="right-main clearfix">
         {% for item in zhuanlanlist.list %}
         {% import "widget2/article/article.html" as article_show %}
         {{ article_show.article_show(item, helper) }}
@@ -152,7 +152,7 @@
           '<div class="homepageing" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;"></div>'+
           '<h3>'+ aitem.user_info.realname +'<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>'+
           '<ul>'+
-          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 4px;">'+
+          '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 16px;">'+
           '<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>'+
           '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
           '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>'+
