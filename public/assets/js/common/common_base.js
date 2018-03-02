@@ -397,18 +397,19 @@
     }
     //区分静态和伪静态， 伪静态中n变量需要存在不能去掉
     function exits_static_page(path) {
-        //留学网站伪静态
-        var reg = path.match(/^\/(glue|news|focus|visa|prereq|cost|nation|schoolranknews|recommand|interpret|scholarship|media|eduquestion|school|adviser|activity|cases|schoollib|yimin|product|special).html$/g);
-        //栏目列表页带国家的数据
-        var list_reg = path.match(/^\/(\w+)\/(special).html$/g);
-        //社区页面
-        var so_reg = path.match(/^\/(p|p1)\/(\d+)(.*).html$/g);
-        var so_center = path.match(/^\/(advisor_center|canzan_center|user_center|login|register|forget).html$/g);//advisor_center
-        //移民好文精选
-        var yimin_reg = path.match(/^\/yimin\/news\/order-hits.html$/g);
-        var yimin_list_reg = path.match(/^\/yimin\/(news|interpret|activity|case).html$/g);
+        var reg_list = path.match(/^((?!yimin).*)\/(glue|news|countrynews|focus|visa|prereq|cost|nation|recommand|interpret|scholarship|media|eduquestion|school|adviser|activity|case|schoollib|yimin|product|special)(\/*)((?![0-9])[0-9A-Za-z\-_%]*).html$/g);
 
-        if(reg || list_reg || so_reg || so_center || yimin_reg || yimin_list_reg){
+        var rank = path.match(/^(.*)\/(nationrank|productrank|schoolrank).html$/g);
+        var edu = path.match(/^(.*)\/(under|middle|master|team|canzan|blog).html$/g);
+        var so_reg = path.match(/^\/(blog)\/(\d+).html$/g);
+        var so_center = path.match(/^\/(advisor_center|canzan_center|user_center|login|register|forget|blog)((?!rereq)(?!roduct).*).html$/g);
+        //移民好文精选
+        var yimin_reg = path.match(/^\/(news|case)\/order-hits.html$/g);
+        var yimin_list_reg = path.match(/^\/(news|interpret|activity|case).html$/g);
+
+        var schoolrank_list = path.match(/^\/(schoolrank)[0-9A-Za-z\-_/]*.html$/g);
+        var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article)(.*).html$/g);
+        if((reg_list || so_reg || so_center || yimin_reg || yimin_list_reg || schoolrank_list || so_pigination || edu) && !rank){
             return false;
         }
         return true;

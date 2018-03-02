@@ -51,9 +51,9 @@
       for (var i = 0; i < slider_img_length - 2; i++) {
 
         if(i === this.config.current){
-          slider_dot_ul.append('<li class="active">'+(i+1)+'</li>')
+          slider_dot_ul.append('<li class="active"></li>')
         } else {
-          slider_dot_ul.append('<li>'+(i+1)+'</li>')
+          slider_dot_ul.append('<li></li>')
         }
       }
 
