@@ -180,14 +180,19 @@
           '</ul>'+
           '</div>'+
           '<div class="homepage-title">'+
-          '<p>'+aitem.title+'<div>'+aitem.tag_list+'</div></p>'+
+          '<p>'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+aitem.title+'<div>'+aitem.tag_list+'</div>'+
+          '</a>'+
+          '</p>'+
           '</div>'+
           '<div class="homepage-p">'+
           '<p>' +
           '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span style="color: #C13232">【查看详情】</span>'+
           '</a>'+
           '</p>'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+
           addArticleImg(aitem.img_list)+
+          '</a>'+
           '<div style="float: left;width: 200px;line-height: 37px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
           '</div>'+
           '</div>'+
