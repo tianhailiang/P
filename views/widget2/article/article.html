@@ -72,7 +72,7 @@
      </div>
      <div class="adviser-info-date clearfix" >
          <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
-         <span>来自：{{item.from}}</span>
+         <span>{{item.tag_list}}</span>
      </div>
      <div class="adviser-info-title">
        <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #C13232">{{item.title}}</a>

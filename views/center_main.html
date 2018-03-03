@@ -155,7 +155,7 @@
                     {% for item in collection_list.list %}
                         {% import "widget2/article/article.html" as article_show %}
                         {{ article_show.adviser_show(item, helper) }}
-                        {% include "widget2/bottom_comment/bottom_comment.html" %}
+                        {% include "widget2/bottom_comment/bottom_comment_zhuanlan.html" %}
                     {% endfor %}
                 </div>
                 {% else %}
@@ -213,7 +213,7 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
