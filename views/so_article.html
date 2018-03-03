@@ -193,9 +193,9 @@
                 <div class="search-btn" id="searchBtn-page" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
             </div>
             <div class="result-bar">
-                搜索<span id="result-keyword">{{keyword}}</span>共搜索到<span id="result-num">{{article_list.total}}</span>个结果
+                搜索<span id="result-keyword">{{keyword}}</span>共搜索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
             </div>
-            {% if article_list.total == 0 %}
+            {% if article_list.total == 0 or article_list.total == null %}
             <!--没有搜索到数据-->
             <div class="no-result page-blank">
                 <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
