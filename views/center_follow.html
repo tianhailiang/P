@@ -50,8 +50,8 @@
 
 {% include "widget/top/top.html" %}
 
-{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(tdk,helper) }}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
 
 <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
@@ -112,7 +112,7 @@
 
 </div>
 {% include "widget/new_footer/new_footer.html" %}
-{% import "widget/new_slide/new_slide.html" as  slide %}
+{% import "widget/new_slide/new_slide2.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
 <script>
     var login_ss = null; 

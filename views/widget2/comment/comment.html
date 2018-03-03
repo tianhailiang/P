@@ -3,7 +3,7 @@
   <textarea class="saytext1 saytext" id="saytext"  maxlength="500"></textarea>
   <div class="sub-btn-box clearfix emotion-box">
     <span class="emotion"></span>
-    <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn" data-artId = "{{article_id}}" data-memberId ="{{memberId}}" id="commentBtn" data-catid="{{article.article_info.category_id}}">
+    <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn" data-artId = "{{article_id}}" data-memberId ="{{memberId}}" id="commentBtn" data-catid="{{article.article_info.category_id}}" style="border-radius: 0;">
        评论
     </a>
   </div>
@@ -90,10 +90,7 @@ $(function(){
   	$("#commentBtn").click(function(){
   	    //文章评论
   	    if( login_ss == undefined){
-  	      layer.msg('你还没有登录')
-  	      window.setTimeout(function(){
-  	        window.location.href =fn.curlgen('login','h='+window.location.href);
-  	      },1000);
+  	      getlogin();
   	      return false;
   	    }
   	    if(login_ss.uid == $("#commentBtn").attr('data-memberId')){
@@ -376,10 +373,7 @@ function reply2(obj){
       return false;
     }             
   }else{
-    layer.msg('你还没有登录')
-    window.setTimeout(function(){
-      window.location.href =fn.curlgen('login','h='+window.location.href);
-    },1000);
+    getlogin();
     return false;
   }
  
@@ -403,10 +397,7 @@ function replyComment1(obj){
       return false;
     }             
   }else{
-    layer.msg('你还没有登录')
-    window.setTimeout(function(){
-      window.location.href =fn.curlgen('login','h='+window.location.href);
-    },1000);
+    getlogin();
     return false;
   }
   var replyMessage =$.trim($(obj).parent().prev().val());
@@ -544,10 +535,7 @@ function replyComment2(obj){
 function fabulous(obj){
   //点赞调取函数
   if(login_ss == undefined){
-    layer.msg('你还没有登录')
-    window.setTimeout(function(){
-      window.location.href =fn.curlgen('login','h='+window.location.href);
-    },1000);
+    getlogin();
     return false;
   }
   if(login_ss.uid  == $(obj).next().attr('data-uid')){
@@ -583,10 +571,7 @@ function fabulous(obj){
 }
 function fabulous1(obj){
   if(login_ss == undefined){
-    layer.msg('你还没有登录')
-    window.setTimeout(function(){
-      window.location.href =fn.curlgen('login','h='+window.location.href);
-    },1000);
+    getlogin();
     return false;
   }
   if(login_ss.uid  == $(obj).next().attr('data-uid')){
@@ -623,10 +608,7 @@ function fabulous1(obj){
 function report(obj){
  //举报调取函数
   if(login_ss == undefined){
-    layer.msg('你还没有登录')
-    window.setTimeout(function(){
-      window.location.href =fn.curlgen('login','h='+window.location.href);
-    },1000);
+    getlogin();
     return false;
   }
   var report_content = null;

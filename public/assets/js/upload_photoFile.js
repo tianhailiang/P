@@ -93,7 +93,7 @@ var ZXXFILE = {
 
                     // 开始上传
                     xhr.open("POST", self.url, true);
-                    var formData = new FormData(file);
+                    var formData = new FormData();
                     formData.append("upload", file);//设置key为avartar,value为上述的File对象
                     xhr.send(formData);
                 }

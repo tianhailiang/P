@@ -103,8 +103,8 @@
 
 {% include "widget/top/top.html" %}
 
-{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(tdk,helper) }}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
 
 <div class="dui-layout-lg clearfix banner-box">
   <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
@@ -137,7 +137,7 @@
       <div style="float: left">
         <div class="con"><span>姓名：{{userinfo.realname}}</span><i>所在分公司：{{ userinfo.organid | getCity() }}分公司</i></div>
         <div class="con"><span>所在部门：{{userinfo.dept}}</span><i>工号：{{userinfo.job_number}}</i></div>
-        <div class="con" style="margin-bottom: 0px">擅长国家：{{userinfo.skilful_country}}</div>
+        <!-- <div class="con" style="margin-bottom: 0px">擅长国家：{{userinfo.skilful_country}}</div> -->
       </div>
     </div>
 
@@ -147,7 +147,7 @@
 
     <div class="content_title_bbb clearfix">
       <span>个 人 介 绍： </span>
-      <textarea id="gerenjieshao" maxlength="500"></textarea>
+      <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}"></textarea>
       <div class="word-num">还可以输入<span id="word-num">500</span>字</div>
     </div>
 
@@ -156,7 +156,7 @@
   </div>
 </div>
 {% include "widget/new_footer/new_footer.html" %}
-{% import "widget/new_slide/new_slide.html" as  slide %}
+{% import "widget/new_slide/new_slide2.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
 <script>
   var login_ss = null; 
@@ -207,6 +207,8 @@
         this.value  = this.value.substring(0, 500);
       }
     });
+    var geren = $('#gerenjieshao').data('geren');
+    $('#gerenjieshao').html(geren);
   });
   function baocunSubmit () {
     $.ajax({

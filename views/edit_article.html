@@ -168,6 +168,16 @@
       			  <input  id="rel-case-title" type="text" maxlength="30" value="{{article.article_info.title}}">
       			  <span class="numTip" style="display: block;margin-left: 97px;">填写文章标题，字数限30个汉字</span>
       		  </div>
+            <div class="rel-case-text1" style="margin-top: 20px;">
+              <label class="title active" for="art_abs" >
+                <span>*</span> 文章摘要：
+              </label>
+              <textarea class="art_abs" id="art_abs" maxlength="200" >{{article.article_info.introduce}}</textarea>
+              <div class="word-num">还可以输入<span id="word-num">200</span>字</div>
+              <span class="numTip" style="display: block;margin-left: 97px;">
+                填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写
+              </span>
+            </div>
     		    <div class="rel-case-text1 clearfix" style="margin-top: 20px;" >
     			    <label class="title active" style="float:left">
                 <span>*</span> 正文内容：
@@ -240,7 +250,12 @@
       }); 
       //选择文章类型
       var newsletterType = $("#art-type").attr('data-id');
-      // console.log(newsletterType)
+      var newTagStr = '';
+      if(newsletterType ==2){
+        newTagStr = '留学时讯';
+      }else{
+        newTagStr ='';
+      }
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
         $('.art-type-i').html('').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'});
@@ -249,8 +264,10 @@
         $(this).find('.art-type-i').next().css({'color':'#c13232'});
         if($(this).index()==2){
           $('.newsletter-hide').slideDown();
+          newTagStr = '';
         }else{
           $('.newsletter-hide').slideUp();
+          newTagStr = '留学时讯';
         }
       });
        //选择学历标签
@@ -270,7 +287,7 @@
       });
       //选择推荐标签
       $('.recommend-sel:last').css({"display":"inline-block","marginLeft":"130px"});
-      var recNumber = 0;
+      var recNumber = $('.recommend-sel[checked=checked]').length;
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
           // console.log('false');
@@ -286,7 +303,6 @@
           }
         }
         recNumber =$('.recommend-sel[checked=checked]').length;
-        // console.log(recNumber)
       });
   
       //编辑器
@@ -371,8 +387,7 @@
             layer.msg('请选择推荐标签');
             return false;
           }
-          var newTagStr =tagStr.substring(0,tagStr.length-1);
-          // console.log(newTagStr)
+          newTagStr =tagStr.substring(0,tagStr.length-1);
         }
 
         if($("#rel-case-title").val()==''){
@@ -409,10 +424,16 @@
             article_id:$(".editor-btn-box").attr("data-articleId")
           },
           dataType:'json',
+          async: false,
           success:function(result){
             console.log(result)
             if(result.code == 0){
-              layer.msg('发布成功')
+              layer.msg('发布成功');
+              if(login_ss.usertype == 2){
+                window.setTimeout(function(){
+                  window.open(fn.articleUrlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()));
+                },1000);
+              }
             }else if(result.code == '1210000011'){
               layer.msg('标题已存在，请更换标题');
             }else if(result.code == '1210000012'){
@@ -444,7 +465,6 @@
             return false;
           }
           var eduStr = eduList.substring(0,eduList.length-1);
-          // console.log(eduStr)
           //判断标签
           var tagStr = '';
           $('.recommend-sel[checked=checked]').each(function(){
@@ -457,8 +477,7 @@
             layer.msg('请选择推荐标签');
             return false;
           }
-          var newTagStr =tagStr.substring(0,tagStr.length-1);
-          // console.log(newTagStr)
+          newTagStr =tagStr.substring(0,tagStr.length-1);
         }
 
         if($("#rel-case-title").val()==''){

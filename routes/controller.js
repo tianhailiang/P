@@ -30,11 +30,12 @@ function split_array(arr, len) {
 
 
 exports.index = function (req, res, next) {
-    var iparea = req.cookies.currentarea;
+    var iparea = req.cookies.currentarea;//是否选择过城市标志
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     if (req.params[0]) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
+            iparea = cityId;
             area = cityId;
             res.cookie("currentarea", cityId, {domain: '.jjlvip.cn'});
         }
@@ -74,7 +75,7 @@ exports.index = function (req, res, next) {
         },
         shouye:function(callback) {
             cms.shouye({
-                "city_id": 1,
+                "city_id": area,
             }, callback);
         },
     },function (err, result) {
@@ -430,6 +431,7 @@ exports.center_main = function (req, res, next) {
         data.follow_list = returnData(result.follow_list,'follow_list');
         data.comment_list =returnData(result.comment_list,'comment_list');
         data.collection_list = returnData(result.collection_list,'collection_list');
+        console.log('data.follow_list', data.follow_list);
         var pagekey = null;
         if(data.userinfo.usertype == 2){
           pagekey = 'ADVISOR_CENTER';
@@ -501,6 +503,20 @@ exports.post_code = function (req, res, next) {
         res.render('center_post_code', data);
     });
 };
+
+exports.advisor_list = function (req, res, next) {
+    log.debug('个人中心 加载更多');
+    var data = req.query;
+    wec.adviser_main(data,function(err,result){
+      if(err){
+        res.send(err);
+      }else{
+        console.log('result', result.data.list);
+        res.send(result);
+      }
+    })
+}
+
 //个人中心 我的案例
 exports.center_case = function (req, res, next) {
     log.debug('个人中心 我的案例')
@@ -544,7 +560,8 @@ exports.center_case = function (req, res, next) {
                 "uid": data.login_info.uid,
                 "page": 1,
                 "per_page": 4,
-                "type": 1
+                "type": 1,
+                "order":"add_time desc"
             }, callback);
         }
     }, function (err, result) {
@@ -764,14 +781,14 @@ exports.center_message = function (req, res, next) {
     async.parallel({
         // lunbo_list:function(callback) {
         //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_CENTER_CASE",
+        //         "ad_page": "ADVISOR_CENTER_REVMESSAGE",
         //         "cityid":area,
         //         "ad_seat": "SEAT1"
         //     }, callback);
         // },
         // lunbo_list2:function(callback) {
         //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_CENTER_CASE",
+        //         "ad_page": "ADVISOR_CENTER_REVMESSAGE",
         //         "cityid":area,
         //         "ad_seat": "SEAT2"
         //     }, callback);
@@ -970,7 +987,8 @@ exports.center_article = function (req, res, next) {
                 "uid": data.login_info.uid,
                 "page": 1,
                 "per_page": 4,
-                "type": 2
+                "type": 2,
+                "order":"add_time desc"
             }, callback);
         }
     }, function (err, result) {
@@ -1774,7 +1792,7 @@ exports.user_information = function (req, res, next) {
   var to_uid = req.params.id;
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
-    console.log("login_a-------" + login_a.uid);
+    console.log("login_a-------" + login_a);
     data.login_info = login_a;
   }else{
     res.redirect(config.wwhost+'/login');
@@ -1804,6 +1822,7 @@ exports.user_information = function (req, res, next) {
       data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
       data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo');
+    console.log('data.userinfo', data.userinfo)
     data.tdk = {
       pagekey: 'USER_CENTER_PROFILE',
       cityid: area,
@@ -1986,7 +2005,7 @@ exports.article_list = function (req, res, next) {
     var data = {};
     data = req.query;
 
-    wec.article_list(data, function(err,result){
+    wec.adviser_main(data, function(err,result){
         res.send(result);
     });
 };

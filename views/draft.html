@@ -98,7 +98,7 @@
     </div>
 	</div>
     {% include "widget/new_footer/new_footer.html" %}
-    {% import "widget/new_slide/new_slide.html" as  slide %}
+    {% import "widget/new_slide/new_slide2.html" as  slide %}
     {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
   <script>
   var login_ss = null; //获取用户信息
@@ -180,16 +180,11 @@
       });
       $(".draft-edit-btn").on("click",function(){
         //点击编辑 跳转编辑页面
-        // console.log($(this).attr("data-type")) //1 是案例 2 是专栏
-        if($(this).attr("data-type") == 1){
-          window.location.href = fn.curlgen('advisor_center/postcase/'+$(this).parent().attr("data-articleId"));
-        }else if($(this).attr("data-type") == 2){
           if(login_ss.usertype == 2){
             window.location.href = fn.curlgen('advisor_center/postarticle/'+$(this).parent().attr("data-articleId"));
           }else if(login_ss.usertype == 3){
             window.location.href = fn.curlgen('canzan_center/postarticle/'+$(this).parent().attr("data-articleId"));
           }
-        }
       });
       $(".draft-push-btn").on("click",function(){
         //发布文章

@@ -80,8 +80,8 @@
     </div>
   </div>
   {% include "widget/top/top.html" %}
-  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-  {{ new_nav_first.new_nav_first(tdk,helper) }}
+  {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+  {{ new_nav_red.new_nav_red(tdk,helper) }}
   <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
@@ -149,7 +149,7 @@
     </div>
   </div>
   {% include "widget/new_footer/new_footer.html" %}
-  {% import "widget/new_slide/new_slide.html" as  slide %}
+  {% import "widget/new_slide/new_slide2.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
   <script>
     var login_ss = null;
@@ -437,7 +437,7 @@
                         htmlstr += '<div class="album-left-box"></div><ul class="album-list">';
                     }
                 }
-                htmlstr += '<li class="photo-item"><dl><dt><img src="'+photoArr[i]['url']+'" alt=""/><div class="opt-bar clearfix" data-photo_id="'+ photoArr[i]['id'] +'"><div class="opt-btn btn-border delete-btn"><i class="iconfont">&#xe8c1;</i>';
+                htmlstr += '<li class="photo-item"><dl><dt><a href="'+photoArr[i]['url']+'" target="_blank"><img src="'+photoArr[i]['url']+'" alt=""/></a><div class="opt-bar clearfix" data-photo_id="'+ photoArr[i]['id'] +'"><div class="opt-btn btn-border delete-btn"><i class="iconfont">&#xe8c1;</i>';
                 htmlstr += '<span>删除</span></div>';
                 htmlstr += '<div class="opt-btn edit-btn"><i class="iconfont">&#xe61c;</i><span>编辑</span></div></div></dt>';
                 htmlstr += '<dd>'+photoArr[i]['desc']+'</dd></dl></li>';

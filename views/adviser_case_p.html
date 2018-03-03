@@ -95,7 +95,7 @@
                       {% import "widget2/article/article.html" as article_show %}
                       {{ article_show.article_show(item, helper) }}
 
-                      {% include "widget2/bottom_comment/bottom_comment.html" %}
+                      {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
                     {% endfor %}
                 </div>
           <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
@@ -108,8 +108,8 @@
         </div>
     </div>
 </div>
-{% import "widget/new_slide/new_slide2.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo) }}
+{% import "widget/new_slide/new_slide3.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info) }}
 {% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null; 
@@ -119,9 +119,9 @@
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
@@ -189,13 +189,15 @@
           '</div>'+
           '<div class="homepage-p">'+
           '<p>' +
-          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span style="color: #C13232">【查看详情】</span>'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'...<span style="color: #C13232">【查看详情】</span>'+
           '</a>'+
           '</p>'+
           '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+
           addArticleImg(aitem.img_list)+
           '</a>'+
-          '<div style="float: left;width: 200px;line-height: 37px;position: absolute;left: 446px;margin-top: 11px;">'+aitem.add_time+'</div>'+
+          '<div style="width: 200px;line-height: 38px;float: left;position: relative">'+
+          '<div style="float: left;position: absolute;">'+aitem.add_time+'</div>'+
+          '</div>'+
           '</div>'+
           '</div>'+
           addBottom(aitem);
@@ -214,7 +216,7 @@
       if(imgList==undefined){
         return '';
       }
-      var html = '<ul>';
+      var html = '<ul class="homepage-li" style="float: left;">';
       for (var j=0; j<imgList.length; j++) {
         html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
       }

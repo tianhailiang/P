@@ -75,8 +75,8 @@
 </style>
 <body style="background: #f5f5f5">
   {% include "widget/top/top.html" %}
-  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-  {{ new_nav_first.new_nav_first(tdk,helper) }}
+  {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+  {{ new_nav_red.new_nav_red(tdk,helper) }}
 
 	<!-- ==广告1== -->
   <div class="dui-layout-lg clearfix banner-box">
@@ -129,7 +129,7 @@
                 {% for item in collection_data.list %}
                     {% import "widget2/article/article.html" as article_fav %}
                     {{ article_fav.article_fav(item, helper) }}
-                    {% include "widget2/bottom_comment/bottom_comment.html" %}
+                    {% include "widget2/bottom_comment/bottom_comment_zhuanlan.html" %}
                 {% endfor %}
             </div>
             <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}">
@@ -143,8 +143,13 @@
     </div>
   </div>
   {% include "widget/new_footer/new_footer.html" %}
+  {% if userinfo.usertype == 1 %}
   {% import "widget/new_slide/new_slide.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+  {% elseif userinfo.usertype == 2 %}
+  {% import "widget/new_slide/new_slide2.html" as  slide %}
+  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+  {% endif %}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){
@@ -158,7 +163,7 @@
   <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/common/select.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
@@ -181,7 +186,7 @@
             intervalTime: 5000,
             slidesPerView : 2,
             slidesPerGroup : 2,
-          pagination: true
+            pagination: true
         });
     })
   </script>
@@ -231,6 +236,7 @@
             aItemHtml += ' <p class="adviser-info-p"><a target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span>【查看详情】</span></a></p>';
             aItemHtml += addArticleImg(aitem.img_list);
             aItemHtml += '</div></div>';
+            aItemHtml += '<div class="bot_comment clearfix"><ul><li onclick="showbottom(1, '+aitem.id+')" id="yuedu_li_'+aitem.id+'"><i class="iconfont " id="yuedu_'+aitem.id+'">&#xe9ca;</i><span id="yuedu_span_'+aitem.id+'">阅读（<em id="yuedu_em_'+ aitem.id +'">'+ aitem.views +'</em>）</span></li><li onclick="showbottom(2, '+aitem.id+')" id="shoucang_li_'+aitem.id+'"><i class="iconfont " id="shoucang_'+aitem.id+'">&#xe7ed;</i><span id="shoucang_span_'+aitem.id+'">收藏（<em id="shoucang_em_'+ aitem.id +'">'+ aitem.favorites +'</em>）</span></li><li onclick="showbottom(3, '+aitem.id+')" id="pinglun_li_'+aitem.id+'"><i class="iconfont " id="pinglun_'+aitem.id+'">&#xe61f;</i><span id="pinglun_span_'+aitem.id+'">评论（<em id="pinglun_em_'+ aitem.id +'">'+ aitem.comments +'</em>）</span></li><li class="dian" onclick="showbottom(4, '+aitem.id+')" id="dianzan_li_'+aitem.id+'"><i class="iconfont " id="dianzan_'+aitem.id+'">&#xe651;</i><span id="dianzan_span_'+aitem.id+'">点赞（<em id="dianzan_em_'+ aitem.id +'">'+ aitem.votes +'</em>）</span></li></ul></div>';
             return aItemHtml;
         }
         function appendFav (favArr) {
