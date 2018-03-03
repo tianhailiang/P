@@ -71,8 +71,8 @@
        <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #333;">{{item.user_info.realname}}</a>
      </div>
      <div class="adviser-info-date clearfix" >
-         <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
-         <span>{{item.tag_list}}</span>
+         <span class="adviser-info-date-s" style="color: #666;line-height: 20px;">{{item.add_time}}</span>
+         <span style="padding: 0 10px;height: 24px;float: left;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
      </div>
      <div class="adviser-info-title">
        <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #C13232">{{item.title}}</a>
@@ -114,8 +114,8 @@
       <a target="_blank" href="/{% if item.user_info.usertype == 2 %}advisor_center{% elif item.user_info.usertype == 3 %}canzan_center{% endif %}/article/{{item.id}}" style="color: #333">{{item.user_info.realname}}</a>
     </div>
     <div class="adviser-info-date clearfix" >
-      <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
-      <span>{{item.tag_list}}</span>
+      <span class="adviser-info-date-s" style="color: #666;line-height: 20px;">{{item.add_time}}</span>
+      <span style="padding: 0 10px;height: 24px;float: left;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
       <a target="_blank" href="/{% if item.user_info.usertype == 2 %}advisor_center{% elif item.user_info.usertype == 3 %}canzan_center{% endif %}/article/{{item.id}}" style="color: #C13232">{{item.title}}</a>
@@ -192,8 +192,8 @@
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #333">{{item.user_info.realname}}</a>
     </div>
     <div class="adviser-info-date clearfix" >
-      <span class="adviser-info-date-s" style="color: #666">{{item.add_time}}</span>
-      <span>{{item.tag_list}}</span>
+      <span class="adviser-info-date-s" style="color: #666;line-height: 20px;">{{item.add_time}}</span>
+      <span style="padding: 0 10px;height: 24px;float: left;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
       <a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}" style="color: #C13232">{{item.title}}</a>
