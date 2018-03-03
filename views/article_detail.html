@@ -204,10 +204,7 @@
               $(that).html('收藏');
             }
           }else if(result.code == 1){
-            layer.msg('你还没有去登录');
-            window.setTimeout(function(){
-              window.location.href =fn.curlgen('login','h='+window.location.href);
-            },1000);
+            getlogin();
           }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -218,10 +215,7 @@
     $("#fabulous").on("click",function(){
       //点赞
       if( login_ss == undefined){
-        layer.msg('你还没有登录')
-        window.setTimeout(function(){
-          window.location.href =fn.curlgen('login','h='+window.location.href);
-        },1000);
+        getlogin();
         return false;
       }
       if(login_ss.uid == $("#articleId").attr('data-memberId')){
@@ -260,10 +254,7 @@
     function artReport(){
         //举报调取函数
         if(login_ss == undefined){
-            layer.msg('你还没有登录')
-            window.setTimeout(function(){
-              window.location.href =fn.curlgen('login','h='+window.location.href);
-            },1000);
+            getlogin();
             return false;
         }
         var report_content = null;
