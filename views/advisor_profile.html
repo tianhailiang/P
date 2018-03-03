@@ -194,17 +194,17 @@
           pagination: true
       });
     $("#gerenjieshao").on("change",function(){
-      this.value = this.value.substring(0, 500);
+      this.value = this.value.substring(0, 80);
     });
     $("#gerenjieshao").on("keydown",function(){
-      this.value  = this.value.substring(0, 500);
+      this.value  = this.value.substring(0, 80);
     });
     $("#gerenjieshao").on("keyup",function(){
       var strLength = $.trim($(this).val()).length;
-      $("#word-num").html(500-strLength);
-      if(strLength > 500){
+      $("#word-num").html(80-strLength);
+      if(strLength > 80){
         $("#word-num").html(0);
-        this.value  = this.value.substring(0, 500);
+        this.value  = this.value.substring(0, 80);
       }
     });
     var geren = $('#gerenjieshao').data('geren');
