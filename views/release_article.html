@@ -457,9 +457,7 @@
             	layer.msg('发布成功')
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
-                  // 'blog',item.uid|string,'article='+item.id | string)
-                  // newWin(fn.articleUrlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()),'blog');
-                  window.open(fn.urlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()));
+                  window.open(fn.articleUrlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()));
                 },1000);
               }
             }else if(result.code == '1210000011'){
@@ -582,18 +580,6 @@
           }
         });
       });
-      function newWin(url, id) {
-        console.log(1000)
-        var a = document.createElement('a');
-        a.setAttribute('href', url);
-        a.setAttribute('target', '_blank');
-        a.setAttribute('id', id);
-        // 防止反复添加
-        if(!document.getElementById(id)) {                     
-            document.body.appendChild(a);
-        }
-        a.click();
-    }
     })
  </script>
 </body>
