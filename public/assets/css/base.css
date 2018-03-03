@@ -2,7 +2,7 @@
 
 @charset "UTF-8";
 html, body {
-  -ms-overflow-style: scrollbar;
+  -ms-overflow-style:scrollbar;
 }
 p,dl,dt,dd{
   margin:0;
