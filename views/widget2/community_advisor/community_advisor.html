@@ -23,7 +23,7 @@
     <p>{{ advisor.introduce | ellipsis(80) }}</p>
   </div>
   <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}">
-    <a onclick="openchat_new('{{ advisor.job_number}}')"class="advisor-zixun"  rel="nofollow">立即咨询</a>
+    <a {% if login_info.uid !== advisor.uid %} onclick="openchat_new('{{ advisor.job_number}}')"{% endif %}class="advisor-zixun"  rel="nofollow">立即咨询</a>
     {% if advisor.is_follow %}
       <span class="advisor-guanzhu guanzhu-btn" data-uid="{{advisor.uid}}">已关注</span>
     {% else %}
