@@ -47,7 +47,7 @@
 					{% if item.uid != null %}
 					<li>
 						<div class="gw-people">
-							<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid | string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 -5px;background-size: cover;"></a>
+							<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid | string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 0;background-size: cover;"></a>
 							<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
 						</div>
 						<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
@@ -65,7 +65,7 @@
 							{% if item.uid != null %}
 							<li class="gw-newslist">
 								<div class="gw-people">
-									<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 -5px;background-size: cover;">
+									<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 0;background-size: cover;">
 										<!-- <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt=""> -->
 									</a>
 									<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
