@@ -113,8 +113,13 @@
 </div>
 
 {% include "widget/new_footer/new_footer.html" %}
+{% if userinfo.usertype == 1 %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+{% elseif userinfo.usertype == 2 %}
 {% import "widget/new_slide/new_slide2.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+{% endif %}
 <script>
     var login_ss = null; 
     if($.cookie('login_ss') != undefined){
