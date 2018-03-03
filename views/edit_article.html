@@ -417,7 +417,12 @@
           success:function(result){
             console.log(result)
             if(result.code == 0){
-              layer.msg('发布成功')
+              layer.msg('发布成功');
+              if(login_ss.usertype == 2){
+                window.setTimeout(function(){
+                  window.location.href=fn.urlgen('advisor_center');
+                },1000);
+              }
             }else if(result.code == '1210000011'){
               layer.msg('标题已存在，请更换标题');
             }else if(result.code == '1210000012'){
