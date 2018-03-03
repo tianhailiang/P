@@ -70,7 +70,7 @@
 									<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
 								</div>
 								<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
-									<div class="gw-legend">{{item.tag_list}}</div>
+									<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
 									<p style="clear:both">{{item.title | ellipsis(13)}}</p>
 								</a>
 							</li>
