@@ -147,7 +147,7 @@
 
     <div class="content_title_bbb clearfix">
       <span>个 人 介 绍： </span>
-      <textarea id="gerenjieshao" maxlength="500"></textarea>
+      <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}"></textarea>
       <div class="word-num">还可以输入<span id="word-num">500</span>字</div>
     </div>
 
@@ -207,6 +207,8 @@
         this.value  = this.value.substring(0, 500);
       }
     });
+    var geren = $('#gerenjieshao').data('geren');
+    $('#gerenjieshao').html(geren);
   });
   function baocunSubmit () {
     $.ajax({

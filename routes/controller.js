@@ -1791,7 +1791,7 @@ exports.user_information = function (req, res, next) {
   var to_uid = req.params.id;
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
-    console.log("login_a-------" + login_a.uid);
+    console.log("login_a-------" + login_a);
     data.login_info = login_a;
   }else{
     res.redirect(config.wwhost+'/login');
@@ -1821,6 +1821,7 @@ exports.user_information = function (req, res, next) {
       data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
       data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo');
+    console.log('data.userinfo', data.userinfo)
     data.tdk = {
       pagekey: 'USER_CENTER_PROFILE',
       cityid: area,

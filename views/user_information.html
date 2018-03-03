@@ -106,15 +106,15 @@
       <form class="m-t register_nei_form" role="form">
         <div class="form-group clearfix" style="position: relative;height: 28px">
           <div class="title">*姓 名：&nbsp;&nbsp;&nbsp;</div>
-          <input type="text" class="form-control" id="username" required data-vaild="" data-errmsg="姓名不能为空" />
+          <input type="text" class="form-control" id="username" required data-vaild="" data-errmsg="姓名不能为空" value="{{userinfo.realname}}"/>
         </div>
 
         <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
           <div class="title">*昵 称：&nbsp;&nbsp;&nbsp;</div>
-          <input type="text" class="form-control" required="" data-vaild="" id="nicheng" data-errmsg="昵称不能为空">
+          <input type="text" class="form-control" required="" data-vaild="" id="nicheng" data-errmsg="昵称不能为空" value="{{userinfo.nickname}}"/>
         </div>
 
-        <div class=" clearfix" id="xingbie">
+        <div class=" clearfix" id="xingbie" data-sex="{{userinfo.sex}}">
           <div class="title" style="margin-top: -5px;color: #333"> 性 别：&nbsp;&nbsp;</div>
           <input class="wrap-con" type="radio" name="payMethod" value="1" checked/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;男
           <input class="wrap-ing" type="radio" name="payMethod" value="2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;女
@@ -122,17 +122,17 @@
 
         <div class="form-group rel-case-text1 clearfix" style="margin-top: 20px;">
           <label class="title active" for="adm-time" style="font-weight: 500;color: #333"> 生 日：&nbsp;&nbsp;&nbsp;&nbsp;</label>
-          <input  id="shengri" type="text" data-toggle="datepicker" class="quick-date" >
+          <input  id="shengri" type="text" data-toggle="datepicker" class="quick-date" value="{{userinfo.birthday}}" />
           <span class="numTip" ></span>
         </div>
 
         <div class="form-group clearfix">
           <div class="title" style="color: #333">个人介绍：</div>
-          <textarea id="gerenjieshao"></textarea>
+          <textarea id="gerenjieshao" data-geren="{{userinfo.introduce}}"></textarea>
         </div>
 
 
-          <input type="button" style="border:none;font-size: 14px;color: #fff;width: 80px;height: 30px;float: right;background: #C13232;color: #fff;text-align: center;line-height: 30px;" id="baocunSubmit" value="确定保存"/>
+        <input type="button" style="border:none;font-size: 14px;color: #fff;width: 80px;height: 30px;float: right;background: #C13232;color: #fff;text-align: center;line-height: 30px;" id="baocunSubmit" value="确定保存"/>
 
       </form>
     </div>
@@ -186,7 +186,16 @@
       console.log('eeeee');
       lS.attachEvent('onclick', baocun, false);
     }
-
+    var geren = $('#gerenjieshao').data('geren');
+    $('#gerenjieshao').html(geren);
+    var sex = $('#xingbie').data('sex');
+    if (sex == 2) {
+      $('.wrap-con').removeAttr("checked");
+      $('.wrap-ing').attr("checked","checked");
+    }else if (sex == 1) {
+      $('.wrap-con').attr("checked","checked");
+      $('.wrap-ing').removeAttr("checked");
+    }
   });
   function baocun () {
     if ($('#username').val() === '') {

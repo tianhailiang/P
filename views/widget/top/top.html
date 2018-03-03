@@ -77,6 +77,9 @@
     background-color: #c13232;
     color: #fff;
   }
+  .l_u_com_but:hover{
+    color: #fff;
+  }
   .l_u_com_she{
     width: 330px;
     text-align: center;
@@ -106,6 +109,7 @@
     height: 32px;
     cursor: pointer;
   }
+  
 </style>
 <div class="l_u" style="display: none;">
   <div class="l_u_top"><img src="{{helper.cdnhost}}/assets/img/logo_login.png" alt=""></div>
@@ -153,7 +157,7 @@
                 '<div class="top-con-right">'+
                 '<span><a target="_blank" onclick="getlogin()" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
-                '<span><a href="javascript:void(0);" id="getlogin" onclick="getlogin()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
+                '<span ><a href="javascript:void(0);" style="background: #fff;" onclick="getlogin()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '</div>'+
                 '</div>'
       $(".top").append(val);
@@ -169,7 +173,7 @@
         val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("canzan_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
       }
       val += '<li><span class="bor">|</span></li>'+
-              '<li><a href="javascript:void(0)" onclick="outlogin()" rel="nofollow">退出</a></li>'+
+              '<li ><a href="javascript:void(0)" style="background: #fff;" onclick="outlogin()" rel="nofollow">退出</a></li>'+
                 '</ul>'+
                 '</div>'+
                 '</div>';
