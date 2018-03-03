@@ -501,6 +501,20 @@ exports.post_code = function (req, res, next) {
         res.render('center_post_code', data);
     });
 };
+
+exports.advisor_list = function (req, res, next) {
+    log.debug('个人中心 加载更多');
+    var data = req.query;
+    wec.adviser_main(data,function(err,result){
+      if(err){
+        res.send(err);
+      }else{
+        console.log('result', result.data.list);
+        res.send(result);
+      }
+    })
+}
+
 //个人中心 我的案例
 exports.center_case = function (req, res, next) {
     log.debug('个人中心 我的案例')
@@ -544,7 +558,8 @@ exports.center_case = function (req, res, next) {
                 "uid": data.login_info.uid,
                 "page": 1,
                 "per_page": 4,
-                "type": 1
+                "type": 1,
+                "order":"add_time desc"
             }, callback);
         }
     }, function (err, result) {
@@ -764,14 +779,14 @@ exports.center_message = function (req, res, next) {
     async.parallel({
         // lunbo_list:function(callback) {
         //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_CENTER_CASE",
+        //         "ad_page": "ADVISOR_CENTER_REVMESSAGE",
         //         "cityid":area,
         //         "ad_seat": "SEAT1"
         //     }, callback);
         // },
         // lunbo_list2:function(callback) {
         //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_CENTER_CASE",
+        //         "ad_page": "ADVISOR_CENTER_REVMESSAGE",
         //         "cityid":area,
         //         "ad_seat": "SEAT2"
         //     }, callback);
@@ -970,7 +985,8 @@ exports.center_article = function (req, res, next) {
                 "uid": data.login_info.uid,
                 "page": 1,
                 "per_page": 4,
-                "type": 2
+                "type": 2,
+                "order":"add_time desc"
             }, callback);
         }
     }, function (err, result) {
@@ -1986,7 +2002,7 @@ exports.article_list = function (req, res, next) {
     var data = {};
     data = req.query;
 
-    wec.article_list(data, function(err,result){
+    wec.adviser_main(data, function(err,result){
         res.send(result);
     });
 };

@@ -70,9 +70,15 @@
               </div>
             </div>
           </div>
-          <h1 class="adviser-case-detail-h3">
-            {{article.article_info.title}}
-          </h1>
+          <div class="clearfix" >
+            <h1 class="adviser-case-detail-h3">
+              {{article.article_info.title}}
+            </h1>
+            <div class="art-tag">
+              <span class="art-tag-bg" ></span>
+              <span class="art-tag-list">{{article.article_info.tag_list}}</span>
+            </div>
+          </div>
           <div class="adviser-case-detail-come" >
             <span>时间：{{article.article_info.add_time}}</span>
             <span style="float:right;margin-left: 20px;">
@@ -118,7 +124,7 @@
       </div>
     </div>
   </div>
-  {% import "widget/new_slide/new_slide2.html" as  slide %}
+  {% import "widget/new_slide/new_slide3.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo) }}
   {% include 'widget/new_footer/new_footer.html' %}
   <div>
@@ -136,7 +142,7 @@
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
-  <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
@@ -198,10 +204,7 @@
               $(that).html('收藏');
             }
           }else if(result.code == 1){
-            layer.msg('你还没有去登录');
-            window.setTimeout(function(){
-              window.location.href =fn.curlgen('login','h='+window.location.href);
-            },1000);
+            getlogin();
           }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -212,10 +215,7 @@
     $("#fabulous").on("click",function(){
       //点赞
       if( login_ss == undefined){
-        layer.msg('你还没有登录')
-        window.setTimeout(function(){
-          window.location.href =fn.curlgen('login','h='+window.location.href);
-        },1000);
+        getlogin();
         return false;
       }
       if(login_ss.uid == $("#articleId").attr('data-memberId')){
@@ -254,10 +254,7 @@
     function artReport(){
         //举报调取函数
         if(login_ss == undefined){
-            layer.msg('你还没有登录')
-            window.setTimeout(function(){
-              window.location.href =fn.curlgen('login','h='+window.location.href);
-            },1000);
+            getlogin();
             return false;
         }
         var report_content = null;

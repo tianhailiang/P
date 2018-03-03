@@ -51,8 +51,8 @@
 
 {% include "widget/top/top.html" %}
 
-{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(tdk,helper) }}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
 
 <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
@@ -148,7 +148,7 @@
             intervalTime: 5000,
             slidesPerView : 2,
             slidesPerGroup : 2,
-          pagination: true
+            pagination: true
         });
       //让分页器居中显示
       $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
