@@ -30,11 +30,12 @@ function split_array(arr, len) {
 
 
 exports.index = function (req, res, next) {
-    var iparea = req.cookies.currentarea;
+    var iparea = req.cookies.currentarea;//是否选择过城市标志
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     if (req.params[0]) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
+            iparea = cityId;
             area = cityId;
             res.cookie("currentarea", cityId, {domain: '.jjlvip.cn'});
         }

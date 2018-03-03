@@ -202,7 +202,7 @@
       </div>
 	</div>
   {% include "widget/new_footer/new_footer.html" %}
-  {% import "widget/new_slide/new_slide.html" as  slide %}
+  {% import "widget/new_slide/new_slide2.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
   <script>
     var login_ss = null; //获取用户信息
@@ -450,10 +450,18 @@
             is_immi:login_ss.adviser
           },
           dataType:'json',
+          async: false,
           success:function(result){
             console.log(result)
             if(result.code == 0){
             	layer.msg('发布成功')
+              if(login_ss.usertype == 2){
+                window.setTimeout(function(){
+                  // 'blog',item.uid|string,'article='+item.id | string)
+                  // newWin(fn.articleUrlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()),'blog');
+                  window.open(fn.urlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()));
+                },1000);
+              }
             }else if(result.code == '1210000011'){
               layer.msg('标题已存在，请更换标题');
             }else if(result.code == '1210000012'){
@@ -574,6 +582,18 @@
           }
         });
       });
+      function newWin(url, id) {
+        console.log(1000)
+        var a = document.createElement('a');
+        a.setAttribute('href', url);
+        a.setAttribute('target', '_blank');
+        a.setAttribute('id', id);
+        // 防止反复添加
+        if(!document.getElementById(id)) {                     
+            document.body.appendChild(a);
+        }
+        a.click();
+    }
     })
  </script>
 </body>
