@@ -426,6 +426,8 @@ $(".weixin-slide").on("click",function(){
   var login_nickname = JSON.parse($.cookie('login_ss'));
   if(login_nickname){
     $(".weixin-slide-img").css("display","block");
+  }else{
+    getlogin();
   }
 
 })
@@ -441,6 +443,8 @@ $(".qq-slide").on("click",function(){
   var login_nickname = JSON.parse($.cookie('login_ss'));
   if(login_nickname){
     $(".qq-slide-img").css("display","block");
+  }else{
+    getlogin();
   }
 })
 $('#to_top').click(function(){
