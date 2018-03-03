@@ -391,7 +391,7 @@
       //
       $(window).on('scroll', function () {
           var $scroll = $(this).scrollTop();
-          if ($scroll >= 200) {
+          if ($scroll >= 250) {
               $('.nationality_guoqi_warp').show();
           } else {
               $('.nationality_guoqi_warp').hide();
@@ -401,7 +401,7 @@
           var id=$(this).attr('href')
           var $scrolltop = $(id).offset().top;
           $('html,body').animate({//$('html,body')兼容问题body属于chrome
-              scrollTop:$scrolltop-230
+              scrollTop:$scrolltop-174
           })
       });
       $('.lunbo_lift .slider').xSlider({
