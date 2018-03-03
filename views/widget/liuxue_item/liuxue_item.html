@@ -18,13 +18,14 @@
 .gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
 .gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
 .gw-items p{color:#333;font-size:16px;padding-top: 10px;text-indent: 20px;}
-.gw-legend{float:right;margin-top:18px;background:#f9f6f1;color:#c13232;font-size:12px}
+.gw-legend{float:right;margin-top:18px;padding:2px 8px;-webkit-border-radius:8px;border-radius:8px;background:#f9f6f1;color:#c13232;font-size:12px}
 .gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
 .gw-people .bg-peopel{float:left;height: 51px; 
 	width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
+
 </style>
 {% for floor in shouye %} {#国家#}
-<div class="lxContaniner" style="overflow:hidden" data-id="country{{floor.country_id}}">
+<div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
 	<div class="lx-head">
 		<h1>{{floor.country_name}}留学</h1>
 		<ul class="lx-tabitems">
@@ -46,7 +47,7 @@
 					{% if item.uid != null %}
 					<li>
 						<div class="gw-people">
-							<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid | string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 -5px;background-size: cover;"></a>
+							<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid | string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 0;background-size: cover;"></a>
 							<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
 						</div>
 						<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
@@ -64,14 +65,14 @@
 							{% if item.uid != null %}
 							<li class="gw-newslist">
 								<div class="gw-people">
-									<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 -5px;background-size: cover;">
+									<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 0;background-size: cover;">
 										<!-- <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt=""> -->
 									</a>
 									<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
 								</div>
 								<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
 									<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
-									<p style="clear:both">{{item.title | ellipsis(13)}}</p>
+									<p style="clear:both">{{item.title | ellipsis(21)}}</p>
 								</a>
 							</li>
 							{% endif %}
