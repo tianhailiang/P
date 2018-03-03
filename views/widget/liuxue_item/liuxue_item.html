@@ -15,14 +15,16 @@
 .gw-items li:nth-child(3n){margin-right:0}
 .gw-people{position:relative;float:left;margin-left:20px}
 .gw-people img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
-.gw-people span{color:#333;font-size:14px}
+.gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
 .gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
 .gw-items p{color:#333;font-size:16px;padding-top: 10px;text-indent: 20px;}
 .gw-legend{float:right;margin-top:18px;background:#f9f6f1;color:#c13232;font-size:12px}
 .gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
+.gw-people .bg-peopel{float:left;height: 51px; 
+	width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
 </style>
 {% for floor in shouye %} {#国家#}
-<div class="lxContaniner" style="overflow:hidden" id="country_{{floor.country_id}}">
+<div class="lxContaniner" style="overflow:hidden" data-id="country{{floor.country_id}}">
 	<div class="lx-head">
 		<h1>{{floor.country_name}}留学</h1>
 		<ul class="lx-tabitems">
@@ -44,12 +46,10 @@
 					{% if item.uid != null %}
 					<li>
 						<div class="gw-people">
-							<a href="{{helper.articleUrlgen('blog',item.uid | string)}}" style="display:inline-block;">
-								<img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
-							</a>
+							<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid | string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 -5px;background-size: cover;"></a>
 							<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
 						</div>
-						<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+						<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
 							<div class="gw-legend gw-news">留学时讯</div>
 							<p style="clear:both">{{ item.title | ellipsis(13) }}</p>
 						</a>
@@ -64,13 +64,13 @@
 							{% if item.uid != null %}
 							<li class="gw-newslist">
 								<div class="gw-people">
-									<a href="{{helper.articleUrlgen('blog',item.uid|string)}}">
-										<img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
+									<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string)}}" class="bg-peopel" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 -5px;background-size: cover;">
+										<!-- <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt=""> -->
 									</a>
 									<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
 								</div>
-								<a href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
-									<div class="gw-legend">{{item.tag_list}}</div>
+								<a target="_blank" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+									<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
 									<p style="clear:both">{{item.title | ellipsis(13)}}</p>
 								</a>
 							</li>
