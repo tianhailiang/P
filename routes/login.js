@@ -60,8 +60,10 @@ exports.login_user = function (req, res, next) {
       log.debug('ok', result.login_user.code);
       if (config.version == 'development' && result.login_user.code === 0) {//开发环境
         res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjlvip.cn'});//保存cookie
+        res.cookie("login_ss").Expires=Date+1;
       } else {
         res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjlvip.cn'});
+        res.cookie("login_ss").Expires=Date+1;
       }
       res.send(result.login_user);
       //log.debug('config', config.wwhost);
@@ -102,10 +104,11 @@ exports.login_s = function (req, res, next) {
     //res.render('login', data)
     if (result.login_ss.code === 0) {
       log.debug('ok', result.login_ss.code);
+      var express_time =  '2019-03-05T10:12:55.000Z';
       if (config.version == 'development' && result.login_ss.code === 0) {//开发环境
-        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjlvip.cn'});//保存cookie
+        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjlvip.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
       } else {
-        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjlvip.cn'});
+        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjlvip.cn', expires: new Date(Date.now() + 90000000)});
       }
       res.send(result.login_ss);
       //log.debug('config', config.wwhost);
