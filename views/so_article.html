@@ -212,18 +212,18 @@
                     {% for item in article_list.list %}
                     <div class="result-item clearfix">
                         <div class="item-adviser">
-                            <a href="{{helper.articleUrlgen('blog',item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>
+                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>
                         </div>
                         <div class="item-info">
                             <div class="info-top clearfix">
-                                <a class="info-title" href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">{{item.title}}</a>
+                                <a class="info-title" href="{{helper.urlgen('article',item.id | string) if item.type == 1 else helper.urlgen('case',item.id | string)}}">{{item.title}}</a>
                                 <div class="info-tags">
                                     {% if item.tag_list %}
                                     <span>{{item.tag_list}}</span>
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.articleUrlgen('blog',item.user_info.uid|string,'article='+item.id | string)}}">【查看详情】</a></div>
+                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.urlgen('article',item.id | string) if item.type == 1 else helper.urlgen('case',item.id | string)}}">【查看详情】</a></div>
                             <div class="time">{{item.add_time | getDefaultFormat('YYYY-MM-DD HH:mm:ss')}}</div>
                         </div>
                     </div>
@@ -281,18 +281,30 @@
                 var item = art_list[i];
                 artHtml+='<div class="result-item clearfix">'+
                             '<div class="item-adviser">'+
-                            '<a href="'+fn.urlgen('blog',item.user_info.uid.toString())+'"><img src="'+fn.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)+'" alt="" class="adviser-avatar"/></a><span>'+ item.user_info.nickname+ '</span><img src="../assets/img/1v.png" alt="" class="flag"/>'+
+                            '<a href="'+fn.urlgen(item.user_info.uid.toString())+'"><img src="'+fn.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)+'" alt="" class="adviser-avatar"/></a><span>'+ item.user_info.nickname+ '</span><img src="../assets/img/1v.png" alt="" class="flag"/>'+
                             '</div>'+
                             '<div class="item-info">'+
-                            '<div class="info-top clearfix">'+
-                            '<a class="info-title" href="'+fn.articleUrlgen('blog',item.user_info.uid.toString(),'article='+item.id.toString())+'">'+ item.title +'</a>'+
-                        '<div class="info-tags">';
+                            '<div class="info-top clearfix">';
+                        if (item.type == 1) {
+                            artHtml+='<a class="info-title" href="'+fn.urlgen('case',+item.id.toString())+'">'+ item.title +'</a>';
+                        }
+                        else{
+                            artHtml+='<a class="info-title" href="'+fn.urlgen('article',+item.id.toString())+'">'+ item.title +'</a>';
+                        }
+                artHtml+='<div class="info-tags">';
                 if (item.tag_list) {
                     artHtml+='<span>'+ item.tag_list +'</span>';
                 }
                 artHtml+= '</div>'+
                     '</div>'+
-                    '<div class="info-desc">'+ fn.ellipsis(item.introduce) +'<a href="'+fn.articleUrlgen('blog',item.user_info.uid.toString(),'article='+item.id.toString())+'">【查看详情】</a></div>'+
+                    '<div class="info-desc">'+ fn.ellipsis(item.introduce);
+                if (item.type == 1) {
+                    artHtml+= '<a href="'+fn.urlgen('case',+item.id.toString())+'">【查看详情】</a>'
+                }
+                else {
+                    artHtml+= '<a href="'+fn.urlgen('article',+item.id.toString())+'">【查看详情】</a>'
+                }
+                artHtml+= '</div>'+
                 '<div class="time">'+ fn.getFormatDate(item.add_time,5) +'</div>'+
                 '</div>'+
                 '</div>';
