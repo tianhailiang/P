@@ -2877,3 +2877,39 @@ exports.hot = function (req, res, next) {
     res.render('adviser_hot', data);
   });
 }
+//协议
+
+//金吉列简介
+exports.agreement = function (req, res, next){
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_nickname = '';
+  if ( req.cookies.login_ss !== undefined) {
+    var login_a = JSON.parse(req.cookies.login_ss);
+    //log.debug("login_a-------" + login_a.nickname)
+    data.login_nickname = login_a;
+  }
+  async.parallel({
+
+  }, function (err, result){
+    log.info(result)
+    data.pageroute="about";
+    data.tdk = {
+      pagekey: 'PROFILE', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    res.render('agreement', data);
+
+  });
+}
