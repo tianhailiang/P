@@ -12,10 +12,14 @@
       current: 0,
       speed: 500,
       intervalTime: 5000,
-      pagination: false
+      pagination: true
     }
-  
-    if(userConfig != null) {
+      // console.log(userConfig.intervalTime);
+    if(el.length == 1 ){
+      $.extend(this.config,this.userConfig.speed=9999999999999999999);
+        console.log(userConfig.speed);
+    }
+    if(el.length > 1) {
       $.extend(this.config,this.userConfig);
     }
     
