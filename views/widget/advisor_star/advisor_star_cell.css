@@ -101,7 +101,7 @@
 .gw-list{width:280px;list-style:none;background: #fff;}
 .gw-list li{border-bottom:solid 1px #dcdcdc;margin-bottom:18px;margin-left: 10px; margin-right: 10px;}
 .gw-list li:first-child{padding-top: 16px;}
-.gw-list a{color:#333;text-decoration:none}
+.gw-list a{color:#333;text-decoration:none;display: block;}
 .likes-item{overflow:hidden}
 .likes-item span{display:inline-block;margin-top:18px}
 .likes-item+.article{font-size:16px;margin:8px 0 18px;color:#333}
