@@ -240,7 +240,11 @@
     <div class="dui-layout-div"></div>
     <div class="dui-layout-silde">
         <div class="guess-like-right" style="margin-top: 20px;background-color: #fff;">
-            {% include "widget2/guess_like/guess_like.html" %}
+            <div class="common-title" style="border:1px solid #dcdcdc;">
+                <i></i>
+                <h3>猜你喜欢</h3>
+              </div>
+            {% esi helper.include(esikey,'fragment/searchguess_like','c='+tdk.cityid) %}
         </div>
     </div>
 </div>

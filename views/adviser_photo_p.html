@@ -69,28 +69,16 @@
         <div style="margin-top: 20px;" class="dui-box-shadow">
             <div class="common-title" style="border:1px solid #dcdcdc;">
                 <i></i>
-                <h3>作者精选</h3>
-            </div>
-           {% esi helper.include(esikey,'fragment/author_selection','uid='+to_uid) %}
-        </div>
-        <!-- ========猜你喜欢======= -->
-        <div style="margin-top: 20px;" class="dui-box-shadow">
-            <div class="common-title" style="border:1px solid #dcdcdc;">
-                <i></i>
                 <h3>猜你喜欢</h3>
             </div>
             {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
         </div>
-        <!-- ==活动预告== -->
-        <div style="margin-top:20px" class="clearfix dui-box-shadow">
-            <div class="common-title ">
+        <div style="margin-top: 20px;" class="dui-box-shadow">
+            <div class="common-title" style="border:1px solid #dcdcdc;">
                 <i></i>
-                <h3>活动预告</h3>
-                <a target="_blank" href="{{helper.active_urlgen('activity', 'c='+tdk.cityid)}}" class="iconfont">&#xe602;</a>
+                <h3>相关顾问</h3>
             </div>
-            <div style="background:#fff" >
-               {% esi helper.include(esikey,'fragment/huodongyugao','pos=cmslist','c='+tdk.cityid,'n='+hcountry) %}
-            </div>
+            {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
         </div>
     </div>
     <div class="dui-layout-div"></div>
@@ -112,25 +100,6 @@
                 <i class="iconfont">&#xe60b;</i>
             </div>
         </div>
-    </div>
-</div>
-<div class="dui-layout-lg clearfix" >
-    <!-- ========热门留学方案======== -->
-    <div class="dui-box-shadow" style="margin-top: 20px;background:#fff;" >
-        <div class="common-title">
-            <i></i>
-            <h3>热门留学方案</h3>
-            <a target="_blank" href="{{helper.urlgen('productrank')}}" class="iconfont">&#xe602;</a>
-        </div>
-        {% esi helper.include(esikey,'fragment/hot_liuxuefangan_list') %}
-    </div>
-    <div class="dui-box-shadow" style="margin-top: 20px;background:#fff;margin-bottom: 20px;">
-        <div class="common-title">
-            <i></i>
-            <h3>明星顾问</h3>
-            <a target="_blank" href="{{helper.urlgen('adviser')}}" class="iconfont">&#xe602;</a>
-        </div>
-          {% esi helper.include(esikey,'fragment/community_guwen','n='+hcountry) %}
     </div>
 </div>
 {% import "widget/new_slide/new_slide3.html" as  slide %}
