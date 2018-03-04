@@ -450,13 +450,20 @@
             is_immi:login_ss.adviser
           },
           dataType:'json',
+          async: false,
           success:function(result){
             console.log(result)
             if(result.code == 0){
             	layer.msg('发布成功')
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
-                  window.location.href=fn.urlgen('advisor_center');
+                    if(result.data.type == 1){
+                        window.open(fn.urlgen('case',result.data.article_id.toString()));
+                    }else {
+                        window.open(fn.urlgen('article',result.data.article_id.toString()));
+                    }
+
+
                 },1000);
               }
             }else if(result.code == '1210000011'){

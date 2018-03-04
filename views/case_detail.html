@@ -35,6 +35,13 @@
       </div>
       {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
     </div>
+    <div style="margin-top: 20px;" class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;">
+        <i></i>
+        <h3>相关顾问</h3>
+      </div>
+      {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+    </div>
   </div>
   <div class="dui-layout-div"></div>
   <div class="dui-layout-con" >
@@ -75,17 +82,17 @@
         </div>
         <div class="adviser-case-detail-come" >
           <span>时间：{{article.article_info.add_time}}</span>
-          <span style="float:right;margin-left: 20px;">
-            阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
-          </span>
           <span style="float:right;margin-left:20px;">
-            收藏{{article.article_info.favorites}}
+            点赞{{article.article_info.votes}}
           </span>
           <span style="float:right;margin-left:20px;">
             评论{{article.article_info.comments}}
           </span>
           <span style="float:right;margin-left:20px;">
-            点赞{{article.article_info.votes}}
+            收藏{{article.article_info.favorites}}
+          </span>
+          <span style="float:right;margin-left: 20px;">
+            阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
           </span>
         </div>
         <div class="adviser-case-detail-offer" >
@@ -119,7 +126,7 @@
   </div>
 </div>
   {% import "widget/new_slide/new_slide3.html" as  slide %}
-  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo) }}
+  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info) }}
 {% include 'widget/new_footer/new_footer.html' %}
   <div>
     <input type="hidden" id="detail_id" value="{{id}}"/>
