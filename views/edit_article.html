@@ -89,7 +89,7 @@
               </select>
               <span class="numTip" ></span>
             </div>
-            <div class="rel-case-text1" style="margin-top: 20px;" id="art-type" data-id ="{{article.article_info.is_news}}">
+            <div class="rel-case-text1" style="margin-top: 20px;" id="art-type" data-id ="{{article.article_info.is_news}}" data-type="{{article.article_info.type}}">
               <label class="title active" for="art_type"><span>*</span> 选择文章类型：</label>
               {% set artType = [
                 {
@@ -358,7 +358,7 @@
         layer.msg(info)
       }
       editor.create();
-      var artType = 2; 
+      var artType = $("#art-type").attr('data-type');
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
@@ -431,7 +431,7 @@
               layer.msg('发布成功');
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
-                    if(result.data.type==1){
+                    if(artType==1){
                      window.open(fn.urlgen('case',result.data.article_id.toString()));
                     }else {
                         window.open(fn.urlgen('article',result.data.article_id.toString()));
@@ -567,8 +567,9 @@
           layer.msg("请输入正文内容");
           return false;
         }    
-        //跳转预览详情页  
-        if(login_ss.usertype ==2){
+        //跳转预览详情页
+
+          if(login_ss.usertype ==2){
             if(artType == 1){
                 window.open('/advisor_center/case/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
             }else {
