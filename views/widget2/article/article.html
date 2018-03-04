@@ -101,11 +101,7 @@
 {% endmacro %}
 {% macro article_edit(item,helper) %}
 <div class="art-box clearfix" >
-  {% if item.user_info.usertype == 2 %}
   <a target="_blank" href="{{helper.urlgen(item.uid | string)}}">
-  {% elif item.user_info.usertype == 3 %}
-  <a target="_blank" href="{{helper.urlgen('canzan_center/article',item.id | string)}}">
-  {% endif %}
     <div class="adviser-head" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 60px 76px;">
     </div>
   </a>
