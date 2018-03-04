@@ -84,7 +84,7 @@
 </script>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>-->
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
@@ -108,7 +108,7 @@
       "share": {}
     };
     console.log(_bd_share_config.common.bdUrl)
-    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
     $('.banner-box-left .slider').xSlider({
       //轮播图配置
 //          autoplay : 500,
@@ -126,56 +126,15 @@
       intervalTime: 5000,
       slidesPerView: 2,
       slidesPerGroup: 2,
-          pagination: true
+      pagination: true
     });
-
-    $('.loadMore').on('click', function () {
-      var page = $(this).data('page') * 1 + 1;
-      var per_page = 4;
-      var thisObj = $(this);
-      $.ajax({
-        url: '/soapi/loadmore',
-        type: 'GET',
-        datatype: 'json',
-        data: {
-          order: "add_time desc",
-          page: page,
-          per_page: per_page,
-          uid: thisObj.attr("data-uid")
-        },
-        success: function (revmsg) {
-          console.log(revmsg)
-          if (revmsg.code == 0) {
-            var revList = revmsg.data.list;
-            var len = revList.length;
-            if (len == 0) {
-              thisObj.html('已展示全部收藏');
-            }
-            if (len < per_page) {
-              thisObj.html('已展示全部收藏');
-              appendFav(revList);
-              thisObj.data('page', page);
-            } else {
-              appendFav(revList);
-              thisObj.data('page', page);
-            }
-          }
-          else {
-            thisObj.html('加载更多出错了，请刷新');
-          }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-          console.log(errorThrown)
-        }
-      })
-    })
-    $('.report-btn').on("click", report); //点击举报
   })
+
   //明星顾问轮播
   function appendArticleItem(aitem) {
     var aItemHtml = '<div class="homepage">' +
       '<div class="homepagecon">' +
-      '<a target="_blank"  href="' + fn.urlgen("blog", aitem.uid.toString()) + '" >'+
+      '<a target="_blank"  href="' + fn.urlgen( aitem.uid.toString()) + '" >'+
       '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: 50px 50px;"></div>' +
       '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
       '</a>'+
@@ -193,29 +152,29 @@
       '<div class="homepage-title">' +
       '<p>' ;
     if(aitem.type==1){
-      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
     }else if(aitem.type==2){
-      aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
     }
     aItemHtml+=  '</p>' +
       '</div>' +
       '<div class="homepage-p">' +
       '<p>' ;
     if(aitem.type==1){
-      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
         '</a>' ;
     }else if(aitem.type==2){
-      aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
         '</a>' ;
     }
     aItemHtml+=  '</p>' +
       '<p>' ;
     if(aitem.type==1){
-      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case",aitem.id.toString()) + '" class="dui-text-warning">' +
         addArticleImg(aitem.img_list) +
         '</a>' ;
     }else if(aitem.type==2){
-      aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' +
         addArticleImg(aitem.img_list) +
         '</a>' ;
     }
@@ -276,6 +235,7 @@
       '</div>';
     return html;
   }
+
   function report() {
     //举报调取函数
     if (login_ss == undefined) {

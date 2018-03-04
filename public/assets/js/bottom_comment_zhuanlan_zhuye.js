@@ -111,8 +111,8 @@ function showbottom (type, index, usertype) {
     var uid = JSON.parse($.cookie('login_ss'));
     if ( uid === null) {
       console.log('uid1', uid)
-      window.location = fn.curlgen('login');
-      // getlogin();
+      // window.location = fn.curlgen('login');
+      getlogin();
       return false;
     }
     var shoucang = $("#shoucang_em_" + index).html()
@@ -190,8 +190,8 @@ function showbottom (type, index, usertype) {
     console.log('uid', uid)
     if ( uid === null) {
       console.log('uid1', uid)
-      window.location = fn.curlgen('login');
-      // getlogin();
+      // window.location = fn.curlgen('login');
+      getlogin();
       return false;
     }
     var dianzan = $("#dianzan_em_" + index).html()

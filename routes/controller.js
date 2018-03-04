@@ -661,24 +661,25 @@ exports.center_comment = function (req, res, next) {
         },function (err, result) {
             data.xSlider = returnData(result.lunbo_list,'lunbo_list');
             data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        })
-        data.tdk = {
-          pagekey: pagekey, 
-          cityid: area, 
-        };
-      data.pagination = {
-        pages:Number.parseInt(data.comment_data.totalpage),
-        displayPage: 5,
-        showCtrl:true,
-        hrefFormer:route+'?page=',
-        //hrefLatter:'',//链接尾部 .html
-        currentPage:Number.parseInt(page),
-        //查询条件 在page分页之前
-        order:{
+            data.tdk = {
+                pagekey: pagekey,
+                cityid: area,
+            };
+            data.pagination = {
+                pages:Number.parseInt(data.comment_data.totalpage),
+                displayPage: 5,
+                showCtrl:true,
+                hrefFormer:route+'?page=',
+                //hrefLatter:'',//链接尾部 .html
+                currentPage:Number.parseInt(page),
+                //查询条件 在page分页之前
+                order:{
 
-        }
-      }
-        res.render('center_comment', data);
+                }
+            }
+            res.render('center_comment', data);
+        })
+
     });
 };
 
@@ -745,24 +746,25 @@ exports.user_comment = function (req, res, next) {
         },function (err, result) {
             data.xSlider = returnData(result.lunbo_list,'lunbo_list');
             data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        })
-        data.tdk = {
-            pagekey: pagekey,
-            cityid: area,
-        };
-      data.pagination = {
-        pages:Number.parseInt(data.comment_data.totalpage),
-        displayPage: 5,
-        showCtrl:true,
-        hrefFormer:route+'?page=',
-        //hrefLatter:'',//链接尾部 .html
-        currentPage:Number.parseInt(page),
-        //查询条件 在page分页之前
-        order:{
+            data.tdk = {
+                pagekey: pagekey,
+                cityid: area,
+            };
+            data.pagination = {
+                pages:Number.parseInt(data.comment_data.totalpage),
+                displayPage: 5,
+                showCtrl:true,
+                hrefFormer:route+'?page=',
+                //hrefLatter:'',//链接尾部 .html
+                currentPage:Number.parseInt(page),
+                //查询条件 在page分页之前
+                order:{
 
-        }
-      }
-        res.render('center_comment', data);
+                }
+            }
+            res.render('center_comment', data);
+        })
+
     });
 };
 //个人中心-收到的消息
@@ -843,24 +845,25 @@ exports.center_message = function (req, res, next) {
         },function (err, result) {
             data.xSlider = returnData(result.lunbo_list,'lunbo_list');
             data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        })
-        data.tdk = {
-          pagekey: pagekey, 
-          cityid: area, 
-        };
-      data.pagination = {
-        pages:Number.parseInt(data.msg_data.totalpage),
-        displayPage: 5,
-        showCtrl:true,
-        hrefFormer:route+'?page=',
-        //hrefLatter:'',//链接尾部 .html
-        currentPage:Number.parseInt(page),
-        //查询条件 在page分页之前
-        order:{
+            data.tdk = {
+                pagekey: pagekey,
+                cityid: area,
+            };
+            data.pagination = {
+                pages:Number.parseInt(data.msg_data.totalpage),
+                displayPage: 5,
+                showCtrl:true,
+                hrefFormer:route+'?page=',
+                //hrefLatter:'',//链接尾部 .html
+                currentPage:Number.parseInt(page),
+                //查询条件 在page分页之前
+                order:{
 
-        }
-      }
-        res.render('center_message', data);
+                }
+            }
+            res.render('center_message', data);
+        })
+
     });
 };
 
@@ -935,12 +938,13 @@ exports.center_collection = function (req, res, next) {
         },function (err, result) {
             data.xSlider = returnData(result.lunbo_list,'lunbo_list');
             data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+            data.tdk = {
+                pagekey: pagekey,
+                cityid: area,
+            };
+            res.render('center_collection', data);
         })
-        data.tdk = {
-          pagekey: pagekey, 
-          cityid: area, 
-        };
-        res.render('center_collection', data);
+
     });
 };
 
@@ -1214,7 +1218,7 @@ exports.case_detail = function(req,res,next){
           "u_id":data.login_info.uid,
           "article_id":data.article_id
         },callback);
-      }  
+      }
     },function(err,result){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -1248,7 +1252,7 @@ exports.case_detail = function(req,res,next){
         };
         data.esikey = esihelper.esikey();
         res.render('case_detail', data);
-      }); 
+      });
     });   
 }
 //专栏底页 （用户视角 包括顾问和参赞的）
@@ -1262,8 +1266,7 @@ exports.article_detail= function(req,res,next){
     data.login_info ={};
     data.login_info.uid = 0;
   }
-  data.article_id = req.params[1]; //获取文章id 
-  data.memberId = req.params[0];
+  data.article_id = req.params.id; //获取文章id
   async.parallel({
       lunbo_list:function(callback) {
           cms.lunbo_list({
@@ -1286,13 +1289,6 @@ exports.article_detail= function(req,res,next){
         "article_id":data.article_id
       },callback);
     },
-    //获取用户信息（普通用户，顾问，参赞）
-    userinfo:function(callback){
-        wec.userinfo({
-          "u_id":data.login_info.uid,
-          "to_uid":data.memberId
-        },callback);
-    }     
   },function(err,result){
     data.xSlider = returnData(result.lunbo_list,'lunbo_list');
     data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -1302,26 +1298,32 @@ exports.article_detail= function(req,res,next){
       res.redirect('/404');
       return false;
     }
-    data.userinfo = returnData(result.userinfo,'userinfo');
-    data.country =data.userinfo.country || '1';
-    data.hcountry = (data.userinfo.country || '1,').split(',')[0];
-    var  pagekey =null;
-    if(data.userinfo.usertype == 2){
-      pagekey = 'ADVISOR_P_ARTICLE_DETAIL';  
-    }else if(data.userinfo.usertype == 3){
-      pagekey = 'CANZAN_P_ARTICLE_DETAIL'; 
-    }
-    data.tdk = {
-      pagekey: pagekey, 
-      cityid: area,
-      realname: data.login_info.realname,
-      title: data.article.article_info.title,
-      description: data.article.article_info.description,
-      keywords: data.article.article_info.keywords,
-    };
-    data.esikey = esihelper.esikey();
-    res.render('article_detail', data);
-  }) 
+      data.memberId = data.article.article_info.uid; //获取顾问id
+      data.id = data.article_id;
+      async.parallel({
+          //获取用户信息（普通用户，顾问，参赞）
+          userinfo:function(callback){
+              wec.userinfo({
+                  "u_id":data.login_info.uid,
+                  "to_uid":data.memberId
+              },callback);
+          }
+      },function(err,result) {
+          data.userinfo = returnData(result.userinfo, 'userinfo');
+          data.country = data.userinfo.country || '1';
+          data.hcountry = (data.userinfo.country || '1,').split(',')[0];
+          data.tdk = {
+              pagekey: 'ADVISOR_P_ARTICLE_DETAIL',
+              cityid: area,
+              realname: data.login_info.realname,
+              title: data.article.article_info.title,
+              description: data.article.article_info.description,
+              keywords: data.article.article_info.keywords,
+          };
+          data.esikey = esihelper.esikey();
+          res.render('article_detail', data);
+      });
+  });
 }
 
 //顾问主页-用户视角
@@ -1329,8 +1331,9 @@ exports.adviser_main = function (req, res, next) {
   log.debug('this adviser_main-----------------------',req.params);
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  data.uid = req.params.id;
-  if ( req.cookies.login_ss !== undefined) {
+  //data.uid = req.params.id;
+    data.uid = req.params[0];
+    if ( req.cookies.login_ss !== undefined) {
     data.login_info = JSON.parse(req.cookies.login_ss);
     log.debug('存储的用户信息' + req.cookies.login_ss);
   }else{
@@ -1429,7 +1432,7 @@ exports.adviser_special = function (req, res, next) {
   log.info('wo shi haidoa')
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  data.to_uid = req.params.id;
+  data.to_uid = req.params[0];
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
     log.debug("login_a-------" + login_a.uid);
@@ -1492,7 +1495,7 @@ exports.adviser_case = function (req, res, next) {
     log.debug('顾问案例-用户视角')
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-    data.to_uid = req.params.id;
+    data.to_uid = req.params[0];
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
     }else{
@@ -1792,7 +1795,7 @@ exports.user_information = function (req, res, next) {
   var to_uid = req.params.id;
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
-    console.log("login_a-------" + login_a.uid);
+    console.log("login_a-------" + login_a);
     data.login_info = login_a;
   }else{
     res.redirect(config.wwhost+'/login');
@@ -1822,6 +1825,7 @@ exports.user_information = function (req, res, next) {
       data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
       data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo');
+    console.log('data.userinfo', data.userinfo)
     data.tdk = {
       pagekey: 'USER_CENTER_PROFILE',
       cityid: area,
@@ -2519,7 +2523,7 @@ exports.hot = function (req, res, next) {
   log.debug('this adviser_main-----------------------', req.params);
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  data.uid = req.params.id;
+  data.uid = req.params[0];
   if (req.cookies.login_ss !== undefined) {
     data.login_info = JSON.parse(req.cookies.login_ss);
     log.debug('存储的用户信息' + req.cookies.login_ss);
