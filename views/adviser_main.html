@@ -171,11 +171,12 @@
     })
     $('.report-btn').on("click", report); //点击举报
   })
+
   //明星顾问轮播
   function appendArticleItem(aitem) {
     var aItemHtml = '<div class="homepage">' +
       '<div class="homepagecon">' +
-      '<a target="_blank"  href="' + fn.urlgen("blog", aitem.uid.toString()) + '" >'+
+      '<a target="_blank"  href="' + fn.urlgen( aitem.uid.toString()) + '" >'+
       '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: 50px 50px;"></div>' +
       '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
       '</a>'+
@@ -193,29 +194,29 @@
       '<div class="homepage-title">' +
       '<p>' ;
     if(aitem.type==1){
-      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
     }else if(aitem.type==2){
-      aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
     }
     aItemHtml+=  '</p>' +
       '</div>' +
       '<div class="homepage-p">' +
       '<p>' ;
     if(aitem.type==1){
-      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
         '</a>' ;
     }else if(aitem.type==2){
-      aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
         '</a>' ;
     }
     aItemHtml+=  '</p>' +
       '<p>' ;
     if(aitem.type==1){
-      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case",aitem.id.toString()) + '" class="dui-text-warning">' +
         addArticleImg(aitem.img_list) +
         '</a>' ;
     }else if(aitem.type==2){
-      aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' +
         addArticleImg(aitem.img_list) +
         '</a>' ;
     }
@@ -276,6 +277,7 @@
       '</div>';
     return html;
   }
+
   function report() {
     //举报调取函数
     if (login_ss == undefined) {

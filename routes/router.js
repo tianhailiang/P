@@ -11,13 +11,13 @@ exports = module.exports = function (app) {// routes
   //社区首页
   app.get('/blog', controller.community_index);
   //用户视角 顾问主页
-  app.get('/blog/:id', controller.adviser_main);
+  app.get(/^\/(\d+)$/, controller.adviser_main);
   //用户视角 参赞主页
   //app.get('/p1/:id', controller.adviser_main);
   //用户 顾问专栏
-  app.get('/blog/:id/article', controller.adviser_special);
+  app.get(/^\/(\d+)\/article/, controller.adviser_special);
   //用户视角 案例
-  app.get('/blog/:id/case', controller.adviser_case);
+  app.get(/^\/(\d+)\/case/, controller.adviser_case);
   //用户 顾问专栏加载更多/参赞
   app.get('/soapi/user/adviser_special_more', controller.adviser_special_more);
   //案例列表接口(type=1)
@@ -94,13 +94,13 @@ exports = module.exports = function (app) {// routes
   //用户 收到的消息
   app.get('/user_center/revmsg', controller.center_message);
   //顾问 相册（用户视角）
-  app.get('/blog/:id/album', controller.adviser_photo_p);
+  app.get('/:id/album', controller.adviser_photo_p);
   //参赞 相册（用户视角）
   //app.get('/p1/:id/album', controller.adviser_photo_p);
   //案列底页（用户视角）
   app.get('/case/:id',controller.case_detail); 
   //专栏底页（用户视角）
-  app.get(/^\/blog\/(\d+)\/article_(\d+)$/, controller.article_detail);
+  app.get('/article/:id', controller.article_detail);
   //文章评论接口
   app.post('/soapi/reviewArticle',controller.reviewArticle);
   //案列发布页面
@@ -202,7 +202,7 @@ exports = module.exports = function (app) {// routes
   //退出
   app.get('/login_out', login.login_out);
   //用户视角 精华
-  app.get('/blog/:id/hot', controller.hot);
+  app.get(/^\/(\d+)\/hot/, controller.hot);
   app.get('/qq_login', login.qq_login);//第三方登录
   app.get('/sina_login', login.sina_login);//第三方登录
   app.get('/weixin_login', login.weixin_login);//第三方登录

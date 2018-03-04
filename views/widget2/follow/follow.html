@@ -1,7 +1,7 @@
 <!--我关注的-->
 {% macro follow(f_type,fItem,helper) %}
 <div class="follow-con clearfix">
-  <a target="_blank" href="{{helper.urlgen('blog', fItem.friend_uid.toString())}}"><img class="img-left" src="{{helper.avaterimg(fItem.friend_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/></a>
+  <a target="_blank" href="{{helper.urlgen(fItem.friend_uid.toString())}}"><img class="img-left" src="{{helper.avaterimg(fItem.friend_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/></a>
   <div class="content">
     <div class="content-title">{{fItem.user_info.realname}}</div>
     <div class="content-des">个人简介：{{fItem.user_info.introduce}}</div>

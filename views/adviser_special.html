@@ -150,7 +150,7 @@
     function appendArticleItem (aitem) {
       var aItemHtml = '<div class="homepage">'+
           '<div class="homepagecon">'+
-          '<a target="_blank"  href="' + fn.urlgen("blog", aitem.uid.toString()) + '" >'+
+          '<a target="_blank"  href="' + fn.urlgen(aitem.uid.toString()) + '" >'+
           '<div class="homepageing" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;"></div>'+
           '<h3>'+ aitem.user_info.realname +'<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>'+
           '</a>'+
@@ -167,16 +167,16 @@
           '</div>'+
           '<div class="homepage-title">'+
           '<p>'+
-          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"case="+aitem.id.toString()) +'" class="dui-text-warning">'+aitem.title+'<div>'+aitem.tag_list+'</div>'+
+          '<a  target="_blank" href="'+ fn.urlgen("article",aitem.id.toString()) +'" class="dui-text-warning">'+aitem.title+'<div>'+aitem.tag_list+'</div>'+
           '</a>'+
           '</p>'+
           '</div>'+
           '<div class="homepage-p">'+
           '<p>' +
-          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"case="+aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'...<span style="color: #C13232">【查看详情】</span>'+
+          '<a  target="_blank" href="'+ fn.urlgen("article",aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'...<span style="color: #C13232">【查看详情】</span>'+
           '</a>'+
           '</p>'+
-          '<a  target="_blank" href="'+ fn.articleUrlgen("blog",aitem.uid.toString(),"case="+aitem.id.toString()) +'" class="dui-text-warning">'+
+          '<a  target="_blank" href="'+ fn.articleUrlgen(aitem.uid.toString(),"article="+aitem.id.toString()) +'" class="dui-text-warning">'+
           addArticleImg(aitem.img_list)+
           '</a>'+
           '<div style="width: 200px;line-height: 38px;float: left;position: relative">'+
