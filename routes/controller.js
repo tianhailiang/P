@@ -912,6 +912,7 @@ exports.center_collection = function (req, res, next) {
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
         data.collection_data = returnData(result.collection_list,'collection_list');
+        console.log('collection_data',data.collection_data);
         var pagekey =null;
         if(data.userinfo.usertype == 1){
           pagekey = 'USER_CENTER_COLLECTION';
