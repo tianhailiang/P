@@ -141,17 +141,6 @@
                 </div>
                 {% if collection_list and collection_list.list.length > 0 %}
                 <div class="follow-me clearfix">
-                    {#{% for item in collection_list.list %}
-                    {% if item.category_id == 17 %}  案例 
-                    {% import "widget2/offer/offer.html" as case_show %}
-                    {{ case_show.case_show(item, helper) }}
-                    {% elif item.category_id < 17 %}  专栏 
-                    {% import "widget2/article/article.html" as article_show %}
-                    {{ article_show.adviser_show(item, helper) }}
-                    {% endif %}
-                    {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
-                    {% endfor %}#}
-
                     {% for item in collection_list.list %}
                         {% import "widget2/article/article.html" as article_show %}
                         {{ article_show.adviser_show(item, helper) }}
