@@ -3,7 +3,7 @@
 <ul class="gw-list">
 	{% for gw_item in xiangguan_guwen %}
 		<li>
-				<a href="{{helper.urlgen(gw_item.user_info.uid|string)}}">
+				<a href="{{helper.urlgen(gw_item.user_info.uid|string)}}" target="_blank">
 					 <img src="{{helper.avaterimg(gw_item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
 					 <div class="artical-info">
 						  <div class="user-infos">

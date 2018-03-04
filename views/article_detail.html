@@ -40,6 +40,13 @@
         </div>
         {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
       </div>
+      <div style="margin-top: 20px;" class="dui-box-shadow">
+        <div class="common-title" style="border:1px solid #dcdcdc;">
+          <i></i>
+          <h3>相关顾问</h3>
+        </div>
+        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+      </div>
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con" >
