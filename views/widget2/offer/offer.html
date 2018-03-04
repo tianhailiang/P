@@ -172,7 +172,7 @@
           </a>
         </div>
         <div class="offers-left-off">
-          <a target="_blank" href="{{helper.urlgen('blog', item.id | string)}}"><p class="off-p1">{{item.user_info.realname}}</p></a>
+          <a target="_blank" href="{{helper.urlgen( item.id | string)}}"><p class="off-p1">{{item.user_info.realname}}</p></a>
             <p class="off-p2">{{item.add_time}}&nbsp;&nbsp;<span>来自 : {{item.from}}</span></p>
             <a target="_blank" href="{{helper.urlgen('case', item.id | string)}}" class="offer-title">
               {{item.title}}

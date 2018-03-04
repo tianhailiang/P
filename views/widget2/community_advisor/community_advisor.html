@@ -7,7 +7,7 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}')"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"></a></dt>
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}')"><a target="_blank" href="{{helper.urlgen( advisor.uid)}}"></a></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
@@ -46,7 +46,7 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 1,advisor.version)}}" alt=""></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 1,advisor.version)}}')"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"></a></dt>
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 1,advisor.version)}}')"><a target="_blank" href="{{helper.urlgen( advisor.uid)}}"></a></dt>
     <dd>
       <p class="advisor-name">金吉列</p>
     </dd>
@@ -69,7 +69,7 @@
     <li style="width: 135px">文章<span class="article-num">{{ advisor.article_count }}</span></li>
   </ul>
   <dl>
-    <dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>
+    <dt class="advisor-img"><a target="_blank" href="{{helper.urlgen(advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>
     <dd>
       <p class="advisor-name">{{ advisor.realname }}</p>
     </dd>

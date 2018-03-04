@@ -94,75 +94,42 @@
         },
         //生成符合静态规范的跳转链接
         urlgen: function () {
-          var isyimin = false;
-          var url = '',chan = '',param = '',nation = '',city = '',nationid='',cityid='';
-            if(arguments.length == 0){
-                return ;
+        var url = '',chan = '',param = '';
+        if(arguments.length == 0){
+            return ;
+        }
+        //get chan & subchan
+        for(var i= 0 ; i < arguments.length;i++){
+            if(arguments[i] == '' || arguments[i].split('=').length > 1)
+            {
+                break;
             }
-            //get chan & subchan
-            for(var i= 0 ; i < arguments.length;i++){
-              if(i == 0 && arguments[i] == 'yimin'){
-                isyimin = true;
-                continue;
-              }
-                if(arguments[i].split('=').length > 1)
-                {
-                    if (nationid = seo_to_url(arguments[i], 'n')) {
-                        nation = this.getCountryEn(nationid);
-                    }
-                    if (cityid = seo_to_url(arguments[i], 'c')) {
-                        city = this.getCityEn(cityid);
-                    }
-                    if(!nationid && !cityid){
-                        chan += '/' + arguments[i].replace(/=/g, "-");
-                    }
-                    break;
-                }
-                else
-                {
-                    chan += '/' + arguments[i];
-                }
+            else
+            {
+                chan += '/' + arguments[i];
             }
-            // i is hold
-            for(i+=1; i < arguments.length;i++){
-                if (nationid = seo_to_url(arguments[i], 'n')) {
-                    nation = this.getCountryEn(nationid);
-                }
-                if (cityid = seo_to_url(arguments[i], 'c')) {
-                    city = this.getCityEn(cityid);
-                }
-                if(!nationid && !cityid){
-                    param += '__' + arguments[i].replace(/=/g, "-");
-                }
+        }
+        // i is hold
+        for(i; i < arguments.length;i++){
+            if (param == '') {
+                param += '/' + arguments[i].replace(/=/g, "-");
             }
+            else {
+                param += '__' + arguments[i].replace(/=/g, "-");
+            }
+        }
+        url += chan + param;
 
-            if(chan.match(/yimin/g)){
-                url += "/yimin"+(city?"/"+city:"") + (nation?"/"+nation:"") + chan.replace(/\/yimin/, "") + param + ".html";
-            }else{
-                url += (city?"/"+city:"") + (nation?"/"+nation:"") + chan + param + ".html";
-            }
+        if (js_api_config.wwhost == 'development') { //如果是開發環境
+            url = js_api_config.wwhost + ':4000' + url;//social
+        }
 
-            if(url == "/.html"){
-                url = "/";
-            }
+        if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)){
+            url = url + '.html';
+        }
 
-            if(!exits_static_page(chan + param + ".html")){
-                url = url.replace(/\.html/g, "");
-            }else{
-                if(chan=='/branch_home'){
-                    url = url.replace(/branch_home.html/g, "");
-                }
-            }
-
-            if (!isyimin && js_api_config.version == 'development') { //如果是開發環境
-                url = js_api_config.wwhost + ':4000' + url;//social
-            }
-
-          if (isyimin && js_api_config.version == 'development') { //如果是開發環境
-            url = js_api_config.yiminhost + ':3000' + url;//web
-          }
-            return url;
-        },
+        return url;
+    },
         /*生成栏目页不需要静态化的跳转链接*/
         no_urlgen: function () {
             console.log(arguments);

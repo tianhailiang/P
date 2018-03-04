@@ -34,7 +34,7 @@
 <ul class="gw-list">
     {% for gw_item in xiangguan_guwen %}
         <li>
-            <a href="{{helper.articleUrlgen('blog',item.uid|string)}}">
+            <a href="{{helper.articleUrlgen(item.uid|string)}}">
                 <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
                 <div class="artical-info">
                     <div class="user-infos">
@@ -85,13 +85,13 @@
   {% if loop.index<=8 %}
   <div  class="star-item">
     <dl class="clearfix" style="margin-bottom:0;">
-      <a target="_blank" href="{{ helper.urlgen('blog', star_item.uid | string) }}">
+      <a target="_blank" href="{{ helper.urlgen( star_item.uid | string) }}">
         <dt>
           <img src="{{ helper.avaterimg(star_item.uid, 'small',star_item.status,star_item.version) }}" alt="{{star_item.realname}}"/>
         </dt>
       </a>
       <dd>
-        <div class="star_name"><a target="_blank" style="color:#333333;" href="{{ helper.urlgen('blog', star_item.uid | string) }}">{{star_item.realname}}</a></div>
+        <div class="star_name"><a target="_blank" style="color:#333333;" href="{{ helper.urlgen( star_item.uid | string) }}">{{star_item.realname}}</a></div>
         <p class="star_info">
           {{star_item.introduce}}
         </p>
