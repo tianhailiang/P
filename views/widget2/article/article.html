@@ -1,7 +1,7 @@
 {% macro article_show(item,helper) %}
 <div class="homepage">
   <div class="homepagecon">
-    <a target="_blank" href="{{helper.urlgen(item.uid | string)}}"><div class="homepageing" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 50px 50px;"></div>
+    <a target="_blank" href="{{helper.urlgen(item.uid | string)}}"><div class="homepageing" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: cover;"></div>
     <h3>{{item.user_info.realname}}<img src="{{helper.cdnhost}}/assets/img/1v.png" alt=""></h3></a>
       <ul>
       <div>
