@@ -249,10 +249,10 @@
             var revList = revmsg.data.list;
             var len = revList.length;
             if (len == 0) {
-              thisObj.html('已展示全部收藏');
+              thisObj.html('已展示全部');
             }
             if (len < per_page) {
-              thisObj.html('已展示全部收藏');
+              thisObj.html('已展示全部');
               appendFav(revList);
               thisObj.data('page', page);
             } else {
