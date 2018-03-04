@@ -108,7 +108,7 @@
       "share": {}
     };
     console.log(_bd_share_config.common.bdUrl)
-    with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+    with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
     $('.banner-box-left .slider').xSlider({
       //轮播图配置
 //          autoplay : 500,
@@ -126,50 +126,8 @@
       intervalTime: 5000,
       slidesPerView: 2,
       slidesPerGroup: 2,
-          pagination: true
+      pagination: true
     });
-
-    $('.loadMore').on('click', function () {
-      var page = $(this).data('page') * 1 + 1;
-      var per_page = 4;
-      var thisObj = $(this);
-      $.ajax({
-        url: '/soapi/loadmore',
-        type: 'GET',
-        datatype: 'json',
-        data: {
-          order: "add_time desc",
-          page: page,
-          per_page: per_page,
-          uid: thisObj.attr("data-uid")
-        },
-        success: function (revmsg) {
-          console.log(revmsg)
-          if (revmsg.code == 0) {
-            var revList = revmsg.data.list;
-            var len = revList.length;
-            if (len == 0) {
-              thisObj.html('已展示全部收藏');
-            }
-            if (len < per_page) {
-              thisObj.html('已展示全部收藏');
-              appendFav(revList);
-              thisObj.data('page', page);
-            } else {
-              appendFav(revList);
-              thisObj.data('page', page);
-            }
-          }
-          else {
-            thisObj.html('加载更多出错了，请刷新');
-          }
-        },
-        error: function (XMLHttpRequest, textStatus, errorThrown) {
-          console.log(errorThrown)
-        }
-      })
-    })
-    $('.report-btn').on("click", report); //点击举报
   })
 
   //明星顾问轮播
