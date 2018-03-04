@@ -160,6 +160,7 @@ exports.so_article = function (req, res, next) {
             pagekey: 'SEARCHNEWS', //key
             cityid: area
         };
+        data.esikey = esihelper.esikey();
         res.render('so_article', data);
 
     });
@@ -1366,7 +1367,8 @@ exports.adviser_main = function (req, res, next) {
       wec.likelist({
         "country_id":1,
         "city_id":1,
-        "per_page":5
+        "per_page":5,
+        // "order":"views desc"
     },callback)
     },
     xiangguan_guwen:function (callback){ //相关顾问
@@ -1402,7 +1404,7 @@ exports.adviser_main = function (req, res, next) {
       realname: data.login_info.realname,
     };
     data.esikey = esihelper.esikey();
-    //log.info(data.xiangguan_guwen)
+    log.info(data.xiangguan_guwen)
     res.render('adviser_main', data);
   });
 }
