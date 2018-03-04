@@ -89,9 +89,9 @@ exports.user_info = function (req, res, next) {
       if(result.code === 0){
         data.login_nickname.nickname = nickname
         if (config.version == 'development') {//开发环境
-          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: '.jjlvip.cn'});//保存cookie
+          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: '.jjlvip.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
         } else {
-          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: '.jjlvip.cn'});
+          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: '.jjlvip.cn', expires: new Date(Date.now() + 90000000)});
         }
       }
 
