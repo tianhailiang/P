@@ -182,7 +182,7 @@ function showbottom (type, uindex, index, usertype, category_id) {
         window.location= fn.urlgen('case',index.toString());
       }
     }else if (category_id < 17) {
-      window.location = fn.articleUrlgen('blog', uindex.toString(),'article='+index.toString());
+      window.location = fn.urlgen('article',index.toString());
     }
   }else if (type === 4) {
     var uid = JSON.parse($.cookie('login_ss'));

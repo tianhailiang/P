@@ -14,7 +14,6 @@
       intervalTime: 5000,
       pagination: false
     }
-  
     if(userConfig != null) {
       $.extend(this.config,this.userConfig);
     }

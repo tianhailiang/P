@@ -2,14 +2,14 @@
     <ul class="gw-likelist">
         {% for item in likelist.list %}
         <li>
-            <a href="{{helper.articleUrlgen('blog',item.uid|string)}}" style="display:inline-block;width:51px;height:51px;float:left;">
+            <a href="{{helper.urlgen(item.uid|string)}}" style="display:inline-block;width:51px;height:51px;float:left;">
               <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="img-responsive">
             </a>
             <div class="likes-item" style="padding-top:12px;">
               <span class="people-name" style="margin-top:0;margin-right:0;">{{item.user_info.realname}}</span>
               <span class="people-action" style="margin-top:0;float:right;">{{item.tag_list | stringSub()}}</span>
             </div>
-            <a style="margin:20px 0 10px 0" href="{{helper.articleUrlgen('blog',item.uid|string,'article='+item.id | string)}}">
+            <a style="margin:20px 0 10px 0" href="{{helper.urlgen('article',item.id | string) if item.type == 1 else helper.urlgen('case',item.id | string)}}">
               <div class="article">{{item.title | ellipsis(14) }}</div>
             </a>
         </li>
