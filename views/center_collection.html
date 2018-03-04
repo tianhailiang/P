@@ -123,13 +123,13 @@
                         {% import "widget2/article/article.html" as article_fav %}
                         {{ article_fav.article_fav(item, helper) }}
                     {% endif %}
-                    {% include "widget2/bottom_comment/bottom_comment.html" %}
+              {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
                 {% endfor %}#}
                 
                 {% for item in collection_data.list %}
                     {% import "widget2/article/article.html" as article_fav %}
                     {{ article_fav.article_fav(item, helper) }}
-                    {% include "widget2/bottom_comment/bottom_comment_zhuanlan.html" %}
+              {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
                 {% endfor %}
             </div>
             <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}">
