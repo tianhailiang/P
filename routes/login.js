@@ -59,7 +59,7 @@ exports.login_user = function (req, res, next) {
     if (result.login_user.code === 0) {
       log.debug('ok', result.login_user.code);
       var express_time =  '2019-03-05T10:12:55.000Z';
-      if (config.version == 'development' && result.login_ss.code === 0) {//开发环境
+      if (config.version == 'development' && result.login_user.code === 0) {//开发环境
         res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjlvip.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
       } else {
         res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjlvip.cn', expires: new Date(Date.now() + 90000000)});
