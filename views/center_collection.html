@@ -114,18 +114,7 @@
                 <div class="tit">我的收藏</div>
             </div>
             {% if collection_data.list.length > 0 %}
-            <div class="right-main clearfix collection-list-box">
-                {#{% for item in collection_data.list %}
-                    {% if item.category_id == 17 %}  案例 
-                        {% import "widget2/offer/offer.html" as case_fav %}
-                        {{ case_fav.case_fav(item, helper) }}
-                    {% elif item.category_id < 17 %}  专栏 
-                        {% import "widget2/article/article.html" as article_fav %}
-                        {{ article_fav.article_fav(item, helper) }}
-                    {% endif %}
-              {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
-                {% endfor %}#}
-                
+            <div class="right-main clearfix collection-list-box"> 
                 {% for item in collection_data.list %}
                     {% import "widget2/article/article.html" as article_fav %}
                     {{ article_fav.article_fav(item, helper) }}
