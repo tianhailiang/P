@@ -15,8 +15,10 @@ exports = module.exports = function (app) {// routes
   // app.get('/fragment/hot_liuxuefangan_list',fragment.hot_liuxuefangan_list);
   // app.get('/fragment/community_guwen',fragment.community_guwen);
   // app.get('/fragment/author_selection',fragment.author_selection);
+  app.get('/fragment/searchguess_like',fragment.searchlikelist);
   app.get('/fragment/guess_like',fragment.guess_like);
-  app.get('/fragment/fangan_liuxue',fragment.fangan_liuxue);
+  app.get('/fragment/xiangguanguwen',fragment.xiangguanguwen);
+  // app.get('/fragment/fangan_liuxue',fragment.fangan_liuxue);
   // app.get('/fragment/productrank_activity',fragment.productrank_activity);
   // // 移民fragments
   // app.get('/fragment/yimin_huodongyugao', fragment.yimin_huodongyugao);  //移民活动

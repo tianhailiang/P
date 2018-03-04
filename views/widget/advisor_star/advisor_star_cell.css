@@ -1,4 +1,4 @@
-.advisor-star-cell{
+/* .advisor-star-cell{
     width: 92px;
     height: 162px;
 }
@@ -23,9 +23,9 @@
 .advisor-star-cell dd.area{
     font-size: 12px;
     line-height: 12px;
-}
+} */
 /*�����ĸ񲼾�*/
-.advisor-star-cont{
+/* .advisor-star-cont{
     width: 244px;
     padding: 16px 17px;
     background-color: #fff;
@@ -37,11 +37,11 @@
 }
 .advisor-star-cont .advisor-star-cell-box a{
     display: block;
-}
+} */
 
 /*�����б�*/
 
-.advisor-star-list{
+/* .advisor-star-list{
     padding-top:10px;
 }
 
@@ -96,20 +96,21 @@
 }
 .hover-color:hover{
     color: #C13232;
-}
+} */
 /* 2018-2-27 */
-.gw-list{width:280px;list-style:none;}
-.gw-list li{border-bottom:solid 1px #dcdcdc;margin-top:20px}
-.gw-list a{color:#333;text-decoration:none}
+.gw-list{width:280px;list-style:none;background: #fff;}
+.gw-list li{border-bottom:solid 1px #dcdcdc;margin-bottom:18px;margin-left: 10px; margin-right: 10px;}
+.gw-list li:first-child{padding-top: 16px;}
+.gw-list a{color:#333;text-decoration:none;display: block;}
 .likes-item{overflow:hidden}
 .likes-item span{display:inline-block;margin-top:18px}
 .likes-item+.article{font-size:16px;margin:8px 0 18px;color:#333}
 .likes-item img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%;float:left}
-.gw-list .people-action{font-size:12px;color:#c13232;background:#fdf3f2;height:24px;line-height:24px;width:80px;text-align:center;-webkit-border-radius:10px;border-radius:10px}
-.gw-list .user-infos .people-name{font-size:14px;margin-left:10px;display:inline-block;margin-right:75px;background:url(/assets/img/1v.png) no-repeat;background-position:right center;padding-right:20px}
+.gw-list .people-action{float:right;font-size:12px;color:#c13232;background:#fdf3f2;height:24px;line-height:24px;width:80px;text-align:center;-webkit-border-radius:10px;border-radius:10px}
+.gw-list .user-infos .people-name{font-size:14px;margin-left:10px;display:inline-block;background:url(/assets/img/1v.png) no-repeat;background-position:right center;padding-right:20px}
 .gw-list img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%;float:left}
 .artical-info{margin-left:60px;overflow:hidden;font-size:14px;margin-bottom:20px}
-.guwen-info{overflow:hidden;margin-left:10px;margin-top:8px;position:relative}
+.guwen-info{overflow:hidden;margin-left:10px;margin-top:15px;position:relative}
 .guwen-info span{height:14px;line-height:14px}
 .guwen-info .pull-left{float:left;border-right:1px solid #d6d6d6;width:90px}
 .guwen-info .pull-right{float:right;margin-right:22px}

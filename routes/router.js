@@ -207,4 +207,5 @@ exports = module.exports = function (app) {// routes
   app.get('/sina_login', login.sina_login);//第三方登录
   app.get('/weixin_login', login.weixin_login);//第三方登录
   app.get('/oauth', login.oauth);
+  app.get("/agreement",controller.agreement);
 };
