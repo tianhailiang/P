@@ -19,11 +19,11 @@
     <p>
     {% if item.type == 1 %}
     <a target="_blank" href="{{helper.urlgen('case',item.id | string)}}" class="dui-text-warning" rel="nofollow">
-      {{item.title}}"</a><div>{{item.tag_list}}</div>
+      {{item.title}}</a><div>{{item.tag_list}}</div>
 
     {% elif item.type == 2 %}
     <a target="_blank" href="{{helper.urlgen('article',item.id | string)}}" class="dui-text-warning" rel="nofollow">
-      {{item.title}}" </a><div>{{item.tag_list}}</div>
+      {{item.title}}</a><div>{{item.tag_list}}</div>
     {% endif %}
     </p>
   </div>
