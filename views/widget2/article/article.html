@@ -19,11 +19,11 @@
     <p>
     {% if item.type == 1 %}
     <a target="_blank" href="{{helper.urlgen('case',item.id | string)}}" class="dui-text-warning" rel="nofollow">
-      {{item.title}}"</a><div>{{item.tag_list}}</div>
+      {{item.title}}</a><div>{{item.tag_list}}</div>
 
     {% elif item.type == 2 %}
     <a target="_blank" href="{{helper.urlgen('article',item.id | string)}}" class="dui-text-warning" rel="nofollow">
-      {{item.title}}" </a><div>{{item.tag_list}}</div>
+      {{item.title}}</a><div>{{item.tag_list}}</div>
     {% endif %}
     </p>
   </div>
@@ -101,11 +101,7 @@
 {% endmacro %}
 {% macro article_edit(item,helper) %}
 <div class="art-box clearfix" >
-  {% if item.user_info.usertype == 2 %}
   <a target="_blank" href="{{helper.urlgen(item.uid | string)}}">
-  {% elif item.user_info.usertype == 3 %}
-  <a target="_blank" href="{{helper.urlgen('canzan_center/article',item.id | string)}}">
-  {% endif %}
     <div class="adviser-head" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: 60px 76px;">
     </div>
   </a>

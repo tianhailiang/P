@@ -308,7 +308,8 @@ exports.center_follow = function (req, res, next) {
         console.log('data.follow_data', data.follow_data)
         data.tdk = {
           pagekey: data.userinfo.usertype ==2 ? 'ADVISOR_CENTER_FOLLOW':'CANZAN_CENTER_FOLLOW',
-          cityid: area
+          cityid: area,
+          realname: data.userinfo.realname
         };
         res.render('center_follow', data);
     });
@@ -440,7 +441,8 @@ exports.center_main = function (req, res, next) {
         }
         data.tdk = {
           pagekey: pagekey, 
-          cityid: area
+          cityid: area,
+          realname: data.userinfo.realname
         };
         res.render('center_main', data);
     });
@@ -499,6 +501,7 @@ exports.post_code = function (req, res, next) {
         data.tdk = {
             pagekey: 'ADVISOR_CENTER_QRCODE',
             cityid: area,
+            realname: data.login_info.realname,
         };
         res.render('center_post_code', data);
     });
@@ -573,6 +576,7 @@ exports.center_case = function (req, res, next) {
         data.tdk = {
           pagekey: 'ADVISOR_CENTER_CASE', 
           cityid: area,
+          realname: data.userinfo.realname
         };
         res.render('center_case', data);
     });
@@ -664,6 +668,7 @@ exports.center_comment = function (req, res, next) {
             data.tdk = {
                 pagekey: pagekey,
                 cityid: area,
+                realname: data.userinfo.realname
             };
             data.pagination = {
                 pages:Number.parseInt(data.comment_data.totalpage),
@@ -848,6 +853,7 @@ exports.center_message = function (req, res, next) {
             data.tdk = {
                 pagekey: pagekey,
                 cityid: area,
+                realname: data.userinfo.realname
             };
             data.pagination = {
                 pages:Number.parseInt(data.msg_data.totalpage),
@@ -942,6 +948,7 @@ exports.center_collection = function (req, res, next) {
             data.tdk = {
                 pagekey: pagekey,
                 cityid: area,
+                realname: data.userinfo.realname
             };
             res.render('center_collection', data);
         })
@@ -1011,6 +1018,7 @@ exports.center_article = function (req, res, next) {
         data.tdk = {
           pagekey: pagekey, 
           cityid: area, 
+          realname: data.userinfo.realname
         };
         res.render('center_article', data);
     });
@@ -1066,6 +1074,7 @@ exports.center_photo = function (req, res, next) {
         data.tdk = {
           pagekey: pagekey, 
           cityid: area, 
+          realname: data.userinfo.realname
         };
         res.render('center_photo', data);
     });
@@ -1697,6 +1706,7 @@ exports.advisor_profile = function (req, res, next) {
     data.tdk = {
       pagekey: 'ADVISOR_CENTER_PROFILE', 
       cityid: area,
+      realname: data.login_info.realname,
     };
     res.render('advisor_profile', data);
   });
@@ -1782,6 +1792,7 @@ exports.advisor_acount = function (req, res, next) {
     data.tdk = {
       pagekey: pagekey,
       cityid: area,
+      realname: data.login_info.realname,
     };
     res.render('advisor_acount', data);
   });
@@ -1948,6 +1959,7 @@ exports.release_article = function(req,res,next){
         data.tdk = {
             pagekey:pagekey,
             cityid: area,
+            realname: data.login_info.realname,
         };
         res.render('release_article',data);
     })
@@ -2256,6 +2268,7 @@ exports.draft =function(req,res,next){
     data.tdk = {
       pagekey:pagekey,
       cityid: area,
+      realname: data.userinfo.realname
     };
     data.pagination = {
       pages:Number.parseInt(data.channel_list.totalpage),
