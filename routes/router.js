@@ -11,7 +11,7 @@ exports = module.exports = function (app) {// routes
   //社区首页
   app.get('/blog', controller.community_index);
   //用户视角 顾问主页
-  app.get(/^\/(\d+)$/, controller.adviser_main);
+  app.get(/^\/(\d+)(\/*)$/, controller.adviser_main);
   //用户视角 参赞主页
   //app.get('/p1/:id', controller.adviser_main);
   //用户 顾问专栏
