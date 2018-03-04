@@ -82,7 +82,7 @@
        <a target="_blank" href="{{helper.urlgen('article',item.id | string)}}"  style="color: #C13232">
          {{item.title}}</a>
        {% endif %}
-      {# <a target="_blank" href="{{helper.urlgen('article',item.id | string) if item.type == 1 else helper.urlgen('case',item.id | string)}}" style="color: #C13232">{{item.title}}</a>#}
+      {# <a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" style="color: #C13232">{{item.title}}</a>#}
      </div>
      <div class="offer-xialas">
         <span class="offer-xialadd iconfont">&#xe60b;</span>
@@ -93,11 +93,11 @@
      </div>
      <p class="adviser-info-p">
        {% if item.type == 1 %}
-       <a target="_blank" href="{{helper.urlgen('article',item.id | string) if item.type == 1 else helper.urlgen('case',item.id | string)}}" class="dui-text-warning" rel="nofollow">
+       <a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" class="dui-text-warning" rel="nofollow">
          {{item.introduce}} <span>【查看详情】</span>
        </a>
        {%else%}
-       <a target="_blank" href="{{helper.urlgen('article',item.id | string) if item.type == 1 else helper.urlgen('case',item.id | string)}}" class="dui-text-warning" rel="nofollow">
+       <a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" class="dui-text-warning" rel="nofollow">
          {{item.introduce}} <span>【查看详情】</span>
        </a>
        {% endif%}
@@ -215,7 +215,20 @@
       <span style="padding: 0 10px;height: 24px;float: left;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
-      <a target="_blank" href="{{helper.urlgen('article',item.id | string) if item.type == 1 else helper.urlgen('case',item.id | string)}}" style="color: #C13232">{{item.title}}</a>
+      {% if item.type == 1 %}
+      <a target="_blank" href="{{helper.urlgen('case',item.id | string)}}" style="color: #C13232">
+        {{item.title}}</a>
+      {% else %}
+      <a target="_blank" href="{{helper.urlgen('article',item.id | string)}}"  style="color: #C13232">
+        {{item.title}}</a>
+      {% endif %}
+
+
+      {#{% if item.type==1%}
+      <a target="_blank" href="{{helper.urlgen('case',item.id | string)" style="color: #C13232">{{item.title}}</a>
+      {% else %}
+      <a target="_blank" href="{{helper.urlgen('article',item.id | string)" style="color: #C13232">{{item.title}}</a>
+      {% endif %}#}
     </div>
     <div class="offer-opt-bar clearfix">
       <div class="opt-btn delete" onclick="cancelFav($(this), {{item.id}})">
@@ -233,7 +246,7 @@
       </ul>
     </div>
     <p class="adviser-info-p">
-      <a target="_blank" href="{{helper.urlgen('article',item.id | string) if item.type == 1 else helper.urlgen('case',item.id | string)}}" class="dui-text-warning" rel="nofollow">
+      <a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" class="dui-text-warning" rel="nofollow">
         {{item.introduce}} <span>【查看详情】</span>
       </a>
     </p>
