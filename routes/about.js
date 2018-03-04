@@ -39,6 +39,14 @@ exports.canzan = function (req, res, next) {
   var articleId = req.params.id;
   var page =req.query.page || 1;
   var order =req.query.article || 1;
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+      data.url = l.h;
+  } else {
+      data.url = config.wwhost;
+  }
   data.login_info = ''
   if ( req.cookies.login_ss !== undefined) {
     console.log('aaaaaa');
@@ -84,7 +92,14 @@ exports.culture = function (req, res, next){
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var qianzhengzhinan_currentPage=req.query.page || 1;
     var country = req.query.n || 0;
-  
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+      data.url = l.h;
+  } else {
+      data.url = config.wwhost;
+  }
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
       var login_a = JSON.parse(req.cookies.login_ss);
@@ -132,7 +147,14 @@ exports.about = function (req, res, next){
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var qianzhengzhinan_currentPage=req.query.page || 1;
     var country = req.query.n || 0;
-  
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+      data.url = l.h;
+  } else {
+      data.url = config.wwhost;
+  }
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
       var login_a = JSON.parse(req.cookies.login_ss);
@@ -160,7 +182,14 @@ exports.events = function (req, res, next){
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var qianzhengzhinan_currentPage=req.query.page || 1;
     var country = req.query.n || 0;
-  
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+      data.url = l.h;
+  } else {
+      data.url = config.wwhost;
+  }
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
       var login_a = JSON.parse(req.cookies.login_ss);
@@ -198,7 +227,14 @@ exports.cooperation = function (req, res, next){
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var qianzhengzhinan_currentPage=req.query.page || 1;
     var country = req.query.n || 0;
-  
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+      data.url = l.h;
+  } else {
+      data.url = config.wwhost;
+  }
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
       var login_a = JSON.parse(req.cookies.login_ss);
@@ -243,7 +279,14 @@ exports.contact = function (req, res, next){
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var qianzhengzhinan_currentPage=req.query.page || 1;
     var country = req.query.n || 0;
-  
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+      data.url = l.h;
+  } else {
+      data.url = config.wwhost;
+  }
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
       var login_a = JSON.parse(req.cookies.login_ss);
