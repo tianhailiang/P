@@ -61,41 +61,50 @@ function active_urlgen(){
  * url拼装  开发、测试区分
  */
 function urlgen() {
-    var url = '',chan = '',param = '';
-    if(arguments.length == 0){
-        return ;
+  var url = '',chan = '',param = '';
+  if(arguments.length == 0){
+    return ;
+  }
+  //get chan & subchan
+  for(var i= 0 ; i < arguments.length;i++){
+    if(arguments[i] == '' || arguments[i].split('=').length > 1)
+    {
+      break;
     }
-    //get chan & subchan
-    for(var i= 0 ; i < arguments.length;i++){
-        if(arguments[i] == '' || arguments[i].split('=').length > 1)
-        {
-            break;
-        }
-        else
-        {
-            chan += '/' + arguments[i];
-        }
+    else
+    {
+      chan += '/' + arguments[i];
     }
-    // i is hold
-    for(i; i < arguments.length;i++){
-        if (param == '') {
-            param += '/' + arguments[i].replace(/=/g, "-");
-        }
-        else {
-            param += '__' + arguments[i].replace(/=/g, "-");
-        }
+  }
+  // i is hold
+  for(i; i < arguments.length;i++){
+    if (cityid = seo_to_url(arguments[i], 'c')) {
+      city = common.getCityEn(cityid);
     }
-    url += chan + param;
+    if(!cityid && arguments[i] != '') {
+      continue;
+    }
+    if (param == '') {
+      param += '/' + arguments[i].replace(/=/g, "-");
+    }
+    else {
+      param += '__' + arguments[i].replace(/=/g, "-");
+    }
+  }
 
-    if (config.version == 'development') { //如果是開發環境
-        url = config.wwhost + ':4000' + url;//social
-    }
+  url += chan + param;
 
-    if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
-        url = url + '.html';
-    }
+  if(chan=='/branch_home'){
+    url = ((city && city != 0)?"/"+city:"")+"/";
+  }
 
-    return url;
+  if (config.version == 'development') { //如果是開發環境
+    url = config.wwhost + ':4000' + url;//social
+  }
+  if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
+    url = url + '.html';
+  }
+  return url;
 }
 
 function articleUrlgen(){
