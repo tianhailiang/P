@@ -1144,6 +1144,7 @@ exports.center_photo = function (req, res, next) {
         res.redirect(config.wwhost+'/login');
         return false;
     }
+    console.log("u-id======", data.login_info.uid);
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
@@ -1170,6 +1171,7 @@ exports.center_photo = function (req, res, next) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
+
         var pagekey =null;
         if(data.userinfo.usertype == 2){
           pagekey = 'ADVISOR_CENTER_ALBUM';
@@ -1205,6 +1207,7 @@ exports.adviser_photo_p = function(req,res,next){
       data.login_info ={};
       data.login_info.uid = 0;
     }
+    console.log("to_uid======", data.login_info.uid);
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
@@ -1224,7 +1227,7 @@ exports.adviser_photo_p = function(req,res,next){
         userinfo:function(callback){
             wec.userinfo({
                 "u_id":data.login_info.uid,
-                "to_uid":data.to_uid
+                "to_uid":data.login_info.uid
             },callback);
         },
         //作者精选
