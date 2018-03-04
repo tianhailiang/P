@@ -46,12 +46,12 @@ function jiazaigengduo (uid) {
                               '<a class="dui-text-warning-s report-btn" data-artId="'+msg.data.list[i].id+'" data-catid="'+msg.data.list[i].category_id+'">举报</a>'+
                             '</li>'+
                             '<li>'+
-                              '<a class="dui-text-warning-s share-btn" data-url="'+fn.articleUrlgen('blog',msg.data.list[i].uid.toString(),'article='+msg.data.list[i].id.toString())+'" data-title ="'+msg.data.list[i].id.title+'">分享</a>'+
+                              '<a class="dui-text-warning-s share-btn" data-url="'+fn.urlgen('article',msg.data.list[i].id.toString())+'" data-title ="'+msg.data.list[i].id.title+'">分享</a>'+
                             '</li>'+
                           '</ul>'+
                         '</div>'+
                         '<p class="adviser-info-p">'+
-                          '<a href="'+fn.articleUrlgen('blog',msg.data.list[i].uid.toString(),'article='+msg.data.list[i].id.toString())+'" class="dui-text-warning">'+msg.data.list[i].introduce+'<span>【查看详情】</span></a>'+
+                          '<a href="'+fn.urlgen('article',msg.data.list[i].id.toString())+'" class="dui-text-warning">'+msg.data.list[i].introduce+'<span>【查看详情】</span></a>'+
                         '</p>'+
                         '<ul class="adviser-info-ul clearfix" id="adviser-info-ul_'+ msg.data.list[i].id +'"></ul>'+
                       '</div>'+
