@@ -1355,20 +1355,18 @@ exports.case_detail = function(req,res,next){
     },function(err,result){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-      data.article =returnData(result.article,'article');
-      if(result.article.code == code){
-        //文章不存在的时候  跳到404
-        res.redirect('/404');
-        return false;
-      }
-      data.memberId = data.article.article_info.uid; //获取顾问id
-      data.id = data.article_id;
+        data.article =returnData(result.article,'article');
+          if(result.article.code == code){
+            //文章不存在的时候  跳到404
+            res.redirect('/404');
+            return false;
+          }
       async.parallel({
         //获取用户信息（普通用户，顾问，参赞）
         userinfo:function(callback){
             wec.userinfo({
               "u_id":data.login_info.uid,
-              "to_uid":data.memberId
+              "to_uid":data.article.article_info.uid
             },callback);
         }   
       },function(err,result){
