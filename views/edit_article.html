@@ -168,6 +168,16 @@
       			  <input  id="rel-case-title" type="text" maxlength="30" value="{{article.article_info.title}}">
       			  <span class="numTip" style="display: block;margin-left: 97px;">填写文章标题，字数限30个汉字</span>
       		  </div>
+            <div class="rel-case-text1" style="margin-top: 20px;">
+              <label class="title active" for="art_abs" >
+                <span>*</span> 文章摘要：
+              </label>
+              <textarea class="art_abs" id="art_abs" maxlength="200" >{{article.article_info.introduce}}</textarea>
+              <div class="word-num">还可以输入<span id="word-num">200</span>字</div>
+              <span class="numTip" style="display: block;margin-left: 97px;">
+                填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写
+              </span>
+            </div>
     		    <div class="rel-case-text1 clearfix" style="margin-top: 20px;" >
     			    <label class="title active" style="float:left">
                 <span>*</span> 正文内容：
@@ -414,13 +424,14 @@
             article_id:$(".editor-btn-box").attr("data-articleId")
           },
           dataType:'json',
+          async: false,
           success:function(result){
             console.log(result)
             if(result.code == 0){
               layer.msg('发布成功');
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
-                  window.location.href=fn.urlgen('advisor_center');
+                  window.open(fn.articleUrlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()));
                 },1000);
               }
             }else if(result.code == '1210000011'){

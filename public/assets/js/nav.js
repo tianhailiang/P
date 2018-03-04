@@ -75,16 +75,16 @@ $('.citys-box').on('click',"a", function(e){
     e.preventDefault();
     currentarea = $(this).attr("data-id");
     $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
-    window.location.href= fn.urlgen('branch_home','c=' + currentarea);
-
+    //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
+    window.location.href = $(this).attr("href");
 });
 
 $('.branch_company_text').on('click',".needJump", function(e){
     e.preventDefault();
     currentarea = $(this).attr("data-id");
     $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
-    window.location.href= fn.urlgen('branch_home','c=' + currentarea);
-
+    //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
+    window.location.href = $(this).find("a").attr("href");
 });
 
 

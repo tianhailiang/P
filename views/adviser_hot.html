@@ -70,7 +70,7 @@
   </div>
 </div>
 {% import "widget/new_slide/new_slide3.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo) }}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info) }}
 {% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null;
@@ -80,7 +80,7 @@
 </script>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>-->
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
@@ -128,8 +128,8 @@
     function appendArticleItem(aitem) {
       var aItemHtml = '<div class="homepage">' +
           '<div class="homepagecon">' +
-          '<a target="_blank"  href="' + fn.urlgen("blog", aitem.uid.toString()) + '" >'+
-          '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: 50px 50px;"></div>' +
+          '<a target="_blank"  href="' + fn.urlgen( aitem.uid.toString()) + '" >'+
+          '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: cover"></div>' +
           '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
           '</a>'+
           '<ul>' +
@@ -148,27 +148,27 @@
       if(aitem.type==1){
         aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
       }else if(aitem.type==2){
-        aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
+        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
       }
       aItemHtml+=  '</p>' +
           '</div>' +
           '<div class="homepage-p">' +
           '<p>' ;
       if(aitem.type==1){
-        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">...【查看详情】</span>' +
+        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case",aitem.id.toString())+ '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">...【查看详情】</span>' +
             '</a>' ;
       }else if(aitem.type==2){
-        aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">...【查看详情】</span>' +
+        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '<span style="color: #C13232">...【查看详情】</span>' +
             '</a>' ;
       }
       aItemHtml+=  '</p>' +
           '<p>' ;
       if(aitem.type==1){
-        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' +
+        aItemHtml+= '<a  target="_blank" href="' +fn.urlgen("case",aitem.id.toString()) + '" class="dui-text-warning">' +
             addArticleImg(aitem.img_list) +
             '</a>' ;
       }else if(aitem.type==2){
-        aItemHtml+= '<a  target="_blank" href="' + fn.articleUrlgen("blog", aitem.uid.toString(), "article=" + aitem.id.toString()) + '" class="dui-text-warning">' +
+        aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article",aitem.id.toString()) + '" class="dui-text-warning">' +
             addArticleImg(aitem.img_list) +
             '</a>' ;
       }

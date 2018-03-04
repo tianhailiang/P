@@ -27,15 +27,10 @@
       margin-right: 10px;
       cursor:pointer;
     }
-    .wrap-con  {
-      -webkit-appearance: radio;  -moz-appearance: radio;  appearance: radio;  position: relative;  top:-3px;  left: 18px;  border: 0;  border:none;
+    login_nei input {
+      border-radius: inherit;
     }
-    .wrap-ing  {
-      -webkit-appearance: radio;   -moz-appearance: radio;  appearance: radio;  position: relative;  top:-3px;  left: 18px;  border:none;  outline:none;
-    }
-    input[type="radio"]:checked {color: red;}
-
-    input[type="radio"]:checked+label {color: red;}
+    
   </style>
 
 <body>
@@ -52,16 +47,16 @@
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
         <!-- <h3 class="login_nei_title">登录金吉列<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a></h3> -->
         <div class=" clearfix" id="guwen" style="margin-left: -15px;font-size: 18px;">
-            <input class="wrap-con" type="radio" name="payMethod" value="1" checked="checked" id="liu"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu">留学顾问</label> 
+            <input class="wrap-con" type="radio" name="payMethod" value="1" checked="checked" id="liu"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu">留学顾问</label> 
             <!-- <input class="wrap-ing" type="radio" name="payMethod" value="2" id="yi"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="yi">移民顾问</label> -->
         </div>
-        <form class="m-t" role="form" style="margin-top: 20px">
+        <form class="m-t" role="form" style="margin-top: 20px;">
           <div class="form-group inputtext_isr" style="position: relative;height: 28px">
-            <input type="text" class="form-control" placeholder="请输入手机号/员工号" id="newEmail"/>
+            <input type="text" style="border-radius: inherit;" class="form-control" placeholder="请输入手机号/员工号" id="newEmail"/>
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
           </div>
           <div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
-            <input type="password" class="form-control" placeholder="密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
+            <input type="password" style="border-radius: inherit;" class="form-control" placeholder="密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
           </div>
         </form>
@@ -76,7 +71,7 @@
               <a target="_blank"  href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了？</small></a>
             </div>
 
-          <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0" id="loginSubmit" value="立 即 登 录"/>
+          <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0;border-radius: inherit;" id="loginSubmit" value="立 即 登 录"/>
 
 
 

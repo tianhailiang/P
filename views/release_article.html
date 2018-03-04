@@ -450,13 +450,14 @@
             is_immi:login_ss.adviser
           },
           dataType:'json',
+          async: false,
           success:function(result){
             console.log(result)
             if(result.code == 0){
             	layer.msg('发布成功')
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
-                  window.location.href=fn.urlgen('advisor_center');
+                  window.open(fn.articleUrlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()));
                 },1000);
               }
             }else if(result.code == '1210000011'){

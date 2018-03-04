@@ -1,13 +1,14 @@
 <!--右侧在线咨询-->
 
-{% macro leyu_slide(path,user) %}
+{% macro leyu_slide(path,user,login_info) %}
 <div class="mui-mbar-tabs" style="z-index:999">
   <div class="quick_links_wrap quick_links_dockright">
     <div class="quick_link_mian">
 
       <div class="quick_links_panel">
         <ul>
-          <li class="on zixun message_list current" id="zxzx" style="background: #c13232;"  onclick="openchat_new('{{ user.job_number}}')">
+
+          <li class="on zixun message_list current" id="zxzx" style="background: #c13232;"  {% if user.uid !== login_info.uid %} onclick="openchat_new('{{ user.job_number}}')" {% endif %}>
 
             <img src="{{helper.cdnhost}}/assets/img/phone.gif" alt="立即咨询" class="quick-img">
             <span>立即咨询</span>
@@ -16,7 +17,7 @@
             <img src="{{helper.cdnhost}}/assets/img/yijian.png" alt="在线评估" class="quick-img">
             <span>在线评估</span>
             <div id="comment_con"
-                 style="width: 280px;height: 600px;background: #fff;right: 42px;top: -100px;position: absolute;border: 1px solid #dcdcdc;display: none">
+                 style="width: 280px;background: #fff;right: 42px;top: -100px;position: absolute;border: 1px solid #dcdcdc;display: none">
               <div id="comment_close" style="margin-left: 5px;font-size: 15px;cursor: pointer; color:#333333;">x</div>
               <!--  <iframe id="floatUrls" style="width: 100%;height:100%;" frameborder="no" border="0"
                        marginwidth="0" marginheight="0" scrolling="no" allowtransparency="yes"

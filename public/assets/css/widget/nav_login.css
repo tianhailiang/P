@@ -230,3 +230,62 @@
   background: url(/img/imgs.png) no-repeat -16px -276px;
   cursor: pointer;
 }
+.inputtext_isr{
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.form-control{
+  display: inline-block;
+  line-height: 25px;
+}
+.fen img{
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  cursor:pointer;
+}
+
+label{
+  font-weight: normal;
+}
+
+input[type="radio"]:checked+label {color: red;}
+
+input[type="radio"] + label:before {
+  content: "\a0"; /*不换行空格*/
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  width: 14px;
+  height: 14px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #958c87;
+  font-weight: normal;
+  line-height: 1; 
+  
+}
+
+input[type="radio"]:checked + label:before {
+  content: "\a0"; /*不换行空格*/
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  width: 10px;
+  height: 9px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #d31d2c;
+  background-color: #d31d2c;
+  background-clip: content-box;
+  padding: 2px;
+  color: #d31d2c;
+}
+
+input[type="radio"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}

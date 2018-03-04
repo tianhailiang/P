@@ -163,13 +163,14 @@ exports.register = function (req, res, next) {
 
 exports.binding = function (req, res, next) {
   log.debug('this router binding~~');
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var data = [];
   data.login_nickname = '';
   console.log("oauth_login", req.cookies.oauth_login);
   data.oauth_data = JSON.parse(req.cookies.oauth_login);
   data.tdk = {
     pagekey: 'BINDING', //key
-    cityid: '', //cityid
+    cityid: area, //cityid
     nationid: ''//nationi
   };
   res.render('login/binding', data)

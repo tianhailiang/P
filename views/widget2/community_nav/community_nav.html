@@ -27,9 +27,9 @@ set adviserNav = [
   <div class="community-nav-con">
     {% for item in adviserNav %}
       {% if type == item.nav_name %}
-      <a target="_blank" href="{{helper.urlgen('blog', id | string, item.nav_url_type)}}" class="community-nav-list nav-active">{{item.nav_name}}</a>
+      <a target="_blank" href="{{helper.urlgen(id | string, item.nav_url_type)}}" class="community-nav-list nav-active">{{item.nav_name}}</a>
       {% else %}
-      <a target="_blank" href="{{helper.urlgen('blog', id | string, item.nav_url_type)}}" class="community-nav-list">{{item.nav_name}}</a>
+      <a target="_blank" href="{{helper.urlgen(id | string, item.nav_url_type)}}" class="community-nav-list">{{item.nav_name}}</a>
       {% endif %}
     {% endfor %}
     <div class="nav-phone">
@@ -60,9 +60,9 @@ set adviserNav = [
 <div class="community-nav-con">
   {% for item in adviserNav %}
   {% if type == item.nav_name %}
-  <a target="_blank" href="{{helper.urlgen('blog', id | string, item.nav_url_type)}}" class="community-nav-list nav-active">{{item.nav_name}}</a>
+  <a target="_blank" href="{{helper.urlgen(id | string, item.nav_url_type)}}" class="community-nav-list nav-active">{{item.nav_name}}</a>
   {% else %}
-  <a target="_blank" href="{{helper.urlgen('blog', id | string, item.nav_url_type)}}" class="community-nav-list">{{item.nav_name}}</a>
+  <a target="_blank" href="{{helper.urlgen( id | string, item.nav_url_type)}}" class="community-nav-list">{{item.nav_name}}</a>
   {% endif %}
   {% endfor %}
   <div class="nav-phone">
@@ -79,7 +79,7 @@ set adviserNav = [
 set adviserNav = [
 {
 "nav_name":"主页",
-"nav_url_type": ""
+"nav_url_type": " "
 },
 {
 "nav_name":"专栏",
@@ -94,9 +94,9 @@ set adviserNav = [
 <div class="community-nav-con">
   {% for item in adviserNav %}
   {% if type == item.nav_name %}
-  <a target="_blank" href="{{helper.urlgen('blog', id | string, item.nav_url_type)}}" class="community-nav-list nav-active">{{item.nav_name}}</a>
+  <a target="_blank" href="{{helper.urlgen( id | string, item.nav_url_type)}}" class="community-nav-list nav-active">{{item.nav_name}}</a>
   {% else %}
-  <a target="_blank" href="{{helper.urlgen('blog', id | string, item.nav_url_type)}}" class="community-nav-list">{{item.nav_name}}</a>
+  <a target="_blank" href="{{helper.urlgen( id | string, item.nav_url_type)}}" class="community-nav-list">{{item.nav_name}}</a>
   {% endif %}
   {% endfor %}
   <div class="nav-phone">

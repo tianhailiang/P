@@ -68,7 +68,7 @@ form, input {
     float: right;
 }
 .new_nav_first .new-city{
-    width:76px;
+    width:82px;
     height: 50px;
     margin-top:32px;
     float:left;
@@ -77,7 +77,7 @@ form, input {
     cursor: pointer;
 }
 #city-on{
-    font-size: 16px;
+    font-size: 18px;
     padding: 0 2px;
 }
 .new_nav_first_white .new-city .icon-top {
