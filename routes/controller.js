@@ -1515,7 +1515,7 @@ exports.adviser_main = function (req, res, next) {
         "country_id":1,
         "city_id":1,
         "per_page":5,
-        // "order":"views desc"
+        "order":"views desc"
     },callback)
     },
     xiangguan_guwen:function (callback){ //相关顾问
