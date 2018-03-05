@@ -452,9 +452,9 @@
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
                     if(artType==1){
-                     window.open(fn.urlgen('case',result.data.article_id.toString()));
+                      window.location.href=fn.urlgen('case',result.data.article_id.toString());
                     }else {
-                        window.open(fn.urlgen('article',result.data.article_id.toString()));
+                      window.location.href=fn.urlgen('article',result.data.article_id.toString());
                     }
                 },1000);
               }

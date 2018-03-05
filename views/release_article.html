@@ -189,6 +189,9 @@
               </div>  
             </div>
             <div class="editor-btn-box" >
+              <!-- <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="go-push">
+                  继续发布新文章
+              </a> -->
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="save-draft">
                     保存到草稿
               </a>
@@ -458,9 +461,9 @@
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
                     if(artType == 1){
-                        window.open(fn.urlgen('case',result.data.article_id.toString()));
+                        window.location.href=fn.urlgen('case',result.data.article_id.toString());
                     }else {
-                        window.open(fn.urlgen('article',result.data.article_id.toString()));
+                        window.location.href=fn.urlgen('article',result.data.article_id.toString());
                     }
                 },1000);
               }
@@ -584,6 +587,7 @@
           }
         });
       });
+      // $("#go-push").on('click')
     })
  </script>
 </body>
