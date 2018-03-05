@@ -4,7 +4,7 @@
 	{% for gw_item in xiangguan_guwen %}
 		<li>
 				<a href="{{helper.urlgen(gw_item.user_info.uid|string)}}" target="_blank">
-					 <img src="{{helper.avaterimg(gw_item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
+					 <span class="bg-span" style="background:url({{helper.avaterimg(gw_item.user_info.uid, 'small', 0,item.user_info.version) no-repeat 0 0;background-size: cover;}})"></span>
 					 <div class="artical-info">
 						  <div class="user-infos">
 								<span class="people-name">{{gw_item.user_info.nickname}}</span>

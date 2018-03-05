@@ -11,6 +11,7 @@ var esihelper = require('../middleware/esihelper');
 var code = '1220000006'; // not found
 var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
+var helperfunc = require('../common/helper');
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -88,13 +89,7 @@ exports.index = function (req, res, next) {
         },
     },function (err, result) {
         var resIp = data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
-        if (resIp == 14) {
-            var areaArr = [50,51];
-            data.nowIp = areaArr[Math.round(Math.random())];
-        }
-        else {
-            data.nowIp = resIp;
-        }
+        data.nowIp = resIp;
         data.iparea = iparea;
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -176,6 +171,12 @@ exports.so_article = function (req, res, next) {
             pagekey: 'SEARCHNEWS', //key
             cityid: area
         };
+        data.pagination = {
+            pages:Number.parseInt(data.article_list.totalpage),
+            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,order == '' ? '':'order='+order,'page='),
+            currentPage:Number.parseInt(page)
+        }
+        console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_article', data);
 
@@ -1144,7 +1145,6 @@ exports.center_photo = function (req, res, next) {
         res.redirect(config.wwhost+'/login');
         return false;
     }
-    console.log("u-id======", data.login_info.uid);
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
@@ -1164,7 +1164,7 @@ exports.center_photo = function (req, res, next) {
         userinfo:function(callback){
             wec.userinfo({
                 "u_id":data.login_info.uid,
-                "to_uid":data.to_uid
+                "to_uid":data.login_info.uid
             },callback);
         }
     }, function (err, result) {
@@ -1192,7 +1192,7 @@ exports.adviser_photo_p = function(req,res,next){
     log.debug('顾问~~~相册 用户视角');
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-   data.to_uid = req.params.id;
+   data.to_uid = req.params[0];
    //node获取地址栏url
    var l = url.parse(req.url, true).query;
    console.log('url', l.h);
@@ -1515,7 +1515,7 @@ exports.adviser_main = function (req, res, next) {
         "country_id":1,
         "city_id":1,
         "per_page":5,
-        // "order":"views desc"
+        "order":"views desc"
     },callback)
     },
     xiangguan_guwen:function (callback){ //相关顾问
@@ -2565,6 +2565,20 @@ exports.edit_article = function(req,res,next){
   }
   data.article_id = req.params.id; //获取文章id 
   async.parallel({
+      lunbo_list: function (callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER_ARTICLEEDIT",
+              "ad_seat": "SEAT1",
+              "cityid":area
+          }, callback);
+      },
+      lunbo_list2: function (callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER_ARTICLEEDIT",
+              "ad_seat": "SEAT2",
+              "cityid":area
+          }, callback);
+      },
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
@@ -2580,11 +2594,13 @@ exports.edit_article = function(req,res,next){
       },callback);  
     } 
   },function(err, result){
+      data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
+      data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article = returnData(result.article,'article');
     var pagekey = null;
     if(data.userinfo.usertype ==2){
-      pagekey = 'ADVISOR_CENTER_POSTARTICLE';
+      pagekey = 'ADVISOR_CENTER_ARTICLEEDIT';
     }else if(data.userinfo.usertype == 3){
       pagekey = 'CANZAN_CENTER_POSTARTICLE'; 
     }

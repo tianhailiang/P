@@ -5,7 +5,7 @@ var login = require('./login.js');
 exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
-  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|gc|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|suz|sz|tj|ty|ts|hk|wc|wx|wz|xa|sm|xz|xn|xj|yt|yc|yic|zz)(\/*)$/, controller.index);
+  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|gc|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|suz|sz|tj|ty|ts|wh|wx|wz|xa|sm|xz|xn|xj|yt|yc|yic|zz)(\/*)$/, controller.index);
   //搜索页
   app.get(/^\/so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article);
   //社区首页
@@ -94,7 +94,8 @@ exports = module.exports = function (app) {// routes
   //用户 收到的消息
   app.get('/user_center/revmsg', controller.center_message);
   //顾问 相册（用户视角）
-  app.get('/:id/album', controller.adviser_photo_p);
+  app.get(/^\/(\d+)\/album/, controller.adviser_photo_p);
+  // app.get('/:id/album', controller.adviser_photo_p);
   //参赞 相册（用户视角）
   //app.get('/p1/:id/album', controller.adviser_photo_p);
   //案列底页（用户视角）
@@ -207,5 +208,5 @@ exports = module.exports = function (app) {// routes
   app.get('/sina_login', login.sina_login);//第三方登录
   app.get('/weixin_login', login.weixin_login);//第三方登录
   app.get('/oauth', login.oauth);
-  app.get("/agreement",controller.agreement);
+  app.get("/agreement",controller.agreement);//金吉列简介
 };
