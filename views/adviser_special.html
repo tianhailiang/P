@@ -243,7 +243,7 @@
         type: 'GET',
         datatype: 'json',
         data: {
-          order:"add_time desc",
+          "order": encodeURI("add_time desc"),
           page: page,
           type: 2,
           per_page: per_page,

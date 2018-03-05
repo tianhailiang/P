@@ -141,7 +141,7 @@
             <div id="photo-blank" style="display: none;">
                 {% include "widget2/blank/blank.html" %}
             </div>
-            <div class="loadMore" data-page="" style="display: none;">
+            <div class="loadMore" data-page="1" style="display: none;">
                 <span>加载更多</span>
                 <i class="iconfont">&#xe60b;</i>
             </div>
@@ -544,11 +544,13 @@
                         $("#photo-blank").show();
                     }else if (msg.data.list.length < pageSizeInit) {
                         $('.loadMore').show().html('已展示全部照片');
+                    }else{
+                        $('.loadMore').show();
                     }
 
                     photoArr = photoArr.concat(msg.data.list);
                     limitDisplay(0,pageSizeInit,pageLineInit,0);
-                    $('.loadMore').attr('page',pageSizeInit/8);
+                    $('.loadMore').attr('data-page',pageSizeInit/8);
                 }else {
                     $("#photo-blank").show();
                 }
@@ -561,12 +563,12 @@
         function loadmore () {
             line = 0;
             htmlstr = '';
-            var curPage = $('.loadMore').attr('page')*1+1;
+            var curPage = $('.loadMore').attr('data-page')*1+1;
             $.ajax({
                 url: '/soapi/get_photos',
                 type:'GET',
                 data:{
-                    u_id: uid,
+                    u_id: login_ss.uid,
                     page: curPage,
                     per_page: 8
                 },
@@ -581,7 +583,7 @@
                         linePhotoNum = 4;
                         photoArr = photoArr.concat(msg.data.list);
                         limitDisplay(pNum,8,2,curM);
-                        $('.loadMore').attr('page', curPage);
+                        $('.loadMore').attr('data-page', curPage);
                     }
                     else {
                         $('.loadMore').html('加载更多出错了，请刷新');

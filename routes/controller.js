@@ -121,7 +121,7 @@ exports.so_article = function (req, res, next) {
     var nquery = comfunc.getReqQuery(req.params[1]);
     var page = nquery && nquery.page ? nquery.page : 1;
     var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    var order = nquery && nquery.order ? nquery.order : "";
+    var order = nquery && nquery.order ? nquery.order : "score";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -173,7 +173,7 @@ exports.so_article = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,order == '' ? '':'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
         console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
@@ -1509,7 +1509,7 @@ exports.adviser_main = function (req, res, next) {
       },
     guwen_list:function (callback){
       wec.adviser_main({
-        "per_page":6, "order":"add_time desc", "uid": data.uid}, callback)
+        "per_page":6, "order": encodeURI("add_time desc"), "uid": data.uid}, callback)
     },
     likelist:function (callback){ //猜你喜欢
       wec.likelist({
@@ -1616,7 +1616,7 @@ exports.adviser_special = function (req, res, next) {
       wec.userinfo({"u_id": data.login_info.uid, "to_uid":data.to_uid},callback);
     },
     zhuanlanlist: function (callback) {
-      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2,"order":"add_time desc"}, callback);
+      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2,"order": encodeURI("add_time desc")}, callback);
     }
   },function(err, result){
       data.xSlider = returnData(result.lunbo_list,'lunbo_list');
@@ -1718,7 +1718,7 @@ exports.adviser_case = function (req, res, next) {
                 "uid": data.to_uid,
                 "per_page": 6,
                 "type": 1,
-                "order":"add_time desc"
+                "order": encodeURI("add_time desc")
             }, callback);
         }
 
@@ -2842,7 +2842,7 @@ exports.hot = function (req, res, next) {
     },
     guwen_list: function (callback) {
       wec.adviser_main({
-        "per_page": 5, "order": "views desc", "uid": data.uid
+        "per_page": 5, "order": encodeURI("views desc"), "uid": data.uid
       }, callback)
     },
     likelist: function (callback) { //猜你喜欢

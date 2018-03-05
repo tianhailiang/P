@@ -171,22 +171,56 @@
             slidesPerGroup : 2,
           pagination: true
         });
-        function appendArticleItem (aitem) {
+        function appendArticleItem (item) {
             var aItemHtml = '';
             var identity = '';
-            if(aitem.user_info.usertype == 2){
+            if(item.user_info.usertype == 2){
               identity = 'advisor';
-            }else if(aitem.user_info.usertype ==3){
+            }else if(item.user_info.usertype ==3){
               identity = 'canzan';
             }
-            aItemHtml += '<div class="art-box clearfix" ><a target="_blank" href="'+ fn.urlgen(aitem.uid.toString()) +'"><div class="adviser-head" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 60px 76px;"></div></a>';
-            aItemHtml += '<div class="adviser-info" ><div class="adviser-info-name" >'+ aitem.user_info.realname +'</div><div class="adviser-info-date clearfix" ><span class="adviser-info-date-s">'+ aitem.add_time +'</span></div><div class="adviser-info-title">'+ aitem.title +'<span style="padding: 0 10px;height: 24px;margin-left: 20px;background: url("{{helper.cdnhost}}/assets/img/yanse.png");background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">'+ aitem.tag_list +'</span></div>';
-            aItemHtml += '<div class="offer-opt-bar clearfix"><div class="opt-btn red-border delete"  onclick="deleteOffer($(this), '+aitem.uid+',' +aitem.id+')"><i class="iconfont">&#xe8c1;</i><span>删除</span></div><div class="opt-btn edit"><i class="iconfont">&#xe61c;</i><a target="_blank" href="'+  fn.curlgen("advisor_center/postarticle/" + aitem.id)+'">编辑</a></div></div>';
-           
-            aItemHtml += ' <p class="adviser-info-p"><a target="_blank" href="'+ fn.urlgen("article",aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span>【查看详情】</span></a></p>';
-            aItemHtml += addArticleImg(aitem.img_list);
-            aItemHtml += '</div></div>';
-          aItemHtml += '<div class="bot_comment clearfix"><ul><li onclick="showbottom(1, '+aitem.id+')" id="yuedu_li_'+aitem.id+'"><i class="iconfont " id="yuedu_'+aitem.id+'">&#xe9ca;</i><span id="yuedu_span_'+aitem.id+'">阅读（<em id="yuedu_em_'+ aitem.id +'">'+ aitem.views +'</em>）</span></li><li onclick="showbottom(2, '+aitem.id+')" id="shoucang_li_'+aitem.id+'"><i class="iconfont " id="shoucang_'+aitem.id+'">&#xe7ed;</i><span id="shoucang_span_'+aitem.id+'">收藏（<em id="shoucang_em_'+ aitem.id +'">'+ aitem.favorites +'</em>）</span></li><li onclick="showbottom(3, '+aitem.id+')" id="pinglun_li_'+aitem.id+'"><i class="iconfont " id="pinglun_'+aitem.id+'">&#xe61f;</i><span id="pinglun_span_'+aitem.id+'">评论（<em id="pinglun_em_'+ aitem.id +'">'+ aitem.comments +'</em>）</span></li><li class="dian" onclick="showbottom(4, '+aitem.id+')" id="dianzan_li_'+aitem.id+'"><i class="iconfont " id="dianzan_'+aitem.id+'">&#xe651;</i><span id="dianzan_span_'+aitem.id+'">点赞（<em id="dianzan_em_'+ aitem.id +'">'+ aitem.votes +'</em>）</span></li></ul></div>';
+            aItemHtml += '<div class="art-box clearfix" >'+
+                        '<a target="_blank" href="' +fn.urlgen(item.uid.toString()) +'">'+
+                        '<div class="adviser-head" style="background:url(' + fn.avaterimg(item.uid, "small",item.user_info.status,item.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;">'+
+                        '</div>'+
+                        '</a>'+
+                        '<div class="adviser-info" >'+
+                        '<div class="adviser-info-name" style="font-size: 14px" >'+
+                        '<a target="_blank" href="' +fn.urlgen(item.uid.toString()) +'" style="color: #333">'+item.user_info.realname+'</a>'+
+                        '</div>'+
+                        '<div class="adviser-info-date clearfix" >'+
+                        '<span class="adviser-info-date-s" style="color: #666;line-height: 20px;">'+item.add_time+'</span>'+
+                        '</div>'+
+                        '<div class="adviser-info-title">';
+        if (item.type==1){
+            aItemHtml += '<a target="_blank" href="'+fn.urlgen("case", item.id.toString())+'" style="color: #C13232">'+item.title+'</a>'
+        }else {
+            aItemHtml += '<a target="_blank" href="'+fn.urlgen("article", item.id.toString())+'" style="color: #C13232">'+item.title+'</a>'
+        }
+            aItemHtml += '<span style="padding: 0 10px;height: 24px;margin-left: 20px;background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/yanse.png);background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">'+item.tag_list+'</span>';
+            aItemHtml += '</div>'+
+                        '<div class="offer-opt-bar clearfix">'+
+                        '<div class="opt-btn red-border delete" onclick="deleteOffer($(this), '+item.uid+', '+item.id+')">'+
+                        '<i class="iconfont">&#xe8c1;</i>'+
+                        '<span>删除</span>'+
+                        '</div>'+
+                        '<div class="opt-btn edit">'+
+                        '<i class="iconfont">&#xe61c;</i>'+
+                        '<a target="_blank" href="'+fn.urlgen("advisor_center/postarticle", item.id.toString())+'">编辑</a>'+
+                        '</div>'+
+                        '</div>'+
+                        '<p class="adviser-info-p">'
+        if (item == 1){
+            aItemHtml += '<a target="_blank" href="'+fn.urlgen("case", item.id.toString())+'" class="dui-text-warning" rel="nofollow">'+item.introduce+' <span>【查看详情】</span></a>'
+        }else{
+            aItemHtml += '<a target="_blank" href="'+fn.urlgen("article", item.id.toString())+'" class="dui-text-warning" rel="nofollow">'+item.introduce+' <span>【查看详情】</span></a>'
+        }
+            aItemHtml += '</p>'
+            aItemHtml += addArticleImg(item.img_list)
+            aItemHtml += '</div>'
+            aItemHtml += '</div>'
+
+            aItemHtml += addBottom(item)
             return aItemHtml;
         }
         function addArticleImg (imgList) {
@@ -203,6 +237,40 @@
                 artHtml += appendArticleItem(artList[i]);
             }
             $('.right-main').append($(artHtml));
+        }
+        function addBottom(item) {
+        var html = '<div class="bot_comment clearfix">' +
+        '<ul>' +
+        '<li onclick="showbottom(1, ' + item.id + ')" id="yuedu_li_' + item.id + '">' +
+        '<i class="iconfont " id="yuedu_' + item.id + '">&#xe9ca;</i>' +
+        '<span id="yuedu_span_' + item.id + '">阅读<em id="yuedu_em_' + item.id + '">' + item.views + '</em></span>' +
+        '</li>' +
+        '<li onclick="showbottom(2, ' + item.id + ')" id="shoucang_li_' + item.id + '">' +
+        '<i class="iconfont " id="shoucang_' + item.id + '">&#xe7ed;</i>' +
+        '<span id="shoucang_span_' + item.id + '">收藏<em id="shoucang_em_' + item.id + '">' + item.favorites + '</em></span>' +
+        '</li>' ;
+        if (item.type == 2){
+        html += '<a target="_blank" href="' + fn.urlgen("article", item.id.toString()) + '">'+
+        '<li onclick="" id="pinglun_li_'+item.id+'">'+
+        '<i class="iconfont " id="pinglun_'+item.id+'" style="color: #666">&#xe61f;</i>'+
+        '<span id="pinglun_span_'+item.id+'">评论<em id="pinglun_em_'+item.id+'">'+item.comments+'</em></span>'+
+        '</li>'+
+        '</a>';
+        } else {
+        html += '<a target="_blank" href="' + fn.urlgen("case", item.id.toString()) + '">'+
+        '<li onclick="" id="pinglun_li_'+item.id+'">'+
+        '<i class="iconfont " id="pinglun_'+item.id+'" style="color: #666">&#xe61f;</i>'+
+        '<span id="pinglun_span_'+item.id+'">评论<em id="pinglun_em_'+item.id+'">'+item.comments+'</em></span>'+
+        '</li>'+
+        '</a>';
+        }
+        html += '<li class="dian" onclick="showbottom(4, ' + item.id + ')" id="dianzan_li_' + item.id + '">' +
+        '<i class="iconfont " id="dianzan_' + item.id + '">&#xe651;</i>' +
+        '<span id="dianzan_span_' + item.id + '">点赞<em id="dianzan_em_' + item.id + '">' + item.votes + '</em></span>' +
+        '</li>' +
+        '</ul>' +
+        '</div>';
+        return html;
         }
         $('.loadMore').on('click', function () {
             var page = $(this).data('page')*1+1;

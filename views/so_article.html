@@ -212,7 +212,7 @@
             {% else %}
             <div class="has-result">
                 <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.paramurlgen('so_article','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=score')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
                     <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
                     <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
                 </div>
