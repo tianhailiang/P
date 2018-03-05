@@ -119,9 +119,11 @@
             }
         }
         url += chan + param;
-
-        if (js_api_config.wwhost == 'development') { //如果是開發環境
+        
+        if (js_api_config.version == 'development') { //如果是開發環境
             url = js_api_config.wwhost + ':4000' + url;//social
+        }else{
+          url = js_api_config.wwhost+url;
         }
 
         if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)){

@@ -93,7 +93,7 @@
   </div>
 </div>
 {% import "widget/new_slide/new_slide3.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info) }}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
 {% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null; 
@@ -160,7 +160,7 @@
           '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
           '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>'+
           '<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>'+
-          '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px;" data-artId="'+aitem.id+'">举报</div>'+
+          '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px;" data-artId="'+aitem.id+'" data-url="'+ fn.urlgen("article",aitem.id.toString()) +'" >举报</div>'+
           '</div>'+
           '</div>'+
           '</ul>'+
@@ -333,10 +333,13 @@
               report_type:'1',
               report_content:report_content,
               userid:login_ss.uid,
-              artecle_id:$(that).attr("data-artId")
+              article_id:$(that).attr("data-artId"),
+              article_url:$(that).attr('data-url'),
+              city_id:$('.advisor-bumen').attr('data-cityId'),
+              article_url:$(that).attr('data-url'),
+              city_id:$('.advisor-bumen').attr('data-cityId')
             },
             dataType:'json',
-            // jsonpCallback:'callback',
             success:function(result){
               console.log(result)
               if(result.code == 0){
