@@ -1144,7 +1144,6 @@ exports.center_photo = function (req, res, next) {
         res.redirect(config.wwhost+'/login');
         return false;
     }
-    console.log("u-id======", data.login_info.uid);
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
@@ -1164,7 +1163,7 @@ exports.center_photo = function (req, res, next) {
         userinfo:function(callback){
             wec.userinfo({
                 "u_id":data.login_info.uid,
-                "to_uid":data.to_uid
+                "to_uid":data.login_info.uid
             },callback);
         }
     }, function (err, result) {
@@ -1192,7 +1191,7 @@ exports.adviser_photo_p = function(req,res,next){
     log.debug('顾问~~~相册 用户视角');
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-   data.to_uid = req.params.id;
+   data.to_uid = req.params[0];
    //node获取地址栏url
    var l = url.parse(req.url, true).query;
    console.log('url', l.h);
