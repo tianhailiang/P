@@ -1144,7 +1144,6 @@ exports.center_photo = function (req, res, next) {
         res.redirect(config.wwhost+'/login');
         return false;
     }
-    console.log("u-id======", data.login_info.uid);
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
@@ -1164,7 +1163,7 @@ exports.center_photo = function (req, res, next) {
         userinfo:function(callback){
             wec.userinfo({
                 "u_id":data.login_info.uid,
-                "to_uid":data.to_uid
+                "to_uid":data.login_info.uid
             },callback);
         }
     }, function (err, result) {
@@ -1192,7 +1191,7 @@ exports.adviser_photo_p = function(req,res,next){
     log.debug('顾问~~~相册 用户视角');
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-   data.to_uid = req.params.id;
+   data.to_uid = req.params[0];
    //node获取地址栏url
    var l = url.parse(req.url, true).query;
    console.log('url', l.h);
@@ -1355,20 +1354,18 @@ exports.case_detail = function(req,res,next){
     },function(err,result){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-      data.article =returnData(result.article,'article');
-      if(result.article.code == code){
-        //文章不存在的时候  跳到404
-        res.redirect('/404');
-        return false;
-      }
-      data.memberId = data.article.article_info.uid; //获取顾问id
-      data.id = data.article_id;
+        data.article =returnData(result.article,'article');
+          if(result.article.code == code){
+            //文章不存在的时候  跳到404
+            res.redirect('/404');
+            return false;
+          }
       async.parallel({
         //获取用户信息（普通用户，顾问，参赞）
         userinfo:function(callback){
             wec.userinfo({
               "u_id":data.login_info.uid,
-              "to_uid":data.memberId
+              "to_uid":data.article.article_info.uid
             },callback);
         }   
       },function(err,result){
@@ -1431,22 +1428,20 @@ exports.article_detail= function(req,res,next){
       },callback);
     },
   },function(err,result){
-    data.xSlider = returnData(result.lunbo_list,'lunbo_list');
-    data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-    data.article =returnData(result.article,'article');
-    if(result.article.code == code){
-      //文章不存在的时候  跳到404
-      res.redirect('/404');
-      return false;
-    }
-      data.memberId = data.article.article_info.uid; //获取顾问id
-      data.id = data.article_id;
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.article =returnData(result.article,'article');
+        if(result.article.code == code){
+          //文章不存在的时候  跳到404
+          res.redirect('/404');
+          return false;
+        }
       async.parallel({
           //获取用户信息（普通用户，顾问，参赞）
           userinfo:function(callback){
               wec.userinfo({
                   "u_id":data.login_info.uid,
-                  "to_uid":data.memberId
+                  "to_uid":data.article.article_info.uid
               },callback);
           }
       },function(err,result) {
@@ -1519,7 +1514,7 @@ exports.adviser_main = function (req, res, next) {
         "country_id":1,
         "city_id":1,
         "per_page":5,
-        // "order":"views desc"
+        "order":"views desc"
     },callback)
     },
     xiangguan_guwen:function (callback){ //相关顾问
