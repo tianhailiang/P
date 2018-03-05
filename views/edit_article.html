@@ -14,11 +14,11 @@
 	<!-- ====导航===== -->
 	{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
   {{ new_nav_red.new_nav_red(tdk,helper) }}
-	<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
-  	<!-- ==广告1== -->
-  	<div class="rel-case-map" id="AD_{% if login_info.usertype ==2 %}ADVISOR{% elif login_info.usertype ==3 %}CANZAN{% endif %}_CENTER_ARTICLEEDIT_SEAT1">
-  	</div>
-	</div>
+  <div class="dui-layout-lg clearfix banner-box">
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider2.html" %}</div>
+  </div>
 	<div class="dui-layout-lg clearfix dui-layout-padding" >
 	  <div class="dui-layout-silde ">
 	    <!-- =======顾问头像关注====== -->
@@ -194,7 +194,7 @@
               <a href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="article-preview">
                    	文章预览
               </a>
-              <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="save-draft">
+              <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment {% if article.article_info.is_draft == 1 %}disabled{% endif %}" style="margin-right: 7px;" id="{% if article.article_info.is_draft != 1 %}save-draft{% endif %}" >
                     保存到草稿
               </a>
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" id="sureBtn">
@@ -208,7 +208,7 @@
 	</div>
   {% include "widget/new_footer/new_footer.html" %}
   {% import "widget/new_slide/new_slide.html" as  slide %}
-  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){
@@ -218,13 +218,33 @@
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
     <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
     <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
   <script >
     $(function(){
+        $('.banner-box-left .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+            current: 0,
+            speed: 500,
+            intervalTime: 5000,
+            pagination: true
+        });
+        $('.banner-box-right .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+            current: 0,
+            speed: 1000,
+            intervalTime: 5000,
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+            pagination: true
+        });
       var city_id =null;
       if(login_ss.usertype ==2){
         //获取顾问的组织id
@@ -329,7 +349,7 @@
       editor.customConfig.pasteFilterStyle = false;
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
-      editor.customConfig.uploadImgMaxSize = 500 * 1024;
+      editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
       // 限制一次最多上传 5 张图片
       editor.customConfig.uploadImgMaxLength = 1;
       editor.customConfig.uploadImgServer = ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload"; // 上传图片到服务器
@@ -432,9 +452,9 @@
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
                     if(artType==1){
-                     window.open(fn.urlgen('case',result.data.article_id.toString()));
+                      window.location.href=fn.urlgen('case',result.data.article_id.toString());
                     }else {
-                        window.open(fn.urlgen('article',result.data.article_id.toString()));
+                      window.location.href=fn.urlgen('article',result.data.article_id.toString());
                     }
                 },1000);
               }
@@ -449,7 +469,7 @@
           error:function(XMLHttpRequest, textStatus, errorThrown){
             console.log(errorThrown)
             if(XMLHttpRequest.status == '413'){
-              layer.msg('您发布的内容已超过1M，应小于1M');
+              layer.msg('您发布的内容已超过2M，应小于2M');
             }
           }
         });
@@ -543,7 +563,7 @@
           error:function(XMLHttpRequest, textStatus, errorThrown){
             console.log(errorThrown)
             if(XMLHttpRequest.status == '413'){
-              layer.msg('您发布的内容已超过1M，应小于1M');
+              layer.msg('您发布的内容已超过2M，应小于2M');
             }
           }
         });

@@ -21,7 +21,7 @@
     <div class="xuanze-ing">
       <div style="float: left;line-height: 40px"> <i class="iconfont icon-top" style="margin: 24px 6px 0px 14px;color: #C13232">&#xe603;</i>猜你所在的城市</div>
       <span id="fengongsi" style="float: left;margin: 0 10px;line-height: 40px;color: #C13232;text-decoration:underline">{{nowIp | getCity()}}</span>
-      <div class="xuanze-anniu"><a target="_blank" href="" data-id="{{nowIp}}" id="selByIp">正确</a></div>
+      <div class="xuanze-anniu"><a target="_blank" href="javascript:void(0);" data-id="{{nowIp}}" id="selByIp">正确</a></div>
     </div>
     <div class="xuanze-xianxian"></div>
     <div class="xuanze-chengshi">
@@ -40,7 +40,7 @@
         <p><span>G</span><a target="_blank" class="dui-text-warning-s" data-id="3"  href="{{helper.urlgen('branch_home','c=3')}}">广州</a>
           <a target="_blank" class="dui-text-warning-s" data-id="35"  href="{{helper.urlgen('branch_home','c=35')}}">贵州</a></p>
         <p><span>H</span><a target="_blank" class="dui-text-warning-s" data-id="6"  href="{{helper.urlgen('branch_home','c=6')}}">杭州</a>
-          <a target="_blank" class="dui-text-warning-s" data-id="51"  href="{{helper.urlgen('branch_home','c=51')}}">汉口</a>
+          <a target="_blank" class="dui-text-warning-s" data-id="14"  href="{{helper.urlgen('branch_home','c=14')}}">汉口</a>
           <a target="_blank" class="dui-text-warning-s"  data-id="22"  href="{{helper.urlgen('branch_home','c=22')}}">合肥</a>
           <a target="_blank" class="dui-text-warning-s" data-id="24"  href="{{helper.urlgen('branch_home','c=24')}}">哈尔滨</a>
           <a target="_blank" class="dui-text-warning-s"  data-id="26"  href="{{helper.urlgen('branch_home','c=26')}}">呼市</a>
@@ -67,7 +67,7 @@
           <a target="_blank" class="dui-text-warning-s" data-id="17"   href="{{helper.urlgen('branch_home','c=17')}}">太原</a>
           <a target="_blank" class="dui-text-warning-s"  data-id="18"  href="{{helper.urlgen('branch_home','c=18')}}">唐山</a></p>
         <!--<p><span>W</span><a target="_blank" class="dui-text-warning-s" href="{{helper.urlgen('branch_home','c=14')}}">武汉</a>-->
-        <p><span>W</span><a target="_blank" class="dui-text-warning-s" data-id="50"   href="{{helper.urlgen('branch_home','c=50')}}">武昌</a>
+        <p><span>W</span><a target="_blank" class="dui-text-warning-s" data-id="14"   href="{{helper.urlgen('branch_home','c=14')}}">武昌</a>
           <a target="_blank" class="dui-text-warning-s" data-id="33"   href="{{helper.urlgen('branch_home','c=33')}}">无锡</a>
           <a target="_blank" class="dui-text-warning-s" data-id="42"   href="{{helper.urlgen('branch_home','c=42')}}">温州</a>
         </p>
@@ -201,10 +201,10 @@
         "companyId": "13"
         },  {
         "companyName": "武昌",
-        "companyId": "50"
+        "companyId": "14"
         },  {
         "companyName": "汉口",
-        "companyId": "51"
+        "companyId": "14"
         },
         {
         "companyName": "西安",
@@ -365,7 +365,7 @@
 {% include "widget/new_footer/new_footer.html" %}
 </div>
 {% import "widget/new_slide/new_slide.html" as  slide %}
-{{slide.leyu_slide("AD_HOME_SEAT10") }}
+{{slide.leyu_slide("AD_HOME_SEAT10",helper) }}
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>

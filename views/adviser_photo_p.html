@@ -83,7 +83,7 @@
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con dui-box-shadow">
-        <div class="right-cont" style="background-color: #fff;">
+        <div class="photo-cont right-cont" style="background-color: #fff;">
             {% import "widget2/community_nav/community_nav.html" as community_nav %}
             {% if userinfo.usertype == 2 %} {#顾问#}
             {{community_nav.adviser_nav('相册', userinfo.uid, helper)}}
@@ -95,7 +95,7 @@
             <div id="photo-blank" style="display: none;">
                 {% include "widget2/blank/blank.html" %}
             </div>
-            <div class="loadMore" data-page="">
+            <div class="loadMore" data-page="1" style="display: none;">
                 <span>加载更多</span>
                 <i class="iconfont">&#xe60b;</i>
             </div>
@@ -103,7 +103,7 @@
     </div>
 </div>
 {% import "widget/new_slide/new_slide3.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info) }}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
 {% include "widget/new_footer/new_footer.html" %}
 <script>
     var login_ss = null;
@@ -143,7 +143,8 @@
         });
         //明星顾问轮播
         $('.advisor_star_bar .slider').xSlider();
-        var to_uid = window.location.pathname.split('/')[2];
+        var to_uid = window.location.pathname.split('/')[1];
+        //照片分行显示
         function limitDisplay(kaishi,changdu,maxLine,lastMonth){
             curM = lastMonth;
             var length = photoArr.length > (kaishi + changdu) ? (kaishi + changdu) : photoArr.length;
@@ -167,19 +168,88 @@
                         htmlstr += '<div class="album-left-box"></div><ul class="album-list">';
                     }
                 }
-                htmlstr += '<li class="photo-item" data-photoid="' + i + '">'+
-                             '<dl>'+
-                               '<dt>'+
-                                  '<a target="_blank" href="'+photoArr[i]['url']+'" target="_blank" >'+
-                                    '<img src="'+photoArr[i]['url']+'" alt=""/>'+
-                                  '</a>'+
-                                '</dt>';
+                htmlstr += '<li class="photo-item"><dl><dt><a href="'+photoArr[i]['url']+'" target="_blank"><img src="'+photoArr[i]['url']+'" alt=""/></a><div class="opt-bar clearfix" data-photo_id="'+ photoArr[i]['id'] +'"><div class="opt-btn btn-border delete-btn"><i class="iconfont">&#xe8c1;</i>';
+                htmlstr += '<span>删除</span></div>';
+                htmlstr += '<div class="opt-btn edit-btn"><i class="iconfont">&#xe61c;</i><span>编辑</span></div></div></dt>';
                 htmlstr += '<dd>'+photoArr[i]['desc']+'</dd></dl></li>';
                 linePhotoNum++;
                 pNum++;
             }
             var newstr = htmlstr.slice(11) + htmlstr.slice(0,11);
+            // console.log(newstr);
             $('.right-main').append($(newstr));
+            /*划过相册动效*/
+            $('.album-bar').find('dt').hover(function() {
+                $(this).find('.opt-bar').slideDown();
+            },function () {
+                $(this).find('.opt-bar').hide();
+            });
+            /*删除*/
+            $(".delete-btn").click(function() {
+                var photoId = $(this).parents('.opt-bar').data('photo_id');
+                to_album_del(login_ss.uid,photoId);
+            });
+            /*编辑*/
+            $(".edit-btn").click(function() {
+                var photoId = $(this).parents('.opt-bar').data('photo_id');
+                var photoImg = $(this).parents('.photo-item').find('img').attr('src');
+                var photoTitle = $(this).parents('.photo-item').find('dd').text();
+                var descLen = photoTitle.length;
+                var defaultHtml = '';
+                defaultHtml += '<div class="close-pop" id="close-edit-pop">x</div>'+
+                '<div class="edit-box clearfix">'+
+                '<div class="photo-cell">'+
+                '<div class="photo-img">'+
+                '<img src="'+ photoImg +'"/>'+
+                '</div>'+
+                '<div class="photo-desc">'+
+                '<input type="text" placeholder="请输入照片描述" class="desc-item" value="'+ photoTitle +'" maxlength="30" />'+
+                '<div><span class="input-num">'+ descLen +'</span>/30</div>'+
+                '</div>'+
+                '</div>'+
+                '</div>'+
+                '<div class="btns">'+
+                '<div class="save-btn save-photos" id="saveEdit">保存</div>'+
+                '</div>';
+
+                $("#photoDialog").show();
+                $("#edit-pop").show();
+                $("#edit-pop").html($(defaultHtml));
+
+                $("#close-edit-pop").click(function(){
+                    $("#photoDialog").hide();
+                    $("#edit-pop").html('');
+                    $("#edit-pop").hide();
+                });
+
+                //输入描述
+                $('.desc-item')
+                        .blur(function(event){
+                            var curInputValLen = $(this).val().length;
+                        })
+                        .keyup(function(event){
+                            var curInputValLen = $(this).val().length;
+                            if (curInputValLen > 30) {
+                                alert('描述不能超过30个字');
+                                $(this).val($(this).val().substring(0, 30));
+                                $(this).next().find('.input-num').text(30);
+                            }
+                            else {
+                                $(this).next().find('.input-num').text(curInputValLen);
+                            }
+                        });
+                //保存照片
+                $("#saveEdit").click(function() {
+                    var newPhotoTitle = $(this).parents('.btns').prev('.edit-box').find('input').val();
+                    if (newPhotoTitle.length == 0) {
+                        layer.msg('照片描述不能为空！')
+                    }
+                    else {
+                        to_album_update(login_ss.uid, photoId, newPhotoTitle);
+                        $("#close-edit-pop").trigger('click');
+                    }
+                })
+            })
         }
         var photoArr = [];//存储所有相片的数组
         var line = 0;//行数
@@ -199,20 +269,21 @@
             },
             dataType:'json',
             success:function (msg) {
-                console.log(msg)
+                console.log(msg.data.list.length)
                 if(msg.code == 0){
                     if (msg.data.list.length == 0) {
                        $("#photo-blank").show();
-                        $('.loadMore').hide();
                     }
                     else if (msg.data.list.length < pageSizeInit) {
                         $('.loadMore').show().html('已展示全部照片');
+                    }else{
+                        $('.loadMore').show();
                     }
                     photoArr = photoArr.concat(msg.data.list);
                     limitDisplay(0,pageSizeInit,pageLineInit,0);
-                    $('.loadMore').attr('page',pageSizeInit/8);
+                    $('.loadMore').attr('data-page',pageSizeInit/8);
                 }else{
-                    console.log(msg.err)
+                    $("#photo-blank").show();
                 }
                
             },
@@ -223,7 +294,7 @@
         function loadmore () {
             line = 0;
             htmlstr = '';
-            var curPage = $('.loadMore').attr('page')*1+1;
+            var curPage = $('.loadMore').attr('data-page')*1+1;
             $.ajax({
                 url: '/soapi/get_photos',
                 type:'GET',
@@ -234,15 +305,20 @@
                 },
                 dataType:'json',
                 success:function (msg) {
-                    var loadMoreLine = 2;
-                    var loadMoreSize = loadMoreLine * 4;
-                    if (msg.list.length < loadMoreSize) {
-                        $('.loadMore').html('已展示全部照片');
+                    if (msg.code == 0) {
+                        var loadMoreLine = 2;
+                        var loadMoreSize = loadMoreLine * 4;
+                        if (msg.data.list.length < loadMoreSize) {
+                            $('.loadMore').html('已展示全部照片');
+                        }
+                        linePhotoNum = 4;
+                        photoArr = photoArr.concat(msg.data.list);
+                        limitDisplay(pNum,8,2,curM);
+                        $('.loadMore').attr('data-page', curPage);
                     }
-                    linePhotoNum = 4;
-                    photoArr = photoArr.concat(msg.list);
-                    limitDisplay(pNum,8,2,curM);
-                    $('.loadMore').attr('page', curPage);
+                    else {
+                        $('.loadMore').html('加载更多出错了，请刷新');
+                    }
                 },
                 error:function(XMLHttpRequest, textStatus, errorThrown){
                     console.log(errorThrown)

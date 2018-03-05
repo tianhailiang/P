@@ -189,6 +189,9 @@
               </div>  
             </div>
             <div class="editor-btn-box" >
+              <!-- <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="go-push">
+                  继续发布新文章
+              </a> -->
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="save-draft">
                     保存到草稿
               </a>
@@ -203,7 +206,7 @@
 	</div>
   {% include "widget/new_footer/new_footer.html" %}
   {% import "widget/new_slide/new_slide2.html" as  slide %}
-  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){
@@ -341,7 +344,7 @@
       editor.customConfig.pasteFilterStyle = false;
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
-      editor.customConfig.uploadImgMaxSize = 500 * 1024;
+      editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
       // 限制一次最多上传 5 张图片
       editor.customConfig.uploadImgMaxLength = 1;
       editor.customConfig.uploadImgServer = ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload"; // 上传图片到服务器
@@ -458,9 +461,9 @@
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
                     if(artType == 1){
-                        window.open(fn.urlgen('case',result.data.article_id.toString()));
+                        window.location.href=fn.urlgen('case',result.data.article_id.toString());
                     }else {
-                        window.open(fn.urlgen('article',result.data.article_id.toString()));
+                        window.location.href=fn.urlgen('article',result.data.article_id.toString());
                     }
                 },1000);
               }
@@ -475,7 +478,7 @@
           error:function(XMLHttpRequest, textStatus, errorThrown){
             console.log(errorThrown)
             if(XMLHttpRequest.status == '413'){
-              layer.msg('您发布的内容已超过1M，应小于1M');
+              layer.msg('您发布的内容已超过2M，应小于2M');
             }
           }
         });
@@ -579,11 +582,12 @@
           error:function(XMLHttpRequest, textStatus, errorThrown){
             console.log(errorThrown)
             if(XMLHttpRequest.status == '413'){
-              layer.msg('您发布的内容已超过1M，应小于1M');
+              layer.msg('您发布的内容已超过2M，应小于2M');
             }
           }
         });
       });
+      // $("#go-push").on('click')
     })
  </script>
 </body>
