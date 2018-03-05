@@ -37,6 +37,13 @@
       </div>
       {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
     </div>
+    <div style="margin-top: 20px;" class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;">
+        <i></i>
+        <h3>相关顾问</h3>
+      </div>
+      {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+    </div>
   </div>
   <div class="dui-layout-div"></div>
   <div class="dui-layout-con left dui-box-shadow" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
@@ -149,10 +156,10 @@
             var revList = revmsg.data.list;
             var len = revList.length;
             if (len == 0) {
-              thisObj.html('已展示全部收藏');
+              thisObj.html('已展示全部');
             }
             if (len < per_page) {
-              thisObj.html('已展示全部收藏');
+              thisObj.html('已展示全部');
               appendFav(revList);
               thisObj.data('page', page);
             } else {
@@ -293,7 +300,8 @@
     if (login_ss == undefined) {
       layer.msg('你还没有登录')
       window.setTimeout(function () {
-        window.location.href = fn.curlgen('login', 'h=' + window.location.href);
+        // window.location.href = fn.curlgen('login', 'h=' + window.location.href);
+        getlogin();
       }, 1000);
       return false;
     }

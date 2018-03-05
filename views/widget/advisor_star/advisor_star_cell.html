@@ -1,105 +1,23 @@
-<!--明星顾问小单元-->
-{% macro advisor_star_cell(star_item) %}
-<dl class="advisor-star-cell">
-    <dt>
-        <img src="{{star_item.imgUrl}}" alt=""/>
-    </dt>
-    <dd class="name">{{star_item.name}}</dd>
-    <dd class="area">{{star_item.area}}</dd>
-</dl>
-{% endmacro %}
-
-<!--明星顾问侧栏四格-->
-{% macro advisor_star_block(star_list, helper) %}
-<div class="advisor-star-cont clearfix">
-    {% for star_item in star_list %}
-    {% if loop.index<=4 %}
-    <div class="advisor-star-cell-box">
-        <a target="_blank" href="{{ helper.urlgen('p', star_item.uid | string) }}" rel="nofollow" style="color: #333333;">
-            <dl class="advisor-star-cell">
-                <dt>
-                    <img src="{{ helper.avaterimg(star_item.uid, 'big',star_item.status,star_item.version) }}" alt="金吉列留学顾问{{star_item.realname}}"/>
-                </dt>
-                <dd class="name hover-color">{{star_item.realname}}</dd>
-                <dd class="area hover-color">{{star_item.dept | shorten(7)}}</dd>
-            </dl>
-        </a>
-    </div>
-    {% endif %}
-    {% endfor %}
-</div>
-{% endmacro %}
 <!--相关顾问侧栏五个-->
 {% macro advisor_starblock(xiangguan_guwen,helper) %}
 <ul class="gw-list">
-    {% for gw_item in xiangguan_guwen %}
-        <li>
-            <a href="{{helper.articleUrlgen(item.uid|string)}}">
-                <img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
-                <div class="artical-info">
-                    <div class="user-infos">
-                        <span class="people-name">{{gw_item.user_info.nickname}}</span>
-                        <span class="people-action">{{gw_item.user_info.dept}}</span>
-                    </div>
-                    <div class="guwen-info">
-                        <span class="pull-left">粉丝<em>{{gw_item.user_info.fans_count}}</em></span>
-                        <span class="pull-right">文章<em>{{gw_item.user_info.article_count}}</em></span>
-                    </div>
-                </div>
-            </a>
-        </li>
-    {% endfor %}
+	{% for gw_item in xiangguan_guwen %}
+		<li>
+				<a href="{{helper.urlgen(gw_item.user_info.uid|string)}}" target="_blank">
+					 <img src="{{helper.avaterimg(gw_item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="">
+					 <div class="artical-info">
+						  <div class="user-infos">
+								<span class="people-name">{{gw_item.user_info.nickname}}</span>
+								<span class="people-action">{{gw_item.user_info.dept}}</span>
+						  </div>
+						  <div class="guwen-info">
+								<span class="pull-left">粉丝<em>{{gw_item.user_info.fans_count}}</em></span>
+								<span class="pull-right">文章<em>{{gw_item.user_info.article_count}}</em></span>
+						  </div>
+					 </div>
+				</a>
+		  </li>
+	{% endfor %}
 </ul>
 {% endmacro %}
-
-<!--明星顾问侧栏竖列表-->
-{% macro advisor_star_list(star_list, helper) %}
-<div class="advisor-star-list clearfix">
-    {% for star_item in star_list %}
-    {% if loop.index<=4 %}
-    <div  class="star-item">
-        <dl class="clearfix" style="margin-bottom:0;">
-            <a target="_blank" href="{{ helper.urlgen('p', star_item.uid | string) }}">
-                <dt>
-                    <img src="{{ helper.avaterimg(star_item.uid, 'small',star_item.status,star_item.version) }}" alt="{{star_item.realname}}"/>
-                </dt>
-            </a>
-            <dd>
-                <div class="star_name"><a target="_blank" style="color:#333333;" href="{{ helper.urlgen('p', star_item.uid | string) }}">{{star_item.realname}}</a></div>
-                <p class="star_info">
-                    {{star_item.introduce}}
-                </p>
-                <a target="_blank" href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{star_item.job_number}}" target="_blank" class="star_btn">在线咨询</a>
-            </dd>
-        </dl>
-    </div>
-    {% endif %}
-    {% endfor %}
-</div>
-{% endmacro %}
-
-<!--明星顾问侧栏竖列表-社区首页-->
-{% macro advisor_star_list1(star_list, helper) %}
-<div class="advisor-star-list clearfix">
-  {% for star_item in star_list %}
-  {% if loop.index<=8 %}
-  <div  class="star-item">
-    <dl class="clearfix" style="margin-bottom:0;">
-      <a target="_blank" href="{{ helper.urlgen( star_item.uid | string) }}">
-        <dt>
-          <img src="{{ helper.avaterimg(star_item.uid, 'small',star_item.status,star_item.version) }}" alt="{{star_item.realname}}"/>
-        </dt>
-      </a>
-      <dd>
-        <div class="star_name"><a target="_blank" style="color:#333333;" href="{{ helper.urlgen( star_item.uid | string) }}">{{star_item.realname}}</a></div>
-        <p class="star_info">
-          {{star_item.introduce}}
-        </p>
-        <a target="_blank" href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{star_item.job_number}}" target="_blank" class="star_btn" rel="nofollow">在线咨询</a>
-      </dd>
-    </dl>
-  </div>
-  {% endif %}
-  {% endfor %}
-</div>
-{% endmacro %}
+    

@@ -30,12 +30,15 @@
 </div>
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
 <script>
-  if($("#login_type").val() == "weixin"){
-    window.location.href = $("#herf_h").val();
-  }else{
-    window.opener.location.href = $("#herf_h").val();
-    window.close();
-  }
+  $(function() {
+    var oauth_url = $("#herf_h").val() ? $("#herf_h").val() : '/';
+    if($("#login_type").val() == "weixin"){
+      window.location.href = oauth_url;
+    }else{
+      window.opener.location.href = oauth_url;
+      window.close();
+    }
+  });
 </script>
 </body>
 </html>

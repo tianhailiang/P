@@ -1,3 +1,15 @@
+{% if xSlider.length ==1 %}
+<style>
+  .slider:hover .slider-btn{
+    display: none;
+  }
+</style>
+<div class="slider">
+  <a href="{{xSlider2[0].linkurl}}" data-pid="{{xSlider2[0].pid}}" target="_blank" >
+    <img src="{{xSlider2[0].imageurl}}" alt="{{xSlider2[0].alt}}" style="width: 100%;height: 100%;">
+  </a>
+</div>
+{% else%}
 <div class="slider">
         <div class="slider-img">
               <ul class="slider-img-ul">
@@ -25,4 +37,4 @@
               </ul>
         </div>     
 </div>
-
+{% endif%}

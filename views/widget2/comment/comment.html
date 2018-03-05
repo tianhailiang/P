@@ -3,7 +3,7 @@
   <textarea class="saytext1 saytext" id="saytext"  maxlength="500"></textarea>
   <div class="sub-btn-box clearfix emotion-box">
     <span class="emotion"></span>
-    <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn" data-artId = "{{article_id}}" data-memberId ="{{memberId}}" id="commentBtn" data-catid="{{article.article_info.category_id}}" style="border-radius: 0;">
+    <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn" data-artId = "{{article_id}}" data-memberId ="{{userinfo.uid}}" id="commentBtn"  style="border-radius: 0;">
        评论
     </a>
   </div>
@@ -35,7 +35,14 @@
           <span class="reply" data-uid = "{{item.uid}}" data-commentId = "{{item.id}}" onclick="reply1(this)">
             <i class="iconfont" >&#xe601;</i>回复
           </span>
-          <span class="report-btn" onclick="report(this)"><i class="iconfont" >&#xe629;</i>举报</span>
+          <span class="report-btn" onclick="report(this,2)">
+            <i class="iconfont" >&#xe629;</i>举报
+          </span>
+          {% if userinfo.uid == login_info.uid %}
+            <span class="delete-btn" >
+              <i class="iconfont" >&#xe61e;</i>删除
+            </span>
+          {% endif %}
       </div>
       <div class="reply-box" >
         <textarea class="reply-text saytext" maxlength="250"></textarea>
@@ -66,7 +73,9 @@
 <script src="{{helper.cdnhost}}/assets/js/jquery.qqFace.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/moment.js" ></script>
 <script>
-$(function(){
+  var adviserId = $("#commentBtn").attr('data-memberId'); // 获取顾问id
+  var article_id = $('#commentBtn').attr("data-artId"); // 获取文章id;
+  $(function(){
     $("#saytext").on("change",function(){
     	this.value = this.value.substring(0, 500);
     });	
@@ -87,13 +96,18 @@ $(function(){
   	  path:ajaxUrlPrefix.cdnhost+'/assets/img/gif/'//表情存放的路径
   	});
 
+    $('.delete-btn').on('click',function(){
+      //删除评论
+      del(this,1)
+    });
+
   	$("#commentBtn").click(function(){
   	    //文章评论
   	    if( login_ss == undefined){
   	      getlogin();
   	      return false;
   	    }
-  	    if(login_ss.uid == $("#commentBtn").attr('data-memberId')){
+  	    if(login_ss.uid ==adviserId){
   	      layer.msg('你不能评论自己的文章')
   	      $("#saytext").val(null);
   	      return false;
@@ -107,7 +121,7 @@ $(function(){
   	      url: '/soapi/reviewArticle',
   	      type:'POST',
   	      data:{
-  	      	article_id:$(this).attr("data-artId"),
+  	      	article_id:article_id,
   	        message:str,
   	        u_id:login_ss.uid
   	      },
@@ -143,7 +157,7 @@ $(function(){
   	                            '<span data-commentId="'+result.data.comment_id.comment_id+'"  onclick="reply1(this)">'+
   	                              '<i class="iconfont" >&#xe601;</i>回复'+
   	                            '</span>'+
-  	                            '<span class="report-btn" onclick="report(this)">'+
+  	                            '<span class="report-btn" onclick="report(this,2)">'+
   	                              '<i class="iconfont" >&#xe629;</i>举报'+
   	                            '</span>'+
   	                          '</div>'+
@@ -185,7 +199,7 @@ $(function(){
 	      url:'/soapi/article_comments',
 	      type:"GET",
 	      data:{
-	        article_id:$("#commentBtn").attr("data-artId"),
+	        article_id:article_id,
 	        page:commentPage,
 	        per_page:'10'
 	      },
@@ -205,12 +219,16 @@ $(function(){
               if(result.data.list[i].user_info.usertype ==2){
                 vHtml = '<i class="adviser-v-i"></i>';
               }
+              var delHtml = '';
+              if( login_ss.uid == adviserId){
+                delHtml = '<span class="delete-btn" ><i class="iconfont" >&#xe61e;</i>删除</span>';
+              }
 	            html += '<div class="comment-list clearfix" >'+
 	                      '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version)+') no-repeat 0 0;background-size:50px 50px;">'+
 	                      '</div>'+
 	                      '<div class="comment-info" >'+
 	                        '<div  class="comment-info-name-box">'+
-	                          '<span class="comment-info-name">'+result.data.list[i].nickname+vhtml+
+	                          '<span class="comment-info-name">'+result.data.list[i].nickname+vHtml+
 	                          '</span>'+
 	                          '<span class="comment-info-time">'+
 	                           result.data.list[i].add_time+ 
@@ -226,9 +244,10 @@ $(function(){
 	                          '<span class="reply" data-uid = "'+result.data.list[i].uid+'" data-commentId = "'+result.data.list[i].id+'" onclick="reply1(this)">'+
 	                            '<i class="iconfont" >&#xe601;</i>回复'+
 	                          '</span>'+
-	                          '<span class="report-btn" onclick="report(this)">'+
+	                          '<span class="report-btn" onclick="report(this,2)">'+
 	                            '<i class="iconfont" >&#xe629;</i>举报'+
 	                          '</span>'+
+                            delHtml+
 	                        '</div>'+
 	                        '<div class="reply-box" >'+
 	                          '<textarea class="reply-text" maxlength="250" >'+
@@ -248,6 +267,11 @@ $(function(){
 	          $('.emotion').qqFace({ 
 	            path:ajaxUrlPrefix.cdnhost+'/assets/img/gif/' //表情存放的路径
 	          });
+            $('.delete-btn').unbind('click'); //清楚一次click事件
+            $('.delete-btn').on('click',function(){
+              //删除评论
+              del(this,1)
+            });
 	          // $('.report-btn').on("click",report); //点击举报
 	          // $(".fabulous").on("click",function(){
 	          //   //评论点赞
@@ -270,269 +294,297 @@ $(function(){
     //   //评论点赞
     //   fabulous(this,'data-commentId','comment');
     // }); 
-})
+  });
 
-function replace_em(str){
+  function replace_em(str){
   str = str.replace(/\</g,'&lt;');
   str = str.replace(/\>/g,'&gt;');
   str = str.replace(/\n/g,'<br/>');
   str = str.replace(/\[em_([0-9]*)\]/g,'<img src="'+ajaxUrlPrefix.cdnhost+'/assets/img/gif/$1.gif" border="0" />');
   return str;
-}
-function reply1(obj){
-  //点击一级回复 加载回复列表
-  console.log('一级回复')
-  obj.replyFlag = !obj.replyFlag; //设置一级回复开关
-  // console.log(obj.replyFlag)
-  var that = obj;
-  if(obj.replyFlag){
-    //显示出来
+  }
+  function reply1(obj){
+    //点击一级回复 加载回复列表
+    console.log('一级回复')
+    obj.replyFlag = !obj.replyFlag; //设置一级回复开关
+    // console.log(obj.replyFlag)
+    var that = obj;
+    if(obj.replyFlag){
+      //显示出来
+      $.ajax({
+        url: '/soapi/comment_ans',
+        type:'GET',
+        dataType:'json',
+        data:{
+          comment_id:$(obj).attr("data-commentId")
+        },
+        success:function(result){
+          console.log(result)
+          if(result.data.list.length !=0){
+            //清空一次
+            $(that).parent().parent().find(".reply-list").show();
+            $(that).parent().parent().find(".reply-list").html(null);
+            var color = ''; //设置点赞颜色
+            for(var i =0;i<result.data.list.length;i++){
+              if(result.data.list[i].is_vote){
+                color = 'c13212';
+              }else{
+                color = 'b2b8c2';
+              }
+              var delHtml = '';
+              if( login_ss.uid == adviserId){
+                delHtml = '<span class="delete-btn2" ><i class="iconfont" >&#xe61e;</i>删除</span>';
+              }
+              var html = '<div class="reply-list-info" >'+
+                            '<div class="reply-list-info-top">'+
+                              '<span >'+result.data.list[i].nickname+'</span>：'+
+                              replace_em(result.data.list[i].message)+
+                            '</div>'+
+                            '<div class="comment-btn-bar" style="margin-top: 10px;">'+
+                              '<span>'+ moment.unix(result.data.list[i].add_time).format('YYYY年MM月D日 HH:mm') + '</span>'+
+                              '<span class="fabulous" onclick="fabulous1(this)">'+
+                                '<i class="iconfont" style="color:#'+color+'">&#xe604;</i>点赞'+
+                              '</span>'+
+                              '<span data-uid = "'+result.data.list[i].uid+'" onclick="reply2(this);" data-commentId="'+result.data.list[i].comment_id+'" data-replyId ="'+result.data.list[i].id+'">'+
+                                '<i class="iconfont" >&#xe601;</i>回复'+
+                              '</span>'+
+                              '<span class="report-btn" onclick="report(this,3)">'+
+                                '<i class="iconfont" >&#xe629;</i>举报'+
+                              '</span>'+
+                              delHtml+
+                            '</div>'+
+                            '<div class="reply-box" >'+
+                              '<textarea class="reply-text" maxlength="250" >'+
+                              '</textarea>'+
+                              '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
+                                '<span class="emotion"></span>'+
+                                '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+result.data.list[i].comment_id+'" onclick="replyComment2(this)">评论'+
+                                '</a>'+
+                             '</div>'+
+                            '</div>'+
+                         '</div>'; 
+              $(that).parent().parent().find(".reply-list").append(html);
+            }
+            $('.emotion').qqFace({ 
+              path:ajaxUrlPrefix.cdnhost+'/assets/img/gif/' //表情存放的路径
+            });
+            
+            $('.delete-btn2').on('click',function(){
+              //删除回复
+              del(this,2);
+            });
+            // $(that).next().on("click",report); //点击举报
+            // $(".fabulous").on("click",function(){
+            //   //评论点赞
+            //   fabulous(this,'data-replyId','comment_ans');
+            // }); 
+          }else{
+            //没有回复列表 让评论框出来
+            $(that).parent().parent().find(".reply-box").show();
+            //获得焦点
+            $(that).parent().parent().find(".reply-box").find('.reply-text').focus();
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+           console.log(errorThrown)
+        }  
+      });
+    }else{
+      //隐藏起来
+      $(that).parent().parent().find(".reply-box").hide();
+      $(that).parent().parent().find(".reply-list").hide();
+    }  
+  }
+  function reply2(obj){
+    //点击二级回复 
+    console.log('二级回复')
+    if( login_ss != undefined){
+      if(login_ss.uid ==adviserId || login_ss.uid  == $(obj).parents('.reply-list').prev().prev().find('.reply').attr('data-uid')){
+        console.log('权限成功')
+      }else{
+        layer.msg('你没有权限回复该评论')
+        return false;
+      }             
+    }else{
+      getlogin();
+      return false;
+    }
+
+    if($(obj).parent().parent().find(".reply-box").css("display")=='none'){
+      //点击 显示隐藏评论框
+      $(obj).parent().parent().find(".reply-box").show();
+       //获得焦点
+      $(obj).parent().parent().find(".reply-box").find('.reply-text').focus();
+    }else{
+      $(obj).parent().parent().find(".reply-box").hide();
+    }
+  }
+  function replyComment1(obj){
+    //回复一级评论
+    console.log('一级评论')
+    if( login_ss != undefined){
+      if(login_ss.uid == adviserId || login_ss.uid  == $(obj).attr('data-uid')){
+        console.log('权限成功')
+      }else{
+        layer.msg('你没有权限回复该评论')
+        return false;
+      }             
+    }else{
+      getlogin();
+      return false;
+    }
+    var replyMessage =$.trim($(obj).parent().prev().val());
+    if(replyMessage == ''){
+       layer.msg('评论不能为空')
+       return false;
+    }
+    var that =obj;
     $.ajax({
-      url: '/soapi/comment_ans',
-      type:'GET',
-      dataType:'json',
+      url:'/soapi/save_comment_ans',
+      type:'POST',
       data:{
-        comment_id:$(obj).attr("data-commentId")
+        u_id:login_ss.uid,
+        comment_id:$(obj).attr("data-commentId"),
+        message:replyMessage
       },
+      dataType:'json',
       success:function(result){
         console.log(result)
-        if(result.data.list.length !=0){
-          //清空一次
-          $(that).parent().parent().find(".reply-list").show();
-          $(that).parent().parent().find(".reply-list").html(null);
-          var color = ''; //设置点赞颜色
-          for(var i =0;i<result.data.list.length;i++){
-            if(result.data.list[i].is_vote){
-              color = 'c13212';
-            }else{
-              color = 'b2b8c2';
-            }
-            var html = '<div class="reply-list-info" >'+
-                          '<div class="reply-list-info-top">'+
-                            '<span >'+result.data.list[i].nickname+'</span>：'+
-                            replace_em(result.data.list[i].message)+
-                          '</div>'+
-                          '<div class="comment-btn-bar" style="margin-top: 10px;">'+
-                            '<span>'+ moment.unix(result.data.list[i].add_time).format('YYYY年MM月D日 HH:mm') + '</span>'+
-                            '<span class="fabulous" onclick="fabulous1(this)">'+
-                              '<i class="iconfont" style="color:#'+color+'">&#xe604;</i>点赞'+
-                            '</span>'+
-                            '<span data-uid = "'+result.data.list[i].uid+'" onclick="reply2(this);" data-commentId="'+result.data.list[i].comment_id+'" data-replyId ="'+result.data.list[i].id+'">'+
-                              '<i class="iconfont" >&#xe601;</i>回复'+
-                            '</span>'+
-                            '<span class="report-btn" onclick="report(this)">'+
-                              '<i class="iconfont" >&#xe629;</i>举报'+
-                            '</span>'+
-                          '</div>'+
-                          '<div class="reply-box" >'+
-                            '<textarea class="reply-text" maxlength="250" >'+
-                            '</textarea>'+
-                            '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
-                              '<span class="emotion"></span>'+
-                              '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+result.data.list[i].comment_id+'" onclick="replyComment2(this)">评论'+
-                              '</a>'+
-                           '</div>'+
-                          '</div>'+
-                       '</div>'; 
-            $(that).parent().parent().find(".reply-list").append(html);
+        if(result.code==0){
+          layer.msg('评论成功')
+          //隐藏评论框
+          $(that).parent().parent().hide(); 
+          var delHtml = '';
+          if( login_ss.uid == adviserId){
+            delHtml = '<span class="delete-btn2" ><i class="iconfont" >&#xe61e;</i>删除</span>';
           }
+          var html =  '<div class="reply-list-info" >'+
+                        '<div class="reply-list-info-top">'+
+                          '<span >'+ login_ss.nickname +'</span>：'+  replace_em(replyMessage) +
+                        '</div>'+
+                        '<div class="comment-btn-bar" style="margin-top: 10px;">'+
+                          '<span>'+moment().format('YYYY年MM月D日 HH:mm')+'</span>'+
+                          '<span class="fabulous"><i class="iconfont" >&#xe604;</i>点赞</span>'+
+                          '<span data-uid = "'+login_ss.uid+'" onclick="reply2(this)" data-commentId="'+$(obj).attr("data-commentId")+'" data-replyId = "'+result.data.comment_ans_id+'">'+
+                            '<i class="iconfont" >&#xe601;</i>回复'+
+                          '</span>'+
+                          '<span class="report-btn" onclick="report(this,3)">'+
+                                '<i class="iconfont" >&#xe629;</i>举报'+
+                          '</span>'+
+                          delHtml+
+                        '</div>'+
+                        '<div class="reply-box" >'+
+                          '<textarea class="reply-text" maxlength="250" >'+
+                          '</textarea>'+
+                          '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
+                            '<span class="emotion"></span>'+
+                            '<a href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
+                            '</a>'+
+                         '</div>'+
+                        '</div>'+
+                      '</div>';
+          //插入回复列表里
+          $(that).parent().parent().next().append(html);
+          //显示出来
+          $(that).parent().parent().next().show();
           $('.emotion').qqFace({ 
             path:ajaxUrlPrefix.cdnhost+'/assets/img/gif/' //表情存放的路径
           });
-          
-          // $(that).next().on("click",report); //点击举报
-          // $(".fabulous").on("click",function(){
-          //   //评论点赞
-          //   fabulous(this,'data-replyId','comment_ans');
-          // }); 
-        }else{
-          //没有回复列表 让评论框出来
-          $(that).parent().parent().find(".reply-box").show();
-          //获得焦点
-          $(that).parent().parent().find(".reply-box").find('.reply-text').focus();
-        }
-      },
+          // $('.report-btn').on("click",report); //点击举报
+          $(".fabulous").on("click",function(){
+            //点赞
+            layer.msg('不能对自己发表的内容进行投票')
+          });  
+          $('.delete-btn2').on('click',function(){
+            //删除回复
+            del(this,2);
+          });
+        }else if(result.code == '1210000012'){
+          layer.msg('您输入的内容有敏感词');
+        } 
+      },  
       error:function(XMLHttpRequest, textStatus, errorThrown){
          console.log(errorThrown)
-      }  
-    });
-  }else{
-    //隐藏起来
-    $(that).parent().parent().find(".reply-box").hide();
-    $(that).parent().parent().find(".reply-list").hide();
-  }  
-}
-function reply2(obj){
-  //点击二级回复 
-  console.log('二级回复')
-  if( login_ss != undefined){
-    if(login_ss.uid == $("#commentBtn").attr('data-memberId') || login_ss.uid  == $(obj).parents('.reply-list').prev().prev().find('.reply').attr('data-uid')){
-      console.log('权限成功')
-    }else{
-      layer.msg('你没有权限回复该评论')
-      return false;
-    }             
-  }else{
-    getlogin();
-    return false;
+      }   
+    });  
   }
- 
-  if($(obj).parent().parent().find(".reply-box").css("display")=='none'){
-    //点击 显示隐藏评论框
-    $(obj).parent().parent().find(".reply-box").show();
-     //获得焦点
-    $(obj).parent().parent().find(".reply-box").find('.reply-text').focus();
-  }else{
-    $(obj).parent().parent().find(".reply-box").hide();
+  function replyComment2(obj){
+    //二级回复评论点击事件
+    console.log('二级评论')
+    var replyMessage =$.trim($(obj).parent().prev().val());
+    if(replyMessage == ''){
+       layer.msg('评论不能为空')
+       return false;
+    }
+    var that = obj;
+    $.ajax({
+      url:'/soapi/save_comment_ans',
+      type:'POST',
+      data:{
+        u_id:login_ss.uid,
+        comment_id:$(obj).attr("data-commentId"),
+        message:replyMessage
+      },
+      dataType:'json',
+      success:function(result){
+        console.log(result)
+        if(result.code==0){
+          layer.msg('评论成功')
+          //隐藏评论框
+          $(that).parent().parent().hide(); 
+          var delHtml = '';
+          if( login_ss.uid == adviserId){
+            delHtml = '<span class="delete-btn2" ><i class="iconfont" >&#xe61e;</i>删除</span>';
+          }
+          var html =  '<div class="reply-list-info" >'+
+                        '<div class="reply-list-info-top">'+
+                          '<span >'+ login_ss.nickname +'</span>：'+ replace_em(replyMessage) +
+                        '</div>'+
+                        '<div class="comment-btn-bar" style="margin-top: 10px;">'+
+                          '<span>'+ moment().format('YYYY年MM月D日 HH:mm') +'</span>'+
+                          '<span class="fabulous"><i class="iconfont" >&#xe604;</i>点赞</span>'+
+                          '<span data-uid = "'+login_ss.uid+'" onclick="reply2(this)" data-commentId="'+$(obj).attr("data-commentId")+'" data-replyId = "'+result.data.comment_ans_id+'">'+
+                            '<i class="iconfont" >&#xe601;</i>回复'+
+                          '</span>'+
+                          '<span class="report-btn" onclick="report(this,3)">'+
+                            '<i class="iconfont" >&#xe629;</i>举报'+
+                          '</span>'+
+                          delHtml+
+                        '</div>'+
+                        '<div class="reply-box" >'+
+                          '<textarea class="reply-text" maxlength="250">'+
+                          '</textarea>'+
+                          '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
+                            '<span class="emotion"></span>'+
+                            '<a href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
+                            '</a>'+
+                         '</div>'+
+                        '</div>'+
+                      '</div>';
+          $(that).parent().parent().parent().parent().append(html);
+          $('.emotion').qqFace({ 
+            path:ajaxUrlPrefix.cdnhost+'/assets/img/gif/' //表情存放的路径
+          });
+          // $('.report-btn').on("click",report); //点击举报
+          $(".fabulous").on("click",function(){
+            //点赞
+            layer.msg('不能对自己发表的内容进行投票')
+          });  
+          $('.delete-btn2').unbind('click');
+          $('.delete-btn2').on('click',function(){
+            //删除回复
+            del(this,2);
+          });
+        }else if(result.code == '1210000012'){
+          layer.msg('您输入的内容有敏感词');
+        } 
+      },  
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+         console.log(errorThrown)
+      }   
+    });  
   }
-}
-function replyComment1(obj){
-  //回复一级评论
-  console.log('一级评论')
-  if( login_ss != undefined){
-    if(login_ss.uid == $("#commentBtn").attr('data-memberId') || login_ss.uid  == $(obj).attr('data-uid')){
-      console.log('权限成功')
-    }else{
-      layer.msg('你没有权限回复该评论')
-      return false;
-    }             
-  }else{
-    getlogin();
-    return false;
-  }
-  var replyMessage =$.trim($(obj).parent().prev().val());
-  if(replyMessage == ''){
-     layer.msg('评论不能为空')
-     return false;
-  }
-  var that =obj;
-  $.ajax({
-    url:'/soapi/save_comment_ans',
-    type:'POST',
-    data:{
-      u_id:login_ss.uid,
-      comment_id:$(obj).attr("data-commentId"),
-      message:replyMessage
-    },
-    dataType:'json',
-    success:function(result){
-      console.log(result)
-      if(result.code==0){
-        layer.msg('评论成功')
-        //隐藏评论框
-        $(that).parent().parent().hide(); 
-        var html =  '<div class="reply-list-info" >'+
-                      '<div class="reply-list-info-top">'+
-                        '<span >'+ login_ss.nickname +'</span>：'+  replace_em(replyMessage) +
-                      '</div>'+
-                      '<div class="comment-btn-bar" style="margin-top: 10px;">'+
-                        '<span>'+moment().format('YYYY年MM月D日 HH:mm')+'</span>'+
-                        '<span class="fabulous"><i class="iconfont" >&#xe604;</i>点赞</span>'+
-                        '<span data-uid = "'+login_ss.uid+'" onclick="reply2(this)" data-commentId="'+$(obj).attr("data-commentId")+'" data-replyId = "'+result.data.comment_ans_id+'">'+
-                          '<i class="iconfont" >&#xe601;</i>回复'+
-                        '</span>'+
-                        '<span class="report-btn" onclick="report(this)">'+
-                              '<i class="iconfont" >&#xe629;</i>举报'+
-                        '</span>'+
-                      '</div>'+
-                      '<div class="reply-box" >'+
-                        '<textarea class="reply-text" maxlength="250" >'+
-                        '</textarea>'+
-                        '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
-                          '<span class="emotion"></span>'+
-                          '<a href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
-                          '</a>'+
-                       '</div>'+
-                      '</div>'+
-                    '</div>';
-        //插入回复列表里
-        $(that).parent().parent().next().append(html);
-        //显示出来
-        $(that).parent().parent().next().show();
-        $('.emotion').qqFace({ 
-          path:ajaxUrlPrefix.cdnhost+'/assets/img/gif/' //表情存放的路径
-        });
-        // $('.report-btn').on("click",report); //点击举报
-        $(".fabulous").on("click",function(){
-          //点赞
-          layer.msg('不能对自己发表的内容进行投票')
-        });  
-      }else if(result.code == '1210000012'){
-        layer.msg('您输入的内容有敏感词');
-      } 
-    },  
-    error:function(XMLHttpRequest, textStatus, errorThrown){
-       console.log(errorThrown)
-    }   
-  });  
-}
-function replyComment2(obj){
-  //二级回复评论点击事件
-  console.log('二级评论')
-  var replyMessage =$.trim($(obj).parent().prev().val());
-  if(replyMessage == ''){
-     layer.msg('评论不能为空')
-     return false;
-  }
-  var that = obj;
-  $.ajax({
-    url:'/soapi/save_comment_ans',
-    type:'POST',
-    data:{
-      u_id:login_ss.uid,
-      comment_id:$(obj).attr("data-commentId"),
-      message:replyMessage
-    },
-    dataType:'json',
-    success:function(result){
-      console.log(result)
-      if(result.code==0){
-        layer.msg('评论成功')
-        //隐藏评论框
-        $(that).parent().parent().hide(); 
-        var html =  '<div class="reply-list-info" >'+
-                      '<div class="reply-list-info-top">'+
-                        '<span >'+ login_ss.nickname +'</span>：'+ replace_em(replyMessage) +
-                      '</div>'+
-                      '<div class="comment-btn-bar" style="margin-top: 10px;">'+
-                        '<span>'+ moment().format('YYYY年MM月D日 HH:mm') +'</span>'+
-                        '<span class="fabulous"><i class="iconfont" >&#xe604;</i>点赞</span>'+
-                        '<span data-uid = "'+login_ss.uid+'" onclick="reply2(this)" data-commentId="'+$(obj).attr("data-commentId")+'" data-replyId = "'+result.data.comment_ans_id+'">'+
-                          '<i class="iconfont" >&#xe601;</i>回复'+
-                        '</span>'+
-                        '<span class="report-btn" onclick="report(this)">'+
-                          '<i class="iconfont" >&#xe629;</i>举报'+
-                        '</span>'+
-                      '</div>'+
-                      '<div class="reply-box" >'+
-                        '<textarea class="reply-text" maxlength="250">'+
-                        '</textarea>'+
-                        '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
-                          '<span class="emotion"></span>'+
-                          '<a href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+$(obj).attr("data-commentId")+'" onclick="replyComment2(this)">评论'+
-                          '</a>'+
-                       '</div>'+
-                      '</div>'+
-                    '</div>';
-        $(that).parent().parent().parent().parent().append(html);
-        $('.emotion').qqFace({ 
-          path:ajaxUrlPrefix.cdnhost+'/assets/img/gif/' //表情存放的路径
-        });
-        // $('.report-btn').on("click",report); //点击举报
-        $(".fabulous").on("click",function(){
-          //点赞
-          layer.msg('不能对自己发表的内容进行投票')
-        });  
-      }else if(result.code == '1210000012'){
-        layer.msg('您输入的内容有敏感词');
-      } 
-    },  
-    error:function(XMLHttpRequest, textStatus, errorThrown){
-       console.log(errorThrown)
-    }   
-  });  
-}
-function fabulous(obj){
+  function fabulous(obj){
   //点赞调取函数
   if(login_ss == undefined){
     getlogin();
@@ -568,8 +620,8 @@ function fabulous(obj){
       console.log(errorThrown)
     }
   });
-}
-function fabulous1(obj){
+  }
+  function fabulous1(obj){
   if(login_ss == undefined){
     getlogin();
     return false;
@@ -604,100 +656,134 @@ function fabulous1(obj){
       console.log(errorThrown)
     }
   });
-}
-function report(obj){
- //举报调取函数
-  if(login_ss == undefined){
-    getlogin();
-    return false;
   }
-  var report_content = null;
-  layer.open({
-    type: 1,
-    title:'举报理由',
-    area: ['700px'], //宽高
-    content: '<div class="report-con">'+
-               '<ul class="report-ul clearfix">'+
-                 '<li>'+
-                   '<span class="circle"></span>'+
-                   '<i class="iconfont">&#xe62a;</i>'+
-                   '<span class="sp-con">垃圾、广告信息</span>'+
-                  '</li>'+
-                  '<li>'+
-                    '<span class="circle"></span>'+
-                    '<i class="iconfont">&#xe62a;</i>'+
-                    '<span class="sp-con">色情、低俗内容</span>'+
-                  '</li>'+
-                  '<li>'+
-                    '<span class="circle"></span>'+
-                    '<i class="iconfont">&#xe62a;</i>'+
-                    '<span class="sp-con">时政敏感话题</span>'+
-                  '</li>'+
-                  '<li>'+
-                    '<span class="circle"></span>'+
-                    '<i class="iconfont">&#xe62a;</i>'+
-                    '<span class="sp-con">其它原因</span>'+
-                  '</li>'+
-                '</ul>'+
-                '<textarea class="report-txt"></textarea>'+
-             '</div>',
-    btn:'确定',
-    closeBtn:'2',
-    yes: function(index, layero){
-      if(report_content ==undefined || report_content == ''){
-        layer.msg('请选择举报理由');
-        return false;
+  function report(obj,type){
+    //举报调取函数
+    if(login_ss == undefined){
+      getlogin();
+      return false;
+    }
+    var report_content = null;
+    layer.open({
+      type: 1,
+      title:'举报理由',
+      area: ['700px'], //宽高
+      content: '<div class="report-con">'+
+                 '<ul class="report-ul clearfix">'+
+                   '<li>'+
+                     '<span class="circle"></span>'+
+                     '<i class="iconfont">&#xe62a;</i>'+
+                     '<span class="sp-con">垃圾、广告信息</span>'+
+                    '</li>'+
+                    '<li>'+
+                      '<span class="circle"></span>'+
+                      '<i class="iconfont">&#xe62a;</i>'+
+                      '<span class="sp-con">色情、低俗内容</span>'+
+                    '</li>'+
+                    '<li>'+
+                      '<span class="circle"></span>'+
+                      '<i class="iconfont">&#xe62a;</i>'+
+                      '<span class="sp-con">时政敏感话题</span>'+
+                    '</li>'+
+                    '<li>'+
+                      '<span class="circle"></span>'+
+                      '<i class="iconfont">&#xe62a;</i>'+
+                      '<span class="sp-con">其它原因</span>'+
+                    '</li>'+
+                  '</ul>'+
+                  '<textarea class="report-txt"></textarea>'+
+               '</div>',
+      btn:'确定',
+      closeBtn:'2',
+      yes: function(index, layero){
+        if(report_content ==undefined || report_content == ''){
+          layer.msg('请选择举报理由');
+          return false;
+        }
+        $.ajax({
+          // url: ajaxUrlPrefix.cmsapi+'/api/userReport',
+          url:'/soapi/userReport',
+          type:'post',
+          data:{
+            report_source:'1',
+            report_type:type,
+            report_content:report_content,
+            userid:login_ss.uid,
+            article_id:article_id,
+            comment_id:$(obj).prev().attr('data-commentId'),
+            reply_id:$(obj).prev().attr('data-replyId'),
+            article_url:window.location.href
+          },
+          dataType:'json',
+          success:function(result){
+            console.log(result)
+            if(result.code == 0){
+              layer.msg('举报成功');
+              layer.close(index); 
+            }
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+            console.log(errorThrown)
+          }  
+        });
+      }         
+    });
+    $(".report-ul li").on("click",function(){
+      //选择举报内容
+      $(".report-ul li i").hide();
+      $(".report-ul li .circle").show();
+      $(this).find("i").show();
+      $(this).find(".circle").hide();
+      if($(this).index() == 3){
+        $(".report-txt").show();
+        $(".layui-layer-content").css({"height":"115px"});
+      }else{
+        $(".report-txt").hide();
+        $(".layui-layer-content").css({"height":"39px"});
+        report_content = $(this).find('.sp-con').text();
       }
-      $.ajax({
-        // url: ajaxUrlPrefix.cmsapi+'/api/userReport',
-        url:'/soapi/userReport',
-        type:'post',
-        data:{
-          report_source:'1',
-          report_type:'2',
-          report_content:report_content,
-          userid:login_ss.uid,
-          artecle_id:$('#commentBtn').attr("data-artId"),
-          catid:$('#commentBtn').attr("data-catid"),
-          comment_id:$(obj).prev().attr('data-commentId'),
-          reply_id:$(obj).prev().attr('data-replyId')
-        },
-        dataType:'json',
-        // jsonpCallback:'callback',
-        success:function(result){
-          console.log(result)
-          if(result.code == 0){
-            layer.msg('举报成功');
-            layer.close(index); 
-          }
-        },
-        error:function(XMLHttpRequest, textStatus, errorThrown){
-          console.log(errorThrown)
-        }  
-      });
-    }         
-  });
-  $(".report-ul li").on("click",function(){
-    //选择举报内容
-    $(".report-ul li i").hide();
-    $(".report-ul li .circle").show();
-    $(this).find("i").show();
-    $(this).find(".circle").hide();
-    if($(this).index() == 3){
-      $(".report-txt").show();
-      $(".layui-layer-content").css({"height":"115px"});
+    });
+    $('.report-txt').on('change',function(){
+      if($('.report-txt').val()!= ''){
+        report_content = $('.report-txt').val();
+      }else{
+         report_content ='';
+      }
+    });
+  }
+
+  function del(obj,type){
+    //调取 删除评论、回复接口
+    var data = {};
+    var url = null;
+    data. u_id = login_ss.uid;
+    if(type==1){
+      data.comment_id = $(obj).prev().prev().attr('data-commentId');
+      url = '/soapi/remove_comment';
     }else{
-      $(".report-txt").hide();
-      $(".layui-layer-content").css({"height":"39px"});
-      report_content = $(this).find('.sp-con').text();
+      data.comment_ans_id = $(obj).prev().prev().attr('data-replyId');
+      url = '/soapi/remove_comment_ans';
     }
-  });
-  $('.report-txt').on('change',function(){
-    if($('.report-txt').val()!= ''){
-      report_content = $('.report-txt').val();
-    }else{
-       report_content ='';
-    }
-  });
-}
+    $.ajax({
+      url:url,
+      type:'POST',
+      data:data,
+      dataType:'json',
+      success:function(result){
+        console.log(result)
+        if(result.code == 0){
+          layer.msg('删除成功')
+          window.setTimeout(function(){
+            window.location.reload();
+          },1000);
+        }else{
+          layer.msg(result.err)
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log(errorThrown)
+      }   
+    });  
+  }
+
 </script>

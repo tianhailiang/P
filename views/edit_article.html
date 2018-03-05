@@ -89,7 +89,7 @@
               </select>
               <span class="numTip" ></span>
             </div>
-            <div class="rel-case-text1" style="margin-top: 20px;" id="art-type" data-id ="{{article.article_info.is_news}}">
+            <div class="rel-case-text1" style="margin-top: 20px;" id="art-type" data-id ="{{article.article_info.is_news}}" data-type="{{article.article_info.type}}">
               <label class="title active" for="art_type"><span>*</span> 选择文章类型：</label>
               {% set artType = [
                 {
@@ -358,7 +358,7 @@
         layer.msg(info)
       }
       editor.create();
-      var artType = 2; 
+      var artType = $("#art-type").attr('data-type');
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
@@ -431,7 +431,11 @@
               layer.msg('发布成功');
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
-                  window.open(fn.articleUrlgen('blog',login_ss.uid.toString(),'article='+result.data.article_id.toString()));
+                    if(artType==1){
+                     window.open(fn.urlgen('case',result.data.article_id.toString()));
+                    }else {
+                        window.open(fn.urlgen('article',result.data.article_id.toString()));
+                    }
                 },1000);
               }
             }else if(result.code == '1210000011'){
@@ -563,9 +567,15 @@
           layer.msg("请输入正文内容");
           return false;
         }    
-        //跳转预览详情页  
-        if(login_ss.usertype ==2){
-          window.open('/advisor_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
+        //跳转预览详情页
+
+          if(login_ss.usertype ==2){
+            if(artType == 1){
+                window.open('/advisor_center/case/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
+            }else {
+                window.open('/advisor_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
+            }
+
         }else if(login_ss.usertype ==3){
           window.open('/canzan_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
         }

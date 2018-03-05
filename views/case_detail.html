@@ -35,6 +35,13 @@
       </div>
       {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
     </div>
+    <div style="margin-top: 20px;" class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;">
+        <i></i>
+        <h3>相关顾问</h3>
+      </div>
+      {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+    </div>
   </div>
   <div class="dui-layout-div"></div>
   <div class="dui-layout-con" >
@@ -91,7 +98,7 @@
         <div class="adviser-case-detail-offer" >
           {{article.article_info.message | safe}}
         </div>
-        <div class="adviser-case-operation-bar clearfix" data-artId = "{{article_id}}" id="articleId" data-memberId ="{{memberId}}" style="padding-top: 40px;
+        <div class="adviser-case-operation-bar clearfix" style="padding-top: 40px;
   padding-bottom: 40px;">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}
@@ -131,14 +138,14 @@
     }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function(){
       $('.banner-box-left .slider').xSlider({
@@ -182,7 +189,7 @@
         url: '/soapi/favorite_article',
         type:'POST',
         data:{
-          article_id:$("#articleId").attr("data-artId")
+          article_id:article_id
         },
         dataType:'jsonp',
         jsonpCallback:'cb',
@@ -217,7 +224,7 @@
         },1000);
         return false;
       }
-      if(login_ss.uid == $("#articleId").attr('data-memberId')){
+      if(login_ss.uid == adviserId){
         layer.msg('不能对自己发表的内容进行投票')
         return false;
       } 
@@ -226,7 +233,7 @@
         url: '/soapi/article_vote',
         type:'POST',
         data:{
-          item_id:$("#articleId").attr("data-artId"),
+          item_id:article_id,
           item_type:'article'
         },
         dataType:'jsonp',
@@ -250,103 +257,11 @@
         }
       });
     });
-    $('.art-report-btn').on('click',artReport); //文章举报
-    function artReport(){
-        //举报调取函数
-        if(login_ss == undefined){
-            layer.msg('你还没有登录')
-            window.setTimeout(function(){
-              window.location.href =fn.curlgen('login','h='+window.location.href);
-            },1000);
-            return false;
-        }
-        var report_content = null;
-        var that =this;
-        layer.open({
-            type: 1,
-            title:'举报理由',
-            area: ['700px'], //宽高
-            content:'<div class="report-con">'+
-                       '<ul class="report-ul clearfix">'+
-                         '<li>'+
-                           '<span class="circle"></span>'+
-                           '<i class="iconfont">&#xe62a;</i>'+
-                           '<span class="sp-con">垃圾、广告信息</span>'+
-                          '</li>'+
-                          '<li>'+
-                            '<span class="circle"></span>'+
-                            '<i class="iconfont">&#xe62a;</i>'+
-                            '<span class="sp-con">色情、低俗内容</span>'+
-                          '</li>'+
-                          '<li>'+
-                            '<span class="circle"></span>'+
-                            '<i class="iconfont">&#xe62a;</i>'+
-                            '<span class="sp-con">时政敏感话题</span>'+
-                          '</li>'+
-                          '<li>'+
-                            '<span class="circle"></span>'+
-                            '<i class="iconfont">&#xe62a;</i>'+
-                            '<span class="sp-con">其它原因</span>'+
-                          '</li>'+
-                        '</ul>'+
-                        '<textarea class="report-txt"></textarea>'+
-                    '</div>',
-            btn:'确定',
-            closeBtn:'2',
-            yes: function(index, layero){
-              if(report_content ==undefined || report_content == ''){
-                layer.msg('请选择举报理由');
-                return false;
-              }
-              $.ajax({
-                // url: ajaxUrlPrefix.cmsapi+'/api/userReport',
-                url:'/soapi/userReport',
-                type:'POST',
-                data:{
-                  report_source:'1',
-                  report_type:'1',
-                  report_content:report_content,
-                  userid:login_ss.uid,
-                  artecle_id:$(that).attr("data-artId")
-                },
-                dataType:'json',
-                // jsonpCallback:'callback',
-                success:function(result){
-                  console.log(result)
-                  if(result.code == 0){
-                    layer.msg('举报成功');
-                    layer.close(index); 
-                  }
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
-                  console.log(errorThrown)
-                }  
-              });
-            }         
-        });
-        $(".report-ul li").on("click",function(){
-            //选择举报内容
-            $(".report-ul li i").hide();
-            $(".report-ul li .circle").show();
-            $(this).find("i").show();
-            $(this).find(".circle").hide();
-            if($(this).index() == 3){
-              $(".report-txt").show();
-              $(".layui-layer-content").css({"height":"115px"});
-            }else{
-              $(".report-txt").hide();
-              $(".layui-layer-content").css({"height":"39px"});
-              report_content = $(this).find('.sp-con').text();
-            }
-        });
-        $('.report-txt').on('change',function(){
-            if($('.report-txt').val()!= ''){
-              report_content = $('.report-txt').val();
-            }else{
-               report_content ='';
-            }
-        });
-    }
+    $('.art-report-btn').on('click',function(){
+      //文章举报
+      report(this,1);
+    });
+   
   })
 </script>
 </body>
