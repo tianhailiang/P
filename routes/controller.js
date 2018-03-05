@@ -2842,7 +2842,7 @@ exports.hot = function (req, res, next) {
     },
     guwen_list: function (callback) {
       wec.adviser_main({
-        "per_page": 5, "order": "views desc", "uid": data.uid
+        "per_page": 5, "order": encodeURI("views desc"), "uid": data.uid
       }, callback)
     },
     likelist: function (callback) { //猜你喜欢
