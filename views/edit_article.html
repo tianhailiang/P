@@ -329,7 +329,7 @@
       editor.customConfig.pasteFilterStyle = false;
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
-      editor.customConfig.uploadImgMaxSize = 500 * 1024;
+      editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
       // 限制一次最多上传 5 张图片
       editor.customConfig.uploadImgMaxLength = 1;
       editor.customConfig.uploadImgServer = ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload"; // 上传图片到服务器
@@ -449,7 +449,7 @@
           error:function(XMLHttpRequest, textStatus, errorThrown){
             console.log(errorThrown)
             if(XMLHttpRequest.status == '413'){
-              layer.msg('您发布的内容已超过1M，应小于1M');
+              layer.msg('您发布的内容已超过2M，应小于2M');
             }
           }
         });
@@ -543,7 +543,7 @@
           error:function(XMLHttpRequest, textStatus, errorThrown){
             console.log(errorThrown)
             if(XMLHttpRequest.status == '413'){
-              layer.msg('您发布的内容已超过1M，应小于1M');
+              layer.msg('您发布的内容已超过2M，应小于2M');
             }
           }
         });
