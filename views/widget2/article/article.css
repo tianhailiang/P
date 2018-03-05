@@ -3,13 +3,13 @@
 }
 
 .art-box .adviser-head{
-    width:60px;
-    height:76px;
+    width:50px;
+    height:50px;
     float:left;
     margin-right:20px;
+    border-radius: 50%;
 
 }
-
 
 .art-box .adviser-info{
     float:left;
