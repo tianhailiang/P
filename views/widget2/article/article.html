@@ -72,7 +72,6 @@
      </div>
      <div class="adviser-info-date clearfix" >
          <span class="adviser-info-date-s" style="color: #666;line-height: 20px;">{{item.add_time}}</span>
-         <span style="padding: 0 10px;height: 24px;float: left;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
      </div>
      <div class="adviser-info-title">
        {% if item.type == 1 %}
@@ -82,6 +81,7 @@
        <a target="_blank" href="{{helper.urlgen('article',item.id | string)}}"  style="color: #C13232">
          {{item.title}}</a>
        {% endif %}
+       <span style="padding: 0 10px;height: 24px;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
      </div>
      <p class="adviser-info-p">
        {% if item.type == 1 %}
@@ -116,13 +116,14 @@
     </div>
     <div class="adviser-info-date clearfix" >
       <span class="adviser-info-date-s" style="color: #666;line-height: 20px;">{{item.add_time}}</span>
-      <span style="padding: 0 10px;height: 24px;float: left;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
       {%if item.type==1%}
       <a target="_blank" href="{% if item.user_info.usertype == 2 %}{{helper.urlgen('case', item.id | string)}}{% elif item.user_info.usertype == 3 %}{{helper.urlgen('case', item.id | string)}}{% endif %}" style="color: #C13232">{{item.title}}</a>
+      <span style="padding: 0 10px;height: 24px;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
       {%else %}
       <a target="_blank" href="{% if item.user_info.usertype == 2 %}{{helper.urlgen('article', item.id | string)}}{% elif item.user_info.usertype == 3 %}{{helper.urlgen('article', item.id | string)}}{% endif %}" style="color: #C13232">{{item.title}}</a>
+      <span style="padding: 0 10px;height: 24px;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
       {% endif%}
     </div>
     <div class="offer-opt-bar clearfix">
@@ -197,7 +198,6 @@
     </div>
     <div class="adviser-info-date clearfix" >
       <span class="adviser-info-date-s" style="color: #666;line-height: 20px;">{{item.add_time}}</span>
-      <span style="padding: 0 10px;height: 24px;float: left;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
     </div>
     <div class="adviser-info-title">
       {% if item.type == 1 %}
@@ -209,6 +209,7 @@
          {{item.title}}
         </a>
       {% endif %}
+      <span style="padding: 0 10px;height: 24px;margin-left: 20px;background: url('{{helper.cdnhost}}/assets/img/yanse.png');background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">{{item.tag_list}}</span>
     </div>
     <div class="offer-opt-bar clearfix">
       <div class="opt-btn delete" onclick="cancelFav($(this), {{item.id}})">
