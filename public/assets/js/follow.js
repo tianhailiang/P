@@ -6,9 +6,9 @@ $('.guanzhu-btn').on('click', function() {
       return false;
     }
     if(login_ss == undefined){
-      layer.msg('你还没有登录')
+      //layer.msg('你还没有登录')
       window.setTimeout(function(){
-          window.location.href = fn.curlgen('login', 'h=' + window.location.href);
+          getlogin();
       },1000);
       return false;
     }
