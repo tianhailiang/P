@@ -179,7 +179,7 @@
               identity = 'canzan';
             }
             aItemHtml += '<div class="art-box clearfix" ><a target="_blank" href="'+ fn.urlgen(aitem.id.toString()) +'"><div class="adviser-head" style="background:url('+fn.avaterimg(aitem.uid,'small',aitem.user_info.status,aitem.user_info.version)+') no-repeat 0 0;background-size: 60px 76px;"></div></a>';
-            aItemHtml += '<div class="adviser-info" ><div class="adviser-info-name" >'+ aitem.user_info.realname +'</div><div class="adviser-info-date clearfix" ><span class="adviser-info-date-s">'+ aitem.add_time +'</span><span>'+ aitem.tag_list +'</span></div><div class="adviser-info-title">'+ aitem.title +'</div>';
+            aItemHtml += '<div class="adviser-info" ><div class="adviser-info-name" >'+ aitem.user_info.realname +'</div><div class="adviser-info-date clearfix" ><span class="adviser-info-date-s">'+ aitem.add_time +'</span></div><div class="adviser-info-title">'+ aitem.title +'<span>'+ aitem.tag_list +'</span></div>';
             aItemHtml += '<div class="offer-opt-bar clearfix"><div class="opt-btn red-border delete"  onclick="deleteOffer($(this), '+aitem.uid+',' +aitem.id+')"><i class="iconfont">&#xe8c1;</i><span>删除</span></div><div class="opt-btn edit"><i class="iconfont">&#xe61c;</i><a target="_blank" href="'+  fn.curlgen("advisor_center/postarticle/" + aitem.id)+'">编辑</a></div></div>';
             aItemHtml += ' <p class="adviser-info-p"><a target="_blank" href="'+ fn.urlgen("case",aitem.id.toString()) +'" class="dui-text-warning">'+ aitem.introduce +'<span>【查看详情】</span></a></p>';
             aItemHtml += addArticleImg(aitem.img_list);

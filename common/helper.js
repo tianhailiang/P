@@ -345,7 +345,7 @@ function pageTDK(flag, tdkParam) {
     var nationName = common.getCountryEn(nationid);
   }
   if(cityid){
-    var cityName = common.getCityEn(cityid);
+    var cityName = common.getCityChinese(cityid);
   }
   return tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname);
 }
