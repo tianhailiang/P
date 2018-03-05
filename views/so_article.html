@@ -156,6 +156,7 @@
         font-size: 12px;
         color: #333;
         line-height: 24px;
+        height: 48px;
         text-align: justify;
     }
     .result-item .item-info .info-desc a{
@@ -219,7 +220,7 @@
                     {% for item in article_list.list %}
                     <div class="result-item clearfix">
                         <div class="item-adviser">
-                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>
+                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>
                         </div>
                         <div class="item-info">
                             <div class="info-top clearfix">

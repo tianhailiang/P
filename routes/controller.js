@@ -2565,6 +2565,20 @@ exports.edit_article = function(req,res,next){
   }
   data.article_id = req.params.id; //获取文章id 
   async.parallel({
+      lunbo_list: function (callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER_ARTICLEEDIT",
+              "ad_seat": "SEAT1",
+              "cityid":area
+          }, callback);
+      },
+      lunbo_list2: function (callback) {
+          cms.lunbo_list({
+              "ad_page": "ADVISOR_CENTER_ARTICLEEDIT",
+              "ad_seat": "SEAT2",
+              "cityid":area
+          }, callback);
+      },
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
@@ -2580,11 +2594,13 @@ exports.edit_article = function(req,res,next){
       },callback);  
     } 
   },function(err, result){
+      data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
+      data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article = returnData(result.article,'article');
     var pagekey = null;
     if(data.userinfo.usertype ==2){
-      pagekey = 'ADVISOR_CENTER_POSTARTICLE';
+      pagekey = 'ADVISOR_CENTER_ARTICLEEDIT';
     }else if(data.userinfo.usertype == 3){
       pagekey = 'CANZAN_CENTER_POSTARTICLE'; 
     }
