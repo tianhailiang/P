@@ -3,8 +3,8 @@
 </div>
 <style>
   .l_u{
-    width: 420px;
-    height: 400px;
+    width: 421px;
+    height: 434px;
     background-color: #fff;
   }
   .l_u_top{
@@ -77,11 +77,14 @@
     background-color: #c13232;
     color: #fff;
   }
+  .l_u_com_but:hover{
+    color: #fff;
+  }
   .l_u_com_she{
     width: 330px;
     text-align: center;
     position: relative;
-    margin-top: 30px;
+    margin-top: 18px;
   }
   .l_u_com_she div{
     width: 330px;
@@ -106,6 +109,53 @@
     height: 32px;
     cursor: pointer;
   }
+  input[type="checkbox"]:checked+label {color: red;}
+
+input[type="checkbox"] + label:before {
+  content: "\a0"; /*不换行空格*/
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  width: 14px;
+  height: 13px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #958c87;
+  font-weight: normal;
+  line-height: 1; 
+  
+}
+
+input[type="checkbox"]:checked + label:before {
+  content: "\a0"; /*不换行空格*/
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  width: 10px;
+  height: 9px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #d31d2c;
+  background-color: #d31d2c;
+  background-clip: content-box;
+  padding: 2px;
+  color: #d31d2c;
+  
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+.yonghu{
+  display: inline;
+  margin-left: -5px;
+  font-size: 14px;
+  color: #333;
+}
+.yonghu a{
+  color: #c13232;
+}
 </style>
 <div class="l_u" style="display: none;">
   <div class="l_u_top"><img src="{{helper.cdnhost}}/assets/img/logo_login.png" alt=""></div>
@@ -127,8 +177,12 @@
       </div>
     </form>
     <div style="margin-top: 20px;">
-      <input type="button" class="btn l_u_com_but" style="width: 330px;padding-left: 0;padding-right: 0" id="loginuser" value="登 录"/>
+        <input type="button" class="btn l_u_com_but" style="width: 330px;padding-left: 0;padding-right: 0" id="loginuser" value="登 录"/>
     </div>
+      <div class=" clearfix" id="guwen" style="margin-top: 20px;">
+          <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi"/><label for="xieyi"></label> 
+          <div class="yonghu">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></div>
+      </div>
     <div class="l_u_com_she">
       <div><i>社交账号登录</i></div>
     </div>
@@ -244,7 +298,7 @@ function getlogin () {
             shade: [0.4,'#000'],
             shadeClose: true,
             closeBtn: true,
-            area: ['420px', '400px'],
+            area: ['421px', '437px'],
             title: false,
             border: [0],
             bgcolor: "#fff",
@@ -333,6 +387,10 @@ if ($('#verify').val() === '') {
   layer.msg('请输入手机验证码');
   return
 }
+if (!$("input[type='checkbox']").is(':checked')) {
+      layer.msg('请同意注册协议');
+      return
+    }
 $.ajax({
   url: '/login_user',
   type:'POST',

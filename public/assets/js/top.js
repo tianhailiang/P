@@ -59,7 +59,7 @@
 	            shade: [0.4,'#000'],
 	            shadeClose: true,
 	            closeBtn: true,
-	            area: ['420px', '400px'],
+	            area: ['421px', '437px'],
 	            title: false,
 	            border: [0],
 	            bgcolor: "#fff",
@@ -146,6 +146,10 @@
     }
     if ($('#verify').val() === '') {
       layer.msg('请输入手机验证码');
+      return
+    }
+    if (!$("input[type='checkbox']").is(':checked')) {
+      layer.msg('请同意注册协议');
       return
     }
     $.ajax({
