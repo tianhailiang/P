@@ -4,6 +4,155 @@
 <!--[if lt IE 10]>
 <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
 <![endif]-->
+<style>
+    .content_title{
+        margin-top: 20px;margin-left: 20px;margin-bottom: 30px;background: #f3f3f3;width: 840px;height: 40px
+    }
+    .content_title_t {
+        float: left;width: 136px;height: 40px;background: #C13232;color: #fff;font-size: 18px;text-align: center;line-height: 40px
+    }
+    .list-h{
+        height:130px;
+    }
+    .list-h img{
+        display: block;
+        width:100%;
+        height:100%;
+    }
+    .post-box{
+        width: 840px;
+        padding: 10px 19px 20px;
+        background-color: #fff;
+    }
+    .post-box-in {
+        width: 100%;
+        height: 440px;
+        background-color: #f8f8f8;
+        padding: 60px 0 0 140px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    .code-box{
+        width: 240px;
+        height: 320px;
+        float: left;
+        background-color: #eee;
+        position: relative;
+    }
+    .code-box-in {
+        position: absolute;
+        background-color: #fff;
+        font-size: 14px;
+        color: #333;
+        text-align: center;
+    }
+    .code-box-in .icon{
+        display: block;
+        width: 120px;
+        height: 120px;
+        margin: 40px auto;
+    }
+    .code-box-in .info {
+        margin: 20px auto 0;
+    }
+    .code-box-in .upload-code-btn{
+        width: 160px;
+        height: 30px;
+        color: #fff;
+        text-align: center;
+        line-height: 30px;
+        -webkit-border-radius: 15px;
+        -moz-border-radius: 15px;
+        border-radius: 15px;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+    .code-box.weixin-box{
+        margin-right: 80px;
+    }
+    .code-box.weixin-box .code-box-in {
+        width: 226px;
+        height: 292px;
+        left: 50%;
+        top: 50%;
+        margin-left: -113px;
+        margin-top: -146px;
+    }
+    .code-box.weixin-box .code-box-in .upload-code-btn {
+        background-color: #51c332;
+    }
+    .code-box.qq-box .code-box-in .upload-code-btn {
+        background-color: #2a9cd5;
+    }
+    .code-box.qq-box .code-box-in {
+        width: 216px;
+        height: 296px;
+        left: 50%;
+        top: 50%;
+        margin-left: -108px;
+        margin-top: -148px;
+    }
+    .code-box-in .has-code,.code-box-in .no-code {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    .code-box-in .has-code {
+        background-position: center;
+        -webkit-background-size: contain;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    .code-box-in .has-code .code-mask{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background-color: rgba(0,0,0,0.4);
+    }
+    .code-box-in .has-code .code-mask .upload-code-btn {
+        position: absolute;
+        left: 28px;
+        bottom: 66px;
+        cursor: pointer;
+    }
+    .loading-mask{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        line-height: 292px;
+        color: #C13232;
+        font-size: 20px;
+    }
+    .banner-box{
+        margin-top: 20px;
+        height: 130px;
+        /*background-color: yellow;*/
+    }
+    .banner-box-left{
+        background: #dcdcdc;
+        height: 130px;
+    }
+    .banner-box-right{
+        background: #dcdcdc;
+        height: 130px;
+    }
+    .slider .slider-dot ul{
+        left:95%;
+    }
+    .slider .slider-dot ul li{
+        border-radius: 50%;
+    }
+    .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
+        margin-top: -33px
+    }
+    .banner-box-right .slider .slider-dot ul{
+        left: 50%;
+    }
+</style>
 <body style="background: #f5f5f5">
 
 {% include "widget/top/top.html" %}
