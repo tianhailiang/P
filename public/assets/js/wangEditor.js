@@ -561,7 +561,7 @@ var config = {
     withCredentials: false,
 
     // 自定义上传图片超时时间 ms
-    uploadImgTimeout: 5000,
+    uploadImgTimeout: 60000,
 
     // 上传图片 hook 
     uploadImgHooks: {
@@ -3667,7 +3667,7 @@ UploadImg.prototype = {
         var editor = this.editor;
         var config = editor.config;
         var maxSize = config.uploadImgMaxSize;
-        var maxSizeM = maxSize / 1000 / 1000;
+        var maxSizeM = Math.floor(maxSize / 1000 / 1000);
         var maxLength = config.uploadImgMaxLength || 10000;
         var uploadImgServer = config.uploadImgServer;
         var uploadImgShowBase64 = config.uploadImgShowBase64;

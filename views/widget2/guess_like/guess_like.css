@@ -6,16 +6,21 @@
 .likes-item{overflow:hidden}
 .likes-item span{display:inline-block;margin-top:18px}
 .likes-item+.article{margin:8px 0 10px;color:#333;font-size:16px}
-.likes-item img{float:left;width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
+.likes-item img{float:left;width:51px;height:51px;}
 .likes-item .people-action{width:80px;height:24px;-webkit-border-radius:8px;border-radius:8px;background:#fdf3f2;color:#c13232;text-align:center;font-size:12px;line-height:24px}
 .likes-item .people-name{margin-right:34px;margin-left:10px;padding-right:20px;background:url(/assets/img/1v.png) no-repeat;background-position:right center;font-size:14px}
 .likeItem{width: 280px;border:solid 1px #dbdbdb;}
 .likeItem > h2{height: 50px;line-height: 50px;font-size: 18px;color: #333;background: #f3f3f3;}
 .likeItem > h2 > em{
-	display: inline-block;width: 2px;height: 22px;
-	background: #c13232;vertical-align: middle;margin-right: 16px;}
+	display: inline-block;
+	width: 2px;
+	height: 22px;
+	background: #c13232;
+	vertical-align: middle;
+	margin-right: 16px;
+}
 .gw-likelist .img-responsive{display: inline-block;height: 51px;width:51px;border-radius: 50%;-webkit-border-radius:50%;}
-.gw-likelist .article{margin-top:20px;margin-bottom:8px;font-size: 16px;color: #333;}
+.gw-likelist .article{margin-top:5px;margin-bottom:8px;font-size: 16px;color: #333;}
 
 
 

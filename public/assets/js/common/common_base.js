@@ -72,14 +72,14 @@
           "2": ["上海", "sh"],
           "8": ["沈阳", "sy"],
           "12": ["石家庄", "sjz"],
-          "20": ["深圳", "suz"],
-          "23": ["苏州", "sz"],
+          "20": ["深圳", "sz"],
+          "23": ["苏州", "suz"],
           "4": ["天津", "tj"],
           "17": ["太原", "ty"],
           "18": ["唐山", "ts"],
          /*"14": ["武汉", "wh"],*/
-          "50": ["武昌", "wc"],
-          "51": ["汉口", "hk"],
+          "14": ["武昌", "wh"],
+          "14": ["汉口", "wh"],
           "33": ["无锡", "wx"],
           "42": ["温州", "wz"],
           "15": ["西安", "xa"],
@@ -119,9 +119,11 @@
             }
         }
         url += chan + param;
-
-        if (js_api_config.wwhost == 'development') { //如果是開發環境
+        
+        if (js_api_config.version == 'development') { //如果是開發環境
             url = js_api_config.wwhost + ':4000' + url;//social
+        }else{
+          url = js_api_config.wwhost+url;
         }
 
         if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)){

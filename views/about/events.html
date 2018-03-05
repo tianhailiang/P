@@ -26,7 +26,7 @@
 <div style="margin:20px 0">
   {% include "widget/nav_tenth/nav_tenth.html" %}
 </div>
-<div class="dui-layout-lg clearfix" style="margin: 20px auto;">
+<div class="dui-layout-lg clearfix" style="margin: 20px auto;height: 360px;background: #dedede">
   <div class="dui-layout-lg events-guanggao" id="AD_EVENTS_SEAT1"></div>
 </div>
 <div class="dui-layout-lg dui-box-shadow" style="padding-bottom: 20px;background: #ffffff;">
@@ -36,7 +36,7 @@
 
 {% include "widget/new_footer/new_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
-{{slide.leyu_slide("AD_EVENTS_SEAT10") }}
+{{slide.leyu_slide("AD_EVENTS_SEAT10",helper) }}
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_ninth.js"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js" ></script>-->

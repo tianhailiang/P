@@ -12,7 +12,100 @@ function strcut(str, count) {
 function getDefaultFormat (str, count) {
   return moment.unix(str).format(count || 'YYYY-MM-DD');
 }
+/**
+ * 常规url拼装  开发、测试区分
+ */
+function paramurlgen() {
+  var isyimin = false;
+  var url = '',chan = '',param = '',nation = '',city = '',nationid='',cityid='';
+  if(arguments.length == 0){
+    return ;
+  }
+  //get chan & subchan
+  for(var i= 0 ; i < arguments.length;i++){
+    if(i == 0 && arguments[i] == 'yimin'){
+      isyimin = true;
+      continue;
+    }
+    if(arguments[i] == '' || arguments[i].split('=').length > 1)
+    {
+      break;
+    }
+    else
+    {
+      chan += '/' + arguments[i];
+    }
+  }
+  // i is hold
+  for(i; i < arguments.length;i++){
+    if (nationid = seo_to_url(arguments[i], 'n')) {
+      nation = common.getCountryEn(nationid);
+    }
+    if (cityid = seo_to_url(arguments[i], 'c')) {
+      if (chan.match(/^\/news(\w*)/) && cityid == 0) { //城市资讯（全国）cityid为0
+        city = 0;
+      }
+      else {
+        city = common.getCityEn(cityid);
+      }
+    }
+    if(!nationid && !cityid && arguments[i] != ''){
+      /*过滤默认参数 start*/
+      var can_type = arguments[i].split('=')[0];
+      var can_val = arguments[i].split('=')[1];
+      if (((can_type == 'order') && (can_val == 1 || can_val == 'score'||  can_val == 'score desc')) || ((can_type == 'page') && (can_val == 1)) || ((can_type == 'crowd') && (can_val == 0))  || ((can_type == 'time') && (can_val == 0)) || ((can_type == 'e') && (can_val == 0)) || ((can_type == 'serve') && (can_val == 0)) || ((can_type == 't') && (can_val == 1)) ) {
+        continue;
+      }
+      /*过滤默认参数 end*/
+      if (param == '') {
+        param += '/' + arguments[i].replace(/=/g, "-");
+      }
+      else {
+        param += '__' + arguments[i].replace(/=/g, "-");
+      }
+    }
+  }
+  if(chan.match(/yimin/g)){
+    url += "/yimin"+(city?"/"+city:"") + ((nation && nation != 'all')?"/"+nation:"") + chan.replace(/\/yimin/, "") + param + ".html";
+  }else{
+    if (chan.match(/^(.*)schoollib(.*)$/)) {
+      url += ((nation && nation != 'all')?"/"+nation:"/") + chan.replace(/\//,"") + param + ".html";
+    }
+    else if (chan == '/nationrank'&& !isyimin) {
+      url += ((nation && nation != 'all')?"/"+nation:"");
+    }
+    else {
+      url += ((city && city != 0)?"/"+city:"") + ((nation && nation != 'all')?"/"+nation:"") + chan + param + ".html";
+    }
+  }
+  //url += (city?"/"+city:"") + (nation?"/"+nation:"") + chan + param + ".html";
+  if(url == "/.html"  ||  url=='.html'){
+    url = "/";
+  }
+  if(!exits_static_page(chan + param + ".html")){
+    url = url.replace(/\.html/g, "");
+  }else{
+    if(chan=='/branch_home'){
+      url = url.replace(/branch_home.html/g, "");
+      url = url.replace(/branch_home/g, "");
+    }
+  }
+  //liuxue
+  if (!isyimin && config.version == 'development') { //如果是開發環境
+    if( (chan.indexOf('/p/') != -1 || chan.indexOf('/p1/') != -1 || chan.indexOf('/article/') != -1 || chan.indexOf('/case/') != -1 || chan.indexOf('center') != -1 || chan.match(/^\/p$/) || chan.indexOf('/blog') != -1 ) && chan.indexOf('/yimin/')==-1 && chan.indexOf('/canzan')==-1) {
+      url = config.wwhost + ':4000' + url;//social
+    }
+    else {
+      url = config.wwhost + ':4000' + url;//web
+    }
+  }
 
+  //yimin
+  if (isyimin && config.version == 'development') { //如果是開發環境
+    url = 'http://' + config.yiminhostname + ':3000' + url;//web
+  }
+  return url;
+}
 function active_urlgen(){
   var url = '',chan = '',param = '',nation = '',city = '',nationid='',cityid='';
   if(arguments.length == 0){
@@ -100,6 +193,8 @@ function urlgen() {
 
   if (config.version == 'development') { //如果是開發環境
     url = config.wwhost + ':4000' + url;//social
+  }else{
+    url = config.wwhost+url;
   }
   if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
     url = url + '.html';
@@ -252,7 +347,7 @@ function pageTDK(flag, tdkParam) {
     var nationName = common.getCountryEn(nationid);
   }
   if(cityid){
-    var cityName = common.getCityEn(cityid);
+    var cityName = common.getCityChinese(cityid);
   }
   return tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname);
 }
@@ -405,6 +500,7 @@ module.exports = {
   cut: strcut ,
   getDefault: getDefaultFormat,
   urlgen: urlgen,
+  paramurlgen:paramurlgen,
   active_urlgen:active_urlgen,
   avaterimg: avaterimg,
   cdnhost: config.cdnhost,
