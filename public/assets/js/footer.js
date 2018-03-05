@@ -66,6 +66,7 @@ function showcity2(){
     if($.cookie('currentarea')!=14){
       $('#address').html(iDcity2[$.cookie('currentarea')][1]);
       $('#tel').html(iDcity2[$.cookie('currentarea')][2]);
+      $("#wc-hk").css("display","none");
     }
     else{
       $("#qita-city").css("display","none");
