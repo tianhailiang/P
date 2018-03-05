@@ -1509,7 +1509,7 @@ exports.adviser_main = function (req, res, next) {
       },
     guwen_list:function (callback){
       wec.adviser_main({
-        "per_page":6, "order":"add_time desc", "uid": data.uid}, callback)
+        "per_page":6, "order": encodeURI("add_time desc"), "uid": data.uid}, callback)
     },
     likelist:function (callback){ //猜你喜欢
       wec.likelist({
@@ -1616,7 +1616,7 @@ exports.adviser_special = function (req, res, next) {
       wec.userinfo({"u_id": data.login_info.uid, "to_uid":data.to_uid},callback);
     },
     zhuanlanlist: function (callback) {
-      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2,"order":"add_time desc"}, callback);
+      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2,"order": encodeURI("add_time desc")}, callback);
     }
   },function(err, result){
       data.xSlider = returnData(result.lunbo_list,'lunbo_list');
@@ -1718,7 +1718,7 @@ exports.adviser_case = function (req, res, next) {
                 "uid": data.to_uid,
                 "per_page": 6,
                 "type": 1,
-                "order":"add_time desc"
+                "order": encodeURI("add_time desc")
             }, callback);
         }
 
@@ -2842,7 +2842,7 @@ exports.hot = function (req, res, next) {
     },
     guwen_list: function (callback) {
       wec.adviser_main({
-        "per_page": 5, "order": "views desc", "uid": data.uid
+        "per_page": 5, "order": encodeURI("views desc"), "uid": data.uid
       }, callback)
     },
     likelist: function (callback) { //猜你喜欢

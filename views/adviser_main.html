@@ -145,7 +145,7 @@
         type: 'GET',
         datatype: 'json',
         data: {
-          order: "add_time desc",
+          "order": encodeURI("add_time desc"),
           page: page,
           per_page: per_page,
           uid: thisObj.attr("data-uid")
