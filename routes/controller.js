@@ -1431,6 +1431,7 @@ exports.article_detail= function(req,res,next){
   },function(err,result){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        result.article.data.article_info.img_info =JSON.parse(result.article.data.article_info.img_info);
         data.article =returnData(result.article,'article');
         if(result.article.code == code){
           //文章不存在的时候  跳到404
