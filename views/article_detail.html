@@ -89,7 +89,7 @@
           <div class="adviser-case-detail-come" >
             <span>时间：{{article.article_info.add_time}}</span>
             <span style="float:right;margin-left:20px;">
-              点赞{{article.article_info.votes}}
+              点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
             </span>
             <span style="float:right;margin-left:20px;">
               评论{{article.article_info.comments}}
@@ -248,9 +248,11 @@
             if(result.data.action=='add'){
               layer.msg('点赞成功');
               $(that).find('i').html('&#xe604;');
+              $('#fabulous-num').text(Number(Number($('#fabulous-num').text())+1));
             }else if(result.data.action == 'remove'){
               layer.msg('取消点赞成功');
               $(that).find('i').html('&#xe651;');
+              $('#fabulous-num').text(Number(Number($('#fabulous-num').text())-1));
             }  
            
           }
