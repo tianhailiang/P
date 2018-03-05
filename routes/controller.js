@@ -121,7 +121,7 @@ exports.so_article = function (req, res, next) {
     var nquery = comfunc.getReqQuery(req.params[1]);
     var page = nquery && nquery.page ? nquery.page : 1;
     var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    var order = nquery && nquery.order ? nquery.order : "";
+    var order = nquery && nquery.order ? nquery.order : "score";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -173,7 +173,7 @@ exports.so_article = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,order == '' ? '':'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
         console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
