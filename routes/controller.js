@@ -106,7 +106,7 @@ exports.index = function (req, res, next) {
         };
         // console.log(result.shouye);
         //data.esikey = esihelper.esikey();
-        log.info(data.xSlider2)
+        // log.info(data.xSlider2)
         res.render('index', data);
     })
 };

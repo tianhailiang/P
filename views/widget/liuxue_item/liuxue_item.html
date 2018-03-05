@@ -76,7 +76,7 @@
 								</div>
 								{#<p>{{item.type}}</p>#}
 								<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
-									<div class="gw-legend">{{item.tag_list}}</div>
+									<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
 									<p style="clear:both">{{item.title | ellipsis(21)}}</p>
 								</a>
 							</li>
