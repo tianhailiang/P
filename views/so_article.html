@@ -229,10 +229,16 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
+                <div class="dui-layout-con page">
+                    <div class="pagination-box">
+                        {% import "widget/pagtion/pagtion.html" as pagtion %}
+                        {{pagtion.pagtion(pagination)}}
+                    </div>
+                </div>
+               <!-- <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
                     加载更多
                     <i class="city-icon iconfont">&#xe60b;</i>
-                </div>
+                </div>-->
             </div>
             {% endif %}
         </div>
@@ -257,6 +263,8 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
     $(function () {
+        //让分页器居中显示
+        $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
@@ -276,7 +284,7 @@
             slidesPerGroup : 2,
           pagination: true
         });
-        var area = $.cookie('currentarea') ? $.cookie('currentarea') : 1;
+/*        var area = $.cookie('currentarea') ? $.cookie('currentarea') : 1;
         var keyword = $('#result-keyword').text();
         var load_page = $('#load-more-article').attr('data-cur_page')*1+1;
         function more_artice (art_list) {
@@ -355,7 +363,7 @@
                     console.log('加载更多出错了！');
                 }
             })
-        })
+        })*/
     })
 
 </script>

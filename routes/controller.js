@@ -176,6 +176,11 @@ exports.so_article = function (req, res, next) {
             pagekey: 'SEARCHNEWS', //key
             cityid: area
         };
+        data.pagination = {
+            pages:Number.parseInt(data.article_list.totalpage),
+            hrefFormer:helperfunc.urlgen('so_article','order='+order,'page='),
+            currentPage:Number.parseInt(page)
+        }
         data.esikey = esihelper.esikey();
         res.render('so_article', data);
 
