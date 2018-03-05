@@ -67,6 +67,19 @@
   display: inline-block;
   width: 22px;
 }
+.liuxue-footer-content .address ul li {
+  line-height: 30px;
+  font-size: 14px;
+}
+.liuxue-footer-content .address ul li i {
+  display: inline-block;
+  width: 22px;
+}
+.liuxue-footer-content .address .wuhan-address{
+  width: 500px;
+  float:left;
+}
+
 .liuxue-footer-content .copyright{
   font-size: 14px;
   color: #B4B4B4;
