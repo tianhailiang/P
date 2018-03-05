@@ -94,7 +94,8 @@ exports = module.exports = function (app) {// routes
   //用户 收到的消息
   app.get('/user_center/revmsg', controller.center_message);
   //顾问 相册（用户视角）
-  app.get('/:id/album', controller.adviser_photo_p);
+  app.get(/^\/(\d+)\/album/, controller.adviser_photo_p);
+  // app.get('/:id/album', controller.adviser_photo_p);
   //参赞 相册（用户视角）
   //app.get('/p1/:id/album', controller.adviser_photo_p);
   //案列底页（用户视角）
