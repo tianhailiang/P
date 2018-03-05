@@ -101,7 +101,7 @@
     </div>
 </div>
 {% import "widget/new_slide/new_slide3.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info) }}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
 {% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null; 
@@ -251,7 +251,7 @@
         type: 'GET',
         datatype: 'json',
         data: {
-          order:"add_time desc",
+          "order": encodeURI("add_time desc"),
           page: page,
           type: 1,
           per_page: per_page,

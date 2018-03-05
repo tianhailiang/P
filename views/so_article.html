@@ -212,7 +212,7 @@
             {% else %}
             <div class="has-result">
                 <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.paramurlgen('so_article','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=score')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
                     <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
                     <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
                 </div>
@@ -267,7 +267,7 @@
 </div>
 {% include "widget/new_footer/new_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>

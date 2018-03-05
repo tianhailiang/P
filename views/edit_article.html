@@ -208,7 +208,7 @@
 	</div>
   {% include "widget/new_footer/new_footer.html" %}
   {% import "widget/new_slide/new_slide.html" as  slide %}
-  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){
