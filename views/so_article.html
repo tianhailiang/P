@@ -4,6 +4,13 @@
 <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
 <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
 <style>
+    .pagination-box{
+        float: left;
+        position: relative;
+        left: 50%;
+        margin-top: 54px;
+        margin-bottom: 54px;
+    }
     .banner-box{
         margin-top: 20px;
         height: 130px;
@@ -204,9 +211,9 @@
             {% else %}
             <div class="has-result">
                 <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.urlgen('so_article','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
-                    <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
-                    <a href="{{helper.urlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
+                    <a href="{{helper.paramurlgen('so_article','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
+                    <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
                 </div>
                 <div class="result-conent" id="result-content">
                     {% for item in article_list.list %}
@@ -229,12 +236,6 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="dui-layout-con page">
-                    <div class="pagination-box">
-                        {% import "widget/pagtion/pagtion.html" as pagtion %}
-                        {{pagtion.pagtion(pagination)}}
-                    </div>
-                </div>
                <!-- <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
                     加载更多
                     <i class="city-icon iconfont">&#xe60b;</i>
@@ -242,6 +243,15 @@
             </div>
             {% endif %}
         </div>
+        {% if article_list.total == 0 or article_list.total == null %}
+        {% else %}
+        <div class="dui-layout-con page">
+            <div class="pagination-box">
+                {% import "widget/pagtion/pagtion.html" as pagtion %}
+                {{pagtion.pagtion(pagination)}}
+            </div>
+        </div>
+        {% endif %}
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-silde">

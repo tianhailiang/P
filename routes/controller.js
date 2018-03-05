@@ -11,6 +11,7 @@ var esihelper = require('../middleware/esihelper');
 var code = '1220000006'; // not found
 var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
+var helperfunc = require('../common/helper');
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -178,9 +179,10 @@ exports.so_article = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
-            hrefFormer:helperfunc.urlgen('so_article','order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,order == '' ? '':'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
+        console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_article', data);
 
