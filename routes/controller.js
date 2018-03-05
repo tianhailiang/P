@@ -121,7 +121,7 @@ exports.so_article = function (req, res, next) {
     var nquery = comfunc.getReqQuery(req.params[1]);
     var page = nquery && nquery.page ? nquery.page : 1;
     var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    var order = nquery && nquery.order ? nquery.order : "";
+    var order = nquery && nquery.order ? nquery.order : "score";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -173,7 +173,7 @@ exports.so_article = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,order == '' ? '':'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
         console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
@@ -474,7 +474,7 @@ exports.center_main = function (req, res, next) {
         data.follow_list = returnData(result.follow_list,'follow_list');
         data.comment_list =returnData(result.comment_list,'comment_list');
         data.collection_list = returnData(result.collection_list,'collection_list');
-        console.log('data.follow_list', data.follow_list);
+        console.log('data.collection_list', data.collection_list);
         var pagekey = null;
         if(data.userinfo.usertype == 2){
           pagekey = 'ADVISOR_CENTER';
@@ -1431,6 +1431,7 @@ exports.article_detail= function(req,res,next){
   },function(err,result){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        result.article.data.article_info.img_info =JSON.parse(result.article.data.article_info.img_info);
         data.article =returnData(result.article,'article');
         if(result.article.code == code){
           //文章不存在的时候  跳到404

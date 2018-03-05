@@ -101,7 +101,7 @@
               阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
             </span>
           </div>
-          <div class="adviser-case-detail-offer" >
+          <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
             {{article.article_info.message | safe}}
           </div>
           <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;
@@ -180,10 +180,11 @@
               "bdText":"",
               "bdMini":"1",
               "bdMiniList":false,
-              "bdPic":"",
+              "bdPic":$("#get-share-img").attr('data-img'),
               "bdStyle":"0",
               "bdSize":"16",
-              "bdUrl":window.location.href
+              "bdUrl":window.location.href,
+              "bdDesc":""
           },
           "share":{}
       };
