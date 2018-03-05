@@ -81,7 +81,7 @@
   </div>
 </div>
 {% import "widget/new_slide/new_slide3.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info) }}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
 {% include "widget/new_footer/new_footer.html" %}
 <script>
   var login_ss = null;
@@ -114,7 +114,6 @@
       },
       "share": {}
     };
-    console.log(_bd_share_config.common.bdUrl)
     with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
     $('.banner-box-left .slider').xSlider({
       //轮播图配置
@@ -145,7 +144,7 @@
         type: 'GET',
         datatype: 'json',
         data: {
-          order: "add_time desc",
+          "order": encodeURI("add_time desc"),
           page: page,
           per_page: per_page,
           uid: thisObj.attr("data-uid")
@@ -180,9 +179,15 @@
   })
   //明星顾问轮播
   function appendArticleItem(aitem) {
+    var artUrl = '';
+    if(aitem.type ==1){
+      artUrl = fn.urlgen("case", aitem.id.toString());
+    }else{
+      artUrl =fn.urlgen("article", aitem.id.toString());
+    }
     var aItemHtml = '<div class="homepage">' +
         '<div class="homepagecon">' +
-        '<a target="_blank"  href="' + fn.urlgen("blog", aitem.uid.toString()) + '" >'+
+        '<a target="_blank"  href="' + fn.urlgen(aitem.uid.toString()) + '" >'+
         '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: cover;"></div>' +
         '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
         '</a>'+
@@ -192,7 +197,7 @@
         '<a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>'+
         '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>' +
         '<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>' +
-        '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px;" data-artId="'+aitem.id+'">举报</div>' +
+        '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px;" data-artId="'+aitem.id+'" data-url="'+artUrl+'">举报</div>' +
         '</div>' +
         '</div>' +
         '</ul>' +
@@ -300,7 +305,6 @@
     if (login_ss == undefined) {
       layer.msg('你还没有登录')
       window.setTimeout(function () {
-        // window.location.href = fn.curlgen('login', 'h=' + window.location.href);
         getlogin();
       }, 1000);
       return false;
@@ -352,10 +356,11 @@
             report_type: '1',
             report_content: report_content,
             userid: login_ss.uid,
-            artecle_id: $(that).attr("data-artId")
+            article_id: $(that).attr("data-artId"),
+            article_url:$(that).attr('data-url'),
+            city_id:$('.advisor-bumen').attr('data-cityId')
           },
           dataType: 'json',
-          // jsonpCallback:'callback',
           success: function (result) {
             console.log(result)
             if (result.code == 0) {

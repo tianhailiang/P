@@ -75,6 +75,7 @@
 <script>
   var adviserId = $("#commentBtn").attr('data-memberId'); // 获取顾问id
   var article_id = $('#commentBtn').attr("data-artId"); // 获取文章id;
+  var city_id = $('.advisor-bumen').attr('data-cityId');//获取顾问的分公司id
   $(function(){
     $("#saytext").on("change",function(){
     	this.value = this.value.substring(0, 500);
@@ -585,79 +586,79 @@
     });  
   }
   function fabulous(obj){
-  //点赞调取函数
-  if(login_ss == undefined){
-    getlogin();
-    return false;
-  }
-  if(login_ss.uid  == $(obj).next().attr('data-uid')){
-    layer.msg('不能对自己发表的内容进行投票');
-    return false;
-  }
-  $.ajax({
-    url: '/soapi/article_vote',
-    type:'POST',
-    data:{
-      item_id:$(obj).next().attr("data-commentId"),
-      item_type:"comment",
-      u_id:login_ss.uid
-    },
-    dataType:'jsonp',
-    jsonpCallback:'cb',
-    success:function(result){
-      console.log(result)
-      if(result.code == 0){
-        if(result.data.action=='add'){
-          layer.msg('点赞成功');
-            $(obj).find('i').css({'color':'#c13232'});
-        }else if(result.data.action == 'remove'){
-          layer.msg('取消点赞成功');
-          $(obj).find('i').css({'color':'#b2b8c2'});
-        }  
-      }
-    },
-    error:function(XMLHttpRequest, textStatus, errorThrown){
-      console.log(errorThrown)
+    //点赞调取函数
+    if(login_ss == undefined){
+      getlogin();
+      return false;
     }
-  });
+    if(login_ss.uid  == $(obj).next().attr('data-uid')){
+      layer.msg('不能对自己发表的内容进行投票');
+      return false;
+    }
+    $.ajax({
+      url: '/soapi/article_vote',
+      type:'POST',
+      data:{
+        item_id:$(obj).next().attr("data-commentId"),
+        item_type:"comment",
+        u_id:login_ss.uid
+      },
+      dataType:'jsonp',
+      jsonpCallback:'cb',
+      success:function(result){
+        console.log(result)
+        if(result.code == 0){
+          if(result.data.action=='add'){
+            layer.msg('点赞成功');
+              $(obj).find('i').css({'color':'#c13232'});
+          }else if(result.data.action == 'remove'){
+            layer.msg('取消点赞成功');
+            $(obj).find('i').css({'color':'#b2b8c2'});
+          }  
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log(errorThrown)
+      }
+    });
   }
   function fabulous1(obj){
-  if(login_ss == undefined){
-    getlogin();
-    return false;
-  }
-  if(login_ss.uid  == $(obj).next().attr('data-uid')){
-    layer.msg('不能对自己发表的内容进行投票');
-    return false;
-  }
-  $.ajax({
-    url: '/soapi/article_vote',
-    type:'POST',
-    data:{
-      item_id:$(obj).next().attr('data-replyId'),
-      item_type:'comment_ans',
-      u_id:login_ss.uid
-    },
-    dataType:'jsonp',
-    jsonpCallback:'cb',
-    success:function(result){
-      console.log(result)
-      if(result.code == 0){
-        if(result.data.action=='add'){
-          layer.msg('点赞成功');
-            $(obj).find('i').css({'color':'#c13232'});
-        }else if(result.data.action == 'remove'){
-          layer.msg('取消点赞成功');
-          $(obj).find('i').css({'color':'#b2b8c2'});
-        }  
-      }
-    },
-    error:function(XMLHttpRequest, textStatus, errorThrown){
-      console.log(errorThrown)
+    if(login_ss == undefined){
+      getlogin();
+      return false;
     }
-  });
+    if(login_ss.uid  == $(obj).next().attr('data-uid')){
+      layer.msg('不能对自己发表的内容进行投票');
+      return false;
+    }
+    $.ajax({
+      url: '/soapi/article_vote',
+      type:'POST',
+      data:{
+        item_id:$(obj).next().attr('data-replyId'),
+        item_type:'comment_ans',
+        u_id:login_ss.uid
+      },
+      dataType:'jsonp',
+      jsonpCallback:'cb',
+      success:function(result){
+        console.log(result)
+        if(result.code == 0){
+          if(result.data.action=='add'){
+            layer.msg('点赞成功');
+              $(obj).find('i').css({'color':'#c13232'});
+          }else if(result.data.action == 'remove'){
+            layer.msg('取消点赞成功');
+            $(obj).find('i').css({'color':'#b2b8c2'});
+          }  
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log(errorThrown)
+      }
+    });
   }
-  function report(obj,type){
+  function report(obj,type,city_id){
     //举报调取函数
     if(login_ss == undefined){
       getlogin();
@@ -712,7 +713,8 @@
             article_id:article_id,
             comment_id:$(obj).prev().attr('data-commentId'),
             reply_id:$(obj).prev().attr('data-replyId'),
-            article_url:window.location.href
+            article_url:window.location.href,
+            city_id:city_id
           },
           dataType:'json',
           success:function(result){

@@ -8,7 +8,7 @@ var log4js = require('../log/log');
 var log = log4js.getLogger();
 var config = require('../config/config');
 var esihelper = require('../middleware/esihelper');
-var code = '1220000006'; // not found
+var code = '1220000006'; // not found 
 var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
 var helperfunc = require('../common/helper');
@@ -1355,35 +1355,36 @@ exports.case_detail = function(req,res,next){
     },function(err,result){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        data.article =returnData(result.article,'article');
-          if(result.article.code == code){
+        if(result.article.code == code){
             //文章不存在的时候  跳到404
             res.redirect('/404');
             return false;
-          }
-      async.parallel({
-        //获取用户信息（普通用户，顾问，参赞）
-        userinfo:function(callback){
-            wec.userinfo({
-              "u_id":data.login_info.uid,
-              "to_uid":data.article.article_info.uid
-            },callback);
-        }   
-      },function(err,result){
-        data.userinfo = returnData(result.userinfo,'userinfo');
-        data.country =data.userinfo.country || '1';
-        data.hcountry = (data.userinfo.country || '1,').split(',')[0];
-        data.tdk = {
-            pagekey: 'ADVISOR_P_CASE_DETAIL',
-            cityid: area, 
-            realname: data.login_info.realname,
-            title: data.article.article_info.title,
-            description: data.article.article_info.description,
-            keywords: data.article.article_info.keywords,
-        };
-        data.esikey = esihelper.esikey();
-        res.render('case_detail', data);
-      });
+        }
+        data.article =returnData(result.article,'article');
+        data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        async.parallel({
+            //获取用户信息（普通用户，顾问，参赞）
+            userinfo:function(callback){
+                wec.userinfo({
+                  "u_id":data.login_info.uid,
+                  "to_uid":data.article.article_info.uid
+                },callback);
+            }   
+        },function(err,result){
+            data.userinfo = returnData(result.userinfo,'userinfo');
+            data.country =data.userinfo.country || '1';
+            data.hcountry = (data.userinfo.country || '1,').split(',')[0];
+            data.tdk = {
+                pagekey: 'ADVISOR_P_CASE_DETAIL',
+                cityid: area, 
+                realname: data.login_info.realname,
+                title: data.article.article_info.title,
+                description: data.article.article_info.description,
+                keywords: data.article.article_info.keywords,
+            };
+            data.esikey = esihelper.esikey();
+            res.render('case_detail', data);
+        });
     });   
 }
 //专栏底页 （用户视角 包括顾问和参赞的）
@@ -1431,14 +1432,14 @@ exports.article_detail= function(req,res,next){
   },function(err,result){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        result.article.data.article_info.img_info =JSON.parse(result.article.data.article_info.img_info);
-        data.article =returnData(result.article,'article');
         if(result.article.code == code){
           //文章不存在的时候  跳到404
           res.redirect('/404');
           return false;
         }
-      async.parallel({
+        data.article =returnData(result.article,'article');
+        data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        async.parallel({
           //获取用户信息（普通用户，顾问，参赞）
           userinfo:function(callback){
               wec.userinfo({
@@ -1446,7 +1447,7 @@ exports.article_detail= function(req,res,next){
                   "to_uid":data.article.article_info.uid
               },callback);
           }
-      },function(err,result) {
+        },function(err,result) {
           data.userinfo = returnData(result.userinfo, 'userinfo');
           data.country = data.userinfo.country || '1';
           data.hcountry = (data.userinfo.country || '1,').split(',')[0];
@@ -1460,8 +1461,8 @@ exports.article_detail= function(req,res,next){
           };
           data.esikey = esihelper.esikey();
           res.render('article_detail', data);
-      });
-  });
+        });
+    });
 }
 
 //顾问主页-用户视角
@@ -1509,7 +1510,7 @@ exports.adviser_main = function (req, res, next) {
       },
     guwen_list:function (callback){
       wec.adviser_main({
-        "per_page":6, "order":"add_time desc", "uid": data.uid}, callback)
+        "per_page":6, "order": encodeURI("add_time desc"), "uid": data.uid}, callback)
     },
     likelist:function (callback){ //猜你喜欢
       wec.likelist({
@@ -1616,7 +1617,7 @@ exports.adviser_special = function (req, res, next) {
       wec.userinfo({"u_id": data.login_info.uid, "to_uid":data.to_uid},callback);
     },
     zhuanlanlist: function (callback) {
-      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2,"order":"add_time desc"}, callback);
+      wec.adviser_main({"uid": data.to_uid, "page": 1, "per_page": 6, "type": 2,"order": encodeURI("add_time desc")}, callback);
     }
   },function(err, result){
       data.xSlider = returnData(result.lunbo_list,'lunbo_list');
@@ -1718,7 +1719,7 @@ exports.adviser_case = function (req, res, next) {
                 "uid": data.to_uid,
                 "per_page": 6,
                 "type": 1,
-                "order":"add_time desc"
+                "order": encodeURI("add_time desc")
             }, callback);
         }
 
@@ -2327,8 +2328,8 @@ exports.center_article_detail = function(req,res,next){
       },callback);  
     } 
   },function(err, result){
-      data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
-      data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
+    data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
+    data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article =  returnData(result.article,'article');
     data.id = data.article_id;

@@ -194,7 +194,7 @@
               <a href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="article-preview">
                    	文章预览
               </a>
-              <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="save-draft">
+              <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment {% if article.article_info.is_draft == 1 %}disabled{% endif %}" style="margin-right: 7px;" id="{% if article.article_info.is_draft != 1 %}save-draft{% endif %}" >
                     保存到草稿
               </a>
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" id="sureBtn">
@@ -208,7 +208,7 @@
 	</div>
   {% include "widget/new_footer/new_footer.html" %}
   {% import "widget/new_slide/new_slide.html" as  slide %}
-  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10") }}
+  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){
