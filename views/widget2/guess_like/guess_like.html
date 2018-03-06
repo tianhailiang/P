@@ -2,7 +2,7 @@
     <ul class="gw-likelist">
         {% for item in likelist.list %}
         <li>
-            <a href="{{helper.urlgen(item.uid|string)}}" style="display:inline-block;width:51px;height:51px;float:left;background: url({{helper.avaterimg(item.user_info.uid, 'small', 0,0,0)}})  no-repeat 0 0;background-size: cover;-webkit-border-radius: 50%;border-radius: 50%;">
+            <a href="{{helper.urlgen(item.uid|string)}}" style="display:inline-block;width:51px;height:51px;float:left;background: url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}})  no-repeat 0 0;background-size: cover;-webkit-border-radius: 50%;border-radius: 50%;">
             </a>
             <div class="likes-item" style="padding-top:12px;">
               <span class="people-name" style="margin-top:0;margin-right:0;">{{item.user_info.realname}}</span>
