@@ -103,7 +103,7 @@
       </div>
     </div>
     <div class="register_nei_content_s clearfix">
-      <form class="m-t register_nei_form" role="form">
+      <form class="m-t register_nei_form" role="form" name="fm" autocomplete="off">
         <div class="form-group clearfix" style="position: relative;height: 28px">
           <div class="title">*姓 名：&nbsp;&nbsp;&nbsp;</div>
           <input type="text" class="form-control" id="username" required data-vaild="" data-errmsg="姓名不能为空" value="{{userinfo.realname}}"/>
@@ -116,8 +116,8 @@
 
         <div class=" clearfix" id="xingbie" data-sex="{{userinfo.sex}}">
           <div class="title" style="margin-top: -5px;color: #333"> 性 别：&nbsp;&nbsp;</div>
-          <input class="wrap-con" type="radio" name="payMethod" value="1" checked/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;男
-          <input class="wrap-ing" type="radio" name="payMethod" value="2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;女
+          <input class="wrap-con" type="radio" name="fm" value="1" checked/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;男
+          <input class="wrap-ing" type="radio" name="fm" value="2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;女
         </div>
 
         <div class="form-group rel-case-text1 clearfix" style="margin-top: 20px;">
@@ -191,11 +191,11 @@
     var sex = $('#xingbie').data('sex');
     if (sex == 2) {
       $('.wrap-con').removeAttr("checked");
-      setTimeout(function(){$('.wrap-ing').attr("checked","checked");},1000);
+      $('.wrap-ing').prop("checked","checked");
       
     }else if (sex == 1) {
       $('.wrap-ing').removeAttr("checked");
-      setTimeout(function(){$('.wrap-con').attr("checked","checked");},1000);
+      $('.wrap-con').prop("checked","checked");
       
     }
   });

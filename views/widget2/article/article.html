@@ -173,7 +173,7 @@
           layer.msg('删除成功');
           window.setTimeout(function(){
             window.location.reload();
-          },1000);
+          },2000);
         }else{
           layer.msg('删除失败')
         }
@@ -254,7 +254,9 @@
         console.log('fav', result);
         if(result.code == 0){
           layer.msg('删除收藏成功');
-          window.location.reload();
+          window.setTimeout(function(){
+            window.location.reload();
+          },2000);
         }else{
           layer.msg('删除失败')
         }
