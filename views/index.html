@@ -21,7 +21,7 @@
     <div class="xuanze-ing">
       <div style="float: left;line-height: 40px"> <i class="iconfont icon-top" style="margin: 24px 6px 0px 14px;color: #C13232">&#xe603;</i>猜你所在的城市</div>
       <span id="fengongsi" style="float: left;margin: 0 10px;line-height: 40px;color: #C13232;text-decoration:underline">{{nowIp | getCity()}}</span>
-      <div class="xuanze-anniu"><a target="_blank" href="javascript:void(0);" data-id="{{nowIp}}" id="selByIp">正确</a></div>
+      <div class="xuanze-anniu"><a target="_blank" href="{{helper.urlgen('branch_home','c='+ nowIp)}}" data-id="{{nowIp}}" id="selByIp">正确</a></div>
     </div>
     <div class="xuanze-xianxian"></div>
     <div class="xuanze-chengshi">
@@ -386,7 +386,7 @@
       e.preventDefault();
       var currentarea = $(this).attr("data-id");
       $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
-      window.location.reload();
+      window.location.href = $(this).attr("href")//fn.urlgen('branch_home','c='+ currentarea);
     })
       //
       $(window).on('scroll', function () {
