@@ -2,7 +2,7 @@
 .gw-likelist{width:280px;list-style:none;padding-bottom: 10px;background: #fff;}
 .gw-likelist li{padding-top:14px;border-bottom:solid 1px #dcdcdc;margin-left: 10px;margin-right: 10px;}
 /* .gw-likelist li:first-child{margin-top:0} */
-.gw-likelist a{color:#333;text-decoration:none;display: inline-block;height: 51px; width:51px;-webkit-border-radius:50%;border-radius:50%}
+.gw-likelist a{color:#333;text-decoration:none;}
 .likes-item{overflow:hidden}
 .likes-item span{display:inline-block;margin-top:18px}
 .likes-item+.article{margin:8px 0 10px;color:#333;font-size:16px}
@@ -20,7 +20,7 @@
 	margin-right: 16px;
 }
 .gw-likelist .img-responsive{display: inline-block;height: 51px;width:51px;border-radius: 50%;-webkit-border-radius:50%;}
-.gw-likelist .article{margin-top:20px;margin-bottom:8px;font-size: 16px;color: #333;}
+.gw-likelist .article{margin-top:5px;margin-bottom:8px;font-size: 16px;color: #333;}
 
 
 
