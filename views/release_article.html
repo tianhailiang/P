@@ -272,7 +272,7 @@
       var newTagStr = '';
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
-        $('.art-type-i').html('').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'});
+        $('.art-type-i').html('').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'});
         $('.art-type-i').next().css({'color':'#333'});
         $(this).find('.art-type-i').html('&#xe626;').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'});
         $(this).find('.art-type-i').next().css({'color':'#c13232'});
@@ -289,7 +289,7 @@
         // console.log($(this).attr('checked'))
         if($(this).attr('checked')){
           // console.log('false');
-          $(this).find('.level-sel-i').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
           $(this).find('.level-sel-i').next().css({'color':'#333'});
           $(this).attr('checked',false);
         }else{
@@ -304,7 +304,7 @@
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
           // console.log('false');
-          $(this).find('.level-sel-i').css({'border':'1px solid #333','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
           $(this).find('.level-sel-i').next().css({'color':'#333'});
           $(this).attr('checked',false);
         }else{
