@@ -5,15 +5,15 @@
     var ajaxUrlPrefix = global.ajaxUrlPrefix = {
         ucapi: 'http://api.jjlvip.cn/uc',
         cmsapi: 'http://api.jjlvip.cn/cms',
-        cdnhost: 'http://www2.jjlvip.cn:4000',
+        cdnhost: 'http://www.jjl.cn:4000',
         shequ_prefix:'http://api.jjlvip.cn/so',
         imageshost: 'http://images.jjl.cn',
-        nodeapi: 'http://api.jjlvip.cn:3600',
+        nodeapi: 'http://api.jjl.cn:3600',
         avatercdn: 'http://www2.jjlvip.cn'
     };
     var js_api_config = global.js_api_config = {
         version: 'development',
-        wwhost: 'http://www2.jjlvip.cn'
+        wwhost: 'http://www.jjl.cn'
     }
 })(this, document);
 
