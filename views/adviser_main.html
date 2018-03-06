@@ -207,7 +207,7 @@
     if(aitem.type==1){
       aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
     }else if(aitem.type==2){
-      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article", aitem.id.toString()) + '" class="dui-text-warning">' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.title + '<div></a>' + aitem.tag_list + '</div>';
           '</a>' ;
     }
     aItemHtml+=  '</p>' +
