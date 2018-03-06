@@ -191,10 +191,12 @@
     var sex = $('#xingbie').data('sex');
     if (sex == 2) {
       $('.wrap-con').removeAttr("checked");
-      $('.wrap-ing').attr("checked","checked");
+      setTimeout(function(){$('.wrap-ing').attr("checked","checked");},1000);
+      
     }else if (sex == 1) {
-      $('.wrap-con').attr("checked","checked");
       $('.wrap-ing').removeAttr("checked");
+      setTimeout(function(){$('.wrap-con').attr("checked","checked");},1000);
+      
     }
   });
   function baocun () {
