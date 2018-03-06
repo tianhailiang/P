@@ -92,7 +92,7 @@
                     </div>
                 </div>
                 {% if comment_list.list.length > 0 %}
-                    <div class="my-comment clearfix">
+                    <div class="my-comment clearfix revcomment-box">
                         {% for item in comment_list.list %}
                         {% include "widget2/my_comment/my_comment.html" %}
                         {% endfor %}
@@ -228,6 +228,13 @@
             slidesPerGroup : 2,
           pagination: true
         });
+        $(".revcomment-box").on('click','a',function (e) {
+            var articleId = $(this).attr('data-articleId');
+            if (articleId == 0) {
+                e.preventDefault();
+                layer.msg('该文章已被删除')
+            }
+        })
         function limitDisplay(kaishi,changdu,maxLine,lastMonth){
             curM = lastMonth;
             var length = photoArr.length > (kaishi + changdu) ? (kaishi + changdu) : photoArr.length;

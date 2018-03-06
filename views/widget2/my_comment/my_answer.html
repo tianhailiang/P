@@ -7,10 +7,10 @@
             <span class="text">{{item.message | ellipsis(80) | replace_em() | safe}}</span>
             <!--案例-->
             {% if item.article_catid == 17 %}
-            <a target="_blank" href="{{helper.urlgen('case',item.article_id | string)}}" class="reply"><i class="iconfont">&#xe601;</i><span>回复</span></a>
+            <a target="_blank" data-articleId="{{item.article_id | safeId}}" href="{{helper.urlgen('case',item.article_id | safeId | string)}}" class="reply"><i class="iconfont">&#xe601;</i><span>回复</span></a>
             {% else %}
             <!--专栏：留学聚焦11 申请攻略12 签证指导13 申请条件14 留学费用15 专家解读16-->
-            <a target="_blank" href="{{helper.urlgen('article',item.article_id | string)}}" class="reply"><i class="iconfont">&#xe601;</i><span>回复</span></a>
+            <a target="_blank" data-articleId="{{item.article_id | safeId}}" href="{{helper.urlgen('article',item.article_id | safeId | string)}}" class="reply"><i class="iconfont">&#xe601;</i><span>回复</span></a>
             {% endif %}
         </div>
         <div class="cmt-info-time">{{item.add_time | getDefaultFormat('YYYY-MM-DD HH:mm:ss')}}</div>
