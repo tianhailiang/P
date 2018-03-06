@@ -47,7 +47,7 @@ exports.searchlikelist = function(req,res,next){
 exports.guess_like = function(req,res,next){
   log.debug('猜你喜欢')
   var data = {};
-  var country = req.query.n || 1;
+  var country = req.query.n ? req.query.n.split(',')[0] : 1;
   var area = req.query.c || 1;
   async.parallel({
     guess_like: function (callback) {
@@ -60,6 +60,8 @@ exports.guess_like = function(req,res,next){
     }
   },function(err,result){
     data.likelist = returnData(result.guess_like,'guess_like');
+      // log.debug(data)
+
     res.render('./fragment/guess_like', data);
   });
 }
@@ -68,7 +70,7 @@ exports.guess_like = function(req,res,next){
 exports.xiangguanguwen = function(req,res,next){
   log.debug('相关顾问.......')
   var data = {};
-  var country = req.query.n || 1;
+  var country = req.query.n ? req.query.n.split(',')[0] : 1;
   var area = req.query.c || 1;
   async.parallel({
     xiangguan_guwen: function (callback) {
