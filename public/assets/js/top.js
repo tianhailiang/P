@@ -219,7 +219,8 @@
       layer.msg('请输入手机验证码');
       return
     }
-    if (!$("input[type='checkbox']").is(':checked')) {
+    console.log('checkbox',$("#guwen input[type='checkbox']").is(':checked'))
+    if (!$("#guwen input[type='checkbox']").is(':checked')) {
       layer.msg('请同意注册协议');
       return
     }
