@@ -45,7 +45,7 @@
   {% for item in canzanlist.list %}
    <div class="canzan dui-layout-col4 dui-box-shadow">
      <!-- <a target="_blank"  href="{{ helper.urlgen('blog', item.uid | string ) }}" rel="nofollow"> -->
-        <img src="{{ helper.avaterimg(item.uid, 'big') }}" alt="{{ item.realname }}">
+        <img src="{{ helper.avaterimg(item.uid, 'big', item.status,item.version) }}" alt="{{ item.realname }}">
      <!-- </a> -->
       <p class="canzan-p"><span>{{ item.job_number | ellipsis(17) }}</span></p>
       <p class="canzan-p2">简介: {{ item.introduce | ellipsis(49) }}</p>
