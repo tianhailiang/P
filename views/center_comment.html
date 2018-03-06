@@ -87,7 +87,7 @@
         <div class="right-cont">
             <div class="right-title" style="background: #f3f3f3"><div class="tit">收到的评论</div></div>
             {% if comment_data.list.length > 0 %}
-            <div class="right-main clearfix">
+            <div class="right-main clearfix revcomment-box">
                 {% for item in comment_data.list %}
                 {% if login_info.usertype == 1 %} {#用户#}
                 {% include "widget2/my_comment/my_answer.html" %}
@@ -134,6 +134,7 @@
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/common/select.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script>
     $(function () {
         $('.banner-box-left .slider').xSlider({
@@ -157,6 +158,13 @@
         });
       //让分页器居中显示
       $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
+      $(".revcomment-box").on('click','a',function (e) {
+          var articleId = $(this).attr('data-articleId');
+          if (articleId == 0) {
+              e.preventDefault();
+              layer.msg('该文章已被删除')
+          }
+      })
       /*var cur_order=Number(getQueryString('order'))||1;
         if (total_num >= 1) {
             /!*分页器*!/

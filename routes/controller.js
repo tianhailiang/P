@@ -2891,8 +2891,6 @@ exports.hot = function (req, res, next) {
   });
 }
 //协议
-
-//金吉列简介
 exports.agreement = function (req, res, next){
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
@@ -2926,3 +2924,4 @@ exports.agreement = function (req, res, next){
 
   });
 }
+
