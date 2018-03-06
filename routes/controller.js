@@ -551,7 +551,7 @@ exports.post_code = function (req, res, next) {
         data.tdk = {
             pagekey: 'ADVISOR_CENTER_QRCODE',
             cityid: area,
-            realname: data.login_info.realname,
+            realname: data.userinfo.realname,
         };
         res.render('center_post_code', data);
     });
@@ -1302,7 +1302,7 @@ exports.adviser_photo_p = function(req,res,next){
           data.tdk = {
             pagekey: pagekey, 
             cityid: area, 
-            realname: data.login_info.realname,
+            realname: data.userinfo.realname,
           };
           data.esikey = esihelper.esikey();
           res.render('adviser_photo_p', data);
@@ -1377,7 +1377,7 @@ exports.case_detail = function(req,res,next){
             data.tdk = {
                 pagekey: 'ADVISOR_P_CASE_DETAIL',
                 cityid: area, 
-                realname: data.login_info.realname,
+                realname: data.userinfo.realname,
                 title: data.article.article_info.title,
                 description: helperfunc.cut(data.article.article_info.message,80),
                 keywords: data.article.article_info.keywords
@@ -1454,7 +1454,7 @@ exports.article_detail= function(req,res,next){
           data.tdk = {
               pagekey: 'ADVISOR_P_ARTICLE_DETAIL',
               cityid: area,
-              realname: data.login_info.realname,
+              realname: data.userinfo.realname,
               title: data.article.article_info.title,
               description: helperfunc.cut(data.article.article_info.message,80),
               keywords: data.article.article_info.keywords
@@ -1551,7 +1551,7 @@ exports.adviser_main = function (req, res, next) {
     data.tdk = {
       pagekey: pagekey,
       cityid: area,
-      realname: data.login_info.realname,
+      realname: data.userinfo.realname,
     };
     data.esikey = esihelper.esikey();
     log.info(data.xiangguan_guwen)
@@ -1639,7 +1639,7 @@ exports.adviser_special = function (req, res, next) {
           data.tdk = {
             pagekey: pagekey,
             cityid: area,
-            realname: data.login_info.realname,
+            realname: data.userinfo.realname,
           };
           data.esikey = esihelper.esikey();
           res.render('adviser_special', data);
@@ -1772,7 +1772,7 @@ exports.adviser_case = function (req, res, next) {
             data.tdk = {
               pagekey: 'ADVISOR_P_CASE',
               cityid: area,
-              realname: data.login_info.realname,
+              realname: data.userinfo.realname,
             };
             data.esikey = esihelper.esikey();
             res.render('adviser_case_p', data);
@@ -1877,7 +1877,7 @@ exports.advisor_profile = function (req, res, next) {
     data.tdk = {
       pagekey: 'ADVISOR_CENTER_PROFILE', 
       cityid: area,
-      realname: data.login_info.realname,
+      realname: data.userinfo.realname,
     };
     res.render('advisor_profile', data);
   });
@@ -1979,7 +1979,7 @@ exports.advisor_acount = function (req, res, next) {
     data.tdk = {
       pagekey: pagekey,
       cityid: area,
-      realname: data.login_info.realname,
+      realname: data.userinfo.realname,
     };
     res.render('advisor_acount', data);
   });
@@ -2170,7 +2170,7 @@ exports.release_article = function(req,res,next){
         data.tdk = {
             pagekey:pagekey,
             cityid: area,
-            realname: data.login_info.realname,
+            realname: data.userinfo.realname,
         };
         res.render('release_article',data);
     })
@@ -2884,7 +2884,7 @@ exports.hot = function (req, res, next) {
     data.tdk = {
       pagekey: pagekey,
       cityid: area,
-      realname: data.login_info.realname,
+      realname: data.userinfo.realname,
     };
     data.esikey = esihelper.esikey();
     //log.info(data.xiangguan_guwen)
