@@ -38,7 +38,7 @@ exports.index = function (req, res, next) {
         if(cityId && cityId !== comfunc.INVALID_ID){
             iparea = cityId;
             area = cityId;
-            res.cookie("currentarea", cityId, {domain: '.jjlvip.cn'});
+            res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
         }
     }
     var data = [];
@@ -169,7 +169,8 @@ exports.so_article = function (req, res, next) {
         data.cur_page = page;
         data.tdk = {
             pagekey: 'SEARCHNEWS', //key
-            cityid: area
+            cityid: area,
+            keywords: keyword
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),

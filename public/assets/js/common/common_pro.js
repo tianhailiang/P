@@ -13,7 +13,7 @@
     };
     var js_api_config = global.js_api_config = {
         version: 'production',
-        wwhost: 'http://www2.jjlvip.cn'
+        wwhost: 'http://www.jjl.cn'
     }
 })(this, document);
 
