@@ -54,7 +54,7 @@ exports.guess_like = function(req,res,next){
       cms.channel_list({
         "country_id":country,
         "city_id":area,
-        "per_page":1,
+        "per_page":5,
         "order":"views desc"
       }, callback)
     }

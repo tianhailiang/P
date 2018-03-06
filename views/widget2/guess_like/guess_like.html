@@ -9,7 +9,7 @@
               <span class="people-action" style="margin-top:0;float:right;">{{item.tag_list | stringSub()}}</span>
             </div>
             <a href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
-              <div class="article">{{item.title | ellipsis(13) }}</div>
+              <div class="article" style="margin-top:20px;">{{item.title | ellipsis(13) }}</div>
             </a>
         </li>
         {% endfor %}
