@@ -12,7 +12,7 @@
 <div class="comment-list-box" >
   {% for item in article.comments.list %}
   <div class="comment-list clearfix" >
-    <div class="comment-head" style="background:url({{helper.avaterimg(item.uid,'small',item.userinfo.status,item.userinfo.version)}}) no-repeat 0 0;background-size:50px 50px;">
+    <div class="comment-head" style="background:url({{helper.avaterimg(item.uid,'small',item.userinfo.status,item.userinfo.version)}}) no-repeat 0 0;background-size:cover;">
     </div>
     <div class="comment-info" >
       <div  class="comment-info-name-box">
@@ -225,7 +225,7 @@
                 delHtml = '<span class="delete-btn" ><i class="iconfont" >&#xe61e;</i>删除</span>';
               }
 	            html += '<div class="comment-list clearfix" >'+
-	                      '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version)+') no-repeat 0 0;background-size:50px 50px;">'+
+	                      '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version)+') no-repeat 0 0;background-size:cover;">'+
 	                      '</div>'+
 	                      '<div class="comment-info" >'+
 	                        '<div  class="comment-info-name-box">'+
