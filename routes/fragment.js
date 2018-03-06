@@ -47,12 +47,12 @@ exports.searchlikelist = function(req,res,next){
 exports.guess_like = function(req,res,next){
   log.debug('猜你喜欢')
   var data = {};
-  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  // var country = req.query.n ? req.query.n.split(',')[0] : 1;
   var area = req.query.c || 1;
   async.parallel({
     guess_like: function (callback) {
       cms.channel_list({
-        "country_id":country,
+        // "country_id":country,
         "city_id":area,
         "per_page":1,
         "order":"views desc"

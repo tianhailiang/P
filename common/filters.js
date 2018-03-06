@@ -83,6 +83,13 @@ var customFilters = {
     str = str.replace(/\n/g,'<br/>');
     str = str.replace(/\[em_([0-9]*)\]/g,'<img src="'+config.cdnhost+'/assets/img/gif/$1.gif" border="0" />');
     return str;
+  },
+  //字符串判断
+  safeId: function (id) {
+    if (id == null || id == undefined || id == '') {
+      id = 0
+    }
+    return id;
   }
 }
 function loadfilters(env = null) {
