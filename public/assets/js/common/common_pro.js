@@ -8,7 +8,7 @@
         cdnhost: 'http://cdn4.jjl.cn',
         shequ_prefix:'http://api.jjlvip.cn/so',
         imageshost: 'http://images.jjl.cn',
-        nodeapi: 'http://api.jjlvip.cn',
+        nodeapi: 'http://api.jjl.cn',
         avatercdn: 'http://www2.jjlvip.cn'
     };
     var js_api_config = global.js_api_config = {
