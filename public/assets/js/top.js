@@ -246,6 +246,7 @@
   }
 //普通用户退出
 function outlogin () {
+  var login_info = JSON.parse($.cookie('login_ss'));
     $.ajax({
       url: '/login_out',
       type: 'GET',
@@ -253,7 +254,12 @@ function outlogin () {
       success:function(msg){
         if (msg == 'ok') {
           console.log('登出')
-          window.location.reload()
+          if (login_info.usertype == 1){
+            getlogin();
+          } else {
+            window.location.reload();
+          }
+          
         }
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
