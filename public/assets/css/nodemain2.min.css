@@ -683,28 +683,6 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .overseas_apply_item_r_c_n img.dian{display:inline;margin-right:0;margin-top:2px;float:none;width:13px;height:13px}
 .overseas_apply_item_r_c a{width:375px;height:20px;line-height:26px;color:#333;font-size:14px}
 .overseas_apply_item_r_c a:hover{color:#C13232}
-.nav-eleventh{height:44px;background:url(../img/bg1.png) repeat-x;position:relative;color:#fff;font-size:14px}
-.nav-eleventh .nav-ele-home{color:#fff;font-size:16px;float:left;display:inline-block;width:16px;text-align:center;margin-top:6px;line-height:38px;margin-left:20px;margin-right:6px}
-.ele-country-list{margin-top:6px;height:38px;float:left;width:864px}
-.ele-country-list li{float:left;display:inline-block;line-height:38px}
-.nav-eleventh .ele-list{padding:0 22px;color:#fff;font-size:16px;display:block;float:left}
-.ele-country-list .nav-ele-down{color:#fff;font-size:10px;padding-left:10px;float:right}
-.nav-eleventh .ele-country-list li .ele-list:hover{text-decoration:underline}
-.ele-country-list li .ele-list:hover .nav-ele-down{color:#fff}
-.nav-ele-on{background:#fff;border-radius:5px 5px 0 0;box-shadow:2px 1px 3px 2px rgba(0,0,0,.2);color:#c13232}
-.nav-eleventh .ele-country-list li .nav-ele-on:hover{text-decoration:none}
-.nav-ele-zhou .ele-list{padding:0 22px}
-.ele-country-list li ol{display:none}
-.ele-country-list li:hover ol{display:block;box-shadow:2px 1px 3px 2px rgba(0,0,0,.2)}
-.nav-ele-zhou{position:relative}
-.nav-ele-zhou ol{position:absolute;top:38px;width:130px;background:#fff}
-.nav-ele-zhou ol a{color:#333}
-.nav-ele-zhou ol li{text-align:center}
-.nav-ele-zhou ol li a{display:block;width:130px;text-align:center;font-size:16px}
-.nav-ele-zhou ol li a:hover{color:#c13232}
-.ele-tel{width:266px;float:left;color:#fff;margin-top:6px}
-.ele-tel i{color:#fff;font-size:22px;width:22px;display:inline-block;padding-right:10px}
-.ele-tel span{font-size:16px;display:inline-block;line-height:38px}
 .nav-eighth{width:100%;position:relative;z-index:1001;background:#fff}
 .nav-eighth a{color:#333}
 .nav-eighth-log{float:left;margin-top:10px}
@@ -748,6 +726,28 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .nav-oversea span{float:left;font-size:14px;color:#333}
 .nav-oversea i{font-size:20px;margin-right:6px;text-align:left;color:#333}
 .nav-oversea-on{margin-left:10px;margin-top:5px}
+.nav-eleventh{height:44px;background:url(../img/bg1.png) repeat-x;position:relative;color:#fff;font-size:14px}
+.nav-eleventh .nav-ele-home{color:#fff;font-size:16px;float:left;display:inline-block;width:16px;text-align:center;margin-top:6px;line-height:38px;margin-left:20px;margin-right:6px}
+.ele-country-list{margin-top:6px;height:38px;float:left;width:864px}
+.ele-country-list li{float:left;display:inline-block;line-height:38px}
+.nav-eleventh .ele-list{padding:0 22px;color:#fff;font-size:16px;display:block;float:left}
+.ele-country-list .nav-ele-down{color:#fff;font-size:10px;padding-left:10px;float:right}
+.nav-eleventh .ele-country-list li .ele-list:hover{text-decoration:underline}
+.ele-country-list li .ele-list:hover .nav-ele-down{color:#fff}
+.nav-ele-on{background:#fff;border-radius:5px 5px 0 0;box-shadow:2px 1px 3px 2px rgba(0,0,0,.2);color:#c13232}
+.nav-eleventh .ele-country-list li .nav-ele-on:hover{text-decoration:none}
+.nav-ele-zhou .ele-list{padding:0 22px}
+.ele-country-list li ol{display:none}
+.ele-country-list li:hover ol{display:block;box-shadow:2px 1px 3px 2px rgba(0,0,0,.2)}
+.nav-ele-zhou{position:relative}
+.nav-ele-zhou ol{position:absolute;top:38px;width:130px;background:#fff}
+.nav-ele-zhou ol a{color:#333}
+.nav-ele-zhou ol li{text-align:center}
+.nav-ele-zhou ol li a{display:block;width:130px;text-align:center;font-size:16px}
+.nav-ele-zhou ol li a:hover{color:#c13232}
+.ele-tel{width:266px;float:left;color:#fff;margin-top:6px}
+.ele-tel i{color:#fff;font-size:22px;width:22px;display:inline-block;padding-right:10px}
+.ele-tel span{font-size:16px;display:inline-block;line-height:38px}
 .nav-fifth-w{width:100%;background:#C13232}
 .nav-fifth{height:44px;color:#fff;font-size:14px}
 .nav-fifth a{color:#fff;font-size:14px}
@@ -1085,7 +1085,7 @@ form,input{margin:0;padding:0}
 .new-city-box .city-cont a{float:left;width:70px;text-align:center;padding:0 5px;display:block;color:#666;font-size:14px;line-height:28px;cursor:pointer}
 .new-city-box .city-cont a:hover{color:#C13232}
 .new-city:hover .new-city-box{display:block}
-.new_nav_first .nav-right .new-searchs{width:300px;height:30px;position:relative;z-index:9999;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
+.new_nav_first .nav-right .new-searchs{width:300px;height:30px;position:relative;z-index:999;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
 .new_nav_first .submit-select{height:30px;border:none;float:left;background:#FFF;outline-style:none}
 .new_nav_first .new-home-search .text-nav{width:245px;height:28px;line-height:28px;border:1px solid #dcdcdc;border-right:none;padding-left:10px;float:left;font-size:12px;outline-style:none;color:#999}
 .new_nav_first_white .new_nav_first .new-home-search .search-btn{background-color:#C13232}
