@@ -646,7 +646,7 @@ exports.center_comment = function (req, res, next) {
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var page = req.query.page || 1;
-    data.is_draft = req.query.is_draft || 2; //默认为2
+    //data.is_draft = req.query.is_draft || 2; //默认为2
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
     console.log('url', l.h);
@@ -690,7 +690,7 @@ exports.center_comment = function (req, res, next) {
         comment_list: function (callback) { //收到的评论
             wec.comment_list({
                 "u_id": data.login_info.uid,
-              "is_draft":data.is_draft,
+              //"is_draft":data.is_draft,
                 "page": page,
                 "per_page": 11
             }, callback);
@@ -760,7 +760,7 @@ exports.user_comment = function (req, res, next) {
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var page = req.query.page || 1;
-    data.is_draft = req.query.is_draft || 2; //默认为2
+    //data.is_draft = req.query.is_draft || 2; //默认为2
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
     console.log('url', l.h);
@@ -786,7 +786,7 @@ exports.user_comment = function (req, res, next) {
         answer_list: function (callback) { //收到的回复
             wec.answer_list({
                 "u_id": data.login_info.uid,
-              "is_draft":data.is_draft,
+              //"is_draft":data.is_draft,
                 "page": page,
                 "per_page": 11
             }, callback);
@@ -851,7 +851,7 @@ exports.center_message = function (req, res, next) {
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var page = req.query.page || 1;
-    data.is_draft = req.query.is_draft || 2; //默认为2
+    //data.is_draft = req.query.is_draft || 2; //默认为2
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
     console.log('url', l.h);
@@ -893,7 +893,7 @@ exports.center_message = function (req, res, next) {
             wec.msg_list({
                 "status": 1,
                 "page": page,
-                "is_draft":data.is_draft,
+                //"is_draft":data.is_draft,
                 "pagesize": 11
             },callback)
         }
