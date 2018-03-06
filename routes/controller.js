@@ -1379,8 +1379,8 @@ exports.case_detail = function(req,res,next){
                 cityid: area, 
                 realname: data.login_info.realname,
                 title: data.article.article_info.title,
-                description: data.article.article_info.description,
-                keywords: data.article.article_info.keywords,
+                description: helperfunc.cut(data.article.article_info.message,80),
+                keywords: data.article.article_info.keywords
             };
             data.esikey = esihelper.esikey();
             res.render('case_detail', data);
@@ -1456,9 +1456,10 @@ exports.article_detail= function(req,res,next){
               cityid: area,
               realname: data.login_info.realname,
               title: data.article.article_info.title,
-              description: data.article.article_info.description,
-              keywords: data.article.article_info.keywords,
+              description: helperfunc.cut(data.article.article_info.message,80),
+              keywords: data.article.article_info.keywords
           };
+            console.log(data.article.article_info.message)
           data.esikey = esihelper.esikey();
           res.render('article_detail', data);
         });
