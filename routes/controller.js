@@ -1381,7 +1381,7 @@ exports.case_detail = function(req,res,next){
                 realname: data.userinfo.realname,
                 title: data.article.article_info.title,
                 description: helperfunc.cut(data.article.article_info.message,80),
-                keywords: data.article.article_info.keywords
+                keywords: data.article.article_info.title
             };
             data.esikey = esihelper.esikey();
             res.render('case_detail', data);
@@ -1458,7 +1458,7 @@ exports.article_detail= function(req,res,next){
               realname: data.userinfo.realname,
               title: data.article.article_info.title,
               description: helperfunc.cut(data.article.article_info.message,80),
-              keywords: data.article.article_info.keywords
+              keywords: data.article.article_info.title
           };
             console.log(data.article.article_info.message)
           data.esikey = esihelper.esikey();
