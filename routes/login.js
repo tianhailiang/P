@@ -7,6 +7,7 @@ var url = require('url');
 var config = require('../config/config');
 var log4js = require('../log/log');
 var log = log4js.getLogger();
+var wec = require('../model/wecenter');
 
 exports.login = function (req, res, next) {
   log.debug('this router login~~');
@@ -57,14 +58,32 @@ exports.login_user = function (req, res, next) {
 
     //res.render('login', data)
     if (result.login_user.code === 0) {
-      log.debug('ok', result.login_user.code);
-      var express_time =  '2019-03-05T10:12:55.000Z';
-      if (config.version == 'development' && result.login_user.code === 0) {//开发环境
-        res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
-      } else {
-        res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
-      }
-      res.send(result.login_user);
+      //
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.login_user.data.uid,
+              "to_uid":result.login_user.data.uid
+          },callback);
+        }
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo.data);
+        data.login_user.data.status = result.userinfo.data.status;
+        data.login_user.data.version = result.userinfo.data.version;
+        log.debug('result.login_user----------', data.login_user.data);
+      
+        if (config.version == 'development') {//开发环境
+          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
+        }
+      
+        res.send(data.login_user);
+      })
+
+      
+      
+      
       //log.debug('config', config.wwhost);
       //res.redirect(301,config.wwhost);
       //res.end()
@@ -102,14 +121,25 @@ exports.login_s = function (req, res, next) {
 
     //res.render('login', data)
     if (result.login_ss.code === 0) {
-      log.debug('ok', result.login_ss.code);
-      var express_time =  '2019-03-05T10:12:55.000Z';
-      if (config.version == 'development' && result.login_ss.code === 0) {//开发环境
-        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
-      } else {
-        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.login_ss.data.uid,
+              "to_uid":result.login_ss.data.uid
+          },callback);
       }
-      res.send(result.login_ss);
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo);
+        data.login_ss.data.status = result.userinfo.data.status;
+        data.login_ss.data.version = result.userinfo.data.version;
+        if (config.version == 'development') {//开发环境
+          res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
+        }
+        res.send(data.login_ss);
+      })
+      
       //log.debug('config', config.wwhost);
       //res.redirect(301,config.wwhost);
       //res.end()
