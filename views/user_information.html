@@ -353,7 +353,9 @@
               if (res.errno === 0) {
                 $('#loading').hide();
                 layer.close(layopen);
-                $('.advisor-img').find('img').attr('src',ajaxUrlPrefix.avatercdn+'/'+ res.localpath.replace(/\//, '/'));
+                /*$('.advisor-img').find('img').attr('src',ajaxUrlPrefix.avatercdn+'/'+ res.localpath.replace(/\//, '/'));*/
+              console.log('图片地址',res.data[0]);
+              $('.advisor-img').css({'background-image':'url('+ res.data[0] +')'});
               } else {
                 $('#loading').hide();
                 layer.msg(res.message);
