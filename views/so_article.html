@@ -102,9 +102,16 @@
         float: left;
     }
     .result-item .item-adviser a{
+        display: block;
         color: #333;
     }
+    .result-item .item-adviser a .adviser-info {
+        width: 102px;
+        float: left;
+        padding-top: 16px;
+    }
     .result-item .item-adviser .adviser-avatar {
+        float: left;
         width: 50px;
         height: 50px;
         -webkit-border-radius: 50%;
@@ -114,6 +121,10 @@
         line-height: 50px;
         font-size: 14px;
         color: #333;
+        background-repeat: no-repeat;
+        background-position: center top;
+        -webkit-background-size: cover;
+        background-size: cover;
     }
     .result-item .item-adviser .flag{
         margin-left: 4px;
@@ -220,7 +231,8 @@
                     {% for item in article_list.list %}
                     <div class="result-item clearfix">
                         <div class="item-adviser">
-                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>
+<!--                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>-->
+                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></div></a>
                         </div>
                         <div class="item-info">
                             <div class="info-top clearfix">
