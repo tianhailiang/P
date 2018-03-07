@@ -28,6 +28,7 @@
 	border-radius: 50%;
 	-webkit-border-radius:50%;
 }
+#guItems li:nth-child(3) .gw-people{margin-left: 26px;}
 </style>
 {% for floor in shouye %} {#国家#}
 <div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
@@ -47,7 +48,7 @@
 	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
 		{% for line in type.list %} {#行数#}
 			{% if loop.index == 1 %} {#第一行#}
-				<ul class="gw-items gw-topitems">
+				<ul class="gw-items gw-topitems" id="guItems">
 					{% for item in line %}
 					{% if item.uid != null %}
 					<li>
