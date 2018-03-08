@@ -39,16 +39,21 @@ exports.login = function (req, res, next) {
 //普通用户登录
 exports.login_user = function (req, res, next) {
   log.debug('this router login_s~~');
-  var username = req.body.username;
-  var password = req.body.password;
+  var username = req.body.phone;
+  var password = req.body.code;
 
   log.debug(req.body);
   var data = [];
+  var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+    if(ip.split(',').length>0){
+        ip = ip.split(',')[0]
+    }
+    console.log('ip',ip);
   var async = require('async');
   async.parallel({
     //签证指南
     login_user: function (callback) {
-      cms.login_user(req.body, callback);
+      cms.login_user({phone:username, code: password, lastloginip: ip}, callback);
     }
   }, function (err, result) {
 
@@ -105,11 +110,16 @@ exports.login_s = function (req, res, next) {
   log.debug('adviser', adviser);
   //res.render('login', '')
   var data = [];
+  var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+    if(ip.split(',').length>0){
+        ip = ip.split(',')[0]
+    }
+    console.log('ip',ip);
   var async = require('async');
   async.parallel({
     //签证指南
     login_ss: function (callback) {
-      cms.login_ss(req.body, callback);
+      cms.login_ss({username:username, password:password,adviser_type:adviser,lastloginip:ip }, callback);
     }
   }, function (err, result) {
     
@@ -243,7 +253,7 @@ exports.register_s = function (req, res, next) {
 
 //发送验证码
 exports.sendcode_s = function (req, res, next) {
-  log.debug('this router register_s~~');
+  log.debug('this router sendcode_s~~');
   var phone = req.query.phone;
 
   //log.debug(JSON.stringify(req.body));
