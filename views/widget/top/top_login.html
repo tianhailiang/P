@@ -148,13 +148,19 @@ input[type="checkbox"] {
   clip: rect(0, 0, 0, 0);
 }
 .yonghu{
-  display: inline;
+  display: inline-block;
   margin-left: -5px;
   font-size: 14px;
   color: #333;
+  position: relative;
 }
 .yonghu a{
   color: #c13232;
+}
+.yonghu span{
+  width: 235px;
+  top: -13px;
+  position: absolute;
 }
 </style>
 <!-- 登录 -->
@@ -181,8 +187,8 @@ input[type="checkbox"] {
         <input type="button" class="btn l_u_com_but" style="width: 330px;padding-left: 0;padding-right: 0" id="loginuser" value="登 录"/>
     </div>
       <div class=" clearfix" id="guwen" style="margin-top: 20px;">
-          <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi"/><label for="xieyi"></label> 
-          <div class="yonghu">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></div>
+          <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi" checked="checked"/><label for="xieyi"></label> 
+          <div class="yonghu"><span style="width: 235px;top: -13px;position: absolute;">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></span></div>
       </div>
     <div class="l_u_com_she">
       <div><i>社交账号登录</i></div>
@@ -221,8 +227,8 @@ input[type="checkbox"] {
       <input type="button" class="btn l_u_com_but" style="width: 330px;padding-left: 0;padding-right: 0" id="loginuser_reg" value="注 册"/>
     </div>
     <div class=" clearfix" id="guwen_reg" style="margin-top: 20px;">
-        <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi_reg"/><label for="xieyi_reg"></label> 
-        <div class="yonghu">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></div>
+        <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi_reg" checked="checked"/><label for="xieyi_reg"></label> 
+        <div class="yonghu"><span style="width: 235px;top: -13px;position: absolute;">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></span></div>
     </div>
     <div class="l_u_com_she">
       <div><i>社交账号登录</i></div>
@@ -241,7 +247,6 @@ input[type="checkbox"] {
   $(function() {
     var login_nickname = JSON.parse($.cookie('login_ss'));
     var user_type;
-    console.log('login_ss', login_nickname);
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con">'+
                 '<div class="top-con-right">'+
@@ -289,24 +294,18 @@ if (sP.addEventListener) {
 }
 
 var bS = document.getElementById('loginuser');
-console.log('loginS', bS);
 if (bS.addEventListener) {
-  console.log('ffff');
   bS.addEventListener('click', login_user, false);
 } else {
-  console.log('eeeee');
   bS.attachEvent('onclick', login_user, false);
 }
 
 $('#weibo').on('click', function () {
   var h = window.location.href;//获取全部的url
-  console.log('h', h);
   var hh = h.split("?");
-  console.log('hh', hh[1])
   if (hh[1] !== undefined) {
     var str = hh[1].substr(1);
     var strs = str.split("=");
-    console.log('strs', strs)
     var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
   } else {
     var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
@@ -337,23 +336,17 @@ $('#qq').on('click', function () {
       sP.attachEvent('onclick', sendphone_reg, false)
     }
     var bS = document.getElementById('loginuser_reg');
-    console.log('loginS', bS);
     if (bS.addEventListener) {
-      console.log('ffff');
       bS.addEventListener('click', login_user_reg, false);
     } else {
-      console.log('eeeee');
       bS.attachEvent('onclick', login_user_reg, false);
     }
     $('#weibo_reg').on('click', function () {
       var h = window.location.href;//获取全部的url
-      console.log('h', h);
       var hh = h.split("?");
-      console.log('hh', hh[1])
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
@@ -363,13 +356,10 @@ $('#qq').on('click', function () {
     //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
     //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
       var h = window.location.href;//获取全部的url
-      console.log('h', h);
       var hh = h.split("?");
-      console.log('hh', hh)
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
