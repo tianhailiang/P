@@ -1248,6 +1248,11 @@ exports.adviser_photo_p = function(req,res,next){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
+        if(result.userinfo.code == '1210000006'){
+            //顾问不存在的时候  跳到404
+            next()
+            return false;
+        }
         // data.channel_list =returnData(result.channel_list,'channel_list');
         //切割成 二维数组
         // data.hotLXFA  = split_array(returnData(result.hot_liuxuefangan_list,'hot_liuxuefangan_list'), 7);
@@ -1613,6 +1618,11 @@ exports.adviser_special = function (req, res, next) {
       data.xSlider = returnData(result.lunbo_list,'lunbo_list');
       data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.userinfo =returnData(result.userinfo,'userinfo');
+      if(result.userinfo.code == '1210000006'){
+          //顾问不存在的时候  跳到404
+          next()
+          return false;
+      }
     // data.channel_list =returnData(result.channel_list,'channel_list');
     data.zhuanlanlist =returnData(result.zhuanlanlist,'zhuanlanlist');
       data.country =data.userinfo.country || '1';
@@ -1717,6 +1727,11 @@ exports.adviser_case = function (req, res, next) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
+        if(result.userinfo.code == '1210000006'){
+            //顾问不存在的时候  跳到404
+            next()
+            return false;
+        }
         // data.channel_list =returnData(result.channel_list,'channel_list');
         data.case_data = returnData(result.case_list,'case_list');
          //切割成 二维数组
