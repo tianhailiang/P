@@ -45,9 +45,9 @@
    <div class="canzan dui-layout-col4 dui-box-shadow">
      <a target="_blank"  href="{{ helper.urlgen( item.uid | string ) }}" rel="nofollow">
         <img src="{{ helper.avaterimg(item.uid, 'big') }}" alt="{{ item.realname }}">
-    </a>
-      <p class="canzan-p"><span>{{ item.job_number | ellipsis(17) }}</span></p>
-      <p class="canzan-p2">简介: {{ item.introduce | ellipsis(49) }}</p>
+      <p class="canzan-p" style="color: #333"><span>{{ item.job_number | ellipsis(17) }}</span></p>
+      <p class="canzan-p2" style="color: #333">简介: {{ item.introduce | ellipsis(49) }}</p>
+     </a>
    </div>
   {% endfor %}
 </div>
