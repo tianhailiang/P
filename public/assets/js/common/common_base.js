@@ -94,43 +94,52 @@
         },
         //生成符合静态规范的跳转链接
         urlgen: function () {
-        var url = '',chan = '',param = '';
-        if(arguments.length == 0){
-            return ;
-        }
-        //get chan & subchan
-        for(var i= 0 ; i < arguments.length;i++){
-            if(arguments[i] == '' || arguments[i].split('=').length > 1)
-            {
-                break;
+            var url = '',chan = '',param = '',city='',cityid='';
+            if(arguments.length == 0){
+                return ;
             }
-            else
-            {
-                chan += '/' + arguments[i];
+            //get chan & subchan
+            for(var i= 0 ; i < arguments.length;i++){
+                if(arguments[i] == '' || arguments[i].split('=').length > 1)
+                {
+                    break;
+                }
+                else
+                {
+                    chan += '/' + arguments[i];
+                }
             }
-        }
-        // i is hold
-        for(i; i < arguments.length;i++){
-            if (param == '') {
-                param += '/' + arguments[i].replace(/=/g, "-");
+            // i is hold
+            for(i; i < arguments.length;i++){
+                if (cityid = seo_to_url(arguments[i], 'c')) {
+                    city = this.getCityEn(cityid);
+                }
+                if(!cityid && arguments[i] != '') {
+                    continue;
+                }
+                if (param == '') {
+                    param += '/' + arguments[i].replace(/=/g, "-");
+                }
+                else {
+                    param += '__' + arguments[i].replace(/=/g, "-");
+                }
             }
-            else {
-                param += '__' + arguments[i].replace(/=/g, "-");
-            }
-        }
-        url += chan + param;
-        
-        if (js_api_config.version == 'development') { //如果是開發環境
-            url = js_api_config.wwhost + ':4000' + url;//social
-        }else{
-          url = js_api_config.wwhost+url;
-        }
 
-        if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)){
-            url = url + '.html';
-        }
+            url += chan + param;
 
-        return url;
+            if(chan=='/branch_home'){
+                url = ((city && city != 0)?"/"+city:"")+"/";
+            }
+
+            if (js_api_config.version == 'development') { //如果是開發環境
+                url = js_api_config.wwhost + ':4000' + url;//social
+            }else{
+                url = js_api_config.wwhost+url;
+            }
+            if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
+                url = url + '.html';
+            }
+            return url;
     },
         /*生成栏目页不需要静态化的跳转链接*/
         no_urlgen: function () {
@@ -255,6 +264,10 @@
         getCityEn: function (id) {
             var obj = normalize(this.cityArr[id],this.cityArr[0]);
             return obj[1];
+        },
+        getCityChinese: function (id){
+            var obj = normalize(this.cityArr[id],this.cityArr[1]);
+            return obj[0];
         },
         //用户头像url组装
         avaterimg: function (uid, size, status,version){
