@@ -31,12 +31,10 @@ function split_array(arr, len) {
 
 
 exports.index = function (req, res, next) {
-    var iparea = req.cookies.currentarea;//是否选择过城市标志
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     if (req.params[0]) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
-            iparea = cityId;
             area = cityId;
             res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
         }
@@ -50,10 +48,6 @@ exports.index = function (req, res, next) {
     } else {
         data.url = config.wwhost;
     }
-    var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
-    if(ip.split(',').length>0){
-        ip = ip.split(',')[0]
-    }
     if ( req.cookies.login_ss !== undefined) {
         console.log('aaaaaa');
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -65,9 +59,6 @@ exports.index = function (req, res, next) {
         //return false;
     }
     async.parallel({
-        getNowCity: function (callback) {
-            cms.ip_geter(ip,callback);
-        },
         lunbo_list:function(callback) {
             cms.lunbo_list({
                 "ad_page": "HOME",
@@ -88,9 +79,6 @@ exports.index = function (req, res, next) {
             }, callback);
         },
     },function (err, result) {
-        var resIp = data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
-        data.nowIp = resIp;
-        data.iparea = iparea;
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);

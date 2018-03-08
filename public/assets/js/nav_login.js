@@ -10,12 +10,9 @@ $(document).ready(function () {
     radioClass: 'iradio_square-green'
   });
   var lS = document.getElementById('loginSubmit');
-  console.log('loginS', lS);
   if (lS.addEventListener) {
-    console.log('ffff');
     lS.addEventListener('click', loginS, false);
   } else {
-    console.log('eeeee');
     lS.attachEvent('onclick', loginS, false);
   }
 
