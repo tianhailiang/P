@@ -369,6 +369,8 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
+    var nowLocation = window.location.href;
+    var endFix = nowLocation.split('?')[1];
     $.ajax({
       type: "get",
       async: false,
@@ -377,15 +379,19 @@
       success: function(result){
         var iparea = result.data;
         if(!$.cookie('currentarea')){
+          console.log('sss');
           $('#zhezhaox').show();
           $('#zhezhaos').show();
           $('#fengongsi').html(fn.getCityChinese(iparea));
+        }
+        else {
+          console.log('9999');
         }
         //正确
         $('#selByIp').on('click',function (e) {
           e.preventDefault();
           $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn'});
-          window.location.href = fn.urlgen('branch_home','c='+ result.data);
+          window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
         })
       },
       error: function(error){
@@ -398,7 +404,7 @@
         e.preventDefault();
       }
       $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
-      window.location.href = $(this).attr("href");
+      window.location.href = $(this).attr("href")+'?'+endFix;
 
     });
       //
