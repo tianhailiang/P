@@ -16,9 +16,15 @@
       <i class="city-icon iconfont dian">&#xe609;</i>
       {% for item in monthamount %}
       <p style="display: none;">{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe623;</i></p>
-      <div class="dashiji-con" style="display: block;margin-bottom: 20px;">
+      {% if loop.index==loop.length %}
+      <div class="dashiji-con" style="display: block;margin-top: 20px;margin-bottom: 20px;">
        {{ loop.index }}. {{ item.description }}
       </div>
+      {% else %}
+      <div class="dashiji-con" style="display: block;margin-top: 20px;">
+        {{ loop.index }}. {{ item.description }}
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
     <div class="shiji-pic">

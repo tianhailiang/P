@@ -576,7 +576,7 @@ exports.center_case = function (req, res, next) {
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
-           res.redirect('/404');
+           next()
            return false;
         }
     }else{
@@ -647,7 +647,7 @@ exports.center_comment = function (req, res, next) {
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
-           res.redirect('/404');
+           next()
            return false;
         }
     }else{
@@ -1052,7 +1052,7 @@ exports.center_article = function (req, res, next) {
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
-           res.redirect('/404');
+           next()
            return false;
         }
     }else{
@@ -1127,7 +1127,7 @@ exports.center_photo = function (req, res, next) {
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
-           res.redirect('/404');
+           next()
            return false;
         }
     }else{
@@ -1346,7 +1346,7 @@ exports.case_detail = function(req,res,next){
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         if(result.article.code == code){
             //文章不存在的时候  跳到404
-            res.redirect('/404');
+            next()
             return false;
         }
         data.article =returnData(result.article,'article');
@@ -1423,7 +1423,7 @@ exports.article_detail= function(req,res,next){
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         if(result.article.code == code){
           //文章不存在的时候  跳到404
-          res.redirect('/404');
+          next()
           return false;
         }
         data.article =returnData(result.article,'article');
@@ -1523,7 +1523,7 @@ exports.adviser_main = function (req, res, next) {
     data.userinfo =returnData(result.userinfo,'userinfo');
     if(result.userinfo.code == '1210000006'){
       //顾问不存在的时候  跳到404
-      res.redirect('/404');
+      next()
       return false;
     }
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
@@ -1789,7 +1789,7 @@ exports.counsellor_personal = function (req, res, next) {
     var login_a = JSON.parse(req.cookies.login_ss);
     data.login_info = login_a;
     if(data.login_info.usertype ==1){
-        res.redirect('/404');
+        next()
         return false;
     }
   }else{
@@ -1832,7 +1832,7 @@ exports.advisor_profile = function (req, res, next) {
     var login_a = JSON.parse(req.cookies.login_ss);
     data.login_info = login_a;
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -1891,7 +1891,7 @@ exports.counsellor_set = function (req, res, next) {
     var login_a = JSON.parse(req.cookies.login_ss);
     data.login_info = login_a;
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2061,7 +2061,7 @@ exports.release_case = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404'); 
+       next()
        return false;
     }
   }else{
@@ -2116,7 +2116,7 @@ exports.release_article = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2278,7 +2278,7 @@ exports.center_article_detail = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2353,7 +2353,7 @@ exports.center_case_detail = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2436,7 +2436,7 @@ exports.draft =function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2548,7 +2548,7 @@ exports.edit_article = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2643,7 +2643,7 @@ exports.edit_case =function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2856,7 +2856,7 @@ exports.hot = function (req, res, next) {
     data.userinfo = returnData(result.userinfo, 'userinfo');
     if (result.userinfo.code == '1210000006') {
       //顾问不存在的时候  跳到404
-      res.redirect('/404');
+      next()
       return false;
     }
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');

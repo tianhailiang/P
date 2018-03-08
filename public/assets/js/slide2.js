@@ -395,8 +395,8 @@ $(".ibar_closebtn").on("click",function(){
 $("#r_comment").hover(function(){
   $("#r_comment").css("background", "#C13232");
 },function(){
-  /* $("#comment_con").css("display", "none");
-   $("#r_comment").css("background", "#9a9a9a");*/
+  /* $("#comment_con").css("display", "none");*/
+   $("#r_comment").css("background", "#9a9a9a");
 })
 $("#r_comment").on("click",function(){
   $("#comment_con").css("display", "block");

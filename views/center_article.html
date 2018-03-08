@@ -216,7 +216,9 @@
             aItemHtml += '<a target="_blank" href="'+fn.urlgen("article", item.id.toString())+'" class="dui-text-warning" rel="nofollow">'+item.introduce+' <span>【查看详情】</span></a>'
         }
             aItemHtml += '</p>'
-            aItemHtml += addArticleImg(item.img_list)
+            if (item.img_list) {
+                aItemHtml += addArticleImg(item.img_list)
+            }
             aItemHtml += '</div>'
             aItemHtml += '</div>'
 
