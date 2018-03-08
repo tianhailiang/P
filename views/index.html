@@ -391,7 +391,12 @@
         $('#selByIp').on('click',function (e) {
           e.preventDefault();
           $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn'});
-          window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
+          if (endFix) {
+            window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
+          }
+          else {
+            window.location.href = fn.urlgen('branch_home','c='+ result.data);
+          }
         })
       },
       error: function(error){
@@ -404,7 +409,12 @@
         e.preventDefault();
       }
       $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
-      window.location.href = $(this).attr("href")+'?'+endFix;
+      if (endFix) {
+        window.location.href = $(this).attr("href")+'?'+endFix;
+      }
+      else {
+        window.location.href = $(this).attr("href");
+      }
 
     });
       //
