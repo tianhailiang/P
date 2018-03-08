@@ -43,9 +43,9 @@
 <div class="dui-layout-lg clearfix ">
   {% for item in canzanlist.list %}
    <div class="canzan dui-layout-col4 dui-box-shadow">
-     <!-- <a target="_blank"  href="{{ helper.urlgen('blog', item.uid | string ) }}" rel="nofollow"> -->
+     <a target="_blank"  href="{{ helper.urlgen( item.uid | string ) }}" rel="nofollow">
         <img src="{{ helper.avaterimg(item.uid, 'big') }}" alt="{{ item.realname }}">
-     <!-- </a> -->
+    </a>
       <p class="canzan-p"><span>{{ item.job_number | ellipsis(17) }}</span></p>
       <p class="canzan-p2">简介: {{ item.introduce | ellipsis(49) }}</p>
    </div>
