@@ -6,6 +6,7 @@ exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
   app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(\/*)$/, controller.index);
+  app.get('/', controller.index);
   //搜索页
   app.get(/^\/so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article);
   //社区首页

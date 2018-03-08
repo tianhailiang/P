@@ -1,6 +1,6 @@
-<h1>{{ message}}</h1>
+{#<h1>{{ message}}</h1>
 <h2>{{ error.status }}</h2>
-<pre>{{ error.stack }}</pre>
+<pre>{{ error.stack }}</pre>#}
 <!DOCTYPE html>
 <html lang="en">
 {% include "header_new.html" %}
@@ -14,7 +14,7 @@
 <p class="error-btn">
     <a  href="javascript:history.go(-1);" class="dui-btn btn-xlarge btn-appointment go-back-btn liuxue-back-btn">返回上页</a>
 </p>
-<script src="{{helper.cdnhost}}/assets/js/nav_home.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script>
     $('.liuxue-back-btn').on('click',function(e) {
@@ -31,25 +31,3 @@
 </script>
 </body>
 </html>
-{#<!DOCTYPE html>
-<html lang="en">
-{% include "header_new.html" %}
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/error.css">
-<body>
-<div class="error-con"><img src="{{helper.cdnhost}}/assets/img/404.png" alt=""></div>
-<p class="error-btn"><a  href="javascript:history.go(-1);" class="dui-btn btn-xlarge btn-appointment go-back-btn blog-back-btn">返回上页</a></p>
-</body>
-<script>
-    $('.blog-back-btn').on('click',function(e) {
-        e.preventDefault();
-        if (window.history.length == 1) {
-            window.opener=null;
-            window.open('','_self');
-            window.close();
-        }
-        else {
-            window.history.go(-1);
-        }
-    })
-</script>
-</html>#}
