@@ -1,0 +1,101 @@
+<style type="text/css">
+.lxContaniner{margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
+.lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc}
+.lx-head h1{float:left;margin-right:70px;color:#333;font-size:22px}
+.lx-tabitems{float:left;margin-top:5px}
+.lx-tabitems li{position:relative;float:left;width:51px;color:#666;margin-right:10px;text-align:center;font-size:14px;cursor:pointer}
+.lx-tabitems li.active{color:#c13232}
+.lx-tabitems li.active em{position:absolute;bottom:-14px;left:0;display:block;width:51px;height:2px;background:#c13232}
+.gw-items li{float:left;margin-right:20px;margin-bottom:10px;padding-bottom:14px;width:385px;*width:380px;width:380px\0;border-bottom:solid 1px #dcdcdc}
+.gw-topitems{position:relative;overflow:hidden;margin-bottom:20px;box-shadow:0 3px 5px #e2e5e6;background:#f1f4f6;}
+.gw-topitems li{margin-right:0;margin-bottom:0;padding-top:10px;width:400px;border-bottom:none;background-color:#f1f4f6;}
+.triangle{position:absolute;top:0;right:0;width:0;height:0;border-top:20px solid #c13232;border-left:20px solid transparent}
+.gw-topitems .gw-people{margin-left:20px}
+.gw-topitems .gw-news{ margin-right: 16px;}
+.gw-items{ width: 1200px;display: inline-block; }
+.gw-items li:nth-child(3n){margin-right:0}
+.gw-people{position:relative;float:left;margin-left:20px}
+.gw-people img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
+.gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
+.gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
+.gw-items p{color:#333;font-size:16px;padding-top: 10px;text-indent: 20px;}
+.gw-legend{float:right;margin-top:18px;padding:2px 8px;-webkit-border-radius:8px;border-radius:8px;background:#f9f6f1;color:#c13232;font-size:12px}
+.gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
+.gw-people .bg-peopel,.gw-people a{
+	float:left;
+	height: 51px; 
+	width: 51px;
+	border-radius: 50%;
+	-webkit-border-radius:50%;
+}
+#guItems li:nth-child(3) .gw-people{margin-left: 26px;}
+</style>
+{% for floor in shouye %} {#国家#}
+<div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
+	<div class="lx-head">
+		<h1>{{floor.country_name}}移民</h1>
+		<ul class="lx-tabitems">
+			{% for tagitem in floor.list %}
+				{% if loop.index == 1 %}
+				<li class="active">{{tagitem.edu_name}}<em></em></li>
+				{% else %}
+				<li>{{tagitem.edu_name}}<em></em></li>
+				{% endif %}
+			{% endfor %}
+		</ul>
+	</div>
+	{% for type in  floor.list %}{#类别#}
+	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
+		{% for line in type.list %} {#行数#}
+			{% if loop.index == 1 %} {#第一行#}
+				<ul class="gw-items gw-topitems" id="guItems">
+					{% for item in line %}
+					{% if item.uid != null %}
+					<li>
+						<div class="gw-people">
+							<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 0;background-size:cover"></a>
+							<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
+						</div>
+						{#<p>{{item.type}}</p>#}
+						<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
+							<div class="gw-legend gw-news">留学时讯</div>
+							<p style="clear:both">{{ item.title | ellipsis(21) }}</p>
+						</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+					<em class="triangle"></em>
+				</ul>
+			{% else %}
+				<ul class="gw-items">
+						{% for item in line %}
+							{% if item.uid != null %}
+							<li class="gw-newslist">
+								<div class="gw-people">
+									<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 0;background-size:cover;"></a>
+									<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
+								</div>
+								{#<p>{{item.type}}</p>#}
+								<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
+									<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
+									<p style="clear:both">{{item.title | ellipsis(21)}}</p>
+								</a>
+							</li>
+							{% endif %}
+						{% endfor %}
+				</ul>
+			{% endif %}
+		{% endfor %}
+	</div>
+	{% endfor %}{#类别end#}
+</div>
+{% endfor %} {#国家end#}
+<script>
+	$(".lxContaniner").on('click', '.lx-tabitems li', function(){
+		var cur_index=$(this).index();
+		$(this).addClass('active').siblings().removeClass('active')
+		$(this).parents(".lxContaniner").find('.lx-groupitems').hide().eq(cur_index).show();
+	})
+</script>
+
+
