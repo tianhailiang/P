@@ -154,19 +154,29 @@ function active_urlgen(){
  * url拼装  开发、测试区分
  */
 function urlgen() {
+  console.log('arguments',arguments)
+  var isyimin = false;
   var url = '',chan = '',param = '',city='',cityid='';
   if(arguments.length == 0){
     return ;
   }
   //get chan & subchan
   for(var i= 0 ; i < arguments.length;i++){
+    if(i == 0 && arguments[i] == 'yimin'){
+      console.log('chan~~~22',arguments[i])
+      isyimin = true;
+      continue;
+    }
+    console.log('chan~~~',arguments[i])
     if(arguments[i] == '' || arguments[i].split('=').length > 1)
     {
+      console.log('chan1',arguments[i])
       break;
     }
     else
     {
       chan += '/' + arguments[i];
+      console.log('chan2',arguments[i])
     }
   }
   // i is hold
@@ -186,18 +196,25 @@ function urlgen() {
   }
 
   url += chan + param;
-
   if(chan=='/branch_home'){
     url = ((city && city != 0)?"/"+city:"")+"/";
   }
-
-  if (config.version == 'development') { //如果是開發環境
-    url = config.wwhost + ':4000' + url;//social
-  }else{
-    url = config.wwhost+url;
-  }
   if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
     url = url + '.html';
+  }
+  if(isyimin){
+    if (config.version == 'development') { //如果是開發環境
+      url = 'http://' + config.yiminhostname + ':4000' +url;
+    }else{
+      url = 'http://' + config.yiminhostname +url;
+    }
+  }
+  else {
+    if (config.version == 'development') { //如果是開發環境
+      url = config.wwhost + ':4000' + url;
+    }else{
+      url = config.wwhost + url;
+    }
   }
   return url;
 }

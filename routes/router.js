@@ -211,4 +211,7 @@ exports = module.exports = function (app) {// routes
   app.get('/oauth', login.oauth);
   app.get("/agreement",controller.agreement);//金吉列简介
   app.get('/about/cultures',about.cultures);//企业文化底页
+
+  //移民站
+  app.get('/yimin',controller.yiminHome);//移民首页
 };
