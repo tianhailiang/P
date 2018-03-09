@@ -11,17 +11,15 @@
   }
 </style>
 <body>
-{% if iparea %}
-{% else %}
-<div class="zhezhao" id="zhezhaox">
+<div class="zhezhao" id="zhezhaox" style="display: none">
 </div>
-<div id="zhezhaos" style="position: fixed;left: 50%; margin-left: -350px;z-index: 1000000;top: 50%;margin-top: -215px">
+<div id="zhezhaos" style="position: fixed;left: 50%; margin-left: -350px;z-index: 1000000;top: 50%;margin-top: -215px;display: none;">
   <div class="xuanze-con">
     <h1 id="guanbi-tankuang">欢迎来到金吉列留学、请选择合适的金吉列分公司所在地<span>全国热线电话:400-010-8000</span></h1>
     <div class="xuanze-ing">
       <div style="float: left;line-height: 40px"> <i class="iconfont icon-top" style="margin: 24px 6px 0px 14px;color: #C13232">&#xe603;</i>猜你所在的城市</div>
-      <span id="fengongsi" style="float: left;margin: 0 10px;line-height: 40px;color: #C13232;text-decoration:underline">{{nowIp | getCity()}}</span>
-      <div class="xuanze-anniu"><a target="_blank" href="{{helper.urlgen('branch_home','c='+ nowIp)}}" data-id="{{nowIp}}" id="selByIp">正确</a></div>
+      <span id="fengongsi" style="float: left;margin: 0 10px;line-height: 40px;color: #C13232;text-decoration:underline"></span>
+      <div class="xuanze-anniu"><a target="_blank" id="selByIp">正确</a></div>
     </div>
     <div class="xuanze-xianxian"></div>
     <div class="xuanze-chengshi">
@@ -90,7 +88,6 @@
   </div>
 
 </div>
-{% endif %}
 <!--留学国家-->
 <div class="nationality_guoqi_warp">
   <div class="nationality_guoqi">
@@ -372,22 +369,54 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
   $(function () {
+    var nowLocation = window.location.href;
+    var endFix = nowLocation.split('?')[1];
+    $.ajax({
+      type: "get",
+      async: false,
+      url:ajaxUrlPrefix.nodeapi+"/ip_geter",
+      dataType: "json",
+      success: function(result){
+        var iparea = result.data;
+        if(!$.cookie('currentarea')){
+          console.log('sss');
+          $('#zhezhaox').show();
+          $('#zhezhaos').show();
+          $('#fengongsi').html(fn.getCityChinese(iparea));
+        }
+        else {
+          console.log('9999');
+        }
+        //正确
+        $('#selByIp').on('click',function (e) {
+          e.preventDefault();
+          $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn'});
+          if (endFix) {
+            window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
+          }
+          else {
+            window.location.href = fn.urlgen('branch_home','c='+ result.data);
+          }
+        })
+      },
+      error: function(error){
+        console.log(error)
+      }
+    });
     $('.xuanze-chengshi').on('click',"a", function(e){
       var currentarea = $(this).attr("data-id");
       if (currentarea) {
         e.preventDefault();
       }
       $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
-      window.location.href = $(this).attr("href");
+      if (endFix) {
+        window.location.href = $(this).attr("href")+'?'+endFix;
+      }
+      else {
+        window.location.href = $(this).attr("href");
+      }
 
     });
-    //正确
-    $('#selByIp').on('click',function (e) {
-      e.preventDefault();
-      var currentarea = $(this).attr("data-id");
-      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
-      window.location.href = $(this).attr("href")//fn.urlgen('branch_home','c='+ currentarea);
-    })
       //
       $(window).on('scroll', function () {
           var $scroll = $(this).scrollTop();

@@ -31,12 +31,10 @@ function split_array(arr, len) {
 
 
 exports.index = function (req, res, next) {
-    var iparea = req.cookies.currentarea;//是否选择过城市标志
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     if (req.params[0]) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
-            iparea = cityId;
             area = cityId;
             res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
         }
@@ -50,10 +48,6 @@ exports.index = function (req, res, next) {
     } else {
         data.url = config.wwhost;
     }
-    var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
-    if(ip.split(',').length>0){
-        ip = ip.split(',')[0]
-    }
     if ( req.cookies.login_ss !== undefined) {
         console.log('aaaaaa');
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -65,9 +59,6 @@ exports.index = function (req, res, next) {
         //return false;
     }
     async.parallel({
-        getNowCity: function (callback) {
-            cms.ip_geter(ip,callback);
-        },
         lunbo_list:function(callback) {
             cms.lunbo_list({
                 "ad_page": "HOME",
@@ -88,9 +79,6 @@ exports.index = function (req, res, next) {
             }, callback);
         },
     },function (err, result) {
-        var resIp = data.area = returnData(result.getNowCity, 'getNowCity');//当前ip所在城市id
-        data.nowIp = resIp;
-        data.iparea = iparea;
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
@@ -588,7 +576,7 @@ exports.center_case = function (req, res, next) {
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
-           res.redirect('/404');
+           next()
            return false;
         }
     }else{
@@ -659,7 +647,7 @@ exports.center_comment = function (req, res, next) {
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
-           res.redirect('/404');
+           next()
            return false;
         }
     }else{
@@ -1064,7 +1052,7 @@ exports.center_article = function (req, res, next) {
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
-           res.redirect('/404');
+           next()
            return false;
         }
     }else{
@@ -1139,7 +1127,7 @@ exports.center_photo = function (req, res, next) {
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
         if(data.login_info.usertype ==1){
-           res.redirect('/404');
+           next()
            return false;
         }
     }else{
@@ -1260,6 +1248,11 @@ exports.adviser_photo_p = function(req,res,next){
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
+        if(result.userinfo.code == '1210000006'){
+            //顾问不存在的时候  跳到404
+            next()
+            return false;
+        }
         // data.channel_list =returnData(result.channel_list,'channel_list');
         //切割成 二维数组
         // data.hotLXFA  = split_array(returnData(result.hot_liuxuefangan_list,'hot_liuxuefangan_list'), 7);
@@ -1358,7 +1351,7 @@ exports.case_detail = function(req,res,next){
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         if(result.article.code == code){
             //文章不存在的时候  跳到404
-            res.redirect('/404');
+            next()
             return false;
         }
         data.article =returnData(result.article,'article');
@@ -1435,7 +1428,7 @@ exports.article_detail= function(req,res,next){
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         if(result.article.code == code){
           //文章不存在的时候  跳到404
-          res.redirect('/404');
+          next()
           return false;
         }
         data.article =returnData(result.article,'article');
@@ -1535,7 +1528,7 @@ exports.adviser_main = function (req, res, next) {
     data.userinfo =returnData(result.userinfo,'userinfo');
     if(result.userinfo.code == '1210000006'){
       //顾问不存在的时候  跳到404
-      res.redirect('/404');
+      next()
       return false;
     }
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
@@ -1625,6 +1618,11 @@ exports.adviser_special = function (req, res, next) {
       data.xSlider = returnData(result.lunbo_list,'lunbo_list');
       data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.userinfo =returnData(result.userinfo,'userinfo');
+      if(result.userinfo.code == '1210000006'){
+          //顾问不存在的时候  跳到404
+          next()
+          return false;
+      }
     // data.channel_list =returnData(result.channel_list,'channel_list');
     data.zhuanlanlist =returnData(result.zhuanlanlist,'zhuanlanlist');
       data.country =data.userinfo.country || '1';
@@ -1729,6 +1727,11 @@ exports.adviser_case = function (req, res, next) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo =returnData(result.userinfo,'userinfo');
+        if(result.userinfo.code == '1210000006'){
+            //顾问不存在的时候  跳到404
+            next()
+            return false;
+        }
         // data.channel_list =returnData(result.channel_list,'channel_list');
         data.case_data = returnData(result.case_list,'case_list');
          //切割成 二维数组
@@ -1801,7 +1804,7 @@ exports.counsellor_personal = function (req, res, next) {
     var login_a = JSON.parse(req.cookies.login_ss);
     data.login_info = login_a;
     if(data.login_info.usertype ==1){
-        res.redirect('/404');
+        next()
         return false;
     }
   }else{
@@ -1844,7 +1847,7 @@ exports.advisor_profile = function (req, res, next) {
     var login_a = JSON.parse(req.cookies.login_ss);
     data.login_info = login_a;
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -1903,7 +1906,7 @@ exports.counsellor_set = function (req, res, next) {
     var login_a = JSON.parse(req.cookies.login_ss);
     data.login_info = login_a;
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2073,7 +2076,7 @@ exports.release_case = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404'); 
+       next()
        return false;
     }
   }else{
@@ -2128,7 +2131,7 @@ exports.release_article = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2290,7 +2293,7 @@ exports.center_article_detail = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2365,7 +2368,7 @@ exports.center_case_detail = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2448,7 +2451,7 @@ exports.draft =function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2560,7 +2563,7 @@ exports.edit_article = function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2655,7 +2658,7 @@ exports.edit_case =function(req,res,next){
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
     if(data.login_info.usertype ==1){
-       res.redirect('/404');
+       next()
        return false;
     }
   }else{
@@ -2868,7 +2871,7 @@ exports.hot = function (req, res, next) {
     data.userinfo = returnData(result.userinfo, 'userinfo');
     if (result.userinfo.code == '1210000006') {
       //顾问不存在的时候  跳到404
-      res.redirect('/404');
+      next()
       return false;
     }
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');

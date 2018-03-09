@@ -11,10 +11,8 @@
     }
     var bS = document.getElementById('loginuser');
     if (bS.addEventListener) {
-      console.log('ffff');
       bS.addEventListener('click', login_user, false);
     } else {
-      console.log('eeeee');
       bS.attachEvent('onclick', login_user, false);
     }
     $('#weibo').on('click', function () {
@@ -55,23 +53,17 @@
       sP.attachEvent('onclick', sendphone_reg, false)
     }
     var bS = document.getElementById('loginuser_reg');
-    console.log('loginS', bS);
     if (bS.addEventListener) {
-      console.log('ffff');
       bS.addEventListener('click', login_user_reg, false);
     } else {
-      console.log('eeeee');
       bS.attachEvent('onclick', login_user_reg, false);
     }
     $('#weibo_reg').on('click', function () {
       var h = window.location.href;//获取全部的url
-      console.log('h', h);
       var hh = h.split("?");
-      console.log('hh', hh[1])
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
@@ -81,13 +73,10 @@
     //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
     //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
       var h = window.location.href;//获取全部的url
-      console.log('h', h);
       var hh = h.split("?");
-      console.log('hh', hh)
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");

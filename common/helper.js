@@ -154,7 +154,7 @@ function active_urlgen(){
  * url拼装  开发、测试区分
  */
 function urlgen() {
-  var url = '',chan = '',param = '';
+  var url = '',chan = '',param = '',city='',cityid='';
   if(arguments.length == 0){
     return ;
   }

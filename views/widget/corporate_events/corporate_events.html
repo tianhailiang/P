@@ -1,7 +1,7 @@
 {% for yearnum, yearamount in memorabilia_list.list %}
 <div class="dui-layout-lg curyear" style="background:#ffffff">
   <div class="year-box clearfix"><h6 class="year-num">{{ yearnum | shorten(-1)}}</h6> <i class="city-icon iconfont down xiangxia">&#xe623;</i> <i class="city-icon iconfont dian">&#xe609;</i></div>
-  <div class="kong"></div>
+  <div class="kong" style="display: block"></div>
   {% for monthnum, monthamount in yearamount %}
 
   <div class="month-box clearfix">
@@ -15,10 +15,16 @@
     <div class="month-right">
       <i class="city-icon iconfont dian">&#xe609;</i>
       {% for item in monthamount %}
-      <p>{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe623;</i></p>
-      <div class="dashiji-con">
-        {{ item.description }}
+      <p style="display: none;">{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe623;</i></p>
+      {% if loop.index==loop.length %}
+      <div class="dashiji-con" style="display: block;margin-top: 20px;margin-bottom: 20px;">
+       {{ loop.index }}. {{ item.description }}
       </div>
+      {% else %}
+      <div class="dashiji-con" style="display: block;margin-top: 20px;">
+        {{ loop.index }}. {{ item.description }}
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
     <div class="shiji-pic">
@@ -40,8 +46,8 @@
     $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe60b;")
     $(".curyear").eq(0).children(".year-box").find(".down").css("color","#c13232");
     $(".curyear").eq(0).siblings().children(".year-box").find(".down").css("color","#999999");
-   /* $(".curyear").eq(1).children(".kong").eq(0).css("display","block");*/
-
+    $(".curyear").eq(1).children(".month-box").css("display","block");
+    $(".curyear").eq(1).children(".kong").css("display","block");
     $.each($(".curyear").siblings(".curyear"),function(){
       $(this).find(".kong").eq(0).css("display","block");
     });
@@ -69,7 +75,7 @@
   $(".curyear:last").find(".down").on("click",function(){
     $(this).parents(".curyear").find(".kong").eq(0).css("display","block");
   })
-  $(".con-btn").on("click",function(){
+  /*$(".con-btn").on("click",function(){
     if($(this).hasClass('con-up')){
       $(this).removeClass('con-up');
       $(this).html("&#xe60b;").css("color","#c13232");
@@ -80,6 +86,6 @@
       $(this).parent("p").next(".dashiji-con").css("display","none");
     }
 
-  })
+  })*/
 </script>
 

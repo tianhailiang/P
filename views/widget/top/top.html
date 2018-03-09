@@ -148,13 +148,19 @@ input[type="checkbox"] {
   clip: rect(0, 0, 0, 0);
 }
 .yonghu{
-  display: inline;
+  display: inline-block;
   margin-left: -5px;
   font-size: 14px;
   color: #333;
+  position: relative;
 }
 .yonghu a{
   color: #c13232;
+}
+.yonghu span{
+  width: 235px;
+  top: -13px;
+  position: absolute;
 }
 </style>
 <!-- 登录 -->
@@ -182,7 +188,7 @@ input[type="checkbox"] {
     </div>
     <div class=" clearfix" id="guwen" style="margin-top: 20px;">
         <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi" checked="checked"/><label for="xieyi"></label> 
-        <div class="yonghu">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></div>
+        <div class="yonghu"><span style="width: 235px;top: -13px;position: absolute;">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></span></div>
     </div>
     <div class="l_u_com_she">
       <div><i>社交账号登录</i></div>
@@ -222,7 +228,7 @@ input[type="checkbox"] {
     </div>
     <div class=" clearfix" id="guwen_reg" style="margin-top: 20px;">
         <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi_reg" checked="checked"/><label for="xieyi_reg"></label> 
-        <div class="yonghu">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></div>
+        <div class="yonghu"><span style="width: 235px;top: -13px;position: absolute;">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></span></div>
     </div>
     <div class="l_u_com_she">
       <div><i>社交账号登录</i></div>
@@ -241,7 +247,6 @@ input[type="checkbox"] {
   $(function() {
     var login_nickname = JSON.parse($.cookie('login_ss'));
     var user_type;
-    console.log('login_ss', login_nickname);
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con">'+
                 '<div class="top-con-right">'+
