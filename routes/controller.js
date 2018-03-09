@@ -2989,6 +2989,6 @@ exports.yiminHome = function (req, res, next) {
         // console.log(result.shouye);
         //data.esikey = esihelper.esikey();
         // log.info(data.xSlider2)
-        res.render('index', data);
+        res.render('yimin_index', data);
     })
 };
