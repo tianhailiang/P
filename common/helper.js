@@ -154,7 +154,7 @@ function active_urlgen(){
  * url拼装  开发、测试区分
  */
 function urlgen() {
-  console.log('arguments',arguments)
+  // console.log('arguments',arguments)
   var isyimin = false;
   var url = '',chan = '',param = '',city='',cityid='';
   if(arguments.length == 0){
@@ -163,20 +163,20 @@ function urlgen() {
   //get chan & subchan
   for(var i= 0 ; i < arguments.length;i++){
     if(i == 0 && arguments[i] == 'yimin'){
-      console.log('chan~~~22',arguments[i])
+      // console.log('chan~~~22',arguments[i])
       isyimin = true;
       continue;
     }
-    console.log('chan~~~',arguments[i])
+    // console.log('chan~~~',arguments[i])
     if(arguments[i] == '' || arguments[i].split('=').length > 1)
     {
-      console.log('chan1',arguments[i])
+      // console.log('chan1',arguments[i])
       break;
     }
     else
     {
       chan += '/' + arguments[i];
-      console.log('chan2',arguments[i])
+      // console.log('chan2',arguments[i])
     }
   }
   // i is hold
