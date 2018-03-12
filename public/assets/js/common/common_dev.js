@@ -13,7 +13,7 @@
     };
     var js_api_config = global.js_api_config = {
         version: 'development',
-        wwhost: 'http://www.jjl.cn'
+        wwhost: 'http://www.jjl.cn:4000'
     }
 })(this, document);
 
