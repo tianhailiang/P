@@ -261,7 +261,7 @@ exports.sendcode_s = function (req, res, next) {
   log.debug('phone', phone);
   //res.render('login', '')
   var data = [];
-  res.setHeader("Access-Control-Allow-Methods","GET,POST");
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   var async = require('async');
   //var cookie = require('cookie-parser');
   //var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
@@ -279,8 +279,8 @@ exports.sendcode_s = function (req, res, next) {
     log.debug('result.login_ss----------', result.sendcode_ss.code);
     if (result.sendcode_ss.code === 0) {
       log.debug('ok', result.sendcode_ss);
-      res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
-      //res.send(result.sendcode_ss)
+      // res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
+      res.send(result.sendcode_ss)
     }
 
   });
