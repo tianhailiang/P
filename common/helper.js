@@ -154,17 +154,12 @@ function active_urlgen(){
  * url拼装  开发、测试区分
  */
 function urlgen() {
-  var isyimin = false;
   var url = '',chan = '',param = '',city='',cityid='';
   if(arguments.length == 0){
     return ;
   }
   //get chan & subchan
   for(var i= 0 ; i < arguments.length;i++){
-    if(i == 0 && arguments[i] == 'yimin'){
-      isyimin = true;
-      continue;
-    }
     if(arguments[i] == '' || arguments[i].split('=').length > 1)
     {
       break;
@@ -197,17 +192,10 @@ function urlgen() {
   if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
     url = url + '.html';
   }
-  if(isyimin){
-    if (config.version == 'development') { //如果是開發環境
-      url = 'http://' + config.yiminhostname + ':4000' +url;
-    }
-  }
-  else {
-    if (config.version == 'development') { //如果是開發環境
-      url = config.wwhost + ':4000' + url;
-    }else{
-      url = config.wwhost + url;
-    }
+  if (config.version == 'development') { //如果是開發環境
+    url = config.wwhost + ':4000' + url;
+  }else{
+    url = config.wwhost + url;
   }
   return url;
 }

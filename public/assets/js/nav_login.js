@@ -50,7 +50,7 @@ function loginS () {
       data:{
         username: $('#newEmail').val(),
         password: hex_sha1($('#password').val()),
-        adviser_type: $('#guwen input[name="payMethod"]:checked ').val()//1 留学，2 移民
+        adviser_type: $('#guwen_login input[name="payMethod"]:checked ').val()//1 留学，2 移民
       },
       dataType:'json',
       success:function(msg){
