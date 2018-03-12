@@ -408,7 +408,7 @@
       if (currentarea) {
         e.preventDefault();
       }
-      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
+      //$.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn',expires: 10}); 
       if (endFix) {
         window.location.href = $(this).attr("href")+'?'+endFix;
       }

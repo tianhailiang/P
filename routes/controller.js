@@ -36,7 +36,8 @@ exports.index = function (req, res, next) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
             area = cityId;
-            res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
+            
+            // res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
         }
     }
     var data = [];
