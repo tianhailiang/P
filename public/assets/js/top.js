@@ -156,12 +156,13 @@
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: '/sendcode_s',
+      url: js_api_config.wwhost + '/sendcode_s',
       type:'GET',
       data: {
         phone: $('#phone').val()
       },
-      dataType:'json',
+      dataType: 'jsonp',
+      jsonpCallback:'cb',
       withCredentials:true,
       success:function(msg){
         console.log('msg', msg);
@@ -215,13 +216,14 @@
     }
     $.ajax({
       url: '/login_user',
-      type:'POST',
+      type: 'POST',
       dataType:'json',
       data: {
         phone: $('#phone').val(),
         code: $('#verify').val(),
       },
       success:function(msg) {
+        console.log('aaaaaa');
         console.log('msg', msg);
         if (msg.code == 0) {
           layer.msg('登录成功');
@@ -238,17 +240,14 @@
 function outlogin () {
   var login_info = JSON.parse($.cookie('login_ss'));
     $.ajax({
-      url: '/login_out',
+      url: js_api_config.wwhost + '/login_out',
       type: 'GET',
-      datatype: 'json',
+      dataType: 'jsonp',
+      jsonpCallback:'cb',
+      withCredentials:true,
       success:function(msg){
         if (msg == 'ok') {
           console.log('登出')
-          // if (login_info.usertype == 1){
-          //   getlogin();
-          // } else {
-          //   window.location.reload();
-          // }
           window.location.reload();
         }
       },
@@ -276,12 +275,13 @@ function outlogin () {
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: '/sendcode_s',
+      url: js_api_config.wwhost + '/sendcode_s',
       type:'GET',
       data: {
         phone: $('#phone_reg').val()
       },
-      dataType:'json',
+      dataType: 'jsonp',
+      jsonpCallback:'cb',
       withCredentials:true,
       success:function(msg){
         console.log('msg', msg);
@@ -333,9 +333,11 @@ function outlogin () {
       return
     }
     $.ajax({
-      url: '/login_user',
+      url: js_api_config.wwhost + '/login_user',
       type:'POST',
-      dataType:'json',
+      dataType: 'jsonp',
+      jsonpCallback:'cb',
+      withCredentials:true,
       data: {
         phone: $('#phone_reg').val(),
         code: $('#verify_reg').val(),
