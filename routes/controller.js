@@ -2176,8 +2176,6 @@ exports.release_article = function(req,res,next){
             cityid: area,
             realname: data.userinfo.realname,
         };
-        data.login_info.adviser == 2;
-        log.debug(data.login_info)
         if(data.login_info.adviser == 1){
             log.info('留学')
             res.render('release_article',data);
@@ -2610,8 +2608,8 @@ exports.edit_article = function(req,res,next){
       },callback);  
     } 
   },function(err, result){
-      data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
-      data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
+    data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
+    data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article = returnData(result.article,'article');
     var pagekey = null;
@@ -2624,7 +2622,12 @@ exports.edit_article = function(req,res,next){
       pagekey:pagekey,
       cityid: area,
     };
-    res.render('edit_article',data);
+    if(data.login_info.adviser == 1){
+        res.render('edit_article',data);
+    }else if(data.login_info.adviser == 2){
+        res.render('edit_article_yimin',data);
+    }
+   
   });  
 }
 //草稿箱发布接口
