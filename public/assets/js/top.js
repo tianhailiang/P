@@ -242,8 +242,6 @@ function outlogin () {
     $.ajax({
       url: js_api_config.wwhost + '/login_out',
       type: 'GET',
-      dataType: 'jsonp',
-      jsonpCallback:'cb',
       withCredentials:true,
       success:function(msg){
         if (msg == 'ok') {
