@@ -437,12 +437,13 @@ $.ajax({
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-  url: '/sendcode_s',
+  url: js_api_config.wwhost + '/sendcode_s',
   type:'GET',
   data: {
     phone: $('#phone').val()
   },
-  dataType:'json',
+  dataType: 'jsonp',
+  jsonpCallback:'cb',
   withCredentials:true,
   success:function(msg){
     console.log('msg', msg);
@@ -494,7 +495,7 @@ if (!$("#guwen input[type='checkbox']").is(':checked')) {
       return
     }
 $.ajax({
-  url: '/login_user',
+  url: js_api_config.wwhost + '/login_user',
   type:'POST',
   dataType:'json',
   data: {
@@ -517,9 +518,10 @@ $.ajax({
 //普通用户退出
 function outlogin () {
 $.ajax({
-  url: '/login_out',
+  url: js_api_config.wwhost + '/login_out',
   type: 'GET',
-  datatype: 'json',
+  dataType: 'jsonp',
+  jsonpCallback:'cb',
   success:function(msg){
     if (msg == 'ok') {
       console.log('登出')
@@ -550,12 +552,13 @@ function sendphone_reg () {
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: '/sendcode_s',
+      url: js_api_config.wwhost + '/sendcode_s',
       type:'GET',
       data: {
         phone: $('#phone_reg').val()
       },
-      dataType:'json',
+      dataType: 'jsonp',
+      jsonpCallback:'cb',
       withCredentials:true,
       success:function(msg){
         console.log('msg', msg);
@@ -607,7 +610,7 @@ function sendphone_reg () {
       return
     }
     $.ajax({
-      url: '/login_user',
+      url: js_api_config.wwhost + '/login_user',
       type:'POST',
       dataType:'json',
       data: {

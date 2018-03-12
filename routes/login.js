@@ -50,6 +50,7 @@ exports.login_user = function (req, res, next) {
     }
     console.log('ip',ip);
   var async = require('async');
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   async.parallel({
     //签证指南
     login_user: function (callback) {
@@ -260,6 +261,7 @@ exports.sendcode_s = function (req, res, next) {
   log.debug('phone', phone);
   //res.render('login', '')
   var data = [];
+  res.setHeader("Access-Control-Allow-Methods","GET,POST");
   var async = require('async');
   //var cookie = require('cookie-parser');
   //var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
@@ -277,7 +279,7 @@ exports.sendcode_s = function (req, res, next) {
     log.debug('result.login_ss----------', result.sendcode_ss.code);
     if (result.sendcode_ss.code === 0) {
       log.debug('ok', result.sendcode_ss);
-      res.send(result.sendcode_ss);
+      res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
       //res.send(result.sendcode_ss)
     }
 
@@ -510,10 +512,11 @@ exports.forget_s = function (req, res, next) {
 exports.login_out = function (req, res, next) {
   console.log('login_out');
   //console.log('req', req);
+  res.setHeader("Access-Control-Allow-Methods","GET,POST");
   res.clearCookie("login_ss", {domain: '.jjl.cn'});
   //res.cookie(prop, 'login_ss', {expires: new Date(0)});
   console.log('login_out1');
-  res.send('ok')
+  res.send("cb(ok)")
   //res.redirect(req.query.h);
 };
 

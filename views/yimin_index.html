@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+{% include "header_new.html" %}
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/logo.css" >
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/index.css">
+<link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
+<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+<style>
+  .xuanze-chengshi p a:last-child{
+    margin-right: 0;
+  }
+  .liuxue-guoqi a{
+    margin: 10px 0px 25px 87px;
+  }
+</style>
+<body>
+<!--留学国家-->
+<div class="nationality_guoqi_warp">
+  <div class="nationality_guoqi">
+    <div class="liuxue-guoqi">
+      <a href="#country1"><img src="{{helper.cdnhost}}/assets/img/America.png" alt="美国移民"><p>美国</p></a>
+      <a href="#country3"><img src="{{helper.cdnhost}}/assets/img/Canada.png" alt="加拿大移民"><p>加拿大</p></a>
+      <a href="#country4"><img src="{{helper.cdnhost}}/assets/img/Australia.png" alt="澳大利亚移民"><p>澳大利亚</p></a>
+      <a href="#country5"><img src="{{helper.cdnhost}}/assets/img/NEW ZEALAND.png" alt="新西兰移民"><p>新西兰</p></a>
+      <a href="#country2"><img src="{{helper.cdnhost}}/assets/img/England.png" alt="英国移民"><p>英国</p></a>
+      <a href="#country108"><img src="{{helper.cdnhost}}/assets/img/eire.png" alt="爱尔兰移民"><p>爱尔兰</p></a>
+      <a href="#country7"><img src="{{helper.cdnhost}}/assets/img/Greece.png" alt="希腊移民"><p>希腊</p></a>
+      <a href="#country8"><img src="{{helper.cdnhost}}/assets/img/Malta.png" alt="马耳他移民"><p>马耳他</p></a><br>
+      <a href="#country112"><img src="{{helper.cdnhost}}/assets/img/Spanish.png" alt="西班牙移民"><p>西班牙</p></a>
+      <a href="#country10"><img src="{{helper.cdnhost}}/assets/img/Portuguesa.png" alt="葡萄牙移民"><p>葡萄牙</p></a>
+      <a href="#country11"><img src="{{helper.cdnhost}}/assets/img/Cyprus.png" alt="塞浦路斯移民"><p>塞浦路斯</p></a>
+      <!--<a href="#country109"><img src="{{helper.cdnhost}}/assets/img/Holand.png" alt="荷兰移民"><p>荷兰</p></a>-->
+      <a href="#country14"><img src="{{helper.cdnhost}}/assets/img/st. kitts.png" alt="圣基茨移民"><p>圣基茨</p></a>
+      <a href="#country12"><img src="{{helper.cdnhost}}/assets/img/Antigua.png" alt="安提瓜移民"><p>安提瓜</p></a>
+      <a href="#country15"><img src="{{helper.cdnhost}}/assets/img/Grenada.png" alt="格林纳达移民"><p>格林纳达</p></a>
+      <a href="#country13"><img src="{{helper.cdnhost}}/assets/img/Dominica.png" alt="多米尼克移民"><p>多米尼克</p></a>
+      <a  href="#country54"><img src="{{helper.cdnhost}}/assets/img/HongKong.png" alt="中国香港移民"><p>中国香港</p></a>
+    </div>
+    <div class="liuxue-guojia-title">
+      移民国家及地区
+    </div>
+  </div>
+</div>
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
+{{ new_nav_first.new_nav_first(tdk,helper) }}
+<div class="main" style="width: 1200px;margin: 0 auto;">
+  <!--轮播图-->
+  <div class="lunbo">
+    <div class="lunbo_lift">
+      {% include "widget/xSlider/xSlider.html" %}
+    </div>
+    <div class="lunbo_right">
+      <!--四大优势-->
+      {% import "widget/xSlider/cSlider.html" as cSlider %}
+      {{cSlider.doubleSlider(xSlider2,helper)}}
+    </div>
+  </div>
+  <!--50家分公司-->
+  <div class="branch_company">
+    <div class="branch_company_img">
+      <img src="{{helper.cdnhost}}/assets/img/yimin-branch-company.png" alt="五十家分公司">
+    </div>
+    <div class="branch_company_text">
+      <div style="margin: 5px 15px">
+        {% set cityList=[
+        {
+        "companyName": "北京",
+        "companyId": "1"
+        },
+        {
+        "companyName": "上海",
+        "companyId": "2"
+        },
+        {
+        "companyName": "广州",
+        "companyId": "3"
+        },
+        {
+        "companyName": "天津",
+        "companyId": "4"
+        },
+        {
+        "companyName": "成都",
+        "companyId": "5"
+        },
+        {
+        "companyName": "杭州",
+        "companyId": "6"
+        },
+        {
+        "companyName": "重庆",
+        "companyId": "7"
+        },
+        {
+        "companyName": "沈阳",
+        "companyId": "8"
+        },
+        {
+        "companyName": "济南",
+        "companyId": "9"
+        },
+        {
+        "companyName": "青岛",
+        "companyId": "10"
+        },
+        {
+        "companyName": "郑州",
+        "companyId": "11"
+        },
+        {
+        "companyName": "石家庄",
+        "companyId": "12"
+        },
+        {
+        "companyName": "大连",
+        "companyId": "13"
+        },  {
+        "companyName": "武昌",
+        "companyId": "14"
+        },  {
+        "companyName": "汉口",
+        "companyId": "14"
+        },
+        {
+        "companyName": "西安",
+        "companyId": "15"
+        },
+        {
+        "companyName": "南京",
+        "companyId": "16"
+        },
+        {
+        "companyName": "太原",
+        "companyId": "17"
+        },
+        {
+        "companyName": "唐山",
+        "companyId": "18"
+        },
+        {
+        "companyName": "长沙",
+        "companyId": "19"
+        },
+        {
+        "companyName": "深圳",
+        "companyId": "20"
+        },
+        {
+        "companyName": "昆明",
+        "companyId": "21"
+        },
+        {
+        "companyName": "合肥",
+        "companyId": "22"
+        },
+        {
+        "companyName": "苏州",
+        "companyId": "23"
+        },
+        {
+        "companyName": "哈尔滨",
+        "companyId": "24"
+        },
+        {
+        "companyName": "长春",
+        "companyId": "25"
+        },
+        {
+        "companyName": "呼市",
+        "companyId": "26"
+        },
+        {
+        "companyName": "兰州",
+        "companyId": "27"
+        },
+        {
+        "companyName": "厦门",
+        "companyId": "28"
+        },
+        {
+        "companyName": "南昌",
+        "companyId": "29"
+        },
+        {
+        "companyName": "吉林",
+        "companyId": "30"
+        },
+        {
+        "companyName": "烟台",
+        "companyId": "31"
+        },
+        {
+        "companyName": "邯郸",
+        "companyId": "32"
+        },
+        {
+        "companyName": "无锡",
+        "companyId": "33"
+        },
+        {
+        "companyName": "宁波",
+        "companyId": "34"
+        },
+        {
+        "companyName": "贵阳",
+        "companyId": "35"
+        },
+        {
+        "companyName": "徐州",
+        "companyId": "36"
+        },
+        {
+        "companyName": "佛山",
+        "companyId": "37"
+        },
+        {
+        "companyName": "南宁",
+        "companyId": "38"
+        },
+        {
+        "companyName": "福州",
+        "companyId": "39"
+        },
+        {
+        "companyName": "银川",
+        "companyId": "40"
+        },
+        {
+        "companyName": "常州",
+        "companyId": "41"
+        },
+        {
+        "companyName": "温州",
+        "companyId": "42"
+        },
+        {
+        "companyName": "东莞",
+        "companyId": "43"
+        },
+        {
+        "companyName": "宜昌",
+        "companyId": "44"
+        },
+        {
+        "companyName": "西宁",
+        "companyId": "45"
+        },
+        {
+        "companyName": "海南",
+        "companyId": "46"
+        },
+        {
+        "companyName": "新疆",
+        "companyId": "47"
+        },
+        {
+        "companyName": "洛阳",
+        "companyId": "48"
+        },
+        {
+        "companyName": "温哥华",
+        "companyId": "49"
+        }
+        ] %}
+        {% for item in cityList %}
+        <div class="branch_company_text_tilte">
+          {{item.companyName}}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% include "widget/liuxue_item/yimin_item.html" %}
+</div>
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_HOME_SEAT10",helper) }}
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script>
+  $(function () {
+    var nowLocation = window.location.href;
+    var endFix = nowLocation.split('?')[1];
+    $.ajax({
+      type: "get",
+      async: false,
+      url:ajaxUrlPrefix.nodeapi+"/ip_geter",
+      dataType: "json",
+      success: function(result){
+        var iparea = result.data;
+        if(!$.cookie('currentarea')){
+          console.log('sss');
+          $('#zhezhaox').show();
+          $('#zhezhaos').show();
+          $('#fengongsi').html(fn.getCityChinese(iparea));
+        }
+        else {
+          console.log('9999');
+        }
+        //正确
+        $('#selByIp').on('click',function (e) {
+          e.preventDefault();
+          $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn'});
+          if (endFix) {
+            window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
+          }
+          else {
+            window.location.href = fn.urlgen('branch_home','c='+ result.data);
+          }
+        })
+      },
+      error: function(error){
+        console.log(error)
+      }
+    });
+    $('.xuanze-chengshi').on('click',"a", function(e){
+      var currentarea = $(this).attr("data-id");
+      if (currentarea) {
+        e.preventDefault();
+      }
+      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
+      if (endFix) {
+        window.location.href = $(this).attr("href")+'?'+endFix;
+      }
+      else {
+        window.location.href = $(this).attr("href");
+      }
+
+    });
+      //
+      $(window).on('scroll', function () {
+          var $scroll = $(this).scrollTop();
+          if ($scroll >= 250) {
+              $('.nationality_guoqi_warp').show();
+          } else {
+              $('.nationality_guoqi_warp').hide();
+          }
+      });
+      $(".liuxue-guoqi ").on('click','a',function () {
+          var id=$(this).attr('href')
+          var $scrolltop = $(id).offset().top;
+          $('html,body').animate({//$('html,body')兼容问题body属于chrome
+              scrollTop:$scrolltop-174
+          })
+      });
+      $('.lunbo_lift .slider').xSlider({
+          //轮播图配置
+          autoplay: 2000,
+          current: 0,
+          speed: 500,
+          intervalTime: 5000,
+          pagination: true
+      });
+  })
+</script>
+</body>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+</html>
