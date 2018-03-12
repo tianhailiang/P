@@ -2929,4 +2929,66 @@ exports.agreement = function (req, res, next){
 
   });
 }
-
+exports.yiminHome = function (req, res, next) {
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    if (req.params[0]) {
+        var cityId = comfunc.getCityId(req.params[0]);
+        if(cityId && cityId !== comfunc.INVALID_ID){
+            area = cityId;
+            res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
+        }
+    }
+    var data = [];
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
+    }
+    if ( req.cookies.login_ss !== undefined) {
+        console.log('aaaaaa');
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        console.log('data.login_info', data.login_info);
+    }else{
+        data.login_info ={};
+        data.login_info.uid = 0;
+        //res.redirect(config.wwhost+'/login');
+        //return false;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "HOME",
+                "ad_seat": "SEAT1",
+                "cityid":area
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "HOME",
+                "ad_seat": "SEAT2",
+                "cityid":area
+            }, callback);
+        },
+        shouye:function(callback) {
+            cms.shouye({
+                "city_id": area,
+            }, callback);
+        },
+    },function (err, result) {
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.shouye = JSON.parse(result.shouye);
+        data.tdk = {
+            pagekey: 'HOME',
+            cityid: area,
+            nationid: ''
+        };
+        // console.log(result.shouye);
+        //data.esikey = esihelper.esikey();
+        // log.info(data.xSlider2)
+        res.render('yimin_index', data);
+    })
+};

@@ -1,7 +1,8 @@
 <!--我关注的-->
 {% macro follow(f_type,fItem,helper) %}
 <div class="follow-con clearfix">
-  <a target="_blank" href="{{helper.urlgen(fItem.friend_uid.toString())}}"><img class="img-left" src="{{helper.avaterimg(fItem.friend_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/></a>
+<!--  <a target="_blank" href="{{helper.urlgen(fItem.friend_uid.toString())}}"><img class="img-left" src="{{helper.avaterimg(fItem.friend_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/></a>-->
+  <a target="_blank" href="{{helper.urlgen(fItem.friend_uid.toString())}}" style="background-image: url({{helper.avaterimg(fItem.friend_uid, 'small',fItem.user_info.status,fItem.user_info.version)}})" class="img-left"></a>
   <div class="content">
     <div class="content-title">{{fItem.user_info.realname}}</div>
     <div class="content-des">个人简介：{{fItem.user_info.introduce}}</div>
@@ -52,7 +53,8 @@
 <!--我关注的-顾问、参赞去掉跳转链接-->
 {% macro follow_no(f_type,fItem,helper) %}
 <div class="follow-con clearfix">
-  <img class="img-left" src="{{helper.avaterimg(fItem.fans_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/>
+<!--  <img class="img-left" src="{{helper.avaterimg(fItem.fans_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/>-->
+  <div style="background-image: url({{helper.avaterimg(fItem.fans_uid, 'small',fItem.user_info.status,fItem.user_info.version)}})" class="img-left"></div>
   <div class="content">
     <div class="content-title">{{fItem.user_info.realname}}</div>
     <div class="content-des">个人简介：{{fItem.user_info.introduce}}</div>
