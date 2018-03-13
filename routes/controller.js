@@ -44,12 +44,18 @@ function get_page_key(usertype, adviser_type, page_key) {
 }
 
 exports.index = function (req, res, next) {
+    console.log('branch_home',helperfunc.urlgen('branch_home','c='+req.cookies.currentarea))
+    if (req.cookies.currentarea) {
+        res.redirect(helperfunc.urlgen('branch_home','c='+req.cookies.currentarea));
+        return false;
+    }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     if (req.params[0]) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
             area = cityId;
-            res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
+            
+            res.cookie("currentarea", cityId, {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
         }
     }
     var data = [];
@@ -106,6 +112,71 @@ exports.index = function (req, res, next) {
         res.render('index', data);
     })
 };
+//分公司首页
+exports.index_page = function (req, res, next) {
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    if (req.params[0]) {
+        var cityId = comfunc.getCityId(req.params[0]);
+        if(cityId && cityId !== comfunc.INVALID_ID){
+            area = cityId;
+            res.cookie("currentarea", cityId, {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
+        }
+    }
+    var data = [];
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
+    }
+    if ( req.cookies.login_ss !== undefined) {
+        console.log('aaaaaa');
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        console.log('data.login_info', data.login_info);
+    }else{
+        data.login_info ={};
+        data.login_info.uid = 0;
+        //res.redirect(config.wwhost+'/login');
+        //return false;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "HOME",
+                "ad_seat": "SEAT1",
+                "cityid":area
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "HOME",
+                "ad_seat": "SEAT2",
+                "cityid":area
+            }, callback);
+        },
+        shouye:function(callback) {
+            cms.shouye({
+                "city_id": area,
+            }, callback);
+        },
+    },function (err, result) {
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.shouye = JSON.parse(result.shouye);
+        data.tdk = {
+            pagekey: 'HOME',
+            cityid: area,
+            nationid: ''
+        };
+        // console.log(result.shouye);
+        //data.esikey = esihelper.esikey();
+        // log.info(data.xSlider2)
+        res.render('index', data);
+    })
+};
+
 //搜索页
 exports.so_article = function (req, res, next) {
     log.debug('搜索结果文章');
@@ -2309,27 +2380,27 @@ exports.publish_article = function (req, res, next) {
 
 //专栏发布页 
 exports.release_article = function(req,res,next){
-  log.debug('专栏发布页~~thl')  
-  var data = {};
-  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  //node获取地址栏url
-  var l = url.parse(req.url, true).query;
-  console.log('url', l.h);
-  if (l.h !== undefined) {
-      data.url = l.h;
-  } else {
-      data.url = config.wwhost;
-  }
-  if(req.cookies.login_ss != undefined){
-    data.login_info = JSON.parse(req.cookies.login_ss);
-    if(data.login_info.usertype ==1){
-       next()
-       return false;
+    log.debug('专栏发布页~~thl')  
+    var data = {};
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
     }
-  }else{
-    res.redirect(config.wwhost+'/login')
-    return false;
-  }
+    if(req.cookies.login_ss != undefined){
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        if(data.login_info.usertype ==1){
+           next()
+           return false;
+        }
+    }else{
+        res.redirect(config.wwhost+'/login')
+        return false;
+    }
     async.parallel({
         lunbo_list: function (callback) {
             cms.lunbo_list({
@@ -2373,7 +2444,14 @@ exports.release_article = function(req,res,next){
             cityid: area,
             realname: data.userinfo.realname,
         };
-        res.render('release_article',data);
+        if(data.login_info.adviser == 1){
+            log.info('留学')
+            res.render('release_article',data);
+        }else if(data.login_info.adviser == 2){
+            log.info('移民')
+            res.render('release_article_yimin',data);
+        }
+       
     })
 };
 
@@ -2808,8 +2886,8 @@ exports.edit_article = function(req,res,next){
       },callback);  
     } 
   },function(err, result){
-      data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
-      data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
+    data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
+    data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article = returnData(result.article,'article');
     var pagekey = null;
@@ -2827,7 +2905,12 @@ exports.edit_article = function(req,res,next){
       pagekey:pagekey,
       cityid: area,
     };
-    res.render('edit_article',data);
+    if(data.login_info.adviser == 1){
+        res.render('edit_article',data);
+    }else if(data.login_info.adviser == 2){
+        res.render('edit_article_yimin',data);
+    }
+   
   });  
 }
 //草稿箱发布接口

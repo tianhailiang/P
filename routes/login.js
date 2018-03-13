@@ -362,12 +362,12 @@ exports.qq_login = function (req, res, next) {
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
-        oauth_data.title = 'QQ'
+        oauth_data.title = 'QQ';
         //data.oauth_data = oauth_data;
         //console.log(oauth_data);
         //res.render('binding', data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
-        res.redirect('binding',oauth_data);
+        res.redirect('binding');
       }
     });
   }else{
@@ -410,7 +410,7 @@ exports.sina_login = function (req, res, next) {
         oauth_data.title = '新浪'
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
-        res.redirect('binding',oauth_data);
+        res.redirect('binding');
       }
     });
   }else{
@@ -454,7 +454,7 @@ exports.weixin_login = function (req, res, next) {
         oauth_data.title = '微信'
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
-        res.redirect('binding',oauth_data);
+        res.redirect('binding');
       }
     });
   }else{

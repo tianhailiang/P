@@ -36,7 +36,7 @@
         <p><span>F</span><a target="_blank" class="dui-text-warning-s" data-id="37"  href="{{helper.urlgen('branch_home','c=37')}}">佛山</a>
           <a target="_blank" class="dui-text-warning-s" data-id="39"  href="{{helper.urlgen('branch_home','c=39')}}">福州</a></p>
         <p><span>G</span><a target="_blank" class="dui-text-warning-s" data-id="3"  href="{{helper.urlgen('branch_home','c=3')}}">广州</a>
-          <a target="_blank" class="dui-text-warning-s" data-id="35"  href="{{helper.urlgen('branch_home','c=35')}}">贵州</a></p>
+          <a target="_blank" class="dui-text-warning-s" data-id="35"  href="{{helper.urlgen('branch_home','c=35')}}">贵阳</a></p>
         <p><span>H</span><a target="_blank" class="dui-text-warning-s" data-id="6"  href="{{helper.urlgen('branch_home','c=6')}}">杭州</a>
           <a target="_blank" class="dui-text-warning-s" data-id="14"  href="{{helper.urlgen('branch_home','c=14')}}">汉口</a>
           <a target="_blank" class="dui-text-warning-s"  data-id="22"  href="{{helper.urlgen('branch_home','c=22')}}">合肥</a>
@@ -390,7 +390,7 @@
         //正确
         $('#selByIp').on('click',function (e) {
           e.preventDefault();
-          $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn'});
+          $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn',expires: 36500});
           if (endFix) {
             window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
           }
@@ -408,7 +408,7 @@
       if (currentarea) {
         e.preventDefault();
       }
-      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
+      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn',expires: 36500}); 
       if (endFix) {
         window.location.href = $(this).attr("href")+'?'+endFix;
       }
