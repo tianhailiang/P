@@ -1,0 +1,43 @@
+{% macro common_nav(tdk,helper) %}
+<link rel="stylesheet" href="{{helper.cdnhost}}/views/widget/new_nav_first/new_nav_first.css">
+<div class="new_nav_first_red">
+    <div class="new_nav_first clearfix">
+        <div class="new-logo-left">
+            <a  target="_blank" href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}"><img src="{{helper.cdnhost}}/assets/img/logo_transparent.png" alt="金吉列留学官网"/></a>
+        </div>
+        <ul class="page-type">
+            <li class="active"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li>
+            <li class="active"><a href="">移民</a></li>
+            <li style="width: 118px;" class="active"><a href="{{ helper.urlgen('about') }}">关于金吉列</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="new-searchs new-home-search">
+                <!--                <div class="top_sec will">
+                                    <span class="please-sec"><a  target="_blank" href="javascript:void(0);" id="searchType">顾问</a><i class="iconfont go-down" style="font-size: 12px;">&#xe60b;</i></span>
+                                    <div class="sec-xq">
+                                        <ul id="searchTypeList">
+                                            <li><a  target="_blank" href="">资讯</a></li>
+                                            <li><a  target="_blank" href="">顾问</a></li>
+                                            <li><a  target="_blank" href="">活动</a></li>
+                                            <li><a  target="_blank" href="">案例</a></li>
+                                            <li><a  target="_blank" href="">院校</a></li>
+
+                                        </ul>
+                                    </div>
+                                </div>-->
+                <div class="search-type-box">
+                    <span class="search-type"></span>
+                    <ul>
+                        <li>留学</li>
+                        <li>移民</li>
+                    </ul>
+                </div>
+                <input type="text" id="search" placeholder="请输入搜索关键词" class="text text-nav"
+                       onfocus="if(this.placeholder == '请输入搜索关键词'){this.value = '';}"
+                       onblur="if(this.value == ''){this.placeholder= '请输入搜索关键词';}">
+                <div class="search-btn" id="searchBtn" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
