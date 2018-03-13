@@ -1,0 +1,299 @@
+
+
+<div class="customization2" style="padding-left: 8px;">
+  <div class="quick-text11" style="padding-top:30px;">
+
+    <label class="title" for="yiMinNames" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px"><span style="color:#c13232;">*</span>&nbsp;姓名：</label>
+    <input name="quickName" id="yiMinNames" type="text" style="width: 220px;
+    height: 28px;border: 1px solid #dcdcdc;padding-left:10px;color:#999999;font-size:12px; " placeholder="输入您的真实姓名" />
+
+    <div class="numTip" id="yiMinTips" style="margin-left:74px;height:14px;line-height: 14px;color:#ff7d31;"></div>
+  </div>
+
+  <div class="quick-text11" style="">
+
+    <label class="title" for="yiMinPhones" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px"><span  style="color:#c13232;">*</span>&nbsp;手机：</label>
+    <input name="quickPhone" id="yiMinPhones" type="text" style="width: 120px;
+    height: 28px;border: 1px solid #dcdcdc;padding-left:10px;color:#999999;font-size:12px; " placeholder="输入您的手机号" />
+    <span class="quick-get-phone-code" id="yiMin-phone-codes" style="width: 90px;height:30px;font-size:14px;position: relative;top: -1px;left:-5px;cursor:pointer;background: #c13232;color:#ffffff;border:none;">获取验证码</span>
+    <div class="numTip" id="yiMinPhoneTips" style="margin-left:74px;height:14px;line-height:14px;color:#ff7d31;"></div>
+  </div>
+  <div class="quick-text11" style="">
+
+    <label class="title" for="yiMinPhoneCodes" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px"> &nbsp;&nbsp;手机验证码：</label>
+    <input name="quickPhoneCodes" id="yiMinPhoneCodes" type="text" style="width: 180px;
+    height:28px;border: 1px solid #dcdcdc;padding-left:10px;color:#999999;font-size:12px; " placeholder="输入手机验证码"/>
+
+    <div class="numTip" id="codeNumTip-acts" style="margin-left:114px;height:14px;line-height: 14px;color:#ff7d31;"></div>
+  </div>
+  <div class="quick-text11" style="">
+
+    <label class="title" for="yimin_countrys" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px">&nbsp;&nbsp;意&nbsp;向&nbsp;国&nbsp;家：</label>
+    <select id="yimin_countrys" name="yimin_countrys" style="width: 190px;
+    height: 28px;color:#999999;border: 1px solid #dcdcdc;padding-left:10px;background:#ffffff url({{helper.cdnhost}}/assets/img/select-down1.png) no-repeat 167px 0">
+      <option value='3'>加拿大</option>
+      <option value='1'>美国</option>
+      <option value='4'>澳洲</option>
+      <option value='5'>新西兰</option>
+      <option value='2'>英国</option>
+      <option value='108'>爱尔兰</option>
+      <option value='7'>希腊</option>
+      <option value='8'>马耳他</option>
+      <option value='112'>西班牙</option>
+      <option value='10'>葡萄牙</option>
+      <option value='11'>塞浦路斯</option>
+      <option value='12'>安提瓜</option>
+      <option value='13'>多米尼克</option>
+      <option value='14'>圣基茨</option>
+      <option value='15'>格林纳达</option>
+      <option value='109'>荷兰</option>
+    </select>
+
+    <div class="numTip" id="departmentNumTip2s"></div>
+  </div>
+  <div class="quick-text11" style="margin-top:14px;">
+
+    <label class="title" for="yimin_projects" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px">&nbsp;&nbsp;移&nbsp;民&nbsp;目&nbsp;的：</label>
+    <select id="yimin_projects" name="yimin_projects" style="width: 190px;
+    height: 28px;color:#999999;border: 1px solid #dcdcdc;padding-left:10px;background:#ffffff url({{helper.cdnhost}}/assets/img/select-down1.png) no-repeat 167px 0">
+      <option value='1'>投资移民</option>
+      <option value='2'>创业移民</option>
+      <option value='3'>技术移民</option>
+      <option value='4'>留学移民</option>
+      <option value='5'>杰出人才移民</option>
+      <option value='6'>团聚移民</option>
+      <option value='7'>购房移民</option>
+      <option value='8'>国债移民</option>
+      <option value='9'>护照项目</option>
+    </select>
+
+    <div class="numTip" id="departmentNumTips"></div>
+  </div>
+
+
+
+
+
+
+  <div class="quick-btn-box" style="font-size: 14px;" >
+    <div class="quick-btn" id="online-btns" style="cursor: pointer">
+      点击进行在线评估
+    </div>
+  </div>
+
+</div>
+<script>
+  $(function(){
+    $('#pinggu').on('click',function(){
+      $('#customizacon').css({"display":"block"});
+    });
+    $('#customiing').on('click',function(){
+      $('#customizacon').css({"display":"none"});
+    });
+
+  var validate_leyu = {
+    //phone
+    phone: function(phone){
+      if(!/^1(3|4|5|7|8)\d{9}$/.test(phone)){
+        return false;
+      }
+      return true;
+    }
+  };
+  /*$(".quick-text11").each(function(i){
+   //获取.title 的宽度  给numTip 设置padding-left
+   var w = $(this).find(".title").width();
+   $(this).find(".numTip").css({"paddingLeft":w+10+"px"})
+
+   });*/
+
+  $("#yiMinNames").on('blur',function(){
+    // 姓名输入框 失去焦点事件
+    if($(this).val()==''){
+      $('#yiMinTips').html("请输入您的姓名");
+    }else{
+      $('#yiMinTips').html("")
+    }
+  });
+  $("#yiMinPhones").on("blur",function(){
+    //手机号失去焦点事件
+    if($(this).val()==''){
+      $('#yiMinPhoneTips').html("请输入您正确的电话")
+    }else{
+      if(!validate_leyu.phone($(this).val())){
+        $('#yiMinPhoneTips').html("输入您的正确手机号码");
+      }else{
+        $('#yiMinPhoneTips').html("");
+      }
+    }
+  });
+  $("#yiMinPhoneCodes").on("blur",function(){
+    //验证码失去焦点事件
+    if($(this).val()==''){
+      $('#codeNumTip-acts').html("请输入验证码");
+    }else{
+      $('#codeNumTip-acts').html("");
+    }
+  });
+
+  function getCode () {
+    //获取验证码
+    if (!validate_leyu.phone($.trim($("#yiMinPhones").val()))) {
+      alert("您输入的手机号不正确");
+      $("#yiMinPhones").val('');
+      return false;
+    } else {
+      countDown();
+      //获取短信验证码
+    }
+    $.ajax({
+      url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
+      type:'get',
+      data:{
+        m: 'sendcode',
+        phone:$("#yiMinPhones").val()
+      },
+      dataType:'json',
+      success:function(msg){
+
+        if(msg.code === 0){
+          alert('成功');
+        } else {
+          alert('出错啦');
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  }
+  var timer;
+  function countDown() {
+    // 60s倒计时
+    $("#yiMin-phone-codes").unbind("click");
+    var countDownTime = 60;
+     timer = window.setInterval(function () {
+      countDownTime--;
+
+      $("#yiMin-phone-codes").html('（'+countDownTime+'）s');
+      if (countDownTime == 0) {
+        clearInterval(timer);
+        $("#yiMin-phone-codes").html('重新获取');
+        $("#yiMin-phone-codes").bind("click",function () {
+          getCode();
+        });
+      }
+    }, 1000);
+  }
+
+
+  $("#yiMin-phone-codes").click(function(){
+    getCode();
+  });
+
+  var customize = function (name, phone, country, project) {
+    //发送定制
+    $.ajax({
+      url: ajaxUrlPrefix.nodeapi + '/cmsapi/immi_case_plan', //移民方案定制
+      type:'POST',
+      data:{
+        user_name: name,
+        phone: phone,
+        country: country,
+        project: project
+      },
+      dataType:'json',
+      success:function(msg){
+        console.log(msg);
+        if(msg.code === 0){
+          alert('成功');
+
+        } else {
+          alert(msg.message);
+
+        };
+        var u_names = $.trim($("#yiMinNames").val(''));
+        var u_phones = $.trim($("#yiMinPhones").val(''));
+        var u_codes = $.trim($("#yiMinPhoneCodes").val(''));
+        clearInterval(timer);
+        $("#yiMin-phone-codes").html('获取验证码');
+        $("#yiMin-phone-codes").bind("click",function () {
+            getCode();
+        });
+        $('#customizacon').css({"display":"none"});
+
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
+        console.log(textStatus);
+        console.log(errorThrown)
+      }
+    });
+  };
+  var checkCode = function (phoneCode, phone, u_name, u_phone, u_country, u_project) {
+    $.ajax({
+      url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
+      type:'get',
+      data:{
+        m: 'check_code',
+        code: phoneCode,
+        phone: phone
+      },
+      dataType:'json',
+      success:function(msg){
+        console.log(msg);
+        if(msg.code === 0){
+          customize(u_name, u_phone, u_country, u_project);
+        } else {
+          alert(msg.message);
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  };
+  $("#online-btns").on('click',function(){
+    var u_names = $.trim($("#yiMinNames").val());
+    var u_phones = $.trim($("#yiMinPhones").val());
+    var u_codes = $.trim($("#yiMinPhoneCodes").val());
+    var u_projects = $("#yimin_projects").val();
+    var u_countrys = $("#yimin_countrys").val();
+    // 验证姓名
+    if(u_names==''){
+      $('#yiMinTips').html("请输入您的姓名");
+      return false;
+    }
+    //验证手机号
+    if(u_phones==''){
+      $('#yiMinPhoneTips').html("请输入您的电话限制11位");
+      return false;
+    }else{
+      if(!validate_leyu.phone(u_phones)){
+        $('#yiMinPhoneTips').html("输入您的正确手机号码");
+        return false;
+      }
+    }
+    //验证  验证码
+    if(u_codes==''){
+      $('#codeNumTip-acts').html("请输入验证码");
+      return false;
+    }
+    else {
+      checkCode(u_codes, u_phones, u_names, u_phones, u_countrys, u_projects);
+
+    }
+  });
+  $("#quick-btnss").on('click',function(){
+    $("#yiMin-phone-codes").unbind("click");
+    var u_names = $.trim($("#yiMinNames").val(''));
+    var u_phones = $.trim($("#yiMinPhones").val(''));
+    var u_codes = $.trim($("#yiMinPhoneCodes").val(''));
+    clearInterval(timer);
+    $("#yiMin-phone-codes").html('获取验证码');
+    $("#yiMin-phone-codes").bind("click",function () {
+        getCode();
+    });
+  })
+  });
+</script>

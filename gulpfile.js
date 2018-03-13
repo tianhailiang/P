@@ -32,7 +32,15 @@ gulp.task("node", function() {
     }
   })
 });
-
+gulp.task("node_yimin", function() {
+  nodemon({
+    script: './bin/yimin_svr',
+    ext: 'js html css',
+    env: {
+      'NODE_ENV': 'development'
+    }
+  })
+});
 /*
 * 打包
 * */
@@ -115,7 +123,24 @@ gulp.task('server', ["node"], function() {
 
   gulp.watch(files).on("change", reload);
 });
+gulp.task('server_yimin', ["node_yimin"], function() {
+  var files = [
+    'views/**/*.html',
+    'views/**/*.ejs',
+    'views/**/*.jade',
+    'public/**/*.*'
+  ];
 
+  //gulp.run(["node"]);
+  browserSync.init(files, {
+    proxy: 'http://localhost:4600',
+    browser: 'chrome',
+    notify: false,
+    port: 4601
+  });
+
+  gulp.watch(files).on("change", reload);
+});
 //css generate verison in dist/rev/css/*.json
 gulp.task('revCss',function(){
   return gulp.src('public/**/*.css')

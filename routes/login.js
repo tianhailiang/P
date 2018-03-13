@@ -50,6 +50,7 @@ exports.login_user = function (req, res, next) {
     }
     console.log('ip',ip);
   var async = require('async');
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   async.parallel({
     //签证指南
     login_user: function (callback) {
@@ -260,6 +261,7 @@ exports.sendcode_s = function (req, res, next) {
   log.debug('phone', phone);
   //res.render('login', '')
   var data = [];
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   var async = require('async');
   //var cookie = require('cookie-parser');
   //var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
@@ -277,8 +279,8 @@ exports.sendcode_s = function (req, res, next) {
     log.debug('result.login_ss----------', result.sendcode_ss.code);
     if (result.sendcode_ss.code === 0) {
       log.debug('ok', result.sendcode_ss);
-      res.send(result.sendcode_ss);
-      //res.send(result.sendcode_ss)
+      // res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
+      res.send(result.sendcode_ss)
     }
 
   });
@@ -360,12 +362,12 @@ exports.qq_login = function (req, res, next) {
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
-        oauth_data.title = 'QQ'
+        oauth_data.title = 'QQ';
         //data.oauth_data = oauth_data;
         //console.log(oauth_data);
         //res.render('binding', data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
-        res.redirect('binding',oauth_data);
+        res.redirect('binding');
       }
     });
   }else{
@@ -408,7 +410,7 @@ exports.sina_login = function (req, res, next) {
         oauth_data.title = '新浪'
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
-        res.redirect('binding',oauth_data);
+        res.redirect('binding');
       }
     });
   }else{
@@ -452,7 +454,7 @@ exports.weixin_login = function (req, res, next) {
         oauth_data.title = '微信'
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
-        res.redirect('binding',oauth_data);
+        res.redirect('binding');
       }
     });
   }else{
@@ -510,10 +512,11 @@ exports.forget_s = function (req, res, next) {
 exports.login_out = function (req, res, next) {
   console.log('login_out');
   //console.log('req', req);
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   res.clearCookie("login_ss", {domain: '.jjl.cn'});
   //res.cookie(prop, 'login_ss', {expires: new Date(0)});
   console.log('login_out1');
-  res.send('ok')
+  res.send("ok")
   //res.redirect(req.query.h);
 };
 

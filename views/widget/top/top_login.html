@@ -442,7 +442,7 @@ $.ajax({
   data: {
     phone: $('#phone').val()
   },
-  dataType:'json',
+  dataType: 'json',
   withCredentials:true,
   success:function(msg){
     console.log('msg', msg);
@@ -519,7 +519,7 @@ function outlogin () {
 $.ajax({
   url: '/login_out',
   type: 'GET',
-  datatype: 'json',
+  dataType: 'json',
   success:function(msg){
     if (msg == 'ok') {
       console.log('登出')
@@ -555,7 +555,7 @@ function sendphone_reg () {
       data: {
         phone: $('#phone_reg').val()
       },
-      dataType:'json',
+      dataType: 'json',
       withCredentials:true,
       success:function(msg){
         console.log('msg', msg);

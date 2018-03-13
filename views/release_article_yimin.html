@@ -51,29 +51,21 @@
               </label>
               {% set countryList = [
                 {"countryId":"1","txt":"美国"},
-                {"countryId":"2","txt":"英国"},
                 {"countryId":"3","txt":"加拿大"},
                 {"countryId":"4","txt":"澳大利亚"},
                 {"countryId":"5","txt":"新西兰"},
-                {"countryId":"51","txt":"日本"},
-                {"countryId":"50","txt":"韩国"},
-                {"countryId":"54","txt":"中国香港"},
-                {"countryId":"100","txt":"俄罗斯"},
-                {"countryId":"101","txt":"乌克兰"},
+                {"countryId":"2","txt":"英国"},
                 {"countryId":"108","txt":"爱尔兰"},
-                {"countryId":"111","txt":"意大利"},
+                {"countryId":"7","txt":"希腊"},
+                {"countryId":"8","txt":"马耳他"},
                 {"countryId":"112","txt":"西班牙"},
-                {"countryId":"102","txt":"白俄罗斯"},
-                {"countryId":"52","txt":"新加坡"},
-                {"countryId":"53","txt":"马来西亚"},
-                {"countryId":"110","txt":"丹麦"},
-                {"countryId":"103","txt":"德国"},
-                {"countryId":"104","txt":"法国"},
-                {"countryId":"105","txt":"挪威"},
-                {"countryId":"106","txt":"瑞典"},
-                {"countryId":"107","txt":"芬兰"},
-                {"countryId":"109","txt":"荷兰"},
-                {"countryId":"113","txt":"瑞士"}
+                {"countryId":"10","txt":"葡萄牙"},
+                {"countryId":"11","txt":"塞浦路斯"},
+                {"countryId":"14","txt":"圣基茨"},
+                {"countryId":"12","txt":"安提瓜"},
+                {"countryId":"15","txt":"格林纳达"},
+                {"countryId":"13","txt":"多米尼克"},
+                {"countryId":"54","txt":"中国香港"}
               ] %}
               <select id="apply-country" >
                 <option value="">请选择</option>
@@ -97,27 +89,131 @@
             </div>  
             <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;">
               <label class="title active" for="level">
-                <span>*</span> 选择学历标签：
+                <span>*</span> 选择项目标签：
               </label>
-              <span class="level-sel" >
-                <i class="level-sel-i iconfont"></i>
-                <i>中学</i>
+              {% set projectList = [
+                {
+                  "id":"1",
+                  "itemLabel":[
+                    "杰出人才EB-1",
+                    "投资类EB-5"
+                  ]
+                },
+                {
+                  "id":"3",
+                  "itemLabel":[
+                    "投资",
+                    "技术",
+                    "各类签证",
+                    "联邦自雇"
+                  ]
+                },
+                {
+                  "id":"4",
+                  "itemLabel":[
+                    "投资",
+                    "技术",
+                    "各类签证"
+                  ]
+                },
+                {
+                  "id":"5",
+                  "itemLabel":[
+                    "投资",
+                    "技术",
+                    "各类签证"
+                  ]
+                },
+                {
+                  "id":"2",
+                  "itemLabel":[
+                    "企业家",
+                    "投资",
+                    "各类签证"
+                  ]
+                },
+                {
+                  "id":"108",
+                  "itemLabel":[
+                    "企业家",
+                    "投资",
+                    "各类签证"
+                  ]
+                },
+                {
+                  "id":"7",
+                  "itemLabel":[
+                    "购房移民"
+                  ]
+                },
+                {
+                  "id":"8",
+                  "itemLabel":[
+                    "国债移民"
+                  ]
+                },
+                {
+                  "id":"112",
+                  "itemLabel":[
+                    "购房移民"
+                  ]
+                },
+                {
+                  "id":"10",
+                  "itemLabel":[
+                    "购房移民"
+                  ]
+                },
+                {
+                  "id":"11",
+                  "itemLabel":[
+                    "购房移民"
+                  ]
+                },
+                {
+                  "id":"14",
+                  "itemLabel":[
+                    "护照"
+                  ]
+                },
+                {
+                  "id":"12",
+                  "itemLabel":[
+                    "护照"
+                  ]
+                },
+                {
+                  "id":"15",
+                  "itemLabel":[
+                    "护照"
+                  ]
+                },
+                {
+                  "id":"13",
+                  "itemLabel":[
+                    "护照"
+                  ]
+                },
+                {
+                  "id":"54",
+                  "itemLabel":[
+                    "香港优才"
+                  ]
+                }
+              ] %}
+              {% for item in projectList %}
+                <div class="project-div" data-id="{{item.id}}">
+                  {% for val in item.itemLabel %}
+                    <span class="level-sel" >
+                      <i class="level-sel-i iconfont"></i>
+                      <i>{{val}}</i>
+                    </span>
+                  {% endfor %}
+                </div>
+              {% endfor %}
+              <span class="numTip" style="display: block;margin-left: 128px;">
+                  项目标签可多选
               </span>
-              <span class="level-sel iconfont">
-                <i class="level-sel-i"></i>
-                <i>本科</i>
-              </span>
-              <span class="level-sel">
-                <i class="level-sel-i iconfont"></i>
-                <i>研究生</i>
-              </span>
-              <span class="level-sel">
-                <i class="level-sel-i iconfont"></i>
-                <i>博士</i>
-              </span>
-               <span class="numTip" style="display: block;margin-left: 128px;">
-                  学历标签可多选
-               </span>
             </div>
             <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;">
               <label class="title active" for="recommend">
@@ -125,35 +221,35 @@
               </label>
               <span class="recommend-sel" >
                 <i class="level-sel-i iconfont"></i>
-                <i>留学聚焦</i>
+                <i>移民咨讯</i>
               </span>
               <span class="recommend-sel" >
                 <i class="level-sel-i iconfont"></i>
-                <i>申请攻略</i>
+                <i>政策解读</i>
               </span>
               <span class="recommend-sel" >
                 <i class="level-sel-i iconfont"></i>
-                <i>签证指导</i>
+                <i>项目解析</i>
               </span>
               <span class="recommend-sel" >
                 <i class="level-sel-i iconfont"></i>
-                <i>申请条件</i>
+                <i>风土人情</i>
               </span>
               <span class="recommend-sel" >
                 <i class="level-sel-i iconfont"></i>
-                <i>留学费用</i>
+                <i>费用周期</i>
               </span>
               <span class="recommend-sel" >
                 <i class="level-sel-i iconfont"></i>
-                <i>专家解读</i>
+                <i>项目优势</i>
               </span>
               <span class="recommend-sel" style="display: inline-block;
     margin-left: 130px;">
                 <i class="level-sel-i iconfont"></i>
-                <i>留学案例</i>
+                <i>移民案例</i>
               </span>
               <span class="numTip">
-                注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                注：选中【移民案例】标签即发布至顾问个人主页-案例中
               </span>
               <span class="numTip" style="display:block;
     margin-left: 130px;margin-top:5px;">
@@ -189,9 +285,6 @@
               </div>  
             </div>
             <div class="editor-btn-box" >
-              <!-- <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="go-push">
-                  继续发布新文章
-              </a> -->
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="save-draft">
                     保存到草稿
               </a>
@@ -226,17 +319,12 @@
   <script >
     $(function(){
         $('.banner-box-left .slider').xSlider({
-            //轮播图配置
-//          autoplay : 500,
             current: 0,
             speed: 500,
             intervalTime: 5000,
             pagination: true
         });
         $('.banner-box-right .slider').xSlider({
-            //轮播图配置
-//          autoplay : 500,
-//            mode:'vertical',
             current: 0,
             speed: 1000,
             intervalTime: 5000,
@@ -269,7 +357,7 @@
       }); 
       //选择文章类型
       var newsletterType = null;
-      var newTagStr = '';
+      var newTagStr = ''; 
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
         $('.art-type-i').html('').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'});
@@ -284,6 +372,19 @@
           newTagStr = '留学时讯';
         }
       });
+      //选择国家 切换学历
+      var eduList = ''; 
+      $('.project-div:first').css({'display':'inline-block'});
+      $("#apply-country").on('change',function(){
+        // console.log($(this).val())
+          $(".project-div").css({"display":"none"});
+          $(".project-div[data-id="+$(this).val()+"]").css({'display':'inline-block'});
+          $('.level-sel[checked=checked]').each(function(){
+            $(this).attr('checked',false);
+          });
+          eduList = '';
+      });
+
       //选择学历标签
       $('.level-sel').on('click',function(){
         // console.log($(this).attr('checked'))
@@ -392,13 +493,13 @@
         }else{
           if(newsletterType==1){
             //选择非时讯
-            //判断学历
-            var eduList = '';
+            //判断项目
             $('.level-sel[checked=checked]').each(function(){
               eduList+=$(this).find('i').eq(1).text()+',';
             });
+            console.log(eduList)
             if(eduList == ''){
-              layer.msg('请选择学历标签');
+              layer.msg('请选择项目标签');
               return false;
             }
             var eduStr = eduList.substring(0,eduList.length-1);
@@ -407,7 +508,7 @@
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
-              if($(this).find('i').eq(1).text()=='留学案例'){
+              if($(this).find('i').eq(1).text()=='移民案例'){
                 artType =1;
               }
             });
@@ -501,13 +602,12 @@
         }else{
           if(newsletterType==1){
             //选择非时讯
-             //判断学历
-            var eduList = '';
+             //判断项目
             $('.level-sel[checked=checked]').each(function(){
               eduList+=$(this).find('i').eq(1).text()+',';
             });
             if(eduList == ''){
-              layer.msg('请选择学历标签');
+              layer.msg('请选择项目标签');
               return false;
             }
             var eduStr = eduList.substring(0,eduList.length-1);
@@ -515,7 +615,7 @@
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
-              if($(this).find('i').eq(1).text()=='留学案例'){
+              if($(this).find('i').eq(1).text()=='移民案例'){
                 artType =1;
               }
             });
@@ -587,7 +687,6 @@
           }
         });
       });
-      // $("#go-push").on('click')
     })
  </script>
 </body>
