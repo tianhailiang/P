@@ -3,7 +3,7 @@
 <div class="new_nav_first_red">
     <div class="new_nav_first clearfix">
         <div class="new-logo-left">
-            <a  target="_blank" href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}"><img src="{{helper.cdnhost}}/assets/img/logo_transparent.png" alt="金吉列留学官网"/></a>
+            <a  target="_blank" href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}"><img src="{{helper.cdnhost}}/assets/img/logo_common.png" alt="金吉列留学官网"/></a>
         </div>
         <ul class="page-type">
             <li class="active"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li>
@@ -12,21 +12,8 @@
         </ul>
         <div class="nav-right">
             <div class="new-searchs new-home-search">
-                <!--                <div class="top_sec will">
-                                    <span class="please-sec"><a  target="_blank" href="javascript:void(0);" id="searchType">顾问</a><i class="iconfont go-down" style="font-size: 12px;">&#xe60b;</i></span>
-                                    <div class="sec-xq">
-                                        <ul id="searchTypeList">
-                                            <li><a  target="_blank" href="">资讯</a></li>
-                                            <li><a  target="_blank" href="">顾问</a></li>
-                                            <li><a  target="_blank" href="">活动</a></li>
-                                            <li><a  target="_blank" href="">案例</a></li>
-                                            <li><a  target="_blank" href="">院校</a></li>
-
-                                        </ul>
-                                    </div>
-                                </div>-->
                 <div class="search-type-box">
-                    <div class="search-type"><span class="search-type-text">留学</span><i class="iconfont go-down" style="font-size: 12px;">&#xe8ca;</i></div>
+                    <div class="search-type"><span class="search-type-text" id="searchType">留学</span><i class="iconfont go-down" style="font-size: 12px;">&#xe8ca;</i></div>
                     <ul class="search-type-ul">
                         <li>留学</li>
                         <li>移民</li>
@@ -40,4 +27,42 @@
         </div>
     </div>
 </div>
+<script>
+    /*获取搜索url函数*/
+    function getSoUrl (stationType,searchType) {
+        var soUrlObj = {
+            "留学": {
+                "文章": 'so_article',
+                "顾问": 'so_adviser'
+            },
+            "移民": {
+                "文章": 'yimin_so_article',
+                "顾问": 'yimin_so_adviser'
+            }
+        };
+        return soUrlObj[stationType][searchType]
+    }
+    $('.search-type-box').hover(function () {
+        $(this).find('.search-type-ul').slideDown(100);
+    }, function () {
+        $(this).find('.search-type-ul').slideUp(100);
+    });
+    $('.search-type-ul').on('click','li',function () {
+        $('.search-type-text').text($(this).text());
+        $(this).prependTo($('.search-type-ul'));
+        $('.search-type-ul').hide();
+    });
+    //点击搜索
+    $("#searchBtn").click(function () {
+        var so_type = $("#searchType").text();
+        var so_key_word = $.trim($("#search").val());
+        if (so_key_word.length == 0 || so_key_word == '请输入你想了解的关键字') {
+            alert('请输入你想了解的关键词');
+            $('#search').focus();
+        }
+        else {
+            window.open(fn.no_urlgen(getSoUrl(so_type,'文章'), 'q=' + so_key_word));
+        }
+    });
+</script>
 {% endmacro %}

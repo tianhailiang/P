@@ -152,35 +152,39 @@ form, input {
     margin-left: 30px;
 }
 .new_nav_first .nav-right .search-type-box{
-    width: 50px;
-    height: 30px;
+    width: 49px;
+    height: 28px;
     float: left;
+    cursor: pointer;
 }
 .new_nav_first .nav-right .search-type-box .search-type {
     position: absolute;
-    width: 50px;
-    height: 30px;
+    width: 40px;
+    height: 28px;
     left: 0;
     top: 0;
     z-index: 999;
     background-color: #fff;
     padding-left: 10px;
-    line-height: 30px;
+    line-height: 28px;
+    border: 1px solid #dcdcdc;
+    border-right: none;
 }
 .new_nav_first .nav-right .search-type-box .search-type .search-type-text {
     padding-right: 2px;
 }
 .new_nav_first .nav-right .search-type-box .search-type-ul {
     position: absolute;
-    left: 0;
+    left: 1px;
     top: 0;
     z-index: 998;
+    display: none;
 }
 .new_nav_first .nav-right .search-type-box .search-type-ul li{
     background-color: #fff;
-    width: 50px;
+    width: 39px;
     height: 30px;
-    text-align: center;
+    padding-left: 10px;
     line-height: 30px;
 }
 .new_nav_first .submit-select{
