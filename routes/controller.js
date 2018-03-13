@@ -2117,27 +2117,27 @@ exports.publish_article = function (req, res, next) {
 
 //专栏发布页 
 exports.release_article = function(req,res,next){
-  log.debug('专栏发布页~~thl')  
-  var data = {};
-  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  //node获取地址栏url
-  var l = url.parse(req.url, true).query;
-  console.log('url', l.h);
-  if (l.h !== undefined) {
-      data.url = l.h;
-  } else {
-      data.url = config.wwhost;
-  }
-  if(req.cookies.login_ss != undefined){
-    data.login_info = JSON.parse(req.cookies.login_ss);
-    if(data.login_info.usertype ==1){
-       next()
-       return false;
+    log.debug('专栏发布页~~thl')  
+    var data = {};
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
     }
-  }else{
-    res.redirect(config.wwhost+'/login')
-    return false;
-  }
+    if(req.cookies.login_ss != undefined){
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        if(data.login_info.usertype ==1){
+           next()
+           return false;
+        }
+    }else{
+        res.redirect(config.wwhost+'/login')
+        return false;
+    }
     async.parallel({
         lunbo_list: function (callback) {
             cms.lunbo_list({
@@ -2176,7 +2176,14 @@ exports.release_article = function(req,res,next){
             cityid: area,
             realname: data.userinfo.realname,
         };
-        res.render('release_article',data);
+        if(data.login_info.adviser == 1){
+            log.info('留学')
+            res.render('release_article',data);
+        }else if(data.login_info.adviser == 2){
+            log.info('移民')
+            res.render('release_article_yimin',data);
+        }
+       
     })
 };
 
@@ -2601,8 +2608,8 @@ exports.edit_article = function(req,res,next){
       },callback);  
     } 
   },function(err, result){
-      data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
-      data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
+    data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
+    data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
     data.userinfo = returnData(result.userinfo,'userinfo'); 
     data.article = returnData(result.article,'article');
     var pagekey = null;
@@ -2615,7 +2622,12 @@ exports.edit_article = function(req,res,next){
       pagekey:pagekey,
       cityid: area,
     };
-    res.render('edit_article',data);
+    if(data.login_info.adviser == 1){
+        res.render('edit_article',data);
+    }else if(data.login_info.adviser == 2){
+        res.render('edit_article_yimin',data);
+    }
+   
   });  
 }
 //草稿箱发布接口

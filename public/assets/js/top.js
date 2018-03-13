@@ -156,13 +156,12 @@
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: js_api_config.wwhost + '/sendcode_s',
+      url: '/sendcode_s',
       type:'GET',
       data: {
         phone: $('#phone').val()
       },
-      dataType: 'jsonp',
-      jsonpCallback:'cb',
+      dataType: 'json',
       withCredentials:true,
       success:function(msg){
         console.log('msg', msg);
@@ -240,10 +239,9 @@
 function outlogin () {
   var login_info = JSON.parse($.cookie('login_ss'));
     $.ajax({
-      url: js_api_config.wwhost + '/login_out',
+      url: '/login_out',
       type: 'GET',
-      dataType: 'jsonp',
-      jsonpCallback:'cb',
+      dataType:'json',
       withCredentials:true,
       success:function(msg){
         if (msg == 'ok') {
@@ -275,13 +273,12 @@ function outlogin () {
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: js_api_config.wwhost + '/sendcode_s',
+      url: '/sendcode_s',
       type:'GET',
       data: {
         phone: $('#phone_reg').val()
       },
-      dataType: 'jsonp',
-      jsonpCallback:'cb',
+      dataType: 'json',
       withCredentials:true,
       success:function(msg){
         console.log('msg', msg);
@@ -333,10 +330,9 @@ function outlogin () {
       return
     }
     $.ajax({
-      url: js_api_config.wwhost + '/login_user',
+      url: '/login_user',
       type:'POST',
-      dataType: 'jsonp',
-      jsonpCallback:'cb',
+      dataType: 'json',
       withCredentials:true,
       data: {
         phone: $('#phone_reg').val(),
