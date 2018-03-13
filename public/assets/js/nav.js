@@ -74,16 +74,23 @@ var iDcity1 = {
 $('.citys-box').on('click',"a", function(e){
     e.preventDefault();
     currentarea = $(this).attr("data-id");
-    $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
+    var date = new Date();  
+    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+    console.log('date',date)
+    $.cookie('currentarea', currentarea, { path: '/',domain: '.jjl.cn',expires: 36500});
     //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
+    // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).attr("href");
 });
 
 $('.branch_company_text').on('click',".needJump", function(e){
     e.preventDefault();
     currentarea = $(this).attr("data-id");
-    $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
+    var date = new Date();  
+    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+    $.cookie('currentarea', currentarea, { path: '/',domain: '.jjl.cn',expires: 36500});
     //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
+    // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).find("a").attr("href");
 });
 
