@@ -163,6 +163,12 @@ form, input {
     left: 0;
     top: 0;
     z-index: 999;
+    background-color: #fff;
+    text-align: center;
+    line-height: 30px;
+}
+.new_nav_first .nav-right .search-type-box .search-type .search-type-text {
+    padding-right: 2px;
 }
 .new_nav_first .nav-right .search-type-box .search-type-ul {
     position: absolute;
@@ -189,6 +195,7 @@ form, input {
     font-size: 12px;
     outline-style: none;
     color:#999999;
+    background-color: #fff;
 }
 .new_nav_first_white .new_nav_first .new-home-search .search-btn {
     background-color: #C13232;
