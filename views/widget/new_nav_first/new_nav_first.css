@@ -176,6 +176,13 @@ form, input {
     top: 0;
     z-index: 998;
 }
+.new_nav_first .nav-right .search-type-box .search-type-ul li{
+    background-color: #fff;
+    width: 50px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+}
 .new_nav_first .submit-select{
     height: 30px;
     border: none;
