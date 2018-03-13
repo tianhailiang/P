@@ -516,7 +516,7 @@ exports.login_out = function (req, res, next) {
   res.clearCookie("login_ss", {domain: '.jjl.cn'});
   //res.cookie(prop, 'login_ss', {expires: new Date(0)});
   console.log('login_out1');
-  res.send("ok")
+  res.send('0');
   //res.redirect(req.query.h);
 };
 

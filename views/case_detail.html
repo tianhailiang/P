@@ -125,8 +125,13 @@
     </div>
   </div>
 </div>
+  {% if userinfo.adviser_type==1 %}
   {% import "widget/new_slide/new_slide3.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
+  {% elseif userinfo.adviser_type==2   %}
+  {% import "widget/new_slide_yimin/new_slide3.html" as  slide %}
+  {{slide.leyu_slide(userinfo,login_info,helper) }}
+  {% endif %}
 {% include 'widget/new_footer/new_footer.html' %}
   <div>
     <input type="hidden" id="detail_id" value="{{article_id}}"/>

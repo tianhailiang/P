@@ -242,9 +242,8 @@ function outlogin () {
       url: '/login_out',
       type: 'GET',
       dataType:'json',
-      withCredentials:true,
       success:function(msg){
-        if (msg == 'ok') {
+        if (msg == '0') {
           console.log('登出')
           window.location.reload();
         }

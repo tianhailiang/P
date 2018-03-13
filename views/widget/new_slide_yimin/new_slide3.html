@@ -1,6 +1,6 @@
 <!--右侧在线咨询-->
 
-{% macro leyu_slide(path,user,login_info,helper) %}
+{% macro leyu_slide(user,login_info,helper) %}
 <div class="mui-mbar-tabs" style="z-index:999">
   <div class="quick_links_wrap quick_links_dockright">
     <div class="quick_link_mian">
@@ -17,7 +17,7 @@
             <img src="{{helper.cdnhost}}/assets/img/yijian.png" alt="在线评估" class="quick-img">
             <span>在线评估</span>
             <div id="comment_con"
-                 style="width:320px;background: #fff;right:40px;top: -52px;position: absolute;border: 1px solid #f8f8f8;display: none">
+                 style="width:320px;background: #fff;right:40px;top: 0px;position: absolute;border: 1px solid #f8f8f8;display: none">
               <div id="comment_close" style="margin-left: 5px;font-size: 15px;cursor: pointer;color:#333333;">x</div>
               {% include "widget/yimin_customization1/yimin_customization1.html" %}
             </div>
