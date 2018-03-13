@@ -237,7 +237,9 @@ var apis = {
   //get_so_article_list
   "get_so_article_list": shequ_prefix + 'search/search_article/',
   //根据ip 获取城市code码
-  "get_ip_geter":prefix + 'ip_geter'
+  "get_ip_geter":prefix + 'ip_geter',
+  //金色力量底页
+  "get_culture_detail":prefix + 'detail'
 };
 module.exports = {
   redisCache: redisCache,
