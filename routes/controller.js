@@ -88,8 +88,6 @@ exports.index = function (req, res, next) {
             nationid: ''
         };
         // console.log(result.shouye);
-        //data.esikey = esihelper.esikey();
-        // log.info(data.xSlider2)
         res.render('index', data);
     })
 };
