@@ -7,6 +7,7 @@ var url = require('url');
 var config = require('../config/config');
 var log4js = require('../log/log');
 var log = log4js.getLogger();
+var wec = require('../model/wecenter');
 
 exports.login = function (req, res, next) {
   log.debug('this router login~~');
@@ -38,16 +39,22 @@ exports.login = function (req, res, next) {
 //普通用户登录
 exports.login_user = function (req, res, next) {
   log.debug('this router login_s~~');
-  var username = req.body.username;
-  var password = req.body.password;
+  var username = req.body.phone;
+  var password = req.body.code;
 
   log.debug(req.body);
   var data = [];
+  var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+    if(ip.split(',').length>0){
+        ip = ip.split(',')[0]
+    }
+    console.log('ip',ip);
   var async = require('async');
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   async.parallel({
     //签证指南
     login_user: function (callback) {
-      cms.login_user(req.body, callback);
+      cms.login_user({phone:username, code: password, lastloginip: ip}, callback);
     }
   }, function (err, result) {
 
@@ -57,14 +64,32 @@ exports.login_user = function (req, res, next) {
 
     //res.render('login', data)
     if (result.login_user.code === 0) {
-      log.debug('ok', result.login_user.code);
-      var express_time =  '2019-03-05T10:12:55.000Z';
-      if (config.version == 'development' && result.login_user.code === 0) {//开发环境
-        res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
-      } else {
-        res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
-      }
-      res.send(result.login_user);
+      //
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.login_user.data.uid,
+              "to_uid":result.login_user.data.uid
+          },callback);
+        }
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo.data);
+        data.login_user.data.status = result.userinfo.data.status;
+        data.login_user.data.version = result.userinfo.data.version;
+        log.debug('result.login_user----------', data.login_user.data);
+      
+        if (config.version == 'development') {//开发环境
+          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
+        }
+      
+        res.send(data.login_user);
+      })
+
+      
+      
+      
       //log.debug('config', config.wwhost);
       //res.redirect(301,config.wwhost);
       //res.end()
@@ -86,11 +111,16 @@ exports.login_s = function (req, res, next) {
   log.debug('adviser', adviser);
   //res.render('login', '')
   var data = [];
+  var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+    if(ip.split(',').length>0){
+        ip = ip.split(',')[0]
+    }
+    console.log('ip',ip);
   var async = require('async');
   async.parallel({
     //签证指南
     login_ss: function (callback) {
-      cms.login_ss(req.body, callback);
+      cms.login_ss({username:username, password:password,adviser_type:adviser,lastloginip:ip }, callback);
     }
   }, function (err, result) {
     
@@ -102,14 +132,25 @@ exports.login_s = function (req, res, next) {
 
     //res.render('login', data)
     if (result.login_ss.code === 0) {
-      log.debug('ok', result.login_ss.code);
-      var express_time =  '2019-03-05T10:12:55.000Z';
-      if (config.version == 'development' && result.login_ss.code === 0) {//开发环境
-        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
-      } else {
-        res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.login_ss.data.uid,
+              "to_uid":result.login_ss.data.uid
+          },callback);
       }
-      res.send(result.login_ss);
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo);
+        data.login_ss.data.status = result.userinfo.data.status;
+        data.login_ss.data.version = result.userinfo.data.version;
+        if (config.version == 'development') {//开发环境
+          res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          res.cookie("login_ss", JSON.stringify(data.login_ss.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
+        }
+        res.send(data.login_ss);
+      })
+      
       //log.debug('config', config.wwhost);
       //res.redirect(301,config.wwhost);
       //res.end()
@@ -213,13 +254,14 @@ exports.register_s = function (req, res, next) {
 
 //发送验证码
 exports.sendcode_s = function (req, res, next) {
-  log.debug('this router register_s~~');
+  log.debug('this router sendcode_s~~');
   var phone = req.query.phone;
 
   //log.debug(JSON.stringify(req.body));
   log.debug('phone', phone);
   //res.render('login', '')
   var data = [];
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   var async = require('async');
   //var cookie = require('cookie-parser');
   //var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
@@ -237,8 +279,8 @@ exports.sendcode_s = function (req, res, next) {
     log.debug('result.login_ss----------', result.sendcode_ss.code);
     if (result.sendcode_ss.code === 0) {
       log.debug('ok', result.sendcode_ss);
-      res.send(result.sendcode_ss);
-      //res.send(result.sendcode_ss)
+      // res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
+      res.send(result.sendcode_ss)
     }
 
   });
@@ -470,10 +512,11 @@ exports.forget_s = function (req, res, next) {
 exports.login_out = function (req, res, next) {
   console.log('login_out');
   //console.log('req', req);
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   res.clearCookie("login_ss", {domain: '.jjl.cn'});
   //res.cookie(prop, 'login_ss', {expires: new Date(0)});
   console.log('login_out1');
-  res.send('ok')
+  res.send("ok")
   //res.redirect(req.query.h);
 };
 

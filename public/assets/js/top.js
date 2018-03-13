@@ -161,7 +161,7 @@
       data: {
         phone: $('#phone').val()
       },
-      dataType:'json',
+      dataType: 'json',
       withCredentials:true,
       success:function(msg){
         console.log('msg', msg);
@@ -215,13 +215,14 @@
     }
     $.ajax({
       url: '/login_user',
-      type:'POST',
+      type: 'POST',
       dataType:'json',
       data: {
         phone: $('#phone').val(),
         code: $('#verify').val(),
       },
       success:function(msg) {
+        console.log('aaaaaa');
         console.log('msg', msg);
         if (msg.code == 0) {
           layer.msg('登录成功');
@@ -240,15 +241,11 @@ function outlogin () {
     $.ajax({
       url: '/login_out',
       type: 'GET',
-      datatype: 'json',
+      dataType:'json',
+      withCredentials:true,
       success:function(msg){
         if (msg == 'ok') {
           console.log('登出')
-          // if (login_info.usertype == 1){
-          //   getlogin();
-          // } else {
-          //   window.location.reload();
-          // }
           window.location.reload();
         }
       },
@@ -281,7 +278,7 @@ function outlogin () {
       data: {
         phone: $('#phone_reg').val()
       },
-      dataType:'json',
+      dataType: 'json',
       withCredentials:true,
       success:function(msg){
         console.log('msg', msg);
@@ -335,7 +332,8 @@ function outlogin () {
     $.ajax({
       url: '/login_user',
       type:'POST',
-      dataType:'json',
+      dataType: 'json',
+      withCredentials:true,
       data: {
         phone: $('#phone_reg').val(),
         code: $('#verify_reg').val(),

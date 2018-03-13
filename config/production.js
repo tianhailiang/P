@@ -9,6 +9,7 @@ const redisCache = {
   "port":6379
 };
 var wwhost = 'http://www.jjl.cn';
+var yiminhostname = '';
 var cdnhost = 'http://cdn4.jjl.cn';
 var prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/cms/api/';
 var uc_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/uc/api/';
@@ -244,5 +245,6 @@ module.exports = {
   apis : apis,
   wwhost: wwhost,
   cdnhost: cdnhost,
-  imageshost: imageshost
+  imageshost: imageshost,
+  yiminhostname: yiminhostname
 };

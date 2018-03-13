@@ -12,11 +12,18 @@
   background: #f0f4f6;
   box-shadow: 0 3px 7px 0 rgba(0,0,0 ,0.14 );
 }
-.follow-con img.img-left{
+.follow-con .img-left{
   width: 60px;
   height: 60px;
   float: left;
   margin-right: 20px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  -webkit-background-size: cover;
+  background-size: cover;
 }
 .follow-con .content{
   width: 289px;

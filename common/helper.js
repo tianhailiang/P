@@ -186,18 +186,16 @@ function urlgen() {
   }
 
   url += chan + param;
-
   if(chan=='/branch_home'){
     url = ((city && city != 0)?"/"+city:"")+"/";
   }
-
-  if (config.version == 'development') { //如果是開發環境
-    url = config.wwhost + ':4000' + url;//social
-  }else{
-    url = config.wwhost+url;
-  }
   if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
     url = url + '.html';
+  }
+  if (config.version == 'development') { //如果是開發環境
+    url = config.wwhost + ':4000' + url;
+  }else{
+    url = config.wwhost + url;
   }
   return url;
 }
@@ -275,25 +273,15 @@ function prefixInteger(num, length) {
   return (Array(length).join('0') + num).slice(-length);
 }
 //用户头像url组装
-function avaterimg(uid, size, status, version,versionflag){
-  // console.log('uid', uid)
+function avaterimg(uid, size, status, version){
   uid = prefixInteger(uid, 9);
   var dir1 = uid.substr(0, 3);
   var dir2 = uid.substr(3, 2);
   var dir3 = uid.substr(5, 2);
-  if(!version){
-    version = Number.parseInt(Date.parse(new Date())/60000);
-  }
-  // console.log(version)
-  if(status == 1){
-    return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+"_1.jpg"+"?"+version;
+  if(status == 1 || version == 0 || version == null){
+    return 'http://images.jjl.cn/avatar/default_avatar_small.jpg'
   }else{
-    if (versionflag == 1) {
-      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+".jpg"+"?"+Date.parse(new Date());
-    }
-    else {
-      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+".jpg"+"?"+version;
-    }
+    return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+"_"+ version +".jpg";
   }
 
 }

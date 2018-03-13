@@ -82,6 +82,7 @@
       console.log('11111')
 //      window.location.href = '/login?h=' + h
       window.open('/login?h=' + h);
+      //window.open(fn.urlgen("login")+'?h='+h);
     } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login') {
       console.log('aaaa')
       window.location.reload();
@@ -89,6 +90,7 @@
       console.log('22222');
 //      window.location.href = '/login'
       window.open('/login?h=');
+      //window.open(fn.urlgen('login')+'?h=');
     }
   }
 </script>
