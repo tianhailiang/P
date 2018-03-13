@@ -164,7 +164,7 @@ form, input {
     top: 0;
     z-index: 999;
     background-color: #fff;
-    text-align: center;
+    padding-left: 10px;
     line-height: 30px;
 }
 .new_nav_first .nav-right .search-type-box .search-type .search-type-text {
