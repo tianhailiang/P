@@ -175,6 +175,10 @@
   cursor: pointer;
   margin-right: 30px;
 }
+.recommend-sel i{
+  font-size: 14px;
+  color:#333;
+}
 .newsletter-hide{
   display: none;
 }
