@@ -614,18 +614,9 @@ exports.post_code = function (req, res, next) {
                 "u_id":data.login_info.uid,
                 "to_uid":data.login_info.uid
             },callback);
-        },
-        case_list: function (callback) {
-            wec.user_article_list({
-                "u_id": data.login_info.uid,
-                "page": page,
-                "per_page": 4,
-                "type": 1
-            }, callback);
         }
     }, function (err, result) {
         data.userinfo =returnData(result.userinfo,'userinfo');
-        data.case_data =returnData(result.case_list,'case_list');
         var pagekey=null;
         if(data.userinfo.usertype == 2){
             if(data.login_info.adviser==1){
@@ -649,7 +640,7 @@ exports.post_code = function (req, res, next) {
                     "ad_seat": "SEAT2"
                 }, callback);
             },
-        },function(){
+        },function(err, result){
             data.xSlider = returnData(result.lunbo_list,'lunbo_list');
             data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
             data.tdk = {
