@@ -58,7 +58,7 @@
 						</div>
 						{#<p>{{item.type}}</p>#}
 						<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
-							<div class="gw-legend gw-news">留学时讯</div>
+							<div class="gw-legend gw-news">移民时讯</div>
 							<p style="clear:both">{{ item.title | ellipsis(21) }}</p>
 						</a>
 					</li>
