@@ -324,10 +324,10 @@ exports.so_article_yimin = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_article_yimin','q='+keyword,'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('yimin_so_article','q='+keyword,'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
-        console.log('aaaaa333~~', helperfunc.paramurlgen('so_article_yimin','order='+order,'page=2'))
+        console.log('aaaaa333~~', helperfunc.paramurlgen('yimin_so_article','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_article_yimin', data);
 
