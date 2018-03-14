@@ -127,3 +127,14 @@ $("#searchBtn").click(function () {
         window.open(fn.no_urlgen(getSoUrl('留学',so_type), 'q=' + so_key_word));
     }
 });
+//页面点击搜索
+$("#searchBtn-page").click(function () {
+    var so_key_word = $.trim($("#search-page").val());
+    if (so_key_word.length == 0 || so_key_word == '请输入你想了解的关键字') {
+        alert('请输入你想了解的关键词');
+        $('#search').focus();
+    }
+    else {
+        window.open(fn.no_urlgen(getSoUrl('移民','文章'), 'q=' + so_key_word));
+    }
+});
