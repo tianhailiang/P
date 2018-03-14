@@ -85,7 +85,7 @@ exports.yimin_guess_like = function(req,res,next){
   },function(err,result){
     data.likelist = returnData(result.guess_like,'guess_like');
       // log.debug(data)
-    console.log(data.likelist)
+    //console.log(data.likelist)
     res.render('./fragment/guess_like', data);
   });
 }
@@ -117,13 +117,15 @@ exports.yimin_xiangguanguwen = function(req,res,next){
   var data = {};
   var country = req.query.n ? req.query.n.split(',')[0] : 1;
   var area = req.query.c || 1;
+  var uid = req.query.uid;
   async.parallel({
     xiangguanguwen: function (callback) {
       wec.yimin_xiangguanguwen({
         "country_id":country,
         "city_id":1,
         "per_page":5,
-        "order":"comments desc"
+        "uid":uid,
+        "order":"comments desc",
       }, callback)
     }
   },function(err,result){

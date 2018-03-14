@@ -47,7 +47,7 @@
       {% if userinfo.adviser_type == 1 %}
         {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
       {% else %}
-        {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+      {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid,'uid='+userinfo.uid) %}
       {% endif %}
     </div>
   </div>
