@@ -232,7 +232,7 @@
                     <div class="result-item clearfix">
                         <div class="item-adviser">
 <!--                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>-->
-                            <a href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></div></a>
+                            <a href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.realname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></div></a>
                         </div>
                         <div class="item-info">
                             <div class="info-top clearfix">
@@ -243,7 +243,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】</a></div>
+                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】{{item.type}}</a></div>
                             <div class="time">{{item.add_time | getDefaultFormat('YYYY-MM-DD HH:mm:ss')}}</div>
                         </div>
                     </div>
