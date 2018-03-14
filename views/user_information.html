@@ -353,14 +353,7 @@
               if (res.errno === 0) {
                 $('#loading').hide();
                 layer.close(layopen);
-                /*$('.advisor-img').find('img').attr('src',ajaxUrlPrefix.avatercdn+'/'+ res.localpath.replace(/\//, '/'));*/
-              console.log('图片地址',res.data[0]);
-              console.log('图片version1',login_ss.version);
               $('.advisor-img').css({'background-image':'url('+ res.data[0] +')'});
-              var new_login_ss = login_ss;
-                  new_login_ss.version = res.version;
-                  console.log('图片version2',res.version);
-                  $.cookie('login_ss',new_login_ss)
               } else {
                 $('#loading').hide();
                 layer.msg(res.message);
