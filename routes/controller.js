@@ -32,8 +32,8 @@ function split_array(arr, len) {
 function get_page_key(usertype, adviser_type, page_key) {
     if (usertype == 2) {
         if (adviser_type == 2){
-            pagekey = 'YIMIN_'+page_key;
-            // pagekey = page_key;
+            // pagekey = 'YIMIN_'+page_key;
+            pagekey = page_key;
         }else {
             pagekey = page_key;
         }
@@ -253,6 +253,86 @@ exports.so_article = function (req, res, next) {
 
     });
 };
+// 移民搜索页
+exports.so_article_yimin = function (req, res, next) {
+    log.debug('搜索结果文章');
+    var data = {};
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
+    }
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
+    var order = nquery && nquery.order ? nquery.order : "score";
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "YIMIN_SEARCH_ARTICLE",
+                "cityid":area,
+                "ad_seat": "SEAT1",
+                "is_immi":"2"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "YIMIN_SEARCH_ARTICLE",
+                "cityid":area,
+                "ad_seat": "SEAT2",
+                "is_immi":"2"
+            }, callback);
+        },
+        so_article_list:function(callback) {
+            cms.so_article_list({
+                order: order,
+                key_word:encodeURI(keyword),
+                city_id:area,
+                "per_page": "15",
+                "page": page
+            }, callback);
+        },
+        guess_like: function (callback) {
+            cms.channel_list({
+                order: 'comments desc',
+                city_id:area,
+                "per_page": "10",
+                "page": 1
+            }, callback)
+        }
+    }, function (err, result) {
+        data.article_list = returnData(result.so_article_list,'so_article_list');
+        data.likelist = returnData(result.guess_like,'guess_like');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.order = order;
+        data.keyword=keyword;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'YIMIN_SEARCHNEWS', //key
+            cityid: area,
+            keywords: keyword
+        };
+        data.pagination = {
+            pages:Number.parseInt(data.article_list.totalpage),
+            hrefFormer:helperfunc.paramurlgen('so_article_yimin','q='+keyword,'order='+order,'page='),
+            currentPage:Number.parseInt(page)
+        }
+        console.log('aaaaa333~~', helperfunc.paramurlgen('so_article_yimin','order='+order,'page=2'))
+        data.esikey = esihelper.esikey();
+        res.render('so_article_yimin', data);
+
+    });
+};
 //社区首页
 exports.community_index = function (req, res, next) {
   console.log('community_index');
@@ -392,7 +472,7 @@ exports.center_follow = function (req, res, next) {
             if(data.login_info.adviser == 1){
                 pagekey = 'ADVISOR_CENTER_FOLLOW';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_FOLLOW';
+                pagekey = 'ADVISOR_CENTER_FOLLOW';
             }
             // pagekey = 'ADVISOR_CENTER';
         }else if(data.userinfo.usertype == 3){
@@ -550,7 +630,7 @@ exports.center_main = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER';
+                pagekey = 'ADVISOR_CENTER';
             }
           // pagekey = 'ADVISOR_CENTER';
         }else if(data.userinfo.usertype == 3){
@@ -622,7 +702,7 @@ exports.post_code = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_QRCODE';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_QRCODE';
+                pagekey = 'ADVISOR_CENTER_QRCODE';
             }
         }
         async.parallel({
@@ -716,7 +796,7 @@ exports.center_case = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_CASE';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_CASE';
+                pagekey = 'ADVISOR_CENTER_CASE';
             }
         }
         async.parallel({
@@ -817,7 +897,7 @@ exports.center_comment = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_REVCOMMENT';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_REVCOMMENT';
+                pagekey = 'ADVISOR_CENTER_REVCOMMENT';
             }
           // pagekey = 'ADVISOR_CENTER_REVCOMMENT';
           route = '/advisor_center/revcomment';
@@ -916,7 +996,7 @@ exports.user_comment = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_REVCOMMENT';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_REVCOMMENT';
+                pagekey = 'ADVISOR_CENTER_REVCOMMENT';
             }
             // pagekey = 'ADVISOR_CENTER_REVCOMMENT';
           route = '/advisor_center/revcomment';
@@ -1028,7 +1108,7 @@ exports.center_message = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_REVMESSAGE';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_REVMESSAGE';
+                pagekey = 'ADVISOR_CENTER_REVMESSAGE';
             }
           // pagekey = 'ADVISOR_CENTER_REVMESSAGE';
           route = '/advisor_center/revmsg';
@@ -1140,7 +1220,7 @@ exports.center_collection = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_COLLECTION';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_COLLECTION';
+                pagekey = 'ADVISOR_CENTER_COLLECTION';
             }
         }else if(data.userinfo.usertype == 3){
           pagekey = 'CANZAN_CENTER_COLLECTION';
@@ -1224,7 +1304,7 @@ exports.center_article = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_ARTICLE';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_ARTICLE';
+                pagekey = 'ADVISOR_CENTER_ARTICLE';
             }
           // pagekey = 'ADVISOR_CENTER_ARTICLE';
         }else if(data.userinfo.usertype == 3){
@@ -1296,7 +1376,7 @@ exports.center_photo = function (req, res, next) {
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_ALBUM';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_ALBUM';
+                pagekey = 'ADVISOR_CENTER_ALBUM';
             }
           // pagekey = 'ADVISOR_CENTER_ALBUM';
         }else if(data.userinfo.usertype == 3){
@@ -1464,7 +1544,7 @@ exports.adviser_photo_p = function(req,res,next){
           // }else if(data.userinfo.usertype == 3){
           //   pagekey = 'CANZAN_P_ALBUM';
           // }else if(data.userinfo.adviser_type == 2){
-          //   pagekey = 'YIMIN_ADVISOR_P_ALBUM';
+          //   pagekey = 'ADVISOR_P_ALBUM';
           // }
           data.tdk = {
             pagekey: pagekey, 
@@ -2127,7 +2207,7 @@ exports.advisor_profile = function (req, res, next) {
           if(data.login_info.adviser==1){
               pagekey = 'ADVISOR_CENTER_PROFILE';
           }else {
-              pagekey = 'YIMIN_ADVISOR_CENTER_PROFILE';
+              pagekey = 'ADVISOR_CENTER_PROFILE';
           }
       }
       async.parallel({
@@ -2236,7 +2316,7 @@ exports.advisor_acount = function (req, res, next) {
         if(data.login_info.adviser==1){
             pagekey = 'ADVISOR_CENTER_ACOUNT';
         }else {
-            pagekey = 'YIMIN_ADVISOR_CENTER_ACOUNT';
+            pagekey = 'ADVISOR_CENTER_ACOUNT';
         }
        // pagekey = 'ADVISOR_CENTER_ACOUNT';
     }
@@ -2433,7 +2513,7 @@ exports.release_article = function(req,res,next){
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_POSTARTICLE';
             }else {
-                pagekey = 'YIMIN_ADVISOR_CENTER_POSTARTICLE';
+                pagekey = 'ADVISOR_CENTER_POSTARTICLE';
             }
             // pagekey = 'ADVISOR_CENTER_POSTARTICLE';
         }else if(data.userinfo.usertype == 3){
@@ -2620,7 +2700,7 @@ exports.center_article_detail = function(req,res,next){
         if(data.login_info.adviser==1){
             pagekey = 'ADVISOR_CENTER_ARTICLEDETAIL';
         }else {
-            pagekey = 'YIMIN_ADVISOR_CENTER_ARTICLEDETAIL';
+            pagekey = 'ADVISOR_CENTER_ARTICLEDETAIL';
         }
       // pagekey = 'ADVISOR_CENTER_ARTICLEDETAIL';
     }else if(data.userinfo.usertype == 3){
@@ -2702,7 +2782,7 @@ exports.center_case_detail = function(req,res,next){
       if(data.login_info.adviser==1){
           pagekey = 'ADVISOR_CENTER_CASEDETAIL';
       }else {
-          pagekey = 'YIMIN_ADVISOR_CENTER_CASEDETAIL';
+          pagekey = 'ADVISOR_CENTER_CASEDETAIL';
       }
     }
     async.parallel({
@@ -2797,7 +2877,7 @@ exports.draft =function(req,res,next){
         if(data.login_info.adviser==1){
             pagekey = 'ADVISOR_CENTER_DRAFT';
         }else {
-            pagekey = 'YIMIN_ADVISOR_CENTER_DRAFT';
+            pagekey = 'ADVISOR_CENTER_DRAFT';
         }
       // pagekey = 'ADVISOR_CENTER_DRAFT';
         route ='/advisor_center/draft';
@@ -2914,7 +2994,7 @@ exports.edit_article = function(req,res,next){
         if(data.login_info.adviser==1){
             pagekey = 'ADVISOR_CENTER_ARTICLEEDIT';
         }else {
-            pagekey = 'YIMIN_ADVISOR_CENTER_ARTICLEEDIT';
+            pagekey = 'ADVISOR_CENTER_ARTICLEEDIT';
         }
       // pagekey = 'ADVISOR_CENTER_ARTICLEEDIT';
     }else if(data.userinfo.usertype == 3){
