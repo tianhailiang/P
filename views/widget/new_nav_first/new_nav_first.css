@@ -31,7 +31,7 @@ form, input {
 .new_nav_first .new-logo-left img{
     display: block;
     float: left;
-    margin-top: 14px;
+    margin-top: 10px;
 }
 .new_nav_first .page-type{
     width: 460px;
@@ -142,7 +142,7 @@ form, input {
 
 /*搜索*/
 .new_nav_first .nav-right .new-searchs{
-    width: 300px;
+    width: 350px;
     height: 30px;
     position: relative;
     z-index:1001;
@@ -150,6 +150,47 @@ form, input {
     background-color: #fff;
     float: right;
     margin-left: 30px;
+}
+.new_nav_first .nav-right .search-type-box{
+    width: 49px;
+    height: 28px;
+    float: left;
+    cursor: pointer;
+}
+.new_nav_first .nav-right .search-type-box .search-type {
+    position: absolute;
+    width: 40px;
+    height: 28px;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    background-color: #fff;
+    padding-left: 10px;
+    line-height: 28px;
+    border: 1px solid #dcdcdc;
+    border-right: none;
+}
+.new_nav_first .nav-right .search-type-box .search-type .search-type-text {
+    padding-right: 2px;
+}
+.new_nav_first .nav-right .search-type-box .search-type-ul {
+    position: absolute;
+    left: 1px;
+    top: 0;
+    z-index: 998;
+    display: none;
+}
+.new_nav_first .nav-right .search-type-box .search-type-ul li{
+    background-color: #fff;
+    width: 39px;
+    height: 30px;
+    padding-left: 10px;
+    line-height: 30px;
+    color:#333;
+    font-size: 12px;
+}
+.new_nav_first .nav-right .search-type-box .search-type-ul li:hover{
+    background-color: #dcdcdc;
 }
 .new_nav_first .submit-select{
     height: 30px;
@@ -164,11 +205,13 @@ form, input {
     line-height: 28px;
     border:1px solid #dcdcdc;
     border-right: none;
+    border-left: none;
     padding-left: 10px;
     float: left;
     font-size: 12px;
     outline-style: none;
     color:#999999;
+    background-color: #fff;
 }
 .new_nav_first_white .new_nav_first .new-home-search .search-btn {
     background-color: #C13232;

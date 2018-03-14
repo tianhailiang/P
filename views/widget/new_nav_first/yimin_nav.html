@@ -1,13 +1,12 @@
-{% macro new_nav_first(tdk,helper) %}
-<link rel="stylesheet" href="{{helper.cdnhost}}/views/widget/new_nav_first/new_nav_first.css">
+{% macro yimin_nav(tdk,helper) %}
 <div class="new_nav_first_white">
     <div class="new_nav_first clearfix">
         <div class="new-logo-left">
             <a  target="_blank" href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}"><img src="{{helper.cdnhost}}/assets/img/logo_red.png" alt="金吉列留学官网"/></a>
         </div>
         <ul class="page-type">
-            <li class="active"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li>
-            <li><a href="{{ helper.urlgen('yimin') }}">移民</a></li>
+            <li class="active"><a href="{{ helper.urlgen('yimin') }}">移民</a></li>
+            <li><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li>
             <li style="width: 118px;"><a href="{{ helper.urlgen('about') }}">关于金吉列</a></li>
         </ul>
         <div class="nav-right">
