@@ -1,6 +1,10 @@
 /**
- * Created by DXZ-Shuqin.Wang on 2017/12/25.
+ * Created by DXZ-Shuqin.Wang on 2018/3/14.
  */
+/**
+ * Created by DXZ-Hui.Cao on 2017/8/25.
+ */
+
 $(document).ready(function(){
     showcity()
 });
@@ -53,7 +57,8 @@ var iDcity1 = {
     17:['太原','太原分公司：太原市南内环街100号恒地大厦12层','服务专线：0351-7668080'],
     18:['唐山','唐山分公司：唐山市路南区新华西道32号新华贸写字楼16层','服务专线：0315-6328566'],
     14:['武汉','武汉分公司：武汉市解放大道航空路新世界中心C座20层','服务专线：027-83805656'],
-    //49:['武昌','武昌分公司：武汉市洪山区珞瑜路10号群光中心百脑汇23层','服务专线：027-67811600'],
+    //14:['武汉','武昌分公司：武汉市洪山区珞瑜路10号群光中心百脑汇23层','服务专线：027-67811600'],
+    //14:['武汉','汉口分公司：武汉市航空路新世界中心C座20层','服务专线：027-83805656'],
     33:['无锡','无锡分公司：无锡市崇安区中山路531号红豆国际广场办公楼19层','服务专线：0510-81805656'],
     42:['温州','温州分公司：温州市鹿城区车站大道577号财富中心1302','服务专线：0577-88815656'],
     15:['西安','西安分公司：西安市碑林区南关正街88号长安国际C座808','服务专线：029-87995656'],
@@ -72,90 +77,53 @@ var iDcity1 = {
 $('.citys-box').on('click',"a", function(e){
     e.preventDefault();
     currentarea = $(this).attr("data-id");
-    $.cookie('currentarea', currentarea, { path: "/",domain: '.jjlvip.cn'});
-    window.location.href=fn.urlgen('branch_home', 'c='+currentarea);
-
+    var date = new Date();
+    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+    console.log('date',date)
+    $.cookie('currentarea', currentarea, { path: '/',domain: '.jjl.cn',expires: 36500});
+    //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
+    // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
+    window.location.href = $(this).attr("href");
 });
-
-
-
-
 function top_city1 (a,t) {
     $('#city-place').html(a);
     $('#city-phone').html(t);
 }
-$(".top_sec").hover(function(){
-    $(this).find(".sec-xq").slideDown(100);
-    $(this).find(".go-down").html("&#xe661;");
-},function(){
-    $(this).find(".sec-xq").slideUp(100);
-    $(this).find(".go-down").html("&#xe60b;")
-});
-
-var page_keyword = $("#so_keyword").text();
-var page_seaType = $('#pagekey').val();
-var curSeaType = getSoType(page_seaType) ? getSoType(page_seaType) : '顾问';
-var curKeyWord = page_keyword ? page_keyword : '请输入你想了解的关键字';
-/*设置展示函数*/
-function setSoType (searchType, searchKeyWord) {
-    $("#searchType").text(searchType);
-    if (searchKeyWord == '' || searchKeyWord == 'undefined' || searchKeyWord == undefined) {
-        $("#search").attr('placeholder', '请输入你想了解的关键字');
-    }
-    else {
-        $("#search").val(searchKeyWord);
-    }
-}
-/*获取搜索类型函数*/
-function getSoType (pagekey) {
-    var soTypeObj = {
-        "SEARCHNEWS": "资讯",
-        "SEARCHADVISER": "顾问",
-        "SEARCHACTIVITY": "活动",
-        "SEARCHCASE": "案例",
-        "SEARCHSCHOOL": "院校"
-    };
-    return soTypeObj[pagekey];
-}
 /*获取搜索url函数*/
-function getSoUrl (searchType) {
+function getSoUrl (stationType,searchType) {
     var soUrlObj = {
-        "资讯": "so_news",
-        "顾问": "so_advisor",
-        "活动": "so_activity",
-        "案例": "so_case",
-        "院校": "so_school"
+        "留学": {
+            "文章": 'so_article',
+            "顾问": 'so_adviser'
+        },
+        "移民": {
+            "文章": 'yimin_so_article',
+            "顾问": 'yimin_so_adviser'
+        }
     };
-    return soUrlObj[searchType]
+    return soUrlObj[stationType][searchType]
 }
-/*设置初始化展示函数*/
-setSoType(curSeaType, curKeyWord);
-/*热门搜索*/
-$(".tags a").click(function(e){
-    e.preventDefault();
-    $("#search").val($(this).html());
-    var so_type = $("#searchType").text();
-    var so_key_word = $.trim($("#search").val());
-    console.log(fn.no_urlgen(getSoUrl(so_type), 'q=' + so_key_word));
-    window.open(fn.no_urlgen(getSoUrl(so_type), 'q=' + so_key_word));
+$('.search-type-box').hover(function () {
+    $(this).find('.search-type-ul').slideDown(100);
+    $(this).find('.go-down').html('&#xe633;');
+}, function () {
+    $(this).find('.search-type-ul').slideUp(100);
+    $(this).find('.go-down').html('&#xe632;')
 });
-//点击搜索按钮
+$('.search-type-ul').on('click','li',function () {
+    $('.search-type-text').text($(this).text());
+    $(this).prependTo($('.search-type-ul'));
+    $('.search-type-ul').hide();
+});
+//点击搜索
 $("#searchBtn").click(function () {
     var so_type = $("#searchType").text();
     var so_key_word = $.trim($("#search").val());
     if (so_key_word.length == 0 || so_key_word == '请输入你想了解的关键字') {
-        alert('请输入你想了解的关键字');
+        alert('请输入你想了解的关键词');
         $('#search').focus();
     }
     else {
-        window.open(fn.no_urlgen(getSoUrl(so_type), 'q=' + so_key_word));
+        window.open(fn.no_urlgen(getSoUrl('留学',so_type), 'q=' + so_key_word));
     }
-});
-//下拉菜单选择类型
-$("#searchTypeList li a").click('li a', function (e) {
-    e.preventDefault();
-    var checkedType = $(this).html();
-    setSoType(checkedType);
-    $(".sec-xq").slideUp(100);
-    $(".go-down").html("&#xe60b;")
 });
