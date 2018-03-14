@@ -346,6 +346,24 @@ exports.xiangguan_guwen=function(data,callback){
   }
   api.apiRequest(url, callback);
 }
+// 移民踩你喜欢
+exports.yimin_likelist=function(data,callback){
+  var url = _api_path_url_shequ(data, config.apis.yimin_likelist);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
+// 移民相关顾问
+exports.yimin_xiangguanguwen=function(data,callback){
+  var url = _api_path_url_shequ(data, config.apis.yimin_xiangguanguwen);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
 //删除评论接口
 exports.remove_comment = function(data,callback){
   var url = config.apis.post_remove_comment;

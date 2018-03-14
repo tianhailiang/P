@@ -9,8 +9,8 @@
   <!-- ===头部=== -->
  {% include "widget/top/top.html" %}
  <!-- ====导航===== -->
-{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
-{{ new_nav_red.new_nav_red(tdk,helper) }}
+  {% import "widget/new_nav_first/common_nav.html" as common_nav %}
+  {{ common_nav.common_nav(tdk,helper) }}
   <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
@@ -33,14 +33,22 @@
         <i></i>
         <h3>猜你喜欢</h3>
       </div>
+      {% if userinfo.adviser_type == 1 %}
       {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+    {% else %}
+      {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
+    {% endif %}
     </div>
     <div style="margin-top: 20px;" class="dui-box-shadow">
       <div class="common-title" style="border:1px solid #dcdcdc;">
         <i></i>
         <h3>相关顾问</h3>
       </div>
-      {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+      {% if userinfo.adviser_type == 1 %}
+        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+      {% else %}
+      {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid,'uid='+userinfo.uid) %}
+      {% endif %}
     </div>
   </div>
   <div class="dui-layout-div"></div>
@@ -143,7 +151,7 @@
     }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav.js" ></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>

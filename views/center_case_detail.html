@@ -12,8 +12,8 @@
   <!-- ===头部=== -->
  {% include "widget/top/top.html" %}
  <!-- ====导航===== -->
- {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
- {{ new_nav_red.new_nav_red(tdk,helper) }}
+  {% import "widget/new_nav_first/common_nav.html" as common_nav %}
+  {{ common_nav.common_nav(tdk,helper) }}
   <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
@@ -87,8 +87,13 @@
   </div>
 </div>
   {% include "widget/new_footer/new_footer.html" %}
+  {% if userinfo.adviser_type==1 %}
   {% import "widget/new_slide/new_slide2.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
+  {% elseif  userinfo.adviser_type==2 %}
+  {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
+  {{slide.leyu_slide(helper) }}
+  {% endif %}
   <div>
       <input type="hidden" id="detail_id" value="{{id}}"/>
   </div>
@@ -101,7 +106,7 @@
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>

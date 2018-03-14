@@ -195,8 +195,8 @@
 </style>
 <body style="background: #f5f5f5">
 {% include "widget/top/top.html" %}
-{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
-{{ new_nav_red.new_nav_red(tdk,helper) }}
+{% import "widget/new_nav_first/yimin_search_nav.html" as yimin_search_nav %}
+{{ yimin_search_nav.yimin_search_nav(tdk,helper) }}
 <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
@@ -243,7 +243,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】{{item.type}}</a></div>
+                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】</a></div>
                             <div class="time">{{item.add_time | getDefaultFormat('YYYY-MM-DD HH:mm:ss')}}</div>
                         </div>
                     </div>
@@ -273,7 +273,7 @@
                 <i></i>
                 <h3>猜你喜欢</h3>
               </div>
-            {% esi helper.include(esikey,'fragment/searchguess_like','c='+tdk.cityid) %}
+            {% esi helper.include(esikey,'fragment/yimin_searchguess_like','c='+tdk.cityid) %}
         </div>
     </div>
 </div>
@@ -391,6 +391,7 @@
 
 </script>
 </body>
-<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<!--<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>-->
+<script src="{{helper.cdnhost}}/assets/js/nav_yimin_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 </html>
