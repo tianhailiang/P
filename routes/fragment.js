@@ -62,7 +62,6 @@ exports.guess_like = function(req,res,next){
   },function(err,result){
     data.likelist = returnData(result.guess_like,'guess_like');
       // log.debug(data)
-
     res.render('./fragment/guess_like', data);
   });
 }
