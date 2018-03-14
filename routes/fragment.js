@@ -24,7 +24,7 @@ function split_array(arr, len) {
   return result;
 }
 
-//猜你喜欢
+//搜索文章猜你喜欢
 exports.searchlikelist = function(req,res,next){
   log.debug('search猜你喜欢')
   var data = {};
@@ -54,6 +54,7 @@ exports.guess_like = function(req,res,next){
       cms.channel_list({
         "country_id":country,
         "city_id":area,
+        "is_immi":1,
         "per_page":5,
         "order":"views desc"
       }, callback)
@@ -62,6 +63,30 @@ exports.guess_like = function(req,res,next){
     data.likelist = returnData(result.guess_like,'guess_like');
       // log.debug(data)
 
+    res.render('./fragment/guess_like', data);
+  });
+}
+
+//移民猜你喜欢
+exports.yimin_guess_like = function(req,res,next){
+  log.debug('移民猜你喜欢')
+  var data = {};
+  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var area = req.query.c || 1;
+  async.parallel({
+    guess_like: function (callback) {
+      cms.channel_list({
+        "country_id":country,
+        "city_id":area,
+        "is_immi":2,
+        "per_page":5,
+        "order":"views desc"
+      }, callback)
+    }
+  },function(err,result){
+    data.likelist = returnData(result.guess_like,'guess_like');
+      // log.debug(data)
+      //console.log(data.likelist)
     res.render('./fragment/guess_like', data);
   });
 }
@@ -84,6 +109,27 @@ exports.xiangguanguwen = function(req,res,next){
   },function(err,result){
     data.xiangguan_guwen = returnData(result.xiangguan_guwen,'xiangguan_guwen');
     //console.log(data.xiangguan_guwen);
+    res.render('./fragment/xiangguanguwen', data);
+  });
+}
+//移民相关顾问
+exports.yimin_xiangguanguwen = function(req,res,next){
+  log.debug('移民相关顾问.......')
+  var data = {};
+  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var area = req.query.c || 1;
+  async.parallel({
+    xiangguanguwen: function (callback) {
+      wec.yimin_xiangguanguwen({
+        "country_id":country,
+        "city_id":area,
+        "per_page":5,
+        "order":"comments desc"
+      }, callback)
+    }
+  },function(err,result){
+    data.xiangguan_guwen = returnData(result.xiangguanguwen,'xiangguanguwen');
+    //console.log(data.xiangguanguwen)
     res.render('./fragment/xiangguanguwen', data);
   });
 }
