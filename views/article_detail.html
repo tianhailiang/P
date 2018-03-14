@@ -38,14 +38,22 @@
           <i></i>
           <h3>猜你喜欢</h3>
         </div>
+        {% if userinfo.adviser_type == 1 %}
         {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+      {% else %}
+        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
+      {% endif %}
       </div>
       <div style="margin-top: 20px;" class="dui-box-shadow">
         <div class="common-title" style="border:1px solid #dcdcdc;">
           <i></i>
           <h3>相关顾问</h3>
         </div>
+        {% if userinfo.adviser_type == 1 %}
         {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+      {% else %}
+        {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+      {% endif %}
       </div>
     </div>
     <div class="dui-layout-div"></div>

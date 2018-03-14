@@ -243,7 +243,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】{{item.type}}</a></div>
+                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】</a></div>
                             <div class="time">{{item.add_time | getDefaultFormat('YYYY-MM-DD HH:mm:ss')}}</div>
                         </div>
                     </div>
