@@ -298,8 +298,8 @@
       </div>
 	</div>
   {% include "widget/new_footer/new_footer.html" %}
-  {% import "widget/new_slide/new_slide2.html" as  slide %}
-  {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
+    {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
+    {{slide.leyu_slide(helper) }}
   <script>
     var login_ss = null; //获取用户信息
     if($.cookie('login_ss') != undefined){
@@ -369,7 +369,7 @@
           newTagStr = '';
         }else{
           $('.newsletter-hide').slideUp();
-          newTagStr = '留学时讯';
+          newTagStr = '移民时讯';
         }
       });
       //选择国家 切换学历

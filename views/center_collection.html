@@ -136,8 +136,13 @@
   {% import "widget/new_slide/new_slide.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
   {% elseif userinfo.usertype == 2 %}
+  {% if userinfo.adviser_type==1 %}
   {% import "widget/new_slide/new_slide2.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
+  {% elseif  userinfo.adviser_type==2 %}
+  {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
+  {{slide.leyu_slide(helper) }}
+  {% endif %}
   {% endif %}
   <script>
     var login_ss = null; //获取用户信息
