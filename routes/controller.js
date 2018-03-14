@@ -280,16 +280,14 @@ exports.so_article_yimin = function (req, res, next) {
             cms.lunbo_list({
                 "ad_page": "YIMIN_SEARCH_ARTICLE",
                 "cityid":area,
-                "ad_seat": "SEAT1",
-                "is_immi":"2"
+                "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
                 "ad_page": "YIMIN_SEARCH_ARTICLE",
                 "cityid":area,
-                "ad_seat": "SEAT2",
-                "is_immi":"2"
+                "ad_seat": "SEAT2"
             }, callback);
         },
         so_article_list:function(callback) {
@@ -298,7 +296,8 @@ exports.so_article_yimin = function (req, res, next) {
                 key_word:encodeURI(keyword),
                 city_id:area,
                 "per_page": "15",
-                "page": page
+                "page": page,
+                "is_immi":"2"
             }, callback);
         },
         guess_like: function (callback) {
@@ -324,10 +323,10 @@ exports.so_article_yimin = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_article_yimin','q='+keyword,'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('yimin_so_article','q='+keyword,'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
-        console.log('aaaaa333~~', helperfunc.paramurlgen('so_article_yimin','order='+order,'page=2'))
+        console.log('aaaaa333~~', helperfunc.paramurlgen('yimin_so_article','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_article_yimin', data);
 
