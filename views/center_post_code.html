@@ -242,8 +242,13 @@
     </div>
 </div>
 {% include "widget/new_footer/new_footer.html" %}
+{% if userinfo.adviser_type==1 %}
 {% import "widget/new_slide/new_slide2.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
+{% elseif  userinfo.adviser_type==2 %}
+{% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
+{{slide.leyu_slide(helper) }}
+{% endif %}
 <script  src="{{helper.cdnhost}}/assets/js/upload_wx_code.js"></script>
 <script  src="{{helper.cdnhost}}/assets/js/upload_qq_code.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
