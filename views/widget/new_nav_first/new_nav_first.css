@@ -31,7 +31,7 @@ form, input {
 .new_nav_first .new-logo-left img{
     display: block;
     float: left;
-    margin-top: 14px;
+    margin-top: 10px;
 }
 .new_nav_first .page-type{
     width: 460px;
@@ -186,6 +186,11 @@ form, input {
     height: 30px;
     padding-left: 10px;
     line-height: 30px;
+    color:#333;
+    font-size: 12px;
+}
+.new_nav_first .nav-right .search-type-box .search-type-ul li:hover{
+    background-color: #dcdcdc;
 }
 .new_nav_first .submit-select{
     height: 30px;
