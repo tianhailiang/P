@@ -76,7 +76,7 @@ exports.yimin_guess_like = function(req,res,next){
     guess_like: function (callback) {
       cms.channel_list({
         "country_id":country,
-        "city_id":area,
+        "city_id":1,
         "is_immi":2,
         "per_page":5,
         "order":"views desc"
@@ -85,7 +85,7 @@ exports.yimin_guess_like = function(req,res,next){
   },function(err,result){
     data.likelist = returnData(result.guess_like,'guess_like');
       // log.debug(data)
-      //console.log(data.likelist)
+    console.log(data.likelist)
     res.render('./fragment/guess_like', data);
   });
 }
@@ -121,7 +121,7 @@ exports.yimin_xiangguanguwen = function(req,res,next){
     xiangguanguwen: function (callback) {
       wec.yimin_xiangguanguwen({
         "country_id":country,
-        "city_id":area,
+        "city_id":1,
         "per_page":5,
         "order":"comments desc"
       }, callback)
