@@ -2,7 +2,7 @@
 <div class="dui-layout-padding clearfix moment">
   {% for item in channel %}
   <div class="dui-layout-col3">
-    <div class="jincai"><a href=""><img class="dui-layout-col3-img" src="{{ helper.imageThumb(item.thumb,'365x275')}}" alt=""></a></div>
+    <div class="jincai"><a href="{{helper.urlgen('about/culture',item.id | string)}}"><img class="dui-layout-col3-img" src="{{ helper.imageThumb(item.thumb,'365x275')}}" alt=""></a></div>
     <p class="jincai-tit"><a class="dui-text-warning-s" href="">{{ item.title |ellipsis(22)   }}</a></p>
     <p class="jincai-con"><a class="dui-text-warning-ss" href="">{{ item.description |ellipsis(62) }}</a></p>
   </div>

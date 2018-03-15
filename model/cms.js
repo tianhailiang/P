@@ -1124,3 +1124,14 @@ exports.ip_geter =function(data,callback){
   }
   api.apiRequest(url ,callback);
 }
+
+//金色力量底页
+exports.culture_detail =function(data,callback){
+  var url = _api_url_path(data, config.apis.get_culture_detail);
+  if (url == null){
+    callback('404');
+    return;
+  }
+
+  api.apiRequest(url ,callback);
+}
