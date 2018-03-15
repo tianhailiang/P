@@ -154,12 +154,17 @@ function active_urlgen(){
  * url拼装  开发、测试区分
  */
 function urlgen() {
+  var isyimin = false;
   var url = '',chan = '',param = '',city='',cityid='';
   if(arguments.length == 0){
     return ;
   }
   //get chan & subchan
   for(var i= 0 ; i < arguments.length;i++){
+    if(i == 0 && arguments[i] == 'yimin'){
+      isyimin = true;
+      continue;
+    }
     if(arguments[i] == '' || arguments[i].split('=').length > 1)
     {
       break;
@@ -184,20 +189,29 @@ function urlgen() {
       param += '__' + arguments[i].replace(/=/g, "-");
     }
   }
-
   url += chan + param;
-  if(chan=='/branch_home'){
-    url = ((city && city != 0)?"/"+city:"")+"/";
+  if (isyimin) {
+    if (config.version == 'development') { //如果是開發環境
+      url = config.yiminhost + ':4600' + url;
+    }else{
+      url = config.yiminhost + url;
+    }
+    return url;
   }
-  if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan|lawyer)/)){
-    url = url + '.html';
+  else {
+    if(chan=='/branch_home'){
+      url = ((city && city != 0)?"/"+city:"")+"/";
+    }
+    if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan|lawyer)/)){
+      url = url + '.html';
+    }
+    if (config.version == 'development') { //如果是開發環境
+      url = config.wwhost + ':4000' + url;
+    }else{
+      url = config.wwhost + url;
+    }
+    return url;
   }
-  if (config.version == 'development') { //如果是開發環境
-    url = config.wwhost + ':4000' + url;
-  }else{
-    url = config.wwhost + url;
-  }
-  return url;
 }
 
 function articleUrlgen(){
