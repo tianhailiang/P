@@ -189,7 +189,7 @@ function urlgen() {
   if(chan=='/branch_home'){
     url = ((city && city != 0)?"/"+city:"")+"/";
   }
-  if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
+  if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan|lawyer)/)){
     url = url + '.html';
   }
   if (config.version == 'development') { //如果是開發環境

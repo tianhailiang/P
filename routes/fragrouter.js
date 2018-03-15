@@ -21,7 +21,7 @@ exports = module.exports = function (app) {// routes
 
 
  // 移民fragments
-  // app.get('/fragment/yimin_searchguess_like',fragment.yimin_searchguess_like);
+  app.get('/fragment/yimin_searchguesslike',fragment.yimin_searchguesslike);
   app.get('/fragment/yimin_guess_like',fragment.yimin_guess_like);
   app.get('/fragment/yimin_xiangguanguwen',fragment.yimin_xiangguanguwen);
 

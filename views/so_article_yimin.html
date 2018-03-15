@@ -232,18 +232,19 @@
                     <div class="result-item clearfix">
                         <div class="item-adviser">
 <!--                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>-->
-                            <a href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.realname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></div></a>
+                            <a target="_blank" href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.realname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></div></a>
                         </div>
                         <div class="item-info">
                             <div class="info-top clearfix">
-                                <a class="info-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">{{item.title}}</a>
+                                <a class="info-title"target="_blank
+" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">{{item.title}}</a>
                                 <div class="info-tags">
                                     {% if item.tag_list %}
                                     <span>{{item.tag_list}}</span>
                                     {% endif %}
                                 </div>
                             </div>
-                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】</a></div>
+                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】</a></div>
                             <div class="time">{{item.add_time | getDefaultFormat('YYYY-MM-DD HH:mm:ss')}}</div>
                         </div>
                     </div>
@@ -273,16 +274,15 @@
                 <i></i>
                 <h3>猜你喜欢</h3>
               </div>
-            {% esi helper.include(esikey,'fragment/yimin_searchguess_like','c='+tdk.cityid) %}
+            {% esi helper.include(esikey,'fragment/yimin_searchguesslike','c='+tdk.cityid) %}
         </div>
     </div>
 </div>
 {% include "widget/new_footer/yimin_footer.html" %}
-{% import "widget/new_slide/new_slide.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
+{% import "widget/new_slide_yimin/new_slide.html" as  slide %}
+{{slide.leyu_slide(helper) }}
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
-<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
     $(function () {
