@@ -59,6 +59,7 @@
   "scripts": {
     "pm2_fragsvr": "pm2 start fragsvr.json --env production",
     "pm2": "pm2 start processes.json --env production",
+    "pm2_yimin": "pm2 start processes_ymin.json --env production",
     "start": "set NODE_ENV=production&&node ./bin/www",
     "dev": "set NODE_ENV=development&&node ./bin/www",
     "frag_dev": "set NODE_ENV=development&&node ./bin/fragsvr",
