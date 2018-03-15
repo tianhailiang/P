@@ -44,6 +44,27 @@ exports.searchlikelist = function(req,res,next){
   });
 }
 
+//移民搜索文章猜你喜欢
+exports.yimin_searchguesslike = function(req,res,next){
+  log.debug('移民search猜你喜欢')
+  var data = {};
+  var area = req.query.c || 1;
+  async.parallel({
+    guess_like: function (callback) {
+      cms.channel_list({
+          order: 'comments desc',
+          city_id:area,
+          "per_page": "10",
+          "page": 1,
+          "is_immi":2
+      }, callback)
+    }
+  },function(err,result){
+    data.likelist = returnData(result.guess_like,'guess_like');
+    // console.log(data.likelist)
+    res.render('./fragment/guess_like', data);
+  });
+}
 exports.guess_like = function(req,res,next){
   log.debug('猜你喜欢')
   var data = {};
