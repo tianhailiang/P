@@ -26,8 +26,8 @@
 <body>
 {% include "widget/top/top.html" %}
 <div class="main" style="width: 1180px;margin: 0 auto;">
-  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-  {{ new_nav_first.new_nav_first(tdk,helper) }}
+  {% import "widget/new_nav_first/nav_login.html" as nav_login %}
+  {{ nav_login.nav_login(tdk,helper) }}
 </div>
 
 <div class="register_overseas clearfix">
@@ -68,7 +68,7 @@
   </div>
 </div>
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
-<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script>
   $(document).ready(function () {
 
