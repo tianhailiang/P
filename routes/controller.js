@@ -3403,7 +3403,7 @@ exports.yiminHome = function (req, res, next) {
             }, callback);
         },
         shouye:function(callback) {
-            cms.shouye({
+            cms.yimin_shouye({
                 "city_id": area,
             }, callback);
         },
@@ -3417,8 +3417,6 @@ exports.yiminHome = function (req, res, next) {
             nationid: ''
         };
         // console.log(result.shouye);
-        //data.esikey = esihelper.esikey();
-        // log.info(data.xSlider2)
         res.render('yimin_index', data);
     })
 };

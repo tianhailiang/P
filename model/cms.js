@@ -1051,6 +1051,16 @@ exports.shouye = function (data, callback) {
     })
 };
 
+exports.yimin_shouye = function (data, callback) {
+    redisPool.get('yimin_home_all', function(err, reply){
+      if(reply){
+        callback(null, reply);
+      }else{
+        callback(null, '暂无数据');
+      }
+    })
+};
+
 
 function update_viewnum(catid, id, uuid, callback){
   var viewNumKey = "WEB:HITS:cat_"+catid+"_"+id;
