@@ -195,6 +195,9 @@
                     url = js_api_config.wwhost + ':4000' + url;
                 }
             }
+            else{
+                url = js_api_config.wwhost+url;
+            }
             return url;
         },
         curlgen:function () {

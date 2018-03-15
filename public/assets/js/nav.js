@@ -135,6 +135,6 @@ $("#searchBtn").click(function () {
         $('#search').focus();
     }
     else {
-        window.open(fn.urlgen(getSoUrl('留学','文章'), 'q=' + so_key_word));
+        window.open(fn.no_urlgen(getSoUrl('留学','文章'), 'q=' + so_key_word));
     }
 });

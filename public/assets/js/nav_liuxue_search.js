@@ -108,7 +108,7 @@ $('.search-type-box').hover(function () {
     //$(this).find('.go-down').html('&#xe633;');
 }, function () {
     $(this).find('.search-type-ul').slideUp(100);
-    //$(this).find('.go-down').html('&#xe632;')
+    $(this).find('.go-down').html('&#xe632;')
 });
 $('.search-type-ul').on('click','li',function () {
     $('.search-type-text').text($(this).text());
@@ -124,7 +124,7 @@ $("#searchBtn").click(function () {
         $('#search').focus();
     }
     else {
-        window.open(fn.urlgen(getSoUrl('留学',so_type), 'q=' + so_key_word));
+        window.open(fn.no_urlgen(getSoUrl('留学',so_type), 'q=' + so_key_word));
     }
 });
 //页面点击搜索
@@ -135,6 +135,6 @@ $("#searchBtn-page").click(function () {
         $('#search').focus();
     }
     else {
-        window.open(fn.urlgen(getSoUrl('留学','文章'), 'q=' + so_key_word));
+        window.open(fn.no_urlgen(getSoUrl('留学','文章'), 'q=' + so_key_word));
     }
 });
