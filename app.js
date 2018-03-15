@@ -37,7 +37,7 @@ app.use(midesi({
   port:'3500'
 }));
 
-url_rewrite(app);
+//url_rewrite(app);
 
 app.set('view engine', 'html');
 customfilters.load(env);
