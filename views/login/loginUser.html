@@ -37,8 +37,8 @@
   {% include "widget/top/top.html" %}
 
   <div class="main" style="width: 1180px;margin: 0 auto;">
-    {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-    {{ new_nav_first.new_nav_first(tdk,helper) }}
+    {% import "widget/new_nav_first/nav_login.html" as nav_login %}
+    {{ nav_login.nav_login(tdk,helper) }}
   </div>
 
   <div class="login_overseas clearfix">
@@ -108,7 +108,7 @@
       ©2009 金吉列出国留学咨询服务有限公司 版权所有 京ICP备05010035号&nbsp;&nbsp;&nbsp;&nbsp;留学投诉电话4006-213-315&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：315@jjl.cn
     </div>
   </div>
-  <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script>
     $(document).ready(function () {
 
