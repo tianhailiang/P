@@ -212,8 +212,8 @@ exports = module.exports = function (app) {// routes
   app.get('/weixin_login', login.weixin_login);//第三方登录
   app.get('/oauth', login.oauth);
   app.get("/agreement",controller.agreement);//金吉列简介
-  app.get('/about/cultures',about.cultures);//企业文化底页
-
   //移民站
   app.get('/yimin',controller.yiminHome);//移民首页
+  app.get('/about/cultures',about.cultures);//公司简介
+  app.get("/about/culture/:id",about.culture_detail);//金色力量底页
 };

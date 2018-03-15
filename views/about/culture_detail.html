@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+{% include "header_new.html" %}
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/logo.css" >
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/index.css">
+<link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
+<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+<style>
+  .xuanze-chengshi p a:last-child{
+    margin-right: 0;
+  }
+  .culture_detail {
+    width: 1180px;
+    height:100% ;
+    margin: 20px auto;
+    background: #ffffff;
+  }
+  .culture_detail h1 div {
+    width: 3px;
+    height: 18px;
+    background: #C13232;
+    float: left;
+    margin-top: 5px;
+    margin-right: 20px;
+  }
+  .culture_detail h1 {
+    font-size: 18px;
+    margin-top: 17px;
+    color: #333;
+  }
+  .culture_details {
+    width: 1140px;
+    margin:7px 20px 17px 20px ;
+    border-bottom: 1px solid #C13232;
+  }
+  .culture_detailcon {
+    margin: 0 20px 20px 20px;
+  }
+  .culture_detailcing {
+    margin-top: 6px;
+  }
+  .culture_detailcing img {
+       display: table-cell; //主要是这个属性
+       vertical-align: middle;
+       text-align: center;
+       margin: 0 auto;
+   }
+</style>
+<body style="background: #f5f5f5">
+
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
+<div class="culture_detail clearfix">
+<h1><div></div>金吉列文化</h1>
+<div class="culture_details"></div>
+<div class="culture_detailcon">
+  <h1>{{ culture_detail.list.title }}</h1>
+  <div class="culture_detailcing">{{ culture_detail.list.content | safe }}</div>
+</div>
+</div>
+{% include "widget/new_footer/new_footer.html" %}
+</body>
+<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+</html>
