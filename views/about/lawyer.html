@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+
+<style>
+  .canzan {
+    height: 330px;
+    margin-top: 20px;
+  }
+  .canzan img {
+    height: 204px;
+    width: 270px;
+    display: block;
+    background: #dfdfdf;
+  }
+  .canzan-p {
+    font-size: 14px;
+    text-align: center;
+    line-height: 40px;
+  }
+  .canzan-p2 {
+    font-size: 12px;
+    height: 84px;
+    line-height: 24px;
+    padding: 9px 14px 0px 14px;
+    background: #eeeeee;
+  }
+  .canzan-p2 a {
+    color: #C13232;
+  }
+.lawyer .canzan-p2{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+  .lawyer .canzan-p{
+    text-align: left;
+    padding-left: 15px;
+  }
+</style>
+<body style="background: #ffffff">
+{# 大学排名 #}
+{# 头部导航 #}
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/yimin_search_nav.html" as yimin_search_nav%}
+{{ yimin_search_nav.yimin_search_nav(tdk,helper) }}
+
+<div class="dui-layout-lg clearfix">
+  <p style="font-size: 14px;margin-left: 20px;margin-top: 20px;"><i class="iconfont" style="color: #C13232">&#xe60d;</i>>><span style="color: #C13232">海外律师团队</span></p>
+</div>
+<div class="dui-layout-lg clearfix lawyer">
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer1.png" alt="美国移民律师">
+      <p class="canzan-p" style="color: #333"><span>美国移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">曾担任英国政府检察官的莫娜律师出生于英国，她被公认为：EB-5业界领军人物、美国前25大移民律师、出版作家以及纽约城市大学教授。</p>
+    </a>
+  </div>
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer2.png" alt="美国移民律师">
+      <p class="canzan-p" style="color: #333"><span>美国移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">曾律师被美国路透社 (Thomson Reuters) 旗下的《超级律师》杂志Super Lawyers评为2017年度 Rising Star及 Top Rated Immigration Attorney （杰出移民律师）,也被Crain’s New York 杂志评选为Leading Women Lawyers in NYC （纽约市杰出女性律师）,并获得纽约大学法学院院长亲笔信祝贺。</p>
+    </a>
+  </div>
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer3.png" alt="加拿大移民律师">
+      <p class="canzan-p" style="color: #333"><span>加拿大移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">专注于金融和公司 及移民法，是安省持牌律师。 Osgoode 法学院毕业后， 丁律师曾与多伦多著名移民及商业 律师共同工作，并处理过一定数量的高难案历。</p>
+    </a>
+  </div>
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer4.png" alt="加拿大移民律师">
+      <p class="canzan-p" style="color: #333"><span>加拿大移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">Gregory James 拥有超过 27 年的加拿大移民律师经验，曾是加拿大移民和难民局的高级管理人 员，难民律师协会主席以及其他相关专业组织的成员。</p>
+    </a>
+  </div>
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer5.png" alt="加拿大移民律师">
+      <p class="canzan-p" style="color: #333"><span>加拿大移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">1999年梅兰妮律师加入加拿大律师协会执行委员会魁北克分部，任职移民和公民事务部。从2002到2008年6月，梅兰妮律师负责商业移民事宜。2008年9月，她被选为魁北克公民和移民局主席，任期两年。多年来，她帮助成千上万的家庭实现自己的梦想，在国外开始了新的生活。</p>
+    </a>
+  </div>
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer6.png" alt="澳洲移民律师">
+      <p class="canzan-p" style="color: #333"><span>澳洲移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">曾任澳大利亚驻华大使馆签证处（前移民局海外办公室）签证官和高级监察官，孟玮女士擅长各类商业移民，包括显赫投资者移民，商业天才移民和商业创新移民等。</p>
+    </a>
+  </div>
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer7.png" alt="澳大利亚移民律师">
+      <p class="canzan-p" style="color: #333"><span>澳大利亚移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">杨天华，澳大利亚丹尼仕律师事务所高级移民顾问律师，澳洲注册三级翻译，从事商业移民10多年，积累大量从业经验。精通188A投资移民。</p>
+    </a>
+  </div>
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer8.png" alt="澳大利亚移民律师">
+      <p class="canzan-p" style="color: #333"><span>澳大利亚移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">澳大利亚丹尼仕律师事务所高级移民顾问律师，毕业于澳洲国立大学法学院，维多利亚大学商学院，从事商业移民10多年。精通188B类投资移民。</p>
+    </a>
+  </div>
+  <div class="canzan dui-layout-col4 dui-box-shadow" style="height: 345px;">
+    <a target="_blank"  href="javascript:void(0);">
+      <img src="{{helper.cdnhost}}/assets/img/lawyer9.png" alt="英国移民律师">
+      <p class="canzan-p" style="color: #333"><span>英国移民律师</span></p>
+      <p class="canzan-p2" style="color: #333;height: 99px;">英国移民署 OISC 高级别律师<br>
+        英国移民律师公会 ILPA 资深会员
+      </p>
+    </a>
+  </div>
+</div>
+
+{% include "widget/new_footer/yimin_footer.html" %}
+{% import "widget/new_slide_yimin/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_COUNSELLER_SEAT10",helper) }}
+</body>
+<script>
+  var AD_PAGE_NAME = "COUNSELLER"; //设置页面对应的名字
+</script>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_yimin_search.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js" ></script>
+
+</html>

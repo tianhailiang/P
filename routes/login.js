@@ -35,6 +35,28 @@ exports.login = function (req, res, next) {
   //res.status(200).send(captcha.data);
   res.render('login/login', data)
 };
+//普通用户登录页面
+exports.loginUser = function (req, res, next) {
+  log.debug('this router loginUser~~');
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var data = [];
+  data.login_nickname = '';
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.tdk = {
+    pagekey: 'LOGIN', //key
+    cityid: area, //cityid
+    nationid: ''//nationi
+  };
+
+  res.render('login/loginUser', data)
+};
 
 //普通用户登录
 exports.login_user = function (req, res, next) {
