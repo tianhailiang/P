@@ -1,0 +1,29 @@
+{% macro nav_login(tdk,helper) %}
+<div class="new_nav_first_white">
+    <div class="new_nav_first clearfix">
+        <div class="new-logo-left">
+            <a  target="_blank" href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}"><img src="{{helper.cdnhost}}/assets/img/logo_common_black.png" alt="金吉列官网"/></a>
+        </div>
+        <ul class="page-type">
+            <li><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li>
+            <li><a href="{{ helper.urlgen('yimin') }}">移民</a></li>
+            <li style="width: 118px;"><a href="{{ helper.urlgen('about') }}">关于金吉列</a></li>
+        </ul>
+        <div class="nav-right">
+            <div class="new-searchs new-home-search">
+                <div class="search-type-box">
+                    <div class="search-type"><span class="search-type-text" id="searchType">留学</span><i class="iconfont go-down" style="font-size: 12px;">&#xe8ca;</i></div>
+                    <ul class="search-type-ul">
+                        <li>留学</li>
+                        <li>移民</li>
+                    </ul>
+                </div>
+                <input type="text" id="search" placeholder="请输入搜索关键词" class="text text-nav"
+                       onfocus="if(this.placeholder == '请输入搜索关键词'){this.value = '';}"
+                       onblur="if(this.value == ''){this.placeholder= '请输入搜索关键词';}">
+                <div class="search-btn" id="searchBtn" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endmacro %}
