@@ -138,6 +138,28 @@
     });
   }
 
+  function getloginUser () {
+    var h = window.location.href;
+    console.log('h', h);
+    var hh = h.split("/");
+    console.log('hh[1]', hh[3]);
+    var hhh = h.split("?");
+    console.log('hhh', hhh[1])
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:') {
+      console.log('11111')
+//      window.location.href = '/login?h=' + h
+      window.open('/loginUser?h=' + h);
+      //window.open(fn.urlgen("login")+'?h='+h);
+    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser') {
+      console.log('aaaa')
+      window.location.reload();
+    } else {
+      console.log('22222');
+//      window.location.href = '/login'
+      window.open('/loginUser?h=');
+      //window.open(fn.urlgen('login')+'?h=');
+    }
+  }
   //登录验证码
   function sendphone () {
     if ($('#phone').val() === '') {

@@ -191,6 +191,8 @@ exports = module.exports = function (app) {// routes
   app.get('/about/contact',about.contact);//联系我们
   //顾问登录
   app.get('/login', login.login);
+  //普通用户登录
+  app.get('/loginUser', login.loginUser);
   //顾问忘记密码
   app.get('/forget', login.forget);
   //普通用户绑定手机号
