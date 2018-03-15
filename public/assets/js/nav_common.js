@@ -39,6 +39,6 @@ $("#searchBtn").click(function () {
         $('#search').focus();
     }
     else {
-        window.open(fn.no_urlgen(getSoUrl(so_type,'文章'), 'q=' + so_key_word));
+        window.open(fn.urlgen(getSoUrl(so_type,'文章'), 'q=' + so_key_word));
     }
 });
