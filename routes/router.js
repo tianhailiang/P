@@ -183,6 +183,8 @@ exports = module.exports = function (app) {// routes
 
   //参赞聚合页
   app.get('/canzan', about.canzan);
+  //海外律师团队
+  app.get('/lawyer', about.lawyer);
   //关于我们
   app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化
