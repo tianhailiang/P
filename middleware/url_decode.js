@@ -4,7 +4,7 @@ var config = require('../config/config');
 
 function url_rewrite(app) {
   //yimin url rewrite
-  url_yiminrewrite(app);
+  //url_yiminrewrite(app);
   url_decode(app);
 }
 
