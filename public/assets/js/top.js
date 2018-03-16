@@ -178,10 +178,11 @@
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
+      url: ajaxUrlPrefix.porthost+'/sendcode_s',
+      //url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
       type:'GET',
       data: {
-        m: 'sendcode',
+        //m: 'sendcode',
         phone: $('#phone').val()
       },
       dataType: 'json',
@@ -237,7 +238,7 @@
       return
     }
     $.ajax({
-      url: '/login_user',
+      url: ajaxUrlPrefix.porthost+'/login_user',
       type: 'POST',
       dataType:'json',
       data: {
@@ -261,6 +262,12 @@
 //普通用户退出
 function outlogin () {
   var login_info = JSON.parse($.cookie('login_ss'));
+  var h = window.location.href;
+    console.log('h', h);
+    var hh = h.split("/");
+    console.log('hh[1]', hh[3]);
+    var hhh = h.split("?");
+    console.log('hhh', hhh[1])
     $.ajax({
       url: js_api_config.wwhost+'/login_out',
       type: 'GET',
@@ -269,7 +276,9 @@ function outlogin () {
       success:function(msg){
         if (msg == '0') {
           console.log('登出')
-          if (login_info.usertype == 1) {
+          if (hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' || hh[3] != undefined || hh[3] != '' || hh[4] != '' || hh[4] != undefined || hh[4] != 'article' || hh[4] != 'case' || hh[4] != 'album' || hh[4] != 'hot') {
+            window.location.reload();
+          }else if (login_info.usertype == 1) {
             console.log('1')
             window.location.href = '/loginUser'
             // window.open('/loginUser');

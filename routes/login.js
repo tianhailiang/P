@@ -101,8 +101,10 @@ exports.login_user = function (req, res, next) {
         log.debug('result.login_user----------', data.login_user.data);
       
         if (config.version == 'development') {//开发环境
+          log.debug('result.login_user----------development');
           res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
         } else {
+          log.debug('result.login_user----------production');
           res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
         }
       
