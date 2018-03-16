@@ -294,23 +294,14 @@ exports.so_article_yimin = function (req, res, next) {
             cms.so_article_list({
                 order: order,
                 key_word:encodeURI(keyword),
-                city_id:area,
+                city_id:1,
                 "per_page": "15",
                 "page": page,
                 "is_immi":"2"
             }, callback);
         },
-        guess_like: function (callback) {
-            cms.channel_list({
-                order: 'comments desc',
-                city_id:area,
-                "per_page": "10",
-                "page": 1
-            }, callback)
-        }
     }, function (err, result) {
         data.article_list = returnData(result.so_article_list,'so_article_list');
-        data.likelist = returnData(result.guess_like,'guess_like');
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.order = order;
