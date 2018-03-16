@@ -7,9 +7,9 @@ $('.guanzhu-btn').on('click', function() {
     }
     if(login_ss == undefined){
       //layer.msg('你还没有登录')
-      window.setTimeout(function(){
+    //   window.setTimeout(function(){
           getlogin();
-      },1000);
+    //   },1000);
       return false;
     }
     var uid = login_ss.uid;
