@@ -224,6 +224,7 @@ exports.activity_detail = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/activity_detail', data);
 
   });

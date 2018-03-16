@@ -82,7 +82,7 @@
       <div class="wenda-zhuanchang">
         <h1 class="baiwen-baida">{{ huodongdiye.title | ellipsis(20)}}</h1>
         <span class="didian"><i class="iconfont activity-map">&#xe69d;</i>讲座地点：{{ huodongdiye.address_des | ellipsis(30)}}</span>
-        <p style="line-height: 54px;font-size: 14px;color:#666666;">活动时间：{{ huodongdiye.start_time | getDefaultFormat('YYYY-MM-DD HH:mm')}}&nbsp;&nbsp;至&nbsp;&nbsp;{{ huodongdiye.end_time | getDefaultFormat('YYYY-MM-DD HH:mm')}}</p>
+        <p style="line-height: 54px;font-size: 14px;color:#666666;">活动时间：{{ huodongdiye.start_time }}</p>
       </div>
       <div class="activity-time-tel">
 
@@ -105,8 +105,14 @@
         <p class="juban-crowd clearfix">
           <span class="juban-tit">举办城市：</span>
           <span class="juban-di renqun">{{ huodongdiye.hold_city | getCity}}</span>
-          <span class="juban-tit" style="margin-left: 30px">活动时间：</span>
-          <span class="start-time">{{ huodongdiye.start_time | getDefaultFormat('YYYY-MM-DD HH:mm')}}&nbsp;&nbsp;至&nbsp;&nbsp;{{ huodongdiye.end_time | getDefaultFormat('YYYY-MM-DD HH:mm')}}</span>
+        </p>
+        <p class="juban-crowd clearfix">
+          <span class="juban-tit">开始时间：</span>
+          <span class="juban-di renqun">{{ huodongdiye.start_time }}</span>
+        </p>
+        <p class="juban-crowd clearfix">
+          <span class="juban-tit">结束时间：</span>
+          <span class="juban-di renqun">{{ huodongdiye.end_time}}</span>
         </p>
         <div class="juban-con clearfix">
           <span class="juban-tit" style="width: 80px">主要内容：</span>
@@ -114,9 +120,9 @@
               740px;float: left">{{ huodongdiye.content | safe }}</div>
         </div>
       </div>
-      <div class="common-title common-title-left gray-bg" style="border:none">
-        <i></i>
-        <h3>在线预约</h3>
+      <div class="common-title common-title-left gray-bg" style="border:none;height: 40px;line-height: 40px;background: #f3f3f3">
+        <i style="margin-left: 0;"></i>
+        <h4 style="margin-left: 10px;">在线预约</h4>
       </div>
       {% include "widget/online_evaluation/quick_application2.html" %}
     </div>
@@ -126,7 +132,13 @@
 
   <div class="dui-layout-div"></div>
   <div class="dui-layout-silde">
-
+    <div style="margin-top: 20px;" class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;">
+        <i></i>
+        <h3>猜你喜欢</h3>
+      </div>
+      {% esi helper.include(esikey,'fragment/guess_like','c='+tdk.cityid) %}
+    </div>
 
   </div>
 </div>
