@@ -536,11 +536,12 @@ exports.forget_s = function (req, res, next) {
 exports.login_out = function (req, res, next) {
   console.log('login_out');
   //console.log('req', req);
-  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
+  res.setHeader("Access-Control-Allow-Methods","GET,POST");
   res.clearCookie("login_ss", {domain: '.jjl.cn'});
   //res.cookie(prop, 'login_ss', {expires: new Date(0)});
   console.log('login_out1');
-  res.send('0');
+  // res.send('0');
+  res.send("cb(0)");
   //res.redirect(req.query.h);
 };
 
