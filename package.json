@@ -23,7 +23,6 @@
     "gulp-notify": "^3.0.0",
     "gulp-nunjucks-render": "^2.2.1",
     "gulp-rename": "^1.2.2",
-    "gulp-rev": "^8.0.0",
     "gulp-uglify": "^3.0.0",
     "lodash.isarray": "^4.0.0",
     "memory-cache": "^0.2.0",
