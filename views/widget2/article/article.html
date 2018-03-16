@@ -18,11 +18,11 @@
   <div class="homepage-title">
     <p>
     {% if item.type == 1 %}
-    <a target="_blank" href="{{helper.urlgen('case',item.id | string)}}" class="dui-text-warning" rel="nofollow">
+    <a target="_blank" href="{{helper.urlgen('case',item.id | string)}}" class="dui-text-warning">
       {{item.title}}</a><div>{{item.tag_list}}</div>
 
     {% else %}
-    <a target="_blank" href="{{helper.urlgen('article',item.id | string)}}" class="dui-text-warning" rel="nofollow">
+    <a target="_blank" href="{{helper.urlgen('article',item.id | string)}}" class="dui-text-warning">
       {{item.title}}</a><div>{{item.tag_list}}</div>
     {% endif %}
     </p>
