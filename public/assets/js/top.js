@@ -66,7 +66,7 @@
         var strs = str.split("=");
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
-        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
     $('#qq_reg').on('click', function () {
@@ -79,7 +79,7 @@
         var strs = str.split("=");
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
-        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
     
@@ -289,7 +289,7 @@ function outlogin () {
       success:function(msg){
         if (msg == '0') {
           console.log('登出')
-          if (hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' || hh[3] != undefined || hh[3] != '' || hh[4] != '' || hh[4] != undefined || hh[4] != 'article' || hh[4] != 'case' || hh[4] != 'album' || hh[4] != 'hot') {
+          if (hh[3] == 'forget' && hh[3] == 'login' && hh[3] == 'loginUser' || hh[3] == undefined || hh[3] == '' || hh[4] == '' || hh[4] == undefined || hh[4] == 'article' || hh[4] == 'case' || hh[4] == 'album' || hh[4] == 'hot') {
             window.location.reload();
           }else if (login_info.usertype == 1) {
             console.log('1')
