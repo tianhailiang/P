@@ -53,6 +53,21 @@ app.use(cookieParser());
 app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
 app.use('/dep', express.static(path.join(__dirname, 'public/dep')));
 app.use('/views', express.static(path.join(__dirname, 'views')));
+/*开发环境 ajax允许跨域*/
+if (config.version == 'development') {
+    app.all('*', function(req, res, next) {
+        console.log('allow origin');
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header('Access-Control-Allow-Headers', 'Content-Type');
+        next();
+    });
+}
+app.all('*', function(req, res, next) {
+    if(req.method=="OPTIONS") res.send(200);/*让options请求快速返回*/
+    else next();
+});
 router(app);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

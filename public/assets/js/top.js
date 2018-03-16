@@ -178,7 +178,7 @@
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: '/sendcode_s',
+      url: ajaxUrlPrefix.porthost+'/sendcode_s',
       type:'GET',
       data: {
         phone: $('#phone').val()
@@ -236,7 +236,7 @@
       return
     }
     $.ajax({
-      url: '/login_user',
+      url: ajaxUrlPrefix.porthost+'/login_user',
       type: 'POST',
       dataType:'json',
       data: {
