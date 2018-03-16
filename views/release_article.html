@@ -219,7 +219,7 @@
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
@@ -270,6 +270,7 @@
       //选择文章类型
       var newsletterType = null;
       var newTagStr = '';
+      var artType = 2;  // 1 是案例 2是专栏
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
         $('.art-type-i').html('').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'});
@@ -282,6 +283,7 @@
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '留学时讯';
+          artType = 2 ;
         }
       });
       //选择学历标签
@@ -373,7 +375,6 @@
         layer.msg(info)
       }
       editor.create();
-      var artType = 2; 
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
