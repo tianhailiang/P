@@ -42,36 +42,9 @@ gulp.task("node_yimin", function() {
   })
 });
 /*
-* 打包
-* */
-gulp.task('testHtmlmin', function () {
-  var options = {
-    removeComments: true,//清除HTML注释
-    collapseWhitespace: true,//压缩HTML
-    collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input />
-    removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
-    removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
-    removeStyleLinkTypeAttributes: true//删除<style>和<link>的type="text/css"
-  };
-  return gulp.src(['views/*/*.html','views/*.html'])
-    .pipe(htmlmin(options))
-    .pipe(gulp.dest('bucketDist'));
-});
-
-function getDataForFile(){
-  var actJson = require('./views/widget/expertunscramble/expertunscramble.json');
-  return actJson;
-
-}
-
-gulp.task('nuk', function () {
-  return gulp.src(['views/widget2/*/*.html'])
-    //.pipe(data(getDataForFile))
-    .pipe(nunjucksRender({
-      path: ['views/widget2/'] // String or Array
-    }))
-    .pipe(gulp.dest('views/dist2'));
-});
+ * 打包
+ * 
+ */
 
 gulp.task('minifycss', function() {
   return gulp.src(['views/widget2/*/*.css', 'views/widget/*/*.css']) //压缩的文件
@@ -96,13 +69,6 @@ gulp.task('minifyjs',function(){
 });
 gulp.task('clean', function(cb) {
   del(['public/assets/css/nodemain.min.css', 'public/assets/js/nodemain.min.js'], cb)
-});
-gulp.task('images', function() {
-  return gulp.src(['public/statics/jjl/img/*.*', 'public/statics/jjl/images/*.*'])
-    .pipe(imagemin({
-      progressive: false
-    }))
-    .pipe(gulp.dest('public/bucketDist/img'));
 });
 
 gulp.task('server', ["node"], function() {
@@ -164,10 +130,14 @@ gulp.task('revProduct',function(){
   return gulp.src(['dist/rev/**/*.json','views/**/*.html'])
     .pipe(revCollector())
     .pipe(gulp.dest('dist/views'));
-})
+});
+gulp.task('images', function() {
+  return gulp.src(['public/assets/img/*.*'])
+    .pipe(gulp.dest('dist/public/assets/img'));
+});
 
 gulp.task('revClean', function(cb) {
-  return del([ 'dist/rev/*','dist/views/*'], cb)
+  return del([ 'dist/rev/*','dist/views/*','dist/public/*'], cb)
 });
 gulp.task('minify_viewCount_js',function(){
   return gulp.src('public/assets/js/view_count.js')
@@ -181,5 +151,4 @@ gulp.task('minify_viewCount_js',function(){
 gulp.task('default', ['clean', 'minifycss', 'minifyjs']);
 
 // build version info in html
-gulp.task('build', gulpSequence('revClean', ['revCss', 'revJs'],'revProduct'));
-
+gulp.task('build', gulpSequence('revClean', ['revCss', 'revJs'],'revProduct','images'));

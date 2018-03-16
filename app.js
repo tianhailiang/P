@@ -8,7 +8,6 @@ var nunjucks = require('nunjucks');
 var router = require('./routes/router.js');
 var customfilters = require('./common/filters');
 var helper = require('./common/helper');
-var log4js = require('./log/log');
 var tdk_monitor = require('./tdk/tdk_monitor');
 var app = express();
 // 代码片段
@@ -50,9 +49,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false,limit:"2048kb" }));
 app.use(cookieParser());
 
-app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
-app.use('/dep', express.static(path.join(__dirname, 'public/dep')));
-app.use('/views', express.static(path.join(__dirname, 'views')));
+if(process.env.NODE_ENV == 'development'){
+  app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+  app.use('/dep', express.static(path.join(__dirname, 'public/dep')));
+}else if(process.env.NODE_ENV == 'production'){
+  app.use('/assets', express.static(path.join(__dirname, 'dist/public/assets')));
+  app.use('/dep', express.static(path.join(__dirname, 'dist/public/dep')));
+}
+
 /*开发环境 ajax允许跨域*/
 if (config.version == 'development') {
     app.all('*', function(req, res, next) {
