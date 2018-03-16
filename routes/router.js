@@ -185,6 +185,7 @@ exports = module.exports = function (app) {// routes
   app.get('/canzan', about.canzan);
   //海外律师团队
   app.get('/lawyer', about.lawyer);
+  app.get('/activity', about.activity);
   //关于我们
   app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化

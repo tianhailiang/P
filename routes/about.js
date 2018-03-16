@@ -127,6 +127,61 @@ exports.lawyer = function (req, res, next) {
 
   });
 }
+//留学活动
+exports.activity = function (req, res, next) {
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+  var articleId = req.params.id;
+  var page =req.query.page || 1;
+  var order =req.query.article || 1;
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_info = ''
+  if ( req.cookies.login_ss !== undefined) {
+    console.log('aaaaaa');
+    data.login_info = JSON.parse(req.cookies.login_ss);
+    console.log('data.login_info', data.login_info);
+  }else{
+    data.login_info ={};
+    data.login_info.uid = 0;
+    //res.redirect(config.wwhost+'/login');
+    //return false;
+  }
+  async.parallel({
+    userinfo:function(callback){
+      wec.userinfo({
+        "u_id":data.login_info.uid, "to_uid":data.login_info.uid},callback);
+    },
+    canzanlist:function (callback) {
+      cms.canzanlist({"usertype":"3","pagesize":100},callback);
+    },
+  }, function (err, result){
+    data.userinfo = returnData(result.userinfo,'userinfo');
+    data.canzanlist = returnData(result.canzanlist,'canzanlist');
+    log.info('个人信息',data.userinfo)
+    data.country=country;
+    data.route = 'team';
+    data.pageType = '文案团队';
+    data.path = 'TEAMDETAIL';
+    data.pageroute='team';
+    data.area=area;
+    data.tdk = {
+      pagekey: 'ACTIVITY', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    res.render('about/activity', data);
+
+  });
+}
 //企业文化
 exports.culture = function (req, res, next){
     var data = [];
