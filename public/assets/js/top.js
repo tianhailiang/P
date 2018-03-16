@@ -178,9 +178,10 @@
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: '/sendcode_s',
+      url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
       type:'GET',
       data: {
+        m: 'sendcode',
         phone: $('#phone').val()
       },
       dataType: 'json',
@@ -261,13 +262,23 @@
 function outlogin () {
   var login_info = JSON.parse($.cookie('login_ss'));
     $.ajax({
-      url: '/login_out',
+      url: js_api_config.wwhost+'/login_out',
       type: 'GET',
-      dataType:'json',
+      dataType:'jsonp',
+      jsonpCallback:'cb',
       success:function(msg){
         if (msg == '0') {
           console.log('登出')
-          window.location.reload();
+          if (login_info.usertype == 1) {
+            console.log('1')
+            window.location.href = '/loginUser'
+            // window.open('/loginUser');
+          }else {
+            console.log('2')
+            window.location.href = '/login'
+            // window.open('/login');
+          }
+          // window.location.reload();
         }
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
