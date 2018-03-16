@@ -17,10 +17,10 @@ function getSoUrl (stationType,searchType) {
 }
 $('.search-type-box').hover(function () {
     $(this).find('.search-type-ul').slideDown(100);
-    //$(this).find('.go-down').html('&#xe633;');
+    $(this).find('.go-down').html('&#xe633;');
 }, function () {
     $(this).find('.search-type-ul').slideUp(100);
-    //$(this).find('.go-down').html('&#xe632;')
+    $(this).find('.go-down').html('&#xe632;')
 });
 $('.search-type-ul').on('click','li',function () {
     $('.search-type-text').text($(this).text());
