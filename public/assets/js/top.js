@@ -84,6 +84,19 @@
     })
     
   })
+  var portname;
+  var hostname = window.location.hostname;
+  portname = 'http://'+ window.location.hostname;
+  if (hostname == 'www.jjl.cn') {
+    if (js_api_config.version == 'development') {
+      portname += ':4000'
+    }
+  }
+  else if (hostname == 'yimin.jjl.cn') {
+    if (js_api_config.version == 'development') {
+      portname += ':4600'
+    }
+  }
   var layeropen;
   function getlogin () {
 
@@ -178,11 +191,11 @@
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: ajaxUrlPrefix.porthost+'/sendcode_s',
-      //url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
+//      url: ajaxUrlPrefix.porthost+'/sendcode_s',
+      url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
       type:'GET',
       data: {
-        //m: 'sendcode',
+        m: 'sendcode',
         phone: $('#phone').val()
       },
       dataType: 'json',
@@ -238,7 +251,7 @@
       return
     }
     $.ajax({
-      url: ajaxUrlPrefix.porthost+'/login_user',
+      url: portname+'/login_user',
       type: 'POST',
       dataType:'json',
       data: {
