@@ -222,7 +222,7 @@
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
   <script >
     $(function(){
@@ -271,6 +271,7 @@
       //选择文章类型
       var newsletterType = $("#art-type").attr('data-id');
       var newTagStr = '';
+      var artType = $("#art-type").attr('data-type');
       if(newsletterType ==2){
         newTagStr = '留学时讯';
       }else{
@@ -288,6 +289,7 @@
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '留学时讯';
+          artType = 2;
         }
       });
        //选择学历标签
@@ -378,7 +380,7 @@
         layer.msg(info)
       }
       editor.create();
-      var artType = $("#art-type").attr('data-type');
+      
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
