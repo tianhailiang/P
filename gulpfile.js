@@ -68,7 +68,7 @@ gulp.task('minifyjs',function(){
     .pipe(notify({message: 'css压缩执行成功'}));
 });
 gulp.task('clean', function(cb) {
-  del(['public/assets/css/nodemain.min.css', 'public/assets/js/nodemain.min.js'], cb)
+  return del(['public/assets/css/nodemain.min.css', 'public/assets/js/nodemain.min.js'], cb);
 });
 
 gulp.task('server', ["node"], function() {
@@ -120,10 +120,10 @@ gulp.task('revCss',function(){
 gulp.task('revJs',function(){
   return gulp.src('public/**/*.js')
     .pipe(rev())
-    .pipe(gulp.dest('dist/public'))//rev
+    .pipe(gulp.dest('dist/public'))
     .pipe(rev.manifest())
     .pipe(gulp.dest('dist/rev/js'));
-})
+});
 
 //check fileinfo: rev-manifest.json in dist/rev,final replace js/css in html;
 gulp.task('revProduct',function(){
@@ -147,6 +147,7 @@ gulp.task('minify_viewCount_js',function(){
       .pipe(gulp.dest('public/assets/js'))
       .pipe(notify({message: 'viewCount压缩执行成功'}));
 });
+
 //打包发布
 gulp.task('default', ['clean', 'minifycss', 'minifyjs']);
 

@@ -45,7 +45,7 @@
     "gulp": "^3.9.1",
     "gulp-clean": "^0.3.2",
     "gulp-nodemon": "^2.2.1",
-    "gulp-rev": "^8.1.0",
+    "gulp-rev": "^8.1.1",
     "gulp-rev-collector": "^1.2.4",
     "gulp-sequence": "^0.4.6",
     "log4js": "^2.3.11",
