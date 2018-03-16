@@ -367,6 +367,7 @@ exports.oauth = function (req, res, next) {
 
 exports.qq_login = function (req, res, next) {
   var code = req.query.code;
+  var h = req.query.h;
   var async = require('async');
   if(code){
     var data = [];
@@ -387,6 +388,7 @@ exports.qq_login = function (req, res, next) {
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
         oauth_data.title = 'QQ';
+        oauth_data.h = h;
         //data.oauth_data = oauth_data;
         //console.log(oauth_data);
         //res.render('binding', data);
@@ -413,6 +415,7 @@ exports.qq_login = function (req, res, next) {
 
 exports.sina_login = function (req, res, next) {
   var code = req.query.code;
+  var h = req.query.h;
   console.log("sina h",req.query.h);
   var async = require('async');
   if(code){
@@ -431,7 +434,8 @@ exports.sina_login = function (req, res, next) {
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
-        oauth_data.title = '新浪'
+        oauth_data.title = '新浪';
+        oauth_data.h = h;
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
         res.redirect('binding');
@@ -456,6 +460,7 @@ exports.sina_login = function (req, res, next) {
 
 exports.weixin_login = function (req, res, next) {
   var code = req.query.code;
+  var h = req.query.h;
   var state = req.query.state;
   console.log("sina h",req.query.h);
   var async = require('async');
@@ -475,14 +480,14 @@ exports.weixin_login = function (req, res, next) {
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
-        oauth_data.title = '微信'
+        oauth_data.title = '微信';
+        oauth_data.h = h;
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
         res.redirect('binding');
       }
     });
   }else{
-    var h = req.query.h;
     var url_cookie = {'h':h, 'befrom':'weixin'};
     res.cookie("oauth_login", JSON.stringify(url_cookie), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
     //res.redirect(config.uchost+"/api/index.php?m=weixin_login");
