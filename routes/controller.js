@@ -278,14 +278,14 @@ exports.so_article_yimin = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "YIMIN_SEARCH_ARTICLE",
+                "ad_page": "YIMIN_SEARCHNEWS",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "YIMIN_SEARCH_ARTICLE",
+                "ad_page": "YIMIN_SEARCHNEWS",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
