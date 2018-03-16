@@ -186,6 +186,7 @@ exports = module.exports = function (app) {// routes
   //海外律师团队
   app.get('/lawyer', about.lawyer);
   app.get('/activity', about.activity);
+  app.get('/activity/:id', about.activity_detail);
   //关于我们
   app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化

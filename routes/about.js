@@ -185,6 +185,49 @@ exports.activity = function (req, res, next) {
 
   });
 }
+//活动底页
+exports.activity_detail = function (req, res, next){
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+  //node获取地址栏url
+  var articleId = req.params.id;
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_nickname = '';
+  if ( req.cookies.login_ss !== undefined) {
+    var login_a = JSON.parse(req.cookies.login_ss);
+    //log.debug("login_a-------" + login_a.nickname)
+    data.login_nickname = login_a;
+  }
+  async.parallel({
+    activitydetail: function (callback) {
+      cms.activity_detail({
+        "catid": 74,
+        "id":articleId,
+      }, callback);
+    },
+  }, function (err, result){
+    log.info(result)
+    data.pageroute="about";
+    data.activitydetail = returnData(result.activitydetail, 'activitydetail');
+    data.huodongdiye=data.activitydetail.list;
+    log.info('底页',data.huodongdiye)
+    data.tdk = {
+      pagekey: 'ACTIVITYDETAIL', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    res.render('about/activity_detail', data);
+
+  });
+}
 //企业文化
 exports.culture = function (req, res, next){
     var data = [];
