@@ -211,7 +211,7 @@
             cItemHtml += '<p class="off-p3">学&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;历&nbsp;:&nbsp;'+ fn.getEdu(citem.edu_id) +'</p>';
             cItemHtml += '<p class="off-p3">录取时间&nbsp;:&nbsp;'+ citem.introduce.admission_time +'</p>';
             cItemHtml += '<p class="off-p4"><a target="_blank" href="'+ fn.urlgen("case", citem.id.toString()) +'">【查询详情】</a></p>';
-            cItemHtml += '</div> </div> <div class="offers-right"> <div class="offers-right-xiala"><div class="offer-opt-bar clearfix"><div class="opt-btn delete" onclick="cancelFav($(this), '+citem.id+')"><i class="iconfont">&#xe8c1;</i><span>删除</span></div></div><div class="offer-xialas"> <span class="offer-xialadd iconfont">&#xe60b;</span> <ul class="offer-xiala"> <li><a  class="dui-text-warning-s report-btn" data-artId="'+citem.id+'" data-catid="'+citem.category_id+'">举报</a></li> <li><a  class="dui-text-warning-s share-btn" data-url="/case/'+citem.id+'" data-title ="'+citem.title+'">分享</a></li> </ul> </div> </div>';
+            cItemHtml += '</div> </div> <div class="offers-right"> <div class="offers-right-xiala"><div class="offer-opt-bar clearfix"><div class="opt-btn delete" onclick="cancelFav($(this),'+item.id+')"><i class="iconfont">&#xe8c1;</i><span>删除</span></div></div><div class="offer-xialas"> <span class="offer-xialadd iconfont">&#xe60b;</span> <ul class="offer-xiala"> <li><a  class="dui-text-warning-s report-btn" data-artId="'+citem.id+'" data-catid="'+citem.category_id+'">举报</a></li> <li><a  class="dui-text-warning-s share-btn" data-url="/case/'+citem.id+'" data-title ="'+citem.title+'">分享</a></li> </ul> </div> </div>';
             if (citem.introduce.offer_img && citem.introduce.offer_img.length > 0) {
                 cItemHtml += '<div class="offers-right-off"> <div class="offers-right-offs"> <span>Offer展示:</span></div><div class="offers-right-offh">';
                 cItemHtml += addCaseImg(citem.introduce.offer_img);
@@ -243,7 +243,7 @@
             aItemHtml += '<span style="font-size: 12px;padding: 0 10px;height: 24px;margin-left: 20px;background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/yanse.png);background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">'+item.tag_list+'</span>';
             aItemHtml += '</div>'+
                         '<div class="offer-opt-bar clearfix">'+
-                        '<div class="opt-btn delete" onclick="deleteOffer($(this), '+item.uid+', '+item.id+')">'+
+                        '<div class="opt-btn delete" onclick="cancelFav($(this),'+item.id+')">'+
                         '<i class="iconfont">&#xe8c1;</i>'+
                         '<span>删除</span>'+
                         '</div>'+
