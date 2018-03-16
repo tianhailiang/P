@@ -182,7 +182,7 @@
       //url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
       type:'GET',
       data: {
-        m: 'sendcode',
+        //m: 'sendcode',
         phone: $('#phone').val()
       },
       dataType: 'json',
