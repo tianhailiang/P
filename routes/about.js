@@ -160,18 +160,21 @@ exports.activity = function (req, res, next) {
       wec.userinfo({
         "u_id":data.login_info.uid, "to_uid":data.login_info.uid},callback);
     },
-    canzanlist:function (callback) {
-      cms.canzanlist({"usertype":"3","pagesize":100},callback);
+    activitylist:function (callback) {
+      cms.activity_list({"city_id":area,"page":"1","perpage":8},callback);
     },
+    other_activitylist:function (callback) {
+      cms.other_activity_list({"city_id":area,"page":"1","perpage":30},callback);
+    }
   }, function (err, result){
     data.userinfo = returnData(result.userinfo,'userinfo');
-    data.canzanlist = returnData(result.canzanlist,'canzanlist');
-    log.info('个人信息',data.userinfo)
-    data.country=country;
+    data.activitylist = returnData(result.activitylist,'activitylist');
+    data.other_activitylist = returnData(result.other_activitylist,'other_activitylist');
+  /*  data.country=country;
     data.route = 'team';
     data.pageType = '文案团队';
     data.path = 'TEAMDETAIL';
-    data.pageroute='team';
+    data.pageroute='team';*/
     data.area=area;
     data.tdk = {
       pagekey: 'ACTIVITY', //key
