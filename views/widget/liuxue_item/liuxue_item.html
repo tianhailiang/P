@@ -15,7 +15,10 @@
 .gw-items{ width: 1200px;display: inline-block;}
 .gw-items li:nth-child(3n){margin-right:0}
 .gw-people{position:relative;float:left;margin-left:20px}
-.lx-groupitems .gw-people a{background-position: -15px -18px\0;}
+.lx-groupitems .gw-people a{
+	background-position:0 0;
+	background-position:-11px -13px\9;
+}
 .gw-people img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
 .gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
 .gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
@@ -54,7 +57,7 @@
 					{% if item.uid != null %}
 					<li>
 						<div class="gw-people">
-							<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 0;background-size:cover"></a>
+							<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover"></a>
 							<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
 						</div>
 						{#<p>{{item.type}}</p>#}
@@ -73,7 +76,7 @@
 							{% if item.uid != null %}
 							<li class="gw-newslist">
 								<div class="gw-people">
-									<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}) no-repeat 0 0;background-size:cover;"></a>
+									<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover;"></a>
 									<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
 								</div>
 								{#<p>{{item.type}}</p>#}
