@@ -146,7 +146,7 @@ function active_urlgen(){
   url += ((city && city != 0)?"/"+city:"") + chan + param;
 
   if (config.version == 'development') { //如果是開發環境
-    url = config.wwhost + ':3000' + url;//web
+    url = config.wwhost + ':4000' + url;//web
   }
   return url;
 }

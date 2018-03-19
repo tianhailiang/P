@@ -192,7 +192,8 @@ exports.activity_detail = function (req, res, next){
   var qianzhengzhinan_currentPage=req.query.page || 1;
   var country = req.query.n || 0;
   //node获取地址栏url
-  var articleId = req.params.id;
+  var activityId = req.params[1];
+
   var l = url.parse(req.url, true).query;
   console.log('url', l.h);
   if (l.h !== undefined) {
@@ -210,7 +211,7 @@ exports.activity_detail = function (req, res, next){
     activitydetail: function (callback) {
       cms.activity_detail({
         "catid": 74,
-        "id":articleId,
+        "id":activityId,
       }, callback);
     },
   }, function (err, result){

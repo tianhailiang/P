@@ -142,7 +142,7 @@
         <div class="new-activity-item">
           <h2 class="new-activity-item-title"><span class="city-name">【{{item.hold_city | getCity}}】</span>{{item.title}}<span  class="activity-time">{{ item.inputtime | getDefaultFormat }}</span></h2>
           <div class="new-activity-item-con">
-            <p class="description"><span>{{item.description | ellipsis(27)}}</span><a href="{{helper.urlgen('activity', item.id | string)}}">【查看详情】</a></p>
+            <p class="description"><span>{{item.description | ellipsis(27)}}</span><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
             <ul>
               <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time}}至{{item.end_time}}</span></li>
               <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}} </span></li>
@@ -156,7 +156,7 @@
         <div class="new-activity-item" style="margin-left: 20px">
           <h2 class="new-activity-item-title"><span class="city-name">【{{item.hold_city | getCity}}】</span>{{item.title}}<span  class="activity-time">{{ item.inputtime | getDefaultFormat }}</span></h2>
           <div class="new-activity-item-con">
-            <p class="description"><span>{{item.description | ellipsis(27)}}</span><a href="">【查看详情】</a></p>
+            <p class="description"><span>{{item.description | ellipsis(27)}}</span><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
             <ul>
               <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time}}至{{item.end_time}}</span></li>
               <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}}  </span></li>
@@ -180,21 +180,21 @@
         {% if loop.index<=6 %}
         {% if loop.index%2==1 %}
         <div class="new-activity-item new-activity-qita">
-          <h2><a href="">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | shorten(10)}}】</span>{{item.title | ellipsis(14)}}<i>最新</i></h2>
+          <h2><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | shorten(10)}}】</span>{{item.title | ellipsis(14)}}<i>最新</i></h2>
         </div>
         {% else %}
         <div class="new-activity-item new-activity-qita" style="margin-left: 20px;">
-          <h2><a href="">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | shorten(10)}}】</span>{{item.title | ellipsis(14)}}<i>最新</i></h2>
+          <h2><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | shorten(10)}}】</span>{{item.title | ellipsis(14)}}<i>最新</i></h2>
         </div>
         {% endif %}
         {% else %}
         {% if loop.index%2==1 %}
         <div class="new-activity-item new-activity-qita">
-          <h2><a href="">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | shorten(10)}}】</span>{{item.title | ellipsis(16)}}</h2>
+          <h2><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | shorten(10)}}】</span>{{item.title | ellipsis(16)}}</h2>
         </div>
         {% else %}
         <div class="new-activity-item new-activity-qita" style="margin-left: 20px;">
-          <h2><a href="">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time |  shorten(10)}}】</span>{{item.title | ellipsis(16)}}</h2>
+          <h2><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time |  shorten(10)}}】</span>{{item.title | ellipsis(16)}}</h2>
         </div>
         {% endif %}
         {% endif %}
