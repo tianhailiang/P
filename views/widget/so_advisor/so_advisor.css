@@ -5,7 +5,7 @@
     margin-top: 20px;
     float: left;
 }
-.so_advisor_warp:nth-child(2n){
+.so_advisor_warp:nth-child(2n+1){
     float: right;
 }
 .so_advisor_top{
@@ -17,7 +17,7 @@
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background: #007aff;
+    /*background: #007aff;*/
     margin: 20px 10px 10px 20px;
     clear: both;
     float: left;

@@ -138,17 +138,6 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .right-cont{width:878px;border:1px #eee solid}
 .right-title{width:840px;height:40px;background:#eee;margin-top:20px;margin-left:20px}
 // .right-title div{//     width:115px;//     height:40px;//     background:#C13232;//     font-size:18px;//     color:#fff;//     text-align:center;//     line-height:40px}
-.cmt-item{width:840px;margin:0 19px;border-bottom:1px solid #dcdcdc}
-.cmt-item:last-child{border-bottom:none}
-.cmt-item .cmt-img{width:60px;height:60px;overflow:hidden;float:left;margin-right:20px;margin-top:20px;margin-bottom:19px;background-color:#ffb6c1}
-.cmt-item .cmt-info{width:740px;float:right;padding:15px 20px 19px 0}
-.cmt-item .cmt-info .cmt-info-txt{font-size:14px;line-height:24px;height:48px;color:#333}
-.cmt-item .cmt-info .cmt-info-txt .reply{float:right;font-size:14px;line-height:24px;color:#C13232}
-.cmt-item .cmt-info .cmt-info-txt .reply .iconfont{font-size:14px;margin-right:4px}
-.cmt-item .cmt-info .cmt-info-time{font-size:12px;color:#666;line-height:12px;margin-top:5px}
-.right-cont{width:878px;border:1px #eee solid}
-.right-title{width:840px;height:40px;background:#eee;margin-top:20px;margin-left:20px}
-.right-title .tit{width:115px;height:40px;background:#C13232;font-size:18px;color:#fff;text-align:center;line-height:40px}
 .offers{width:880px;position:relative;margin-bottom:10px}
 .offers-left{width:448px;height:100%;float:left}
 .offers-left-img{width:60px;height:100%;float:left;margin:0 20px}
@@ -217,6 +206,17 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .photo-upload-box{width:100px;height:24px;margin-top:8px;font-size:14px;float:right;margin-right:10px}
 .photo-cont{background-color:#fff}
 .photo-cont .right-main{padding:0 19px}
+.cmt-item{width:840px;margin:0 19px;border-bottom:1px solid #dcdcdc}
+.cmt-item:last-child{border-bottom:none}
+.cmt-item .cmt-img{width:60px;height:60px;overflow:hidden;float:left;margin-right:20px;margin-top:20px;margin-bottom:19px;background-color:#ffb6c1}
+.cmt-item .cmt-info{width:740px;float:right;padding:15px 20px 19px 0}
+.cmt-item .cmt-info .cmt-info-txt{font-size:14px;line-height:24px;height:48px;color:#333}
+.cmt-item .cmt-info .cmt-info-txt .reply{float:right;font-size:14px;line-height:24px;color:#C13232}
+.cmt-item .cmt-info .cmt-info-txt .reply .iconfont{font-size:14px;margin-right:4px}
+.cmt-item .cmt-info .cmt-info-time{font-size:12px;color:#666;line-height:12px;margin-top:5px}
+.right-cont{width:878px;border:1px #eee solid}
+.right-title{width:840px;height:40px;background:#eee;margin-top:20px;margin-left:20px}
+.right-title .tit{width:115px;height:40px;background:#C13232;font-size:18px;color:#fff;text-align:center;line-height:40px}
 .list{width:280px;margin:20px auto;background:#fff}
 .list ul{list-style:none}
 .list ul li{width:100%;cursor:pointer}
@@ -1576,9 +1576,9 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .pagination-box .pagination-large{margin:0}
 .icon{width:16px;height:16px;position:relative;left:0;top:1px}
 .so_advisor_warp{width:410px;height:168px;background:#f5f5f5;margin-top:20px;float:left}
-.so_advisor_warp:nth-child(2n){float:right}
+.so_advisor_warp:nth-child(2n+1){float:right}
 .so_advisor_top{height:80px}
-.so_advisor_img{width:50px;height:50px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;background:#007aff;margin:20px 10px 10px 20px;clear:both;float:left;background-repeat:no-repeat;background-position:center top;-webkit-background-size:cover;background-size:cover}
+.so_advisor_img{width:50px;height:50px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;margin:20px 10px 10px 20px;clear:both;float:left;background-repeat:no-repeat;background-position:center top;-webkit-background-size:cover;background-size:cover}
 .so_advisor_top p{float:left;margin-top:38px;color:#666}
 .flag{margin-left:4px;margin-top:-3px}
 .so_advisor_top_right{width:70px;height:24px;line-height:24px;background:#c13232;text-align:center;color:#fff;float:right;margin-right:20px;margin-top:30px;font-size:14px}
