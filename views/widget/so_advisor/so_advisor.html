@@ -1,0 +1,17 @@
+
+{% for item in article_list.list %}
+<div class="so_advisor_warp">
+  <div class="so_advisor_top">
+    <a href=""><div class="so_advisor_img" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div></a>
+    <p>{{item.user_info.realname | shorten(6)}}<img src="../assets/img/1v.png" alt="" class="flag"/><span style="margin-left: 20px">{{ advisor.position_name if advisor.position_name else '咨询顾问'
+}}</span></p>
+    <div class="so_advisor_top_right"><a style="color: #FFFFFF" href="">我要咨询</a></div>
+  </div>
+  <div class="so_advisor_bottom"><p>{{ advisor.introduce | ellipsis(80) }}<a href="">【看看TA的主页】</a></p></div>
+</div>
+{% endfor %}
+
+
+
+
+
