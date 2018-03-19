@@ -49,8 +49,8 @@
 <body style="background: #f5f5f5">
 
 {% include "widget/top/top.html" %}
-{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
-{{ new_nav_red.new_nav_red(tdk,helper) }}
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
 <div class="culture_detail clearfix">
 <h1><div></div>金吉列文化</h1>
 <div class="culture_details"></div>
@@ -61,6 +61,6 @@
 </div>
 {% include "widget/new_footer/new_footer.html" %}
 </body>
-<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 </html>
