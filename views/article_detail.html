@@ -75,7 +75,7 @@
                 {{userinfo.realname}}<i class="adviser-v-i"></i>
               </span>
             </div>
-            <div style="float:right;" >
+            <div style="float:right;" data-introduce="{{article.article_info.introduce}}" id="intro">
               <div class="bdsharebuttonbox" style="margin-top: 15px;">
                 <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
                 <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
@@ -169,17 +169,12 @@
   <script>
   $(function(){
       $('.banner-box-left .slider').xSlider({
-          //轮播图配置
-//          autoplay : 500,
           current: 0,
           speed: 500,
           intervalTime: 5000,
           pagination: true
       });
       $('.banner-box-right .slider').xSlider({
-          //轮播图配置
-//          autoplay : 500,
-//            mode:'vertical',
           current: 0,
           speed: 1000,
           intervalTime: 5000,
@@ -187,6 +182,7 @@
           slidesPerGroup : 2,
           pagination: true
       });
+    console.log($('#intro').attr('data-introduce'))
     window._bd_share_config={
           "common":{
               "bdSnsKey":{},
@@ -197,7 +193,7 @@
               "bdStyle":"0",
               "bdSize":"16",
               "bdUrl":window.location.href,
-              "bdDesc":""
+              "bdDesc":$('#intro').attr('data-introduce')
           },
           "share":{}
       };
