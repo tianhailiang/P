@@ -371,13 +371,13 @@
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '移民时讯';
+          artType = 2;
         }
       });
       //选择国家 切换学历
       var eduList = ''; 
       $('.project-div:first').css({'display':'inline-block'});
       $("#apply-country").on('change',function(){
-        // console.log($(this).val())
           $(".project-div").css({"display":"none"});
           $(".project-div[data-id="+$(this).val()+"]").css({'display':'inline-block'});
           $('.level-sel[checked=checked]').each(function(){
@@ -508,10 +508,12 @@
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
-              if($(this).find('i').eq(1).text()=='移民案例'){
-                artType =1;
-              }
             });
+            if($('.recommend-sel').eq(6).attr('checked')){
+              artType = 1;
+            }else{
+              artType = 2;
+            }
             if(tagStr == ''){
               layer.msg('请选择推荐标签');
               return false;
@@ -615,10 +617,12 @@
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
-              if($(this).find('i').eq(1).text()=='移民案例'){
-                artType =1;
-              }
             });
+            if($('.recommend-sel').eq(6).attr('checked')){
+              artType = 1;
+            }else{
+              artType = 2;
+            }
             if(tagStr == ''){
               layer.msg('请选择推荐标签');
               return false;

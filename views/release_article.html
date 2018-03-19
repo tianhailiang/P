@@ -408,10 +408,12 @@
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
-              if($(this).find('i').eq(1).text()=='留学案例'){
-                artType =1;
-              }
             });
+            if($('.recommend-sel').eq(6).attr('checked')){
+              artType = 1;
+            }else{
+              artType = 2;
+            }
             if(tagStr == ''){
               layer.msg('请选择推荐标签');
               return false;
@@ -516,10 +518,12 @@
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
-              if($(this).find('i').eq(1).text()=='留学案例'){
-                artType =1;
-              }
             });
+            if($('.recommend-sel').eq(6).attr('checked')){
+              artType = 1;
+            }else{
+              artType = 2;
+            }
             if(tagStr == ''){
               layer.msg('请选择推荐标签');
               return false;
@@ -588,7 +592,6 @@
           }
         });
       });
-      // $("#go-push").on('click')
     })
  </script>
 </body>
