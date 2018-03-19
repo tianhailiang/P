@@ -1,11 +1,12 @@
 .so_advisor_warp{
-    width: 410px;
-    height: 168px;
-    background: #f5f5f5;
+    width: 408px;
+    height: 166px;
+    background: #fafafa;
     margin-top: 20px;
     float: left;
+    border: 1px solid #eeeeee;
 }
-.so_advisor_warp:nth-child(2n+1){
+.so_advisor_warp:nth-child(2n){
     float: right;
 }
 .so_advisor_top{

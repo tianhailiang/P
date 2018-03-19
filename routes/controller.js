@@ -297,7 +297,7 @@ exports.so_adviser = function (req, res, next) {
                 order: order,
                 key_word:encodeURI(keyword),
                 city_id:area,
-                "per_page": "15",
+                "per_page": "16",
                 "page": page
             }, callback);
         },
@@ -324,10 +324,10 @@ exports.so_adviser = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('so_advisor','q='+keyword,'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
-        console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
+        console.log('aaaaa333~~', helperfunc.paramurlgen('so_advisor','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_adviser', data);
 

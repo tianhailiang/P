@@ -105,11 +105,11 @@ function getSoUrl (stationType,searchType) {
     var soUrlObj = {
         "留学": {
             "文章": 'so_article',
-            "顾问": 'so_adviser'
+            "顾问": 'so_advisor'
         },
         "移民": {
             "文章": 'yimin_so_article',
-            "顾问": 'yimin_so_adviser'
+            "顾问": 'yimin_so_advisor'
         }
     };
     return soUrlObj[stationType][searchType]
