@@ -1,3 +1,8 @@
+.author-sel{padding:20px 20px 0 20px;background:#fff}
+.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
+.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
+.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
+.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:755px}
@@ -16,11 +21,6 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:32px}
-.author-sel{padding:20px 20px 0 20px;background:#fff}
-.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
-.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
-.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
-.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
@@ -101,7 +101,7 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .community-tel{display:block;font-size:14px}
 .follow-con{width:369px;height:82px;border-left:1px solid #C13232;background:#fafafa;padding:20px;margin-top:20px}
 .follow-con:hover{background:#f0f4f6;box-shadow:0 3px 7px 0 rgba(0,0,0 ,.14)}
-.follow-con img.img-left{width:60px;height:60px;float:left;margin-right:20px}
+.follow-con .img-left{width:60px;height:60px;float:left;margin-right:20px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;background-repeat:no-repeat;background-position:0 0;-webkit-background-size:cover;background-size:cover}
 .follow-con .content{width:289px;height:82px;float:right}
 .follow-con .content-title{line-height:16px;font-size:14px;line-height:14px;color:#333;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;-webkit-box-orient:vertical}
 .follow-con .content-des{margin-top:14px;line-height:12px;font-size:12px;height:12px;color:#666;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -1059,7 +1059,7 @@ form,input{margin:0;padding:0}
 .new_nav_first_red .new_nav_first{width:1180px}
 .new_nav_first{margin:0 auto;height:82px}
 .new_nav_first .new-logo-left{width:217px;height:62px;float:left}
-.new_nav_first .new-logo-left img{display:block;float:left;margin-top:14px}
+.new_nav_first .new-logo-left img{display:block;float:left;margin-top:10px}
 .new_nav_first .page-type{width:460px;margin-top:26px;float:left}
 .new_nav_first .page-type li{float:left;margin-left:60px;width:78px;height:28px;-webkit-border-radius:15px;-moz-border-radius:15px;border-radius:15px;text-align:center;line-height:28px;background-color:#fff;border:1px solid #C13232}
 .new_nav_first .page-type li.active{background-color:#C13232}
@@ -1085,9 +1085,15 @@ form,input{margin:0;padding:0}
 .new-city-box .city-cont a{float:left;width:70px;text-align:center;padding:0 5px;display:block;color:#666;font-size:14px;line-height:28px;cursor:pointer}
 .new-city-box .city-cont a:hover{color:#C13232}
 .new-city:hover .new-city-box{display:block}
-.new_nav_first .nav-right .new-searchs{width:300px;height:30px;position:relative;z-index:999;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
+.new_nav_first .nav-right .new-searchs{width:350px;height:30px;position:relative;z-index:1001;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
+.new_nav_first .nav-right .search-type-box{width:49px;height:28px;float:left;cursor:pointer}
+.new_nav_first .nav-right .search-type-box .search-type{position:absolute;width:40px;height:28px;left:0;top:0;z-index:999;background-color:#fff;padding-left:10px;line-height:28px;border:1px solid #dcdcdc;border-right:none}
+.new_nav_first .nav-right .search-type-box .search-type .search-type-text{padding-right:2px}
+.new_nav_first .nav-right .search-type-box .search-type-ul{position:absolute;left:1px;top:0;z-index:998;display:none}
+.new_nav_first .nav-right .search-type-box .search-type-ul li{background-color:#fff;width:39px;height:30px;padding-left:10px;line-height:30px;color:#333;font-size:12px}
+.new_nav_first .nav-right .search-type-box .search-type-ul li:hover{background-color:#dcdcdc}
 .new_nav_first .submit-select{height:30px;border:none;float:left;background:#FFF;outline-style:none}
-.new_nav_first .new-home-search .text-nav{width:245px;height:28px;line-height:28px;border:1px solid #dcdcdc;border-right:none;padding-left:10px;float:left;font-size:12px;outline-style:none;color:#999}
+.new_nav_first .new-home-search .text-nav{width:245px;height:28px;line-height:28px;border:1px solid #dcdcdc;border-right:none;border-left:none;padding-left:10px;float:left;font-size:12px;outline-style:none;color:#999;background-color:#fff}
 .new_nav_first_white .new_nav_first .new-home-search .search-btn{background-color:#C13232}
 .new_nav_first_red .new_nav_first .new-home-search .search-btn{background-color:#821313}
 .new_nav_first .new-home-search .search-btn{width:44px;height:30px;float:right;border:none;outline-style:none;line-height:30px;text-align:center;*margin-top:-30px}
@@ -1658,3 +1664,11 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .slider .slider-btn.slider-btn-left{background-image:url(../img/zuo1.png);left:0;margin-top:-50px}
 .slider:hover .slider-btn{display:block}
 .slider .slider-btn.slider-btn-right{background-image:url(../img/you1.png);right:0;margin-top:-50px}
+.customization2{width:314px;height:350px;background:#f8f8f8;position:relative;left:-1px}
+.quick_links_panel ul .customization2 .quick-text11 span{padding:0}
+.customization2 h2{width:878px;height:48px;line-height:48px;text-align:center;border-bottom:1px solid #dcdcdc}
+.quick-text11 label{color:#333}
+.quick-text11 span{color:#ff7d31;position:relative;top:2px}
+.quick-get-phone-code,.quick-get-phone-code-act{display:inline-block;width:108px;height:28px;color:#c13232;text-align:center;line-height:28px;margin-left:10px;vertical-align:middle}
+.quick-btn-box{width:100%;margin-top:30px}
+.quick-btn{position:relative;width:160px;height:30px;background:#d21b29;color:#fff;text-align:center;line-height:30px;left:50%;margin-left:-80px}

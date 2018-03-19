@@ -175,6 +175,10 @@
   cursor: pointer;
   margin-right: 30px;
 }
+.recommend-sel i{
+  font-size: 14px;
+  color:#333;
+}
 .newsletter-hide{
   display: none;
 }
@@ -202,4 +206,11 @@
 }
 .banner-box-right .slider .slider-dot ul{
     left: 50%;
+}
+
+
+/*==================移民=====================*/
+.project-div{
+  display: none;
+
 }

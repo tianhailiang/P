@@ -26,14 +26,14 @@
 <body>
 {% include "widget/top/top.html" %}
 <div class="main" style="width: 1180px;margin: 0 auto;">
-  {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-  {{ new_nav_first.new_nav_first(tdk,helper) }}
+  {% import "widget/new_nav_first/nav_login.html" as nav_login %}
+  {{ nav_login.nav_login(tdk,helper) }}
 </div>
 
 <div class="register_overseas clearfix">
   <div class="register_content">
     <div class="register_nei login_nei clearfix">
-      <div class="register_nei_title"><em>绑定手机号</em><i>您已经成功关联{{oauth_data.title}}账号，用户名，请输入手机号完成<a target="_blank"  target="_blank"  href="/login">绑定</a></i></div>
+      <div class="register_nei_title"><em>绑定手机号</em><i>您已经成功关联{{oauth_data.title}}账号，用户名，请输入手机号完成<a target="_blank"  target="_blank"  href="/loginUser">绑定</a></i></div>
 
       <div class="register_nei_content">
         <form class="m-t register_nei_form" role="form" style="margin-top: 100px">
@@ -68,7 +68,7 @@
   </div>
 </div>
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
-<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script>
   $(document).ready(function () {
 

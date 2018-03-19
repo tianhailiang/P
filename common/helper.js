@@ -154,12 +154,17 @@ function active_urlgen(){
  * url拼装  开发、测试区分
  */
 function urlgen() {
+  var isyimin = false;
   var url = '',chan = '',param = '',city='',cityid='';
   if(arguments.length == 0){
     return ;
   }
   //get chan & subchan
   for(var i= 0 ; i < arguments.length;i++){
+    if(i == 0 && arguments[i] == 'yimin'){
+      isyimin = true;
+      continue;
+    }
     if(arguments[i] == '' || arguments[i].split('=').length > 1)
     {
       break;
@@ -184,22 +189,29 @@ function urlgen() {
       param += '__' + arguments[i].replace(/=/g, "-");
     }
   }
-
   url += chan + param;
-
-  if(chan=='/branch_home'){
-    url = ((city && city != 0)?"/"+city:"")+"/";
+  if (isyimin) {
+    if (config.version == 'development') { //如果是開發環境
+      url = config.yiminhost + ':4600' + url;
+    }else{
+      url = config.yiminhost + url;
+    }
+    return url;
   }
-
-  if (config.version == 'development') { //如果是開發環境
-    url = config.wwhost + ':4000' + url;//social
-  }else{
-    url = config.wwhost+url;
+  else {
+    if(chan=='/branch_home'){
+      url = ((city && city != 0)?"/"+city:"")+"/";
+    }
+    if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan|lawyer)/)){
+      url = url + '.html';
+    }
+    if (config.version == 'development') { //如果是開發環境
+      url = config.wwhost + ':4000' + url;
+    }else{
+      url = config.wwhost + url;
+    }
+    return url;
   }
-  if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan)/)){
-    url = url + '.html';
-  }
-  return url;
 }
 
 function articleUrlgen(){
@@ -264,7 +276,7 @@ function exits_static_page(path) {
   var yimin_list_reg = path.match(/^\/(news|interpret|activity|case).html$/g);
 
   var schoolrank_list = path.match(/^\/(schoolrank)[0-9A-Za-z\-_/]*.html$/g);
-  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article)(.*).html$/g);
+  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article)(.*).html$/g);
   if((reg_list || so_reg || so_center || yimin_reg || yimin_list_reg || schoolrank_list || so_pigination || edu) && !rank){
     return false;
   }
@@ -275,24 +287,19 @@ function prefixInteger(num, length) {
   return (Array(length).join('0') + num).slice(-length);
 }
 //用户头像url组装
-function avaterimg(uid, size, status, version,versionflag){
-  // console.log('uid', uid)
+function avaterimg(uid, size, status, version){
   uid = prefixInteger(uid, 9);
   var dir1 = uid.substr(0, 3);
   var dir2 = uid.substr(3, 2);
   var dir3 = uid.substr(5, 2);
-  if(!version){
-    version = Number.parseInt(Date.parse(new Date())/60000);
-  }
-  // console.log(version)
-  if(status == 1){
-    return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+"_1.jpg"+"?"+version;
+  if(status == 1 || version == 0 || version == null){
+    return 'http://images.jjl.cn/avatar/default_avatar_small.jpg'
   }else{
-    if (versionflag == 1) {
-      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+".jpg"+"?"+Date.parse(new Date());
+    if (version == 1) {
+      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+".jpg";
     }
     else {
-      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+".jpg"+"?"+version;
+      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+"_"+ version +".jpg";
     }
   }
 

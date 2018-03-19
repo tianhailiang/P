@@ -32,38 +32,19 @@ gulp.task("node", function() {
     }
   })
 });
-
+gulp.task("node_yimin", function() {
+  nodemon({
+    script: './bin/yimin_svr',
+    ext: 'js html css',
+    env: {
+      'NODE_ENV': 'development'
+    }
+  })
+});
 /*
-* 打包
-* */
-gulp.task('testHtmlmin', function () {
-  var options = {
-    removeComments: true,//清除HTML注释
-    collapseWhitespace: true,//压缩HTML
-    collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input />
-    removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
-    removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
-    removeStyleLinkTypeAttributes: true//删除<style>和<link>的type="text/css"
-  };
-  return gulp.src(['views/*/*.html','views/*.html'])
-    .pipe(htmlmin(options))
-    .pipe(gulp.dest('bucketDist'));
-});
-
-function getDataForFile(){
-  var actJson = require('./views/widget/expertunscramble/expertunscramble.json');
-  return actJson;
-
-}
-
-gulp.task('nuk', function () {
-  return gulp.src(['views/widget2/*/*.html'])
-    //.pipe(data(getDataForFile))
-    .pipe(nunjucksRender({
-      path: ['views/widget2/'] // String or Array
-    }))
-    .pipe(gulp.dest('views/dist2'));
-});
+ * 打包
+ * 
+ */
 
 gulp.task('minifycss', function() {
   return gulp.src(['views/widget2/*/*.css', 'views/widget/*/*.css']) //压缩的文件
@@ -87,14 +68,7 @@ gulp.task('minifyjs',function(){
     .pipe(notify({message: 'css压缩执行成功'}));
 });
 gulp.task('clean', function(cb) {
-  del(['public/assets/css/nodemain.min.css', 'public/assets/js/nodemain.min.js'], cb)
-});
-gulp.task('images', function() {
-  return gulp.src(['public/statics/jjl/img/*.*', 'public/statics/jjl/images/*.*'])
-    .pipe(imagemin({
-      progressive: false
-    }))
-    .pipe(gulp.dest('public/bucketDist/img'));
+  return del(['public/assets/css/nodemain.min.css', 'public/assets/js/nodemain.min.js'], cb);
 });
 
 gulp.task('server', ["node"], function() {
@@ -115,32 +89,55 @@ gulp.task('server', ["node"], function() {
 
   gulp.watch(files).on("change", reload);
 });
+gulp.task('server_yimin', ["node_yimin"], function() {
+  var files = [
+    'views/**/*.html',
+    'views/**/*.ejs',
+    'views/**/*.jade',
+    'public/**/*.*'
+  ];
 
+  //gulp.run(["node"]);
+  browserSync.init(files, {
+    proxy: 'http://localhost:4600',
+    browser: 'chrome',
+    notify: false,
+    port: 4601
+  });
+
+  gulp.watch(files).on("change", reload);
+});
 //css generate verison in dist/rev/css/*.json
 gulp.task('revCss',function(){
-  return gulp.src('public/**/*.css')
+  return gulp.src(['public/**/*.css','!' + 'public/dep{,/**}'])
     .pipe(rev())
+    .pipe(gulp.dest('dist/public'))
     .pipe(rev.manifest())
     .pipe(gulp.dest('dist/rev/css'));
 })
 
 //js generate verison in dist/rev/js/*.json
 gulp.task('revJs',function(){
-  return gulp.src('public/**/*.js')
+  return gulp.src(['public/**/*.js','!' + 'public/dep{,/**}'])
     .pipe(rev())
+    .pipe(gulp.dest('dist/public'))
     .pipe(rev.manifest())
     .pipe(gulp.dest('dist/rev/js'));
-})
+});
 
 //check fileinfo: rev-manifest.json in dist/rev,final replace js/css in html;
 gulp.task('revProduct',function(){
   return gulp.src(['dist/rev/**/*.json','views/**/*.html'])
     .pipe(revCollector())
     .pipe(gulp.dest('dist/views'));
-})
+});
+gulp.task('distcopy', function(cb) {
+  return gulp.src(['public/**/*','!' + 'public/assets/css{,/**}','!' + 'public/assets/js{,/**}'])
+    .pipe(gulp.dest('dist/public'));
+});
 
 gulp.task('revClean', function(cb) {
-  return del([ 'dist/rev/*','dist/views/*'], cb)
+  return del([ 'dist/rev/*','dist/views/*','dist/public/*'], cb)
 });
 gulp.task('minify_viewCount_js',function(){
   return gulp.src('public/assets/js/view_count.js')
@@ -150,9 +147,9 @@ gulp.task('minify_viewCount_js',function(){
       .pipe(gulp.dest('public/assets/js'))
       .pipe(notify({message: 'viewCount压缩执行成功'}));
 });
+
 //打包发布
 gulp.task('default', ['clean', 'minifycss', 'minifyjs']);
 
 // build version info in html
-gulp.task('build', gulpSequence('revClean', ['revCss', 'revJs'],'revProduct'));
-
+gulp.task('build', gulpSequence('revClean', ['revCss', 'revJs'],'revProduct','distcopy'));

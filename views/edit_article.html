@@ -12,8 +12,8 @@
 	<!-- ===头部=== -->
 	{% include "widget/top/top.html" %}
 	<!-- ====导航===== -->
-	{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
-  {{ new_nav_red.new_nav_red(tdk,helper) }}
+  {% import "widget/new_nav_first/common_nav.html" as common_nav %}
+  {{ common_nav.common_nav(tdk,helper) }}
   <div class="dui-layout-lg clearfix banner-box">
     <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
     <div class="dui-layout-div"></div>
@@ -156,7 +156,7 @@
                 {{helper.tagChecked(item.name,article.article_info.tag_list) |safe }}              
               {% endfor %}
               <span class="numTip">
-                注：选中【留学案例】标签及发布至顾问个人主页-案例中
+                注：选中【留学案例】标签即发布至顾问个人主页-案例中
               </span>
               <span class="numTip" style="display:block;
     margin-left: 130px;margin-top:5px;">
@@ -206,7 +206,7 @@
         </div>
       </div>
 	</div>
-  {% include "widget/new_footer/new_footer.html" %}
+  {% include "widget/new_footer/common_footer.html" %}
   {% import "widget/new_slide/new_slide.html" as  slide %}
   {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
   <script>
@@ -218,11 +218,11 @@
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
     <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
     <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
   <script >
     $(function(){
@@ -271,6 +271,7 @@
       //选择文章类型
       var newsletterType = $("#art-type").attr('data-id');
       var newTagStr = '';
+      var artType = $("#art-type").attr('data-type');
       if(newsletterType ==2){
         newTagStr = '留学时讯';
       }else{
@@ -288,6 +289,7 @@
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '留学时讯';
+          artType = 2;
         }
       });
        //选择学历标签
@@ -378,7 +380,7 @@
         layer.msg(info)
       }
       editor.create();
-      var artType = $("#art-type").attr('data-type');
+      
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();

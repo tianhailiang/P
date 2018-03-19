@@ -1,3 +1,5 @@
+// import { URL } from 'url';
+
 var api = require('../model/apiRequest');
 var config = require('../config/config');
 var log4js = require('../log/log');
@@ -512,6 +514,9 @@ exports.channel_list = function (data, callback) {
     callback('404');
     return;
   }
+  // console.log('RTYUUUUUUUUUUUUUUUUUUUU' + url)
+    // log.debug('shengqinganli_list----url', url)
+
   api.apiRequest(url ,callback);
 }
 //栏目综合页---->栏目］留学奖学金
@@ -1038,6 +1043,16 @@ exports.shouye = function (data, callback) {
   //redis 缓存文章浏览数````·
   //判断用户访问是否在限制条件内 10min 5
     redisPool.get('home_all_' + data.city_id, function(err, reply){
+      if(reply){
+        callback(null, reply);
+      }else{
+        callback(null, '暂无数据');
+      }
+    })
+};
+
+exports.yimin_shouye = function (data, callback) {
+    redisPool.get('yimin_home_all', function(err, reply){
       if(reply){
         callback(null, reply);
       }else{

@@ -37,7 +37,7 @@
           </div>
       </div>
     </div>
-    <li class="address clearfix">
+    <div class="address clearfix">
       <h2>欢迎来访</h2>
       <ol class="xiangxi-address one" id="qita-city">
         <li><i class="iconfont">&#xe679;</i><span>400-010-8000</span></li>
@@ -82,6 +82,7 @@
       console.log('11111')
 //      window.location.href = '/login?h=' + h
       window.open('/login?h=' + h);
+      //window.open(fn.urlgen("login")+'?h='+h);
     } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login') {
       console.log('aaaa')
       window.location.reload();
@@ -89,6 +90,7 @@
       console.log('22222');
 //      window.location.href = '/login'
       window.open('/login?h=');
+      //window.open(fn.urlgen('login')+'?h=');
     }
   }
 </script>

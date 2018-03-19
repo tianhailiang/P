@@ -77,8 +77,8 @@
 
 {% include "widget/top/top.html" %}
 
-{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(tdk,helper) }}
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
 
 <div class="dui-layout-lg clearfix banner-box">
   <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
@@ -138,7 +138,7 @@
     </div>
   </div>
 </div>
-{% include "widget/new_footer/new_footer.html" %}
+{% include "widget/new_footer/common_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
 <script>
@@ -150,7 +150,7 @@
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
@@ -353,7 +353,7 @@
               if (res.errno === 0) {
                 $('#loading').hide();
                 layer.close(layopen);
-                $('.advisor-img').find('img').attr('src',ajaxUrlPrefix.avatercdn+'/'+ res.localpath.replace(/\//, '/'));
+              $('.advisor-img').css({'background-image':'url('+ res.data[0] +')'});
               } else {
                 $('#loading').hide();
                 layer.msg(res.message);

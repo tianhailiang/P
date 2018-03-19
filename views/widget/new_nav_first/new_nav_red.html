@@ -6,7 +6,7 @@
         </div>
         <ul class="page-type">
             <li class="active"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li>
-            <!--<li><a href="">移民</a></li>-->
+            <!--<li class="active"><a href="{{ helper.urlgen('yimin') }}">移民</a></li>-->
             <li style="width: 118px;" class="active"><a href="{{ helper.urlgen('about') }}">关于金吉列</a></li>
         </ul>
         <div class="nav-right">
@@ -139,12 +139,6 @@
                         "companyId": "46"
                         },
                         {
-                        "companyAddress": "汉口分公司：武汉市航空路新世界中心C座20层",
-                        "companyTel": "服务专线：027-83805656",
-                        "companyName": "H-汉口",
-                        "companyId": "14"
-                        },
-                        {
                         "companyAddress": "济南分公司：济南市市中区泺源大街229号金龙大厦29层",
                         "companyTel": "服务专线：0531-81851155",
                         "companyName": "J-济南",
@@ -157,7 +151,7 @@
                         "companyId": "30"
                         },
                         {
-                        "companyAddress": "昆明分公司：昆明市盘龙区东风东路36号，建工大厦28层，2808-2811号办公楼",
+                        "companyAddress": "昆明分公司：昆明市东风东路36号建投大厦6楼金吉列留学",
                         "companyTel": "服务专线：0871-63536688",
                         "companyName": "K-昆明",
                         "companyId": "21"
@@ -199,7 +193,7 @@
                         "companyId": "38"
                         },
                         {
-                        "companyAddress": "青岛分公司：青岛市香港中路40号数码旗舰大厦19层A1室",
+                        "companyAddress": "青岛分公司：青岛市市南区香港中路40号数码旗舰大厦19层A1室",
                         "companyTel": "服务专线：0532-86667776",
                         "companyName": "Q-青岛",
                         "companyId": "10"
@@ -253,9 +247,9 @@
                         "companyId": "18"
                         },
                         {
-                        "companyAddress": "武昌分公司：武汉市洪山区珞瑜路10号群光中心百脑汇23层",
-                        "companyTel": "服务专线：027-67811600",
-                        "companyName": "W-武昌",
+                        "companyAddress": "武汉分公司：武汉市航空路新世界中心C座20层/珞瑜路10号群光中心百脑汇23层",
+                        "companyTel": "服务专线：027-83805656/027-67811600",
+                        "companyName": "W-武汉",
                         "companyId": "14"
                         },
                         {
@@ -334,7 +328,7 @@
 
                         <div class="citys-box clearfix" style="padding: 4px 0;">
                             {% for item in cityList %}
-                            {% if loop.index<50 %}
+                            {% if loop.index<49 %}
                             <a  target="_blank" href="{{helper.urlgen('branch_home','c='+item.companyId)}}" data-id="{{item.companyId}}" onmouseover="top_city1('{{item.companyAddress}}','{{item.companyTel}}')" onmouseout="showcity()">{{item.companyName}}</a>
                             {% endif %}
                             {% endfor %}
@@ -344,25 +338,19 @@
               <span>
                 <i class="iconfont">&#xe6bd;</i>海外分公司：
               </span>
-                            <a  target="_blank" target="_blank" href="http://www.jjl.cn/zt/overseas/vancouver/index.html" class="nav-oversea-on"  data-id="{{cityList[49].companyId}}" onmouseover="top_city1('{{cityList[49].companyAddress}}','{{cityList[49].companyTel}}')" onmouseout="showcity()">{{cityList[49].companyName}}</a>
+                            <a  target="_blank" target="_blank" href="http://www.jjl.cn/zt/overseas/vancouver/index.html" class="nav-oversea-on"  data-id="{{cityList[48].companyId}}" onmouseover="top_city1('{{cityList[48].companyAddress}}','{{cityList[48].companyTel}}')" onmouseout="showcity()">{{cityList[48].companyName}}</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="new-searchs new-home-search">
-<!--                <div class="top_sec will">
-                    <span class="please-sec"><a  target="_blank" href="javascript:void(0);" id="searchType">顾问</a><i class="iconfont go-down" style="font-size: 12px;">&#xe60b;</i></span>
-                    <div class="sec-xq">
-                        <ul id="searchTypeList">
-                            <li><a  target="_blank" href="">资讯</a></li>
-                            <li><a  target="_blank" href="">顾问</a></li>
-                            <li><a  target="_blank" href="">活动</a></li>
-                            <li><a  target="_blank" href="">案例</a></li>
-                            <li><a  target="_blank" href="">院校</a></li>
-
-                        </ul>
-                    </div>
-                </div>-->
+                <div class="search-type-box">
+                    <div class="search-type"><span class="search-type-text" id="searchType">文章</span><i class="iconfont go-down" style="font-size: 12px;">&#xe8ca;</i></div>
+                    <ul class="search-type-ul">
+                        <li>文章</li>
+                        <!--<li>顾问</li>-->
+                    </ul>
+                </div>
                 <input type="text" id="search" placeholder="请输入搜索关键词" class="text text-nav"
                        onfocus="if(this.placeholder == '请输入搜索关键词'){this.value = '';}"
                        onblur="if(this.value == ''){this.placeholder= '请输入搜索关键词';}">

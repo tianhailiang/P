@@ -18,6 +18,14 @@ exports = module.exports = function (app) {// routes
   app.get('/fragment/searchguess_like',fragment.searchlikelist);
   app.get('/fragment/guess_like',fragment.guess_like);
   app.get('/fragment/xiangguanguwen',fragment.xiangguanguwen);
+
+
+ // 移民fragments
+  app.get('/fragment/yimin_searchguesslike',fragment.yimin_searchguesslike);
+  app.get('/fragment/yimin_guess_like',fragment.yimin_guess_like);
+  app.get('/fragment/yimin_xiangguanguwen',fragment.yimin_xiangguanguwen);
+
+
   // app.get('/fragment/fangan_liuxue',fragment.fangan_liuxue);
   // app.get('/fragment/productrank_activity',fragment.productrank_activity);
   // // 移民fragments

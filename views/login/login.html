@@ -36,22 +36,22 @@
   {% include "widget/top/top_login.html" %}
 
   <div class="main" style="width: 1180px;margin: 0 auto;">
-    {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-    {{ new_nav_first.new_nav_first(tdk,helper) }}
+    {% import "widget/new_nav_first/nav_login.html" as nav_login %}
+    {{ nav_login.nav_login(tdk,helper) }}
   </div>
 
   <div class="login_overseas clearfix">
     
-    <div style="margin: 0px auto;height: 550px;min-width: 1180px;">
-      <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;"/>
+    <div style="margin: 0px auto;height: 550px;min-width: 1180px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png) no-repeat;">
+      <!--<img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 1920px;height: 550px;display:block;overflow:hidden;"/>-->
     </div>
     
     <div class="login_content">
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
         <!-- <h3 class="login_nei_title">登录金吉列<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a></h3> -->
-        <div class=" clearfix" id="guwen" style="margin-left: -15px;font-size: 18px;">
+        <div class=" clearfix" id="guwen_login" style="margin-left: -15px;font-size: 18px;">
             <input class="wrap-con" type="radio" name="payMethod" value="1" checked="checked" id="liu"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu">留学顾问</label> 
-            <!-- <input class="wrap-ing" type="radio" name="payMethod" value="2" id="yi"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="yi">移民顾问</label> -->
+            <input class="wrap-ing" type="radio" name="payMethod" value="2" id="yi"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="yi">移民顾问</label>
         </div>
         <form class="m-t" role="form" style="margin-top: 20px;">
           <div class="form-group inputtext_isr" style="position: relative;height: 28px">
@@ -98,7 +98,7 @@
   </div>
   <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_login.js" type="text/javascript" charset="utf-8"></script>
-  <script src="{{helper.cdnhost}}/assets/js/nav.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 
 
 </body>

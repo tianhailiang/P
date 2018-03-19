@@ -44,7 +44,7 @@
   {% for item in canzanlist.list %}
    <div class="canzan dui-layout-col4 dui-box-shadow">
      <a target="_blank"  href="{{ helper.urlgen( item.uid | string ) }}" rel="nofollow">
-        <img src="{{ helper.avaterimg(item.uid, 'big') }}" alt="{{ item.realname }}">
+        <img src="{{ helper.avaterimg(item.uid, 'big', item.status,item.version) }}" alt="{{ item.realname }}">
       <p class="canzan-p" style="color: #333"><span>{{ item.job_number | ellipsis(17) }}</span></p>
       <p class="canzan-p2" style="color: #333">简介: {{ item.introduce | ellipsis(49) }}</p>
      </a>
@@ -62,7 +62,7 @@
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/nav.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_ninth.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_fifth.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js" ></script>

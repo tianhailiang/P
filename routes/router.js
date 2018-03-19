@@ -5,10 +5,12 @@ var login = require('./login.js');
 exports = module.exports = function (app) {// routes
   //nav
   app.get('/', controller.index);
-  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(\/*)$/, controller.index);
-  app.get('/', controller.index);
+  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(\/*)$/, controller.index_page);
+  // app.get('/', controller.index);
   //搜索页
   app.get(/^\/so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article);
+  //移民搜索页
+  app.get(/^\/yimin_so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article_yimin);
   //社区首页
   app.get('/blog', controller.community_index);
   //用户视角 顾问主页
@@ -181,6 +183,8 @@ exports = module.exports = function (app) {// routes
 
   //参赞聚合页
   app.get('/canzan', about.canzan);
+  //海外律师团队
+  app.get('/lawyer', about.lawyer);
   //关于我们
   app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化
@@ -189,6 +193,8 @@ exports = module.exports = function (app) {// routes
   app.get('/about/contact',about.contact);//联系我们
   //顾问登录
   app.get('/login', login.login);
+  //普通用户登录
+  app.get('/loginUser', login.loginUser);
   //顾问忘记密码
   app.get('/forget', login.forget);
   //普通用户绑定手机号
