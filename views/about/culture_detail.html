@@ -45,6 +45,12 @@
        text-align: center;
        margin: 0 auto;
    }
+  .culture_detailcing i {
+    font-style:italic;
+  }
+  .culture_detailcing em {
+    font-style: italic;
+  }
 </style>
 <body style="background: #f5f5f5">
 
@@ -59,7 +65,7 @@
   <div class="culture_detailcing">{{ culture_detail.list.content | safe }}</div>
 </div>
 </div>
-{% include "widget/new_footer/new_footer.html" %}
+{% include "widget/new_footer/common_footer.html" %}
 </body>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
