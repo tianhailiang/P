@@ -66,7 +66,7 @@ exports.index = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         console.log('aaaaaa');
@@ -129,7 +129,7 @@ exports.index_page = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         console.log('aaaaaa');
@@ -187,7 +187,7 @@ exports.so_article = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
@@ -261,11 +261,11 @@ exports.so_article_yimin = function (req, res, next) {
     var data = {};
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
-    console.log('url', l.h);
+    console.log('url', config.wwhost+req.url);
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
@@ -427,7 +427,7 @@ exports.center_follow = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     data.login_info = '';
     if ( req.cookies.login_ss !== undefined) {
@@ -510,7 +510,7 @@ exports.user_followee = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -572,7 +572,7 @@ exports.center_main = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         console.log('有cookie')
@@ -667,7 +667,7 @@ exports.post_code = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -750,7 +750,7 @@ exports.center_case = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -832,7 +832,7 @@ exports.center_comment = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -951,7 +951,7 @@ exports.user_comment = function (req, res, next) {
     if (l.h !== undefined) {
       data.url = l.h;
     } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -1047,7 +1047,7 @@ exports.center_message = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     data.login_info = ''
     if ( req.cookies.login_ss !== undefined) {
@@ -1161,7 +1161,7 @@ exports.center_collection = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -1258,7 +1258,7 @@ exports.center_article = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -1341,7 +1341,7 @@ exports.center_photo = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -1414,7 +1414,7 @@ exports.adviser_photo_p = function(req,res,next){
    if (l.h !== undefined) {
        data.url = l.h;
    } else {
-       data.url = config.wwhost;
+       data.url = config.wwhost+req.url;
    }
     if ( req.cookies.login_ss !== undefined) {
       data.login_info = JSON.parse(req.cookies.login_ss);
@@ -1560,7 +1560,7 @@ exports.case_detail = function(req,res,next){
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if(req.cookies.login_ss != undefined){
       data.login_info =JSON.parse(req.cookies.login_ss);
@@ -1658,7 +1658,7 @@ exports.article_detail= function(req,res,next){
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if(req.cookies.login_ss != undefined){
     data.login_info =JSON.parse(req.cookies.login_ss);
@@ -1755,11 +1755,11 @@ exports.adviser_main = function (req, res, next) {
     data.uid = req.params[0];
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
-    console.log('url', l.h);
+    console.log('url', config.wwhost+req.url);
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
     data.login_info = JSON.parse(req.cookies.login_ss);
@@ -1883,7 +1883,7 @@ exports.adviser_special = function (req, res, next) {
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
@@ -1973,7 +1973,7 @@ exports.adviser_case = function (req, res, next) {
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -2129,7 +2129,7 @@ exports.counsellor_personal = function (req, res, next) {
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   data.login_info = '';
   if ( req.cookies.login_ss !== undefined) {
@@ -2173,7 +2173,7 @@ exports.advisor_profile = function (req, res, next) {
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
@@ -2243,7 +2243,7 @@ exports.counsellor_set = function (req, res, next) {
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
@@ -2284,7 +2284,7 @@ exports.advisor_acount = function (req, res, next) {
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
@@ -2353,7 +2353,7 @@ exports.user_information = function (req, res, next) {
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if ( req.cookies.login_ss !== undefined) {
     var login_a = JSON.parse(req.cookies.login_ss);
@@ -2422,7 +2422,7 @@ exports.release_case = function(req,res,next){
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
@@ -2477,7 +2477,7 @@ exports.release_article = function(req,res,next){
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.wwhost+req.url;
     }
     if(req.cookies.login_ss != undefined){
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -2653,7 +2653,7 @@ exports.center_article_detail = function(req,res,next){
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
@@ -2736,7 +2736,7 @@ exports.center_case_detail = function(req,res,next){
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
@@ -2829,7 +2829,7 @@ exports.draft =function(req,res,next){
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   var page = req.query.page || 1;
   if(req.cookies.login_ss != undefined){
@@ -2950,7 +2950,7 @@ exports.edit_article = function(req,res,next){
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
@@ -3057,7 +3057,7 @@ exports.edit_case =function(req,res,next){
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if(req.cookies.login_ss != undefined){
     data.login_info = JSON.parse(req.cookies.login_ss);
@@ -3219,7 +3219,7 @@ exports.hot = function (req, res, next) {
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
-      data.url = config.wwhost;
+      data.url = config.wwhost+req.url;
   }
   if (req.cookies.login_ss !== undefined) {
     data.login_info = JSON.parse(req.cookies.login_ss);
@@ -3330,7 +3330,7 @@ exports.agreement = function (req, res, next){
   if (l.h !== undefined) {
     data.url = l.h;
   } else {
-    data.url = config.wwhost;
+    data.url = config.wwhost+req.url;
   }
   data.login_nickname = '';
   if ( req.cookies.login_ss !== undefined) {
@@ -3364,11 +3364,11 @@ exports.yiminHome = function (req, res, next) {
     var data = [];
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
-    console.log('url', l.h);
+    console.log('url', config.yiminhost+req.url);
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
-        data.url = config.wwhost;
+        data.url = config.yiminhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
         console.log('aaaaaa');
