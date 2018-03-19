@@ -250,9 +250,9 @@
                 <div class="search-btn" id="searchBtn-page" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
             </div>
             <div class="page-search-type" id="page-search-type">
-                <input type="radio" name="page-search-type" id="article" checked value="文章"/>
+                <input type="radio" name="page-search-type" id="article" value="文章"/>
                 <label for="article" style="margin-right: 20px;">搜文章</label>
-                <input type="radio" name="page-search-type" id="adviser" value="顾问"/>
+                <input type="radio" name="page-search-type" id="adviser" value="顾问" checked/>
                 <label for="adviser">搜顾问</label>
             </div>
             <div class="result-bar">
@@ -330,10 +330,6 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script>
     $(function () {
-        $('#page-search-type input[name="page-search-type"]').on('click',function () {
-            console.log($(this).val());
-        });
-        $('#page-search-type input[name="page-search-type"]:checked ').val();
         //让分页器居中显示
         $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
         $('.banner-box-left .slider').xSlider({
