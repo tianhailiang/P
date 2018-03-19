@@ -42,7 +42,7 @@
 .comment-info-name-box{padding-top:10px}
 .comment-info-name{font-size:14px;color:#666;margin-right:10px}
 .comment-info-time{font-size:12px;color:#999}
-.comment-info-txt{font-size:14px;color:#666;line-height:27px;width:730px}
+.comment-info-txt{font-size:14px;color:#666;line-height:27px;width:730px;word-break:break-all}
 .comment-btn-bar{margin-top:5px}
 .comment-btn-bar span{margin-right:20px;font-size:12px;color:#b2b8c2;cursor:pointer}
 .comment-btn-bar i{margin-right:2px}
@@ -52,6 +52,7 @@
 .sub-btn2{float:right;padding:3px 25px}
 .reply-list{margin-top:20px;background:#f3f3f3;padding:0 20px;display:none}
 .reply-list-info{border-bottom:1px dashed #dcdcdc;padding-top:8px;padding-bottom:8px}
+.reply-list-info-top{word-break:break-all}
 .reply-list-info-top span{color:#c13232}
 .load-more{height:53px;border-top:1px solid #dcdcdc;cursor:pointer;text-align:center;line-height:53px;font-size:14px;color:#333}
 @charset "UTF-8";

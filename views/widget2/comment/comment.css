@@ -100,6 +100,7 @@
 	color:#666;
 	line-height: 27px;
 	width:730px;
+	word-break:break-all;
 }
 
 .comment-btn-bar{
@@ -153,7 +154,9 @@
 	padding-top:8px;
 	padding-bottom: 8px;
 }
-
+.reply-list-info-top{
+	word-break:break-all;
+}
 .reply-list-info-top span{
 	color:#c13232;
 }
