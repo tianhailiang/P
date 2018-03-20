@@ -87,6 +87,9 @@
   .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
     margin-top: -33px
   }
+  .detail-con em,.detail-con i{
+    font-style: italic;
+  }
 </style>
 <script>
   var AD_PAGE_NAME = "ACTIVITYDETAIL";
@@ -114,7 +117,7 @@
 
         <div class="common-title common-title-left gray-bg" style="border:none;height: 40px;line-height: 40px;background: #f3f3f3">
           <i style="margin-left: 0;"></i>
-          <h4 style="margin-left: 10px;"><span class="activity-time">活动预约专线：{{ huodongdiye.telephone }}</span>
+          <h4 style="margin-left: 10px;"><span class="activity-time">活动预约专线：{{ huodongdiye.active_telephone }}</span>
             <span class="activity-tel"><a  href="javascript:void(0);" onclick="rand_zixun('{{  huodongdiye.country | getCountry }}',146,'{{huodongdiye.id}}')" class="dui-btn btn-xlarge btn-appointment zixun-btn" style="color: #ffffff;">立即咨询</a></span></h4>
         </div>
 
