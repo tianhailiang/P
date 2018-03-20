@@ -26,7 +26,7 @@
         console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
-        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
     $('#qq').on('click', function () {
@@ -42,7 +42,7 @@
         console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
-        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
     // 注册
@@ -66,7 +66,7 @@
         var strs = str.split("=");
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
-        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
     $('#qq_reg').on('click', function () {
@@ -79,11 +79,24 @@
         var strs = str.split("=");
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
-        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
     
   })
+  var portname;
+  var hostname = window.location.hostname;
+  portname = 'http://'+ window.location.hostname;
+  if (hostname == 'www.jjl.cn') {
+    if (js_api_config.version == 'development') {
+      portname += ':4000'
+    }
+  }
+  else if (hostname == 'yimin.jjl.cn') {
+    if (js_api_config.version == 'development') {
+      portname += ':4600'
+    }
+  }
   var layeropen;
   function getlogin () {
 
@@ -138,6 +151,28 @@
     });
   }
 
+  function getloginUser () {
+    var h = window.location.href;
+    console.log('h', h);
+    var hh = h.split("/");
+    console.log('hh[1]', hh[3]);
+    var hhh = h.split("?");
+    console.log('hhh', hhh[1])
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:') {
+      console.log('11111')
+//      window.location.href = '/login?h=' + h
+      // window.open('/loginUser?h=' + h);
+      window.open(fn.urlgen("loginUser")+'?h='+h);
+    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser') {
+      console.log('aaaa')
+      window.location.reload();
+    } else {
+      console.log('22222');
+//      window.location.href = '/login'
+      // window.open('/loginUser?h=');
+      window.open(fn.urlgen('loginUser')+'?h=');
+    }
+  }
   //登录验证码
   function sendphone () {
     if ($('#phone').val() === '') {
@@ -156,9 +191,11 @@
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-      url: '/sendcode_s',
+//      url: ajaxUrlPrefix.porthost+'/sendcode_s',
+      url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
       type:'GET',
       data: {
+        m: 'sendcode',
         phone: $('#phone').val()
       },
       dataType: 'json',
@@ -214,7 +251,7 @@
       return
     }
     $.ajax({
-      url: '/login_user',
+      url: portname+'/login_user',
       type: 'POST',
       dataType:'json',
       data: {
@@ -238,14 +275,32 @@
 //普通用户退出
 function outlogin () {
   var login_info = JSON.parse($.cookie('login_ss'));
+  var h = window.location.href;
+    console.log('h', h);
+    var hh = h.split("/");
+    console.log('hh[1]', hh[3]);
+    var hhh = h.split("?");
+    console.log('hhh', hhh[1])
     $.ajax({
-      url: '/login_out',
+      url: js_api_config.wwhost+'/login_out',
       type: 'GET',
-      dataType:'json',
+      dataType:'jsonp',
+      jsonpCallback:'cb',
       success:function(msg){
         if (msg == '0') {
           console.log('登出')
-          window.location.reload();
+          if (hh[3] == 'forget' && hh[3] == 'login' && hh[3] == 'loginUser' || hh[3] == undefined || hh[3] == '' || hh[4] == '' || hh[4] == undefined || hh[4] == 'article' || hh[4] == 'case' || hh[4] == 'album' || hh[4] == 'hot') {
+            window.location.reload();
+          }else if (login_info.usertype == 1) {
+            console.log('1')
+            window.location.href = '/loginUser'
+            // window.open('/loginUser');
+          }else {
+            console.log('2')
+            window.location.href = '/login'
+            // window.open('/login');
+          }
+          // window.location.reload();
         }
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){

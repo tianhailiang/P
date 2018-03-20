@@ -116,10 +116,7 @@
         "companyName": "大连",
         "companyId": "13"
         },  {
-        "companyName": "武昌",
-        "companyId": "14"
-        },  {
-        "companyName": "汉口",
+        "companyName": "武汉",
         "companyId": "14"
         },
         {
@@ -264,7 +261,7 @@
         }
         ] %}
         {% for item in cityList %}
-        <div class="branch_company_text_tilte">
+        <div class="branch_company_text_tilte" style="cursor: default">
           {{item.companyName}}
         </div>
         {% endfor %}
@@ -302,7 +299,7 @@
         //正确
         $('#selByIp').on('click',function (e) {
           e.preventDefault();
-          $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn'});
+          $.cookie('currentarea', iparea, { path: "/",domain: js_api_config.domain});
           if (endFix) {
             window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
           }
@@ -320,7 +317,7 @@
       if (currentarea) {
         e.preventDefault();
       }
-      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
+      $.cookie('currentarea', currentarea, { path: "/",domain: js_api_config.domain});
       if (endFix) {
         window.location.href = $(this).attr("href")+'?'+endFix;
       }

@@ -312,7 +312,7 @@
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
@@ -358,6 +358,7 @@
       //选择文章类型
       var newsletterType = null;
       var newTagStr = ''; 
+      var artType = 2;  // 1 是案例 2是专栏
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
         $('.art-type-i').html('').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'});
@@ -370,13 +371,13 @@
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '移民时讯';
+          artType = 2;
         }
       });
       //选择国家 切换学历
       var eduList = ''; 
       $('.project-div:first').css({'display':'inline-block'});
       $("#apply-country").on('change',function(){
-        // console.log($(this).val())
           $(".project-div").css({"display":"none"});
           $(".project-div[data-id="+$(this).val()+"]").css({'display':'inline-block'});
           $('.level-sel[checked=checked]').each(function(){
@@ -474,7 +475,6 @@
         layer.msg(info)
       }
       editor.create();
-      var artType = 2; 
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
@@ -508,10 +508,12 @@
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
-              if($(this).find('i').eq(1).text()=='移民案例'){
-                artType =1;
-              }
             });
+            if($('.recommend-sel').eq(6).attr('checked')){
+              artType = 1;
+            }else{
+              artType = 2;
+            }
             if(tagStr == ''){
               layer.msg('请选择推荐标签');
               return false;
@@ -615,10 +617,12 @@
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
-              if($(this).find('i').eq(1).text()=='移民案例'){
-                artType =1;
-              }
             });
+            if($('.recommend-sel').eq(6).attr('checked')){
+              artType = 1;
+            }else{
+              artType = 2;
+            }
             if(tagStr == ''){
               layer.msg('请选择推荐标签');
               return false;

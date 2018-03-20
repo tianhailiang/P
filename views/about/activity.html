@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+<style>
+  .new-activity{
+    padding:0 20px;
+  }
+  .new-activity-title{
+    height: 22px;
+    font-size: 18px;
+    color:#333333;
+    line-height: 22px;
+    border-left:2px solid #c13232;
+    padding-left:10px;
+  }
+  .new-activity-content{
+    margin-top:16px;
+    border-top:1px solid #dcdcdc;
+    padding-top: 20px;;
+  }
+  .new-activity-item{
+    width: 560px;
+    float: left;
+  }
+  .new-activity-item-title{
+    height: 40px;
+    background: #f1f4f6;
+    font-size: 16px;
+    line-height: 40px;
+    padding:0 20px 0 14px;
+  }
+  .new-activity-item-title .city-name{
+    color:#c13232;
+  }
+  .new-activity-item-title .activity-time{
+    float:right;
+    *margin-top:-40px;
+  }
+  .new-activity-item-con{
+    padding:0 20px;
+  }
+  .new-activity-item-con .description{
+    font-size: 14px;
+    color:#333333;
+    margin:20px 0;
+    height: 14px;
+
+  }
+  .new-activity-item-con .description span{
+
+  }
+  .new-activity-item-con .description a{
+    color:#c13232;
+  }
+  .new-activity-item-con ul{
+    position: relative;
+  }
+  .new-activity-item-con li{
+    font-size: 14px;
+    color:#333333;
+    margin-bottom: 20px;
+  }
+  .new-activity-item-con li i{
+    font-size: 16px;
+    color:#666666;
+    margin-right: 8px;
+  }
+
+  .new-activity-item-con ul .booking{
+    position: absolute;
+    right:0;
+    bottom: 0;
+    width: 115px;
+    height: 30px;
+    background: #c13232;
+    color: #ffffff;
+    line-height: 30px;
+    text-align: center;
+    margin-bottom: 0;
+    *margin-bottom:20px;
+  }
+  .new-activity-qita h2{
+    font-size: 16px;
+    color:#333333;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 20px;
+    padding:0 20px 0 14px;
+  }
+  .new-activity-qita h2 span{
+    color:#c13232;
+
+  }
+  .new-activity-qita h2 .know{
+    float:right;
+    display: inline-block;
+    width: 115px;
+    height: 30px;
+    background: #c13232;
+    color:#ffffff;
+    text-align: center;
+    line-height: 30px;;
+    font-size: 14px;
+  }
+  .new-activity-qita h2 .know-title{
+    color:#333333;
+  }
+  .new-activity-qita h2 .know-title:hover{
+    color:#c13232
+  }
+  .new-activity-qita h2 i{
+    display: inline-block;
+    width: 42px;
+    height: 20px;
+    margin-top:5px;
+    background: #f9f6f1;;
+    color:#c13232;
+    font-size: 12px;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 5px;
+    margin-left: 10px;
+  }
+.booking span{
+  cursor: pointer;
+}
+  .new-activity-item-title a{
+    color:#333333;
+  }
+  .new-activity-item-title a:hover{
+    color:#c13232;
+  }
+</style>
+<script>
+  var AD_PAGE_NAME = "ACTIVITY";
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<body style="background: #ffffff">
+{# 大学排名 #}
+{# 头部导航 #}
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
+
+<div class="dui-layout-lg clearfix" style="margin: 20px auto;">
+  <div class="dui-layout-lg about-guanggao"  style="height: 130px;background: #dedede;overflow: hidden" id="AD_ACTIVITY_SEAT1">
+  </div>
+  </div>
+<div class="dui-layout-lg clearfix new-activity">
+  <div style="padding: 0 20px">
+    <div class="new-activity-title">
+      留学活动讲座
+    </div>
+    <div class="new-activity-content">
+      <div class="clearfix">
+        {% for item in activitylist.list %}
+          {% if loop.index%2==1 %}
+        <div class="new-activity-item">
+          <h2 class="new-activity-item-title"><span class="city-name">【{{item.hold_city | getCity}}】</span><a
+            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.title | ellipsis(20)}}</a><span  class="activity-time">{{ item.inputtime | getDefaultFormat }}</span></h2>
+          <div class="new-activity-item-con">
+            <p class="description"><span>{{item.description | ellipsis(27)}}</span><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
+            <ul>
+              <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time}}至{{item.end_time}}</span></li>
+              <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}} </span></li>
+              <li><i class="iconfont">&#xe662;</i><span>针对人群：{{item.crowd}} </span></li>
+              <li class="booking"><span onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')" >立即预约</span></li>
+            </ul>
+          </div>
+        </div>
+        {% else %}
+
+        <div class="new-activity-item" style="margin-left: 20px">
+          <h2 class="new-activity-item-title"><span class="city-name">【{{item.hold_city | getCity}}】</span><a
+            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.title | ellipsis(20)}}</a><span  class="activity-time">{{ item.inputtime | getDefaultFormat }}</span></h2>
+          <div class="new-activity-item-con">
+            <p class="description"><span>{{item.description | ellipsis(27)}}</span><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
+            <ul>
+              <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time}}至{{item.end_time}}</span></li>
+              <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}}  </span></li>
+              <li><i class="iconfont">&#xe662;</i><span>针对人群：{{item.crowd}} </span></li>
+              <li class="booking"><span onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')">立即预约</span></li>
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+      </div>
+
+    </div>
+    <div class="new-activity-title" style="margin-top: 20px;">
+      其他城市讲座信息
+    </div>
+    <div class="new-activity-content">
+      <div class="clearfix">
+        {% for item in other_activitylist.list %}
+        {% if loop.index<=6 %}
+        {% if loop.index%2==1 %}
+        <div class="new-activity-item new-activity-qita">
+          <h2><a class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.title | ellipsis(14)}}</a><i>最新</i></h2>
+        </div>
+        {% else %}
+        <div class="new-activity-item new-activity-qita" style="margin-left: 20px;">
+          <h2><a class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.title | ellipsis(14)}}</a><i>最新</i></h2>
+        </div>
+        {% endif %}
+        {% else %}
+        {% if loop.index%2==1 %}
+        <div class="new-activity-item new-activity-qita">
+          <h2><a class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.title | ellipsis(16)}}</a></h2>
+        </div>
+        {% else %}
+        <div class="new-activity-item new-activity-qita" style="margin-left: 20px;">
+          <h2><a class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.title | ellipsis(16)}}</a></h2>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_COUNSELLER_SEAT10",helper) }}
+</body>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js" ></script>
+
+</html>

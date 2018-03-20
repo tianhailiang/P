@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/activity_detail.css">
+<style>
+  /* .jjl-jiangzuo{
+     position: relative;
+     z-index: 3;
+   }*/
+  .appenddiv{
+    box-shadow: 0px 1px 7px 3px rgba(0,0,0,0.1);
+    position: fixed;
+    z-index: 999;;
+    top:50%;
+    left:50%;
+    margin-top:-265px;
+    margin-left:-140px;
+    display: none;
+  }
+  .appenddiv img{
+    width: 280px;
+  }
+  .appenddiv .tankuang{
+    width:280px;
+    *margin-left:267px;
+    background: #f6f6f6;
+
+  }
+  .common-title-left i{
+    margin-left: 20px;
+  }
+  .common-title-left h3{
+    margin-left: 28px;
+  }
+  .quick-application-box{
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  .quick-btn-box{
+    margin-top: 10px;
+  }
+  .quick-application-con{
+    padding: 17px 0  17px 20px ;
+  }
+  .leaveField .title{
+    margin-left: 10px;
+    *margin-left: 10px;
+  }
+  .wenda-zhuanchang .baiwen-baida{
+    display: inline-block;
+    font-weight: normal;
+    line-height: 22px;;
+  }
+  .detail-con p{
+    width: 740px;
+    margin-bottom:10px;
+
+  }
+  .pagination-box{
+    float: left;
+    position: relative;
+    left: 50%;
+    margin-top: 54px;
+    margin-bottom: 54px;
+  }
+  .banner-box{
+    margin-top: 20px;
+    height: 130px;
+    /*background-color: yellow;*/
+  }
+  .banner-box-left{
+    background: #dcdcdc;
+    height: 130px;
+  }
+  .banner-box-right{
+    background: #dcdcdc;
+    height: 130px;
+  }
+  .slider .slider-dot ul{
+    left:95%;
+  }
+  .slider .slider-dot ul li{
+    border-radius: 50%;
+  }
+  .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
+    margin-top: -33px
+  }
+</style>
+<script>
+  var AD_PAGE_NAME = "ACTIVITYDETAIL";
+
+</script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<body>
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
+<div class="dui-layout-lg clearfix banner-box">
+  <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
+</div>
+<div class="dui-layout-lg clearfix" style="margin-top: 20px">
+  <div class="dui-layout-con dui-box-shadow">
+    <div class=" activity-detail">
+      <p class="tit"><i class="iconfont activity-home" style="font-size: 17px;">&#xe60d;</i>>><a target="_blank"  href="{{ helper.active_urlgen('activity','c='+huodongdiye.hold_city) }}" class="activity-tit">留学活动</a>>><span class="activity-article">文章</span></p>
+      <div class="wenda-zhuanchang">
+        <h1 class="baiwen-baida">{{ huodongdiye.title | ellipsis(20)}}</h1>
+        <span class="didian"><i class="iconfont activity-map">&#xe69d;</i>讲座地点：{{ huodongdiye.address_des | ellipsis(30)}}</span>
+        <p style="line-height: 54px;font-size: 14px;color:#666666;">活动时间：{{ huodongdiye.start_time }}</p>
+      </div>
+      <div class="activity-time-tel">
+
+        <div class="common-title common-title-left gray-bg" style="border:none;height: 40px;line-height: 40px;background: #f3f3f3">
+          <i style="margin-left: 0;"></i>
+          <h4 style="margin-left: 10px;"><span class="activity-time">活动预约专线：{{ huodongdiye.telephone }}</span>
+            <span class="activity-tel"><a  href="javascript:void(0);" onclick="rand_zixun('{{  huodongdiye.country | getCountry }}',146,'{{huodongdiye.id}}')" class="dui-btn btn-xlarge btn-appointment zixun-btn" style="color: #ffffff;">立即咨询</a></span></h4>
+        </div>
+
+      </div>
+      <div class="juban-info">
+        <p class="juban-city clearfix" >
+          <span class="juban-tit">针对人群：</span>
+          <span class="renqun juban-di">{{ huodongdiye.crowd }}</span>
+        </p>
+        <p class="juban-liangdian clearfix">
+          <span class="juban-tit">活动亮点：</span>
+          <span class="liangdian-xq">{{ huodongdiye.description  }}</span>
+        </p>
+        <p class="juban-crowd clearfix">
+          <span class="juban-tit">举办城市：</span>
+          <span class="juban-di renqun">{{ huodongdiye.hold_city | getCity}}</span>
+        </p>
+        <p class="juban-crowd clearfix">
+          <span class="juban-tit">开始时间：</span>
+          <span class="juban-di renqun">{{ huodongdiye.start_time }}</span>
+        </p>
+        <p class="juban-crowd clearfix">
+          <span class="juban-tit">结束时间：</span>
+          <span class="juban-di renqun">{{ huodongdiye.end_time}}</span>
+        </p>
+        <div class="juban-con clearfix">
+          <span class="juban-tit" style="width: 80px">主要内容：</span>
+          <div class="detail-con" style="line-height: 24px;width:
+              740px;float: left">{{ huodongdiye.content | safe }}</div>
+        </div>
+      </div>
+      <div class="common-title common-title-left gray-bg" style="border:none;height: 40px;line-height: 40px;background: #f3f3f3">
+        <i style="margin-left: 0;"></i>
+        <h4 style="margin-left: 10px;">在线预约</h4>
+      </div>
+      {% include "widget/online_evaluation/quick_application2.html" %}
+    </div>
+
+
+  </div>
+
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-silde">
+    <div class="dui-box-shadow">
+      <div class="common-title" style="border:1px solid #dcdcdc;background: #f3f3f3;">
+        <i></i>
+        <h3>猜你喜欢</h3>
+      </div>
+      {% esi helper.include(esikey,'fragment/guess_like','n='+huodongdiye.country,'c='+huodongdiye.hold_city) %}
+    </div>
+
+  </div>
+</div>
+
+
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_ACTIVITYDETAIL_SEAT10") }}
+
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
+<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/quick_application2.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script>
+  $('.banner-box-left .slider').xSlider({
+    //轮播图配置
+//          autoplay : 500,
+    current: 0,
+    speed: 500,
+    intervalTime: 5000,
+    pagination: true
+  });
+  $('.banner-box-right .slider').xSlider({
+    //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+    current: 0,
+    speed: 1000,
+    intervalTime: 5000,
+    slidesPerView: 2,
+    slidesPerGroup: 2,
+    pagination: true
+  });
+</script>
+</body>
+</html>

@@ -56,7 +56,7 @@ var iDcity1 = {
     4:['天津','天津分公司：天津市河西区大沽南路362号天津图书大厦10层1088室','服务专线：022-23263399'],
     17:['太原','太原分公司：太原市南内环街100号恒地大厦12层','服务专线：0351-7668080'],
     18:['唐山','唐山分公司：唐山市路南区新华西道32号新华贸写字楼16层','服务专线：0315-6328566'],
-    14:['武汉','武汉分公司：武汉市解放大道航空路新世界中心C座20层','服务专线：027-83805656'],
+    14:['武汉','武汉分公司：武汉市航空路新世界中心C座20层/珞瑜路10号群光中心百脑汇23层','服务专线：027-83805656/027-67811600'],
     //14:['武汉','武昌分公司：武汉市洪山区珞瑜路10号群光中心百脑汇23层','服务专线：027-67811600'],
     //14:['武汉','汉口分公司：武汉市航空路新世界中心C座20层','服务专线：027-83805656'],
     33:['无锡','无锡分公司：无锡市崇安区中山路531号红豆国际广场办公楼19层','服务专线：0510-81805656'],
@@ -80,7 +80,7 @@ $('.citys-box').on('click',"a", function(e){
     var date = new Date();
     date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
     console.log('date',date)
-    $.cookie('currentarea', currentarea, { path: '/',domain: '.jjl.cn',expires: 36500});
+    $.cookie('currentarea', currentarea, { path: '/',domain: js_api_config.domain,expires: 36500});
     //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
     // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).attr("href");
@@ -94,21 +94,21 @@ function getSoUrl (stationType,searchType) {
     var soUrlObj = {
         "留学": {
             "文章": 'so_article',
-            "顾问": 'so_adviser'
+            "顾问": 'so_advisor'
         },
         "移民": {
             "文章": 'yimin_so_article',
-            "顾问": 'yimin_so_adviser'
+            "顾问": 'yimin_so_advisor'
         }
     };
     return soUrlObj[stationType][searchType]
 }
 $('.search-type-box').hover(function () {
     $(this).find('.search-type-ul').slideDown(100);
-    $(this).find('.go-down').html('&#xe633;');
+    //$(this).find('.go-down').html('&#xe633;');
 }, function () {
     $(this).find('.search-type-ul').slideUp(100);
-    $(this).find('.go-down').html('&#xe632;')
+    //$(this).find('.go-down').html('&#xe632;')
 });
 $('.search-type-ul').on('click','li',function () {
     $('.search-type-text').text($(this).text());
@@ -128,13 +128,23 @@ $("#searchBtn").click(function () {
     }
 });
 //页面点击搜索
+$('#page-search-type input[name="page-search-type"]').on('click',function () {
+    var chooseType = $(this).val();
+    if (chooseType == '文章') {
+        $("#search-page").val('请输入您感兴趣的文章关键词');
+    }
+    else if (chooseType == '文章') {
+        $("#search-page").val('请输入您感兴趣的顾问姓名');
+    }
+});
 $("#searchBtn-page").click(function () {
     var so_key_word = $.trim($("#search-page").val());
+    var so_type = $('#page-search-type input[name="page-search-type"]:checked ').val();
     if (so_key_word.length == 0 || so_key_word == '请输入你想了解的关键字') {
         alert('请输入你想了解的关键词');
         $('#search').focus();
     }
     else {
-        window.open(fn.no_urlgen(getSoUrl('留学','文章'), 'q=' + so_key_word));
+        window.open(fn.no_urlgen(getSoUrl('留学',so_type), 'q=' + so_key_word));
     }
 });

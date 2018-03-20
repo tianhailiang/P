@@ -5,6 +5,13 @@
   <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
   <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+  <style>
+    .canzanps p {
+      font-size: 14px;
+      line-height: 26px;
+      color: #333333;
+    }
+  </style>
 </head>
 <body style="background: #f5f5f5">
 {% include "widget/top/top.html" %}
@@ -30,6 +37,7 @@
       {% endif %}
       {% endif %}
     </div>
+    {% if userinfo.usertype == 2 %}
     <div style="margin-top: 20px;" class="dui-box-shadow">
       <div class="common-title" style="border:1px solid #dcdcdc;">
         <i></i>
@@ -41,15 +49,16 @@
         {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
       {% endif %}
     </div>
+    {% endif %}
     <div style="margin-top: 20px;" class="dui-box-shadow">
       <div class="common-title" style="border:1px solid #dcdcdc;">
         <i></i>
         <h3>相关顾问</h3>
       </div>
-      {% if userinfo.adviser_type == 1 %}
-        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
-      {% else %}
+      {% if userinfo.adviser_type == 2 %}
         {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid,'uid='+userinfo.uid) %}
+      {% else %}
+        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
       {% endif %}
     </div>
   </div>
@@ -68,6 +77,7 @@
         {% endif %}
         {% endif %}
       </div>
+      {% if userinfo.usertype == 2 %}
       {% if guwen_list.list.length > 0 %}
       <div class="right-main clearfix">
         {% for item in guwen_list.list %}
@@ -85,10 +95,17 @@
       {% else %}
       {% include "widget2/blank/blank.html" %}
       {% endif %}
+      {% else %}{# 参赞介绍 #}
+      <h2 style="font-size: 18px; margin: 20px">参赞介绍：</h2>
+      <div class="canzanps" style="padding-bottom: 20px;margin: 0 20px">{{ canzan_jianjie.description | safe }}</div>
+      {% endif %}
     </div>
   </div>
 </div>
-{% if userinfo.adviser_type==1 %}
+{% if userinfo.usertype==3 %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",helper) }}
+{% elseif userinfo.adviser_type==1 %}
 {% import "widget/new_slide/new_slide3.html" as  slide %}
 {{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
 {% elseif userinfo.adviser_type==2   %}
@@ -109,9 +126,10 @@
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
 <script>
   $(function() {
     window._bd_share_config = {

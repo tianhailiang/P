@@ -1051,6 +1051,16 @@ exports.shouye = function (data, callback) {
     })
 };
 
+exports.yimin_shouye = function (data, callback) {
+    redisPool.get('yimin_home_all', function(err, reply){
+      if(reply){
+        callback(null, reply);
+      }else{
+        callback(null, '暂无数据');
+      }
+    })
+};
+
 
 function update_viewnum(catid, id, uuid, callback){
   var viewNumKey = "WEB:HITS:cat_"+catid+"_"+id;
@@ -1085,6 +1095,33 @@ exports.canzanlist = function (data, callback) {
   api.apiRequest(url, callback);
 }
 
+//新活动列表
+exports.activity_list = function (data, callback) {
+  var url = _api_url_path(data, config.apis.get_activity_list);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
+//其他城市活动列表
+exports.other_activity_list = function (data, callback) {
+  var url = _api_url_path(data, config.apis.get_other_activity_list);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
+//新活动底页
+exports.activity_detail = function (data, callback) {
+  var url = _api_url_path(data, config.apis.get_activity_detail);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
 /*发送手机验证码*/
 exports.sendcode_ss = function (data, callback) {
   log.debug('000');
@@ -1138,5 +1175,16 @@ exports.culture_detail =function(data,callback){
     return;
   }
 
+  api.apiRequest(url ,callback);
+
+}
+//参赞简介
+exports.canzan_jianjie =function(data,callback){
+  var url = _api_path_url_shequ(data, config.apis.get_user_description);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  console.log('url----hahhahahahhaahhahahahahh-', url)
   api.apiRequest(url ,callback);
 }

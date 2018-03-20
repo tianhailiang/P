@@ -77,7 +77,7 @@ $('.citys-box').on('click',"a", function(e){
     var date = new Date();  
     date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
     console.log('date',date)
-    $.cookie('currentarea', currentarea, { path: '/',domain: '.jjl.cn',expires: 36500});
+    $.cookie('currentarea', currentarea, { path: '/',domain: js_api_config.domain,expires: 36500});
     //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
     // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).attr("href");
@@ -88,7 +88,7 @@ $('.branch_company_text').on('click',".needJump", function(e){
     currentarea = $(this).attr("data-id");
     var date = new Date();  
     date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
-    $.cookie('currentarea', currentarea, { path: '/',domain: '.jjl.cn',expires: 36500});
+    $.cookie('currentarea', currentarea, { path: '/',domain: js_api_config.domain,expires: 36500});
     //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
     // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).find("a").attr("href");
@@ -105,11 +105,11 @@ function getSoUrl (stationType,searchType) {
     var soUrlObj = {
         "留学": {
             "文章": 'so_article',
-            "顾问": 'so_adviser'
+            "顾问": 'so_advisor'
         },
         "移民": {
             "文章": 'yimin_so_article',
-            "顾问": 'yimin_so_adviser'
+            "顾问": 'yimin_so_advisor'
         }
     };
     return soUrlObj[stationType][searchType]

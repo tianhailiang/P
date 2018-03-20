@@ -1,8 +1,3 @@
-.author-sel{padding:20px 20px 0 20px;background:#fff}
-.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
-.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
-.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
-.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:755px}
@@ -21,6 +16,11 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:32px}
+.author-sel{padding:20px 20px 0 20px;background:#fff}
+.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
+.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
+.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
+.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
@@ -42,7 +42,7 @@
 .comment-info-name-box{padding-top:10px}
 .comment-info-name{font-size:14px;color:#666;margin-right:10px}
 .comment-info-time{font-size:12px;color:#999}
-.comment-info-txt{font-size:14px;color:#666;line-height:27px;width:730px}
+.comment-info-txt{font-size:14px;color:#666;line-height:27px;width:730px;word-break:break-all}
 .comment-btn-bar{margin-top:5px}
 .comment-btn-bar span{margin-right:20px;font-size:12px;color:#b2b8c2;cursor:pointer}
 .comment-btn-bar i{margin-right:2px}
@@ -52,6 +52,7 @@
 .sub-btn2{float:right;padding:3px 25px}
 .reply-list{margin-top:20px;background:#f3f3f3;padding:0 20px;display:none}
 .reply-list-info{border-bottom:1px dashed #dcdcdc;padding-top:8px;padding-bottom:8px}
+.reply-list-info-top{word-break:break-all}
 .reply-list-info-top span{color:#c13232}
 .load-more{height:53px;border-top:1px solid #dcdcdc;cursor:pointer;text-align:center;line-height:53px;font-size:14px;color:#333}
 @charset "UTF-8";
@@ -1574,6 +1575,15 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .school-con{width:130px;height:23px;position:absolute;top:20px;right:0;line-height:20px}
 .pagination-box .pagination-large{margin:0}
 .icon{width:16px;height:16px;position:relative;left:0;top:1px}
+.so_advisor_warp{width:408px;height:166px;background:#fafafa;margin-top:20px;float:left;border:1px solid #eee}
+.so_advisor_warp:nth-child(2n){float:right}
+.so_advisor_top{height:80px}
+.so_advisor_img{width:50px;height:50px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;margin:20px 10px 10px 20px;clear:both;float:left;background-repeat:no-repeat;background-position:center top;-webkit-background-size:cover;background-size:cover}
+.so_advisor_top p{float:left;margin-top:38px;color:#666}
+.flag{margin-left:4px;margin-top:-3px}
+.so_advisor_top_right{width:70px;height:24px;line-height:24px;background:#c13232;text-align:center;color:#fff;float:right;margin-right:20px;margin-top:35px;font-size:14px}
+.so_advisor_bottom{padding:20px;padding-top:0;font-size:12px;line-height:24px;color:#666}
+.so_advisor_bottom p a{color:#c13232}
 .study-focus{background:#fff}
 .foucus-public{margin-left:20px;width:840px;font-size:14px;color:#333;border-bottom:1px dashed #dcdcdc}
 .foucus-public p{float:left;height:20px;line-height:20px}

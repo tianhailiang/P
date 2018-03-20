@@ -38,7 +38,7 @@
         <p><span>G</span><a target="_blank" class="dui-text-warning-s" data-id="3"  href="{{helper.urlgen('branch_home','c=3')}}">广州</a>
           <a target="_blank" class="dui-text-warning-s" data-id="35"  href="{{helper.urlgen('branch_home','c=35')}}">贵阳</a></p>
         <p><span>H</span><a target="_blank" class="dui-text-warning-s" data-id="6"  href="{{helper.urlgen('branch_home','c=6')}}">杭州</a>
-          <a target="_blank" class="dui-text-warning-s" data-id="14"  href="{{helper.urlgen('branch_home','c=14')}}">汉口</a>
+          <!--<a target="_blank" class="dui-text-warning-s" data-id="14"  href="{{helper.urlgen('branch_home','c=14')}}">汉口</a>-->
           <a target="_blank" class="dui-text-warning-s"  data-id="22"  href="{{helper.urlgen('branch_home','c=22')}}">合肥</a>
           <a target="_blank" class="dui-text-warning-s" data-id="24"  href="{{helper.urlgen('branch_home','c=24')}}">哈尔滨</a>
           <a target="_blank" class="dui-text-warning-s"  data-id="26"  href="{{helper.urlgen('branch_home','c=26')}}">呼市</a>
@@ -64,8 +64,8 @@
         <p><span>T</span><a target="_blank" class="dui-text-warning-s" data-id="4"   href="{{helper.urlgen('branch_home','c=4')}}">天津</a>
           <a target="_blank" class="dui-text-warning-s" data-id="17"   href="{{helper.urlgen('branch_home','c=17')}}">太原</a>
           <a target="_blank" class="dui-text-warning-s"  data-id="18"  href="{{helper.urlgen('branch_home','c=18')}}">唐山</a></p>
-        <!--<p><span>W</span><a target="_blank" class="dui-text-warning-s" href="{{helper.urlgen('branch_home','c=14')}}">武汉</a>-->
-        <p><span>W</span><a target="_blank" class="dui-text-warning-s" data-id="14"   href="{{helper.urlgen('branch_home','c=14')}}">武昌</a>
+        <p><span>W</span><a target="_blank" class="dui-text-warning-s" href="{{helper.urlgen('branch_home','c=14')}}">武汉</a>
+        <!--<p><span>W</span><a target="_blank" class="dui-text-warning-s" data-id="14"   href="{{helper.urlgen('branch_home','c=14')}}">武昌</a>-->
           <a target="_blank" class="dui-text-warning-s" data-id="33"   href="{{helper.urlgen('branch_home','c=33')}}">无锡</a>
           <a target="_blank" class="dui-text-warning-s" data-id="42"   href="{{helper.urlgen('branch_home','c=42')}}">温州</a>
         </p>
@@ -197,10 +197,7 @@
         "companyName": "大连",
         "companyId": "13"
         },  {
-        "companyName": "武昌",
-        "companyId": "14"
-        },  {
-        "companyName": "汉口",
+        "companyName": "武汉",
         "companyId": "14"
         },
         {
@@ -345,14 +342,14 @@
         }
         ] %}
         {% for item in cityList %}
-        {% if loop.index<50 %}
+        {% if loop.index<49 %}
         <div class="branch_company_text_tilte needJump" data-id="{{item.companyId}}">
           <a  target="_blank" href="{{helper.urlgen('branch_home','c='+item.companyId)}}" data-id="{{item.companyId}}">{{item.companyName}}</a>
         </div>
         {% endif %}
         {% endfor %}
-        <div class="branch_company_text_tilte" data-id="{{cityList[49].companyId}}">
-          <a  target="_blank" href="http://www.jjl.cn/zt/overseas/vancouver/index.html" data-id="{{cityList[49].companyId}}" >{{cityList[49].companyName}}</a>
+        <div class="branch_company_text_tilte" data-id="{{cityList[48].companyId}}">
+          <a  target="_blank" href="http://www.jjl.cn/zt/overseas/vancouver/index.html" data-id="{{cityList[48].companyId}}" >{{cityList[48].companyName}}</a>
         </div>
       </div>
     </div>
@@ -390,7 +387,7 @@
         //正确
         $('#selByIp').on('click',function (e) {
           e.preventDefault();
-          $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn',expires: 36500});
+          $.cookie('currentarea', iparea, { path: "/",domain: js_api_config.domain,expires: 36500});
           if (endFix) {
             window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
           }
@@ -408,7 +405,7 @@
       if (currentarea) {
         e.preventDefault();
       }
-      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn',expires: 36500}); 
+      $.cookie('currentarea', currentarea, { path: "/",domain: js_api_config.domain,expires: 36500});
       if (endFix) {
         window.location.href = $(this).attr("href")+'?'+endFix;
       }

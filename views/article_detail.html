@@ -49,10 +49,10 @@
           <i></i>
           <h3>相关顾问</h3>
         </div>
-        {% if userinfo.adviser_type == 1 %}
-        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+        {% if userinfo.adviser_type == 2 %}
+          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid,'uid='+userinfo.uid) %}
       {% else %}
-      {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid,'uid='+userinfo.uid) %}
+        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
       {% endif %}
       </div>
     </div>
@@ -160,7 +160,7 @@
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
@@ -169,17 +169,12 @@
   <script>
   $(function(){
       $('.banner-box-left .slider').xSlider({
-          //轮播图配置
-//          autoplay : 500,
           current: 0,
           speed: 500,
           intervalTime: 5000,
           pagination: true
       });
       $('.banner-box-right .slider').xSlider({
-          //轮播图配置
-//          autoplay : 500,
-//            mode:'vertical',
           current: 0,
           speed: 1000,
           intervalTime: 5000,
@@ -197,7 +192,7 @@
               "bdStyle":"0",
               "bdSize":"16",
               "bdUrl":window.location.href,
-              "bdDesc":""
+              "bdDesc":''
           },
           "share":{}
       };

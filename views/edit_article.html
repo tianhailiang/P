@@ -222,7 +222,7 @@
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/layer.min.js"></script>
+  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
   <script >
     $(function(){
@@ -271,6 +271,7 @@
       //选择文章类型
       var newsletterType = $("#art-type").attr('data-id');
       var newTagStr = '';
+      var artType = $("#art-type").attr('data-type');
       if(newsletterType ==2){
         newTagStr = '留学时讯';
       }else{
@@ -288,6 +289,7 @@
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '留学时讯';
+          artType = 2;
         }
       });
        //选择学历标签
@@ -378,7 +380,7 @@
         layer.msg(info)
       }
       editor.create();
-      var artType = $("#art-type").attr('data-type');
+      
       $('#sureBtn').on('click', function () {
         // 读取 html
         var data = editor.txt.html();
@@ -399,10 +401,12 @@
           var tagStr = '';
           $('.recommend-sel[checked=checked]').each(function(){
             tagStr+=$(this).find('i').eq(1).text()+',';
-            if($(this).find('i').eq(1).text()=='留学案例'){
-              artType =1;
-            }
           });
+          if($('.recommend-sel').eq(6).attr('checked')){
+           artType = 1;
+          }else{
+            artType = 2;
+          }
           if(tagStr == ''){
             layer.msg('请选择推荐标签');
             return false;
@@ -493,10 +497,12 @@
           var tagStr = '';
           $('.recommend-sel[checked=checked]').each(function(){
             tagStr+=$(this).find('i').eq(1).text()+',';
-            if($(this).find('i').eq(1).text()=='留学案例'){
-              artType =1;
-            }
           });
+          if($('.recommend-sel').eq(6).attr('checked')){
+            artType = 1;
+          }else{
+            artType = 2;
+          }
           if(tagStr == ''){
             layer.msg('请选择推荐标签');
             return false;
