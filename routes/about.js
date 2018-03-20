@@ -130,8 +130,14 @@ exports.lawyer = function (req, res, next) {
 //留学活动
 exports.activity = function (req, res, next) {
   var data = [];
-  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var area = 1;
+  if (req.params[0]) {
+    var cityId = comfunc.getCityId(req.params[0]);
+    if(cityId && cityId !== comfunc.INVALID_ID){
+      area = cityId;
+      res.cookie("currentarea", cityId, {domain: config.domain});
+    }
+  }
   var country = req.query.n || 0;
   var articleId = req.params.id;
   var page =req.query.page || 1;
@@ -188,7 +194,14 @@ exports.activity = function (req, res, next) {
 //活动底页
 exports.activity_detail = function (req, res, next){
   var data = [];
-  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var area = 1;
+  var urlcity=''
+  if (req.params[0]) {
+    var cityId = comfunc.getCityId(req.params[0]);
+    if(cityId && cityId !== comfunc.INVALID_ID){
+      urlcity = cityId;
+    }
+  }
   var qianzhengzhinan_currentPage=req.query.page || 1;
   var country = req.query.n || 0;
   //node获取地址栏url
@@ -218,8 +231,10 @@ exports.activity_detail = function (req, res, next){
     log.info(result)
     data.pageroute="about";
     data.activitydetail = returnData(result.activitydetail, 'activitydetail');
+    if(err || result.activitydetail.code != 0 || result.activitydetail.data.list.hold_city != urlcity){
+      next()
+    }
     data.huodongdiye=data.activitydetail.list;
-    log.info('底页',data.huodongdiye)
     data.tdk = {
       pagekey: 'ACTIVITYDETAIL', //key
       cityid: area, //cityid
