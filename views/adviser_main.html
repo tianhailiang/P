@@ -5,6 +5,13 @@
   <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper2.7.6.css" >
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
   <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper2.7.6.js"></script>
+  <style>
+    .canzanps p {
+      font-size: 14px;
+      line-height: 26px;
+      color: #333333;
+    }
+  </style>
 </head>
 <body style="background: #f5f5f5">
 {% include "widget/top/top.html" %}
@@ -30,6 +37,7 @@
       {% endif %}
       {% endif %}
     </div>
+    {% if userinfo.usertype == 2 %}
     <div style="margin-top: 20px;" class="dui-box-shadow">
       <div class="common-title" style="border:1px solid #dcdcdc;">
         <i></i>
@@ -41,6 +49,7 @@
         {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
       {% endif %}
     </div>
+    {% endif %}
     <div style="margin-top: 20px;" class="dui-box-shadow">
       <div class="common-title" style="border:1px solid #dcdcdc;">
         <i></i>
@@ -68,6 +77,7 @@
         {% endif %}
         {% endif %}
       </div>
+      {% if userinfo.usertype == 2 %}
       {% if guwen_list.list.length > 0 %}
       <div class="right-main clearfix">
         {% for item in guwen_list.list %}
@@ -84,6 +94,10 @@
       </div>
       {% else %}
       {% include "widget2/blank/blank.html" %}
+      {% endif %}
+      {% else %}{# 参赞介绍 #}
+      <h2 style="font-size: 18px; margin: 20px">参赞介绍：</h2>
+      <div class="canzanps" style="padding-bottom: 20px;margin: 0 20px">{{ canzan_jianjie.description | safe }}</div>
       {% endif %}
     </div>
   </div>
