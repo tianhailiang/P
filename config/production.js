@@ -247,6 +247,8 @@ var apis = {
   "get_activity_list":prefix+'activity_list',
   //其他城市活动列表
   "get_other_activity_list":prefix+'other_activity_list',
+  //新活动底页
+  "get_activity_detail":prefix+'detail'
 };
 module.exports = {
   redisCache: redisCache,
