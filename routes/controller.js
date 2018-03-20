@@ -46,7 +46,7 @@ function get_page_key(usertype, adviser_type, page_key) {
 exports.index = function (req, res, next) {
     console.log('branch_home',helperfunc.urlgen('branch_home','c='+req.cookies.currentarea))
     if (req.cookies.currentarea) {
-        res.cookie("currentareast", comfunc.getCityEn(req.cookies.currentarea), {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
+        res.cookie("currentareast", comfunc.getCityEn(req.cookies.currentarea), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
         res.redirect(helperfunc.urlgen('branch_home','c='+req.cookies.currentarea));
         return false;
     }
@@ -55,8 +55,8 @@ exports.index = function (req, res, next) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
             area = cityId;
-            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
-            res.cookie("currentarea", cityId, {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentarea", cityId, {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
         }
     }
     var data = [];
@@ -118,8 +118,8 @@ exports.index_page = function (req, res, next) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
             area = cityId;
-            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
-            res.cookie("currentarea", cityId, {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentarea", cityId, {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
         }
     }
     var data = [];
@@ -3436,7 +3436,7 @@ exports.yiminHome = function (req, res, next) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
             area = cityId;
-            res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
+            res.cookie("currentarea", cityId, {domain: config.domain});
         }
     }
     var data = [];

@@ -89,9 +89,9 @@ exports.user_info = function (req, res, next) {
       if(result.code === 0){
         data.login_nickname.nickname = nickname
         if (config.version == 'development') {//开发环境
-          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});//保存cookie
+          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
         } else {
-          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: '.jjl.cn', expires: new Date(Date.now() + 90000000)});
+          res.cookie("login_ss", JSON.stringify(data.login_nickname), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
         }
       }
 
@@ -168,7 +168,7 @@ exports.modify_portrait = function (req, res, next) {
 exports.login_out = function (req, res, next) {
   console.log('login_out');
   //console.log('req', req);
-  res.clearCookie("login_ss", {domain: '.jjl.cn'});
+  res.clearCookie("login_ss", {domain: config.domain});
   //res.cookie(prop, 'login_ss', {expires: new Date(0)});
   console.log('login_out1');
   res.send('ok')
@@ -205,9 +205,9 @@ exports.login_s = function (req, res, next) {
     if (result.login_ss.code === 0) {
       log.debug('ok', result.login_ss.code);
       if (config.version == 'development' && result.login_ss.code === 0) {//开发环境
-        res.cookie("login_ss", JSON.stringify(result.login_ss.data), {domain: '.jjl.cn'});//保存cookie
+        res.cookie("login_ss", JSON.stringify(result.login_ss.data), {domain: config.domain});//保存cookie
       } else {
-        res.cookie("login_ss", JSON.stringify(result.login_ss.data), {domain: '.jjl.cn'});
+        res.cookie("login_ss", JSON.stringify(result.login_ss.data), {domain: config.domain});
       }
       res.send(result.login_ss);
       //log.debug('config', config.wwhost);

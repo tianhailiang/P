@@ -8,6 +8,7 @@ const redisCache = {
   "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
   "port":6379
 };
+var domain = '.jjl.cn';
 var wwhost = 'http://www.jjl.cn';
 var yiminhost = 'http://yimin.jjl.cn';
 var cdnhost = 'http://www.jjl.cn:4000';
@@ -249,5 +250,6 @@ module.exports = {
   wwhost: wwhost,
   cdnhost: cdnhost,
   imageshost: imageshost,
-  yiminhost: yiminhost
+  yiminhost: yiminhost,
+  domain: domain
 };

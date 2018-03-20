@@ -80,7 +80,7 @@ $('.citys-box').on('click',"a", function(e){
     var date = new Date();
     date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
     console.log('date',date)
-    $.cookie('currentarea', currentarea, { path: '/',domain: '.jjl.cn',expires: 36500});
+    $.cookie('currentarea', currentarea, { path: '/',domain: js_api_config.domain,expires: 36500});
     //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
     // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).attr("href");
