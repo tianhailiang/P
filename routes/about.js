@@ -221,6 +221,20 @@ exports.activity_detail = function (req, res, next){
     data.login_nickname = login_a;
   }
   async.parallel({
+    lunbo_list:function(callback) {
+      cms.lunbo_list({
+        "ad_page": 'ACTIVITYDETAIL',
+        "cityid":area,
+        "ad_seat": "SEAT1"
+      }, callback);
+    },
+    lunbo_list2:function(callback) {
+      cms.lunbo_list({
+        "ad_page": 'ACTIVITYDETAIL',
+        "cityid":area,
+        "ad_seat": "SEAT2"
+      }, callback);
+    },
     activitydetail: function (callback) {
       cms.activity_detail({
         "catid": 74,
@@ -228,8 +242,8 @@ exports.activity_detail = function (req, res, next){
       }, callback);
     },
   }, function (err, result){
-    log.info(result)
-    data.pageroute="about";
+    data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+    data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.activitydetail = returnData(result.activitydetail, 'activitydetail');
     if(err || result.activitydetail.code != 0 || result.activitydetail.data.list.hold_city != urlcity){
       next()
