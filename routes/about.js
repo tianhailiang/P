@@ -589,7 +589,7 @@ exports.culture_detail = function (req, res, next){
     data.culture_detail = returnData(result.culture_detail, 'culture_detail');
     log.info(data.culture_detail)
     data.tdk = {
-      pagekey: 'PROFILE', //key
+      pagekey: 'CULTURE_DETAIL', //key
       cityid: area, //cityid
       nationid: country//nationi
     };
