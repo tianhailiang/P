@@ -299,7 +299,7 @@
         //正确
         $('#selByIp').on('click',function (e) {
           e.preventDefault();
-          $.cookie('currentarea', iparea, { path: "/",domain: '.jjl.cn'});
+          $.cookie('currentarea', iparea, { path: "/",domain: js_api_config.domain});
           if (endFix) {
             window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
           }
@@ -317,7 +317,7 @@
       if (currentarea) {
         e.preventDefault();
       }
-      $.cookie('currentarea', currentarea, { path: "/",domain: '.jjl.cn'});
+      $.cookie('currentarea', currentarea, { path: "/",domain: js_api_config.domain});
       if (endFix) {
         window.location.href = $(this).attr("href")+'?'+endFix;
       }
