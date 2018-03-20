@@ -192,6 +192,45 @@
     .banner-box-right .slider .slider-dot ul{
         left: 50%;
     }
+    .page-search-type{
+      height: 56px;
+      line-height: 56px;
+    }
+    .page-search-type label {
+      margin: 0;
+      font-weight: normal;
+      font-size: 16px;
+      color: #333;
+    }
+    .page-search-type input[type="radio"] + label:before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      margin-right: 10px;
+      border-radius: 50%;
+      border: 1px solid #333;
+      color: #333;
+      margin-top: -2px;
+    }
+    .page-search-type input[type="radio"]:checked + label {
+      color: #c13232;
+    }
+    .page-search-type input[type="radio"]:checked + label:before {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      width: 12px;
+      height: 12px;
+      margin-right: 10px;
+      border-radius: 50%;
+      border: 1px solid #c13232;
+      background-color: #c13232;
+      background-clip: content-box;
+      padding: 2px;
+      color: #c13232;
+    }
 </style>
 <body style="background: #f5f5f5">
 {% include "widget/top/top.html" %}
@@ -211,10 +250,16 @@
                        onblur="if(this.value == ''){this.placeholder= '请输入搜索关键词';}" value="{{keyword}}">
                 <div class="search-btn" id="searchBtn-page" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
             </div>
+          <div class="page-search-type" id="page-search-type">
+            <input type="radio" name="page-search-type" id="article" value="文章"/>
+            <label for="article" style="margin-right: 20px;">搜文章</label>
+            <input type="radio" name="page-search-type" id="adviser" value="顾问" checked/>
+            <label for="adviser">搜顾问</label>
+          </div>
             <div class="result-bar">
-                搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
+                搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{so_adviser_list.total if so_adviser_list.total else 0}}</span>个结果
             </div>
-            {% if article_list.total == 0 or article_list.total == null %}
+            {% if so_adviser_list.total == 0 or so_adviser_list.total == null %}
             <!--没有搜索到数据-->
             <div class="no-result page-blank">
                 <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
@@ -222,33 +267,13 @@
             </div>
             {% else %}
             <div class="has-result">
-                <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.paramurlgen('yimin_so_article','q='+ keyword, 'order=score')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
-                    <a href="{{helper.paramurlgen('yimin_so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
-                    <a href="{{helper.paramurlgen('yimin_so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
-                </div>
+              <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
+                <a href="{{helper.paramurlgen('yimin_so_advisor','q='+ keyword, 'order=score')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
+                <a href="{{helper.paramurlgen('yimin_so_advisor','q='+ keyword, 'order=fans_count')}}" {% if order == 'fans_count' %}class="active"{% else %}{% endif %}>粉丝数</a>
+                <a href="{{helper.paramurlgen('yimin_so_advisor','q='+ keyword, 'order=article_count')}}" {% if order == 'article_count' %}class="active"{% else %}{% endif %}>文章数</a>
+              </div>
                 <div class="result-conent" id="result-content">
-                    {% for item in article_list.list %}
-                    <div class="result-item clearfix">
-                        <div class="item-adviser">
-<!--                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>-->
-                            <a target="_blank" href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.realname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></div></a>
-                        </div>
-                        <div class="item-info">
-                            <div class="info-top clearfix">
-                                <a class="info-title"target="_blank
-" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">{{item.title}}</a>
-                                <div class="info-tags">
-                                    {% if item.tag_list %}
-                                    <span>{{item.tag_list}}</span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】</a></div>
-                            <div class="time">{{item.add_time | getDefaultFormat('YYYY-MM-DD HH:mm:ss')}}</div>
-                        </div>
-                    </div>
-                    {% endfor %}
+                  {% include "widget/so_advisor/so_advisor.html" %}
                 </div>
                <!-- <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
                     加载更多
@@ -257,7 +282,7 @@
             </div>
             {% endif %}
         </div>
-        {% if article_list.total == 0 or article_list.total == null %}
+        {% if so_adviser_list.total == 0 or so_adviser_list.total == null %}
         {% else %}
         <div class="dui-layout-con page">
             <div class="pagination-box">

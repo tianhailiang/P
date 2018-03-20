@@ -11,6 +11,8 @@ exports = module.exports = function (app) {// routes
   app.get(/^\/so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article);
   //顾问搜索页
   app.get(/^\/so_advisor(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_adviser);
+  //移民顾问搜索页
+  app.get(/^\/yimin_so_advisor(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_adviser_yimin);
   //移民搜索页
   app.get(/^\/yimin_so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article_yimin);
   //社区首页

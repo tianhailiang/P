@@ -256,9 +256,9 @@
                 <label for="adviser">搜顾问</label>
             </div>
             <div class="result-bar">
-                搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
+                搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{so_adviser_list.total if so_adviser_list.total else 0}}</span>个结果
             </div>
-            {% if article_list.total == 0 or article_list.total == null %}
+            {% if so_adviser_list.total == 0 or so_adviser_list.total == null %}
             <!--没有搜索到数据-->
             <div class="no-result page-blank">
                 <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
@@ -267,9 +267,9 @@
             {% else %}
             <div class="has-result">
                 <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=score')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
-                    <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>粉丝数</a>
-                    <a href="{{helper.paramurlgen('so_article','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>文章数</a>
+                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=score')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=fans_count')}}" {% if order == 'fans_count' %}class="active"{% else %}{% endif %}>粉丝数</a>
+                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=article_count')}}" {% if order == 'article_count' %}class="active"{% else %}{% endif %}>文章数</a>
                 </div>
                 <div class="result-conent" id="result-content">
                     {% include "widget/so_advisor/so_advisor.html" %}
@@ -281,7 +281,7 @@
             </div>
             {% endif %}
         </div>
-        {% if article_list.total == 0 or article_list.total == null %}
+        {% if so_adviser_list.total == 0 or so_adviser_list.total == null %}
         {% else %}
         <div class="dui-layout-con page">
             <div class="pagination-box">

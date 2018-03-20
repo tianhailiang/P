@@ -133,7 +133,7 @@ $('#page-search-type input[name="page-search-type"]').on('click',function () {
     if (chooseType == '文章') {
         $("#search-page").val('请输入您感兴趣的文章关键词');
     }
-    else if (chooseType == '文章') {
+    else if (chooseType == '顾问') {
         $("#search-page").val('请输入您感兴趣的顾问姓名');
     }
 });
