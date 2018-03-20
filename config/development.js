@@ -241,7 +241,9 @@ var apis = {
   //根据ip 获取城市code码
   "get_ip_geter":prefix + 'ip_geter',
   //金色力量底页
-  "get_culture_detail":prefix + 'detail'
+  "get_culture_detail":prefix + 'detail',
+  //参赞介绍
+  "get_user_description":shequ_prefix + 'account/get_user_description/'
 };
 module.exports = {
   redisCache: redisCache,

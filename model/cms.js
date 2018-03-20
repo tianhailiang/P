@@ -1149,4 +1149,15 @@ exports.culture_detail =function(data,callback){
   }
 
   api.apiRequest(url ,callback);
+
+}
+//参赞简介
+exports.canzan_jianjie =function(data,callback){
+  var url = _api_path_url_shequ(data, config.apis.get_user_description);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  console.log('url----hahhahahahhaahhahahahahh-', url)
+  api.apiRequest(url ,callback);
 }
