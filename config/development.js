@@ -242,7 +242,13 @@ var apis = {
   //根据ip 获取城市code码
   "get_ip_geter":prefix + 'ip_geter',
   //金色力量底页
-  "get_culture_detail":prefix + 'detail'
+  "get_culture_detail":prefix + 'detail',
+  //新活动列表
+  "get_activity_list":prefix+'activity_list',
+  //其他城市活动列表
+  "get_other_activity_list":prefix+'other_activity_list',
+  //新活动底页
+  "get_activity_detail":prefix+'detail',
 };
 module.exports = {
   redisCache: redisCache,

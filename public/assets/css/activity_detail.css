@@ -1,0 +1,209 @@
+.activity-detail{
+  padding:20px;
+}
+.activity-detail .activity-home{
+  color:#c13232;
+  font-size: 17px;
+  padding-right: 10px;
+}
+.activity-detail .tit{
+  font-size: 14px;
+  color:#333333;
+}
+.activity-detail .activity-tit{
+  color:#c13232;
+  padding:0 4px;
+}
+.activity-detail .activity-article{
+  padding-left: 4px;
+}
+.activity-detail .activity-map{
+  font-size: 14px;
+  color:#c13232;
+}
+.wenda-zhuanchang{
+  padding-top:20px;
+  border-bottom: 1px solid #dcdcdc;
+
+}
+.wenda-zhuanchang .baiwen-baida{
+  font-size: 18px;
+  line-height: 18px;
+  color:#c13232;
+}
+.wenda-zhuanchang .didian{
+  float:right;
+  font-size: 12px;
+  line-height: 18px;
+  color:#666666;
+  *margin-top:-24px;
+}
+.activity-time-tel{
+  padding-top:20px;
+  padding-bottom:20px;
+}
+.activity-time-tel p{
+  height: 40px;
+  background:#f3f3f3;
+  line-height: 40px;
+}
+.activity-time-tel .activity-time{
+  font-size: 18px;
+}
+.activity-time-tel .activity-tel{
+  float:right;
+  margin-right:-15px;
+  font-size: 16px;
+  color:#666666;
+  *margin-top:-50px;
+  margin-top: 5px;
+}
+.juban-info .juban-city{
+  padding-left: 20px;
+}
+.juban-info .detail-con{
+  color:#666666;
+  font-size: 14px;
+}
+.juban-info .juban-tit{
+  font-size: 14px;
+  color:#333333;
+  display:block;
+  width: 80px;
+  float:left;
+
+}
+.juban-city .juban-tit{
+    padding-top: 10px;
+}
+.juban-city .zixun-btn{
+  float:right;
+  width: 80px;
+  padding:3px 3px;
+  *margin-top:-24px;
+}
+.juban-city .juban-di{
+  color:#666666;
+  font-size: 14px;
+  padding-top: 10px;
+  display: inline-block;
+
+}
+.juban-info .juban-liangdian{
+  padding-left: 20px;
+  margin-top:30px;
+}
+.juban-liangdian .liangdian-xq{
+  width: 732px;
+  display: block;
+  float:left;
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: -2px;
+  color:#666666;
+}
+.juban-crowd{
+  margin-top: 30px;
+}
+.juban-crowd .renqun,.juban-crowd .start-time{
+  display: block;
+  float:left;
+  color:#666666;
+  font-size: 14px;
+  height: 14px;
+}
+.juban-crowd .juban-tit{
+  margin-left:20px;
+}
+.juban-con{
+  margin-top: 30px;
+  margin-left: 20px;
+  padding-bottom: 8px;
+}
+
+.juban-con .detail-con{
+  width: 732px;
+  display: block;
+  float:left;
+  font-size: 14px;
+  line-height: 24px;
+  margin-top: -2px;
+}
+.jiangzuo-ren{
+  padding:20px 0px  20px 20px;
+  font-size: 14px;
+  color:#333333;
+
+}
+.jiangzuo img{
+  width: 260px;
+  height: 190px;
+}
+.jiangzuo .jiangzuo-name{
+  margin-top:20px;
+  font-size: 16px;
+  color:#333333;
+}
+.jiangzuo .jiangzuo-name span{
+  font-size: 14px;
+}
+.jiangzuo .jiangzuo-info{
+  margin-top: 5px;
+  font-size: 14px;
+  color:#666666;
+  height: 43px;
+  line-height: 24px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.jz-btn{
+  width: 80px;
+  padding: 3px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.jz-btn-l{
+  margin-left: 30px;
+}
+.jz-btn-r{
+  margin-left: 20px;
+}
+.dui-con-col3-detail{
+  width: 260px;
+  float:left;
+  margin-left:20px;
+}
+.jiangzuo{
+  clear:both;
+}
+.common-title h4 {
+  line-height: 40px;
+  font-weight: 400;
+  font-size: 18px;
+  color: #333;
+  margin-left: 28px;
+}
+.map-dress .left{
+  width: 440px;
+  padding: 20px 20px 20px 20px;
+  float:left
+}
+.map-dress .right{
+  width:345px;
+  padding: 20px 20px 20px 0;
+  float:left;
+  margin-left: 30px;
+  font-size:16px;
+  color:#333333;
+}
+.BMap_pop{
+  display: none;
+}
+.quick-application-con .quick-text1 input{
+  width: 210px;
+}
+.content {
+  font-size: 13px;
+  color: #333;
+  margin-top: 6px;
+}

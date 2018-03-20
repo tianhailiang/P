@@ -127,6 +127,109 @@ exports.lawyer = function (req, res, next) {
 
   });
 }
+//留学活动
+exports.activity = function (req, res, next) {
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+  var articleId = req.params.id;
+  var page =req.query.page || 1;
+  var order =req.query.article || 1;
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_info = ''
+  if ( req.cookies.login_ss !== undefined) {
+    console.log('aaaaaa');
+    data.login_info = JSON.parse(req.cookies.login_ss);
+    console.log('data.login_info', data.login_info);
+  }else{
+    data.login_info ={};
+    data.login_info.uid = 0;
+    //res.redirect(config.wwhost+'/login');
+    //return false;
+  }
+  async.parallel({
+    userinfo:function(callback){
+      wec.userinfo({
+        "u_id":data.login_info.uid, "to_uid":data.login_info.uid},callback);
+    },
+    activitylist:function (callback) {
+      cms.activity_list({"city_id":area,"page":"1","perpage":8},callback);
+    },
+    other_activitylist:function (callback) {
+      cms.other_activity_list({"city_id":area,"page":"1","perpage":30},callback);
+    }
+  }, function (err, result){
+    data.userinfo = returnData(result.userinfo,'userinfo');
+    data.activitylist = returnData(result.activitylist,'activitylist');
+    data.other_activitylist = returnData(result.other_activitylist,'other_activitylist');
+  /*  data.country=country;
+    data.route = 'team';
+    data.pageType = '文案团队';
+    data.path = 'TEAMDETAIL';
+    data.pageroute='team';*/
+    data.area=area;
+    data.tdk = {
+      pagekey: 'ACTIVITY', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    res.render('about/activity', data);
+
+  });
+}
+//活动底页
+exports.activity_detail = function (req, res, next){
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+  //node获取地址栏url
+  var activityId = req.params[1];
+
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_nickname = '';
+  if ( req.cookies.login_ss !== undefined) {
+    var login_a = JSON.parse(req.cookies.login_ss);
+    //log.debug("login_a-------" + login_a.nickname)
+    data.login_nickname = login_a;
+  }
+  async.parallel({
+    activitydetail: function (callback) {
+      cms.activity_detail({
+        "catid": 74,
+        "id":activityId,
+      }, callback);
+    },
+  }, function (err, result){
+    log.info(result)
+    data.pageroute="about";
+    data.activitydetail = returnData(result.activitydetail, 'activitydetail');
+    data.huodongdiye=data.activitydetail.list;
+    log.info('底页',data.huodongdiye)
+    data.tdk = {
+      pagekey: 'ACTIVITYDETAIL', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    data.esikey = esihelper.esikey();
+    res.render('about/activity_detail', data);
+
+  });
+}
 //企业文化
 exports.culture = function (req, res, next){
     var data = [];
