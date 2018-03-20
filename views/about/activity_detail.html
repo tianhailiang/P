@@ -56,7 +56,35 @@
     margin-bottom:10px;
 
   }
-
+  .pagination-box{
+    float: left;
+    position: relative;
+    left: 50%;
+    margin-top: 54px;
+    margin-bottom: 54px;
+  }
+  .banner-box{
+    margin-top: 20px;
+    height: 130px;
+    /*background-color: yellow;*/
+  }
+  .banner-box-left{
+    background: #dcdcdc;
+    height: 130px;
+  }
+  .banner-box-right{
+    background: #dcdcdc;
+    height: 130px;
+  }
+  .slider .slider-dot ul{
+    left:95%;
+  }
+  .slider .slider-dot ul li{
+    border-radius: 50%;
+  }
+  .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
+    margin-top: -33px
+  }
 </style>
 <script>
   var AD_PAGE_NAME = "ACTIVITYDETAIL";
@@ -67,13 +95,10 @@
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
 {{ new_nav_red.new_nav_red(tdk,helper) }}
-<div class="dui-layout-lg clearfix list-h">
-  <div class="dui-layout-con" id="AD_ACTIVITYDETAIL_SEAT1">
-  </div>
+<div class="dui-layout-lg clearfix banner-box">
+  <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
   <div class="dui-layout-div"></div>
-  <div class="dui-layout-silde" id="AD_ACTIVITYDETAIL_SEAT2">
-
-  </div>
+  <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
 </div>
 <div class="dui-layout-lg clearfix" style="margin-top: 20px">
   <div class="dui-layout-con dui-box-shadow">
@@ -155,6 +180,27 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-
+<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script>
+  $('.banner-box-left .slider').xSlider({
+    //轮播图配置
+//          autoplay : 500,
+    current: 0,
+    speed: 500,
+    intervalTime: 5000,
+    pagination: true
+  });
+  $('.banner-box-right .slider').xSlider({
+    //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+    current: 0,
+    speed: 1000,
+    intervalTime: 5000,
+    slidesPerView: 2,
+    slidesPerGroup: 2,
+    pagination: true
+  });
+</script>
 </body>
 </html>
