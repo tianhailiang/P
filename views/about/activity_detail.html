@@ -78,7 +78,7 @@
 <div class="dui-layout-lg clearfix" style="margin-top: 20px">
   <div class="dui-layout-con dui-box-shadow">
     <div class=" activity-detail">
-      <p class="tit"><i class="iconfont activity-home" style="font-size: 17px;">&#xe60d;</i>>><a target="_blank"  href="{{ helper.active_urlgen('activity') }}" class="activity-tit">留学活动</a>>><span class="activity-article">文章</span></p>
+      <p class="tit"><i class="iconfont activity-home" style="font-size: 17px;">&#xe60d;</i>>><a target="_blank"  href="{{ helper.active_urlgen('activity','c='+huodongdiye.hold_city) }}" class="activity-tit">留学活动</a>>><span class="activity-article">文章</span></p>
       <div class="wenda-zhuanchang">
         <h1 class="baiwen-baida">{{ huodongdiye.title | ellipsis(20)}}</h1>
         <span class="didian"><i class="iconfont activity-map">&#xe69d;</i>讲座地点：{{ huodongdiye.address_des | ellipsis(30)}}</span>
@@ -137,7 +137,7 @@
         <i></i>
         <h3>猜你喜欢</h3>
       </div>
-      {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+      {% esi helper.include(esikey,'fragment/guess_like','n='+huodongdiye.country,'c='+tdk.cityid) %}
     </div>
 
   </div>
