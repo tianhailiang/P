@@ -115,7 +115,9 @@
     border-radius: 5px;
     margin-left: 10px;
   }
-
+.booking span{
+  cursor: pointer;
+}
 </style>
 <script>
   var AD_PAGE_NAME = "ACTIVITY";
@@ -149,7 +151,7 @@
               <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time}}至{{item.end_time}}</span></li>
               <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}} </span></li>
               <li><i class="iconfont">&#xe662;</i><span>针对人群：{{item.crowd}} </span></li>
-              <li class="booking"><span onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')">立即预约</span></li>
+              <li class="booking"><span onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')" >立即预约</span></li>
             </ul>
           </div>
         </div>
