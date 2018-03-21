@@ -1,3 +1,8 @@
+.author-sel{padding:20px 20px 0 20px;background:#fff}
+.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
+.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
+.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
+.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:755px}
@@ -16,11 +21,6 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:32px}
-.author-sel{padding:20px 20px 0 20px;background:#fff}
-.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
-.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
-.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
-.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
@@ -1072,7 +1072,7 @@ form,input{margin:0;padding:0}
 #city-on{font-size:18px;padding:0 2px}
 .new_nav_first_white .new-city .icon-top{color:#C13232}
 .new_nav_first_red .new-city .icon-top{color:#fff}
-.new_nav_first .new-city .icon-top{font-size:20px;position:absolute;top:1px;left:-24px}
+.new_nav_first .new-city .icon-top{font-size:20px;position:absolute;top:1px;left:-24px;line-height:20px}
 .new_nav_first .new-city .city-cc{width:100px;height:21px;line-height:21px}
 .new_nav_first .new-city .city-cc i{display:block;float:left;width:31px;height:21px}
 .new_nav_first .new-city p{margin-top:15px;color:#C13232;font-size:24px;margin-left:-14px}
@@ -1097,7 +1097,7 @@ form,input{margin:0;padding:0}
 .new_nav_first .new-home-search .text-nav{width:245px;height:28px;line-height:28px;border:1px solid #dcdcdc;border-right:none;border-left:none;padding-left:10px;float:left;font-size:12px;outline-style:none;color:#999;background-color:#fff}
 .new_nav_first_white .new_nav_first .new-home-search .search-btn{background-color:#C13232}
 .new_nav_first_red .new_nav_first .new-home-search .search-btn{background-color:#821313}
-.new_nav_first .new-home-search .search-btn{width:44px;height:30px;float:right;border:none;outline-style:none;line-height:30px;text-align:center;*margin-top:-30px}
+.new_nav_first .new-home-search .search-btn{width:44px;height:30px;float:right;border:none;outline-style:none;line-height:30px;text-align:center}
 .new_nav_first .search-btn i{font-size:16px;color:#fff;line-height:30px}
 .new_nav_first .tags{width:300px;height:30px;margin-top:10px}
 .new_nav_first .tags span{font-size:12px}
