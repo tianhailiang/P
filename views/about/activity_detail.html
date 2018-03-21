@@ -47,9 +47,11 @@
     *margin-left: 10px;
   }
   .wenda-zhuanchang .baiwen-baida{
-    display: inline-block;
     font-weight: normal;
-    line-height: 22px;;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
   }
   .detail-con p{
     width: 740px;
@@ -85,6 +87,9 @@
   .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
     margin-top: -33px
   }
+  .detail-con em,.detail-con i{
+    font-style: italic;
+  }
 </style>
 <script>
   var AD_PAGE_NAME = "ACTIVITYDETAIL";
@@ -105,15 +110,14 @@
     <div class=" activity-detail">
       <p class="tit"><i class="iconfont activity-home" style="font-size: 17px;">&#xe60d;</i>>><a target="_blank"  href="{{ helper.active_urlgen('activity','c='+huodongdiye.hold_city) }}" class="activity-tit">留学活动</a>>><span class="activity-article">文章</span></p>
       <div class="wenda-zhuanchang">
-        <h1 class="baiwen-baida">{{ huodongdiye.title | ellipsis(20)}}</h1>
-        <span class="didian"><i class="iconfont activity-map">&#xe69d;</i>讲座地点：{{ huodongdiye.address_des | ellipsis(30)}}</span>
-        <p style="line-height: 54px;font-size: 14px;color:#666666;">活动时间：{{ huodongdiye.start_time }}</p>
+        <h1 class="baiwen-baida">{{ huodongdiye.title }}</h1>
+        <p style="line-height: 54px;font-size: 14px;color:#666666;"><span class="didian" style="line-height: 54px;*margin-top:0;"><i class="iconfont activity-map">&#xe69d;</i>讲座地点：{{ huodongdiye.address_des | ellipsis(40)}}</span>活动时间：{{ huodongdiye.start_time | shorten(-3)}}</p>
       </div>
       <div class="activity-time-tel">
 
         <div class="common-title common-title-left gray-bg" style="border:none;height: 40px;line-height: 40px;background: #f3f3f3">
           <i style="margin-left: 0;"></i>
-          <h4 style="margin-left: 10px;"><span class="activity-time">活动预约专线：{{ huodongdiye.telephone }}</span>
+          <h4 style="margin-left: 10px;"><span class="activity-time">活动预约专线：{{ huodongdiye.active_telephone }}</span>
             <span class="activity-tel"><a  href="javascript:void(0);" onclick="rand_zixun('{{  huodongdiye.country | getCountry }}',146,'{{huodongdiye.id}}')" class="dui-btn btn-xlarge btn-appointment zixun-btn" style="color: #ffffff;">立即咨询</a></span></h4>
         </div>
 
@@ -133,11 +137,11 @@
         </p>
         <p class="juban-crowd clearfix">
           <span class="juban-tit">开始时间：</span>
-          <span class="juban-di renqun">{{ huodongdiye.start_time }}</span>
+          <span class="juban-di renqun">{{ huodongdiye.start_time | shorten(-3) }}</span>
         </p>
         <p class="juban-crowd clearfix">
           <span class="juban-tit">结束时间：</span>
-          <span class="juban-di renqun">{{ huodongdiye.end_time}}</span>
+          <span class="juban-di renqun">{{ huodongdiye.end_time | shorten(-3)}}</span>
         </p>
         <div class="juban-con clearfix">
           <span class="juban-tit" style="width: 80px">主要内容：</span>
