@@ -13,9 +13,13 @@
   {{ common_nav.common_nav(tdk,helper) }}
   <!--轮播图广告-->
   <div class="dui-layout-lg clearfix banner-box">
-    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-silde banner-box-right">
+      {% include "widget/xSlider/xSlider.html" %}
+    </div>
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider2.html" %}</div>
+    <div class="dui-layout-con banner-box-left">
+      {% include "widget/xSlider/xSlider2.html" %}
+    </div>
   </div>
   <div class="dui-layout-lg clearfix dui-layout-padding" >
     <div class="dui-layout-silde">
@@ -39,10 +43,10 @@
           <h3>猜你喜欢</h3>
         </div>
         {% if userinfo.adviser_type == 1 %}
-        {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
-      {% else %}
-        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
-      {% endif %}
+          {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+        {% else %}
+          {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
+        {% endif %}
       </div>
       <div style="margin-top: 20px;" class="dui-box-shadow">
         <div class="common-title" style="border:1px solid #dcdcdc;">
@@ -51,14 +55,15 @@
         </div>
         {% if userinfo.adviser_type == 2 %}
           {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid,'uid='+userinfo.uid) %}
-      {% else %}
-        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
-      {% endif %}
+        {% else %}
+          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+        {% endif %}
       </div>
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con" >
-      <div class="adviser-case-detail-con" style="margin-top: 0" >
+      <div class="dui-box-shadow" >
+        <div class="adviser-case-detail-con" style="margin-top: 0;" >
           {% import "widget2/community_nav/community_nav.html" as community_nav %}
           {% if userinfo.status == 1 %} {#离职顾问#}
             {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
@@ -67,53 +72,50 @@
              {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
             {% endif %}
           {% endif %}
-            <div class="adviser-top clearfix" style="margin-top: 20px;">
-                <div style="float:left;line-height: 50px;" >
-                  <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
-                  </div>
-                  <span style="font-size: 14px;color:#333;">
-                    {{userinfo.realname}}<i class="adviser-v-i"></i>
-                  </span>
-                </div>
-                <div style="float:right;" >
-                  <div class="bdsharebuttonbox" style="margin-top: 15px;">
-                    <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
-                    <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
-                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
-                    <span class="art-report-btn" style="font-size: 12px;color:#333;cursor: pointer;" >举报</span>
-                  </div>
-                </div>
-            </div>
-            <div class="clearfix" >
-              <h1 class="adviser-case-detail-h3">
-                {{article.article_info.title}}
-              </h1>
-              <div class="art-tag">
-                <span class="art-tag-bg" ></span>
-                <span class="art-tag-list">{{article.article_info.tag_list}}</span>
+          <div class="adviser-top clearfix" style="margin-top: 20px;">
+            <div style="float:left;line-height: 50px;" >
+              <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
               </div>
-            </div>
-            <div class="adviser-case-detail-come" >
-              <span>时间：{{article.article_info.add_time}}</span>
-              <span style="float:right;margin-left:20px;">
-                点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
-              </span>
-              <span style="float:right;margin-left:20px;">
-                评论{{article.article_info.comments}}
-              </span>
-              <span style="float:right;margin-left:20px;">
-                收藏<i id="collection-num">{{article.article_info.favorites}}</i>
-              </span>
-              <span style="float:right;margin-left: 20px;">
-                阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
+              <span style="font-size: 14px;color:#333;">
+                {{userinfo.realname}}<i class="adviser-v-i"></i>
               </span>
             </div>
-            <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
-              {{article.article_info.message | safe}}
+            <div class="bdsharebuttonbox" style="margin-top: 15px;float:right;">
+              <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
+              <span class="art-report-btn" style="font-size: 12px;color:#333;cursor: pointer;" >举报</span>
             </div>
-          <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;
-  padding-bottom: 40px;">
+          </div>
+          <div class="clearfix" >
+            <h1 class="adviser-case-detail-h3">
+              {{article.article_info.title}}
+            </h1>
+            <div class="art-tag">
+              <span class="art-tag-bg" ></span>
+              <span class="art-tag-list">{{article.article_info.tag_list}}</span>
+            </div>
+          </div>
+          <div class="adviser-case-detail-come" >
+            <span>时间：{{article.article_info.add_time}}</span>
+            <span style="float:right;margin-left:20px;">
+              点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
+            </span>
+            <span style="float:right;margin-left:20px;">
+              评论{{article.article_info.comments}}
+            </span>
+            <span style="float:right;margin-left:20px;">
+              收藏<i id="collection-num">{{article.article_info.favorites}}</i>
+            </span>
+            <span style="float:right;margin-left: 20px;">
+              阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
+            </span>
+          </div>
+          <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
+            {{article.article_info.message | safe}}
+          </div>
+          <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;padding-bottom: 40px;">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}
               已收藏
@@ -135,7 +137,7 @@
           {% if userinfo.status == 0 %} 
             {% include "widget2/comment/comment.html" %}
           {% endif %}
-        </div>  
+        </div>
       </div>
     </div>
   </div>
@@ -274,24 +276,36 @@
       //文章举报
       report(this,1,city_id);
     });
-    // addWaterMarker('文章来源自金吉列')
-    // function addWaterMarker(str){
-    //   var can = document.createElement('canvas');
-    //   var body = document.getElementById('get-share-img');
-    //   body.appendChild(can);
-    //   can.width=500;
-    //   can.height=300;
-    //   can.style.display='none';
-    //   var cans = can.getContext('2d');
-    //   cans.rotate(-20*Math.PI/180);
-    //   cans.font = "16px Microsoft JhengHei"; 
-    //   cans.fillStyle = "rgba(17, 17, 17, 0.50)";
-    //   cans.textAlign = 'left'; 
-    //   cans.textBaseline = 'Middle';
-    //   cans.fillText(str,can.width/3,can.height/2);
-    //   body.style.backgroundImage="url("+can.toDataURL("image/png")+")";
-    //   }
+    watermark();
   })
+    function watermark() {
+      var oTemp = document.createDocumentFragment();
+      var mask_div = document.createElement('div');
+      mask_div.appendChild(document.createTextNode('文章来源自金吉列 www.jjl.cn 400-010-8000'));
+      //设置水印div倾斜显示
+      mask_div.style.webkitTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.MozTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.msTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.OTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.transform = "rotate(-" + 30 + "deg)";
+      mask_div.style.visibility = "";
+      mask_div.style.position = "absolute";
+      mask_div.style.left ='80px';
+      mask_div.style.top = '40%';
+      mask_div.style.overflow = "hidden";
+      mask_div.style.zIndex = "9999";
+      mask_div.style.opacity ="0.4";
+      mask_div.style.filter = "filter:Alpha(opacity=40)";
+      mask_div.style.fontSize = "30px";
+      mask_div.style.fontFamily = "微软雅黑";
+      mask_div.style.color = "#999";
+      mask_div.style.textAlign = "center";
+      mask_div.style.height ='80px';
+      mask_div.style.lineHeight='80px';
+      mask_div.style.display = "block";
+      oTemp.appendChild(mask_div);
+      document.getElementById('get-share-img').getElementsByTagName('p')[0].appendChild(oTemp);
+    }
   </script>
 </body>
 </html>

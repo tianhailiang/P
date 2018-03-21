@@ -58,6 +58,7 @@
   border-bottom: 1px solid #dcdcdc;
   padding-top:20px;
   padding-bottom: 40px;
+  position: relative;
 }
 .adviser-case-offer-h4{
   font-size: 16px;

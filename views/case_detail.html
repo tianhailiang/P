@@ -34,10 +34,10 @@
         <h3>猜你喜欢</h3>
       </div>
       {% if userinfo.adviser_type == 1 %}
-      {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
-    {% else %}
-      {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
-    {% endif %}
+        {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+      {% else %}
+        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
+      {% endif %}
     </div>
     <div style="margin-top: 20px;" class="dui-box-shadow">
       <div class="common-title" style="border:1px solid #dcdcdc;">
@@ -62,24 +62,22 @@
           {{community_nav.adviser_nav('案例',userinfo.uid,helper)}}
         {% endif %}
         <div class="adviser-top clearfix" style="margin-top: 20px;">
-            <div style="float:left;line-height: 50px;" >
-              <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover">
-              </div>
-              <span style="font-size: 14px;color:#333;">
-                {{userinfo.realname}}<i class="adviser-v-i"></i>
-              </span>
+          <div style="float:left;line-height: 50px;" >
+            <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover">
             </div>
-            <div style="float:right;" >
-              <div class="bdsharebuttonbox" style="margin-top: 15px;">
-                <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
-                <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
-                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
-                <span class="art-report-btn" style="font-size: 12px;color:#333;cursor: pointer;" data-artId ="{{article_id}}" >举报</span>
-              </div>
-            </div>
+            <span style="font-size: 14px;color:#333;">
+              {{userinfo.realname}}<i class="adviser-v-i"></i>
+            </span>
+          </div>
+          <div class="bdsharebuttonbox" style="margin-top: 15px;float:right;">
+            <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
+            <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
+            <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
+            <span class="art-report-btn" style="font-size: 12px;color:#333;cursor: pointer;" data-artId ="{{article_id}}" >举报</span>
+          </div>
         </div>
-       <div class="clearfix" >
+        <div class="clearfix" >
           <h1 class="adviser-case-detail-h3">
             {{article.article_info.title}}
           </h1>
@@ -106,8 +104,7 @@
         <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
           {{article.article_info.message | safe}}
         </div>
-        <div class="adviser-case-operation-bar clearfix" style="padding-top: 40px;
-  padding-bottom: 40px;">
+        <div class="adviser-case-operation-bar clearfix" style="padding-top: 40px;padding-bottom: 40px;">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}
               已收藏
@@ -124,7 +121,7 @@
               {% endif %}  
               </i>点赞</span> 
             <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}"  rel="nofollow">立即咨询</a>
-          </div>
+        </div>
         <!-- ========评论===== -->
         {% if userinfo.status == 0 %} 
           {% include "widget2/comment/comment.html" %}
@@ -162,17 +159,12 @@
 <script>
   $(function(){
       $('.banner-box-left .slider').xSlider({
-          //轮播图配置
-//          autoplay : 500,
           current: 0,
           speed: 500,
           intervalTime: 5000,
           pagination: true
       });
       $('.banner-box-right .slider').xSlider({
-          //轮播图配置
-//          autoplay : 500,
-//            mode:'vertical',
           current: 0,
           speed: 1000,
           intervalTime: 5000,
@@ -278,8 +270,36 @@
       //文章举报
       report(this,1);
     });
-   
+    watermark();
   })
+  function watermark() {
+      var oTemp = document.createDocumentFragment();
+      var mask_div = document.createElement('div');
+      mask_div.appendChild(document.createTextNode('文章来源自金吉列 www.jjl.cn 400-010-8000'));
+      //设置水印div倾斜显示
+      mask_div.style.webkitTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.MozTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.msTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.OTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.transform = "rotate(-" + 30 + "deg)";
+      mask_div.style.visibility = "";
+      mask_div.style.position = "absolute";
+      mask_div.style.left ='80px';
+      mask_div.style.top = '40%';
+      mask_div.style.overflow = "hidden";
+      mask_div.style.zIndex = "9999";
+      mask_div.style.opacity ="0.4";
+      mask_div.style.filter = "filter:Alpha(opacity=40)";
+      mask_div.style.fontSize = "30px";
+      mask_div.style.fontFamily = "微软雅黑";
+      mask_div.style.color = "#999";
+      mask_div.style.textAlign = "center";
+      mask_div.style.height ='80px';
+      mask_div.style.lineHeight='80px';
+      mask_div.style.display = "block";
+      oTemp.appendChild(mask_div);
+      document.getElementById('get-share-img').getElementsByTagName('p')[0].appendChild(oTemp);
+  }
 </script>
 </body>
 </html>
