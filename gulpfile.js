@@ -131,7 +131,12 @@ gulp.task('img',function(){
     .pipe(rev.manifest())
     .pipe(gulp.dest('dist/rev/img'));
 })
-
+gulp.task('revimg', function() {
+    //css，主要是针对img替换
+    return gulp.src(['dist/rev/img/rev-manifest.json', 'dist/public/assets/css/*.css'])
+        .pipe(revCollector())
+        .pipe(gulp.dest('dist/public/assets/css'));
+});
 //check fileinfo: rev-manifest.json in dist/rev,final replace js/css in html;
 gulp.task('revProduct',function(){
   return gulp.src(['dist/rev/**/*.json','views/**/*.html'])
@@ -162,4 +167,4 @@ gulp.task('minify_viewCount_js',function(){
 gulp.task('default', ['clean', 'minifycss', 'minifyjs']);
 
 // build version info in html
-gulp.task('build', gulpSequence('revClean', ['revCss', 'revJs','img'],'revProduct','distcopy','gif'));
+gulp.task('build', gulpSequence('revClean', ['revCss', 'revJs','img'],'revimg','revProduct','distcopy','gif'));
