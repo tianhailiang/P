@@ -161,7 +161,7 @@
           <div class="new-activity-item-con">
             <p class="description"><span>{{item.description | ellipsis(27)}}</span><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
             <ul>
-              <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time}}至{{item.end_time}}</span></li>
+              <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time | shorten(-3)}}至{{item.end_time | shorten(-3)}}</span></li>
               <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}} </span></li>
               <li><i class="iconfont">&#xe662;</i><span>针对人群：{{item.crowd}} </span></li>
               <li class="booking"><span onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')" >立即预约</span></li>
@@ -176,7 +176,7 @@
           <div class="new-activity-item-con">
             <p class="description"><span>{{item.description | ellipsis(27)}}</span><a href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
             <ul>
-              <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time}}至{{item.end_time}}</span></li>
+              <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time | shorten(-3)}}至{{item.end_time | shorten(-3)}}</span></li>
               <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}}  </span></li>
               <li><i class="iconfont">&#xe662;</i><span>针对人群：{{item.crowd}} </span></li>
               <li class="booking"><span onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')">立即预约</span></li>
@@ -227,7 +227,7 @@
 
 {% include "widget/new_footer/new_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
-{{slide.leyu_slide("AD_COUNSELLER_SEAT10",helper) }}
+{{slide.leyu_slide("AD_ACTIVITY_SEAT10",helper) }}
 </body>
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
