@@ -58,59 +58,61 @@
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con" >
-        <div class="adviser-case-detail-con" style="margin-top: 0" >
+      <div class="adviser-case-detail-con" style="margin-top: 0" >
           {% import "widget2/community_nav/community_nav.html" as community_nav %}
-            {% if userinfo.status == 1 %} {#离职顾问#}
-              {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
-            {% else %} {#在职顾问#}
-              {% if userinfo.usertype == 2 %}
-               {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
-              {% endif %}
+          {% if userinfo.status == 1 %} {#离职顾问#}
+            {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
+          {% else %} {#在职顾问#}
+            {% if userinfo.usertype == 2 %}
+             {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
             {% endif %}
-          <div class="adviser-top clearfix" style="margin-top: 20px;">
-            <div style="float:left;line-height: 50px;" >
-              <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
+          {% endif %}
+          <div id="copy-box" >
+            <div class="adviser-top clearfix" style="margin-top: 20px;">
+                <div style="float:left;line-height: 50px;" >
+                  <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
+                  </div>
+                  <span style="font-size: 14px;color:#333;">
+                    {{userinfo.realname}}<i class="adviser-v-i"></i>
+                  </span>
+                </div>
+                <div style="float:right;" >
+                  <div class="bdsharebuttonbox" style="margin-top: 15px;">
+                    <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
+                    <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
+                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
+                    <span class="art-report-btn" style="font-size: 12px;color:#333;cursor: pointer;" >举报</span>
+                  </div>
+                </div>
+            </div>
+            <div class="clearfix" >
+              <h1 class="adviser-case-detail-h3">
+                {{article.article_info.title}}
+              </h1>
+              <div class="art-tag">
+                <span class="art-tag-bg" ></span>
+                <span class="art-tag-list">{{article.article_info.tag_list}}</span>
               </div>
-              <span style="font-size: 14px;color:#333;">
-                {{userinfo.realname}}<i class="adviser-v-i"></i>
+            </div>
+            <div class="adviser-case-detail-come" >
+              <span>时间：{{article.article_info.add_time}}</span>
+              <span style="float:right;margin-left:20px;">
+                点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
+              </span>
+              <span style="float:right;margin-left:20px;">
+                评论{{article.article_info.comments}}
+              </span>
+              <span style="float:right;margin-left:20px;">
+                收藏<i id="collection-num">{{article.article_info.favorites}}</i>
+              </span>
+              <span style="float:right;margin-left: 20px;">
+                阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
               </span>
             </div>
-            <div style="float:right;" >
-              <div class="bdsharebuttonbox" style="margin-top: 15px;">
-                <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
-                <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
-                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
-                <span class="art-report-btn" style="font-size: 12px;color:#333;cursor: pointer;" >举报</span>
-              </div>
+            <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
+              {{article.article_info.message | safe}}
             </div>
-          </div>
-          <div class="clearfix" >
-            <h1 class="adviser-case-detail-h3">
-              {{article.article_info.title}}
-            </h1>
-            <div class="art-tag">
-              <span class="art-tag-bg" ></span>
-              <span class="art-tag-list">{{article.article_info.tag_list}}</span>
-            </div>
-          </div>
-          <div class="adviser-case-detail-come" >
-            <span>时间：{{article.article_info.add_time}}</span>
-            <span style="float:right;margin-left:20px;">
-              点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
-            </span>
-            <span style="float:right;margin-left:20px;">
-              评论{{article.article_info.comments}}
-            </span>
-            <span style="float:right;margin-left:20px;">
-              收藏<i id="collection-num">{{article.article_info.favorites}}</i>
-            </span>
-            <span style="float:right;margin-left: 20px;">
-              阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
-            </span>
-          </div>
-          <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
-            {{article.article_info.message | safe}}
           </div>
           <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;
   padding-bottom: 40px;">
@@ -273,6 +275,15 @@
     $('.art-report-btn').on('click',function(){
       //文章举报
       report(this,1,city_id);
+    });
+    document.getElementById('copy-box').addEventListener("copy",function(event){ 
+      var para=document.createElement("div");
+      var node=document.createTextNode("本文的原著作者来自金吉列");
+      para.appendChild(node);
+      console.log(event)
+      console.log(event.returnValue)
+      event.currentTarget.appendChild(para);
+      // console.log( event.currentTarget.innerHTML)
     });
 
   })
