@@ -139,13 +139,12 @@
 }
 
 .bdshare-button-style0-16 a{
-     padding-left:0; 
+     padding-left:0 !important;
     width: 20px;
-    line-height: 20px;
-    height: 20px;
+    line-height: 20px !important;
+    height: 20px !important;
     cursor: pointer;
-    margin:0;
-    margin-right: 10px;
+    margin: 0px 10px 10px 0!important;
 }
 .bdshare-button-style0-16 .wx{
   background:url(../img/wx.png) no-repeat 0 0 !important;
