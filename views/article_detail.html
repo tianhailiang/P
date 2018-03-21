@@ -67,7 +67,6 @@
              {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
             {% endif %}
           {% endif %}
-          <div id="copy-box" >
             <div class="adviser-top clearfix" style="margin-top: 20px;">
                 <div style="float:left;line-height: 50px;" >
                   <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
@@ -113,7 +112,6 @@
             <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
               {{article.article_info.message | safe}}
             </div>
-          </div>
           <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;
   padding-bottom: 40px;">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
@@ -276,16 +274,23 @@
       //文章举报
       report(this,1,city_id);
     });
-    document.getElementById('copy-box').addEventListener("copy",function(event){ 
-      var para=document.createElement("div");
-      var node=document.createTextNode("本文的原著作者来自金吉列");
-      para.appendChild(node);
-      console.log(event)
-      console.log(event.returnValue)
-      event.currentTarget.appendChild(para);
-      // console.log( event.currentTarget.innerHTML)
-    });
-
+    addWaterMarker('文章来源自金吉列')
+    function addWaterMarker(str){
+      var can = document.createElement('canvas');
+      var body = document.getElementById('get-share-img');
+      body.appendChild(can);
+      can.width=500;
+      can.height=300;
+      can.style.display='none';
+      var cans = can.getContext('2d');
+      cans.rotate(-20*Math.PI/180);
+      cans.font = "16px Microsoft JhengHei"; 
+      cans.fillStyle = "rgba(17, 17, 17, 0.50)";
+      cans.textAlign = 'left'; 
+      cans.textBaseline = 'Middle';
+      cans.fillText(str,can.width/3,can.height/2);
+      body.style.backgroundImage="url("+can.toDataURL("image/png")+")";
+      }
   })
   </script>
 </body>
