@@ -127,6 +127,138 @@ exports.lawyer = function (req, res, next) {
 
   });
 }
+//留学活动
+exports.activity = function (req, res, next) {
+  var data = [];
+  var area = 1;
+  if (req.params[0]) {
+    var cityId = comfunc.getCityId(req.params[0]);
+    if(cityId && cityId !== comfunc.INVALID_ID){
+      area = cityId;
+      res.cookie("currentarea", cityId, {domain: config.domain});
+    }
+  }
+  var country = req.query.n || 0;
+  var articleId = req.params.id;
+  var page =req.query.page || 1;
+  var order =req.query.article || 1;
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_info = ''
+  if ( req.cookies.login_ss !== undefined) {
+    console.log('aaaaaa');
+    data.login_info = JSON.parse(req.cookies.login_ss);
+    console.log('data.login_info', data.login_info);
+  }else{
+    data.login_info ={};
+    data.login_info.uid = 0;
+    //res.redirect(config.wwhost+'/login');
+    //return false;
+  }
+  async.parallel({
+    userinfo:function(callback){
+      wec.userinfo({
+        "u_id":data.login_info.uid, "to_uid":data.login_info.uid},callback);
+    },
+    activitylist:function (callback) {
+      cms.activity_list({"city_id":area,"page":"1","perpage":8},callback);
+    },
+    other_activitylist:function (callback) {
+      cms.other_activity_list({"city_id":area,"page":"1","perpage":30},callback);
+    }
+  }, function (err, result){
+    data.userinfo = returnData(result.userinfo,'userinfo');
+    data.activitylist = returnData(result.activitylist,'activitylist');
+    data.other_activitylist = returnData(result.other_activitylist,'other_activitylist');
+  /*  data.country=country;
+    data.route = 'team';
+    data.pageType = '文案团队';
+    data.path = 'TEAMDETAIL';
+    data.pageroute='team';*/
+    data.area=area;
+    data.tdk = {
+      pagekey: 'ACTIVITY', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    res.render('about/activity', data);
+
+  });
+}
+//活动底页
+exports.activity_detail = function (req, res, next){
+  var data = [];
+  var area = 1;
+  var urlcity=''
+  if (req.params[0]) {
+    var cityId = comfunc.getCityId(req.params[0]);
+    if(cityId && cityId !== comfunc.INVALID_ID){
+      urlcity = cityId;
+    }
+  }
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+  //node获取地址栏url
+  var activityId = req.params[1];
+
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_nickname = '';
+  if ( req.cookies.login_ss !== undefined) {
+    var login_a = JSON.parse(req.cookies.login_ss);
+    //log.debug("login_a-------" + login_a.nickname)
+    data.login_nickname = login_a;
+  }
+  async.parallel({
+    lunbo_list:function(callback) {
+      cms.lunbo_list({
+        "ad_page": 'ACTIVITYDETAIL',
+        "cityid":area,
+        "ad_seat": "SEAT1"
+      }, callback);
+    },
+    lunbo_list2:function(callback) {
+      cms.lunbo_list({
+        "ad_page": 'ACTIVITYDETAIL',
+        "cityid":area,
+        "ad_seat": "SEAT2"
+      }, callback);
+    },
+    activitydetail: function (callback) {
+      cms.activity_detail({
+        "catid": 74,
+        "id":activityId,
+      }, callback);
+    },
+  }, function (err, result){
+    data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+    data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+    data.activitydetail = returnData(result.activitydetail, 'activitydetail');
+    if(err || result.activitydetail.code != 0 || result.activitydetail.data.list.hold_city != urlcity){
+      next()
+    }
+    data.huodongdiye=data.activitydetail.list;
+    data.tdk = {
+      pagekey: 'ACTIVITYDETAIL', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    data.esikey = esihelper.esikey();
+    res.render('about/activity_detail', data);
+
+  });
+}
 //企业文化
 exports.culture = function (req, res, next){
     var data = [];
@@ -471,7 +603,7 @@ exports.culture_detail = function (req, res, next){
     data.culture_detail = returnData(result.culture_detail, 'culture_detail');
     log.info(data.culture_detail)
     data.tdk = {
-      pagekey: 'PROFILE', //key
+      pagekey: 'CULTURE_DETAIL', //key
       cityid: area, //cityid
       nationid: country//nationi
     };

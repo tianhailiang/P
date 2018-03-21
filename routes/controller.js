@@ -46,7 +46,7 @@ function get_page_key(usertype, adviser_type, page_key) {
 exports.index = function (req, res, next) {
     console.log('branch_home',helperfunc.urlgen('branch_home','c='+req.cookies.currentarea))
     if (req.cookies.currentarea) {
-        res.cookie("currentareast", comfunc.getCityEn(req.cookies.currentarea), {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
+        res.cookie("currentareast", comfunc.getCityEn(req.cookies.currentarea), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
         res.redirect(helperfunc.urlgen('branch_home','c='+req.cookies.currentarea));
         return false;
     }
@@ -55,8 +55,8 @@ exports.index = function (req, res, next) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
             area = cityId;
-            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
-            res.cookie("currentarea", cityId, {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentarea", cityId, {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
         }
     }
     var data = [];
@@ -118,8 +118,8 @@ exports.index_page = function (req, res, next) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
             area = cityId;
-            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
-            res.cookie("currentarea", cityId, {domain: '.jjl.cn',expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentarea", cityId, {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
         }
     }
     var data = [];
@@ -292,9 +292,9 @@ exports.so_adviser = function (req, res, next) {
                 "ad_seat": "SEAT2"
             }, callback);
         },
-        so_article_list:function(callback) {
-            cms.so_article_list({
-                order: order,
+        so_adviser_list:function(callback) {
+            cms.so_adviser_list({
+                // order: order,
                 key_word:encodeURI(keyword),
                 city_id:area,
                 "per_page": "16",
@@ -310,7 +310,7 @@ exports.so_adviser = function (req, res, next) {
             }, callback)
         }
     }, function (err, result) {
-        data.article_list = returnData(result.so_article_list,'so_article_list');
+        data.so_adviser_list = returnData(result.so_adviser_list,'so_adviser_list');
         data.likelist = returnData(result.guess_like,'guess_like');
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -323,13 +323,91 @@ exports.so_adviser = function (req, res, next) {
             keywords: keyword
         };
         data.pagination = {
-            pages:Number.parseInt(data.article_list.totalpage),
+            pages:Number.parseInt(data.so_adviser_list.totalpage),
             hrefFormer:helperfunc.paramurlgen('so_advisor','q='+keyword,'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
         console.log('aaaaa333~~', helperfunc.paramurlgen('so_advisor','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_adviser', data);
+
+    });
+};
+//移民顾问搜索页
+exports.so_adviser_yimin = function (req, res, next) {
+    log.debug('搜索结果顾问');
+    var data = {};
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
+    }
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
+    var order = nquery && nquery.order ? nquery.order : "score";
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "YIMIN_SEARCHNEWS",
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "YIMIN_SEARCHNEWS",
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
+        so_adviser_list:function(callback) {
+            cms.so_adviser_list({
+                // order: order,
+                key_word:encodeURI(keyword),
+                city_id:area,
+                "per_page": "16",
+                "page": page
+            }, callback);
+        },
+        guess_like: function (callback) {
+            cms.channel_list({
+                order: 'comments desc',
+                city_id:area,
+                "per_page": "10",
+                "page": 1
+            }, callback)
+        }
+    }, function (err, result) {
+        data.so_adviser_list = returnData(result.so_adviser_list,'so_adviser_list');
+        data.likelist = returnData(result.guess_like,'guess_like');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.order = order;
+        data.keyword=keyword;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'YIMIN_SEARCHNEWS', //key
+            cityid: area,
+            keywords: keyword
+        };
+        data.pagination = {
+            pages:Number.parseInt(data.so_adviser_list.totalpage),
+            hrefFormer:helperfunc.paramurlgen('yimin_so_advisor','q='+keyword,'order='+order,'page='),
+            currentPage:Number.parseInt(page)
+        }
+        console.log('aaaaa333~~', helperfunc.paramurlgen('yimin_so_advisor','order='+order,'page=2'))
+        data.esikey = esihelper.esikey();
+        res.render('so_adviser_yimin', data);
 
     });
 };
@@ -1880,12 +1958,17 @@ exports.adviser_main = function (req, res, next) {
     },callback)
     },
     xiangguan_guwen:function (callback){ //相关顾问
-      wec.xiangguan_guwen({
-        "country_id":1,
-        "city_id":1,
-        "per_page":5
-    },callback)
-    },
+          wec.xiangguan_guwen({
+              "country_id":1,
+              "city_id":1,
+              "per_page":5
+          },callback)
+      },
+      canzan_jianjie:function (callback){ //相关顾问
+          cms.canzan_jianjie({
+              "uid":data.uid
+          },callback)
+      },
   },function(err, result){
       // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
       // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -1895,11 +1978,13 @@ exports.adviser_main = function (req, res, next) {
       next()
       return false;
     }
+    data.canzan_jianjie = returnData(result.canzan_jianjie, 'canzan_jianjie');
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
     data.likelist = returnData(result.likelist,'likelist');
     data.xiangguan_guwen = returnData(result.xiangguan_guwen,'xiangguan_guwen');
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
+      log.info(data.canzan_jianjie)
     var pagekey = '';
     pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_MAIN');
       async.parallel({
@@ -3436,7 +3521,7 @@ exports.yiminHome = function (req, res, next) {
         var cityId = comfunc.getCityId(req.params[0]);
         if(cityId && cityId !== comfunc.INVALID_ID){
             area = cityId;
-            res.cookie("currentarea", cityId, {domain: '.jjl.cn'});
+            res.cookie("currentarea", cityId, {domain: config.domain});
         }
     }
     var data = [];

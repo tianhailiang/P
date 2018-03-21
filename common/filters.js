@@ -13,6 +13,11 @@ var customFilters = {
           return str.slice(0, count || 5);
       }
   },
+  sliceShorten: function(str,start, count) {
+    if (str) {
+      return str.slice(start, count);
+    }
+  },
   //显示一定长度的字符，超过一定长度显示省略号
   ellipsis: function (str, count) {
     var resultStr = '';

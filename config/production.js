@@ -8,6 +8,7 @@ const redisCache = {
   "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
   "port":6379
 };
+var domain = '.jjl.cn';
 var wwhost = 'http://www.jjl.cn';
 var yiminhost = 'http://yimin.jjl.cn';
 var cdnhost = 'http://cdn4.jjl.cn';
@@ -238,10 +239,20 @@ var apis = {
   //顾问主页 个人视角
   //get_so_article_list
   "get_so_article_list": shequ_prefix + 'search/search_article/',
+  //搜索结果页（顾问）
+  "get_so_adviser_adviser": shequ_prefix + 'search/search_adviser/',
   //根据ip 获取城市code码
   "get_ip_geter":prefix + 'ip_geter',
   //金色力量底页
-  "get_culture_detail":prefix + 'detail'
+  "get_culture_detail":prefix + 'detail',
+  //新活动列表
+  "get_activity_list":prefix+'activity_list',
+  //其他城市活动列表
+  "get_other_activity_list":prefix+'other_activity_list',
+  //新活动底页
+  "get_activity_detail":prefix+'detail',
+  //参赞介绍
+  "get_user_description":shequ_prefix + 'account/get_user_description/'
 };
 module.exports = {
   redisCache: redisCache,
@@ -249,5 +260,6 @@ module.exports = {
   wwhost: wwhost,
   cdnhost: cdnhost,
   imageshost: imageshost,
-  yiminhost: yiminhost
+  yiminhost: yiminhost,
+  domain: domain
 };

@@ -143,10 +143,12 @@ function active_urlgen(){
       }
     }
   }
-  url += ((city && city != 0)?"/"+city:"") + chan + param;
-
+  url += ((city && city != 0)?"/"+city:"") + chan + param+'.html';
+  if(!exits_static_page(chan + param + ".html")){
+    url = url.replace(/\.html/g, "");
+  }
   if (config.version == 'development') { //如果是開發環境
-    url = config.wwhost + ':3000' + url;//web
+    url = config.wwhost + ':4000' + url;//web
   }
   return url;
 }
@@ -276,7 +278,7 @@ function exits_static_page(path) {
   var yimin_list_reg = path.match(/^\/(news|interpret|activity|case).html$/g);
 
   var schoolrank_list = path.match(/^\/(schoolrank)[0-9A-Za-z\-_/]*.html$/g);
-  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article)(.*).html$/g);
+  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article|yimin_so_advisor)(.*).html$/g);
   if((reg_list || so_reg || so_center || yimin_reg || yimin_list_reg || schoolrank_list || so_pigination || edu) && !rank){
     return false;
   }

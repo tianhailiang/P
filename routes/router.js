@@ -11,6 +11,8 @@ exports = module.exports = function (app) {// routes
   app.get(/^\/so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article);
   //顾问搜索页
   app.get(/^\/so_advisor(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_adviser);
+  //移民顾问搜索页
+  app.get(/^\/yimin_so_advisor(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_adviser_yimin);
   //移民搜索页
   app.get(/^\/yimin_so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article_yimin);
   //社区首页
@@ -187,6 +189,8 @@ exports = module.exports = function (app) {// routes
   app.get('/canzan', about.canzan);
   //海外律师团队
   app.get('/lawyer', about.lawyer);
+  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|gc|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wc|wx|wz|xa|sm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)((?![0-9])[0-9A-Za-z\-_]*)$/, about.activity);
+  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|gc|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wc|wx|wz|xa|sm|xz|xn|xj|yt|yc|ych|zz)\/activity\/(\d+)/, about.activity_detail);
   //关于我们
   app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化

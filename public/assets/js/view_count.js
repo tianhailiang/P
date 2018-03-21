@@ -18,7 +18,7 @@ function article_count (token,catid,articleid,uuid) {
         success:function(res){
             if (res.code == 0) {
                 $('#detail_views_num').html(res.data.num);
-                $.cookie('uuid', res.data.uuid,{ path: "/",domain: '.jjl.cn'});
+                $.cookie('uuid', res.data.uuid,{ path: "/",domain: js_api_config.domain});
             }
         }
     });

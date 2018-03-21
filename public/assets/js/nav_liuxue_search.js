@@ -80,7 +80,7 @@ $('.citys-box').on('click',"a", function(e){
     var date = new Date();
     date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
     console.log('date',date)
-    $.cookie('currentarea', currentarea, { path: '/',domain: '.jjl.cn',expires: 36500});
+    $.cookie('currentarea', currentarea, { path: '/',domain: js_api_config.domain,expires: 36500});
     //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
     // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).attr("href");
@@ -133,7 +133,7 @@ $('#page-search-type input[name="page-search-type"]').on('click',function () {
     if (chooseType == '文章') {
         $("#search-page").val('请输入您感兴趣的文章关键词');
     }
-    else if (chooseType == '文章') {
+    else if (chooseType == '顾问') {
         $("#search-page").val('请输入您感兴趣的顾问姓名');
     }
 });

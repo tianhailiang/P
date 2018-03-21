@@ -1,13 +1,13 @@
 
-{% for item in article_list.list %}
+{% for item in so_adviser_list.list %}
 <div class="so_advisor_warp">
   <div class="so_advisor_top">
-    <a target="_blank" href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="so_advisor_img" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div></a>
-    <p>{{item.user_info.realname | shorten(4)}}<img src="../assets/img/1v.png" alt="" class="flag"/><span style="margin-left: 15px">{{ item.user_info.position_name if item.user_info.position_name else '咨询顾问'
+    <a target="_blank" href="{{helper.urlgen(item.id | string)}}"><div class="so_advisor_img" style="background-image: url({{helper.avaterimg(item.id, 'small', 0,item.version)}})"></div></a>
+    <p>{{item.realname | shorten(4)}}<img src="../assets/img/1v.png" alt="" class="flag"/><span style="margin-left: 15px">{{ item.position_name if item.position_name else '咨询顾问'
 }}</span></p>
-    <div class="so_advisor_top_right"><a style="color: #FFFFFF" onclick="openchat_new('{{ item.user_info.job_number}}')">我要咨询</a></div>
+    <div class="so_advisor_top_right"><a style="color: #FFFFFF" onclick="openchat_new('{{ item.job_number}}')">我要咨询</a></div>
   </div>
-  <div class="so_advisor_bottom" style="text-align: justify"><p>{{ item.user_info.introduce | ellipsis(80) }}<a target="_blank" href="{{helper.urlgen(item.user_info.uid | string)}}">【看看TA的主页】</a></p></div>
+  <div class="so_advisor_bottom" style="text-align: justify"><p>{{ item.introduce | ellipsis(80) }}<a target="_blank" href="{{helper.urlgen(item.id | string)}}">【看看TA的主页】</a></p></div>
 </div>
 {% endfor %}
 <script>
