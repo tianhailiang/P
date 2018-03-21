@@ -124,6 +124,13 @@ gulp.task('revJs',function(){
     .pipe(rev.manifest())
     .pipe(gulp.dest('dist/rev/js'));
 });
+gulp.task('img',function(){
+  return gulp.src(['public/assets/img/*','!' + 'public/assets/img/gif/{,/**}'])
+    .pipe(rev())
+    .pipe(gulp.dest('dist/public/assets/img'))
+    .pipe(rev.manifest())
+    .pipe(gulp.dest('dist/rev/img'));
+})
 
 //check fileinfo: rev-manifest.json in dist/rev,final replace js/css in html;
 gulp.task('revProduct',function(){
@@ -132,10 +139,13 @@ gulp.task('revProduct',function(){
     .pipe(gulp.dest('dist/views'));
 });
 gulp.task('distcopy', function(cb) {
-  return gulp.src(['public/**/*','!' + 'public/assets/css{,/**}','!' + 'public/assets/js{,/**}'])
+  return gulp.src(['public/**/*','!' + 'public/assets/css{,/**}','!' + 'public/assets/js{,/**}','!' + 'public/assets/img{,/**}'])
     .pipe(gulp.dest('dist/public'));
 });
-
+gulp.task('gif', function(cb) {
+  return gulp.src('public/assets/img/gif/*')
+    .pipe(gulp.dest('dist/public/assets/img/gif/'));
+});
 gulp.task('revClean', function(cb) {
   return del([ 'dist/rev/*','dist/views/*','dist/public/*'], cb)
 });
@@ -152,4 +162,4 @@ gulp.task('minify_viewCount_js',function(){
 gulp.task('default', ['clean', 'minifycss', 'minifyjs']);
 
 // build version info in html
-gulp.task('build', gulpSequence('revClean', ['revCss', 'revJs'],'revProduct','distcopy'));
+gulp.task('build', gulpSequence('revClean', ['revCss', 'revJs','img'],'revProduct','distcopy','gif'));
