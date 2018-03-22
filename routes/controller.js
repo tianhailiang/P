@@ -325,10 +325,9 @@ exports.so_adviser = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.so_adviser_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_advisor','q='+keyword,'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('so_advisor','q='+keyword,order ? 'order='+order : '','page='),
             currentPage:Number.parseInt(page)
         }
-        console.log('aaaaa333~~', helperfunc.paramurlgen('so_advisor','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_adviser', data);
 
@@ -404,10 +403,9 @@ exports.so_adviser_yimin = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.so_adviser_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('yimin_so_advisor','q='+keyword,'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('yimin_so_advisor','q='+keyword,order ? 'order='+order : '','page='),
             currentPage:Number.parseInt(page)
         }
-        console.log('aaaaa333~~', helperfunc.paramurlgen('yimin_so_advisor','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_adviser_yimin', data);
 

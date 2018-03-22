@@ -267,7 +267,7 @@
             {% else %}
             <div class="has-result">
                 <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=')}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
                     <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=fans_count')}}" {% if order == 'fans_count' %}class="active"{% else %}{% endif %}>粉丝数</a>
                     <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=article_count')}}" {% if order == 'article_count' %}class="active"{% else %}{% endif %}>文章数</a>
                 </div>
