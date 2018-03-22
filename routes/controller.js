@@ -280,14 +280,14 @@ exports.so_adviser = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "SEARCH_ARTICLE",
+                "ad_page": "SEARCHADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "SEARCH_ARTICLE",
+                "ad_page": "SEARCHADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
@@ -359,14 +359,14 @@ exports.so_adviser_yimin = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "YIMIN_SEARCHNEWS",
+                "ad_page": "YIMIN_SEARCHADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "YIMIN_SEARCHNEWS",
+                "ad_page": "YIMIN_SEARCHADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
