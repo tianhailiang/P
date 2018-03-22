@@ -44,6 +44,9 @@ $("#searchBtn").click(function () {
 });
 $(document).keyup(function(event){
     if(event.keyCode ==13){
-        $("#searchBtn").trigger("click");
+        var curIdName = document.activeElement.id;
+        if (curIdName == 'search') { //顶部搜索框
+            $("#searchBtn").trigger("click");
+        }
     }
 });
