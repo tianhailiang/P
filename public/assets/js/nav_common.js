@@ -42,3 +42,8 @@ $("#searchBtn").click(function () {
         window.open(fn.no_urlgen(getSoUrl(so_type,'文章'), 'q=' + so_key_word));
     }
 });
+$(document).keyup(function(event){
+    if(event.keyCode ==13){
+        $("#searchBtn").trigger("click");
+    }
+});
