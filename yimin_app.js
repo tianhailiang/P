@@ -53,9 +53,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false,limit:"2048kb" }));
 app.use(cookieParser());
 
-app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
-app.use('/dep', express.static(path.join(__dirname, 'public/dep')));
-app.use('/views', express.static(path.join(__dirname, 'views')));
+if(process.env.NODE_ENV == 'development'){
+  app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
+  app.use('/dep', express.static(path.join(__dirname, 'public/dep')));
+}else if(process.env.NODE_ENV == 'production'){
+  app.use('/assets', express.static(path.join(__dirname, 'dist/public/assets')));
+  app.use('/dep', express.static(path.join(__dirname, 'dist/public/dep')));
+}
 router(app);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

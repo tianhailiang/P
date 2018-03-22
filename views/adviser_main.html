@@ -50,9 +50,9 @@
         <h3>猜你喜欢</h3>
       </div>
       {% if userinfo.adviser_type == 1 %}
-        {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+        {% esi helper.include(esikey,'fragment/guess_like','n='+userinfo.country,'c='+userinfo.organid) %}
       {% else %}
-        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
+        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+userinfo.country,'c='+userinfo.organid) %}
       {% endif %}
     </div>
     {% endif %}
@@ -61,10 +61,14 @@
         <i></i>
         <h3>相关顾问</h3>
       </div>
-      {% if userinfo.adviser_type == 2 %}
-        {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid,'uid='+userinfo.uid) %}
-      {% else %}
-        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
+      {% if userinfo.usertype==2 %}
+        {% if userinfo.adviser_type == 2 %}
+          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
+        {% else %}
+          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid) %}
+        {% endif %}
+      {% elseif userinfo.usertype==3 %}
+        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c=1') %}
       {% endif %}
     </div>
   </div>
