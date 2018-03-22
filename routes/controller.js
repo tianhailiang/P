@@ -271,7 +271,7 @@ exports.so_adviser = function (req, res, next) {
     var nquery = comfunc.getReqQuery(req.params[1]);
     var page = nquery && nquery.page ? nquery.page : 1;
     var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    var order = nquery && nquery.order ? nquery.order : "score";
+    var order = nquery && nquery.order ? nquery.order : "";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -280,23 +280,24 @@ exports.so_adviser = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "SEARCH_ARTICLE",
+                "ad_page": "SEARCHADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "SEARCH_ARTICLE",
+                "ad_page": "SEARCHADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
         },
         so_adviser_list:function(callback) {
             cms.so_adviser_list({
-                // order: order,
+                order: order,
                 key_word:encodeURI(keyword),
                 city_id:area,
+                "adviser_type":"1",
                 "per_page": "16",
                 "page": page
             }, callback);
@@ -318,16 +319,15 @@ exports.so_adviser = function (req, res, next) {
         data.keyword=keyword;
         data.cur_page = page;
         data.tdk = {
-            pagekey: 'SEARCHNEWS', //key
+            pagekey: 'SEARCHADVISER', //key
             cityid: area,
             keywords: keyword
         };
         data.pagination = {
             pages:Number.parseInt(data.so_adviser_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_advisor','q='+keyword,'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('so_advisor','q='+keyword,order ? 'order='+order : '','page='),
             currentPage:Number.parseInt(page)
         }
-        console.log('aaaaa333~~', helperfunc.paramurlgen('so_advisor','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_adviser', data);
 
@@ -349,7 +349,7 @@ exports.so_adviser_yimin = function (req, res, next) {
     var nquery = comfunc.getReqQuery(req.params[1]);
     var page = nquery && nquery.page ? nquery.page : 1;
     var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    var order = nquery && nquery.order ? nquery.order : "score";
+    var order = nquery && nquery.order ? nquery.order : "";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -358,23 +358,24 @@ exports.so_adviser_yimin = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "YIMIN_SEARCHNEWS",
+                "ad_page": "YIMIN_SEARCHADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "YIMIN_SEARCHNEWS",
+                "ad_page": "YIMIN_SEARCHADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
         },
         so_adviser_list:function(callback) {
             cms.so_adviser_list({
-                // order: order,
+                order: order,
                 key_word:encodeURI(keyword),
                 city_id:area,
+                "adviser_type":"2",
                 "per_page": "16",
                 "page": page
             }, callback);
@@ -396,16 +397,15 @@ exports.so_adviser_yimin = function (req, res, next) {
         data.keyword=keyword;
         data.cur_page = page;
         data.tdk = {
-            pagekey: 'YIMIN_SEARCHNEWS', //key
+            pagekey: 'YIMIN_SEARCHADVISER', //key
             cityid: area,
             keywords: keyword
         };
         data.pagination = {
             pages:Number.parseInt(data.so_adviser_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('yimin_so_advisor','q='+keyword,'order='+order,'page='),
+            hrefFormer:helperfunc.paramurlgen('yimin_so_advisor','q='+keyword,order ? 'order='+order : '','page='),
             currentPage:Number.parseInt(page)
         }
-        console.log('aaaaa333~~', helperfunc.paramurlgen('yimin_so_advisor','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_adviser_yimin', data);
 
