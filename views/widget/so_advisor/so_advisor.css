@@ -27,11 +27,6 @@
     -webkit-background-size: cover;
     background-size: cover;
 }
-.so_advisor_top p{
-    float: left;
-    margin-top: 38px;
-    color: #666;
-}
 .flag{
     margin-left: 4px;
     margin-top: -3px;
@@ -45,7 +40,7 @@
     color: #fff;
     float: right;
     margin-right: 20px;
-    margin-top: 35px;
+    margin-top: 20px;
     font-size: 14px;
 }
 .so_advisor_bottom{
@@ -57,4 +52,20 @@
 }
 .so_advisor_bottom p a{
     color: #c13232;
+}
+.so_advisor_top_name{
+    float: left;
+}
+.so_advisor_top_position_name{
+    margin-top: 25px;
+    font-size: 14px;
+    color: #666;
+}
+.so_advisor_top_fans{
+    margin-top: 8px;
+    font-size: 14px;
+    color: #666;
+}
+.so_advisor_top_fans span{
+    padding: 0 5px;
 }
