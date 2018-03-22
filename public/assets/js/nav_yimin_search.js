@@ -43,10 +43,12 @@ $("#searchBtn").click(function () {
 $('#page-search-type input[name="page-search-type"]').on('click',function () {
     var chooseType = $(this).val();
     if (chooseType == '文章') {
-        $("#search-page").val('请输入您感兴趣的文章关键词');
+        $("#search-page").val('');
+        $("#search-page").attr('placeholder','请输入您感兴趣的文章关键词');
     }
     else if (chooseType == '顾问') {
-        $("#search-page").val('请输入您感兴趣的顾问姓名');
+        $("#search-page").val('');
+        $("#search-page").attr('placeholder','请输入您感兴趣的顾问姓名');
     }
 });
 $("#searchBtn-page").click(function () {
@@ -54,7 +56,7 @@ $("#searchBtn-page").click(function () {
     var so_type = $('#page-search-type input[name="page-search-type"]:checked ').val();
     if (so_key_word.length == 0 || so_key_word == '请输入你想了解的关键字') {
         alert('请输入你想了解的关键词');
-        $('#search').focus();
+        $('#search-page').focus();
     }
     else {
         window.open(fn.no_urlgen(getSoUrl('移民',so_type), 'q=' + so_key_word));
