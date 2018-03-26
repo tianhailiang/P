@@ -4,11 +4,10 @@
 $(function() {
     $(window).on('scroll', function () {
         var $scroll = $(this).scrollTop();
-        console.log('$scroll',$scroll);
         if ($scroll >= 470) {
-            $('.detail_bar').slideDown();
+            $('.detail_bar').show();
         } else {
-            $('.detail_bar').slideUp();
+            $('.detail_bar').hide();
         }
     });
 })
