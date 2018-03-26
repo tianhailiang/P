@@ -27,7 +27,7 @@
     white-space: nowrap;
 }
 .detail_bar .detail_bar_in .bar_options {
-    width: 286px;
+    /*width: 286px;*/
     float: right;
 }
 .detail_bar .detail_bar_in .bar_options .share_buttons {
