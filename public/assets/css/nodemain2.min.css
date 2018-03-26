@@ -25,36 +25,6 @@
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
 
-.saytext-box{position:relative}
-.saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
-.sub-btn-box{margin-top:20px;margin-bottom:20px}
-.emotion{float:left;width:20px;height:20px;background:url(/assets/img/face.png) no-repeat 0 0;background-size:20px 20px}
-.qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid}
-.qqFace table td{padding:0}
-.qqFace table td img{cursor:pointer;border:1px #fff solid}
-.sub-btn{float:right;padding:3px 25px}
-.word-num{position:absolute;right:10px;top:95px;z-index:100;color:#999}
-#word-num{color:#c13232}
-.comment-list-box{background:#fafafa;padding:20px 20px 0;border-bottom:1px solid #dcdcdc}
-.comment-list{margin-bottom:40px}
-.comment-head{width:50px;height:50px;margin-right:10px;float:left;border-radius:50%}
-.comment-info{float:left}
-.comment-info-name-box{padding-top:10px}
-.comment-info-name{font-size:14px;color:#666;margin-right:10px}
-.comment-info-time{font-size:12px;color:#999}
-.comment-info-txt{font-size:14px;color:#666;line-height:27px;width:730px;word-break:break-all}
-.comment-btn-bar{margin-top:5px}
-.comment-btn-bar span{margin-right:20px;font-size:12px;color:#b2b8c2;cursor:pointer}
-.comment-btn-bar i{margin-right:2px}
-.reply-text{width:100%;height:60px;resize:none;padding:0;overflow:hidden;border-color:#ff8547}
-.reply-box{margin-top:10px;display:none}
-.sub-btn1{float:right;padding:3px 25px}
-.sub-btn2{float:right;padding:3px 25px}
-.reply-list{margin-top:20px;background:#f3f3f3;padding:0 20px;display:none}
-.reply-list-info{border-bottom:1px dashed #dcdcdc;padding-top:8px;padding-bottom:8px}
-.reply-list-info-top{word-break:break-all}
-.reply-list-info-top span{color:#c13232}
-.load-more{height:53px;border-top:1px solid #dcdcdc;cursor:pointer;text-align:center;line-height:53px;font-size:14px;color:#333}
 @charset "UTF-8";
 dd,dl,dt,p{margin:0;padding:0}
 table{border-collapse:collapse;border-spacing:0}
@@ -92,6 +62,36 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .community-advisor .advisor-guanzhu,.community-advisor .advisor-zixun{font-size:14px;padding:1px 42px;cursor:pointer;color:#fff}
 .community-advisor .advisor-zixun{border-right:1px solid #fff}
 .community-advisor .counsellor-guanzhu{font-size:14px;display:block;text-align:center;cursor:pointer}
+.saytext-box{position:relative}
+.saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
+.sub-btn-box{margin-top:20px;margin-bottom:20px}
+.emotion{float:left;width:20px;height:20px;background:url(/assets/img/face.png) no-repeat 0 0;background-size:20px 20px}
+.qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid}
+.qqFace table td{padding:0}
+.qqFace table td img{cursor:pointer;border:1px #fff solid}
+.sub-btn{float:right;padding:3px 25px}
+.word-num{position:absolute;right:10px;top:95px;z-index:100;color:#999}
+#word-num{color:#c13232}
+.comment-list-box{background:#fafafa;padding:20px 20px 0;border-bottom:1px solid #dcdcdc}
+.comment-list{margin-bottom:40px}
+.comment-head{width:50px;height:50px;margin-right:10px;float:left;border-radius:50%}
+.comment-info{float:left}
+.comment-info-name-box{padding-top:10px}
+.comment-info-name{font-size:14px;color:#666;margin-right:10px}
+.comment-info-time{font-size:12px;color:#999}
+.comment-info-txt{font-size:14px;color:#666;line-height:27px;width:730px;word-break:break-all}
+.comment-btn-bar{margin-top:5px}
+.comment-btn-bar span{margin-right:20px;font-size:12px;color:#b2b8c2;cursor:pointer}
+.comment-btn-bar i{margin-right:2px}
+.reply-text{width:100%;height:60px;resize:none;padding:0;overflow:hidden;border-color:#ff8547}
+.reply-box{margin-top:10px;display:none}
+.sub-btn1{float:right;padding:3px 25px}
+.sub-btn2{float:right;padding:3px 25px}
+.reply-list{margin-top:20px;background:#f3f3f3;padding:0 20px;display:none}
+.reply-list-info{border-bottom:1px dashed #dcdcdc;padding-top:8px;padding-bottom:8px}
+.reply-list-info-top{word-break:break-all}
+.reply-list-info-top span{color:#c13232}
+.load-more{height:53px;border-top:1px solid #dcdcdc;cursor:pointer;text-align:center;line-height:53px;font-size:14px;color:#333}
 .community-nav-con{height:40px;background:#f3f3f3;margin:20px 20px 0}
 .community-nav-con .community-nav-list{display:inline-block;font-size:16px;color:#666;line-height:40px;width:96px;height:40px;text-align:center}
 .community-nav-con .nav-active{background:#c13232;color:#fff}
@@ -489,6 +489,19 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .curyear .kong,.curyear .month-box{display:none}
 .dashiji-con{display:none;width:737px;float:left;margin-left:20px;margin-right:30px;font-size:14px;line-height:24px}
 .con-btn{color:#999;padding-left:10px;font-size:10px}
+.detail_bar{width:100%;height:60px;background-color:#fff;position:fixed;top:0;z-index:1002;-moz-box-shadow:0 0 5px 1px #eee;-webkit-box-shadow:0 0 5px 1px #eee;box-shadow:0 0 5px 1px #eee;display:none}
+.detail_bar .detail_bar_in{width:1180px;height:60px;margin:0 auto;padding:0 10px}
+.detail_bar .detail_bar_in .bar_title{width:894px;float:left;line-height:60px;font-size:30px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.detail_bar .detail_bar_in .bar_options{width:286px;float:right}
+.detail_bar .detail_bar_in .bar_options .share_buttons{float:left;padding-right:10px;border-right:1px solid #DCDCDC;margin-top:15px}
+.detail_bar .detail_bar_in .bar_options .share_buttons a{width:30px;height:30px!important;margin:0!important;margin-right:10px!important;padding-left:0}
+.detail_bar .detail_bar_in .bar_options .share_buttons .sina{background-image:url(../img/xl.png)!important;background-repeat:no-repeat;background-position:0 0;background-size:cover}
+.detail_bar .detail_bar_in .bar_options .share_buttons .wx{background-image:url(../img/wx.png)!important;background-repeat:no-repeat;background-position:0 0;background-size:cover}
+.detail_bar .detail_bar_in .bar_options .share_buttons .space{background-image:url(../img/qqspace.png)!important;background-repeat:no-repeat;background-position:0 0;background-size:cover}
+.detail_bar .detail_bar_in .bar_options .option_buttons{float:right;padding-left:10px;margin-top:20px}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comment_text{color:#666;font-size:14px;padding:0 14px 0 12px}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comments_num{font-size:36px;color:#b23e39}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comment_btn{color:#b23e39;font-size:26px}
 .expert_unscramble{width:278px;float:left;border:1px #dcdcdc solid;background:#fff}
 .expert_unscramble_new{width:278px;float:left;border:1px #dcdcdc solid;background:#fafafa}
 .expert_unscramble_new{width:278px;float:left;border:1px #dcdcdc solid;background:#fafafa}
