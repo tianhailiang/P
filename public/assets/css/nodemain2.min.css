@@ -257,32 +257,6 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .universitiescon_content_det{background:#f5f5f5;color:#C13232;position:absolute;right:20px;bottom:57px;z-index:10}
 .universitiescon_content_det:hover{text-decoration:none;color:#C13232}
 .unuversitiescon_content_conss{width:592px}
-.col5-t-p1-p2{width:212px;height:100%;float:left;margin-left:20px}
-.col5-p1-p2-a2{font-size:14px}
-.col5-p1-p2-a1{width:212px;margin-bottom:19px;height:160px}
-.col5-p1-p2-a3{width:212px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-bottom:19px}
-.col3-p1-p1{margin:20px 0}
-.col3-p1-p1-a{width:266px;height:100%;float:left;margin-left:20px}
-.col3-p1-p1-a1{width:266px;height:200px}
-.col3-p1-p1-a2{margin:18px 0 17px 0;font-size:14px}
-.col3-p1-p2-a1{width:266px;height:200px}
-.col3-p1-p2-a2{margin-top:17px}
-.col3-p1-p2-a4{float:left;width:20px;height:20px;background:#C13232;color:#fff;border-radius:50%;text-align:center;margin-right:10px}
-.col3-p1-p2-a3{width:266px;height:22px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;margin:4px 0 12px 0}
-.col3-p1-p2-a5{font-size:14px}
-.col3-t-p1-p2-a1{width:366.5px;margin-bottom:20px;height:206px;display:block}
-.col3-t-p1-p2-a3{width:366px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-.col3-t-p1-p2-a2{font-size:14px;margin-bottom:12px}
-.col3-t-p1-p2-a6{width:366px;line-height:24px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:14px}
-.dui-layout-col6{width:266px;margin-left:23px;float:left}
-.col5-t-p1-p2{width:266px;height:100%;float:left;margin-left:20px}
-.col5-p1-p2-a2{font-size:14px}
-.col5-p1-p2-a1{width:266px;margin-bottom:19px;height:200px}
-.col5-p1-p2-a3{width:266px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:4px;margin-bottom:10px}
-.moment .jincai a{display:block;width:366px;height:276px}
-.moment .dui-layout-col3-img{width:366px;height:276px}
-.moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
-.moment .jincai-con{font-size:14px;color:#333}
 .act-advance-content{padding:20px 19px 0}
 .act-advance-content .act-img{display:block;width:240px;height:135px;-webkit-background-size:cover;background-size:cover;background-repeat:no-repeat;background-position:center}
 .act-advance-content ul{padding:0;margin:0}
@@ -397,6 +371,32 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .booking-activities2 .btn-detail{position:absolute;bottom:10px;right:0;width:115px;box-sizing:border-box}
 .booking-activities2 .book-activities-city{padding:20px 0 0 0;font-size:14px}
 .booking-activities2 .destination{margin-left:42px}
+.col5-t-p1-p2{width:212px;height:100%;float:left;margin-left:20px}
+.col5-p1-p2-a2{font-size:14px}
+.col5-p1-p2-a1{width:212px;margin-bottom:19px;height:160px}
+.col5-p1-p2-a3{width:212px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-bottom:19px}
+.col3-p1-p1{margin:20px 0}
+.col3-p1-p1-a{width:266px;height:100%;float:left;margin-left:20px}
+.col3-p1-p1-a1{width:266px;height:200px}
+.col3-p1-p1-a2{margin:18px 0 17px 0;font-size:14px}
+.col3-p1-p2-a1{width:266px;height:200px}
+.col3-p1-p2-a2{margin-top:17px}
+.col3-p1-p2-a4{float:left;width:20px;height:20px;background:#C13232;color:#fff;border-radius:50%;text-align:center;margin-right:10px}
+.col3-p1-p2-a3{width:266px;height:22px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:1;overflow:hidden;margin:4px 0 12px 0}
+.col3-p1-p2-a5{font-size:14px}
+.col3-t-p1-p2-a1{width:366.5px;margin-bottom:20px;height:206px;display:block}
+.col3-t-p1-p2-a3{width:366px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.col3-t-p1-p2-a2{font-size:14px;margin-bottom:12px}
+.col3-t-p1-p2-a6{width:366px;line-height:24px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:14px}
+.dui-layout-col6{width:266px;margin-left:23px;float:left}
+.col5-t-p1-p2{width:266px;height:100%;float:left;margin-left:20px}
+.col5-p1-p2-a2{font-size:14px}
+.col5-p1-p2-a1{width:266px;margin-bottom:19px;height:200px}
+.col5-p1-p2-a3{width:266px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;margin-top:4px;margin-bottom:10px}
+.moment .jincai a{display:block;width:366px;height:276px}
+.moment .dui-layout-col3-img{width:366px;height:276px}
+.moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
+.moment .jincai-con{font-size:14px;color:#333}
 .booking-activities1 .book-activities-box{display:block;color:#333}
 .booking-activities1{background:#fff;margin-bottom:2px}
 .booking-activities1 .booking-activities-box{margin:0 20px;height:158px}
@@ -425,29 +425,6 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .boutiqueing{width:170px;height:30px;background:#f3f3f3;float:right;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;-webkit-line-clamp:1;line-height:30px;margin-top:3px}
 .boutiqueing p{margin:0 0 0 6px}
 .boutiquecon{width:18px;height:18px;background:#C13232;color:#fff;float:left;text-align:center;border-radius:2px;margin-right:10px}
-.channel-nav{height:44px}
-.channel-nav .channel-nav-left{width:900px;float:left}
-.channel-nav .channel-nav-left a{text-decoration:none}
-.tag{width:96px;float:left;text-align:center}
-.tag{position:relative}
-.tag-item:hover{background-color:#C13232}
-.tag-item:hover a{color:#fff}
-.tag-item.active{background-color:#C13232}
-.tag-item.active a{color:#fff}
-.tag-item{width:96px;height:44px;float:left;text-align:center;line-height:44px}
-.tag-item a{font-size:16px;color:#333}
-.tag-two{position:absolute;top:44px}
-.channel-nav .channel-nav-left .country{float:left}
-.channel-nav .channel-nav-left .country li{width:96px;height:44px;float:left;text-align:center;line-height:44px}
-.channel-nav .channel-nav-left .country li a{display:block;text-decoration:none;font-size:16px;color:#333}
-.channel-nav .channel-nav-left .country li.active a{display:block;text-decoration:none;background-color:#C13232;color:#fff}
-.channel-nav .channel-nav-left .area{width:238px;float:left;padding-top:9px}
-.channel-nav .channel-nav-left .area .select{float:left;margin-left:20px;width:94px;height:24px;border:1px solid #dcdcdc;-webkit-box-sizing:content-box}
-.phoneBox{width:134px;float:right;padding-right:30px;padding-top:8px}
-.phoneBox dl dt{width:28px;height:28px;background-color:#C13232;color:#fff;text-align:center;line-height:28px;float:left;margin-right:8px}
-.phoneBox dl dt span{font-size:18px}
-.phoneBox dl dd{font-size:12px;color:#666;line-height:14px}
-.phoneBox dl dd.phone-number{color:#C13232;font-size:14px;line-height:18px}
 .colleges_recommend{width:278px;height:529px;float:left;border:1px #dcdcdc solid}
 .colleges_recommend_title{width:278px;height:48px;display:inline-block;font-weight:600;border-bottom:1px solid #dcdcdc;font-size:16px;color:#333;background:#fafafa}
 .colleges_recommend_title i{width:2px;height:22px;display:block;background:#C13232;margin-right:18px;float:left;margin-top:15px}
@@ -471,6 +448,29 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .contacting p{width:210px;line-height:20px;font-size:14px;float:left}
 .contacting p a{color:#C13232;margin-left:10px}
 .contact-vv{color:#C13232}
+.channel-nav{height:44px}
+.channel-nav .channel-nav-left{width:900px;float:left}
+.channel-nav .channel-nav-left a{text-decoration:none}
+.tag{width:96px;float:left;text-align:center}
+.tag{position:relative}
+.tag-item:hover{background-color:#C13232}
+.tag-item:hover a{color:#fff}
+.tag-item.active{background-color:#C13232}
+.tag-item.active a{color:#fff}
+.tag-item{width:96px;height:44px;float:left;text-align:center;line-height:44px}
+.tag-item a{font-size:16px;color:#333}
+.tag-two{position:absolute;top:44px}
+.channel-nav .channel-nav-left .country{float:left}
+.channel-nav .channel-nav-left .country li{width:96px;height:44px;float:left;text-align:center;line-height:44px}
+.channel-nav .channel-nav-left .country li a{display:block;text-decoration:none;font-size:16px;color:#333}
+.channel-nav .channel-nav-left .country li.active a{display:block;text-decoration:none;background-color:#C13232;color:#fff}
+.channel-nav .channel-nav-left .area{width:238px;float:left;padding-top:9px}
+.channel-nav .channel-nav-left .area .select{float:left;margin-left:20px;width:94px;height:24px;border:1px solid #dcdcdc;-webkit-box-sizing:content-box}
+.phoneBox{width:134px;float:right;padding-right:30px;padding-top:8px}
+.phoneBox dl dt{width:28px;height:28px;background-color:#C13232;color:#fff;text-align:center;line-height:28px;float:left;margin-right:8px}
+.phoneBox dl dt span{font-size:18px}
+.phoneBox dl dd{font-size:12px;color:#666;line-height:14px}
+.phoneBox dl dd.phone-number{color:#C13232;font-size:14px;line-height:18px}
 .year-box{padding:0 20px 0 20px}
 .year-box .year-num{font-size:20px;color:#333;width:56px;float:left;font-weight:400}
 .month-box .down,.year-box .down{color:#c13232;font-size:14px;padding:0 10px}
@@ -491,7 +491,7 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .con-btn{color:#999;padding-left:10px;font-size:10px}
 .detail_bar{width:100%;height:60px;background-color:#fff;position:fixed;top:0;z-index:10000;-moz-box-shadow:0 0 5px 1px #eee;-webkit-box-shadow:0 0 5px 1px #eee;box-shadow:0 0 5px 1px #eee;display:none}
 .detail_bar .detail_bar_in{width:1180px;height:60px;margin:0 auto;padding:0 10px}
-.detail_bar .detail_bar_in .bar_title{width:894px;float:left;line-height:60px;font-size:30px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.detail_bar .detail_bar_in .bar_title{width:844px;float:left;line-height:60px;font-size:30px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .detail_bar .detail_bar_in .bar_options{float:right}
 .detail_bar .detail_bar_in .bar_options .share_buttons{float:left;padding-right:10px;border-right:1px solid #DCDCDC;margin-top:15px}
 .detail_bar .detail_bar_in .bar_options .share_buttons a{width:30px;height:30px!important;margin:0!important;margin-right:10px!important;padding-left:0}
