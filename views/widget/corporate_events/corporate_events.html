@@ -52,8 +52,12 @@
     $.each($(".curyear").siblings(".curyear"),function(){
       $(this).find(".kong").eq(0).css("display","block");
     });
+    if($(".curyear").length>2){
+      $(".curyear:last").find(".kong").eq(0).css("display","none");
+    }else{
+      $(".curyear:last").find(".kong").eq(0).css("display","block");
+    }
 
-    $(".curyear:last").find(".kong").eq(0).css("display","none");
     $(".year-box").eq(0).css("padding-top","20px");
     $(document).scrollTop(0);
   });
