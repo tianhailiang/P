@@ -73,7 +73,7 @@ function onclick_ly(c,tar){
 
 function openChat(c){
   //console.log(c)
-  var url = "http://jesong.jjl.cn/live/" +'chat.dll?c=1';
+  var url = "http://jesong.jjl.cn/live/" +'chat.do?c=1';
   url = url +"&chatUrl="+window.encodeURIComponent(window.location.href);
   if($.cookie("im_refer")){
     url = url +"&refer="+window.encodeURIComponent($.cookie("im_refer"));
