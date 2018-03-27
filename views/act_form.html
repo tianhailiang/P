@@ -19,6 +19,18 @@
    margin-right: 155px;
    margin-top: 10px;
  }
+ .act_form_con label{
+   font-weight: normal;
+   margin-left: 40px;
+   margin-right: 130px;
+   margin-top: 10px;
+ }
+ .act_form_con_3 label{
+   font-weight: normal;
+   margin-left: 60px;
+   margin-right: 130px;
+   margin-top: 10px;
+ }
 
  input[type="radio"]:checked+label {color: red;}
 
@@ -52,6 +64,8 @@
    padding: 2px;
    color: #d31d2c;
  }
+
+ .act_form_con_2 input[type="radio"]:checked+label, .act_form_con_2 label {color: #fff;}
  .act_form_con_2 input[type="radio"] + label:before {
    content: "\a0"; /*不换行空格*/
    display: inline-block;
@@ -61,7 +75,7 @@
    height: 14px;
    margin-right: 10px;
    border-radius: 50%;
-   border: 1px solid #958c87;
+   border: 1px solid #fff;
    font-weight: normal;
    line-height: 1;
 
@@ -76,8 +90,40 @@
    height: 9px;
    margin-right: 10px;
    border-radius: 50%;
-   border: 1px solid #d31d2c;
-   background-color: #d31d2c;
+   border: 1px solid #fff;
+   background-color: #fff;
+   background-clip: content-box;
+   padding: 2px;
+   color: #d31d2c;
+ }
+
+ .act_form_con_3 input[type="radio"]:checked+label, .act_form_con_3 label {color: #fff;}
+ .act_form_con_3 input[type="radio"] + label:before {
+   content: "\a0"; /*不换行空格*/
+   display: inline-block;
+   vertical-align: middle;
+   font-size: 18px;
+   width: 14px;
+   height: 14px;
+   margin-right: 10px;
+   border-radius: 50%;
+   border: 1px solid #fff;
+   font-weight: normal;
+   line-height: 1;
+
+ }
+
+ .act_form_con_3 input[type="radio"]:checked + label:before {
+   content: "\a0"; /*不换行空格*/
+   display: inline-block;
+   vertical-align: middle;
+   font-size: 18px;
+   width: 10px;
+   height: 9px;
+   margin-right: 10px;
+   border-radius: 50%;
+   border: 1px solid #fff;
+   background-color: #fff;
    background-clip: content-box;
    padding: 2px;
    color: #d31d2c;
@@ -115,6 +161,31 @@
  .word-num span{
    color: #c13232;
  }
+ .attachment_box{
+   padding: 30px 10px;
+ }
+  .attach_upload_btn{
+    width: 172px;
+    height: 172px;
+    border: 1px solid #C13232;
+    background-color: #f8f8f8;
+    text-align: center;
+    line-height: 172px;
+    float: left;
+  }
+ .attach_upload_btn i {
+   font-size: 50px;
+   color: #C13232;
+ }
+  .attach_item {
+    width: 900px;
+    height: 172px;
+    line-height: 172px;
+    float: left;
+    margin-left: 20px;
+    color: #333;
+    font-size: 14px;
+  }
   .act_form_ing {
     width: 1180px;
     height: 40px;
@@ -147,35 +218,42 @@
       <input class="wrap-ing" type="radio" name="payMethod" value="2" id="liu2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu2">市场营销</label>
       <input class="wrap-ing" type="radio" name="payMethod" value="3" id="liu3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu3">管理体系</label>
       <input class="wrap-ing" type="radio" name="payMethod" value="4" id="liu4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu4">薪酬体系</label>
-      <input class="wrap-ing" type="radio" name="payMethod" value="5" id="liu5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu5">人力资源</label>
-    </div>
+      <input class="wrap-ing" type="radio" name="payMethod" value="5" id="liu5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0;margin-left: 0;" for="liu5">人力资源</label>
+  </div>
 
-    <div class="act_form_con_2 clearfix">
-      <input  type="radio" name="payMethod" value="1"  id="liu-1-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-1">技术缺陷</label>
-      <input  type="radio" name="payMethod" value="2" id="liu-1-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-1-2">机制建议</label>
-      <input type="radio" name="payMethod" value="3" id="liu-1-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-3">ui设计</label>
-      <input  type="radio" name="payMethod" value="4" id="liu-1-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-4">页面排版</label>
-      <input type="radio" name="payMethod" value="5" id="liu-1-5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu-1-5">技术优化</label>
-    </div>
-    <div>
-      <h1><div style="width: 16px;margin-top: 5px;margin-right:8px;height: 20px; background: #C13232;float: left;"></div>问题简述</h1>
-      <div class="act_form_xian"></div>
-    </div>
-    <div class="content_title_bbb clearfix">
-      <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}"></textarea>
-      <div class="word-num">还可以输入<span id="word-num">120</span>字</div>
-    </div>
+<div class="act_form_con_2 clearfix" style="background:url({{helper.cdnhost}}/assets/img/act_back.png);background-size:cover;height: 50px;line-height: 38px;">
+  <input  type="radio" name="pay" value="1" checked="checked" id="liu-1-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-1">技术缺陷</label>
+  <input  type="radio" name="pay" value="2" id="liu-1-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-1-2">机制建议</label>
+  <input type="radio" name="pay" value="3" id="liu-1-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-3">ui设计</label>
+  <input  type="radio" name="pay" value="4" id="liu-1-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-4">页面排版</label>
+  <input type="radio" name="pay" value="5" id="liu-1-5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu-1-5">技术优化</label>
+</div>
+
+<div class="act_form_con_3 clearfix" style="background:url({{helper.cdnhost}}/assets/img/act_back1.png);background-size:cover;height: 50px;line-height: 38px;display: none;">
+  <input  type="radio" name="pay1" value="1" checked="checked" id="liu-2-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-1">交互设计</label>
+  <input  type="radio" name="pay1" value="2" id="liu-2-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-2-2">专题设计</label>
+  <input type="radio" name="pay1" value="3" id="liu-2-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-3">营销文案策划</label>
+  <input  type="radio" name="pay1" value="4" id="liu-2-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-4">前端设计</label>
+</div>
+  <div style="margin-top: 40px">
+    <h1><div style="width: 10px;margin-top: 8px;margin-right:8px;height: 12px; background: #C13232;float: left;"></div>问题简述</h1>
+    <div class="act_form_xian"></div>
+  </div>
+  <div class="content_title_bbb clearfix">
+    <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}"></textarea>
+    <div class="word-num">还可以输入<span id="word-num">120</span>字</div>
+  </div>
 
 
-    <div>
-      <h1><div style="width: 16px;margin-top: 5px;margin-right:8px;height: 20px; background: #C13232;float: left;"></div>上传建议附件</h1>
-      <div class="act_form_xian"></div>
-      <div class="attachment_box">
-        <form id="attachmentForm">
-          <input id="attachment" type="file" multiple="multiple" name="attachment" style="display: none;"/>
-          <label for="attachment" class="attach-upload-btn"><i class="iconfont">&#xe616;</i></label>
-        </form>
-      </div>
+  <div style="margin-top: 40px">
+    <h1><div style="width: 10px;margin-top: 8px;margin-right:8px;height: 12px; background: #C13232;float: left;"></div>上传建议附件</h1>
+    <div class="act_form_xian"></div>
+    <div class="attachment_box clearfix">
+      <form id="attachmentForm">
+        <input id="attachment" type="file" multiple="multiple" name="attachment" style="display: none;"/>
+        <label for="attachment" class="attach_upload_btn"><i class="iconfont">&#xe616;</i></label>
+      </form>
+      <div class="attach_item"></div>
     </div>
 
   </div>
@@ -190,6 +268,7 @@
 <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/attachment.js"></script>
 <script>
+$(function () {
   $("#gerenjieshao").on("keyup",function(){
   var strLength = $.trim($(this).val()).length;
   $("#word-num").html(80-strLength);
@@ -197,7 +276,30 @@
     $("#word-num").html(0);
     this.value  = this.value.substring(0, 80);
   }
-});
+  });
+  
+  $("#liu1").on('click', function(){
+    $('.act_form_con_3').css("display", "none");
+		$('.act_form_con_2').css("display", "block");
+	})
+  $("#liu2").on('click', function(){
+    $('.act_form_con_2').css("display", "none");
+		$('.act_form_con_3').css("display", "block");
+	})
+  $("#liu3").on('click', function(){
+    $('.act_form_con_2').css("display", "none");
+		$('.act_form_con_3').css("display", "none");
+	})
+  $("#liu4").on('click', function(){
+    $('.act_form_con_2').css("display", "none");
+		$('.act_form_con_3').css("display", "none");
+	})
+  $("#liu5").on('click', function(){
+    $('.act_form_con_2').css("display", "none");
+		$('.act_form_con_3').css("display", "none");
+	})
+})
+  
 </script>
 <script>
   $(function () {
@@ -222,7 +324,7 @@
         }
         return arrFiles;
       },
-      onSelect: function(files) {
+/*      onSelect: function(files) {
         console.log('onSelect',files)
         if (files.length <= 0) return;
         for(var i =0;i<files.length;i++) {
@@ -238,14 +340,14 @@
 
           }
         });
-      },
+      },*/
       onSuccess: function(file, response) {
         console.log('onSuccess',response);
         var res = JSON.parse(response);
         if (res.errno === 0) {
-
+          $('.attach_item').text(res.data[0])
         } else {
-          $('#loading').hide();
+          $('.attach_item').text('上传失败，请重新上传')
         }
       },
       onFailure: function(file) {
