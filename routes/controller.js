@@ -3610,3 +3610,16 @@ exports.act_form = function (req, res, next){
 
     });
 }
+
+//表单
+exports.save_feedback = function(req,res,next){
+    log.debug('表单提交');
+    var data = req.body;
+    cms.save_feedback(data,function(err,result){
+        if(err){
+          res.send(err);
+        }else{
+          res.send(result); 
+        }
+    })
+}

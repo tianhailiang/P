@@ -126,7 +126,6 @@
 </div>
 
 
-
 {% include "widget/new_footer/common_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_PROFILE_SEAT10",helper) }}
@@ -136,14 +135,54 @@
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script>
-  $("#gerenjieshao").on("keyup",function(){
-  var strLength = $.trim($(this).val()).length;
-  $("#word-num").html(80-strLength);
-  if(strLength > 80){
-    $("#word-num").html(0);
-    this.value  = this.value.substring(0, 80);
-  }
-});
+	var login_ss = null; //获取用户信息
+    if($.cookie('login_ss') != undefined){
+      login_ss = JSON.parse($.cookie('login_ss'));
+    }
+    console.log(login_ss)
+    $("#gerenjieshao").on("keyup",function(){
+		var strLength = $.trim($(this).val()).length;
+	    $("#word-num").html(80-strLength);
+	    if(strLength > 80){
+	      $("#word-num").html(0);
+	      this.value  = this.value.substring(0, 80);
+	    }
+	});
+	$("#gerenjieshao").on('focus',function(){
+		if($.cookie('login_ss') == undefined){
+		  getlogin();
+  	      return false;
+		}
+	});
+	
+	$.ajax({
+          url: '/save_feedback',
+          type:'POST',
+          data:{
+            uid:login_ss.uid,
+            phone:login_ss.username,
+            nickname:login_ss.nickname,
+            type_id:1,
+            child_id:11,
+            description:'thl',
+            file_url:'www.baidu.com'
+          },
+          dataType:'json',
+          async: false,
+          success:function(result){
+            console.log(result)
+            if(result.code == 0){
+            	layer.msg('提交成功')
+            }else{
+              layer.msg('系统繁忙，请稍后重试')
+            }
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+            console.log(errorThrown)
+          }
+        });
+
+
 </script>
 </body>
 </html>

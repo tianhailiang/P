@@ -252,7 +252,9 @@ var apis = {
   //新活动底页
   "get_activity_detail":prefix+'detail',
   //参赞介绍
-  "get_user_description":shequ_prefix + 'account/get_user_description/'
+  "get_user_description":shequ_prefix + 'account/get_user_description/',
+  //表单提交
+  "get_save_feedback":prefix +'save_feedback'
 };
 module.exports = {
   redisCache: redisCache,
