@@ -14,7 +14,7 @@
    margin: 0 auto;
    margin-top: 20px;
  }
- label{
+ .act_form_con label, .act_form_con_3 label{
    font-weight: normal;
    margin-right: 155px;
    margin-top: 10px;
@@ -249,10 +249,10 @@
     <h1><div style="width: 10px;margin-top: 8px;margin-right:8px;height: 12px; background: #C13232;float: left;"></div>上传建议附件</h1>
     <div class="act_form_xian"></div>
     <div class="attachment_box clearfix">
-      <form id="attachmentForm">
-        <input id="attachment" type="file" multiple="multiple" name="attachment" style="display: none;"/>
-        <label for="attachment" class="attach_upload_btn"><i class="iconfont">&#xe616;</i></label>
+      <form id="attachmentForm" style="display: none;">
+        <input id="attachment" type="file" multiple="multiple" name="attachment"/>
       </form>
+      <label for="attachment" class="attach_upload_btn"><i class="iconfont">&#xe616;</i></label>
       <div class="attach_item"></div>
     </div>
 
