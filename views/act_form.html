@@ -267,6 +267,7 @@
 <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/attachment.js"></script>
 <script>
+$(function () {
   $("#gerenjieshao").on("keyup",function(){
   var strLength = $.trim($(this).val()).length;
   $("#word-num").html(80-strLength);
@@ -274,7 +275,30 @@
     $("#word-num").html(0);
     this.value  = this.value.substring(0, 80);
   }
-});
+  });
+  
+  $("#liu1").on('click', function(){
+    $('.act_form_con_3').css("display", "none");
+		$('.act_form_con_2').css("display", "block");
+	})
+  $("#liu2").on('click', function(){
+    $('.act_form_con_2').css("display", "none");
+		$('.act_form_con_3').css("display", "block");
+	})
+  $("#liu3").on('click', function(){
+    $('.act_form_con_2').css("display", "none");
+		$('.act_form_con_3').css("display", "none");
+	})
+  $("#liu4").on('click', function(){
+    $('.act_form_con_2').css("display", "none");
+		$('.act_form_con_3').css("display", "none");
+	})
+  $("#liu5").on('click', function(){
+    $('.act_form_con_2').css("display", "none");
+		$('.act_form_con_3').css("display", "none");
+	})
+})
+  
 </script>
 <script>
   $(function () {
