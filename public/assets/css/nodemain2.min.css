@@ -111,6 +111,7 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .follow-con .content-nun .num-show div{float:left}
 .follow-con .content-nun .num-show div.iconfont{font-size:16px;line-height:16px;margin-right:10px}
 .follow-con .content-nun div.follow-btn{width:66px;height:24px;background:#C13232;color:#fff;text-align:center;line-height:24px;font-size:13px;position:absolute;bottom:-6px;right:0;cursor:pointer}
+.follow-con .content-nun div.follow-cancel{width:60px;height:20px;background:#dcdcdc;color:#fff;text-align:center;line-height:20px;font-size:13px;position:absolute;bottom:-6px;right:0;cursor:pointer}
 .right-cont{width:878px;border:1px #eee solid}
 .right-title{width:840px;height:40px;background:#eee;margin-top:20px;margin-left:20px}
 .right-title .tit{width:115px;height:40px;background:#C13232;font-size:18px;color:#fff;text-align:center;line-height:40px}
@@ -489,6 +490,19 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .curyear .kong,.curyear .month-box{display:none}
 .dashiji-con{display:none;width:737px;float:left;margin-left:20px;margin-right:30px;font-size:14px;line-height:24px}
 .con-btn{color:#999;padding-left:10px;font-size:10px}
+.detail_bar{width:100%;height:60px;background-color:#fff;position:fixed;top:0;z-index:10000;-moz-box-shadow:0 0 5px 1px #eee;-webkit-box-shadow:0 0 5px 1px #eee;box-shadow:0 0 5px 1px #eee;display:none}
+.detail_bar .detail_bar_in{width:1180px;height:60px;margin:0 auto;padding:0 10px}
+.detail_bar .detail_bar_in .bar_title{width:844px;float:left;line-height:60px;font-size:30px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.detail_bar .detail_bar_in .bar_options{float:right}
+.detail_bar .detail_bar_in .bar_options .share_buttons{float:left;padding-right:10px;border-right:1px solid #DCDCDC;margin-top:15px}
+.detail_bar .detail_bar_in .bar_options .share_buttons a{width:30px;height:30px!important;margin:0!important;margin-right:10px!important;padding-left:0}
+.detail_bar .detail_bar_in .bar_options .share_buttons .sina{background-image:url(../img/xl.png)!important;background-repeat:no-repeat;background-position:0 0;background-size:cover}
+.detail_bar .detail_bar_in .bar_options .share_buttons .wx{background-image:url(../img/wx.png)!important;background-repeat:no-repeat;background-position:0 0;background-size:cover}
+.detail_bar .detail_bar_in .bar_options .share_buttons .space{background-image:url(../img/qqspace.png)!important;background-repeat:no-repeat;background-position:0 0;background-size:cover}
+.detail_bar .detail_bar_in .bar_options .option_buttons{float:right;padding-left:10px;margin-top:20px}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comment_text{color:#666;font-size:14px;padding:0 14px 0 12px}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comments_num{font-size:36px;color:#b23e39}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comment_btn{color:#b23e39;font-size:26px}
 .expert_unscramble{width:278px;float:left;border:1px #dcdcdc solid;background:#fff}
 .expert_unscramble_new{width:278px;float:left;border:1px #dcdcdc solid;background:#fafafa}
 .expert_unscramble_new{width:278px;float:left;border:1px #dcdcdc solid;background:#fafafa}
