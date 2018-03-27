@@ -1,6 +1,6 @@
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
-.art-box .adviser-info{float:left;position:relative;width:755px}
+.art-box .adviser-info{float:left;position:relative;width:768px}
 .art-box .adviser-info-name{margin-top:10px;margin-bottom:14px;font-size:14px;color:#333;line-height:12px}
 .art-box .adviser-info-date{font-size:12px;color:#333;line-height:12px;margin-bottom:20px}
 .art-box .adviser-info-date span{float:left}
@@ -15,7 +15,7 @@
 .art-box .offer-xiala{width:70px;height:88px;float:left;display:none;box-shadow:1px 0 4px rgba(0,0,0,.2)}
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
-.art-box .offer-opt-bar{top:10px;right:32px}
+.art-box .offer-opt-bar{top:10px;right:0}
 .author-sel{padding:20px 20px 0 20px;background:#fff}
 .author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
 .author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
@@ -177,7 +177,7 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .offer-opt-bar{position:absolute;right:60px;top:20px}
 .offer-opt-bar .opt-btn{float:left;color:#C13232;font-size:12px;line-height:12px;cursor:pointer}
 .offer-opt-bar .opt-btn.red-border{border-right:1px solid #C13232;padding-right:20px}
-.offer-opt-bar .opt-btn i{margin-left:20px}
+.offer-opt-bar .opt-btn i{margin-left:20px;font-size:14px}
 .offer-opt-bar .opt-btn span{margin-left:10px}
 .offer-opt-bar .opt-btn a{margin-left:10px;color:#C13232;font-size:12px}
 .case-cont{background-color:#fff}

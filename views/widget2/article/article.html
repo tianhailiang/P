@@ -127,6 +127,10 @@
       {% endif%}
     </div>
     <div class="offer-opt-bar clearfix">
+      <div class="opt-btn red-border stick" onclick="stick($(this), {{item.uid}}, {{item.id}})">
+        <i class="iconfont">&#xe685;</i>
+        <span>置顶</span>
+      </div>
       <div class="opt-btn red-border delete" onclick="deleteOffer($(this), {{item.uid}}, {{item.id}})">
         <i class="iconfont">&#xe8c1;</i>
         <span>删除</span>
