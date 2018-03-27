@@ -1,6 +1,6 @@
 {% for yearnum, yearamount in memorabilia_list.list %}
 <div class="dui-layout-lg curyear" style="background:#ffffff">
-  <div class="year-box clearfix"><h6 class="year-num">{{ yearnum | shorten(-1)}}</h6> <i class="city-icon iconfont down xiangxia">&#xe636;</i> <i class="city-icon iconfont dian">&#xe609;</i></div>
+  <div class="year-box clearfix"><h6 class="year-num">{{ yearnum | shorten(-1)}}</h6> <i class="city-icon iconfont down xiangxia" style="cursor: pointer;">&#xe636;</i> <i class="city-icon iconfont dian">&#xe609;</i></div>
   <div class="kong" style="display: block"></div>
   {% for monthnum, monthamount in yearamount %}
 
@@ -63,14 +63,14 @@
   });
   $(".down").on("click",function(){
     $(this).html("&#xe635;");
-    $(this).css("color","#c13232");
+    $(this).css({"color":"#c13232","cursor":"default"});
     $(this) .parents(".curyear").children(".month-box").css("display","block");
     $(document).scrollTop(500);
     $(this).parents(".curyear").children(".kong").css("display","block");
     $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
     $(this).parents(".curyear").siblings().children(".kong").css("display","none");
     $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
-    $(this).parents(".curyear").siblings().children(".year-box").find(".down").css("color","#999999");
+    $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
     $.each($(this).parents(".curyear").siblings(".curyear"),function(){
       $(this).find(".kong").eq(0).css("display","block");
     });
