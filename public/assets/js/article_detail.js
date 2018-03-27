@@ -10,4 +10,10 @@ $(function() {
             $('.detail_bar').hide();
         }
     });
+    $('#fix_bar_comment').on('click', function () {
+        var detail_bar_h = $('#detail_bar').height();
+        var commentTop = $('#saytext-box').offset().top;
+        $(window).scrollTop(commentTop-detail_bar_h-30);
+        $('#saytext').focus();
+    })
 })

@@ -1,5 +1,5 @@
 <!--<link rel="stylesheet" href="{{helper.cdnhost}}/views/widget/detail_bar/detail_bar.css" >-->
-<div class="detail_bar">
+<div class="detail_bar" id="detail_bar">
     <div class="detail_bar_in clearfix">
         <div class="bar_title">{{article.article_info.title}}</div>
         <div class="bar_options">
@@ -9,7 +9,7 @@
                 <a href="#" class="bds_qzone space" data-cmd="qzone" title="分享到QQ空间"></a>
             </div>
             <div class="option_buttons">
-                <span class="comments_num">{{article.article_info.comments + article.article_info.votes + article.article_info.views}}</span><span class="comment_text">评论</span><a href="#to_comments" class="iconfont comment_btn">&#xe61c;</a>
+                <span class="comments_num">{{article.article_info.comments + article.article_info.votes + article.article_info.views}}</span><span class="comment_text">评论</span><a href="javascript:;" class="iconfont comment_btn" id="fix_bar_comment">&#xe61c;</a>
             </div>
         </div>
     </div>
