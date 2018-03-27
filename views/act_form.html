@@ -205,7 +205,7 @@
   {% include "widget/top/top.html" %}
   {% import "widget/new_nav_first/common_nav.html" as common_nav %}
   {{ common_nav.common_nav(tdk,helper) }}
-  <div style="width:100%;height:auto;background-image: url({{helper.cdnhost}}/assets/img/gongkaixin.jpg);padding-top: 300px;background-repeat: no-repeat;background-size: 100% auto;" class="clearfix" >
+  <div style="width:100%;height:auto;background-image: url({{helper.cdnhost}}/assets/img/zhuanxiang.png);padding-top: 300px;background-repeat: no-repeat;background-size: 100% auto;" class="clearfix" >
   <div class="act_form clearfix">
     <img style="display:block;" src="{{helper.cdnhost}}/assets/img/bioadantiaojiao.png" alt="">
     <h1>
@@ -258,6 +258,7 @@
 
   </div>
 </div>
+    {% include "widget/new_footer/common_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_PROFILE_SEAT10",helper) }}
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
