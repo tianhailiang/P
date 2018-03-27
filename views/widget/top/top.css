@@ -35,3 +35,18 @@
   margin-left: 10px;
   line-height: 25px;
 }
+.top_weibo_img{
+  float: right;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  line-height: 25px;
+}
+.top_weibo{
+  width: 96px;
+  height: 99px;
+  z-index: 1002;
+  position: absolute;
+  top: 21px;
+  right: 0px;
+}

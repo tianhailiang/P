@@ -1,3 +1,8 @@
+.author-sel{padding:20px 20px 0 20px;background:#fff}
+.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
+.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
+.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
+.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:755px}
@@ -16,11 +21,6 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:32px}
-.author-sel{padding:20px 20px 0 20px;background:#fff}
-.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
-.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
-.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
-.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
@@ -245,19 +245,6 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .universitiesdetails_content_con{margin-top:14px;font-size:14px;color:#333;line-height:26px;text-align:justify}
 .universitiesdetails_content_det{background:#f5f5f5;color:#C13232}
 .universitiesdetails_content_det:hover{text-decoration:none;color:#C13232}
-.unuversitiescon{width:880px;height:222px;float:left;background:#fff;border-bottom:1px dashed #dcdcdc;position:relative}
-.unuversitiescon img{width:326px;height:182px;float:left;margin:20px}
-.unuversitiescon img.new_xiao{width:228px;height:172px;float:left;margin:20px}
-.unuversitiescon_content{width:494px;margin-top:20px;margin-right:20px;float:left}
-.universitiescon_content_title a.title{width:370px;height:18px;font-size:18px;color:#C13232;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;-webkit-line-clamp:1;-webkit-box-orient:vertical;float:left;margin-top:6px}
-.universitiescon_content_title a.but{width:115px;height:30px;line-height:30px;background:#C13232;color:#fff;float:right;text-align:center;font-size:14px}
-.universitiescon_content_title a.but:hover{text-decoration:none}
-.unuversitiescon_content_con{height:99px;margin-top:15px;font-size:14px;color:#333;line-height:26px;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;-webkit-line-clamp:4;-webkit-box-orient:vertical}
-.universitiescon_content_fu{font-size:12px;color:#666;margin-top:20px}
-.universitiescon_content_fu em{font-style:normal;overflow:hidden}
-.universitiescon_content_det{background:#f5f5f5;color:#C13232;position:absolute;right:20px;bottom:57px;z-index:10}
-.universitiescon_content_det:hover{text-decoration:none;color:#C13232}
-.unuversitiescon_content_conss{width:592px}
 .col5-t-p1-p2{width:212px;height:100%;float:left;margin-left:20px}
 .col5-p1-p2-a2{font-size:14px}
 .col5-p1-p2-a1{width:212px;margin-bottom:19px;height:160px}
@@ -284,6 +271,19 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .moment .dui-layout-col3-img{width:366px;height:276px}
 .moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
 .moment .jincai-con{font-size:14px;color:#333}
+.unuversitiescon{width:880px;height:222px;float:left;background:#fff;border-bottom:1px dashed #dcdcdc;position:relative}
+.unuversitiescon img{width:326px;height:182px;float:left;margin:20px}
+.unuversitiescon img.new_xiao{width:228px;height:172px;float:left;margin:20px}
+.unuversitiescon_content{width:494px;margin-top:20px;margin-right:20px;float:left}
+.universitiescon_content_title a.title{width:370px;height:18px;font-size:18px;color:#C13232;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;-webkit-line-clamp:1;-webkit-box-orient:vertical;float:left;margin-top:6px}
+.universitiescon_content_title a.but{width:115px;height:30px;line-height:30px;background:#C13232;color:#fff;float:right;text-align:center;font-size:14px}
+.universitiescon_content_title a.but:hover{text-decoration:none}
+.unuversitiescon_content_con{height:99px;margin-top:15px;font-size:14px;color:#333;line-height:26px;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;-webkit-line-clamp:4;-webkit-box-orient:vertical}
+.universitiescon_content_fu{font-size:12px;color:#666;margin-top:20px}
+.universitiescon_content_fu em{font-style:normal;overflow:hidden}
+.universitiescon_content_det{background:#f5f5f5;color:#C13232;position:absolute;right:20px;bottom:57px;z-index:10}
+.universitiescon_content_det:hover{text-decoration:none;color:#C13232}
+.unuversitiescon_content_conss{width:592px}
 .act-advance-content{padding:20px 19px 0}
 .act-advance-content .act-img{display:block;width:240px;height:135px;-webkit-background-size:cover;background-size:cover;background-repeat:no-repeat;background-position:center}
 .act-advance-content ul{padding:0;margin:0}
@@ -1656,6 +1656,8 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .top-con-right{float:right}
 .top-con-right .bor{margin:0 10px;font-size:10px}
 .top-con-right li{float:left;margin-left:10px;line-height:25px}
+.top_weibo_img{float:right;width:22px;height:22px;margin-right:10px;line-height:25px}
+.top_weibo{width:96px;height:99px;z-index:1002;position:absolute;top:21px;right:0}
 .advisor_star_bar{height:162px;padding:19px 0;position:relative}
 .advisor-star-cella{display:block;float:left;margin-left:24px}
 .advisor-star-cell a dt{width:92px;height:116px;overflow:hidden}
