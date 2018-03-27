@@ -105,6 +105,7 @@ var ZXXFILE = {
         //文件选择控件选择
         if (this.fileInput) {
             var changefn = function (e) {
+                console.log('change')
                 self.funGetFiles(e);
             };
             if(document.addEventListener){
