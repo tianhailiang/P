@@ -224,4 +224,5 @@ exports = module.exports = function (app) {// routes
   app.get("/agreement",controller.agreement);//金吉列简介
   app.get('/about/cultures',about.cultures);//公司简介
   app.get("/about/culture/:id",about.culture_detail);//金色力量底页
+  app.get("/act_form",controller.act_form);//活动表单
 };
