@@ -229,7 +229,7 @@
     </h1>
     <div class="act_form_xian"></div>
     <div class="act_form_con clearfix">
-      <input  type="radio" name="payMethod" value="1" checked="checked" id="liu1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu1">技术相关</label>
+      <input  type="radio" name="payMethod" value="1" checked="checked" id="liu1" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu1">技术相关</label>
       <input  type="radio" name="payMethod" value="2" id="liu2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu2">市场营销</label>
       <input  type="radio" name="payMethod" value="3" id="liu3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu3">管理体系</label>
       <input  type="radio" name="payMethod" value="4" id="liu4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu4">薪酬体系</label>
@@ -237,18 +237,18 @@
   </div>
 
 <div class="act_form_con_2 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back.png);background-size:cover;height: 50px;line-height: 38px;">
-  <input  type="radio" name="pay" value="11" checked="checked" id="liu-1-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-1">技术缺陷</label>
-  <input  type="radio" name="pay" value="12" id="liu-1-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-1-2">机制建议</label>
-  <input type="radio" name="pay" value="13" id="liu-1-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-3">ui设计</label>
-  <input  type="radio" name="pay" value="14" id="liu-1-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-4">页面排版</label>
-  <input type="radio" name="pay" value="15" id="liu-1-5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu-1-5">技术优化</label>
+  <input  type="radio" name="pay1" value="11" checked="checked" id="liu-1-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-1">技术缺陷</label>
+  <input  type="radio" name="pay1" value="12" id="liu-1-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-1-2">机制建议</label>
+  <input type="radio" name="pay1" value="13" id="liu-1-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-3">ui设计</label>
+  <input  type="radio" name="pay1" value="14" id="liu-1-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-4">页面排版</label>
+  <input type="radio" name="pay1" value="15" id="liu-1-5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu-1-5">技术优化</label>
 </div>
 
 <div class="act_form_con_3 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back1.png);background-size:cover;height: 50px;line-height: 38px;display: none;">
-  <input  type="radio" name="pay1" value="21" checked="checked" id="liu-2-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-1">交互设计</label>
-  <input  type="radio" name="pay1" value="22" id="liu-2-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-2-2">专题设计</label>
-  <input type="radio" name="pay1" value="23" id="liu-2-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-3">营销文案策划</label>
-  <input  type="radio" name="pay1" value="24" id="liu-2-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-4">前端设计</label>
+  <input  type="radio" name="pay2" value="21" checked="checked" id="liu-2-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-1">交互设计</label>
+  <input  type="radio" name="pay2" value="22" id="liu-2-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-2-2">专题设计</label>
+  <input type="radio" name="pay2" value="23" id="liu-2-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-3">营销文案策划</label>
+  <input  type="radio" name="pay2" value="24" id="liu-2-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-4">前端设计</label>
 </div>
   <div style="margin-top: 20px">
     <h1><div style="width: 16px;margin-top: 8px;margin-right:8px;height: 20px; background: #C13232;float: left;"></div>问题简述</h1>
@@ -271,7 +271,7 @@
       <div class="attach_item"></div>
     </div>
   </div>
-  <div style="position: relative;">
+  <div style="position: relative;height:40px;margin-top: 10px;margin-bottom: 40px;">
   	<span class="act-form-btn">提交建议</span>
   </div>
 </div>
@@ -300,6 +300,7 @@
 	  }
 	});
     $("#liu1").on('click', function(){
+
      	$('.act_form_con_3').css("display", "none");
 		$('.act_form_con_2').css("display", "block");
 	})
@@ -336,7 +337,7 @@
 	});
 	
     var params = {
-      uid: login_ss.uid,
+      uid:Math.floor(Math.random() * 999999),
       maxfileNum:1,
       fileInput: $("#attachment").get(0),
       url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
@@ -368,15 +369,14 @@
     ZXXFILE = $.extend(ZXXFILE, params);
     ZXXFILE.init();
     $(".act-form-btn").on('click',function(){
-    	var type_id = $('.act_form_con input[checked=checked]').val();
-    	console.log(type_id)
-    	var child_id =$(".act_form_con_child").eq(type_id).find('input[checked=checked]').val();
-    	console.log(child_id)
+    	var type_id = $('.act_form_con input[name="payMethod"]:checked').val();
+    	// console.log(type_id)
+    	var child_id =$(".act_form_con_child").eq(type_id-1).find('input[name="pay'+type_id+'"]:checked').val();
+    	// console.log(child_id)
     	if($("#gerenjieshao").val()==''){
     		layer.msg("请填写问题描述");
           	return false;
     	}
-
     	$.ajax({
 	        url: '/save_feedback',
 	        type:'POST',
