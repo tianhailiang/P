@@ -351,6 +351,10 @@
         }
         return arrFiles;
       },
+      onSelect: function(files) {
+        console.log('4444444444')
+        $('.attach_item').text('附件正在上传……');
+      },
       onSuccess: function(file, response) {
         console.log('onSuccess',response);
         var res = JSON.parse(response);
@@ -361,7 +365,7 @@
         }
       },
       onFailure: function(file) {
-        console.log(file)
+        $('.attach_item').text('上传失败，请重新上传')
       }
     };
     ZXXFILE = $.extend(ZXXFILE, params);
