@@ -397,6 +397,9 @@
 	            console.log(result)
 	            if(result.code == 0){
 	            	layer.msg('提交成功')
+	            	window.setTimeout(function(){
+                    	window.location.reload();
+                	},1000);
 	            }else{
 	              layer.msg('系统繁忙，请稍后重试')
 	            }
