@@ -3602,7 +3602,7 @@ exports.act_form = function (req, res, next){
         log.info(result)
         data.pageroute="about";
         data.tdk = {
-            pagekey: 'PROFILE', //key
+            pagekey: 'FEEDBACK', //key
             cityid: area, //cityid
             nationid: country//nationi
         };
