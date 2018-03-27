@@ -213,6 +213,8 @@ exports = module.exports = function (app) {// routes
   app.post('/bind_phone', login.bind_phone);
   //普通用户登录
   app.post('/login_user', login.login_user);
+  //表单提交
+  app.post('/save_feedback',controller.save_feedback);
   //退出
   app.get('/login_out', login.login_out);
   //用户视角 精华
@@ -224,4 +226,5 @@ exports = module.exports = function (app) {// routes
   app.get("/agreement",controller.agreement);//金吉列简介
   app.get('/about/cultures',about.cultures);//公司简介
   app.get("/about/culture/:id",about.culture_detail);//金色力量底页
+  app.get("/act_form",controller.act_form);//活动表单
 };

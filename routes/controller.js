@@ -3576,3 +3576,50 @@ exports.yiminHome = function (req, res, next) {
         res.render('yimin_index', data);
     })
 };
+//活动表单
+exports.act_form = function (req, res, next){
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var qianzhengzhinan_currentPage=req.query.page || 1;
+    var country = req.query.n || 0;
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        //log.debug("login_a-------" + login_a.nickname)
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+
+    }, function (err, result){
+        log.info(result)
+        data.pageroute="about";
+        data.tdk = {
+            pagekey: 'PROFILE', //key
+            cityid: area, //cityid
+            nationid: country//nationi
+        };
+        res.render('act_form', data);
+
+    });
+}
+
+//表单
+exports.save_feedback = function(req,res,next){
+    log.debug('表单提交');
+    var data = req.body;
+    cms.save_feedback(data,function(err,result){
+        if(err){
+          res.send(err);
+        }else{
+          res.send(result); 
+        }
+    })
+}

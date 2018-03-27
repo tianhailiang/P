@@ -1,3 +1,8 @@
+.author-sel{padding:20px 20px 0 20px;background:#fff}
+.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
+.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
+.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
+.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:755px}
@@ -16,11 +21,6 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:32px}
-.author-sel{padding:20px 20px 0 20px;background:#fff}
-.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
-.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
-.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
-.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
@@ -1146,7 +1146,7 @@ form,input{margin:0;padding:0}
 .tc{text-align:center}
 .a-right,.tr{text-align:right}
 .nobr,.nowrap{white-space:nowrap;word-wrap:normal}
-.mui-mbar-tabs,.quick_links_wrap{height:100%;width:40px;right:0;position:fixed;right:4px;bottom:0;z-index:1000;height:100%;-webkit-transition:width linear .4s;-moz-transition:width linear .4s;-ms-transition:width linear .4s;transition:width linear .4s;_position:fixed;_bottom:auto;_top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-10)}
+.mui-mbar-tabs,.quick_links_wrap{height:100%;width:40px;position:fixed;right:18px;bottom:0;z-index:1000;height:100%;-webkit-transition:width linear .4s;-moz-transition:width linear .4s;-ms-transition:width linear .4s;transition:width linear .4s;_position:fixed;_bottom:auto;_top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-10)}
 .quick_links_wraper.quick_links_dockright{margin-left:0;left:auto;right:4px}
 .ibar_closebtn,.login_favorite,.login_order,.mui-mbar-tabs i{display:inline-block;cursor:pointer;height:19px;width:18px;vertical-align:top;position:absolute}
 #quick_links_panel{width:44px;height:100%;position:fixed;z-index:2;top:0;right:0;font-family:'microsoft yahei',arial}
@@ -1190,7 +1190,7 @@ form,input{margin:0;padding:0}
 .quick_links_pop .arrow i{border-color:transparent #f9fafc;margin:-12px 0 0 -13px;left:0;top:0}
 .quick_links_pop .fix_bg{display:none;border-top-width:0;border-radius:0 0 3px 3px;margin:0 0 -4px -250px;height:2px;width:500px;overflow:hidden;position:absolute;bottom:0;left:50%}
 .quick_links_pop .pop_panel{font-size:12px;width:100%;height:628px;position:relative}
-.quick_cart_list,.quick_history_list,.quick_leave_message,.quick_links_pop .links,.quick_message_list,.quick_mpbtn_histroy,.quick_mpbtn_recharge,.quick_mpbtn_wdsc,.quick_my_qlinks{position:fixed;width:170px;right:40px;top:50%;background:#f5f5f5;display:block;margin-top:-380px;right:50px!important}
+.quick_cart_list,.quick_history_list,.quick_leave_message,.quick_links_pop .links,.quick_message_list,.quick_mpbtn_histroy,.quick_mpbtn_recharge,.quick_mpbtn_wdsc,.quick_my_qlinks{position:fixed;width:170px;right:40px;top:50%;background:#f5f5f5;display:block;margin-top:-380px;right:70px!important}
 .quick_cart_list .user_cart_inner,.quick_history_list .history_slider{display:block;border:0;margin:0;position:static}
 .quick_cart_list .user_cart_inner .del{display:none}
 .quick_history_list .title i{background-position:-170px -34px}
@@ -1369,6 +1369,8 @@ a{cursor:pointer}
 .qq-slide-img{position:absolute;width:216px;height:296px;border:12px solid #f8f8f8;background:#fff;right:44px;top:-230px;display:none}
 .qq-slide-img img{width:216px}
 .quick_links_panel ul li.weichuan:hover{background:#9a9a9a}
+.quick_links_panel ul li.jiang{background:0 0}
+.quick_links_panel ul li.jiang:hover{background:0 0}
 .clear{clear:both;display:block;height:0;overflow:hidden;font-size:0}
 button,input,select,textarea{font-size:100%;outline:0}
 textarea{overflow-y:auto}

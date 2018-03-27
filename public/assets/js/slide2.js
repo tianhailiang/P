@@ -450,7 +450,9 @@ $(".qq-slide").on("click",function(){
 $('#to_top').click(function(){
   $('html , body').animate({scrollTop: 0},'slow');
 });
-
+$(".jiang").click(function(){
+  window.open(fn.no_urlgen('act_form'));
+})
 //====================弹窗==============
 
 //document.write('<div id="guanbi_tanchu" style="display:none" class="box_tanchu"></div>');
