@@ -417,11 +417,21 @@
     $(".act-form-btn").on('click',function(){
     	var type_id = $('.act_form_con input[name="payMethod"]:checked').val();
     	// console.log(type_id)
+      if(type_id == undefined){
+        layer.msg("请选择建议类型");
+        return false;
+      }
     	var child_id =$(".act_form_con_child").eq(type_id-1).find('input[name="pay'+type_id+'"]:checked').val();
+      if(type_id ==1 || type_id ==2){
+        if(child_id == undefined ){
+          layer.msg("请选择其中一项分类");
+          return false;
+        }
+      }
     	// console.log(child_id)
-    	if($("#gerenjieshao").val()==''){
+    	if($("#gerenjieshao").val()=='' || $("#gerenjieshao").val() =='请描述你的建议~'){
     		layer.msg("请填写问题描述");
-          	return false;
+        return false;
     	}
     	$.ajax({
 	        url: '/save_feedback',
@@ -442,8 +452,8 @@
 	            if(result.code == 0){
 	            	layer.msg('提交成功')
 	            	window.setTimeout(function(){
-                    	window.location.reload();
-                	},1000);
+                  window.location.reload();
+              	},1000);
 	            }else{
 	              layer.msg('系统繁忙，请稍后重试')
 	            }
