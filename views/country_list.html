@@ -212,7 +212,7 @@
           <p><span>文章类别：</span></p>
           <ul class="select-list">
             {% for item in crowdType %}
-            <li data-id="{{item.id}}"><a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', 'type='+ item.id,('tag=' + tag) if tag else '',('order=' + order) if order else '')}}" class={{'focus-on' if item.id == type else ""}}>{{item.type}}</a></li>
+            <li data-id="{{item.id}}"><a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', 'type='+ item.id,('tag=' + tag) if (tag and item.id != 5) else '',('order=' + order) if order else '')}}" class={{'focus-on' if item.id == type else ""}}>{{item.type}}</a></li>
             {% endfor %}
           </ul>
         </div>

@@ -189,11 +189,11 @@ exports.country_list = function (req, res, next) {
         data.url = config.wwhost+req.url;
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-     var nquery = comfunc.getReqQuery(req.params[1]);
-     var country = nquery && nquery.n ? nquery.n : 0;
-     var type = nquery && nquery.type ? nquery.type : '';
-     var tag = nquery && nquery.tag ? nquery.tag : '';
-     var order = nquery && nquery.order ? nquery.order : "score";
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var country = nquery && nquery.n ? nquery.n : 0;
+    var type = nquery && nquery.type ? nquery.type : '';
+    var tag = nquery && nquery.tag ? nquery.tag : '';
+    var order = nquery && nquery.order ? nquery.order : "score";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
