@@ -55,7 +55,7 @@
 }
 .adviser-case-detail-offer{
   border-top:1px solid #dcdcdc;
-  border-bottom: 1px solid #dcdcdc;
+  /*border-bottom: 1px solid #dcdcdc;*/
   padding-top:20px;
   padding-bottom: 40px;
   position: relative;
@@ -188,4 +188,31 @@
 }
 .banner-box-right .slider .slider-dot ul{
   left: 50%;
+}
+.userinfo-box{
+  padding:20px;
+  height:76px;
+  border:1px solid #dcdcdc;
+  display: inline-block;
+}
+.userinfo-img{
+  width:76px;
+  height:76px;
+  float:left;
+  margin-right: 14px;
+}
+.userinfo-right{
+  float:left;
+
+}
+.userinfo-name{
+  font-size: 16px;
+  color:#333;
+  font-weight: bold;
+}
+.userinfo-information{
+  font-size: 14px;
+  color:#333;
+  margin-top:14px;
+  line-height: 14px;
 }

@@ -117,6 +117,22 @@
           <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
             {{article.article_info.message | safe}}
           </div>
+          <div class="userinfo-box clearfix" >
+            <img class="userinfo-img" src="{{userinfo.qrcode}}" >
+            <div class="userinfo-right" >
+              <div >
+                <i class="userinfo-name">{{userinfo.realname}}</i>
+                <i class="adviser-v-i" style="margin-left: 0;"></i>
+                <i style="color:#333;font-size: 14px;">{{userinfo.position_name}}</i>
+              </div>
+              <div class="userinfo-information" >
+                邮箱：{{userinfo.email}} | 电话 {{userinfo.tel}}
+              </div>
+              <div class="userinfo-information" >
+                {{userinfo.organid | getCity()}}分公司：{{userinfo.organid | getCityAddress()}}
+              </div>
+            </div>
+          </div>
           <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;padding-bottom: 40px;" id="to_comments">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}

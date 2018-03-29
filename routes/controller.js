@@ -30,9 +30,9 @@ function split_array(arr, len) {
 }
 
 function get_page_key(usertype, adviser_type, page_key) {
+    var pagekey = null;
     if (usertype == 2) {
         if (adviser_type == 2){
-            // pagekey = 'YIMIN_'+page_key;
             pagekey = page_key;
         }else {
             pagekey = page_key;
