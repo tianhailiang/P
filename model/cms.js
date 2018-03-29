@@ -1197,3 +1197,12 @@ exports.canzan_jianjie =function(data,callback){
   console.log('url----hahhahahahhaahhahahahahh-', url)
   api.apiRequest(url ,callback);
 }
+//表单提交
+exports.save_feedback = function(data,callback){
+  var url = config.apis.get_save_feedback;
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url, data, callback);
+}
