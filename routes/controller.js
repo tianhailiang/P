@@ -189,6 +189,7 @@ exports.country_list = function (req, res, next) {
         data.url = config.wwhost+req.url;
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var page = nquery && nquery.page ? nquery.page : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
     var country = nquery && nquery.n ? nquery.n : 0;
     var type = nquery && nquery.type ? nquery.type : '';
@@ -214,15 +215,19 @@ exports.country_list = function (req, res, next) {
                 "ad_seat": "SEAT2"
             }, callback);
         },
-        // so_article_list:function(callback) {
-        //     cms.so_article_list({
-        //         order: order,
-        //         key_word:encodeURI(keyword),
-        //         city_id:area,
-        //         "per_page": "15",
-        //         "page": page
-        //     }, callback);
-        // },
+        so_article_list:function(callback) {
+            cms.search_article_list({
+                order: order,
+                is_immi:1,
+                city_id:area,
+                "tag_list": tag,
+                "country_id": country,
+                "is_news": 1,
+                "edu_id":type,
+                "per_page": "15",
+                "page": page
+            }, callback);
+        },
         // guess_like: function (callback) {
         //     cms.channel_list({
         //         order: 'comments desc',
@@ -232,7 +237,7 @@ exports.country_list = function (req, res, next) {
         //     }, callback)
         // }
     }, function (err, result) {
-        // data.article_list = returnData(result.so_article_list,'so_article_list');
+        data.article_list = returnData(result.so_article_list,'so_article_list');
         // data.likelist = returnData(result.guess_like,'guess_like');
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -245,11 +250,11 @@ exports.country_list = function (req, res, next) {
             cityid: area,
             // keywords: keyword
         };
-        // data.pagination = {
-        //     pages:Number.parseInt(data.article_list.totalpage),
-        //     hrefFormer:helperfunc.paramurlgen('so_article','q='+keyword,'order='+order,'page='),
-        //     currentPage:Number.parseInt(page)
-        // }
+        data.pagination = {
+            pages:Number.parseInt(data.article_list.totalpage),
+            hrefFormer:helperfunc.paramurlgen('so_article','type='+type,'tag='+tag,'order='+order,'page='),
+            currentPage:Number.parseInt(page)
+        }
         // console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('country_list', data);
