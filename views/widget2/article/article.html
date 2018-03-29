@@ -189,7 +189,13 @@
     })
   }
   function stick (thisObj, uId, articleId) {
-    console.log($(thisObj).parents('.article-list-item').html());
+    var parent = $(thisObj).parents('.article-list-item');
+    var parents = $(thisObj).parents('.right-main');
+    if (parent.index() == 0) {
+      layer.msg('已经置顶！');
+      return false;
+    }
+    parents.prepend(parent);
   }
 </script>
 {% endmacro %}
