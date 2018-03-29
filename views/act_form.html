@@ -347,7 +347,14 @@
         }
         var arrFiles = [];
         for (var i = 0, file; file = files[i]; i++) {
-          arrFiles.push(file);
+          var mSize = 10*1024*1024;
+          if (file.size >=  mSize) {
+            $('.attach_item').text('您的文件应小于10M');
+            return false;
+          }
+          else {
+            arrFiles.push(file);
+          }
         }
         return arrFiles;
       },
