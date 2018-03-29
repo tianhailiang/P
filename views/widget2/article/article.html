@@ -197,7 +197,28 @@
     }
     else {
       //调用置顶接口
-      parents.prepend(parent);
+      $.ajax({
+        url: ajaxUrlPrefix.nodeapi+'/article_top',
+        type: 'POST',
+        datatype: 'json',
+        data: {
+          uid: uId,
+          article_id: articleId
+        },
+        success: function (result) {
+          console.log('置顶',result);
+          if(result.code == 0){
+            parents.prepend(parent);
+            layer.msg('置顶成功');
+          }else{
+            layer.msg('置顶失败')
+          }
+
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          console.log(errorThrown)
+        }
+      })
     }
   }
 </script>
