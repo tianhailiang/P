@@ -178,7 +178,7 @@ exports.index_page = function (req, res, next) {
 };
 //国家列表页
 exports.country_list = function (req, res, next) {
-    log.debug('国家搜索结果页');
+    log.debug('国家列表页');
     var data = {};
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
@@ -189,10 +189,11 @@ exports.country_list = function (req, res, next) {
         data.url = config.wwhost+req.url;
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-    // var nquery = comfunc.getReqQuery(req.params[1]);
-    // var page = nquery && nquery.page ? nquery.page : 1;
-    // var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
-    // var order = nquery && nquery.order ? nquery.order : "score";
+     var nquery = comfunc.getReqQuery(req.params[1]);
+     var country = nquery && nquery.n ? nquery.n : 0;
+     var type = nquery && nquery.type ? nquery.type : '';
+     var tag = nquery && nquery.tag ? nquery.tag : '';
+     var order = nquery && nquery.order ? nquery.order : "score";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -235,9 +236,10 @@ exports.country_list = function (req, res, next) {
         // data.likelist = returnData(result.guess_like,'guess_like');
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        // data.order = order;
-        // data.keyword=keyword;
-        // data.cur_page = page;
+        data.country = country;
+        data.type=type;
+        data.tag = tag;
+        data.order = order;
         data.tdk = {
             pagekey: 'SEARCHNEWS', //key
             cityid: area,
