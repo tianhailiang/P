@@ -173,7 +173,7 @@
           <p><span>留学国家及地区：</span></p>
           <ul class="select-list">
             {% for cItem in countryList %}
-            <li data-id="{{cItem.id}}"><a href="">{{cItem.country}}</a></li>
+            <li data-id="{{cItem.id}}"><a href="" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
             {% endfor %}
           </ul>
         </div>
@@ -212,7 +212,7 @@
           <p><span>文章类别：</span></p>
           <ul class="select-list">
             {% for item in crowdType %}
-            <li data-id="{{item.id}}"><a href="">{{item.type}}</a></li>
+            <li data-id="{{item.id}}"><a href="" class={{'focus-on' if item.id == type else ""}}>{{item.type}}</a></li>
             {% endfor %}
           </ul>
         </div>
@@ -259,7 +259,7 @@
           <p><span>文章标签：</span></p>
           <ul class="select-list">
             {% for item in arcType %}
-            <li data-id="{{item.id}}"><a href="" class="">{{item.type}}</a></li>
+            <li data-id="{{item.id}}"><a href="" class={{'focus-on' if item.id == type else ""}}>{{item.type}}</a></li>
             {% endfor %}
           </ul>
         </div>
