@@ -8,7 +8,6 @@
 <style>
  .act_form {
    width: 1120px;
-   background: #ffffff;
    margin: 0 auto;
    margin-top: 20px;
  }
@@ -169,7 +168,6 @@
     width: 175px;
     height: 175px;
     border: 1px solid #C13232;
-    background-color: #f8f8f8;
     text-align: center;
     line-height: 50px;
     float: left;
@@ -242,7 +240,7 @@
   var AD_PAGE_NAME = "PROFILE";
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<body>
+<body style="position: relative">
   {% include "widget/top/top.html" %}
   {% import "widget/new_nav_first/common_nav.html" as common_nav %}
   {{ common_nav.common_nav(tdk,helper) }}
@@ -287,7 +285,7 @@
 
 
   <div>
-    <h1 style="margin-top: 60px"><div class="act_form_biaoti"></div>上传建议附件</h1>
+    <h1 style="margin-top: 54px"><div class="act_form_biaoti"></div>上传建议附件</h1>
     <div class="act_form_xian"></div>
     <div class="attachment_box clearfix">
       <form id="attachmentForm" style="display: none;">
@@ -301,6 +299,7 @@
   	<span class="act-form-btn">提交建议</span>
   </div>
 </div>
+  <div  style=" width:100%;height:auto;background-image: url({{helper.cdnhost}}/assets/img/bioa_beijing.png);padding-bottom: 768px;background-repeat: no-repeat;background-size: 100% auto;position: absolute;bottom: 0px;z-index: -100;"></div>
     <div class="act_form_diye"style="">点击此处查看招聘职位<i class="iconfont" style="padding: 0 5px;">&#xe636;</i><a href="http://special.zhaopin.com/bj/2015/jjl032714/job2.html?deptid=112034331" style="font-size: 20px;color: #fff;;">虚位以待</a></div>
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_FEEDBACK_SEAT10",helper) }}
