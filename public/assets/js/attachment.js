@@ -36,10 +36,16 @@ var ZXXFILE = {
         // this.funDragHover(e);
         // 获取文件列表对象
         var files = e.target.files || e.dataTransfer.files;
+        var checkedFiles = this.filter(files);
         //只能上传一张
-        this.fileFilter = this.filter(files);
-        this.funDealFiles(this.fileFilter);
-        return this;
+        if (checkedFiles) {
+            this.fileFilter = checkedFiles;
+            this.funDealFiles(this.fileFilter);
+            return this;
+        }
+        else {
+            return false;
+        }
     },
     //选中文件的处理与回调
     funDealFiles: function(files) {
@@ -105,7 +111,6 @@ var ZXXFILE = {
         //文件选择控件选择
         if (this.fileInput) {
             var changefn = function (e) {
-                console.log('change')
                 self.funGetFiles(e);
             };
             if(document.addEventListener){
