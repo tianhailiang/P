@@ -17,6 +17,8 @@ exports = module.exports = function (app) {// routes
   app.get(/^\/yimin_so_article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.so_article_yimin);
   //社区首页
   app.get('/blog', controller.community_index);
+  //国家列表页
+  app.get('/country', controller.country_list);
   //用户视角 顾问主页
   app.get(/^\/(\d+)(\/*)$/, controller.adviser_main);
   //用户视角 参赞主页
