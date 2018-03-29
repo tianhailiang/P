@@ -257,62 +257,59 @@
   {{ common_nav.common_nav(tdk,helper) }}
   <div class="clearfix act_form_tu" >
     <div class="act_form_tu_xion"></div>
-  <div class="act_form clearfix">
-    <img style="display:block;" src="{{helper.cdnhost}}/assets/img/bioadantiaojiao.png" alt="">
-    <h1 style="margin-top: 40px;">
-      <div class="act_form_biaoti">
-      </div>建议类型
-    </h1>
-    <div class="act_form_xian"></div>
-    <div class="act_form_con clearfix">
-      <input  type="radio" name="payMethod" value="1" id="liu1" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu1">技术相关</label>
-      <input  type="radio" name="payMethod" value="2" id="liu2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu2">市场营销</label>
-      <input  type="radio" name="payMethod" value="3" id="liu3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu3">管理体系</label>
-      <input  type="radio" name="payMethod" value="4" id="liu4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu4">薪酬体系</label>
-      <input  type="radio" name="payMethod" value="5" id="liu5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0;margin-left: 0;" for="liu5">人力资源</label>
-  </div>
-
-<div class="act_form_con_2 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back.png);background-size:cover;height: 50px;line-height: 38px;display: none;width: 1186px;">
-  <input  type="radio" name="pay1" value="11" id="liu-1-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-1">技术缺陷</label>
-  <input  type="radio" name="pay1" value="12" id="liu-1-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-1-2">机制建议</label>
-  <input type="radio" name="pay1" value="13" id="liu-1-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-3">UI设计</label>
-  <input  type="radio" name="pay1" value="14" id="liu-1-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-4">页面排版</label>
-  <input type="radio" name="pay1" value="15" id="liu-1-5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu-1-5">技术优化</label>
-</div>
-
-<div class="act_form_con_3 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back1.png);background-size:cover;height: 50px;line-height: 38px;display: none;width: 1186px">
-  <input  type="radio" name="pay2" value="21" id="liu-2-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-1">交互设计</label>
-  <input  type="radio" name="pay2" value="22" id="liu-2-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-2-2">专题设计</label>
-  <input type="radio" name="pay2" value="23" id="liu-2-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-3">营销文案策划</label>
-  <input  type="radio" name="pay2" value="24" id="liu-2-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-4">前端设计</label>
-</div>
-  <div>
-    <h1 style="margin-top: 40px"><div class="act_form_biaoti"></div>问题简述</h1>
-    <div class="act_form_xian"></div>
-  </div>
-  <div class="content_title_bbb clearfix">
-    <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}">请描述你的建议~</textarea>
-    <div class="word-num">还可以输入<span id="word-num">120</span>字</div>
-  </div>
-
-
-  <div>
-    <h1 style="margin-top: 54px"><div class="act_form_biaoti"></div>上传建议附件</h1>
-    <div class="act_form_xian"></div>
-    <div class="attachment_box clearfix">
-      <form id="attachmentForm" style="display: none;">
-        <input id="attachment" type="file" multiple="multiple" name="attachment"/>
-      </form>
-      <label for="attachment" class="attach_upload_btn"><i class="iconfont">&#xe616;</i></label>
-      <div class="attach_item"></div>
+    <div class="act_form clearfix">
+      <img style="display:block;" src="{{helper.cdnhost}}/assets/img/bioadantiaojiao.png" alt="">
+      <h1 style="margin-top: 40px;">
+        <div class="act_form_biaoti">
+        </div>建议类型
+      </h1>
+      <div class="act_form_xian"></div>
+      <div class="act_form_con clearfix">
+        <input  type="radio" name="payMethod" value="1" id="liu1" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu1">技术相关</label>
+        <input  type="radio" name="payMethod" value="2" id="liu2" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu2">市场营销</label>
+        <input  type="radio" name="payMethod" value="3" id="liu3" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu3">管理体系</label>
+        <input  type="radio" name="payMethod" value="4" id="liu4" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu4">薪酬体系</label>
+        <input  type="radio" name="payMethod" value="5" id="liu5" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0;margin-left: 0;" for="liu5">人力资源</label>
+    </div>
+    <div class="act_form_con_2 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back.png);background-size:cover;height: 50px;line-height: 38px;display: none;width: 1186px;">
+      <input  type="radio" name="pay1" value="11" id="liu-1-1" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-1">技术缺陷</label>
+      <input  type="radio" name="pay1" value="12" id="liu-1-2" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-1-2">机制建议</label>
+      <input type="radio" name="pay1" value="13" id="liu-1-3" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-3">UI设计</label>
+      <input  type="radio" name="pay1" value="14" id="liu-1-4" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-4">页面排版</label>
+      <input type="radio" name="pay1" value="15" id="liu-1-5" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu-1-5">技术优化</label>
+    </div>
+    <div class="act_form_con_3 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back1.png);background-size:cover;height: 50px;line-height: 38px;display: none;width: 1186px">
+      <input  type="radio" name="pay2" value="21" id="liu-2-1" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-1">交互设计</label>
+      <input  type="radio" name="pay2" value="22" id="liu-2-2" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-2-2">专题设计</label>
+      <input type="radio" name="pay2" value="23" id="liu-2-3" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-3">营销文案策划</label>
+      <input  type="radio" name="pay2" value="24" id="liu-2-4" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-4">前端设计</label>
+    </div>
+    <div>
+      <h1 style="margin-top: 40px"><div class="act_form_biaoti"></div>问题简述</h1>
+      <div class="act_form_xian"></div>
+    </div>
+    <div class="content_title_bbb clearfix">
+      <textarea id="gerenjieshao" maxlength="500"  autocomplete="off">请描述你的建议~</textarea>
+      <div class="word-num">还可以输入<span id="word-num">120</span>字</div>
+    </div>
+    <div>
+      <h1 style="margin-top: 54px"><div class="act_form_biaoti"></div>上传建议附件</h1>
+      <div class="act_form_xian"></div>
+      <div class="attachment_box clearfix">
+        <form id="attachmentForm" style="display: none;">
+          <input id="attachment" type="file" multiple="multiple" name="attachment"/>
+        </form>
+        <label for="attachment" class="attach_upload_btn"><i class="iconfont">&#xe616;</i></label>
+        <div class="attach_item"></div>
+      </div>
+    </div>
+    <div style="position: relative;height:40px;margin-top: 70px;margin-bottom: 40px;">
+    	<span class="act-form-btn">提交建议</span>
     </div>
   </div>
-  <div style="position: relative;height:40px;margin-top: 70px;margin-bottom: 40px;">
-  	<span class="act-form-btn">提交建议</span>
-  </div>
-</div>
-
-    <a target="_blank" href="http://special.zhaopin.com/bj/2015/jjl032714/job2.html?deptid=112034331"><div class="act_form_diye"></div></a>
+  <a target="_blank" href="http://special.zhaopin.com/bj/2015/jjl032714/job2.html?deptid=112034331">
+    <div class="act_form_diye"></div>
+  </a>
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_FEEDBACK_SEAT10",helper) }}
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
@@ -415,6 +412,7 @@
     ZXXFILE = $.extend(ZXXFILE, params);
     ZXXFILE.init();
     $(".act-form-btn").on('click',function(){
+      $(this).unbind('click');
     	var type_id = $('.act_form_con input[name="payMethod"]:checked').val();
     	// console.log(type_id)
       if(type_id == undefined){
@@ -433,38 +431,38 @@
     		layer.msg("请填写问题描述");
         return false;
     	}
-    	$.ajax({
-	        url: '/save_feedback',
-	        type:'POST',
-	        data:{
-	            uid:login_ss.uid,
-	            phone:login_ss.username,
-	            nickname:login_ss.nickname,
-	            type_id:type_id,
-	            child_id:child_id,
-	            description:$("#gerenjieshao").val(),
-	            file_url: $('.attach_item').text()
-	        },
-	        dataType:'json',
-	        async: false,
-	        success:function(result){
-	            console.log(result)
-	            if(result.code == 0){
-	            	layer.msg('提交成功')
-	            	window.setTimeout(function(){
+      $.ajax({
+          url: '/save_feedback',
+          type:'POST',
+          data:{
+              uid:login_ss.uid,
+              phone:login_ss.username,
+              nickname:login_ss.nickname,
+              type_id:type_id,
+              child_id:child_id,
+              description:$("#gerenjieshao").val(),
+              file_url: $('.attach_item').text()
+          },
+          dataType:'json',
+          async: false,
+          success:function(result){
+              console.log(result)
+              if(result.code == 0){
+                layer.msg('提交成功')
+                window.setTimeout(function(){
                   window.location.reload();
-              	},1000);
-	            }else{
-	              layer.msg('系统繁忙，请稍后重试')
-	            }
-	        },
-	        error:function(XMLHttpRequest, textStatus, errorThrown){
-	            console.log(errorThrown)
-	        }
-	    });
-
+                },1000);
+              }else{
+                layer.msg('系统繁忙，请稍后重试')
+              }
+             
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+              console.log(errorThrown)
+          }
+      });
+    
     });
-   
   })
 </script>
 </body>
