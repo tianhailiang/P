@@ -62,7 +62,7 @@ var __countryArr_ = {
 /*
  * param：国家id，
  * return：国家中文
-*/
+ */
 function getCountryChinese(id) {
   var obj = normalize(__countryArr_[id],__countryArr_[0]);
   return obj[0];
@@ -221,8 +221,9 @@ function getProjectName(id) {
 }
 
 /*
-* 国家和学历对应关系
-* */
+ * 国家和学历对应关系
+ * 
+ */
 var __country_edu_ = {
     "1":{
       "1":"本科",
@@ -253,7 +254,7 @@ var __country_edu_ = {
       "2":"研究生",
       "19":"中小学",
       "4":"预科"
-  },
+    },
     "50":{
       "1":"本科",
       "2":"研究生"
@@ -339,7 +340,7 @@ var __country_edu_ = {
       "1":"本科",
       "2":"研究生"
     }
-  };
+};
 
 function getCountryEdu (countryId, eduId) {
   if (__country_edu_[countryId][eduId]) {
@@ -350,8 +351,9 @@ function getCountryEdu (countryId, eduId) {
   }
 }
 /*
-* ok: true
-* */
+ * ok: true
+ * 
+ */
 function cityid_invalidcheck(id) {
   return invalidDataCheck(__cityArr_[id]);
 }
@@ -385,7 +387,7 @@ function getCountryIdParams(countryParams) {
   return country;
 }
 
-/**
+/*
  * 处理栏目列表参数
  * @param req_query order-views__page-1
  * @returns {Array}
@@ -406,7 +408,7 @@ function getReqQuery(req_query) {
   return nquery;
 }
 
-/**
+/*
  * api 接口返回数据格式化
  * @param code
  * @param message
