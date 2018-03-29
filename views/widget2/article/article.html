@@ -195,7 +195,10 @@
       layer.msg('已经置顶！');
       return false;
     }
-    parents.prepend(parent);
+    else {
+      //调用置顶接口
+      parents.prepend(parent);
+    }
   }
 </script>
 {% endmacro %}
