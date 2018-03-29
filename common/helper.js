@@ -131,7 +131,7 @@ function active_urlgen(){
       /*过滤默认参数 start*/
       var can_type = arguments[i].split('=')[0];
       var can_val = arguments[i].split('=')[1];
-      if (((can_type == 'order') && (can_val == 1 || can_val == 'inputtime' || can_val == 'add_time' ||  can_val == 'inputtime desc' ||  can_val == 'add_time desc')) || ((can_type == 'page') && (can_val == 1)) || ((can_type == 'crowd') && (can_val == 0))  || ((can_type == 'time') && (can_val == 0)) || ((can_type == 'e') && (can_val == 0)) || ((can_type == 'serve') && (can_val == 0)) || ((can_type == 't') && (can_val == 1)) || ((can_type == 'n') && (can_val == 0)) ) {
+      if (((can_type == 'order') && (can_val == 1 || can_val == 'inputtime' || can_val == 'add_time' ||  can_val == 'inputtime desc' ||  can_val == 'add_time desc')) || ((can_type == 'page') && (can_val == 1)) || ((can_type == 'crowd') && (can_val == 0))  || ((can_type == 'time') && (can_val == 0)) || ((can_type == 'e') && (can_val == 0)) || ((can_type == 'serve') && (can_val == 0)) || ((can_type == 't') && (can_val == 1)) || ((can_type == 'n') && (can_val == 0)) || ((can_type == 'type') && (can_val == 0)) || ((can_type == 'tag') && (can_val == 0)) ) {
         continue;
       }
       /*过滤默认参数 end*/
@@ -278,7 +278,7 @@ function exits_static_page(path) {
   var yimin_list_reg = path.match(/^\/(news|interpret|activity|case).html$/g);
 
   var schoolrank_list = path.match(/^\/(schoolrank)[0-9A-Za-z\-_/]*.html$/g);
-  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article|yimin_so_advisor)(.*).html$/g);
+  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article|yimin_so_advisor|articles)(.*).html$/g);
   if((reg_list || so_reg || so_center || yimin_reg || yimin_list_reg || schoolrank_list || so_pigination || edu) && !rank){
     return false;
   }

@@ -18,7 +18,7 @@ exports = module.exports = function (app) {// routes
   //社区首页
   app.get('/blog', controller.community_index);
   //国家列表页
-  app.get(/article(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.country_list);
+  app.get(/articles(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.country_list);
   //用户视角 顾问主页
   app.get(/^\/(\d+)(\/*)$/, controller.adviser_main);
   //用户视角 参赞主页
