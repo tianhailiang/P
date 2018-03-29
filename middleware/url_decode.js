@@ -27,9 +27,11 @@ function url_yiminrewrite(app) {
 function url_decode(app) {
   app.use(function(req, res, next) {
     var url = req.url;
-    req.url = req.originalUrl = url.replace(".html","");
-    req.query = URL.parse(req.url, true).query;
-    console.log('reqUrl',req.url,req.query);
+    if (url != 'http://www.jjl.cn/zt/zhaopin/employment.html') { //招聘页面
+      req.url = req.originalUrl = url.replace(".html","");
+      req.query = URL.parse(req.url, true).query;
+      console.log('reqUrl',req.url,req.query);
+    }
     next('route');
   });
 }
