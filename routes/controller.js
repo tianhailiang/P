@@ -195,6 +195,11 @@ exports.country_list = function (req, res, next) {
     var type = nquery && nquery.type ? nquery.type : '';
     var tag = nquery && nquery.tag ? nquery.tag : '';
     var order = nquery && nquery.order ? nquery.order : "score";
+    var newsFlag = 1;
+    if (type == '时讯') {
+        newsFlag = 2;
+        tag = ''
+    }
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -222,8 +227,8 @@ exports.country_list = function (req, res, next) {
                 city_id:area,
                 "tag_list": tag,
                 "country_id": country,
-                "is_news": 1,
-                "edu_id":type,
+                "is_news": newsFlag,
+                "edu_id":(type=='时讯')?'':type,
                 "per_page": "15",
                 "page": page
             }, callback);
@@ -242,8 +247,8 @@ exports.country_list = function (req, res, next) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.country = country;
-        data.type=type;
-        data.tag = tag;
+        data.type=(type== '')?'全部':type;
+        data.tag = (tag== '')?'全部':tag;
         data.order = order;
         data.tdk = {
             pagekey: 'ARTICLELIST', //key
