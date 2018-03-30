@@ -157,24 +157,31 @@ exports.yimin_xiangguanguwen = function(req,res,next){
 }
 //相关推荐
 exports.article_xiangguantuijian = function(req,res,next){
-  log.debug('相关推荐.......')
+  log.debug('相关推荐.......',req.query)
   var data = {};
   var country = req.query.n ? req.query.n.split(',')[0] : 1;
   var area = req.query.c || 1;
-  var uid = req.query.uid;
+  var is_news = req.query.is_news || '';
+  var tag_list = encodeURI(req.query.tag_list) || '';
+  var now_articleId = req.query.article_id;
   async.parallel({
-    guess_like: function (callback) {
-      cms.channel_list({
+    relation_recommend: function (callback) {
+      wec.relation_recommend({
         "country_id":country,
-        "city_id":1,
-        "is_immi":2,
-        "per_page":5,
-        "order":"views desc"
+        "city_id":area,
+        //"is_immi":2,
+        "is_news": is_news,
+        "tag_list": tag_list,
+        "per_page":5
       }, callback)
     }
   },function(err,result){
-    data.likelist = returnData(result.guess_like,'guess_like');
-    console.log(data.likelist)
+    data.relation_recommend = returnData(result.relation_recommend,'relation_recommend');
+    for (let index in data.relation_recommend.list) {
+      if (data.relation_recommend.list[index].id == now_articleId) {
+        data.relation_recommend.list.splice(index, 1);
+      }
+    }
     res.render('./fragment/article_xiangguantuijian', data);
   });
 }
