@@ -142,6 +142,10 @@
               </i>点赞</span> 
             <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}"  rel="nofollow">立即咨询</a>
         </div>
+        <div class="article_tuijian">
+          <h1><div></div>相关推荐</h1>
+          {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+userinfo.country,'c='+userinfo.organid,'is_news='+article.article_info.is_news,'tag_list='+ tag_list,'article_id='+article.article_info.id) %}
+        </div>
         <!-- ========评论===== -->
         {% if userinfo.status == 0 %} 
           {% include "widget2/comment/comment.html" %}
