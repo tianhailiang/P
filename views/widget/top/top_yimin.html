@@ -254,10 +254,10 @@ input[type="checkbox"] {
                 '<span class="bor"></span>'+
                 '<span ><a href="javascript:void(0);" style="background: #fff;" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '<span class="bor">|</span>'+
-                '<span id="weibo" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>'+
-                '<span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weibo.png);display: none;"></span>'+
                 '<span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>'+
                 '<span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weixin.png);display: none;"></span>'+
+                '<span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>'+
+                '<span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weibo.png);display: none;"></span>'+
                 '</div>'+
                 '</div>'
       $(".top").append(val);
@@ -276,9 +276,9 @@ input[type="checkbox"] {
               '<li ><a href="javascript:void(0)" style="background: #fff;" onclick="outlogin()" rel="nofollow">退出</a></li>'+
               '<li style="margin-right: 10px;"><span class="bor">|</span></li>'+
               '<li style="margin-left: 0px;"><span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span></li>'+
-              '<li style="margin-left: 0px;"><span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weixin.png);display: none;"></span></li>'+
-              '<li style="margin-left: 0px;"><span id="weibo" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span></li>'+
-              '<li style="margin-left: 0px;"><span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weibo.png);display: none;"></span></li>'+
+              '<li style="margin-left: 0px;"><span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weixin.png);display: none;"></span></li>'+
+              '<li style="margin-left: 0px;"><span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span></li>'+
+              '<li style="margin-left: 0px;"><span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weibo.png);display: none;"></span></li>'+
                 '</ul>'+
                 '</div>'+
                 '</div>';
@@ -294,10 +294,10 @@ input[type="checkbox"] {
 <script src="{{helper.cdnhost}}/assets/js/top.js"></script>
 <script>
   $(function () {
-    $("#weibo").on("mouseover", function (e) {
+    $("#weibo_top").on("mouseover", function (e) {
       $("#weibo_").css("display", "block");
     });
-    $("#weibo").on("mouseout", function (e) {
+    $("#weibo_top").on("mouseout", function (e) {
       $("#weibo_").css("display", "none");
     });
     $("#weixin").on("mouseover", function (e) {

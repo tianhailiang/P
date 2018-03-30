@@ -36,9 +36,11 @@
         if (msg.code == 0) {
           if (msg.data.type == 'add') {
             thisObj.text('取消关注');
+            thisObj.css('background','#dcdcdc');
           }
           else if ( msg.data.type == 'remove') {
             thisObj.text('+关注');
+            thisObj.css('background','#C13232');
           }
         }
       },
