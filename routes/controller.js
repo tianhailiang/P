@@ -189,12 +189,12 @@ exports.country_list = function (req, res, next) {
         data.url = config.wwhost+req.url;
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-    var page = nquery && nquery.page ? nquery.page : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
     var country = nquery && nquery.n ? nquery.n : 0;
     var type = nquery && nquery.type ? nquery.type : '';
     var tag = nquery && nquery.tag ? nquery.tag : '';
     var order = nquery && nquery.order ? nquery.order : "score";
+    var page = nquery && nquery.page ? nquery.page : 1;
     var newsFlag = 1;
     if (type == '时讯') {
         newsFlag = 2;
@@ -225,10 +225,10 @@ exports.country_list = function (req, res, next) {
                 order: order,
                 is_immi:1,
                 city_id:area,
-                "tag_list": tag,
+                "tag_list": encodeURI(tag),
                 "country_id": country,
                 "is_news": newsFlag,
-                "edu_id":(type=='时讯')?'':type,
+                "edu_id":(type=='时讯')?'':encodeURI(type),
                 "per_page": "15",
                 "page": page
             }, callback);
@@ -250,6 +250,7 @@ exports.country_list = function (req, res, next) {
         data.type=(type== '')?'全部':type;
         data.tag = (tag== '')?'全部':tag;
         data.order = order;
+        data.cur_page = page;
         data.tdk = {
             pagekey: 'ARTICLELIST', //key
             cityid: area,
@@ -257,10 +258,10 @@ exports.country_list = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_article','type='+type,'tag='+tag,'order='+order,'page='),
+            hrefFormer:helperfunc.active_urlgen('articles','n='+country,'type='+type,'tag='+tag,'order='+order,'page='),
             currentPage:Number.parseInt(page)
         }
-        // console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
+        // console.log('aaaaa333~~', helperfunc.active_urlgen('articles','n='+country,'type='+type,'tag='+tag,'order='+order,'page='))
         data.esikey = esihelper.esikey();
         res.render('country_list', data);
     });
