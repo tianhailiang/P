@@ -205,6 +205,10 @@
             aItemHtml += '<span style="font-size: 12px;padding: 0 10px;height: 24px;margin-left: 20px;background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/yanse.png);background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">'+item.tag_list+'</span>';
             aItemHtml += '</div>'+
                         '<div class="offer-opt-bar clearfix">'+
+                        '<div class="opt-btn red-border stick" onclick="stick($(this), '+item.ui+', '+item.id+')">'+
+                        '<i class="iconfont">&#xe685;</i>'+
+                        '<span>置顶</span>'+
+                        '</div>'+
                         '<div class="opt-btn red-border delete" onclick="deleteOffer($(this), '+item.uid+', '+item.id+')">'+
                         '<i class="iconfont">&#xe8c1;</i>'+
                         '<span>删除</span>'+

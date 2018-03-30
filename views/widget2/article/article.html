@@ -127,6 +127,10 @@
       {% endif%}
     </div>
     <div class="offer-opt-bar clearfix">
+      <div class="opt-btn red-border stick" onclick="stick($(this), {{item.uid}}, {{item.id}})">
+        <i class="iconfont">&#xe685;</i>
+        <span>置顶</span>
+      </div>
       <div class="opt-btn red-border delete" onclick="deleteOffer($(this), {{item.uid}}, {{item.id}})">
         <i class="iconfont">&#xe8c1;</i>
         <span>删除</span>
@@ -183,6 +187,39 @@
         console.log(errorThrown)
       }
     })
+  }
+  function stick (thisObj, uId, articleId) {
+    var parent = $(thisObj).parents('.article-list-item');
+    var parents = $(thisObj).parents('.right-main');
+    if (parent.index() == 0) {
+      layer.msg('已经置顶！');
+      return false;
+    }
+    else {
+      //调用置顶接口
+      $.ajax({
+        url: ajaxUrlPrefix.nodeapi+'/article_top',
+        type: 'POST',
+        datatype: 'json',
+        data: {
+          uid: uId,
+          article_id: articleId
+        },
+        success: function (result) {
+          console.log('置顶',result);
+          if(result.code == 0){
+            parents.prepend(parent);
+            layer.msg('置顶成功');
+          }else{
+            layer.msg('置顶失败')
+          }
+
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          console.log(errorThrown)
+        }
+      })
+    }
   }
 </script>
 {% endmacro %}
