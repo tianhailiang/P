@@ -1899,7 +1899,7 @@ exports.article_detail= function(req,res,next){
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
-  console.log('url', l.h);
+  // console.log('url', l.h);
   if (l.h !== undefined) {
       data.url = l.h;
   } else {

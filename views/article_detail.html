@@ -118,7 +118,9 @@
             {{article.article_info.message | safe}}
           </div>
           <div class="userinfo-box clearfix" >
-            <img class="userinfo-img" src="{{userinfo.qrcode}}!76x76" >
+            {% if userinfo.qrcode %}
+              <img class="userinfo-img" src="{{helper.imageThumb(userinfo.qrcode,'76x76')}}" >
+            {% endif %}
             <div class="userinfo-right" >
               <div >
                 <i class="userinfo-name">{{userinfo.realname}}</i>
@@ -150,6 +152,10 @@
               {% endif %} 
               </i>点赞</span> 
             <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}"  rel="nofollow">立即咨询</a>
+          </div>
+          <div class="article_tuijian">
+              <h1><div></div>相关推荐</h1>
+            {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+userinfo.country,'c='+userinfo.organid) %}
           </div>
           <!-- ========评论===== -->
           {% if userinfo.status == 0 %} 

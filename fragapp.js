@@ -29,7 +29,7 @@ var env = nunjucks.configure(viewspath, {
   autoescape: true
 });
 
-// viewcache
+ viewcache
 app.use(viewcache({
   redis: config.redisCache.host,
   port:config.redisCache.port,
