@@ -410,7 +410,6 @@
     ZXXFILE = $.extend(ZXXFILE, params);
     ZXXFILE.init();
     $(".act-form-btn").on('click',function(){
-      $(this).unbind('click');
     	var type_id = $('.act_form_con input[name="payMethod"]:checked').val();
     	// console.log(type_id)
       if(type_id == undefined){
@@ -429,6 +428,7 @@
     		layer.msg("请填写问题描述");
         return false;
     	}
+      $(this).unbind('click');
       $.ajax({
           url: '/save_feedback',
           type:'POST',
