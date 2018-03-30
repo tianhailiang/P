@@ -19,7 +19,7 @@ function show_advert() {
                 var imageSetting = val[i].setting;
                 var html = "";
                 if(homeAdvert(AD_PAGE_NAME, val[i].ad_seat)){
-                    //console.log(imageSetting);
+                    // console.log(imageSetting);
                     for(var j in imageSetting){
                         if(imageSetting[j].imageurl == undefined){continue;}
                         html += '<a rel="nofollow" data-pid="'+imageSetting[j].pid+'" href="'+imageSetting[j].linkurl+'" target="_blank">';
