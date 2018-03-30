@@ -1,32 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 {% include "header_new.html" %}
- <!--[if lt IE 9]>
+ <!--[if lt IE 10]>
   <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
   <![endif]-->
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/about.css">
 <style>
  .act_form {
-   width: 1120px;
-   background: #ffffff;
+   width: 1200px;
    margin: 0 auto;
    margin-top: 20px;
  }
  .act_form_con_2 label{
    font-weight: normal;
-   margin-right: 155px;
+   margin-right: 158px;
    margin-top: 10px;
+   font-size: 14px;
  }
  .act_form_con label{
    font-weight: normal;
-   margin-left: 40px;
-   margin-right: 110px;
+   margin-right: 158px;
    margin-top: 10px;
+   font-size: 16px;
  }
  .act_form_con_3 label{
    font-weight: normal;
    margin-left: 50px;
-   margin-right: 130px;
+   margin-right: 125px;
    margin-top: 10px;
  }
 
@@ -132,29 +132,34 @@
    clip: rect(0, 0, 0, 0);
  }
   .act_form_con {
-    width: 1180px;
+    width: 1200px;
     height: 40px;
+    margin-top: 26px;
   }
 #gerenjieshao {
-  width: 1052px;
+  width: 1080px;
   margin: 30px;
-  height: 188px;
+  padding: 30px;
+  height: 154px;
+  font-size: 16px;
+  color: #999999;
   background: #f8f8f8;
   border: 0;
+
 }
   .act_form_xian {
-    width: 1090px;
+    width: 1168px;
     height: 1px;
     border-bottom:1px solid #C13232 ;
     border-top:1px solid #C13232;
-    margin: 0 10px;
+    margin-left: 16px;
   }
  .word-num {
    position: absolute;
-   right: 55px;
-   top: 188px;
+   right: 50px;
+   top: 208px;
    z-index: 100;
-   color: #666;
+   color: #999;
  }
  .word-num span{
    color: #c13232;
@@ -163,10 +168,9 @@
    padding: 30px 10px;
  }
   .attach_upload_btn{
-    width: 50px;
-    height: 50px;
+    width: 175px;
+    height: 175px;
     border: 1px solid #C13232;
-    background-color: #f8f8f8;
     text-align: center;
     line-height: 50px;
     float: left;
@@ -174,6 +178,8 @@
  .attach_upload_btn i {
    font-size: 50px;
    color: #C13232;
+   display: block;
+   margin-top: 60px;
  }
   .attach_item {
     width: 900px;
@@ -192,6 +198,9 @@
   }
   .content_title_bbb {
     position: relative;
+    margin-top: 40px;
+    background: #fff;
+    box-shadow: 0px 1px 7px 3px rgba(0,0,0,0.1);
   }
   .act-form-btn{
   	display: block;
@@ -208,72 +217,97 @@
   	margin-left: -200px;
   	cursor: pointer;
   }
+  .act_form_tu {
+    width:100%;
+    min-width:1180px;
+    height:auto;
+    background-image: url({{helper.cdnhost}}/assets/img/zhuanxiang.png);padding-top: 300px;background-repeat: no-repeat;background-size: 100% auto;
+  }
+  h1 {
+    font-size: 18px
+  }
+  .act_form_biaoti {
+    width: 16px;
+    margin-top: 6px;
+    margin-right:8px;
+    height: 20px;
+    background: #C13232;
+    float: left;
+  }
+.act_form_diye {
+  width:100%;
+   height:270px;
+  background-image: url({{helper.cdnhost}}/assets/img/diditu.jpg);background-repeat: no-repeat;background-size: cover;text-align: center;color: #fff;font-size: 20px;background-position: center 0;
+}
+  .act_form_tu_xion {
+    width:100%;
+    min-width:1180px;
+    height:968px;
+    background-image: url({{helper.cdnhost}}/assets/img/bioa_beijing.png);background-repeat: no-repeat;background-size: 100% auto;position: absolute;bottom: 0px;z-index: -100;
+  }
 </style>
 <!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy3.css"/>-->
 <script>
   var AD_PAGE_NAME = "PROFILE";
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<body >
+<body style="position: relative">
   {% include "widget/top/top.html" %}
   {% import "widget/new_nav_first/common_nav.html" as common_nav %}
   {{ common_nav.common_nav(tdk,helper) }}
-  <div style="width:100%;height:auto;background-image: url({{helper.cdnhost}}/assets/img/zhuanxiang.png);padding-top: 300px;background-repeat: no-repeat;background-size: 100% auto;" class="clearfix" >
-  <div class="act_form clearfix">
-    <img style="display:block;" src="{{helper.cdnhost}}/assets/img/bioadantiaojiao.png" alt="">
-    <h1>
-      <div style="width: 16px;margin-top: 5px;margin-right:8px;height: 20px; background: #C13232;float: left;">
-      </div>建议类型
-    </h1>
-    <div class="act_form_xian"></div>
-    <div class="act_form_con clearfix">
-      <input  type="radio" name="payMethod" value="1" checked="checked" id="liu1" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu1">技术相关</label>
-      <input  type="radio" name="payMethod" value="2" id="liu2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu2">市场营销</label>
-      <input  type="radio" name="payMethod" value="3" id="liu3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu3">管理体系</label>
-      <input  type="radio" name="payMethod" value="4" id="liu4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu4">薪酬体系</label>
-      <input  type="radio" name="payMethod" value="5" id="liu5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0;margin-left: 0;" for="liu5">人力资源</label>
-  </div>
-
-<div class="act_form_con_2 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back.png);background-size:cover;height: 50px;line-height: 38px;">
-  <input  type="radio" name="pay1" value="11" checked="checked" id="liu-1-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-1">技术缺陷</label>
-  <input  type="radio" name="pay1" value="12" id="liu-1-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-1-2">机制建议</label>
-  <input type="radio" name="pay1" value="13" id="liu-1-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-3">ui设计</label>
-  <input  type="radio" name="pay1" value="14" id="liu-1-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-4">页面排版</label>
-  <input type="radio" name="pay1" value="15" id="liu-1-5"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu-1-5">技术优化</label>
-</div>
-
-<div class="act_form_con_3 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back1.png);background-size:cover;height: 50px;line-height: 38px;display: none;">
-  <input  type="radio" name="pay2" value="21" checked="checked" id="liu-2-1"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-1">交互设计</label>
-  <input  type="radio" name="pay2" value="22" id="liu-2-2"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-2-2">专题设计</label>
-  <input type="radio" name="pay2" value="23" id="liu-2-3"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-3">营销文案策划</label>
-  <input  type="radio" name="pay2" value="24" id="liu-2-4"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-4">前端设计</label>
-</div>
-  <div style="margin-top: 20px">
-    <h1><div style="width: 16px;margin-top: 8px;margin-right:8px;height: 20px; background: #C13232;float: left;"></div>问题简述</h1>
-    <div class="act_form_xian"></div>
-  </div>
-  <div class="content_title_bbb clearfix">
-    <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}"></textarea>
-    <div class="word-num">还可以输入<span id="word-num">120</span>字</div>
-  </div>
-
-
-  <div>
-    <h1><div style="width: 16px;margin-top: 8px;margin-right:8px;height: 20px; background: #C13232;float: left;"></div>上传建议附件</h1>
-    <div class="act_form_xian"></div>
-    <div class="attachment_box clearfix">
-      <form id="attachmentForm" style="display: none;">
-        <input id="attachment" type="file" multiple="multiple" name="attachment"/>
-      </form>
-      <label for="attachment" class="attach_upload_btn"><i class="iconfont">&#xe616;</i></label>
-      <div class="attach_item"></div>
+  <div class="clearfix act_form_tu" >
+    <div class="act_form_tu_xion"></div>
+    <div class="act_form clearfix">
+      <img style="display:block;" src="{{helper.cdnhost}}/assets/img/bioadantiaojiao.png" alt="">
+      <h1 style="margin-top: 40px;">
+        <div class="act_form_biaoti">
+        </div>建议类型
+      </h1>
+      <div class="act_form_xian"></div>
+      <div class="act_form_con clearfix">
+        <input  type="radio" name="payMethod" value="1" id="liu1" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu1">技术相关</label>
+        <input  type="radio" name="payMethod" value="2" id="liu2" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu2">市场营销</label>
+        <input  type="radio" name="payMethod" value="3" id="liu3" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu3">管理体系</label>
+        <input  type="radio" name="payMethod" value="4" id="liu4" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu4">薪酬体系</label>
+        <input  type="radio" name="payMethod" value="5" id="liu5" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0;margin-left: 0;" for="liu5">人力资源</label>
+    </div>
+    <div class="act_form_con_2 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back.png);background-size:cover;height: 50px;line-height: 38px;display: none;width: 1186px;">
+      <input  type="radio" name="pay1" value="11" id="liu-1-1" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-1">技术缺陷</label>
+      <input  type="radio" name="pay1" value="12" id="liu-1-2" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-1-2">机制建议</label>
+      <input type="radio" name="pay1" value="13" id="liu-1-3" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-3">UI设计</label>
+      <input  type="radio" name="pay1" value="14" id="liu-1-4" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-1-4">页面排版</label>
+      <input type="radio" name="pay1" value="15" id="liu-1-5" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label style="margin-right: 0" for="liu-1-5">技术优化</label>
+    </div>
+    <div class="act_form_con_3 clearfix act_form_con_child" style="background:url({{helper.cdnhost}}/assets/img/act_back1.png);background-size:cover;height: 50px;line-height: 38px;display: none;width: 1186px">
+      <input  type="radio" name="pay2" value="21" id="liu-2-1" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-1">交互设计</label>
+      <input  type="radio" name="pay2" value="22" id="liu-2-2" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label class="act_form_label" for="liu-2-2">专题设计</label>
+      <input type="radio" name="pay2" value="23" id="liu-2-3" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-3">营销文案策划</label>
+      <input  type="radio" name="pay2" value="24" id="liu-2-4" autocomplete="off" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu-2-4">前端设计</label>
+    </div>
+    <div>
+      <h1 style="margin-top: 40px"><div class="act_form_biaoti"></div>问题简述</h1>
+      <div class="act_form_xian"></div>
+    </div>
+    <div class="content_title_bbb clearfix">
+      <textarea id="gerenjieshao" maxlength="500"  autocomplete="off">请描述你的建议~</textarea>
+      <div class="word-num">还可以输入<span id="word-num">120</span>字</div>
+    </div>
+    <div>
+      <h1 style="margin-top: 54px"><div class="act_form_biaoti"></div>上传建议附件</h1>
+      <div class="act_form_xian"></div>
+      <div class="attachment_box clearfix">
+        <form id="attachmentForm" style="display: none;">
+          <input id="attachment" type="file" multiple="multiple" name="attachment"/>
+        </form>
+        <label for="attachment" class="attach_upload_btn"><i class="iconfont">&#xe616;</i></label>
+        <div class="attach_item"></div>
+      </div>
+    </div>
+    <div style="position: relative;height:40px;margin-top: 70px;margin-bottom: 40px;">
+    	<span class="act-form-btn">提交建议</span>
     </div>
   </div>
-  <div style="position: relative;height:40px;margin-top: 10px;margin-bottom: 40px;">
-  	<span class="act-form-btn">提交建议</span>
-  </div>
-</div>
-    <div style="width:100%;height:60px;background-image: url({{helper.cdnhost}}/assets/img/diditu.png);background-repeat: no-repeat;background-size: cover;text-align: center;line-height: 60px;color: #fff;font-size: 14px;">点击此处查看招聘职位<i class="iconfont" style="padding: 0 5px;">&#xe636;</i><a href="http://special.zhaopin.com/bj/2015/jjl032714/job2.html?deptid=112034331" style="font-size: 20px;color: #fff;;">虚位以待</a></div>
+    <a target="_blank" href="http://www.jjl.cn/zt/zhaopin/employment.html"><div class="act_form_diye"></div></a>
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_FEEDBACK_SEAT10",helper) }}
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
@@ -347,7 +381,14 @@
         }
         var arrFiles = [];
         for (var i = 0, file; file = files[i]; i++) {
-          arrFiles.push(file);
+          var mSize = 10*1024*1024;
+          if (file.size >=  mSize) {
+            $('.attach_item').text('您的文件应小于10M');
+            return false;
+          }
+          else {
+            arrFiles.push(file);
+          }
         }
         return arrFiles;
       },
@@ -371,44 +412,55 @@
     $(".act-form-btn").on('click',function(){
     	var type_id = $('.act_form_con input[name="payMethod"]:checked').val();
     	// console.log(type_id)
+      if(type_id == undefined){
+        layer.msg("请选择建议类型");
+        return false;
+      }
     	var child_id =$(".act_form_con_child").eq(type_id-1).find('input[name="pay'+type_id+'"]:checked').val();
+      if(type_id ==1 || type_id ==2){
+        if(child_id == undefined ){
+          layer.msg("请选择其中一项分类");
+          return false;
+        }
+      }
     	// console.log(child_id)
-    	if($("#gerenjieshao").val()==''){
+    	if($("#gerenjieshao").val()=='' || $("#gerenjieshao").val() =='请描述你的建议~'){
     		layer.msg("请填写问题描述");
-          	return false;
+        return false;
     	}
-    	$.ajax({
-	        url: '/save_feedback',
-	        type:'POST',
-	        data:{
-	            uid:login_ss.uid,
-	            phone:login_ss.username,
-	            nickname:login_ss.nickname,
-	            type_id:type_id,
-	            child_id:child_id,
-	            description:$("#gerenjieshao").val(),
-	            file_url: $('.attach_item').text()
-	        },
-	        dataType:'json',
-	        async: false,
-	        success:function(result){
-	            console.log(result)
-	            if(result.code == 0){
-	            	layer.msg('提交成功')
-	            	window.setTimeout(function(){
-                    	window.location.reload();
-                	},1000);
-	            }else{
-	              layer.msg('系统繁忙，请稍后重试')
-	            }
-	        },
-	        error:function(XMLHttpRequest, textStatus, errorThrown){
-	            console.log(errorThrown)
-	        }
-	    });
-
+      $(this).unbind('click');
+      $.ajax({
+          url: '/save_feedback',
+          type:'POST',
+          data:{
+              uid:login_ss.uid,
+              phone:login_ss.username,
+              nickname:login_ss.nickname,
+              type_id:type_id,
+              child_id:child_id,
+              description:$("#gerenjieshao").val(),
+              file_url: $('.attach_item').text()
+          },
+          dataType:'json',
+          async: false,
+          success:function(result){
+              console.log(result)
+              if(result.code == 0){
+                layer.msg('提交成功')
+                window.setTimeout(function(){
+                  window.location.reload();
+                },1000);
+              }else{
+                layer.msg('系统繁忙，请稍后重试')
+              }
+             
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+              console.log(errorThrown)
+          }
+      });
+    
     });
-   
   })
 </script>
 </body>

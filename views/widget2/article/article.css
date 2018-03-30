@@ -14,7 +14,7 @@
 .art-box .adviser-info{
     float:left;
     position: relative;
-    width:755px;
+    width:768px;
 }
 
 .art-box .adviser-info-name{
@@ -108,5 +108,5 @@
 /*���ܰ�ť��*/
 .art-box .offer-opt-bar{
     top: 10px;
-    right: 32px;
+    right: 0;
 }
