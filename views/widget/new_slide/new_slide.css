@@ -27,7 +27,7 @@
 .bold{font-weight:bold;} .f11{ font-size:11px;} .f14{ font-size:14px;}
 .tl {text-align:left;}.tc {text-align:center;} .tr, .a-right{text-align:right;} .nowrap,.nobr{white-space:nowrap; word-wrap:normal;}
 /* quick_links */
-.quick_links_wrap,.mui-mbar-tabs{ height:100%; width:40px;right: 0; position:fixed;right:4px;bottom:0; z-index:1000; height:100%;-webkit-transition:width linear .4s; -moz-transition:width linear .4s; -ms-transition:width linear .4s; transition:width linear .4s; _position:fixed; _bottom:auto; _top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-10);}
+.quick_links_wrap,.mui-mbar-tabs{ height:100%; width:40px; position:fixed;right:4px;bottom:0; z-index:1000; height:100%;-webkit-transition:width linear .4s; -moz-transition:width linear .4s; -ms-transition:width linear .4s; transition:width linear .4s; _position:fixed; _bottom:auto; _top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-10);}
 .quick_links_wraper.quick_links_dockright{ margin-left:0; left:auto; right:4px;}
 .mui-mbar-tabs i,.ibar_closebtn,.login_order,.login_favorite{display: inline-block;cursor: pointer;height: 19px;width: 18px;vertical-align: top;position:absolute;}
 #quick_links_panel{
@@ -187,7 +187,7 @@
 .quick_links_pop .arrow i{ border-color:transparent #f9fafc; margin:-12px 0 0 -13px; left:0; top:0;}
 .quick_links_pop .fix_bg{ display:none; border-top-width:0; border-radius:0 0 3px 3px; margin:0 0 -4px -250px; height:2px; width:500px; overflow:hidden; position:absolute; bottom:0; left:50%;}
 .quick_links_pop .pop_panel{ font-size:12px; width:100%; height:628px; position:relative;}
-.quick_cart_list, .quick_history_list, .quick_links_pop .links, .quick_my_qlinks, .quick_message_list,.quick_leave_message,.quick_mpbtn_histroy,.quick_mpbtn_wdsc,.quick_mpbtn_recharge{ position:fixed; width:170px; right:40px; top:50%; background:#f5f5f5; display:block; margin-top:-380px;right: 50px !important;}
+.quick_cart_list, .quick_history_list, .quick_links_pop .links, .quick_my_qlinks, .quick_message_list,.quick_leave_message,.quick_mpbtn_histroy,.quick_mpbtn_wdsc,.quick_mpbtn_recharge{ position:fixed; width:170px; right:40px; top:50%; background:#f5f5f5; display:block; margin-top:-380px;right: 46px !important;}
 .quick_cart_list .user_cart_inner, .quick_history_list .history_slider{ display:block; border:0; margin:0; position:static;}
 .quick_cart_list .user_cart_inner .del{ display:none;}
 .quick_history_list .title i{ background-position:-170px -34px;}
@@ -613,7 +613,7 @@ i.ibar_recharge-arrow {
   position: relative;
 }
 .quick_link_mian{
-  margin-top:140px;
+  margin-top:120px;
 }
 .weixin{
   position: absolute;
@@ -704,4 +704,10 @@ i.ibar_recharge-arrow {
 }
 .quick_links_panel ul li.weichuan:hover{
   background: #9a9a9a;
+}
+.quick_links_panel ul li.jiang{
+  background: none;
+}
+.quick_links_panel ul li.jiang:hover{
+  background: none;
 }

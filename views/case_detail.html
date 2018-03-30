@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/article_detail.css" >
 </head>
 <body style="background:#f5f5f5;">
+<!--页面标题导航条-->
+{% include "widget/detail_bar/detail_bar.html" %}
   <!-- ===头部=== -->
  {% include "widget/top/top.html" %}
  <!-- ====导航===== -->
@@ -69,7 +71,7 @@
               {{userinfo.realname}}<i class="adviser-v-i"></i>
             </span>
           </div>
-          <div class="bdsharebuttonbox" style="margin-top: 15px;float:right;">
+          <div class="bdsharebuttonbox page_share_buttons" style="margin-top: 15px;float:right;">
             <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
             <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
             <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
@@ -104,7 +106,23 @@
         <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
           {{article.article_info.message | safe}}
         </div>
-        <div class="adviser-case-operation-bar clearfix" style="padding-top: 40px;padding-bottom: 40px;">
+        <div class="userinfo-box clearfix" >
+          <img class="userinfo-img" src="{{userinfo.qrcode}}!76x76" >
+          <div class="userinfo-right" >
+            <div >
+              <i class="userinfo-name">{{userinfo.realname}}</i>
+              <i class="adviser-v-i" style="margin-left: 0;"></i>
+              <i style="color:#333;font-size: 14px;">{{userinfo.position_name}}</i>
+            </div>
+            <div class="userinfo-information" >
+              邮箱：{{userinfo.email}} | 电话 {{userinfo.tel}}
+            </div>
+            <div class="userinfo-information" >
+              {{userinfo.organid | getCity()}}分公司：{{userinfo.organid | getCityAddress()}}
+            </div>
+          </div>
+        </div>
+        <div class="adviser-case-operation-bar clearfix" style="padding-top: 40px;padding-bottom: 40px;" id="to_comments">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}
               已收藏
@@ -156,6 +174,7 @@
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/article_detail.js"></script>
 <script>
   $(function(){
       $('.banner-box-left .slider').xSlider({
@@ -287,7 +306,7 @@
       mask_div.style.left ='80px';
       mask_div.style.top = '40%';
       mask_div.style.overflow = "hidden";
-      mask_div.style.zIndex = "9999";
+      mask_div.style.zIndex = "1000";
       mask_div.style.opacity ="0.4";
       mask_div.style.filter = "filter:Alpha(opacity=40)";
       mask_div.style.fontSize = "30px";

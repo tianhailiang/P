@@ -239,6 +239,8 @@ var apis = {
   //顾问主页 个人视角
   //get_so_article_list
   "get_so_article_list": shequ_prefix + 'search/search_article/',
+  //国家文章列表
+  "get_search_article_list": shequ_prefix + 'search/search_article_list/',
   //搜索结果页（顾问）
   "get_so_adviser_adviser": shequ_prefix + 'search/search_adviser/',
   //根据ip 获取城市code码
@@ -252,7 +254,9 @@ var apis = {
   //新活动底页
   "get_activity_detail":prefix+'detail',
   //参赞介绍
-  "get_user_description":shequ_prefix + 'account/get_user_description/'
+  "get_user_description":shequ_prefix + 'account/get_user_description/',
+  //表单提交
+  "get_save_feedback":prefix +'save_feedback'
 };
 module.exports = {
   redisCache: redisCache,

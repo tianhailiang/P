@@ -55,7 +55,7 @@
 }
 .adviser-case-detail-offer{
   border-top:1px solid #dcdcdc;
-  border-bottom: 1px solid #dcdcdc;
+  /*border-bottom: 1px solid #dcdcdc;*/
   padding-top:20px;
   padding-bottom: 40px;
   position: relative;
@@ -113,7 +113,8 @@
 .adviser-case-detail-offer p{
   font-size: 14px;
   line-height: 26px;
-  color:#333
+  color:#333;
+  text-indent: 2em;
 }
 .adviser-case-detail-offer i{
   font-style: italic;
@@ -139,7 +140,7 @@
   margin-left: 4px;
 }
 
-.bdshare-button-style0-16 a{
+.page_share_buttons a{
      padding-left:0 !important;
     width: 20px;
     line-height: 20px !important;
@@ -147,19 +148,19 @@
     cursor: pointer;
     margin: 0px 10px 10px 0!important;
 }
-.bdshare-button-style0-16 .wx{
+.page_share_buttons .wx{
   background:url(../img/wx.png) no-repeat 0 0 !important;
   background-size: 20px 20px;
 }
-.bdshare-button-style0-16 .weixin-pengyouquan{
+.page_share_buttons .weixin-pengyouquan{
   background:url(../img/pyq.png) no-repeat 0 0 !important;
   background-size: 20px 20px;
 }
-.bdshare-button-style0-16 .bds_tsina{
+.page_share_buttons .bds_tsina{
   background:url(../img/xl.png) no-repeat 0 0 !important;
   background-size: 20px 20px;
 }
-.bdshare-button-style0-16 .bds_sqq{
+.page_share_buttons .bds_sqq{
   background:url(../img/qq.png) no-repeat 0 0 !important;
   background-size: 20px 20px;
 }
@@ -188,4 +189,31 @@
 }
 .banner-box-right .slider .slider-dot ul{
   left: 50%;
+}
+.userinfo-box{
+  padding:20px;
+  height:76px;
+  border:1px solid #dcdcdc;
+  display: inline-block;
+}
+.userinfo-img{
+  width:76px;
+  height:76px;
+  float:left;
+  margin-right: 14px;
+}
+.userinfo-right{
+  float:left;
+
+}
+.userinfo-name{
+  font-size: 16px;
+  color:#333;
+  font-weight: bold;
+}
+.userinfo-information{
+  font-size: 14px;
+  color:#333;
+  margin-top:14px;
+  line-height: 14px;
 }

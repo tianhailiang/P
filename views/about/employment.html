@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<style>
+  .job-list li span{
+    float:right;
+  }
+  .lianxi-fangshi{
+    width: 280px;
+    height: 490px;
+    background-image: url({{helper.cdnhost}}/assets/img/lianxi_fangshi.png);
+    background-size: cover;
+    color:#ffffff;
+  }
+  .lianxi-fangshi-con{
+    padding:20px 10px 0;
+  }
+  .lianxi-fangshi h2{
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+  .lianxi-fangshi h2 i{
+    font-size: 24px;
+    margin-right: 15px;;
+  }
+  .lianxi-fangshi p{
+    font-size: 16px;
+    line-height: 32px;
+  }
+  .lianxi-fangshi p span{
+    font-size: 14px;
+  }
+  .lianxi-fangshi .des-job i{
+    font-size: 14px;
+    margin-right: 5px;
+  }
+  .lianxi-fangshi .des-job{
+    font-size:14px;
+    line-height: 32px;
+  }
+  .jobs-more{
+    width: 280px;
+    height:68px;
+    background-image: url({{helper.cdnhost}}/assets/img/jobs_more.png);
+    background-size: cover;
+    margin-top: 20px;
+  }
+  .jobs-more h2{
+    padding:0 10px;
+    font-size: 20px;
+    line-height: 68px;
+
+  }
+  .jobs-more h2 a{
+    color:#ffffff;
+  }
+  .jobs-more h2 i{
+    font-size: 24px;
+  }
+  .job-hot{
+    padding: 20px 20px 0;
+  }
+  .job-hot h2{
+    font-size: 18px;
+    color:#c13232;
+    line-height: 20px;
+  }
+  .job-hot h2 i{
+    width: 16px;
+    height: 20px;
+    background: #c13232;
+    display: inline-block;
+  }
+  .job-hot h2 span{
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+  }
+.job-hot .line{
+  border-bottom: 1px solid #c13232;
+}
+  .job-hot .job{
+    margin-top:30px;
+  }
+  .job-hot .job img{
+    width: 266px;
+    height: 200px;
+    display: block;
+    float: left;
+    margin-bottom: 20px;
+  }
+  .job-hot .job img:hover{
+    box-shadow: 0px 2px 9px 5px rgba(0,0,0,0.1);
+  }
+
+  .job-hot .job .img-middle{
+    margin-right: 20px;
+  }
+  .job-list{
+    padding:30px 10px 0;
+    border-top:1px solid #c13232;
+  }
+  .job-list li{
+    padding:0 10px;
+    border-radius:2px;
+  }
+  .job-list li i{
+    color:#c13232;
+    font-size: 12px;
+    margin-right: 10px;
+  }
+  .job-list li a{
+    font-size: 14px;
+    color:#333333;
+  }
+  .job-list li span,.job-list li em{
+    color:#666666;
+  }
+
+  .job-list .white-bg{
+    height: 40px;
+    line-height: 40px;
+  }
+  .job-list .grag-bg{
+    height:35px;
+    line-height: 35px;
+    background: #f8f8f8;
+  }
+.dui-box-shadow-img{
+  box-shadow: 0px 1px 4px 2px rgba(0,0,0,0.1);
+}
+
+</style>
+<body style="background: #f5f5f5;">
+{% include "widget/top/top.html" %}
+
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
+<div class="dui-layout-lg" style="margin-top: 20px;height: 320px;">
+  <img src="{{helper.cdnhost}}/assets/img/zhaoping.jpg"  alt="">
+</div>
+<div class="dui-layout-lg" style="margin-top: 20px;">
+  <div class="dui-layout-silde">
+    <div class="lianxi-fangshi dui-box-shadow">
+      <div class="lianxi-fangshi-con">
+      <h2><i class="iconfont">&#xe656;</i>联系方式</h2>
+      <p>联系电话：<span>010-65138877</span></p>
+      <p>联系地址：<span>北京市建国门外大街永安东里米阳大厦2层</span></p>
+      <p>电子邮箱：<span>hr@daxuezhang.com</span></p>
+      <p>乘车路线：</p>
+      <p class="des-job"><i class="iconfont">&#xe634;</i>乘地铁一号线永安里站下车，C出口向南50米</p>
+      <p class="des-job"><i class="iconfont">&#xe634;</i>乘公交1、4、9、37、48、52、120、728路永安里站下车，永安里路口向南50米</p>
+      <p class="des-job"><i class="iconfont">&#xe634;</i>自驾：建议从通惠河北路向北右转500米后到达，楼下小型停车场，收费8元/小时</p>
+      </div>
+    </div>
+    <div class="jobs-more dui-box-shadow">
+      <h2><a target="_blank" href="http://special.zhaopin.com/bj/2015/jjl032714/enter.html"><i class="iconfont" style="float: right;font-size: 10px;">&#xe623;</i><i class="iconfont" style="margin-right: 15px;">&#xe63e;</i>查看更多职位</a></h2>
+    </div>
+  </div>
+  <div class="dui-layout-div"></div>
+  <div class="dui-layout-con dui-box-shadow" style="background: #ffffff">
+    <div class="job-hot">
+    <h2><i></i><span>热招职位</span></h2>
+      <p class="line"></p>
+      <p class="line" style="margin-top: 2px;" ></p>
+    <div class="job">
+      <a target="_blank" href="http://jobs.zhaopin.com/130038311264760.htm?ssidkey=y&ff=02&ss=101"><img src="{{helper.cdnhost}}/assets/img/job1.png" alt="" class="img-middle dui-box-shadow-img"></a>
+      <a target="_blank" href="http://jobs.zhaopin.com/130038311264750.htm?ssidkey=y&ff=02&ss=101"><img src="{{helper.cdnhost}}/assets/img/job2.png" alt="" class="img-middle dui-box-shadow-img"></a>
+      <a target="_blank" href="http://jobs.zhaopin.com/130038311264761.htm?ssidkey=y&ff=02&ss=101"><img src="{{helper.cdnhost}}/assets/img/job3.png" alt="" class="dui-box-shadow-img"></a>
+      <a target="_blank" href="http://jobs.zhaopin.com/130038311264751.htm?ssidkey=y&ff=02&ss=101"><img src="{{helper.cdnhost}}/assets/img/job4.png" alt="" class="dui-box-shadow-img" style="margin-bottom: 30px;"></a>
+    </div>
+    <ul class="job-list  clearfix">
+      <li class="grag-bg"><a target="_blank" href="http://jobs.zhaopin.com/130038311264754.htm?ssidkey=y&ff=02&ss=101"><span>2018-03-28&nbsp;发布</span><i class="iconfont">&#xe634;</i>后端PHP研发工程师<em>&nbsp;&nbsp;|&nbsp;&nbsp;北京</em></a></li>
+      <li class="white-bg"><a target="_blank" href="http://jobs.zhaopin.com/130038311264752.htm?ssidkey=y&ff=02&ss=101"><span>2018-03-28&nbsp;发布</span><i class="iconfont">&#xe634;</i>web前端技术经理<em>&nbsp;&nbsp;|&nbsp;&nbsp;北京</em></a></li>
+      <li class="grag-bg"><a target="_blank" href="http://jobs.zhaopin.com/130038311264755.htm?ssidkey=y&ff=02&ss=101"><span>2018-03-28&nbsp;发布</span><i class="iconfont">&#xe634;</i>golang研发工程师<em>&nbsp;&nbsp;|&nbsp;&nbsp;北京</em></a></li>
+      <li class="white-bg"><a target="_blank" href="http://jobs.zhaopin.com/130038311264756.htm?ssidkey=y&ff=02&ss=101"><span>2018-03-28&nbsp;发布</span><i class="iconfont">&#xe634;</i>测试工程师<em>&nbsp;&nbsp;|&nbsp;&nbsp;北京</em></a></li>
+      <li class="grag-bg"><a target="_blank" href="http://jobs.zhaopin.com/130038311264753.htm?ssidkey=y&ff=02&ss=101"><span>2018-03-28&nbsp;发布</span><i class="iconfont">&#xe634;</i>测试经理<em>&nbsp;&nbsp;|&nbsp;&nbsp;北京</em></a></li>
+      <li class="white-bg"><a target="_blank" href="http://jobs.zhaopin.com/130038311264759.htm?ssidkey=y&ff=02&ss=101"><span>2018-03-28&nbsp;发布</span><i class="iconfont">&#xe634;</i>UI设计师<em>&nbsp;&nbsp;|&nbsp;&nbsp;北京</em></a></li>
+      <li class="grag-bg"><a target="_blank" href="http://jobs.zhaopin.com/130038311264757.htm?ssidkey=y&ff=02&ss=101"><span>2018-03-28&nbsp;发布</span><i class="iconfont">&#xe634;</i>高级web前端研发工程师<em>&nbsp;&nbsp;|&nbsp;&nbsp;北京</em></a></li>
+      <li class="white-bg"><a target="_blank" href="http://jobs.zhaopin.com/130038311264758.htm?ssidkey=y&ff=02&ss=101"><span>2018-03-28&nbsp;发布</span><i class="iconfont">&#xe634;</i>产品经理<em>&nbsp;&nbsp;|&nbsp;&nbsp;北京</em></a></li>
+    </ul>
+    </div>
+  </div>
+</div>
+<div class="clearfix">
+{% include "widget/new_footer/common_footer.html" %}
+</div>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+</body>
+</html>

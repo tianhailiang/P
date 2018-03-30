@@ -917,6 +917,15 @@ exports.so_article_list = function (data,callback) {
   }
   api.apiRequest(url ,callback);
 }
+//国家文章结果页search_article_list
+exports.search_article_list = function (data,callback) {
+  var url = _api_path_url_shequ(data, config.apis.get_search_article_list);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
+}
 //搜索结果页so_adviser_list
 exports.so_adviser_list = function (data,callback) {
   var url = _api_path_url_shequ(data, config.apis.get_so_adviser_adviser);
@@ -1196,4 +1205,13 @@ exports.canzan_jianjie =function(data,callback){
   }
   console.log('url----hahhahahahhaahhahahahahh-', url)
   api.apiRequest(url ,callback);
+}
+//表单提交
+exports.save_feedback = function(data,callback){
+  var url = config.apis.get_save_feedback;
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url, data, callback);
 }

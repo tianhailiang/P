@@ -16,7 +16,7 @@
         <div>评论:<span>{{fItem.answer_count}}</span></div>
       </div>-->
       {% if f_type == 'btnyes' %}
-      <div class="follow-btn" data-to_uid="{{fItem.friend_uid}}" onclick="cancelFollow($(this), {{fItem.friend_uid}})">取消关注</div>
+      <div class="follow-btn follow-cancel" data-to_uid="{{fItem.friend_uid}}" onclick="cancelFollow($(this), {{fItem.friend_uid}})">取消关注</div>
       {% endif %}
     </div>
   </div>
