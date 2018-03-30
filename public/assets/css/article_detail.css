@@ -113,7 +113,8 @@
 .adviser-case-detail-offer p{
   font-size: 14px;
   line-height: 26px;
-  color:#333
+  color:#333;
+  text-indent: 2em;
 }
 .adviser-case-detail-offer i{
   font-style: italic;
