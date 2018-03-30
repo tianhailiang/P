@@ -268,7 +268,7 @@
         {% endif %}
         <div class="main-left clearfix">
           <div class="result-bar">
-           <span id="result-keyword">{{keyword | ellipsis(45)}}</span>共检索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
+           <span id="result-keyword">{{country |getCountry}}留学</span>共检索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
           </div>
             {% if article_list.total == 0 or article_list.total == null %}
             <!--没有搜索到数据-->
