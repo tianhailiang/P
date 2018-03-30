@@ -18,6 +18,7 @@ exports = module.exports = function (app) {// routes
   app.get('/fragment/searchguess_like',fragment.searchlikelist);
   app.get('/fragment/guess_like',fragment.guess_like);
   app.get('/fragment/xiangguanguwen',fragment.xiangguanguwen);
+  app.get('/fragment/article_xiangguantuijian',fragment.article_xiangguantuijian);
 
 
  // 移民fragments

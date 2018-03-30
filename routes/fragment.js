@@ -155,3 +155,26 @@ exports.yimin_xiangguanguwen = function(req,res,next){
     res.render('./fragment/xiangguanguwen', data);
   });
 }
+//相关推荐
+exports.article_xiangguantuijian = function(req,res,next){
+  log.debug('相关推荐.......')
+  var data = {};
+  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var area = req.query.c || 1;
+  var uid = req.query.uid;
+  async.parallel({
+    guess_like: function (callback) {
+      cms.channel_list({
+        "country_id":country,
+        "city_id":1,
+        "is_immi":2,
+        "per_page":5,
+        "order":"views desc"
+      }, callback)
+    }
+  },function(err,result){
+    data.likelist = returnData(result.guess_like,'guess_like');
+    console.log(data.likelist)
+    res.render('./fragment/article_xiangguantuijian', data);
+  });
+}
