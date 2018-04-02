@@ -25,6 +25,10 @@ function show_advert() {
                         html += '<a rel="nofollow" data-pid="'+imageSetting[j].pid+'" href="'+imageSetting[j].linkurl+'" target="_blank">';
                         html += "<img src='"+IMG_URL+imageSetting[j].imageurl+"' alt='"+imageSetting[j].alt+"' style='width:"+ val[i].width +"px;height:"+ val[i].height +"px;display:block;overflow:hidden;'/>";
                         html += '</a>';
+
+                        if(j == 2){
+                            break;
+                        }
                     }
                 }else{
                     for(var j in imageSetting){
