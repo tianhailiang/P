@@ -36,6 +36,18 @@
         float: left;
 
     }
+    .right-title .tit-release {
+        float: right;
+        width: 76px;
+        height: 26px;
+        font-size: 14px;
+        color: #fff;
+        text-align: center;
+        line-height: 26px;
+        background-color: #c13232;
+        margin-top: 7px;
+        margin-right: 20px;
+    }
     .list-h{
         height:130px;
     }
@@ -107,6 +119,7 @@
         <div class="right-cont case-cont">
             <div class="right-title clearfix">
                 <div class="tit">我的案例</div>
+                <a href="{{helper.urlgen('advisor_center','postarticle')}}" class="tit-release" target="_blank">发布文章</a>
             </div>
             {% if case_data.list.length > 0 %}
             <div class="right-main clearfix case-list-box">
