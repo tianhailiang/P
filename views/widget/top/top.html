@@ -4,7 +4,7 @@
 <style>
   .l_u{
     width: 421px;
-    height: 434px;
+    height: 460px;
     background-color: #fff;
   }
   .l_u_top{
@@ -173,6 +173,14 @@ input[type="checkbox"] {
       <div class="form-group inputtext_isr" style="position: relative;">
         <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
         <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe679;</i>
+      </div>
+      <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
+        <input placeholder="填写图形验证码" type="text" id="verify" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe653;</i>
+        <div class="l_u_com_bang">
+          <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+          <input type="button" class="btn btn-primary" style="width: 90px;height: 40px;text-align: center;padding: 6px 2px;background: #fff;color: #c13232;border: 1px solid #c13232;border-radius: 3px;line-height: 0px" id="sendcun" value="图片验证码"/>
+        </div>
       </div>
       <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
         <input placeholder="请输入短信验证码" type="text" id="verify" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
