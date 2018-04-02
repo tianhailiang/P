@@ -190,7 +190,7 @@ exports.country_list = function (req, res, next) {
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
-    var country = nquery && nquery.n ? nquery.n : 0;
+    var country = nquery && nquery.n ? nquery.n : "";
     var type = nquery && nquery.type ? nquery.type : '';
     var tag = nquery && nquery.tag ? nquery.tag : '';
     var order = nquery && nquery.order ? nquery.order : "score";
