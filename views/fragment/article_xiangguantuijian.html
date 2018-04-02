@@ -1,13 +1,17 @@
 <ul class="gw-items">
+  {% for item in relation_recommend.list %}
+  {% if item.uid != null %}
   <li class="gw-newslist">
     <div class="gw-people">
-      <a target="_blank" href=""></a>
-      <span class="pepple-icon"><em></em><i></i></span>
+      <a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover;"></a>
+      <span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
     </div>
-    {#<p>1111111</p>#}
-    <a target="_blank" href="">
-      <div class="gw-legend">11111</div>
-      <p style="clear:both">1111</p>
+    {#<p>{{item.type}}</p>#}
+    <a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
+      <div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
+      <p style="clear:both">{{item.title | ellipsis(21)}}</p>
     </a>
   </li>
+  {% endif %}
+  {% endfor %}
 </ul>

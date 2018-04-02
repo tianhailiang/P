@@ -346,6 +346,15 @@ exports.xiangguan_guwen=function(data,callback){
   }
   api.apiRequest(url, callback);
 }
+// 顾问主页-相关推荐
+exports.relation_recommend=function(data,callback){
+  var url = _api_path_url_shequ(data, config.apis.relation_recommend);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
 // 移民踩你喜欢
 exports.yimin_likelist=function(data,callback){
   var url = _api_path_url_shequ(data, config.apis.yimin_likelist);

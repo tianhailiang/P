@@ -200,6 +200,11 @@ exports.country_list = function (req, res, next) {
         newsFlag = 2;
         tag = ''
     }
+    if(tag != ''){
+        newsFlag = 1;
+    }else if (tag == '' && type == '') {
+        newsFlag = '';
+    }
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
@@ -1846,6 +1851,7 @@ exports.case_detail = function(req,res,next){
         }
         data.article =returnData(result.article,'article');
         data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
             //获取用户信息（普通用户，顾问，参赞）
             userinfo:function(callback){
@@ -1944,6 +1950,7 @@ exports.article_detail= function(req,res,next){
         }
         data.article =returnData(result.article,'article');
         data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
           //获取用户信息（普通用户，顾问，参赞）
           userinfo:function(callback){
