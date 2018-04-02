@@ -35,7 +35,8 @@ exports.searchlikelist = function(req,res,next){
           order: 'comments desc',
           city_id:area,
           "per_page": "10",
-          "page": 1
+          "page": 1,
+          "is_immi":1
       }, callback)
     }
   },function(err,result){
