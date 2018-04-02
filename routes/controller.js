@@ -190,7 +190,7 @@ exports.country_list = function (req, res, next) {
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
-    var country = nquery && nquery.n ? nquery.n : 0;
+    var country = nquery && nquery.n ? nquery.n : "";
     var type = nquery && nquery.type ? nquery.type : '';
     var tag = nquery && nquery.tag ? nquery.tag : '';
     var order = nquery && nquery.order ? nquery.order : "score";
@@ -3718,4 +3718,15 @@ exports.save_feedback = function(req,res,next){
           res.send(result); 
         }
     })
-}
+};
+//article_top
+exports.article_top = function (req, res, next) {
+    data = req.body;
+    cms.article_top(data,function(err,result){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    })
+};
