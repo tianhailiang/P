@@ -28,7 +28,7 @@
 .gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
 .gw-people .bg-peopel,.gw-people a{float:left;height: 51px; width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
 #guItems li:nth-child(3) .gw-people{margin-left: 26px;}
-.home-guanggao a{float: left;margin-right: 20px;}
+.home-guanggao a{float: left;margin-right: 20px;background-color: #dcdcdc;}
 .lx-head a{ font-size: 12px;color: #c13232;float: right;margin-top: 5px}
 </style>
 {% for floor in shouye %} {#国家#}
@@ -91,10 +91,12 @@
 	</div>
 	{% endfor %}{#类别end#}
 </div>
+	{% if loop.index <= 6 %}
 	<!-- 广告位图 -->
 	<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
 		<div class="home-guanggao" style="float:left;height:120px;margin-right:-20px;overflow:hidden;" id="AD_HOME_SEAT{{loop.index+10}}"></div>
 	</div>
+	{% endif %}
 {% endfor %} {#国家end#}
 <script>
 	$(".lxContaniner").on('click', '.lx-tabitems li', function(){

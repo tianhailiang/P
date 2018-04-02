@@ -200,6 +200,11 @@ exports.country_list = function (req, res, next) {
         newsFlag = 2;
         tag = ''
     }
+    if(tag != ''){
+        newsFlag = 1;
+    }else if (tag == '' && type == '') {
+        newsFlag = '';
+    }
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
         var login_a = JSON.parse(req.cookies.login_ss);
