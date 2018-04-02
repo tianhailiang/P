@@ -257,7 +257,9 @@ var apis = {
   //参赞介绍
   "get_user_description":shequ_prefix + 'account/get_user_description/',
   //表单提交
-  "get_save_feedback":prefix +'save_feedback'
+  "get_save_feedback":prefix +'save_feedback',
+  //文章置顶
+  "article_top": shequ_prefix + 'article/article_top/'
 };
 module.exports = {
   redisCache: redisCache,

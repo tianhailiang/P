@@ -230,4 +230,7 @@ exports = module.exports = function (app) {// routes
   app.get("/about/culture/:id",about.culture_detail);//金色力量底页
   app.get("/act_form",controller.act_form);//活动表单
   app.get('/employment',about.employment);//招聘页面
+
+  //文章置顶接口
+  app.post('/article_top', controller.article_top);
 };
