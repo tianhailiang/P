@@ -1,6 +1,7 @@
 <ul class="gw-items">
   {% for item in relation_recommend.list %}
   {% if item.uid != null %}
+  {% if loop.index <= 4 %}
   <li class="gw-newslist">
     <div class="gw-people">
       <a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover;"></a>
@@ -12,6 +13,7 @@
       <p style="clear:both">{{item.title | ellipsis(21)}}</p>
     </a>
   </li>
+  {% endif %}
   {% endif %}
   {% endfor %}
 </ul>
