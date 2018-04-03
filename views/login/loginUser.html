@@ -233,7 +233,7 @@
       return
     }
     if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian_user").val())) {
-      layer.msg('图片验证码位数不足');
+      layer.msg('请输入4位图片验证码');
       return
     }
     $.ajax({
