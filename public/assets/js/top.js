@@ -239,6 +239,19 @@
         console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
+          var downcount = 60;
+          var time = setInterval(function (){
+            if (downcount === 0) {
+              $("#sendcun").attr("value", "发送验证码");
+              $("#sendcun").removeAttr("disabled");
+              clearInterval(time);
+              return
+            }else {
+              $("#sendcun").attr("disabled", "disabled");
+              $("#sendcun").attr("value", downcount + "s");
+              downcount--;
+            }
+          }, 1000);
         } else if (msg == '1') {
           layer.msg('图片验证码失败');
         } else if (msg.code === '1150013') {
@@ -252,19 +265,7 @@
         layer.msg("获取失败，请重试！CODE:"+XMLHttpRequest.status);
       }
     });
-    var downcount = 60;
-    var time = setInterval(function (){
-      if (downcount === 0) {
-        $("#sendcun").attr("value", "发送验证码");
-        $("#sendcun").removeAttr("disabled");
-        clearInterval(time);
-        return
-      }else {
-        $("#sendcun").attr("disabled", "disabled");
-        $("#sendcun").attr("value", downcount + "s");
-        downcount--;
-      }
-    }, 1000);
+    
   }
   //登录
   function login_user () {
