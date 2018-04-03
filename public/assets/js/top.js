@@ -16,6 +16,12 @@
     });
 
     //登录
+    var pac = document.getElementById('param_code');
+    if (pac.addEventListener) {
+      pac.addEventListener('click', showcode, false)
+    }else {
+      pac.attachEvent('onclick', showcode, false)
+    }
     var sP = document.getElementById('sendcun');
     if (sP.addEventListener) {
       sP.addEventListener('click', sendphone, false)
@@ -113,10 +119,11 @@
 
   function showcode () {
     $.ajax({
-      url:"/param_code",
+      url:"/param_code?time="+new Date().getTime(),
       type: "get",
       success: function(result){
-        $('#param_code').html(result)
+        // $('#param_code').html(result)
+        $("#param_code")[0].innerHTML = result;
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
         console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
@@ -219,7 +226,7 @@
       return
     }
     if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian").val())) {
-      layer.msg('图片验证码位数不足');
+      layer.msg('请输入4位图片验证码');
       return
     }
     $.ajax({
@@ -239,6 +246,19 @@
         console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
+          var downcount = 60;
+          var time = setInterval(function (){
+            if (downcount === 0) {
+              $("#sendcun").attr("value", "发送验证码");
+              $("#sendcun").removeAttr("disabled");
+              clearInterval(time);
+              return
+            }else {
+              $("#sendcun").attr("disabled", "disabled");
+              $("#sendcun").attr("value", downcount + "s");
+              downcount--;
+            }
+          }, 1000);
         } else if (msg == '1') {
           layer.msg('图片验证码失败');
         } else if (msg.code === '1150013') {
@@ -252,19 +272,7 @@
         layer.msg("获取失败，请重试！CODE:"+XMLHttpRequest.status);
       }
     });
-    var downcount = 60;
-    var time = setInterval(function (){
-      if (downcount === 0) {
-        $("#sendcun").attr("value", "发送验证码");
-        $("#sendcun").removeAttr("disabled");
-        clearInterval(time);
-        return
-      }else {
-        $("#sendcun").attr("disabled", "disabled");
-        $("#sendcun").attr("value", downcount + "s");
-        downcount--;
-      }
-    }, 1000);
+    
   }
   //登录
   function login_user () {

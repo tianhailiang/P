@@ -69,7 +69,7 @@
             <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;">
             <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
             <!--<img class="" style="width: 90px;height: 30px;" id="tupiancun_user" />-->
-            <div id="param_code_user" style="width: 90px;height: 35px;" onclick="showcode()"></div>
+            <div id="param_code_user" style="width: 90px;height: 35px;"></div>
             </div>
           </div>
 
@@ -156,6 +156,12 @@
       checkboxClass: 'icheckbox_square-green',
       radioClass: 'iradio_square-green'
     });
+    var pc = document.getElementById('param_code_user');
+    if (pc.addEventListener) {
+      pc.addEventListener('click', showcode, false);
+    } else {
+      pc.attachEvent('onclick', showcode, false);
+    }
     var lS = document.getElementById('loginSubmit');
     if (lS.addEventListener) {
       lS.addEventListener('click', loginS, false);
@@ -203,10 +209,11 @@
 
   function showcode () {
     $.ajax({
-      url:"/param_code",
+      url:"/param_code?time="+new Date().getTime(),
       type: "get",
       success: function(result){
-        $('#param_code_user').html(result)
+        //$('#param_code_user').html(result)
+        $("#param_code_user")[0].innerHTML = result;
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
         console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
@@ -233,7 +240,7 @@
       return
     }
     if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian_user").val())) {
-      layer.msg('图片验证码位数不足');
+      layer.msg('请输入4位图片验证码');
       return
     }
     $.ajax({
@@ -252,6 +259,19 @@
         console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
+          var downcount = 60;
+          var time = setInterval(function (){
+            if (downcount === 0) {
+              $("#sendcun_user").attr("value", "发送验证码");
+              $("#sendcun_user").removeAttr("disabled");
+              clearInterval(time);
+              return
+            }else {
+              $("#sendcun_user").attr("disabled", "disabled");
+              $("#sendcun_user").attr("value", downcount + "s");
+              downcount--;
+            }
+          }, 1000);
         } else if (msg == '1') {
           layer.msg('图片验证码验证失败');
         } else if (msg.code === '1150013') {
@@ -265,19 +285,7 @@
         layer.msg("获取失败，请重试！CODE:"+XMLHttpRequest.status);
       }
     });
-    var downcount = 60;
-    var time = setInterval(function (){
-      if (downcount === 0) {
-        $("#sendcun_user").attr("value", "发送验证码");
-        $("#sendcun_user").removeAttr("disabled");
-        clearInterval(time);
-        return
-      }else {
-        $("#sendcun_user").attr("disabled", "disabled");
-        $("#sendcun_user").attr("value", downcount + "s");
-        downcount--;
-      }
-    }, 1000);
+    
   }
 
 
