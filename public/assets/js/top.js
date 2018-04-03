@@ -16,6 +16,12 @@
     });
 
     //登录
+    var pac = document.getElementById('param_code');
+    if (pac.addEventListener) {
+      pac.addEventListener('click', showcode, false)
+    }else {
+      pac.attachEvent('onclick', showcode, false)
+    }
     var sP = document.getElementById('sendcun');
     if (sP.addEventListener) {
       sP.addEventListener('click', sendphone, false)
@@ -113,10 +119,11 @@
 
   function showcode () {
     $.ajax({
-      url:"/param_code",
+      url:"/param_code?time="+new Date().getTime(),
       type: "get",
       success: function(result){
-        $('#param_code').html(result)
+        // $('#param_code').html(result)
+        $("#param_code")[0].innerHTML = result;
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
         console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
