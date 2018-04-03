@@ -56,7 +56,7 @@ app.use(cookieParser('Asecretqqqq-'));
 app.use(session({
     secret:'Asecretqqqq-',
     store: new RedisStore({
-        host: '192.168.122.110',
+        host: 'jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn',
         port:6379
     }),
     resave: false,
