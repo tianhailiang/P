@@ -12,6 +12,7 @@ var code = '1220000006'; // not found
 var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
 var helperfunc = require('../common/helper');
+var svgCaptcha = require("svg-captcha");
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -3622,4 +3623,4 @@ exports.save_feedback = function(req,res,next){
           res.send(result); 
         }
     })
-}
+};

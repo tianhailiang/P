@@ -206,7 +206,7 @@ exports = module.exports = function (app) {// routes
   //普通用户绑定手机号
   app.get('/binding', login.binding);
   //手机验证码
-  app.get('/sendcode_s', login.sendcode_s);
+  app.post('/sendcode_s', login.sendcode_s);
   //忘记密码
   app.post('/forget_s', login.forget_s);
   //绑定手机号
@@ -228,4 +228,7 @@ exports = module.exports = function (app) {// routes
   app.get("/about/culture/:id",about.culture_detail);//金色力量底页
   app.get("/act_form",controller.act_form);//活动表单
   app.get('/employment',about.employment);//招聘页面
+
+  app.get('/param_code',login.param_code);//生成图片验证码
+  app.post('/session_param_code',login.check_param_code)//验证图片验证码
 };
