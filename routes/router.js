@@ -208,7 +208,7 @@ exports = module.exports = function (app) {// routes
   //普通用户绑定手机号
   app.get('/binding', login.binding);
   //手机验证码
-  app.get('/sendcode_s', login.sendcode_s);
+  app.post('/sendcode_s', login.sendcode_s);
   //忘记密码
   app.post('/forget_s', login.forget_s);
   //绑定手机号
@@ -233,4 +233,6 @@ exports = module.exports = function (app) {// routes
 
   //文章置顶接口
   app.post('/article_top', controller.article_top);
+  app.get('/param_code',login.param_code);//生成图片验证码
+  app.post('/session_param_code',login.check_param_code)//验证图片验证码
 };
