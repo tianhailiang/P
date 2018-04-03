@@ -8,6 +8,7 @@ var config = require('../config/config');
 var log4js = require('../log/log');
 var log = log4js.getLogger();
 var wec = require('../model/wecenter');
+var svgCaptcha = require('svg-captcha');
 
 exports.login = function (req, res, next) {
   log.debug('this router login~~');
@@ -279,35 +280,51 @@ exports.register_s = function (req, res, next) {
 //发送验证码
 exports.sendcode_s = function (req, res, next) {
   log.debug('this router sendcode_s~~');
-  var phone = req.query.phone;
-
-  //log.debug(JSON.stringify(req.body));
-  log.debug('phone', phone);
-  //res.render('login', '')
   var data = [];
-  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   var async = require('async');
-  //var cookie = require('cookie-parser');
-  //var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  //var qianzhengzhinan_currentPage=req.query.page || 1;
-  //var qianzhengzhinan_pagesizee=req.query.pagesize || 12;
-  //var country = req.query.country || 1;
-  async.parallel({
-    //验证码
-    sendcode_ss: function (callback) {
-      cms.sendcode_ss({m: 'sendcode',phone: phone}, callback);
-    }
-  }, function (err, result) {
+  var phone = req.body.phone;
+  log.debug('phone', phone);
+  var page_param_code = req.body.param_code;
+  var local_param_code = req.session.param_code;
+  if (page_param_code == local_param_code) {
+    // res.send('0');
+    //res.send(JSON.parse({"code":0}));
+    console.log('0--------------');
+    async.parallel({
+      //验证码
+      sendcode_ss: function (callback) {
+        cms.sendcode_ss({m: 'sendcode',phone: phone}, callback);
+      }
+    }, function (err, result) {
+  
+      data.sendcode_ss = result.sendcode_ss;
+      log.debug('result.login_ss----------', result.sendcode_ss.code);
+      if (result.sendcode_ss.code == 0) {
+        log.debug('ok', result.sendcode_ss);
+        // res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
+        res.send(result.sendcode_ss)
 
-    data.sendcode_ss = result.sendcode_ss;
-    log.debug('result.login_ss----------', result.sendcode_ss.code);
-    if (result.sendcode_ss.code === 0) {
-      log.debug('ok', result.sendcode_ss);
-      // res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
-      res.send(result.sendcode_ss)
-    }
+        //清除session
+        req.session.destroy(function(err) {
+          log.debug('session destroy err',err);
+        })
+      } else {
+        res.send(result.sendcode_ss)
+      }
 
-  });
+    });
+  }
+  else {
+    //res.send(JSON.parse({"code":1}));
+    console.log('1---------------');
+    res.send('1');
+  }
+  //log.debug(JSON.stringify(req.body));
+  //res.render('login', '')
+  
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
+  
+  
 }
 
 //验证手机是否已被使用
@@ -550,3 +567,39 @@ exports.login_out = function (req, res, next) {
   //res.redirect(req.query.h);
 };
 
+// 生成图形验证码
+exports.param_code = function (req,res,next){
+  var codeConfig = {
+  size: 4,// 验证码长度
+  ignoreChars: '0o1i', // 验证码字符中排除 0o1i
+  noise: 2, // 干扰线条的数量
+  height: 35,
+  width: 90
+  }
+  var captcha = svgCaptcha.create(codeConfig);
+  if (req.session) {
+      console.log('有session',req.session,req.session.param_code)
+  }else {
+      console.log('无session')
+  }
+ if(captcha.text.toLowerCase()){
+     req.session.param_code = captcha.text.toLowerCase(); //存session用于验证接口获取文字码
+     console.log('cishu~~')
+ }
+  console.log('存储session~~`',req.session,req.session.param_code)
+  res.send(captcha.data);
+}
+//check_param_code
+exports.check_param_code = function (req,res,next){
+ console.log('check_param_code data~~',req.body,req.session.param_code)
+ var page_param_code = req.body.param_code;
+ var local_param_code = req.session.param_code;
+ if (page_param_code == local_param_code) {
+     res.send('0');
+     //res.send(JSON.parse({"code":0}));
+ }
+ else {
+     res.send('1');
+     //res.send(JSON.parse({"code":1}));
+ }
+}

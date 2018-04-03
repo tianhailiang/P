@@ -64,11 +64,12 @@
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
           </div>-->
           <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
-            <input placeholder="填写图形验证码" type="text" id="tupian_user" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" style="border-radius: inherit;height: 30px;line-heigth: 30px"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <input placeholder="填写图形验证码" type="text" id="tupian_user" class="form-control l_u_com_yan" required data-vaild="^[a-zA-Z0-9]{4}$" style="border-radius: inherit;height: 30px;line-heigth: 30px"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
             <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;">
             <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
-            <img class="" style="width: 90px;height: 30px;" id="tupiancun_user" />
+            <!--<img class="" style="width: 90px;height: 30px;" id="tupiancun_user" />-->
+            <div id="param_code_user" style="width: 90px;height: 30px;" onclick="showcode()"></div>
             </div>
           </div>
 
@@ -121,6 +122,35 @@
 <script>
     $(document).ready(function () {
 
+    //图片验证码
+
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code_user').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+    $('#tijiao').click(function () {
+      var page_param = $('#param_code_value').val().toLowerCase();
+      $.ajax({
+        url:"/session_param_code",
+        type: "post",
+        data:{
+          param_code: page_param
+        },
+        success: function(result){
+          console.log('check param_code',result)
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+        }
+      });
+    })
+
     $("form").Vaild();
     $('.i-checks').iCheck({
       checkboxClass: 'icheckbox_square-green',
@@ -171,6 +201,19 @@
     })
   })
 
+  function showcode () {
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code_user').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  }
+
 //登录验证码
   function sendphone_user () {
     if ($('#newEmail').val() === '') {
@@ -185,13 +228,22 @@
       $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
+    if ($('#tupian_user').val() == '') {
+      layer.msg('请输入图片验证码');
+      return
+    }
+    if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian_user").val())) {
+      layer.msg('图片验证码位数不足');
+      return
+    }
     $.ajax({
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
       url: '/sendcode_s',
-      type:'GET',
+      type:'post',
       data: {
+        param_code: $('#tupian_user').val(),
         phone: $('#newEmail').val()
       },
       dataType: 'json',
@@ -200,7 +252,11 @@
         console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
-        } else {
+        } else if (msg == '1') {
+          layer.msg('图片验证码验证失败');
+        } else if (msg.code === '1150013') {
+          layer.msg(msg.message);
+        }else {
           layer.msg('数据错误');
         }
       },
