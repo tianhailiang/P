@@ -139,7 +139,7 @@
 	            shade: [0.4,'#000'],
 	            shadeClose: true,
 	            closeBtn: true,
-	            area: ['421px', '492px'],
+	            area: ['421px', '500px'],
 	            title: false,
 	            border: [0],
 	            bgcolor: "#fff",
