@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var nunjucks = require('nunjucks');
 var router = require('./routes/router.js');
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
 var customfilters = require('./common/filters');
 var helper = require('./common/helper');
 var tdk_monitor = require('./tdk/tdk_monitor');
@@ -47,7 +49,19 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false,limit:"2048kb" }));
-app.use(cookieParser());
+// app.use(cookieParser());
+app.use(cookieParser('Asecretqqqq-'));
+
+//seesion
+app.use(session({
+    secret:'Asecretqqqq-',
+    store: new RedisStore({
+        host: 'jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn',
+        port:6379
+    }),
+    resave: false,
+    saveUninitialized:true
+}));
 
 if(process.env.NODE_ENV == 'development'){
   app.use('/assets', express.static(path.join(__dirname, 'public/assets')));
