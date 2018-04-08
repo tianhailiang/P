@@ -260,7 +260,7 @@
             }
           }, 1000);
         } else if (msg == '1') {
-          layer.msg('图片验证码失败');
+          layer.msg('图片验证码输入错误');
         } else if (msg.code === '1150013') {
           layer.msg(msg.message);
         }else {
