@@ -43,12 +43,20 @@ exports.loginUser = function (req, res, next) {
   var data = [];
   data.login_nickname = '';
   //node获取地址栏url
-  var l = url.parse(req.url, true).query;
+  console.log('req.query',req.query)
+  // var l = url.parse(req.url, true).query;
+  var l = req.query
   console.log('url', l.h);
   if (l.h !== undefined) {
     data.url = l.h;
   } else {
     data.url = config.wwhost;
+  }
+  // ad广告统计跳转
+  console.log('data.url',l.href)
+  if (l.href !== undefined) {
+    data.url += '&href=' + l.href;
+    console.log('data.url--------',data.url)
   }
   data.tdk = {
     pagekey: 'LOGIN', //key
@@ -602,4 +610,33 @@ exports.check_param_code = function (req,res,next){
      res.send('1');
      //res.send(JSON.parse({"code":1}));
  }
+}
+
+//公告位登录统计
+exports.ad_tongji = function (req,res,next){
+  var data = {}
+  data.login_nickname = '';
+  // var l = url.parse(req.url, true).query;
+  var l = req.query;
+    console.log('url', config.wwhost+req.url);
+    if (l.href !== undefined) {
+        data.url = l.href;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    if ( req.cookies.login_ss !== undefined) {
+        // 已登录
+
+        // ad广告统计redis
+        var login_a = JSON.parse(req.cookies.login_ss)
+        cms.ad_tongji(login_a.uid, login_a.username);
+
+        res.redirect(data.url);
+    } else {
+      // 未登录
+      // https://apply.mcard.boc.cn/apply/pc/product/goProductDetails?newInTypeCode=0095&masterOrSubFlag=1&formVersion=GPB1A&shortId=ueuuyq&channelSource=1
+      // 
+      res.redirect('loginUser?h='+config.wwhost+req.url+'?href='+data.url);
+    }
+  // res.render('login/forget', data)
 }
