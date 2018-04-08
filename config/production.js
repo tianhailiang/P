@@ -3,7 +3,7 @@
  * @type {{host: string, port: number}}
  */
 'use strict';
-var apiconfig = require('../config/config');
+var apiconfig = require('../config/interface_config');
 /*const redisCache = {
   "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
   "port":6379
