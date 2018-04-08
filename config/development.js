@@ -3,7 +3,7 @@
  * @type {{host: string, port: number}}
  */
 'use strict';
-var apiconfig = require('../config/config');
+var apiconfig = require('../config/interface_config');
 /*const redisCache = {
  "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
  "port":6379
@@ -19,6 +19,7 @@ var apiconfig = require('../config/config');
  var cms_out_prefix = prefix;*/
 const redisCache = apiconfig.redisCache;
 var domain = apiconfig.domain;
+console.log('1234567890!!!!!!!!~~',apiconfig)
 var wwhost = apiconfig.wwhost;
 var yiminhost = apiconfig.yiminhost;
 var cdnhost = apiconfig.cdnhost;
