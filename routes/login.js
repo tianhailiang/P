@@ -636,7 +636,7 @@ exports.ad_tongji = function (req,res,next){
       // 未登录
       // https://apply.mcard.boc.cn/apply/pc/product/goProductDetails?newInTypeCode=0095&masterOrSubFlag=1&formVersion=GPB1A&shortId=ueuuyq&channelSource=1
       // 
-      res.redirect('loginUser?h=http://www.jjl.cn:4000/ad_tongji?href='+data.url);
+      res.redirect('loginUser?h='+config.wwhost+req.url+'?href='+data.url);
     }
   // res.render('login/forget', data)
 }
