@@ -46,7 +46,8 @@ function show_advert() {
     // /*点击广告位进行统计*/
     $("[id^='AD_']").click('a', function (e) {
         e.preventDefault();
-        var pid = $(this).find('a').attr("data-pid");
+        var targetA = $(e.srcElement ? e.srcElement : e.target).parent('a');
+        var pid = targetA.attr("data-pid");
         if(pid){
             $.ajax({
                 url: ajaxUrlPrefix.nodeapi + '/cmsapi/advert_clicknum',
@@ -60,7 +61,7 @@ function show_advert() {
                 }
             })
         }
-        var url = $(this).find("a").attr('href');
+        var url = targetA.attr('href');
         if(url){
             window.open(url);
         }
