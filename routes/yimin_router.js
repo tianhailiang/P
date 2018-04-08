@@ -4,11 +4,13 @@
 var controller = require('./controller.js');
 var login = require('./login.js');
 exports = module.exports = function (app) {// routes
-    //ÒÆÃñÕ¾
+    //ï¿½ï¿½ï¿½ï¿½Õ¾
    /* app.get('/',function(req,res,next){
         res.send('aaa')
-    });//ÒÆÃñÊ×Ò³*/
-    app.get('/',controller.yiminHome);//ÒÆÃñÊ×Ò³
-    //ÆÕÍ¨ÓÃ»§µÇÂ¼
+    });//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³*/
+    app.get('/',controller.yiminHome);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò³
+    //ï¿½ï¿½Í¨ï¿½Ã»ï¿½ï¿½ï¿½Â¼
     app.post('/login_user', login.login_user);
+    app.get('/param_code',login.param_code);//ç”Ÿæˆå›¾ç‰‡éªŒè¯ç 
+    app.post('/session_param_code',login.check_param_code)//éªŒè¯å›¾ç‰‡éªŒè¯ç 
 };
