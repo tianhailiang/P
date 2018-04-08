@@ -3,8 +3,8 @@
  * @type {{host: string, port: number}}
  */
 'use strict';
-
-const redisCache = {
+var apiconfig = require('../config/config');
+/*const redisCache = {
   "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
   "port":6379
 };
@@ -16,6 +16,16 @@ var prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.co
 var uc_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/uc/api/';
 var shequ_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/so/?/api/';
 var imageshost = 'http://images.jjl.cn';
+var cms_out_prefix = prefix;*/
+const redisCache = apiconfig.redisCache;
+var domain = apiconfig.domain;
+var wwhost = apiconfig.wwhost;
+var yiminhost = apiconfig.yiminhost;
+var cdnhost = apiconfig.cdnhost;
+var prefix = apiconfig.prefix;
+var uc_prefix = apiconfig.uc_prefix;
+var shequ_prefix = apiconfig.shequ_prefix;
+var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
 var apis = {
 
