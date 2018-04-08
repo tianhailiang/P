@@ -22,24 +22,5 @@ module.exports = (function () {
   //下面可以给 config 对象添加一些属性,方便程序使用
   config.is_production = config.version === 'production';
   config.is_test = config.version === 'test';
-
-  config.redisCache = {
-    "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
-    "port":6379
-  };
-  config.domain = '.jjl.cn';
-  config.wwhost = 'http://www.jjl.cn';
-  config.yiminhost = 'http://yimin.jjl.cn';
-  var cdnhost = 'http://www.jjl.cn:4000';
-  config.prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/cms/api/';
-  config.uc_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/uc/api/';
-  config.shequ_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/so/?/api/';
-  config.imageshost = 'http://images.jjl.cn';
-  if (config.version == 'development') {
-    config.cdnhost = 'http://www.jjl.cn:4000';
-  }
-  else if (config.version == 'production') {
-    config.cdnhost = 'http://cdn4.jjl.cn';
-  }
   return config;
 })();
