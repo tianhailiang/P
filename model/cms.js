@@ -1224,3 +1224,18 @@ exports.article_top = function(data,callback){
   }
   api.apiRequest_post(url ,data ,callback);
 };
+
+//ad广告统计redis
+exports.ad_tongji = function(uid, phone){
+  var moment = require('moment');
+  var redis = require('redis');
+  var redisHits =  redis.createClient(config.redisCache.port, config.redisCache.host);
+  
+  console.log('ad_tongji---------uid', uid);
+  console.log('ad_tongji---------phone', phone);
+  redisHits.select('3', function(error){
+    var key = "ad_tongji:"+moment().format('YYYY-MM-DD');
+    redisHits.sadd(key, "{'uid':"+uid+", 'phone':"+phone+"}");
+  });
+  
+}
