@@ -18,26 +18,18 @@ function show_advert() {
             for(var i in val){
                 var imageSetting = val[i].setting;
                 var html = "";
-                if(val[i].type == 'imagechange'){
-                    var firstLi = '';
-                    var lastLi = '';
-                    for(var j in imageSetting) {
+                if(homeAdvert(AD_PAGE_NAME, val[i].ad_seat)){
+                    // console.log(imageSetting);
+                    for(var j in imageSetting){
                         if(imageSetting[j].imageurl == undefined){continue;}
-                        var liHtml = '<li>';
-                        liHtml += '<a rel="nofollow" data-pid="'+imageSetting[j].pid+'" href="'+imageSetting[j].linkurl+'" target="_blank">';
-                        liHtml += '<img src="'+IMG_URL+imageSetting[j].imageurl+'" alt="'+imageSetting[j].alt+'" style="width:'+ val[i].width +'px;height:'+ val[i].height +'px;display:block;overflow:hidden;"/>';
-                        liHtml += '</a>';
-                        liHtml += '</li>';
+                        html += '<a rel="nofollow" data-pid="'+imageSetting[j].pid+'" href="'+imageSetting[j].linkurl+'" target="_blank">';
+                        html += "<img src='"+IMG_URL+imageSetting[j].imageurl+"' alt='"+imageSetting[j].alt+"' style='width:"+ val[i].width +"px;height:"+ val[i].height +"px;display:block;overflow:hidden;'/>";
+                        html += '</a>';
 
-                        html += liHtml;
-                        if(j == 0){
-                            lastLi = liHtml;
-                        }
-                        if(j == imageSetting.length-1){
-                            firstLi = liHtml;
+                        if(j == 2){
+                            break;
                         }
                     }
-                    html = firstLi+html+lastLi;
                 }else{
                     for(var j in imageSetting){
                         if(imageSetting[j].imageurl == undefined){continue;}
@@ -94,4 +86,13 @@ function show_advert() {
             }
         }
     });
+}
+
+
+
+function homeAdvert(ad_page, ad_seat){
+    if(ad_page == 'HOME' && ad_seat!=10){
+        return true;
+    }
+    return false;
 }

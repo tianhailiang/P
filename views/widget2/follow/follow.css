@@ -101,6 +101,19 @@
   right: 0px;
   cursor: pointer;
 }
+.follow-con .content-nun div.follow-cancel{
+  width: 60px;
+  height: 20px;
+  background: #dcdcdc;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  font-size: 13px;
+  position: absolute;
+  bottom: -6px;
+  right: 0px;
+  cursor: pointer;
+}
 .right-cont{
   width: 878px;
   /*height: 1365px;*/

@@ -31,9 +31,9 @@ function split_array(arr, len) {
 }
 
 function get_page_key(usertype, adviser_type, page_key) {
+    var pagekey = null;
     if (usertype == 2) {
         if (adviser_type == 2){
-            // pagekey = 'YIMIN_'+page_key;
             pagekey = page_key;
         }else {
             pagekey = page_key;
@@ -177,7 +177,101 @@ exports.index_page = function (req, res, next) {
         res.render('index', data);
     })
 };
-
+//国家列表页
+exports.country_list = function (req, res, next) {
+    log.debug('国家列表页');
+    var data = {};
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var country = nquery && nquery.n ? nquery.n : "";
+    var type = nquery && nquery.type ? nquery.type : '';
+    var tag = nquery && nquery.tag ? nquery.tag : '';
+    var order = nquery && nquery.order ? nquery.order : "score";
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var newsFlag = 1;
+    if (type == '时讯') {
+        newsFlag = 2;
+        tag = ''
+    }
+    if(tag != ''){
+        newsFlag = 1;
+    }else if (tag == '' && type == '') {
+        newsFlag = '';
+    }
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ARTICLELIST",
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ARTICLELIST",
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
+        so_article_list:function(callback) {
+            cms.search_article_list({
+                order: order,
+                is_immi:1,
+                city_id:area,
+                "tag_list": encodeURI(tag),
+                "country_id": country,
+                "is_news": newsFlag,
+                "edu_id":(type=='时讯')?'':encodeURI(type),
+                "per_page": "15",
+                "page": page
+            }, callback);
+        },
+        // guess_like: function (callback) {
+        //     cms.channel_list({
+        //         order: 'comments desc',
+        //         city_id:area,
+        //         "per_page": "10",
+        //         "page": 1
+        //     }, callback)
+        // }
+    }, function (err, result) {
+        data.article_list = returnData(result.so_article_list,'so_article_list');
+        // data.likelist = returnData(result.guess_like,'guess_like');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.country = country;
+        data.type=(type== '')?'全部':type;
+        data.tag = (tag== '')?'全部':tag;
+        data.order = order;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'ARTICLELIST', //key
+            cityid: area,
+            // keywords: keyword
+        };
+        data.pagination = {
+            pages:Number.parseInt(data.article_list.totalpage),
+            hrefFormer:helperfunc.active_urlgen('articles','n='+country,'type='+type,'tag='+tag,'order='+order,'page='),
+            currentPage:Number.parseInt(page)
+        }
+        // console.log('aaaaa333~~', helperfunc.active_urlgen('articles','n='+country,'type='+type,'tag='+tag,'order='+order,'page='))
+        data.esikey = esihelper.esikey();
+        res.render('country_list', data);
+    });
+};
 //搜索页
 exports.so_article = function (req, res, next) {
     log.debug('搜索结果文章');
@@ -1758,6 +1852,7 @@ exports.case_detail = function(req,res,next){
         }
         data.article =returnData(result.article,'article');
         data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
             //获取用户信息（普通用户，顾问，参赞）
             userinfo:function(callback){
@@ -1811,7 +1906,7 @@ exports.article_detail= function(req,res,next){
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
-  console.log('url', l.h);
+  // console.log('url', l.h);
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
@@ -1856,6 +1951,7 @@ exports.article_detail= function(req,res,next){
         }
         data.article =returnData(result.article,'article');
         data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
           //获取用户信息（普通用户，顾问，参赞）
           userinfo:function(callback){
@@ -3621,6 +3717,17 @@ exports.save_feedback = function(req,res,next){
           res.send(err);
         }else{
           res.send(result); 
+        }
+    })
+};
+//article_top
+exports.article_top = function (req, res, next) {
+    data = req.body;
+    cms.article_top(data,function(err,result){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
         }
     })
 };

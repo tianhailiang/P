@@ -166,6 +166,9 @@
     font-size: 16px;
     color: #333;
 }
+.page-search-type input[type="radio"] {
+    visibility: hidden;
+}
 .page-search-type input[type="radio"] + label:before {
     content: "";
     display: inline-block;

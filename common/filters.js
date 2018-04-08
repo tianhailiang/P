@@ -68,6 +68,7 @@ var customFilters = {
   getCity: common.getCityChinese,
   getCitys: common.getCityEn,
   getCityId: common.getCityId,
+  getCityAddress:common.getCityAddress,
   getEdu: common.getEduName,
   getProject: common.getProjectName,
   //路径追溯url

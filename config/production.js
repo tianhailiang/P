@@ -3,8 +3,8 @@
  * @type {{host: string, port: number}}
  */
 'use strict';
-
-const redisCache = {
+var apiconfig = require('../config/config');
+/*const redisCache = {
   "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
   "port":6379
 };
@@ -16,6 +16,16 @@ var prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.co
 var uc_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/uc/api/';
 var shequ_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/so/?/api/';
 var imageshost = 'http://images.jjl.cn';
+var cms_out_prefix = prefix;*/
+const redisCache = apiconfig.redisCache;
+var domain = apiconfig.domain;
+var wwhost = apiconfig.wwhost;
+var yiminhost = apiconfig.yiminhost;
+var cdnhost = apiconfig.cdnhost;
+var prefix = apiconfig.prefix;
+var uc_prefix = apiconfig.uc_prefix;
+var shequ_prefix = apiconfig.shequ_prefix;
+var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
 var apis = {
 
@@ -26,13 +36,13 @@ var apis = {
   "sendcode": uc_prefix + 'index.php',//发送手机验证码
   "get_contact": prefix + 'contact_way_list',//关于我们(联系我们)
   "get_media_broadcast": prefix + 'common_recommend',//企业文化--媒体播报
-  "get_business_cooperation_list": prefix + 'business_cooperation_list',
   "get_canzanlist":shequ_prefix+'account/get_canzan_list/',//参赞列表
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
   "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
   "likelist": shequ_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
+  "relation_recommend": shequ_prefix + 'article/correlation/',//相关推荐
   "xiangguan_guwen": shequ_prefix + 'article/related_adviser/', // 社区 相关顾问
   "yimin_xiangguanguwen": shequ_prefix + 'article/immi_related_adviser/', // 社区 相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
@@ -239,6 +249,8 @@ var apis = {
   //顾问主页 个人视角
   //get_so_article_list
   "get_so_article_list": shequ_prefix + 'search/search_article/',
+  //国家文章列表
+  "get_search_article_list": shequ_prefix + 'search/search_article_list/',
   //搜索结果页（顾问）
   "get_so_adviser_adviser": shequ_prefix + 'search/search_adviser/',
   //根据ip 获取城市code码
@@ -254,7 +266,9 @@ var apis = {
   //参赞介绍
   "get_user_description":shequ_prefix + 'account/get_user_description/',
   //表单提交
-  "get_save_feedback":prefix +'save_feedback'
+  "get_save_feedback":prefix +'save_feedback',
+  //文章置顶
+  "article_top": shequ_prefix + 'article/article_top/'
 };
 module.exports = {
   redisCache: redisCache,

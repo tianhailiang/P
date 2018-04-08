@@ -12,3 +12,4 @@ logs/
 logs/*
 nohup.out
 dist/
+config/config.js

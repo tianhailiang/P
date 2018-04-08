@@ -1,0 +1,84 @@
+.detail_bar{
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    z-index: 10000;
+    -moz-box-shadow:0 0 5px 1px #eee;
+    -webkit-box-shadow:0 0 5px  1px #eee;
+    box-shadow: 0 0 5px 1px #eee;
+    display: none;
+}
+.detail_bar .detail_bar_in {
+    width: 1180px;
+    height: 60px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+.detail_bar .detail_bar_in .bar_title {
+    width: 844px;
+    float: left;
+    line-height: 60px;
+    font-size: 30px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.detail_bar .detail_bar_in .bar_options {
+    /*width: 336px;*/
+    float: right;
+}
+.detail_bar .detail_bar_in .bar_options .share_buttons {
+    float: left;
+    padding-right: 10px;
+    border-right: 1px solid #DCDCDC;
+    margin-top: 15px;
+}
+.detail_bar .detail_bar_in .bar_options .share_buttons a{
+    width: 30px;
+    height: 30px !important;
+    margin: 0 !important;
+    margin-right: 10px !important;
+    padding-left: 0;
+}
+.detail_bar .detail_bar_in .bar_options .share_buttons .sina {
+    background-image: url(../img/xl.png) !important;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    /*background-color: red;*/
+}
+.detail_bar .detail_bar_in .bar_options .share_buttons .wx {
+    background-image: url(../img/wx.png) !important;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    /*background-color: red;*/
+}
+.detail_bar .detail_bar_in .bar_options .share_buttons .space {
+    background-image: url(../img/qqspace.png) !important;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: cover;
+    /*background-color: red;*/
+}
+.detail_bar .detail_bar_in .bar_options .option_buttons {
+    float: right;
+    padding-left: 10px;
+    margin-top: 20px;
+}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comment_text {
+    color: #666666;
+    font-size: 14px;
+    padding: 0 14px 0 12px;
+}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comments_num {
+    font-size: 36px;
+    color: #b23e39;
+}
+.detail_bar .detail_bar_in .bar_options .option_buttons .comment_btn {
+    color: #b23e39;
+    font-size: 26px;
+}
