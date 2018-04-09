@@ -371,7 +371,7 @@
       url: '/sendcode_s',
       type:'post',
       data: {
-        param_code: $('#tupian_bin').val(),
+        param_code: $('#tupian_bin').val().toLowerCase(),
         phone: $('#newEmail').val()
       },
       dataType:'json',
