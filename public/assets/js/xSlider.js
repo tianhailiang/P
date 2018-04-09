@@ -45,10 +45,9 @@
       }else {
           this.el.append('<a href="javascript:" class="slider-btn slider-btn-left"></a>');
           this.el.append('<a href="javascript:" class="slider-btn slider-btn-right"></a>');
-          var slider_btn_left = this.el.children('.slider-btn-left');
-          var slider_btn_right = this.el.children('.slider-btn-right');
       }
-
+      var slider_btn_left = this.el.children('.slider-btn-left');
+      var slider_btn_right = this.el.children('.slider-btn-right');
     if (this.config.pagination) {
       // 初始化圆点
       this.el.append('<div class="slider-dot"><ul></ul></div>');
