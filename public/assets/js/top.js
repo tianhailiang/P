@@ -229,6 +229,7 @@
       layer.msg('请输入4位图片验证码');
       return
     }
+    console.log('tupian',$('#tupian').val().toLowerCase())
     $.ajax({
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
@@ -237,7 +238,7 @@
       url: '/sendcode_s',
       type:'post',
       data: {
-        param_code: $('#tupian').val(),
+        param_code: $('#tupian').val().toLowerCase(),
         phone: $('#phone').val()
       },
       dataType: 'json',
