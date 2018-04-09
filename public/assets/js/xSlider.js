@@ -34,7 +34,11 @@
     slider_img_ul_li.css('width',this.config.w);
 
     // 初始化默认显示图片位置
-    slider_img_ul.css('left', - this.config.w * this.config.current - this.config.w);
+      if(slider_img_length==1 ){
+          slider_img_ul.css('left',0);
+      }else {
+          slider_img_ul.css('left', - this.config.w * this.config.current - this.config.w);
+      }
     // 初始化左右按钮
     this.el.append('<a href="javascript:" class="slider-btn slider-btn-left"></a>');
     this.el.append('<a href="javascript:" class="slider-btn slider-btn-right"></a>');
