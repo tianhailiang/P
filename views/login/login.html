@@ -42,12 +42,12 @@
 
   <div class="login_overseas clearfix">
     
-    <div style="margin: 0px auto;height: 550px;min-width: 1180px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png) no-repeat;">
-      <!--<img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 1920px;height: 550px;display:block;overflow:hidden;"/>-->
+    <div style="margin: 0px auto;height: 550px;min-width: 1180px;width: 100%;">{#background: url({{helper.cdnhost}}/assets/img/login_background.png) no-repeat;background-size: cover;#}
+      <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;min-width: 1180px;height: 550px;display:block;overflow:hidden;"/>
     </div>
     
     <div class="login_content">
-      <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
+      <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left;height: 280px;">
         <!-- <h3 class="login_nei_title">登录金吉列<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a></h3> -->
         <div class=" clearfix" id="guwen_login" style="margin-left: -15px;font-size: 18px;">
             <input class="wrap-con" type="radio" name="payMethod" value="1" checked="checked" id="liu"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu">留学顾问</label> 

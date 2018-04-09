@@ -43,8 +43,9 @@
 
   <div class="login_overseas clearfix">
     
-    <div style="margin: 0px auto;height: 550px;min-width: 1180px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png) no-repeat;">
-      <!--<img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 1920px;height: 550px;display:block;overflow:hidden;"/>-->
+    <div style="margin: 0px auto;height: 550px;min-width: 1180px;width: 100%;">{#background: url({{helper.cdnhost}}/assets/img/login_background.png);
+    background-repeat: no-repeat;background-size: cover; #}
+      <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;min-width: 1180px;height: 550px;display:block;overflow:hidden;"/>
     </div>
     
     <div class="login_content">
@@ -64,6 +65,16 @@
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
           </div>-->
           <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
+            <input placeholder="填写图形验证码" type="text" id="tupian_user" class="form-control l_u_com_yan" required data-vaild="^[a-zA-Z0-9]{4}$" style="border-radius: inherit;height: 30px;line-heigth: 30px"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
+            <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;">
+            <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+            <!--<img class="" style="width: 90px;height: 30px;" id="tupiancun_user" />-->
+            <div id="param_code_user" style="width: 90px;height: 35px;margin-top: -7px;cursor: pointer;"></div>
+            </div>
+          </div>
+
+          <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
             <input placeholder="请输入短信验证码" type="text" id="verify_user" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" style="border-radius: inherit;height: 30px;line-heigth: 30px"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
             <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;">
@@ -78,7 +89,7 @@
               <a target="_blank"  href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了？</small></a>
             </div>-->
 
-          <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0;border-radius: inherit;" id="loginSubmit" value="立 即 登 录"/>
+          <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0;border-radius: inherit;" id="loginSubmit" value="立 即 登 录" data-url='{{url}}'/>
 
           <div class="form-group text-left" id="login_user" style="color: #999;margin-top: 0px;margin-left: -20px;">
               <div class="checkbox i-checks" style="color: #999;">
@@ -92,12 +103,12 @@
         <div class="fen" style="margin-top: -5px;">
           <h4 style="line-height: 37px;">第三方快速登录：</h4>
           <div class="bdsharebuttonbox" id="fx" style="float: left;margin-top: 7px">
-            <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user"/>
+            <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user" data-url='{{url}}'/>
 
             <a target="_blank"  href="{{helper.wwhost}}/weixin_login?h={{url}}" >
               <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
             </a>
-            <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user"/>
+            <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user" data-url='{{url}}'/>
           </div>
         </div>
 
@@ -112,11 +123,46 @@
 <script>
     $(document).ready(function () {
 
+    //图片验证码
+
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code_user').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+    $('#tijiao').click(function () {
+      var page_param = $('#param_code_value').val().toLowerCase();
+      $.ajax({
+        url:"/session_param_code",
+        type: "post",
+        data:{
+          param_code: page_param
+        },
+        success: function(result){
+          console.log('check param_code',result)
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+        }
+      });
+    })
+
     $("form").Vaild();
     $('.i-checks').iCheck({
       checkboxClass: 'icheckbox_square-green',
       radioClass: 'iradio_square-green'
     });
+    var pc = document.getElementById('param_code_user');
+    if (pc.addEventListener) {
+      pc.addEventListener('click', showcode, false);
+    } else {
+      pc.attachEvent('onclick', showcode, false);
+    }
     var lS = document.getElementById('loginSubmit');
     if (lS.addEventListener) {
       lS.addEventListener('click', loginS, false);
@@ -131,15 +177,17 @@
     }
 
     $('#weibo_user').on('click', function () {
-      var h = window.location.href;//获取全部的url
-      console.log('h', h);
-      var hh = h.split("?");
-      console.log('hh', hh[1])
-      if (hh[1] !== undefined) {
-        var str = hh[1].substr(1);
-        var strs = str.split("=");
-        console.log('strs', strs)
-        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      var url = $(this).attr('data-url')
+      console.log('url',url)
+      //var h = window.location.href;//获取全部的url
+      //console.log('h', h);
+      //var hh = h.split("?");
+      //console.log('hh', hh[1])
+      if (url !== undefined) {
+        //var str = hh[1].substr(1);
+        //var strs = str.split("=");
+        //console.log('strs', strs)
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + url, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
@@ -147,20 +195,36 @@
     $('#qq_user').on('click', function () {
     //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
     //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
-      var h = window.location.href;//获取全部的url
-      console.log('h', h);
-      var hh = h.split("?");
-      console.log('hh', hh)
-      if (hh[1] !== undefined) {
-        var str = hh[1].substr(1);
-        var strs = str.split("=");
-        console.log('strs', strs)
-        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      var url = $(this).attr('data-url')
+      console.log('url',url)
+      //var h = window.location.href;//获取全部的url
+      //console.log('h', h);
+      //var hh = h.split("?");
+      //console.log('hh', hh)
+      if (url !== undefined) {
+        //var str = hh[1].substr(1);
+        //var strs = str.split("=");
+        //console.log('strs', strs)
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + url, "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
   })
+
+  function showcode () {
+    $.ajax({
+      url:"/param_code?time="+new Date().getTime(),
+      type: "get",
+      success: function(result){
+        //$('#param_code_user').html(result)
+        $("#param_code_user")[0].innerHTML = result;
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  }
 
 //登录验证码
   function sendphone_user () {
@@ -176,13 +240,22 @@
       $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
+    if ($('#tupian_user').val() == '') {
+      layer.msg('请输入图片验证码');
+      return
+    }
+    if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian_user").val())) {
+      layer.msg('请输入4位图片验证码');
+      return
+    }
     $.ajax({
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
       url: '/sendcode_s',
-      type:'GET',
+      type:'post',
       data: {
+        param_code: $('#tupian_user').val().toLowerCase(),
         phone: $('#newEmail').val()
       },
       dataType: 'json',
@@ -191,7 +264,24 @@
         console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
-        } else {
+          var downcount = 60;
+          var time = setInterval(function (){
+            if (downcount === 0) {
+              $("#sendcun_user").attr("value", "发送验证码");
+              $("#sendcun_user").removeAttr("disabled");
+              clearInterval(time);
+              return
+            }else {
+              $("#sendcun_user").attr("disabled", "disabled");
+              $("#sendcun_user").attr("value", downcount + "s");
+              downcount--;
+            }
+          }, 1000);
+        } else if (msg == '1') {
+          layer.msg('图片验证码输入错误');
+        } else if (msg.code === '1150013') {
+          layer.msg(msg.message);
+        }else {
           layer.msg('数据错误');
         }
       },
@@ -200,23 +290,13 @@
         layer.msg("获取失败，请重试！CODE:"+XMLHttpRequest.status);
       }
     });
-    var downcount = 60;
-    var time = setInterval(function (){
-      if (downcount === 0) {
-        $("#sendcun_user").attr("value", "发送验证码");
-        $("#sendcun_user").removeAttr("disabled");
-        clearInterval(time);
-        return
-      }else {
-        $("#sendcun_user").attr("disabled", "disabled");
-        $("#sendcun_user").attr("value", downcount + "s");
-        downcount--;
-      }
-    }, 1000);
+    
   }
 
 
 function loginS () {
+  var url = $(this).attr('data-url')
+  console.log('url',url)
   console.log('login_ssssss')
   if ($('#newEmail').val() === '') {
     $('#newEmail').parent().addClass("has-error").removeClass("has-success");
@@ -255,16 +335,16 @@ function loginS () {
         console.log('msg ajax', msg);
         if(msg.code === 0){
           //var h = location.search;//获取？后面的字符串
-          var h = window.location.href;//获取全部的url
-          console.log('h', h);
-          var hh = h.split("?");
-          console.log('hh', hh)
-          if (hh[1] !== undefined) {
-            var str = hh[1].substr(1);
-            console.log('str', str);
-            var strs = str.split("=");
-            console.log('strs', strs[1]);
-            window.location= strs[1];
+          //var h = window.location.href;//获取全部的url
+          //console.log('h', h);
+          //var hh = h.split("?");
+          //console.log('hh', hh)
+          if (url !== undefined) {
+            //var str = hh[1].substr(1);
+            //console.log('str', str);
+            //var strs = str.split("=");
+            //console.log('strs', strs[1]);
+            window.location= url;
           } else {
             window.location = '/';
           }

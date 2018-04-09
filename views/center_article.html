@@ -38,6 +38,18 @@
       line-height: 40px;
       float: left;
   }
+  .right-title .tit-release {
+      float: right;
+      width: 76px;
+      height: 26px;
+      font-size: 14px;
+      color: #fff;
+      text-align: center;
+      line-height: 26px;
+      background-color: #c13232;
+      margin-top: 7px;
+      margin-right: 20px;
+  }
   .rel-case-map{
 	 	width:100%;
 	 	height:130px;
@@ -110,6 +122,7 @@
         <div class="right-cont case-cont">
             <div class="right-title clearfix" style="background: #f3f3f3">
                 <div class="tit">我的专栏</div>
+                <a href="{{helper.urlgen('advisor_center','postarticle')}}" class="tit-release" target="_blank">发布文章</a>
             </div>
             {% if article_data and article_data.list.length > 0 %}
             <div class="right-main clearfix case-list-box">
@@ -184,7 +197,7 @@
             }else if(item.user_info.usertype ==3){
               identity = 'canzan';
             }
-            aItemHtml += '<div class="art-box clearfix" >'+
+            aItemHtml += '<div class="article-list-item"><div class="art-box clearfix" >'+
                         '<a target="_blank" href="' +fn.urlgen(item.uid.toString()) +'">'+
                         '<div class="adviser-head" style="background:url(' + fn.avaterimg(item.uid, "small",item.user_info.status,item.user_info.version)+') no-repeat 0 0;background-size: 50px 50px;">'+
                         '</div>'+
@@ -205,6 +218,10 @@
             aItemHtml += '<span style="font-size: 12px;padding: 0 10px;height: 24px;margin-left: 20px;background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/yanse.png);background-size:cover ;border-radius:12px ;margin-top: -3px;text-align: center;line-height: 24px;color: #C13232;">'+item.tag_list+'</span>';
             aItemHtml += '</div>'+
                         '<div class="offer-opt-bar clearfix">'+
+                        '<div class="opt-btn red-border stick" onclick="stick($(this), '+item.uid+', '+item.id+')">'+
+                        '<i class="iconfont">&#xe685;</i>'+
+                        '<span>置顶</span>'+
+                        '</div>'+
                         '<div class="opt-btn red-border delete" onclick="deleteOffer($(this), '+item.uid+', '+item.id+')">'+
                         '<i class="iconfont">&#xe8c1;</i>'+
                         '<span>删除</span>'+
@@ -227,7 +244,8 @@
             aItemHtml += '</div>'
             aItemHtml += '</div>'
 
-            aItemHtml += addBottom(item)
+            aItemHtml += addBottom(item);
+            aItemHtml += '</div>';
             return aItemHtml;
         }
         function addArticleImg (imgList) {

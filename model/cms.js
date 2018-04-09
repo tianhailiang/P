@@ -917,6 +917,15 @@ exports.so_article_list = function (data,callback) {
   }
   api.apiRequest(url ,callback);
 }
+//国家文章结果页search_article_list
+exports.search_article_list = function (data,callback) {
+  var url = _api_path_url_shequ(data, config.apis.get_search_article_list);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
+}
 //搜索结果页so_adviser_list
 exports.so_adviser_list = function (data,callback) {
   var url = _api_path_url_shequ(data, config.apis.get_so_adviser_adviser);
@@ -1196,4 +1205,37 @@ exports.canzan_jianjie =function(data,callback){
   }
   console.log('url----hahhahahahhaahhahahahahh-', url)
   api.apiRequest(url ,callback);
+}
+//表单提交
+exports.save_feedback = function(data,callback){
+  var url = config.apis.get_save_feedback;
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url, data, callback);
+};
+//article_top
+exports.article_top = function(data,callback){
+  var url = config.apis.article_top;
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url ,data ,callback);
+};
+
+//ad广告统计redis
+exports.ad_tongji = function(uid, phone){
+  var moment = require('moment');
+  var redis = require('redis');
+  var redisHits =  redis.createClient(config.redisCache.port, config.redisCache.host);
+  
+  console.log('ad_tongji---------uid', uid);
+  console.log('ad_tongji---------phone', phone);
+  redisHits.select('3', function(error){
+    var key = "ad_tongji:"+moment().format('YYYY-MM-DD');
+    redisHits.sadd(key, "{'uid':"+uid+", 'phone':"+phone+"}");
+  });
+  
 }

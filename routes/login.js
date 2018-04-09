@@ -8,6 +8,7 @@ var config = require('../config/config');
 var log4js = require('../log/log');
 var log = log4js.getLogger();
 var wec = require('../model/wecenter');
+var svgCaptcha = require('svg-captcha');
 
 exports.login = function (req, res, next) {
   log.debug('this router login~~');
@@ -42,12 +43,20 @@ exports.loginUser = function (req, res, next) {
   var data = [];
   data.login_nickname = '';
   //node获取地址栏url
-  var l = url.parse(req.url, true).query;
+  console.log('req.query',req.query)
+  // var l = url.parse(req.url, true).query;
+  var l = req.query
   console.log('url', l.h);
   if (l.h !== undefined) {
     data.url = l.h;
   } else {
     data.url = config.wwhost;
+  }
+  // ad广告统计跳转
+  console.log('data.url',l.href)
+  if (l.href !== undefined) {
+    data.url += '&href=' + l.href;
+    console.log('data.url--------',data.url)
   }
   data.tdk = {
     pagekey: 'LOGIN', //key
@@ -279,35 +288,51 @@ exports.register_s = function (req, res, next) {
 //发送验证码
 exports.sendcode_s = function (req, res, next) {
   log.debug('this router sendcode_s~~');
-  var phone = req.query.phone;
-
-  //log.debug(JSON.stringify(req.body));
-  log.debug('phone', phone);
-  //res.render('login', '')
   var data = [];
-  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
   var async = require('async');
-  //var cookie = require('cookie-parser');
-  //var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  //var qianzhengzhinan_currentPage=req.query.page || 1;
-  //var qianzhengzhinan_pagesizee=req.query.pagesize || 12;
-  //var country = req.query.country || 1;
-  async.parallel({
-    //验证码
-    sendcode_ss: function (callback) {
-      cms.sendcode_ss({m: 'sendcode',phone: phone}, callback);
-    }
-  }, function (err, result) {
+  var phone = req.body.phone;
+  log.debug('phone', phone);
+  var page_param_code = req.body.param_code;
+  var local_param_code = req.session.param_code;
+  if (page_param_code == local_param_code) {
+    // res.send('0');
+    //res.send(JSON.parse({"code":0}));
+    console.log('0--------------');
+    async.parallel({
+      //验证码
+      sendcode_ss: function (callback) {
+        cms.sendcode_ss({m: 'sendcode',phone: phone}, callback);
+      }
+    }, function (err, result) {
+  
+      data.sendcode_ss = result.sendcode_ss;
+      log.debug('result.login_ss----------', result.sendcode_ss.code);
+      if (result.sendcode_ss.code == 0) {
+        log.debug('ok', result.sendcode_ss);
+        // res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
+        res.send(result.sendcode_ss)
 
-    data.sendcode_ss = result.sendcode_ss;
-    log.debug('result.login_ss----------', result.sendcode_ss.code);
-    if (result.sendcode_ss.code === 0) {
-      log.debug('ok', result.sendcode_ss);
-      // res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
-      res.send(result.sendcode_ss)
-    }
+        //清除session
+        req.session.destroy(function(err) {
+          log.debug('session destroy err',err);
+        })
+      } else {
+        res.send(result.sendcode_ss)
+      }
 
-  });
+    });
+  }
+  else {
+    //res.send(JSON.parse({"code":1}));
+    console.log('1---------------');
+    res.send('1');
+  }
+  //log.debug(JSON.stringify(req.body));
+  //res.render('login', '')
+  
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
+  
+  
 }
 
 //验证手机是否已被使用
@@ -367,7 +392,6 @@ exports.oauth = function (req, res, next) {
 
 exports.qq_login = function (req, res, next) {
   var code = req.query.code;
-  var h = req.query.h;
   var async = require('async');
   if(code){
     var data = [];
@@ -388,7 +412,6 @@ exports.qq_login = function (req, res, next) {
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
         oauth_data.title = 'QQ';
-        oauth_data.h = h;
         //data.oauth_data = oauth_data;
         //console.log(oauth_data);
         //res.render('binding', data);
@@ -415,7 +438,6 @@ exports.qq_login = function (req, res, next) {
 
 exports.sina_login = function (req, res, next) {
   var code = req.query.code;
-  var h = req.query.h;
   console.log("sina h",req.query.h);
   var async = require('async');
   if(code){
@@ -435,7 +457,6 @@ exports.sina_login = function (req, res, next) {
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
         oauth_data.title = '新浪';
-        oauth_data.h = h;
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
         res.redirect('binding');
@@ -460,7 +481,6 @@ exports.sina_login = function (req, res, next) {
 
 exports.weixin_login = function (req, res, next) {
   var code = req.query.code;
-  var h = req.query.h;
   var state = req.query.state;
   console.log("sina h",req.query.h);
   var async = require('async');
@@ -481,13 +501,13 @@ exports.weixin_login = function (req, res, next) {
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
         oauth_data.title = '微信';
-        oauth_data.h = h;
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
         res.redirect('binding');
       }
     });
   }else{
+    var h = req.query.h;
     var url_cookie = {'h':h, 'befrom':'weixin'};
     res.cookie("oauth_login", JSON.stringify(url_cookie), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
     //res.redirect(config.uchost+"/api/index.php?m=weixin_login");
@@ -550,3 +570,71 @@ exports.login_out = function (req, res, next) {
   //res.redirect(req.query.h);
 };
 
+// 生成图形验证码
+exports.param_code = function (req,res,next){
+  var codeConfig = {
+  size: 4,// 验证码长度
+  ignoreChars: '0o1ilI', // 验证码字符中排除 0o1i
+  noise: 0, // 干扰线条的数量
+  height: 50,
+  width: 90
+  }
+  var captcha = svgCaptcha.create(codeConfig);
+  if (req.session) {
+      console.log('有session',req.session,req.session.param_code)
+  }else {
+      console.log('无session')
+  }
+ if(captcha.text.toLowerCase()){
+     req.session.param_code = captcha.text.toLowerCase(); //存session用于验证接口获取文字码
+     console.log('cishu~~')
+ }
+  console.log('存储session~~`',req.session,req.session.param_code)
+  res.send(captcha.data);
+}
+//check_param_code
+exports.check_param_code = function (req,res,next){
+ console.log('check_param_code data~~',req.body,req.session.param_code)
+ var page_param_code = req.body.param_code;
+ var local_param_code = req.session.param_code;
+ if (page_param_code == local_param_code) {
+     res.send('0');
+     //res.send(JSON.parse({"code":0}));
+ }
+ else {
+     res.send('1');
+     //res.send(JSON.parse({"code":1}));
+ }
+}
+
+//公告位登录统计
+exports.ad_tongji = function (req,res,next){
+  var data = {}
+  data.login_nickname = '';
+  // var l = url.parse(req.url, true).query;
+  var l = req.query;
+    console.log('url', config.wwhost+req.url);
+    if (l.href !== undefined) {
+        data.url = l.href;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    if ( req.cookies.login_ss !== undefined) {
+        // 已登录
+
+        // ad广告统计redis
+        var login_a = JSON.parse(req.cookies.login_ss)
+        cms.ad_tongji(login_a.uid, login_a.username);
+
+        res.redirect(data.url);
+    } else {
+      // 未登录
+      // https://apply.mcard.boc.cn/apply/pc/product/goProductDetails?newInTypeCode=0095&masterOrSubFlag=1&formVersion=GPB1A&shortId=ueuuyq&channelSource=1
+      // 
+
+      console.log('config.wwhost', config.wwhost);
+      console.log('req.url', req.url);
+      res.redirect('loginUser?h='+config.wwhost+'/ad_tongji?href='+data.url);
+    }
+  // res.render('login/forget', data)
+}

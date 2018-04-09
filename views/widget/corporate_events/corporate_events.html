@@ -1,6 +1,6 @@
 {% for yearnum, yearamount in memorabilia_list.list %}
 <div class="dui-layout-lg curyear" style="background:#ffffff">
-  <div class="year-box clearfix"><h6 class="year-num">{{ yearnum | shorten(-1)}}</h6> <i class="city-icon iconfont down xiangxia">&#xe623;</i> <i class="city-icon iconfont dian">&#xe609;</i></div>
+  <div class="year-box clearfix"><h6 class="year-num">{{ yearnum | shorten(-1)}}</h6> <i class="city-icon iconfont down xiangxia" style="cursor: pointer;">&#xe636;</i> <i class="city-icon iconfont dian">&#xe609;</i></div>
   <div class="kong" style="display: block"></div>
   {% for monthnum, monthamount in yearamount %}
 
@@ -15,7 +15,7 @@
     <div class="month-right">
       <i class="city-icon iconfont dian">&#xe609;</i>
       {% for item in monthamount %}
-      <p style="display: none;">{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe623;</i></p>
+      <p style="display: none;">{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe636;</i></p>
       {% if loop.index==loop.length %}
       <div class="dashiji-con" style="display: block;margin-top: 20px;margin-bottom: 20px;">
        {{ loop.index }}. {{ item.description }}
@@ -43,29 +43,34 @@
   $(document).ready(function(){
     $(".curyear").eq(0).children(".month-box").css("display","block");
     $(".curyear").eq(0).children(".kong").css("display","block");
-    $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe60b;")
+    $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe635;")
     $(".curyear").eq(0).children(".year-box").find(".down").css("color","#c13232");
     $(".curyear").eq(0).siblings().children(".year-box").find(".down").css("color","#999999");
     $(".curyear").eq(1).children(".month-box").css("display","block");
+    $(".curyear").eq(1).children(".year-box").find(".down").html("&#xe635;").css("color","#c13232");
     $(".curyear").eq(1).children(".kong").css("display","block");
     $.each($(".curyear").siblings(".curyear"),function(){
       $(this).find(".kong").eq(0).css("display","block");
     });
+    if($(".curyear").length>2){
+      $(".curyear:last").find(".kong").eq(0).css("display","none");
+    }else{
+      $(".curyear:last").find(".kong").eq(0).css("display","block");
+    }
 
-    $(".curyear:last").find(".kong").eq(0).css("display","none");
     $(".year-box").eq(0).css("padding-top","20px");
     $(document).scrollTop(0);
   });
   $(".down").on("click",function(){
-    $(this).html("&#xe60b;");
-    $(this).css("color","#c13232");
+    $(this).html("&#xe635;");
+    $(this).css({"color":"#c13232","cursor":"default"});
     $(this) .parents(".curyear").children(".month-box").css("display","block");
     $(document).scrollTop(500);
     $(this).parents(".curyear").children(".kong").css("display","block");
     $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
     $(this).parents(".curyear").siblings().children(".kong").css("display","none");
-    $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe623;");
-    $(this).parents(".curyear").siblings().children(".year-box").find(".down").css("color","#999999");
+    $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
+    $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
     $.each($(this).parents(".curyear").siblings(".curyear"),function(){
       $(this).find(".kong").eq(0).css("display","block");
     });
@@ -78,11 +83,11 @@
   /*$(".con-btn").on("click",function(){
     if($(this).hasClass('con-up')){
       $(this).removeClass('con-up');
-      $(this).html("&#xe60b;").css("color","#c13232");
+      $(this).html("&#xe635;").css("color","#c13232");
       $(this).parent("p").next(".dashiji-con").css("display","block");
     }else{
       $(this).addClass('con-up');
-      $(this).html("&#xe623;").css("color","#999999");
+      $(this).html("&#xe636;").css("color","#999999");
       $(this).parent("p").next(".dashiji-con").css("display","none");
     }
 

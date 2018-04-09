@@ -1,0 +1,371 @@
+<div class="top">
+
+</div>
+<style>
+  .l_u{
+    width: 421px;
+    height: 434px;
+    background-color: #fff;
+  }
+  .l_u_top{
+    width: 100%;
+    height: 56px;
+    background-color: #c13232;
+    padding: 5px 0
+  }
+  .l_u_top img {
+    display: block;
+    width: 150px;
+    height: 52px;
+    margin: 0 auto;
+  }
+  .l_u_con{
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-left: 45px;
+  }
+  .l_u_con p{
+    width: 72px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 2px #c13232 solid;
+  }
+  .l_u_con_{
+    width: 330px;
+    height: 1px;
+    background-color: #dcdcdc;
+  }
+  .inputtext_isr{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .form-control{
+    display: inline-block;
+    line-height: 25px;
+  }
+  .l_u_com_phone{
+    width: 281px;
+    height: 26px;
+    padding-left: 35px;
+    font-size: 14px;
+    color: #999;
+  }
+  .l_u_com_yan{
+    width: 182px;
+    height: 26px;
+    padding-left: 34px;
+    font-size: 14px;
+    color: #999;
+  }
+  .l_u_com_bang{
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    float: right;
+    margin-right: 45px;
+    margin-top: -2px;
+  }
+  .l_u_com_but{
+    width: 330px;
+    height: 40px;
+    background-color: #c13232;
+    color: #fff;
+  }
+  .l_u_com_but:hover{
+    color: #fff;
+  }
+  .l_u_com_she{
+    width: 330px;
+    text-align: center;
+    position: relative;
+    margin-top: 18px;
+  }
+  .l_u_com_she div{
+    width: 330px;
+    height: 1px;
+    background-color: #999;
+    line-height: 0px;
+  }
+  .l_u_com_she i{
+    font-style: normal;
+    font-size: 14px;
+    color: #999;
+    background-color: #fff;
+    z-index: 10;
+  }
+  .l_u_com_fen{
+    width: 330px;
+    margin-top: 30px;
+    text-align: center;
+  }
+  .l_u_com_fen img{
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+  input[type="checkbox"]:checked+label {color: red;}
+
+input[type="checkbox"] + label:before, #xieyi_reg input[type="checkbox"] + label:before {
+  content: "\a0"; /*不换行空格*/
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  width: 14px;
+  height: 13px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #958c87;
+  font-weight: normal;
+  line-height: 1; 
+  
+}
+
+input[type="checkbox"]:checked + label:before, #xieyi_reg input[type="checkbox"]:checked + label:before{
+  content: "\a0"; /*不换行空格*/
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  width: 10px;
+  height: 9px;
+  margin-right: 10px;
+  border-radius: 50%;
+  border: 1px solid #d31d2c;
+  background-color: #d31d2c;
+  background-clip: content-box;
+  padding: 2px;
+  color: #d31d2c;
+  
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  clip: rect(0, 0, 0, 0);
+}
+.yonghu{
+  display: inline-block;
+  margin-left: -5px;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+}
+.yonghu a{
+  color: #c13232;
+}
+.yonghu span{
+  width: 235px;
+  top: -13px;
+  position: absolute;
+}
+</style>
+<!-- 登录 -->
+<div class="l_u" id="l_u" style="display: none;height: 500px;">
+  <div class="l_u_top"><img src="{{helper.cdnhost}}/assets/img/logo_login.png" alt=""></div>
+  <div class="l_u_con">
+    <p>验证码登录</p>
+    <div class="l_u_con_"></div>
+    <form class="m-t" role="form" style="margin-top: 20px">
+      <div class="form-group inputtext_isr" style="position: relative;">
+        <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe679;</i>
+      </div>
+      <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
+        <input placeholder="填写图形验证码" type="text" id="tupian" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe653;</i>
+        <div class="l_u_com_bang">
+          <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+          <!--<img class="" style="width: 90px;height: 40px;" id="tupiancun" />-->
+          <div id="param_code" style="width: 90px;height: 35px;margin-top: -7px;cursor: pointer;"></div>
+        </div>
+      </div>
+      <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
+        <input placeholder="请输入短信验证码" type="text" id="verify" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe653;</i>
+        <div class="l_u_com_bang">
+          <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+          <input type="button" class="btn btn-primary" style="width: 90px;height: 40px;text-align: center;padding: 6px 2px;background: #fff;color: #c13232;border: 1px solid #c13232;border-radius: 3px;line-height: 0px" id="sendcun" value="发送验证码"/>
+        </div>
+      </div>
+    </form>
+    <div style="margin-top: 20px;">
+      <input type="button" class="btn l_u_com_but" style="width: 330px;padding-left: 0;padding-right: 0" id="loginuser" value="登 录"/>
+    </div>
+    <div class=" clearfix" id="guwen" style="margin-top: 20px;">
+        <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi" checked="checked"/><label for="xieyi"></label> 
+        <div class="yonghu"><span style="width: 235px;top: -13px;position: absolute;">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></span></div>
+    </div>
+    <div class="l_u_com_she">
+      <div><i>社交账号登录</i></div>
+    </div>
+    <div class="l_u_com_fen" id="fx" >
+        <img style="margin-right: 76px;" src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo"/>
+
+        <a target="_blank"  href="{{helper.urlgen('weixin_login')}}?h={{url}}" >
+          <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
+        </a>
+        <img style="margin-left: 76px;" src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq"/>
+      </div>
+  </div>
+</div>
+<!-- 注册 -->
+<div class="l_u" id="r_u" style="display: none;">
+  <div class="l_u_top"><img src="{{helper.cdnhost}}/assets/img/logo_login.png" alt=""></div>
+  <div class="l_u_con">
+    <p>验证码注册</p>
+    <div class="l_u_con_"></div>
+    <form class="m-t" role="form" style="margin-top: 20px">
+      <div class="form-group inputtext_isr" style="position: relative;">
+        <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone_reg" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe679;</i>
+      </div>
+      <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
+        <input placeholder="请输入短信验证码" type="text" id="verify_reg" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe653;</i>
+        <div class="l_u_com_bang">
+          <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+          <input type="button" class="btn btn-primary" style="width: 90px;height: 40px;text-align: center;padding: 6px 2px;background: #fff;color: #c13232;border: 1px solid #c13232;border-radius: 3px;line-height: 0px" id="sendcun_reg" value="发送验证码"/>
+        </div>
+      </div>
+    </form>
+    <div style="margin-top: 20px;">
+      <input type="button" class="btn l_u_com_but" style="width: 330px;padding-left: 0;padding-right: 0" id="loginuser_reg" value="注 册"/>
+    </div>
+    <div class=" clearfix" id="guwen_reg" style="margin-top: 20px;">
+        <input class="wrap-con" type="checkbox" name="payMethod" value="1" id="xieyi_reg" checked="checked"/><label for="xieyi_reg"></label> 
+        <div class="yonghu"><span style="width: 235px;top: -13px;position: absolute;">我已阅读并同意<a target="_blank"  href="{{helper.urlgen('agreement', '')}}">金吉列用户使用协议</a></span></div>
+    </div>
+    <div class="l_u_com_she">
+      <div><i>社交账号登录</i></div>
+    </div>
+    <div class="l_u_com_fen" id="fx" >
+        <img style="margin-right: 76px;" src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_reg"/>
+
+        <a target="_blank"  href="{{helper.urlgen('weixin_login')}}?h={{url}}" >
+          <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
+        </a>
+        <img style="margin-left: 76px;" src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_reg"/>
+      </div>
+  </div>
+</div>
+<script>
+  $(function() {
+    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var user_type;
+    if (login_nickname == null) {
+      var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-right">'+
+                '<span><a target="_blank" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                '<span class="bor"></span>'+
+                '<span ><a href="javascript:void(0);" style="background: #fff;" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
+                '<span class="bor">|</span>'+
+                '<span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>'+
+                '<span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weixin.png);display: none;"></span>'+
+                '<span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>'+
+                '<span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weibo.png);display: none;"></span>'+
+                '</div>'+
+                '</div>'
+      $(".top").append(val);
+    } else {
+      var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-right">'+
+                '<ul>';
+      if (login_nickname.usertype == 1) {
+        val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+      } else if (login_nickname.usertype == 2) {
+        val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("advisor_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+      }else if (login_nickname.usertype == 3) {
+        val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("canzan_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+      }
+      val += '<li><span class="bor">|</span></li>'+
+              '<li ><a href="javascript:void(0)" style="background: #fff;" onclick="outlogin()" rel="nofollow">退出</a></li>'+
+              '<li style="margin-right: 10px;"><span class="bor">|</span></li>'+
+              '<li style="margin-left: 0px;"><span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span></li>'+
+              '<li style="margin-left: 0px;"><span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weixin.png);display: none;"></span></li>'+
+              '<li style="margin-left: 0px;"><span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span></li>'+
+              '<li style="margin-left: 0px;"><span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_yimin_weibo.png);display: none;"></span></li>'+
+                '</ul>'+
+                '</div>'+
+                '</div>';
+      $(".top").append(val);
+    }
+
+  })
+</script>
+<script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/top.js"></script>
+<script>
+  $(function () {
+    $("#weibo_top").on("mouseover", function (e) {
+      $("#weibo_").css("display", "block");
+    });
+    $("#weibo_top").on("mouseout", function (e) {
+      $("#weibo_").css("display", "none");
+    });
+    $("#weixin").on("mouseover", function (e) {
+      $("#weixin_").css("display", "block");
+    });
+    $("#weixin").on("mouseout", function (e) {
+      $("#weixin_").css("display", "none");
+    });
+  })
+</script>
+
+
+{#{% if login_nickname == '' %}
+<div class="top">
+  <div class="dui-layout-lg top-con">
+      <div class="top-con-left">
+        <i class="iconfont">&#xe60d;</i>
+        <span><a target="_blank" href="{{ helper.urlgen('') }}" rel="nofollow">金吉列留学首页</a></span>
+      </div>
+      <div class="top-con-right">
+        <span><i class="msg-icon iconfont nav-name">&#xe675;</i><a target="_blank" href="/register" class="dui-text-warning-ss" rel="nofollow">注册</a></span>
+        <span class="bor">|</span>
+        <span><a href="javascript:void(0);" onclick="getlogin()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>
+        <span class="bor">|</span>
+        <span><a target="_blank" href="{{helper.urlgen('advisor_center', 'revmsg')}}">消息</a></span><!--http://www.51daxuetong.cn/advisor_center/revmsg-->
+        <span class="bor">|</span>
+        <span><a target="_blank" href="http://www.jjl.cn/english/?tag=2" class="dui-text-warning-ss" rel="nofollow">English Website</a></span>
+        <span class="bor">|</span>
+        <span><a target="_blank" href="http://special.zhaopin.com/bj/2015/jjl032714/job.html" class="dui-text-warning-ss" rel="nofollow">诚聘英才</a></span>
+      </div>
+  </div>
+</div>
+
+{% endif%}#}
+{#{% if login_nickname != ''%}
+<div class="top">
+  <div class="dui-layout-lg top-con">
+    <div class="top-con-left">
+      <i class="iconfont">&#xe60d;</i>
+      <span><a target="_blank" href="{{ helper.urlgen('') }}" rel="nofollow">金吉列留学首页</a></span>
+    </div>
+    <div class="top-con-right">
+      <ul>
+        {% if login_nickname.usertype == 1%}<!--普通用户-->
+        <li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="{{helper.urlgen('user_center', 'revcomment')}}" rel="nofollow">{{login_nickname.nickname}}</a></span></li>
+        {% endif %}
+        {% if login_nickname.usertype == 2%}<!--顾问个人视角-->
+        <li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="{{helper.urlgen('advisor_center')}}" rel="nofollow">{{login_nickname.nickname}}</a></span></li>
+        {% endif %}
+        {% if login_nickname.usertype == 3%}<!--参赞个人视角-->
+        <li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="{{helper.urlgen('canzan_center')}}" rel="nofollow">{{login_nickname.nickname}}</a></span></li>
+        {% endif %}
+        <li><a target="_blank" href="javascript:void(0)" onclick="var h = window.location.href;console.log('h',h);window.location.href='/login_out?h='+h" rel="nofollow">退出</a></li>
+        <li><a target="_blank" href="{{helper.urlgen('advisor_center', 'revmsg')}}" rel="nofollow">消息</a></li><!--http://www.51daxuetong.cn/advisor_center/revmsg-->
+        <li><a href="http://www.jjl.cn/english/?tag=2" target="_blank" rel="nofollow">English Website</a></li>
+        <li class="topss"><a href="http://special.zhaopin.com/bj/2015/jjl032714/job.html" target="_blank" rel="nofollow">诚聘英才</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endif %}#}

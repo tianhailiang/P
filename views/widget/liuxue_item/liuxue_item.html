@@ -1,6 +1,6 @@
 <style type="text/css">
 .lxContaniner{margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
-.lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc}
+.lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc;overflow: hidden;}
 .lx-head h1{float:left;margin-right:70px;color:#333;font-size:22px}
 .lx-tabitems{float:left;margin-top:5px}
 .lx-tabitems li{position:relative;float:left;width:51px;color:#666;margin-right:10px;text-align:center;font-size:14px;cursor:pointer}
@@ -19,23 +19,19 @@
 	background-position:0 0;
 	background-position:-18px -18px\0;
 }
-:root .lx-groupitems .gw-people a{
-	background-position:0 0\0;
-}
+:root .lx-groupitems .gw-people a{background-position:0 0\0;}
 .gw-people img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
 .gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
 .gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
 .gw-items p{color:#333;font-size:16px;padding-top: 10px;text-indent: 20px;}
 .gw-legend{float:right;margin-top:18px;padding:2px 8px;-webkit-border-radius:8px;border-radius:8px;background:#f9f6f1;color:#c13232;font-size:12px}
 .gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
-.gw-people .bg-peopel,.gw-people a{
-	float:left;
-	height: 51px; 
-	width: 51px;
-	border-radius: 50%;
-	-webkit-border-radius:50%;
-}
+.gw-people .bg-peopel,.gw-people a{float:left;height: 51px; width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
 #guItems li:nth-child(3) .gw-people{margin-left: 26px;}
+.home-guanggao a{float: left;margin-right: 20px;background-color: #dcdcdc;}
+.home-guanggao a:nth-of-type(3){ margin-right: 0;}
+.home-guanggao a:last-child{ margin-right: 0;}
+.lx-head a{ font-size: 12px;color: #c13232;float: right;margin-top: 5px}
 </style>
 {% for floor in shouye %} {#国家#}
 <div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
@@ -50,6 +46,7 @@
 				{% endif %}
 			{% endfor %}
 		</ul>
+		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区&nbsp;&nbsp;></a>
 	</div>
 	{% for type in  floor.list %}{#类别#}
 	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
@@ -96,6 +93,11 @@
 	</div>
 	{% endfor %}{#类别end#}
 </div>
+	{% if loop.index <= 6 %}
+		<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
+			<div class="home-guanggao" style="float:left;overflow:hidden;" id="AD_HOME_SEAT{{loop.index+10}}"></div>
+		</div>
+	{% endif %}
 {% endfor %} {#国家end#}
 <script>
 	$(".lxContaniner").on('click', '.lx-tabitems li', function(){

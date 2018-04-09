@@ -2,7 +2,26 @@
   $(function() {
 
     $("form").Vaild();
+
+    //图片验证码
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+
     //登录
+    var pac = document.getElementById('param_code');
+    if (pac.addEventListener) {
+      pac.addEventListener('click', showcode, false)
+    }else {
+      pac.attachEvent('onclick', showcode, false)
+    }
     var sP = document.getElementById('sendcun');
     if (sP.addEventListener) {
       sP.addEventListener('click', sendphone, false)
@@ -97,6 +116,21 @@
       portname += ':4600'
     }
   }
+
+  function showcode () {
+    $.ajax({
+      url:"/param_code?time="+new Date().getTime(),
+      type: "get",
+      success: function(result){
+        // $('#param_code').html(result)
+        $("#param_code")[0].innerHTML = result;
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  }
+
   var layeropen;
   function getlogin () {
 
@@ -105,7 +139,7 @@
 	            shade: [0.4,'#000'],
 	            shadeClose: true,
 	            closeBtn: true,
-	            area: ['421px', '437px'],
+	            area: ['421px', '500px'],
 	            title: false,
 	            border: [0],
 	            bgcolor: "#fff",
@@ -131,7 +165,7 @@
           shade: [0.4,'#000'],
           shadeClose: true,
           closeBtn: true,
-          area: ['421px', '437px'],
+          area: ['421px', '487px'],
           title: false,
           border: [0],
           bgcolor: "#fff",
@@ -173,7 +207,7 @@
       window.open(fn.urlgen('loginUser')+'?h=');
     }
   }
-  //登录验证码
+  //登录发送验证码
   function sendphone () {
     if ($('#phone').val() === '') {
 //            let butp = document.getElementById('phone')
@@ -187,15 +221,24 @@
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
+    if ($('#tupian').val() == '') {
+      layer.msg('请输入图片验证码');
+      return
+    }
+    if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian").val())) {
+      layer.msg('请输入4位图片验证码');
+      return
+    }
+    console.log('tupian',$('#tupian').val().toLowerCase())
     $.ajax({
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
 //      url: ajaxUrlPrefix.porthost+'/sendcode_s',
-      url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
-      type:'GET',
+      url: '/sendcode_s',
+      type:'post',
       data: {
-        m: 'sendcode',
+        param_code: $('#tupian').val().toLowerCase(),
         phone: $('#phone').val()
       },
       dataType: 'json',
@@ -204,7 +247,24 @@
         console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
-        } else {
+          var downcount = 60;
+          var time = setInterval(function (){
+            if (downcount === 0) {
+              $("#sendcun").attr("value", "发送验证码");
+              $("#sendcun").removeAttr("disabled");
+              clearInterval(time);
+              return
+            }else {
+              $("#sendcun").attr("disabled", "disabled");
+              $("#sendcun").attr("value", downcount + "s");
+              downcount--;
+            }
+          }, 1000);
+        } else if (msg == '1') {
+          layer.msg('图片验证码输入错误');
+        } else if (msg.code === '1150013') {
+          layer.msg(msg.message);
+        }else {
           layer.msg('数据错误');
         }
       },
@@ -213,19 +273,7 @@
         layer.msg("获取失败，请重试！CODE:"+XMLHttpRequest.status);
       }
     });
-    var downcount = 60;
-    var time = setInterval(function (){
-      if (downcount === 0) {
-        $("#sendcun").attr("value", "发送验证码");
-        $("#sendcun").removeAttr("disabled");
-        clearInterval(time);
-        return
-      }else {
-        $("#sendcun").attr("disabled", "disabled");
-        $("#sendcun").attr("value", downcount + "s");
-        downcount--;
-      }
-    }, 1000);
+    
   }
   //登录
   function login_user () {
@@ -282,7 +330,7 @@ function outlogin () {
     var hhh = h.split("?");
     console.log('hhh', hhh[1])
     $.ajax({
-      url: js_api_config.wwhost+'/login_out',
+      url: portname+'/login_out',
       type: 'GET',
       dataType:'jsonp',
       jsonpCallback:'cb',

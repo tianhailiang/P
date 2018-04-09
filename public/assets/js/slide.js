@@ -2,7 +2,6 @@
  * Created by DXZ-Hui.Cao on 2017/8/24.
  */
 document.write('<div id="guanbi_tanchu" style="display:none" class="box_tanchu"></div>');
-
 var iDcity1 = {
   1:['北京','北京分公司：北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米)','服务专线：010-65685656'],
   5:['成都','成都分公司：成都市总府路2号时代广场A座18层','服务专线：028-85595757'],
@@ -73,7 +72,7 @@ function onclick_ly(c,tar){
 
   function openChat(c){
     //console.log(c)
-    var url = "http://jesong.jjl.cn/live/" +'chat.dll?c=1';
+    var url = "http://jesong.jjl.cn/live/" +'chat.do?c=1';
     url = url +"&chatUrl="+window.encodeURIComponent(window.location.href);
     if($.cookie("im_refer")){
       url = url +"&refer="+window.encodeURIComponent($.cookie("im_refer"));
@@ -441,6 +440,9 @@ $(".qq-slide").hover(function(){
   $('#to_top').click(function(){
     $('html , body').animate({scrollTop: 0},'slow');
   });
+$(".jiang").click(function(){
+  window.open(fn.no_urlgen('act_form'));
+})
 
 //====================弹窗==============
 

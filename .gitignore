@@ -12,3 +12,5 @@ logs/
 logs/*
 nohup.out
 dist/
+config/interface_config.js
+public/assets/js/common/common_pro.js

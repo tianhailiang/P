@@ -7,7 +7,7 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}');background-position: 0 0;"><a target="_blank" href="{{helper.urlgen( advisor.uid)}}"></a></dt>
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}');background-position: 0 0;"><a target="_blank" href="{{helper.urlgen( advisor.uid)}}"></a><div class="jjl_mark"  style="background-image: url('{{helper.cdnhost}}/assets/img/adviser_logo.png');background-position: center;"></div></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
@@ -33,7 +33,7 @@
 </div>
 <script>
   function  openchat_new(jobnum){
-    window.open('http://jesong.jjl.cn/live/chat.dll?c=1&n='+jobnum,'','height=500,width=320,directories=no,location=no,menubar=no,resizeable=no,status=no,toolbar=no,top=100,left=200')
+    openJesongChatByCus(1,jobnum)
   }
 </script>
 {% endmacro %}
@@ -57,7 +57,7 @@
 </div>
 <script>
   function  openchat_new(jobnum){
-    window.open('http://jesong.jjl.cn/live/chat.dll?c=1&n='+jobnum,'','height=500,width=320,directories=no,location=no,menubar=no,resizeable=no,status=no,toolbar=no,top=100,left=200')
+    openJesongChatByCus(1,jobnum)
   }
 </script>
 {% endmacro %}

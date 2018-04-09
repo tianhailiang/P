@@ -55,9 +55,10 @@
 }
 .adviser-case-detail-offer{
   border-top:1px solid #dcdcdc;
-  border-bottom: 1px solid #dcdcdc;
+  /*border-bottom: 1px solid #dcdcdc;*/
   padding-top:20px;
   padding-bottom: 40px;
+  position: relative;
 }
 .adviser-case-offer-h4{
   font-size: 16px;
@@ -112,7 +113,8 @@
 .adviser-case-detail-offer p{
   font-size: 14px;
   line-height: 26px;
-  color:#333
+  color:#333;
+  text-indent: 2em;
 }
 .adviser-case-detail-offer i{
   font-style: italic;
@@ -138,28 +140,27 @@
   margin-left: 4px;
 }
 
-.bdshare-button-style0-16 a{
-     padding-left:0; 
+.page_share_buttons a{
+     padding-left:0 !important;
     width: 20px;
-    line-height: 20px;
-    height: 20px;
+    line-height: 20px !important;
+    height: 20px !important;
     cursor: pointer;
-    margin:0;
-    margin-right: 10px;
+    margin: 0px 10px 10px 0!important;
 }
-.bdshare-button-style0-16 .wx{
+.page_share_buttons .wx{
   background:url(../img/wx.png) no-repeat 0 0 !important;
   background-size: 20px 20px;
 }
-.bdshare-button-style0-16 .weixin-pengyouquan{
+.page_share_buttons .weixin-pengyouquan{
   background:url(../img/pyq.png) no-repeat 0 0 !important;
   background-size: 20px 20px;
 }
-.bdshare-button-style0-16 .bds_tsina{
+.page_share_buttons .bds_tsina{
   background:url(../img/xl.png) no-repeat 0 0 !important;
   background-size: 20px 20px;
 }
-.bdshare-button-style0-16 .bds_sqq{
+.page_share_buttons .bds_sqq{
   background:url(../img/qq.png) no-repeat 0 0 !important;
   background-size: 20px 20px;
 }
@@ -189,3 +190,65 @@
 .banner-box-right .slider .slider-dot ul{
   left: 50%;
 }
+.userinfo-box{
+  padding:20px;
+  height:76px;
+  border:1px solid #dcdcdc;
+  display: inline-block;
+}
+.userinfo-img{
+  width:76px;
+  height:76px;
+  float:left;
+  margin-right: 14px;
+}
+.userinfo-right{
+  float:left;
+
+}
+.userinfo-name{
+  font-size: 16px;
+  color:#333;
+  font-weight: bold;
+}
+.userinfo-information{
+  font-size: 12px;
+  color:#333;
+  margin-top:12px;
+  line-height: 12px;
+}
+.lxContaniner{
+  margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
+.lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc;overflow: hidden;}
+.lx-head h1{float:left;margin-right:70px;color:#333;font-size:22px}
+.lx-tabitems{float:left;margin-top:5px}
+.lx-tabitems li{position:relative;float:left;width:51px;color:#666;margin-right:10px;text-align:center;font-size:14px;cursor:pointer}
+.lx-tabitems li.active{color:#c13232}
+.lx-tabitems li.active em{position:absolute;bottom:-14px;left:0;display:block;width:51px;height:2px;background:#c13232}
+.gw-items li{float:left;margin-right:50px;margin-bottom:10px;padding-bottom:14px;width:385px;*width:380px;width:380px\0;border-bottom:solid 1px #dcdcdc}
+.gw-topitems{position:relative;overflow:hidden;margin-bottom:20px;box-shadow:0 3px 5px #e2e5e6;background:#f1f4f6;}
+.gw-topitems li{margin-right:0;margin-bottom:0;padding-top:10px;width:400px;border-bottom:none;background-color:#f1f4f6;}
+.triangle{position:absolute;top:0;right:0;width:0;height:0;border-top:20px solid #c13232;border-left:20px solid transparent}
+.gw-topitems .gw-people{margin-left:20px}
+.gw-topitems .gw-news{ margin-right: 16px;}
+.gw-items{ width: 820px;margin:0 10px;display: inline-block;}
+.gw-items li:nth-child(2n){margin-right:0}
+.gw-people{position:relative;float:left;margin-left:20px}
+.lx-groupitems .gw-people a{
+  background-position:0 0;
+  background-position:-18px -18px\0;
+}
+:root .lx-groupitems .gw-people a{background-position:0 0\0;}
+.gw-people img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
+.gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
+.gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../img/1v.png) no-repeat;background-position:right center}
+.gw-items p{color:#333;font-size:16px;padding-top: 10px;text-indent: 20px;}
+.gw-legend{float:right;margin-top:18px;padding:2px 8px;-webkit-border-radius:8px;border-radius:8px;background:#f9f6f1;color:#c13232;font-size:12px}
+.gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
+.gw-people .bg-peopel,.gw-people a{float:left;height: 51px; width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
+#guItems li:nth-child(3) .gw-people{margin-left: 26px;}
+.home-guanggao a{float: left;margin-right: 20px;}
+.lx-head a{ font-size: 12px;color: #c13232;float: right;margin-top: 5px}
+.article_tuijian {width: 840px;margin: 10px 0px 30px;}
+.article_tuijian h1 {width: 840px;height: 40px;background: #f3f3f3;font-size: 18px;line-height: 40px;margin-bottom: 20px}
+.article_tuijian h1 div {width: 2px;height: 22px;float: left;background: #C13232;margin-top: 9px;margin-right: 10px}

@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/article_detail.css" >
 </head>
 <body style="background:#f5f5f5;">
+<!--页面标题导航条-->
+{% include "widget/detail_bar/detail_bar.html" %}
   <!-- ===头部=== -->
   {% include "widget/top/top.html" %}
   <!-- ====导航===== -->
@@ -13,9 +15,13 @@
   {{ common_nav.common_nav(tdk,helper) }}
   <!--轮播图广告-->
   <div class="dui-layout-lg clearfix banner-box">
-    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-silde banner-box-right">
+      {% include "widget/xSlider/xSlider.html" %}
+    </div>
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider2.html" %}</div>
+    <div class="dui-layout-con banner-box-left">
+      {% include "widget/xSlider/xSlider2.html" %}
+    </div>
   </div>
   <div class="dui-layout-lg clearfix dui-layout-padding" >
     <div class="dui-layout-silde">
@@ -38,10 +44,10 @@
           <i></i>
           <h3>猜你喜欢</h3>
         </div>
-        {% if userinfo.adviser_type == 1 %}
-        {% esi helper.include(esikey,'fragment/guess_like','n='+country,'c='+tdk.cityid) %}
+      {% if userinfo.adviser_type == 1 %}
+        {% esi helper.include(esikey,'fragment/guess_like','n='+userinfo.country,'c='+userinfo.organid) %}
       {% else %}
-        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+country,'c='+tdk.cityid) %}
+        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+userinfo.country,'c='+userinfo.organid) %}
       {% endif %}
       </div>
       <div style="margin-top: 20px;" class="dui-box-shadow">
@@ -50,15 +56,16 @@
           <h3>相关顾问</h3>
         </div>
         {% if userinfo.adviser_type == 2 %}
-          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+country,'c='+tdk.cityid,'uid='+userinfo.uid) %}
-      {% else %}
-        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+country,'c='+tdk.cityid) %}
-      {% endif %}
+          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
+        {% else %}
+          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid) %}
+        {% endif %}
       </div>
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con" >
-      <div class="adviser-case-detail-con" style="margin-top: 0" >
+      <div class="dui-box-shadow" >
+        <div class="adviser-case-detail-con" style="margin-top: 0;" >
           {% import "widget2/community_nav/community_nav.html" as community_nav %}
           {% if userinfo.status == 1 %} {#离职顾问#}
             {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
@@ -67,53 +74,68 @@
              {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
             {% endif %}
           {% endif %}
-            <div class="adviser-top clearfix" style="margin-top: 20px;">
-                <div style="float:left;line-height: 50px;" >
-                  <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
-                  </div>
-                  <span style="font-size: 14px;color:#333;">
-                    {{userinfo.realname}}<i class="adviser-v-i"></i>
-                  </span>
-                </div>
-                <div style="float:right;" >
-                  <div class="bdsharebuttonbox" style="margin-top: 15px;">
-                    <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
-                    <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
-                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
-                    <span class="art-report-btn" style="font-size: 12px;color:#333;cursor: pointer;" >举报</span>
-                  </div>
-                </div>
+          <div class="adviser-top clearfix" style="margin-top: 20px;">
+            <div style="float:left;line-height: 50px;" >
+              <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
+              </div>
+              <span style="font-size: 14px;color:#333;">
+                {{userinfo.realname}}<i class="adviser-v-i"></i>
+              </span>
             </div>
-            <div class="clearfix" >
-              <h1 class="adviser-case-detail-h3">
-                {{article.article_info.title}}
-              </h1>
-              <div class="art-tag">
-                <span class="art-tag-bg" ></span>
-                <span class="art-tag-list">{{article.article_info.tag_list}}</span>
+            <div class="bdsharebuttonbox page_share_buttons" style="margin-top: 15px;float:right;">
+              <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
+              <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
+              <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+              <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>
+              <span class="art-report-btn" style="font-size: 12px;color:#333;cursor: pointer;" >举报</span>
+            </div>
+          </div>
+          <div class="clearfix" >
+            <h1 class="adviser-case-detail-h3">
+              {{article.article_info.title}}
+            </h1>
+            <div class="art-tag">
+              <span class="art-tag-bg" ></span>
+              <span class="art-tag-list">{{article.article_info.tag_list}}</span>
+            </div>
+          </div>
+          <div class="adviser-case-detail-come" >
+            <span>时间：{{article.article_info.add_time}}</span>
+            <span style="float:right;margin-left:20px;">
+              点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
+            </span>
+            <span style="float:right;margin-left:20px;">
+              评论{{article.article_info.comments}}
+            </span>
+            <span style="float:right;margin-left:20px;">
+              收藏<i id="collection-num">{{article.article_info.favorites}}</i>
+            </span>
+            <span style="float:right;margin-left: 20px;">
+              阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
+            </span>
+          </div>
+          <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
+            {{article.article_info.message | safe}}
+          </div>
+          <div class="userinfo-box clearfix" >
+            {% if userinfo.qrcode %}
+              <img class="userinfo-img" src="{{helper.imageThumb(userinfo.qrcode,'76x76')}}" >
+            {% endif %}
+            <div class="userinfo-right" >
+              <div >
+                <i class="userinfo-name">{{userinfo.realname}}</i>
+                <i class="adviser-v-i" style="margin-left: 0;"></i>
+                <i style="color:#333;font-size: 14px;">{{userinfo.position_name}}</i>
+              </div>
+              <div class="userinfo-information" >
+                邮箱：{{userinfo.email}} | 电话：{{userinfo.tel}}
+              </div>
+              <div class="userinfo-information" >
+                {{userinfo.organid | getCity()}}分公司：{{userinfo.organid | getCityAddress()}}
               </div>
             </div>
-            <div class="adviser-case-detail-come" >
-              <span>时间：{{article.article_info.add_time}}</span>
-              <span style="float:right;margin-left:20px;">
-                点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
-              </span>
-              <span style="float:right;margin-left:20px;">
-                评论{{article.article_info.comments}}
-              </span>
-              <span style="float:right;margin-left:20px;">
-                收藏<i id="collection-num">{{article.article_info.favorites}}</i>
-              </span>
-              <span style="float:right;margin-left: 20px;">
-                阅读<i style="font-style: normal;" id="detail_views_num">{{article.article_info.views}}</i>
-              </span>
-            </div>
-            <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
-              {{article.article_info.message | safe}}
-            </div>
-          <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;
-  padding-bottom: 40px;">
+          </div>
+          <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;padding-bottom: 40px;" id="to_comments">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}
               已收藏
@@ -129,13 +151,17 @@
                 &#xe651;
               {% endif %} 
               </i>点赞</span> 
-            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}"  rel="nofollow">立即咨询</a>
+            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" onclick="openchat_new('{{ userinfo.job_number}}')">立即咨询</a>
+          </div>
+          <div class="article_tuijian">
+              <h1><div></div>相关推荐</h1>
+            {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list) %}
           </div>
           <!-- ========评论===== -->
           {% if userinfo.status == 0 %} 
             {% include "widget2/comment/comment.html" %}
           {% endif %}
-        </div>  
+        </div>
       </div>
     </div>
   </div>
@@ -166,8 +192,9 @@
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/article_detail.js"></script>
   <script>
-  $(function(){
+    $(function(){
       $('.banner-box-left .slider').xSlider({
           current: 0,
           speed: 500,
@@ -182,116 +209,128 @@
           slidesPerGroup : 2,
           pagination: true
       });
-    window._bd_share_config={
-          "common":{
-              "bdSnsKey":{},
-              "bdText":"",
-              "bdMini":"1",
-              "bdMiniList":false,
-              "bdPic":$("#get-share-img").attr('data-img'),
-              "bdStyle":"0",
-              "bdSize":"16",
-              "bdUrl":window.location.href,
-              "bdDesc":''
+      window._bd_share_config={
+            "common":{
+                "bdSnsKey":{},
+                "bdText":"",
+                "bdMini":"1",
+                "bdMiniList":false,
+                "bdPic":$("#get-share-img").attr('data-img'),
+                "bdStyle":"0",
+                "bdSize":"16",
+                "bdUrl":window.location.href,
+                "bdDesc":''
+            },
+            "share":{}
+        };
+        // console.log(_bd_share_config.common.bdUrl)
+      with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+      $("#collection").on("click",function(){
+        //文章收藏按钮
+        var that =this;
+        $.ajax({
+          url: '/soapi/favorite_article',
+          type:'POST',
+          data:{
+            article_id:article_id
           },
-          "share":{}
-      };
-      // console.log(_bd_share_config.common.bdUrl)
-    with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-    $("#collection").on("click",function(){
-      //文章收藏按钮
-      var that =this;
-      $.ajax({
-        url: '/soapi/favorite_article',
-        type:'POST',
-        data:{
-          article_id:article_id
-        },
-        dataType:'jsonp',
-        jsonpCallback:'cb',
-        success:function(result){
-         console.log(result)
-          if(result.code == 0){
-            if(result.data.action=='add'){
-              layer.msg('收藏成功');
-              $(that).html('已收藏');
-              $('#collection-num').text(Number(Number($('#collection-num').text())+1));
-            }else if(result.data.action=='remove'){
-              layer.msg('取消收藏成功');
-              $(that).html('收藏');
-              $('#collection-num').text(Number($('#collection-num').text()-1));
+          dataType:'jsonp',
+          jsonpCallback:'cb',
+          success:function(result){
+           console.log(result)
+            if(result.code == 0){
+              if(result.data.action=='add'){
+                layer.msg('收藏成功');
+                $(that).html('已收藏');
+                $('#collection-num').text(Number(Number($('#collection-num').text())+1));
+              }else if(result.data.action=='remove'){
+                layer.msg('取消收藏成功');
+                $(that).html('收藏');
+                $('#collection-num').text(Number($('#collection-num').text()-1));
+              }
+            }else if(result.code == 1){
+              getlogin();
             }
-          }else if(result.code == 1){
-            getlogin();
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+            console.log(errorThrown)
           }
-        },
-        error:function(XMLHttpRequest, textStatus, errorThrown){
-          console.log(errorThrown)
-        }
+        });
       });
-    });
-    $("#fabulous").on("click",function(){
-      //点赞
-      if( login_ss == undefined){
-        getlogin();
-        return false;
-      }
-      if(login_ss.uid == adviserId){
-        layer.msg('不能对自己发表的内容进行投票')
-        return false;
-      } 
-      var that =this;
-      $.ajax({
-        url: '/soapi/article_vote',
-        type:'POST',
-        data:{
-          item_id:article_id,
-          item_type:'article'
-        },
-        dataType:'jsonp',
-        jsonpCallback:'cb',
-        success:function(result){
-         console.log(result)
-          if(result.code == 0){
-            if(result.data.action=='add'){
-              layer.msg('点赞成功');
-              $(that).find('i').html('&#xe604;');
-              $('#fabulous-num').text(Number(Number($('#fabulous-num').text())+1));
-            }else if(result.data.action == 'remove'){
-              layer.msg('取消点赞成功');
-              $(that).find('i').html('&#xe651;');
-              $('#fabulous-num').text(Number(Number($('#fabulous-num').text())-1));
-            }  
-           
+      $("#fabulous").on("click",function(){
+        //点赞
+        if( login_ss == undefined){
+          getlogin();
+          return false;
+        }
+        if(login_ss.uid == adviserId){
+          layer.msg('不能对自己发表的内容进行投票')
+          return false;
+        } 
+        var that =this;
+        $.ajax({
+          url: '/soapi/article_vote',
+          type:'POST',
+          data:{
+            item_id:article_id,
+            item_type:'article'
+          },
+          dataType:'jsonp',
+          jsonpCallback:'cb',
+          success:function(result){
+           console.log(result)
+            if(result.code == 0){
+              if(result.data.action=='add'){
+                layer.msg('点赞成功');
+                $(that).find('i').html('&#xe604;');
+                $('#fabulous-num').text(Number(Number($('#fabulous-num').text())+1));
+              }else if(result.data.action == 'remove'){
+                layer.msg('取消点赞成功');
+                $(that).find('i').html('&#xe651;');
+                $('#fabulous-num').text(Number(Number($('#fabulous-num').text())-1));
+              }  
+             
+            }
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+             console.log(errorThrown)
           }
-        },
-        error:function(XMLHttpRequest, textStatus, errorThrown){
-           console.log(errorThrown)
-        }
+        });
       });
-    });
-    $('.art-report-btn').on('click',function(){
-      //文章举报
-      report(this,1,city_id);
-    });
-    // addWaterMarker('文章来源自金吉列')
-    // function addWaterMarker(str){
-    //   var can = document.createElement('canvas');
-    //   var body = document.getElementById('get-share-img');
-    //   body.appendChild(can);
-    //   can.width=500;
-    //   can.height=300;
-    //   can.style.display='none';
-    //   var cans = can.getContext('2d');
-    //   cans.rotate(-20*Math.PI/180);
-    //   cans.font = "16px Microsoft JhengHei"; 
-    //   cans.fillStyle = "rgba(17, 17, 17, 0.50)";
-    //   cans.textAlign = 'left'; 
-    //   cans.textBaseline = 'Middle';
-    //   cans.fillText(str,can.width/3,can.height/2);
-    //   body.style.backgroundImage="url("+can.toDataURL("image/png")+")";
-    //   }
-  })
+      $('.art-report-btn').on('click',function(){
+        //文章举报
+        report(this,1,city_id);
+      });
+      watermark();
+    })
+    function watermark() {
+      var oTemp = document.createDocumentFragment();
+      var mask_div = document.createElement('div');
+      mask_div.appendChild(document.createTextNode('文章来源自金吉列 www.jjl.cn 400-010-8000'));
+      //设置水印div倾斜显示
+      mask_div.style.webkitTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.MozTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.msTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.OTransform = "rotate(-" + 30 + "deg)";
+      mask_div.style.transform = "rotate(-" + 30 + "deg)";
+      mask_div.style.visibility = "";
+      mask_div.style.position = "absolute";
+      mask_div.style.left ='80px';
+      mask_div.style.top = '40%';
+      mask_div.style.overflow = "hidden";
+      mask_div.style.zIndex = "1000";
+      mask_div.style.opacity ="0.4";
+      mask_div.style.filter = "filter:Alpha(opacity=40)";
+      mask_div.style.fontSize = "30px";
+      mask_div.style.fontFamily = "微软雅黑";
+      mask_div.style.color = "#999";
+      mask_div.style.textAlign = "center";
+      mask_div.style.height ='80px';
+      mask_div.style.lineHeight='80px';
+      mask_div.style.display = "block";
+      oTemp.appendChild(mask_div);
+      document.getElementById('get-share-img').getElementsByTagName('p')[0].appendChild(oTemp);
+    }
   </script>
 </body>
 </html>

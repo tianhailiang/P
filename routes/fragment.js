@@ -35,7 +35,8 @@ exports.searchlikelist = function(req,res,next){
           order: 'comments desc',
           city_id:area,
           "per_page": "10",
-          "page": 1
+          "page": 1,
+          "is_immi":1
       }, callback)
     }
   },function(err,result){
@@ -153,5 +154,35 @@ exports.yimin_xiangguanguwen = function(req,res,next){
     data.xiangguan_guwen = returnData(result.xiangguanguwen,'xiangguanguwen');
     //console.log(data.xiangguanguwen)
     res.render('./fragment/xiangguanguwen', data);
+  });
+}
+//相关推荐
+exports.article_xiangguantuijian = function(req,res,next){
+  log.debug('相关推荐.......',req.query)
+  var data = {};
+  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var area = req.query.c || 1;
+  var is_news = req.query.is_news || '';
+  var tag_list = encodeURI(req.query.tag_list) || '';
+  var now_articleId = req.query.article_id;
+  async.parallel({
+    relation_recommend: function (callback) {
+      wec.relation_recommend({
+        "country_id":country,
+        "city_id":area,
+        //"is_immi":2,
+        "is_news": is_news,
+        "tag_list": tag_list,
+        "per_page":5
+      }, callback)
+    }
+  },function(err,result){
+    data.relation_recommend = returnData(result.relation_recommend,'relation_recommend');
+    //for (let index in data.relation_recommend.list) {
+    //  if (data.relation_recommend.list[index].id == now_articleId) {
+    //    data.relation_recommend.list.splice(index, 1);
+    //  }
+    //}
+    res.render('./fragment/article_xiangguantuijian', data);
   });
 }

@@ -1,14 +1,16 @@
 {% if xSlider.length ==1 %}
-<style>
-  .slider:hover .slider-btn{
-    display: none;
-  }
-</style>
 <div class="slider">
-  <a href="{{xSlider[0].linkurl}}" data-pid="{{xSlider[0].pid}}" target="_blank" >
-    <img src="{{xSlider[0].imageurl}}" alt="{{xSlider[0].alt}}" style="width: 100%;height: 100%;">
-  </a>
+  <div class="slider-img">
+    <ul class="slider-img-ul">
+      <li>
+        <a href="{{xSlider[0].linkurl}}" data-pid="{{xSlider[0].pid}}" target="_blank" >
+          <img src="{{xSlider[0].imageurl}}" alt="{{xSlider[0].alt}}" style="width: 100%;height: 100%;">
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
+{% elif xSlider.length ==0 %}
 {% else%}
 <div class="slider">
         <div class="slider-img">

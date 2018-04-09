@@ -73,7 +73,7 @@ function onclick_ly(c,tar){
 
 function openChat(c){
   //console.log(c)
-  var url = "http://jesong.jjl.cn/live/" +'chat.dll?c=1';
+  var url = "http://jesong.jjl.cn/live/" +'chat.do?c=1';
   url = url +"&chatUrl="+window.encodeURIComponent(window.location.href);
   if($.cookie("im_refer")){
     url = url +"&refer="+window.encodeURIComponent($.cookie("im_refer"));
@@ -450,7 +450,9 @@ $(".qq-slide").on("click",function(){
 $('#to_top').click(function(){
   $('html , body').animate({scrollTop: 0},'slow');
 });
-
+$(".jiang").click(function(){
+  window.open(fn.no_urlgen('act_form'));
+})
 //====================弹窗==============
 
 //document.write('<div id="guanbi_tanchu" style="display:none" class="box_tanchu"></div>');

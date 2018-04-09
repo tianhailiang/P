@@ -20,10 +20,10 @@ function getSoUrl (stationType,searchType) {
 }
 $('.search-type-box').hover(function () {
     $(this).find('.search-type-ul').slideDown(100);
-    $(this).find('.go-down').html('&#xe633;');
+    //$(this).find('.go-down').html('&#xe633;');
 }, function () {
     $(this).find('.search-type-ul').slideUp(100);
-    $(this).find('.go-down').html('&#xe632;')
+    //$(this).find('.go-down').html('&#xe632;')
 });
 $('.search-type-ul').on('click','li',function () {
     $('.search-type-text').text($(this).text());
@@ -40,5 +40,13 @@ $("#searchBtn").click(function () {
     }
     else {
         window.open(fn.no_urlgen(getSoUrl(so_type,'文章'), 'q=' + so_key_word));
+    }
+});
+$(document).keyup(function(event){
+    if(event.keyCode ==13){
+        var curIdName = document.activeElement.id;
+        if (curIdName == 'search') { //顶部搜索框
+            $("#searchBtn").trigger("click");
+        }
     }
 });
