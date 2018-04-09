@@ -42,6 +42,15 @@
             <input type="text" class="form-control" id="newEmail" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确" />
             <div class="ti">请输入手机号</div>
           </div>
+          <div class="form-group clearfix" style="margin-left: -20px;">
+            <div class="title"><span>*&nbsp;</span>图形验证码&nbsp;：</div>
+            <input  type="text" id="tupian_bin" class="form-control" style="width: 114px;display: inline-block;" required data-vaild="^[a-zA-Z0-9]{4}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <div class="bind-button" style="width: 100px;float: left">
+              <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+              <!--<input type="button" class="btn btn-primary" style="width: 100px;text-align: center;padding: 6px 2px;background: #fff;color: #c6a770;border: 1px solid #c6a770;border-radius: 3px;line-height: 0px" id="sendcun_binding" value="发送验证码"/>-->
+              <div id="param_code_bin" style="width: 90px;height: 35px;margin-top: -16px;margin-left: 10px;cursor: pointer;"></div>
+            </div>
+          </div>
           <div class="form-group clearfix">
             <div class="title"><span>*&nbsp;</span>验&nbsp;证&nbsp;码&nbsp;：</div>
             <input  type="text" id="verify_binding" class="form-control" style="width: 114px;display: inline-block;" required data-vaild="^\d{4}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
@@ -73,6 +82,25 @@
   $(document).ready(function () {
 
     $("form").Vaild();
+
+    //图片验证码
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code_bin').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+
+    var pc = document.getElementById('param_code_bin');
+    if (pc.addEventListener) {
+      pc.addEventListener('click', showcode, false);
+    } else {
+      pc.attachEvent('onclick', showcode, false);
+    }
     var bS = document.getElementById('bindingSubmit');
     console.log('loginS', bS);
     if (bS.addEventListener) {
@@ -99,8 +127,23 @@
     }
 
   })
+
   function fangqis () {
     window.close();
+  }
+
+  function showcode () {
+    $.ajax({
+      url:"/param_code?time="+new Date().getTime(),
+      type: "get",
+      success: function(result){
+        //$('#param_code_user').html(result)
+        $("#param_code_bin")[0].innerHTML = result;
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
   }
 
   function bindings () {
@@ -167,13 +210,22 @@
       $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
+    if ($('#tupian_bin').val() == '') {
+      layer.msg('请输入图片验证码');
+      return
+    }
+    if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian_bin").val())) {
+      layer.msg('请输入4位图片验证码');
+      return
+    }
     $.ajax({
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
 //      url: ajaxUrlPrefix.ucapi + '/api/index.php?m=sendcode&phone=' + $('#newEmail').val(),
       url: '/sendcode_s',
-      type:'GET',
+      type:'post',
       data: {
+        param_code: $('#tupian_bin').val(),
         phone: $('#newEmail').val()
       },
       dataType:'json',
@@ -182,6 +234,23 @@
         console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
+          var downcount = 60;
+          var time = setInterval(function (){
+            if (downcount === 0) {
+              $("#sendcun_binding").attr("value", "发送验证码");
+              $("#sendcun_binding").removeAttr("disabled");
+              clearInterval(time);
+              return
+            }else {
+              $("#sendcun_binding").attr("disabled", "disabled");
+              $("#sendcun_binding").attr("value", downcount + "s");
+              downcount--;
+            }
+          }, 1000);
+        } else if (msg == '1') {
+          layer.msg('图片验证码输入错误');
+        } else if (msg.code === '1150013') {
+          layer.msg(msg.message);
         } else {
           layer.msg('数据错误');
         }
@@ -191,19 +260,7 @@
         layer.msg("获取失败，请重试！CODE:"+XMLHttpRequest.status);
       }
     });
-    var downcount = 60;
-    var time = setInterval(function (){
-      if (downcount === 0) {
-        $("#sendcun_binding").attr("value", "发送验证码");
-        $("#sendcun_binding").removeAttr("disabled");
-        clearInterval(time);
-        return
-      }else {
-        $("#sendcun_binding").attr("disabled", "disabled");
-        $("#sendcun_binding").attr("value", downcount + "s");
-        downcount--;
-      }
-    }, 1000);
+    
   }
 </script>
 </body>

@@ -3,8 +3,8 @@
  * @type {{host: string, port: number}}
  */
 'use strict';
-
-const redisCache = {
+var apiconfig = require('../config/interface_config');
+/*const redisCache = {
   "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
   "port":6379
 };
@@ -16,6 +16,16 @@ var prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.co
 var uc_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/uc/api/';
 var shequ_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/so/?/api/';
 var imageshost = 'http://images.jjl.cn';
+var cms_out_prefix = prefix;*/
+const redisCache = apiconfig.redisCache;
+var domain = apiconfig.domain;
+var wwhost = apiconfig.wwhost;
+var yiminhost = apiconfig.yiminhost;
+var cdnhost = apiconfig.cdnhost;
+var prefix = apiconfig.prefix;
+var uc_prefix = apiconfig.uc_prefix;
+var shequ_prefix = apiconfig.shequ_prefix;
+var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
 var apis = {
 
@@ -26,7 +36,6 @@ var apis = {
   "sendcode": uc_prefix + 'index.php',//发送手机验证码
   "get_contact": prefix + 'contact_way_list',//关于我们(联系我们)
   "get_media_broadcast": prefix + 'common_recommend',//企业文化--媒体播报
-  "get_business_cooperation_list": prefix + 'business_cooperation_list',
   "get_canzanlist":shequ_prefix+'account/get_canzan_list/',//参赞列表
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像

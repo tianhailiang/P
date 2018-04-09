@@ -22,6 +22,5 @@ module.exports = (function () {
   //下面可以给 config 对象添加一些属性,方便程序使用
   config.is_production = config.version === 'production';
   config.is_test = config.version === 'test';
-
   return config;
 })();

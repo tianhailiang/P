@@ -3,11 +3,20 @@
   .slider:hover .slider-btn{
     display: none;
   }
+  .slider-img-ul{
+    left: 0!important;
+  }
 </style>
 <div class="slider">
-  <a href="{{xSlider[0].linkurl}}" data-pid="{{xSlider[0].pid}}" target="_blank" >
-    <img src="{{xSlider[0].imageurl}}" alt="{{xSlider[0].alt}}" style="width: 100%;height: 100%;">
-  </a>
+  <div class="slider-img">
+    <ul class="slider-img-ul">
+      <li>
+        <a href="{{xSlider[0].linkurl}}" data-pid="{{xSlider[0].pid}}" target="_blank" >
+          <img src="{{xSlider[0].imageurl}}" alt="{{xSlider[0].alt}}" style="width: 100%;height: 100%;">
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
 {% else%}
 <div class="slider">

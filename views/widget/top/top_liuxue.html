@@ -164,7 +164,7 @@ input[type="checkbox"] {
 }
 </style>
 <!-- 登录 -->
-<div class="l_u" id="l_u" style="display: none;">
+<div class="l_u" id="l_u" style="display: none;height: 500px;">
   <div class="l_u_top"><img src="{{helper.cdnhost}}/assets/img/logo_login.png" alt=""></div>
   <div class="l_u_con">
     <p>验证码登录</p>
@@ -173,6 +173,15 @@ input[type="checkbox"] {
       <div class="form-group inputtext_isr" style="position: relative;">
         <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
         <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe679;</i>
+      </div>
+      <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
+        <input placeholder="填写图形验证码" type="text" id="tupian" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+        <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe653;</i>
+        <div class="l_u_com_bang">
+          <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+          <!--<img class="" style="width: 90px;height: 40px;" id="tupiancun" />-->
+          <div id="param_code" style="width: 90px;height: 35px;margin-top: -7px;cursor: pointer;"></div>
+        </div>
       </div>
       <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
         <input placeholder="请输入短信验证码" type="text" id="verify" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->

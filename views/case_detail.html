@@ -117,7 +117,7 @@
               <i style="color:#333;font-size: 14px;">{{userinfo.position_name}}</i>
             </div>
             <div class="userinfo-information" >
-              邮箱：{{userinfo.email}} | 电话 {{userinfo.tel}}
+              邮箱：{{userinfo.email}} | 电话：{{userinfo.tel}}
             </div>
             <div class="userinfo-information" >
               {{userinfo.organid | getCity()}}分公司：{{userinfo.organid | getCityAddress()}}
@@ -140,11 +140,11 @@
                 &#xe651;
               {% endif %}  
               </i>点赞</span> 
-            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" target="_blank"  href="http://jesong.jjl.cn/live/chat.dll?c=1&amp;n={{userinfo.job_number}}"  rel="nofollow">立即咨询</a>
+            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" onclick="openchat_new('{{ userinfo.job_number}}')">立即咨询</a>
         </div>
         <div class="article_tuijian">
           <h1><div></div>相关推荐</h1>
-          {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list,'article_id='+article.article_info.id) %}
+          {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list) %}
         </div>
         <!-- ========评论===== -->
         {% if userinfo.status == 0 %} 

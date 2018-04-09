@@ -191,8 +191,8 @@ exports = module.exports = function (app) {// routes
   app.get('/canzan', about.canzan);
   //海外律师团队
   app.get('/lawyer', about.lawyer);
-  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|gc|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wc|wx|wz|xa|sm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)((?![0-9])[0-9A-Za-z\-_]*)$/, about.activity);
-  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|gc|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wc|wx|wz|xa|sm|xz|xn|xj|yt|yc|ych|zz)\/activity\/(\d+)/, about.activity_detail);
+  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|hd|heb|hs|gc|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wc|wx|wz|xa|sm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)((?![0-9])[0-9A-Za-z\-_]*)$/, about.activity);
+  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|hd|heb|hs|gc|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wc|wx|wz|xa|sm|xz|xn|xj|yt|yc|ych|zz)\/activity\/(\d+)/, about.activity_detail);
   //关于我们
   app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化
@@ -208,7 +208,7 @@ exports = module.exports = function (app) {// routes
   //普通用户绑定手机号
   app.get('/binding', login.binding);
   //手机验证码
-  app.get('/sendcode_s', login.sendcode_s);
+  app.post('/sendcode_s', login.sendcode_s);
   //忘记密码
   app.post('/forget_s', login.forget_s);
   //绑定手机号
@@ -231,6 +231,11 @@ exports = module.exports = function (app) {// routes
   app.get("/act_form",controller.act_form);//活动表单
   app.get('/employment',about.employment);//招聘页面
 
+
   //文章置顶接口
   app.post('/article_top', controller.article_top);
+
+  app.get('/param_code',login.param_code);//生成图片验证码
+  app.post('/session_param_code',login.check_param_code)//验证图片验证码
+
 };
