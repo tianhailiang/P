@@ -237,8 +237,9 @@
     float: left;
   }
 .act_form_diye {
-  width:100%;
+  width:1200px;
    height:270px;
+  margin: 0 auto;
   background-image: url({{helper.cdnhost}}/assets/img/diditu.jpg);background-repeat: no-repeat;background-size: cover;text-align: center;color: #fff;font-size: 20px;background-position: center 0;
 }
   .act_form_tu_xion {
@@ -246,6 +247,12 @@
     min-width:1180px;
     height:968px;
     background-image: url({{helper.cdnhost}}/assets/img/bioa_beijing.png);background-repeat: no-repeat;background-size: 100% auto;position: absolute;bottom: 0px;z-index: -100;
+  }
+  .act_form_beijingtu {
+    width: 100%;
+    height: 270px;
+    background-image: url({{helper.cdnhost}}/assets/img/act_form_beijingtu.png);background-repeat: no-repeat;background-size: cover;text-align: center;color: #fff;font-size: 20px;background-position: center 0;
+
   }
 </style>
 <!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy3.css"/>-->
@@ -309,7 +316,9 @@
     	<span class="act-form-btn">提交建议</span>
     </div>
   </div>
-    <a target="_blank" href="http://www.jjl.cn/zt/zhaopin/employment.html"><div class="act_form_diye"></div></a>
+    <div class="act_form_beijingtu">
+      <a target="_blank" href="http://www.jjl.cn/zt/zhaopin/employment.html"><div class="act_form_diye"></div></a>
+    </div>
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("AD_FEEDBACK_SEAT10",helper) }}
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
