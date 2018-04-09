@@ -126,7 +126,7 @@
                   "name":"本科"
                 },
                 {
-                  "name":"研究生"
+                  "name":"硕士"
                 },
                 {
                   "name":"博士"
@@ -144,18 +144,22 @@
                 <span>*</span> 选择推荐标签：
               </label>
               {% set recommendList = [
-                {'name':'留学聚焦'},
-                {'name':'申请攻略'},
-                {'name':'签证指导'},
-                {'name':'申请条件'},
+                {'name':'专业解析'},
+                {'name':'申请规划'},
                 {'name':'留学费用'},
-                {'name':'专家解读'},
+                {'name':'留学条件'},
+                {'name':'留学评估'},
+                {'name':'大学排名'},
+                {'name':'签证指南'},
+                {'name':'行前指导'},
+                {'name':'就业指导'},
+                {'name':'签证指导'},
                 {'name':'留学案例'}
               ]  %}
               {% for item in recommendList %}
                 {{helper.tagChecked(item.name,article.article_info.tag_list) |safe }}              
               {% endfor %}
-              <span class="numTip">
+              <span class="numTip" style="display: inline-block;margin-top: 5px;">
                 注：选中【留学案例】标签即发布至顾问个人主页-案例中
               </span>
               <span class="numTip" style="display:block;
@@ -308,7 +312,10 @@
         }
       });
       //选择推荐标签
-      $('.recommend-sel:last').css({"display":"inline-block","marginLeft":"130px"});
+      $('.recommend-sel').eq(6).css({"display":"inline-block","marginLeft":"130px","marginTop":"5px"});
+      $('.recommend-sel').eq(9).css({"marginRight":"274px"});
+      $('.recommend-sel:last').css({"display":"inline-block","marginLeft":"130px","marginTop":"5px"});
+
       var recNumber = $('.recommend-sel[checked=checked]').length;
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
@@ -402,7 +409,7 @@
           $('.recommend-sel[checked=checked]').each(function(){
             tagStr+=$(this).find('i').eq(1).text()+',';
           });
-          if($('.recommend-sel').eq(6).attr('checked')){
+          if($('.recommend-sel').eq(10).attr('checked')){
            artType = 1;
           }else{
             artType = 2;
@@ -498,7 +505,7 @@
           $('.recommend-sel[checked=checked]').each(function(){
             tagStr+=$(this).find('i').eq(1).text()+',';
           });
-          if($('.recommend-sel').eq(6).attr('checked')){
+          if($('.recommend-sel').eq(10).attr('checked')){
             artType = 1;
           }else{
             artType = 2;
