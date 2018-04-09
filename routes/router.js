@@ -231,11 +231,9 @@ exports = module.exports = function (app) {// routes
   app.get("/act_form",controller.act_form);//活动表单
   app.get('/employment',about.employment);//招聘页面
 
-
   //文章置顶接口
   app.post('/article_top', controller.article_top);
-
   app.get('/param_code',login.param_code);//生成图片验证码
   app.post('/session_param_code',login.check_param_code)//验证图片验证码
-
+  app.get('/ad_tongji', login.ad_tongji);//广告位统计登录
 };

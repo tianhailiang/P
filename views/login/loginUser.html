@@ -89,7 +89,7 @@
               <a target="_blank"  href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了？</small></a>
             </div>-->
 
-          <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0;border-radius: inherit;" id="loginSubmit" value="立 即 登 录"/>
+          <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0;border-radius: inherit;" id="loginSubmit" value="立 即 登 录" data-url='{{url}}'/>
 
           <div class="form-group text-left" id="login_user" style="color: #999;margin-top: 0px;margin-left: -20px;">
               <div class="checkbox i-checks" style="color: #999;">
@@ -291,6 +291,8 @@
 
 
 function loginS () {
+  var url = $(this).attr('data-url')
+  console.log('url',url)
   console.log('login_ssssss')
   if ($('#newEmail').val() === '') {
     $('#newEmail').parent().addClass("has-error").removeClass("has-success");
@@ -329,16 +331,16 @@ function loginS () {
         console.log('msg ajax', msg);
         if(msg.code === 0){
           //var h = location.search;//获取？后面的字符串
-          var h = window.location.href;//获取全部的url
-          console.log('h', h);
-          var hh = h.split("?");
-          console.log('hh', hh)
-          if (hh[1] !== undefined) {
-            var str = hh[1].substr(1);
-            console.log('str', str);
-            var strs = str.split("=");
-            console.log('strs', strs[1]);
-            window.location= strs[1];
+          //var h = window.location.href;//获取全部的url
+          //console.log('h', h);
+          //var hh = h.split("?");
+          //console.log('hh', hh)
+          if (url !== undefined) {
+            //var str = hh[1].substr(1);
+            //console.log('str', str);
+            //var strs = str.split("=");
+            //console.log('strs', strs[1]);
+            window.location= url;
           } else {
             window.location = '/';
           }

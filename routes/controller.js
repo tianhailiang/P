@@ -3730,5 +3730,4 @@ exports.article_top = function (req, res, next) {
             res.send(result);
         }
     })
-
 };
