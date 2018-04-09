@@ -329,7 +329,7 @@ function outlogin () {
     var hhh = h.split("?");
     console.log('hhh', hhh[1])
     $.ajax({
-      url: js_api_config.wwhost+'/login_out',
+      url: portname+'/login_out',
       type: 'GET',
       dataType:'jsonp',
       jsonpCallback:'cb',
