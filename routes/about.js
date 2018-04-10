@@ -678,7 +678,6 @@ exports.schooltopic = function (req, res, next){
     log.info(result)
     data.pageroute="about";
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    log.info(data.schooltopic)
     data.tdk = {
       pagekey: 'SCHOOLTOPIC', //key
       cityid: area, //cityid
