@@ -653,6 +653,7 @@ exports.schooltopic = function (req, res, next){
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var qianzhengzhinan_currentPage=req.query.page || 1;
   var country = req.query.n || 0;
+  var articleId = req.params.id;
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
   console.log('url', l.h);
@@ -668,12 +669,18 @@ exports.schooltopic = function (req, res, next){
   //  data.login_nickname = login_a;
   //}
   async.parallel({
-
+    schooltopic: function (callback) {
+      cms.schooltopic({
+        id:articleId,
+      }, callback);
+    },
   }, function (err, result){
     log.info(result)
     data.pageroute="about";
+    data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    log.info(data.schooltopic)
     data.tdk = {
-      pagekey: 'PROFILE', //key
+      pagekey: 'SCHOOLTOPIC', //key
       cityid: area, //cityid
       nationid: country//nationi
     };

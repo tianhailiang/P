@@ -1239,3 +1239,14 @@ exports.ad_tongji = function(uid, phone){
   });
   
 }
+//专题页面
+exports.schooltopic =function(data,callback){
+  var url = _api_url_path(data, config.apis.get_schooltopic);
+  if (url == null){
+    callback('404');
+    return;
+  }
+
+  api.apiRequest(url ,callback);
+
+}
