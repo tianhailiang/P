@@ -3,6 +3,7 @@
 @charset "UTF-8";
 html, body {
   -ms-overflow-style:scrollbar;
+  min-width: 1200px;
 }
 p,dl,dt,dd{
   margin:0;
