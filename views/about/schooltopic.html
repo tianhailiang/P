@@ -232,6 +232,7 @@
 
 
 <!--金吉列申请优势-->
+{% if schooltopic.list.apply_advantage %}
 <div class="content-title">
   <p><span></span>金吉列申请优势<span></span></p>
   <div class="gray-title">JJL Application advantage</div>
@@ -239,7 +240,7 @@
 <div class="content3">
   {{schooltopic.list.apply_advantage | safe}}
 </div>
-
+{% endif %}
 <!--报名表单-->
 <div class="bg">
   <div class="baoming-form" style="background: {{schooltopic.list.button_background}}">
@@ -248,7 +249,7 @@
       <div><span>您的姓名：</span><input type="text"  id="username" name="username"/></div>
       <div><span>您的手机：</span><input type="tel" id="tel" name="tel"/></div>
       <div><span>所在城市：</span><input type="text" id="city" name="city" /></div>
-      <div class="submitId" id="submitId">在线预约</div>
+      <div class="submitId" id="submitId" style="cursor: pointer">在线预约</div>
       <div style="display: none;">
         <input type="hidden" name="activityTitle" id="activityTitle" value="马凯特大学" />
       </div>
