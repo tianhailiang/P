@@ -1,11 +1,11 @@
 <style type="text/css">
 .lxContaniner{margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
 .lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc;overflow: hidden;}
-.lx-head h1{float:left;margin-right:70px;color:#333;font-size:22px}
+.lx-head h1{float:left;margin-right:35px;color:#333;font-size:22px}
 .lx-tabitems{float:left;margin-top:5px}
-.lx-tabitems li{position:relative;float:left;width:51px;color:#666;margin-right:10px;text-align:center;font-size:14px;cursor:pointer}
+.lx-tabitems li{position:relative;float:left;color:#666;margin-right:12px;text-align:center;font-size:14px;cursor:pointer}
 .lx-tabitems li.active{color:#c13232}
-.lx-tabitems li.active em{position:absolute;bottom:-14px;left:0;display:block;width:51px;height:2px;background:#c13232}
+.lx-tabitems li.active em{position:absolute;bottom:-14px;left:0;display:block;width:100%;height:2px;background:#c13232}
 .gw-items li{float:left;margin-right:20px;margin-bottom:10px;padding-bottom:14px;width:385px;*width:380px;width:380px\0;border-bottom:solid 1px #dcdcdc}
 .gw-topitems{position:relative;overflow:hidden;margin-bottom:20px;box-shadow:0 3px 5px #e2e5e6;background:#f1f4f6;}
 .gw-topitems li{margin-right:0;margin-bottom:0;padding-top:10px;width:400px;border-bottom:none;background-color:#f1f4f6;}
@@ -24,14 +24,25 @@
 .gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
 .gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
 .gw-items p{color:#333;font-size:16px;padding-top: 10px;text-indent: 20px;}
-.gw-legend{float:right;margin-top:18px;padding:2px 8px;-webkit-border-radius:8px;border-radius:8px;background:#f9f6f1;color:#c13232;font-size:12px}
+.gw-legend{float:right;margin-top:18px;padding:2px 8px;-webkit-border-radius:8px;border-radius:8px;background: rgba(193,50,50,.06);background:#f9f6f1\9;color:#c13232;font-size:12px}
 .gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
 .gw-people .bg-peopel,.gw-people a{float:left;height: 51px; width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
 #guItems li:nth-child(3) .gw-people{margin-left: 26px;}
 .home-guanggao a{float: left;margin-right: 20px;background-color: #dcdcdc;}
-.home-guanggao a:nth-of-type(3){ margin-right: 0;}
-.home-guanggao a:last-child{ margin-right: 0;}
+/* .home-guanggao a:nth-of-type(3){ margin-right: 0;}
+.home-guanggao a:last-child{ margin-right: 0;} */
 .lx-head a{ font-size: 12px;color: #c13232;float: right;margin-top: 5px}
+.lx-hovertarg{ float: left;font-size: 0; }
+.lx-hovertarg li{ display: inline-block; margin-right: 8px;}
+.lx-hovertarg li a{font-size: 12px;color: #999;width: 60px;	transition: .2s ease;-webkit-transition: .2s ease;}
+.lx-hovertarg li a:hover{
+	color: #c13232;
+	font-weight: bold;
+	transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	/*transform-origin: center center;*/
+	/*-webkit-transform-origin: center center;*/
+	}
 </style>
 {% for floor in shouye %} {#国家#}
 <div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
@@ -45,6 +56,19 @@
 				<li>{{tagitem.edu_name}}<em></em></li>
 				{% endif %}
 			{% endfor %}
+		</ul>
+		<ul class="lx-hovertarg">
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=专业解析')}}" target="_blank">专业解析</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=申请规划')}}" target="_blank">申请规划</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=留学费用')}}" target="_blank">留学费用</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=留学条件')}}" target="_blank">留学条件</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=留学评估')}}" target="_blank">留学评估</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=大学排名')}}" target="_blank">大学排名</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=签证指南')}}" target="_blank">签证指南</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=行前指导')}}" target="_blank">行前指导</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=就业指导')}}" target="_blank">就业指导</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=签证指导')}}" target="_blank">签证指导</a></li>
+			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=留学案例')}}" target="_blank">留学案例</a></li>
 		</ul>
 		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区&nbsp;&nbsp;></a>
 	</div>
@@ -95,7 +119,7 @@
 </div>
 	{% if loop.index <= 6 %}
 		<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
-			<div class="home-guanggao" style="float:left;overflow:hidden;" id="AD_HOME_SEAT{{loop.index+10}}"></div>
+			<div class="home-guanggao" style="float:left;overflow:hidden;margin-right:-20px" id="AD_HOME_SEAT{{loop.index+10}}"></div>
 		</div>
 	{% endif %}
 {% endfor %} {#国家end#}
