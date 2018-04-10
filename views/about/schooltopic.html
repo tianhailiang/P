@@ -8,9 +8,9 @@
 }
 
   /* banner */
-  .banner{width:100%;background:url("../images/mkt_01.jpg") no-repeat center center; height: 500px; overflow:hidden;}
+  .banner{width:100%;height: 500px; overflow:hidden;}
   .banner .btn-box{width:450px;height:100px;margin:420px auto;}
-  .banner .btn-box a{display: block; font-size: 16px; text-align: center; line-height:40px;color:#fff;background: #005aab; float:left; width:136px; height:40px;box-sizing: border-box; border: 1px solid #005aab;border-radius: 5px;}
+  .banner .btn-box a{display: block; font-size: 16px; text-align: center; line-height:40px;color:#fff; float:left; width:136px; height:40px;box-sizing: border-box; border-radius: 5px;}
   /*.banner .btn-box a:hover{background: #efcd68; border: 1px solid #efcd68}*/
   .banner .btn-box .md-btn{margin-left:150px;}
   /*标题*/
@@ -94,7 +94,6 @@
     width: 1000px;
     height: 180px;
     margin: 0 auto;
-    background: #153252;
   }
   .form-content{
     margin: 0 auto;
@@ -124,7 +123,7 @@
 
 </style>
 <script>
-  var AD_PAGE_NAME = "PROFILE";
+  var AD_PAGE_NAME = "SCHOOLTOPIC";
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <body style="background: #f5f5f5;">
@@ -136,65 +135,68 @@
 <!------------------这里写body的所有内容，上下为header,footer公共样式，照如此粘贴即可。-------------------->
 
 <!-- banner图 -->
-<div class="banner">
+
+<div class="banner" style="background-image:url({{schooltopic.list.sch_background_map}});height: 500px; overflow:hidden;background-size:cover;background-position: center center">
   <div class="wrap1">
     <div class="btn-box">
-      <a href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
-      <a class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
+      <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
+      <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
     </div>
   </div>
 </div>
 <!--学校介绍-->
+{% if schooltopic.list.content %}
 <div class="content-title">
   <p><span></span>学校介绍<span></span></p>
   <div class="gray-title">School introduction</div>
 </div>
 <div class="content2 clearfix">
   <div class="content2-img">
-    <img src="images/mkt_04.jpg" alt=""/>
+    <img src="{{ schooltopic.list.sch_introduce_map}}" alt=""/>
   </div>
   <div class="content2-txt">
-    <p>马凯特大学(Marquette University，简称MU)是一所美国顶尖的私立天主教大学，坐落在威斯康辛州的最大城市和湖港密尔沃基市，是美国最大的天主教耶稣会大学之一，同时也是威斯康辛最大的私立大学，在校学生越12000人 。</p>
-    <p>1881年8月28日 ，马凯特大学由密尔沃基市第一主教John Martin Henni创建，最初的目的为了给当地的德国移民后裔提供神学教育，在当时只是一所男性大学， 1909年成为世界上第一所接受女性的天主教大学。 马凯特大学亦是一所篮球名校，“闪电侠”德怀恩· 德毕业于该校。学校还培养了获得奥斯卡奖的电影演员唐· 阿米契，安永全球首席营运官，美国银行首席执行官等众多社会各界的知名人士  。马凯特大学获《美国新闻与世界报道》评为一级国家级大学，2018年USNEWS全 美排名第90位。 130多年来，学校一直致力于培养学生坚定的信念，以在职业生涯中、团队里和社会上成为卓越领导者为目标。</p>
+     {{ schooltopic.list.content | safe}}
   </div>
 </div>
+{% endif %}
+
+
 <!--优势介绍-->
+{% if schooltopic.list.advantage %}
 <div class="content-title">
   <p><span></span>各类排名及优势介绍<span></span></p>
   <div class="gray-title">Various ranking and advantages</div>
 </div>
 <div class="content1 clearfix">
   <ul class="clearfix">
-    <li><img src="images/mkt_08.jpg" alt=""/></li>
-    <li><img src="images/mkt_10.jpg" alt=""/></li>
-    <li><img src="images/mkt_12.jpg" alt=""/></li>
+    <li><img src="{{ schooltopic.list.advantage_map1}}" alt=""/></li>
+    <li><img src="{{ schooltopic.list.advantage_map2}}" alt=""/></li>
+    <li><img src="{{ schooltopic.list.advantage_map3}}" alt=""/></li>
   </ul>
-  <p>
-    2018全美排名第90位，其中学校的MBA项目排名全美14位，本科金融专业排名全美第15位，供应链管理排名第12位， 生物工程排名52位，法学院排名95位。  《华盛顿月刊》则将马凯特大学评为美国大学第48位。
-  </p>
-  <p>
-    优势专业:商科、 工程、电脑科学、健康科学、传媒
-  </p>
-  <p>
-    知名校友:“闪电侠”德怀恩· 韦德;奥斯卡奖电影演员唐·阿米契，安永全球首席营运官，美国银行首席执行官等。
-  </p>
+  {{schooltopic.list.advantage | safe}}
 </div>
+{% endif %}
+
+
 <!--院系设置-->
+{% if schooltopic.list.sch_set %}
 <div class="content-title">
   <p><span></span>院系设置<span></span></p>
   <div class="gray-title">Schools and Departments</div>
 </div>
 <div class="content1 clearfix">
   <ul class="clearfix">
-    <li><img src="images/mkt_17.jpg" alt=""/></li>
-    <li><img src="images/mkt_18.jpg" alt=""/></li>
-    <li><img src="images/mkt_20.jpg" alt=""/></li>
+    <li><img src="{{ schooltopic.list.sch_set_map1}}" alt=""/></li>
+    <li><img src="{{ schooltopic.list.sch_set_map2}}" alt=""/></li>
+    <li><img src="{{ schooltopic.list.sch_set_map3}}" alt=""/></li>
   </ul>
-  <p>
-    文理学院，商学院，法学院， 工程学院，传媒学院，教育学院，护理学院，健康科学学院， 牙科。
-  </p>
+  {{schooltopic.list.sch_set | safe}}
 </div>
+{% endif %}
+
+
 <!--学费信息-->
+{% if schooltopic.list.tuition_info %}
 <div class="content-title">
   <p><span></span>学费信息<span></span></p>
   <div class="gray-title">Tuition information</div>
@@ -202,14 +204,17 @@
 
 <div class="content2 clearfix">
   <div class="content2-img">
-    <img src="images/mkt_25.jpg" alt=""/>
+    <img src="{{ schooltopic.list.tuition_info_map}}" alt=""/>
   </div>
   <div class="content2-txt">
-    <p>本科学费约38000-41000美元每年; 研究生学费除教育学为825美元 每学分之外，其他专业为1100美 每学分。</p>
-
+    {{schooltopic.list.tuition_info | safe}}
   </div>
 </div>
+{% endif %}
+
+
 <!--奖学金信息-->
+{% if schooltopic.list.scholarship_info %}
 <div class="content-title">
   <p><span></span>奖学金信息<span></span></p>
   <div class="gray-title">Financial Aid Statistics</div>
@@ -217,30 +222,34 @@
 
 <div class="content2 clearfix">
   <div class="content2-img">
-    <img src="images/mkt_27.jpg" alt=""/>
+    <img src="{{ schooltopic.list.scholarship_info_map}}" alt=""/>
   </div>
   <div class="content2-txt">
-    <p>学校有种类丰富的奖学  于奖励不同类型的学 。其中，对于学业优异的学 ，奖学 价值从每年$4,000到$14,000不等。针对转学的学 ，奖学 价值$2000或 者$3000不等。</p>
-
+    {{schooltopic.list.scholarship_info | safe}}
   </div>
 </div>
+{% endif %}
+
+
 <!--金吉列申请优势-->
+{% if schooltopic.list.apply_advantage %}
 <div class="content-title">
   <p><span></span>金吉列申请优势<span></span></p>
   <div class="gray-title">JJL Application advantage</div>
 </div>
 <div class="content3">
-  与马凯特大学深度合作且合作关系密切，可免申请费。院系教授面对面讲解专业申请特殊要求等信息。申请流程更顺畅，申请成功率更高 。
+  {{schooltopic.list.apply_advantage | safe}}
 </div>
+{% endif %}
 <!--报名表单-->
 <div class="bg">
-  <div class="baoming-form">
+  <div class="baoming-form" style="background: {{schooltopic.list.button_background}}">
     <div class="baoming">我想报名</div>
     <div class="form-content">
       <div><span>您的姓名：</span><input type="text"  id="username" name="username"/></div>
       <div><span>您的手机：</span><input type="tel" id="tel" name="tel"/></div>
       <div><span>所在城市：</span><input type="text" id="city" name="city" /></div>
-      <div class="submitId" id="submitId">在线预约</div>
+      <div class="submitId" id="submitId" style="cursor: pointer">在线预约</div>
       <div style="display: none;">
         <input type="hidden" name="activityTitle" id="activityTitle" value="马凯特大学" />
       </div>
@@ -251,12 +260,13 @@
 
 {% include "widget/new_footer/common_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
-{{slide.leyu_slide("AD_PROFILE_SEAT10",helper) }}
+{{slide.leyu_slide("AD_SCHOOLTOPIC_SEAT10",helper) }}
 
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/index.js"></script>
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/jquery.bxslider.js"></script>
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
