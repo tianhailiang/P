@@ -236,4 +236,5 @@ exports = module.exports = function (app) {// routes
   app.get('/param_code',login.param_code);//生成图片验证码
   app.post('/session_param_code',login.check_param_code)//验证图片验证码
   app.get('/ad_tongji', login.ad_tongji);//广告位统计登录
+  app.get("/about/schooltopic",about.schooltopic);//金色力量底页
 };
