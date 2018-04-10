@@ -579,7 +579,7 @@ exports.login_out = function (req, res, next) {
 exports.param_code = function (req,res,next){
   var codeConfig = {
   size: 4,// 验证码长度
-  ignoreChars: '0o1i', // 验证码字符中排除 0o1i
+  ignoreChars: '0o1ilI', // 验证码字符中排除 0o1i
   noise: 0, // 干扰线条的数量
   height: 50,
   width: 90
