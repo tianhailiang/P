@@ -93,11 +93,9 @@
 	</div>
 	{% endfor %}{#类别end#}
 </div>
-	{% if loop.index <= 6 %}
 		<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
 			<div class="home-guanggao" style="float:left;overflow:hidden;margin-right:-20px" id="AD_HOME_SEAT{{loop.index+10}}"></div>
 		</div>
-	{% endif %}
 {% endfor %} {#国家end#}
 <script>
 	$(".lxContaniner").on('click', '.lx-tabitems li', function(){
