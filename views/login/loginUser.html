@@ -3,7 +3,7 @@
 {% include "header_new.html" %}
 
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/custom.css"/>
+  
   
   <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
   <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
@@ -42,12 +42,11 @@
   </div>
 
   <div class="login_overseas clearfix">
+    <div style="margin: 0px auto;height: 550px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png);
+    background-repeat: no-repeat;background-size: cover;">{# #}
+      {# <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/> #}
     
-    <div style="margin: 0px auto;height: 550px;width: 100%;">{#background: url({{helper.cdnhost}}/assets/img/login_background.png);
-    background-repeat: no-repeat;background-size: cover; #}
-      <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/>
     </div>
-    
     <div class="login_content">
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
         <h3 class="login_nei_title">验证码登录<!--<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a>--></h3>
@@ -103,17 +102,26 @@
         <div class="fen" style="margin-top: -5px;">
           <h4 style="line-height: 37px;">第三方快速登录：</h4>
           <div class="bdsharebuttonbox" id="fx" style="float: left;margin-top: 7px">
+<<<<<<< HEAD
+            <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user" data-url='{{url}}'/>
+=======
             <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user" style="float: left;"/>
+>>>>>>> ipad
 
             <a target="_blank"  href="{{helper.wwhost}}/weixin_login?h={{url}}" style="float: left;">
               <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
             </a>
+<<<<<<< HEAD
+            <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user" data-url='{{url}}'/>
+=======
             <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user" style="float: left;"/>
+>>>>>>> ipad
           </div>
         </div>
 
       </div>
     </div>
+    
     <div class="login_footer">
       <div id="login_data">{{login_ss}}</div>
       ©2009 金吉列出国留学咨询服务有限公司 版权所有 京ICP备05010035号&nbsp;&nbsp;&nbsp;&nbsp;留学投诉电话4006-213-315&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：315@jjl.cn
@@ -177,15 +185,17 @@
     }
 
     $('#weibo_user').on('click', function () {
-      var h = window.location.href;//获取全部的url
-      console.log('h', h);
-      var hh = h.split("?");
-      console.log('hh', hh[1])
-      if (hh[1] !== undefined) {
-        var str = hh[1].substr(1);
-        var strs = str.split("=");
-        console.log('strs', strs)
-        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      var url = $(this).attr('data-url')
+      console.log('url',url)
+      //var h = window.location.href;//获取全部的url
+      //console.log('h', h);
+      //var hh = h.split("?");
+      //console.log('hh', hh[1])
+      if (url !== undefined) {
+        //var str = hh[1].substr(1);
+        //var strs = str.split("=");
+        //console.log('strs', strs)
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + url, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
@@ -193,15 +203,17 @@
     $('#qq_user').on('click', function () {
     //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
     //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
-      var h = window.location.href;//获取全部的url
-      console.log('h', h);
-      var hh = h.split("?");
-      console.log('hh', hh)
-      if (hh[1] !== undefined) {
-        var str = hh[1].substr(1);
-        var strs = str.split("=");
-        console.log('strs', strs)
-        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      var url = $(this).attr('data-url')
+      console.log('url',url)
+      //var h = window.location.href;//获取全部的url
+      //console.log('h', h);
+      //var hh = h.split("?");
+      //console.log('hh', hh)
+      if (url !== undefined) {
+        //var str = hh[1].substr(1);
+        //var strs = str.split("=");
+        //console.log('strs', strs)
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + url, "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
@@ -251,7 +263,7 @@
       url: '/sendcode_s',
       type:'post',
       data: {
-        param_code: $('#tupian_user').val(),
+        param_code: $('#tupian_user').val().toLowerCase(),
         phone: $('#newEmail').val()
       },
       dataType: 'json',

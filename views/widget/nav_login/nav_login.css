@@ -1,4 +1,4 @@
-/*µÇÂ¼¡¢×¢²áÍ·²¿*/
+/*ï¿½ï¿½Â¼ï¿½ï¿½×¢ï¿½ï¿½Í·ï¿½ï¿½*/
 .nav_login{
   width: 100%;
   background: #fff;
@@ -36,16 +36,17 @@
 .nav_login i{
   color: #C13232;
 }
-/*µÇÂ¼ÄÚÈÝ*/
+/*ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½*/
 .login_overseas{
   width: 100%;
-  min-width: 1180px;
+  
   height: 550px;
 }
 .login_content{
-  width: 1180px;
+  min-width: 1200px;
   margin: 0px auto;
   position: relative;
+  max-width: 1200px;
 }
 .login_nei *{
   -webkit-box-sizing:
@@ -58,6 +59,7 @@
   float: right;
   background: #fcf4ef;
   margin-top: -390px;
+  margin-right: 5px;
   z-index: 10000;
   padding: 24px 72px 0 72px;
   text-align: left;
@@ -126,7 +128,7 @@
   background-size: 22px 22px;
 }
 .login_footer{
-  width: 1180px;
+  min-width: 1200px;
   margin: 0px auto;
   position: relative;
   text-align: center;
@@ -134,10 +136,10 @@
   color: #666;
   margin-top: 20px;
 }
-/*×¢²áÄÚÈÝ*/
+/*×¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½*/
 .register_overseas {
   width: 100%;
-  min-width: 1180px;
+  min-width: 1200px;
   background: #f5f5f5;
   padding-top: 40px;
 }
