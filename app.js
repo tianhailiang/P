@@ -25,7 +25,7 @@ app.use(favicon(path.join(__dirname, 'favicon.ico')));
 var viewspath = 'views';
 if(process.env.NODE_ENV == 'production'){
   viewspath = 'dist/views'
-}
+}  
 
 app.set('views', path.join(__dirname, viewspath));
 var env = nunjucks.configure(viewspath, {
