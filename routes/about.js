@@ -645,3 +645,45 @@ exports.employment = function (req, res, next){
 
   });
 }
+
+
+//专题页面
+exports.schooltopic = function (req, res, next){
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+  var articleId = req.params.id;
+  //node获取地址栏url
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_nickname = '';
+  //if ( req.cookies.login_ss !== undefined) {
+  //  var login_a = JSON.parse(req.cookies.login_ss);
+  //  //log.debug("login_a-------" + login_a.nickname)
+  //  data.login_nickname = login_a;
+  //}
+  async.parallel({
+    schooltopic: function (callback) {
+      cms.schooltopic({
+        id:articleId,
+      }, callback);
+    },
+  }, function (err, result){
+    log.info(result)
+    data.pageroute="about";
+    data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    data.tdk = {
+      pagekey: 'SCHOOLTOPIC', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    res.render('about/schooltopic', data);
+
+  });
+}

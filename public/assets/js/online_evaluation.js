@@ -70,7 +70,7 @@ $(function(){
       $("#department-num").html('');
     };
     //所属区域
-    if($("#city").val()==''){
+    if($("#slide-area").val()==''){
       $("#city-num").html("选择所属区域");
       return false;
     }else{
@@ -94,7 +94,7 @@ $(function(){
         name: $("#name").val(),
         phone: $("#phone-slide").val(),
         country: $('#department').val(),
-        city: $('#city').val(),
+        city: $('#slide-area').val(),
         need:$("#context").val()
       },
       success:function(msg){

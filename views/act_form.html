@@ -220,7 +220,7 @@
   }
   .act_form_tu {
     width:100%;
-    min-width:1180px;
+    min-width:1200px;
     height:auto;
     background-image: url({{helper.cdnhost}}/assets/img/zhuanxiang.jpg);background-repeat: no-repeat;background-size: 100% auto;
     padding-top: 22%;
@@ -236,24 +236,29 @@
     background: #C13232;
     float: left;
   }
-.act_form_diye {
-  width:1200px;
+ .act_form_diye {
+   min-width:1200px;
    height:270px;
-  margin: 0 auto;
-  background-image: url({{helper.cdnhost}}/assets/img/diditu.png);background-repeat: no-repeat;background-size: cover;text-align: center;color: #fff;font-size: 20px;background-position: center 0;
-}
+   margin: 0 auto;
+   background-image: url({{helper.cdnhost}}/assets/img/diditu.png);background-repeat: no-repeat;background-size: cover;text-align: center;color: #fff;font-size: 20px;background-position: center 0;
+ }
   .act_form_tu_xion {
     width:100%;
-    min-width:1180px;
+    min-width:1200px;
     height:968px;
-    background-image: url({{helper.cdnhost}}/assets/img/bioa_beijing.png);background-repeat: no-repeat;background-size: 100% auto;position: absolute;bottom: 0px;z-index: -100;
+    background-image: url({{helper.cdnhost}}/assets/img/bioa_beijing.png);background-repeat: no-repeat;background-size: 100% 100%;position: absolute;bottom: 0px;z-index: -100;
   }
   .act_form_beijingtu {
     width: 100%;
     height: 270px;
     background-image: url({{helper.cdnhost}}/assets/img/act_form_beijingtu.png);background-repeat: no-repeat;background-size: cover;text-align: center;color: #fff;font-size: 20px;background-position: center 0;
-
   }
+ .act_form_beijingtu {
+   width: 100%;
+   height: 270px;
+   background-image: url({{helper.cdnhost}}/assets/img/act_form_beijingtu.png);background-repeat: no-repeat;background-size: cover;text-align: center;color: #fff;font-size: 20px;background-position: center 0;
+
+ }
 </style>
 <!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy3.css"/>-->
 <script>
@@ -363,7 +368,7 @@
     	$('.act_form_con_2').css("display", "none");
 		$('.act_form_con_3').css("display", "none");
 	})
-  	
+
 	$("#gerenjieshao").on("keyup",function(){
 		var strLength = $.trim($(this).val()).length;
 	    $("#word-num").html(80-strLength);
@@ -378,7 +383,7 @@
   	      return false;
 		}
 	});
-	
+
     var params = {
       uid:Math.floor(Math.random() * 999999),
       maxfileNum:1,
@@ -464,13 +469,13 @@
               }else{
                 layer.msg('系统繁忙，请稍后重试')
               }
-             
+
           },
           error:function(XMLHttpRequest, textStatus, errorThrown){
               console.log(errorThrown)
           }
       });
-    
+
     });
   })
 </script>

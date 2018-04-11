@@ -269,7 +269,9 @@ var apis = {
   //表单提交
   "get_save_feedback":prefix +'save_feedback',
   //文章置顶
-  "article_top": shequ_prefix + 'article/article_top/'
+  "article_top": shequ_prefix + 'article/article_top/',
+  //专题接口
+  "get_schooltopic": prefix + 'colleges_detail/',
 };
 module.exports = {
   redisCache: redisCache,

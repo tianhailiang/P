@@ -3,7 +3,7 @@
 {% include "header_new.html" %}
 
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/custom.css"/>
+  
   
   <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
   <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
@@ -36,18 +36,17 @@
 <body>
   {% include "widget/top/top.html" %}
 
-  <div class="main" style="width: 1180px;margin: 0 auto;">
+  <div class="main" style="margin: 0 auto;">
     {% import "widget/new_nav_first/nav_login.html" as nav_login %}
     {{ nav_login.nav_login(tdk,helper) }}
   </div>
 
   <div class="login_overseas clearfix">
+    <div style="margin: 0px auto;height: 550px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png);
+    background-repeat: no-repeat;background-size: cover;">{# #}
+      {# <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/> #}
     
-    <div style="margin: 0px auto;height: 550px;min-width: 1180px;width: 100%;">{#background: url({{helper.cdnhost}}/assets/img/login_background.png);
-    background-repeat: no-repeat;background-size: cover; #}
-      <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;min-width: 1180px;height: 550px;display:block;overflow:hidden;"/>
     </div>
-    
     <div class="login_content">
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
         <h3 class="login_nei_title">验证码登录<!--<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a>--></h3>
@@ -55,7 +54,7 @@
             <input class="wrap-con" type="radio" name="payMethod" value="1" checked="checked" id="liu"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu">留学顾问</label> 
             <input class="wrap-ing" type="radio" name="payMethod" value="2" id="yi"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="yi">移民顾问</label>
         </div>-->
-        <form class="m-t" role="form" style="margin-top: 20px;">
+        <form class="form-group m-t" role="form" style="margin-top: 20px;">
           <div class="form-group inputtext_isr" style="position: relative;height: 28px">
             <input type="text" style="border-radius: inherit;height: 30px;" class="form-control" placeholder="请输入手机号" id="newEmail" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
@@ -64,8 +63,8 @@
             <input type="password" style="border-radius: inherit;" class="form-control" placeholder="密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
           </div>-->
-          <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
-            <input placeholder="填写图形验证码" type="text" id="tupian_user" class="form-control l_u_com_yan" required data-vaild="^[a-zA-Z0-9]{4}$" style="border-radius: inherit;height: 30px;line-heigth: 30px"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+          <div class="form-group clearfix" style="height: 28px;margin-top: 20px;position: relative;margin-bottom: 0px;">
+            <input placeholder="填写图形验证码" type="text" id="tupian_user" class="form-control l_u_com_yan" required data-vaild="^[a-zA-Z0-9]{4}$" style="padding-left: 0px;text-indent: 30px;border-radius: inherit;height: 30px;line-heigth: 30px;float:left;"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
             <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;">
             <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
@@ -75,9 +74,9 @@
           </div>
 
           <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
-            <input placeholder="请输入短信验证码" type="text" id="verify_user" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" style="border-radius: inherit;height: 30px;line-heigth: 30px"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <input placeholder="请输入短信验证码" type="text" id="verify_user" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" style="padding-left: 0px;text-indent: 30px;border-radius: inherit;height: 30px;line-heigth: 30px;float:left;"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
-            <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;">
+            <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;float: right;">
             <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
             <input type="button" class="btn btn-primary" style="width: 90px;height: 30px;text-align: center;padding: 6px 2px;background: #fff;color: #c13232;border: 1px solid #c13232;border-radius: 3px;line-height: 0px;border-radius: inherit;" id="sendcun_user" value="发送验证码"/>
             </div>
@@ -103,17 +102,26 @@
         <div class="fen" style="margin-top: -5px;">
           <h4 style="line-height: 37px;">第三方快速登录：</h4>
           <div class="bdsharebuttonbox" id="fx" style="float: left;margin-top: 7px">
+<<<<<<< HEAD
             <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user" data-url='{{url}}'/>
+=======
+            <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user" style="float: left;"/>
+>>>>>>> ipad
 
-            <a target="_blank"  href="{{helper.wwhost}}/weixin_login?h={{url}}" >
+            <a target="_blank"  href="{{helper.wwhost}}/weixin_login?h={{url}}" style="float: left;">
               <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
             </a>
+<<<<<<< HEAD
             <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user" data-url='{{url}}'/>
+=======
+            <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user" style="float: left;"/>
+>>>>>>> ipad
           </div>
         </div>
 
       </div>
     </div>
+    
     <div class="login_footer">
       <div id="login_data">{{login_ss}}</div>
       ©2009 金吉列出国留学咨询服务有限公司 版权所有 京ICP备05010035号&nbsp;&nbsp;&nbsp;&nbsp;留学投诉电话4006-213-315&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：315@jjl.cn

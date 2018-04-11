@@ -29,8 +29,8 @@
 .gw-people .bg-peopel,.gw-people a{float:left;height: 51px; width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
 #guItems li:nth-child(3) .gw-people{margin-left: 26px;}
 .home-guanggao a{float: left;margin-right: 20px;background-color: #dcdcdc;}
-.home-guanggao a:nth-of-type(3){ margin-right: 0;}
-.home-guanggao a:last-child{ margin-right: 0;}
+/* .home-guanggao a:nth-of-type(3){ margin-right: 0;}
+.home-guanggao a:last-child{ margin-right: 0;} */
 .lx-head a{ font-size: 12px;color: #c13232;float: right;margin-top: 5px}
 .lx-hovertarg{ float: left;font-size: 0; }
 .lx-hovertarg li{ display: inline-block; margin-right: 8px;}
@@ -49,12 +49,7 @@
 	<div class="lx-head">
 		<h1>{{floor.country_name}}留学</h1>
 		<ul class="lx-tabitems">
-			{% for tagitem in floor.list %}
-				{% if loop.index == 1 %}
-				<li class="active">{{tagitem.edu_name}}<em></em></li>
-				{% else %}
-				<li>{{tagitem.edu_name}}<em></em></li>
-				{% endif %}
+			{% for tagitem in floor.list %}{% if loop.index == 1 %}<li class="active">{{tagitem.edu_name}}<em></em></li>{% else %}<li>{{tagitem.edu_name}}<em></em></li>{% endif %}
 			{% endfor %}
 		</ul>
 		<ul class="lx-hovertarg">
@@ -75,53 +70,16 @@
 	{% for type in  floor.list %}{#类别#}
 	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
 		{% for line in type.list %} {#行数#}
-			{% if loop.index == 1 %} {#第一行#}
-				<ul class="gw-items gw-topitems" id="guItems">
-					{% for item in line %}
-					{% if item.uid != null %}
-					<li>
-						<div class="gw-people">
-							<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover"></a>
-							<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
-						</div>
-						{#<p>{{item.type}}</p>#}
-						<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
-							<div class="gw-legend gw-news">留学时讯</div>
-							<p style="clear:both">{{ item.title | ellipsis(21) }}</p>
-						</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-					<em class="triangle"></em>
-				</ul>
-			{% else %}
-				<ul class="gw-items">
-						{% for item in line %}
-							{% if item.uid != null %}
-							<li class="gw-newslist">
-								<div class="gw-people">
-									<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover;"></a>
-									<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
-								</div>
-								{#<p>{{item.type}}</p>#}
-								<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
-									<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
-									<p style="clear:both">{{item.title | ellipsis(21)}}</p>
-								</a>
-							</li>
-							{% endif %}
-						{% endfor %}
-				</ul>
+			{% if loop.index == 1 %} {#第一行#}<ul class="gw-items gw-topitems" id="guItems">	{% for item in line %}	{% if item.uid != null %}	<li>		<div class="gw-people">			<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover"></a>			<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>		</div>		{#<p>{{item.type}}</p>#}		<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">			<div class="gw-legend gw-news">留学时讯</div>			<p style="clear:both">{{ item.title | ellipsis(21) }}</p>		</a>	</li>	{% endif %}	{% endfor %}	<em class="triangle"></em></ul>
+			{% else %}<ul class="gw-items">		{% for item in line %}			{% if item.uid != null %}			<li class="gw-newslist">				<div class="gw-people">					<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover;"></a>					<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>				</div>				{#<p>{{item.type}}</p>#}				<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">					<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>					<p style="clear:both">{{item.title | ellipsis(21)}}</p>				</a>			</li>			{% endif %}		{% endfor %}</ul>
 			{% endif %}
 		{% endfor %}
 	</div>
 	{% endfor %}{#类别end#}
 </div>
-	{% if loop.index <= 6 %}
 		<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
-			<div class="home-guanggao" style="float:left;overflow:hidden;" id="AD_HOME_SEAT{{loop.index+10}}"></div>
+			<div class="home-guanggao" style="float:left;overflow:hidden;margin-right:-20px" id="AD_HOME_SEAT{{loop.index+10}}"></div>
 		</div>
-	{% endif %}
 {% endfor %} {#国家end#}
 <script>
 	$(".lxContaniner").on('click', '.lx-tabitems li', function(){
