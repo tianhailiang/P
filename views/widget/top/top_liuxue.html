@@ -254,6 +254,7 @@ input[type="checkbox"] {
 <script>
   $(function() {
     var login_nickname = JSON.parse($.cookie('login_ss'));
+    console.log('login_nickname',login_nickname);
     var user_type;
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
@@ -262,9 +263,9 @@ input[type="checkbox"] {
                 '<span class="bor"></span>'+
                 '<span ><a href="javascript:void(0);" style="background: #fff;" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '<span class="bor">|</span>'+
-                '<span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>'+
+                '<span class="top_weibo_img"><img id="weixin" src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>'+
                 '<span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weixin.png);display: none;"></span>'+
-                '<span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>'+
+                '<span class="top_weibo_img"><img id="weibo_top" src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>'+
                 '<span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weibo.png);display: none;"></span>'+
                 '</div>'+
                 '</div>'
@@ -273,6 +274,7 @@ input[type="checkbox"] {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
                 '<div class="top-con-right">'+
                 '<ul>';
+
       if (login_nickname.usertype == 1) {
         val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
       } else if (login_nickname.usertype == 2) {
@@ -283,9 +285,9 @@ input[type="checkbox"] {
       val += '<li><span class="bor">|</span></li>'+
               '<li ><a href="javascript:void(0)" style="background: #fff;" onclick="outlogin()" rel="nofollow">退出</a></li>'+
               '<li style="margin-right: 10px;"><span class="bor">|</span></li>'+
-              '<li style="margin-left: 0px;"><span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span></li>'+
+              '<li style="margin-left: 0px;"><span class="top_weibo_img"><img id="weixin" src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span></li>'+
               '<li style="margin-left: 0px;"><span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weixin.png);display: none;"></span></li>'+
-              '<li style="margin-left: 0px;"><span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span></li>'+
+              '<li style="margin-left: 0px;"><span class="top_weibo_img"><img id="weibo_top" src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span></li>'+
               '<li style="margin-left: 0px;"><span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weibo.png);display: none;"></span></li>'+
                 '</ul>'+
                 '</div>'+
