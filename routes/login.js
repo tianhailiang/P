@@ -403,8 +403,8 @@ exports.qq_login = function (req, res, next) {
       }
     }, function (err, result) {
       console.log("qq_login", result.oauth);
-      data.oauth = result.oauth;
       if(result.oauth.code == 0 && result.oauth.data){
+        data.oauth = result.oauth;
         async.parallel({
           userinfo:function(callback){
             wec.userinfo({
@@ -468,8 +468,8 @@ exports.sina_login = function (req, res, next) {
       }
     }, function (err, result) {
       console.log("sina_login", result.oauth);
-      data.oauth = result.oauth;
       if(result.oauth.code == 0 && result.oauth.data){
+        data.oauth = result.oauth;
         async.parallel({
           userinfo:function(callback){
             wec.userinfo({
@@ -531,8 +531,8 @@ exports.weixin_login = function (req, res, next) {
       }
     }, function (err, result) {
       console.log("weixin_login", result.oauth);
-      data.oauth = result.oauth;
       if(result.oauth.code == 0 && result.oauth.data){
+        data.oauth = result.oauth;
         async.parallel({
           userinfo:function(callback){
             wec.userinfo({

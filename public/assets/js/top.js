@@ -17,17 +17,23 @@
 
     //登录
     var pac_d = document.getElementById('getloginUser_deng');
-    if (pac_d.addEventListener) {
-      pac_d.addEventListener('click', loginUser, false)
-    }else {
-      pac_d.attachEvent('onclick', loginUser, false)
+    if (pac_d) {
+      if (pac_d.addEventListener) {
+        pac_d.addEventListener('click', loginUser, false)
+      }else {
+        pac_d.attachEvent('onclick', loginUser, false)
+      }
     }
-    var pac = document.getElementById('getloginUser');
-    if (pac.addEventListener) {
-      pac.addEventListener('click', loginUser, false)
-    }else {
-      pac.attachEvent('onclick', loginUser, false)
+    
+    var pac_u = document.getElementById('getloginUser');
+    if (pac_u) {
+      if (pac_u.addEventListener) {
+        pac_u.addEventListener('click', loginUser, false)
+      }else {
+        pac_u.attachEvent('onclick', loginUser, false)
+      }
     }
+    
     var pac = document.getElementById('param_code');
     if (pac.addEventListener) {
       pac.addEventListener('click', showcode, false)
