@@ -358,7 +358,7 @@ $(".my").hover(function () {
   $(this).find("p").css("display","none");
   $(this).find("img").css("display","block");
 });
-$(".my").find("p").on("click",function(){
+$(".my").on("click",function(){
   var login_nickname = JSON.parse($.cookie('login_ss'));
   if(login_nickname){
     if(login_nickname.usertype==1){
