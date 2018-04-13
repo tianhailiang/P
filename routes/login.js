@@ -403,9 +403,28 @@ exports.qq_login = function (req, res, next) {
       }
     }, function (err, result) {
       console.log("qq_login", result.oauth);
+      data.oauth = result.oauth;
       if(result.oauth.code == 0 && result.oauth.data){
-        res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
-        res.redirect("oauth");
+        async.parallel({
+          userinfo:function(callback){
+            wec.userinfo({
+                "u_id":result.oauth.data.uid,
+                "to_uid":result.oauth.data.uid
+            },callback);
+        }
+        },function (err, result){
+          log.debug('result.userinfo', result.userinfo);
+          data.oauth.data.status = result.userinfo.data.status;
+          data.oauth.data.version = result.userinfo.data.version;
+          if (config.version == 'development') {//开发环境
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+          } else {
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+          }
+          res.redirect("oauth");
+        })
+        // res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        // res.redirect("oauth");
       }
       else if(result.oauth.code == 1110018){
         var oauth_data = JSON.parse(req.cookies.oauth_login);
@@ -449,9 +468,28 @@ exports.sina_login = function (req, res, next) {
       }
     }, function (err, result) {
       console.log("sina_login", result.oauth);
+      data.oauth = result.oauth;
       if(result.oauth.code == 0 && result.oauth.data){
-        res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
-        res.redirect("oauth");
+        async.parallel({
+          userinfo:function(callback){
+            wec.userinfo({
+                "u_id":result.oauth.data.uid,
+                "to_uid":result.oauth.data.uid
+            },callback);
+        }
+        },function (err, result){
+          log.debug('result.userinfo', result.userinfo);
+          data.oauth.data.status = result.userinfo.data.status;
+          data.oauth.data.version = result.userinfo.data.version;
+          if (config.version == 'development') {//开发环境
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+          } else {
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+          }
+          res.redirect("oauth");
+        })
+        // res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        // res.redirect("oauth");
       }else if(result.oauth.code == 1110018){
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;
@@ -493,9 +531,28 @@ exports.weixin_login = function (req, res, next) {
       }
     }, function (err, result) {
       console.log("weixin_login", result.oauth);
+      data.oauth = result.oauth;
       if(result.oauth.code == 0 && result.oauth.data){
-        res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
-        res.redirect("oauth");
+        async.parallel({
+          userinfo:function(callback){
+            wec.userinfo({
+                "u_id":result.oauth.data.uid,
+                "to_uid":result.oauth.data.uid
+            },callback);
+        }
+        },function (err, result){
+          log.debug('result.userinfo', result.userinfo);
+          data.oauth.data.status = result.userinfo.data.status;
+          data.oauth.data.version = result.userinfo.data.version;
+          if (config.version == 'development') {//开发环境
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+          } else {
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+          }
+          res.redirect("oauth");
+        })
+        // res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        // res.redirect("oauth");
       }else if(result.oauth.code == 1110018){
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;

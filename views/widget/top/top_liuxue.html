@@ -254,6 +254,7 @@ input[type="checkbox"] {
 <script>
   $(function() {
     var login_nickname = JSON.parse($.cookie('login_ss'));
+    console.log('login_nickname',login_nickname);
     var user_type;
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
