@@ -187,7 +187,7 @@ $(function(){
     }
     if($("#quickName-act").val()==''){
       //判断姓名
-      $("#nameNumTip").html('请填写您的姓名');
+      $("#nameNumTip-act").html('请填写您的姓名');
       return false;
     }else{
       $("#nameNumTip-act").html('');
