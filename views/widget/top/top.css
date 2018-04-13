@@ -36,11 +36,12 @@
   line-height: 25px;
 }
 .top_weibo_img{
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   margin-right: 10px;
   line-height: 25px;
   cursor: pointer;
+  display: block;
 }
 .top_weibo_img img{
   width: 22px;
