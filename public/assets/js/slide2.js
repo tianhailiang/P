@@ -348,29 +348,55 @@ $(".quick_toggle li").mouseleave(function () {
   $(this).children(".mp_qrcode").hide();
 });
 
-$(".my").hover(function () {
-  $(this).find("img").css("display","none");
-  $(this).find("p").css("display","block");
-  $("#quick_links_pop").css("display", "none");
-  $("#comment_con").css("display", "none");
-  $("#r_comment").css("background", "#9a9a9a");
-},function(){
-  $(this).find("p").css("display","none");
-  $(this).find("img").css("display","block");
-});
-$(".my").on("click",function(){
-  var login_nickname = JSON.parse($.cookie('login_ss'));
-  if(login_nickname){
-    if(login_nickname.usertype==1){
-      window.open(fn.no_urlgen('user_center', 'revcomment'));
-    }else if(login_nickname.usertype==2){
-      window.open(fn.no_urlgen('advisor_center'));
-    }
-  }else{
-    getlogin();
+var sUserAgent = navigator.userAgent.toLowerCase();
+if(sUserAgent .match(/ipad/i) == "ipad"){
+  $(".my").hover(function () {
+    $(this).find("img").css("display","none");
+    $(this).find("p").css("display","block");
+    $("#quick_links_pop").css("display", "none");
+    $("#comment_con").css("display", "none");
+    $("#r_comment").css("background", "#9a9a9a");
+    var login_nickname = JSON.parse($.cookie('login_ss'));
+    if(login_nickname){
+      if(login_nickname.usertype==1){
+        window.open(fn.no_urlgen('user_center', 'revcomment'));
+      }else if(login_nickname.usertype==2){
+        window.open(fn.no_urlgen('advisor_center'));
+      }
+    }else{
+      getlogin();
 
-  }
-})
+    }
+  },function(){
+    $(this).find("p").css("display","none");
+    $(this).find("img").css("display","block");
+  });
+}else{
+  $(".my").hover(function () {
+    $(this).find("img").css("display","none");
+    $(this).find("p").css("display","block");
+    $("#quick_links_pop").css("display", "none");
+    $("#comment_con").css("display", "none");
+    $("#r_comment").css("background", "#9a9a9a");
+  },function(){
+    $(this).find("p").css("display","none");
+    $(this).find("img").css("display","block");
+  });
+  $(".my").on("click",function(){
+    var login_nickname = JSON.parse($.cookie('login_ss'));
+    if(login_nickname){
+      if(login_nickname.usertype==1){
+        window.open(fn.no_urlgen('user_center', 'revcomment'));
+      }else if(login_nickname.usertype==2){
+        window.open(fn.no_urlgen('advisor_center'));
+      }
+    }else{
+      getlogin();
+
+    }
+  })
+
+}
 // right: 40px; margin-top: -200px; display: block; width: 170px;
 $(".zixun").on("click", function () {
   $("#quick_links_pop").css({"display": "block", "right": "40px", "margin-top": "-300px", "width": "170px"})
