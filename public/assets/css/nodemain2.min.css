@@ -1659,9 +1659,9 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .top-con-right{float:right}
 .top-con-right .bor{margin:0 10px;font-size:10px}
 .top-con-right li{float:left;margin-left:10px;line-height:25px}
-.top_weibo_img{width:26px;height:26px;margin-right:10px;line-height:25px;cursor:pointer;display:block}
+.top_weibo_img{width:26px;height:26px;margin-right:10px;line-height:25px;cursor:pointer}
 .top_weibo_img img{width:22px;height:22px}
-.top_weibo{width:96px;height:99px;z-index:1002;position:absolute;top:21px;right:0}
+.top_weibo{width:96px;height:99px;z-index:1002;position:absolute;top:29px;right:0}
 .advisor_star_bar{height:162px;padding:19px 0;position:relative}
 .advisor-star-cella{display:block;float:left;margin-left:24px}
 .advisor-star-cell a dt{width:92px;height:116px;overflow:hidden}
