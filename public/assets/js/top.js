@@ -16,6 +16,12 @@
     });
 
     //登录
+    var pac = document.getElementById('getloginUser');
+    if (pac.addEventListener) {
+      pac.addEventListener('click', loginUser, false)
+    }else {
+      pac.attachEvent('onclick', loginUser, false)
+    }
     var pac = document.getElementById('param_code');
     if (pac.addEventListener) {
       pac.addEventListener('click', showcode, false)
@@ -185,7 +191,7 @@
     });
   }
 
-  function getloginUser () {
+  function loginUser () {
     var h = window.location.href;
     console.log('h', h);
     var hh = h.split("/");

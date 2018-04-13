@@ -259,9 +259,9 @@ input[type="checkbox"] {
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
                 '<div class="top-con-right">'+
-                '<span><a target="_blank" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                '<span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
-                '<span ><a href="javascript:void(0);" style="background: #fff;" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
+                '<span ><a href="javascript:void(0);" id="getloginUser" style="background: #fff;" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '<span class="bor">|</span>'+
                 '<span class="top_weibo_img"><img id="weixin" src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>'+
                 '<span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weixin.png);display: none;"></span>'+
@@ -274,7 +274,6 @@ input[type="checkbox"] {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
                 '<div class="top-con-right">'+
                 '<ul>';
-
       if (login_nickname.usertype == 1) {
         val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
       } else if (login_nickname.usertype == 2) {
