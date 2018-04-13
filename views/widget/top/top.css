@@ -41,7 +41,6 @@
   margin-right: 10px;
   line-height: 25px;
   cursor: pointer;
-  display: block;
 }
 .top_weibo_img img{
   width: 22px;
@@ -52,6 +51,6 @@
   height: 99px;
   z-index: 1002;
   position: absolute;
-  top: 21px;
+  top: 29px;
   right: 0px;
 }
