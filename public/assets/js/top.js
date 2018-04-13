@@ -16,6 +16,12 @@
     });
 
     //登录
+    var pac_d = document.getElementById('getloginUser_deng');
+    if (pac_d.addEventListener) {
+      pac_d.addEventListener('click', loginUser, false)
+    }else {
+      pac_d.attachEvent('onclick', loginUser, false)
+    }
     var pac = document.getElementById('getloginUser');
     if (pac.addEventListener) {
       pac.addEventListener('click', loginUser, false)
@@ -206,11 +212,12 @@
     } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser') {
       console.log('aaaa')
       window.location.reload();
-    } else {
+    } else if (hhh[1] == undefined && hh[3] == 'loginUser') {
       console.log('22222');
+      window.location.reload();
 //      window.location.href = '/login'
       // window.open('/loginUser?h=');
-      window.open(fn.urlgen('loginUser')+'?h=');
+      // window.open(fn.urlgen('loginUser')+'?h=');
     }
   }
   //登录发送验证码
