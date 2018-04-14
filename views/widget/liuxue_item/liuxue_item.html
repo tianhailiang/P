@@ -49,6 +49,7 @@
 		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区&nbsp;&nbsp;></a>
 	</div>
 	{% for type in  floor.list %}{#类别#}
+	{% if loop.index == 1 and type.edu_name == '推荐'%}
 	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
 		{% for line in type.list %} {#行数#}
 			{% if loop.index == 1 %} {#第一行#}
@@ -91,6 +92,7 @@
 			{% endif %}
 		{% endfor %}
 	</div>
+	{% endif %}
 	{% endfor %}{#类别end#}
 </div>
 		<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
