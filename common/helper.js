@@ -505,6 +505,13 @@ function tagChecked(val,checkedList){
   }
   return html;
 }
+function adseatCompare(seat,dest){
+  if(seat == "SEAT" + dest.toString()){
+    return true
+  }else{
+    return false
+  }
+}
 module.exports = {
   cut: strcut ,
   getDefault: getDefaultFormat,
@@ -521,5 +528,6 @@ module.exports = {
   getLink: getLink,
   articleUrlgen:articleUrlgen,
   eduChecked:eduChecked,
-  tagChecked:tagChecked
+  tagChecked:tagChecked,
+  adseatCompare:adseatCompare
 };
