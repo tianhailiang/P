@@ -85,6 +85,21 @@ $('.citys-box').on('click',"a", function(e){
     // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).attr("href");
 });
+$('#new-city').hover(function() {
+    $(this).find('.new-city-box').show();
+},function() {
+    $(this).find('.new-city-box').hide();
+})
+//ipad 城市弹框
+var city_name_box = document.getElementById('city-name-box');
+city_name_box.addEventListener('touchstart', function(){
+    if ($(this).parent('.new-city').hasClass('hover')) {
+        $(this).parent('.new-city').removeClass('hover');
+    }
+    else {
+        $(this).parent('.new-city').addClass('hover');
+    }
+}, false);
 function top_city1 (a,t) {
     $('#city-place').html(a);
     $('#city-phone').html(t);
