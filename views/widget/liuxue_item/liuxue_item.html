@@ -121,12 +121,6 @@
 			success:function(msg){
 				cur_groupitems.remove();
 				cur_container.append($(msg));
-				console.log(msg);
-				/*if(msg.code === 0){
-					customize(u_name, u_phone, u_country, u_email);
-				} else {
-					alert(msg.message);
-				}*/
 			},
 			error:function(XMLHttpRequest, textStatus, errorThrown){
 				console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
