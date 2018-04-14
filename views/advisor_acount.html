@@ -229,6 +229,16 @@
       $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
       return
     }
+    if (!/^[a-zA-Z0-9]{8,16}$/.test($("#new_password").val())) {
+      $('#new_password').parent().addClass("has-error").removeClass("has-success");
+      $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      return
+    }
+    if (!/^[a-zA-Z0-9]{8,16}$/.test($("#qie_password").val())) {
+      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
+      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      return
+    }
     var sha1 = hex_sha1($('#old_password').val());
     console.log('sha1', sha1);
     if ($('#username').val() !== '' && $('#nicheng').val() !== '') {

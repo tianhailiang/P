@@ -36,8 +36,8 @@
   line-height: 25px;
 }
 .top_weibo_img{
-  width: 22px;
-  height: 22px;
+  width: 26px;
+  height: 26px;
   margin-right: 10px;
   line-height: 25px;
   cursor: pointer;
@@ -51,6 +51,6 @@
   height: 99px;
   z-index: 1002;
   position: absolute;
-  top: 21px;
+  top: 29px;
   right: 0px;
 }

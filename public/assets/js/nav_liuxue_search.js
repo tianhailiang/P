@@ -79,12 +79,26 @@ $('.citys-box').on('click',"a", function(e){
     currentarea = $(this).attr("data-id");
     var date = new Date();
     date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
-    console.log('date',date)
     $.cookie('currentarea', currentarea, { path: '/',domain: js_api_config.domain,expires: 36500});
     //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
     // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
     window.location.href = $(this).attr("href");
 });
+$('#new-city').hover(function() {
+    $(this).find('.new-city-box').show();
+},function() {
+    $(this).find('.new-city-box').hide();
+})
+//ipad 城市弹框
+var city_name_box = document.getElementById('city-name-box');
+city_name_box.addEventListener('touchstart', function(){
+    if ($(this).parent('.new-city').hasClass('hover')) {
+        $(this).parent('.new-city').removeClass('hover');
+    }
+    else {
+        $(this).parent('.new-city').addClass('hover');
+    }
+}, false);
 function top_city1 (a,t) {
     $('#city-place').html(a);
     $('#city-phone').html(t);

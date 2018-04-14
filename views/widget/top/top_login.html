@@ -249,9 +249,9 @@ input[type="checkbox"] {
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con">'+
                 '<div class="top-con-right">'+
-                '<span><a target="_blank" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                '<span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
-                '<span><a href="javascript:void(0);" id="getlogin" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
+                '<span><a href="javascript:void(0);" id="getloginUser_deng" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '</div>'+
                 '</div>'
       $(".top").append(val);
@@ -286,6 +286,19 @@ input[type="checkbox"] {
 
     $("form").Vaild();
     //登录
+
+    var pac_d = document.getElementById('getloginUser_deng');
+    if (pac_d.addEventListener) {
+      pac_d.addEventListener('click', loginUser, false)
+    }else {
+      pac_d.attachEvent('onclick', loginUser, false)
+    }
+    var pac = document.getElementById('getloginUser');
+    if (pac.addEventListener) {
+      pac.addEventListener('click', loginUser, false)
+    }else {
+      pac.attachEvent('onclick', loginUser, false)
+    }
     var sP = document.getElementById('sendcun');
     if (sP.addEventListener) {
       sP.addEventListener('click', sendphone, false)
@@ -421,7 +434,7 @@ input[type="checkbox"] {
     });
   }
 
-  function getloginUser () {
+  function loginUser () {
     var h = window.location.href;
     console.log('h', h);
     var hh = h.split("/");
