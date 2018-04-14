@@ -74,12 +74,12 @@
           </div>
           <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
             <div class="title"><span>*</span>设置密码：</div>
-            <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{6,16}$" id="password" data-errmsg="密码不正确，请输入6-16位数字或字母">
+            <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{6,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
             <div class="ti"  style="margin-top: -5px">密码8-16位，数字、字母字符至少包含两种</div>
           </div>
           <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
             <div class="title"><span>*</span>确认密码：</div>
-            <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{6,16}$" id="qie_password" data-errmsg="确认密码不正确，请输入6-16位数字或字母">
+            <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{6,16}$" id="qie_password" data-errmsg="确认密码不正确，请输入8-16位数字或字母">
             <div class="ti">请再次输入密码</div>
           </div>
 
@@ -371,7 +371,7 @@
       url: '/sendcode_s',
       type:'post',
       data: {
-        param_code: $('#tupian_bin').val(),
+        param_code: $('#tupian_bin').val().toLowerCase(),
         phone: $('#newEmail').val()
       },
       dataType:'json',

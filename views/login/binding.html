@@ -168,7 +168,7 @@
       type:'POST',
       dataType:'json',
       data: {
-        phone: $('#newEmail').val(),
+        phone: $('#newEmail').val().toLowerCase(),
         code: $('#verify_binding').val(),
         oauthid: $('#oauthid').val()
       },
