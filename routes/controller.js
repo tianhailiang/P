@@ -13,6 +13,7 @@ var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
 var helperfunc = require('../common/helper');
 var svgCaptcha = require("svg-captcha");
+var fs = require('fs');
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -3733,50 +3734,15 @@ exports.article_top = function (req, res, next) {
 };
 //分公司首页ajax 加载段落
 exports.liuxue_item_nunjucks = function (req, res, next) {
-    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-    if (req.params[0]) {
-        var cityId = comfunc.getCityId(req.params[0]);
-        if(cityId && cityId !== comfunc.INVALID_ID){
-            area = cityId;
-            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
-            res.cookie("currentarea", cityId, {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
-        }
-    }
-    var data = [];
-    //node获取地址栏url
-    var l = url.parse(req.url, true).query;
-    console.log('url', l.h);
-    if (l.h !== undefined) {
-        data.url = l.h;
-    } else {
-        data.url = config.wwhost+req.url;
-    }
-    if ( req.cookies.login_ss !== undefined) {
-        console.log('aaaaaa');
-        data.login_info = JSON.parse(req.cookies.login_ss);
-        console.log('data.login_info', data.login_info);
-    }else{
-        data.login_info ={};
-        data.login_info.uid = 0;
-        //res.redirect(config.wwhost+'/login');
-        //return false;
-    }
-    async.parallel({
-        shouye:function(callback) {
-            cms.shouye({
-                "city_id": area,
-            }, callback);
-        },
-    },function (err, result) {
-        data.shouye = JSON.parse(result.shouye);
-        data.tdk = {
-            pagekey: 'HOME',
-            cityid: area,
-            nationid: ''
-        };
-        // console.log(result.shouye);
-        //data.esikey = esihelper.esikey();
-        // log.info(data.xSlider2)
-        res.render('liuxue_item_nunjucks', data);
+    data = req.query;
+    console.log('分公司首页ajax 加载段落',data);
+    var resData = [];
+    cms.ajax_shouye({
+        "city_id": data.city_id,
+        "country_id":data.country_id,
+        "edu_id":data.edu_id
+    }, function (err, result) {
+        resData.edu_item = result;
+        res.render('widget/liuxue_item/liuxue_item_nunjucks', resData);
     })
-};
+}

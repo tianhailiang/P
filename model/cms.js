@@ -1068,7 +1068,25 @@ exports.shouye = function (data, callback) {
       }
     })
 };
-
+exports.ajax_shouye = function (data, callback) {
+  //redis 缓存文章浏览数````·
+  //判断用户访问是否在限制条件内 10min 5
+  //log.debug('city_id ',data.city_id,'country_id ',data.country_id,'edu_id',data.edu_id)
+  redisPool.get('home_' + data.city_id+'_'+data.country_id, function(err, reply){
+    if(reply){
+      var c_list = JSON.parse(reply).list;
+      var res_replay={};
+      for (let i = 0;len = c_list.length,i < len; i++) {
+        if (c_list[i].edu_id == data.edu_id) {
+          res_replay = c_list[i];
+        }
+      }
+      callback(null, res_replay);
+    }else{
+      callback(null, '暂无数据');
+    }
+  })
+};
 exports.yimin_shouye = function (data, callback) {
     redisPool.get('yimin_home_all', function(err, reply){
       if(reply){
