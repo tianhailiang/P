@@ -108,7 +108,8 @@
 //		var cur_index=$(this).index();
 		var cur_edu_id = $(this).attr('data-edu_id');
 		var cur_country_id = $(this).parents('.lx-tabitems').attr('data-country_id');
-		var cur_groupitems = $(this).parents(".lxContaniner").find('.lx-groupitems');
+		var cur_container = $(this).parents(".lxContaniner");
+		var cur_groupitems = cur_container.find('.lx-groupitems');
 		$.ajax({
 			url: '/liuxue_item_nunjucks',
 			type:'get',
@@ -119,7 +120,7 @@
 			},
 			success:function(msg){
 				cur_groupitems.remove();
-				$('.lxContaniner').append($(msg));
+				cur_container.append($(msg));
 				console.log(msg);
 				/*if(msg.code === 0){
 					customize(u_name, u_phone, u_country, u_email);
