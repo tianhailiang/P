@@ -1268,3 +1268,13 @@ exports.schooltopic =function(data,callback){
   api.apiRequest(url ,callback);
 
 }
+
+//首页广告楼层
+exports.advert = function(data,callback){
+  var url = _api_url_path(data, config.apis.advert);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+};
