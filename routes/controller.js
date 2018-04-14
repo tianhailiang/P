@@ -99,16 +99,23 @@ exports.index = function (req, res, next) {
                 "city_id": area,
             }, callback);
         },
+        guanggao:function(callback){
+            cms.advert({
+                "cityid": area,
+                "ad_page": "HOME"
+            },callback);
+        },
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
+        data.guanggao = returnData(result.guanggao,'guanggao');
+        // console.log(data.guanggao)
         data.tdk = {
             pagekey: 'HOME',
             cityid: area,
             nationid: ''
         };
-        // console.log(result.shouye);
         res.render('index', data);
     })
 };
@@ -162,9 +169,16 @@ exports.index_page = function (req, res, next) {
                 "city_id": area,
             }, callback);
         },
+        guanggao:function(callback){
+            cms.advert({
+                "cityid": area,
+                "ad_page": "HOME"
+            },callback);
+        },
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.guanggao = returnData(result.guanggao,'guanggao');
         data.shouye = JSON.parse(result.shouye);
         data.tdk = {
             pagekey: 'HOME',
