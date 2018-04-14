@@ -29,7 +29,9 @@ if(process.env.NODE_ENV == 'production'){
 
 app.set('views', path.join(__dirname, viewspath));
 var env = nunjucks.configure(viewspath, {
-  autoescape: true
+  autoescape: true,
+  trimBlocks: 1,
+  lstripBlocks: true
 });
 //add esinc
 env.addExtension('esinc', new esinc());
