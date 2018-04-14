@@ -392,7 +392,6 @@ exports.oauth = function (req, res, next) {
 
 exports.qq_login = function (req, res, next) {
   var code = req.query.code;
-  var h = req.query.h;
   var async = require('async');
   if(code){
     var data = [];
@@ -405,15 +404,33 @@ exports.qq_login = function (req, res, next) {
     }, function (err, result) {
       console.log("qq_login", result.oauth);
       if(result.oauth.code == 0 && result.oauth.data){
-        res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
-        res.redirect("oauth");
+        data.oauth = result.oauth;
+        async.parallel({
+          userinfo:function(callback){
+            wec.userinfo({
+                "u_id":result.oauth.data.uid,
+                "to_uid":result.oauth.data.uid
+            },callback);
+        }
+        },function (err, result){
+          log.debug('result.userinfo', result.userinfo);
+          data.oauth.data.status = result.userinfo.data.status;
+          data.oauth.data.version = result.userinfo.data.version;
+          if (config.version == 'development') {//开发环境
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+          } else {
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+          }
+          res.redirect("oauth");
+        })
+        // res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        // res.redirect("oauth");
       }
       else if(result.oauth.code == 1110018){
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
         oauth_data.title = 'QQ';
-        oauth_data.h = h;
         //data.oauth_data = oauth_data;
         //console.log(oauth_data);
         //res.render('binding', data);
@@ -440,7 +457,6 @@ exports.qq_login = function (req, res, next) {
 
 exports.sina_login = function (req, res, next) {
   var code = req.query.code;
-  var h = req.query.h;
   console.log("sina h",req.query.h);
   var async = require('async');
   if(code){
@@ -453,14 +469,32 @@ exports.sina_login = function (req, res, next) {
     }, function (err, result) {
       console.log("sina_login", result.oauth);
       if(result.oauth.code == 0 && result.oauth.data){
-        res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
-        res.redirect("oauth");
+        data.oauth = result.oauth;
+        async.parallel({
+          userinfo:function(callback){
+            wec.userinfo({
+                "u_id":result.oauth.data.uid,
+                "to_uid":result.oauth.data.uid
+            },callback);
+        }
+        },function (err, result){
+          log.debug('result.userinfo', result.userinfo);
+          data.oauth.data.status = result.userinfo.data.status;
+          data.oauth.data.version = result.userinfo.data.version;
+          if (config.version == 'development') {//开发环境
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+          } else {
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+          }
+          res.redirect("oauth");
+        })
+        // res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        // res.redirect("oauth");
       }else if(result.oauth.code == 1110018){
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
         oauth_data.title = '新浪';
-        oauth_data.h = h;
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
         res.redirect('binding');
@@ -485,7 +519,6 @@ exports.sina_login = function (req, res, next) {
 
 exports.weixin_login = function (req, res, next) {
   var code = req.query.code;
-  var h = req.query.h;
   var state = req.query.state;
   console.log("sina h",req.query.h);
   var async = require('async');
@@ -499,20 +532,39 @@ exports.weixin_login = function (req, res, next) {
     }, function (err, result) {
       console.log("weixin_login", result.oauth);
       if(result.oauth.code == 0 && result.oauth.data){
-        res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
-        res.redirect("oauth");
+        data.oauth = result.oauth;
+        async.parallel({
+          userinfo:function(callback){
+            wec.userinfo({
+                "u_id":result.oauth.data.uid,
+                "to_uid":result.oauth.data.uid
+            },callback);
+        }
+        },function (err, result){
+          log.debug('result.userinfo', result.userinfo);
+          data.oauth.data.status = result.userinfo.data.status;
+          data.oauth.data.version = result.userinfo.data.version;
+          if (config.version == 'development') {//开发环境
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+          } else {
+            res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+          }
+          res.redirect("oauth");
+        })
+        // res.cookie("login_ss", JSON.stringify(result.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        // res.redirect("oauth");
       }else if(result.oauth.code == 1110018){
         var oauth_data = JSON.parse(req.cookies.oauth_login);
         oauth_data.oauthid = result.oauth.data.oauthid;
         oauth_data.befrom = result.oauth.data.befrom;
         oauth_data.title = '微信';
-        oauth_data.h = h;
         console.log(oauth_data);
         res.cookie("oauth_login", JSON.stringify(oauth_data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
         res.redirect('binding');
       }
     });
   }else{
+    var h = req.query.h;
     var url_cookie = {'h':h, 'befrom':'weixin'};
     res.cookie("oauth_login", JSON.stringify(url_cookie), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
     //res.redirect(config.uchost+"/api/index.php?m=weixin_login");
