@@ -87,6 +87,27 @@ function show_advert() {
             }
         }
     });
+    $(".swiper-slide").click("a", function(e){
+        var pid = $(this).find('a').attr("data-pid");
+        if(pid){
+            e.preventDefault();
+            $.ajax({
+                url: ajaxUrlPrefix.nodeapi + '/cmsapi/advert_clicknum',
+                type: 'GET',
+                data:{
+                    pid: pid
+                },
+                datatype: 'json',
+                success: function (res) {
+                    // console.log('统计成功！')
+                }
+            })
+            var url = $(this).find("a").attr('href');
+            if(url){
+                window.open(url);
+            }
+        }
+    });
 }
 
 
