@@ -3731,3 +3731,52 @@ exports.article_top = function (req, res, next) {
         }
     })
 };
+//分公司首页ajax 加载段落
+exports.liuxue_item_nunjucks = function (req, res, next) {
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    if (req.params[0]) {
+        var cityId = comfunc.getCityId(req.params[0]);
+        if(cityId && cityId !== comfunc.INVALID_ID){
+            area = cityId;
+            res.cookie("currentareast", comfunc.getCityEn(cityId), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
+            res.cookie("currentarea", cityId, {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
+        }
+    }
+    var data = [];
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    if ( req.cookies.login_ss !== undefined) {
+        console.log('aaaaaa');
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        console.log('data.login_info', data.login_info);
+    }else{
+        data.login_info ={};
+        data.login_info.uid = 0;
+        //res.redirect(config.wwhost+'/login');
+        //return false;
+    }
+    async.parallel({
+        shouye:function(callback) {
+            cms.shouye({
+                "city_id": area,
+            }, callback);
+        },
+    },function (err, result) {
+        data.shouye = JSON.parse(result.shouye);
+        data.tdk = {
+            pagekey: 'HOME',
+            cityid: area,
+            nationid: ''
+        };
+        // console.log(result.shouye);
+        //data.esikey = esihelper.esikey();
+        // log.info(data.xSlider2)
+        res.render('liuxue_item_nunjucks', data);
+    })
+};
