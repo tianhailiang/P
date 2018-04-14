@@ -40,9 +40,9 @@ if(sUserAgent .match(/ipad/i) == "ipad"){
     var login_nickname = JSON.parse($.cookie('login_ss'));
     if(login_nickname){
       if(login_nickname.usertype==1){
-        window.open(fn.no_urlgen('user_center', 'revcomment'));
+        window.location.href=fn.no_urlgen('user_center', 'revcomment');
       }else if(login_nickname.usertype==2){
-        window.open(fn.no_urlgen('advisor_center'));
+        window.location.href=fn.no_urlgen('advisor_center');
       }
     }else{
       getlogin();
