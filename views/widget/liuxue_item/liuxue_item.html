@@ -37,12 +37,12 @@
 <div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
 	<div class="lx-head">
 		<h1>{{floor.country_name}}留学</h1>
-		<ul class="lx-tabitems">
+		<ul class="lx-tabitems" data-country_id="{{floor.country_id}}">
 			{% for tagitem in floor.list %}
 				{% if loop.index == 1 %}
-				<li class="active">{{tagitem.edu_name}}<em></em></li>
+				<li class="active" data-edu_id="{{tagitem.edu_id}}">{{tagitem.edu_name}}<em></em></li>
 				{% else %}
-				<li>{{tagitem.edu_name}}<em></em></li>
+				<li data-edu_id="{{tagitem.edu_id}}">{{tagitem.edu_name}}<em></em></li>
 				{% endif %}
 			{% endfor %}
 		</ul>
@@ -100,8 +100,35 @@
 		</div>
 {% endfor %} {#国家end#}
 <script>
+	var cur_area;
+	if ($.cookie('currentarea')) {
+		cur_area = $.cookie('currentarea');
+	}
 	$(".lxContaniner").on('click', '.lx-tabitems li', function(){
 		var cur_index=$(this).index();
+		var cur_edu_id = $(this).attr('data-edu_id');
+		var cur_country_id = $(this).parents('.lx-tabitems').attr('data-country_id');
+		$.ajax({
+			url: '/ucapi/ucapi_agent',
+			type:'get',
+			data:{
+				"city_id": cur_area,
+				"country_id":cur_country_id,
+				"edu_id":cur_edu_id
+			},
+			dataType:'json',
+			success:function(msg){
+				console.log(msg);
+				if(msg.code === 0){
+					customize(u_name, u_phone, u_country, u_email);
+				} else {
+					alert(msg.message);
+				}
+			},
+			error:function(XMLHttpRequest, textStatus, errorThrown){
+				console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+			}
+		})
 		$(this).addClass('active').siblings().removeClass('active')
 		$(this).parents(".lxContaniner").find('.lx-groupitems').hide().eq(cur_index).show();
 	})
