@@ -250,9 +250,9 @@ input[type="checkbox"] {
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con">'+
                 '<div class="top-con-right">'+
-                '<span><a target="_blank" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                '<span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
-                '<span><a href="javascript:void(0);" id="getlogin" onclick="getloginUser()" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
+                '<span><a href="javascript:void(0);" id="getloginUser_deng" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '</div>'+
                 '</div>'
       $(".top").append(val);
@@ -287,6 +287,19 @@ input[type="checkbox"] {
 
     $("form").Vaild();
     //登录
+    var pac_d = document.getElementById('getloginUser_deng');
+      if (pac_d.addEventListener) {
+        pac_d.addEventListener('click', loginUser, false)
+      }else {
+        pac_d.attachEvent('onclick', loginUser, false)
+      }
+    var pac = document.getElementById('getloginUser');
+    if (pac.addEventListener) {
+      pac.addEventListener('click', loginUser, false)
+    }else {
+      pac.attachEvent('onclick', loginUser, false)
+    }
+
     var sP = document.getElementById('sendcun');
     if (sP.addEventListener) {
       sP.addEventListener('click', sendphone, false)
@@ -422,26 +435,26 @@ input[type="checkbox"] {
     });
   }
 
-  function getloginUser () {
+  function loginUser () {
     var h = window.location.href;
     console.log('h', h);
     var hh = h.split("/");
     console.log('hh[1]', hh[3]);
     var hhh = h.split("?");
     console.log('hhh', hhh[1])
-    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'loginUser' && hh[3] != 'loginUser?h=http:') {
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'loginUser?h=http:') {
       console.log('11111')
 //      window.location.href = '/login?h=' + h
       // window.open('/loginUser?h=' + h);
       window.open(fn.urlgen("loginUser")+'?'+hhh[1]);
-    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'loginUser') {
+    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser') {
       console.log('aaaa')
       window.location.reload();
     } else {
       console.log('22222');
 //      window.location.href = '/login'
       // window.open('/loginUser?h=');
-      window.open(fn.urlgen('loginUser')+'?h=');
+      window.open(fn.urlgen('loginUser'));
     }
   }
   //登录验证码

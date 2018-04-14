@@ -236,10 +236,11 @@
               $('#collection-num').text(Number($('#collection-num').text()-1));
             }
           }else if(result.code == 1){
-            layer.msg('你还没有去登录');
-            window.setTimeout(function(){
-              window.location.href =fn.curlgen('login','h='+window.location.href);
-            },1000);
+            // layer.msg('你还没有去登录');
+            // window.setTimeout(function(){
+            //   window.location.href =fn.curlgen('login','h='+window.location.href);
+            // },1000);
+            getlogin();
           }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -250,10 +251,11 @@
     $("#fabulous").on("click",function(){
       //点赞
       if( login_ss == undefined){
-        layer.msg('你还没有登录')
-        window.setTimeout(function(){
-          window.location.href =fn.curlgen('login','h='+window.location.href);
-        },1000);
+        // layer.msg('你还没有登录')
+        // window.setTimeout(function(){
+        //   window.location.href =fn.curlgen('login','h='+window.location.href);
+        // },1000);
+        getlogin();
         return false;
       }
       if(login_ss.uid == adviserId){
