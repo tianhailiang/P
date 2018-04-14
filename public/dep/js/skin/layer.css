@@ -473,7 +473,8 @@ html #layui_layer_skinlayercss {
 	filter:alpha(opacity=60);
 	background-color:rgba(0,0,0,.6);
 	color:#fff;
-	border:none
+	border:none;
+	filter:Alpha(opacity=60);
 }
 .layui-layer-hui .layui-layer-content {
 	padding:12px 25px;
