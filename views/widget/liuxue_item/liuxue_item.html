@@ -50,7 +50,7 @@
 	</div>
 	{% for type in  floor.list %}{#类别#}
 	{% if loop.index == 1 and type.edu_name == '推荐'%}
-	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
+	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %} data-id="{{type.edu_id}}"><!--推荐-->
 		{% for line in type.list %} {#行数#}
 			{% if loop.index == 1 %} {#第一行#}
 				<ul class="gw-items gw-topitems" id="guItems">
@@ -105,29 +105,33 @@
 		cur_area = $.cookie('currentarea');
 	}
 	$(".lxContaniner").on('click', '.lx-tabitems li', function(){
-//		var cur_index=$(this).index();
+		var obj = $(this);
 		var cur_edu_id = $(this).attr('data-edu_id');
 		var cur_country_id = $(this).parents('.lx-tabitems').attr('data-country_id');
 		var cur_container = $(this).parents(".lxContaniner");
-		var cur_groupitems = cur_container.find('.lx-groupitems');
-		$.ajax({
-			url: '/liuxue_item_nunjucks',
-			type:'get',
-			data:{
-				"city_id": cur_area,
-				"country_id":cur_country_id,
-				"edu_id":cur_edu_id
-			},
-			success:function(msg){
-				cur_groupitems.remove();
-				cur_container.append($(msg));
-			},
-			error:function(XMLHttpRequest, textStatus, errorThrown){
-				console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
-			}
-		})
-		$(this).addClass('active').siblings().removeClass('active')
-//		$(this).parents(".lxContaniner").find('.lx-groupitems').hide().eq(cur_index).show();
+		var click_groupitems = cur_container.find(".lx-groupitems[data-id='"+cur_edu_id+"']").html();
+		if (click_groupitems) { //如果已经渲染对应学历
+			obj.parents(".lxContaniner").find('.lx-groupitems[data-id="'+ cur_edu_id +'"]').show().siblings('.lx-groupitems').hide();
+		}
+		else {
+			$.ajax({
+				url: '/liuxue_item_nunjucks',
+				type:'get',
+				data:{
+					"city_id": cur_area,
+					"country_id":cur_country_id,
+					"edu_id":cur_edu_id
+				},
+				success:function(msg){
+					cur_container.append($(msg));
+					obj.parents(".lxContaniner").find('.lx-groupitems[data-id="'+ cur_edu_id +'"]').show().siblings('.lx-groupitems').hide();
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){
+					console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+				}
+			})
+		}
+		$(this).addClass('active').siblings().removeClass('active');
 	})
 </script>
 
