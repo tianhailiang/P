@@ -256,7 +256,7 @@
       url: '/sendcode_s',
       type:'post',
       data: {
-        param_code: $('#tupian').val(),
+        param_code: $('#tupian').val().toLowerCase(),
         phone: $('#phone').val()
       },
       dataType: 'json',
@@ -348,7 +348,7 @@ function outlogin () {
     var hhh = h.split("?");
     console.log('hhh', hhh[1])
     $.ajax({
-      url: js_api_config.wwhost+'/login_out',
+      url: portname+'/login_out',
       type: 'GET',
       dataType:'jsonp',
       jsonpCallback:'cb',
