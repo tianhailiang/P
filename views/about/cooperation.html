@@ -180,7 +180,7 @@
     height: 120px;border: 1px solid #dcdcdc;padding-left:10px;" placeholder="输入您的合作事宜" /></textarea>
     <!--<input name="quickPhone"  type="text" style="width: 934px;-->
     <!--height: 120px;border: 1px solid #dcdcdc;padding-left:10px" placeholder="输入您的合作事宜" />-->
-    <!--<div class="numTip" style="margin-left:88px;height:20px;line-height: 20px;color:#ff7d31;" id="phoneNumTip5"></div>-->
+    <div class="numTip" style="margin-left:88px;height:20px;line-height: 20px;color:#ff7d31;" id="phoneNumTip5"></div>
   <!--</div>-->
 
   <div class="dui-layout-lg" style="float: left">
@@ -343,7 +343,7 @@
 
       if(!baomingfaangshi.email($.trim($("#quickPhone4").val()))){
         //判断手机号
-        $('#phoneNumTip4').html("您输入的邮箱不正确");
+        $('#phoneNumTip4').html("输入您的电子邮箱");
         return false;
       }else{
         $('#phoneNumTip4').html('');
@@ -351,7 +351,7 @@
 
       if($("#quickPhone5").val()==''){
         //判断姓名
-        $("#phoneNumTip5").html('输入您的联系地址');
+        $("#phoneNumTip5").html('输入您的合作事宜');
         return false;
 
       }else{
