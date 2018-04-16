@@ -73,6 +73,11 @@
 <script src="{{helper.cdnhost}}/assets/js/jquery.qqFace.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/moment.js" ></script>
 <script>
+  var login_ss = null; //获取用户信息
+  if($.cookie('login_ss') != undefined){
+    login_ss = JSON.parse($.cookie('login_ss'));  
+  }
+  console.log(login_ss)
   var adviserId = $("#commentBtn").attr('data-memberId'); // 获取顾问id
   var article_id = $('#commentBtn').attr("data-artId"); // 获取文章id;
   var city_id = $('.advisor-bumen').attr('data-cityId');//获取顾问的分公司id
@@ -228,7 +233,7 @@
                 vHtml = '<i class="adviser-v-i"></i>';
               }
               var delHtml = '';
-              if( login_ss.uid == adviserId){
+              if( login_ss!=null && login_ss.uid == adviserId){
                 delHtml = '<span class="delete-btn" ><i class="iconfont" >&#xe61e;</i>删除</span>';
               }
 	            html += '<div class="comment-list clearfix" >'+
@@ -315,7 +320,7 @@
     //点击一级回复 加载回复列表
     console.log('一级回复')
     obj.replyFlag = !obj.replyFlag; //设置一级回复开关
-    // console.log(obj.replyFlag)
+    console.log(obj.replyFlag)
     var that = obj;
     if(obj.replyFlag){
       //显示出来
@@ -340,7 +345,7 @@
                 color = 'b2b8c2';
               }
               var delHtml = '';
-              if( login_ss.uid == adviserId){
+              if( login_ss!=null && login_ss.uid == adviserId){
                 delHtml = '<span class="delete-btn2" ><i class="iconfont" >&#xe61e;</i>删除</span>';
               }
               var html = '<div class="reply-list-info" >'+
@@ -745,7 +750,7 @@
       $(this).find(".circle").hide();
       if($(this).index() == 3){
         $(".report-txt").show();
-        $(".layui-layer-content").css({"height":"115px"});
+        $(".report-con").parent().css({"height":"115px"});
         if($('.report-txt').val()!= ''){
           report_content = $('.report-txt').val();
         }else{
@@ -753,7 +758,7 @@
         }
       }else{
         $(".report-txt").hide();
-        $(".layui-layer-content").css({"height":"39px"});
+        $(".report-con").parent().css({"height":"39px"});
         report_content = $(this).find('.sp-con').text();
       }
     });

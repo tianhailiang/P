@@ -33,7 +33,6 @@
 .qqFace table td{padding:0}
 .qqFace table td img{cursor:pointer;border:1px #fff solid}
 .sub-btn{float:right;padding:3px 25px}
-.word-num{position:absolute;right:10px;top:95px;z-index:100;color:#999}
 #word-num{color:#c13232}
 .comment-list-box{background:#fafafa;padding:20px 20px 0;border-bottom:1px solid #dcdcdc}
 .comment-list{margin-bottom:40px}
