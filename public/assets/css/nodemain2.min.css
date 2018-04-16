@@ -1,3 +1,8 @@
+.author-sel{padding:20px 20px 0 20px;background:#fff}
+.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
+.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
+.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
+.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:768px}
@@ -16,11 +21,6 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:0}
-.author-sel{padding:20px 20px 0 20px;background:#fff}
-.author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
-.author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
-.author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
-.author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
@@ -33,6 +33,7 @@
 .qqFace table td{padding:0}
 .qqFace table td img{cursor:pointer;border:1px #fff solid}
 .sub-btn{float:right;padding:3px 25px}
+.word-num{position:absolute;right:10px;top:95px;z-index:100;color:#999}
 #word-num{color:#c13232}
 .comment-list-box{background:#fafafa;padding:20px 20px 0;border-bottom:1px solid #dcdcdc}
 .comment-list{margin-bottom:40px}
@@ -85,8 +86,8 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .community-advisor .advisor-sushu{height:16px;font-size:14px;color:#666;margin-top:16px;text-align:center}
 .community-advisor .advisor-intro{padding:13px 20px;font-size:12px;color:#666}
 .community-advisor .counsellor-intro{text-indent:2em;padding:15px 20px;font-size:12px;color:#666}
-.community-advisor .counsellor-intro p{line-height:24px}
-.community-advisor .advisor-intro p{line-height:24px}
+.community-advisor .counsellor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
+.community-advisor .advisor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
 .community-advisor .advisor-btn{height:40px;background:#ff8547;font-size:20px;color:#fff;line-height:40px}
 .community-advisor .advisor-btn-gray{background:#dcdcdc}
 .community-advisor .advisor-guanzhu,.community-advisor .advisor-zixun{font-size:14px;padding:1px 42px;cursor:pointer;color:#fff}
@@ -417,15 +418,6 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .booking-activities1 .book-activities-btn .btn-detail{width:115px}
 .activity-on{color:#333}
 .activity-on:hover{color:#333}
-.boutique{width:240px;height:76px;margin:20px}
-.boutique dl{width:240px;height:50px;margin-top:8px}
-.boutique dl dt{width:50px;height:50px;float:left;margin-right:20px}
-.boutique dl dt img{width:50px;height:50px}
-.boutique dl dd{width:170px;height:50px;float:left}
-.boutique dl dd p{font-size:12px;margin-bottom:0}
-.boutiqueing{width:170px;height:30px;background:#f3f3f3;float:right;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;-webkit-line-clamp:1;line-height:30px;margin-top:3px}
-.boutiqueing p{margin:0 0 0 6px}
-.boutiquecon{width:18px;height:18px;background:#C13232;color:#fff;float:left;text-align:center;border-radius:2px;margin-right:10px}
 .channel-nav{height:44px}
 .channel-nav .channel-nav-left{width:900px;float:left}
 .channel-nav .channel-nav-left a{text-decoration:none}
@@ -449,6 +441,15 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .phoneBox dl dt span{font-size:18px}
 .phoneBox dl dd{font-size:12px;color:#666;line-height:14px}
 .phoneBox dl dd.phone-number{color:#C13232;font-size:14px;line-height:18px}
+.boutique{width:240px;height:76px;margin:20px}
+.boutique dl{width:240px;height:50px;margin-top:8px}
+.boutique dl dt{width:50px;height:50px;float:left;margin-right:20px}
+.boutique dl dt img{width:50px;height:50px}
+.boutique dl dd{width:170px;height:50px;float:left}
+.boutique dl dd p{font-size:12px;margin-bottom:0}
+.boutiqueing{width:170px;height:30px;background:#f3f3f3;float:right;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden;-webkit-line-clamp:1;line-height:30px;margin-top:3px}
+.boutiqueing p{margin:0 0 0 6px}
+.boutiquecon{width:18px;height:18px;background:#C13232;color:#fff;float:left;text-align:center;border-radius:2px;margin-right:10px}
 .colleges_recommend{width:278px;height:529px;float:left;border:1px #dcdcdc solid}
 .colleges_recommend_title{width:278px;height:48px;display:inline-block;font-weight:600;border-bottom:1px solid #dcdcdc;font-size:16px;color:#333;background:#fafafa}
 .colleges_recommend_title i{width:2px;height:22px;display:block;background:#C13232;margin-right:18px;float:left;margin-top:15px}
