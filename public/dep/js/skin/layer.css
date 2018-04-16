@@ -476,6 +476,9 @@ html #layui_layer_skinlayercss {
 	border:none;
 	filter:Alpha(opacity=60);
 }
+.layui-layer-hui:not(IE9Only){
+	filter:Alpha(opacity=120);
+}
 .layui-layer-hui .layui-layer-content {
 	padding:12px 25px;
 	text-align:center

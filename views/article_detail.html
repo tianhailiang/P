@@ -199,7 +199,8 @@
           current: 0,
           speed: 500,
           intervalTime: 5000,
-          pagination: true
+          pagination: true,
+          dotPostion:'right'
       });
       $('.banner-box-right .slider').xSlider({
           current: 0,
@@ -329,7 +330,7 @@
       mask_div.style.lineHeight='80px';
       mask_div.style.display = "block";
       oTemp.appendChild(mask_div);
-      document.getElementById('get-share-img').getElementsByTagName('p')[0].appendChild(oTemp);
+      document.getElementById('get-share-img').appendChild(oTemp);
     }
   </script>
 </body>

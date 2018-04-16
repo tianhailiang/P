@@ -68,9 +68,6 @@
     background: #dcdcdc;
     height: 130px;
 }
-.slider .slider-dot ul{
-    left:95%;
-}
 .slider .slider-dot ul li{
     border-radius: 50%;
 }

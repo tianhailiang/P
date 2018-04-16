@@ -287,17 +287,23 @@ input[type="checkbox"] {
     $("form").Vaild();
     //登录
     var pac_d = document.getElementById('getloginUser_deng');
-    if (pac_d.addEventListener) {
-      pac_d.addEventListener('click', loginUser, false)
-    }else {
-      pac_d.attachEvent('onclick', loginUser, false)
+    if (pac_d) {
+      if (pac_d.addEventListener) {
+        pac_d.addEventListener('click', loginUser, false)
+      }else {
+        pac_d.attachEvent('onclick', loginUser, false)
+      }
     }
+    
     var pac = document.getElementById('getloginUser');
-    if (pac.addEventListener) {
-      pac.addEventListener('click', loginUser, false)
-    }else {
-      pac.attachEvent('onclick', loginUser, false)
+    if (pac) {
+      if (pac.addEventListener) {
+        pac.addEventListener('click', loginUser, false)
+      }else {
+        pac.attachEvent('onclick', loginUser, false)
+      }
     }
+    
     var sP = document.getElementById('sendcun');
     if (sP.addEventListener) {
       sP.addEventListener('click', sendphone, false)

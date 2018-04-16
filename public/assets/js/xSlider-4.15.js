@@ -9,7 +9,8 @@
       current: 0,
       speed: 500,
       intervalTime: 5000,
-      pagination: false
+      pagination: false,
+      dotPostion: 'center'
     }
     if(userConfig != null) {
       $.extend(this.config,this.userConfig);
@@ -55,7 +56,13 @@
 
       //给 slider_dot_ul 设置宽度
 
-      slider_dot_ul.css({"width":slider_dot_ul_li.length*26+"px","marginLeft":-slider_dot_ul_li.length*26/2+"px"});
+/*      slider_dot_ul.css({"width":slider_dot_ul_li.length*22+"px","marginLeft":-slider_dot_ul_li.length*22/2+"px","left":"50%"});*/
+      if (_this.config.dotPostion == 'center') {
+          slider_dot_ul.css({"width":slider_dot_ul_li.length*20+"px","marginLeft":-slider_dot_ul_li.length*20/2+"px","left":"50%"});
+      }
+      else if (_this.config.dotPostion == 'right') {
+          slider_dot_ul.css({"width":slider_dot_ul_li.length*20+"px","right":"20px"});
+      }
 
       // dot点击事件
       slider_dot_ul_li.on('click', function(event) {
