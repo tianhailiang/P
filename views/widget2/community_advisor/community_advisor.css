@@ -110,9 +110,15 @@
 }
 .community-advisor .counsellor-intro p{
   line-height: 24px;
+  word-wrap:break-word; 
+  word-break:break-all; 
+  overflow: hidden;
 }
 .community-advisor .advisor-intro p{
   line-height: 24px;
+  word-wrap:break-word; 
+  word-break:break-all; 
+  overflow: hidden;
 }
 .community-advisor .advisor-btn{
   height: 40px;
