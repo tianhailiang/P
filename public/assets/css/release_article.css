@@ -196,17 +196,11 @@
     background: #dcdcdc;
     height: 130px;
 }
-.slider .slider-dot ul{
-    left:95%;
-}
 .slider .slider-dot ul li{
     border-radius: 50%;
 }
 .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
     margin-top: -33px
-}
-.banner-box-right .slider .slider-dot ul{
-    left: 50%;
 }
 
 

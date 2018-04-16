@@ -39,7 +39,7 @@
 
 .slider .slider-dot ul {
     position: absolute;
-    left: 50%;
+    /*left: 50%;*/
     bottom: 10px;
 }
 .slider .slider-dot ul li {
