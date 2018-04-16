@@ -179,7 +179,7 @@
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/xSlider.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/article_detail.js"></script>
 <script>
   $(function(){
@@ -236,11 +236,11 @@
               $('#collection-num').text(Number($('#collection-num').text()-1));
             }
           }else if(result.code == 1){
-            getlogin();
             // layer.msg('你还没有去登录');
             // window.setTimeout(function(){
             //   window.location.href =fn.curlgen('login','h='+window.location.href);
             // },1000);
+            getlogin();
           }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown){

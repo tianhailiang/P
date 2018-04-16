@@ -271,6 +271,8 @@ var apis = {
   "article_top": shequ_prefix + 'article/article_top/',
   //专题接口
   "get_schooltopic": prefix + 'colleges_detail/',
+    //首页楼层广告
+  "advert":prefix + 'advert',
 };
 module.exports = {
   redisCache: redisCache,

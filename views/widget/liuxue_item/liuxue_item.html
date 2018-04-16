@@ -46,11 +46,17 @@
 	}
 </style>
 {% for floor in shouye %} {#国家#}
+{% set ad_seat_index = loop.index + 10 %}
 <div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
 	<div class="lx-head">
 		<h1>{{floor.country_name}}留学</h1>
-		<ul class="lx-tabitems">
-			{% for tagitem in floor.list %}{% if loop.index == 1 %}<li class="active">{{tagitem.edu_name}}<em></em></li>{% else %}<li>{{tagitem.edu_name}}<em></em></li>{% endif %}
+		<ul class="lx-tabitems" data-country_id="{{floor.country_id}}">
+			{% for tagitem in floor.list %}
+				{% if loop.index == 1 %}
+				<li class="active" data-edu_id="{{tagitem.edu_id}}">{{tagitem.edu_name}}<em></em></li>
+				{% else %}
+				<li data-edu_id="{{tagitem.edu_id}}">{{tagitem.edu_name}}<em></em></li>
+				{% endif %}
 			{% endfor %}
 		</ul>
 		<ul class="lx-hovertarg">
@@ -69,24 +75,66 @@
 		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区&nbsp;&nbsp;></a>
 	</div>
 	{% for type in  floor.list %}{#类别#}
-	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %}><!--推荐-->
+	{% if loop.index == 1 and type.edu_name == '推荐'%}
+	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %} data-id="{{type.edu_id}}"><!--推荐-->
 		{% for line in type.list %} {#行数#}
 			{% if loop.index == 1 %} {#第一行#}<ul class="gw-items gw-topitems" id="guItems">	{% for item in line %}	{% if item.uid != null %}	<li>		<div class="gw-people">			<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover"></a>			<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>		</div>		{#<p>{{item.type}}</p>#}		<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">			<div class="gw-legend gw-news">留学时讯</div>			<p style="clear:both">{{ item.title | ellipsis(21) }}</p>		</a>	</li>	{% endif %}	{% endfor %}	<em class="triangle"></em></ul>
 			{% else %}<ul class="gw-items">		{% for item in line %}			{% if item.uid != null %}			<li class="gw-newslist">				<div class="gw-people">					<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover;"></a>					<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>				</div>				{#<p>{{item.type}}</p>#}				<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">					<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>					<p style="clear:both">{{item.title | ellipsis(21)}}</p>				</a>			</li>			{% endif %}		{% endfor %}</ul>
 			{% endif %}
 		{% endfor %}
 	</div>
+	{% endif %}
 	{% endfor %}{#类别end#}
 </div>
-		<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
-			<div class="home-guanggao" style="float:left;overflow:hidden;margin-right:-20px" id="AD_HOME_SEAT{{loop.index+10}}"></div>
+	<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
+		<div class="home-guanggao" style="float:left;overflow:hidden;margin-right:-20px">
+			{% for picitem in guanggao %}
+			{% if helper.adseatCompare(picitem.ad_seat,ad_seat_index) %}
+					{% for ad_pic in picitem.setting %}
+						{% if loop.index <= 3%}
+						<a rel="nofollow" data-pid="{{ad_pic.pid}}" data-seat="{{ad_seat_index}}"  href="{{ad_pic.linkurl}}" target="_blank">
+							<img src='{{ad_pic.imageurl}}' alt='{{picitem.alt}}' style="width:386px;height:120px"/>
+						</a>
+						{% endif %}
+					{% endfor %}
+			{% endif %}
+			{% endfor %}
 		</div>
+	</div>
 {% endfor %} {#国家end#}
 <script>
+	var cur_area;
+	if ($.cookie('currentarea')) {
+		cur_area = $.cookie('currentarea');
+	}
 	$(".lxContaniner").on('click', '.lx-tabitems li', function(){
-		var cur_index=$(this).index();
-		$(this).addClass('active').siblings().removeClass('active')
-		$(this).parents(".lxContaniner").find('.lx-groupitems').hide().eq(cur_index).show();
+		var obj = $(this);
+		var cur_edu_id = $(this).attr('data-edu_id');
+		var cur_country_id = $(this).parents('.lx-tabitems').attr('data-country_id');
+		var cur_container = $(this).parents(".lxContaniner");
+		var click_groupitems = cur_container.find(".lx-groupitems[data-id='"+cur_edu_id+"']").html();
+		if (click_groupitems) { //如果已经渲染对应学历
+			obj.parents(".lxContaniner").find('.lx-groupitems[data-id="'+ cur_edu_id +'"]').show().siblings('.lx-groupitems').hide();
+		}
+		else {
+			$.ajax({
+				url: '/liuxue_item_nunjucks',
+				type:'get',
+				data:{
+					"city_id": cur_area,
+					"country_id":cur_country_id,
+					"edu_id":cur_edu_id
+				},
+				success:function(msg){
+					cur_container.append($(msg));
+					obj.parents(".lxContaniner").find('.lx-groupitems[data-id="'+ cur_edu_id +'"]').show().siblings('.lx-groupitems').hide();
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){
+					console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+				}
+			})
+		}
+		$(this).addClass('active').siblings().removeClass('active');
 	})
 </script>
 

@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html>
 {% include "header_new.html" %}
-
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
-  
-  
   <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
   <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/icheck.min.js"></script>
@@ -45,7 +42,9 @@
     <div style="margin: 0px auto;height: 550px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png);
     background-repeat: no-repeat;background-size: cover;">{# #}
       {# <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/> #}
-    
+    <div style="margin: 0px auto;height: 550px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png);
+    background-repeat: no-repeat;background-size: cover;">{# #}
+      {# <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/> #}
     </div>
     <div class="login_content">
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
@@ -102,12 +101,12 @@
         <div class="fen" style="margin-top: -5px;">
           <h4 style="line-height: 37px;">第三方快速登录：</h4>
           <div class="bdsharebuttonbox" id="fx" style="float: left;margin-top: 7px">
-            <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user" style="float: left;"/>
+            <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user" style="float: left;" data-url="{{url}}"/>
 
             <a target="_blank"  href="{{helper.wwhost}}/weixin_login?h={{url}}" style="float: left;">
               <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
             </a>
-            <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user" style="float: left;"/>
+            <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user" style="float: left;" data-url="{{url}}"/>
           </div>
         </div>
 
@@ -178,7 +177,6 @@
 
     $('#weibo_user').on('click', function () {
       var url = $(this).attr('data-url')
-      console.log('url',url)
       //var h = window.location.href;//获取全部的url
       //console.log('h', h);
       //var hh = h.split("?");
@@ -196,7 +194,6 @@
     //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
     //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
       var url = $(this).attr('data-url')
-      console.log('url',url)
       //var h = window.location.href;//获取全部的url
       //console.log('h', h);
       //var hh = h.split("?");

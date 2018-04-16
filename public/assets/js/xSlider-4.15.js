@@ -1,10 +1,7 @@
 ;(function($){
   var xSlider = function(el, userConfig) {
-
     var _this = this;
     this.el = el;
-   
-   
     // 参数配置
     this.userConfig = userConfig;
     this.config = {
@@ -17,37 +14,28 @@
     if(userConfig != null) {
       $.extend(this.config,this.userConfig);
     }
-    
-
     // 保存查找dom元素
     var slider_img = this.el.children('.slider-img');
     var slider_img_ul = slider_img.children('ul');
     var slider_img_ul_li = slider_img_ul.children('li');
     var slider_img_length = slider_img_ul_li.length;
-   
-
     //给图片盒子设置宽度
     slider_img.css('width',this.config.w * slider_img_length);
-    
-
     //给图片li设置宽度
     slider_img_ul_li.css('width',this.config.w);
-
     // 初始化默认显示图片位置
-      if(slider_img_length==1 ){
-          slider_img_ul.css('left',0);
-      }else {
-          slider_img_ul.css('left', - this.config.w * this.config.current - this.config.w);
-      }
-    // 初始化左右按钮
-      if(slider_img_length==1 ){
-
-      }else {
-          this.el.append('<a href="javascript:" class="slider-btn slider-btn-left"></a>');
-          this.el.append('<a href="javascript:" class="slider-btn slider-btn-right"></a>');
-      }
-      var slider_btn_left = this.el.children('.slider-btn-left');
-      var slider_btn_right = this.el.children('.slider-btn-right');
+    if(slider_img_length==1 ){
+      slider_img_ul.css('left',0);
+    }else {
+      slider_img_ul.css('left', - this.config.w * this.config.current - this.config.w);
+    }
+// 初始化左右按钮
+    if(slider_img_length != 1 ){
+        this.el.append('<a href="javascript:" class="slider-btn slider-btn-left"></a>');
+        this.el.append('<a href="javascript:" class="slider-btn slider-btn-right"></a>');
+    }
+    var slider_btn_left = this.el.children('.slider-btn-left');
+    var slider_btn_right = this.el.children('.slider-btn-right');
     if (this.config.pagination) {
       // 初始化圆点
       this.el.append('<div class="slider-dot"><ul></ul></div>');
@@ -88,8 +76,6 @@
         slider_dot_ul_li.eq(i).addClass('active')
       }
     }
-
-
 
     // 右点击事件
     slider_btn_right.on('click', function(event) {
@@ -171,5 +157,3 @@
   })
 
 })(jQuery);
-
-

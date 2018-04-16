@@ -1,0 +1,44 @@
+ <div class="lx-groupitems" data-id="{{edu_item.edu_id}}">
+    {% for line in edu_item.list %} {#行数#}
+    {% if loop.index == 1 %} {#第一行#}
+    <ul class="gw-items gw-topitems" id="guItems">
+      {% for item in line %}
+      {% if item.uid != null %}
+      <li>
+        <div class="gw-people">
+          <a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover"></a>
+          <span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
+        </div>
+        {#<p>{{item.type}}</p>#}
+        <a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
+          <div class="gw-legend gw-news">留学时讯</div>
+          <p style="clear:both">{{ item.title | ellipsis(21) }}</p>
+        </a>
+      </li>
+      {% endif %}
+      {% endfor %}
+      <em class="triangle"></em>
+    </ul>
+    {% else %}
+    <ul class="gw-items">
+      {% for item in line %}
+      {% if item.uid != null %}
+      <li class="gw-newslist">
+        <div class="gw-people">
+          <a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover;"></a>
+          <span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
+        </div>
+        {#<p>{{item.type}}</p>#}
+        <a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
+          <div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
+          <p style="clear:both">{{item.title | ellipsis(21)}}</p>
+        </a>
+      </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+  </div>
+
+
