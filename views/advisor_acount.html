@@ -237,6 +237,12 @@
     var sha1 = hex_sha1($('#old_password').val());
     console.log('sha1', sha1);
     if ($('#username').val() !== '' && $('#nicheng').val() !== '') {
+      $("#old_password").parent().removeClass("has-error").addClass("has-success");
+      $("#old_password").popover("destroy");
+      $("#new_password").parent().removeClass("has-error").addClass("has-success");
+      $("#new_password").popover("destroy");
+      $("#qie_password").parent().removeClass("has-error").addClass("has-success");
+      $("#qie_password").popover("destroy");
       $.ajax({
         url: '/soapi/user_password',
         type:'POST',

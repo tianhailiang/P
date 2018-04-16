@@ -746,6 +746,11 @@
       if($(this).index() == 3){
         $(".report-txt").show();
         $(".layui-layer-content").css({"height":"115px"});
+        if($('.report-txt').val()!= ''){
+          report_content = $('.report-txt').val();
+        }else{
+          report_content ='';
+        }
       }else{
         $(".report-txt").hide();
         $(".layui-layer-content").css({"height":"39px"});
