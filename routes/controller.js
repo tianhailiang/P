@@ -13,6 +13,7 @@ var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
 var helperfunc = require('../common/helper');
 var svgCaptcha = require("svg-captcha");
+var fs = require('fs');
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -99,16 +100,23 @@ exports.index = function (req, res, next) {
                 "city_id": area,
             }, callback);
         },
+        guanggao:function(callback){
+            cms.advert({
+                "cityid": area,
+                "ad_page": "HOME"
+            },callback);
+        },
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
+        data.guanggao = returnData(result.guanggao,'guanggao');
+        // console.log(data.guanggao)
         data.tdk = {
             pagekey: 'HOME',
             cityid: area,
             nationid: ''
         };
-        // console.log(result.shouye);
         res.render('index', data);
     })
 };
@@ -162,9 +170,16 @@ exports.index_page = function (req, res, next) {
                 "city_id": area,
             }, callback);
         },
+        guanggao:function(callback){
+            cms.advert({
+                "cityid": area,
+                "ad_page": "HOME"
+            },callback);
+        },
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.guanggao = returnData(result.guanggao,'guanggao');
         data.shouye = JSON.parse(result.shouye);
         data.tdk = {
             pagekey: 'HOME',
@@ -3731,3 +3746,17 @@ exports.article_top = function (req, res, next) {
         }
     })
 };
+//分公司首页ajax 加载段落
+exports.liuxue_item_nunjucks = function (req, res, next) {
+    data = req.query;
+    console.log('分公司首页ajax 加载段落',data);
+    var resData = [];
+    cms.ajax_shouye({
+        "city_id": data.city_id,
+        "country_id":data.country_id,
+        "edu_id":data.edu_id
+    }, function (err, result) {
+        resData.edu_item = result;
+        res.render('widget/liuxue_item/liuxue_item_nunjucks', resData);
+    })
+}
