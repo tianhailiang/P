@@ -50,9 +50,9 @@
             </div>
             <div class="page-search-type" id="page-search-type">
                 <input type="radio" name="page-search-type" id="article" value="文章" checked class="checked"/>
-                <span><i></i></span><label for="article" style="margin-right: 20px;">搜文章</label>
+                <label for="article" style="margin-right: 20px;"><span><i></i></span>搜文章</label>
                 <input type="radio" name="page-search-type" id="adviser" value="顾问"/>
-                <span><i></i></span><label for="adviser">搜顾问</label>
+                <label for="adviser"><span><i></i></span>搜顾问</label>
             </div>
             <div class="result-bar">
                 搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
