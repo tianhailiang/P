@@ -125,16 +125,14 @@
         }
       }
     })
-
+      // 自动切换
+      var sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
       slider_img_ul_li.on('mouseover', function () {
           clearInterval(sliderInt);
       });
       slider_img_ul_li.on('mouseout', function () {
           sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
       });
-
-    // 自动切换
-    var sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
     // 判断图片切换
     function sliderInterval() {
       if (_this.config.current < slider_img_length - 2) {
