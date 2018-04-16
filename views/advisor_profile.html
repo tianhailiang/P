@@ -85,17 +85,11 @@
     background: #dcdcdc;
     height: 130px;
   }
-  .slider .slider-dot ul{
-    left:95%;
-  }
   .slider .slider-dot ul li{
     border-radius: 50%;
   }
   .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left {
     margin-top: -33px
-  }
-  .banner-box-right .slider .slider-dot ul{
-    left: 50%;
   }
 </style>
 </head>
@@ -184,7 +178,8 @@
           current: 0,
           speed: 500,
           intervalTime: 5000,
-          pagination: true
+          pagination: true,
+          dotPostion:'right'
       });
       $('.banner-box-right .slider').xSlider({
           //轮播图配置
