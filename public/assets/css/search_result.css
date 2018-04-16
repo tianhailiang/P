@@ -165,9 +165,11 @@
 }
 .page-search-type input[type="radio"] {
     /*visibility: hidden;*/
-    position: absolute;
+    /*position: absolute;
     top: -999px;
-    left: -999px;
+    left: -999px;*/
+    position: absolute;
+    z-index: -1;
 }
 .page-search-type input[type="radio"] + span {
     display: inline-block;
