@@ -33,7 +33,7 @@
         pac_u.attachEvent('onclick', loginUser, false)
       }
     }
-    
+
     var pac = document.getElementById('param_code');
     if (pac.addEventListener) {
       pac.addEventListener('click', showcode, false)
@@ -156,7 +156,7 @@
 	            type: 1,
 	            shade: [0.4,'#000'],
 	            shadeClose: true,
-	            closeBtn: true,
+	            closeBtn: false,
 	            area: ['421px', '500px'],
 	            title: false,
 	            border: [0],

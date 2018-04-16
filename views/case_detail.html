@@ -236,11 +236,11 @@
               $('#collection-num').text(Number($('#collection-num').text()-1));
             }
           }else if(result.code == 1){
-            getlogin();
             // layer.msg('你还没有去登录');
             // window.setTimeout(function(){
             //   window.location.href =fn.curlgen('login','h='+window.location.href);
             // },1000);
+            getlogin();
           }
         },
         error:function(XMLHttpRequest, textStatus, errorThrown){
