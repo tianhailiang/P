@@ -39,7 +39,9 @@ $("#searchBtn").click(function () {
         $('#search').focus();
     }
     else {
-        window.open(fn.no_urlgen(getSoUrl(so_type,'文章'), 'q=' + so_key_word));
+        if (!checkSpecialCode(so_key_word)) {
+            window.open(fn.no_urlgen(getSoUrl(so_type, '文章'), 'q=' + so_key_word));
+        }
     }
 });
 $(document).keyup(function(event){
@@ -50,3 +52,10 @@ $(document).keyup(function(event){
         }
     }
 });
+function checkSpecialCode(val){
+    var special_code = new RegExp("[~'!@#$%^&*()-+_=:]",'g');
+    if (val.match(special_code)) {
+        alert('搜索内容不能包括特殊字符');
+        return true;
+    }
+}
