@@ -326,7 +326,7 @@
       dataType:'json',
       data: {
         phone: $('#phone').val(),
-        code: $('#verify').val(),
+        code: $('#verify').val()
       },
       success:function(msg) {
         console.log('aaaaaa');
@@ -460,7 +460,7 @@ function outlogin () {
       withCredentials:true,
       data: {
         phone: $('#phone_reg').val(),
-        code: $('#verify_reg').val(),
+        code: $('#verify_reg').val()
       },
       success:function(msg) {
         console.log('msg', msg);
