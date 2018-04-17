@@ -153,6 +153,10 @@ border-color:#E7E7E7 white white white;border-width: 1px;}
     background:url(../img/select-down.png) no-repeat 145px 0;
     background-size: 18px 24px;
 }
+.leaveField .text1 select.department{
+	width: 124px;
+	background: url(../img/select-down.png) no-repeat 105px 0
+}
 
 .leaveField .textNum{
 	/*float:left;*/

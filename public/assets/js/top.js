@@ -224,6 +224,9 @@
 //      window.location.href = '/login'
       // window.open('/loginUser?h=');
       // window.open(fn.urlgen('loginUser')+'?h=');
+    } else if (hhh[1] == undefined && hh[3] == 'forget') {
+      console.log('forget');
+      window.open(fn.urlgen("login"));
     }
   }
   //登录发送验证码
@@ -323,7 +326,7 @@
       dataType:'json',
       data: {
         phone: $('#phone').val(),
-        code: $('#verify').val(),
+        code: $('#verify').val()
       },
       success:function(msg) {
         console.log('aaaaaa');
@@ -457,7 +460,7 @@ function outlogin () {
       withCredentials:true,
       data: {
         phone: $('#phone_reg').val(),
-        code: $('#verify_reg').val(),
+        code: $('#verify_reg').val()
       },
       success:function(msg) {
         console.log('msg', msg);

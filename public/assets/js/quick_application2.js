@@ -83,7 +83,7 @@ $(function(){
       success:function(msg){
         console.log(msg);
         if(msg.code === 0){
-          alert('成功');
+         /* alert('成功');*/
         } else {
           alert('出错啦');
         }
