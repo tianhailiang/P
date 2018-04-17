@@ -27,10 +27,9 @@ $(function(){
     }
   });
 
-  $("#phone").on("blur",function(){
+  $("#phone-slide").on("blur",function(){
     //手机号失去焦点事件
     if($(this).val()==''){
-
       $('#phoneTip').html("请输入您的手机号码");
     }else{
       if(!validate_leyu.phone($(this).val())){
