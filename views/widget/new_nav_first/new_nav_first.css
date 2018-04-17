@@ -68,9 +68,10 @@ form, input {
     float: right;
 }
 .new_nav_first .new-city{
-    width:82px;
-    height: 50px;
-    margin-top:32px;
+    width:122px;
+    height: 82px;
+    text-align: right;
+    line-height: 82px;
     float:left;
     position: relative;
     z-index: 1000;
@@ -88,10 +89,14 @@ form, input {
 }
 .new_nav_first .new-city  .icon-top{
     font-size: 20px;
-    position: absolute;
+    /*position: absolute;
     top: 1px;
-    left: -24px;
+    left: -24px;*/
+    top: 1px;
     line-height: 20px;
+}
+.new_nav_first .new-city  .city-icon {
+    top: -1px;
 }
 .new_nav_first .new-city .city-cc{
     width:100px;
@@ -123,15 +128,16 @@ form, input {
     color: #333;
 }
 .citynames i{
-    margin-right: 6px;
+    /*margin-right: 6px;*/
     font-size:14px;
     position: relative;
-    top:-2px;
+    /*top:-2px;*/
     left: 0;
 }
 
 
-.new-city-box{position: absolute;z-index: 999;display:none;left:-516px;top:34px;*top:56px; width: 584px; background: #fff; border-top: 2px solid #D41B2B;}
+.new-city-box{position: absolute;z-index: 999;display:none;
+    right: 0;top:80px;top:60px \0; width: 584px; background: #fff; border-top: 2px solid #D41B2B;}
 .new-city-box .arrow{position: absolute; top:-9px; left: 112px; width: 5px; height: 9px; display: inline-block;}
 .new-city-box .city-cont{border: 1px solid #D2D2D2; border-top: none; padding: 18px 0 10px 0;}
 .new-city-box .city-cont a{float: left; width: 70px; text-align: center; padding: 0 5px; display: block; color: #666; font-size:14px; line-height: 28px;cursor: pointer}
@@ -257,6 +263,8 @@ form, input {
     border-bottom: 1px dashed #dcdcdc;
     font-size: 14px;
     color: #333;
+    line-height: 18px;
+    text-align: left;
 }
 
 .new_nav_first .top-div-1{
