@@ -339,14 +339,6 @@
     if($.cookie('login_ss') != undefined){
       login_ss = JSON.parse($.cookie('login_ss'));
     }
-    $("#gerenjieshao").on("keyup",function(){
-	  var strLength = $.trim($(this).val()).length;
-	  $("#word-num").html(80-strLength);
-	  if(strLength > 80){
-	    $("#word-num").html(0);
-	    this.value  = this.value.substring(0, 80);
-	  }
-	});
     $("#liu1").on('click', function(){
 
      	$('.act_form_con_3').css("display", "none");
@@ -371,10 +363,10 @@
 
 	$("#gerenjieshao").on("keyup",function(){
 		var strLength = $.trim($(this).val()).length;
-	    $("#word-num").html(80-strLength);
-	    if(strLength > 80){
+	    $("#word-num").html(120-strLength);
+	    if(strLength > 120){
 	      $("#word-num").html(0);
-	      this.value  = this.value.substring(0, 80);
+	      this.value  = this.value.substring(0, 120);
 	    }
 	});
 	$("#gerenjieshao").on('focus',function(){
