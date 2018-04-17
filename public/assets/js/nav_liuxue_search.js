@@ -90,7 +90,7 @@ $('#new-city').hover(function() {
     $(this).find('.new-city-box').hide();
 })
 //ipad 城市弹框
-var city_name_box = document.getElementById('city-name-box');
+/*var city_name_box = document.getElementById('city-name-box');
 city_name_box.addEventListener('touchstart', function(){
     if ($(this).parent('.new-city').hasClass('hover')) {
         $(this).parent('.new-city').removeClass('hover');
@@ -98,7 +98,7 @@ city_name_box.addEventListener('touchstart', function(){
     else {
         $(this).parent('.new-city').addClass('hover');
     }
-}, false);
+}, false);*/
 function top_city1 (a,t) {
     $('#city-place').html(a);
     $('#city-phone').html(t);
@@ -192,3 +192,7 @@ $(document).keyup(function(event){
         }
     }
 });
+//页面选择搜索类型js
+$(".page-search-type").find("input[type^='radio']").on('change',function () {
+    $(this).addClass('checked').siblings('input').removeClass('checked');
+})
