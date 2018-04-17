@@ -263,9 +263,9 @@ input[type="checkbox"] {
                 '<span class="bor"></span>'+
                 '<span ><a href="javascript:void(0);" style="background: #fff;" id="getloginUser_deng" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '<span class="bor">|</span>'+
-                '<span class="top_weibo_img"><img id="weixin" src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>'+
+                '<span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>'+
                 '<span id="weixin_" class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weixin.png);display: none;"></span>'+
-                '<span class="top_weibo_img"><img id="weibo_top" src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>'+
+                '<span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>'+
                 '<span id="weibo_"class="top_weibo" style="background: url('+ajaxUrlPrefix.cdnhost+'/assets/img/top_liuxue_weibo.png);display: none;"></span>'+
                 '</div>'+
                 '</div>'
@@ -303,6 +303,35 @@ input[type="checkbox"] {
 <script src="{{helper.cdnhost}}/assets/js/top.js"></script>
 <script>
   $(function () {
+    var addEvent = function(element,type,callback){
+      if(element.addEventListener){
+        element.addEventListener(type,callback,false);
+      }else if(element.attachEvent){
+        element.attachEvent('on' + type,callback)
+      }
+    }
+    var weibo_top = document.getElementById('weibo_top');
+    addEvent(weibo_top,'touchstart',function(){
+      if ($('#weibo_').css('display') == 'block') {
+        console.log('11111111')
+        $("#weibo_").css("display", "none");
+      }
+      else {
+        console.log('22222222')
+        $("#weibo_").css("display", "block");
+      }
+    });
+    var weixin = document.getElementById('weixin');
+    addEvent(weixin,'touchstart',function(){
+      if ($('#weixin_').css('display') == 'block') {
+        console.log('11111111')
+        $("#weixin_").css("display", "none");
+      }
+      else {
+        console.log('22222222')
+        $("#weixin_").css("display", "block");
+      }
+    });
     $("#weibo_top").on("mouseover", function (e) {
       $("#weibo_").css("display", "block");
     });
