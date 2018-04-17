@@ -90,15 +90,23 @@ $('#new-city').hover(function() {
     $(this).find('.new-city-box').hide();
 })
 //ipad 城市弹框
-/*var city_name_box = document.getElementById('city-name-box');
-city_name_box.addEventListener('touchstart', function(){
+var addEvent = function(element,type,callback){
+    if(element.addEventListener){
+        element.addEventListener(type,callback,false);
+    }else if(element.attachEvent){
+        element.attachEvent('on' + type,callback)
+    }
+
+}
+var city_name_box = document.getElementById('city-name-box');
+addEvent(city_name_box,'touchstart',function(){
     if ($(this).parent('.new-city').hasClass('hover')) {
         $(this).parent('.new-city').removeClass('hover');
     }
     else {
         $(this).parent('.new-city').addClass('hover');
     }
-}, false);*/
+});
 function top_city1 (a,t) {
     $('#city-place').html(a);
     $('#city-phone').html(t);
