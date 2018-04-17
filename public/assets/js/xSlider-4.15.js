@@ -127,10 +127,11 @@
     })
       // 自动切换
       var sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
-      slider_img_ul_li.on('mouseover', function () {
+      slider_img_ul.on('mouseover', function () {
+        console.log(2222)
           clearInterval(sliderInt);
       });
-      slider_img_ul_li.on('mouseout', function () {
+      slider_img_ul.on('mouseout', function () {
           sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
       });
     // 判断图片切换
