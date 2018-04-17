@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include "header_new.html" %}
+<!--
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_ninth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_tenth.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/xSlider.css"/>
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/layout.css" >
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy6.css">
+<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/expertunscramble.css">
+-->
+<style>
+.wrap-con  {
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
+  appearance: radio;
+  position: relative;
+  top:-3px;
+  left: 18px;
+  border: 0;
+  border:none;
+}
+.wrap-ing  {
+  -webkit-appearance: radio;
+  -moz-appearance: radio;
+  appearance: radio;
+  position: relative;
+  top:-3px;
+  left: 18px;
+  border:none;
+  outline:none;
+
+}
+
+</style>
+<body style="background: #f5f5f5;">
+{% include "widget/top/top.html" %}
+
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
+
+<div style="margin:20px 0">
+  {% include "widget/nav_tenth/nav_tenth.html" %}
+</div>
+
+<div class="dui-layout-lg clearfix">
+  <div class="branch-lunbo-slider" style="width:100%;height: 360px;" >
+    {% include "widget/xSlider/xSlider.html" %}
+  </div>
+</div>
+<div class="dui-layout-lg clearfix dui-box-shadow" style="background: #ffffff;margin-top:20px;    padding-bottom: 20px;">
+  <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #c13232;width: 1140px; margin: 0 20px;">
+    <div ></div>
+    <i></i>
+    <h3><span style="color:#c13232;">金吉列合作宗旨</span></h3>
+  </div>
+  {# 金吉列合作宗旨 #}
+  <div class="cooperation clearfix" style="margin: 0 20px;padding:16px 0;border-bottom: 1px solid #dcdcdc">
+      <div class="cooperationing" style="float: left;font-size: 14px;font-weight: 600;">良心：</div>
+      <p style="font-size: 14px">战略发展的根基和基石。</p>
+  </div>
+  <div class="cooperation clearfix" style="margin: 0 20px;padding:16px 0;border-bottom: 1px solid #dcdcdc">
+    <div class="cooperationing" style="float: left;font-size: 14px;font-weight: 600;">合作：</div>
+    <p style="font-size: 14px">开放合作，金吉列与奋斗型员工、相关机构和个人等广泛展开合作。</p>
+  </div>
+  <div class="cooperation clearfix" style="margin: 0 20px;padding:16px 0;border-bottom: 1px solid #dcdcdc">
+    <div class="cooperationing" style="float: left;font-size: 14px;font-weight: 600;">多赢：</div>
+    <p style="font-size: 14px">金吉列与客户、奋斗型员工、合作机构等实现多赢。</p>
+  </div>
+  <div class="cooperation clearfix" style="margin: 0 20px;padding:16px 0;border-bottom: 1px solid #dcdcdc">
+    <div class="cooperationing" style="float: left;font-size: 14px;font-weight: 600;">共享：</div>
+    <p style="font-size: 14px"> 让奋斗型员工共享知识、智慧和企业发展成果。</p>
+  </div>
+  <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #c13232;
+  width: 1140px; margin: 0 20px;">
+    <i></i>
+    <h3><span style="color:#c13232;">合作方式</span></h3>
+  </div>
+  {# 合作方式1 #}
+  <div class="cooperation clearfix" style="margin: 0 20px;padding:16px 0;border-bottom: 1px solid #dcdcdc">
+  <div class="cooperationing" style="width: 188px;height: 224px;float: left;font-size: 14px;font-weight: 600;">【一、留学、移民业务合作】</div>
+  <p style="font-size: 14px;margin-bottom: 12px">1、国内外中介机构</p>
+  <p style="font-size: 14px">我们愿意与您共享澳大利亚、新西兰及英国等丰富的院校代理资源，愿意与您共享加拿大、澳大利亚、新西兰、美国、英国等各国家境外增值服务机构，专业律师指导，共同开拓市场，利润共享。我们将为合作机构提供鼎力支持，免费提供业务培训手业务培训手册，组织外方院校招生会，专家指导咨询和签证，帮助合作机构扩大招生规模；我们也愿意与拥有互为补充的院校代理资源、项目代理资源和客户资源的机构建立互惠的合作伙伴关系。
+  </p>
+  <p style="font-size: 14px;margin: 12px 0">2、个人代理</p>
+  <p style="font-size: 14px">如果您拥有留学生、移民客户资源，或者留学、移民中介网络，我们将提供优厚的回报，与您建立长期的合作，共谋发展。
+  </p>
+  <p style="font-size: 14px;margin: 12px 0">3、国内相关商户</p>
+  <p style="font-size: 14px">我们愿意与语言培训机构、金融机构、保险机构、体检机构及一切与留学、移民服务相关的国内商户共享金吉列客户资源，协助合作伙伴共同开拓市场，共同助合作伙伴强势品牌，为客户真正提供全方位的一站式留学、移民服务，并与合作商户建立长期稳定的互惠互利合作伙伴关系。
+  </p>
+</div>
+  {# 合作方式2 #}
+  <div class="cooperation clearfix" style="margin: 0 20px;padding:16px 0;border-bottom: 1px solid #dcdcdc">
+    <div class="cooperationing" style="width: 188px;height: 160px;float: left;font-size: 14px;font-weight: 600;">【二、商务合作】</div>
+    <p style="font-size: 14px">金吉列本着积极合作的态度，乐意与知名网站开展多元化的合作。具体合作方式包括内容合作、网站联盟、活动合作、链接互换等等，我们希望能发挥自身的优势资源，与合作网站互惠互利、收益共享。
+    </p>
+    <p style="font-size: 14px;margin: 12px 0">1、品牌（市场）合作</p>
+    <p style="font-size: 14px;margin: 12px 0">（1）电视媒体合作  （2）平面媒体合作  （3）广告投放合作  （4）线下活动合作  （5）校园推广合作  （6）明星宣传合作  （7）联合推广
+    </p>
+    <p style="font-size: 14px;margin: 12px 0">2、推广合作</p>
+    <p style="font-size: 14px;margin: 12px 0">（1）优惠券合作  （2）联合推广活动合作  （3）第三方平台合作  （4）联盟合作  （5）银行与支付合作  （6）社会化媒体营销合作  （7）电信运营合作电信运
+    </p>
+  </div>
+
+  {# 合作方式3 #}
+  <div class="cooperation clearfix" style="margin: 0 20px;padding:16px 0;border-bottom: 1px solid #dcdcdc">
+    <div class="cooperationing" style="width: 188px;height: 292px;float: left;font-size: 14px;font-weight: 600;">【三、战略合作】</div>
+    <p style="font-size: 14px">金吉列本着“良心、合作、多赢、共享”的原则，热烈欢迎教育学院、各类机构和其他组织等与我们进行战略合作，以建立强大的产品与服务联盟，为广大在产品与服务职员工、学生等所有有能力并且渴望留学、移民的认识提供全面化、专业化、个性化的解决方案。
+    </p>
+    <p style="font-size: 14px;margin: 12px 0">作为中国领先的留学、移民咨询服务提供商，我们对留学、移民行业的认识正随着我们理念的完善、产品的成熟、市场的拓展而日益深刻。我们一直积极拓展与合作我们一直伙伴的关系，从而共同为留学、移民者提供全面的、优秀的、成熟的、一体化的解决方案以及贴心的支持和服务。在广泛和高质量的协作下，我们与合作伙伴我们与合作不仅可以优势互补，最大地满足直至超越留学、移民者的期望，还能利用各自的资源，发掘更多的商机，共赢市场。</p>
+    <p style="font-size: 14px;margin: 12px 0">我们的目标是共同构造具有强大生命力的、实现相互依存共同发展的留学生态圈，向留学者提供高层次、综合性的整体解决方案和集成化服务，追求最追求最佳的客户满意度。
+    </p>
+    <p style="font-size: 14px;margin: 12px 0">我们的目标是共同构造具有强大生命力的、实现相互依存共同发展的留学/移民生态圈，向留学、移民者提供高层次、综合性的整体解决方案和集成化服务，追求最追求最佳的客户满意度。
+    </p>
+    <p style="font-size: 14px;">通过与合作伙伴产品、技术和服务的整合，从市场、销售、咨询、方案、实施、售后服务等环节中展开有效合作，我们将能全面、有效地满足留学、移民者的有效地满足需求。同时，金吉列的合作伙伴也可以从金吉列数量庞大和不断增长的客户群中获得无限商机。
+    </p>
+    <p style="font-size: 14px;margin-top: 10px">良好的准入机制和共同遵循的商业道德规范，将是合作伙伴生态链得以健康发展的基本保障。为此，金吉列将对合作伙伴进行严格的资质认证，设定完资质认证善的评估体系和跟踪机制，确保联盟体系的专业水平和商业信用。
+    </p>
+</div>
+
+
+
+  <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #c13232;width: 1140px; margin: 0 20px;">
+    <i></i>
+    <h3><span style="color:#c13232;">合作登记</span></h3>
+  </div>
+
+
+  <div class="quick-text1" style="margin: 20px 0 0px 20px;*margin: 20px 0 0px 20px;float: left">
+    <label class="title" for="quickPhone" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px" >机构名称 :</label>
+    <input name="quickPhone" id="quickPhone" type="text" style="width: 224px;
+    height: 30px;border: 1px solid #dcdcdc;padding-left:10px" placeholder="输入您机构名称" />
+    <div class="numTip" style="margin-left:88px;height:20px;line-height: 20px;color:#ff7d31;" id="phoneNumTip"></div>
+  </div>
+
+  <div class="quick-text1" style="margin: 20px 0 0px 60px;*margin-left: 20px;float: left">
+    <label class="title" for="quickPhone" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px" >联系人 :</label>
+    <input name="quickPhone" id="quickPhone1" type="text" style="width: 224px;
+    height: 30px;border: 1px solid #dcdcdc;padding-left:10px" placeholder="输入您的联系人" />
+    <div class="numTip" style="margin-left:76px;height:20px;line-height: 20px;color:#ff7d31;" id="phoneNumTip1"></div>
+  </div>
+
+  <div class="quick-text1" style="margin: 20px 0 0px 60px;*margin-left: 20px;float: left">
+    <label class="title" for="quickPhone" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px" >联系电话 :</label>
+    <input name="quickPhone" id="quickPhone2" type="text" style="width: 224px;
+    height: 30px;border: 1px solid #dcdcdc;padding-left:10px" placeholder="输入您的联系电话" />
+    <div class="numTip" style="margin-left:88px;height:20px;line-height: 20px;color:#ff7d31;" id="phoneNumTip2"></div>
+  </div>
+
+  <div class="quick-text1" style="margin: 0px 0 0px 20px;*margin-left: 20px;float: left">
+    <label class="title" for="quickPhone" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px" >联系地址 : </label>
+    <textarea name="quickPhone" id="quickPhone3" type="text" style="width: 582px;
+    height: 90px;border: 1px solid #dcdcdc;padding-left:10px" placeholder="输入您的联系地址" /></textarea>
+    <div class="numTip" style="margin-left:88px;height:20px;line-height: 20px;color:#ff7d31;" id="phoneNumTip3"></div>
+  </div>
+
+  <div class="quick-text1" style="margin: 0px 0 0px 60px;*margin-left: 20px;float: left">
+    <label class="title" for="quickPhone" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px" >电子邮箱 :</label>
+    <input name="quickPhone" id="quickPhone4" type="text" style="width: 224px;
+    height: 30px;border: 1px solid #dcdcdc;padding-left:10px" placeholder="输入您的电子邮箱" />
+    <div class="numTip" style="margin-left:88px;height:20px;line-height: 20px;color:#ff7d31;" id="phoneNumTip4"></div>
+  </div>
+  <div class="quick-text1" style="margin: 0px 0 0px 60px;*margin-left: 20px;float: left">
+    <label class="title" for="quickPhone" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px;" >合作邮箱 : <span style="color: #666;margin-left: 10px;margin-top: -1px">gongxiaoping1575@jjl.cn</span></label>
+  </div>
+  <div class="dui-layout-lg" style="float: left">
+    <div class="quick-text1" style="margin: 0px 0 0px 20px;*margin-left: 20px;float: left">
+      <div id="wrap">
+        <span style="font-size: 14px">合作方式</span>
+      <input class="wrap-con" type="radio" name="payMethod" value="1" checked/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留学、移民业务合作
+      <input class="wrap-ing" type="radio" name="payMethod" value="2" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;商务合作
+    </div>
+    </div>
+  </div>
+
+  <div class="quick-text1" style="margin: 20px 0 0px 20px;*margin-left: 20px;float: left">
+    <label class="title" for="quickPhone" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px" >合作事宜 :</label>
+        <textarea name="quickPhone" id="quickPhone5" type="text" style="width: 952px;
+    height: 120px;border: 1px solid #dcdcdc;padding-left:10px;" placeholder="输入您的合作事宜" /></textarea>
+    <!--<input name="quickPhone"  type="text" style="width: 934px;-->
+    <!--height: 120px;border: 1px solid #dcdcdc;padding-left:10px" placeholder="输入您的合作事宜" />-->
+    <div class="numTip" style="margin-left:88px;height:20px;line-height: 20px;color:#ff7d31;" id="phoneNumTip5"></div>
+  <!--</div>-->
+
+  <div class="dui-layout-lg" style="float: left">
+    <div class="quick-btn-box" >
+      <div class="quick-btn" id="quick-btn" style="position: relative;width:140px;height:30px;background:#d21b29;color:#fff;text-align: center;line-height: 30px;left:50%;margin-left: -70px;cursor: pointer;margin-bottom: 20px">
+        提交
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+{% include "widget/new_footer/common_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("AD_COOPERATION_SEAT10",helper) }}
+<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js" ></script>-->
+<script src="{{helper.cdnhost}}/assets/js/footer.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+
+<script>
+  $('.branch-lunbo-slider .slider').xSlider({
+    //轮播图配置
+    current: 0,
+    speed: 500,
+    intervalTime: 5000,
+    pagination: true
+  });
+
+</script>
+<!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
+<script>
+  $(function(){
+
+    var baomingfaangshi = {
+      //phone
+      phone: function(phone){
+        if(!/^1(3|4|5|7|8)\d{9}$/.test(phone)){
+          return false;
+        }
+        return true;
+      },
+      email:function(email){
+        if(!/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(email)){
+          return false;
+        }
+        return true;
+      }
+
+    };
+
+    $("#quickPhone").on('blur',function(){
+      // 机构名称输入框 失去焦点事件
+      if($(this).val()==''){
+
+        $('#phoneNumTip').html("输入您机构名称");
+      }else{
+
+        $('#phoneNumTip').html("");
+      }
+    });
+
+    $("#quickPhone1").on('blur',function(){
+      // 联系人输入框 失去焦点事件
+      if($(this).val()==''){
+
+        $('#phoneNumTip1').html("输入您的联系人");
+      }else{
+
+        $('#phoneNumTip1').html("");
+      }
+    });
+
+    $("#quickPhone2").on('blur',function(){
+      // 联系电话输入框 失去焦点事件
+      if($(this).val()==''){
+
+        $('#phoneNumTip2').html("输入您的联系电话");
+      }else{
+
+        $('#phoneNumTip2').html("");
+      }
+    });
+
+    $("#quickPhone3").on('blur',function(){
+      // 联系人输入框 失去焦点事件
+      if($(this).val()==''){
+
+        $('#phoneNumTip3').html("输入您的联系地址");
+      }else{
+
+        $('#phoneNumTip3').html("");
+      }
+    });
+
+    $("#quickPhone4").on('blur',function(){
+      // 联系人输入框 失去焦点事件
+      if($(this).val()==''){
+
+        $('#phoneNumTip4').html("输入您的电子邮箱");
+      }else{
+
+        $('#phoneNumTip4').html("");
+      }
+    });
+
+    $("#quickPhone5").on('blur',function(){
+      // 联系人输入框 失去焦点事件
+      if($(this).val()==''){
+
+        $('#phoneNumTip5').html("输入您的合作事宜");
+      }else{
+
+        $('#phoneNumTip5').html("");
+      }
+    });
+
+    $("#quick-btn").on('click',function(){
+      if($("#quickPhone").val()==''){
+        //判断姓名
+        $("#phoneNumTip").html('输入您机构名称');
+        return false;
+
+      }else{
+
+        $("#phoneNumTip").html('');
+      }
+
+      if($("#quickPhone1").val()==''){
+        //判断姓名
+        console.log(1);
+        $("#phoneNumTip1").html('输入您的联系人');
+        return false;
+
+      }else{
+
+        $("#phoneNumTip1").html('');
+      }
+
+      if(!baomingfaangshi.phone($.trim($("#quickPhone2").val()))){
+        //判断手机号
+        $('#phoneNumTip2').html("请输入正确的手机号");
+        return false;
+      }else{
+        $('#phoneNumTip2').html('');
+      }
+
+      if($("#quickPhone3").val()==''){
+        //判断姓名
+        $("#phoneNumTip3").html('输入您的联系地址');
+        return false;
+
+      }else{
+
+        $("#phoneNumTip3").html('');
+      }
+
+      if(!baomingfaangshi.email($.trim($("#quickPhone4").val()))){
+        //判断手机号
+        $('#phoneNumTip4').html("输入正确的电子邮箱");
+        return false;
+      }else{
+        $('#phoneNumTip4').html('');
+      }
+
+      if($("#quickPhone5").val()==''){
+        //判断姓名
+        $("#phoneNumTip5").html('输入您的合作事宜');
+        return false;
+
+      }else{
+
+        $("#phoneNumTip5").html('');
+      }
+      $.ajax({
+        url:ajaxUrlPrefix.nodeapi+'/cmsapi/sign_up_way',
+        type:'POST',
+        data:{
+          organization_name: $('#quickPhone').val(),
+          contact_people: $('#quickPhone1').val(),
+          contact_phone: $('#quickPhone2').val(),
+          contact_address: $('#quickPhone3').val(),
+          contact_email: $('#quickPhone4').val(),
+          cooperate_way: $('#wrap input[name="payMethod"]:checked ').val(),
+          cooperate_matter: $('#quickPhone5').val()
+         },
+        dataType:'json',
+        success:function(msg){
+          //console.log('msg ajax', msg);
+          if(msg.code === 0){
+            alert('成功');
+          } else {
+            alert(msg.message);
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+        }
+      });
+    });
+  })
+</script>
+</body>
+</html>
