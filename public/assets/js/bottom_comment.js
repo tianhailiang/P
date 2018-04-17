@@ -137,14 +137,14 @@ function showbottom (type, uindex, index, usertype, category_id) {
             shoucang = parseInt(shoucang) + 1;
             $("#shoucang_em_" + index).html(shoucang);
             //layer.msg('收藏成功');
-            window.location.reload();
+            // window.location.reload();
           } else {
             shoucang = parseInt(shoucang) - 1;
             $("#shoucang_em_" + index).html(shoucang);
             //layer.msg('取消收藏成功');
-            window.location.reload();
+            // window.location.reload();
           }
-          $("#shoucang_li_" + index).removeAttr('onclick');
+          // $("#shoucang_li_" + index).removeAttr('onclick');
         } else {
           alert(msg.err);
         }
@@ -214,16 +214,16 @@ function showbottom (type, uindex, index, usertype, category_id) {
           //$("#dianzan_span_" + index).css('color', '#C13232');
           if (msg.data.action === 'add') {
             dianzan = parseInt(dianzan) + 1;
-            $("#shoucang_em_" + index).html(dianzan);
+            $("#dianzan_em_" + index).html(dianzan);
             //layer.msg('点赞成功');
-            window.location.reload();
+            // window.location.reload();
           } else {
             dianzan = parseInt(dianzan) - 1;
-            $("#shoucang_em_" + index).html(dianzan);
+            $("#dianzan_em_" + index).html(dianzan);
             //layer.msg('取消点赞成功');
-            window.location.reload();
+            // window.location.reload();
           }
-          $("#dianzan_li_" + index).removeAttr('onclick');
+          // $("#dianzan_li_" + index).removeAttr('onclick');
         } else {
           alert(msg.err);
         }

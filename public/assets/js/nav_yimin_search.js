@@ -91,3 +91,7 @@ $(document).keyup(function(event){
         }
     }
 });
+//页面选择搜索类型js
+$(".page-search-type").find("input[type^='radio']").on('change',function () {
+    $(this).addClass('checked').siblings('input').removeClass('checked');
+})
