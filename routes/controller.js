@@ -3450,6 +3450,10 @@ exports.userReport = function(req,res,next){
 // 浏览量
 exports.article_count = function (req, res, next) {
     data = req.query;
+    data.uuid = '';
+    if (req.cookies.uuid) {
+        data.uuid = req.cookies.uuid
+    }
     var resErr = [];
     var resReturn = [];
     if(!tokenfunc.checkToken(data.token)){ //token验证不通过

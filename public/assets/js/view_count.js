@@ -5,14 +5,13 @@ function create_token(code){
     }
     return escape(c);
 }
-function article_count (token,catid,articleid,uuid) {
+function article_count (token,catid,articleid) {
     $.ajax({
-        url: ajaxUrlPrefix.nodeapi + '/cmsapi/article_count',
+        url: '/cmsapi/article_count',
         type:'GET',
         data:{
             catid : catid,
             id :articleid,
-            uuid: uuid,
             token:token
         },
         success:function(res){
@@ -28,6 +27,5 @@ function article_count (token,catid,articleid,uuid) {
 $(function(){
     var catid = '100';
     var articleid = $("#detail_id").val();
-    var uuid = $.cookie('uuid') ? $.cookie('uuid') : '';
-    article_count(create_token("apitokenjjl.cn2018"),catid,articleid,uuid);
+    article_count(create_token("apitokenjjl.cn2018"),catid,articleid);
 });
