@@ -224,6 +224,9 @@
 //      window.location.href = '/login'
       // window.open('/loginUser?h=');
       // window.open(fn.urlgen('loginUser')+'?h=');
+    } else if (hhh[1] == undefined && hh[3] == 'forget') {
+      console.log('forget');
+      window.open(fn.urlgen("login"));
     }
   }
   //登录发送验证码
