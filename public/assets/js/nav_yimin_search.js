@@ -36,7 +36,9 @@ $("#searchBtn").click(function () {
         $('#search').focus();
     }
     else {
-        window.open(fn.no_urlgen(getSoUrl('移民',so_type), 'q=' + so_key_word));
+        if (!checkSpecialCode(so_key_word)) {
+            window.open(fn.no_urlgen(getSoUrl('移民', so_type), 'q=' + so_key_word));
+        }
     }
 });
 //页面输入框聚焦
@@ -76,7 +78,9 @@ $("#searchBtn-page").click(function () {
         $('#search-page').focus();
     }
     else {
-        window.open(fn.no_urlgen(getSoUrl('移民',so_type), 'q=' + so_key_word));
+        if (!checkSpecialCode(so_key_word)) {
+            window.open(fn.no_urlgen(getSoUrl('移民', so_type), 'q=' + so_key_word));
+        }
     }
 });
 //回车键搜索
@@ -94,4 +98,11 @@ $(document).keyup(function(event){
 //页面选择搜索类型js
 $(".page-search-type").find("input[type^='radio']").on('change',function () {
     $(this).addClass('checked').siblings('input').removeClass('checked');
-})
+});
+function checkSpecialCode(val){
+    var special_code = new RegExp("[~'!@#$%^&*()-+_=:]",'g');
+    if (val.match(special_code)) {
+        alert('搜索内容不能包括特殊字符');
+        return true;
+    }
+}
