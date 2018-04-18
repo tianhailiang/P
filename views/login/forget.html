@@ -383,13 +383,13 @@
           var downcount = 60;
           var time = setInterval(function (){
             if (downcount === 0) {
-              $("#sendcun_binding").attr("value", "发送验证码");
-              $("#sendcun_binding").removeAttr("disabled");
+              $("#sendcun_forget").attr("value", "发送验证码");
+              $("#sendcun_forget").removeAttr("disabled");
               clearInterval(time);
               return
             }else {
-              $("#sendcun_binding").attr("disabled", "disabled");
-              $("#sendcun_binding").attr("value", downcount + "s");
+              $("#sendcun_forget").attr("disabled", "disabled");
+              $("#sendcun_forget").attr("value", downcount + "s");
               downcount--;
             }
           }, 1000);
