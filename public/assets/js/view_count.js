@@ -21,6 +21,9 @@ function article_count (token,catid,articleid) {
                 $('#totalNum').text(totalNum*1+res.data.num*1);
                 $.cookie('uuid', res.data.uuid,{ path: "/",domain: js_api_config.domain});
             }
+            else {
+                $('#detail_views_num').html($('#detail_views_num').attr('data-viesNum'));
+            }
         }
     });
 }

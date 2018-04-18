@@ -3455,9 +3455,9 @@ exports.article_count = function (req, res, next) {
         data.uuid = req.cookies.uuid
     }
     var resErr = [];
-    var resReturn = [];
     if(!tokenfunc.checkToken(data.token)){ //token验证不通过
         res.send(comfunc.api_return('100001', 'token check fail', ''));
+        return false;
     }
     cms.detail_count(data,function(err,result){
         if(err){
