@@ -3450,10 +3450,14 @@ exports.userReport = function(req,res,next){
 // 浏览量
 exports.article_count = function (req, res, next) {
     data = req.query;
+    data.uuid = '';
+    if (req.cookies.uuid) {
+        data.uuid = req.cookies.uuid
+    }
     var resErr = [];
-    var resReturn = [];
     if(!tokenfunc.checkToken(data.token)){ //token验证不通过
         res.send(comfunc.api_return('100001', 'token check fail', ''));
+        return false;
     }
     cms.detail_count(data,function(err,result){
         if(err){
