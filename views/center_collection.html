@@ -269,6 +269,7 @@
                 favHtml += appendArticleItem(favArr[i]);
             }
             $('.right-main').append($(favHtml));
+            $('.report-btn').unbind('click');
             $('.report-btn').on("click",report); //点击举报
             $('.share-btn').on('click',share); //点击分享
         }
