@@ -20,17 +20,17 @@
   </div>
   <div class="quick-text11" style="">
 
-    <label class="title" for="yiMinPhoneCodes" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px"> &nbsp;&nbsp;手机验证码：</label>
-    <input name="quickPhoneCodes" id="yiMinPhoneCodes" type="text" style="width: 180px;
+    <label class="title" for="yiMinPhoneCodes" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px"> &nbsp;&nbsp;手&nbsp;&nbsp;机&nbsp;&nbsp;验&nbsp;&nbsp;证&nbsp;码：</label>
+    <input name="quickPhoneCodes" id="yiMinPhoneCodes" type="text" style="width: 152px;
     height:28px;border: 1px solid #dcdcdc;padding-left:10px;color:#999999;font-size:12px; " placeholder="输入手机验证码"/>
 
-    <div class="numTip" id="codeNumTip-acts" style="margin-left:114px;height:14px;line-height: 14px;color:#ff7d31;"></div>
+    <div class="numTip" id="codeNumTip-acts" style="margin-left:136px;height:14px;line-height: 14px;color:#ff7d31;"></div>
   </div>
   <div class="quick-text11" style="">
 
-    <label class="title" for="yimin_countrys" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px">&nbsp;&nbsp;意&nbsp;向&nbsp;国&nbsp;家：</label>
-    <select id="yimin_countrys" name="yimin_countrys" style="width: 190px;
-    height: 28px;color:#999999;border: 1px solid #dcdcdc;padding-left:10px;background:#ffffff url({{helper.cdnhost}}/assets/img/select-down1.png) no-repeat 167px 0">
+    <label class="title" for="yimin_countrys" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px">&nbsp;&nbsp;意向国家和地区：</label>
+    <select id="yimin_countrys" name="yimin_countrys" style="width: 164px;
+    height: 28px;color:#999999;border: 1px solid #dcdcdc;padding-left:10px;background:#ffffff url({{helper.cdnhost}}/assets/img/select-down1.png) no-repeat 141px 0">
       <option value='3'>加拿大</option>
       <option value='1'>美国</option>
       <option value='4'>澳大利亚</option>
@@ -53,9 +53,9 @@
   </div>
   <div class="quick-text11" style="margin-top:14px;">
 
-    <label class="title" for="yimin_projects" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px">&nbsp;&nbsp;移&nbsp;民&nbsp;目&nbsp;的：</label>
-    <select id="yimin_projects" name="yimin_projects" style="width: 190px;
-    height: 28px;color:#999999;border: 1px solid #dcdcdc;padding-left:10px;background:#ffffff url({{helper.cdnhost}}/assets/img/select-down1.png) no-repeat 167px 0">
+    <label class="title" for="yimin_projects" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px">&nbsp;&nbsp;移&nbsp;&nbsp;&nbsp;&nbsp;民&nbsp;&nbsp;&nbsp;目&nbsp;&nbsp;&nbsp;的：</label>
+    <select id="yimin_projects" name="yimin_projects" style="width: 164px;
+    height: 28px;color:#999999;border: 1px solid #dcdcdc;padding-left:10px;background:#ffffff url({{helper.cdnhost}}/assets/img/select-down1.png) no-repeat 141px 0">
       <option value='1'>投资移民</option>
       <option value='2'>创业移民</option>
       <option value='3'>技术移民</option>
@@ -157,7 +157,7 @@
       success:function(msg){
 
         if(msg.code === 0){
-          alert('成功');
+         /* alert('成功');*/
         } else {
           alert('出错啦');
         }
