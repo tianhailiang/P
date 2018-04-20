@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 {% include "header_new.html" %}
 <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/search_result.css"/>
@@ -32,7 +33,9 @@
         margin-top: -33px
     }
 </style>
+</head>
 <body style="background: #f5f5f5">
+{% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/yimin_search_nav.html" as yimin_search_nav %}
 {{ yimin_search_nav.yimin_search_nav(tdk,helper) }}
