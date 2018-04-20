@@ -56,7 +56,7 @@
         </div>-->
         <form class="form-group m-t" role="form" style="margin-top: 20px;">
           <div class="form-group inputtext_isr" style="position: relative;height: 28px">
-            <input type="text" style="border-radius: inherit;height: 30px;" class="form-control" placeholder="请输入手机号" id="newEmail" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
+            <input type="text" style="border-radius: inherit;height: 30px;" class="form-control" placeholder="请输入手机号" id="newEmail" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
           </div>
           <!--<div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
@@ -232,7 +232,7 @@
       $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#newEmail").val())) {
+    if (!/^1\d{10}$/.test($("#newEmail").val())) {
 //            let butp = document.getElementById('phone')
       $('#newEmail').parent().addClass("has-error").removeClass("has-success");
       $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
@@ -301,9 +301,9 @@ function loginS () {
     $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
     return
   }
-  if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1[3|4|5|7|8]\d{9}$/.test($('#newEmail').val())) {
+  if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1\d{10}$/.test($('#newEmail').val())) {
     $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-    $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号或工号后六位').popover({"trigger":"manual"}).popover("show");
+    $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号').popover({"trigger":"manual"}).popover("show");
     return
   }
   if ($('#verify_user').val() === '') {
@@ -318,7 +318,7 @@ function loginS () {
     layer.msg('请同意注册协议');
     return
   }
-  if ($('#newEmail').val() !== '' && $('#verify_user').val() !== ''&& /^\d{6}$/.test($("#verify_user").val()) && /^1[3|4|5|7|8]\d{9}$/.test($("#newEmail").val()) ) {
+  if ($('#newEmail').val() !== '' && $('#verify_user').val() !== ''&& /^\d{6}$/.test($("#verify_user").val()) && /^1\d{10}$/.test($("#newEmail").val()) ) {
     console.log('ajax');
     $.ajax({
       url: '/login_user',
