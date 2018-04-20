@@ -152,7 +152,7 @@
           {% for item in community_index.us.views.list %}
           {% if loop.first %}
           <li class="clearfix">
-            <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+            <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
             <div class="r">
               <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
               <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -176,7 +176,7 @@
             {% for item in community_index.us.add_time.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -206,7 +206,7 @@
             {% for item in community_index.gb.views.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -230,7 +230,7 @@
             {% for item in community_index.gb.add_time.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -260,7 +260,7 @@
             {% for item in community_index.ca.views.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -284,7 +284,7 @@
             {% for item in community_index.ca.add_time.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -314,7 +314,7 @@
             {% for item in community_index.au.views.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -338,7 +338,7 @@
             {% for item in community_index.au.add_time.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -368,7 +368,7 @@
             {% for item in community_index.nz.views.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -392,7 +392,7 @@
             {% for item in community_index.nz.add_time.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -422,7 +422,7 @@
             {% for item in community_index.as.views.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -446,7 +446,7 @@
             {% for item in community_index.as.add_time.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -476,7 +476,7 @@
             {% for item in community_index.eu.views.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
@@ -500,7 +500,7 @@
             {% for item in community_index.eu.add_time.list %}
             {% if loop.first %}
             <li class="clearfix">
-              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
+              <a target="_blank" href="{{helper.urlgen('blog', item.user_info.uid.toString())}}"><img class="tou" src="{{helper.avaterimg(item.user_info.uid, 'small',  item.user_info.status,item.user_info.version)}}" alt="{{item.title}}" title="{{item.title}}"/></a>
               <div class="r">
                 <div class="r_title"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="color: #333" rel="nofollow">{{item.title}}</a></div>
                 <div class="r_con"><a target="_blank" href="{{helper.articleUrlgen('blog', item.uid.toString(), 'article='+item.id | string)}}" style="" rel="nofollow">{{item.introduce | ellipsis(58)}} <span>【查看详情】</span></a></div>
