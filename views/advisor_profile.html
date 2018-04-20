@@ -207,6 +207,7 @@
       }
     });
     var geren = $('#gerenjieshao').data('geren');
+    geren = geren.substring(0, 80);
     $('#gerenjieshao').html(geren);
     $("#word-num").html(80-geren.length);
   });
