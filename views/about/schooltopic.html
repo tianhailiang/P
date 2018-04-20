@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 {% include "header_new.html" %}
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/about.css">
 <style>
@@ -126,7 +127,9 @@
   var AD_PAGE_NAME = "SCHOOLTOPIC";
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+</head>
 <body style="background: #f5f5f5;">
+{% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
 
 {% import "widget/new_nav_first/common_nav.html" as common_nav %}

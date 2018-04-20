@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 {% include "header_new.html" %}
  <!--[if lt IE 10]>
   <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
@@ -265,7 +266,9 @@
   var AD_PAGE_NAME = "PROFILE";
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+</head>
 <body style="position: relative">
+  {% include "widget/common_hide/common_hide.html"%}
   {% include "widget/top/top.html" %}
   {% import "widget/new_nav_first/common_nav.html" as common_nav %}
   {{ common_nav.common_nav(tdk,helper) }}
