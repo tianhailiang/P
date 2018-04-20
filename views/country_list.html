@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 {% include "header_new.html" %}
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/search_result.css"/>
 <style>
@@ -46,7 +47,9 @@
       padding-top: 16px;
     }
 </style>
+</head>
 <body style="background: #f5f5f5">
+{% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
 {{ new_nav_red.new_nav_red(tdk,helper) }}
@@ -286,7 +289,7 @@
                     <div class="result-item clearfix">
                         <div class="item-adviser">
 <!--                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>-->
-                            <a target="_blank" href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.realname | shorten(6)}}</span><img src="{{helper.cdnhost}}/assets/img/1v.png" alt="" class="flag"/></div></a>
+                            <a target="_blank" href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.realname | shorten(6)}}</span><img src="{{helper.cdnhost}}/assets/img/1v.png" alt="" class="flag"/></div></a>
                         </div>
                         <div class="item-info">
                             <div class="info-top clearfix">

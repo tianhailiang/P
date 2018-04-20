@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 {% include "header_new.html" %}
 <style>
   .new-activity{
@@ -135,9 +136,11 @@
   var AD_PAGE_NAME = "ACTIVITY";
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+</head>
 <body style="background: #ffffff">
 {# 大学排名 #}
 {# 头部导航 #}
+{% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
 {{ new_nav_red.new_nav_red(tdk,helper) }}

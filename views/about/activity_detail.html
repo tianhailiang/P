@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 {% include "header_new.html" %}
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/activity_detail.css">
 <style>
@@ -93,7 +94,9 @@
 
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+</head>
 <body>
+{% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
 {{ new_nav_red.new_nav_red(tdk,helper) }}
