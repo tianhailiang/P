@@ -237,7 +237,7 @@
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#phone").val())) {
+    if (!/^1\d{10}$/.test($("#phone").val())) {
 //            let butp = document.getElementById('phone')
       $('#phone').parent().addClass("has-error").removeClass("has-success");
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
@@ -305,7 +305,7 @@
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#phone").val())) {
+    if (!/^1\d{10}$/.test($("#phone").val())) {
 //            let butp = document.getElementById('phone')
       $('#phone').parent().addClass("has-error").removeClass("has-success");
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
@@ -387,7 +387,7 @@ function outlogin () {
       $('#phone_reg').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#phone_reg").val())) {
+    if (!/^1\d{10}$/.test($("#phone_reg").val())) {
 //            let butp = document.getElementById('phone')
       $('#phone_reg').parent().addClass("has-error").removeClass("has-success");
       $('#phone_reg').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
@@ -439,7 +439,7 @@ function outlogin () {
       $('#phone_reg').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#phone_reg").val())) {
+    if (!/^1\d{10}$/.test($("#phone_reg").val())) {
 //            let butp = document.getElementById('phone')
       $('#phone_reg').parent().addClass("has-error").removeClass("has-success");
       $('#phone_reg').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
