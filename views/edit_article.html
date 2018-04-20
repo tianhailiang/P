@@ -148,9 +148,7 @@
                 {'name':'申请规划'},
                 {'name':'留学费用'},
                 {'name':'留学条件'},
-                {'name':'留学评估'},
                 {'name':'大学排名'},
-                {'name':'签证指南'},
                 {'name':'行前指导'},
                 {'name':'就业指导'},
                 {'name':'签证指导'},
@@ -164,7 +162,7 @@
               </span>
               <span class="numTip" style="display:block;
     margin-left: 130px;margin-top:5px;">
-                推荐标签最多选择3个
+                推荐标签最多选择2个
               </span>
             </div>
   	        <div class="rel-case-text1" style="margin-top: 20px;">
@@ -313,8 +311,8 @@
         }
       });
       //选择推荐标签
-      $('.recommend-sel').eq(6).css({"display":"inline-block","marginLeft":"130px","marginTop":"5px"});
-      $('.recommend-sel').eq(9).css({"marginRight":"274px"});
+      $('.recommend-sel').eq(5).css({"display":"inline-block","marginLeft":"130px","marginTop":"5px"});
+      $('.recommend-sel').eq(7).css({"marginRight":"274px"});
       $('.recommend-sel:last').css({"display":"inline-block","marginLeft":"130px","marginTop":"5px"});
 
       var recNumber = $('.recommend-sel[checked=checked]').length;
@@ -326,7 +324,7 @@
           $(this).attr('checked',false);
         }else{
           // console.log('true')
-          if(recNumber<3){
+          if(recNumber<2){
             $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
             $(this).find('.level-sel-i').next().css({'color':'#c13232'});
             $(this).attr('checked',true);
@@ -410,7 +408,7 @@
           $('.recommend-sel[checked=checked]').each(function(){
             tagStr+=$(this).find('i').eq(1).text()+',';
           });
-          if($('.recommend-sel').eq(10).attr('checked')){
+          if($('.recommend-sel').eq(8).attr('checked')){
            artType = 1;
           }else{
             artType = 2;
@@ -506,7 +504,7 @@
           $('.recommend-sel[checked=checked]').each(function(){
             tagStr+=$(this).find('i').eq(1).text()+',';
           });
-          if($('.recommend-sel').eq(10).attr('checked')){
+          if($('.recommend-sel').eq(8).attr('checked')){
             artType = 1;
           }else{
             artType = 2;
