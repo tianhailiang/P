@@ -124,6 +124,7 @@
             </div>
           </div>
         </div>
+          {% if userinfo.status == 0 %}
         <div class="adviser-case-operation-bar clearfix" style="padding-top: 40px;padding-bottom: 40px;" id="to_comments">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}
@@ -142,6 +143,7 @@
               </i>点赞</span> 
             <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" onclick="openchat_new('{{ userinfo.job_number}}')">立即咨询</a>
         </div>
+          {% endif %}
         <div class="article_tuijian">
           <h1><div></div>相关推荐</h1>
           {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list) %}
