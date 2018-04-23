@@ -234,6 +234,8 @@
       return
     }
     if (!/^[a-zA-Z0-9]{8,16}$/.test($("#qie_password").val())) {
+      $("#new_password").parent().removeClass("has-error").addClass("has-success");
+      $("#new_password").popover("destroy");
       $("#qie_password").parent().removeClass("has-error").addClass("has-success");
       $("#qie_password").popover("destroy");
       $('#qie_password').parent().addClass("has-error").removeClass("has-success");
