@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function initialize(){
+			var geolocation = new BMap.Geolocation();
+			geolocation.getCurrentPosition(function(r){
+				console.log(r)
+				if(this.getStatus() == BMAP_STATUS_SUCCESS){
+					alert(r.address.city)
+					alert('您的位置：'+r.point.lng+','+r.point.lat);
+				}
+				else {
+					alert('failed'+this.getStatus());
+				}        
+			});
+		}
+		function loadScript() {  
+		  var script = document.createElement("script");  
+		  script.src = "http://api.map.baidu.com/api?v=3.0&ak=586c90bc5512edfcd7de1696749f8ef7&callback=initialize";
+		  document.body.appendChild(script);  
+		}  
+   
+		window.onload = loadScript;  
+	</script>
+</head>
+<body>
+	<div class="box"></div>
+	<div id ="app" >顾问信息</div>
+	<!-- <script  src="{{helper.cdnhost}}/dep/js/jquery.js"></script>
+	<script  src="{{helper.cdnhost}}/dep/js/nunjucks.js"></script>
+	<script type="text/javascript">
+		var data = {
+		    "uid": "250",
+		    "nickname": "曾雪",
+		    "organid": 1,
+		    "usertype": 2,
+		    "introduce": "曾雪老师，世界巴斯大学（Bath）管理硕士高材生，在学习期间也有许多实习工作经验。毕业就加入到留学行业有实力金吉列公司，在金吉列工作的这些年，曾雪老师充分发挥在英国求学和工作优势，成功帮助学生申请到牛津、剑桥、伦敦政经、帝国理工、伦敦大学学院、圣安德鲁斯、华威、爱丁堡、布里斯托、杜伦、巴斯、曼彻斯特等世界名校，对每个学生的方案掌握精准。",
+		    "groupid": null,
+		    "birthday": null,
+		    "sex": null,
+		    "realname": "曾雪",
+		    "dept": "英国七部",
+		    "status": 0,
+		    "position_name": null,
+		    "version": "1521010157",
+		    "job_number": "jjl-uk7-011193",
+		    "country": "2",
+		    "qq_qrcode": null,
+		    "weixin_qrcode": "http://images.jjl.cn/ugc/2018/0305/20180305191749520.jpeg",
+		    "adviser_type": 1,
+		    "lx_adviser": 2,
+		    "ym_adviser": 1,
+		    "qrcode": "http://images.jjl.cn/qrcode/1523411082.png",
+		    "email": "zengxue.bj@jjl.cn",
+		    "tel": "010-65685656-1778",
+		    "fans_count": 7,
+		    "favourite_count": 0,
+		    "article_count": 40,
+		    "is_follow": 0
+		}
+		nunjucks.configure('/views', { autoescape: true });
+		var a = nunjucks.render('template/foo.html', data);
+		console.log(100)
+		console.log(a)
+		$("#app").on('click',function(){
+			console.log(200)
+			$('.box').html(a)
+		})
+	</script> -->
+
+</body>
+</html>

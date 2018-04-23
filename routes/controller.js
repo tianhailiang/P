@@ -1866,7 +1866,12 @@ exports.case_detail = function(req,res,next){
             return false;
         }
         data.article =returnData(result.article,'article');
-        data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        if(data.article.article_info.img_info){
+            data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        }else{
+            data.article.article_info.img_info=[];
+        }
+        
         data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
             //获取用户信息（普通用户，顾问，参赞）
@@ -1965,7 +1970,11 @@ exports.article_detail= function(req,res,next){
           return false;
         }
         data.article =returnData(result.article,'article');
-        data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        if(data.article.article_info.img_info){
+            data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
+        }else{
+            data.article.article_info.img_info = [];
+        }
         data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
           //获取用户信息（普通用户，顾问，参赞）
@@ -3763,4 +3772,9 @@ exports.liuxue_item_nunjucks = function (req, res, next) {
         resData.edu_item = result;
         res.render('widget/liuxue_item/liuxue_item_nunjucks', resData);
     })
+}
+exports.thl = function(req,res,next){
+    log.debug('测试thl页面')
+    var data ={};
+    res.render('thl',data)
 }
