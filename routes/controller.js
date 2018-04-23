@@ -2123,7 +2123,7 @@ exports.adviser_main = function (req, res, next) {
               realname: data.userinfo.realname,
           };
           data.esikey = esihelper.esikey();
-        //   log.info(data.userinfo)
+        // log.info(data.userinfo)
           res.render('adviser_main', data);
       })
   });
