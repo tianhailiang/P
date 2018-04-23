@@ -239,4 +239,9 @@ exports = module.exports = function (app) {// routes
   app.get("/schooltopic/:id",about.schooltopic);//金色力量底页
   app.get("/liuxue_item_nunjucks",controller.liuxue_item_nunjucks);//首页代码段落
   app.get('/thl',controller.thl);
+  app.get('/cityIp',function(req,res,next){
+    console.log('百度ip定位')
+    var data ={};
+    res.render('baidu_ip',data);
+  })
 };
