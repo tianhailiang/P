@@ -204,17 +204,17 @@
     if ($('#old_password').val() === '') {
       $('#old_password').parent().addClass("has-error").removeClass("has-success");
       $('#old_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '当前登录密码不正确').popover({"trigger":"manual"}).popover("show");
-      return
+      return false
     }
     if ($('#new_password').val() === '') {
       $('#new_password').parent().addClass("has-error").removeClass("has-success");
       $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '新密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
-      return
+      return false
     }
     if ($('#qie_password').val() === '') {
       $('#qie_password').parent().addClass("has-error").removeClass("has-success");
       $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
-      return
+      return false
     }
     if ($('#new_password').val() !== $('#qie_password').val()) {
       console.log('dddddd')
@@ -222,29 +222,29 @@
       $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
       $('#qie_password').parent().addClass("has-error").removeClass("has-success");
       $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
-      return
+      return false
     }
     if (!/^[a-zA-Z0-9]{8,16}$/.test($("#new_password").val())) {
-      $("#new_password").parent().removeClass("has-error").addClass("has-success");
+      //$("#new_password").parent().removeClass("has-error").addClass("has-success");
       $("#new_password").popover("destroy");
-      $("#qie_password").parent().removeClass("has-error").addClass("has-success");
-      $("#qie_password").popover("destroy");
-      $('#new_password').parent().addClass("has-error").removeClass("has-success");
-      $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '新密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
-      return
+      console.log('888888888888')
+      //$('#new_password').parent().addClass("has-error").removeClass("has-success");
+       window.setTimeout(function(){
+         $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '新密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+       },500)
+      return false
     }
     if (!/^[a-zA-Z0-9]{8,16}$/.test($("#qie_password").val())) {
-      $("#new_password").parent().removeClass("has-error").addClass("has-success");
-      $("#new_password").popover("destroy");
-      $("#qie_password").parent().removeClass("has-error").addClass("has-success");
+      //$('#qie_password').parent().addClass("has-error").removeClass("has-success");
       $("#qie_password").popover("destroy");
-      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
-      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
-      return
+      window.setTimeout(function(){
+        $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      },500)
+      return false
     }
     var sha1 = hex_sha1($('#old_password').val());
     console.log('sha1', sha1);
-    if ($('#username').val() !== '' && $('#nicheng').val() !== '') {
+    if ($('#username').val() !== '' && $('#nicheng').val() !== '' && $('#new_password').val() === $('#qie_password').val() && /^[a-zA-Z0-9]{8,16}$/.test($("#new_password").val()) && /^[a-zA-Z0-9]{8,16}$/.test($("#qie_password").val())) {
       $("#old_password").parent().removeClass("has-error").addClass("has-success");
       $("#old_password").popover("destroy");
       $("#new_password").parent().removeClass("has-error").addClass("has-success");
