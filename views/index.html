@@ -371,38 +371,34 @@
   $(function () {
     var nowLocation = window.location.href;
     var endFix = nowLocation.split('?')[1];
-    $.ajax({
-      type: "get",
-      async: false,
-      url:ajaxUrlPrefix.nodeapi+"/ip_geter",
-      dataType: "json",
-      success: function(result){
-        var iparea = result.data;
-        if(!$.cookie('currentarea')){
-          console.log('sss');
+    if(!$.cookie('currentarea')) {
+      $.ajax({
+        type: "get",
+        async: false,
+        url: ajaxUrlPrefix.nodeapi + "/ip_geter",
+        dataType: "json",
+        success: function (result) {
+          var iparea = result.data;
           $('#zhezhaox').show();
           $('#zhezhaos').show();
           $('#fengongsi').html(fn.getCityChinese(iparea));
+          //正确
+          $('#selByIp').on('click', function (e) {
+            e.preventDefault();
+            $.cookie('currentarea', iparea, {path: "/", domain: js_api_config.domain, expires: 36500});
+            if (endFix) {
+              window.location.href = fn.urlgen('branch_home', 'c=' + result.data) + '?' + endFix;
+            }
+            else {
+              window.location.href = fn.urlgen('branch_home', 'c=' + result.data);
+            }
+          })
+        },
+        error: function (error) {
+          console.log(error)
         }
-        else {
-          console.log('9999');
-        }
-        //正确
-        $('#selByIp').on('click',function (e) {
-          e.preventDefault();
-          $.cookie('currentarea', iparea, { path: "/",domain: js_api_config.domain,expires: 36500});
-          if (endFix) {
-            window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
-          }
-          else {
-            window.location.href = fn.urlgen('branch_home','c='+ result.data);
-          }
-        })
-      },
-      error: function(error){
-        console.log(error)
-      }
-    });
+      });
+    }
     $('.xuanze-chengshi').on('click',"a", function(e){
       var currentarea = $(this).attr("data-id");
       if (currentarea) {
