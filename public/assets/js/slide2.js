@@ -472,10 +472,7 @@ $(".weixin-slide").on("touchstart",function(){
       $(this).css("backgroundColor","#c13232");
     }
 
-  }else{
-    getlogin();
   }
-
 })
 $(".qq-slide").hover(function(){
 /*  $(".qq-slide-img").css("display","block");
@@ -507,8 +504,6 @@ $(".qq-slide").on("touchstart",function(){
       $(this).css("backgroundColor","#c13232");
     }
 
-  }else{
-    getlogin();
   }
 })
 $('#to_top').click(function(){

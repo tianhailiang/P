@@ -26,7 +26,7 @@ function loginS () {
     $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
     return
   }
-  if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1[3|4|5|7|8]\d{9}$/.test($('#newEmail').val())) {
+  if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1\d{10}$/.test($('#newEmail').val())) {
     $('#newEmail').parent().addClass("has-error").removeClass("has-success");
     $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号或工号后六位').popover({"trigger":"manual"}).popover("show");
     return
@@ -42,7 +42,7 @@ function loginS () {
   }*/
   var sha1 = hex_sha1($('#password').val());
   console.log('sha1'+sha1);
-  if ($('#newEmail').val() !== '' && $('#password').val() !== ''&& /^[a-zA-Z0-9]{6,16}$/.test($("#password").val()) && /^1[3|4|5|7|8]\d{9}$/.test($("#newEmail").val()) || /^[A-Za-z0-9]{6}$/.test($('#newEmail').val())) {
+  if ($('#newEmail').val() !== '' && $('#password').val() !== ''&& /^[a-zA-Z0-9]{6,16}$/.test($("#password").val()) && /^1\d{10}$/.test($("#newEmail").val()) || /^[A-Za-z0-9]{6}$/.test($('#newEmail').val())) {
     console.log('ajax');
     $.ajax({
       url: '/login_s',
