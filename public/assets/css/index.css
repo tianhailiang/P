@@ -130,91 +130,115 @@
     margin: 5px 10px;
 }
 .guoqi_ios1{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -62px -10px;
 }.guoqi_ios2{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -162px -10px;
 }.guoqi_ios3{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -357px -10px;
 }.guoqi_ios4{
-    background: url("../img/guoqi_ios.png")no-repeat;
-    background-position: -259px -10px;
+   background-image: url("../img/guoqi_ios.png");
+   background-repeat: no-repeat;
+   background-position: -259px -10px;
 }.guoqi_ios5{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -454px -10px;
 }.guoqi_ios6{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -650px -10px;
 }.guoqi_ios7{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -552px -10px;
 }.guoqi_ios8{
-    background: url("../img/guoqi_ios.png")no-repeat;
-    background-position: -847px -10px;
+   background-image: url("../img/guoqi_ios.png");
+   background-repeat: no-repeat;
+   background-position: -847px -10px;
     /*background-position: -748px -10px;*/
 }.guoqi_ios9{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -1041px -10px;
     /*background-position: -847px -10px;*/
 }.guoqi_ios10{
-    background: url("../img/guoqi_ios.png")no-repeat;
-    background-position: -1140px -10px;
+     background-image: url("../img/guoqi_ios.png");
+     background-repeat: no-repeat;
+     background-position: -1140px -10px;
     /*background-position: -943px -10px;*/
 }.guoqi_ios11{
-    background: url("../img/guoqi_ios.png")no-repeat;
-    background-position: -454px -72px;
+      background-image: url("../img/guoqi_ios.png");
+      background-repeat: no-repeat;
+      background-position: -454px -72px;
     /*background-position: -1041px -10px;*/
 }.guoqi_ios12{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -943px -72px;
     /*background-position: -1140px -10px;*/
 }.guoqi_ios13{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -1041px -72px;
     /*background-position: -62px -72px;*/
 }.guoqi_ios14{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -62px -72px;
     /*background-position: -162px -72px;*/
 }.guoqi_ios15{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -748px -10px;
     /*background-position: -259px -72px;*/
 }.guoqi_ios16{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -943px -10px;
     /*background-position: -357px -72px;*/
 }.guoqi_ios17{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -847px -72px;
     /*background-position: -454px -72px;*/
 }.guoqi_ios18{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -162px -72px;
     /*background-position: -552px -72px;*/
 }.guoqi_ios19{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -259px -72px;
     /*background-position: -650px -72px;*/
 }.guoqi_ios20{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -357px -72px;
     /*background-position: -748px -72px;*/
 }.guoqi_ios21{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -552px -72px;
     /*background-position: -847px -72px;*/
 }.guoqi_ios22{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -748px -72px;
     /*background-position: -943px -72px;*/
 }.guoqi_ios23{
-    background: url("../img/guoqi_ios.png")no-repeat;
+    background-image: url("../img/guoqi_ios.png");
+    background-repeat: no-repeat;
     background-position: -650px -72px;
     /*background-position: -1041px -72px;*/
 }.guoqi_ios24{
-    background: url("../img/guoqi_ios.png")no-repeat;
-    background-position: -1140px -72px;
+   background-image: url("../img/guoqi_ios.png");
+   background-repeat: no-repeat;
+   background-position: -1140px -72px;
 }
