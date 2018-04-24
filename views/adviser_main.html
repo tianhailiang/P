@@ -184,11 +184,10 @@
       slidesPerGroup: 2,
       pagination: true
     });
-
+    var listpage =1;
     $('.loadMore').on('click', function () {
       var page = $(this).data('page') * 1 + 1;
       var pageall = $(this).data('page-all');
-      var listpage =1;
       if(pageall == 1 || pageall == listpage ){
         return false;
       }
