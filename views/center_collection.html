@@ -342,9 +342,7 @@
             var all = $(this).data('all');
             var per_page = 4;
             var thisObj = $(this);
-            if (all == 1 || all < page ) {
-                return false;
-            }
+            
             $.ajax({
                 url: '/soapi/favList',
                 type: 'GET',
@@ -355,6 +353,7 @@
                     per_page: per_page
                 },
                 success: function (revmsg) {
+                    console.log(revmsg)
                     if (revmsg.code == 0) {
                         var revList = revmsg.data.list;
                         var len = revList.length;
@@ -379,6 +378,7 @@
                     console.log(errorThrown)
                 }
             })
+            
         });
         $('.report-btn').on("click",report); //点击举报
         $('.share-btn').on('click',share); //点击分享
