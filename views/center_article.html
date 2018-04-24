@@ -302,13 +302,12 @@
         $('.loadMore').on('click', function () {
             var page = $(this).data('page')*1+1;
             var pageall = $(this).data('page-all');
+            if(page >pageall){
+              return false;
+            }
             var uid = $(this).data('uid');
             var per_page = 4;
             var thisObj = $(this);
-            if(page >pageall){
-              thisObj.html('已展示全部');
-              return false;
-            }
             $.ajax({
                 url: '/soapi/advisor_list',
                 type: 'GET',
