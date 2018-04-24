@@ -375,10 +375,10 @@
       $.ajax({
         type: "get",
         async: false,
-        url: ajaxUrlPrefix.nodeapi + "/ip_geter",
+        url: ajaxUrlPrefix.nodeapi + "/get_ip_geter",
         dataType: "json",
         success: function (result) {
-          var iparea = result.data;
+          var iparea = result;
           $('#zhezhaox').show();
           $('#zhezhaos').show();
           $('#fengongsi').html(fn.getCityChinese(iparea));
