@@ -16,9 +16,10 @@ $(document).ready(function () {
     lS.attachEvent('onclick', loginS, false);
   }
 
-
 })
-
+$(".payMethod").find("input[type^='radio']").on('click',function () {
+    $(this).addClass('checked').siblings('input').removeClass('checked');
+});
 function loginS () {
   console.log('login_ssssss')
   if ($('#newEmail').val() === '') {

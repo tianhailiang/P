@@ -248,13 +248,13 @@
   cursor:pointer;
 }
 
-label{
+.payMethod label{
   font-weight: normal;
 }
 
-input[type="radio"]:checked+label {color: red;}
+.payMethod input[type="radio"].checked+label {color: #d31d2c;}
 
-input[type="radio"] + label:before {
+.payMethod input[type="radio"] + label span {
   content: "\a0"; /*不换行空格*/
   display: inline-block;
   vertical-align: middle;
@@ -269,13 +269,17 @@ input[type="radio"] + label:before {
   
 }
 
-input[type="radio"]:checked + label:before {
+.payMethod input[type="radio"].checked + label span i {
+  background-color: #d31d2c;
+}
+
+.payMethod input[type="radio"].checked + label span {
   content: "\a0"; /*不换行空格*/
   display: inline-block;
   vertical-align: middle;
   font-size: 18px;
-  width: 10px;
-  height: 9px;
+  width: 14px;
+  height: 14px;
   margin-right: 10px;
   border-radius: 50%;
   border: 1px solid #d31d2c;
@@ -285,7 +289,7 @@ input[type="radio"]:checked + label:before {
   color: #d31d2c;
 }
 
-input[type="radio"] {
+.payMethod input[type="radio"] {
   position: absolute;
-  clip: rect(0, 0, 0, 0);
+  z-index: -1;
 }
