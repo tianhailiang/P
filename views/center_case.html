@@ -310,7 +310,7 @@
             var per_page = 4;
             var thisObj = $(this);
             if (all == 1 || all == listpage) {
-                thisObj.html('已展示全部收藏');
+                thisObj.html('案例加载完毕');
                 return false;
             }
             $.ajax({
@@ -333,8 +333,8 @@
                             thisObj.html('案例加载完毕')
                         }
                         else if (all == listpage) {
-                            thisObj.html('已展示全部收藏');
-                            appendFav(revList);
+                            thisObj.html('案例加载完毕');
+                            appendFav(revmsg.data.list);
                         }
                         else if (0 < len && len < per_page) {
                             thisObj.html('案例加载完毕');
