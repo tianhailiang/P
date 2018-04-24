@@ -12,7 +12,7 @@
 <div class="comment-list-box" >
   {% for item in article.comments.list %}
   <div class="comment-list clearfix" >
-    <div class="comment-head" style="background:url({{helper.avaterimg(item.uid,'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size:cover;">
+    <div class="comment-head" style="background:url({{helper.avaterimg(item.uid,'small',item.user_info.status,item.user_info.version,item.user_info.usertype)}}) no-repeat 0 0;background-size:cover;">
     </div>
     <div class="comment-info" >
       <div  class="comment-info-name-box">
@@ -146,7 +146,7 @@
                 }
 
                 var html ='<div class="comment-list clearfix" >'+
-                             '<div class="comment-head" style="background:url('+fn.avaterimg(login_ss.uid,'small',login_ss.status,login_ss.version)+') no-repeat 0 0;background-size:cover;" >'+
+                             '<div class="comment-head" style="background:url('+fn.avaterimg(login_ss.uid,'small',login_ss.status,login_ss.version, login_ss.usertype)+') no-repeat 0 0;background-size:cover;" >'+
                              '</div>'+
                              '<div class="comment-info" >'+
                                '<div  class="comment-info-name-box">'+
@@ -237,7 +237,7 @@
                 delHtml = '<span class="delete-btn" ><i class="iconfont" >&#xe61e;</i>删除</span>';
               }
 	            html += '<div class="comment-list clearfix" >'+
-	                      '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version)+') no-repeat 0 0;background-size:cover;">'+
+	                      '<div class="comment-head" style="background:url('+fn.avaterimg(result.data.list[i].uid,'small',result.data.list[i].user_info.status,result.data.list[i].user_info.version,result.data.list[i].user_info.usertype)+') no-repeat 0 0;background-size:cover;">'+
 	                      '</div>'+
 	                      '<div class="comment-info" >'+
 	                        '<div  class="comment-info-name-box">'+

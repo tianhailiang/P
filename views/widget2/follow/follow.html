@@ -56,7 +56,7 @@
 {% macro follow_no(f_type,fItem,helper) %}
 <div class="follow-con clearfix">
 <!--  <img class="img-left" src="{{helper.avaterimg(fItem.fans_uid, 'small',fItem.user_info.status,fItem.user_info.version)}}" alt=""/>-->
-  <div style="background-image: url({{helper.avaterimg(fItem.fans_uid, 'small',fItem.user_info.status,fItem.user_info.version)}})" class="img-left"></div>
+  <div style="background-image: url({{helper.avaterimg(fItem.fans_uid, 'small',fItem.user_info.status,fItem.user_info.version,fItem.user_info.usertype)}})" class="img-left"></div>
   <div class="content">
     <div class="content-title">{{fItem.user_info.realname}}</div>
     <div class="content-des">个人简介：{{fItem.user_info.introduce}}</div>

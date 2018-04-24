@@ -131,9 +131,13 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="loadMore" data-page="1" data-uid="{% if userinfo %}{{userinfo.uid}}{%  endif %}">
-                <span>加载更多</span>
-                <i class="iconfont">&#xe60b;</i>
+            <div class="loadMore" data-page="1" data-page-all="{{case_data.totalpage}}" data-uid="{% if userinfo %}{{userinfo.uid}}{%  endif %}">
+              {% if case_data.total_count > 4 %}
+              <span>加载更多</span>
+              <i class="iconfont">&#xe60b;</i>
+              {% else %}
+              <span>专栏加载完毕</span>
+              {% endif %}
             </div>
             {% else %}
             <div style="width: 100%; height: 400px;text-align: center;line-height: 400px;font-size: 30px;">您还未发布专栏,快去<a target="_blank" href="{{helper.urlgen('advisor_center', 'postarticle')}}">发布专栏</a>发布吧！</div>
@@ -297,6 +301,10 @@
         }
         $('.loadMore').on('click', function () {
             var page = $(this).data('page')*1+1;
+            var pageall = $(this).data('page-all');
+            if(page >pageall){
+              return false;
+            }
             var uid = $(this).data('uid');
             var per_page = 4;
             var thisObj = $(this);
