@@ -254,56 +254,63 @@
       return html;
     }
     var listpage = 1;
+    var loadMoreFlag = true;
     $('.loadMore').on('click', function () {
-      var page = $(this).data('page')*1+1;
-      var pageall = $(this).data('page-all');
-      if(pageall == 1 || pageall == listpage ){
-        return false;
-      }
-      var per_page = 6;
-      var thisObj = $(this);
-      $.ajax({
-        url: '/soapi/loadmore',
-        type: 'GET',
-        datatype: 'json',
-        data: {
-          "order": encodeURI("add_time desc"),
-          page: page,
-          type: 2,
-          per_page: per_page,
-          uid:thisObj.attr("data-uid")
-        },
-        success: function (revmsg) {
-          console.log(revmsg)
-          if (revmsg.code == 0) {
-            var revList = revmsg.data.list;
-            var len = revList.length;
-            listpage = revmsg.data.page;
-            if (len == 0) {
-              thisObj.html('已展示全部');
-            }
-            else if (pageall == listpage) {
-              thisObj.html('已展示全部');
-              appendFav(revList);
-              thisObj.data('page', page);
-            }
-            else if (len < per_page) {
-              thisObj.html('已展示全部');
-              appendFav(revList);
-              thisObj.data('page', page);
-            }else {
-              appendFav(revList);
-              thisObj.data('page', page);
-            }
-          }
-          else {
-            thisObj.html('加载更多出错了，请刷新');
-          }
-        },
-        error:function(XMLHttpRequest, textStatus, errorThrown){
-          console.log(errorThrown)
+      if(loadMoreFlag){
+        var page = $(this).data('page')*1+1;
+        var pageall = $(this).data('page-all');
+        if(pageall == 1 || pageall == listpage ){
+          return false;
         }
-      })
+        var per_page = 6;
+        var thisObj = $(this);
+        loadMoreFlag = false;
+        $.ajax({
+          url: '/soapi/loadmore',
+          type: 'GET',
+          datatype: 'json',
+          data: {
+            "order": encodeURI("add_time desc"),
+            page: page,
+            type: 2,
+            per_page: per_page,
+            uid:thisObj.attr("data-uid")
+          },
+          success: function (revmsg) {
+            console.log(revmsg)
+            if (revmsg.code == 0) {
+              var revList = revmsg.data.list;
+              var len = revList.length;
+              listpage = revmsg.data.page;
+              if (len == 0) {
+                thisObj.html('已展示全部');
+              }
+              else if (pageall == listpage) {
+                thisObj.html('已展示全部');
+                appendFav(revList);
+                thisObj.data('page', page);
+              }
+              else if (len < per_page) {
+                thisObj.html('已展示全部');
+                appendFav(revList);
+                thisObj.data('page', page);
+              }else {
+                appendFav(revList);
+                thisObj.data('page', page);
+              }
+            }
+            else {
+              thisObj.html('加载更多出错了，请刷新');
+            }
+            loadMoreFlag = true;
+          },
+          error:function(XMLHttpRequest, textStatus, errorThrown){
+            console.log(errorThrown)
+            loadMoreFlag = true;
+          }
+        })
+      }
+
     });
     $('.report-btn').on("click",report); //点击举报
     function report(){
