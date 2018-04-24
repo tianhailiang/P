@@ -299,9 +299,9 @@
         '</div>';
         return html;
         }
+        var listpage = 1;
         $('.loadMore').on('click', function () {
             var page = $(this).data('page')*1+1;
-            var listpage = 1;
             var pageall = $(this).data('page-all');
             if(pageall == 1 || pageall == listpage ){
               return false;
