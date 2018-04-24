@@ -118,10 +118,17 @@
               {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
                 {% endfor %}
             </div>
-            <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}">
+            {% if collection_data.totalpage == 1  %}
+            <div class="loadMore" data-page="1" data-all="{{collection_data.totalpage}}" data-uid="{{userinfo.uid}}">
+                <span>已展示全部收藏</span>
+                {# <i class="iconfont">&#xe60b;</i> #}
+            </div>
+            {% else %}
+            <div class="loadMore" data-page="1" data-all="{{collection_data.totalpage}}" data-uid="{{userinfo.uid}}">
                 <span>加载更多</span>
                 <i class="iconfont">&#xe60b;</i>
             </div>
+            {% endif %}
             {% else %}
             {% include "widget2/blank/blank.html" %}
             {% endif %}
@@ -332,8 +339,12 @@
             page = page + 1;
             console.log('page',page);
             var uid = $(this).data('uid');
+            var all = $(this).data('all');
             var per_page = 4;
             var thisObj = $(this);
+            if (all == 1 || all < page ) {
+                return false;
+            }
             $.ajax({
                 url: '/soapi/favList',
                 type: 'GET',
