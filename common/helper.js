@@ -296,10 +296,10 @@ function avaterimg(uid, size, status, version,usertype){
   var dir3 = uid.substr(5, 2);
   if(status == 1 || version == 0 || version == null){
     if (usertype == 1) {
-      return 'http://images.jjl.cn/avatar/2018/0306/20180306133620636.jpeg'
+      return 'http://images.jjl.cn/avatar/default_avatar_small.jpg'
     }
     else {
-      return 'http://images.jjl.cn/avatar/default_avatar_small.jpg'
+      return 'http://images.jjl.cn/avatar/default_jjl.png'
     }
   }else{
     if (version == 1) {
