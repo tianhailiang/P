@@ -17,6 +17,7 @@
   </style>
 </head>
 <body style="background: #f5f5f5">
+{% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/common_nav.html" as common_nav %}
 {{ common_nav.common_nav(tdk,helper) }}
@@ -90,9 +91,13 @@
         {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
         {% endfor %}
       </div>
-      <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
+      <div class="loadMore" data-page="1" data-page-all="{{zhuanlanlist.totalpage}}" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
+        {% if zhuanlanlist.total_count > 6 %}
         <span>加载更多</span>
         <i class="iconfont">&#xe60b;</i>
+        {% else %}
+        <span>已展示全部</span>
+        {% endif %}
       </div>
       {% else %}
       {% include "widget2/blank/blank.html" %}
@@ -250,6 +255,10 @@
     }
     $('.loadMore').on('click', function () {
       var page = $(this).data('page')*1+1;
+      var pageall = $(this).data('page-all');
+      if(page >pageall){
+        return false;
+      }
       var per_page = 6;
       var thisObj = $(this);
       $.ajax({

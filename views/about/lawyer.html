@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
 {% include "header_new.html" %}
 
 <style>
@@ -42,7 +43,9 @@
     cursor: default;
   }
 </style>
+</head>
 <body style="background: #ffffff">
+{% include "widget/common_hide/common_hide.html"%}
 {# 大学排名 #}
 {# 头部导航 #}
 {% include "widget/top/top.html" %}
@@ -122,7 +125,7 @@
 
 {% include "widget/new_footer/yimin_footer.html" %}
 {% import "widget/new_slide_yimin/new_slide.html" as  slide %}
-{{slide.leyu_slide("AD_COUNSELLER_SEAT10",helper) }}
+{{slide.leyu_slide(helper) }}
 </body>
 <script>
   var AD_PAGE_NAME = "COUNSELLER"; //设置页面对应的名字

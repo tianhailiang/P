@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<head>
 {% include "header_new.html" %}
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/logo.css" >
 <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/index.css">
@@ -13,7 +14,9 @@
     margin: 10px 0px 25px 87px;
   }
 </style>
+</head>
 <body>
+{% include "widget/common_hide/common_hide.html"%}
 <!--留学国家-->
 <div class="nationality_guoqi_warp">
   <div class="nationality_guoqi">
@@ -21,7 +24,7 @@
       <a href="#country1"><img src="{{helper.cdnhost}}/assets/img/America.png" alt="美国移民"><p>美国</p></a>
       <a href="#country3"><img src="{{helper.cdnhost}}/assets/img/Canada.png" alt="加拿大移民"><p>加拿大</p></a>
       <a href="#country4"><img src="{{helper.cdnhost}}/assets/img/Australia.png" alt="澳大利亚移民"><p>澳大利亚</p></a>
-      <a href="#country5"><img src="{{helper.cdnhost}}/assets/img/NEW ZEALAND.png" alt="新西兰移民"><p>新西兰</p></a>
+      <a href="#country5"><img src="{{helper.cdnhost}}/assets/img/NEW_ZEALAND.png" alt="新西兰移民"><p>新西兰</p></a>
       <a href="#country2"><img src="{{helper.cdnhost}}/assets/img/England.png" alt="英国移民"><p>英国</p></a>
       <a href="#country108"><img src="{{helper.cdnhost}}/assets/img/eire.png" alt="爱尔兰移民"><p>爱尔兰</p></a>
       <a href="#country7"><img src="{{helper.cdnhost}}/assets/img/Greece.png" alt="希腊移民"><p>希腊</p></a>

@@ -3,11 +3,14 @@
 <pre>{{ error.stack }}</pre>#}
 <!DOCTYPE html>
 <html lang="en">
+<head>
 {% include "header_new.html" %}
 <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/index.css">
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/error.css">
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/branch_home_page.css" >
+</head>
 <body>
+{% include "widget/common_hide/common_hide.html"%}
 {% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
 {{ new_nav_first.new_nav_first(tdk,helper) }}
 <div class="error-con"><img src="{{helper.cdnhost}}/assets/img/404.png" alt=""></div>

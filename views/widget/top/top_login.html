@@ -170,7 +170,7 @@ input[type="checkbox"] {
     <div class="l_u_con_"></div>
     <form class="m-t" role="form" style="margin-top: 20px">
       <div class="form-group inputtext_isr" style="position: relative;">
-        <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
+        <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
         <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe679;</i>
       </div>
       <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
@@ -210,7 +210,7 @@ input[type="checkbox"] {
     <div class="l_u_con_"></div>
     <form class="m-t" role="form" style="margin-top: 20px">
       <div class="form-group inputtext_isr" style="position: relative;">
-        <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone_reg" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确"/>
+        <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone_reg" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
         <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe679;</i>
       </div>
       <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
@@ -469,7 +469,7 @@ input[type="checkbox"] {
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#phone").val())) {
+    if (!/^1\d{10}$/.test($("#phone").val())) {
 //            let butp = document.getElementById('phone')
       $('#phone').parent().addClass("has-error").removeClass("has-success");
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
@@ -521,7 +521,7 @@ input[type="checkbox"] {
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#phone").val())) {
+    if (!/^1\d{10}$/.test($("#phone").val())) {
 //            let butp = document.getElementById('phone')
       $('#phone').parent().addClass("has-error").removeClass("has-success");
       $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
@@ -586,7 +586,7 @@ function outlogin () {
       $('#phone_reg').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#phone_reg").val())) {
+    if (!/^1\d{10}$/.test($("#phone_reg").val())) {
 //            let butp = document.getElementById('phone')
       $('#phone_reg').parent().addClass("has-error").removeClass("has-success");
       $('#phone_reg').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
@@ -638,7 +638,7 @@ function outlogin () {
       $('#phone_reg').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#phone_reg").val())) {
+    if (!/^1\d{10}$/.test($("#phone_reg").val())) {
 //            let butp = document.getElementById('phone')
       $('#phone_reg').parent().addClass("has-error").removeClass("has-success");
       $('#phone_reg').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");

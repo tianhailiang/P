@@ -13,7 +13,7 @@
 .triangle{position:absolute;top:0;right:0;width:0;height:0;border-top:20px solid #c13232;border-left:20px solid transparent}
 .gw-topitems .gw-people{margin-left:20px}
 .gw-topitems .gw-news{ margin-right: 16px;}
-.gw-items{ width: 1200px;display: inline-block;}
+.gw-items{ width: 1200px; overflow: hidden; }
 .gw-items li:nth-child(3n){margin-right:0}
 .gw-people{position:relative;float:left;margin-left:20px}
 .lx-groupitems .gw-people a{
@@ -65,9 +65,7 @@
 			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=申请规划')}}" target="_blank">申请规划</a></li>
 			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=留学费用')}}" target="_blank">留学费用</a></li>
 			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=留学条件')}}" target="_blank">留学条件</a></li>
-			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=留学评估')}}" target="_blank">留学评估</a></li>
 			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=大学排名')}}" target="_blank">大学排名</a></li>
-			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=签证指南')}}" target="_blank">签证指南</a></li>
 			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=行前指导')}}" target="_blank">行前指导</a></li>
 			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=就业指导')}}" target="_blank">就业指导</a></li>
 			<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=签证指导')}}" target="_blank">签证指导</a></li>
@@ -79,8 +77,8 @@
 	{% if loop.index == 1 and type.edu_name == '推荐'%}
 	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %} data-id="{{type.edu_id}}"><!--推荐-->
 		{% for line in type.list %} {#行数#}
-			{% if loop.index == 1 %} {#第一行#}<ul class="gw-items gw-topitems" id="guItems">	{% for item in line %}	{% if item.uid != null %}	<li>		<div class="gw-people">			<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover"></a>			<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>		</div>		{#<p>{{item.type}}</p>#}		<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">			<div class="gw-legend gw-news">留学时讯</div>			<p style="clear:both">{{ item.title | ellipsis(21) }}</p>		</a>	</li>	{% endif %}	{% endfor %}	<em class="triangle"></em></ul>
-			{% else %}<ul class="gw-items">		{% for item in line %}			{% if item.uid != null %}			<li class="gw-newslist">				<div class="gw-people">					<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}});background-size:cover;"></a>					<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>				</div>				{#<p>{{item.type}}</p>#}				<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">					<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>					<p style="clear:both">{{item.title | ellipsis(21)}}</p>				</a>			</li>			{% endif %}		{% endfor %}</ul>
+			{% if loop.index == 1 %} {#第一行#}<ul class="gw-items gw-topitems" id="guItems">	{% for item in line %}	{% if item.uid != null %}	<li>		<div class="gw-people">			<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></a>			<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>		</div>		{#<p>{{item.type}}</p>#}		<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">			<div class="gw-legend gw-news">留学时讯</div>			<p style="clear:both">{{ item.title | ellipsis(21) }}</p>		</a>	</li>	{% endif %}	{% endfor %}	<em class="triangle"></em></ul>
+			{% else %}<ul class="gw-items">		{% for item in line %}			{% if item.uid != null %}			<li class="gw-newslist">				<div class="gw-people">					<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover;"></a>					<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>				</div>				{#<p>{{item.type}}</p>#}				<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">					<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>					<p style="clear:both">{{item.title | ellipsis(21)}}</p>				</a>			</li>			{% endif %}		{% endfor %}</ul>
 			{% endif %}
 		{% endfor %}
 	</div>

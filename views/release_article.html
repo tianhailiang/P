@@ -9,6 +9,7 @@
   <![endif]-->
 </head>
 <body style="background:#f5f5f5;">
+{% include "widget/common_hide/common_hide.html"%}
 	<!-- ===头部=== -->
 	{% include "widget/top/top.html" %}
 	<!-- ====导航===== -->
@@ -141,18 +142,10 @@
               </span>
               <span class="recommend-sel" >
                 <i class="level-sel-i iconfont"></i>
-                <i>留学评估</i>
-              </span>
-              <span class="recommend-sel" >
-                <i class="level-sel-i iconfont"></i>
                 <i>大学排名</i>
               </span>
               <span class="recommend-sel" style="display: inline-block;
     margin-left: 130px;">
-                <i class="level-sel-i iconfont"></i>
-                <i>签证指南</i>
-              </span>
-              <span class="recommend-sel" >
                 <i class="level-sel-i iconfont"></i>
                 <i>行前指导</i>
               </span>
@@ -174,15 +167,15 @@
               </span>
               <span class="numTip" style="display:block;
     margin-left: 130px;margin-top:5px;">
-                推荐标签最多选择3个
+                推荐标签最多选择2个
               </span>
             </div>
   	        <div class="rel-case-text1" style="margin-top: 20px;">
       			  <label class="title active" for="rel-case-title">
                 <span>*</span> 文章标题：
               </label>
-      			  <input  id="rel-case-title" type="text" maxlength="30">
-      			  <span class="numTip" style="display: block;margin-left: 97px;margin-top: 8px;">填写文章标题，字数限30个汉字</span>
+      			  <input  id="rel-case-title" type="text" maxlength="22">
+      			  <span class="numTip" style="display: block;margin-left: 97px;margin-top: 8px;">填写文章标题，字数限22个汉字</span>
       		  </div>
             <div class="rel-case-text1" style="margin-top: 20px;">
               <label class="title active" for="art_abs" >
@@ -329,7 +322,7 @@
           $(this).attr('checked',false);
         }else{
           // console.log('true')
-          if(recNumber<3){
+          if(recNumber<2){
             $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
             $(this).find('.level-sel-i').next().css({'color':'#c13232'});
             $(this).attr('checked',true);
@@ -427,7 +420,7 @@
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
             });
-            if($('.recommend-sel').eq(10).attr('checked')){
+            if($('.recommend-sel').eq(8).attr('checked')){
               artType = 1;
             }else{
               artType = 2;
@@ -537,7 +530,7 @@
             $('.recommend-sel[checked=checked]').each(function(){
               tagStr+=$(this).find('i').eq(1).text()+',';
             });
-            if($('.recommend-sel').eq(10).attr('checked')){
+            if($('.recommend-sel').eq(8).attr('checked')){
               artType = 1;
             }else{
               artType = 2;
