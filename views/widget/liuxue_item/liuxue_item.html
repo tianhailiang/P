@@ -85,22 +85,10 @@
 	{% endif %}
 	{% endfor %}{#类别end#}
 </div>
-	<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;">
-		<div class="home-guanggao" style="float:left;overflow:hidden;margin-right:-20px">
-			{% for picitem in guanggao %}
-			{% if helper.adseatCompare(picitem.ad_seat,ad_seat_index) %}
-					{% for ad_pic in picitem.setting %}
-						{% if loop.index <= 3%}
-						<a rel="nofollow" data-pid="{{ad_pic.pid}}" data-seat="{{ad_seat_index}}"  href="{{ad_pic.linkurl}}" target="_blank">
-							<img src='{{ad_pic.imageurl}}' alt='{{picitem.alt}}' style="width:386px;height:120px"/>
-						</a>
-						{% endif %}
-					{% endfor %}
-			{% endif %}
-			{% endfor %}
-		</div>
-	</div>
+	{% import "widget/xSlider/guanggao_slider.html" as guanggao_slider %}
+	{{guanggao_slider.slideMove(guanggao,helper,ad_seat_index)}}
 {% endfor %} {#国家end#}
+
 <script>
 	var cur_area;
 	if ($.cookie('currentarea')) {
