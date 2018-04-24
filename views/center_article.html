@@ -131,12 +131,12 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="loadMore" data-page="1" data-page-all="{{case_data.totalpage}}" data-uid="{% if userinfo %}{{userinfo.uid}}{%  endif %}">
-              {% if case_data.totalpage == 1 %}
+            <div class="loadMore" data-page="1" data-page-all="{{article_data.totalpage}}" data-uid="{% if userinfo %}{{userinfo.uid}}{%  endif %}">
+              {% if article_data.totalpage == 1 %}
               <span>专栏加载完毕</span>
-              <i class="iconfont">&#xe60b;</i>
               {% else %}
               <span>加载更多</span>
+              <i class="iconfont">&#xe60b;</i>
               {% endif %}
             </div>
             {% else %}
@@ -321,7 +321,7 @@
                     order:"add_time desc"
                 },
                 success: function (revmsg) {
-                    // console.log(revmsg)
+                     console.log(revmsg)
                     if (revmsg.code == 0) {
                         var len = revmsg.data.list.length;
                         listpage = revmsg.data.page;
@@ -329,8 +329,8 @@
                             thisObj.html('专栏加载完毕')
                         }
                         else if (pageall == listpage) {
-                          thisObj.html('已展示全部');
-                          appendFav(revList);
+                          thisObj.html('专栏加载完毕');
+                          addArticle(revmsg.data.list);
                           thisObj.data('page', page);
                         }
                         else if (0 < len && len < per_page) {
