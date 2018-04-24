@@ -131,12 +131,12 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="loadMore" data-page="1" data-page-all="{{case_data.totalpage}}" data-uid="{% if userinfo %}{{userinfo.uid}}{%  endif %}">
-              {% if case_data.total_count > 4 %}
+            <div class="loadMore" data-page="1" data-page-all="{{article_data.totalpage}}" data-uid="{% if userinfo %}{{userinfo.uid}}{%  endif %}">
+              {% if article_data.totalpage == 1 %}
+              <span>专栏加载完毕</span>
+              {% else %}
               <span>加载更多</span>
               <i class="iconfont">&#xe60b;</i>
-              {% else %}
-              <span>专栏加载完毕</span>
               {% endif %}
             </div>
             {% else %}
@@ -299,51 +299,65 @@
         '</div>';
         return html;
         }
+        var listpage = 1;
+        var loadMoreFlag = true;
         $('.loadMore').on('click', function () {
+          if(loadMoreFlag){
             var page = $(this).data('page')*1+1;
             var pageall = $(this).data('page-all');
-            if(page >pageall){
+            if(pageall == 1 || pageall == listpage ){
               return false;
             }
             var uid = $(this).data('uid');
             var per_page = 4;
             var thisObj = $(this);
+            loadMoreFlag = false;
             $.ajax({
-                url: '/soapi/advisor_list',
-                type: 'GET',
-                datatype: 'json',
-                data: {
-                    uid: uid,
-                    type: 2,
-                    page: page,
-                    per_page: per_page,
-                    order:"add_time desc"
-                },
-                success: function (revmsg) {
-                    // console.log(revmsg)
-                    if (revmsg.code == 0) {
-                        var len = revmsg.data.list.length;
-                        if (len == 0) {
-                            thisObj.html('专栏加载完毕')
-                        }
-                        else if (0 < len && len < per_page) {
-                            thisObj.html('专栏加载完毕');
-                            addArticle(revmsg.data.list);
-                            thisObj.data('page', page);
-                        }
-                        else {
-                            addArticle(revmsg.data.list);
-                            thisObj.data('page', page);
-                        }
-                    }
-                    else {
-                        thisObj.html('加载更多出错了，请刷新');
-                    }
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
-                    console.log(errorThrown)
+              url: '/soapi/advisor_list',
+              type: 'GET',
+              datatype: 'json',
+              data: {
+                uid: uid,
+                type: 2,
+                page: page,
+                per_page: per_page,
+                order:"add_time desc"
+              },
+              success: function (revmsg) {
+                console.log(revmsg)
+                if (revmsg.code == 0) {
+                  var len = revmsg.data.list.length;
+                  listpage = revmsg.data.page;
+                  if (len == 0) {
+                    thisObj.html('专栏加载完毕')
+                  }
+                  else if (pageall == listpage) {
+                    thisObj.html('专栏加载完毕');
+                    addArticle(revmsg.data.list);
+                    thisObj.data('page', page);
+                  }
+                  else if (0 < len && len < per_page) {
+                    thisObj.html('专栏加载完毕');
+                    addArticle(revmsg.data.list);
+                    thisObj.data('page', page);
+                  }
+                  else {
+                    addArticle(revmsg.data.list);
+                    thisObj.data('page', page);
+                  }
                 }
+                else {
+                  thisObj.html('加载更多出错了，请刷新');
+                }
+                loadMoreFlag = true;
+              },
+              error:function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(errorThrown)
+                loadMoreFlag = true;
+              }
             })
+          }
+
         })
     })
   </script>

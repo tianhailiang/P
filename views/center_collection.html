@@ -335,14 +335,19 @@
         }
 
         var page = 1;
+        var listpage = 1;
         $('.loadMore').on('click', function () {
             page = page + 1;
             console.log('page',page);
+            console.log('listpage',listpage);
             var uid = $(this).data('uid');
             var all = $(this).data('all');
             var per_page = 4;
             var thisObj = $(this);
-            
+            if (all == 1 || all == listpage) {
+                thisObj.html('已展示全部收藏');
+                return false;
+            }
             $.ajax({
                 url: '/soapi/favList',
                 type: 'GET',
@@ -357,10 +362,15 @@
                     if (revmsg.code == 0) {
                         var revList = revmsg.data.list;
                         var len = revList.length;
-                        if (len == 0) {
+                        listpage = revmsg.data.page;
+                        if (len == 0 ) {
                             thisObj.html('已展示全部收藏');
                         }
-                        if (len < per_page) {
+                        else if (all == listpage) {
+                            thisObj.html('已展示全部收藏');
+                            appendFav(revList);
+                        }
+                        else if (0 < len && len < per_page) {
                             thisObj.html('已展示全部收藏');
                             appendFav(revList);
 //                            thisObj.data('page', page);

@@ -301,13 +301,18 @@
         '</div>';
         return html;
         }
+        
         $('.loadMore').on('click', function () {
             var page = $(this).data('page')*1+1;
+            var listpage = 1;
             var uid = $(this).data('uid');
             var all = $(this).data('all');
             var per_page = 4;
-            
             var thisObj = $(this);
+            if (all == 1 || all == listpage) {
+                thisObj.html('案例加载完毕');
+                return false;
+            }
             $.ajax({
                 url: '/soapi/advisor_list',
                 type: 'GET',
@@ -323,8 +328,13 @@
                   console.log(revmsg);
                     if (revmsg.code == 0) {
                         var len = revmsg.data.list.length;
+                        listpage = revmsg.data.page;
                         if (len == 0) {
                             thisObj.html('案例加载完毕')
+                        }
+                        else if (all == listpage) {
+                            thisObj.html('案例加载完毕');
+                            addArticle(revmsg.data.list);
                         }
                         else if (0 < len && len < per_page) {
                             thisObj.html('案例加载完毕');
