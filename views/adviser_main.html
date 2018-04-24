@@ -217,15 +217,15 @@
               }
               else if (pageall == listpage) {
                 thisObj.html('已展示全部');
-                appendFav(revList);
+                appendFav(revmsg.data.list);
                 thisObj.data('page', page);
               }
               else if (len < per_page) {
                 thisObj.html('已展示全部');
-                appendFav(revList);
+                appendFav(revmsg.data.list);
                 thisObj.data('page', page);
               } else {
-                appendFav(revList);
+                appendFav(revmsg.data.list);
                 thisObj.data('page', page);
               }
             }
@@ -240,10 +240,10 @@
           }
         })
       }
-
+      
     })
     $('.report-btn').on("click", report); //点击举报
-  })
+  
   //明星顾问轮播
   function appendArticleItem(aitem) {
     var artUrl = '';
@@ -265,7 +265,6 @@
         '<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>' +
         '<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ"></a>' +
         '<div class="report-btn" style="color: #666;font-size: 12px;float: left;margin-top: 6px;margin-right: 5px;" data-artId="'+aitem.id+'" data-url="'+artUrl+'">举报</div>' +
-        '</div>' +
         '</div>' +
         '</ul>' +
         '</div>' +
@@ -314,8 +313,7 @@
     for (var i = 0; i < favArr.length; i++) {
       favHtml += appendArticleItem(favArr[i]);
     }
-
-    $('.right-main').append(favHtml);
+    $('.right-main').append($(favHtml));
     window._bd_share_main.init();
     $('.report-btn').unbind('click');
     $('.report-btn').on("click", report); //点击举报
@@ -471,6 +469,7 @@
     });
   }
 
+})
 </script>
 </body>
 </html>

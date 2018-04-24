@@ -3773,8 +3773,3 @@ exports.liuxue_item_nunjucks = function (req, res, next) {
         res.render('widget/liuxue_item/liuxue_item_nunjucks', resData);
     })
 }
-exports.thl = function(req,res,next){
-    log.debug('测试thl页面')
-    var data ={};
-    res.render('thl',data)
-}
