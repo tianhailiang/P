@@ -256,12 +256,11 @@
     $('.loadMore').on('click', function () {
       var page = $(this).data('page')*1+1;
       var pageall = $(this).data('page-all');
-      var per_page = 6;
-      var thisObj = $(this);
       if(page >pageall){
-        thisObj.html('已展示全部');
         return false;
       }
+      var per_page = 6;
+      var thisObj = $(this);
       $.ajax({
         url: '/soapi/loadmore',
         type: 'GET',
