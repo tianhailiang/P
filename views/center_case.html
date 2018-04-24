@@ -128,10 +128,17 @@
                 </div>
                 {% endfor %}
             </div>
-            <div class="loadMore" data-page="1" data-uid="{{userinfo.uid}}">
+            {% if case_data.totalpage == 1 %}
+            <div class="loadMore" data-page="1" data-all="{{case_data.totalpage}}" data-uid="{{userinfo.uid}}">
+                <span>案例加载完毕</span>
+                {# <i class="iconfont">&#xe60b;</i> #}
+            </div>
+            {% else %}
+            <div class="loadMore" data-page="1" data-all="{{case_data.totalpage}}" data-uid="{{userinfo.uid}}">
                 <span>加载更多</span>
                 <i class="iconfont">&#xe60b;</i>
             </div>
+            {% endif %}
             {% else %}
             <div style="width: 100%; height: 400px;text-align: center;line-height: 400px;font-size: 30px;">您还未发布案例,快去<a target="_blank" href="{{helper.urlgen('advisor_center', 'postarticle')}}">发布案例</a>发布吧！</div>
             {% endif %}
@@ -294,12 +301,18 @@
         '</div>';
         return html;
         }
+        
         $('.loadMore').on('click', function () {
             var page = $(this).data('page')*1+1;
+            var listpage = 1;
             var uid = $(this).data('uid');
+            var all = $(this).data('all');
             var per_page = 4;
-
             var thisObj = $(this);
+            if (all == 1 || all == listpage) {
+                thisObj.html('案例加载完毕');
+                return false;
+            }
             $.ajax({
                 url: '/soapi/advisor_list',
                 type: 'GET',
@@ -315,8 +328,13 @@
                   console.log(revmsg);
                     if (revmsg.code == 0) {
                         var len = revmsg.data.list.length;
+                        listpage = revmsg.data.page;
                         if (len == 0) {
                             thisObj.html('案例加载完毕')
+                        }
+                        else if (all == listpage) {
+                            thisObj.html('案例加载完毕');
+                            addArticle(revmsg.data.list);
                         }
                         else if (0 < len && len < per_page) {
                             thisObj.html('案例加载完毕');
@@ -337,6 +355,7 @@
                 }
             })
         });
+        
     })
   </script>
 </body>
