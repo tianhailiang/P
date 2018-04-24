@@ -100,11 +100,11 @@
                     {% endfor %}
                 </div>
           <div class="loadMore" data-page="1" data-page-all="{{case_data.totalpage}}" data-uid="{{userinfo.uid}}" style="height: 54px;line-height: 54px">
-         {% if case_data.total_count > 6 %}
-            <span>加载更多</span>
+         {% if case_data.totalpage == 1 %}
+            <span>已展示全部</span>
             <i class="iconfont">&#xe60b;</i>
             {% else %}
-            <span>已展示全部</span>
+            <span>加载更多</span>
             {% endif %}
           </div>
             {% else %}
@@ -263,13 +263,13 @@
     }
     $('.loadMore').on('click', function () {
       var page = $(this).data('page')*1+1;
-      var per_page = 6;
-      var thisObj = $(this);
       var pageall = $(this).data('page-all');
-      if(page >pageall){
-        thisObj.html('已展示全部');
+      var listpage =1;
+      if(pageall == 1 || pageall == listpage ){
         return false;
       }
+      var per_page = 6;
+      var thisObj = $(this);
       $.ajax({
         url: '/soapi/loadmore',
         type: 'GET',
@@ -286,10 +286,16 @@
           if (revmsg.code == 0) {
             var revList = revmsg.data.list;
             var len = revList.length;
+            listpage = revmsg.data.page;
             if (len == 0) {
               thisObj.html('已展示全部');
             }
-            if (len < per_page) {
+            else if (pageall == listpage) {
+              thisObj.html('已展示全部');
+              appendFav(revList);
+              thisObj.data('page', page);
+            }
+            else if (len < per_page) {
               thisObj.html('已展示全部');
               appendFav(revList);
               thisObj.data('page', page);
