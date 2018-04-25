@@ -287,10 +287,10 @@
                 }
             }else{
                 if (version == 1) {
-                    return ajaxUrlPrefix.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+".jpg";
+                    return ajaxUrlPrefix.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substring(uid.length-2)+"_avatar_"+size+".jpg";//ie8不兼容uid.substr(-2)
                 }
                 else {
-                    return ajaxUrlPrefix.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+"_"+ version +".jpg";
+                    return ajaxUrlPrefix.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substring(uid.length-2)+"_avatar_"+size+"_"+ version +".jpg";//ie8不兼容uid.substr(-2)
                 }
             }
         },
