@@ -182,9 +182,16 @@
                 linePhotoNum++;
                 pNum++;
             }
+            console.log('line',line,'maxLine',maxLine,'pNum',pNum,'totalCount',totalCount);
             var newstr = htmlstr.slice(11) + htmlstr.slice(0,11);
             // console.log(newstr);
             $('.right-main').append($(newstr));
+            if (line < maxLine || pNum >= totalCount) {
+                $('.loadMore').show().html('已展示全部照片');
+            }
+            else {
+                $('.loadMore').show();
+            }
             /*划过相册动效*/
             $('.album-bar').find('dt').hover(function() {
                 $(this).find('.opt-bar').slideDown();
@@ -264,8 +271,9 @@
         var curM = 0;//上一个月份
         var htmlstr = '';//HTML字符串
         var linePhotoNum = 0; //每一行相片数量
-        var pageLineInit = 8; //第一次请求的行数1
+        var pageLineInit = 4; //第一次请求的行数1
         var pageSizeInit = pageLineInit * 4; //第一次请求的相片数量
+        var totalCount = '';
         $.ajax({
             url: '/soapi/get_photos',
             type:'GET',
@@ -276,16 +284,17 @@
             },
             dataType:'json',
             success:function (msg) {
-                console.log(msg.data.list.length)
-                if(msg.code == 0){
-                    if (msg.data.list.length == 0) {
+                console.log(msg.data.total_count)
+                totalCount = msg.data.total_count;
+                if(msg.code == 0 && msg.data.total_count > 0){
+/*                    if (msg.data.list.length == 0) {
                        $("#photo-blank").show();
                     }
                     else if (msg.data.list.length < pageSizeInit) {
                         $('.loadMore').show().html('已展示全部照片');
                     }else{
                         $('.loadMore').show();
-                    }
+                    }*/
                     photoArr = photoArr.concat(msg.data.list);
                     limitDisplay(0,pageSizeInit,pageLineInit,0);
                     $('.loadMore').attr('data-page',pageSizeInit/8);
@@ -315,9 +324,9 @@
                     if (msg.code == 0) {
                         var loadMoreLine = 2;
                         var loadMoreSize = loadMoreLine * 4;
-                        if (msg.data.list.length < loadMoreSize) {
+/*                        if (msg.data.list.length < loadMoreSize) {
                             $('.loadMore').html('已展示全部照片');
-                        }
+                        }*/
                         linePhotoNum = 4;
                         photoArr = photoArr.concat(msg.data.list);
                         limitDisplay(pNum,8,2,curM);
