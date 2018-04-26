@@ -254,9 +254,10 @@
     }
     var aItemHtml = '<div class="homepage">' +
         '<div class="homepagecon">' +
-        '<a target="_blank"  href="' + fn.urlgen(aitem.uid.toString()) + '" >'+
-        '<div class="homepageing" style="background:url(' + fn.avaterimg(aitem.uid, 'small', aitem.user_info.status, aitem.user_info.version) + ') no-repeat 0 0;background-size: cover;"></div>' +
-        '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
+        '<a target="_blank"  href="' + fn.urlgen(aitem.uid.toString()) + '" >';
+        
+        aItemHtml += '<div class="homepageing" style="background-image:url(' + fn.avaterimg(aitem.user_info.uid, 'small', aitem.user_info.status, aitem.user_info.version) + '?time='+new Date().getTime()+'); background-repeat:no-repeat; background-size: cover;"></div>';
+        aItemHtml += '<h3>' + aitem.user_info.realname + '<img src="'+ ajaxUrlPrefix.cdnhost +'/assets/img/1v.png" alt=""></h3>' +
         '</a>'+
         '<ul>' +
         '<div class="bdsharebuttonbox bdshare-button-style0-16" style="margin-top: 12px;">' +
