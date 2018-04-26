@@ -448,6 +448,12 @@
             var newstr = htmlstr.slice(11) + htmlstr.slice(0,11);
             // console.log(newstr);
             $('.right-main').append($(newstr));
+            if (line < maxLine || pNum >= totalCount) {
+                $('.loadMore').show().html('已展示全部照片');
+            }
+            else {
+                $('.loadMore').show();
+            }
             /*划过相册动效*/
             $('.album-bar').find('dt').hover(function() {
                 $(this).find('.opt-bar').slideDown();
@@ -527,8 +533,9 @@
         var curM = 0;//上一个月份
         var htmlstr = '';//HTML字符串
         var linePhotoNum = 0; //每一行相片数量
-        var pageLineInit = 4; //第一次请求的行数
+        var pageLineInit = 8; //第一次请求的行数
         var pageSizeInit = pageLineInit * 4; //第一次请求的相片数量
+        var totalCount = '';
         $.ajax({
             url: '/soapi/get_photos',/*http://test.wecenter.com/?/api/account/album_list*/
             type:'GET',
@@ -540,15 +547,8 @@
             dataType:'json',
             success:function (msg) {
                 // console.log(msg)
-                if (msg.code == 0) {
-                    if (msg.data.list.length == 0) {
-                        $("#photo-blank").show();
-                    }else if (msg.data.list.length < pageSizeInit) {
-                        $('.loadMore').show().html('已展示全部照片');
-                    }else{
-                        $('.loadMore').show();
-                    }
-
+                totalCount = msg.data.total_count;
+                if (msg.code == 0 && msg.data.total_count > 0) {
                     photoArr = photoArr.concat(msg.data.list);
                     limitDisplay(0,pageSizeInit,pageLineInit,0);
                     $('.loadMore').attr('data-page',pageSizeInit/8);
@@ -565,35 +565,38 @@
             line = 0;
             htmlstr = '';
             var curPage = $('.loadMore').attr('data-page')*1+1;
-            $.ajax({
-                url: '/soapi/get_photos',
-                type:'GET',
-                data:{
-                    u_id: login_ss.uid,
-                    page: curPage,
-                    per_page: 8
-                },
-                dataType:'json',
-                success:function (msg) {
-                    if (msg.code == 0) {
-                        var loadMoreLine = 2;
-                        var loadMoreSize = loadMoreLine * 4;
-                        if (msg.data.list.length < loadMoreSize) {
-                            $('.loadMore').html('已展示全部照片');
+            if (totalCount > photoArr.length) {
+                $.ajax({
+                    url: '/soapi/get_photos',
+                    type:'GET',
+                    data:{
+                        u_id: login_ss.uid,
+                        page: curPage,
+                        per_page: 8
+                    },
+                    dataType:'json',
+                    success:function (msg) {
+                        if (msg.code == 0) {
+                            var loadMoreLine = 2;
+                            var loadMoreSize = loadMoreLine * 4;
+                            linePhotoNum = 4;
+                            photoArr = photoArr.concat(msg.data.list);
+                            limitDisplay(pNum,8,2,curM);
+                            $('.loadMore').attr('data-page', curPage);
                         }
-                        linePhotoNum = 4;
-                        photoArr = photoArr.concat(msg.data.list);
-                        limitDisplay(pNum,8,2,curM);
-                        $('.loadMore').attr('data-page', curPage);
+                        else {
+                            $('.loadMore').html('加载更多出错了，请刷新');
+                        }
+                    },
+                    error:function(XMLHttpRequest, textStatus, errorThrown){
+                        console.log('加载更多出错了')
                     }
-                    else {
-                        $('.loadMore').html('加载更多出错了，请刷新');
-                    }
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
-                    console.log('加载更多出错了')
-                }
-            });
+                });
+            }
+            else {
+                limitDisplay(pNum,8,2,curM);
+                $('.loadMore').attr('data-page', curPage);
+            }
         }
         $('.loadMore').on('click',function () {
             loadmore();
