@@ -116,8 +116,8 @@
               <span class="numTip" ></span>
             </div> 
             <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;{% if article.article_info.is_news ==1 %}display: block;{% endif %}">
-              <label class="title active" for="level">
-                <span>*</span> 选择学历标签：
+              <label class="title" for="level" style="padding-left: 14px;">
+                <!-- <span>*</span> --> 选择学历标签：
               </label>
               {% set levelList = [
                 {
@@ -398,10 +398,10 @@
           $('.level-sel[checked=checked]').each(function(){
             eduList+=$(this).find('i').eq(1).text()+',';
           });
-          if(eduList == ''){
-            layer.msg('请选择学历标签');
-            return false;
-          }
+          // if(eduList == ''){
+          //   layer.msg('请选择学历标签');
+          //   return false;
+          // }
           var eduStr = eduList.substring(0,eduList.length-1);
           // console.log(eduStr)
           //判断标签
@@ -426,16 +426,17 @@
           $("#rel-case-title").focus();
           return false;
         }
-        if($("#editor1").find("p").html() == '<br>'){
-          //判断正文
-          layer.msg("请输入正文内容");
-          return false;
-        }
         if($("#art_abs").val()==''){
           // 判断文章摘要
           $("#art_abs").focus();
           return false;
         }
+        if(editor.txt.text()== ''){
+          //判断正文
+          layer.msg("请输入正文内容");
+          return false;
+        }
+        
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
@@ -495,10 +496,10 @@
           $('.level-sel[checked=checked]').each(function(){
             eduList+=$(this).find('i').eq(1).text()+',';
           });
-          if(eduList == ''){
-            layer.msg('请选择学历标签');
-            return false;
-          }
+          // if(eduList == ''){
+          //   layer.msg('请选择学历标签');
+          //   return false;
+          // }
           var eduStr = eduList.substring(0,eduList.length-1);
           //判断标签
           var tagStr = '';
@@ -529,7 +530,7 @@
           return false;
         }
 
-        if($("#editor1").find("p").html() == '<br>'){
+        if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
@@ -595,7 +596,7 @@
           return false;
         }
 
-        if($("#editor1").find("p").html() == '<br>'){
+        if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;

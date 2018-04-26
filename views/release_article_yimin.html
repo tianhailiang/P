@@ -534,7 +534,7 @@
           $("#art_abs").focus();
           return false;
         }
-        if($("#editor1").find("p").html() == '<br>'){
+        if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
@@ -642,7 +642,7 @@
           $("#art_abs").focus();
           return false;
         }
-        if($("#editor1").find("p").html() == '<br>'){
+        if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;

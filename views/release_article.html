@@ -97,8 +97,8 @@
               <span class="numTip" ></span>
             </div>  
             <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;">
-              <label class="title active" for="level">
-                <span>*</span> 选择学历标签：
+              <label class="title" for="level" style="padding-left: 14px;">
+                <!-- <span>*</span> --> 选择学历标签：
               </label>
               <span class="level-sel" >
                 <i class="level-sel-i iconfont"></i>
@@ -409,10 +409,10 @@
             $('.level-sel[checked=checked]').each(function(){
               eduList+=$(this).find('i').eq(1).text()+',';
             });
-            if(eduList == ''){
-              layer.msg('请选择学历标签');
-              return false;
-            }
+            // if(eduList == ''){
+            //   layer.msg('请选择学历标签');
+            //   return false;
+            // }
             var eduStr = eduList.substring(0,eduList.length-1);
             // console.log(eduStr)
             //判断标签
@@ -443,7 +443,7 @@
           $("#art_abs").focus();
           return false;
         }
-        if($("#editor1").find("p").html() == '<br>'){
+        if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
@@ -520,10 +520,10 @@
             $('.level-sel[checked=checked]').each(function(){
               eduList+=$(this).find('i').eq(1).text()+',';
             });
-            if(eduList == ''){
-              layer.msg('请选择学历标签');
-              return false;
-            }
+            // if(eduList == ''){
+            //   layer.msg('请选择学历标签');
+            //   return false;
+            // }
             var eduStr = eduList.substring(0,eduList.length-1);
             //判断标签
             var tagStr = '';
@@ -552,7 +552,8 @@
           $("#art_abs").focus();
           return false;
         }
-        if($("#editor1").find("p").html() == '<br>'){
+
+        if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
