@@ -525,16 +525,17 @@
           $("#rel-case-title").focus();
           return false;
         }
-        if($("#editor1").find("p").html() == '<br>'){
-          //判断正文
-          layer.msg("请输入正文内容");
-          return false;
-        }
         if($("#art_abs").val()==''){
           // 判断文章摘要
           $("#art_abs").focus();
           return false;
         }
+        if(editor.txt.text()== ''){
+          //判断正文
+          layer.msg("请输入正文内容");
+          return false;
+        }
+       
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
@@ -627,7 +628,7 @@
           return false;
         }
 
-        if($("#editor1").find("p").html() == '<br>'){
+        if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
@@ -692,7 +693,7 @@
           return false;
         }
 
-        if($("#editor1").find("p").html() == '<br>'){
+        if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
