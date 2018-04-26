@@ -5,8 +5,7 @@ if($('.swiper-container_11').data('slider') > 3){
 			loop : true,
 			mode : 'horizontal',
 			speed:1300,
-			slidesPerView : 3,
-			autoplayDisableOnInteraction : false
+			slidesPerView : 3
 	})
 	$(".swiper-container_11").mouseenter(function(){
 		mySwiper11.stopAutoplay();
@@ -21,9 +20,8 @@ if($('.swiper-container_12').data('slider') > 3){
 			autoplay : 4000,
 			loop : true,
 			mode : 'horizontal',
-			speed:1000,
-			slidesPerView : 3,
-			slidesPerGroup : 3
+			speed:1300,
+			slidesPerView : 3
 	})
 	$(".swiper-container_12").mouseenter(function(){
 		mySwiper12.stopAutoplay();
@@ -38,7 +36,7 @@ if($('.swiper-container_13').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_13").mouseenter(function(){
@@ -53,7 +51,7 @@ if($('.swiper-container_14').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_14").mouseenter(function(){
@@ -68,7 +66,7 @@ if($('.swiper-container_15').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 })
 	$(".swiper-container_15").mouseenter(function(){
@@ -83,7 +81,7 @@ if($('.swiper-container_16').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_16").mouseenter(function(){
@@ -98,7 +96,7 @@ if($('.swiper-container_17').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_17").mouseenter(function(){
@@ -113,7 +111,7 @@ if($('.swiper-container_18').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_18").mouseenter(function(){
@@ -128,7 +126,7 @@ if($('.swiper-container_19').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_19").mouseenter(function(){
@@ -143,7 +141,7 @@ if($('.swiper-container_20').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_20").mouseenter(function(){
@@ -158,7 +156,7 @@ if($('.swiper-container_21').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_21").mouseenter(function(){
@@ -173,7 +171,7 @@ if($('.swiper-container_22').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_22").mouseenter(function(){
@@ -188,7 +186,7 @@ if($('.swiper-container_23').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_23").mouseenter(function(){
@@ -203,7 +201,7 @@ if($('.swiper-container_24').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_24").mouseenter(function(){
@@ -219,7 +217,7 @@ if($('.swiper-container_25').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_25").mouseenter(function(){
@@ -234,7 +232,7 @@ if($('.swiper-container_26').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_26").mouseenter(function(){
@@ -249,7 +247,7 @@ if($('.swiper-container_27').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_27").mouseenter(function(){
@@ -264,7 +262,7 @@ if($('.swiper-container_28').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_28").mouseenter(function(){
@@ -279,7 +277,7 @@ if($('.swiper-container_29').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_29").mouseenter(function(){
@@ -294,7 +292,7 @@ if($('.swiper-container_30').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_30").mouseenter(function(){
@@ -309,7 +307,7 @@ if($('.swiper-container_31').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_31").mouseenter(function(){
@@ -332,7 +330,7 @@ if($('.swiper-container_32').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_32").mouseenter(function(){
@@ -347,7 +345,7 @@ if($('.swiper-container_33').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_33").mouseenter(function(){
@@ -362,7 +360,7 @@ if($('.swiper-container_34').data('slider') > 3){
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
-		speed:1000,
+		speed:1300,
 		slidesPerView : 3
 	})
 	$(".swiper-container_34").mouseenter(function(){
