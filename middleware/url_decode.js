@@ -30,7 +30,7 @@ function url_decode(app) {
     if (url != '/zt/zhaopin/employment.html' || url != '/about/culture.html') { //招聘页面
       req.url = req.originalUrl = url.replace(".html","");
       req.query = URL.parse(req.url, true).query;
-      console.log('reqUrl',req.url,req.query);
+      // console.log('reqUrl',req.url,req.query);
     }
     next('route');
   });

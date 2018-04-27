@@ -386,16 +386,18 @@
         layer.msg(info)
       }
       editor.create();
-      $('#sureBtn').on('click', function () {
+      $('#sureBtn').on('click',surePublish); //发布文章
+      $("#save-draft").on("click",savePublish); //保存草稿箱
+      function surePublish(){
         // 读取 html
         var data = editor.txt.html();
         if($("#apply-country").val()==''){
-        	// 判断国家
-        	$("#apply-country").focus();
+          // 判断国家
+          $("#apply-country").focus();
           $("#apply-country").next().html("请选择国家");
           return false;
         }else{
-        	 $("#apply-country").next().html('');
+           $("#apply-country").next().html('');
         } 
         //判断文章类型
         if(newsletterType ==undefined){
@@ -448,7 +450,8 @@
           layer.msg("请输入正文内容");
           return false;
         }
-
+        $(this).unbind('click');
+        var that = this;
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
@@ -471,7 +474,7 @@
           success:function(result){
             console.log(result)
             if(result.code == 0){
-            	layer.msg('发布成功')
+              layer.msg('发布成功')
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
                     if(artType == 1){
@@ -483,10 +486,13 @@
               }
             }else if(result.code == '1210000011'){
               layer.msg('标题已存在，请更换标题');
+              $(that).bind('click',surePublish);
             }else if(result.code == '1210000012'){
               layer.msg('您编辑器输入的内容有敏感词');
+              $(that).bind('click',surePublish);
             }else{
-              layer.msg('发布失败')
+              layer.msg('发布失败');
+              $(that).bind('click',surePublish);
             }
           },
           error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -494,10 +500,11 @@
             if(XMLHttpRequest.status == '413'){
               layer.msg('您发布的内容已超过2M，应小于2M');
             }
+            $(that).bind('click',surePublish);
           }
         });
-      });
-      $("#save-draft").on("click",function(){
+      }
+      function savePublish(){
         //保存草稿箱
         var data = editor.txt.html();
         if($("#apply-country").val()==''){
@@ -558,7 +565,8 @@
           layer.msg("请输入正文内容");
           return false;
         }   
-
+        $(this).unbind('click');
+        var that = this;
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
@@ -590,10 +598,13 @@
               },1000);
             }else if(result.code == '1210000011'){
               layer.msg('标题已存在，请更换标题');
+              $(that).bind('click',savePublish);
             }else if(result.code == '1210000012'){
+              $(that).bind('click',savePublish);
               layer.msg('您编辑器输入的内容有敏感词');
             }else{
-              layer.msg('保存失败')
+              layer.msg('保存失败');
+              $(that).bind('click',savePublish);
             }
           },
           error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -601,9 +612,10 @@
             if(XMLHttpRequest.status == '413'){
               layer.msg('您发布的内容已超过2M，应小于2M');
             }
+            $(that).bind('click',savePublish);
           }
         });
-      });
+      }
     })
  </script>
 </body>
