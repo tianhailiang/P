@@ -303,10 +303,10 @@ function avaterimg(uid, size, status, version,usertype){
     }
   }else{
     if (version == 1) {
-      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+".jpg";
+      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substring(uid.length-2)+"_avatar_"+size+".jpg";//ie8不兼容uid.substr(-2)
     }
     else {
-      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substr(-2)+"_avatar_"+size+"_"+ version +".jpg";
+      return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substring(uid.length-2)+"_avatar_"+size+"_"+ version +".jpg";//ie8不兼容uid.substr(-2)
     }
   }
 
