@@ -23,7 +23,7 @@
     clear: both;
     float: left;
     background-repeat: no-repeat;
-    background-position: center top;
+    background-position: 0 0;
     -webkit-background-size: cover;
     background-size: cover;
 }
