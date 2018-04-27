@@ -16,7 +16,7 @@
   <div class="dui-layout-div"></div>
   <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider2.html" %}</div>
 </div>
-{#<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="AD_{% if userinfo.usertype == 2 %}ADVISOR{% elif userinfo.usertype == 3 %}CANZAN{% endif %}_P_MAIN_SEAT1"></div>#}
+{#<div class="dui-layout-lg clearfix list-h" style="margin-top: 20px;" id="XC_{% if userinfo.usertype == 2 %}ADVISOR{% elif userinfo.usertype == 3 %}CANZAN{% endif %}_P_MAIN_SEAT1"></div>#}
 <div class="dui-layout-lg clearfix">
   <div class="dui-layout-silde right">
     <div class="clearfix" style="margin-top: 20px">
@@ -87,7 +87,7 @@
 </div>
 {% if userinfo.adviser_type==1 %}
 {% import "widget/new_slide/new_slide3.html" as  slide %}
-{{slide.leyu_slide("AD_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
+{{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
 {% elseif userinfo.adviser_type==2   %}
 {% import "widget/new_slide_yimin/new_slide3.html" as  slide %}
 {{slide.leyu_slide(userinfo,login_info,helper) }}
