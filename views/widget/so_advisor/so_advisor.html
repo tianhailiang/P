@@ -2,7 +2,7 @@
 {% for item in so_adviser_list.list %}
 <div class="so_advisor_warp">
   <div class="so_advisor_top">
-    <a target="_blank" href="{{helper.urlgen(item.id | string)}}"><div class="so_advisor_img" style="background-image: url({{helper.avaterimg(item.id, 'small', item.status,item.version)}})"></div></a>
+    <a target="_blank" href="{{helper.urlgen(item.id | string)}}"><div class="so_advisor_img" style="background-image: url({{helper.avaterimg(item.id, 'small', item.status,item.version)}});background-size: cover;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{helper.avaterimg(item.id, 'small', item.status,item.version)}}',sizingMethod='scale'"></div></a>
     <div class="so_advisor_top_name">
       <p class="so_advisor_top_position_name">{{item.realname | shorten(4)}}<img src="{{helper.cdnhost}}/assets/img/1v.png" alt="" class="flag"/><span style="margin-left: 15px;background: #fdf3f2;color: #c13232;padding: 2px 10px;border-radius: 20px">{{ item.dept}}</span></p>
       <p class="so_advisor_top_fans"><i><svg class="icon" aria-hidden="true">
