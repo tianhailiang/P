@@ -147,6 +147,17 @@ exports.article = function(data,callback){
 };
 
 /*
+ *  编辑文章详情
+ */
+exports.article_info = function(data,callback){
+  var url = _api_path_url_shequ(data, config.apis.get_article_info);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
+};
+/*
  * 用户相册
  *
  */
