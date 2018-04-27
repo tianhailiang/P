@@ -12,7 +12,7 @@
 <div class="comment-list-box" >
   {% for item in article.comments.list %}
   <div class="comment-list clearfix" >
-    <div class="comment-head" style="background:url({{helper.avaterimg(item.uid,'small',item.user_info.status,item.user_info.version,item.user_info.usertype)}}) no-repeat 0 0;background-size:cover;">
+    <div class="comment-head" style="background:url({{helper.avaterimg(item.uid,'small',item.user_info.status,item.user_info.version,item.user_info.usertype)}}) no-repeat 0 0;background-size:cover;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{helper.avaterimg(item.uid,'small',item.user_info.status,item.user_info.version,item.user_info.usertype)}}',sizingMethod='scale'">
     </div>
     <div class="comment-info" >
       <div  class="comment-info-name-box">
