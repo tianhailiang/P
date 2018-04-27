@@ -39,12 +39,12 @@ function show_advert() {
                     }
                 }
                 // console.log(html);
-                $("#AD_"+AD_PAGE_NAME+"_"+val[i].ad_seat).html(html);
+                $("#XC_"+AD_PAGE_NAME+"_"+val[i].ad_seat).html(html);
             }
         }
     });
     // /*点击广告位进行统计*/
-    $("[id^='AD_']").click('a', function (e) {
+    $("[id^='XC_']").click('a', function (e) {
         e.preventDefault();
         var targetA = $(e.srcElement ? e.srcElement : e.target).parent('a');
         var pid = targetA.attr("data-pid");
