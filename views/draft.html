@@ -212,7 +212,7 @@
                 window.location.reload();
               },1000);
             }else{
-              layer.msg('发布失败')
+              layer.msg(result.err);
             }
           },
            error:function(XMLHttpRequest, textStatus, errorThrown){
