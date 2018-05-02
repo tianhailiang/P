@@ -111,13 +111,19 @@
                 <div class="tit">我的收藏</div>
             </div>
             {% if collection_data.list.length > 0 %}
-            <div class="right-main clearfix collection-list-box"> 
+            
+            <div class="right-main clearfix collection-list-box" > 
                 {% for item in collection_data.list %}
+                    <div id="art_box_{{item.id}}">
                     {% import "widget2/article/article.html" as article_fav %}
                     {{ article_fav.article_fav(item, helper) }}
-              {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
+                    {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
+                    </div>
                 {% endfor %}
+                
+                    
             </div>
+            
             {% if collection_data.totalpage == 1  %}
             <div class="loadMore" data-page="1" data-all="{{collection_data.totalpage}}" data-uid="{{userinfo.uid}}">
                 <span>已展示全部收藏</span>
@@ -276,7 +282,9 @@
                 // else if (favArr[i].category_id < 17) { //专栏
                 //     favHtml += appendArticleItem(favArr[i]);
                 // }
+                favHtml += '<div id="art_box_'+favArr[i].id+'">'
                 favHtml += appendArticleItem(favArr[i]);
+                favHtml += '</div>'
             }
             $('.right-main').append($(favHtml));
             $('.report-btn').unbind('click');

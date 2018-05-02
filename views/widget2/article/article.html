@@ -225,7 +225,7 @@
 {% endmacro %}
 
 {% macro article_fav(item,helper) %}
-<div class="art-box clearfix" >
+<div class="art-box clearfix">
   <a target="_blank" href="{{helper.urlgen(item.uid | string)}}">
     <div class="adviser-head" style="background:url({{helper.avaterimg(item.uid, 'small',item.user_info.status,item.user_info.version)}}) no-repeat 0 0;background-size: cover;"></div>
   </a>
@@ -234,7 +234,7 @@
       <a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="color: #333">{{item.user_info.realname}}</a>
     </div>
     <div class="adviser-info-date clearfix" >
-      <span class="adviser-info-date-s" style="color: #666;line-height: 20px;">{{item.add_time}}</span>
+      <span class="adviser-info-date-s" style="color: #666;line-height: 20px">{{item.add_time}}</span>
     </div>
     <div class="adviser-info-title">
       {% if item.type == 1 %}
@@ -291,9 +291,10 @@
         console.log('fav', result);
         if(result.code == 0){
           layer.msg('删除收藏成功');
-          window.setTimeout(function(){
-            window.location.reload();
-          },2000);
+          // window.setTimeout(function(){
+          //   window.location.reload();
+          // },2000);
+          $('#art_box_' + articleId).css('display','none')
         }else{
           layer.msg('删除失败')
         }
