@@ -140,31 +140,31 @@
                 学历标签可多选
               </span>
             </div>
-            <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;{% if article.article_info.is_news ==1 %}display: block;{% endif %}">
-              <label class="title active" for="recommend">
+            <div class="rel-case-text1 newsletter-hide clearfix" style="margin-top: 20px;{% if article.article_info.is_news ==1 %}display: block;{% endif %}">
+              <label class="title active" for="recommend" style="float:left">
                 <span>*</span> 选择推荐标签：
               </label>
-              {% set recommendList = [
-                {'name':'专业解析'},
-                {'name':'申请规划'},
-                {'name':'留学费用'},
-                {'name':'留学条件'},
-                {'name':'大学排名'},
-                {'name':'行前指导'},
-                {'name':'就业指导'},
-                {'name':'签证指导'},
-                {'name':'留学案例'}
-              ]  %}
-              {% for item in recommendList %}
-                {{helper.tagChecked(item.name,article.article_info.tag_list) |safe }}              
-              {% endfor %}
-              <span class="numTip" style="display: inline-block;margin-top: 5px;">
-                注：选中【留学案例】标签即发布至顾问个人主页-案例中
-              </span>
-              <span class="numTip" style="display:block;
-    margin-left: 130px;margin-top:5px;">
-                推荐标签最多选择2个
-              </span>
+              <div class="recommend-tag" >
+                {% set recommendList = [
+                  {'name':'专业解析','val':'专业解析'},
+                  {'name':'申请规划','val':'申请规划'},
+                  {'name':'留学费用','val':'留学费用'},
+                  {'name':'留学条件','val':'留学条件'},
+                  {'name':'大学排名','val':'大学排名'},
+                  {'name':'行前指导','val':'行前指导'},
+                  {'name':'就业指导','val':'就业指导'},
+                  {'name':'签证指导','val':'签证指导'},
+                  {'name':'留学案例','val':'留学案例'},
+                  {'name':'自定义标签','val':article.article_info.custom_tags}
+                ]  %}
+                {% for item in recommendList %}
+                  {{helper.tagChecked(loop.index0,item.val,article.article_info.tag_list,article.article_info.custom_tags) |safe }}              
+                {% endfor %}
+        
+                <span class="numTip" style="color:#c13232;display:block;margin-top: 10px;">
+                  推荐标签最多选择2个
+                </span>
+              </div>
             </div>
   	        <div class="rel-case-text1" style="margin-top: 20px;">
       			  <label class="title active" for="rel-case-title"><span>*</span> 文章标题：</label>
@@ -312,11 +312,8 @@
         }
       });
       //选择推荐标签
-      $('.recommend-sel').eq(5).css({"display":"inline-block","marginLeft":"130px","marginTop":"5px"});
-      $('.recommend-sel').eq(7).css({"marginRight":"274px"});
-      $('.recommend-sel:last').css({"display":"inline-block","marginLeft":"130px","marginTop":"5px"});
-
       var recNumber = $('.recommend-sel[checked=checked]').length;
+      var custom_tags = $("#recommend-input").val(); //自定义标签内容
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
           // console.log('false');
@@ -441,7 +438,9 @@
           //判断标签
           var tagStr = '';
           $('.recommend-sel[checked=checked]').each(function(){
-            tagStr+=$(this).find('i').eq(1).text()+',';
+            if($(this).attr('data-str')!=''){
+              tagStr+=$(this).attr('data-str')+',';
+            }
           });
           if($('.recommend-sel').eq(8).attr('checked')){
            artType = 1;
@@ -453,6 +452,15 @@
             return false;
           }
           newTagStr =tagStr.substring(0,tagStr.length-1);
+          if($('.recommend-sel').eq(9).attr('checked')){
+            //选中自定义标签
+            if($('#recommend-input').val()==''){
+              layer.msg('请输入您的自定义标签');
+              return false;
+            }else{
+              custom_tags =$('#recommend-input').val();
+            }
+          }
         }
         if($("#rel-case-title").val()==''){
           // 判断title
@@ -487,7 +495,8 @@
             is_news:newsletterType,
             tag_list:newTagStr,
             is_immi:login_ss.adviser,
-            article_id:$(".editor-btn-box").attr("data-articleId")
+            article_id:$(".editor-btn-box").attr("data-articleId"),
+            custom_tags:custom_tags
           },
           dataType:'json',
           async: false,
@@ -542,7 +551,9 @@
           //判断标签
           var tagStr = '';
           $('.recommend-sel[checked=checked]').each(function(){
-            tagStr+=$(this).find('i').eq(1).text()+',';
+            if($(this).attr('data-str')!=''){
+              tagStr+=$(this).attr('data-str')+',';
+            }
           });
           if($('.recommend-sel').eq(8).attr('checked')){
             artType = 1;
@@ -554,6 +565,15 @@
             return false;
           }
           newTagStr =tagStr.substring(0,tagStr.length-1);
+          if($('.recommend-sel').eq(9).attr('checked')){
+            //选中自定义标签
+            if($('#recommend-input').val()==''){
+              layer.msg('请输入您的自定义标签');
+              return false;
+            }else{
+              custom_tags =$('#recommend-input').val();
+            }
+          }
         }
 
         if($("#rel-case-title").val()==''){
@@ -591,7 +611,8 @@
             is_news:newsletterType,
             tag_list:newTagStr,
             is_immi:login_ss.adviser,
-            article_id:$(".editor-btn-box").attr("data-articleId")
+            article_id:$(".editor-btn-box").attr("data-articleId"),
+            custom_tags:custom_tags
           },
           dataType:'json',
           success:function(result){

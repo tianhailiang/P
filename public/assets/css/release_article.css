@@ -50,7 +50,7 @@
 	font-size: 12px;
 	/*line-height: 30px;*/
 	color:#999;
-  vertical-align: text-top;
+  /*vertical-align: text-top;*/
 }
 
 .rel-case-text1 .active{
@@ -166,6 +166,7 @@
   border: 1px solid #666;
   vertical-align: text-top;
   margin-right: 5px;
+  margin-top: 1px;
 }
 .level-sel i{
   font-size: 14px;
@@ -175,6 +176,7 @@
   vertical-align:middle;
   cursor: pointer;
   margin-right: 30px;
+  line-height: 30px;
 }
 .recommend-sel i{
   font-size: 14px;
@@ -208,4 +210,29 @@
 .project-div{
   display: none;
 
+}
+.recommend-tag{
+  float:left;
+  width:640px;
+}
+.rel-case-text1 .recommend-input{
+  margin-left: 14px;
+  outline: none;
+  height: 30px;
+  color: #999;
+  padding-left: 10px;
+  border: 1px solid #dcdcdc;
+  width: 196px;
+  line-height: 30px;
+  box-sizing: border-box;
+}
+
+.recommend-input::-webkit-input-placeholder{
+  color:#999;
+}
+.recommend-input::-moz-placeholder{   /* Mozilla Firefox 19+ */
+  color:#999;
+}
+.recommend-input:-ms-input-placeholder{  /* Internet Explorer 10-11 */ 
+  color:#999;
 }

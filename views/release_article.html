@@ -120,55 +120,60 @@
                   学历标签可多选
                </span>
             </div>
-            <div class="rel-case-text1 newsletter-hide" style="margin-top: 20px;">
-              <label class="title active" for="recommend">
+            <div class="rel-case-text1 newsletter-hide clearfix" style="margin-top: 20px;">
+              <label class="title active" for="recommend" style="float:left;">
                 <span>*</span> 选择推荐标签：
               </label>
-              <span class="recommend-sel" >
-                <i class="level-sel-i iconfont"></i>
-                <i>专业解析</i>
-              </span>
-              <span class="recommend-sel" >
-                <i class="level-sel-i iconfont"></i>
-                <i>申请规划</i>
-              </span>
-              <span class="recommend-sel" >
-                <i class="level-sel-i iconfont"></i>
-                <i>留学费用</i>
-              </span>
-              <span class="recommend-sel" >
-                <i class="level-sel-i iconfont"></i>
-                <i>留学条件</i>
-              </span>
-              <span class="recommend-sel" >
-                <i class="level-sel-i iconfont"></i>
-                <i>大学排名</i>
-              </span>
-              <span class="recommend-sel" style="display: inline-block;
-    margin-left: 130px;">
-                <i class="level-sel-i iconfont"></i>
-                <i>行前指导</i>
-              </span>
-              <span class="recommend-sel" >
-                <i class="level-sel-i iconfont"></i>
-                <i>就业指导</i>
-              </span>
-              <span class="recommend-sel" style="margin-right:274px;">
-                <i class="level-sel-i iconfont"></i>
-                <i>签证指导</i>
-              </span>
-              <span class="recommend-sel" style="display: inline-block;
-    margin-left: 130px;margin-top: 5px;">
-                <i class="level-sel-i iconfont"></i>
-                <i>留学案例</i>
-              </span>
-              <span class="numTip" style="display: inline-block;margin-top: 5px;">
-                注：选中【留学案例】标签即发布至顾问个人主页-案例中
-              </span>
-              <span class="numTip" style="display:block;
-    margin-left: 130px;margin-top:5px;">
-                推荐标签最多选择2个
-              </span>
+              <div class="recommend-tag" >
+                <span class="recommend-sel" data-str="专业解析" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>专业解析</i>
+                </span>
+                <span class="recommend-sel" data-str="申请规划" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>申请规划</i>
+                </span>
+                <span class="recommend-sel" data-str="留学费用" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>留学费用</i>
+                </span>
+                <span class="recommend-sel" data-str="留学条件" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>留学条件</i>
+                </span>
+                <span class="recommend-sel" data-str="大学排名" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>大学排名</i>
+                </span>
+                <span class="recommend-sel" data-str="行前指导" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>行前指导</i>
+                </span>
+                <span class="recommend-sel" data-str="就业指导" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>就业指导</i>
+                </span>
+                <span class="recommend-sel" data-str="签证指导" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>签证指导</i>
+                </span>
+                <span class="recommend-sel" style="display: block;" data-str="留学案例" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>留学案例</i>
+                  <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                  </i>
+                </span>
+                <div  style="display: block;">
+                  <span class="recommend-sel" style="margin-right: 0px;" data-str="" >
+                    <i class="level-sel-i iconfont"></i>
+                    <i>自定义标签</i>
+                  </span>
+                  <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" />
+                </div>
+                <span class="numTip" style="color:#c13232;display:block;margin-top: 10px;">
+                  推荐标签最多选择2个
+                </span>
+              </div>
             </div>
   	        <div class="rel-case-text1" style="margin-top: 20px;">
       			  <label class="title active" for="rel-case-title">
@@ -314,16 +319,17 @@
       });
       //选择推荐标签
       var recNumber = 0;
+      var custom_tags = ''; //自定义标签内容
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
           // console.log('false');
-          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px','lineHeight':'none'}).html('');
           $(this).find('.level-sel-i').next().css({'color':'#333'});
           $(this).attr('checked',false);
         }else{
           // console.log('true')
           if(recNumber<2){
-            $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
+            $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px','lineHeight':'18px'}).html('&#xe640;');
             $(this).find('.level-sel-i').next().css({'color':'#c13232'});
             $(this).attr('checked',true);
           }
@@ -420,7 +426,9 @@
             //判断标签
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
-              tagStr+=$(this).find('i').eq(1).text()+',';
+              if($(this).attr('data-str')!=''){
+                tagStr+=$(this).attr('data-str')+',';
+              }
             });
             if($('.recommend-sel').eq(8).attr('checked')){
               artType = 1;
@@ -432,6 +440,15 @@
               return false;
             }
             newTagStr =tagStr.substring(0,tagStr.length-1);
+            if($('.recommend-sel').eq(9).attr('checked')){
+              //选中自定义标签
+              if($('#recommend-input').val()==''){
+                layer.msg('请输入您的自定义标签');
+                return false;
+              }else{
+                custom_tags =$('#recommend-input').val();
+              }
+            }
           }
         }
         
@@ -467,7 +484,8 @@
             edu_id:eduStr,
             is_news:newsletterType,
             tag_list:newTagStr,
-            is_immi:login_ss.adviser
+            is_immi:login_ss.adviser,
+            custom_tags:custom_tags
           },
           dataType:'json',
           async: false,
@@ -488,7 +506,7 @@
               layer.msg('标题已存在，请更换标题');
               $(that).bind('click',surePublish);
             }else if(result.code == '1210000012'){
-              layer.msg('您编辑器输入的内容有敏感词');
+              layer.msg('自定义标签或编辑器内容有敏感词');
               $(that).bind('click',surePublish);
             }else{
               layer.msg('发布失败');
@@ -535,7 +553,9 @@
             //判断标签
             var tagStr = '';
             $('.recommend-sel[checked=checked]').each(function(){
-              tagStr+=$(this).find('i').eq(1).text()+',';
+              if($(this).attr('data-str')!=''){
+                tagStr+=$(this).attr('data-str')+',';
+              }
             });
             if($('.recommend-sel').eq(8).attr('checked')){
               artType = 1;
@@ -547,6 +567,15 @@
               return false;
             }
             newTagStr =tagStr.substring(0,tagStr.length-1);
+            if($('.recommend-sel').eq(9).attr('checked')){
+              //选中自定义标签
+              if($('#recommend-input').val()==''){
+                layer.msg('请输入您的自定义标签');
+                return false;
+              }else{
+                custom_tags =$('#recommend-input').val();
+              }
+            }
           }
         }
         if($("#rel-case-title").val()==''){
@@ -582,7 +611,8 @@
             edu_id:eduStr,
             is_news:newsletterType,
             tag_list:newTagStr,
-            is_immi:login_ss.adviser
+            is_immi:login_ss.adviser,
+            custom_tags:custom_tags
           },
           dataType:'json',
           success:function(result){

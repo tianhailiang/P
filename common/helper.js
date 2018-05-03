@@ -490,11 +490,30 @@ function eduChecked(val,checkedList){
   return html;
 }
 //推荐标签选中函数
-function tagChecked(val,checkedList){
-  var html =`<span class="recommend-sel" >
+function tagChecked(index,val,checkedList){
+  // console.log(custom_tags)
+  var html =`<span class="recommend-sel" data-str="${val}">
               <i class="level-sel-i iconfont"></i>
               <i>${val}</i>
             </span>`;
+  if(index==8){
+    html =`<span class="recommend-sel" style="display: block;" data-str="${val}" >
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+            <i class="numTip" style="margin-left:30px;">
+            注：选中【留学案例】标签即发布至顾问个人主页-案例中
+            </i>
+          </span>`;
+  }
+  if(index==9){
+    html =`<div  style="display: block;">
+            <span class="recommend-sel" style="margin-right: 0px;" data-str="${val}" >
+              <i class="level-sel-i iconfont"></i>
+              <i>自定义标签</i>
+            </span>
+            <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" />
+          </div>`;
+  }
   if(checkedList==undefined){
      checkedList = []
   }else{
@@ -502,10 +521,22 @@ function tagChecked(val,checkedList){
   }
   for (let item of checkedList) {
     if(val == item){
-      html = `<span class="recommend-sel" checked="checked">
-                <i class="level-sel-i iconfont" style="border:none;color:#c13232;margin-right:7px;font-size:16px;">&#xe640;</i>
+      html = `<span class="recommend-sel" checked="checked" data-str="${val}">
+                <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
                 <i>${val}</i>
               </span>`;
+      if(index==9){
+        console.log(val)
+        html =`<div  style="display: block;">
+            <span class="recommend-sel" style="margin-right: 0px;" data-str="" checked="checked" >
+              <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+              <i>自定义标签</i>
+            </span>
+            <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" value= "${val}" />
+          </div>`;
+      }
     }
   }
   return html;
