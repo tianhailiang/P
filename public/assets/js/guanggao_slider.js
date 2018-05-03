@@ -1,7 +1,7 @@
 // console.log($('.swiper-container_11').data('slider'))
 if($('.swiper-container_11').data('slider') > 3){
 		var mySwiper11 = new Swiper('.swiper-container_11',{
-			autoplay : 5000,
+			autoplay : 4000,
 			loop : true,
 			mode : 'horizontal',
 			speed:1300,
