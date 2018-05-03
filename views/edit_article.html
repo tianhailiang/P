@@ -176,7 +176,7 @@
                 <span>*</span> 文章摘要：
               </label>
               <textarea class="art_abs" id="art_abs" maxlength="200" >{{article.article_info.introduce}}</textarea>
-              <div class="word-num">还可以输入<span id="word-num">200</span>字</div>
+              <div class="word-num">还可以输入<span id="word-num">{{200-article.article_info.introduce.length}}</span>字</div>
               <span class="numTip" style="display: block;margin-left: 97px;">
                 填写文章内容概要信息，此内容将会在网站与个人主页显示，请认真填写
               </span>
