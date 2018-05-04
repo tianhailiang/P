@@ -526,6 +526,16 @@ function tagChecked(index,val,checkedList){
                 margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
                 <i>${val}</i>
               </span>`;
+      if(index==8){
+        html =`<span class="recommend-sel" style="display: block;" data-str="${val}" checked="checked" >
+                <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                <i>${val}</i>
+                <i class="numTip" style="margin-left:30px;">
+                注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                </i>
+              </span>`;
+      }
       if(index==9){
         console.log(val)
         html =`<div  style="display: block;">
