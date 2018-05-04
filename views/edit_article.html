@@ -440,6 +440,8 @@
           $('.recommend-sel[checked=checked]').each(function(){
             if($(this).attr('data-str')!=''){
               tagStr+=$(this).attr('data-str')+',';
+            }else{
+              tagStr+=$('#recommend-input').val()+',';
             }
           });
           if($('.recommend-sel').eq(8).attr('checked')){
@@ -553,6 +555,8 @@
           $('.recommend-sel[checked=checked]').each(function(){
             if($(this).attr('data-str')!=''){
               tagStr+=$(this).attr('data-str')+',';
+            }else{
+              tagStr+=$('#recommend-input').val()+',';
             }
           });
           if($('.recommend-sel').eq(8).attr('checked')){

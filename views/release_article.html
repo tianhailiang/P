@@ -428,6 +428,8 @@
             $('.recommend-sel[checked=checked]').each(function(){
               if($(this).attr('data-str')!=''){
                 tagStr+=$(this).attr('data-str')+',';
+              }else{
+                tagStr+=$('#recommend-input').val()+',';
               }
             });
             if($('.recommend-sel').eq(8).attr('checked')){
@@ -440,6 +442,8 @@
               return false;
             }
             newTagStr =tagStr.substring(0,tagStr.length-1);
+            // console.log(tagStr)
+            // console.log(newTagStr)
             if($('.recommend-sel').eq(9).attr('checked')){
               //选中自定义标签
               if($('#recommend-input').val()==''){
@@ -555,6 +559,8 @@
             $('.recommend-sel[checked=checked]').each(function(){
               if($(this).attr('data-str')!=''){
                 tagStr+=$(this).attr('data-str')+',';
+              }else{
+                tagStr+=$('#recommend-input').val()+',';
               }
             });
             if($('.recommend-sel').eq(8).attr('checked')){
