@@ -246,7 +246,7 @@ exports.activity_detail = function (req, res, next){
     data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.activitydetail = returnData(result.activitydetail, 'activitydetail');
     if(err || result.activitydetail.code != 0 || result.activitydetail.data.list.hold_city != urlcity){
-      next()
+      return next();
     }
     data.huodongdiye=data.activitydetail.list;
     data.tdk = {
