@@ -14,6 +14,7 @@ $(function() {
         var detail_bar_h = $('#detail_bar').height();
         var commentTop = $('#saytext-box').offset().top;
         $(window).scrollTop(commentTop-detail_bar_h-30);
+        console.log('commentTop',commentTop,'detail_bar_h',detail_bar_h)
         $('#saytext').focus();
     };
     var hash = (window.location.href.split('#').length) > 1 ? true : false;
