@@ -1,7 +1,7 @@
 /**
  * Created by DXZ-Shuqin.Wang on 2018/3/26.
  */
-$(function() {
+$(window).load(function(){
     $(window).on('scroll', function () {
         var $scroll = $(this).scrollTop();
         if ($scroll >= 470) {
