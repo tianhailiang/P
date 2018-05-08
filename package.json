@@ -68,7 +68,7 @@
     "pm2_yimin": "pm2 start processes_yimin.json --env production",
     "start": "set NODE_ENV=production&&node ./bin/www",
     "dev": "set NODE_ENV=development&&node ./bin/www",
-    "yimin_start": "set NODE_ENV=production&&node ./bin/yimin_svr",
+    "yimin_start": "set NODE_ENV=production&&node ./bin/yimin_svr &",
     "yimin_dev": "set NODE_ENV=development&&node ./bin/yimin_svr",
     "frag_dev": "set NODE_ENV=development&&node ./bin/fragsvr",
     "linux_frag_dev": "export NODE_ENV=development;supervisor ./bin/fragsvr &",
