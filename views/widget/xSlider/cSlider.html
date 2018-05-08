@@ -16,22 +16,23 @@
 		</div>
 	</div>
 	<script>
-		var mySwiper = new Swiper('.swiper-container',{
-			autoplay : 4000,
-				loop : true,
-        speed:1000,
-        mode : 'vertical',
-        slidesPerView : 2,
-        slidesPerGroup : 2,
-		})
-		$('.arrow-left').on('click', function(e){
-		    e.preventDefault()
-		    mySwiper.swipePrev()
-		})
-	  	$('.arrow-right').on('click', function(e){
-	    	e.preventDefault()
-	    	mySwiper.swipeNext()
-	  	})
+		$(function () {
+        var mySwiper = new Swiper('.swiper-container',{
+            autoplay : 4000,
+            loop : true,
+            speed:1000,
+            mode : 'vertical',
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+        })
+        $('.arrow-left').on('click', function(e){
+            e.preventDefault()
+            mySwiper.swipePrev()
+        })
+        $('.arrow-right').on('click', function(e){
+            e.preventDefault()
+            mySwiper.swipeNext()
+        })
 
 //      	$(".branch-expert-lunbo").on("mouseover",function(){
 //      		$(".arrow-btn").show();
@@ -41,5 +42,6 @@
 // 	  		$(".arrow-btn").hide();
 // 	  		mySwiper.startAutoplay(); //开始自动滚动
 // 	  	})
+    })
 	</script>
 {% endmacro %}

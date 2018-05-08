@@ -1,4 +1,5 @@
 // console.log($('.swiper-container_11').data('slider'))
+$(function () {
 if($('.swiper-container_11').data('slider') > 3){
 		var mySwiper11 = new Swiper('.swiper-container_11',{
 			autoplay : 4000,
@@ -370,7 +371,7 @@ if($('.swiper-container_34').data('slider') > 3){
 		mySwiper34.startAutoplay();
 	})
 }
-		
+})
 
 
 
