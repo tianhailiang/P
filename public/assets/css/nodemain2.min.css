@@ -1,6 +1,3 @@
-.page-blank{padding:40px 0;width:880px;height:200px}
-.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
-.page-blank .blank-img{display:block;width:200px;margin:0 auto}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:768px}
@@ -19,6 +16,9 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:0}
+.page-blank{padding:40px 0;width:880px;height:200px}
+.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
+.page-blank .blank-img{display:block;width:200px;margin:0 auto}
 
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
@@ -222,6 +222,10 @@
 .col3-t-p1-p2-a3{width:366px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
 .col3-t-p1-p2-a2{font-size:14px;margin-bottom:12px}
 .col3-t-p1-p2-a6{width:366px;line-height:24px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:14px}
+.moment .jincai a{display:block;width:366px;height:276px}
+.moment .dui-layout-col3-img{width:366px;height:276px}
+.moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
+.moment .jincai-con{font-size:14px;color:#333}
 .gw-list{width:280px;list-style:none;background:#fff}
 .gw-list li{border-bottom:solid 1px #dcdcdc;margin-bottom:18px;margin-left:10px;margin-right:10px}
 .gw-list li:first-child{padding-top:16px}
@@ -917,6 +921,14 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .top_weibo_img{width:26px;height:26px;margin-right:10px;line-height:25px;cursor:pointer}
 .top_weibo_img img{width:22px;height:22px}
 .top_weibo{width:96px;height:99px;z-index:1002;position:absolute;top:29px;right:0}
+.customization2{width:314px;height:350px;background:#f8f8f8;position:relative;left:-1px}
+.quick_links_panel ul .customization2 .quick-text11 span{padding:0}
+.customization2 h2{width:878px;height:48px;line-height:48px;text-align:center;border-bottom:1px solid #dcdcdc}
+.quick-text11 label{color:#333}
+.quick-text11 span{color:#ff7d31;position:relative;top:2px}
+.quick-get-phone-code,.quick-get-phone-code-act{display:inline-block;width:108px;height:28px;color:#c13232;text-align:center;line-height:28px;margin-left:10px;vertical-align:middle}
+.quick-btn-box{width:100%;margin-top:30px}
+.quick-btn{position:relative;width:160px;height:30px;background:#d21b29;color:#fff;text-align:center;line-height:30px;left:50%;margin-left:-80px}
 .advisor_star_bar{height:162px;padding:19px 0;position:relative}
 .advisor-star-cella{display:block;float:left;margin-left:24px}
 .advisor-star-cell a dt{width:92px;height:116px;overflow:hidden}
@@ -952,11 +964,3 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .slider .slider-btn.slider-btn-left{background-image:url(../img/zuo1.png);left:0;margin-top:-50px}
 .slider:hover .slider-btn{display:block}
 .slider .slider-btn.slider-btn-right{background-image:url(../img/you1.png);right:0;margin-top:-50px}
-.customization2{width:314px;height:350px;background:#f8f8f8;position:relative;left:-1px}
-.quick_links_panel ul .customization2 .quick-text11 span{padding:0}
-.customization2 h2{width:878px;height:48px;line-height:48px;text-align:center;border-bottom:1px solid #dcdcdc}
-.quick-text11 label{color:#333}
-.quick-text11 span{color:#ff7d31;position:relative;top:2px}
-.quick-get-phone-code,.quick-get-phone-code-act{display:inline-block;width:108px;height:28px;color:#c13232;text-align:center;line-height:28px;margin-left:10px;vertical-align:middle}
-.quick-btn-box{width:100%;margin-top:30px}
-.quick-btn{position:relative;width:160px;height:30px;background:#d21b29;color:#fff;text-align:center;line-height:30px;left:50%;margin-left:-80px}

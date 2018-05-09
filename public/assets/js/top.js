@@ -3,17 +3,7 @@
 
     $("form").Vaild();
 
-    //图片验证码
-    $.ajax({
-      url:"/param_code",
-      type: "get",
-      success: function(result){
-        $('#param_code').html(result)
-      },
-      error:function(XMLHttpRequest, textStatus, errorThrown){
-        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
-      }
-    });
+
 
     //登录
     var pac_d = document.getElementById('getloginUser_deng');
@@ -152,6 +142,17 @@
   var layeropen;
   function getlogin () {
 
+    //图片验证码
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
         layeropen = layer.open({
 	            type: 1,
 	            shade: [0.4,'#000'],
@@ -177,6 +178,18 @@
 	      });
   }
   function getregister () {
+
+    //图片验证码
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
 
     layeropen = layer.open({
           type: 1,
