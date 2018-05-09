@@ -265,7 +265,7 @@
         this.value  = this.value.substring(0, 200);
       }); 
       $("#art_abs").on("keyup",function(){
-        var strLength = $.trim($(this).val()).length; 
+        var strLength = this.value.length; 
         $("#word-num").html(200-strLength);
         if(strLength > 200){
           $("#word-num").html(0);
