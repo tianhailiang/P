@@ -99,20 +99,21 @@
     font-size: 0;
 }
 .liuxue-guoqi p{
-    /*width: 54px;*/
-    /*height: 18px;*/
-    /*overflow: hidden;*/
+    width: 54px;
+    height: 18px;
+    overflow: hidden;
     color:#333 ;
     font-size: 12px;
     text-align: center;
     /*margin-top: 5px;*/
 }
 .liuxue-guoqi a{
-    margin: 5px 40px 0px 0;
+    margin: 5px 42px 0px 0;
     height:60px;
     position: relative;
-    display: inline-block;
-    border:solid 1px transparent;
+    /*display: inline-block;*/
+    float: left;
+    /*border:solid 1px transparent;*/
 }
 .liuxue-guojia-title{
     width: 23px;
@@ -123,8 +124,15 @@
     line-height: 13px;
     background: #fff;
     padding: 10px 6px;
-    border-right: 1px solid #eeeeee;
+    /*border-right: solid #eeeeee;*/
+    /*border-right-width: 1px;*/
     float: left;
+}
+.liuxue-guojia-line{
+    width: 1px;
+    float: left;
+    height: 134px;
+    background: #eee;
 }
 .guoqi_ios{
     width:34px;
