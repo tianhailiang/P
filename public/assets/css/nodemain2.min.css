@@ -1,7 +1,32 @@
+.art-box{padding:20px}
+.art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
+.art-box .adviser-info{float:left;position:relative;width:768px}
+.art-box .adviser-info-name{margin-top:10px;margin-bottom:14px;font-size:14px;color:#333;line-height:12px}
+.art-box .adviser-info-date{font-size:12px;color:#333;line-height:12px;margin-bottom:20px}
+.art-box .adviser-info-date span{float:left}
+.art-box .adviser-info-date-s{margin-right:10px}
+.art-box .adviser-info-title{font-size:16px;color:#c13232;line-height:16px}
+.art-box .adviser-info-p{font-size:12px;color:#333;line-height:24px;margin-bottom:5px}
+.art-box .adviser-info-p span{color:#c13232}
+.art-box .adviser-info-ul li{width:150px;height:150px;float:left;margin-right:20px}
+.art-box .adviser-info-ul li img{display:block;width:100%;height:100%}
+.art-box .offer-xialas{position:absolute;right:0;top:8px;z-index:500}
+.art-box .offer-xialadd{float:right;font-size:14px;line-height:14px;color:#333}
+.art-box .offer-xiala{width:70px;height:88px;float:left;display:none;box-shadow:1px 0 4px rgba(0,0,0,.2)}
+.art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
+.art-box .offer-xialas:hover .offer-xiala{display:block}
+.art-box .offer-opt-bar{top:10px;right:0}
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
-
+.bot_comment{width:880px;height:44px;border-top:1px solid #dcdcdc;border-bottom:1px solid #dcdcdc}
+.bot_comment ul{width:100%;height:100%}
+.bot_comment li{width:219px;height:20px;border-right:1px solid #dcdcdc;text-align:center;float:left;margin-top:11px;cursor:pointer}
+.bot_comment li:hover i,.bot_comment li:hover span{color:#C13232}
+.bot_comment li i{margin-right:10px}
+.bot_comment li span{font-size:14px;color:#666}
+.bot_comment li em{font-style:normal}
+.bot_comment li.dian{border-right:none}
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
 .sub-btn-box{margin-top:20px;margin-bottom:20px}
@@ -54,24 +79,6 @@
 .community-advisor .advisor-guanzhu,.community-advisor .advisor-zixun{font-size:14px;padding:1px 42px;cursor:pointer;color:#fff}
 .community-advisor .advisor-zixun{border-right:1px solid #fff}
 .community-advisor .counsellor-guanzhu{font-size:14px;display:block;text-align:center;cursor:pointer}
-.art-box{padding:20px}
-.art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
-.art-box .adviser-info{float:left;position:relative;width:768px}
-.art-box .adviser-info-name{margin-top:10px;margin-bottom:14px;font-size:14px;color:#333;line-height:12px}
-.art-box .adviser-info-date{font-size:12px;color:#333;line-height:12px;margin-bottom:20px}
-.art-box .adviser-info-date span{float:left}
-.art-box .adviser-info-date-s{margin-right:10px}
-.art-box .adviser-info-title{font-size:16px;color:#c13232;line-height:16px}
-.art-box .adviser-info-p{font-size:12px;color:#333;line-height:24px;margin-bottom:5px}
-.art-box .adviser-info-p span{color:#c13232}
-.art-box .adviser-info-ul li{width:150px;height:150px;float:left;margin-right:20px}
-.art-box .adviser-info-ul li img{display:block;width:100%;height:100%}
-.art-box .offer-xialas{position:absolute;right:0;top:8px;z-index:500}
-.art-box .offer-xialadd{float:right;font-size:14px;line-height:14px;color:#333}
-.art-box .offer-xiala{width:70px;height:88px;float:left;display:none;box-shadow:1px 0 4px rgba(0,0,0,.2)}
-.art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
-.art-box .offer-xialas:hover .offer-xiala{display:block}
-.art-box .offer-opt-bar{top:10px;right:0}
 .community-nav-con{height:40px;background:#f3f3f3;margin:20px 20px 0}
 .community-nav-con .community-nav-list{display:inline-block;font-size:16px;color:#666;line-height:40px;width:96px;height:40px;text-align:center}
 .community-nav-con .nav-active{background:#c13232;color:#fff}
@@ -118,7 +125,12 @@
 .msg-item .msg-info .msg-info-time{font-size:12px;color:#666;line-height:12px;margin-top:5px}
 .right-cont{width:878px;border:1px #eee solid}
 .right-title{width:840px;height:40px;background:#eee;margin-top:20px;margin-left:20px}
-// .right-title div{//     width:115px;//     height:40px;//     background:#C13232;//     font-size:18px;//     color:#fff;//     text-align:center;//     line-height:40px}
+.right-title div{width:115px;height:40px;background:#C13232;font-size:18px;color:#fff;text-align:center;line-height:40px}
+.banner-box{margin-top:20px;height:130px}
+.banner-box-left{background:#dcdcdc;height:130px}
+.banner-box-right{background:#dcdcdc;height:130px}
+.slider .slider-dot ul li{border-radius:50%}
+.slider .slider-btn.slider-btn-left,.slider .slider-btn.slider-btn-right{margin-top:-33px}
 .cmt-item{width:840px;margin:0 19px;border-bottom:1px solid #dcdcdc}
 .cmt-item:last-child{border-bottom:none}
 .cmt-item .cmt-img{width:60px;height:60px;overflow:hidden;float:left;margin-right:20px;margin-top:20px;margin-bottom:19px;background-color:#ffb6c1}
