@@ -41,7 +41,7 @@
 {% for floor in shouye %} {#国家#}
 <div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
 	<div class="lx-head">
-		<h1>{{floor.country_name}}移民</h1>
+		<h1 style="font-weight: normal">{{floor.country_name}}移民</h1>
 		<ul class="lx-tabitems">
 			{% for tagitem in floor.list %}
 				{% if loop.index == 1 %}
