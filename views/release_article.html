@@ -449,6 +449,9 @@
               if($('#recommend-input').val()==''){
                 layer.msg('请输入您的自定义标签');
                 return false;
+              }else if ($('#recommend-input').val() == '专业解析' || $('#recommend-input').val()=='申请规划' || $('#recommend-input').val() =='留学费用'||$('#recommend-input').val()=='留学条件'||$('#recommend-input').val()=='大学排名'||$('#recommend-input').val()=='行前指导'||$('#recommend-input').val()=='就业指导'||$('#recommend-input').val()=='签证指导'||$('#recommend-input').val()=='留学案例'){
+                layer.msg('您输入的自定义标签不能与推荐标签相同');
+                return false;
               }else{
                 custom_tags =$('#recommend-input').val();
               }
@@ -577,6 +580,9 @@
               //选中自定义标签
               if($('#recommend-input').val()==''){
                 layer.msg('请输入您的自定义标签');
+                return false;
+              }else if ($('#recommend-input').val() == '专业解析' || $('#recommend-input').val()=='申请规划' || $('#recommend-input').val() =='留学费用'||$('#recommend-input').val()=='留学条件'||$('#recommend-input').val()=='大学排名'||$('#recommend-input').val()=='行前指导'||$('#recommend-input').val()=='就业指导'||$('#recommend-input').val()=='签证指导'||$('#recommend-input').val()=='留学案例'){
+                layer.msg('您输入的自定义标签不能与推荐标签相同');
                 return false;
               }else{
                 custom_tags =$('#recommend-input').val();
