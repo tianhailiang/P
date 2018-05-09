@@ -93,3 +93,4 @@ a,button,input,optgroup,select,textarea {
   overflow: hidden;
 }
 .dui-box-shadow {box-shadow: 0px 1px 7px 3px rgba(0,0,0,0.1);}
+*{-webkit-appearance: none;}/*（去除默认样式）*/
