@@ -27,6 +27,28 @@
 .bot_comment li span{font-size:14px;color:#666}
 .bot_comment li em{font-style:normal}
 .bot_comment li.dian{border-right:none}
+.community-advisor{border-top:2px solid #c13232;box-shadow:1px 0 5px rgba(0,0,0,.4);width:100%;background:#fff}
+.community-advisor ul{height:37px;border-bottom:1px solid #dcdcdc}
+.community-advisor ul li{float:left;width:139.5px;text-align:center;margin-top:12px;font-size:14px;color:#666}
+.community-advisor .guanzhu{border-right:1px solid #dcdcdc;margin-right:0}
+.community-advisor .article-num,.community-advisor .guanzhu-num{color:#333;padding-left:10px}
+.community-advisor dl{padding:0 80px;text-align:center;margin-top:20px}
+.community-advisor .advisor-img{width:126px;height:126px;margin-bottom:20px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;-webkit-background-size:cover;background-size:cover;position:relative;overflow:hidden}
+.community-advisor .advisor-img a{display:block;width:100%;height:100%}
+.community-advisor .advisor-img .jjl_mark{position:absolute;left:0;bottom:0;width:100%;height:28px}
+.community-advisor .advisor-name{font-size:18px;text-align:center;color:#c13232;line-height:18px}
+.community-advisor .user-name{font-size:18px;line-height:18px;text-align:center;margin-bottom:20px;color:#333}
+.community-advisor .advisor-bumen,.community-advisor .advisor-enjoy{height:14px;margin-top:10px;font-size:14px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:14px}
+.community-advisor .advisor-sushu{height:16px;font-size:14px;color:#666;margin-top:16px;text-align:center}
+.community-advisor .advisor-intro{padding:13px 20px;font-size:12px;color:#666}
+.community-advisor .counsellor-intro{text-indent:2em;padding:15px 20px;font-size:12px;color:#666}
+.community-advisor .counsellor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
+.community-advisor .advisor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
+.community-advisor .advisor-btn{height:40px;background:#ff8547;font-size:20px;color:#fff;line-height:40px}
+.community-advisor .advisor-btn-gray{background:#dcdcdc}
+.community-advisor .advisor-guanzhu,.community-advisor .advisor-zixun{font-size:14px;padding:1px 42px;cursor:pointer;color:#fff}
+.community-advisor .advisor-zixun{border-right:1px solid #fff}
+.community-advisor .counsellor-guanzhu{font-size:14px;display:block;text-align:center;cursor:pointer}
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
 .sub-btn-box{margin-top:20px;margin-bottom:20px}
@@ -57,28 +79,6 @@
 .reply-list-info-top{word-break:break-all}
 .reply-list-info-top span{color:#c13232}
 .load-more{height:53px;border-top:1px solid #dcdcdc;cursor:pointer;text-align:center;line-height:53px;font-size:14px;color:#333}
-.community-advisor{border-top:2px solid #c13232;box-shadow:1px 0 5px rgba(0,0,0,.4);width:100%;background:#fff}
-.community-advisor ul{height:37px;border-bottom:1px solid #dcdcdc}
-.community-advisor ul li{float:left;width:139.5px;text-align:center;margin-top:12px;font-size:14px;color:#666}
-.community-advisor .guanzhu{border-right:1px solid #dcdcdc;margin-right:0}
-.community-advisor .article-num,.community-advisor .guanzhu-num{color:#333;padding-left:10px}
-.community-advisor dl{padding:0 80px;text-align:center;margin-top:20px}
-.community-advisor .advisor-img{width:126px;height:126px;margin-bottom:20px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;-webkit-background-size:cover;background-size:cover;position:relative;overflow:hidden}
-.community-advisor .advisor-img a{display:block;width:100%;height:100%}
-.community-advisor .advisor-img .jjl_mark{position:absolute;left:0;bottom:0;width:100%;height:28px}
-.community-advisor .advisor-name{font-size:18px;text-align:center;color:#c13232;line-height:18px}
-.community-advisor .user-name{font-size:18px;line-height:18px;text-align:center;margin-bottom:20px;color:#333}
-.community-advisor .advisor-bumen,.community-advisor .advisor-enjoy{height:14px;margin-top:10px;font-size:14px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:14px}
-.community-advisor .advisor-sushu{height:16px;font-size:14px;color:#666;margin-top:16px;text-align:center}
-.community-advisor .advisor-intro{padding:13px 20px;font-size:12px;color:#666}
-.community-advisor .counsellor-intro{text-indent:2em;padding:15px 20px;font-size:12px;color:#666}
-.community-advisor .counsellor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
-.community-advisor .advisor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
-.community-advisor .advisor-btn{height:40px;background:#ff8547;font-size:20px;color:#fff;line-height:40px}
-.community-advisor .advisor-btn-gray{background:#dcdcdc}
-.community-advisor .advisor-guanzhu,.community-advisor .advisor-zixun{font-size:14px;padding:1px 42px;cursor:pointer;color:#fff}
-.community-advisor .advisor-zixun{border-right:1px solid #fff}
-.community-advisor .counsellor-guanzhu{font-size:14px;display:block;text-align:center;cursor:pointer}
 .community-nav-con{height:40px;background:#f3f3f3;margin:20px 20px 0}
 .community-nav-con .community-nav-list{display:inline-block;font-size:16px;color:#666;line-height:40px;width:96px;height:40px;text-align:center}
 .community-nav-con .nav-active{background:#c13232;color:#fff}
