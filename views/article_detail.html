@@ -124,7 +124,7 @@
             {% endif %}
             <div class="userinfo-right" >
               <div >
-                <i class="userinfo-name">{{userinfo.realname}}</i>
+                <i class="userinfo-name" style="font-weight: normal">{{userinfo.realname}}</i>
                 <i class="adviser-v-i" style="margin-left: 0;"></i>
                 <i style="color:#333;font-size: 14px;">{{userinfo.position_name}}</i>
               </div>
@@ -157,7 +157,7 @@
           </div>
           {% endif %}
           <div class="article_tuijian">
-              <h1><div></div>相关推荐</h1>
+              <h1 style="font-weight: normal"><div></div>相关推荐</h1>
             {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list) %}
           </div>
           <!-- ========评论===== -->
