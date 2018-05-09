@@ -22,12 +22,14 @@
     float: left;
     width: 60px;
     height: 40px;
+    line-height: 40px;
     text-align: center;
     background-color: #c13232;
     font-size: 18px;
 }
 .main-left .main-searchbox .search-btn i {
     font-size: 22px;
+    color: #fff;
 }
 .main-left .result-bar{
     font-size: 14px;
