@@ -90,6 +90,7 @@
 {% endfor %} {#国家end#}
 
 <script>
+	$(function () {
 	var cur_area;
 	if ($.cookie('currentarea')) {
 		cur_area = $.cookie('currentarea');
@@ -123,6 +124,7 @@
 		}
 		$(this).addClass('active').siblings().removeClass('active');
 	})
+  })
 </script>
 
 
