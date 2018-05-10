@@ -212,12 +212,6 @@
   {% include "widget/new_footer/common_footer.html" %}
   {% import "widget/new_slide/new_slide.html" as  slide %}
   {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
-  <script>
-    var login_ss = null; //获取用户信息
-    if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));  
-    }
-  </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
     <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
     <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
@@ -229,6 +223,10 @@
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script >
     $(function(){
+        var login_ss = null; //获取用户信息
+        if($.cookie('login_ss') != undefined){
+            login_ss = JSON.parse($.cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,

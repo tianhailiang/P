@@ -153,12 +153,6 @@
   {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
   {{slide.leyu_slide(helper) }}
   {% endif %}
-  <script>
-    var login_ss = null; 
-    if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));  
-    }
-  </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
@@ -170,6 +164,10 @@
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script>
     $(function() {
+        var login_ss = null;
+        if($.cookie('login_ss') != undefined){
+            login_ss = JSON.parse($.cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,

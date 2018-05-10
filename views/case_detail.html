@@ -180,6 +180,10 @@
 <script src="{{helper.cdnhost}}/assets/js/article_detail.js"></script>
 <script>
   $(function(){
+      var login_ss = null;
+      if($.cookie('login_ss') != undefined){
+          login_ss = JSON.parse($.cookie('login_ss'));
+      }
       $('.banner-box-left .slider').xSlider({
           current: 0,
           speed: 500,

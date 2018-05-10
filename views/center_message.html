@@ -102,11 +102,6 @@
 {{slide.leyu_slide(helper) }}
 {% endif %}
 {% endif %}
-<script>
-    if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));  
-    }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
@@ -116,6 +111,9 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script>
     $(function () {
+        if($.cookie('login_ss') != undefined){
+            login_ss = JSON.parse($.cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,

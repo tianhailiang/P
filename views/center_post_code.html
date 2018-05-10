@@ -250,148 +250,150 @@
 <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script>
-    $('.banner-box-left .slider').xSlider({
-        //轮播图配置
+    $(function() {
+        $('.banner-box-left .slider').xSlider({
+            //轮播图配置
 //          autoplay : 500,
-        current: 0,
-        speed: 500,
-        intervalTime: 5000,
-        pagination: true,
-        dotPostion:'right'
-    });
-    $('.banner-box-right .slider').xSlider({
-        //轮播图配置
+            current: 0,
+            speed: 500,
+            intervalTime: 5000,
+            pagination: true,
+            dotPostion:'right'
+        });
+        $('.banner-box-right .slider').xSlider({
+            //轮播图配置
 //          autoplay : 500,
 //            mode:'vertical',
-        current: 0,
-        speed: 1000,
-        intervalTime: 5000,
-        slidesPerView : 2,
-        slidesPerGroup : 2,
-          pagination: true
-    });
-    var login_ss = null;
-    if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));
-    }
-    //微信图片上传
-    var params = {
-        uid: login_ss.uid,
-        fileInput: $("#post-wx-code").get(0),
-        url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
-        filter: function(files) {
-            var arrFiles = [];
-            for (var i = 0, file; file = files[i]; i++) {
-                if (file.type.indexOf("image") == 0) {
-                    if (file.size >= 1024000) {
-                        layer.msg('您这张"'+ file.name +'"图片大小过大，应小于1M');
-                    } else {
-                        arrFiles.push(file);
-                    }
-                } else {
-                    layer.msg('文件"' + file.name + '"不是图片。');
-                }
-            }
-            return arrFiles;
-        },
-        onSelect: function(files) {
-            console.log('onSelect回调');
-        },
-        onDragOver: function() {
-            $(this).addClass("upload_drag_hover");
-        },
-        onDragLeave: function() {
-            $(this).removeClass("upload_drag_hover");
-        },
-        onProgress: function(file, loaded, total) {
-            /*var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
-            eleProgress.show().html(percent);*/
-            $('#weixin-box').find('.loading-mask').show();
-        },
-        onSuccess: function(file, response) {
-            var resData = JSON.parse(response);
-            console.log('onSuccess~~~thl', resData);
-            if (resData.errno == 0) {
-                $('#weixin-box').find('.no-code').hide();
-                $('#weixin-box').find('.has-code').remove();
-                var html ='<div class="has-code" style="background-image: url('+ resData.data[0] +')">'+
-                    '<div class="code-mask">'+
-                    '<label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>'+
-                    '</div>'+
-                    '</div>';
-                $('#weixin-box').find('.code-box-in').append($(html));
-            }
-            else {
-                layer.msg(resData.message);
-            }
-            $('#weixin-box').find('.loading-mask').hide();
-        },
-        onFailure: function(file) {
-            $('#weixin-box').find('.loading-mask').hide();
-            layer.msg('服务器出小差了，请重试');
+            current: 0,
+            speed: 1000,
+            intervalTime: 5000,
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+            pagination: true
+        });
+        var login_ss = null;
+        if($.cookie('login_ss') != undefined){
+            login_ss = JSON.parse($.cookie('login_ss'));
         }
-    };
-    ZXXFILE = $.extend(ZXXFILE, params);
-    ZXXFILE.init();
-    //qq图片上传
-    var paramsQQ = {
-        uid: login_ss.uid,
-        fileInput: $("#post-qq-code").get(0),
-        url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
-        filter: function(files) {
-            var arrFiles = [];
-            for (var i = 0, file; file = files[i]; i++) {
-                if (file.type.indexOf("image") == 0) {
-                    if (file.size >= 1024000) {
-                        layer.msg('您这张"'+ file.name +'"图片大小过大，应小于1M');
+        //微信图片上传
+        var params = {
+            uid: login_ss.uid,
+            fileInput: $("#post-wx-code").get(0),
+            url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+            filter: function(files) {
+                var arrFiles = [];
+                for (var i = 0, file; file = files[i]; i++) {
+                    if (file.type.indexOf("image") == 0) {
+                        if (file.size >= 1024000) {
+                            layer.msg('您这张"'+ file.name +'"图片大小过大，应小于1M');
+                        } else {
+                            arrFiles.push(file);
+                        }
                     } else {
-                        arrFiles.push(file);
+                        layer.msg('文件"' + file.name + '"不是图片。');
                     }
-                } else {
-                    layer.msg('文件"' + file.name + '"不是图片。');
                 }
+                return arrFiles;
+            },
+            onSelect: function(files) {
+                console.log('onSelect回调');
+            },
+            onDragOver: function() {
+                $(this).addClass("upload_drag_hover");
+            },
+            onDragLeave: function() {
+                $(this).removeClass("upload_drag_hover");
+            },
+            onProgress: function(file, loaded, total) {
+                /*var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+                 eleProgress.show().html(percent);*/
+                $('#weixin-box').find('.loading-mask').show();
+            },
+            onSuccess: function(file, response) {
+                var resData = JSON.parse(response);
+                console.log('onSuccess~~~thl', resData);
+                if (resData.errno == 0) {
+                    $('#weixin-box').find('.no-code').hide();
+                    $('#weixin-box').find('.has-code').remove();
+                    var html ='<div class="has-code" style="background-image: url('+ resData.data[0] +')">'+
+                            '<div class="code-mask">'+
+                            '<label class="upload-code-btn"  for="post-wx-code">修改我的微信二维码</label>'+
+                            '</div>'+
+                            '</div>';
+                    $('#weixin-box').find('.code-box-in').append($(html));
+                }
+                else {
+                    layer.msg(resData.message);
+                }
+                $('#weixin-box').find('.loading-mask').hide();
+            },
+            onFailure: function(file) {
+                $('#weixin-box').find('.loading-mask').hide();
+                layer.msg('服务器出小差了，请重试');
             }
-            return arrFiles;
-        },
-        onSelect: function(files) {
-            console.log('onSelect回调');
-        },
-        onDragOver: function() {
-            $(this).addClass("upload_drag_hover");
-        },
-        onDragLeave: function() {
-            $(this).removeClass("upload_drag_hover");
-        },
-        onProgress: function(file, loaded, total) {
-           /* var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
-            eleProgress.show().html(percent);*/
-            $('#qq-box').find('.loading-mask').show();
-        },
-        onSuccess: function(file, response) {
-            var resData = JSON.parse(response);
-            console.log('onSuccess~~~thl', resData);
-            if (resData.errno == 0) {
-                $('#qq-box').find('.no-code').hide();
-                $('#qq-box').find('.has-code').remove();
-                var html ='<div class="has-code" style="background-image: url('+ resData.data[0] +')">'+
-                        '<div class="code-mask">'+
-                        '<label class="upload-code-btn"  for="post-qq-code">修改我的QQ二维码</label>'+
-                        '</div>'+
-                        '</div>';
-                $('#qq-box').find('.code-box-in').append($(html));
+        };
+        ZXXFILE = $.extend(ZXXFILE, params);
+        ZXXFILE.init();
+        //qq图片上传
+        var paramsQQ = {
+            uid: login_ss.uid,
+            fileInput: $("#post-qq-code").get(0),
+            url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+            filter: function(files) {
+                var arrFiles = [];
+                for (var i = 0, file; file = files[i]; i++) {
+                    if (file.type.indexOf("image") == 0) {
+                        if (file.size >= 1024000) {
+                            layer.msg('您这张"'+ file.name +'"图片大小过大，应小于1M');
+                        } else {
+                            arrFiles.push(file);
+                        }
+                    } else {
+                        layer.msg('文件"' + file.name + '"不是图片。');
+                    }
+                }
+                return arrFiles;
+            },
+            onSelect: function(files) {
+                console.log('onSelect回调');
+            },
+            onDragOver: function() {
+                $(this).addClass("upload_drag_hover");
+            },
+            onDragLeave: function() {
+                $(this).removeClass("upload_drag_hover");
+            },
+            onProgress: function(file, loaded, total) {
+                /* var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+                 eleProgress.show().html(percent);*/
+                $('#qq-box').find('.loading-mask').show();
+            },
+            onSuccess: function(file, response) {
+                var resData = JSON.parse(response);
+                console.log('onSuccess~~~thl', resData);
+                if (resData.errno == 0) {
+                    $('#qq-box').find('.no-code').hide();
+                    $('#qq-box').find('.has-code').remove();
+                    var html ='<div class="has-code" style="background-image: url('+ resData.data[0] +')">'+
+                            '<div class="code-mask">'+
+                            '<label class="upload-code-btn"  for="post-qq-code">修改我的QQ二维码</label>'+
+                            '</div>'+
+                            '</div>';
+                    $('#qq-box').find('.code-box-in').append($(html));
+                }
+                else {
+                    layer.msg(resData.message);
+                }
+                $('#qq-box').find('.loading-mask').hide();
+            },
+            onFailure: function(file) {
+                $('#qq-box').find('.loading-mask').hide();
+                layer.msg('服务器出小差了，请重试');
             }
-            else {
-                layer.msg(resData.message);
-            }
-            $('#qq-box').find('.loading-mask').hide();
-        },
-        onFailure: function(file) {
-            $('#qq-box').find('.loading-mask').hide();
-            layer.msg('服务器出小差了，请重试');
-        }
-    };
-    ZXXFILEQQ = $.extend(ZXXFILEQQ, paramsQQ);
-    ZXXFILEQQ.init();
+        };
+        ZXXFILEQQ = $.extend(ZXXFILEQQ, paramsQQ);
+        ZXXFILEQQ.init();
+    })
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>

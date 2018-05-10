@@ -113,12 +113,6 @@
 {{slide.leyu_slide(userinfo,login_info,helper) }}
 {% endif %}
 {% include "widget/new_footer/common_footer.html" %}
-<script>
-    var login_ss = null;
-    if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));
-    }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
@@ -130,6 +124,10 @@
 <script src="{{helper.cdnhost}}/assets/js/bigPhotoSlider.js"></script>
 <script>
     $(function () {
+        var login_ss = null;
+        if($.cookie('login_ss') != undefined){
+            login_ss = JSON.parse($.cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,

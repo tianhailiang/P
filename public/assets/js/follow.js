@@ -2,6 +2,10 @@
  * Created by DXZ-Shuqin.Wang on 2017/10/17.
  */
 $(function () {
+    var login_ss = null;
+    if($.cookie('login_ss') != undefined){
+        login_ss = JSON.parse($.cookie('login_ss'));
+    }
     $('.guanzhu-btn').on('click', function() {
         if($(this).parent().hasClass('advisor-btn-gray')){
             return false;
