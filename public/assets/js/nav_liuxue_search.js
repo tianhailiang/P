@@ -6,18 +6,6 @@
  */
 
 $(document).ready(function(){
-    showcity();
-    function showcity(){
-        if($.cookie('currentarea')){
-            //获取顶部城市
-            //console.log(iDcity1[$.cookie('currentarea')][0])
-            $("#city-on").html(iDcity1[$.cookie('currentarea')][0]);
-            $('#city-place').html(iDcity1[$.cookie('currentarea')][1]);
-            $('#city-phone').html(iDcity1[$.cookie('currentarea')][2]);
-
-        }
-    }
-
     var iDcity1 = {
         1:['北京','北京分公司：北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米)','服务专线：010-65685656'],
         5:['成都','成都分公司：成都市总府路2号时代广场A座18层','服务专线：028-85595757'],
@@ -71,8 +59,17 @@ $(document).ready(function(){
         11:['郑州','郑州分公司：郑州市金水区经三路68号2号楼招商银行大厦12层1202室','服务专线：0371-60228686']
 
     };
+    showcity();
+    function showcity(){
+        if($.cookie('currentarea')){
+            //获取顶部城市
+            //console.log(iDcity1[$.cookie('currentarea')][0])
+            $("#city-on").html(iDcity1[$.cookie('currentarea')][0]);
+            $('#city-place').html(iDcity1[$.cookie('currentarea')][1]);
+            $('#city-phone').html(iDcity1[$.cookie('currentarea')][2]);
 
-
+        }
+    }
     $('.citys-box').on('click',"a", function(e){
         e.preventDefault();
         currentarea = $(this).attr("data-id");
