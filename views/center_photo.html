@@ -162,7 +162,6 @@
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/select.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/upload_photoFile.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
@@ -409,6 +408,7 @@
           
             if (flag) { //符合要求,请求后台接口
                 to_album_add(login_ss.uid,needSavePhotoArr);
+                $("#save-photos").unbind('click');
             }
             else {
                 layer.msg('第' + descWarn.substring(0,descWarn.length-1)+ '张照片的描述不能为空！')

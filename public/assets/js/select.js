@@ -34,8 +34,8 @@ var total_num = $('.pagination-box').data('pagenum');
 var cur_page = Number(getQueryString("page") || 1);
 
 
-if ($.cookie('currentarea')) {
+/*if ($.cookie('currentarea')) {
     $('.current-city').html(iDcity1[$.cookie('currentarea')][0]);
-}
+}*/
 
 
