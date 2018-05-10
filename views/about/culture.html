@@ -49,14 +49,15 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script>
-  $('.branch-lunbo-slider .slider').xSlider({
-    //轮播图配置
-    current: 0,
-    speed: 500,
-    intervalTime: 5000,
-    pagination: true
-  });
-
+  $(function(){
+    $('.branch-lunbo-slider .slider').xSlider({
+      //轮播图配置
+      current: 0,
+      speed: 500,
+      intervalTime: 5000,
+      pagination: true
+    });
+  })
 </script>
 </body>
 </html>
