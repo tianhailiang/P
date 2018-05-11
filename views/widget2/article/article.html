@@ -275,34 +275,40 @@
   </div>
 </div>
 <script>
+  var art_box_ = true;
   function cancelFav (thisObj, articleId) { //取消案例收藏
-    $.ajax({
-      url: '/soapi/favorite_article',
-      type: 'POST',
-      datatype: 'json',
-      data: {
-        article_id: articleId
-      },
-      dataType:'jsonp',
-      jsonpCallback:'cb',
-      success: function (result) {
+    if(art_box_){
+      art_box_ = false;
+      $.ajax({
+        url: '/soapi/favorite_article',
+        type: 'POST',
+        datatype: 'json',
+        data: {
+          article_id: articleId
+        },
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success: function (result) {
 //        var msg = JSON.parse(result)
 //        console.log(msg)
-        console.log('fav', result);
-        if(result.code == 0){
-          layer.msg('删除收藏成功');
-          // window.setTimeout(function(){
-          //   window.location.reload();
-          // },2000);
-          $('#art_box_' + articleId).css('display','none')
-        }else{
-          layer.msg('删除失败')
+          console.log('fav', result);
+          if(result.code == 0){
+            layer.msg('删除收藏成功');
+            // window.setTimeout(function(){
+            window.location.reload();
+            // },2000);
+            $('#art_box_' + articleId).css('display','none')
+          }else{
+            layer.msg('删除失败')
+          }
+          art_box_ = true;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          console.log(errorThrown)
+          art_box_ = true;
         }
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        console.log(errorThrown)
-      }
-    })
+      })
+    }
   }
 </script>
 {% endmacro %}
