@@ -59,15 +59,15 @@
     <div class="" style="margin-top: 20px">
       <div>
         {% import "widget2/community_nav/community_nav.html" as community_nav %}
-        {% if userinfo.status == 1 %} {#离职顾问#}
+        {#{% if userinfo.status == 1 %}
         {{community_nav.adviser_nav_leave('精华', userinfo.uid, helper)}}
-        {% else %} {#在职顾问#}
+        {% else %}#}
         {% if userinfo.usertype == 2 %}
         {{community_nav.adviser_nav('精华', userinfo.uid, helper)}}
         {% elif userinfo.usertype == 3 %}
         {{community_nav.canzan_nav('精华', userinfo.uid, helper)}}
         {% endif %}
-        {% endif %}
+        {#% endif %#}
       </div>
       {% if guwen_list.list.length > 0 %}
       <div class="right-main clearfix">
