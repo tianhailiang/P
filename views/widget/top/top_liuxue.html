@@ -253,7 +253,7 @@ input[type="checkbox"] {
 </div>
 <script>
   $(function() {
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     console.log('login_nickname',login_nickname);
     var user_type;
     if (login_nickname == null) {

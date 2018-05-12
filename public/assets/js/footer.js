@@ -62,10 +62,10 @@ $(document).ready(function(){
 
 });
 function showcity2(){
-  if($.cookie('currentarea')){
-    if($.cookie('currentarea')!=14){
-      $('#address').html(iDcity2[$.cookie('currentarea')][1]);
-      $('#tel').html(iDcity2[$.cookie('currentarea')][2]);
+  if(cookie('currentarea')){
+    if(cookie('currentarea')!=14){
+      $('#address').html(iDcity2[cookie('currentarea')][1]);
+      $('#tel').html(iDcity2[cookie('currentarea')][2]);
       $("#wc-hk").css("display","none");
     }
     else{

@@ -1,4 +1,4 @@
-jQuery.cookie = function(name, value, options) {
+cookie = function(name, value, options) {
     if (typeof value != 'undefined') { // name and value given, set cookie
         options = options || {};
         if (value === null) {
@@ -25,7 +25,8 @@ jQuery.cookie = function(name, value, options) {
         if (document.cookie && document.cookie != '') {
             var cookies = document.cookie.split(';');
             for (var i = 0; i < cookies.length; i++) {
-                var cookie = jQuery.trim(cookies[i]);
+                // var cookie = jQuery.trim(cookies[i]);
+                var cookie = cookies[i].replace(/^\s\s*/,'').replace(/\s\s*$/,'');//用原生的方法替换jQuery.trim
                 // Does this cookie string begin with the name we want?
                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));

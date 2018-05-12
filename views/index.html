@@ -379,7 +379,7 @@
   $(function () {
     var nowLocation = window.location.href;
     var endFix = nowLocation.split('?')[1];
-    if(!$.cookie('currentarea')) {
+    if(!cookie('currentarea')) {
       $.ajax({
         type: "get",
         async: false,
@@ -393,7 +393,7 @@
           //正确
           $('#selByIp').on('click', function (e) {
             e.preventDefault();
-            $.cookie('currentarea', iparea, {path: "/", domain: js_api_config.domain, expires: 36500});
+            cookie('currentarea', iparea, {path: "/", domain: js_api_config.domain, expires: 36500});
             if (endFix) {
               window.location.href = fn.urlgen('branch_home', 'c=' + result.data) + '?' + endFix;
             }
@@ -412,7 +412,7 @@
       if (currentarea) {
         e.preventDefault();
       }
-      $.cookie('currentarea', currentarea, { path: "/",domain: js_api_config.domain,expires: 36500});
+      cookie('currentarea', currentarea, { path: "/",domain: js_api_config.domain,expires: 36500});
       if (endFix) {
         window.location.href = $(this).attr("href")+'?'+endFix;
       }

@@ -64,7 +64,7 @@ $(document).ready(function(){
         currentarea = $(this).attr("data-id");
         var date = new Date();
         date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
-        $.cookie('currentarea', currentarea, { path: '/',domain: js_api_config.domain,expires: 36500});
+        cookie('currentarea', currentarea, { path: '/',domain: js_api_config.domain,expires: 36500});
         //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
         // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
         window.location.href = $(this).attr("href");
@@ -198,12 +198,12 @@ $(document).ready(function(){
     }
 });
 function showcity(){
-    if($.cookie('currentarea')){
+    if(cookie('currentarea')){
         //获取顶部城市
-        //console.log(iDcity1[$.cookie('currentarea')][0])
-        $("#city-on").html(iDcity1[$.cookie('currentarea')][0]);
-        $('#city-place').html(iDcity1[$.cookie('currentarea')][1]);
-        $('#city-phone').html(iDcity1[$.cookie('currentarea')][2]);
+        //console.log(iDcity1[cookie('currentarea')][0])
+        $("#city-on").html(iDcity1[cookie('currentarea')][0]);
+        $('#city-place').html(iDcity1[cookie('currentarea')][1]);
+        $('#city-phone').html(iDcity1[cookie('currentarea')][2]);
     }
 }
 function top_city1 (a,t) {

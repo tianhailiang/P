@@ -92,8 +92,8 @@
 <script>
 	$(function () {
 	var cur_area;
-	if ($.cookie('currentarea')) {
-		cur_area = $.cookie('currentarea');
+	if (cookie('currentarea')) {
+		cur_area = cookie('currentarea');
 	}
 	$(".lxContaniner").on('click', '.lx-tabitems li', function(){
 		var obj = $(this);
