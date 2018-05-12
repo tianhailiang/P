@@ -244,7 +244,7 @@ input[type="checkbox"] {
 </div>
 <script>
   $(function() {
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     var user_type;
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con">'+
@@ -560,7 +560,7 @@ input[type="checkbox"] {
   }
 //普通用户退出
 function outlogin () {
-  var login_info = JSON.parse($.cookie('login_ss'));
+  var login_info = JSON.parse(cookie('login_ss'));
     $.ajax({
       url: js_api_config.wwhost+'/login_out',
       type: 'GET',

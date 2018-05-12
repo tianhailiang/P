@@ -313,8 +313,8 @@
   <script >
     $(function(){
       var login_ss = null; //获取用户信息
-      if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));
+      if(cookie('login_ss') != undefined){
+        login_ss = JSON.parse(cookie('login_ss'));
       }
         $('.banner-box-left .slider').xSlider({
             current: 0,

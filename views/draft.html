@@ -137,8 +137,8 @@
           pagination: true
         });
       var login_ss = null; //获取用户信息
-      if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));  
+      if(cookie('login_ss') != undefined){
+        login_ss = JSON.parse(cookie('login_ss'));  
       }
       var cur_is_draft = Number(getQueryString('is_draft')) || 2;
       $(".main-title-right span").on("click",function(){

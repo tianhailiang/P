@@ -298,8 +298,8 @@
   <script >
     $(function(){
       var login_ss = null; //获取用户信息
-      if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));
+      if(cookie('login_ss') != undefined){
+        login_ss = JSON.parse(cookie('login_ss'));
       }
       var city_id =null;
       if(login_ss.usertype ==2){

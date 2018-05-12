@@ -11,7 +11,7 @@ $(function(){
       $("#quick_links_pop").css("display", "none");
       $("#comment_con").css("display", "none");
       $("#r_comment").css("background", "#9a9a9a");
-      var login_nickname = JSON.parse($.cookie('login_ss'));
+      var login_nickname = JSON.parse(cookie('login_ss'));
       if(login_nickname){
         if(login_nickname.usertype==1){
           window.location.href=fn.no_urlgen('user_center', 'revcomment');
@@ -38,7 +38,7 @@ $(function(){
       $(this).find("img").css("display","block");
     });
     $(".my").on("click",function(){
-      var login_nickname = JSON.parse($.cookie('login_ss'));
+      var login_nickname = JSON.parse(cookie('login_ss'));
       if(login_nickname){
         if(login_nickname.usertype==1){
           window.open(fn.no_urlgen('user_center', 'revcomment'));

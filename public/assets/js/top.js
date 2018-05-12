@@ -357,7 +357,7 @@
   }
 //普通用户退出
 function outlogin () {
-  var login_info = JSON.parse($.cookie('login_ss'));
+  var login_info = JSON.parse(cookie('login_ss'));
   var h = window.location.href;
     console.log('h', h);
     var hh = h.split("/");

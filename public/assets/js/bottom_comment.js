@@ -108,7 +108,7 @@ function showbottom (type, uindex, index, usertype, category_id) {
     //$("#shoucang_" + index).html('&#xe634;');
     //$("#shoucang_li_" + index).css('color', '#C13232');
     //$("#shoucang_span_" + index).css('color', '#C13232');
-    var uid = JSON.parse($.cookie('login_ss'));
+    var uid = JSON.parse(cookie('login_ss'));
     if ( uid === null) {
       console.log('uid1', uid)
       window.location = fn.curlgen('login');
@@ -168,7 +168,7 @@ function showbottom (type, uindex, index, usertype, category_id) {
      $("#pinglun_li_" + index).css('color', '#666666');
      $("#pinglun_span_" + index).css('color', '#666666');
      }*/
-    var uid = JSON.parse($.cookie('login_ss'));
+    var uid = JSON.parse(cookie('login_ss'));
     if ( uid === null) {
       window.location = fn.curlgen('login');
       return false;
@@ -185,7 +185,7 @@ function showbottom (type, uindex, index, usertype, category_id) {
       window.location = fn.urlgen('article',index.toString());
     }
   }else if (type === 4) {
-    var uid = JSON.parse($.cookie('login_ss'));
+    var uid = JSON.parse(cookie('login_ss'));
     console.log('uid', uid)
     if ( uid === null) {
       console.log('uid1', uid)

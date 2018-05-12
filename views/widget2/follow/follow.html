@@ -23,7 +23,7 @@
 </div>
 <script>
   function cancelFollow (thisObj, toUid) {
-    var uid = JSON.parse($.cookie('login_ss')).uid;
+    var uid = JSON.parse(cookie('login_ss')).uid;
     $.ajax({
       url: '/soapi/follow_people',
       type:'POST',
@@ -77,7 +77,7 @@
 </div>
 <script>
   function cancelFollow (thisObj, toUid) {
-    var uid = JSON.parse($.cookie('login_ss')).uid;
+    var uid = JSON.parse(cookie('login_ss')).uid;
     $.ajax({
       url: '/soapi/follow_people',
       type:'POST',

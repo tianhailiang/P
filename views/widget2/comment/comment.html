@@ -109,8 +109,8 @@
   var city_id = '';
   var login_ss = null;
   $(function(){
-    if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));
+    if(cookie('login_ss') != undefined){
+      login_ss = JSON.parse(cookie('login_ss'));
     }
     adviserId = $("#commentBtn").attr('data-memberId'); // 获取顾问id
     article_id = $('#commentBtn').attr("data-artId"); // 获取文章id;

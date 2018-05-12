@@ -3,8 +3,8 @@
  */
 $(function () {
     var login_ss = null;
-    if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));
+    if(cookie('login_ss') != undefined){
+        login_ss = JSON.parse(cookie('login_ss'));
     }
     $('.guanzhu-btn').on('click', function() {
         if($(this).parent().hasClass('advisor-btn-gray')){
