@@ -98,9 +98,9 @@ $(function(){
 
     var _areaName=null;
 
-    if($.cookie('currentarea')){
-      _areaCode = $.cookie('currentarea');
-      _areaName=  iDcity1[$.cookie('currentarea')][0];
+    if(cookie('currentarea')){
+      _areaCode = cookie('currentarea');
+      _areaName=  iDcity1[cookie('currentarea')][0];
     }else{
       _areaName='北京';
       _areaCode=1;
@@ -271,7 +271,7 @@ $(function(){
     return tar;
   }
   function get_location(_type){
-    _areaCode = $.cookie('currentarea') ? $.cookie('currentarea') : 1;
+    _areaCode = cookie('currentarea') ? cookie('currentarea') : 1;
     if(_type == 1){
       return $('.city-box [data-id='+_areaCode+']').attr('data-value');
     }else if(_type == 2){
@@ -319,7 +319,7 @@ $(function(){
       $("#quick_links_pop").css("display", "none");
       $("#comment_con").css("display", "none");
       $("#r_comment").css("background", "#9a9a9a");
-      var login_nickname = JSON.parse($.cookie('login_ss'));
+      var login_nickname = JSON.parse(cookie('login_ss'));
       if(login_nickname){
         if(login_nickname.usertype==1){
           window.location.href=fn.no_urlgen('user_center', 'revcomment');
@@ -346,7 +346,7 @@ $(function(){
       $(this).find("img").css("display","block");
     });
     $(".my").on("click",function(){
-      var login_nickname = JSON.parse($.cookie('login_ss'));
+      var login_nickname = JSON.parse(cookie('login_ss'));
       if(login_nickname){
         if(login_nickname.usertype==1){
           window.open(fn.no_urlgen('user_center', 'revcomment'));
@@ -406,7 +406,7 @@ $(function(){
   });
 
   $(".weixin-slide").on("click",function(){
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     if(login_nickname){
       if( $(".weixin-slide-img").css("display")=="block"){
         $(".weixin-slide-img").css("display","none");
@@ -420,7 +420,7 @@ $(function(){
 
   })
   $(".weixin-slide").on("touchstart",function(){
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     if(login_nickname){
       if( $(".weixin-slide-img").css("display")=="block"){
         $(this).css("backgroundColor","#9a9a9a");
@@ -439,7 +439,7 @@ $(function(){
     $(".qq-slide-img").css("display","none")
   });
   $(".qq-slide").on("click",function(){
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     if(login_nickname){
       if($(".qq-slide-img").css("display")=="block"){
         $(".qq-slide-img").css("display","none");
@@ -452,7 +452,7 @@ $(function(){
     }
   })
   $(".qq-slide").on("touchstart",function(){
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     if(login_nickname){
       if($(".qq-slide-img").css("display")=="block"){
         $(this).css("backgroundColor","#9a9a9a");

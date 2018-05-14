@@ -1,10 +1,6 @@
 
   $(function() {
 
-    $("form").Vaild();
-
-
-
     //登录
     var pac_d = document.getElementById('getloginUser_deng');
     if (pac_d) {
@@ -44,13 +40,13 @@
     }
     $('#weibo').on('click', function () {
       var h = window.location.href;//获取全部的url
-      console.log('h', h);
+      // console.log('h', h);
       var hh = h.split("?");
-      console.log('hh', hh[1])
+      // console.log('hh', hh[1])
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        console.log('strs', strs)
+        // console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
@@ -60,13 +56,13 @@
     //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
     //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
       var h = window.location.href;//获取全部的url
-      console.log('h', h);
+      // console.log('h', h);
       var hh = h.split("?");
-      console.log('hh', hh)
+      // console.log('hh', hh)
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        console.log('strs', strs)
+        // console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
@@ -142,6 +138,8 @@
   var layeropen;
   function getlogin () {
 
+    $("form").Vaild();
+
     //图片验证码
     $.ajax({
       url:"/param_code",
@@ -178,6 +176,8 @@
 	      });
   }
   function getregister () {
+
+    $("form").Vaild();
 
     //图片验证码
     $.ajax({
@@ -279,7 +279,7 @@
       dataType: 'json',
       withCredentials:true,
       success:function(msg){
-        console.log('msg', msg);
+        // console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
           var downcount = 60;
@@ -342,14 +342,13 @@
         code: $('#verify').val()
       },
       success:function(msg) {
-        console.log('aaaaaa');
-        console.log('msg', msg);
+        // console.log('msg', msg);
         if (msg.code == 0) {
           layer.msg('登录成功');
           layer.close(layeropen);
           window.location.reload();
         } else {
-          console.log(msg)
+          // console.log(msg)
           layer.msg(msg.message)
         }
       }
@@ -359,11 +358,11 @@
 function outlogin () {
   var login_info = JSON.parse(cookie('login_ss'));
   var h = window.location.href;
-    console.log('h', h);
+    // console.log('h', h);
     var hh = h.split("/");
-    console.log('hh[1]', hh[3]);
+    // console.log('hh[1]', hh[3]);
     var hhh = h.split("?");
-    console.log('hhh', hhh[1])
+    // console.log('hhh', hhh[1])
     $.ajax({
       url: portname+'/login_out',
       type: 'GET',
@@ -371,15 +370,15 @@ function outlogin () {
       jsonpCallback:'cb',
       success:function(msg){
         if (msg == '0') {
-          console.log('登出')
+          // console.log('登出')
           if (hh[3] == 'forget' && hh[3] == 'login' && hh[3] == 'loginUser' || hh[3] == undefined || hh[3] == '' || hh[4] == '' || hh[4] == undefined || hh[4] == 'article' || hh[4] == 'case' || hh[4] == 'album' || hh[4] == 'hot') {
             window.location.reload();
           }else if (login_info.usertype == 1) {
-            console.log('1')
+            // console.log('1')
             window.location.href = '/loginUser'
             // window.open('/loginUser');
           }else {
-            console.log('2')
+            // console.log('2')
             window.location.href = '/login'
             // window.open('/login');
           }

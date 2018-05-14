@@ -296,11 +296,7 @@ input[type="checkbox"] {
 
   })
 </script>
-<script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
-<script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
-<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/top.js"></script>
+
 <script>
   $(function () {
     var addEvent = function(element,type,callback){
@@ -313,22 +309,18 @@ input[type="checkbox"] {
     var weibo_top = document.getElementById('weibo_top');
     addEvent(weibo_top,'touchstart',function(){
       if ($('#weibo_').css('display') == 'block') {
-        console.log('11111111')
         $("#weibo_").css("display", "none");
       }
       else {
-        console.log('22222222')
         $("#weibo_").css("display", "block");
       }
     });
     var weixin = document.getElementById('weixin');
     addEvent(weixin,'touchstart',function(){
       if ($('#weixin_').css('display') == 'block') {
-        console.log('11111111')
         $("#weixin_").css("display", "none");
       }
       else {
-        console.log('22222222')
         $("#weixin_").css("display", "block");
       }
     });
