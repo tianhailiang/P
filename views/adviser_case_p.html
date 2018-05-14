@@ -78,10 +78,10 @@
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con dui-box-shadow" style="background-color: #fff;">
         <div class="right-cont case-cont">
-            {% if userinfo.status == 1 %} {#离职顾问#}
+            {#% if userinfo.status == 1 %}
             {% import "widget2/community_nav/community_nav.html" as adviser_nav_leave %}
             {{adviser_nav_leave.adviser_nav_leave('案例', userinfo.uid, helper)}}
-            {% else %} {#在职顾问#}
+            {% else %#}
             {% if userinfo.usertype == 2 %}
             {% import "widget2/community_nav/community_nav.html" as adviser_nav %}
             {{adviser_nav.adviser_nav('案例', userinfo.uid, helper)}}
@@ -89,7 +89,7 @@
             {% import "widget2/community_nav/community_nav.html" as canzan_nav %}
             {{canzan_nav.canzan_nav('案例', userinfo.uid, helper)}}
             {% endif %}
-            {% endif %}
+            {#% endif %#}
             {% if case_data.list.length > 0 %}
           <div class="right-main clearfix">
                     {% for item in case_data.list %}

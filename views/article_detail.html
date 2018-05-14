@@ -68,13 +68,13 @@
       <div class="dui-box-shadow" >
         <div class="adviser-case-detail-con" style="margin-top: 0;" >
           {% import "widget2/community_nav/community_nav.html" as community_nav %}
-          {% if userinfo.status == 1 %} {#离职顾问#}
+          {#% if userinfo.status == 1 %}
             {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
-          {% else %} {#在职顾问#}
+          {% else %#}
             {% if userinfo.usertype == 2 %}
              {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
             {% endif %}
-          {% endif %}
+          {#% endif %#}
           <div class="adviser-top clearfix" style="margin-top: 20px;">
             <div style="float:left;line-height: 50px;" >
               <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
@@ -136,7 +136,6 @@
               </div>
             </div>
           </div>
-          {% if userinfo.status == 0 %}
           <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;padding-bottom: 40px;" id="to_comments">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}
@@ -153,17 +152,14 @@
                 &#xe651;
               {% endif %} 
               </i>点赞</span> 
-            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" onclick="openchat_new('{{ userinfo.job_number}}')">立即咨询</a>
+            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" onclick="openchat_new('{{ userinfo.new_job_number}}')">立即咨询</a>
           </div>
-          {% endif %}
           <div class="article_tuijian">
               <h1 style="font-weight: normal"><div></div>相关推荐</h1>
             {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list) %}
           </div>
           <!-- ========评论===== -->
-          {% if userinfo.status == 0 %} 
             {% include "widget2/comment/comment.html" %}
-          {% endif %}
         </div>
       </div>
     </div>
