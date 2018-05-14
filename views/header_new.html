@@ -22,6 +22,11 @@
   <!--[if lt IE 9]>
   <script src="{{helper.cdnhost}}/dep/js/html5.js"></script>
   <![endif]-->
+  <script type="text/javascript">
+    if ('undefined' === typeof console) {
+      var console = {log:function () {}};
+    }
+  </script>
   <script  src="{{helper.cdnhost}}/dep/js/jquery-11.1.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/jquery.xdomainrequest.min.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/jquery.cookie.js" ></script>
