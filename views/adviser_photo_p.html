@@ -89,7 +89,7 @@
         <div class="photo-cont right-cont" style="background-color: #fff;">
             {% import "widget2/community_nav/community_nav.html" as community_nav %}
             {% if userinfo.usertype == 2 %} {#顾问#}
-            {{community_nav.adviser_nav('相册', userinfo.uid, helper)}}
+            {{community_nav.adviser_nav('相册', userinfo, helper)}}
             {% elif userinfo.usertype == 3 %} {#参赞#}
             {{community_nav.canzan_nav('相册', userinfo.uid, helper)}}
             {% endif %}

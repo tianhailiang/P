@@ -62,7 +62,7 @@
         {#% if userinfo.status == 1 %}
           {{community_nav.adviser_nav_leave('案例', userinfo.uid, helper)}}
         {% else %#} {#在职顾问#}
-          {{community_nav.adviser_nav('案例',userinfo.uid,helper)}}
+          {{community_nav.adviser_nav('案例',userinfo,helper)}}
         {#% endif %#}
         <div class="adviser-top clearfix" style="margin-top: 20px;">
           <div style="float:left;line-height: 50px;" >

@@ -84,7 +84,7 @@
             {% else %#}
             {% if userinfo.usertype == 2 %}
             {% import "widget2/community_nav/community_nav.html" as adviser_nav %}
-            {{adviser_nav.adviser_nav('案例', userinfo.uid, helper)}}
+            {{adviser_nav.adviser_nav('案例', userinfo, helper)}}
             {% elif userinfo.usertype == 3 %}
             {% import "widget2/community_nav/community_nav.html" as canzan_nav %}
             {{canzan_nav.canzan_nav('案例', userinfo.uid, helper)}}

@@ -82,7 +82,7 @@
         {{community_nav.adviser_nav_leave('主页', userinfo.uid, helper)}}
         {% else %}#}
         {% if userinfo.usertype == 2 %}
-        {{community_nav.adviser_nav('主页', userinfo.uid, helper)}}
+        {{community_nav.adviser_nav('主页', userinfo, helper)}}
         {% elif userinfo.usertype == 3 %}
         {{community_nav.canzan_nav('主页', userinfo.uid, helper)}}
         {% endif %}
