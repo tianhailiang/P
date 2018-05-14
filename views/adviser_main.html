@@ -205,7 +205,6 @@
             uid: thisObj.attr("data-uid")
           },
           success: function (revmsg) {
-            console.log(revmsg)
             if (revmsg.code == 0) {
               var revList = revmsg.data.list;
               var len = revList.length;
@@ -427,7 +426,6 @@
           },
           dataType: 'json',
           success: function (result) {
-            console.log(result)
             if (result.code == 0) {
               layer.msg('举报成功');
               layer.close(index);
