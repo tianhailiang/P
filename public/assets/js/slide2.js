@@ -378,6 +378,7 @@ if(sUserAgent .match(/ipad/i) == "ipad"){
     $("#quick_links_pop").css("display", "none");
     $("#comment_con").css("display", "none");
     $("#r_comment").css("background", "#9a9a9a");
+    $(".phone-number").css("display","none");
   },function(){
     $(this).find("p").css("display","none");
     $(this).find("img").css("display","block");
@@ -420,6 +421,7 @@ $(".ibar_closebtn").on("click",function(){
  });*/
 $("#r_comment").hover(function(){
   $("#r_comment").css("background", "#C13232");
+  $(".phone-number").css("display","none");
 },function(){
   /* $("#comment_con").css("display", "none");*/
    $("#r_comment").css("background", "#9a9a9a");
@@ -436,6 +438,7 @@ $("#zxzx").hover(function(){
   $("#quick_links_pop").css("display", "block");
   $("#comment_con").css("display", "none");
   $("#r_comment").css("background", "#9a9a9a");
+  $(".phone-number").css("display","none");
 },function(){
   /*  $("#quick_links_pop").css("display", "none");*/
 });
@@ -445,6 +448,7 @@ $(".weixin-slide").hover(function(){
   $("#quick_links_pop").css("display", "none");
   $("#comment_con").css("display", "none");*/
   $("#r_comment").css("background", "#9a9a9a");
+  $(".phone-number").css("display","none");
 },function(){
   $(".weixin-slide-img").css("display","none")
 });
@@ -479,6 +483,7 @@ $(".qq-slide").hover(function(){
   $("#quick_links_pop").css("display", "none");
   $("#comment_con").css("display", "none");*/
   $("#r_comment").css("background", "#9a9a9a");
+  $(".phone-number").css("display","none");
 },function(){
   $(".qq-slide-img").css("display","none")
 });
@@ -506,12 +511,29 @@ $(".qq-slide").on("touchstart",function(){
 
   }
 })
+$(".slide-phone").on("click",function(){
+  if( $(".phone-number").css("display")=="block"){
+    $(".phone-number").css("display","none");
+  }else{
+    $(".phone-number").css("display","block");
+  }
+
+})
+$(".slide-phone").on("touchstart",function(){
+  if( $(".phone-number").css("display")=="block"){
+    $(this).css("backgroundColor","#9a9a9a");
+  }else{
+    $(this).css("backgroundColor","#c13232");
+  }
+})
 $('#to_top').click(function(){
   $('html , body').animate({scrollTop: 0},'slow');
+  $(".phone-number").css("display","none");
 });
 $(".jiang").click(function(){
   window.open(fn.no_urlgen('act_form'));
 })
+
 //====================弹窗==============
 
 //document.write('<div id="guanbi_tanchu" style="display:none" class="box_tanchu"></div>');

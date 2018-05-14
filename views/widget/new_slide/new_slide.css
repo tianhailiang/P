@@ -711,3 +711,19 @@ i.ibar_recharge-arrow {
 .quick_links_panel ul li.jiang:hover{
   background: none;
 }
+.slide-phone{
+  position: relative;
+}
+.slide-phone p{
+  position: absolute;
+  background: #c13232;
+  width: 140px;
+  height: 44px;
+  color:#ffffff;
+  font-size: 16px;
+  text-align: center;
+  line-height: 44px;
+  left:-144px;
+  top:1px;
+  display: none;
+}
