@@ -16,14 +16,14 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:0}
+.page-blank{padding:40px 0;width:880px;height:200px}
+.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
+.page-blank .blank-img{display:block;width:200px;margin:0 auto}
 .author-sel{padding:20px 20px 0 20px;background:#fff}
 .author-sel-img{display:block;width:240px;height:135px;margin-bottom:20px}
 .author-sel-ul li a{display:block;font-size:14px;color:#333;padding-bottom:16px;line-height:14px}
 .author-sel-title{white-space:nowrap;text-overflow:ellipsis;overflow:hidden;display:block;width:224px;float:right}
 .author-sel-txt{font-size:12px;line-height:18px;margin-top:5px}
-.page-blank{padding:40px 0;width:880px;height:200px}
-.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
-.page-blank .blank-img{display:block;width:200px;margin:0 auto}
 
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
@@ -465,14 +465,6 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .overseas_apply_item_r_c span.dian{background:#C13232}
 .overseas_apply_item_r_c span.dian1{background:#ef8b55}
 .overseas_apply_item_r_c span.dian2{background:#f3b053}
-.contact{width:270px;height:153px;border:1px solid #C13232;border-radius:5px;margin-bottom:20px;float:left}
-.contact h2{font-size:16px;font-weight:600;margin-top:8px}
-.contact p{font-size:14px}
-.contactcs,.contactp1,.contactp2{margin:0 8px;float:left}
-.contactpp{margin:9px 0 9px 0}
-.contacting p{width:210px;line-height:20px;font-size:14px;float:left}
-.contacting p a{color:#C13232;margin-left:10px}
-.contact-vv{color:#C13232}
 .year-box{padding:0 20px 0 20px}
 .year-box .year-num{font-size:20px;color:#333;width:56px;float:left;font-weight:400}
 .month-box .down,.year-box .down{color:#c13232;font-size:14px;padding:0 10px}
@@ -491,6 +483,14 @@ a,button,input,optgroup,select,textarea{-webkit-tap-highlight-color:rgba(0,0,0,0
 .curyear .kong,.curyear .month-box{display:none}
 .dashiji-con{display:none;width:737px;float:left;margin-left:20px;margin-right:30px;font-size:14px;line-height:24px}
 .con-btn{color:#999;padding-left:10px;font-size:10px}
+.contact{width:270px;height:153px;border:1px solid #C13232;border-radius:5px;margin-bottom:20px;float:left}
+.contact h2{font-size:16px;font-weight:600;margin-top:8px}
+.contact p{font-size:14px}
+.contactcs,.contactp1,.contactp2{margin:0 8px;float:left}
+.contactpp{margin:9px 0 9px 0}
+.contacting p{width:210px;line-height:20px;font-size:14px;float:left}
+.contacting p a{color:#C13232;margin-left:10px}
+.contact-vv{color:#C13232}
 .detail_bar{width:100%;height:60px;background-color:#fff;position:fixed;top:0;z-index:10000;-moz-box-shadow:0 0 5px 1px #eee;-webkit-box-shadow:0 0 5px 1px #eee;box-shadow:0 0 5px 1px #eee;display:none}
 .detail_bar .detail_bar_in{width:1180px;height:60px;margin:0 auto;padding:0 10px}
 .detail_bar .detail_bar_in .bar_title{width:844px;float:left;line-height:60px;font-size:30px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -1102,7 +1102,7 @@ form,input{margin:0;padding:0}
 .new-city-box .city-cont a{float:left;width:70px;text-align:center;padding:0 5px;display:block;color:#666;font-size:14px;line-height:28px;cursor:pointer}
 .new-city-box .city-cont a:hover{color:#C13232}
 .new-city.hover .new-city-box{display:block}
-.new_nav_first .nav-right .new-searchs{width:350px;height:30px;position:relative;z-index:1001;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
+.new_nav_first .nav-right .new-searchs{width:350px;height:30px;position:relative;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
 .new_nav_first .nav-right .search-type-box{width:49px;height:28px;float:left;cursor:pointer}
 .new_nav_first .nav-right .search-type-box .search-type{position:absolute;width:40px;height:28px;left:0;top:0;z-index:999;background-color:#fff;padding-left:10px;line-height:28px;border:1px solid #dcdcdc;border-right:none}
 .new_nav_first .nav-right .search-type-box .search-type .search-type-text{padding-right:2px}
@@ -1162,7 +1162,7 @@ form,input{margin:0;padding:0}
 .tc{text-align:center}
 .a-right,.tr{text-align:right}
 .nobr,.nowrap{white-space:nowrap;word-wrap:normal}
-.mui-mbar-tabs,.quick_links_wrap{height:100%;width:40px;position:fixed;right:4px;bottom:0;z-index:1000;height:100%;-webkit-transition:width linear .4s;-moz-transition:width linear .4s;-ms-transition:width linear .4s;transition:width linear .4s;_position:fixed;_bottom:auto;_top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-10)}
+.mui-mbar-tabs,.quick_links_wrap{width:40px;position:fixed;right:4px;bottom:0;z-index:1000;-webkit-transition:width linear .4s;-moz-transition:width linear .4s;-ms-transition:width linear .4s;transition:width linear .4s;_position:fixed;_bottom:auto;_top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-10)}
 .quick_links_wraper.quick_links_dockright{margin-left:0;left:auto;right:4px}
 .ibar_closebtn,.login_favorite,.login_order,.mui-mbar-tabs i{display:inline-block;cursor:pointer;height:19px;width:18px;vertical-align:top;position:absolute}
 #quick_links_panel{width:44px;height:100%;position:fixed;z-index:2;top:0;right:0;font-family:'microsoft yahei',arial}
@@ -1303,7 +1303,6 @@ i.ibar_recharge-arrow{width:6px;height:3px;background:url(../images/arrow-down.p
 .quick_links_pop ul li{height:22px;line-height:24px;color:#FFF;padding-left:4px;font-size:13px;width:145px;margin-left:8px;overflow:hidden}
 .quick_links_pop ul li a{color:#010101}
 #shopCart{border-radius:8px}
-.quick_links_panel ul{margin-top:86px}
 .quick_links_panel ul li{width:44px;height:44px;background:#9a9a9a;padding:8px;margin-top:2px;box-sizing:border-box}
 .quick_links_panel .quick-img{width:28px;height:28px}
 .quick_links_panel ul li.on{height:130px;background:#9a9a9a}
@@ -1312,7 +1311,6 @@ i.ibar_recharge-arrow{width:6px;height:3px;background:url(../images/arrow-down.p
 #r_comment:hover{background:#C13232}
 .quick_links_panel ul li:hover{background:#C13232}
 .quick_links_panel{position:relative}
-.quick_link_mian{margin-top:120px}
 .weixin{position:absolute;z-index:99999;width:148px;height:176px;left:-150px;top:230px;display:none}
 #quick_links_pop{width:170px;height:auto;padding-bottom:16px;border:1px solid #dcdcdc}
 #quick_links_pop{background:#C13232;position:fixed;top:344px}

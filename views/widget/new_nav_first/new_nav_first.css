@@ -154,7 +154,6 @@ form, input {
     width: 350px;
     height: 30px;
     position: relative;
-    z-index:1001;
     margin-top: 26px;
     background-color: #fff;
     float: right;
