@@ -278,7 +278,7 @@
       return
     }
     if (!/^\d{6}$/.test($("#verify_forget").val())) {
-      layer.msg('验证位数不足6位');
+      layer.msg('请输入6位验证码');
       return
     }
     if ($('#password').val() === '') {
