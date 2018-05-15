@@ -115,6 +115,18 @@
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script>
+    var getQueryString = function (name) {
+      var reg;
+      var search = window.location.search.substr(1);
+      if(search.indexOf("?") != -1){
+          reg = new RegExp("(^|&)" + name + "=([^]*)(&|$)");
+      }else{
+          reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      }
+      var r = search.match(reg);
+      if(r != null) return r[2];
+      return null;
+    };
     $(function(){
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
