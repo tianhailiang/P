@@ -13,6 +13,136 @@ function onclick_ly(c,tar){
     jesong.win.openChat(c,tar);
   }
 }
+//咨询
+function rand_zixun(country, catid, id, area, num, tp) {
+  var tp = tp ? tp : 'ly';
+  var num = num ? num : 1;
+  var area = area ? area : get_location(2);
+  var data = {country: country, area: area, num: num, tp: tp, catid: catid, id: id};
+  //console.log(data);
+  var tar = get_tar(country, tp);
+  onclick_ly('g', tar);
+}
+function get_tar(country,type){
+  var area = get_location(3);
+  var tar = '1';
+  if(type == 'ly'){
+    if(country == '美国'){
+      if(area == 1){
+        tar = '246';
+      }
+      else{
+        tar = myjson[area].a_us;
+      }
+    } else if(country == '英国' || country == '香港'){
+      if(country == '英国' && area == 1){
+        tar = '60';
+      }
+      else if(country == '香港' && area == 1){
+        tar = '472';
+      }
+      else{
+        tar = myjson[area].a_uk;
+      }
+    }
+    else if(country == '澳洲' || country == '澳大利亚'){
+      if(area == 1){
+        tar = '50';
+      }
+      else{
+        tar = myjson[area].a_au;
+      }
+    }
+    else if(country == '新西兰'){
+      if(area == 1){
+        tar = '57';
+      }
+      else{
+        tar = myjson[area].a_xxl;
+      }
+    }
+    else if(country == '亚洲'){
+      if(area == 1){
+        tar = '56';
+      }else{
+        tar = myjson[area].a_as;
+      }
+    }
+    else if(country == '法国'){
+      tar = '55';
+    }
+    else if(country == '爱尔兰' || country == '荷兰' || country == '北欧'){
+      tar = '49';
+    }
+    else if(country == '意大利' || country == '西班牙' || country == '瑞士'){
+      tar = '123';
+    }
+    else if(country == '德国'){
+      tar = '48';
+    }
+    else if(country == '俄罗斯' || country == '乌克兰' || country == '白俄罗斯'){
+      if(area == 1){
+        tar = '51';
+      }
+      else{
+        tar = myjson[area].a_as;
+      }
+    }
+    else if(country == '新加坡' || country == '马拉西亚'){
+      if(area == 1){
+        tar = '52';
+      }
+      else{
+        tar = myjson[area].a_xm || myjson[area].a_as
+      }
+    }
+    else if(country == '日本'){
+      if(area == 1){
+        tar = '56';
+      } else {
+        tar = myjson[area].a_as;
+      }
+    }
+    else if(country == '韩国'){
+      if(area == 1){
+        tar = '46';
+      }
+      else if(area == 4){
+        tar = myjson[area].a_ko;
+      }
+      else{
+        tar = myjson[area].a_ko || myjson[area].a_as;
+      }
+    }
+    else if(country == '加拿大'){
+      if(area == 1){
+        tar = '58';
+      }
+      else{
+        tar = myjson[area].a_ca;
+      }
+    }
+  }
+  else if(type == 'ym'){
+    tar = '54';
+  }
+  else if(type == 'yx'){
+    tar = '154';
+  }
+  return tar;
+}
+function get_location(_type){
+  _areaCode = cookie('currentarea') ? cookie('currentarea') : 1;
+  if(_type == 1){
+    return $('.city-box [data-id='+_areaCode+']').attr('data-value');
+  }else if(_type == 2){
+    // console.log("返回",$('.city-box [data-id='+_areaCode+']').attr('data-name'));
+    return $('.city-box [data-id='+_areaCode+']').attr('data-name');
+
+  }else if(_type == 3){
+    return _areaCode;
+  }
+}
 $(function(){
   var iDcity1 = {
     1:['北京','北京分公司：北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米)','服务专线：010-65685656'],
@@ -152,138 +282,6 @@ $(function(){
     }
     return _listStr + _listStrAll;
   }
-//咨询
-  function rand_zixun(country, catid, id, area, num, tp) {
-    var tp = tp ? tp : 'ly';
-    var num = num ? num : 1;
-    var area = area ? area : get_location(2);
-    var data = {country: country, area: area, num: num, tp: tp, catid: catid, id: id};
-    //console.log(data);
-    var tar = get_tar(country, tp);
-    onclick_ly('g', tar);
-  }
-  function get_tar(country,type){
-    var area = get_location(3);
-    var tar = '1';
-    if(type == 'ly'){
-      if(country == '美国'){
-        if(area == 1){
-          tar = '246';
-        }
-        else{
-          tar = myjson[area].a_us;
-        }
-      } else if(country == '英国' || country == '香港'){
-        if(country == '英国' && area == 1){
-          tar = '60';
-        }
-        else if(country == '香港' && area == 1){
-          tar = '472';
-        }
-        else{
-          tar = myjson[area].a_uk;
-        }
-      }
-      else if(country == '澳洲' || country == '澳大利亚'){
-        if(area == 1){
-          tar = '50';
-        }
-        else{
-          tar = myjson[area].a_au;
-        }
-      }
-      else if(country == '新西兰'){
-        if(area == 1){
-          tar = '57';
-        }
-        else{
-          tar = myjson[area].a_xxl;
-        }
-      }
-      else if(country == '亚洲'){
-        if(area == 1){
-          tar = '56';
-        }else{
-          tar = myjson[area].a_as;
-        }
-      }
-      else if(country == '法国'){
-        tar = '55';
-      }
-      else if(country == '爱尔兰' || country == '荷兰' || country == '北欧'){
-        tar = '49';
-      }
-      else if(country == '意大利' || country == '西班牙' || country == '瑞士'){
-        tar = '123';
-      }
-      else if(country == '德国'){
-        tar = '48';
-      }
-      else if(country == '俄罗斯' || country == '乌克兰' || country == '白俄罗斯'){
-        if(area == 1){
-          tar = '51';
-        }
-        else{
-          tar = myjson[area].a_as;
-        }
-      }
-      else if(country == '新加坡' || country == '马拉西亚'){
-        if(area == 1){
-          tar = '52';
-        }
-        else{
-          tar = myjson[area].a_xm || myjson[area].a_as
-        }
-      }
-      else if(country == '日本'){
-        if(area == 1){
-          tar = '56';
-        } else {
-          tar = myjson[area].a_as;
-        }
-      }
-      else if(country == '韩国'){
-        if(area == 1){
-          tar = '46';
-        }
-        else if(area == 4){
-          tar = myjson[area].a_ko;
-        }
-        else{
-          tar = myjson[area].a_ko || myjson[area].a_as;
-        }
-      }
-      else if(country == '加拿大'){
-        if(area == 1){
-          tar = '58';
-        }
-        else{
-          tar = myjson[area].a_ca;
-        }
-      }
-    }
-    else if(type == 'ym'){
-      tar = '54';
-    }
-    else if(type == 'yx'){
-      tar = '154';
-    }
-    return tar;
-  }
-  function get_location(_type){
-    _areaCode = cookie('currentarea') ? cookie('currentarea') : 1;
-    if(_type == 1){
-      return $('.city-box [data-id='+_areaCode+']').attr('data-value');
-    }else if(_type == 2){
-      // console.log("返回",$('.city-box [data-id='+_areaCode+']').attr('data-name'));
-      return $('.city-box [data-id='+_areaCode+']').attr('data-name');
-
-    }else if(_type == 3){
-      return _areaCode;
-    }
-  }
-
-
 //在线咨询列表展示
 //  console.log(get_zxbarHtml())
   $("#lylist").html(get_zxbarHtml());
