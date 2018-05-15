@@ -202,8 +202,9 @@
               report_type: '1',
               report_content: report_content,
               userid: login_ss.uid,
-              artecle_id: $(that).attr("data-artId"),
-              catid: $(that).attr("data-catid")
+              article_id: $(that).attr("data-artId"),
+              article_url:$(that).attr('data-url'),
+              city_id:$('.advisor-bumen').attr('data-cityId')
             },
             dataType: 'json',
             // jsonpCallback:'callback',
