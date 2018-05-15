@@ -114,7 +114,7 @@
 					"edu_id":cur_edu_id
 				},
 				success:function(msg){
-					cur_container.append($(msg));
+					cur_container.append($.parseHTML(msg)); //兼容jq1.9
 					obj.parents(".lxContaniner").find('.lx-groupitems[data-id="'+ cur_edu_id +'"]').show().siblings('.lx-groupitems').hide();
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown){

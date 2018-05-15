@@ -120,43 +120,7 @@
   
   <script>
     $(function () {
-      var addEvent = function(element,type,callback){
-        if(element.addEventListener){
-          element.addEventListener(type,callback,false);
-        }else if(element.attachEvent){
-          element.attachEvent('on' + type,callback)
-        }
-      }
-      var weibo_top = document.getElementById('weibo_top');
-      addEvent(weibo_top,'touchstart',function(){
-        if ($('#weibo_').css('display') == 'block') {
-          $("#weibo_").css("display", "none");
-        }
-        else {
-          $("#weibo_").css("display", "block");
-        }
-      });
-      var weixin = document.getElementById('weixin');
-      addEvent(weixin,'touchstart',function(){
-        if ($('#weixin_').css('display') == 'block') {
-          $("#weixin_").css("display", "none");
-        }
-        else {
-          $("#weixin_").css("display", "block");
-        }
-      });
-      $("#weibo_top").on("mouseover", function (e) {
-        $("#weibo_").css("display", "block");
-      });
-      $("#weibo_top").on("mouseout", function (e) {
-        $("#weibo_").css("display", "none");
-      });
-      $("#weixin").on("mouseover", function (e) {
-        $("#weixin_").css("display", "block");
-      });
-      $("#weixin").on("mouseout", function (e) {
-        $("#weixin_").css("display", "none");
-      });
+
     })
   </script>
 
