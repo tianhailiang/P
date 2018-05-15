@@ -264,7 +264,7 @@
       layer.msg('请输入4位图片验证码');
       return
     }
-    console.log('tupian',$('#tupian').val().toLowerCase())
+    // console.log('tupian',$('#tupian').val().toLowerCase())
     $.ajax({
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
@@ -328,7 +328,7 @@
       layer.msg('请输入手机验证码');
       return
     }
-    console.log('checkbox',$("#guwen input[type='checkbox']").is(':checked'))
+    // console.log('checkbox',$("#guwen input[type='checkbox']").is(':checked'))
     if (!$("#guwen input[type='checkbox']").is(':checked')) {
       layer.msg('请同意注册协议');
       return
@@ -417,7 +417,7 @@ function outlogin () {
       dataType: 'json',
       withCredentials:true,
       success:function(msg){
-        console.log('msg', msg);
+        // console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
         } else {
@@ -475,13 +475,13 @@ function outlogin () {
         code: $('#verify_reg').val()
       },
       success:function(msg) {
-        console.log('msg', msg);
+        // console.log('msg', msg);
         if (msg.code == 0) {
           layer.msg('登录成功');
           layer.close(layeropen);
           window.location.reload();
         } else {
-          console.log(msg)
+          // console.log(msg)
           layer.msg(msg.message)
         }
       }
