@@ -124,7 +124,7 @@
             {% if article_data and article_data.list.length > 0 %}
             <div class="right-main clearfix case-list-box">
                 {% for item in article_data.list %}
-                <div class="article-list-item">
+                <div class="article-list-item" id="art_box_{{item.id}}">
                     {% import "widget2/article/article.html" as article_edit %}
                     {{ article_edit.article_edit(item, helper) }}
                   {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
@@ -196,7 +196,7 @@
             }else if(item.user_info.usertype ==3){
               identity = 'canzan';
             }
-            aItemHtml += '<div class="article-list-item"><div class="art-box clearfix" >'+
+            aItemHtml += '<div class="article-list-item" id="art_box_'+item.id+'"><div class="art-box clearfix" >'+
                         '<a target="_blank" href="' +fn.urlgen(item.uid.toString()) +'">'+
                         '<div class="adviser-head" style="background:url(' + fn.avaterimg(item.uid, "small",item.user_info.status,item.user_info.version)+') no-repeat 0 0;background-size: cover;">'+
                         '</div>'+

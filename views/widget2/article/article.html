@@ -158,9 +158,12 @@
   </div>
 </div>
 <script>
+  var art_box_ = true;
   function deleteOffer (thisObj, uId, articleId) { //删除文章
     // console.log('删除文章' + uId + articleId);
-    $.ajax({
+    if(art_box_){
+      art_box_ = false;
+      $.ajax({
       url: '/soapi/delete_article',
       type: 'POST',
       datatype: 'json',
@@ -172,18 +175,22 @@
         console.log(result);
         if(result.code == 0){
           layer.msg('删除成功');
-          window.setTimeout(function(){
+          // window.setTimeout(function(){
             window.location.reload();
-          },2000);
+          // },2000);
+          $('#art_box_' + articleId).css('display','none')
         }else{
           layer.msg('删除失败')
         }
-        
+        art_box_ = true;
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         console.log(errorThrown)
+        art_box_ = true;
       }
-    })
+      })
+    }
+    
   }
   function stick (thisObj, uId, articleId) {
     var parent = $(thisObj).parents('.article-list-item');
