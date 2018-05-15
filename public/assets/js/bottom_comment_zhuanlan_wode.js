@@ -144,7 +144,7 @@ function showbottom (type, index, usertype) {
             // shoucang = parseInt(shoucang) - 1;
             // $("#shoucang_em_" + index).html(shoucang);
             //layer.msg('取消收藏成功');
-            // window.location.reload();
+             window.location.reload();
           }
           // $("#shoucang_li_" + index).removeAttr('onclick');
         } else {
