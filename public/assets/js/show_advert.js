@@ -4,10 +4,10 @@
 var IMG_URL = '';
 var IMG_RQ_URL = ajaxUrlPrefix.nodeapi + "/cmsapi/advert";
 $(function(){
-    show_advert();
-    window.setInterval(show_advert, 3000000);
     var AD_PAGE_NAME = $("#pagekey").val();
     var AD_CITY_ID = $("#page_cityid").val();
+    show_advert();
+    window.setInterval(show_advert, 3000000);
     function show_advert() {
         //加载广告位图片
         $.getJSON(IMG_RQ_URL, {ad_page:AD_PAGE_NAME,cityid:AD_CITY_ID}, function (ret) {
