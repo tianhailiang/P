@@ -24,10 +24,50 @@
       margin-right: 10px;
       cursor:pointer;
     }
-    login_nei input {
+    .inputtext_isr input {
+      width: 100%;
+      height: 34px;
+      margin-bottom: 15px;
       border-radius: inherit;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      background-image: none;
     }
-    
+    .login_error{
+      background-color: #FFFBEF;
+      border: 1px solid #C13232;
+      padding: 6px 12px;
+      z-index: 1;
+      box-shadow: 0 1px 1px #eee;
+      color: #C13232;
+      position: absolute;
+      right: -170px;
+      left: 205px;
+      top: -19px;
+      opacity: 1;
+    }
+    .login_error:after,.login_error:before{
+      border: 6px solid transparent;
+      content: ' ';
+      position: absolute;
+      left: 1em;
+    }
+    .login_error:before{
+      border-top-color: #C13232;
+      bottom: -13px;
+    }
+    .login_error:after{
+      border-top-color: #fffbef;
+      bottom: -12px;
+    }
+    .login_x{
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+      margin-right: 5px;
+      background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
+    }
   </style>
 </head>
 <body>
@@ -44,7 +84,7 @@
       {# <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/> #}
     </div>
     
-    <div class="login_content">
+    <div class="login_content" style="position: relative;">
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left;height: 280px;">
         <!-- <h3 class="login_nei_title">登录金吉列<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a></h3> -->
         <div class="payMethod clearfix" id="guwen_login" style="margin-left: -15px;font-size: 18px;">
@@ -55,10 +95,12 @@
           <div class="form-group inputtext_isr" style="position: relative;height: 28px">
             <input type="text" style="border-radius: inherit;" class="form-control" placeholder="请输入手机号/员工号" id="newEmail"/>
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
+            <span class="login_error" id="login_e_phone" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone">请输入手机号</em></span>
           </div>
           <div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
             <input type="password" style="border-radius: inherit;" class="form-control" placeholder="密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
+            <span class="login_error" id="login_e_pass" style="display: none;"><i class="login_x"></i><em id="login_error_text_pass">密码不正确，请输入8-16位数字或字母</em></span>
           </div>
         </form>
 
@@ -68,11 +110,11 @@
                   <input type="checkbox"><i></i> 我同意注册协议</label>
               </div>
             </div>-->
-            <div class="login_check clearfix" style="">
+            <div class="login_check clearfix" style="margin-top: 15px;">
               <a target="_blank"  href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了？</small></a>
             </div>
 
-          <input type="button" class="btn login-primary" style="width: 100%;padding-left: 0;padding-right: 0;border-radius: inherit;" id="loginSubmit" value="立 即 登 录"/>
+          <input type="button" class="btn login-primary" style="width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;" id="loginSubmit" value="立 即 登 录"/>
 
 
 

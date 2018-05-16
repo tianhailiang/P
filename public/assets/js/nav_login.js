@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
 
-  $("form").Vaild();
+  // $("form").Vaild();
   $('.i-checks').iCheck({
     checkboxClass: 'icheckbox_square-green',
     radioClass: 'iradio_square-green'
@@ -21,19 +21,31 @@ $(document).ready(function () {
   function loginS () {
     console.log('login_ssssss')
     if ($('#newEmail').val() === '') {
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
       return
     }
     if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1\d{10}$/.test($('#newEmail').val())) {
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号或工号后六位').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号或工号后六位').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
+      $('#login_error_text_phone').html('请输入正确手机号或工号后六位')
       return
+    } else {
+      $('#login_e_phone').css('display','none');
     }
     if ($('#password').val() === '') {
-      $('#password').parent().addClass("has-error").removeClass("has-success");
-      $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入密码').popover({"trigger":"manual"}).popover("show");
+      // $('#password').parent().addClass("has-error").removeClass("has-success");
+      // $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入密码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_pass').css('display', 'block')
       return
+    }
+    if (!/^[a-zA-Z0-9]{8,16}$/.test($("#password").val())) {
+      $('#login_e_pass').css('display', 'block')
+      return
+    } else {
+      $('#login_e_pass').css('display', 'none')
     }
     /*if (!$("input[type='checkbox']").is(':checked')) {
      layer.msg('请同意注册协议');
@@ -41,7 +53,7 @@ $(document).ready(function () {
      }*/
     var sha1 = hex_sha1($('#password').val());
     console.log('sha1'+sha1);
-    if ($('#newEmail').val() !== '' && $('#password').val() !== ''&& /^[a-zA-Z0-9]{6,16}$/.test($("#password").val()) && /^1\d{10}$/.test($("#newEmail").val()) || /^[A-Za-z0-9]{6}$/.test($('#newEmail').val())) {
+    if ($('#newEmail').val() !== '' && $('#password').val() !== ''&& /^[a-zA-Z0-9]{8,16}$/.test($("#password").val()) && /^1\d{10}$/.test($("#newEmail").val()) || /^[A-Za-z0-9]{6}$/.test($('#newEmail').val())) {
       console.log('ajax');
       $.ajax({
         url: '/login_s',

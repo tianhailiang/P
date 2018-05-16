@@ -138,7 +138,7 @@
   var layeropen;
   function getlogin () {
 
-    $("form").Vaild();
+    // $("form").Vaild();
 
     //图片验证码
     $.ajax({
@@ -155,7 +155,7 @@
 	            type: 1,
 	            shade: [0.4,'#000'],
 	            shadeClose: true,
-	            closeBtn: false,
+	            closeBtn: true,
 	            area: ['421px', '500px'],
 	            title: false,
 	            border: [0],
@@ -166,18 +166,20 @@
 	            	
               },
               cancel:function(){
-                $("#phone").parent().removeClass("has-error").addClass("has-success");
-                $("#phone").popover("destroy");
+                // $("#phone").parent().removeClass("has-error").addClass("has-success");
+                // $("#phone").popover("destroy");
+                $('#login_e_phone').css('display','none');
               },
               end:function() {
-                $("#phone").parent().removeClass("has-error").addClass("has-success");
-                $("#phone").popover("destroy");
+                // $("#phone").parent().removeClass("has-error").addClass("has-success");
+                // $("#phone").popover("destroy");
+                $('#login_e_phone').css('display','none');
               }
 	      });
   }
   function getregister () {
 
-    $("form").Vaild();
+    // $("form").Vaild();
 
     //图片验证码
     $.ajax({
@@ -206,12 +208,14 @@
             
           },
           cancel:function(){
-            $("#phone_reg").parent().removeClass("has-error").addClass("has-success");
-            $("#phone_reg").popover("destroy");
+            // $("#phone_reg").parent().removeClass("has-error").addClass("has-success");
+            // $("#phone_reg").popover("destroy");
+            $('#login_e_phone').css('display','none');
           },
           end:function() {
-            $("#phone_reg").parent().removeClass("has-error").addClass("has-success");
-            $("#phone_reg").popover("destroy");
+            // $("#phone_reg").parent().removeClass("has-error").addClass("has-success");
+            // $("#phone_reg").popover("destroy");
+            $('#login_e_phone').css('display','none');
           }
     });
   }
@@ -246,15 +250,20 @@
   function sendphone () {
     if ($('#phone').val() === '') {
 //            let butp = document.getElementById('phone')
-      $('#phone').parent().addClass("has-error").removeClass("has-success");
-      $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#phone').parent().addClass("has-error").removeClass("has-success");
+      // $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
       return
     }
     if (!/^1\d{10}$/.test($("#phone").val())) {
 //            let butp = document.getElementById('phone')
-      $('#phone').parent().addClass("has-error").removeClass("has-success");
-      $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#phone').parent().addClass("has-error").removeClass("has-success");
+      // $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
+      $('#login_error_text').html('请输入正确手机号码')
       return
+    } else {
+      $('#login_e_phone').css('display','none');
     }
     if ($('#tupian').val() == '') {
       layer.msg('请输入图片验证码');
@@ -314,15 +323,20 @@
   function login_user () {
     if ($('#phone').val() === '') {
 //            let butp = document.getElementById('phone')
-      $('#phone').parent().addClass("has-error").removeClass("has-success");
-      $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#phone').parent().addClass("has-error").removeClass("has-success");
+      // $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
       return
     }
     if (!/^1\d{10}$/.test($("#phone").val())) {
 //            let butp = document.getElementById('phone')
-      $('#phone').parent().addClass("has-error").removeClass("has-success");
-      $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#phone').parent().addClass("has-error").removeClass("has-success");
+      // $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
+      $('#login_error_text').html('请输入正确手机号码')
       return
+    } else {
+      $('#login_e_phone').css('display','none');
     }
     if ($('#verify').val() === '') {
       layer.msg('请输入手机验证码');
@@ -482,7 +496,7 @@ function outlogin () {
           window.location.reload();
         } else {
           // console.log(msg)
-          layer.msg(msg.message)
+          layer.msg(msg.message);
         }
       }
     });

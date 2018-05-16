@@ -8,11 +8,15 @@
   <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/custom.css"/>
   <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/layer.css"/>
   {% include "header_new.html" %}
-  <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-  <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
+
+  <script src="{{helper.cdnhost}}/dep/js/layer/layer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/icheck.min.js"></script>
   <style type="text/css">
+    .binding_r {
+      float: left;
+      margin-left: 25px;
+      margin-top: 50px;
+    }
     .register_nei_title {
       font-size: 18px;
       color: #C13232;
@@ -21,9 +25,55 @@
       display: inline-block;
       width: 980px;
     }
+    .form-group input {
+      width: 100%;
+      height: 34px;
+      color: #999;
+      margin-bottom: 15px;
+      border-radius: inherit;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      background-image: none;
+    }
+    .form-group .login_error{
+      background-color: #FFFBEF;
+      border: 1px solid #C13232;
+      padding: 6px 12px;
+      z-index: 1;
+      box-shadow: 0 1px 1px #eee;
+      color: #C13232;
+      position: absolute;
+      right: -40px;
+      left: 250px;
+      top: -19px;
+      opacity: 1;
+    }
+    .form-group .login_error:after,.login_error:before{
+      border: 6px solid transparent;
+      content: ' ';
+      position: absolute;
+      left: 1em;
+    }
+    .form-group .login_error:before{
+      border-top-color: #C13232;
+      bottom: -13px;
+    }
+    .form-group .login_error:after{
+      border-top-color: #fffbef;
+      bottom: -12px;
+    }
+    .form-group .login_x{
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+      margin-right: 5px;
+      background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
+    }
   </style>
 </head>
 <body>
+    {% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
 <div class="main" style="width: 1180px;margin: 0 auto;">
   {% import "widget/new_nav_first/nav_login.html" as nav_login %}
@@ -41,6 +91,7 @@
             <div class="title"><span>*&nbsp;</span>手&nbsp;机&nbsp;号&nbsp;：</div>
             <input type="text" class="form-control" id="newEmail" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确" />
             <div class="ti">请输入手机号</div>
+            <span class="login_error" id="login_e_phone_u" style="display: none"><i class="login_x"></i><em id="login_error_text_phone_u">请输入手机号</em></span>
           </div>
           <div class="form-group clearfix" style="margin-left: -20px;">
             <div class="title"><span>*&nbsp;</span>图形验证码&nbsp;：</div>
@@ -62,14 +113,15 @@
           <input type="hidden" name="oauthid" id="oauthid" value="{{oauth_data.oauthid}}"/>
           <input type="hidden" name="oauth_type" id="oauth_type" value="{{oauth_data.befrom}}"/>
           <input type="hidden" name="oauth_h" id="oauth_h" value="{{oauth_data.h}}"/>
-          <input type="button" class="btn login-primary" id="bindingSubmit" value="确定绑定" style="margin-left: 90px;width: 102px;line-height: 14px"/>
-          <input type="button" class="btn login-primary" id="fangqiSubmit" value="放弃绑定" style="margin-left: 20px;width: 102px;background: #ddd;line-height: 14px;color: #666"/>
+          <input type="button" class="btn login-primary" id="bindingSubmit" value="确定绑定" style="margin-left: 90px;width: 102px;line-height: 14px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;"/>
+          <input type="button" class="btn login-primary" id="fangqiSubmit" value="放弃绑定" style="margin-left: 20px;width: 102px;background: #ddd;line-height: 14px;color: #666;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #ddd;border-radius: 4px;"/>
         </form>
 
       </div>
-      <div class="register_r">
+      <div class="binding_r" id="XC_BINDING_SEAT1"></div>
+      <!-- <div class="register_r">
         <img src="{{helper.cdnhost}}/assets/img/r_reg.png" alt=""/>
-      </div>
+      </div> -->
     </div>
   </div>
   <div class="login_footer">
@@ -79,10 +131,11 @@
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
 <script src="{{helper.cdnhost}}/assets/js/top.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script>
   $(document).ready(function () {
 
-    $("form").Vaild();
+    // $("form").Vaild();
 
     //图片验证码
     $.ajax({
@@ -150,15 +203,20 @@
   function bindings () {
     if ($('#newEmail').val() === '') {
 //            let butp = document.getElementById('phone')
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
       return
     }
     if (!/^1\d{10}$/.test($("#newEmail").val())) {
 //            let butp = document.getElementById('phone')
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
+      $('#login_error_text_phone_u').html('请输入正确手机号码');
       return
+    } else {
+      $('#login_e_phone_u').css('display','none');
     }
     if ($('#verify_binding').val() === '') {
       layer.msg('请输入手机验证码');
@@ -201,15 +259,20 @@
   function sendphone_bin () {
     if ($('#newEmail').val() === '') {
 //            let butp = document.getElementById('phone')
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
       return
     }
     if (!/^1\d{10}$/.test($("#newEmail").val())) {
 //            let butp = document.getElementById('phone')
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
+      $('#login_error_text_phone_u').html('请输入正确手机号码');
       return
+    } else {
+      $('#login_e_phone_u').css('display','none');
     }
     if ($('#tupian_bin').val() == '') {
       layer.msg('请输入图片验证码');
