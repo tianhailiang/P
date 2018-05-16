@@ -158,11 +158,11 @@
   </div>
 </div>
 <script>
-  var art_box_ = true;
+  var art_box_edit = true;
   function deleteOffer (thisObj, uId, articleId) { //删除文章
     // console.log('删除文章' + uId + articleId);
-    if(art_box_){
-      art_box_ = false;
+    if(art_box_edit){
+      art_box_edit = false;
       $.ajax({
       url: '/soapi/delete_article',
       type: 'POST',
@@ -182,11 +182,11 @@
         }else{
           layer.msg('删除失败')
         }
-        art_box_ = true;
+        art_box_edit = true;
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         console.log(errorThrown)
-        art_box_ = true;
+        art_box_edit = true;
       }
       })
     }
