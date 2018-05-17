@@ -7,7 +7,7 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;"></dt>
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
