@@ -16,10 +16,10 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:0}
+
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
-
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
 .sub-btn-box{margin-top:20px;margin-bottom:20px}
@@ -63,14 +63,15 @@
 .community-advisor .user-name{font-size:18px;line-height:18px;text-align:center;margin-bottom:20px;color:#333}
 .community-advisor .advisor-bumen,.community-advisor .advisor-enjoy{height:14px;margin-top:10px;font-size:14px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:14px}
 .community-advisor .advisor-sushu{height:16px;font-size:14px;color:#666;margin-top:16px;text-align:center}
-.community-advisor .advisor-intro{padding:13px 20px;font-size:12px;color:#666}
+.community-advisor .advisor-intro{padding:13px 20px 0;font-size:12px;color:#666}
 .community-advisor .counsellor-intro{text-indent:2em;padding:15px 20px;font-size:12px;color:#666}
 .community-advisor .counsellor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
 .community-advisor .advisor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
-.community-advisor .advisor-btn{height:40px;background:#ff8547;font-size:20px;color:#fff;line-height:40px}
+.community-advisor .advisor-btn{height:40px;font-size:20px;color:#fff;line-height:40px;padding-bottom:15px;padding-top:2px}
 .community-advisor .advisor-btn-gray{background:#dcdcdc}
-.community-advisor .advisor-guanzhu,.community-advisor .advisor-zixun{font-size:14px;padding:1px 42px;cursor:pointer;color:#fff}
-.community-advisor .advisor-zixun{border-right:1px solid #fff}
+.community-advisor .advisor-zixun{font-size:14px;padding:4px 28px;cursor:pointer;margin-left:20px;color:#fff;background:#c13232}
+.community-advisor .advisor-guanzhu{font-size:14px;padding:3px 38px;cursor:pointer;margin-left:18px;color:#c13232;border:1px solid #c13232;border-radius:4px}
+.community-advisor .advisor-zixun{border-radius:4px}
 .community-advisor .counsellor-guanzhu{font-size:14px;display:block;text-align:center;cursor:pointer}
 .community-nav-con{height:40px;background:#f3f3f3;margin:20px 20px 0}
 .community-nav-con .community-nav-list{display:inline-block;font-size:16px;color:#666;line-height:40px;width:96px;height:40px;text-align:center}
@@ -218,14 +219,6 @@
 .list-se li{position:relative;text-indent:110px;height:54px;line-height:54px}
 .list-se li a{color:#666;height:54px;line-height:54px;font-size:14px}
 .list-se li.choose a{color:#C13232;text-decoration:underline}
-.col3-t-p1-p2-a1{width:366.5px;margin-bottom:20px;height:206px;display:block}
-.col3-t-p1-p2-a3{width:366px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-.col3-t-p1-p2-a2{font-size:14px;margin-bottom:12px}
-.col3-t-p1-p2-a6{width:366px;line-height:24px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:14px}
-.moment .jincai a{display:block;width:366px;height:276px}
-.moment .dui-layout-col3-img{width:366px;height:276px}
-.moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
-.moment .jincai-con{font-size:14px;color:#333}
 .gw-list{width:280px;list-style:none;background:#fff}
 .gw-list li{border-bottom:solid 1px #dcdcdc;margin-bottom:18px;margin-left:10px;margin-right:10px}
 .gw-list li:first-child{padding-top:16px}
@@ -244,14 +237,14 @@
 .guwen-info .pull-right{float:right;margin-right:22px}
 .guwen-info em{display:inline-block;font-style:normal;margin-left:10px}
 .gw-list .bg-span{float:left;height:51px;width:51px;-webkit-border-radius:50%;border-radius:50%}
-.contact{width:270px;height:153px;border:1px solid #C13232;border-radius:5px;margin-bottom:20px;float:left}
-.contact h2{font-size:16px;font-weight:600;margin-top:8px}
-.contact p{font-size:14px}
-.contactcs,.contactp1,.contactp2{margin:0 8px;float:left}
-.contactpp{margin:9px 0 9px 0}
-.contacting p{width:210px;line-height:20px;font-size:14px;float:left}
-.contacting p a{color:#C13232;margin-left:10px}
-.contact-vv{color:#C13232}
+.col3-t-p1-p2-a1{width:366.5px;margin-bottom:20px;height:206px;display:block}
+.col3-t-p1-p2-a3{width:366px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.col3-t-p1-p2-a2{font-size:14px;margin-bottom:12px}
+.col3-t-p1-p2-a6{width:366px;line-height:24px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:14px}
+.moment .jincai a{display:block;width:366px;height:276px}
+.moment .dui-layout-col3-img{width:366px;height:276px}
+.moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
+.moment .jincai-con{font-size:14px;color:#333}
 .year-box{padding:0 20px 0 20px}
 .year-box .year-num{font-size:20px;color:#333;width:56px;float:left;font-weight:400}
 .month-box .down,.year-box .down{color:#c13232;font-size:14px;padding:0 10px}
@@ -283,21 +276,14 @@
 .detail_bar .detail_bar_in .bar_options .option_buttons .comment_text{color:#666;font-size:14px;padding:0 14px 0 12px}
 .detail_bar .detail_bar_in .bar_options .option_buttons .comments_num{font-size:36px;color:#b23e39}
 .detail_bar .detail_bar_in .bar_options .option_buttons .comment_btn{color:#b23e39;font-size:26px}
-.white-bg{background-color:#fff}
-.gray-bg{background-color:#f3f3f3}
-.common-title{width:100%;height:47px;line-height:47px;border-bottom:1px solid #dcdcdc;position:relative;z-index:100}
-.line-top-title{height:45px;line-height:45px;border-top:2px solid #C13232;border-bottom:1px solid #dcdcdc}
-.red-bg-title{height:48px;background-color:#C13232;border:none}
-.common-title i{width:2px;height:22px;display:block;background:#C13232;position:absolute;top:50%;left:0;margin-top:-11px}
-.common-title h3{line-height:47px;font-weight:400;font-size:18px;color:#333;margin-left:18px;float:left}
-.common-title a{float:right;color:#666;font-size:16px;margin-right:19px}
-.red-bg-title a{color:#fff}
-.line-top-title h3{line-height:45px}
-.red-bg-title h3{line-height:48px;margin-left:20px;color:#fff}
-.main-title{height:40px;border:none}
-.main-title h3{margin-left:0;clear:both;display:inline-block;line-height:40px;color:#fff;background:#C13232;padding:0 20px;font-weight:400}
-.main-title a{float:right;color:#666;font-size:16px;margin-right:19px;line-height:40px}
-.main-title h3{*zoom:1;*display:inline}
+.contact{width:270px;height:153px;border:1px solid #C13232;border-radius:5px;margin-bottom:20px;float:left}
+.contact h2{font-size:16px;font-weight:600;margin-top:8px}
+.contact p{font-size:14px}
+.contactcs,.contactp1,.contactp2{margin:0 8px;float:left}
+.contactpp{margin:9px 0 9px 0}
+.contacting p{width:210px;line-height:20px;font-size:14px;float:left}
+.contacting p a{color:#C13232;margin-left:10px}
+.contact-vv{color:#C13232}
 .nav_login{width:100%;background:#fff;clear:both}
 .nav_logo{float:left;margin-right:20px}
 .nav_logo img{width:234px;height:80px}
@@ -342,6 +328,21 @@
 .register_r img{width:410px;height:292px}
 .register_nei_content .in{float:left;width:380px}
 .register_nei_content .checkbox_unchecked{width:18px;height:18px;display:block;margin-right:10px;background:url(/img/imgs.png) no-repeat -16px -276px;cursor:pointer}
+.white-bg{background-color:#fff}
+.gray-bg{background-color:#f3f3f3}
+.common-title{width:100%;height:47px;line-height:47px;border-bottom:1px solid #dcdcdc;position:relative;z-index:100}
+.line-top-title{height:45px;line-height:45px;border-top:2px solid #C13232;border-bottom:1px solid #dcdcdc}
+.red-bg-title{height:48px;background-color:#C13232;border:none}
+.common-title i{width:2px;height:22px;display:block;background:#C13232;position:absolute;top:50%;left:0;margin-top:-11px}
+.common-title h3{line-height:47px;font-weight:400;font-size:18px;color:#333;margin-left:18px;float:left}
+.common-title a{float:right;color:#666;font-size:16px;margin-right:19px}
+.red-bg-title a{color:#fff}
+.line-top-title h3{line-height:45px}
+.red-bg-title h3{line-height:48px;margin-left:20px;color:#fff}
+.main-title{height:40px;border:none}
+.main-title h3{margin-left:0;clear:both;display:inline-block;line-height:40px;color:#fff;background:#C13232;padding:0 20px;font-weight:400}
+.main-title a{float:right;color:#666;font-size:16px;margin-right:19px;line-height:40px}
+.main-title h3{*zoom:1;*display:inline}
 .nav-tenth{height:48px;background:#fff}
 .nav-tenth-con a{display:inline-block;height:30px;line-height:30px;margin:9px 38px 0 23px;font-size:18px;color:#333;padding:0 10px}
 .nav-tenth-con a:hover{background:#c13232;color:#fff}
@@ -396,6 +397,7 @@ form,input{margin:0;padding:0}
 .new_nav_first_red .citynames{color:#fff}
 .new_nav_first_white .citynames{color:#333}
 .citynames i{font-size:14px;position:relative;left:0}
+.new-city-box{width:700px;height:470px;background-color:#fff;position:absolute;right:0}
 .new_nav_first .nav-right .new-searchs{width:350px;height:30px;position:relative;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
 .new_nav_first .nav-right .search-type-box{width:49px;height:28px;float:left;cursor:pointer}
 .new_nav_first .nav-right .search-type-box .search-type{position:absolute;width:40px;height:28px;left:0;top:0;z-index:999;background-color:#fff;padding-left:10px;line-height:28px;border:1px solid #dcdcdc;border-right:none}
