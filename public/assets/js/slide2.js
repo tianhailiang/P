@@ -387,11 +387,12 @@ $("#r_comment").hover(function(){
    $("#r_comment").css("background", "#9a9a9a");
 })
 $("#r_comment").on("click",function(){
-  if($(this).find(".guanggao-slide").length>0){
+  if($(this).find(".guanggao-slide").length>0 && $("#comment_con").css("display")=="none"){
     show_guanggao();
+    $("#comment_con").css("display", "block");
   }
 
-  $("#comment_con").css("display", "block");
+
 })
 $("#comment_close").on("click", function () {
   $("#comment_con").css("display", "none");
