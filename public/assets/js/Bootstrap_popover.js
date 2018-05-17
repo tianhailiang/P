@@ -7,6 +7,7 @@
  原理：http://www.miaoqiyuan.cn/p/jquery-bootstrap-vaild
  演示：http://www.miaoqiyuan.cn/products/vaild/index.html
  源码：http://www.miaoqiyuan.cn/products/vaild/jQuery.Vaild.js
+ fix 5.16
  */
 (function(jQuery){
   $.extend({

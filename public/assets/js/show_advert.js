@@ -1,9 +1,9 @@
 /**
  * Created by DXZ-Libo.Sun on 2017/9/14.
  */
-var IMG_URL = '';
-var IMG_RQ_URL = ajaxUrlPrefix.nodeapi + "/cmsapi/advert";
-$(function(){
+  function show_guanggao(){
+    var IMG_URL = '';
+    var IMG_RQ_URL = ajaxUrlPrefix.nodeapi + "/cmsapi/advert";
     var AD_PAGE_NAME = $("#pagekey").val();
     var AD_CITY_ID = $("#page_cityid").val();
     show_advert();
@@ -11,6 +11,7 @@ $(function(){
     function show_advert() {
         //加载广告位图片
         $.getJSON(IMG_RQ_URL, {ad_page:AD_PAGE_NAME,cityid:AD_CITY_ID}, function (ret) {
+            console.log(ret)
             if(ret.code == 0){
                 var val = ret.data;
                 for(var i in val){
@@ -116,4 +117,6 @@ $(function(){
         }
         return false;
     }
-});
+
+}
+
