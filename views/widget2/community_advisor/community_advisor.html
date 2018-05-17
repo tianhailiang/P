@@ -21,7 +21,7 @@
   </dl>
   <div class="advisor-intro">
     {% if advisor.introduce.length > 70 %}
-    <p class="expand2" data-tex="{{ advisor.introduce | ellipsis(70) }}">{{ advisor.introduce | ellipsis(70) }}<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px">展开全部</span></p>
+    <p class="expand2" data-tex="{{ advisor.introduce | ellipsis(70) }}">{{ advisor.introduce | ellipsis(70) }}<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span></p>
     {% else %}
     <p class="expand1">{{ advisor.introduce }}</p>
     {% endif %}
@@ -44,12 +44,12 @@
   }
   $('.expand2').on('click','.expand',function(){
     var text = $(this).data('text');
-    $('.expand2').html(text+'<span class="expand3" style="color: #c13232;margin-left: 6px">收起</span>');
+    $('.expand2').html(text+'<span class="expand3" style="color: #c13232;margin-left: 6px;cursor: pointer">收起</span>');
   });
   $('.expand2').on('click','.expand3',function(){
     var tex = $(this).parent('.expand2').data('tex');
     /* $('.expand1').hide();*/
-    $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px">展开全部</span>')
+    $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
   });
   $('.advisor-img').on('click',function(){
       if($(".tan_tupian").css("display")=="block"){
