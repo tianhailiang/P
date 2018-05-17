@@ -152,6 +152,8 @@ form, input {
     width: 700px;
     height: 470px;
     background-color: #fff;
+    position: absolute;
+    right: 0;
 }
 /*搜索*/
 .new_nav_first .nav-right .new-searchs{
