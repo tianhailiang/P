@@ -387,9 +387,11 @@ $(function(){
     $("#r_comment").css("background", "#9a9a9a");
   })
   $("#r_comment").on("click",function(){
-    show_guanggao();
-    $("#comment_con").css("display", "block");
-    $("#quick_links_pop").css("display", "none")
+    if($("#comment_con").css("display")=="none"){
+      show_guanggao();
+      $("#comment_con").css("display", "block");
+      $("#quick_links_pop").css("display", "none")
+    }
   })
   $("#comment_close").on("click", function () {
     $("#comment_con").css("display", "none");

@@ -11,7 +11,6 @@
     function show_advert() {
         //加载广告位图片
         $.getJSON(IMG_RQ_URL, {ad_page:AD_PAGE_NAME,cityid:AD_CITY_ID}, function (ret) {
-            console.log(ret)
             if(ret.code == 0){
                 var val = ret.data;
                 for(var i in val){
