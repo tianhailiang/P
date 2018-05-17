@@ -69,11 +69,11 @@ $(document).ready(function(){
         // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
         window.location.href = $(this).attr("href");
     });
-    $('#new-city').hover(function() {
+/*    $('#new-city').hover(function() {
         $(this).find('.new-city-box').show();
     },function() {
         $(this).find('.new-city-box').hide();
-    })
+    })*/
 //ipad 城市弹框
     var addEvent = function(element,type,callback){
         if(element.addEventListener){

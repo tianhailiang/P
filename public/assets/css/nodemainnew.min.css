@@ -1,7 +1,3 @@
-.page-blank{padding:40px 0;width:880px;height:200px}
-.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
-.page-blank .blank-img{display:block;width:200px;margin:0 auto}
-
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:768px}
@@ -20,6 +16,10 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:0}
+.page-blank{padding:40px 0;width:880px;height:200px}
+.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
+.page-blank .blank-img{display:block;width:200px;margin:0 auto}
+
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
 .sub-btn-box{margin-top:20px;margin-bottom:20px}
@@ -396,12 +396,6 @@ form,input{margin:0;padding:0}
 .new_nav_first_red .citynames{color:#fff}
 .new_nav_first_white .citynames{color:#333}
 .citynames i{font-size:14px;position:relative;left:0}
-.new-city-box{position:absolute;z-index:999;display:none;right:0;top:65px;top:60px\9;width:584px;background:#fff;border-top:2px solid #D41B2B}
-.new-city-box .arrow{position:absolute;top:-9px;left:112px;width:5px;height:9px;display:inline-block}
-.new-city-box .city-cont{border:1px solid #D2D2D2;border-top:none;padding:18px 0 10px 0}
-.new-city-box .city-cont a{float:left;width:70px;text-align:center;padding:0 5px;display:block;color:#666;font-size:14px;line-height:28px;cursor:pointer}
-.new-city-box .city-cont a:hover{color:#C13232}
-.new-city.hover .new-city-box{display:block}
 .new_nav_first .nav-right .new-searchs{width:350px;height:30px;position:relative;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
 .new_nav_first .nav-right .search-type-box{width:49px;height:28px;float:left;cursor:pointer}
 .new_nav_first .nav-right .search-type-box .search-type{position:absolute;width:40px;height:28px;left:0;top:0;z-index:999;background-color:#fff;padding-left:10px;line-height:28px;border:1px solid #dcdcdc;border-right:none}

@@ -136,18 +136,18 @@ form, input {
 }
 
 
-.new-city-box{position: absolute;z-index: 999;display:none;
+/*.new-city-box{position: absolute;z-index: 999;display:none;
     right: 0;top:65px;top:60px \0; width: 584px; background: #fff; border-top: 2px solid #D41B2B;}
 .new-city-box .arrow{position: absolute; top:-9px; left: 112px; width: 5px; height: 9px; display: inline-block;}
 .new-city-box .city-cont{border: 1px solid #D2D2D2; border-top: none; padding: 18px 0 10px 0;}
 .new-city-box .city-cont a{float: left; width: 70px; text-align: center; padding: 0 5px; display: block; color: #666; font-size:14px; line-height: 28px;cursor: pointer}
 .new-city-box .city-cont a:hover{color: #C13232;}
-/*.new-city:hover .new-city-box{
+/!*.new-city:hover .new-city-box{
     display: block;
-}*/
+}*!/
 .new-city.hover .new-city-box{
     display: block;
-}
+}*/
 
 /*搜索*/
 .new_nav_first .nav-right .new-searchs{
