@@ -312,11 +312,11 @@
     function report(){
       //举报调取函数
       if(login_ss == undefined){
-        layer.msg('你还没有登录')
-        window.setTimeout(function(){
+        // layer.msg('你还没有登录')
+        // window.setTimeout(function(){
           // window.location.href =fn.curlgen('login','h='+window.location.href);
           getlogin();
-        },1000);
+        // },1000);
         return false;
       }
       var report_content = null;
