@@ -148,7 +148,11 @@ form, input {
 .new-city.hover .new-city-box{
     display: block;
 }*/
-
+.new-city-box {
+    width: 700px;
+    height: 470px;
+    background-color: #fff;
+}
 /*搜索*/
 .new_nav_first .nav-right .new-searchs{
     width: 350px;
