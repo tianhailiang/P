@@ -2880,10 +2880,12 @@ exports.article_list = function (req, res, next) {
 exports.delete_article = function (req,res,next) {
     log.debug('删除文章接口！！');
     var data = req.body;
+    console.log('data',data)
     wec.delete_article(data,function(err,result){
         if(err){
             res.send(err)
         }else{
+            console.log('result',result)
             res.send(result)
         }
     });
