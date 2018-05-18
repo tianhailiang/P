@@ -175,9 +175,9 @@
         console.log(result);
         if(result.code == 0){
           layer.msg('删除成功');
-          // window.setTimeout(function(){
+          window.setTimeout(function(){
             window.location.reload();
-          // },2000);
+          },1000);
           $('#art_box_' + articleId).css('display','none')
         }else{
           layer.msg('删除失败')
