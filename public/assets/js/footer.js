@@ -59,6 +59,10 @@ var iDcity2 = {
 
 $(document).ready(function(){
   showcity2()
+  var leg = $(".footer-top a").length;
+  if(leg<1){
+      $(".footer-top").css('display','none')
+  }
 
 });
 function showcity2(){
