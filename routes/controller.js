@@ -70,6 +70,7 @@ exports.index = function (req, res, next) {
     } else {
         data.url = config.wwhost+req.url;
     }
+    data.index_userinfo = {}
     if ( req.cookies.login_ss !== undefined) {
         console.log('aaaaaa');
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -111,13 +112,36 @@ exports.index = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
         data.guanggao = returnData(result.guanggao,'guanggao');
-        data.tdk = {
-            pagekey: 'HOME',
-            cityid: area,
-            nationid: ''
-        };
-        data.esikey = esihelper.esikey();
-        res.render('index', data);
+        if (data.login_info.uid != 0) {
+            async.parallel({
+                //获取用户信息（普通用户，顾问，参赞）
+                userinfo:function(callback){
+                    wec.userinfo({
+                    "u_id":data.login_info.uid,
+                    "to_uid":data.login_info.uid
+                    },callback);
+                }
+            },function (err, result) {
+                data.index_userinfo = result.userinfo;
+                console.log('userinfo',data.index_userinfo)
+                data.tdk = {
+                    pagekey: 'HOME',
+                    cityid: area,
+                    nationid: ''
+                };
+                data.esikey = esihelper.esikey();
+                res.render('index', data);
+            })
+        } else {
+            data.tdk = {
+                pagekey: 'HOME',
+                cityid: area,
+                nationid: ''
+            };
+            data.esikey = esihelper.esikey();
+            res.render('index', data);
+        }
+        
     })
 };
 //分公司首页
@@ -181,15 +205,41 @@ exports.index_page = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.guanggao = returnData(result.guanggao,'guanggao');
         data.shouye = JSON.parse(result.shouye);
-        data.tdk = {
-            pagekey: 'HOME',
-            cityid: area,
-            nationid: ''
-        };
-        // console.log(result.shouye);
-        data.esikey = esihelper.esikey();
-        // log.info(data.xSlider2)
-        res.render('index', data);
+        if (data.login_info.uid != 0) {
+            async.parallel({
+                //获取用户信息（普通用户，顾问，参赞）
+                userinfo:function(callback){
+                    wec.userinfo({
+                    "u_id":data.login_info.uid,
+                    "to_uid":data.login_info.uid
+                    },callback);
+                }
+            },function (err, result) {
+                data.index_userinfo = returnData(result.userinfo,'userinfo');
+                console.log('userinfo',data.index_userinfo);
+                data.tdk = {
+                    pagekey: 'HOME',
+                    cityid: area,
+                    nationid: ''
+                };
+                // console.log(result.shouye);
+                data.esikey = esihelper.esikey();
+                console.log('userinfo',data.index_userinfo);
+                // log.info(data.xSlider2)
+                res.render('index', data);
+            })
+        } else {
+            data.tdk = {
+                pagekey: 'HOME',
+                cityid: area,
+                nationid: ''
+            };
+            // console.log(result.shouye);
+            data.esikey = esihelper.esikey();
+            // log.info(data.xSlider2)
+            res.render('index', data);
+        }
+        
     })
 };
 //国家列表页
