@@ -160,7 +160,7 @@
           {% if loop.index%2==1 %}
         <div class="new-activity-item">
           <h2 class="new-activity-item-title"  style="font-weight: normal;"><span class="city-name">【{{item.hold_city | getCity}}】</span><a target="_blank"
-            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(18)}}</a><span  class="activity-time">{{ item.inputtime | getDefaultFormat }}</span></h2>
+            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(18)}}</a><span  class="activity-time">{{ item.start_time  | shorten(10) }}</span></h2>
           <div class="new-activity-item-con">
             <p class="description"><span>{{item.description | ellipsis(27)}}</span><a target="_blank" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
             <ul>
@@ -175,7 +175,7 @@
 
         <div class="new-activity-item" style="margin-left: 20px">
           <h2 class="new-activity-item-title"  style="font-weight: normal;"><span class="city-name">【{{item.hold_city | getCity}}】</span><a target="_blank"
-            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(18)}}</a><span  class="activity-time">{{ item.inputtime | getDefaultFormat }}</span></h2>
+            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(18)}}</a><span  class="activity-time">{{ item.start_time | shorten(10) }}</span></h2>
           <div class="new-activity-item-con">
             <p class="description"><span>{{item.description | ellipsis(27)}}</span><a target="_blank" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
             <ul>
