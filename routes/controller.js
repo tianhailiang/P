@@ -111,7 +111,6 @@ exports.index = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
         data.guanggao = returnData(result.guanggao,'guanggao');
-        // console.log(data.guanggao)
         data.tdk = {
             pagekey: 'HOME',
             cityid: area,
@@ -187,7 +186,7 @@ exports.index_page = function (req, res, next) {
             nationid: ''
         };
         // console.log(result.shouye);
-        //data.esikey = esihelper.esikey();
+        data.esikey = esihelper.esikey();
         // log.info(data.xSlider2)
         res.render('index', data);
     })

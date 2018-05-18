@@ -1,7 +1,3 @@
-
-.page-blank{padding:40px 0;width:880px;height:200px}
-.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
-.page-blank .blank-img{display:block;width:200px;margin:0 auto}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:768px}
@@ -20,6 +16,10 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:0}
+.page-blank{padding:40px 0;width:880px;height:200px}
+.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
+.page-blank .blank-img{display:block;width:200px;margin:0 auto}
+
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
 .sub-btn-box{margin-top:20px;margin-bottom:20px}
@@ -63,14 +63,16 @@
 .community-advisor .user-name{font-size:18px;line-height:18px;text-align:center;margin-bottom:20px;color:#333}
 .community-advisor .advisor-bumen,.community-advisor .advisor-enjoy{height:14px;margin-top:10px;font-size:14px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:14px}
 .community-advisor .advisor-sushu{height:16px;font-size:14px;color:#666;margin-top:16px;text-align:center}
-.community-advisor .advisor-intro{padding:13px 20px;font-size:12px;color:#666}
+.community-advisor .advisor-intro{padding:13px 20px 0;font-size:12px;color:#666}
 .community-advisor .counsellor-intro{text-indent:2em;padding:15px 20px;font-size:12px;color:#666}
 .community-advisor .counsellor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
 .community-advisor .advisor-intro p{line-height:24px;word-wrap:break-word;word-break:break-all;overflow:hidden}
-.community-advisor .advisor-btn{height:40px;background:#ff8547;font-size:20px;color:#fff;line-height:40px}
-.community-advisor .advisor-btn-gray{background:#dcdcdc}
-.community-advisor .advisor-guanzhu,.community-advisor .advisor-zixun{font-size:14px;padding:1px 42px;cursor:pointer;color:#fff}
-.community-advisor .advisor-zixun{border-right:1px solid #fff}
+.community-advisor .advisor-btn{height:40px;font-size:20px;color:#fff;line-height:40px;padding-bottom:15px;padding-top:2px}
+.community-advisor .advisor-btn-gray .advisor-zixun{background:#dcdcdc}
+.community-advisor .advisor-btn-gray .advisor-guanzhu{background:#dcdcdc;border:none;color:#fff;padding:4px 38px}
+.community-advisor .advisor-zixun{font-size:14px;padding:4px 28px;cursor:pointer;margin-left:20px;color:#fff;background:#c13232}
+.community-advisor .advisor-guanzhu{font-size:14px;padding:3px 38px;cursor:pointer;margin-left:18px;color:#c13232;border:1px solid #c13232;border-radius:4px}
+.community-advisor .advisor-zixun{border-radius:4px}
 .community-advisor .counsellor-guanzhu{font-size:14px;display:block;text-align:center;cursor:pointer}
 .community-nav-con{height:40px;background:#f3f3f3;margin:20px 20px 0}
 .community-nav-con .community-nav-list{display:inline-block;font-size:16px;color:#666;line-height:40px;width:96px;height:40px;text-align:center}
@@ -346,9 +348,10 @@
 .nav-tenth-con a{display:inline-block;height:30px;line-height:30px;margin:9px 38px 0 23px;font-size:18px;color:#333;padding:0 10px}
 .nav-tenth-con a:hover{background:#c13232;color:#fff}
 .nav-tenth-on{background:#c13232;color:#fff}
-.liuxue-footer{width:100%;height:424px;background:#000 url(../img/bg_footer.jpg);opacity:.9;margin-top:20px}
+.liuxue-footer{width:100%;height:auto;background:#000 url(../img/bg_footer.jpg);opacity:.9;margin-top:20px;padding-bottom:17px}
 .liuxue-footer-content{width:1180px;margin:0 auto;color:#fff;position:relative}
-.liuxue-footer-content .foot-map{padding:50px 0 31px}
+.liuxue-footer-content .foot-map{padding:40px 0 31px}
+.foot-map a:hover{font-size:14px;text-decoration:underline}
 .liuxue-footer-content .foot-map .sitemap h2{color:#fff;font-size:16px;font-weight:400;line-height:16px;padding-bottom:22px}
 .liuxue-footer-content .foot-map .sitemap{float:left}
 .liuxue-footer-content .foot-map .sitemap ul li{font-size:12px;line-height:30px}
@@ -356,7 +359,7 @@
 .liuxue-footer-content .foot-map .sitemap01{width:320px}
 .liuxue-footer-content .foot-map .sitemap02{width:420px}
 .liuxue-footer-content .foot-map .sitemap01 ul{float:left}
-.liuxue-footer-content .foot-map .sitemap01 .left-ul{margin-right:58px}
+.liuxue-footer-content .foot-map .sitemap01 .left-ul{width:106px}
 .liuxue-footer-content .foot-map .sitemap04 dl{float:left;text-align:center}
 .liuxue-footer-content .foot-map .sitemap04 dl dt{margin-bottom:10px}
 .liuxue-footer-content .foot-map .sitemap04 dl.foot-weibo{margin-right:50px}
@@ -366,8 +369,11 @@
 .liuxue-footer-content .address ul li{line-height:30px;font-size:14px}
 .liuxue-footer-content .address ul li i{display:inline-block;width:22px}
 .liuxue-footer-content .address .wuhan-address{width:500px;float:left}
-.liuxue-footer-content .copyright{font-size:14px;color:#B4B4B4;margin-top:34px}
+.liuxue-footer-content .copyright{font-size:14px;color:#B4B4B4;margin-top:34px;padding-left:20px}
 .liuxue-footer-content .adviser-login{width:98px;height:24px;text-align:center;line-height:24px;border:1px solid #fff;color:#fff;font-size:14px;position:absolute;bottom:0;right:232px;cursor:pointer}
+.footer-top h2{float:left;font-size:16px;line-height:20px;background:url(../img/foot_03.png) no-repeat left center;padding-left:18px;margin-top:20px;margin-right:35px}
+.footer-top a{color:#fff;font-size:16px;display:inline-block;margin-top:21px;margin-right:30px}
+.footer-top:after{position:absolute;display:block;content:"";border-bottom:1px solid #333;bottom:-20px;width:100%}
 form,input{margin:0;padding:0}
 .new_nav_first_white{width:100%;height:82px;background-color:#fff}
 .new_nav_first_red{width:100%;height:82px;background-color:#C13232}
@@ -397,7 +403,8 @@ form,input{margin:0;padding:0}
 .new_nav_first_red .citynames{color:#fff}
 .new_nav_first_white .citynames{color:#333}
 .citynames i{font-size:14px;position:relative;left:0}
-.new-city-box{width:735px;background-color:#fff;border-top:2px solid #C13232;position:absolute;right:0}
+.new-city:hover .new-city-box{display:block}
+.new-city-box{width:735px;background-color:#fff;border-top:2px solid #C13232;position:absolute;right:0;display:none}
 .new-city-box a{color:#333;font-size:14px}
 .new-city-box a:hover{color:#C13232}
 .new-city-box .city-box-top{margin:0 10px;padding:20px 0 19px;font-size:14px;color:#333;border-bottom:1px dashed #DCDCDC;line-height:1}
