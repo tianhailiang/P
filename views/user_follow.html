@@ -90,9 +90,8 @@
             {% endif %}
             <!--分页器 start-->
             <div class="pagination-box" data-pagenum="{{follow_data.totalpage}}">
-                <div class="dui-pagination pagination-large">
-
-                </div>
+                {% import "widget2/pagtion/pagtion.html" as pagtion %}
+                {{pagtion.pagtion(pagination)}}
             </div>
             <!--分页器 end-->
         </div>
@@ -131,21 +130,8 @@
             slidesPerGroup : 2,
           pagination: true
         });
-        /*分页器*/
-        if (total_num >= 1) {
-            $('.pagination-box').pagination({
-                pages: total_num,
-                styleClass: ['pagination-large'],
-                showCtrl: true,
-                currentPage: cur_page,
-                displayPage: 7,
-                onSelect: function (num) {
-                    window.location.href = fn.curlgen('user_center/followee','page=' + num);
-                }
-            });
-            //让分页器居中显示
-            $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
-        }
+        //让分页器居中显示
+        $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
     })
 </script>
 </body>
