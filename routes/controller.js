@@ -2805,15 +2805,15 @@ exports.release_article = function(req,res,next){
                 cityid: area,
                 realname: data.userinfo.realname,
             };
-        })
+          if(data.userinfo.adviser_type == 2){
+            log.info('移民')
+            res.render('release_article_yimin',data);
+          }else{
+            log.info('留学')
+            res.render('release_article',data);
+          }
 
-      if(data.userinfo.adviser_type == 2){
-        log.info('移民')
-        res.render('release_article_yimin',data);
-      }else{
-        log.info('留学')
-        res.render('release_article',data);
-      }
+        })
     })
 };
 
