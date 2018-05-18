@@ -336,7 +336,11 @@
   }
 </script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 </body>

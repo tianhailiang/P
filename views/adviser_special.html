@@ -117,7 +117,11 @@
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide2_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
