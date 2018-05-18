@@ -189,8 +189,8 @@ exports.article_xiangguantuijian = function(req,res,next){
 //友情链接
 exports.linkList = function (req, res, next) {
     var data = {}
-    console.log('友情链接',data);
     var area = req.query.c || 1;
+    // console.log('友情链接',area);
     // var resData = [];
     async.parallel({
         link:function(callback){
