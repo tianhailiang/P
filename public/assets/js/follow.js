@@ -34,10 +34,12 @@ $(function () {
                 if (msg.code == 0) {
                     if (msg.data.type == 'add') {
                         thisObj.text('已关注');
+                        thisObj.css('padding', '3px 31px');
                         guanzhu_num_box.text(guanzhu_num*1+1);
                     }
                     else if ( msg.data.type == 'remove') {
                         thisObj.text('关注');
+                        thisObj.css('padding', '3px 38px');
                         guanzhu_num_box.text(guanzhu_num*1-1);
                     }
                 }
