@@ -116,6 +116,7 @@ exports.index = function (req, res, next) {
             cityid: area,
             nationid: ''
         };
+        data.esikey = esihelper.esikey();
         res.render('index', data);
     })
 };
@@ -759,6 +760,7 @@ exports.center_follow = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_follow', data);
         })
     });
@@ -823,6 +825,7 @@ exports.user_followee = function (req, res, next) {
           cityid: area, 
           nationid: country
         };
+        data.esikey = esihelper.esikey();
         res.render('user_follow', data);
     });
 };
@@ -916,6 +919,7 @@ exports.center_main = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_main', data);
         })
     });
@@ -985,6 +989,7 @@ exports.post_code = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname,
             };
+            data.esikey = esihelper.esikey();
             res.render('center_post_code', data);
         })
     });
@@ -1078,6 +1083,7 @@ exports.center_case = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_case', data);
         })
     });
@@ -1195,6 +1201,7 @@ exports.center_comment = function (req, res, next) {
 
                 }
             }
+            data.esikey = esihelper.esikey();
             res.render('center_comment', data);
         })
 
@@ -1293,6 +1300,7 @@ exports.user_comment = function (req, res, next) {
 
                 }
             }
+            data.esikey = esihelper.esikey();
             res.render('center_comment', data);
         })
 
@@ -1407,6 +1415,7 @@ exports.center_message = function (req, res, next) {
 
                 }
             }
+            data.esikey = esihelper.esikey();
             res.render('center_message', data);
         })
 
@@ -1503,6 +1512,7 @@ exports.center_collection = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_collection', data);
         })
 
@@ -1587,6 +1597,7 @@ exports.center_article = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_article', data);
         })
     });
@@ -1658,6 +1669,7 @@ exports.center_photo = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_photo', data);
         })
     });
@@ -2498,6 +2510,7 @@ exports.advisor_profile = function (req, res, next) {
               cityid: area,
               realname: data.userinfo.realname,
           };
+          data.esikey = esihelper.esikey();
           res.render('advisor_profile', data);
       })
   });
@@ -2539,6 +2552,7 @@ exports.counsellor_set = function (req, res, next) {
       pagekey: 'CANZAN_CENTER_ACOUNT',
       cityid: area,
     };
+    data.esikey = esihelper.esikey();
     res.render('counsellor_set', data);
   });
 };
@@ -2607,6 +2621,7 @@ exports.advisor_acount = function (req, res, next) {
             cityid: area,
             realname: data.userinfo.realname,
         };
+        data.esikey = esihelper.esikey();
         res.render('advisor_acount', data);
     })
   });
@@ -2664,6 +2679,7 @@ exports.user_information = function (req, res, next) {
       pagekey: 'USER_CENTER_PROFILE',
       cityid: area,
     };
+    data.esikey = esihelper.esikey();
     res.render('user_information', data);
   });
 };
@@ -2719,6 +2735,7 @@ exports.release_case = function(req,res,next){
       pagekey: 'ADVISOR_CENTER_POSTCASE',
       cityid: area,
     };
+    data.esikey = esihelper.esikey();
     res.render('release_case', data);
   });  
 }
@@ -2804,6 +2821,7 @@ exports.release_article = function(req,res,next){
                 cityid: area,
                 realname: data.userinfo.realname,
             };
+            data.esikey = esihelper.esikey();
             if(data.login_info.adviser == 1){
                 log.info('留学')
                 res.render('release_article',data);
@@ -2989,6 +3007,7 @@ exports.center_article_detail = function(req,res,next){
             pagekey:pagekey,
             cityid: area,
         };
+        data.esikey = esihelper.esikey();
         res.render('center_article_detail', data);
     })
   });  
@@ -3067,6 +3086,7 @@ exports.center_case_detail = function(req,res,next){
             pagekey:pagekey,
             cityid: area,
         };
+        data.esikey = esihelper.esikey();
         res.render('center_case_detail', data);
     })
   });   
@@ -3178,6 +3198,7 @@ exports.draft =function(req,res,next){
                 is_draft:data.is_draft
             }
         }
+        data.esikey = esihelper.esikey();
         res.render('draft', data);
     })
   });  
@@ -3280,6 +3301,7 @@ exports.edit_article = function(req,res,next){
             pagekey:pagekey,
             cityid: area,
         };
+        data.esikey = esihelper.esikey();
         if(data.login_info.adviser == 1){
             res.render('edit_article',data);
         }else if(data.login_info.adviser == 2){
@@ -3357,6 +3379,7 @@ exports.edit_case =function(req,res,next){
       pagekey: 'ADVISOR_CENTER_POSTCASE',
       cityid: area,
     };
+    data.esikey = esihelper.esikey();
     res.render('edit_case',data);
   });  
 }
@@ -3616,6 +3639,7 @@ exports.agreement = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('agreement', data);
 
   });
@@ -3677,6 +3701,7 @@ exports.yiminHome = function (req, res, next) {
             cityid: area,
             nationid: ''
         };
+        data.esikey = esihelper.esikey();
         // console.log(result.shouye);
         res.render('yimin_index', data);
     })

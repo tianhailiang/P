@@ -521,11 +521,12 @@
         $(".top").empty();
         var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
                   '<div class="top-con-left">'+
-                  '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">'+
+                  '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400" style="margin-right: 3px;">'+
                   '<span style="font-size: 12px;color: #666;">400-010-8000</span>'+
                   '</div>'+
                   '<div class="top-con-right">'+
-                  '<ul>';
+                  '<ul>'+
+                  '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" id="" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;">9</i></li>';
         if (login_nickname.usertype == 1) {
           val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
         } else if (login_nickname.usertype == 2) {
