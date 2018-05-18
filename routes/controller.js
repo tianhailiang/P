@@ -727,7 +727,7 @@ exports.center_follow = function (req, res, next) {
         console.log('data.follow_data', data.follow_data)
         var pagekey=null;
         if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser == 1){
+            if(data.userinfo.adviser_type == 1){
                 pagekey = 'ADVISOR_CENTER_FOLLOW';
             }else {
                 pagekey = 'ADVISOR_CENTER_FOLLOW';
@@ -885,7 +885,7 @@ exports.center_main = function (req, res, next) {
         console.log('data.collection_list', data.collection_list);
         var pagekey = null;
         if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER';
             }else {
                 pagekey = 'ADVISOR_CENTER';
@@ -957,7 +957,7 @@ exports.post_code = function (req, res, next) {
         data.userinfo =returnData(result.userinfo,'userinfo');
         var pagekey=null;
         if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_QRCODE';
             }else {
                 pagekey = 'ADVISOR_CENTER_QRCODE';
@@ -1050,7 +1050,7 @@ exports.center_case = function (req, res, next) {
         console.log('case_data',data.case_data);
         var pagekey=null;
         if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_CASE';
             }else {
                 pagekey = 'ADVISOR_CENTER_CASE';
@@ -1150,7 +1150,7 @@ exports.center_comment = function (req, res, next) {
           pagekey = 'USER_CENTER_REVCOMMENT';
           route = '/user_center/revcomment';
         }else if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_REVCOMMENT';
             }else {
                 pagekey = 'ADVISOR_CENTER_REVCOMMENT';
@@ -1249,7 +1249,7 @@ exports.user_comment = function (req, res, next) {
             pagekey = 'USER_CENTER_REVCOMMENT';
           route = '/user_center/revcomment';
         }else if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_REVCOMMENT';
             }else {
                 pagekey = 'ADVISOR_CENTER_REVCOMMENT';
@@ -1361,7 +1361,7 @@ exports.center_message = function (req, res, next) {
           pagekey = 'USER_CENTER_REVMESSAGE';
           route = '/user_center/revmsg';
         }else if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_REVMESSAGE';
             }else {
                 pagekey = 'ADVISOR_CENTER_REVMESSAGE';
@@ -1473,7 +1473,7 @@ exports.center_collection = function (req, res, next) {
         if(data.userinfo.usertype == 1){
           pagekey = 'USER_CENTER_COLLECTION';
         }else if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_COLLECTION';
             }else {
                 pagekey = 'ADVISOR_CENTER_COLLECTION';
@@ -1556,7 +1556,7 @@ exports.center_article = function (req, res, next) {
       console.log('article_data',data.article_data)
         var pagekey =null;
         if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_ARTICLE';
             }else {
                 pagekey = 'ADVISOR_CENTER_ARTICLE';
@@ -1627,7 +1627,7 @@ exports.center_photo = function (req, res, next) {
         data.userinfo =returnData(result.userinfo,'userinfo');
         var pagekey =null;
         if(data.userinfo.usertype == 2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_ALBUM';
             }else {
                 pagekey = 'ADVISOR_CENTER_ALBUM';
@@ -2470,7 +2470,7 @@ exports.advisor_profile = function (req, res, next) {
     log.debug(data.userinfo);
       var pagekey =null;
       if(data.userinfo.usertype == 2){
-          if(data.login_info.adviser==1){
+          if(data.userinfo.adviser_type==1){
               pagekey = 'ADVISOR_CENTER_PROFILE';
           }else {
               pagekey = 'ADVISOR_CENTER_PROFILE';
@@ -2578,7 +2578,7 @@ exports.advisor_acount = function (req, res, next) {
     if(data.userinfo.usertype ==1){
        pagekey = 'USER_CENTER_ACOUNT';
     }else if(data.userinfo.usertype == 2){
-        if(data.login_info.adviser==1){
+        if(data.userinfo.adviser_type==1){
             pagekey = 'ADVISOR_CENTER_ACOUNT';
         }else {
             pagekey = 'ADVISOR_CENTER_ACOUNT';
@@ -2773,7 +2773,7 @@ exports.release_article = function(req,res,next){
         data.userinfo = returnData(result.userinfo,'userinfo');
         var pagekey = null;
         if(data.userinfo.usertype ==2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_POSTARTICLE';
             }else {
                 pagekey = 'ADVISOR_CENTER_POSTARTICLE';
@@ -2805,10 +2805,10 @@ exports.release_article = function(req,res,next){
                 cityid: area,
                 realname: data.userinfo.realname,
             };
-            if(data.login_info.adviser == 1){
+            if(data.userinfo.adviser_type == 1){
                 log.info('留学')
                 res.render('release_article',data);
-            }else if(data.login_info.adviser == 2){
+            }else if(data.userinfo.adviser_type == 2){
                 log.info('移民')
                 res.render('release_article_yimin',data);
             }
@@ -2959,7 +2959,7 @@ exports.center_article_detail = function(req,res,next){
     data.id = data.article_id;
     var pagekey = null;
     if(data.userinfo.usertype ==2){
-        if(data.login_info.adviser==1){
+        if(data.userinfo.adviser_type==1){
             pagekey = 'ADVISOR_CENTER_ARTICLEDETAIL';
         }else {
             pagekey = 'ADVISOR_CENTER_ARTICLEDETAIL';
@@ -3040,7 +3040,7 @@ exports.center_case_detail = function(req,res,next){
     data.id = data.article_id;
     var pagekey = null;
     if(data.userinfo.usertype ==2){
-      if(data.login_info.adviser==1){
+      if(data.userinfo.adviser_type==1){
           pagekey = 'ADVISOR_CENTER_CASEDETAIL';
       }else {
           pagekey = 'ADVISOR_CENTER_CASEDETAIL';
@@ -3134,7 +3134,7 @@ exports.draft =function(req,res,next){
     var pagekey = null;
     var route = '';
     if(data.userinfo.usertype == 2){
-        if(data.login_info.adviser==1){
+        if(data.userinfo.adviser_type==1){
             pagekey = 'ADVISOR_CENTER_DRAFT';
         }else {
             pagekey = 'ADVISOR_CENTER_DRAFT';
@@ -3250,7 +3250,7 @@ exports.edit_article = function(req,res,next){
     data.article = returnData(result.article,'article');
     var pagekey = null;
     if(data.userinfo.usertype ==2){
-        if(data.login_info.adviser==1){
+        if(data.userinfo.adviser_type==1){
             pagekey = 'ADVISOR_CENTER_ARTICLEEDIT';
         }else {
             pagekey = 'ADVISOR_CENTER_ARTICLEEDIT';
@@ -3281,9 +3281,9 @@ exports.edit_article = function(req,res,next){
             pagekey:pagekey,
             cityid: area,
         };
-        if(data.login_info.adviser == 1){
+        if(data.userinfo.adviser_type == 1){
             res.render('edit_article',data);
-        }else if(data.login_info.adviser == 2){
+        }else if(data.userinfo.adviser_type == 2){
             res.render('edit_article_yimin',data);
         }
     })
