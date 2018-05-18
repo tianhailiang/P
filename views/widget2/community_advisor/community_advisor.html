@@ -20,8 +20,8 @@
     </dd>
   </dl>
   <div class="advisor-intro">
-    {% if advisor.introduce.length > 70 %}
-    <p class="expand2" data-tex="{{ advisor.introduce | ellipsis(70) }}">{{ advisor.introduce | ellipsis(70) }}<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span></p>
+    {% if advisor.introduce.length > 74 %}
+    <p class="expand2" data-tex="{{ advisor.introduce | ellipsis(74) }}">{{ advisor.introduce | ellipsis(74) }}<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span></p>
     {% else %}
     <p class="expand1">{{ advisor.introduce }}</p>
     {% endif %}
@@ -29,7 +29,7 @@
   <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}">
     <a {% if login_info.uid !== advisor.uid %} onclick="openchat_new('{{ advisor.new_job_number}}')"{% endif %}class="advisor-zixun"  rel="nofollow">立即咨询</a>
     {% if advisor.is_follow %}
-      <span class="advisor-guanzhu guanzhu-btn" data-uid="{{advisor.uid}}">已关注</span>
+      <span class="advisor-guanzhu guanzhu-btn" style="padding: 3px 31px;" data-uid="{{advisor.uid}}">已关注</span>
     {% else %}
       <span class="advisor-guanzhu guanzhu-btn" data-uid="{{advisor.uid}}">关注</span>
     {% endif %}  
