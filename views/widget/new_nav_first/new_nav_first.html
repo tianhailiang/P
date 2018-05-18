@@ -407,19 +407,167 @@
                 </div>#}
                 <!--新的城市下拉框-->
                 <div class="new-city-box">
-                    <div class="city-box-top">
+                    <div class="city-box-top whole-city">
                         <div class="city-address">
-                            <i class="iconfont">&#xe603;</i>
-                            <span id="city-address-text">北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米）</span>
-                            <span>【点击查看地图】</span>
+                            <i class="iconfont">&#xe603;</i><span id="city-address-text">北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米）</span><span class="useMap">【点击查看地图】</span>
                         </div>
                         <div class="city-phone">
-                            <i class="iconfont">&#xe684;</i>
-                            <span id="city-phone">010-65685656</span>
+                            <i class="iconfont">&#xe684;</i><span id="city-phone-text">010-65685656</span>
                         </div>
                     </div>
-                    <div class="city-box-body"></div>
-                    <div class="city-box-bot"></div>
+                    <div class="city-box-top wuhan" style="display: none;">
+                        <div class="city-address">
+                            <i class="iconfont">&#xe603;</i><span>武汉市航空路新世界中心C座20层</span><span class="useMap">【点击查看地图】</span>&nbsp;&nbsp;<span>珞瑜路10号群光中心百脑汇23层</span><span class="useMap">【点击查看地图】</span>
+                        </div>
+                        <div class="city-phone">
+                            <i class="iconfont">&#xe684;</i><span>010-65685656/027-67811600</span>
+                        </div>
+                    </div>
+                    <div class="city-box-body">
+                        <div class="current-city">&lt;返回当前城市</div>
+                        <div class="city-colum clearfix" id="home-citys">
+                            <ul class="colum-left">
+                                <li class="clearfix">
+                                    <span>B</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=1')}}" data-cid="1">北京</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>C</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=5')}}" data-cid="5">成都</a>
+                                        <a href="{{helper.urlgen('branch_home','c=7')}}" data-cid="7">重庆</a>
+                                        <a href="{{helper.urlgen('branch_home','c=19')}}" data-cid="19">长沙</a>
+                                        <a href="{{helper.urlgen('branch_home','c=25')}}" data-cid="25">长春</a>
+                                        <a href="{{helper.urlgen('branch_home','c=41')}}" data-cid="41">常州</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>D</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=43')}}" data-cid="43">东莞</a>
+                                        <a href="{{helper.urlgen('branch_home','c=13')}}" data-cid="13">大连</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>F</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=37')}}" data-cid="37">佛山</a>
+                                        <a href="{{helper.urlgen('branch_home','c=39')}}" data-cid="39">福州</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>G</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=3')}}" data-cid="3">广州</a>
+                                        <a href="{{helper.urlgen('branch_home','c=35')}}" data-cid="35">贵阳</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>H</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=6')}}" data-cid="6">杭州</a>
+                                        <a href="{{helper.urlgen('branch_home','c=22')}}" data-cid="22">合肥</a>
+                                        <a href="{{helper.urlgen('branch_home','c=24')}}" data-cid="24">哈尔滨</a>
+                                        <a href="{{helper.urlgen('branch_home','c=26')}}" data-cid="26">呼市</a>
+                                        <a href="{{helper.urlgen('branch_home','c=32')}}" data-cid="32">邯郸</a>
+                                        <a href="{{helper.urlgen('branch_home','c=46')}}" data-cid="46">海南</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>J</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=9')}}" data-cid="9">济南</a>
+                                        <a href="{{helper.urlgen('branch_home','c=30')}}" data-cid="30">吉林</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>K</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=21')}}" data-cid="21">昆明</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>L</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=27')}}" data-cid="27">兰州</a>
+                                        <a href="{{helper.urlgen('branch_home','c=48')}}" data-cid="48">洛阳</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="colum-right">
+                                <li class="clearfix">
+                                    <span>N</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=16')}}" data-cid="16">南京</a>
+                                        <a href="{{helper.urlgen('branch_home','c=29')}}" data-cid="29">南昌</a>
+                                        <a href="{{helper.urlgen('branch_home','c=34')}}" data-cid="34">宁波</a>
+                                        <a href="{{helper.urlgen('branch_home','c=38')}}" data-cid="38">南宁</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>Q</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=10')}}" data-cid="10">青岛</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>S</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=2')}}" data-cid="2">上海</a>
+                                        <a href="{{helper.urlgen('branch_home','c=8')}}" data-cid="8">沈阳</a>
+                                        <a href="{{helper.urlgen('branch_home','c=12')}}" data-cid="12">石家庄</a>
+                                        <a href="{{helper.urlgen('branch_home','c=20')}}" data-cid="20">深圳</a>
+                                        <a href="{{helper.urlgen('branch_home','c=23')}}" data-cid="23">苏州</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>T</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=4')}}" data-cid="4">天津</a>
+                                        <a href="{{helper.urlgen('branch_home','c=17')}}" data-cid="17">太原</a>
+                                        <a href="{{helper.urlgen('branch_home','c=18')}}" data-cid="18">唐山</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>W</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=14')}}" data-cid="14">武汉</a>
+                                        <a href="{{helper.urlgen('branch_home','c=33')}}" data-cid="33">无锡</a>
+                                        <a href="{{helper.urlgen('branch_home','c=42')}}" data-cid="42">温州</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>X</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=15')}}" data-cid="15">西安</a>
+                                        <a href="{{helper.urlgen('branch_home','c=28')}}" data-cid="28">厦门</a>
+                                        <a href="{{helper.urlgen('branch_home','c=36')}}" data-cid="36">徐州</a>
+                                        <a href="{{helper.urlgen('branch_home','c=45')}}" data-cid="45">西宁</a>
+                                        <a href="{{helper.urlgen('branch_home','c=47')}}" data-cid="47">新疆</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>Y</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=31')}}" data-cid="31">烟台</a>
+                                        <a href="{{helper.urlgen('branch_home','c=40')}}" data-cid="40">银川</a>
+                                        <a href="{{helper.urlgen('branch_home','c=44')}}" data-cid="44">宜昌</a>
+                                    </div>
+                                </li>
+                                <li class="clearfix">
+                                    <span>Z</span>
+                                    <div>
+                                        <a href="{{helper.urlgen('branch_home','c=11')}}" data-cid="11">郑州</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="city-box-bot" id="oversea-citys">
+                        <i class="iconfont">&#xe6bd;</i>海外分公司：<a href="" data-cid="51">奥克兰</a><a href="" data-cid="50">多伦多</a><a href="" data-cid="49">温哥华</a>
+                    </div>
                 </div>
             </div>
             <div class="new-searchs new-home-search">

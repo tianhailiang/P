@@ -68,14 +68,16 @@ form, input {
     float: right;
 }
 .new_nav_first .new-city{
-    width:122px;
-    height: 82px;
-    text-align: right;
-    line-height: 82px;
     float:left;
     position: relative;
     z-index: 1000;
     cursor: pointer;
+}
+.new_nav_first .new-city .citynames {
+    width:122px;
+    height: 82px;
+    text-align: right;
+    line-height: 82px;
 }
 #city-on{
     font-size: 18px;
@@ -148,12 +150,118 @@ form, input {
 .new-city.hover .new-city-box{
     display: block;
 }*/
+.new-city:hover .new-city-box{
+    display: block;
+}
 .new-city-box {
-    width: 700px;
-    height: 470px;
+    width: 735px;
+    /*height: 504px;*/
     background-color: #fff;
+    border-top: 2px solid #C13232;
     position: absolute;
     right: 0;
+    display: none;
+}
+.new-city-box a {
+    color: #333;
+    font-size: 14px;
+}
+.new-city-box a:hover {
+    color: #C13232;
+}
+.new-city-box .city-box-top {
+    margin: 0 10px;
+    padding: 20px 0 19px;
+    font-size: 14px;
+    color: #333;
+    border-bottom: 1px dashed #DCDCDC;
+    line-height: 1;
+}
+.new-city-box .city-box-top .city-address {
+    padding-left: 10px;
+}
+.new-city-box .city-box-top .city-address {
+    margin-bottom: 20px;
+}
+.new-city-box .city-box-top .city-address .useMap {
+    margin-left: 20px;
+    color: #C13232;
+    text-decoration: underline;
+}
+.new-city-box .city-box-top .city-address i {
+    font-size: 14px;
+}
+.new-city-box .city-box-top .city-phone {
+    padding-left: 10px;
+}
+.new-city-box .city-box-top .city-phone i {
+    font-size: 12px;
+}
+.new-city-box .city-box-top i {
+    display: inline-block;
+    color: #C13232;
+    width: 24px;
+}
+.new-city-box .city-box-body .current-city {
+    padding: 20px 20px;
+    font-size: 14px;
+    color: #C13232;
+    line-height: 1;
+}
+.new-city-box .city-box-body .city-colum ul{
+    padding-left: 20px;
+    position: relative;
+}
+.new-city-box .city-box-body .city-colum .colum-right:before {
+    position: absolute;
+    content: '';
+    width: 0;
+    height: 272px;
+    border-left: 1px dashed #DCDCDC;
+    left: 0;
+    top: 0;
+
+}
+.new-city-box .city-box-body .city-colum li span {
+    float: left;
+    width: 30px;
+    font-size: 14px;
+    color: #C13232;
+}
+.new-city-box .city-box-body .city-colum li div {
+    float: left;
+    font-size: 0;
+}
+.new-city-box .city-box-body .city-colum li div a {
+    font-size: 14px;
+    margin-right: 26px;
+}
+.new-city-box .city-box-body .city-colum li div a:last-child  {
+    margin-right: 20px;
+}
+.new-city-box .city-box-body .city-colum li {
+    line-height: 1;
+    margin-bottom: 20px;
+}
+.new-city-box .city-box-body .city-colum ul {
+    float: left;
+}
+/*海外分公司*/
+.new-city-box .city-box-bot {
+    height: 53px;
+    line-height: 53px;
+    margin: 0 10px;
+    border-top: 1px dashed #DCDCDC;
+    font-size: 14px;
+    color: #333;
+}
+.new-city-box .city-box-bot i {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #C13232;
+}
+.new-city-box .city-box-bot a {
+    margin-right: 26px;
 }
 /*搜索*/
 .new_nav_first .nav-right .new-searchs{
