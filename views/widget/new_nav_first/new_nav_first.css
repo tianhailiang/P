@@ -254,6 +254,7 @@ form, input {
     border-top: 1px dashed #DCDCDC;
     font-size: 14px;
     color: #333;
+    padding-left: 10px;
 }
 .new-city-box .city-box-bot i {
     font-size: 20px;

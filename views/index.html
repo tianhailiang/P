@@ -13,11 +13,23 @@
   .liuxue-guoqi a:hover{
     background: rgba(0,0,0,0.07);
   }
-
+  .voucher{position:absolute;top:0;left:0;z-index:100009;width:100%;}
+  .voucherLink{position:fixed;top:50%;left:50%;z-index:100010;margin:-250px 0 0 -382px;width:766px;height:500px;}
+  .voucherLink .voucherclose{display:block;background:url({{helper.cdnhost}}/assets/img/indexpop_close.png) no-repeat 50% 50%;position:absolute;top:0;right:0;height:50px;cursor:pointer;
+    width:50px;}
 </style>
 </head>
 <body>
 {% include "widget/common_hide/common_hide.html"%}
+<div class="voucher" id="voucherLink" style="display:block"></div>
+<div class="voucherLink" style="display:none">
+  <div class="left clearfix">
+    <div id="container1" class="container" style="height: 500px;width: 100%">
+    </div>
+  </div>
+  <div class="voucherclose"></div>
+</div>
+
 <div class="zhezhao" id="zhezhaox" style="display: none">
 </div>
 <div id="zhezhaos" style="position: fixed;left: 50%; margin-left: -350px;z-index: 1000000;top: 50%;margin-top: -215px;display: none;">
@@ -372,6 +384,8 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
+<script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/guanggao_slider.js"></script>

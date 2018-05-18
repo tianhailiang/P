@@ -314,8 +314,10 @@ var cityJson = {"1":{
     "companyTel": "服务专线：027-83805656\/027-67811600",
     "companyName": "W-武汉",
     "companyId": "14",
-    "lng": 114.3631931264858,
-    "lat": 30.531711662457397
+    "lng": 114.27810193295183,
+    "lat": 30.621955397850657,
+    "lng2": 114.3631931264858,
+    "lat2": 30.531711662457397
 }, "33":{
     "companyAddress": "无锡分公司：无锡市崇安区中山路531号红豆国际广场办公楼19层",
     "companyTel": "服务专线：0510-81805656",
@@ -438,7 +440,9 @@ function change_city_show (cId) {
 }
 $(document).ready(function(){
     var cookie_cityId = cookie('currentarea');
+    $("#city-on").text(fn.getCityChinese(cookie_cityId));
     change_city_show(cookie_cityId);
+    /*划过切换城市*/
     $('.new-city-box a').hover(function () {
         var hover_cityId = $(this).attr('data-cid');
         change_city_show(hover_cityId);
@@ -447,9 +451,41 @@ $(document).ready(function(){
     });
     /*点击查看地图*/
     $('.useMap').on('click', function () {
-        console.log($(this).index());
+        var lng;
+        var lat;
+        var address;
+        if ($(this).hasClass('wh')) {
+            lng = cityJson['14']['lng'];
+            lat = cityJson['14']['lat'];
+            address = '武汉市航空路新世界中心C座20层';
+        }
+        else if ($(this).hasClass('wc')) {
+            lng = cityJson['14']['lng2'];
+            lat = cityJson['14']['lat2'];
+            address = '珞瑜路10号群光中心百脑汇23层';
+        }
+        else {
+            lng = cityJson[cookie_cityId]['lng'];
+            lat = cityJson[cookie_cityId]['lat'];
+            address = cityJson[cookie_cityId]['companyAddress'];
+        }
+        $(".voucherLink").css("display","block");
+        new BaiduMap({
+            id: "container1",
+            title: {
+                text: address,
+                className: "title"
+            },
+            point: {
+                lng: lng,
+                lat: lat
+            },
+            zoom:true
+        });
     });
-    //showcity();
+    $(".voucherclose").click(function(){
+        $(".voucherLink").css("display","none");
+    })
     $('.citys-box').on('click',"a", function(e){
         e.preventDefault();
         currentarea = $(this).attr("data-id");
