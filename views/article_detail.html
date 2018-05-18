@@ -121,6 +121,7 @@
           <div class="userinfo-box clearfix" >
             {% if userinfo.qrcode %}
               <img class="userinfo-img" src="{{helper.imageThumb(userinfo.qrcode,'76x76')}}" >
+              <img class="userinfo-img-shaow" src="{{helper.cdnhost}}/assets/img/my_else_shaow.png" >
             {% endif %}
             <div class="userinfo-right" >
               <div >
@@ -128,11 +129,14 @@
                 <i class="adviser-v-i" style="margin-left: 0;"></i>
                 <i style="color:#333;font-size: 14px;">{{userinfo.position_name}}</i>
               </div>
-              <div class="userinfo-information" >
-                邮箱：{{userinfo.email}} | 电话：{{userinfo.tel}}
+              <div class="userinfo-information" style="margin-top: 30px">
+                邮箱：<em>{{userinfo.email}}</em>
               </div>
               <div class="userinfo-information" >
-                {{userinfo.organid | getCity()}}分公司：{{userinfo.organid | getCityAddress()}}
+                电话：<em>{{userinfo.tel}}</em>
+              </div>
+              <div class="userinfo-information" >
+                {{userinfo.organid | getCity()}}分公司：<em>{{userinfo.organid | getCityAddress()}}</em>
               </div>
             </div>
           </div>

@@ -19,7 +19,7 @@ width:50px;}
 .checkRadio input[type=radio]+i{position:absolute;top:0;right:0;bottom:0;left:0;border:transparent;border-radius:4px;}
 .checkRadio input[type=radio]:checked+i{border:solid 1px #c13232;background:url({{helper.cdnhost}}/assets/img/arrow.png) no-repeat right top;}
 .checkRadio .checked{color:#C13232;}
-.selectControl{width:200px;height:24px;border:solid 1px #dcdcdc;border-radius:4px;text-indent:10px;}
+.selectControl{width:200px;height:24px;border:solid 1px #dcdcdc;background: url({{helper.cdnhost}}/assets/img/feedback.png) no-repeat right 5px center;color: #666; border-radius:4px;text-indent:10px;}
 .areaContent{position:relative;display:inline-block;width:800px;}
 .areaContent span{position:absolute;right:20px;bottom:14px;color:#999;font-size:12px;}
 .lengendInfo{position:relative;margin-top:14px;margin-bottom:20px;margin-left:90px;color:#C13232;font-size:14px;display: none;}
@@ -179,11 +179,54 @@ width:50px;}
             <div class="form-group">
               <label class="infoType">反馈对象：</label>
               <select class="selectControl">
-                <option>北京分公司</option>
-                <option>北京分公司</option>
-                <option>北京分公司</option>
-                <option>北京分公司</option>
-                <option>北京分公司</option>
+                <option value="1">(B)北京分公司</option>
+								<option value="7">(C)重庆分公司</option>
+								<option value="5">(C)成都分公司</option>
+								<option value="19">(C)长沙分公司</option>
+								<option value="25">(C)长春分公司</option>
+								<option value="41">(C)常州分公司</option>
+								<option value="13">(D)大连分公司</option>
+								<option value="43">(D)东莞分公司</option>
+								<option value="37">(F)佛山分公司</option>
+								<option value="39">(F)福州分公司</option>
+								<option value="3">(G)广州分公司</option>
+								<option value="35">(G)贵阳分公司</option>
+								<option value="24">(H)哈尔滨分公司</option>
+								<option value="32">(H)邯郸分公司</option>
+								<option value="26">(H)呼和浩特分公司</option>
+								<option value="6">(H)杭州分公司</option>
+								<option value="22">(H)合肥分公司</option>
+								<option value="46">(H)海南分公司</option>
+								<option value="9">(J)济南分公司</option>
+								<option value="30">(J)吉林分公司</option>
+								<option value="21">(K)昆明分公司</option>
+								<option value="27">(L)兰州分公司</option>
+								<option value="48">(L)洛阳分公司</option>
+								<option value="16">(N)南京分公司</option>
+								<option value="29">(N)南昌分公司</option>
+								<option value="38">(N)南宁分公司</option>
+								<option value="34">(N)宁波分公司</option>
+								<option value="10">(Q)青岛分公司</option>
+								<option value="2">(S)上海分公司</option>
+								<option value="8">(S)沈阳分公司</option>
+								<option value="12">(S)石家庄分公司</option>
+								<option value="20">(S)深圳分公司</option>
+								<option value="23">(S)苏州分公司</option>
+								<option value="4">(T)天津分公司</option>
+								<option value="17">(T)太原分公司</option>
+								<option value="18">(T)唐山分公司</option>
+								<option value="14">(W)武汉分公司</option>
+								<option value="33">(W)无锡分公司</option>
+								<option value="42">(W)温州分公司</option>
+								<option value="28">(X)厦门分公司</option>
+								<option value="36">(X)徐州分公司</option>
+								<option value="15">(X)西安分公司</option>
+								<option value="45">(X)西宁分公司</option>
+								<option value="47">(X)乌鲁木齐分公司</option>
+								<option value="31">(Y)烟台分公司</option>
+								<option value="40">(Y)银川分公司</option>
+								<option value="44">(Y)宜昌分公司</option>
+								<option value="11">(Z)郑州分公司</option>
               </select>
             </div>
             <div class="form-group">
@@ -257,12 +300,11 @@ width:50px;}
     var maxVal = 500 //最大文本数字
     $(".formControl").keyup(function(){
       var iNum = $(this).val().length //获取文本输入的字数
-      var wordNum = maxVal - iNum //还可以输入的字数
+      var wordNum = maxVal - iNum //还可以输入的字数 
       if(iNum > maxVal){
         $(this).val($(this).val().substring(0, maxVal))
       }
-      $(".areaContent").find('span').text('您还可以输入'+wordNum+'字')
-      
+      $(".areaContent").find('span').text('您还可以输入'+wordNum+'个字')
       if($(this).val().length == 0){
         $(".areaContent").find('span').text('您可以填写20—500字')
       }
