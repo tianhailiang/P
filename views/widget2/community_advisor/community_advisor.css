@@ -128,10 +128,15 @@
   padding-bottom: 15px;
   padding-top: 2px;
 }
-.community-advisor .advisor-btn-gray{
+.community-advisor .advisor-btn-gray .advisor-zixun{
   background:#dcdcdc;
 }
-
+.community-advisor .advisor-btn-gray .advisor-guanzhu {
+  background:#dcdcdc;
+  border: none;
+  color: #fff;
+  padding: 4px 38px;
+}
 .community-advisor .advisor-zixun{
   font-size: 14px;
   padding:4px  28px;
