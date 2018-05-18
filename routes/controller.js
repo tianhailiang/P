@@ -2773,7 +2773,7 @@ exports.release_article = function(req,res,next){
         data.userinfo = returnData(result.userinfo,'userinfo');
         var pagekey = null;
         if(data.userinfo.usertype ==2){
-            if(data.login_info.adviser==1){
+            if(data.userinfo.adviser_type==1){
                 pagekey = 'ADVISOR_CENTER_POSTARTICLE';
             }else {
                 pagekey = 'ADVISOR_CENTER_POSTARTICLE';
@@ -2805,14 +2805,15 @@ exports.release_article = function(req,res,next){
                 cityid: area,
                 realname: data.userinfo.realname,
             };
-            if(data.login_info.adviser == 1){
-                log.info('留学')
-                res.render('release_article',data);
-            }else if(data.login_info.adviser == 2){
-                log.info('移民')
-                res.render('release_article_yimin',data);
-            }
         })
+
+      if(data.userinfo.adviser_type == 2){
+        log.info('移民')
+        res.render('release_article_yimin',data);
+      }else{
+        log.info('留学')
+        res.render('release_article',data);
+      }
     })
 };
 
