@@ -724,7 +724,13 @@ exports.center_follow = function (req, res, next) {
     }, function (err, result) {
         data.userinfo =returnData(result.userinfo,'userinfo');
         data.follow_data = returnData(result.follow_list,'follow_list');
-        console.log('data.follow_data', data.follow_data)
+        data.pagination = {
+            pages:Number.parseInt(data.follow_data.totalpage),
+            displayPage: 5,
+            showCtrl:true,
+            hrefFormer:'/advisor_center/follow?page=',
+            currentPage:Number.parseInt(page)
+        };
         var pagekey=null;
         if(data.userinfo.usertype == 2){
             if(data.login_info.adviser == 1){
@@ -754,6 +760,7 @@ exports.center_follow = function (req, res, next) {
         },function (err, result) {
             data.xSlider = returnData(result.lunbo_list,'lunbo_list');
             data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+
             data.tdk = {
                 // pagekey: data.userinfo.usertype ==2 ? 'ADVISOR_CENTER_FOLLOW':'CANZAN_CENTER_FOLLOW',
                 pagekey:pagekey,
@@ -810,7 +817,7 @@ exports.user_followee = function (req, res, next) {
             wec.user_follow({
                 "u_id": data.login_info.uid,
                 "page": page,
-                "per_page": 16
+                "per_page": 8
             }, callback);
         }
     }, function (err, result) {
@@ -818,7 +825,13 @@ exports.user_followee = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.follow_data =returnData(result.follow_list,'follow_list');
         data.userinfo = returnData(result.userinfo,'userinfo');
-        console.log('data.follow_data', data.follow_data)
+        data.pagination = {
+            pages:Number.parseInt(data.follow_data.totalpage),
+            displayPage: 5,
+            showCtrl:true,
+            hrefFormer:'/user_center/followee?page=',
+            currentPage:Number.parseInt(page)
+        };
         data.tdk = {
           pagekey: 'USER_CENTER_FOLLOWEE', 
           cityid: area, 
