@@ -416,6 +416,13 @@ exports.qq_login = function (req, res, next) {
           log.debug('result.userinfo', result.userinfo);
           data.oauth.data.status = result.userinfo.data.status;
           data.oauth.data.version = result.userinfo.data.version;
+
+          if(result.userinfo.data.ym_adviser == 2 && result.userinfo.data.lx_adviser == 1){
+            data.oauth.data.adviser = 2;
+          }
+          if(result.userinfo.data.lx_adviser == 2){
+            data.oauth.data.adviser = 1;
+          }
           if (config.version == 'development') {//开发环境
             res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
           } else {
