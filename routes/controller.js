@@ -833,8 +833,8 @@ exports.user_followee = function (req, res, next) {
             currentPage:Number.parseInt(page)
         };
         data.tdk = {
-          pagekey: 'USER_CENTER_FOLLOWEE', 
-          cityid: area, 
+          pagekey: 'USER_CENTER_FOLLOWEE',
+          cityid: area,
           nationid: country
         };
         res.render('user_follow', data);
@@ -859,7 +859,7 @@ exports.center_main = function (req, res, next) {
     }else{
         console.log('无cookie')
         res.redirect(config.wwhost+'/login');
-        return false;    
+        return false;
     }
     async.parallel({
         //获取用户信息（普通用户，顾问，参赞）
@@ -1444,7 +1444,7 @@ exports.center_collection = function (req, res, next) {
         data.login_info = JSON.parse(req.cookies.login_ss);
     }else{
         res.redirect(config.wwhost+'/login');
-        return false;   
+        return false;
     }
     async.parallel({
         // lunbo_list:function(callback) {
@@ -1544,7 +1544,7 @@ exports.center_article = function (req, res, next) {
         }
     }else{
         res.redirect(config.wwhost+'/login');
-        return false; 
+        return false;
     }
     async.parallel({
         //获取用户信息（普通用户，顾问，参赞）
@@ -1799,7 +1799,7 @@ exports.adviser_photo_p = function(req,res,next){
           //     "country": hcountry.split(',')[0],
           //     "perpage": "4"
           //   }, callback);
-          // }   
+          // }
         },function(err,result){
             data.xSlider = returnData(result.lunbo_list,'lunbo_list');
             data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -1813,13 +1813,13 @@ exports.adviser_photo_p = function(req,res,next){
           //   pagekey = 'ADVISOR_P_ALBUM';
           // }
           data.tdk = {
-            pagekey: pagekey, 
-            cityid: area, 
+            pagekey: pagekey,
+            cityid: area,
             realname: data.userinfo.realname,
           };
           data.esikey = esihelper.esikey();
           res.render('adviser_photo_p', data);
-        }); 
+        });
     });
 }
 
@@ -1878,7 +1878,7 @@ exports.case_detail = function(req,res,next){
         }else{
             data.article.article_info.img_info=[];
         }
-        
+
         data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
             //获取用户信息（普通用户，顾问，参赞）
@@ -1887,7 +1887,7 @@ exports.case_detail = function(req,res,next){
                   "u_id":data.login_info.uid,
                   "to_uid":data.article.article_info.uid
                 },callback);
-            }   
+            }
         },function(err,result){
             data.userinfo = returnData(result.userinfo,'userinfo');
             data.country =data.userinfo.country || '1';
@@ -1924,7 +1924,7 @@ exports.case_detail = function(req,res,next){
                 res.render('case_detail', data);
             })
         });
-    });   
+    });
 }
 //专栏底页 （用户视角 包括顾问和参赞的）
 exports.article_detail= function(req,res,next){
@@ -2052,7 +2052,7 @@ exports.adviser_main = function (req, res, next) {
     data.login_info = {};
     data.login_info.uid = 0;
   }
-  
+
   async.parallel({
       // lunbo_list:function(callback) {
       //     cms.lunbo_list({
@@ -2383,7 +2383,7 @@ exports.adviser_case = function (req, res, next) {
           //     "country": hcountry.split(',')[0],
           //     "perpage": "4"
           //   }, callback);
-          // }   
+          // }
         },function(err,result){
             data.xSlider = returnData(result.lunbo_list,'lunbo_list');
             data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -2392,7 +2392,7 @@ exports.adviser_case = function (req, res, next) {
             /*if(data.userinfo.status == 1){
               pagekey = 'PREAD_CASE_LIST';
             }else if(data.userinfo.status == 0){
-              pagekey = 'ADVISOR_P_CASE'; 
+              pagekey = 'ADVISOR_P_CASE';
             }*/
             data.tdk = {
               pagekey: pagekey,
@@ -2441,7 +2441,7 @@ exports.counsellor_personal = function (req, res, next) {
     data.userinfo =returnData(result.userinfo,'userinfo');
     console.log('data.userinfo', data.userinfo)
     data.tdk = {
-      pagekey: 'CANZAN_CENTER_PROFILE', 
+      pagekey: 'CANZAN_CENTER_PROFILE',
       cityid: area,
     };
     res.render('counsellor_personal', data);
@@ -2728,32 +2728,32 @@ exports.release_case = function(req,res,next){
       },callback);
      }
   },function(err, result){
-    data.userinfo = returnData(result.userinfo,'userinfo'); 
+    data.userinfo = returnData(result.userinfo,'userinfo');
     data.tdk = {
       pagekey: 'ADVISOR_CENTER_POSTCASE',
       cityid: area,
     };
     res.render('release_case', data);
-  });  
+  });
 }
 
 //文本编辑器发布接口
 exports.publish_article = function (req, res, next) {
   log.debug('文本编辑器发布接口~~thl')
-  var data ={}; 
+  var data ={};
   data = req.body;
   wec.publish_article(data, function(err,result){
     if(err){
       res.send(err);
     }else{
-      res.send(result); 
+      res.send(result);
     }
   });
 }
 
-//专栏发布页 
+//专栏发布页
 exports.release_article = function(req,res,next){
-    log.debug('专栏发布页~~thl')  
+    log.debug('专栏发布页~~thl')
     var data = {};
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     //node获取地址栏url
@@ -2829,7 +2829,7 @@ exports.release_article = function(req,res,next){
     })
 };
 
-//获取相册列表 
+//获取相册列表
 exports.get_photos = function (req, res, next) {
     log.debug('获取相册列表接口');
     var data = req.query;
@@ -2922,7 +2922,7 @@ exports.article_comments = function(req,res,next){
     if(err){
         res.send(err);
     }else{
-       res.send(result); 
+       res.send(result);
     }
   });
 }
@@ -2964,10 +2964,10 @@ exports.center_article_detail = function(req,res,next){
        wec.article_info({
        "u_id":data.login_info.uid,
        "article_id":data.article_id,
-      },callback);  
-    } 
+      },callback);
+    }
   },function(err, result){
-    data.userinfo = returnData(result.userinfo,'userinfo'); 
+    data.userinfo = returnData(result.userinfo,'userinfo');
     data.article =  returnData(result.article,'article');
     data.id = data.article_id;
     var pagekey = null;
@@ -2979,7 +2979,7 @@ exports.center_article_detail = function(req,res,next){
         }
       // pagekey = 'ADVISOR_CENTER_ARTICLEDETAIL';
     }else if(data.userinfo.usertype == 3){
-      pagekey = 'CANZAN_CENTER_ARTICLEDETAIL'; 
+      pagekey = 'CANZAN_CENTER_ARTICLEDETAIL';
     }
     async.parallel({
         lunbo_list: function (callback) {
@@ -3005,7 +3005,7 @@ exports.center_article_detail = function(req,res,next){
         };
         res.render('center_article_detail', data);
     })
-  });  
+  });
 }
 
 //案例底页 （顾问视角）
@@ -3046,9 +3046,9 @@ exports.center_case_detail = function(req,res,next){
        "u_id":data.login_info.uid,
        "article_id":data.article_id,
       },callback);  
-    } 
+    }
   },function(err, result){
-    data.userinfo = returnData(result.userinfo,'userinfo'); 
+    data.userinfo = returnData(result.userinfo,'userinfo');
     data.article = returnData(result.article,'article');
     data.id = data.article_id;
     var pagekey = null;
@@ -3083,7 +3083,7 @@ exports.center_case_detail = function(req,res,next){
         };
         res.render('center_case_detail', data);
     })
-  });   
+  });
 }
 
 //添加相册接口
@@ -3194,7 +3194,7 @@ exports.draft =function(req,res,next){
         }
         res.render('draft', data);
     })
-  });  
+  });
 }
 //编辑相册接口
 exports.album_update = function (req,res,next) {
@@ -3242,7 +3242,7 @@ exports.edit_article = function(req,res,next){
     res.redirect(config.wwhost+'/login');
     return false;
   }
-  data.article_id = req.params.id; //获取文章id 
+  data.article_id = req.params.id; //获取文章id
   async.parallel({
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
@@ -3256,10 +3256,10 @@ exports.edit_article = function(req,res,next){
        wec.article_info({
        "u_id":data.login_info.uid,
        "article_id":data.article_id,
-      },callback);  
-    } 
+      },callback);
+    }
   },function(err, result){
-    data.userinfo = returnData(result.userinfo,'userinfo'); 
+    data.userinfo = returnData(result.userinfo,'userinfo');
     data.article = returnData(result.article,'article');
     var pagekey = null;
     if(data.userinfo.usertype ==2){
@@ -3270,7 +3270,7 @@ exports.edit_article = function(req,res,next){
         }
       // pagekey = 'ADVISOR_CENTER_ARTICLEEDIT';
     }else if(data.userinfo.usertype == 3){
-      pagekey = 'CANZAN_CENTER_POSTARTICLE'; 
+      pagekey = 'CANZAN_CENTER_POSTARTICLE';
     }
     async.parallel({
         lunbo_list: function (callback) {

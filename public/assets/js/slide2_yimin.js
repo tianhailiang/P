@@ -1,4 +1,7 @@
 /**
+ * Created by DXZ-Hui.Cao on 2018/5/18.
+ */
+/**
  * Created by DXZ-Hui.Cao on 2017/8/24.
  */
 function onclick_ly(c,tar){
@@ -372,84 +375,79 @@ $(function(){
   $(".ibar_closebtn").on("click",function(){
     $(this).parent("#quick_links_pop").css("display","none")
   })
-/*右侧-评论*/
-/*  $("#r_comment").on("click", function () {
- $("#comment_con").css("display", "block");
- $("#r_comment").css("background", "#C13232");
- $("#quick_links_pop").css("display", "none");
- return false
- });*/
-$("#r_comment").hover(function(){
-  $("#r_comment").css("background", "#C13232");
-  $(".phone-number").css("display","none");
-},function(){
-  /* $("#comment_con").css("display", "none");*/
-   $("#r_comment").css("background", "#9a9a9a");
-})
-$("#r_comment").on("click",function(){
-  if($(this).find(".guanggao-slide").length>0 && $("#comment_con").css("display")=="none"){
-    show_guanggao();
-    $("#comment_con").css("display", "block");
-  }
+  /*右侧-评论*/
+  /*  $("#r_comment").on("click", function () {
+   $("#comment_con").css("display", "block");
+   $("#r_comment").css("background", "#C13232");
+   $("#quick_links_pop").css("display", "none");
+   return false
+   });*/
+  $("#r_comment").hover(function(){
+    $("#r_comment").css("background", "#C13232");
+    $(".phone-number").css("display","none");
+  },function(){
+    /* $("#comment_con").css("display", "none");*/
+    $("#r_comment").css("background", "#9a9a9a");
+  })
+  $("#r_comment").on("click",function(){
+      $("#comment_con").css("display", "block");
+  })
+  $("#comment_close").on("click", function () {
+    $("#comment_con").css("display", "none");
+    $("#r_comment").css("background", "#9a9a9a");
+    return false
+  })
+  $("#zxzx").hover(function(){
+    $("#quick_links_pop").css("display", "block");
+    $("#comment_con").css("display", "none");
+    $("#r_comment").css("background", "#9a9a9a");
+    $(".phone-number").css("display","none");
+  },function(){
+    /*  $("#quick_links_pop").css("display", "none");*/
+  });
 
+  $(".weixin-slide").hover(function(){
+    /*$(".weixin-slide-img").css("display","block");
+     $("#quick_links_pop").css("display", "none");
+     $("#comment_con").css("display", "none");*/
+    $("#r_comment").css("background", "#9a9a9a");
+    $(".phone-number").css("display","none");
+  },function(){
+    $(".weixin-slide-img").css("display","none")
+  });
 
-})
-$("#comment_close").on("click", function () {
-  $("#comment_con").css("display", "none");
-  $("#r_comment").css("background", "#9a9a9a");
-  return false
-})
-$("#zxzx").hover(function(){
-  $("#quick_links_pop").css("display", "block");
-  $("#comment_con").css("display", "none");
-  $("#r_comment").css("background", "#9a9a9a");
-  $(".phone-number").css("display","none");
-},function(){
-  /*  $("#quick_links_pop").css("display", "none");*/
-});
+  $(".weixin-slide").on("click",function(){
+    var login_nickname = JSON.parse(cookie('login_ss'));
+    if(login_nickname){
+      if( $(".weixin-slide-img").css("display")=="block"){
+        $(".weixin-slide-img").css("display","none");
+      }else{
+        $(".weixin-slide-img").css("display","block");
+      }
 
-$(".weixin-slide").hover(function(){
-  /*$(".weixin-slide-img").css("display","block");
-  $("#quick_links_pop").css("display", "none");
-  $("#comment_con").css("display", "none");*/
-  $("#r_comment").css("background", "#9a9a9a");
-  $(".phone-number").css("display","none");
-},function(){
-  $(".weixin-slide-img").css("display","none")
-});
-
-$(".weixin-slide").on("click",function(){
-  var login_nickname = JSON.parse(cookie('login_ss'));
-  if(login_nickname){
-    if( $(".weixin-slide-img").css("display")=="block"){
-      $(".weixin-slide-img").css("display","none");
     }else{
-      $(".weixin-slide-img").css("display","block");
+      getlogin();
     }
-
-  }else{
-    getlogin();
-  }
-})
-$(".weixin-slide").on("touchstart",function(){
-  var login_nickname = JSON.parse(cookie('login_ss'));
-  if(login_nickname){
-    if( $(".weixin-slide-img").css("display")=="block"){
-      $(this).css("backgroundColor","#9a9a9a");
-    }else{
-      $(this).css("backgroundColor","#c13232");
+  })
+  $(".weixin-slide").on("touchstart",function(){
+    var login_nickname = JSON.parse(cookie('login_ss'));
+    if(login_nickname){
+      if( $(".weixin-slide-img").css("display")=="block"){
+        $(this).css("backgroundColor","#9a9a9a");
+      }else{
+        $(this).css("backgroundColor","#c13232");
+      }
     }
-  }
-})
-$(".qq-slide").hover(function(){
-/*  $(".qq-slide-img").css("display","block");
-  $("#quick_links_pop").css("display", "none");
-  $("#comment_con").css("display", "none");*/
-  $("#r_comment").css("background", "#9a9a9a");
-  $(".phone-number").css("display","none");
-},function(){
-  $(".qq-slide-img").css("display","none")
-});
+  })
+  $(".qq-slide").hover(function(){
+    /*  $(".qq-slide-img").css("display","block");
+     $("#quick_links_pop").css("display", "none");
+     $("#comment_con").css("display", "none");*/
+    $("#r_comment").css("background", "#9a9a9a");
+    $(".phone-number").css("display","none");
+  },function(){
+    $(".qq-slide-img").css("display","none")
+  });
   $(".qq-slide").on("click",function(){
     var login_nickname = JSON.parse(cookie('login_ss'));
     if(login_nickname){
@@ -473,28 +471,28 @@ $(".qq-slide").hover(function(){
       }
     }
   })
-$(".slide-phone").on("click",function(){
-  if( $(".phone-number").css("display")=="block"){
-    $(".phone-number").css("display","none");
-  }else{
-    $(".phone-number").css("display","block");
-  }
+  $(".slide-phone").on("click",function(){
+    if( $(".phone-number").css("display")=="block"){
+      $(".phone-number").css("display","none");
+    }else{
+      $(".phone-number").css("display","block");
+    }
 
-})
-$(".slide-phone").on("touchstart",function(){
-  if( $(".phone-number").css("display")=="block"){
-    $(this).css("backgroundColor","#9a9a9a");
-  }else{
-    $(this).css("backgroundColor","#c13232");
-  }
-})
-$('#to_top').click(function(){
-  $('html , body').animate({scrollTop: 0},'slow');
-  $(".phone-number").css("display","none");
-});
-$(".jiang").click(function(){
-  window.open(fn.no_urlgen('act_form'));
-})
+  })
+  $(".slide-phone").on("touchstart",function(){
+    if( $(".phone-number").css("display")=="block"){
+      $(this).css("backgroundColor","#9a9a9a");
+    }else{
+      $(this).css("backgroundColor","#c13232");
+    }
+  })
+  $('#to_top').click(function(){
+    $('html , body').animate({scrollTop: 0},'slow');
+    $(".phone-number").css("display","none");
+  });
+  $(".jiang").click(function(){
+    window.open(fn.no_urlgen('act_form'));
+  })
 //====================弹窗==============
 
   var myjson1={"1":{"a_as":"873","a_ca":"875","a_au":"872","a_us":"253","a_uk":"60","a_xxl":"57"},"2":{"a_as":"2","a_ca":"3","a_au":"4","a_us":"5","a_uk":"6","a_xxl":"514"},"37":{"a_as":"305","a_ca":"306","a_au":"307","a_us":"308","a_uk":"309","a_xxl":"519"},"27":{"a_as":"144","a_ca":"142","a_au":"143","a_us":"140","a_uk":"141","a_xxl":"530"},"16":{"a_as":"310","a_ca":"311","a_au":"312","a_us":"313","a_uk":"314","a_xxl":"507"},"38":{"a_as":"315","a_ca":"316","a_au":"317","a_us":"318","a_uk":"319","a_xxl":"512"},"29":{"a_as":"320","a_ca":"321","a_au":"322","a_us":"323","a_uk":"324","a_xxl":"506"},"28":{"a_as":"330","a_ca":"331","a_au":"332","a_us":"333","a_uk":"334","a_xxl":"524"},"22":{"a_as":"335","a_ca":"336","a_au":"337","a_us":"338","a_uk":"339","a_xxl":"496"},"30":{"a_as":"340","a_ca":"341","a_au":"342","a_us":"343","a_uk":"344","a_xxl":"529"},"26":{"a_as":"345","a_ca":"346","a_au":"348","a_us":"349","a_uk":"350","a_xxl":"522"},"24":{"a_as":"102","a_ca":"101","a_au":"100","a_us":"98","a_uk":"99","a_xxl":"518"},"18":{"a_as":"351","a_ca":"352","a_au":"353","a_us":"354","a_uk":"355","a_xxl":"535"},"13":{"a_as":"356","a_ca":"357","a_au":"358","a_us":"359","a_uk":"360","a_xxl":"502"},"4":{"a_jp":"37","a_ca":"38","a_au":"39","a_us":"41","a_uk":"40","a_ko":"161","a_xm":"162","a_xxl":"503","a_as":"172"},"17":{"a_as":"361","a_ca":"362","a_au":"363","a_us":"364","a_uk":"365","a_xxl":"520"},"34":{"a_as":"366","a_ca":"367","a_au":"368","a_us":"369","a_uk":"370","a_xxl":"499"},"3":{"a_as":"371","a_ca":"372","a_au":"373","a_us":"374","a_uk":"375","a_xxl":"523"},"36":{"a_as":"376","a_ca":"377","a_au":"378","a_us":"379","a_uk":"380","a_xxl":"516"},"5":{"a_as":"188","a_ca":"187","a_au":"186","a_us":"184","a_uk":"185","a_xxl":"521"},"33":{"a_as":"381","a_ca":"382","a_au":"383","a_us":"384","a_uk":"385","a_xxl":"500"},"21":{"a_as":"386","a_ca":"387","a_au":"388","a_us":"389","a_uk":"390","a_xxl":"510"},"6":{"a_as":"391","a_ca":"392","a_au":"393","a_us":"394","a_uk":"395","a_xxl":"508"},"14":{"a_as":"396","a_ca":"397","a_au":"398","a_us":"399","a_uk":"400","a_xxl":"509"},"8":{"a_as":"401","a_ca":"402","a_au":"403","a_us":"404","a_uk":"405","a_xxl":"494"},"9":{"a_as":"406","a_ca":"407","a_au":"408","a_us":"409","a_uk":"410","a_xxl":"498"},"20":{"a_as":"92","a_ca":"91","a_au":"90","a_us":"88","a_uk":"89","a_xxl":"531"},"31":{"a_as":"416","a_ca":"417","a_au":"418","a_us":"419","a_uk":"420","a_xxl":"492"},"12":{"a_as":"421","a_ca":"422","a_au":"423","a_us":"424","a_uk":"425","a_xxl":"517"},"39":{"a_as":"252","a_ca":"251","a_au":"250","a_us":"248","a_uk":"249","a_xxl":"504"},"23":{"a_as":"117","a_ca":"116","a_au":"115","a_us":"113","a_uk":"114","a_xxl":"511"},"45":{"a_as":"426","a_ca":"427","a_au":"428","a_us":"429","a_uk":"430","a_xxl":"495"},"15":{"a_as":"431","a_ca":"432","a_au":"433","a_us":"434","a_uk":"435","a_xxl":"505"},"35":{"a_as":"436","a_ca":"437","a_au":"438","a_us":"439","a_uk":"440","a_xxl":"536"},"32":{"a_as":"214","a_ca":"213","a_au":"212","a_us":"210","a_uk":"211","a_xxl":"552"},"11":{"a_as":"27","a_ca":"28","a_au":"29","a_us":"30","a_uk":"31","a_xxl":"513"},"25":{"a_as":"451","a_ca":"452","a_au":"453","a_us":"454","a_uk":"455","a_xxl":"533"},"19":{"a_as":"456","a_ca":"457","a_au":"458","a_us":"459","a_uk":"460","a_xxl":"526"},"10":{"a_as":"461","a_ca":"462","a_au":"463","a_us":"464","a_uk":"465","a_xxl":"528"},"43":{"a_as":"300","a_ca":"301","a_au":"302","a_us":"303","a_uk":"304","a_xxl":"527"},"40":{"a_as":"446","a_ca":"447","a_au":"448","a_us":"449","a_uk":"450","a_xxl":"493"},"41":{"a_as":"267","a_ca":"261","a_au":"264","a_us":"255","a_uk":"258","a_xxl":"532"},"42":{"a_as":"411","a_ca":"412","a_au":"413","a_us":"414","a_uk":"415","a_xxl":"497"},"7":{"a_as":"441","a_ca":"442","a_au":"443","a_us":"444","a_uk":"445","a_xxl":"501"},"44":{"a_as":"282","a_ca":"281","a_au":"283","a_us":"279","a_uk":"280","a_xxl":"515"},"46":{"a_as":"467","a_ca":"469","a_au":"468","a_us":"471","a_uk":"470","a_xxl":"534"},"47":{"a_as":"597","a_ca":"596","a_au":"594","a_us":"592","a_uk":"593","a_xxl":"595"},"48":{"a_as":"718","a_ca":"715","a_au":"716","a_us":"713","a_uk":"714","a_xxl":"717"}};

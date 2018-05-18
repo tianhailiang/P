@@ -46,8 +46,8 @@
       box-shadow: 0 1px 1px #eee;
       color: #C13232;
       position: absolute;
-      right: -170px;
-      left: 250px;
+      right: -75px;
+      left: 205px;
       top: -19px;
       opacity: 1;
     }
@@ -354,7 +354,8 @@ function loginS () {
     $('#login_e_phone_u').css('display','block');
     return
   }
-  if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1\d{10}$/.test($('#newEmail').val())) {
+  // if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1\d{10}$/.test($('#newEmail').val())) {
+  if (!/^1\d{10}$/.test($('#newEmail').val())) {
     // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
     // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号').popover({"trigger":"manual"}).popover("show");
     $('#login_e_phone_u').css('display','block');

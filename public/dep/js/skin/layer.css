@@ -489,7 +489,7 @@ html #layui_layer_skinlayercss {
 }
 .layui-layer-page .layui-layer-content {
 	position:relative;
-	overflow:auto
+	/* overflow:auto */
 }
 .layui-layer-iframe .layui-layer-btn,.layui-layer-page .layui-layer-btn {
 	padding-top:10px

@@ -117,7 +117,7 @@ $(function(){
     //发送定制
     $.ajax({
       url: ajaxUrlPrefix.nodeapi+'/cmsapi/onlineBooking', //活动预约
-      type:'POST',
+      type:'GET',
       data:{
         name: $('#quickName-act').val(),
         phone: $('#quickPhone-act').val(),

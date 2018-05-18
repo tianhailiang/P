@@ -99,7 +99,11 @@
 <!--<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>-->
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide2_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script>
@@ -147,11 +151,11 @@
     function report() {
       //举报调取函数
       if (login_ss == undefined) {
-        layer.msg('你还没有登录')
-        window.setTimeout(function () {
+        // layer.msg('你还没有登录')
+        // window.setTimeout(function () {
           // window.location.href = fn.curlgen('login', 'h=' + window.location.href);
           getlogin();
-        }, 1000);
+        // }, 1000);
         return false;
       }
       var report_content = null;

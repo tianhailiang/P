@@ -371,6 +371,23 @@ if($('.swiper-container_34').data('slider') > 3){
 		mySwiper34.startAutoplay();
 	})
 }
+//首页右侧轮播
+	var mySwiper = new Swiper('.swiper-container',{
+		autoplay : 4000,
+		loop : true,
+		speed:1000,
+		mode : 'vertical',
+		slidesPerView : 2,
+		slidesPerGroup : 2,
+	})
+	$('.arrow-left').on('click', function(e){
+		e.preventDefault()
+		mySwiper.swipePrev()
+	})
+	$('.arrow-right').on('click', function(e){
+		e.preventDefault()
+		mySwiper.swipeNext()
+	})
 })
 
 
