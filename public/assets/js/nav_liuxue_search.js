@@ -469,7 +469,8 @@ $(document).ready(function(){
             lat = cityJson[cookie_cityId]['lat'];
             address = cityJson[cookie_cityId]['companyAddress'];
         }
-        $(".voucherLink").css("display","block");
+        $(".voucherLink").show();
+        $("#zhezhaox").show();
         new BaiduMap({
             id: "container1",
             title: {
@@ -483,8 +484,12 @@ $(document).ready(function(){
             zoom:true
         });
     });
-    $(".voucherclose").click(function(){
-        $(".voucherLink").css("display","none");
+    $(".voucherclose").click(function(e){
+        var e = e || event;
+        e.stopPropagation();
+        e.cancelBubble = true;
+        $(".voucherLink").hide();
+        $("#zhezhaox").hide();
     })
 /*    $('.citys-box').on('click',"a", function(e){
         e.preventDefault();
