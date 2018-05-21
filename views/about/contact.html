@@ -2,36 +2,47 @@
 <html lang="en">
 <head>
 {% include "header_new.html" %}
-<style type="text/css">
-  .voucher {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 100009;
-  }
-  .voucherLink {
-    position: fixed;
-    width: 766px;
-    height: 500px;
-    top: 50%;
-    left: 50%;
-    margin: -250px 0 0 -382px;
-    z-index: 100010;
-  }
-  .voucherLink .voucherclose {
-    display: block;
-    background: url({{helper.cdnhost}}/assets/img/indexpop_close.png) no-repeat 50% 50%;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 0;
-    right: 0px;
-    cursor: pointer;
-  }
-  .searchs {
-    z-index: 500;
-  }
+<style>
+  .voucher{position:absolute;top:0;left:0;z-index:100009;width:100%;}
+.voucherLink{position:fixed;top:50%;left:50%;z-index:100010;margin:-250px 0 0 -382px;width:766px;height:500px;}
+.voucherLink .voucherclose{display:block;background:url({{helper.cdnhost}}/assets/img/indexpop_close.png) no-repeat 50% 50%;position:absolute;top:0;right:0;height:50px;cursor:pointer;
+width:50px;}
+.searchs{z-index:500;}
+.collectInfo{border-right:solid 1px #c13232;border-bottom:solid 1px #c13232;border-left:solid 1px #c13232;margin-bottom: 20px;}
+.collectInfo>h3{height:44px;background-color:#c13232;color:#fff;text-align:center;font-weight:400;font-size:18px;line-height:44px;}
+.form-group{margin-bottom:20px;}
+.form-group .infoType{position:relative;display:inline-block;margin-right:18px;color:#333;font-size:14px;}
+.form-group .infoType::after{position:absolute; display: block; top:3px;left:-10px;color:#c13232;content:"*";font-size:16px;}
+.formControl{width:800px;height:180px;border:solid 1px #dcdcdc;border-radius:4px;resize:none;}
+.checkRadio{display:inline-block;font-size:0;}
+.checkRadio label{position:relative;display:inline-block;margin-right:20px;width:90px;height:24px;border:solid 1px #dcdcdc;border-radius:4px;color:#666;text-align:center;font-size:14px;line-height:24px;}
+.checkRadio input[type=radio]+i{position:absolute;top:0;right:0;bottom:0;left:0;border:transparent;border-radius:4px;}
+.checkRadio input[type=radio]:checked+i{border:solid 1px #c13232;background:url({{helper.cdnhost}}/assets/img/arrow.png) no-repeat right top;}
+.checkRadio .checked{color:#C13232;}
+.checkRadio input[type=radio]{ opacity: 0;filter:alpha(opacity=0);position: absolute;}
+.selectControl{width:200px;height:24px;border:solid 1px #dcdcdc;background: url({{helper.cdnhost}}/assets/img/feedback.png) no-repeat right 5px center;color: #666; border-radius:4px;text-indent:10px;}
+.areaContent{position:relative;display:inline-block;width:800px;}
+.areaContent span{position:absolute;right:20px;bottom:14px;color:#999;font-size:12px;}
+.lengendInfo{position:relative;margin-top:14px;margin-bottom:20px;margin-left:90px;color:#C13232;font-size:14px;display: none;}
+.lengendInfo::before{display:inline-block;margin-right:4px;width:15px;height:15px;border-radius:50%;background:#c13232;color:#fff;content:"X";text-align:center;font-size:10px;line-height:14px;}
+.picUpload{margin-right:18px;color:#333;font-size:14px;}
+.upload{ display: inline-block;}
+.upload input[type='file']{ width: 80px;height: 80px;opacity: 0;border:solid 1px #dcdcdc;}
+.pictuerArea{ display: inline-block;width:80px;height:80px;position:relative;margin-right:12px;}
+.pictuerArea .close{ 
+  position: absolute;
+  top: -11px;right: -5px;
+  cursor: pointer; 
+  font-size:8px;
+  height: 15px;
+  width:15px; 
+  background: url({{helper.cdnhost}}/assets/img/close.png) no-repeat center center;
+}
+.pictuerArea img{ height: 80px;width:80px;}
+.pictueAdd{border:solid 1px #dcdcdc;background: url({{helper.cdnhost}}/assets/img/uploada.png) no-repeat center center;}
+.subMit{margin-bottom:20px;text-align:center;}
+.subMit button{width:180px;height:40px;border:none;border-radius:4px;background:#c13232;color:#fff;text-align:center;font-size:16px;}
+
 </style>
 </head>
 <body style="background: #f5f5f5;">
@@ -162,8 +173,110 @@
   </div>
   <div class="voucherclose"></div>
 </div>
-
-
+  {# 意见反馈 #}
+  <div class="dui-layout-lg" style="background: #fff;height: 100%" id="Suggestions">
+    <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 0 20px 0;">
+      <i></i>
+      <h3><span style="color:#c13232;">意见反馈</span></h3>
+    </div>
+    <div class="clearfix" style="background: #fff;padding-top: 20px;margin-left:20px;margin-right:20px">
+        <div class="collectInfo">
+          <h3>您好！我是金吉列网站的产品经理，您的感受和建议对优化我们的产品和服务很重要！</h3>
+          <form style="padding-left:110px;padding-top:30px">
+            <div class="form-group">
+              <label class="infoType">意见类型：</label>
+              <div class="checkRadio">
+                <label><input type="radio" name="name" value="问题反馈">问题反馈<i></i></label>
+                <label><input type="radio" name="name" value="页面设计">页面设计<i></i></label>
+                <label><input type="radio" name="name" value="功能建议">功能建议<i></i></label>
+                <label><input type="radio" name="name" value="其他建议">其他建议<i></i></label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="infoType">反馈对象：</label>
+              <select class="selectControl">
+                <option value="1">(B)北京分公司</option>
+								<option value="7">(C)重庆分公司</option>
+								<option value="5">(C)成都分公司</option>
+								<option value="19">(C)长沙分公司</option>
+								<option value="25">(C)长春分公司</option>
+								<option value="41">(C)常州分公司</option>
+								<option value="13">(D)大连分公司</option>
+								<option value="43">(D)东莞分公司</option>
+								<option value="37">(F)佛山分公司</option>
+								<option value="39">(F)福州分公司</option>
+								<option value="3">(G)广州分公司</option>
+								<option value="35">(G)贵阳分公司</option>
+								<option value="24">(H)哈尔滨分公司</option>
+								<option value="32">(H)邯郸分公司</option>
+								<option value="26">(H)呼和浩特分公司</option>
+								<option value="6">(H)杭州分公司</option>
+								<option value="22">(H)合肥分公司</option>
+								<option value="46">(H)海南分公司</option>
+								<option value="9">(J)济南分公司</option>
+								<option value="30">(J)吉林分公司</option>
+								<option value="21">(K)昆明分公司</option>
+								<option value="27">(L)兰州分公司</option>
+								<option value="48">(L)洛阳分公司</option>
+								<option value="16">(N)南京分公司</option>
+								<option value="29">(N)南昌分公司</option>
+								<option value="38">(N)南宁分公司</option>
+								<option value="34">(N)宁波分公司</option>
+								<option value="10">(Q)青岛分公司</option>
+								<option value="2">(S)上海分公司</option>
+								<option value="8">(S)沈阳分公司</option>
+								<option value="12">(S)石家庄分公司</option>
+								<option value="20">(S)深圳分公司</option>
+								<option value="23">(S)苏州分公司</option>
+								<option value="4">(T)天津分公司</option>
+								<option value="17">(T)太原分公司</option>
+								<option value="18">(T)唐山分公司</option>
+								<option value="14">(W)武汉分公司</option>
+								<option value="33">(W)无锡分公司</option>
+								<option value="42">(W)温州分公司</option>
+								<option value="28">(X)厦门分公司</option>
+								<option value="36">(X)徐州分公司</option>
+								<option value="15">(X)西安分公司</option>
+								<option value="45">(X)西宁分公司</option>
+								<option value="47">(X)乌鲁木齐分公司</option>
+								<option value="31">(Y)烟台分公司</option>
+								<option value="40">(Y)银川分公司</option>
+								<option value="44">(Y)宜昌分公司</option>
+								<option value="11">(Z)郑州分公司</option>
+              </select>
+            </div>
+            <div class="form-group" style="overflow: hidden;">
+              <label class="infoType" style="float: left;">意见内容：</label>
+              <div class="areaContent">
+                <textarea class="formControl" rows="8"></textarea>
+                <span>您可以填写20—500字</span>
+              </div>
+              <p class="lengendInfo">请具体描述您的问题，字数在20—500字之间</p>
+            </div>
+            <div class="form-group">
+              <label class="picUpload">上传图片：</label>
+              <div class="upload">
+                <div class="pictuerArea">
+                  <img src="http://images.jjl.cn/avatar/000/00/01/33_avatar_small_1521009960.jpg" alt="">
+                  <span class="close"></span>
+                </div>
+                <div class="pictuerArea">
+                    <img src="http://images.jjl.cn/avatar/000/00/01/33_avatar_small_1521009960.jpg" alt="">
+                    <span class="close"></span>
+                </div>
+                <div class="pictuerArea pictueAdd">
+                    <input type="file" name="" id="">
+                </div> 
+              </div>
+              <p style="color:#999;margin-left:90px;margin-top:15px;">最多可上传5张照片，支持jpg/png格式，单图不超过2M</p>
+            </div>
+            <div class="subMit">
+              <button type="button" class="sendInfo">提交建议</button>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
 {# 地图页面 #}
 
 {% include "widget/new_footer/common_footer.html" %}
@@ -178,7 +291,6 @@
 <script src="http://api.map.baidu.com/api?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
 <script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script>
-
   $(function(){
     $(".contact-vv").click(function(){
       $(".voucherLink").css("display","block");
@@ -204,7 +316,57 @@
     $(".voucherclose").click(function(){
       $(".voucherLink").css("display","none");
     })
-  })
+  
+    $('.sendInfo').on('click',function(){
+      //获取每一个值
+      var valRadio = $(".checkRadio input[type='radio']:checked").val()
+      var valSelect = $(".selectControl").val()
+      var valArea = $(".formControl").val()
+      if(valRadio == '' || valSelect == '' || valArea == ''){
+        alert('请填写完整的信息')
+        return false
+      }
+      //发送数据到后端
+      // $.ajax({
+      //   url: '',  
+      //   type: 'POST',
+      //   data: {
+      //     valRadio:valRadio,
+      //     valSelect:valSelect,
+      //     valArea:valArea
+      //   },
+      //   dataType:'json',
+      //   success:function(){
+
+      //   },
+      //   error:function() {
+      //     alert("发生异常啦！");
+      //   }
+      // })
+    })
+
+    //文本筐失去焦点事件
+    $(".formControl").blur(function(){
+      if(!$(this).val()){
+        $(".lengendInfo").css('display','block');
+      } else {
+        $(".lengendInfo").css('display','none');
+      }
+    })
+    //限制文本域输入字数
+    var maxVal = 500 //最大文本数字
+    $(".formControl").on('keyup',function(){
+      var iNum = $(this).val().length //获取文本输入的字数
+      var wordNum = maxVal - iNum //还可以输入的字数
+      if(iNum > maxVal){
+        $(this).val($(this).val().substring(0, maxVal))
+      }
+      $(".areaContent").find('span').text('您还可以输入'+wordNum+'个字')
+      if($(this).val().length == 0){
+        $(".areaContent").find('span').text('您可以填写20—500字')
+      }
+    })
+  })  
 </script>
 </body>
 </html>

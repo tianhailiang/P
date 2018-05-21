@@ -1,6 +1,13 @@
-<div class="top" style="position:relative;z-index: 1002;">
+<div class="top" style="position:relative;z-index: 1002;" data-uinfo="{{index_userinfo.unread_num}}">
     <div class="dui-layout-lg top-con" style="position: relative;">
+        <div class="top-con-left">
+            <img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">
+            <span style="font-size: 12px;color: #666;">400-010-8000</span>
+          </div>
         <div class="top-con-right">
+        <span class="top_phone"><i></i></span>
+        {#<span style="position: relative;margin-right: 5px;"><a style="font-size: 12px;" target="_blank" id="" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;top: -7px">9</i></span>
+        <span class="bor"></span>#}
         <span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>
         <span class="bor"></span>
         <span ><a href="javascript:void(0);" style="background: #fff;" id="getloginUser_deng" class="dui-text-warning-ss" rel="nofollow">登录</a></span>
@@ -216,6 +223,22 @@ input[type="checkbox"] {
       display: inline-block;
       margin-right: 5px;
       background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
+    }
+    .top_400{
+      width: 12px;
+      height: 12px;
+    }
+    .text_shu{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #C13232;
+      color: #fff;
+      position: absolute;
+      top: 0px;
+      left: -16px;
+      text-align: center;
+      line-height: 18px;
     }
 </style>
 <!-- 登录 -->

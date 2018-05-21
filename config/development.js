@@ -234,7 +234,8 @@ var apis = {
   //收藏列表
   "get_collection_list":shequ_prefix + 'account/favorite_list/',
   //站内消息
-  "get_msg_list": prefix + 'webmailList',
+  // "get_msg_list": prefix + 'webmailList',
+  "get_msg_list": prefix + 'messages_list',
   //图片库
   "get_attachment":prefix + 'attachment',
   //删除评论接口

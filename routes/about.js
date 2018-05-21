@@ -81,6 +81,7 @@ exports.canzan = function (req, res, next) {
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/canzan', data);
 
   });
@@ -123,6 +124,7 @@ exports.lawyer = function (req, res, next) {
     data.tdk = {
       pagekey: 'YIMIN_LAWYER'
     };
+    data.esikey = esihelper.esikey();
     res.render('about/lawyer', data);
 
   });
@@ -187,6 +189,7 @@ exports.activity = function (req, res, next) {
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/activity', data);
 
   });
@@ -309,6 +312,7 @@ exports.culture = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/culture', data);
   
     });
@@ -344,6 +348,7 @@ exports.about = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/about', data);
   
     });
@@ -387,6 +392,7 @@ exports.events = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/events', data);
   
     });
@@ -441,6 +447,7 @@ exports.cooperation = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/cooperation', data);
   
     });
@@ -529,6 +536,7 @@ exports.contact = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/contact', data);
   
     });
@@ -563,6 +571,7 @@ exports.cultures = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/cultures', data);
 
   });
@@ -607,6 +616,7 @@ exports.culture_detail = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/culture_detail', data);
 
   });
@@ -641,6 +651,7 @@ exports.employment = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/employment', data);
 
   });
@@ -683,6 +694,7 @@ exports.schooltopic = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/schooltopic', data);
 
   });

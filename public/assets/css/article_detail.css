@@ -185,20 +185,27 @@
   margin-top: -33px
 }
 .userinfo-box{
-  padding:20px;
-  height:76px;
-  border:1px solid #dcdcdc;
+  /*padding:20px;*/
+  width: 838px;
+  /*height:76px;*/
+  border:1px solid #eee;
   display: inline-block;
 }
 .userinfo-img{
-  width:76px;
-  height:76px;
+  width:180px;
+  height:180px;
   float:left;
-  margin-right: 14px;
+  padding: 20px;
+}
+.userinfo-img-shaow{
+  margin-top: 25px;
+  float: left;
+  display: block;
 }
 .userinfo-right{
   float:left;
-
+  margin-top: 44px;
+  margin-left: 14px;
 }
 .userinfo-name{
   font-size: 16px;
@@ -206,10 +213,13 @@
   font-weight: bold;
 }
 .userinfo-information{
-  font-size: 12px;
+  font-size: 14px;
   color:#333;
-  margin-top:12px;
-  line-height: 12px;
+  margin-top:20px;
+  line-height: 14px;
+}
+.userinfo-information em{
+  color:#666;
 }
 .lxContaniner{
   margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}

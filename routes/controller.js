@@ -70,6 +70,7 @@ exports.index = function (req, res, next) {
     } else {
         data.url = config.wwhost+req.url;
     }
+    data.index_userinfo = {}
     if ( req.cookies.login_ss !== undefined) {
         console.log('aaaaaa');
         data.login_info = JSON.parse(req.cookies.login_ss);
@@ -111,13 +112,36 @@ exports.index = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
         data.guanggao = returnData(result.guanggao,'guanggao');
-        // console.log(data.guanggao)
-        data.tdk = {
-            pagekey: 'HOME',
-            cityid: area,
-            nationid: ''
-        };
-        res.render('index', data);
+        if (data.login_info.uid != 0) {
+            async.parallel({
+                //获取用户信息（普通用户，顾问，参赞）
+                userinfo:function(callback){
+                    wec.userinfo({
+                    "u_id":data.login_info.uid,
+                    "to_uid":data.login_info.uid
+                    },callback);
+                }
+            },function (err, result) {
+                data.index_userinfo = result.userinfo;
+                console.log('userinfo',data.index_userinfo)
+                data.tdk = {
+                    pagekey: 'HOME',
+                    cityid: area,
+                    nationid: ''
+                };
+                data.esikey = esihelper.esikey();
+                res.render('index', data);
+            })
+        } else {
+            data.tdk = {
+                pagekey: 'HOME',
+                cityid: area,
+                nationid: ''
+            };
+            data.esikey = esihelper.esikey();
+            res.render('index', data);
+        }
+        
     })
 };
 //分公司首页
@@ -181,15 +205,41 @@ exports.index_page = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.guanggao = returnData(result.guanggao,'guanggao');
         data.shouye = JSON.parse(result.shouye);
-        data.tdk = {
-            pagekey: 'HOME',
-            cityid: area,
-            nationid: ''
-        };
-        // console.log(result.shouye);
-        //data.esikey = esihelper.esikey();
-        // log.info(data.xSlider2)
-        res.render('index', data);
+        if (data.login_info.uid != 0) {
+            async.parallel({
+                //获取用户信息（普通用户，顾问，参赞）
+                userinfo:function(callback){
+                    wec.userinfo({
+                    "u_id":data.login_info.uid,
+                    "to_uid":data.login_info.uid
+                    },callback);
+                }
+            },function (err, result) {
+                data.index_userinfo = returnData(result.userinfo,'userinfo');
+                console.log('userinfo',data.index_userinfo);
+                data.tdk = {
+                    pagekey: 'HOME',
+                    cityid: area,
+                    nationid: ''
+                };
+                // console.log(result.shouye);
+                data.esikey = esihelper.esikey();
+                console.log('userinfo',data.index_userinfo);
+                // log.info(data.xSlider2)
+                res.render('index', data);
+            })
+        } else {
+            data.tdk = {
+                pagekey: 'HOME',
+                cityid: area,
+                nationid: ''
+            };
+            // console.log(result.shouye);
+            data.esikey = esihelper.esikey();
+            // log.info(data.xSlider2)
+            res.render('index', data);
+        }
+        
     })
 };
 //国家列表页
@@ -767,6 +817,7 @@ exports.center_follow = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_follow', data);
         })
     });
@@ -837,6 +888,7 @@ exports.user_followee = function (req, res, next) {
           cityid: area,
           nationid: country
         };
+        data.esikey = esihelper.esikey();
         res.render('user_follow', data);
     });
 };
@@ -930,6 +982,7 @@ exports.center_main = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_main', data);
         })
     });
@@ -999,6 +1052,7 @@ exports.post_code = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname,
             };
+            data.esikey = esihelper.esikey();
             res.render('center_post_code', data);
         })
     });
@@ -1092,6 +1146,7 @@ exports.center_case = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_case', data);
         })
     });
@@ -1209,6 +1264,7 @@ exports.center_comment = function (req, res, next) {
 
                 }
             }
+            data.esikey = esihelper.esikey();
             res.render('center_comment', data);
         })
 
@@ -1307,6 +1363,7 @@ exports.user_comment = function (req, res, next) {
 
                 }
             }
+            data.esikey = esihelper.esikey();
             res.render('center_comment', data);
         })
 
@@ -1357,10 +1414,12 @@ exports.center_message = function (req, res, next) {
         },
         msg_list: function (callback) {
             wec.msg_list({
-                "status": 1,
+                // "status": 1,
+                "uid": data.login_info.uid,
                 "page": page,
                 //"is_draft":data.is_draft,
-                "pagesize": 11
+                // "pagesize": 11
+                "perpage": 11
             },callback)
         }
     }, function (err, result) {
@@ -1368,6 +1427,7 @@ exports.center_message = function (req, res, next) {
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo = returnData(result.userinfo,'userinfo');
         data.msg_data = returnData(result.msg_list,'msg_list');
+        console.log('msg_data',data.msg_data);
         var pagekey =null;
       var route = '';
         if(data.userinfo.usertype == 1){
@@ -1421,6 +1481,7 @@ exports.center_message = function (req, res, next) {
 
                 }
             }
+            data.esikey = esihelper.esikey();
             res.render('center_message', data);
         })
 
@@ -1517,6 +1578,7 @@ exports.center_collection = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_collection', data);
         })
 
@@ -1601,6 +1663,7 @@ exports.center_article = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_article', data);
         })
     });
@@ -1672,6 +1735,7 @@ exports.center_photo = function (req, res, next) {
                 cityid: area,
                 realname: data.userinfo.realname
             };
+            data.esikey = esihelper.esikey();
             res.render('center_photo', data);
         })
     });
@@ -2512,6 +2576,7 @@ exports.advisor_profile = function (req, res, next) {
               cityid: area,
               realname: data.userinfo.realname,
           };
+          data.esikey = esihelper.esikey();
           res.render('advisor_profile', data);
       })
   });
@@ -2553,6 +2618,7 @@ exports.counsellor_set = function (req, res, next) {
       pagekey: 'CANZAN_CENTER_ACOUNT',
       cityid: area,
     };
+    data.esikey = esihelper.esikey();
     res.render('counsellor_set', data);
   });
 };
@@ -2621,6 +2687,7 @@ exports.advisor_acount = function (req, res, next) {
             cityid: area,
             realname: data.userinfo.realname,
         };
+        data.esikey = esihelper.esikey();
         res.render('advisor_acount', data);
     })
   });
@@ -2678,6 +2745,7 @@ exports.user_information = function (req, res, next) {
       pagekey: 'USER_CENTER_PROFILE',
       cityid: area,
     };
+    data.esikey = esihelper.esikey();
     res.render('user_information', data);
   });
 };
@@ -2733,6 +2801,7 @@ exports.release_case = function(req,res,next){
       pagekey: 'ADVISOR_CENTER_POSTCASE',
       cityid: area,
     };
+    data.esikey = esihelper.esikey();
     res.render('release_case', data);
   });
 }
@@ -2818,6 +2887,7 @@ exports.release_article = function(req,res,next){
                 cityid: area,
                 realname: data.userinfo.realname,
             };
+            data.esikey = esihelper.esikey();
             if(data.login_info.adviser == 1){
                 log.info('留学')
                 res.render('release_article',data);
@@ -3003,6 +3073,7 @@ exports.center_article_detail = function(req,res,next){
             pagekey:pagekey,
             cityid: area,
         };
+        data.esikey = esihelper.esikey();
         res.render('center_article_detail', data);
     })
   });
@@ -3081,6 +3152,7 @@ exports.center_case_detail = function(req,res,next){
             pagekey:pagekey,
             cityid: area,
         };
+        data.esikey = esihelper.esikey();
         res.render('center_case_detail', data);
     })
   });
@@ -3192,6 +3264,7 @@ exports.draft =function(req,res,next){
                 is_draft:data.is_draft
             }
         }
+        data.esikey = esihelper.esikey();
         res.render('draft', data);
     })
   });
@@ -3294,6 +3367,7 @@ exports.edit_article = function(req,res,next){
             pagekey:pagekey,
             cityid: area,
         };
+        data.esikey = esihelper.esikey();
         if(data.login_info.adviser == 1){
             res.render('edit_article',data);
         }else if(data.login_info.adviser == 2){
@@ -3371,6 +3445,7 @@ exports.edit_case =function(req,res,next){
       pagekey: 'ADVISOR_CENTER_POSTCASE',
       cityid: area,
     };
+    data.esikey = esihelper.esikey();
     res.render('edit_case',data);
   });  
 }
@@ -3630,6 +3705,7 @@ exports.agreement = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('agreement', data);
 
   });
@@ -3691,6 +3767,7 @@ exports.yiminHome = function (req, res, next) {
             cityid: area,
             nationid: ''
         };
+        data.esikey = esihelper.esikey();
         // console.log(result.shouye);
         res.render('yimin_index', data);
     })

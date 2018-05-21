@@ -13,11 +13,22 @@
   .liuxue-guoqi a:hover{
     background: rgba(0,0,0,0.07);
   }
-
+  .voucher{position:absolute;top:0;left:0;z-index:100009;width:100%;}
+  .voucherLink{position:fixed;top:50%;left:50%;z-index:100010;margin:-250px 0 0 -382px;width:766px;height:500px;}
+  .voucherLink .voucherclose{display:block;background:url({{helper.cdnhost}}/assets/img/indexpop_close.png) no-repeat 50% 50%;position:absolute;top:0;right:0;height:50px;cursor:pointer;
+    width:50px;}
 </style>
 </head>
 <body>
 {% include "widget/common_hide/common_hide.html"%}
+<div class="voucherLink" style="display:none">
+  <div class="left clearfix">
+    <div id="container1" class="container" style="height: 500px;width: 100%">
+    </div>
+  </div>
+  <div class="voucherclose"></div>
+</div>
+
 <div class="zhezhao" id="zhezhaox" style="display: none">
 </div>
 <div id="zhezhaos" style="position: fixed;left: 50%; margin-left: -350px;z-index: 1000000;top: 50%;margin-top: -215px;display: none;">
@@ -372,6 +383,8 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+<script src="http://api.map.baidu.com/api?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
+<script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/guanggao_slider.js"></script>
@@ -487,7 +500,9 @@
 
   //top切换
   var login_nickname = JSON.parse(cookie('login_ss'));
-      console.log('login_nickname',login_nickname);
+      // console.log('login_nickname',login_nickname);
+      var userinfo_num = $('.top').data('uinfo')
+      console.log('userinfo_num',userinfo_num);
       var user_type;
       if (login_nickname == null) {
         // var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
@@ -505,9 +520,28 @@
         // $(".top").append(val);
       } else {
         $(".top").empty();
+        
         var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                  '<div class="top-con-left">'+
+                  '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400" style="margin-right: 3px;">'+
+                  '<span style="font-size: 12px;color: #666;">400-010-8000</span>'+
+                  '</div>'+
                   '<div class="top-con-right">'+
                   '<ul>';
+        if (userinfo_num != 0) {
+          if (login_nickname.usertype == 1) {
+            val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("user_center", "revmsg") + '" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;">'+userinfo_num+'</i></li>';
+          } else if (login_nickname.usertype == 2) {
+            val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("advisor_center", "revmsg") + '" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;">'+userinfo_num+'</i></li>';
+          }
+        } else {
+          if (login_nickname.usertype == 1) {
+            val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("user_center", "revmsg") + '" rel="nofollow">消息</a></li>';
+          } else if (login_nickname.usertype == 2) {
+            val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("advisor_center", "revmsg") + '" rel="nofollow">消息</a></li>';
+          }
+          
+        }  
         if (login_nickname.usertype == 1) {
           val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
         } else if (login_nickname.usertype == 2) {

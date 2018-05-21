@@ -57,4 +57,26 @@ $(function() {
             return true;
         }
     }
+    //热门标签搜索
+    $(document).click(function(e){
+        $('#hot-tags-box').hide();
+    });
+    $('#search').on('click', function (e) {
+        var e = e || event;
+        e.stopPropagation();
+        e.cancelBubble = true;
+        $('#hot-tags-box').show();
+        $('.search-type-ul').hide();
+    });
+    $('#hot-tags-box').on('click',function (e) {
+        var e = e || event;
+        e.stopPropagation();
+    });
+    $('#hot-tags-box').on('click','span', function (e) {
+        var e = e || event;
+        e.stopPropagation();
+        var so_type = $("#searchType").text();
+        var so_key_word = $(this).html();
+        window.open(fn.no_urlgen(getSoUrl(so_type, '文章'), 'q=' + so_key_word));
+    })
 });
