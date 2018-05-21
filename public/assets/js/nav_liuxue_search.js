@@ -486,7 +486,7 @@ $(document).ready(function(){
     $(".voucherclose").click(function(){
         $(".voucherLink").css("display","none");
     })
-    $('.citys-box').on('click',"a", function(e){
+/*    $('.citys-box').on('click',"a", function(e){
         e.preventDefault();
         currentarea = $(this).attr("data-id");
         var date = new Date();
@@ -495,7 +495,7 @@ $(document).ready(function(){
         //window.location.href= fn.urlgen('branch_home','c=' + currentarea);
         // document.cookie="currentarea="+currentarea+"; expires="+date.toTimeString();
         window.location.href = $(this).attr("href");
-    });
+    });*/
     /*划过出现城市下拉框 pc*/
     $('#new-city').hover(function() {
         $(this).find('.new-city-box').show();
@@ -537,6 +537,7 @@ $(document).ready(function(){
     $('.search-type-box').hover(function () {
         $(this).find('.search-type-ul').slideDown(100);
         $(this).find('.go-down').html('&#xe633;');
+        $('#hot-tags-box').hide();
     }, function () {
         $(this).find('.search-type-ul').slideUp(100);
         $(this).find('.go-down').html('&#xe632;')
@@ -624,6 +625,44 @@ $(document).ready(function(){
             return true;
         }
     }
+    //热门标签搜索
+    $(document).click(function(e){
+        $('#hot-tags-box').hide();
+    });
+    $('#search').on('click', function (e) {
+        var e = e || event;
+        e.stopPropagation();
+        e.cancelBubble = true;
+        $('#hot-tags-box').show();
+        $('.search-type-ul').hide();
+    });
+    $('#hot-tags-box').on('click',function (e) {
+        var e = e || event;
+        e.stopPropagation();
+    });
+    $('#hot-tags-box').on('click','span', function (e) {
+        var e = e || event;
+        e.stopPropagation();
+        var so_type = $("#searchType").text();
+        var so_key_word = $(this).html();
+        window.open(fn.no_urlgen(getSoUrl('留学', so_type), 'q=' + so_key_word));
+    })
+    //点击返回当前城市
+    $("#back-current-city").on('click',function() {
+        $.ajax({
+            type: "get",
+            async: false,
+            url: ajaxUrlPrefix.nodeapi + "/get_ip_geter",
+            dataType: "json",
+            success: function (result) {
+                cookie('currentarea', result, {path: "/", domain: js_api_config.domain, expires: 36500});
+                window.location.href = fn.urlgen('branch_home', 'c=' + result.data);
+            },
+            error: function (error) {
+                console.log(error)
+            }
+        });
+    })
 });
 function showcity(){
     if(cookie('currentarea')){
