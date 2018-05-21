@@ -1308,6 +1308,15 @@ exports.advert = function(data,callback){
   api.apiRequest(url, callback);
 };
 
+exports.userFeedback = function(data,callback){
+  var url = _api_url_path(data, config.apis.userFeedback);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+};
+
 var redisPool_views = require('redis-connection-pool')('viewNumberCache', {
   host: config.redisCache.host,
   port: config.redisCache.port || 6379,
