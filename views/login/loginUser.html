@@ -72,7 +72,53 @@
       margin-right: 5px;
       background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
     }
-    
+    .login_nei{
+      width: 440px;
+      height: 335px;
+      float: right;
+      background: #fcf4ef;
+      margin-top: -390px;
+      margin-right: 5px;
+      z-index: 10000;
+      padding: 0px;
+    }
+    .login_nei_top{
+      width: 100%;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+    }
+    .login_nei_top .active{
+      border-bottom: none;
+      background: #fcf4ef;
+      color: #c13232;
+    }
+    .login_nei_title{
+      width: 220px;
+      height: 40px;
+      font-size: 18px;
+      color: #333;
+      background: #f5f5f5;
+      border-bottom: 1px solid #dcdcdc;
+      border-right: 1px solid #dcdcdc;
+      float: left;
+      cursor: pointer;
+    }
+    .login_form{
+      width: 440px;
+      height: auto;
+      margin-right: 5px;
+      padding: 0 72px 0 72px;
+      text-align: left;
+    }
+    .phone_q{
+      color: #999;
+      position: absolute;
+      top: 6px;
+      width: 55px;
+      left: 30px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
@@ -94,12 +140,39 @@
     </div>
     <div class="login_content">
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
-        <h3 class="login_nei_title" style="font-weight: 400">验证码登录<!--<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a>--></h3>
+        <div class="login_nei_top clearfix">
+          <div class="login_nei_title active">账号密码登录</div>
+          <div class="login_nei_title">验证码登录</div>
+        </div>
+        {#<h3 class="login_nei_title" style="font-weight: 400">验证码登录<!--<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a>--></h3>
         <!--<div class=" clearfix" id="guwen_login" style="margin-left: -15px;font-size: 18px;">
             <input class="wrap-con" type="radio" name="payMethod" value="1" checked="checked" id="liu"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu">留学顾问</label> 
             <input class="wrap-ing" type="radio" name="payMethod" value="2" id="yi"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="yi">移民顾问</label>
-        </div>-->
-        <form class="form-group m-t" role="form" style="margin-top: 20px;">
+        </div>-->#}
+        <div class="login_form">
+
+            <form class="form-group m-t password" role="form" style="margin-top: 20px;">
+                <div class="form-group inputtext_isr" style="position: relative;height: 28px">
+                  <input type="text" style="border-radius: inherit;height: 30px;padding-left: 90px;" class="form-control" placeholder="请输入手机号" id="newEmail" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
+                  <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
+                  <i class="phone_q">+86</i>
+                  <span class="login_error" id="login_e_phone_u" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_u">请输入手机号</em></span>
+                </div>
+                <div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
+                  <input type="password" style="border-radius: inherit;" class="form-control" placeholder="密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
+                  <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
+                </div>
+
+                  <div class="login_check clearfix" style="margin-top: 20px">
+                    <a href="######" style="float: left;color: #999">还没有账号？<small style="color: #c13232">免费注册</small></a>
+                    <a target="_blank"  href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了</small></a>
+                  </div>
+      
+                <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;" id="loginSubmit" value="立 即 登 录" data-url='{{url}}'/>
+            </form>
+              
+
+        <form class="form-group m-t" role="form" style="margin-top: 20px;display: none">
           <div class="form-group inputtext_isr" style="position: relative;height: 28px">
             <input type="text" style="border-radius: inherit;height: 30px;" class="form-control" placeholder="请输入手机号" id="newEmail" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
@@ -135,7 +208,7 @@
             </div>-->
 
           <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;" id="loginSubmit" value="立 即 登 录" data-url='{{url}}'/>
-
+          </form>
           <div class="form-group text-left" id="login_user" style="color: #999;margin-top: 20px;margin-left: -0px;">
               <div class="checkbox i-checks" style="color: #999;">
                 <label class="no-padding">
@@ -143,7 +216,7 @@
                   <a target="_blank"  href="{{helper.urlgen('agreement', '')}}" style="color: #c13232">金吉列用户使用协议</a>
               </div>
           </div>
-        </form>
+        
 
         <div class="fen" style="margin-top: 15px;">
           <h4 style="line-height: 37px;">第三方快速登录：</h4>
@@ -157,6 +230,7 @@
           </div>
         </div>
 
+        </div>
       </div>
     </div>
     
