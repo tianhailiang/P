@@ -528,11 +528,20 @@
                   '</div>'+
                   '<div class="top-con-right">'+
                   '<ul>';
-        // if (userinfo_num != 0) {
-          val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("user_center", "revmsg") + '" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;">'+userinfo_num+'</i></li>';
-        // } else {
-        //   val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" id="" rel="nofollow">消息</a></li>';
-        // }  
+        if (userinfo_num != 0) {
+          if (login_nickname.usertype == 1) {
+            val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("user_center", "revmsg") + '" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;">'+userinfo_num+'</i></li>';
+          } else if (login_nickname.usertype == 2) {
+            val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("advisor_center", "revmsg") + '" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;">'+userinfo_num+'</i></li>';
+          }
+        } else {
+          if (login_nickname.usertype == 1) {
+            val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("user_center", "revmsg") + '" rel="nofollow">消息</a></li>';
+          } else if (login_nickname.usertype == 2) {
+            val += '<li class="msg-icon iconfont nav-name" style="position: relative;"><a style="font-size: 12px;" target="_blank" href="' + fn.urlgen("advisor_center", "revmsg") + '" rel="nofollow">消息</a></li>';
+          }
+          
+        }  
         if (login_nickname.usertype == 1) {
           val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
         } else if (login_nickname.usertype == 2) {

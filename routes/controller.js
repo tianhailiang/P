@@ -1401,10 +1401,12 @@ exports.center_message = function (req, res, next) {
         },
         msg_list: function (callback) {
             wec.msg_list({
-                "status": 1,
+                // "status": 1,
+                "uid": data.login_info.uid,
                 "page": page,
                 //"is_draft":data.is_draft,
-                "pagesize": 11
+                // "pagesize": 11
+                "perpage": 11
             },callback)
         }
     }, function (err, result) {
@@ -1412,6 +1414,7 @@ exports.center_message = function (req, res, next) {
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.userinfo = returnData(result.userinfo,'userinfo');
         data.msg_data = returnData(result.msg_list,'msg_list');
+        console.log('msg_data',data.msg_data);
         var pagekey =null;
       var route = '';
         if(data.userinfo.usertype == 1){
