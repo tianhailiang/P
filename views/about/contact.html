@@ -174,22 +174,22 @@ width:50px;}
   <div class="voucherclose"></div>
 </div>
   {# 意见反馈 #}
-  <div class="dui-layout-lg" style="background: #ffffff;height: 100%">
+  <div class="dui-layout-lg" style="background: #fff;height: 100%" id="Suggestions">
     <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #C13232;width: 1140px; margin: 0 20px 0;">
       <i></i>
       <h3><span style="color:#c13232;">意见反馈</span></h3>
     </div>
-    <div class="clearfix" style="background: #ffffff;padding-top: 20px;margin-left:20px;margin-right:20px">
+    <div class="clearfix" style="background: #fff;padding-top: 20px;margin-left:20px;margin-right:20px">
         <div class="collectInfo">
           <h3>您好！我是金吉列网站的产品经理，您的感受和建议对优化我们的产品和服务很重要！</h3>
           <form style="padding-left:110px;padding-top:30px">
             <div class="form-group">
               <label class="infoType">意见类型：</label>
               <div class="checkRadio">
-                <label><input type="radio" name="name">问题反馈<i></i></label>
-                <label><input type="radio" name="name">页面设计<i></i></label>
-                <label><input type="radio" name="name">功能建议<i></i></label>
-                <label><input type="radio" name="name">其他建议<i></i></label>
+                <label><input type="radio" name="name" value="问题反馈">问题反馈<i></i></label>
+                <label><input type="radio" name="name" value="页面设计">页面设计<i></i></label>
+                <label><input type="radio" name="name" value="功能建议">功能建议<i></i></label>
+                <label><input type="radio" name="name" value="其他建议">其他建议<i></i></label>
               </div>
             </div>
             <div class="form-group">
@@ -245,8 +245,8 @@ width:50px;}
 								<option value="11">(Z)郑州分公司</option>
               </select>
             </div>
-            <div class="form-group">
-              <label class="infoType">意见内容：</label>
+            <div class="form-group" style="overflow: hidden;">
+              <label class="infoType" style="float: left;">意见内容：</label>
               <div class="areaContent">
                 <textarea class="formControl" rows="8"></textarea>
                 <span>您可以填写20—500字</span>
@@ -271,14 +271,12 @@ width:50px;}
               <p style="color:#999;margin-left:90px;margin-top:15px;">最多可上传5张照片，支持jpg/png格式，单图不超过2M</p>
             </div>
             <div class="subMit">
-              <button type="button">提交建议</button>
+              <button type="button" class="sendInfo">提交建议</button>
             </div>
           </form>
         </div>
     </div>
   </div>
-</div>
-
 {# 地图页面 #}
 
 {% include "widget/new_footer/common_footer.html" %}
@@ -318,6 +316,35 @@ width:50px;}
     $(".voucherclose").click(function(){
       $(".voucherLink").css("display","none");
     })
+  
+    $('.sendInfo').on('click',function(){
+      //获取每一个值
+      var valRadio = $(".checkRadio input[type='radio']:checked").val()
+      var valSelect = $(".selectControl").val()
+      var valArea = $(".formControl").val()
+      if(valRadio == '' || valSelect == '' || valArea == ''){
+        alert('请填写完整的信息')
+        return false
+      }
+      //发送数据到后端
+      // $.ajax({
+      //   url: '',  
+      //   type: 'POST',
+      //   data: {
+      //     valRadio:valRadio,
+      //     valSelect:valSelect,
+      //     valArea:valArea
+      //   },
+      //   dataType:'json',
+      //   success:function(){
+
+      //   },
+      //   error:function() {
+      //     alert("发生异常啦！");
+      //   }
+      // })
+    })
+
     //文本筐失去焦点事件
     $(".formControl").blur(function(){
       if(!$(this).val()){
@@ -326,7 +353,7 @@ width:50px;}
         $(".lengendInfo").css('display','none');
       }
     })
-    //
+    //限制文本域输入字数
     var maxVal = 500 //最大文本数字
     $(".formControl").on('keyup',function(){
       var iNum = $(this).val().length //获取文本输入的字数
@@ -339,7 +366,7 @@ width:50px;}
         $(".areaContent").find('span').text('您可以填写20—500字')
       }
     })
-  })
+  })  
 </script>
 </body>
 </html>
