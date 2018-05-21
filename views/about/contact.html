@@ -186,10 +186,10 @@ width:50px;}
             <div class="form-group">
               <label class="infoType">意见类型：</label>
               <div class="checkRadio">
-                <label><input type="radio" name="name" value="问题反馈">问题反馈<i></i></label>
-                <label><input type="radio" name="name" value="页面设计">页面设计<i></i></label>
-                <label><input type="radio" name="name" value="功能建议">功能建议<i></i></label>
-                <label><input type="radio" name="name" value="其他建议">其他建议<i></i></label>
+                <label><input type="radio" name="name" value="1">问题反馈<i></i></label>
+                <label><input type="radio" name="name" value="2">页面设计<i></i></label>
+                <label><input type="radio" name="name" value="3">功能建议<i></i></label>
+                <label><input type="radio" name="name" value="4">其他建议<i></i></label>
               </div>
             </div>
             <div class="form-group">
@@ -292,10 +292,9 @@ width:50px;}
 <script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script>
   $(function(){
+
     $(".contact-vv").click(function(){
       $(".voucherLink").css("display","block");
-      //console.log('map')
-      // console.log(BaiduMap);
       new BaiduMap({
         id: "container1",
         title: {
@@ -316,33 +315,48 @@ width:50px;}
     $(".voucherclose").click(function(){
       $(".voucherLink").css("display","none");
     })
-  
+
+    var login_ss = null;
+    if(cookie('login_ss') != undefined){
+      login_ss = JSON.parse(cookie('login_ss'));
+    }
+
+    //提交意见反馈信息
     $('.sendInfo').on('click',function(){
       //获取每一个值
       var valRadio = $(".checkRadio input[type='radio']:checked").val()
       var valSelect = $(".selectControl").val()
       var valArea = $(".formControl").val()
+      
+      
+
       if(valRadio == '' || valSelect == '' || valArea == ''){
         alert('请填写完整的信息')
         return false
       }
       //发送数据到后端
-      // $.ajax({
-      //   url: '',  
-      //   type: 'POST',
-      //   data: {
-      //     valRadio:valRadio,
-      //     valSelect:valSelect,
-      //     valArea:valArea
-      //   },
-      //   dataType:'json',
-      //   success:function(){
+      $.ajax({
+        url:'/userFeedback',
+        type: 'POST',
+        data:{
+          uid:login_ss.uid,
+          cid:login_ss.cid,
+          phone:login_ss.username,
+          typeId:valRadio,
+          cName:valSelect,
+          content:valArea
+        },
+        dataType:'json',
+        success:function(res){
+          if(res.code == 0){
+            alert('提交成功')
+          }
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+              console.log(errorThrown)
+        }
+      })
 
-      //   },
-      //   error:function() {
-      //     alert("发生异常啦！");
-      //   }
-      // })
     })
 
     //文本筐失去焦点事件
