@@ -112,21 +112,25 @@
 {% if userinfo.usertype == 1 %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
-{% elseif userinfo.usertype == 2 %}
-{% if userinfo.adviser_type==1 %}
-{% import "widget/new_slide/new_slide2.html" as  slide %}
-{{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
-{% elseif  userinfo.adviser_type==2 %}
-{% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
-{{slide.leyu_slide(helper) }}
-{% endif %}
+{% elif userinfo.usertype == 2 %}
+    {% if userinfo.adviser_type==1 %}
+    {% import "widget/new_slide/new_slide2.html" as  slide %}
+    {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
+    {% elif  userinfo.adviser_type==2 %}
+    {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
+    {{slide.leyu_slide(helper) }}
+    {% endif %}
 {% endif %}
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+{% if userinfo.usertype == 1 %}
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+{% elseif userinfo.usertype == 2 %}
 {% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 {% elseif  userinfo.adviser_type==2 %}
 <script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+{% endif %}
 {% endif %}
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
