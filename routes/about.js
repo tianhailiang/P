@@ -194,7 +194,7 @@ exports.activity = function (req, res, next) {
 //活动底页
 exports.activity_detail = function (req, res, next){
   var data = [];
-  var area = 1;
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var urlcity=''
   if (req.params[0]) {
     var cityId = comfunc.getCityId(req.params[0]);
