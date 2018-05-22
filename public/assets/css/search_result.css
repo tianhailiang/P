@@ -212,5 +212,5 @@
 .page-search-type input[type="radio"].checked + label span i{
     background-color: #c13232;
 }
-.result-item .item-info .info-top a:hover,
-.result-item .item-info .info-top a:visited{ color: #C13232;}
+.result-item .item-info .info-top a:hover{color:#c13232; }
+.result-item .item-info .info-top a:visited{ color: #c0c0c0;}
