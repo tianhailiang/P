@@ -153,11 +153,12 @@
                   <input type="text" style="border-radius: inherit;height: 30px;padding-left: 90px;" class="form-control" placeholder="请输入手机号" id="newEmail_pass" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
                   <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
                   <i class="phone_q">+86</i>
-                  <span class="login_error" id="login_e_phone_u" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_u">请输入手机号</em></span>
+                  <span class="login_error" id="login_e_phone_p" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_p">请输入手机号</em></span>
                 </div>
                 <div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
-                  <input type="password" style="border-radius: inherit;" class="form-control" placeholder="密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
+                  <input type="password" style="border-radius: inherit;" class="form-control" placeholder="请输入密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
                   <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
+                  <span class="login_error" id="login_e_phone_pp" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_pp">请输入6-12位数字+字母组成</em></span>
                 </div>
 
                   <div class="login_check clearfix" style="margin-top: 20px">
@@ -299,6 +300,12 @@
     }else {
       sP.attachEvent('onclick', sendphone_user, false)
     }
+    var pass = document.getElementById('loginSubmit_pass')
+    if (pass.addEventListener) {
+      pass.addEventListener('click', loginS_pass, false)
+    } else {
+      pass.attachEvent('onclick', loginS_pass, false)
+    }
 
     $('#weibo_user').on('click', function () {
       var url = $(this).attr('data-url')
@@ -420,7 +427,7 @@
     
   }
 
-
+//验证码登录
 function loginS () {
   var url = $(this).attr('data-url')
   console.log('url',url)
@@ -461,6 +468,92 @@ function loginS () {
       data:{
         phone: $('#newEmail').val(),
         code: $('#verify_user').val(),
+      },
+      dataType:'json',
+      success:function(msg){
+        console.log('aaaaaaaaa')
+        console.log('msg ajax', msg);
+        if(msg.code === 0){
+          //var h = location.search;//获取？后面的字符串
+          //var h = window.location.href;//获取全部的url
+          //console.log('h', h);
+          //var hh = h.split("?");
+          //console.log('hh', hh)
+          if (url !== undefined) {
+            //var str = hh[1].substr(1);
+            //console.log('str', str);
+            //var strs = str.split("=");
+            //console.log('strs', strs[1]);
+            window.location= url;
+          } else {
+            window.location = '/';
+          }
+          //alert('成功');
+        } else {
+          alert('金吉列提醒您：'+msg.message);
+        }
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+
+  }
+};
+
+//账户密码登录
+function loginS_pass () {
+  var url = $(this).attr('data-url')
+  console.log('url',url)
+  console.log('login_ssssss')
+  if ($('#newEmail_pass').val() === '') {
+    // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+    // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
+    $('#login_e_phone_p').css('display','block');
+    $('#login_error_text_phone_p').html('请输入手机号码');
+    return
+  }
+  // if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1\d{10}$/.test($('#newEmail').val())) {
+  if (!/^1\d{10}$/.test($('#newEmail_pass').val())) {
+    // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+    // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号').popover({"trigger":"manual"}).popover("show");
+    $('#login_e_phone_p').css('display','block');
+    $('#login_error_text_phone_p').html('请输入正确手机号码');
+    return
+  } else {
+    $('#login_e_phone_p').css('display','none');
+  }
+  // if ($('#verify_user').val() === '') {
+  //   layer.msg('请输入短信验证码');
+  //   return
+  // }
+  // if (!/^\d{6}$/.test($("#verify_user").val())) {
+  //   layer.msg('短信验证码位数不足');
+  //   return
+  // }
+  if ($('#password').val() === '') {
+    $('#login_e_phone_pp').css('display','block');
+    return
+  }
+  if (!/^[a-zA-Z0-9]{6,12}$/.test($("#password").val())) {
+    $('#login_e_phone_pp').css('display','block');
+    $('#login_error_text_phone_pp').html('请输入6-12位数字+字母组成');
+    return
+  } else {
+    $('#login_e_phone_pp').css('display','none');
+  }
+  if (!$("#login_user input[type='checkbox']").is(':checked')) {
+    layer.msg('请同意注册协议');
+    return
+  }
+  if ($('#newEmail_pass').val() !== '' && /^1\d{10}$/.test($("#newEmail_pass").val()) && $('#password').val() !== '' && /^[a-zA-Z0-9]{6,12}$/.test($("#password").val())) {
+    console.log('ajax');
+    $.ajax({
+      url: '/login_user',
+      type:'POST',
+      data:{
+        phone: $('#newEmail_pass').val(),
+        password: $('#password').val(),
       },
       dataType:'json',
       success:function(msg){
