@@ -234,7 +234,7 @@ exports.register = function (req, res, next) {
     cityid: area, //cityid
     nationid: ''//nationi
   };
-  res.render('register', data)
+  res.render('login/register', data)
 }
 
 exports.binding = function (req, res, next) {
