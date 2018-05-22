@@ -148,9 +148,9 @@
         </div>-->#}
         <div class="login_form">
 
-            <form class="form-group m-t password" role="form" style="margin-top: 20px;">
+            <form class="form-group m-t form_password" role="form" style="margin-top: 20px;">
                 <div class="form-group inputtext_isr" style="position: relative;height: 28px">
-                  <input type="text" style="border-radius: inherit;height: 30px;padding-left: 90px;" class="form-control" placeholder="请输入手机号" id="newEmail" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
+                  <input type="text" style="border-radius: inherit;height: 30px;padding-left: 90px;" class="form-control" placeholder="请输入手机号" id="newEmail_pass" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
                   <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
                   <i class="phone_q">+86</i>
                   <span class="login_error" id="login_e_phone_u" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_u">请输入手机号</em></span>
@@ -165,11 +165,11 @@
                     <a target="_blank"  href="{{helper.urlgen('forgetUser')}}" style="float: right"><small>忘记密码了</small></a>
                   </div>
       
-                <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;" id="loginSubmit" value="立 即 登 录" data-url='{{url}}'/>
+                <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;" id="loginSubmit_pass" value="立 即 登 录" data-url='{{url}}'/>
             </form>
               
 
-        <form class="form-group m-t" role="form" style="margin-top: 20px;display: none">
+        <form class="form-group m-t form_code" role="form" style="margin-top: 20px;display: none">
           <div class="form-group inputtext_isr" style="position: relative;height: 28px">
             <input type="text" style="border-radius: inherit;height: 30px;" class="form-control" placeholder="请输入手机号" id="newEmail" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
@@ -268,6 +268,12 @@
           console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
         }
       });
+    })
+
+    $('.login_content').on('click','.login_nei_top div' , function () {
+      var cur_index=$(this).index();
+		  $(this).addClass('active').siblings().removeClass('active')
+		  $(this).parents(".login_content").find('.m-t').hide().eq(cur_index).show();
     })
 
     // $("form").Vaild();
