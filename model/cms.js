@@ -1131,7 +1131,7 @@ exports.link = function (data, callback) {
     //redis 缓存友情链接·
     redis_db.select('2', function(error){
         var key = 'WEB:LINK:linkCity:'+data.city_id+'pc';
-        redis_db.zrevrange(key, 0, -1, function (err, req) {
+        redis_db.zrange(key, 0, -1, function (err, req) {
             if(req){
                 callback(null, req);
             }else{

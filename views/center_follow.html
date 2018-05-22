@@ -59,7 +59,7 @@
         <div class="clearfix">
             {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
             {% if login_info.usertype == 2 %} {#顾问#}
-            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {{ community_advisor.advisor_center(userinfo,helper,login_info) }}
             {% elif login_info.usertype == 3 %} {#参赞#}
             {{ community_advisor.counsellor(userinfo,helper,login_info) }}
             {% endif %}

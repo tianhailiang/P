@@ -142,6 +142,45 @@
   <!--</div>-->
 </div>
 {% endmacro %}
+<!--在职顾问-中心-->
+{% macro advisor_center(advisor, helper,login_info) %}
+<div class="community-advisor dui-box-shadow">
+  <ul style="height: 40px">
+    <li class="guanzhu">粉丝<span class="guanzhu-num">{{ advisor.fans_count }}</span></li>
+    <li style="width: 135px">文章<span class="article-num">{{ advisor.article_count }}</span></li>
+  </ul>
+  <dl>
+    <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}');background-position: 0 0;"><a target="_blank" href="{{helper.urlgen( advisor.uid)}}"></a></dt>
+    <dd>
+      <p class="advisor-name" >{{ advisor.realname }}</p>
+      {% if advisor.organid != null %}
+      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >{{ advisor.organid | getCity() }}分公司</p>
+      {% else %}
+      <p class="advisor-bumen" data-cityId ="" >分公司</p>
+      {% endif %}
+      <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else '咨询顾问'
+        }}</p>
+    </dd>
+  </dl>
+  <div class="advisor-intro">
+    <p>{{ advisor.introduce | ellipsis(80) }}</p>
+  </div>
+  <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}">
+    <a {% if login_info.uid !== advisor.uid %} onclick="openchat_new('{{ advisor.job_number}}')"{% endif %}class="advisor-zixun"  rel="nofollow">立即咨询</a>
+    {% if advisor.is_follow %}
+    <span class="advisor-guanzhu guanzhu-btn" data-uid="{{advisor.uid}}">已关注</span>
+    {% else %}
+    <span class="advisor-guanzhu guanzhu-btn" data-uid="{{advisor.uid}}">关注</span>
+    {% endif %}
+  </div>
+</div>
+<script>
+  function  openchat_new(jobnum){
+    openJesongChatByCus(1,jobnum)
+  }
+</script>
+{% endmacro %}
 
 <!--用户-->
 {% macro user(userinfo,helper,versionflag) %}

@@ -25,7 +25,7 @@
 	    <!-- =======顾问头像关注====== -->
       {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
       {% if userinfo.usertype == 2 %}
-        {{community_advisor.advisor(userinfo, helper,login_info)}}
+        {{community_advisor.advisor_center(userinfo, helper,login_info)}}
       {% elif userinfo.usertype == 3 %}  
         {{community_advisor.counsellor(userinfo, helper,login_info)}}
       {% else %}  
