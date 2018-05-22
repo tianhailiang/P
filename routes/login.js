@@ -378,6 +378,19 @@ exports.forget = function (req, res, next) {
   res.render('login/forget', data)
 }
 
+exports.forgetUser = function (req, res, next) {
+  log.debug('this router forgetUser~~');
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var data = [];
+  data.login_nickname = '';
+  data.tdk = {
+    pagekey: 'FORGETPWD', //key
+    cityid: area, //cityid
+    nationid: ''//nationi
+  };
+  res.render('login/forgetUser', data)
+}
+
 exports.oauth = function (req, res, next) {
   var data = [], oauth_data=[];
   if (req.cookies.oauth_login) {

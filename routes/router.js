@@ -205,8 +205,10 @@ exports = module.exports = function (app) {// routes
   app.get('/loginUser', login.loginUser);
   //顾问忘记密码
   app.get('/forget', login.forget);
-  //快速注册(普通用户)
+  //普通用户快速注册
   app.get('/register',login.register);
+  //普通用户忘记密码
+  app.get('/forgetUser',login.forgetUser);
   //普通用户绑定手机号
   app.get('/binding', login.binding);
   //手机验证码
