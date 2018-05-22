@@ -28,8 +28,8 @@ width:50px;}
 .picUpload{margin-right:18px;color:#333;font-size:14px;}
 .upload{ display: inline-block;}
 .upload input[type='file']{ width: 80px;height: 80px;opacity: 0;border:solid 1px #dcdcdc;}
-.pictuerArea{ display: inline-block;width:80px;height:80px;position:relative;margin-right:12px;}
-.pictuerArea .close{ 
+.pictuerArea{ float:left;width:80px;height:80px;position:relative;margin-right:12px;}
+.pictuerArea .close{
   position: absolute;
   top: -11px;right: -5px;
   cursor: pointer; 
@@ -39,10 +39,59 @@ width:50px;}
   background: url({{helper.cdnhost}}/assets/img/close.png) no-repeat center center;
 }
 .pictuerArea img{ height: 80px;width:80px;}
-.pictueAdd{border:solid 1px #dcdcdc;background: url({{helper.cdnhost}}/assets/img/uploada.png) no-repeat center center;}
+.pictueAdd{border:solid 1px #dcdcdc;background: url({{helper.cdnhost}}/assets/img/uploada.png) no-repeat center center; float: left;width:80px;height:80px;position:relative;margin-right:12px;}
 .subMit{margin-bottom:20px;text-align:center;}
 .subMit button{width:180px;height:40px;border:none;border-radius:4px;background:#c13232;color:#fff;text-align:center;font-size:16px;}
 
+  #photoDialog{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    left: 0;
+    top: 0;
+    z-index: 1000;
+  }
+  .dialog-cont{
+    width: 560px;
+    height: 210px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -320px;
+    margin-top: -105px;
+    background-color: #fff;
+    padding: 0 40px;
+  }
+  .dialog-cont .success-info{
+    padding: 20px 0;
+    font-size: 18px;
+    color: #333;
+    line-height: 18px;
+    margin-bottom: 10px;
+  }
+  .dialog-cont .success-info span{
+    color: #C13232;
+  }
+  /*按钮*/
+  #photoDialog .save-btn{
+    width: 80px;
+    height: 24px;
+    text-align: center;
+    line-height: 24px;
+    color: #fff;
+    background-color: #C13232;
+    float: right;
+    cursor: pointer;
+  }
+  #photoDialog .btns{
+    margin: 20px;
+    height: 26px;
+  }
+  #photoDialog .btns .cancel-btn{
+    background-color: #DCDCDC;
+    margin-left: 20px;
+  }
 </style>
 </head>
 <body style="background: #f5f5f5;">
@@ -255,17 +304,9 @@ width:50px;}
             </div>
             <div class="form-group">
               <label class="picUpload">上传图片：</label>
-              <div class="upload">
-                <div class="pictuerArea">
-                  <img src="http://images.jjl.cn/avatar/000/00/01/33_avatar_small_1521009960.jpg" alt="">
-                  <span class="close"></span>
-                </div>
-                <div class="pictuerArea">
-                    <img src="http://images.jjl.cn/avatar/000/00/01/33_avatar_small_1521009960.jpg" alt="">
-                    <span class="close"></span>
-                </div>
-                <div class="pictuerArea pictueAdd">
-                    <input type="file" name="" id="">
+              <div class="upload clearfix" id="uploaded-photo">
+                <div class="pictueAdd" id="page-add-btn">
+                    <input type="file" name="" id="opinion-upload" multiple="multiple">
                 </div> 
               </div>
               <p style="color:#999;margin-left:90px;margin-top:15px;">最多可上传5张照片，支持jpg/png格式，单图不超过2M</p>
@@ -290,6 +331,7 @@ width:50px;}
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
 <script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
+<script  src="{{helper.cdnhost}}/assets/js/upload_opinionFile.js"></script>
 <script>
   $(function(){
 
@@ -320,7 +362,84 @@ width:50px;}
     if(cookie('login_ss') != undefined){
       login_ss = JSON.parse(cookie('login_ss'));
     }
-
+    //图片上传
+    var params = {
+      fileInput: $("#opinion-upload").get(0),
+      upButton: $("#fileSubmit").get(0),
+      url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+      maxfileNum:5,
+      filter: function(files) {
+        var selectedNum = $('#uploaded-photo').find('.pictuerArea').length;
+        if(selectedNum + files.length > ZXXFILE.maxfileNum){
+          layer.msg('最多上传几'+ZXXFILE.maxfileNum+'照片');
+          return false;
+        }
+        else {
+          var arrFiles = [];
+          for (var i = 0, file; file = files[i]; i++) {
+            if (file.type.indexOf("image") == 0) {
+              if (file.size >= 1024000*2) {
+                layer.msg('您这张"'+ file.name +'"图片大小过大，应小于2M');
+              } else {
+                arrFiles.push(file);
+              }
+            } else {
+              layer.msg('文件"' + file.name + '"不是图片。');
+            }
+          }
+          return arrFiles;
+        }
+      },
+      onSelect: function(files) {
+        var html = '';
+        for (var i = 0;i<files.length;i++) {
+          html += '<div class="pictuerArea" data-file="'+files[i].name+'" data-index="'+ZXXFILE.num+'">'+
+          '<img src="" alt="">'+
+          '<span class="close sure_delete"></span>'+
+          '</div>'
+        }
+        $("#page-add-btn").before(html);
+        //删除方法
+        $(".sure_delete").click(function() {
+          $(this).parent().remove();
+          ZXXFILE.uploadNum--;
+        });
+      },
+      onDragOver: function() {
+        $(this).addClass("upload_drag_hover");
+      },
+      onDragLeave: function() {
+        $(this).removeClass("upload_drag_hover");
+      },
+      onProgress: function(file, loaded, total) {
+        var eleProgress = $("#uploadProgress_" + file.index), percent = (loaded / total * 100).toFixed(2) + '%';
+        eleProgress.show().html(percent);
+      },
+      onSuccess: function(file, response) {
+        $(".pictuerArea[data-index="+ZXXFILE.num+"]").each(function(){
+          if($(this).attr('data-file') == file.name){
+            $(this).find('img').attr('src',fn.imageThumb(JSON.parse(response).data[0]));
+            $(this).find('img').attr('data-src',JSON.parse(response).data[0]);
+          }
+        });
+      },
+      onFailure: function(file) {
+        layer.msg('上传失败，请重试!');
+      }
+    };
+    ZXXFILE = $.extend(ZXXFILE, params);
+    ZXXFILE.init();
+    //保存图片
+    function getUploadPhotos () {
+      var needSavePhotoArr = [];
+      var photoList = $('#uploaded-photo').find('.pictuerArea');
+      $.each(photoList, function (n,vl) {
+        var curImg = $(this).find('img').attr('data-src');
+        var curObj = {};
+        curObj.url = curImg;
+        needSavePhotoArr.push(curObj);
+      });
+    }
     //提交意见反馈信息
     $('.sendInfo').on('click',function(){
       //获取每一个值
