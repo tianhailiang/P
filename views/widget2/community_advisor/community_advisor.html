@@ -142,7 +142,7 @@
   <!--</div>-->
 </div>
 {% endmacro %}
-<!--在职顾问-->
+<!--在职顾问-中心-->
 {% macro advisor_center(advisor, helper,login_info) %}
 <div class="community-advisor dui-box-shadow">
   <ul style="height: 40px">
@@ -151,7 +151,7 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}');background-position: 0 0;"><a target="_blank" href="{{helper.urlgen( advisor.uid)}}"></a><div class="jjl_mark"  style="background-image: url('{{helper.cdnhost}}/assets/img/adviser_logo.png');background-position: center;"></div></dt>
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}');background-position: 0 0;"><a target="_blank" href="{{helper.urlgen( advisor.uid)}}"></a></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
