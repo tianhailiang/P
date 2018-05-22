@@ -62,7 +62,7 @@
             {% if userinfo.usertype == 1 %} {#用户#}
             {{ community_advisor.user(userinfo,helper) }}
             {% elif userinfo.usertype == 2 %} {#顾问#}
-            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {{ community_advisor.advisor_center(userinfo,helper,login_info) }}
             {% elif userinfo.usertype == 3 %} {#参赞#}
             {{ community_advisor.counsellor(userinfo,helper,login_info) }}
             {% endif %}

@@ -95,7 +95,7 @@
             {% if login_info.usertype == 1 %} {#用户#}
             {{ advisor.user(userinfo,helper) }}
             {% elif login_info.usertype == 2 %} {#顾问#}
-            {{ advisor.advisor(userinfo,helper,login_info) }}
+            {{ advisor.advisor_center(userinfo,helper,login_info) }}
             {% elif login_info.usertype == 3 %} {#参赞#}
             {{ advisor.counsellor(userinfo,helper,login_info) }}
             {% endif %}
