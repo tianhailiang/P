@@ -105,7 +105,7 @@
   <div class="dui-layout-silde right">
     <div class="clearfix" style="margin-top: 20px">
       {% import "widget2/community_advisor/community_advisor.html" as advisor %}
-      {{ advisor.advisor(userinfo,helper,login_info) }}
+      {{ advisor.advisor_center(userinfo,helper,login_info) }}
     </div>
     {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
     {{ adviser_side_menu.adviser_side_menu('个人信息设置', ' ', helper) }}
