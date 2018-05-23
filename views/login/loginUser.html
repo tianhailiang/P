@@ -549,7 +549,7 @@ function loginS_pass () {
   if ($('#newEmail_pass').val() !== '' && /^1\d{10}$/.test($("#newEmail_pass").val()) && $('#password').val() !== '' && /^[a-zA-Z0-9]{6,12}$/.test($("#password").val())) {
     console.log('ajax');
     $.ajax({
-      url: '/login_user',
+      url: '/user_login',
       type:'POST',
       data:{
         phone: $('#newEmail_pass').val(),

@@ -67,7 +67,7 @@ exports.loginUser = function (req, res, next) {
   res.render('login/loginUser', data)
 };
 
-//普通用户登录
+//普通用户验证码登录
 exports.login_user = function (req, res, next) {
   log.debug('this router login_s~~');
   var username = req.body.phone;
@@ -122,6 +122,69 @@ exports.login_user = function (req, res, next) {
 
       
       
+      
+      //log.debug('config', config.wwhost);
+      //res.redirect(301,config.wwhost);
+      //res.end()
+    }else {
+      res.send(result.login_user);
+    }
+  });
+}
+
+//普通用户密码登录
+exports.user_login = function (req, res, next) {
+  log.debug('this router user_login~~');
+  // var username = req.body.phone;
+  // var password = req.body.code;
+
+  log.debug(req.body);
+  var data = [];
+  // var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+  //   if(ip.split(',').length>0){
+  //       ip = ip.split(',')[0]
+  //   }
+  //   console.log('ip',ip);
+  var async = require('async');
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
+  async.parallel({
+    //签证指南
+    user_login: function (callback) {
+      cms.user_login(req.body, callback);
+    }
+  }, function (err, result) {
+
+    data.login_user = result.user_login;
+    console.log('data.login_user',data.login_user)
+    
+    //res.render('login', data)
+    if (result.user_login.code == 0) {
+      if (data.login_user.data != null) {
+        data.login_user.data.usertype = 1;
+      }
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.login_user.data.uid,
+              "to_uid":result.login_user.data.uid
+          },callback);
+        }
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo.data);
+        data.login_user.data.status = result.userinfo.data.status;
+        data.login_user.data.version = result.userinfo.data.version;
+        log.debug('result.login_user----------', data.login_user.data);
+      
+        if (config.version == 'development') {//开发环境
+          log.debug('result.login_user----------development');
+          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          log.debug('result.login_user----------production');
+          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+        }
+      
+        res.send(data.login_user);
+      })
       
       //log.debug('config', config.wwhost);
       //res.redirect(301,config.wwhost);

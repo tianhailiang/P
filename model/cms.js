@@ -994,9 +994,19 @@ exports.oauth = function (data, callback) {
   log.debug('url', url)
 }
 
-/*普通用户登录*/
+/*普通用户验证码登录*/
 exports.login_user = function (data, callback) {
   var url = config.apis.login_user;
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url ,data ,callback);
+}
+
+/*普通用户密码登录*/
+exports.user_login = function (data, callback) {
+  var url = config.apis.user_login;
   if (url == null){
     callback('404');
     return;
