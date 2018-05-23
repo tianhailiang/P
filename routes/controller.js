@@ -3819,6 +3819,18 @@ exports.save_feedback = function(req,res,next){
         }
     })
 };
+//意见反馈
+exports.userFeedback = function(req,res,next){
+    log.debug('意见反馈');
+    var data = req.body;
+    cms.userFeedback(data,function(err,result){
+        if(err){
+          res.send(err);
+        }else{
+          res.send(result); 
+        }
+    })
+};
 //article_top
 exports.article_top = function (req, res, next) {
     data = req.body;

@@ -1309,12 +1309,13 @@ exports.advert = function(data,callback){
 };
 
 exports.userFeedback = function(data,callback){
-  var url = _api_url_path(data, config.apis.userFeedback);
+  var url = _api_url_path(data,config.apis.userFeedback)
+  console.log(url)
   if (url == null){
     callback('404');
     return;
   }
-  api.apiRequest(url, callback);
+  api.apiRequest_post(url ,data ,callback);
 };
 
 var redisPool_views = require('redis-connection-pool')('viewNumberCache', {
