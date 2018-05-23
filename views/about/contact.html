@@ -16,8 +16,8 @@ width:50px;}
 .formControl{width:800px;height:180px;border:solid 1px #dcdcdc;border-radius:4px;resize:none;}
 .checkRadio{display:inline-block;font-size:0;}
 .checkRadio label{position:relative;display:inline-block;margin-right:20px;width:90px;height:24px;border:solid 1px #dcdcdc;border-radius:4px;color:#666;text-align:center;font-size:14px;line-height:24px;}
-.checkRadio input[type=radio]+i{position:absolute;top:0;right:0;bottom:0;left:0;border:transparent;border-radius:4px;}
-.checkRadio input[type=radio]:checked+i{border:solid 1px #c13232;background:url({{helper.cdnhost}}/assets/img/arrow.png) no-repeat right top;}
+.checkRadio input[type="radio"]+i{position:absolute;top:0;right:0;bottom:0;left:0;border:transparent;border-radius:4px;}
+.checkRadio input[type="radio"]:checked+i{border:solid 1px #c13232;background:url({{helper.cdnhost}}/assets/img/arrow.png) no-repeat right top;}
 .checkRadio .checked{color:#C13232;}
 .checkRadio input[type=radio]{ opacity: 0;filter:alpha(opacity=0);position: absolute;}
 .selectControl{width:200px;height:24px;border:solid 1px #dcdcdc;background: url({{helper.cdnhost}}/assets/img/feedback.png) no-repeat right 5px center;color: #666; border-radius:4px;text-indent:10px;}
@@ -294,7 +294,7 @@ width:50px;}
 								<option value="11">(Z)郑州分公司</option>
               </select>
             </div>
-            <div class="form-group" style="overflow: hidden;">
+            <div class="form-group">
               <label class="infoType" style="float: left;">意见内容：</label>
               <div class="areaContent">
                 <textarea class="formControl" rows="8"></textarea>
@@ -453,9 +453,7 @@ width:50px;}
         var valSelect = $(".selectControl").find("option:selected").val()
         var valSelectTxt = $(".selectControl").find("option:selected").text()
         var groupText = valSelect +'_'+ valSelectTxt
-        console.log(groupText)
         var valArea = $(".formControl").val()
-
         if(valRadio == '' || valSelect == '' || valArea == ''){
           alert('请填写完整的信息')
           return false
@@ -468,7 +466,7 @@ width:50px;}
               uid: login_ss.uid,
               name: login_ss.username,
               cId: cookie_cityId,
-              phone: login_ss.username,
+              phone: login_ss.phone,
               typeId: valRadio,
               cName: groupText,
               content: valArea,
@@ -500,8 +498,11 @@ width:50px;}
     //限制文本域输入字数
     var maxVal = 500 //最大文本数字
     $(".formControl").on('keyup',function(){
-      var iNum = $(this).val().length //获取文本输入的字数
+      var iNum = $.trim($(this).val()).length //获取文本输入的字数
       var wordNum = maxVal - iNum //还可以输入的字数
+      if(wordNum < 0){
+        wordNum = 0
+      }
       if(iNum > maxVal){
         $(this).val($(this).val().substring(0, maxVal))
       }
