@@ -378,7 +378,12 @@ width:50px;}
         else {
           var arrFiles = [];
           for (var i = 0, file; file = files[i]; i++) {
+            console.log('file', file);
             if (file.type.indexOf("image") == 0) {
+              if (file.type.split('/')[1] != 'png' || file.type.split('/')[1] != 'jpg') {
+                layer.msg('只支持png或者jpg格式的图片');
+                return false;
+              }
               if (file.size >= 1024000*2) {
                 layer.msg('您这张"'+ file.name +'"图片大小过大，应小于2M');
               } else {
