@@ -241,7 +241,7 @@ $(function(){
       '<li><a onclick="onclick_ly(\'g\',\'123\')"target="_blank">西意瑞咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'48\')"target="_blank">德国咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'54\')"target="_blank">移民咨询</a></li>'+
-      '<li><a onclick="onclick_ly(\'g\',\'174\')"target="_blank">境外升转学</a></li>'+
+     /* '<li><a onclick="onclick_ly(\'g\',\'174\')"target="_blank">境外升转学</a></li>'+*/
       '<li style="border:0px; height:124px; margin-top:6px;"><img src="http://vip.jjl.cn/statics/jjlyx/images/weixin.png" width="112" height="114"></li>';
 
     var _listStr='';
