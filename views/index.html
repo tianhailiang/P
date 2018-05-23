@@ -13,22 +13,10 @@
   .liuxue-guoqi a:hover{
     background: rgba(0,0,0,0.07);
   }
-  .voucher{position:absolute;top:0;left:0;z-index:100009;width:100%;}
-  .voucherLink{position:fixed;top:50%;left:50%;z-index:100010;margin:-250px 0 0 -382px;width:766px;height:500px;}
-  .voucherLink .voucherclose{display:block;background:url({{helper.cdnhost}}/assets/img/indexpop_close.png) no-repeat 50% 50%;position:absolute;top:0;right:0;height:50px;cursor:pointer;
-    width:50px;}
 </style>
 </head>
 <body>
 {% include "widget/common_hide/common_hide.html"%}
-<div class="voucherLink" style="display:none">
-  <div class="left clearfix">
-    <div id="container1" class="container" style="height: 500px;width: 100%">
-    </div>
-  </div>
-  <div class="voucherclose"></div>
-</div>
-
 <div class="zhezhao" id="zhezhaox" style="display: none">
 </div>
 <div id="zhezhaos" style="position: fixed;left: 50%; margin-left: -350px;z-index: 1000000;top: 50%;margin-top: -215px;display: none;">
@@ -100,8 +88,8 @@
     </div>
     <div class="xuanze-haiwai-bikuang"></div>
     <div class="xuanze-haiwai">
-      <h2><i class="iconfont icon-top" style="margin: 26px 6px 0px 14px;color: #C13232;">&#xe6bd;</i>海外分公司:
-        <a target="_blank" class="dui-text-warning-s"  href="http://www.jjl.cn/specialrank/zt/overseas/vancouver/index.html">温哥华</a></h2>
+      <h2><i class="iconfont icon-top" style="margin: 26px 6px 0px 14px;color: #C13232;">&#xe6bd;</i>海外分公司：
+        <a href="http://www.jjl.cn/zt/overseas/2018_auckland/index.html">奥克兰</a><a href="http://www.jjl.cn/zt/overseas/2018_toronto/index.html">多伦多</a><a href="http://www.jjl.cn/specialrank/zt/overseas/vancouver/index.html">温哥华</a></h2>
     </div>
   </div>
 
@@ -359,6 +347,14 @@
         {
         "companyName": "温哥华",
         "companyId": "49"
+        },
+        {
+        "companyName": "多伦多",
+        "companyId": "50"
+        },
+        {
+        "companyName": "奥克兰",
+        "companyId": "51"
         }
         ] %}
         {% for item in cityList %}
@@ -368,6 +364,12 @@
         </div>
         {% endif %}
         {% endfor %}
+        <div class="branch_company_text_tilte" data-id="{{cityList[50].companyId}}">
+          <a  href="http://www.jjl.cn/zt/overseas/2018_auckland/index.html" data-id="{{cityList[50].companyId}}" >{{cityList[50].companyName}}</a>
+        </div>
+        <div class="branch_company_text_tilte" data-id="{{cityList[49].companyId}}">
+          <a  href="http://www.jjl.cn/zt/overseas/2018_toronto/index.html" data-id="{{cityList[49].companyId}}" >{{cityList[49].companyName}}</a>
+        </div>
         <div class="branch_company_text_tilte" data-id="{{cityList[48].companyId}}">
           <a  href="http://www.jjl.cn/zt/overseas/vancouver/index.html" data-id="{{cityList[48].companyId}}" >{{cityList[48].companyName}}</a>
         </div>
@@ -383,8 +385,6 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
-<script src="http://api.map.baidu.com/api?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
-<script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/guanggao_slider.js"></script>
@@ -399,19 +399,18 @@
         url: ajaxUrlPrefix.nodeapi + "/get_ip_geter",
         dataType: "json",
         success: function (result) {
-          var iparea = result;
           $('#zhezhaox').show();
           $('#zhezhaos').show();
-          $('#fengongsi').html(fn.getCityChinese(iparea));
+          $('#fengongsi').html(fn.getCityChinese(result));
           //正确
           $('#selByIp').on('click', function (e) {
             e.preventDefault();
-            cookie('currentarea', iparea, {path: "/", domain: js_api_config.domain, expires: 36500});
+            cookie('currentarea', result, {path: "/", domain: js_api_config.domain, expires: 36500});
             if (endFix) {
-              window.location.href = fn.urlgen('branch_home', 'c=' + result.data) + '?' + endFix;
+              window.location.href = fn.urlgen('branch_home', 'c=' + result) + '?' + endFix;
             }
             else {
-              window.location.href = fn.urlgen('branch_home', 'c=' + result.data);
+              window.location.href = fn.urlgen('branch_home', 'c=' + result);
             }
           })
         },
