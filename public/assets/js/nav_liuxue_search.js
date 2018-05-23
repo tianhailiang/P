@@ -386,7 +386,7 @@ function change_city_show (cId) {
     }
 }
 $(document).ready(function(){
-    var cookie_cityId = cookie('currentarea');
+    var cookie_cityId = cookie('currentarea') ? cookie('currentarea') : 1;
     $("#city-on").text(fn.getCityChinese(cookie_cityId));
     change_city_show(cookie_cityId);
     /*划过切换城市*/
@@ -563,7 +563,7 @@ $(document).ready(function(){
             dataType: "json",
             success: function (result) {
                 cookie('currentarea', result, {path: "/", domain: js_api_config.domain, expires: 36500});
-                window.location.href = fn.urlgen('branch_home', 'c=' + result.data);
+                window.location.href = fn.urlgen('branch_home', 'c=' + result);
             },
             error: function (error) {
                 console.log(error)
@@ -571,16 +571,3 @@ $(document).ready(function(){
         });
     })
 });
-function showcity(){
-    if(cookie('currentarea')){
-        //获取顶部城市
-        //console.log(iDcity1[cookie('currentarea')][0])
-        $("#city-on").html(iDcity1[cookie('currentarea')][0]);
-        $('#city-place').html(iDcity1[cookie('currentarea')][1]);
-        $('#city-phone').html(iDcity1[cookie('currentarea')][2]);
-    }
-}
-function top_city1 (a,t) {
-    $('#city-place').html(a);
-    $('#city-phone').html(t);
-}

@@ -88,8 +88,8 @@
     </div>
     <div class="xuanze-haiwai-bikuang"></div>
     <div class="xuanze-haiwai">
-      <h2><i class="iconfont icon-top" style="margin: 26px 6px 0px 14px;color: #C13232;">&#xe6bd;</i>海外分公司:
-        <a target="_blank" class="dui-text-warning-s"  href="http://www.jjl.cn/specialrank/zt/overseas/vancouver/index.html">温哥华</a></h2>
+      <h2><i class="iconfont icon-top" style="margin: 26px 6px 0px 14px;color: #C13232;">&#xe6bd;</i>海外分公司：
+        <a href="http://www.jjl.cn/zt/overseas/2018_auckland/index.html">奥克兰</a><a href="http://www.jjl.cn/zt/overseas/2018_toronto/index.html">多伦多</a><a href="http://www.jjl.cn/specialrank/zt/overseas/vancouver/index.html">温哥华</a></h2>
     </div>
   </div>
 
@@ -399,19 +399,18 @@
         url: ajaxUrlPrefix.nodeapi + "/get_ip_geter",
         dataType: "json",
         success: function (result) {
-          var iparea = result;
           $('#zhezhaox').show();
           $('#zhezhaos').show();
-          $('#fengongsi').html(fn.getCityChinese(iparea));
+          $('#fengongsi').html(fn.getCityChinese(result));
           //正确
           $('#selByIp').on('click', function (e) {
             e.preventDefault();
-            cookie('currentarea', iparea, {path: "/", domain: js_api_config.domain, expires: 36500});
+            cookie('currentarea', result, {path: "/", domain: js_api_config.domain, expires: 36500});
             if (endFix) {
-              window.location.href = fn.urlgen('branch_home', 'c=' + result.data) + '?' + endFix;
+              window.location.href = fn.urlgen('branch_home', 'c=' + result) + '?' + endFix;
             }
             else {
-              window.location.href = fn.urlgen('branch_home', 'c=' + result.data);
+              window.location.href = fn.urlgen('branch_home', 'c=' + result);
             }
           })
         },
