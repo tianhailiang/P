@@ -56,11 +56,11 @@ set side_ul = [
         <li class="checked">
             <div class="title">
                 {% if mItem.li_name == '我的主页' %}
-                <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                <a  class="opc" href="{{helper.urlgen(mItem.li_url)}}">
                     <i class="iconfont">&#xe600;</i>我的主页<span class="iconfont"></span>
                 </a>
                 {% else %}
-                <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                <a  class="opc" href="{{helper.urlgen(mItem.li_url)}}">
                     <i class="iconfont">
                         {% if mItem.li_name == '收到的消息' %}
                         &#xe6a9;
@@ -85,9 +85,9 @@ set side_ul = [
             <ul class='list-se'>
                 {% for item in mItem.sub_ul %}
                 {% if item.sub_name == sub_menu_name %}
-                <li class="choose"><a target="_blank" href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
+                <li class="choose"><a  href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
                 {% else %}
-                <li><a target="_blank" href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
+                <li><a  href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
@@ -97,11 +97,11 @@ set side_ul = [
         <li>
             <div class="title">
                 {% if mItem.li_name == '我的主页' %}
-                <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                <a  class="opc" href="{{helper.urlgen(mItem.li_url)}}">
                     <i class="iconfont">&#xe600;</i>我的主页<span class="iconfont"></span>
                 </a>
                 {% else %}
-                <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                <a  class="opc" href="{{helper.urlgen(mItem.li_url)}}">
                     <i class="iconfont">
                         {% if mItem.li_name == '收到的消息' %}
                         &#xe6a9;
@@ -126,9 +126,9 @@ set side_ul = [
             <ul class='list-se'>
                 {% for item in mItem.sub_ul %}
                 {% if item.sub_name == sub_menu_name %}
-                <li class="choose"><a target="_blank" href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
+                <li class="choose"><a  href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
                 {% else %}
-                <li><a target="_blank" href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
+                <li><a  href="{{helper.urlgen(item.sub_url)}}">{{item.sub_name}}</a></li>
                 {% endif %}
                 {% endfor %}
             </ul>
