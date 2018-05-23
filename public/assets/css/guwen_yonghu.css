@@ -60,11 +60,14 @@
   margin-left: 20px;
   float: left;
 }
-.homepage-title p .dui-text-warning:hover{
-  color: #C13232;
+.homepage-title p .dui-text-warning:link{
+  color: #666;
 }
 .homepage-title p .dui-text-warning:visited{
   color: #999;
+}
+.homepage-title p .dui-text-warning:hover{
+  color: #C13232;
 }
 .homepage-title div {
   padding: 0 10px;

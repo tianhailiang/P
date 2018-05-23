@@ -269,6 +269,7 @@ form, input {
     width: 350px;
     height: 30px;
     position: relative;
+    z-index: 2; /*热门搜索签儿盖住轮播图*/
     margin-top: 26px;
     background-color: #fff;
     float: right;

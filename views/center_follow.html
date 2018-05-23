@@ -74,8 +74,8 @@
     </div>
 
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-con left">
-        <div class="right-cont dui-box-shadow">
+    <div class="dui-layout-con left dui-box-shadow">
+        <div class="right-cont">
             <div class="right-title"><div class="tit">关注我的</div></div>
             {% if follow_data and follow_data.list.length > 0 %}
             <div class="right-main clearfix">
@@ -96,16 +96,16 @@
             {% else %}
             {% include "widget2/blank/blank.html" %}
             {% endif %}
-            <!--分页器 start-->
-            <div class="pagination-box" data-pagenum="{{follow_data.totalpage}}">
-                {% import "widget2/pagtion/pagtion.html" as pagtion %}
-                {{pagtion.pagtion(pagination)}}
-            </div>
-            <!--分页器 end-->
         </div>
+        <!--分页器 start-->
+        <div class="pagination-box" data-pagenum="{{follow_data.totalpage}}">
+            {% import "widget2/pagtion/pagtion.html" as pagtion %}
+            {{pagtion.pagtion(pagination)}}
+        </div>
+        <!--分页器 end-->
     </div>
-
 </div>
+
 {% include "widget/new_footer/common_footer.html" %}
 {% if userinfo.adviser_type==1 %}
 {% import "widget/new_slide/new_slide2.html" as  slide %}

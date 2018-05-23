@@ -210,5 +210,6 @@
     background-color: transparent;
 }
 .page-search-type input[type="radio"].checked + label span i{background-color: #c13232;}
-.result-item .item-info .info-top a:hover{color:#c13232; }
+.result-item .item-info .info-top a:link{color:#333; }
 .result-item .item-info .info-top a:visited{ color: #999;}
+.result-item .item-info .info-top a:hover{color:#c13232; }
