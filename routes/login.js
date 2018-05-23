@@ -292,6 +292,13 @@ exports.register = function (req, res, next) {
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var data = [];
   data.login_nickname = '';
+  var l = req.query
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
   data.tdk = {
     pagekey: 'REGISTER', //key
     cityid: area, //cityid
@@ -341,7 +348,6 @@ exports.register_s = function (req, res, next) {
 
     data.register_ss = result.register_ss;
     log.debug('result.login_ss----------', result.register_ss);
-      log.debug('ok', result.register_ss.code)
       res.send(result.register_ss)
 
   });
@@ -446,6 +452,13 @@ exports.forgetUser = function (req, res, next) {
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var data = [];
   data.login_nickname = '';
+  var l = req.query
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
   data.tdk = {
     pagekey: 'FORGETPWD', //key
     cityid: area, //cityid

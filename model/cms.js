@@ -979,6 +979,16 @@ exports.login_ss = function (data, callback) {
   api.apiRequest_post(url ,data ,callback);
 }
 
+/*顾问登录*/
+exports.register_ss = function (data, callback) {
+  var url = config.apis.user_register;
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url ,data ,callback);
+}
+
 /**
  * 第三方登录接口调用封装
  * @param data

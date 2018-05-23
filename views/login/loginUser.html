@@ -120,11 +120,32 @@
       left: 30px;
       text-align: center;
     }
+    .l_u_com_yan{
+    width: 182px;
+    height: 40px;
+    padding-left: 34px;
+    font-size: 14px;
+    color: #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
+  }
+  .l_u_com_bang{
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    float: right;
+    margin-right: 45px;
+    margin-top: -2px;
+  }
   </style>
 </head>
 <body>
 {% include "widget/common_hide/common_hide.html"%}
-  {% include "widget/top/top.html" %}
+  {#{% include "widget/top/top.html" %}#}
+  <div class="top" style="position:relative;z-index: 1002;">
+  </div>
 
   <div class="main" style="margin: 0 auto;">
     {% import "widget/new_nav_first/nav_login.html" as nav_login %}
@@ -167,7 +188,7 @@
                     <a target="_blank"  href="{{helper.urlgen('forgetUser')}}" style="float: right"><small>忘记密码了</small></a>
                   </div>
       
-                <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;" id="loginSubmit_pass" value="立 即 登 录" data-url='{{url}}'/>
+                <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;" id="loginSubmit_pass" value="立 即 登 录" data-url='{{url}}'/>
             </form>
               
 
@@ -206,7 +227,7 @@
               <a target="_blank"  href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了？</small></a>
             </div>-->
 
-          <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;" id="loginSubmit" value="立 即 登 录" data-url='{{url}}'/>
+          <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;" id="loginSubmit" value="立 即 登 录" data-url='{{url}}'/>
           </form>
           <div class="form-group text-left" id="login_user" style="color: #999;margin-top: 20px;margin-left: -0px;">
               <div class="checkbox i-checks" style="color: #999;">
@@ -238,10 +259,40 @@
       ©2009 金吉列出国留学咨询服务有限公司 版权所有 京ICP备05010035号&nbsp;&nbsp;&nbsp;&nbsp;留学投诉电话4006-213-315&nbsp;&nbsp;&nbsp;&nbsp;投诉邮箱：315@jjl.cn
     </div>
   </div>
-  <script src="{{helper.cdnhost}}/assets/js/top.js"></script>
+  <!-- <script src="{{helper.cdnhost}}/assets/js/top.js"></script> -->
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script>
     $(document).ready(function () {
+
+        var login_nickname = JSON.parse(cookie('login_ss'));
+        var user_type;
+        if (login_nickname == null) {
+          var val = '<div class="dui-layout-lg top-con">'+
+                '<div class="top-con-right">'+
+                '<span><a href="' + fn.urlgen("register") + '" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                '<span class="bor"></span>'+
+                '<span ><a style="background: #fff;" onclick="window.location.reload();" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
+                '</div>'+
+                '</div>'
+          $(".top").append(val);
+        } else {
+          var val = '<div class="dui-layout-lg top-con">'+
+                '<div class="top-con-right">'+
+                '<ul>';
+          if (login_nickname.usertype == 1) {
+            val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+          } else if (login_nickname.usertype == 2) {
+            val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("advisor_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+          }else if (login_nickname.usertype == 3) {
+            val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("canzan_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+          }
+          val += '<li><span class="bor">|</span></li>'+
+              '<li ><a href="javascript:void(0)" style="background: #fff;" onclick="outlogin()" rel="nofollow">退出</a></li>'+
+                '</ul>'+
+                '</div>'+
+                '</div>';
+          $(".top").append(val);
+        }
 
     //图片验证码
 

@@ -221,6 +221,8 @@ exports = module.exports = function (app) {// routes
   app.post('/login_user', login.login_user);
   //普通用户密码登录
   app.post('/user_login',login.user_login);
+  //普通用户快速注册
+  app.post('/register_s', login.register_s);
   //表单提交
   app.post('/save_feedback',controller.save_feedback);
   //退出
