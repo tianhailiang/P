@@ -155,7 +155,7 @@ exports.user_login = function (req, res, next) {
   }, function (err, result) {
 
     data.login_user = result.user_login;
-    console.log('data.login_user',data.login_user)
+    console.log('data.login_user',result.user_login.code)
     
     //res.render('login', data)
     if (result.user_login.code == 0) {
@@ -190,7 +190,8 @@ exports.user_login = function (req, res, next) {
       //res.redirect(301,config.wwhost);
       //res.end()
     }else {
-      res.send(result.login_user);
+      console.log('result.login_user',result.user_login)
+      res.send(result.user_login);
     }
   });
 }
