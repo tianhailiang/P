@@ -371,7 +371,7 @@ width:50px;}
       filter: function(files) {
         var selectedNum = $('#uploaded-photo').find('.pictuerArea').length;
         if(selectedNum + files.length > ZXXFILE.maxfileNum){
-          layer.msg('最多上传几'+ZXXFILE.maxfileNum+'照片');
+          layer.msg('最多上传'+ZXXFILE.maxfileNum+'张照片');
           return false;
         }
         else {
