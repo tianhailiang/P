@@ -90,12 +90,14 @@ exports.login_user = function (req, res, next) {
   }, function (err, result) {
 
     data.login_user = result.login_user;
-    data.login_user.data.usertype = 1;
+    
     log.debug('result.login_user----------', result.login_user);
 
     //res.render('login', data)
     if (result.login_user.code === 0) {
-      //
+      if (data.login_user.data) {
+        data.login_user.data.usertype = 1;
+      }
       async.parallel({
         userinfo:function(callback){
           wec.userinfo({
@@ -158,13 +160,15 @@ exports.login_s = function (req, res, next) {
   }, function (err, result) {
     
     data.login_ss = result.login_ss;
-    data.login_ss.data.usertype = 2;
-    data.login_ss.data.adviser = adviser;
-
-    log.debug('result.login_ss----------', data.login_ss.data);
+    log.debug('result.login_ss----------', data.login_ss);
 
     //res.render('login', data)
     if (result.login_ss.code === 0) {
+      if (data.login_ss.data) {
+        console.log('datatatta---------------')
+        data.login_ss.data.usertype = 2;
+        data.login_ss.data.adviser = adviser;
+      }
       async.parallel({
         userinfo:function(callback){
           wec.userinfo({

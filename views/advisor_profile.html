@@ -138,7 +138,7 @@
     <div class="content_title_bbb clearfix">
       <span>个 人 介 绍： </span>
       <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}"></textarea>
-      <div class="word-num">还可以输入<span id="word-num">80</span>字</div>
+      <div class="word-num">还可以输入<span id="word-num">150</span>字</div>
     </div>
 
     <input type="button" style="border:none;font-size: 14px;color: #fff;width: 80px;height: 30px;float: right;background: #C13232;color: #fff;text-align: center;line-height: 30px;margin-right: 80px" onclick="baocunSubmit()" value="确定保存"/>
@@ -187,23 +187,23 @@
           pagination: true
       });
     $("#gerenjieshao").on("change",function(){
-      this.value = this.value.substring(0, 80);
+      this.value = this.value.substring(0, 150);
     });
     $("#gerenjieshao").on("keydown",function(){
-      this.value  = this.value.substring(0, 80);
+      this.value  = this.value.substring(0, 150);
     });
     $("#gerenjieshao").on("keyup",function(){
       var strLength = $.trim($(this).val()).length;
-      $("#word-num").html(80-strLength);
-      if(strLength > 80){
+      $("#word-num").html(150-strLength);
+      if(strLength > 150){
         $("#word-num").html(0);
-        this.value  = this.value.substring(0, 80);
+        this.value  = this.value.substring(0, 150);
       }
     });
     var geren = $('#gerenjieshao').data('geren');
-    geren = geren.substring(0, 80);
+    geren = geren.substring(0, 150);
     $('#gerenjieshao').html(geren);
-    $("#word-num").html(80-geren.length);
+    $("#word-num").html(150-geren.length);
   });
   function baocunSubmit () {
     $.ajax({
