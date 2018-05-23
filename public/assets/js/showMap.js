@@ -363,10 +363,8 @@ $(function () {
         "lat": null
     }};
     /*点击查看地图*/
-    console.log('d地图')
-    var cookie_cityId = cookie('currentarea');
+    var cookie_cityId = cookie('currentarea') ? cookie('currentarea') : 1;
     $('.useMap').on('click', function () {
-        console.log('d地1111111111图')
         var lng;
         var lat;
         var address;

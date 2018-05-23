@@ -431,7 +431,7 @@ form,input{margin:0;padding:0}
 .new-city-box .city-box-bot{height:53px;line-height:53px;margin:0 10px;border-top:1px dashed #DCDCDC;font-size:14px;color:#333;padding-left:10px}
 .new-city-box .city-box-bot i{font-size:20px;margin-right:10px;color:#C13232}
 .new-city-box .city-box-bot a{margin-right:26px}
-.new_nav_first .nav-right .new-searchs{width:350px;height:30px;position:relative;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
+.new_nav_first .nav-right .new-searchs{width:350px;height:30px;position:relative;z-index:2;margin-top:26px;background-color:#fff;float:right;margin-left:30px}
 .new_nav_first .nav-right .search-type-box{width:49px;height:28px;float:left;cursor:pointer}
 .new_nav_first .nav-right .search-type-box .search-type{position:absolute;width:40px;height:28px;left:0;top:0;z-index:999;background-color:#fff;padding-left:10px;line-height:28px;border:1px solid #dcdcdc;border-right:none}
 .new_nav_first .nav-right .search-type-box .search-type:after{content:'';position:absolute;width:0;height:18px;border-right:1px solid #DCDCDC;right:0;top:6px}
