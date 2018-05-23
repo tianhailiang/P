@@ -190,7 +190,6 @@ exports.user_login = function (req, res, next) {
       //res.redirect(301,config.wwhost);
       //res.end()
     }else {
-      console.log('result.login_user',result.user_login)
       res.send(result.user_login);
     }
   });
