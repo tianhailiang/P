@@ -217,7 +217,7 @@ width:50px;}
 <div class="voucher" id="voucherLink" style="display:block"></div>
 <div class="voucherLink" style="display:none">
   <div class="left clearfix">
-    <div id="container1" class="container" style="height: 500px;width: 100%">
+    <div id="container2" class="container" style="height: 500px;width: 100%">
     </div>
   </div>
   <div class="voucherclose"></div>
@@ -338,7 +338,7 @@ width:50px;}
     $(".contact-vv").click(function(){
       $(".voucherLink").css("display","block");
       new BaiduMap({
-        id: "container1",
+        id: "container2",
         title: {
           text: $(this).parents('p').find('.contactingcc').html(),
           className: "title"
@@ -357,7 +357,8 @@ width:50px;}
     $(".voucherclose").click(function(){
       $(".voucherLink").css("display","none");
     })
-
+    //获取cookie
+    var cookie_cityId = cookie('currentarea');
     var login_ss = null;
     if(cookie('login_ss') != undefined){
       login_ss = JSON.parse(cookie('login_ss'));
@@ -435,47 +436,57 @@ width:50px;}
       var photoList = $('#uploaded-photo').find('.pictuerArea');
       $.each(photoList, function (n,vl) {
         var curImg = $(this).find('img').attr('data-src');
-        var curObj = {};
-        curObj.url = curImg;
-        needSavePhotoArr.push(curObj);
+        needSavePhotoArr.push(curImg);
       });
+      return needSavePhotoArr.join(',');
     }
     //提交意见反馈信息
+
     $('.sendInfo').on('click',function(){
-      //获取每一个值
-      var valRadio = $(".checkRadio input[type='radio']:checked").val()
-      var valSelect = $(".selectControl").val()
-      var valArea = $(".formControl").val()
       
-      
+      if(!cookie('login_ss')){
+          getlogin();
+      } else {
+        //获取每一个值
+        var photoUrl = getUploadPhotos();
+        var valRadio = $(".checkRadio input[type='radio']:checked").val()
+        var valSelect = $(".selectControl").find("option:selected").val()
+        var valSelectTxt = $(".selectControl").find("option:selected").text()
+        var groupText = valSelect +'_'+ valSelectTxt
+        console.log(groupText)
+        var valArea = $(".formControl").val()
 
-      if(valRadio == '' || valSelect == '' || valArea == ''){
-        alert('请填写完整的信息')
-        return false
-      }
-      //发送数据到后端
-      $.ajax({
-        url:'/userFeedback',
-        type: 'POST',
-        data:{
-          uid:login_ss.uid,
-          cid:login_ss.cid,
-          phone:login_ss.username,
-          typeId:valRadio,
-          cName:valSelect,
-          content:valArea
-        },
-        dataType:'json',
-        success:function(res){
-          if(res.code == 0){
-            alert('提交成功')
-          }
-        },
-        error:function(XMLHttpRequest, textStatus, errorThrown){
-              console.log(errorThrown)
+        if(valRadio == '' || valSelect == '' || valArea == ''){
+          alert('请填写完整的信息')
+          return false
         }
-      })
-
+        //发送数据到后端
+          $.ajax({
+            url:'/userFeedback',
+            type: 'POST',
+            data:{
+              uid: login_ss.uid,
+              name: login_ss.username,
+              cId: cookie_cityId,
+              phone: login_ss.username,
+              typeId: valRadio,
+              cName: groupText,
+              content: valArea,
+              url: photoUrl
+            },
+            success:function(res,req){
+              if(res.code == 0){
+                alert("反馈成功")
+                window.setTimeout(function(){
+                    window.location.reload();
+                },800);
+              }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(textStatus)
+            }
+          })
+      }
     })
 
     //文本筐失去焦点事件
