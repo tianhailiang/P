@@ -301,7 +301,7 @@
           </form>
 
           <div class="login_check clearfix" style="margin-top: 10px">
-              <a href="{{helper.urlgen('loginUser')}}" style="float: right;color: #333">已有账号？<small style="color: #c13232">登录</small></a>
+              <a href="{{helper.urlgen('loginUser')}}?h={{url}}" style="float: right;color: #333">已有账号？<small style="color: #c13232">登录</small></a>
             </div>
         <div class="fen" style="margin-top: 10px;">
           <h4 style="line-height: 37px;">第三方快速登录：</h4>
@@ -387,14 +387,20 @@
 <script>
   $(document).ready(function () {
         var login_nickname = JSON.parse(cookie('login_ss'));
+        var h = window.location.href;
+        var hhh = h.split("?");
         var user_type;
         if (login_nickname == null) {
           var val = '<div class="dui-layout-lg top-con">'+
                 '<div class="top-con-right">'+
                 '<span><a onclick="window.location.reload();" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
-                '<span class="bor"></span>'+
-                '<span ><a style="background: #fff;" href="' + fn.urlgen("loginUser") + '" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
-                '</div>'+
+                '<span class="bor"></span>';
+                if (hhh[1]) {
+                  val += '<span ><a style="background: #fff;" href="' + fn.urlgen("loginUser")+"?"+hhh[1] + '" class="dui-text-warning-ss" rel="nofollow">登录</a></span>';
+                } else {
+                  val += '<span ><a style="background: #fff;" href="' + fn.urlgen("loginUser") + '" class="dui-text-warning-ss" rel="nofollow">登录</a></span>';
+                }
+                val +='</div>'+
                 '</div>'
           $(".top").append(val);
         } else {

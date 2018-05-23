@@ -377,13 +377,21 @@
     
       var login_nickname = JSON.parse(cookie('login_ss'));
         var user_type;
+        var h = window.location.href;
+        var hhh = h.split("?");
         if (login_nickname == null) {
           var val = '<div class="dui-layout-lg top-con">'+
-                '<div class="top-con-right">'+
-                '<span><a href="' + fn.urlgen("register") + '" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
-                '<span class="bor"></span>'+
-                '<span ><a style="background: #fff;" href="' + fn.urlgen("loginUser") + '" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
-                '</div>'+
+                '<div class="top-con-right">';
+                  if (hhh[1]) {
+                  val += '<span><a href="' + fn.urlgen("register")+"?"+hhh[1] + '" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                  '<span class="bor"></span>'+
+                  '<span ><a style="background: #fff;" href="' + fn.urlgen("loginUser")+"?"+hhh[1] + '" class="dui-text-warning-ss" rel="nofollow">登录</a></span>';
+                } else {
+                  val += '<span><a href="' + fn.urlgen("register") + '" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                  '<span class="bor"></span>'+
+                  '<span ><a style="background: #fff;" href="' + fn.urlgen("loginUser") + '" class="dui-text-warning-ss" rel="nofollow">登录</a></span>';
+                }
+                val +='</div>'+
                 '</div>'
           $(".top").append(val);
         } else {

@@ -184,8 +184,8 @@
                 </div>
 
                   <div class="login_check clearfix" style="margin-top: 20px">
-                    <a href="{{helper.urlgen('register')}}" style="float: left;color: #999">还没有账号？<small style="color: #c13232">免费注册</small></a>
-                    <a target="_blank"  href="{{helper.urlgen('forgetUser')}}" style="float: right"><small>忘记密码了</small></a>
+                    <a href="{{helper.urlgen('register')}}?h={{url}}" style="float: left;color: #999">还没有账号？<small style="color: #c13232">免费注册</small></a>
+                    <a href="{{helper.urlgen('forgetUser')}}?h={{url}}" style="float: right"><small>忘记密码了</small></a>
                   </div>
       
                 <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;" id="loginSubmit_pass" value="立 即 登 录" data-url='{{url}}'/>
@@ -265,12 +265,18 @@
     $(document).ready(function () {
 
         var login_nickname = JSON.parse(cookie('login_ss'));
+        var h = window.location.href;
+        var hhh = h.split("?");
         var user_type;
         if (login_nickname == null) {
           var val = '<div class="dui-layout-lg top-con">'+
-                '<div class="top-con-right">'+
-                '<span><a href="' + fn.urlgen("register") + '" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
-                '<span class="bor"></span>'+
+                '<div class="top-con-right">';
+                if (hhh[1]) {
+                  val += '<span><a href="' + fn.urlgen("register")+"?"+hhh[1] + '" class="dui-text-warning-ss" rel="nofollow">注册</a></span>';
+                } else {
+                  val += '<span><a href="' + fn.urlgen("register") + '" class="dui-text-warning-ss" rel="nofollow">注册</a></span>';
+                }
+                val += '<span class="bor"></span>'+
                 '<span ><a style="background: #fff;" onclick="window.location.reload();" class="dui-text-warning-ss" rel="nofollow">登录</a></span>'+
                 '</div>'+
                 '</div>'
