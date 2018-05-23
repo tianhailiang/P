@@ -193,7 +193,7 @@
     vertical-align: middle;
     width: 16px;
     height: 16px;
-    margin-rigt: 10px;
+    margin-right: 10px;
     border-radius: 50%;
     border: 1px solid #c13232;
     color: #c13232;
@@ -209,8 +209,6 @@
     border-radius: 50%;
     background-color: transparent;
 }
-.page-search-type input[type="radio"].checked + label span i{
-    background-color: #c13232;
-}
-.result-item .item-info .info-top a:hover,
-.result-item .item-info .info-top a:visited{ color: #C13232;}
+.page-search-type input[type="radio"].checked + label span i{background-color: #c13232;}
+.result-item .item-info .info-top a:hover{color:#c13232; }
+.result-item .item-info .info-top a:visited{ color: #999;}
