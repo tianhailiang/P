@@ -378,9 +378,8 @@ width:50px;}
         else {
           var arrFiles = [];
           for (var i = 0, file; file = files[i]; i++) {
-            console.log('file', file);
             if (file.type.indexOf("image") == 0) {
-              if (file.type.split('/')[1] != 'png' || file.type.split('/')[1] != 'jpg') {
+              if (file.name.split('.')[1] != 'png' && file.name.split('.')[1] != 'jpg') {
                 layer.msg('只支持png或者jpg格式的图片');
                 return false;
               }

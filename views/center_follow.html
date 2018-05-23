@@ -93,16 +93,16 @@
                 {% endif %}
                 {% endfor %}
             </div>
+            <!--分页器 start-->
+            <div class="pagination-box" data-pagenum="{{follow_data.totalpage}}">
+                {% import "widget2/pagtion/pagtion.html" as pagtion %}
+                {{pagtion.pagtion(pagination)}}
+            </div>
+            <!--分页器 end-->
             {% else %}
             {% include "widget2/blank/blank.html" %}
             {% endif %}
         </div>
-        <!--分页器 start-->
-        <div class="pagination-box" data-pagenum="{{follow_data.totalpage}}">
-            {% import "widget2/pagtion/pagtion.html" as pagtion %}
-            {{pagtion.pagtion(pagination)}}
-        </div>
-        <!--分页器 end-->
     </div>
 </div>
 
