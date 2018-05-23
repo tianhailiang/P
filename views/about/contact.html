@@ -454,7 +454,7 @@ width:50px;}
         var valSelectTxt = $(".selectControl").find("option:selected").text()
         var groupText = valSelect +'_'+ valSelectTxt
         var valArea = $(".formControl").val()
-        if(valRadio == '' || valSelect == '' || valArea == ''){
+        if((valRadio == '' || valSelect == '' || valArea == '') || $(".formControl").val().length < 20){
           alert('请填写完整的信息')
           return false
         }
@@ -464,7 +464,7 @@ width:50px;}
             type: 'POST',
             data:{
               uid: login_ss.uid,
-              name: login_ss.username,
+              name: login_ss.nickname,
               cId: cookie_cityId,
               phone: login_ss.phone,
               typeId: valRadio,
@@ -476,23 +476,19 @@ width:50px;}
               if(res.code == 0){
                 alert("反馈成功")
                 window.setTimeout(function(){
-                    window.location.reload();
-                },800);
+                  $(".formControl").val("") //清空文本域的值
+                  $(".checkRadio label").removeClass('checked')
+                  $(".checkRadio label > i").css('display','none')
+                  $(".selectControl").find("option:selected").eq(0).text("(B)北京分公司");
+                  $(".selectControl").find("option").eq(0).attr("selected","selected");
+                    // window.location.reload();
+                },300);
               }
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){
                 console.log(textStatus)
             }
           })
-      }
-    })
-
-    //文本筐失去焦点事件
-    $(".formControl").blur(function(){
-      if(!$(this).val()){
-        $(".lengendInfo").css('display','block');
-      } else {
-        $(".lengendInfo").css('display','none');
       }
     })
     //限制文本域输入字数
@@ -509,6 +505,14 @@ width:50px;}
       $(".areaContent").find('span').text('您还可以输入'+wordNum+'个字')
       if($(this).val().length == 0){
         $(".areaContent").find('span').text('您可以填写20—500字')
+      }
+    })
+    //文本筐失去焦点事件
+    $(".formControl").blur(function(){
+      if(!$(this).val() || $(".formControl").val().length < 20){
+        $(".lengendInfo").css('display','block');
+      } else {
+        $(".lengendInfo").css('display','none');
       }
     })
   })  
