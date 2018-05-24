@@ -164,7 +164,11 @@
     </dd>
   </dl>
   <div class="advisor-intro">
-    <p>{{ advisor.introduce | ellipsis(80) }}</p>
+    {% if advisor.introduce.length > 74 %}
+    <p class="expand2" data-tex="{{ advisor.introduce | ellipsis(74) }}">{{ advisor.introduce | ellipsis(74) }}<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span></p>
+    {% else %}
+    <p class="expand1">{{ advisor.introduce }}</p>
+    {% endif %}
   </div>
   <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}">
     <a {% if login_info.uid !== advisor.uid %} onclick="openchat_new('{{ advisor.job_number}}')"{% endif %}class="advisor-zixun"  rel="nofollow">立即咨询</a>
@@ -179,6 +183,22 @@
   function  openchat_new(jobnum){
     openJesongChatByCus(1,jobnum)
   }
+  $('.expand2').on('click','.expand',function(){
+    var text = $(this).data('text');
+    $('.expand2').html(text+'<span class="expand3" style="color: #c13232;margin-left: 6px;cursor: pointer">收起</span>');
+  });
+  $('.expand2').on('click','.expand3',function(){
+    var tex = $(this).parent('.expand2').data('tex');
+    /* $('.expand1').hide();*/
+    $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
+  });
+  $('.advisor-img').on('click',function(){
+    if($(".tan_tupian").css("display")=="block"){
+      $(".tan_tupian").css("display","none");
+    }else{
+      $(".tan_tupian").css("display","block");
+    }
+  })
 </script>
 {% endmacro %}
 

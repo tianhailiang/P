@@ -420,6 +420,29 @@ $(document).ready(function(){
             $(this).parent('.new-city').addClass('hover');
         }
     });
+    //点击切换城市
+    function changeCity (chooseId) {
+        var currentUrl = window.location.href;
+        var hrefUrl = '';
+        if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(\/*)$/g) ) {
+            hrefUrl = fn.urlgen('branch_home','c='+chooseId);
+        }
+        else if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)$/g) ) {
+            hrefUrl = fn.active_urlgen('activity','c='+chooseId);
+        }
+        else {
+            hrefUrl = currentUrl;
+        }
+        var date = new Date();
+        date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+        cookie('currentarea', chooseId, { path: '/',domain: js_api_config.domain,expires: 36500});
+        window.location.href= hrefUrl;
+    }
+    $('#changeCityBox').on('click',"a", function(e){
+        e.preventDefault();
+        var currentarea = $(this).attr("data-cid");
+        changeCity(currentarea);
+    });
     /*获取搜索url函数*/
     function getSoUrl (stationType,searchType) {
         var soUrlObj = {
@@ -556,18 +579,56 @@ $(document).ready(function(){
     })
     //点击返回当前城市
     $("#back-current-city").on('click',function() {
-        $.ajax({
-            type: "get",
-            async: false,
-            url: ajaxUrlPrefix.nodeapi + "/get_ip_geter",
-            dataType: "json",
-            success: function (result) {
-                cookie('currentarea', result, {path: "/", domain: js_api_config.domain, expires: 36500});
-                window.location.href = fn.urlgen('branch_home', 'c=' + result);
-            },
-            error: function (error) {
-                console.log(error)
-            }
-        });
+        var cur_ip;
+        if ( cookie('ip_area') ) {
+            cur_ip = cookie('ip_area');
+            changeCity(cur_ip);
+        }
+        else {
+            $.ajax({
+                type: "get",
+                url: ajaxUrlPrefix.nodeapi + "/get_ip_geter",
+                dataType: "json",
+                success: function (result) {
+                    cur_ip = result;
+                    cookie('ip_area', cur_ip, {path: "/", domain: js_api_config.domain, expires: 36500});
+                    changeCity(cur_ip);
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
+        }
+        //
+    })
+    //404返回当前城市
+    $("#error-back-current-city").on('click',function() {
+        var cur_ip;
+        if ( cookie('ip_area') ) {
+            cur_ip = cookie('ip_area');
+            var date = new Date();
+            date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+            cookie('currentarea', cur_ip, { path: '/',domain: js_api_config.domain,expires: 36500});
+            window.location.href= fn.urlgen('branch_home', 'c='+cur_ip);
+        }
+        else {
+            $.ajax({
+                type: "get",
+                url: ajaxUrlPrefix.nodeapi + "/get_ip_geter",
+                dataType: "json",
+                success: function (result) {
+                    cur_ip = result;
+                    cookie('ip_area', cur_ip, {path: "/", domain: js_api_config.domain, expires: 36500});
+                    var date = new Date();
+                    date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
+                    cookie('currentarea', cur_ip, { path: '/',domain: js_api_config.domain,expires: 36500});
+                    window.location.href= fn.urlgen('branch_home', 'c='+cur_ip);
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            });
+        }
+        //
     })
 });
