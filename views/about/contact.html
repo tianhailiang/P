@@ -235,7 +235,7 @@ width:50px;}
             <div class="form-group">
               <label class="infoType"><em>*</em>意见类型：</label>
               <div class="checkRadio">
-                <label><input type="radio" name="name" value="1">问题反馈<i></i></label>
+                <label class="checked"><input type="radio" name="name" value="1" checked>问题反馈<i></i></label>
                 <label><input type="radio" name="name" value="2">页面设计<i></i></label>
                 <label><input type="radio" name="name" value="3">功能建议<i></i></label>
                 <label><input type="radio" name="name" value="4">其他建议<i></i></label>
@@ -282,12 +282,12 @@ width:50px;}
 								<option value="18">(T)唐山分公司</option>
 								<option value="14">(W)武汉分公司</option>
 								<option value="33">(W)无锡分公司</option>
-								<option value="42">(W)温州分公司</option>
+                <option value="42">(W)温州分公司</option>
+                <option value="47">(W)乌鲁木齐分公司</option>
 								<option value="28">(X)厦门分公司</option>
 								<option value="36">(X)徐州分公司</option>
 								<option value="15">(X)西安分公司</option>
 								<option value="45">(X)西宁分公司</option>
-								<option value="47">(X)乌鲁木齐分公司</option>
 								<option value="31">(Y)烟台分公司</option>
 								<option value="40">(Y)银川分公司</option>
 								<option value="44">(Y)宜昌分公司</option>
@@ -334,7 +334,6 @@ width:50px;}
 <script  src="{{helper.cdnhost}}/assets/js/upload_opinionFile.js"></script>
 <script>
   $(function(){
-
     $(".contact-vv").click(function(){
       $(".voucherLink").css("display","block");
       new BaiduMap({
@@ -445,9 +444,28 @@ width:50px;}
       return needSavePhotoArr.join(',');
     }
     //提交意见反馈信息
+    
+    var maxVal = 500 //最大文本数字
+    $(".formControl").on('keyup',function(){
+      var iNum = $.trim($(this).val().length) //获取文本输入的字数
+      var wordNum = maxVal - iNum //还可以输入的字数
+      if(wordNum < 0){
+        wordNum = 0
+      }
+      if(iNum > maxVal){
+        $(this).val($(this).val().substring(0, maxVal))
+      }
+      $(".areaContent").find('span').text('您还可以输入'+wordNum+'个字')
+
+      if($.trim($(this).val()).length <20){
+        $(".lengendInfo").css('display','block');
+      } else {
+        $(".lengendInfo").css('display','none');
+      }
+
+    })
 
     $('.sendInfo').on('click',function(){
-     
       if(!cookie('login_ss')){
           getlogin();
       } else {
@@ -458,22 +476,14 @@ width:50px;}
         var valSelectTxt = $(".selectControl").find("option:selected").text()
         var groupText = valSelect +'_'+ valSelectTxt
         var valArea = $(".formControl").val()
-        if( !valRadio  || !valSelect  || !valArea ){
-          alert('请填写完整的信息')
-          if(valArea.length >= 20 ){
-            $(".lengendInfo").css('display','none');
-          }else{
-            $(".lengendInfo").css('display','block');
-          }
-          return false
-        }
-        if(valArea.length < 20 ){
-          alert('请填写完整的信息')
+        if (valArea.length >= 20 ) {
+          $(".lengendInfo").css('display','none');
+        } else {
           $(".lengendInfo").css('display','block');
-          return false
+          return false;
         }
         //发送数据到后端
-          $.ajax({
+        $.ajax({
             url:'/userFeedback',
             type: 'POST',
             data:{
@@ -506,30 +516,7 @@ width:50px;}
           })
       }
     })
-    //限制文本域输入字数
-    var maxVal = 500 //最大文本数字
-    $(".formControl").on('keyup',function(){
-      var iNum = $.trim($(this).val()).length //获取文本输入的字数
-      var wordNum = maxVal - iNum //还可以输入的字数
-      if(wordNum < 0){
-        wordNum = 0
-      }
-      if(iNum > maxVal){
-        $(this).val($(this).val().substring(0, maxVal))
-      }
-      $(".areaContent").find('span').text('您还可以输入'+wordNum+'个字')
-      if($(this).val().length == 0){
-        $(".areaContent").find('span').text('您可以填写20—500字')
-      }
-    })
-    //文本筐失去焦点事件
-    $(".formControl").blur(function(){
-      if(!$(".formControl").val()){
-        $(".lengendInfo").css('display','block');
-      } else {
-        $(".lengendInfo").css('display','none');
-      }
-    })
+
   })  
 </script>
 </body>
