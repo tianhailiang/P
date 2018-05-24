@@ -12,7 +12,7 @@ width:50px;}
 .collectInfo>h3{height:44px;background-color:#c13232;color:#fff;text-align:center;font-weight:400;font-size:18px;line-height:44px;}
 .form-group{margin-bottom:20px;}
 .form-group .infoType{position:relative;display:inline-block;margin-right:18px;color:#333;font-size:14px;}
-.form-group .infoType::after{position:absolute; display: block; top:3px;left:-10px;color:#c13232;content:"*";font-size:16px;}
+.form-group .infoType > em{display: inline-block; margin-right:2px;color:#c13232;font-size:16px;vertical-align:middle;}
 .formControl{width:800px;height:180px;border:solid 1px #dcdcdc;border-radius:4px;resize:none;}
 .checkRadio{display:inline-block;font-size:0;}
 .checkRadio label{position:relative;display:inline-block;margin-right:20px;width:90px;height:24px;border:solid 1px #dcdcdc;border-radius:4px;color:#666;text-align:center;font-size:14px;line-height:24px;}
@@ -233,7 +233,7 @@ width:50px;}
           <h3>您好！我是金吉列网站的产品经理，您的感受和建议对优化我们的产品和服务很重要！</h3>
           <form style="padding-left:110px;padding-top:30px">
             <div class="form-group">
-              <label class="infoType">意见类型：</label>
+              <label class="infoType"><em>*</em>意见类型：</label>
               <div class="checkRadio">
                 <label><input type="radio" name="name" value="1">问题反馈<i></i></label>
                 <label><input type="radio" name="name" value="2">页面设计<i></i></label>
@@ -242,7 +242,7 @@ width:50px;}
               </div>
             </div>
             <div class="form-group">
-              <label class="infoType">反馈对象：</label>
+              <label class="infoType"><em>*</em>反馈对象：</label>
               <select class="selectControl">
                 <option value="1">(B)北京分公司</option>
 								<option value="7">(C)重庆分公司</option>
@@ -295,7 +295,7 @@ width:50px;}
               </select>
             </div>
             <div class="form-group">
-              <label class="infoType" style="float: left;">意见内容：</label>
+              <label class="infoType" style="float: left;"><em>*</em>意见内容：</label>
               <div class="areaContent">
                 <textarea class="formControl" rows="8"></textarea>
                 <span>您可以填写20—500字</span>
@@ -358,7 +358,7 @@ width:50px;}
       $(".voucherLink").css("display","none");
     })
     //获取cookie
-    var cookie_cityId = cookie('currentarea');
+    var cookie_cityId = cookie('currentarea') ? cookie('currentarea') : 1;
     var login_ss = null;
     if(cookie('login_ss') != undefined){
       login_ss = JSON.parse(cookie('login_ss'));
@@ -447,7 +447,7 @@ width:50px;}
     //提交意见反馈信息
 
     $('.sendInfo').on('click',function(){
-      
+
       if(!cookie('login_ss')){
           getlogin();
       } else {
@@ -458,10 +458,16 @@ width:50px;}
         var valSelectTxt = $(".selectControl").find("option:selected").text()
         var groupText = valSelect +'_'+ valSelectTxt
         var valArea = $(".formControl").val()
-        if((valRadio == '' || valSelect == '' || valArea == '') && $(".formControl").val().length < 20){
+        if( !valRadio  || !valSelect  || !valArea){
           alert('请填写完整的信息')
+          if(valArea.length > 20){
+            $(".lengendInfo").css('display','none');
+          }else{
+            $(".lengendInfo").css('display','block');
+          }
           return false
         }
+
         //发送数据到后端
           $.ajax({
             url:'/userFeedback',
@@ -514,7 +520,7 @@ width:50px;}
     })
     //文本筐失去焦点事件
     $(".formControl").blur(function(){
-      if(!$(this).val() || $(".formControl").val().length < 20){
+      if(!$(".formControl").val()){
         $(".lengendInfo").css('display','block');
       } else {
         $(".lengendInfo").css('display','none');
