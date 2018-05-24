@@ -447,7 +447,7 @@ width:50px;}
     //提交意见反馈信息
 
     $('.sendInfo').on('click',function(){
-
+     
       if(!cookie('login_ss')){
           getlogin();
       } else {
@@ -458,16 +458,20 @@ width:50px;}
         var valSelectTxt = $(".selectControl").find("option:selected").text()
         var groupText = valSelect +'_'+ valSelectTxt
         var valArea = $(".formControl").val()
-        if( !valRadio  || !valSelect  || !valArea){
+        if( !valRadio  || !valSelect  || !valArea ){
           alert('请填写完整的信息')
-          if(valArea.length > 20){
+          if(valArea.length >= 20 ){
             $(".lengendInfo").css('display','none');
           }else{
             $(".lengendInfo").css('display','block');
           }
           return false
         }
-
+        if(valArea.length < 20 ){
+          alert('请填写完整的信息')
+          $(".lengendInfo").css('display','block');
+          return false
+        }
         //发送数据到后端
           $.ajax({
             url:'/userFeedback',
