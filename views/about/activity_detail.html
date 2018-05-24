@@ -97,8 +97,8 @@
 <body>
 {% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
-{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
-{{ new_nav_red.new_nav_red(tdk,helper) }}
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
 <div class="dui-layout-lg clearfix banner-box">
   <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
   <div class="dui-layout-div"></div>
@@ -177,7 +177,7 @@
 {{slide.leyu_slide("XC_ACTIVITYDETAIL_SEAT10",helper) }}
 
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
-<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/quick_application2.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
