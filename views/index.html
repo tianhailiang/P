@@ -395,7 +395,6 @@
     if(!cookie('currentarea')) {
       $.ajax({
         type: "get",
-        async: false,
         url: ajaxUrlPrefix.nodeapi + "/get_ip_geter",
         dataType: "json",
         success: function (result) {
@@ -406,6 +405,7 @@
           $('#selByIp').on('click', function (e) {
             e.preventDefault();
             cookie('currentarea', result, {path: "/", domain: js_api_config.domain, expires: 36500});
+            cookie('ip_area', result, {path: "/", domain: js_api_config.domain, expires: 36500});
             if (endFix) {
               window.location.href = fn.urlgen('branch_home', 'c=' + result) + '?' + endFix;
             }

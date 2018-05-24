@@ -11,8 +11,8 @@
 </head>
 <body>
 {% include "widget/common_hide/common_hide.html"%}
-{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(tdk,helper) }}
+{% import "widget/new_nav_first/error_nav.html" as error_nav %}
+{{ error_nav.error_nav(tdk,helper) }}
 <div class="error-con"><img src="{{helper.cdnhost}}/assets/img/404.png" alt=""></div>
 <p class="error-btn">
     <a  href="javascript:history.go(-1);" class="dui-btn btn-xlarge btn-appointment go-back-btn liuxue-back-btn">返回上页</a>
