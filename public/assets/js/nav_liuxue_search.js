@@ -390,12 +390,15 @@ $(document).ready(function(){
     $("#city-on").text(fn.getCityChinese(cookie_cityId));
     change_city_show(cookie_cityId);
     /*划过切换城市*/
-    $('.new-city-box a').hover(function () {
-        var hover_cityId = $(this).attr('data-cid');
-        change_city_show(hover_cityId);
-    },function () {
-        change_city_show(cookie_cityId);
-    });
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    if(sUserAgent .match(/ipad/i) != "ipad"){
+        $('.new-city-box a').hover(function () {
+            var hover_cityId = $(this).attr('data-cid');
+            change_city_show(hover_cityId);
+        },function () {
+            change_city_show(cookie_cityId);
+        });
+    }
     /*划过出现城市下拉框 pc*/
     $('#new-city').hover(function() {
         $(this).find('.new-city-box').show();
