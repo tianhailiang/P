@@ -31,7 +31,6 @@
   float: right;
 }
 .follow-con .content-title{
-  line-height: 16px;
   font-size: 14px;
   line-height: 14px;
   color: #333;
@@ -39,6 +38,9 @@
   display: -webkit-box;
   text-overflow: ellipsis;
   -webkit-box-orient: vertical;
+}
+.follow-con .content-title a{
+  color: #333;
 }
 .follow-con .content-des{
   margin-top: 14px;
