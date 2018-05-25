@@ -28,8 +28,9 @@ var shequ_prefix = apiconfig.shequ_prefix;
 var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
 var apis = {
-
-  "login_user":  uc_prefix + 'index.php?m=login',// 普通用户登录
+  "user_register": uc_prefix + 'index.php?m=user_register',//普通用户快速注册
+  "user_login": uc_prefix + 'index.php?m=user_login',//普通用户密码登录
+  "login_user":  uc_prefix + 'index.php?m=login',// 普通用户验证码登录
   "oauth": uc_prefix + 'index.php',
   "bind_phone": uc_prefix + 'index.php?m=bind_phone',// 绑定手机号
   "forget": uc_prefix + 'index.php?m=forgetpassword',//忘记密码

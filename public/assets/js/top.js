@@ -14,9 +14,9 @@
     var pac_u = document.getElementById('getloginUser');
     if (pac_u) {
       if (pac_u.addEventListener) {
-        pac_u.addEventListener('click', loginUser, false)
+        pac_u.addEventListener('click', getregisterUser, false)
       }else {
-        pac_u.attachEvent('onclick', loginUser, false)
+        pac_u.attachEvent('onclick', getregisterUser, false)
       }
     }
 
@@ -220,23 +220,53 @@
     });
   }
 
+  function getregisterUser () {
+    var h = window.location.href;
+    console.log('h', h);
+    var hh = h.split("/");
+    console.log('hh[1]', hh[3]);
+    var hhh = h.split("?");
+    console.log('hhh', hhh[1])
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:' && hh[3] != 'register?h=http:') {
+      console.log('11111')
+//      window.location.href = '/login?h=' + h
+      // window.open('/loginUser?h=' + h);
+      window.open(fn.urlgen("register")+'?h='+h);
+    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser') {
+      console.log('aaaa')
+      window.location.reload();
+    } else if (hhh[1] == undefined && hh[3] == 'loginUser') {
+      console.log('22222');
+      window.location.reload();
+//      window.location.href = '/login'
+      // window.open('/loginUser?h=');
+      // window.open(fn.urlgen('loginUser')+'?h=');
+    } else if (hhh[1] == undefined && hh[3] == 'forget') {
+      console.log('forget');
+      window.open(fn.urlgen("login"));
+    } else if (hhh[1] != undefined && hh[3] == 'register') {
+      console.log('rrrrrr')
+      window.open(fn.urlgen("loginUser"));
+    }
+  }
+
   function loginUser () {
     var h = window.location.href;
-    // console.log('h', h);
+    console.log('h', h);
     var hh = h.split("/");
-    // console.log('hh[1]', hh[3]);
+    console.log('hh[1]', hh[3]);
     var hhh = h.split("?");
-    // console.log('hhh', hhh[1])
-    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:') {
-      // console.log('11111')
+    console.log('hhh', hhh[1])
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:' ) {
+      console.log('11111')
 //      window.location.href = '/login?h=' + h
       // window.open('/loginUser?h=' + h);
       window.open(fn.urlgen("loginUser")+'?h='+h);
     } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser') {
-      // console.log('aaaa')
+      console.log('aaaa')
       window.location.reload();
     } else if (hhh[1] == undefined && hh[3] == 'loginUser') {
-      // console.log('22222');
+      console.log('22222');
       window.location.reload();
 //      window.location.href = '/login'
       // window.open('/loginUser?h=');
@@ -244,6 +274,9 @@
     } else if (hhh[1] == undefined && hh[3] == 'forget') {
       // console.log('forget');
       window.open(fn.urlgen("login"));
+    } else if (hhh[1] != undefined && hh[3] == 'register?h=http:'){
+      console.log('rrrrrr')
+      window.open(fn.urlgen("loginUser"));
     }
   }
   //登录发送验证码
