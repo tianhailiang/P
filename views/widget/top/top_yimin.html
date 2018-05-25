@@ -171,6 +171,22 @@ input[type="checkbox"] {
   top: -13px;
   position: absolute;
 }
+.top_400{
+      width: 12px;
+      height: 12px;
+    }
+    .text_shu{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #C13232;
+      color: #fff;
+      position: absolute;
+      top: 0px;
+      left: -16px;
+      text-align: center;
+      line-height: 18px;
+    }
 </style>
 <!-- 登录 -->
 <div class="l_u" id="l_u" style="display: none;height: 500px;">
@@ -267,6 +283,10 @@ input[type="checkbox"] {
     var user_type;
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-left" style="display: inline-block;width: 50%;">'+
+                '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">'+
+                '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
                 '<div class="top-con-right">'+
                 '<span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
@@ -281,6 +301,10 @@ input[type="checkbox"] {
       $(".top").append(val);
     } else {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-left">'+
+                '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400" style="margin-right: 3px;">'+
+                '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
                 '<div class="top-con-right">'+
                 '<ul>';
       if (login_nickname.usertype == 1) {
