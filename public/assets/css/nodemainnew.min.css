@@ -86,7 +86,8 @@
 .follow-con:hover{background:#f0f4f6;box-shadow:0 3px 7px 0 rgba(0,0,0 ,.14)}
 .follow-con .img-left{width:60px;height:60px;float:left;margin-right:20px;-webkit-border-radius:50%;-moz-border-radius:50%;border-radius:50%;background-repeat:no-repeat;background-position:0 0;-webkit-background-size:cover;background-size:cover}
 .follow-con .content{width:289px;height:82px;float:right}
-.follow-con .content-title{line-height:16px;font-size:14px;line-height:14px;color:#333;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;-webkit-box-orient:vertical}
+.follow-con .content-title{font-size:14px;line-height:14px;color:#333;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;-webkit-box-orient:vertical}
+.follow-con .content-title a{color:#333}
 .follow-con .content-des{margin-top:14px;line-height:12px;font-size:12px;height:12px;color:#666;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .follow-con .content-nun{width:289px;margin-top:20px;font-size:12px;line-height:16px;color:#666;position:relative}
 .follow-con .content-nun .num-show{float:left;margin-right:20px}
