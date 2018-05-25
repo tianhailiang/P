@@ -206,6 +206,10 @@
     $("#word-num").html(150-geren.length);
   });
   function baocunSubmit () {
+    if ($('#gerenjieshao').val() == '') {
+      layer.msg('个人简介不能为空');
+      return false;
+    }
     $.ajax({
       url: '/soapi/user_ziliao',
       type:'POST',
