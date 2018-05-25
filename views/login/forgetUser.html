@@ -517,7 +517,8 @@
   }
 
   function forgetS () {
-    console.log('forget_ssssss')
+    var url = $(this).attr('data-url')
+    console.log('url',url);
     if ($('#newEmail').val() === '') {
       // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
       // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
@@ -611,7 +612,15 @@
           if(msg.code === 0){
             //window.location= '/';
 //            alert('成功');
-            window.location = '/login'
+            if (url !== undefined) {
+            //var str = hh[1].substr(1);
+            //console.log('str', str);
+            //var strs = str.split("=");
+            //console.log('strs', strs[1]);
+              window.location= url;
+            } else {
+              window.location = '/loginUser';
+            }
           } else {
             alert('金吉列留学提醒您：'+msg.message);
           }
