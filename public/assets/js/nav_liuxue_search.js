@@ -370,6 +370,7 @@ function change_city_show (cId) {
     if (cId == 14) { //武汉（显示两个地址）
         $('.wuhan').show();
         $('.whole-city').hide();
+        $('.useMap').show();
     }
     else if (cId == 49 || cId == 50 || cId == 51) {
         $('#city-address-text').text(address);
@@ -383,6 +384,7 @@ function change_city_show (cId) {
         $('#city-phone-text').text(phone);
         $('.whole-city').show();
         $('.wuhan').hide();
+        $('.useMap').show();
     }
 }
 $(document).ready(function(){
