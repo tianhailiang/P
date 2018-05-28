@@ -108,7 +108,7 @@ function showbottom (type, index, usertype) {
     //$("#shoucang_" + index).html('&#xe634;');
     //$("#shoucang_li_" + index).css('color', '#C13232');
     //$("#shoucang_span_" + index).css('color', '#C13232');
-    var uid = JSON.parse($.cookie('login_ss'));
+    var uid = JSON.parse(cookie('login_ss'));
     if ( uid === null) {
       console.log('uid1', uid)
       window.location = fn.curlgen('login');
@@ -144,7 +144,7 @@ function showbottom (type, index, usertype) {
             // shoucang = parseInt(shoucang) - 1;
             // $("#shoucang_em_" + index).html(shoucang);
             //layer.msg('取消收藏成功');
-            // window.location.reload();
+             window.location.reload();
           }
           // $("#shoucang_li_" + index).removeAttr('onclick');
         } else {
@@ -187,7 +187,7 @@ function showbottom (type, index, usertype) {
     })*/
 
   }else if (type === 4) {
-    var uid = JSON.parse($.cookie('login_ss'));
+    var uid = JSON.parse(cookie('login_ss'));
     console.log('uid', uid)
     if ( uid === null) {
       console.log('uid1', uid)

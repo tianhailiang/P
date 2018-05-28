@@ -1,20 +1,6 @@
 
   $(function() {
 
-    $("form").Vaild();
-
-    //图片验证码
-    $.ajax({
-      url:"/param_code",
-      type: "get",
-      success: function(result){
-        $('#param_code').html(result)
-      },
-      error:function(XMLHttpRequest, textStatus, errorThrown){
-        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
-      }
-    });
-
     //登录
     var pac_d = document.getElementById('getloginUser_deng');
     if (pac_d) {
@@ -28,9 +14,9 @@
     var pac_u = document.getElementById('getloginUser');
     if (pac_u) {
       if (pac_u.addEventListener) {
-        pac_u.addEventListener('click', loginUser, false)
+        pac_u.addEventListener('click', getregisterUser, false)
       }else {
-        pac_u.attachEvent('onclick', loginUser, false)
+        pac_u.attachEvent('onclick', getregisterUser, false)
       }
     }
 
@@ -54,13 +40,13 @@
     }
     $('#weibo').on('click', function () {
       var h = window.location.href;//获取全部的url
-      console.log('h', h);
+      // console.log('h', h);
       var hh = h.split("?");
-      console.log('hh', hh[1])
+      // console.log('hh', hh[1])
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        console.log('strs', strs)
+        // console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
@@ -70,13 +56,13 @@
     //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
     //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
       var h = window.location.href;//获取全部的url
-      console.log('h', h);
+      // console.log('h', h);
       var hh = h.split("?");
-      console.log('hh', hh)
+      // console.log('hh', hh)
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        console.log('strs', strs)
+        // console.log('strs', strs)
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       } else {
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
@@ -152,6 +138,19 @@
   var layeropen;
   function getlogin () {
 
+    // $("form").Vaild();
+
+    //图片验证码
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
         layeropen = layer.open({
 	            type: 1,
 	            shade: [0.4,'#000'],
@@ -167,22 +166,38 @@
 	            	
               },
               cancel:function(){
-                $("#phone").parent().removeClass("has-error").addClass("has-success");
-                $("#phone").popover("destroy");
+                // $("#phone").parent().removeClass("has-error").addClass("has-success");
+                // $("#phone").popover("destroy");
+                $('#login_e_phone').css('display','none');
               },
               end:function() {
-                $("#phone").parent().removeClass("has-error").addClass("has-success");
-                $("#phone").popover("destroy");
+                // $("#phone").parent().removeClass("has-error").addClass("has-success");
+                // $("#phone").popover("destroy");
+                $('#login_e_phone').css('display','none');
               }
 	      });
   }
   function getregister () {
 
+    // $("form").Vaild();
+
+    //图片验证码
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+
     layeropen = layer.open({
           type: 1,
           shade: [0.4,'#000'],
           shadeClose: true,
-          closeBtn: true,
+          closeBtn: false,
           area: ['421px', '487px'],
           title: false,
           border: [0],
@@ -193,14 +208,46 @@
             
           },
           cancel:function(){
-            $("#phone_reg").parent().removeClass("has-error").addClass("has-success");
-            $("#phone_reg").popover("destroy");
+            // $("#phone_reg").parent().removeClass("has-error").addClass("has-success");
+            // $("#phone_reg").popover("destroy");
+            $('#login_e_phone').css('display','none');
           },
           end:function() {
-            $("#phone_reg").parent().removeClass("has-error").addClass("has-success");
-            $("#phone_reg").popover("destroy");
+            // $("#phone_reg").parent().removeClass("has-error").addClass("has-success");
+            // $("#phone_reg").popover("destroy");
+            $('#login_e_phone').css('display','none');
           }
     });
+  }
+
+  function getregisterUser () {
+    var h = window.location.href;
+    console.log('h', h);
+    var hh = h.split("/");
+    console.log('hh[1]', hh[3]);
+    var hhh = h.split("?");
+    console.log('hhh', hhh[1])
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:' && hh[3] != 'register?h=http:') {
+      console.log('11111')
+//      window.location.href = '/login?h=' + h
+      // window.open('/loginUser?h=' + h);
+      window.open(fn.urlgen("register")+'?h='+h);
+    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser') {
+      console.log('aaaa')
+      window.location.reload();
+    } else if (hhh[1] == undefined && hh[3] == 'loginUser') {
+      console.log('22222');
+      window.location.reload();
+//      window.location.href = '/login'
+      // window.open('/loginUser?h=');
+      // window.open(fn.urlgen('loginUser')+'?h=');
+    } else if (hhh[1] == undefined && hh[3] == 'forget') {
+      console.log('forget');
+      window.open(fn.urlgen("login"));
+    } else if (hhh[1] != undefined && hh[3] == 'register') {
+      console.log('rrrrrr')
+      window.open(fn.urlgen("loginUser"));
+    }
   }
 
   function loginUser () {
@@ -210,7 +257,7 @@
     console.log('hh[1]', hh[3]);
     var hhh = h.split("?");
     console.log('hhh', hhh[1])
-    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:') {
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:' ) {
       console.log('11111')
 //      window.location.href = '/login?h=' + h
       // window.open('/loginUser?h=' + h);
@@ -225,23 +272,31 @@
       // window.open('/loginUser?h=');
       // window.open(fn.urlgen('loginUser')+'?h=');
     } else if (hhh[1] == undefined && hh[3] == 'forget') {
-      console.log('forget');
+      // console.log('forget');
       window.open(fn.urlgen("login"));
+    } else if (hhh[1] != undefined && hh[3] == 'register?h=http:'){
+      console.log('rrrrrr')
+      window.open(fn.urlgen("loginUser"));
     }
   }
   //登录发送验证码
   function sendphone () {
     if ($('#phone').val() === '') {
 //            let butp = document.getElementById('phone')
-      $('#phone').parent().addClass("has-error").removeClass("has-success");
-      $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#phone').parent().addClass("has-error").removeClass("has-success");
+      // $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
       return
     }
     if (!/^1\d{10}$/.test($("#phone").val())) {
 //            let butp = document.getElementById('phone')
-      $('#phone').parent().addClass("has-error").removeClass("has-success");
-      $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#phone').parent().addClass("has-error").removeClass("has-success");
+      // $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
+      $('#login_error_text').html('请输入正确手机号码')
       return
+    } else {
+      $('#login_e_phone').css('display','none');
     }
     if ($('#tupian').val() == '') {
       layer.msg('请输入图片验证码');
@@ -251,7 +306,7 @@
       layer.msg('请输入4位图片验证码');
       return
     }
-    console.log('tupian',$('#tupian').val().toLowerCase())
+    // console.log('tupian',$('#tupian').val().toLowerCase())
     $.ajax({
 //          url: 'http://192.168.100.77/api/sendcode/' + $('#phone').val(),
 //    url: 'http://www.51daxuetong.cn/api/sendcode/' + $('#phone').val(),
@@ -266,7 +321,7 @@
       dataType: 'json',
       withCredentials:true,
       success:function(msg){
-        console.log('msg', msg);
+        // console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
           var downcount = 60;
@@ -301,21 +356,26 @@
   function login_user () {
     if ($('#phone').val() === '') {
 //            let butp = document.getElementById('phone')
-      $('#phone').parent().addClass("has-error").removeClass("has-success");
-      $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#phone').parent().addClass("has-error").removeClass("has-success");
+      // $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
       return
     }
     if (!/^1\d{10}$/.test($("#phone").val())) {
 //            let butp = document.getElementById('phone')
-      $('#phone').parent().addClass("has-error").removeClass("has-success");
-      $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#phone').parent().addClass("has-error").removeClass("has-success");
+      // $('#phone').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone').css('display','block');
+      $('#login_error_text').html('请输入正确手机号码')
       return
+    } else {
+      $('#login_e_phone').css('display','none');
     }
     if ($('#verify').val() === '') {
       layer.msg('请输入手机验证码');
       return
     }
-    console.log('checkbox',$("#guwen input[type='checkbox']").is(':checked'))
+    // console.log('checkbox',$("#guwen input[type='checkbox']").is(':checked'))
     if (!$("#guwen input[type='checkbox']").is(':checked')) {
       layer.msg('请同意注册协议');
       return
@@ -329,14 +389,13 @@
         code: $('#verify').val()
       },
       success:function(msg) {
-        console.log('aaaaaa');
-        console.log('msg', msg);
+        // console.log('msg', msg);
         if (msg.code == 0) {
           layer.msg('登录成功');
           layer.close(layeropen);
           window.location.reload();
         } else {
-          console.log(msg)
+          // console.log(msg)
           layer.msg(msg.message)
         }
       }
@@ -344,13 +403,13 @@
   }
 //普通用户退出
 function outlogin () {
-  var login_info = JSON.parse($.cookie('login_ss'));
+  var login_info = JSON.parse(cookie('login_ss'));
   var h = window.location.href;
-    console.log('h', h);
+    // console.log('h', h);
     var hh = h.split("/");
-    console.log('hh[1]', hh[3]);
+    // console.log('hh[1]', hh[3]);
     var hhh = h.split("?");
-    console.log('hhh', hhh[1])
+    // console.log('hhh', hhh[1])
     $.ajax({
       url: portname+'/login_out',
       type: 'GET',
@@ -358,15 +417,15 @@ function outlogin () {
       jsonpCallback:'cb',
       success:function(msg){
         if (msg == '0') {
-          console.log('登出')
+          // console.log('登出')
           if (hh[3] == 'forget' && hh[3] == 'login' && hh[3] == 'loginUser' || hh[3] == undefined || hh[3] == '' || hh[4] == '' || hh[4] == undefined || hh[4] == 'article' || hh[4] == 'case' || hh[4] == 'album' || hh[4] == 'hot') {
             window.location.reload();
           }else if (login_info.usertype == 1) {
-            console.log('1')
+            // console.log('1')
             window.location.href = '/loginUser'
             // window.open('/loginUser');
           }else {
-            console.log('2')
+            // console.log('2')
             window.location.href = '/login'
             // window.open('/login');
           }
@@ -405,7 +464,7 @@ function outlogin () {
       dataType: 'json',
       withCredentials:true,
       success:function(msg){
-        console.log('msg', msg);
+        // console.log('msg', msg);
         if (msg.code === 0) {
           layer.msg('短信发送成功，请查阅手机');
         } else {
@@ -463,14 +522,14 @@ function outlogin () {
         code: $('#verify_reg').val()
       },
       success:function(msg) {
-        console.log('msg', msg);
+        // console.log('msg', msg);
         if (msg.code == 0) {
           layer.msg('登录成功');
           layer.close(layeropen);
           window.location.reload();
         } else {
-          console.log(msg)
-          layer.msg(msg.message)
+          // console.log(msg)
+          layer.msg(msg.message);
         }
       }
     });

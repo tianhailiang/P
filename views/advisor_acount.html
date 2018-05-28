@@ -1,17 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head >
   <meta charset="UTF-8">
   <title></title>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_sec.css" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/side_menu.css"/>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/community_advisor.css"/>
-  <link href="{{helper.cdnhost}}/assets/css/widget/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-  <link href="{{helper.cdnhost}}/assets/css/widget/style.css?v=4.1.0" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget/top.css" >
   {% include "header_new.html" %}
-  <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-  <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+  
 
   <style>
     .content_title{
@@ -33,7 +27,7 @@
       margin-left: 188px; float: left;
     }
     .register_nei_content_s .register_nei_form input{
-      padding-left: 5px;  float: left;  margin-left: 10px;  margin-bottom: 30px;  width: 276px;  height: 30px;
+      padding-left: 5px;  float: left;  margin-left: 10px;  margin-bottom: 30px;  width: 276px;  height: 30px;border: 1px solid #ccc;border-radius: 4px;background-color: #fff;background-image: none;
     }
     .register_nei_content_s .title{
       font-size: 14px;  color: #333;  float: left;  margin-top: 5px;line-height: 30px;
@@ -54,6 +48,40 @@
         display: block;
         width:100%;
         height:100%;
+    }
+    .register_nei_form .login_error{
+      background-color: #FFFBEF;
+      border: 1px solid #C13232;
+      padding: 6px 12px;
+      z-index: 1;
+      box-shadow: 0 1px 1px #eee;
+      color: #C13232;
+      position: absolute;
+      right: 10px;
+      left: 350px;
+      top: -19px;
+      opacity: 1;
+    }
+    .register_nei_form .login_error:after,.register_nei_form .login_error:before{
+      border: 6px solid transparent;
+      content: ' ';
+      position: absolute;
+      left: 1em;
+    }
+    .register_nei_form .form-group .login_error:before{
+      border-top-color: #C13232;
+      bottom: -13px;
+    }
+    .register_nei_form .form-group .login_error:after{
+      border-top-color: #fffbef;
+      bottom: -12px;
+    }
+    .register_nei_form .login_x{
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+      margin-right: 5px;
+      background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
     }
     /*轮播图*/
     .banner-box{
@@ -98,7 +126,7 @@
       {{ user.user(userinfo,helper) }}
       {% elif login_info.usertype == 2 %} {#顾问#}
       {% import "widget2/community_advisor/community_advisor.html" as advisor %}
-      {{ advisor.advisor(userinfo,helper,login_info) }}
+      {{ advisor.advisor_center(userinfo,helper,login_info) }}
       {% elif login_info.usertype == 3 %} {#参赞#}
       {% import "widget2/community_advisor/community_advisor.html" as counsellor %}
       {{ counsellor.counsellor(userinfo,helper,login_info) }}
@@ -133,18 +161,21 @@
           <div class="title">当前登录密码：</div>
           <input type="password" class="form-control" id="old_password" required data-vaild="^[a-zA-Z0-9]{6,16}$" data-errmsg="当前登录密码不正确" />
           <div class="ti">请输入当前登录密码</div>
+          <span class="login_error" id="login_e_old_u" style="display: none"><i class="login_x"></i><em id="login_error_text_old_u">当前登录密码不正确</em></span>
         </div>
 
         <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
           <div class="title">新登录密码  ： &nbsp;</div>
           <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="new_password" data-errmsg="新密码不正确，请输入8-16位数字或字母">
           <div class="ti" style="">密码8-16位，数字、字母字符至少包含两种</div>
+          <span class="login_error" id="login_e_new_u" style="display: none"><i class="login_x"></i><em id="login_error_text_old_u">新密码不正确，请输入8-16位数字或字母</em></span>
         </div>
 
         <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
           <div class="title">重复新密码  ： &nbsp;</div>
           <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="qie_password" data-errmsg="确认密码不正确，请输入8-16位数字或字母">
           <div class="ti">请再次输入密码</div>
+          <span class="login_error" id="login_e_que_u" style="display: none"><i class="login_x"></i><em id="login_error_text_old_u">确认密码不正确，请输入8-16位数字或字母</em></span>
         </div>
 
         <input type="button" id="baocunSubmit" value="保 存" style="margin-left: 115px;background: #C13232;border: none;font-size: 14px;color: #fff"/>
@@ -187,7 +218,7 @@
           slidesPerGroup : 2,
           pagination: true
       });
-    $("form").Vaild();
+    // $("form").Vaild();
     var lS = document.getElementById('baocunSubmit');
     console.log('loginS', lS);
     if (lS.addEventListener) {
@@ -202,55 +233,82 @@
 
   function baocun () {
     if ($('#old_password').val() === '') {
-      $('#old_password').parent().addClass("has-error").removeClass("has-success");
-      $('#old_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '当前登录密码不正确').popover({"trigger":"manual"}).popover("show");
+      // $('#old_password').parent().addClass("has-error").removeClass("has-success");
+      // $('#old_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '当前登录密码不正确').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_old_u').css('display', 'block');
+      $('#login_e_old_u').css('当前登录密码不正确');
       return false
+    } else {
+      $('#login_e_old_u').css('display', 'none');
     }
     if ($('#new_password').val() === '') {
-      $('#new_password').parent().addClass("has-error").removeClass("has-success");
-      $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '新密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      // $('#new_password').parent().addClass("has-error").removeClass("has-success");
+      // $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '新密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_old_u').css('display', 'none');
+      $('#login_e_que_u').css('display', 'none');
+      $('#login_e_new_u').css('display', 'block');
+      $('#login_e_new_u').html('新密码不正确，请输入8-16位数字或字母');
       return false
     }
     if ($('#qie_password').val() === '') {
-      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
-      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      // $('#qie_password').parent().addClass("has-error").removeClass("has-success");
+      // $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_old_u').css('display', 'none');
+      $('#login_e_new_u').css('display', 'none');
+      $('#login_e_que_u').css('display', 'block');
+      $('#login_e_que_u').html('确认密码不正确，请输入8-16位数字或字母');
       return false
     }
     if ($('#new_password').val() !== $('#qie_password').val()) {
       console.log('dddddd')
-      $('#new_password').parent().addClass("has-error").removeClass("has-success");
-      $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
-      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
-      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
+      // $('#new_password').parent().addClass("has-error").removeClass("has-success");
+      // $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
+      // $('#qie_password').parent().addClass("has-error").removeClass("has-success");
+      // $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次输入密码不一致').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_new_u').css('display', 'block');
+      $('#login_e_new_u').html('两次输入密码不一致');
+      $('#login_e_que_u').css('display', 'block');
+      $('#login_e_que_u').html('两次输入密码不一致');
       return false
+    } else {
+      $('#login_e_new_u').css('display', 'none');
+      $('#login_e_que_u').css('display', 'none');
     }
     if (!/^[a-zA-Z0-9]{8,16}$/.test($("#new_password").val())) {
       //$("#new_password").parent().removeClass("has-error").addClass("has-success");
-      $("#new_password").popover("destroy");
-      console.log('888888888888')
-      //$('#new_password').parent().addClass("has-error").removeClass("has-success");
-       window.setTimeout(function(){
-         $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '新密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
-       },500)
+      // $("#new_password").popover("destroy");
+      // console.log('888888888888')
+      // //$('#new_password').parent().addClass("has-error").removeClass("has-success");
+      //  window.setTimeout(function(){
+      //    $('#new_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '新密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      //  },500)
+      $('#login_e_new_u').css('display', 'block');
+      $('#login_e_new_u').html('新密码不正确，请输入8-16位数字或字母');
       return false
+    } else {
+      $('#login_e_new_u').css('display', 'none');
     }
     if (!/^[a-zA-Z0-9]{8,16}$/.test($("#qie_password").val())) {
       //$('#qie_password').parent().addClass("has-error").removeClass("has-success");
-      $("#qie_password").popover("destroy");
-      window.setTimeout(function(){
-        $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
-      },500)
+      // $("#qie_password").popover("destroy");
+      // window.setTimeout(function(){
+      //   $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '确认密码不正确，请输入8-16位数字或字母').popover({"trigger":"manual"}).popover("show");
+      // },500)
+      $('#login_e_que_u').css('display', 'block');
+      $('#login_e_que_u').html('确认密码不正确，请输入8-16位数字或字母');
       return false
+    } else {
+      $('#login_e_que_u').css('display', 'none');
     }
     var sha1 = hex_sha1($('#old_password').val());
     console.log('sha1', sha1);
     if ($('#username').val() !== '' && $('#nicheng').val() !== '' && $('#new_password').val() === $('#qie_password').val() && /^[a-zA-Z0-9]{8,16}$/.test($("#new_password").val()) && /^[a-zA-Z0-9]{8,16}$/.test($("#qie_password").val())) {
-      $("#old_password").parent().removeClass("has-error").addClass("has-success");
-      $("#old_password").popover("destroy");
-      $("#new_password").parent().removeClass("has-error").addClass("has-success");
-      $("#new_password").popover("destroy");
-      $("#qie_password").parent().removeClass("has-error").addClass("has-success");
-      $("#qie_password").popover("destroy");
+      // $("#old_password").parent().removeClass("has-error").addClass("has-success");
+      // $("#old_password").popover("destroy");
+      // $("#new_password").parent().removeClass("has-error").addClass("has-success");
+      // $("#new_password").popover("destroy");
+      // $("#qie_password").parent().removeClass("has-error").addClass("has-success");
+      // $("#qie_password").popover("destroy");
       $.ajax({
         url: '/soapi/user_password',
         type:'POST',
@@ -277,14 +335,12 @@
     }
   }
 </script>
-<script>
-  var login_ss = null; 
-  if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));  
-  }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 </body>

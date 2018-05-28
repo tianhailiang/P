@@ -13,6 +13,7 @@ $.fn.checkItem=function()
         //$(this).parents('li').addClass('checked').siblings().removeClass('checked');
         if ($(this).parents('li').hasClass('checked')) {
             e.preventDefault();
+            window.location.reload();
         }
         if ($(this).parents('li').hasClass('up')) {
             $(this).find('span').html('&#xe60b;');

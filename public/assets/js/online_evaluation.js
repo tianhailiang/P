@@ -86,7 +86,7 @@ $(function(){
 
     $.ajax({
       url: ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
-      type:'POST',
+      type:'GET',
       dataType:'json',
       //jsonpCallback: 'callback',
       data:{

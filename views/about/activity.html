@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 {% include "header_new.html" %}
-<style>
+<style type="text/css">
   .new-activity{
     padding:0 20px;
   }
@@ -159,30 +159,30 @@
         {% for item in activitylist.list %}
           {% if loop.index%2==1 %}
         <div class="new-activity-item">
-          <h2 class="new-activity-item-title"><span class="city-name">【{{item.hold_city | getCity}}】</span><a target="_blank"
-            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(18)}}</a><span  class="activity-time">{{ item.inputtime | getDefaultFormat }}</span></h2>
+          <h2 class="new-activity-item-title"  style="font-weight: normal;"><span class="city-name">【{{item.hold_city | getCity}}】</span><a target="_blank"
+            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(18)}}</a><span  class="activity-time">{{ item.start_time  | shorten(10) }}</span></h2>
           <div class="new-activity-item-con">
             <p class="description"><span>{{item.description | ellipsis(27)}}</span><a target="_blank" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
             <ul>
               <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time | shorten(-3)}}至{{item.end_time | shorten(-3)}}</span></li>
               <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}} </span></li>
               <li><i class="iconfont">&#xe662;</i><span>针对人群：{{item.crowd}} </span></li>
-              <li class="booking"><span onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')" >立即预约</span></li>
+              <li class="booking" onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')"><span  >立即预约</span></li>
             </ul>
           </div>
         </div>
         {% else %}
 
         <div class="new-activity-item" style="margin-left: 20px">
-          <h2 class="new-activity-item-title"><span class="city-name">【{{item.hold_city | getCity}}】</span><a target="_blank"
-            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(18)}}</a><span  class="activity-time">{{ item.inputtime | getDefaultFormat }}</span></h2>
+          <h2 class="new-activity-item-title"  style="font-weight: normal;"><span class="city-name">【{{item.hold_city | getCity}}】</span><a target="_blank"
+            href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(18)}}</a><span  class="activity-time">{{ item.start_time | shorten(10) }}</span></h2>
           <div class="new-activity-item-con">
             <p class="description"><span>{{item.description | ellipsis(27)}}</span><a target="_blank" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">【查看详情】</a></p>
             <ul>
               <li><i class="iconfont">&#xe6be;</i><span>活动时间：{{item.start_time | shorten(-3)}}至{{item.end_time | shorten(-3)}}</span></li>
               <li><i class="iconfont">&#xe63a;</i><span>活动地址：{{item.address_des | ellipsis(27)}}  </span></li>
               <li><i class="iconfont">&#xe662;</i><span>针对人群：{{item.crowd}} </span></li>
-              <li class="booking"><span onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')">立即预约</span></li>
+              <li class="booking" onclick="rand_zixun('{{  item.country | getCountry }}',156,'{{item.id}}')"><span >立即预约</span></li>
             </ul>
           </div>
         </div>
@@ -201,21 +201,21 @@
         {% if loop.index<=6 %}
         {% if loop.index%2==1 %}
         <div class="new-activity-item new-activity-qita">
-          <h2><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank"  class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(10)}}</a><i>最新</i></h2>
+          <h2  style="font-weight: normal;"><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank"  class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(10)}}</a><i>最新</i></h2>
         </div>
         {% else %}
         <div class="new-activity-item new-activity-qita" style="margin-left: 20px;">
-          <h2><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(10)}}</a><i>最新</i></h2>
+          <h2  style="font-weight: normal;"><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(10)}}</a><i>最新</i></h2>
         </div>
         {% endif %}
         {% else %}
         {% if loop.index%2==1 %}
         <div class="new-activity-item new-activity-qita">
-          <h2><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(12)}}</a></h2>
+          <h2  style="font-weight: normal;"><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(12)}}</a></h2>
         </div>
         {% else %}
         <div class="new-activity-item new-activity-qita" style="margin-left: 20px;">
-          <h2><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(12)}}</a></h2>
+          <h2  style="font-weight: normal;"><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(12)}}</a></h2>
         </div>
         {% endif %}
         {% endif %}
@@ -239,5 +239,9 @@
 <script src="{{helper.cdnhost}}/assets/js/footer.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js" ></script>
-
+<script>
+  $(function(){
+    show_guanggao()
+  })
+</script>
 </html>

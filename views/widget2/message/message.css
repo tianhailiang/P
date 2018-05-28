@@ -45,12 +45,23 @@
     margin-top: 20px;
     margin-left: 20px;
 }
-// .right-title div{
-//     width: 115px;
-//     height: 40px;
-//     background: #C13232;
-//     font-size: 18px;
-//     color: #fff;
-//     text-align: center;
-//     line-height: 40px;
-// }
+/*ÂÖ²¥Í¼*/
+.banner-box{
+    margin-top: 20px;
+    height: 130px;
+    /*background-color: yellow;*/
+}
+.banner-box-left{
+    background: #dcdcdc;
+    height: 130px;
+}
+.banner-box-right{
+    background: #dcdcdc;
+    height: 130px;
+}
+.slider .slider-dot ul li{
+    border-radius: 50%;
+}
+.slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left {
+    margin-top: -33px
+}

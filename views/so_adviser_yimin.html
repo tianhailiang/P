@@ -2,10 +2,10 @@
 <html>
 <head>
 {% include "header_new.html" %}
-<link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/search_result.css"/>
-<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6.js"></script>
-<style>
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/search_result.css"/>
+<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
+<style type="text/css">
     .pagination-box{
         float: left;
         position: relative;
@@ -134,7 +134,7 @@
             slidesPerGroup : 2,
           pagination: true
         });
-/*        var area = $.cookie('currentarea') ? $.cookie('currentarea') : 1;
+/*        var area = cookie('currentarea') ? cookie('currentarea') : 1;
         var keyword = $('#result-keyword').text();
         var load_page = $('#load-more-article').attr('data-cur_page')*1+1;
         function more_artice (art_list) {

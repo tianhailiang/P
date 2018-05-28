@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head lang="en"> 
+<html lang="en">
+<head > 
   {% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
-  <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6.js"></script>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
-  <style>
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
+  <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
+  <style type="text/css">
     .list-h{
         height:130px;
     }
@@ -66,21 +66,21 @@
     </div>
   </div>
   <div class="dui-layout-div"></div>
-  <div class="dui-layout-con left" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
+  <div class="dui-layout-con left" style="margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
     <div style="margin-top: 20px">
       <div style="">
-          {% if userinfo.status == 1 %} {#离职顾问#}
+          {#{% if userinfo.status == 1 %} 
           {% import "widget2/community_nav/community_nav.html" as adviser_nav_leave %}
           {{adviser_nav_leave.adviser_nav_leave('专栏', userinfo.uid, helper)}}
-          {% else %} {#在职顾问#}
+          {% else %} #}
           {% if userinfo.usertype == 2 %}
           {% import "widget2/community_nav/community_nav.html" as adviser_nav %}
-          {{adviser_nav.adviser_nav('专栏', userinfo.uid, helper)}}
+          {{adviser_nav.adviser_nav('专栏', userinfo, helper)}}
           {% elif userinfo.usertype == 3 %}
           {% import "widget2/community_nav/community_nav.html" as canzan_nav %}
           {{canzan_nav.canzan_nav('专栏', userinfo.uid, helper)}}
           {% endif %}
-          {% endif %}
+          {#% endif %#}
       </div>
       {% if zhuanlanlist.list.length > 0 %}
       <div class="right-main clearfix">
@@ -113,23 +113,24 @@
 {{slide.leyu_slide(userinfo,login_info,helper) }}
 {% endif %}
 {% include "widget/new_footer/common_footer.html" %}
-<script>
-  var login_ss = null; 
-  if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));  
-  }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide2_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
 <script>
   $(function(){
+      var login_ss = null;
+      if(cookie('login_ss') != undefined){
+          login_ss = JSON.parse(cookie('login_ss'));
+      }
     window._bd_share_config = {
       "common": {
         "bdSnsKey": {},
@@ -315,11 +316,11 @@
     function report(){
       //举报调取函数
       if(login_ss == undefined){
-        layer.msg('你还没有登录')
-        window.setTimeout(function(){
+        // layer.msg('你还没有登录')
+        // window.setTimeout(function(){
           // window.location.href =fn.curlgen('login','h='+window.location.href);
           getlogin();
-        },1000);
+        // },1000);
         return false;
       }
       var report_content = null;
@@ -370,8 +371,6 @@
               report_content:report_content,
               userid:login_ss.uid,
               article_id:$(that).attr("data-artId"),
-              article_url:$(that).attr('data-url'),
-              city_id:$('.advisor-bumen').attr('data-cityId'),
               article_url:$(that).attr('data-url'),
               city_id:$('.advisor-bumen').attr('data-cityId')
             },

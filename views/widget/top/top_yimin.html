@@ -1,6 +1,6 @@
 <div class="top" style="position:relative;z-index: 1002;">
 </div>
-<style>
+<style type="text/css">
   .l_u{
     width: 421px;
     height: 434px;
@@ -49,18 +49,26 @@
     line-height: 25px;
   }
   .l_u_com_phone{
-    width: 281px;
-    height: 26px;
+    width: 295px;
+    height: 40px;
     padding-left: 35px;
     font-size: 14px;
     color: #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
   }
   .l_u_com_yan{
     width: 182px;
-    height: 26px;
+    height: 40px;
     padding-left: 34px;
     font-size: 14px;
     color: #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
   }
   .l_u_com_bang{
     width: 90px;
@@ -75,6 +83,8 @@
     height: 40px;
     background-color: #c13232;
     color: #fff;
+    border: 1px solid #c13232;
+    border-radius: 4px;
   }
   .l_u_com_but:hover{
     color: #fff;
@@ -161,6 +171,22 @@ input[type="checkbox"] {
   top: -13px;
   position: absolute;
 }
+.top_400{
+      width: 12px;
+      height: 12px;
+    }
+    .text_shu{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #C13232;
+      color: #fff;
+      position: absolute;
+      top: 0px;
+      left: -16px;
+      text-align: center;
+      line-height: 18px;
+    }
 </style>
 <!-- 登录 -->
 <div class="l_u" id="l_u" style="display: none;height: 500px;">
@@ -253,10 +279,14 @@ input[type="checkbox"] {
 </div>
 <script>
   $(function() {
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     var user_type;
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-left" style="display: inline-block;width: 50%;">'+
+                '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">'+
+                '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
                 '<div class="top-con-right">'+
                 '<span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
@@ -271,6 +301,10 @@ input[type="checkbox"] {
       $(".top").append(val);
     } else {
       var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-left" style="display: inline-block;width: 40%;">'+
+                '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400" style="margin-right: 3px;">'+
+                '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
                 '<div class="top-con-right">'+
                 '<ul>';
       if (login_nickname.usertype == 1) {
@@ -295,11 +329,7 @@ input[type="checkbox"] {
 
   })
 </script>
-<script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
-<script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
-<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/top.js"></script>
+
 <script>
   $(function () {
     var addEvent = function(element,type,callback){
@@ -312,22 +342,18 @@ input[type="checkbox"] {
     var weibo_top = document.getElementById('weibo_top');
     addEvent(weibo_top,'touchstart',function(){
       if ($('#weibo_').css('display') == 'block') {
-        console.log('11111111')
         $("#weibo_").css("display", "none");
       }
       else {
-        console.log('22222222')
         $("#weibo_").css("display", "block");
       }
     });
     var weixin = document.getElementById('weixin');
     addEvent(weixin,'touchstart',function(){
       if ($('#weixin_').css('display') == 'block') {
-        console.log('11111111')
         $("#weixin_").css("display", "none");
       }
       else {
-        console.log('22222222')
         $("#weixin_").css("display", "block");
       }
     });

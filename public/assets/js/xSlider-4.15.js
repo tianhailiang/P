@@ -1,4 +1,5 @@
 ;(function($){
+  /*fix 5.16 noon*/
   var xSlider = function(el, userConfig) {
     var _this = this;
     this.el = el;

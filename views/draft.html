@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   {% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/draft.css" >
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/draft.css" >
   <!--[if lt IE 10]>
   <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
   <![endif]-->
@@ -25,7 +25,7 @@
 	    <!-- =======顾问头像关注====== -->
       {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
       {% if userinfo.usertype == 2 %}
-        {{community_advisor.advisor(userinfo,helper,login_info)}}
+        {{community_advisor.advisor_center(userinfo,helper,login_info)}}
       {% elif userinfo.usertype == 3 %}  
         {{community_advisor.counsellor(userinfo,helper,login_info)}}
       {% else %}  
@@ -106,22 +106,30 @@
     {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
     {{slide.leyu_slide(helper) }}
     {% endif %}
-  <script>
-  var login_ss = null; //获取用户信息
-  if($.cookie('login_ss') != undefined){
-    login_ss = JSON.parse($.cookie('login_ss'));  
-  }
-  </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+  {% if userinfo.adviser_type==1 %}
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+  {% elseif  userinfo.adviser_type==2 %}
+  <script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+  {% endif %}
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/select.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script>
+    var getQueryString = function (name) {
+      var reg;
+      var search = window.location.search.substr(1);
+      if(search.indexOf("?") != -1){
+          reg = new RegExp("(^|&)" + name + "=([^]*)(&|$)");
+      }else{
+          reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      }
+      var r = search.match(reg);
+      if(r != null) return r[2];
+      return null;
+    };
     $(function(){
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
@@ -143,10 +151,9 @@
             slidesPerGroup : 2,
           pagination: true
         });
-      console.log($.cookie('login_ss'))
       var login_ss = null; //获取用户信息
-      if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));  
+      if(cookie('login_ss') != undefined){
+        login_ss = JSON.parse(cookie('login_ss'));  
       }
       var cur_is_draft = Number(getQueryString('is_draft')) || 2;
       $(".main-title-right span").on("click",function(){
@@ -221,7 +228,6 @@
 
         });
       });
-
     });
 
   </script>

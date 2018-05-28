@@ -104,15 +104,17 @@
 <script src="{{helper.cdnhost}}/assets/js/jquery.qqFace.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/moment.js" ></script>
 <script>
-  var login_ss = null; //获取用户信息
-  if($.cookie('login_ss') != undefined){
-    login_ss = JSON.parse($.cookie('login_ss'));  
-  }
-  console.log(login_ss)
-  var adviserId = $("#commentBtn").attr('data-memberId'); // 获取顾问id
-  var article_id = $('#commentBtn').attr("data-artId"); // 获取文章id;
-  var city_id = $('.advisor-bumen').attr('data-cityId');//获取顾问的分公司id
+  var adviserId = '';
+  var article_id = '';
+  var city_id = '';
+  var login_ss = null;
   $(function(){
+    if(cookie('login_ss') != undefined){
+      login_ss = JSON.parse(cookie('login_ss'));
+    }
+    adviserId = $("#commentBtn").attr('data-memberId'); // 获取顾问id
+    article_id = $('#commentBtn').attr("data-artId"); // 获取文章id;
+    city_id = $('.advisor-bumen').attr('data-cityId');//获取顾问的分公司id
     $("#saytext").on("change",function(){
     	this.value = this.value.substring(0, 500);
     });	

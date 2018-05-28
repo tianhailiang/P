@@ -2,16 +2,7 @@
 <html lang="en">
 <head>
 {% include "header_new.html" %}
-<!--
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_ninth.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_tenth.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/xSlider.css"/>
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/layout.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy6.css">
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/expertunscramble.css">
--->
-<style>
+<style type="text/css">
 .wrap-con  {
   -webkit-appearance: radio;
   -moz-appearance: radio;
@@ -206,21 +197,15 @@
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
-
-<script>
-  $('.branch-lunbo-slider .slider').xSlider({
-    //轮播图配置
-    current: 0,
-    speed: 500,
-    intervalTime: 5000,
-    pagination: true
-  });
-
-</script>
-<!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
 <script>
   $(function(){
-
+    $('.branch-lunbo-slider .slider').xSlider({
+      //轮播图配置
+      current: 0,
+      speed: 500,
+      intervalTime: 5000,
+      pagination: true
+    });
     var baomingfaangshi = {
       //phone
       phone: function(phone){
@@ -363,7 +348,7 @@
       }
       $.ajax({
         url:ajaxUrlPrefix.nodeapi+'/cmsapi/sign_up_way',
-        type:'POST',
+        type:'GET',
         data:{
           organization_name: $('#quickPhone').val(),
           contact_people: $('#quickPhone1').val(),

@@ -2,11 +2,11 @@
 <html>
 <head>
 {% include "header_new.html" %}
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/bottom_comment.css"/>
+    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget2/bottom_comment.css" >
 <!--[if lt IE 10]>
 <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
 <![endif]-->
-<style>
+<style type="text/css">
   .right-cont{
       width: 878px;
       /*height: 1365px;*/
@@ -98,7 +98,7 @@
             {% if login_info.usertype == 1 %} {#用户#}
             {{ community_advisor.user(userinfo,helper) }}
             {% elif login_info.usertype == 2 %} {#顾问#}
-            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {{ community_advisor.advisor_center(userinfo,helper,login_info) }}
             {% elif login_info.usertype == 3 %} {#参赞#}
             {{ community_advisor.counsellor(userinfo,helper,login_info) }}
             {% endif %}
@@ -124,7 +124,7 @@
             {% if article_data and article_data.list.length > 0 %}
             <div class="right-main clearfix case-list-box">
                 {% for item in article_data.list %}
-                <div class="article-list-item">
+                <div class="article-list-item" id="art_box_{{item.id}}">
                     {% import "widget2/article/article.html" as article_edit %}
                     {{ article_edit.article_edit(item, helper) }}
                   {% include "widget2/bottom_comment/bottom_comment_zhuanlan_zhuye.html" %}
@@ -153,24 +153,24 @@
   {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
   {{slide.leyu_slide(helper) }}
   {% endif %}
-  <script>
-    var login_ss = null; 
-    if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));  
-    }
-  </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+{% if userinfo.adviser_type==1 %}
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+{% elseif  userinfo.adviser_type==2 %}
+<script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+{% endif %}
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/common/select.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan.js"></script>
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script>
     $(function() {
+        var login_ss = null;
+        if(cookie('login_ss') != undefined){
+            login_ss = JSON.parse(cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
@@ -199,7 +199,7 @@
             }else if(item.user_info.usertype ==3){
               identity = 'canzan';
             }
-            aItemHtml += '<div class="article-list-item"><div class="art-box clearfix" >'+
+            aItemHtml += '<div class="article-list-item" id="art_box_'+item.id+'"><div class="art-box clearfix" >'+
                         '<a target="_blank" href="' +fn.urlgen(item.uid.toString()) +'">'+
                         '<div class="adviser-head" style="background:url(' + fn.avaterimg(item.uid, "small",item.user_info.status,item.user_info.version)+') no-repeat 0 0;background-size: cover;">'+
                         '</div>'+

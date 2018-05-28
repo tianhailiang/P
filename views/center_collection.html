@@ -2,11 +2,11 @@
 <html>
 <head>
 {% include "header_new.html" %}
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/bottom_comment.css"/>
+    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget2/bottom_comment.css" >
   <!--[if lt IE 10]>
   <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
   <![endif]-->
-<style>
+<style type="text/css">
     .right-cont{
         width: 878px;
         /*height: 1365px;*/
@@ -88,7 +88,7 @@
             {% if login_info.usertype == 1 %} {#用户#}
             {{ community_advisor.user(userinfo,helper) }}
             {% elif login_info.usertype == 2 %} {#顾问#}
-            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {{ community_advisor.advisor_center(userinfo,helper,login_info) }}
             {% elif login_info.usertype == 3 %} {#参赞#}
             {{ community_advisor.counsellor(userinfo,helper,login_info) }}
             {% endif %}
@@ -154,24 +154,28 @@
   {{slide.leyu_slide(helper) }}
   {% endif %}
   {% endif %}
-  <script>
-    var login_ss = null; //获取用户信息
-    if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));  
-    }
-  </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+  {% if userinfo.usertype == 1 %}
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+  {% elseif userinfo.usertype == 2 %}
+    {% if userinfo.adviser_type==1 %}
+    <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+    {% elseif  userinfo.adviser_type==2 %}
+    <script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+    {% endif %}
+  {% endif %}
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/common/select.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_wode.js"></script>
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script>
     $(function () {
+        var login_ss = null; //获取用户信息
+        if(cookie('login_ss') != undefined){
+            login_ss = JSON.parse(cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,

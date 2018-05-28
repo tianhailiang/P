@@ -21,6 +21,7 @@
 }
 .gw-likelist .img-responsive{display: inline-block;height: 51px;width:51px;border-radius: 50%;-webkit-border-radius:50%;}
 .gw-likelist .article{margin-top:5px;margin-bottom:8px;font-size: 16px;color: #333;}
+.gw-likelist .like-title:hover .article{ color: #c13232;}
 
 
 

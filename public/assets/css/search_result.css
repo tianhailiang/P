@@ -8,7 +8,7 @@
 .main-left .main-searchbox .search-text{
     display: block;
     float: left;
-    width: 779px;
+    width: 778px;
     height: 38px;
     border: 1px solid #DCDCDC;
     border-right: none;
@@ -22,12 +22,14 @@
     float: left;
     width: 60px;
     height: 40px;
+    line-height: 40px;
     text-align: center;
     background-color: #c13232;
     font-size: 18px;
 }
 .main-left .main-searchbox .search-btn i {
     font-size: 22px;
+    color: #fff;
 }
 .main-left .result-bar{
     font-size: 14px;
@@ -191,7 +193,7 @@
     vertical-align: middle;
     width: 16px;
     height: 16px;
-    margin-rigt: 10px;
+    margin-right: 10px;
     border-radius: 50%;
     border: 1px solid #c13232;
     color: #c13232;
@@ -207,6 +209,7 @@
     border-radius: 50%;
     background-color: transparent;
 }
-.page-search-type input[type="radio"].checked + label span i{
-    background-color: #c13232;
-}
+.page-search-type input[type="radio"].checked + label span i{background-color: #c13232;}
+.result-item .item-info .info-top a:link{color:#333; }
+.result-item .item-info .info-top a:visited{ color: #999;}
+.result-item .item-info .info-top a:hover{color:#c13232; }

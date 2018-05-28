@@ -1,6 +1,6 @@
 <div class="top" style="position:relative;z-index: 1002;">
 </div>
-<style>
+<style type="text/css">
   .l_u{
     width: 421px;
     height: 460px;
@@ -49,18 +49,26 @@
     line-height: 25px;
   }
   .l_u_com_phone{
-    width: 281px;
-    height: 26px;
+    width: 295px;
+    height: 40px;
     padding-left: 35px;
     font-size: 14px;
     color: #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
   }
   .l_u_com_yan{
     width: 182px;
-    height: 26px;
+    height: 40px;
     padding-left: 34px;
     font-size: 14px;
     color: #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
   }
   .l_u_com_bang{
     width: 90px;
@@ -75,6 +83,8 @@
     height: 40px;
     background-color: #c13232;
     color: #fff;
+    border: 1px solid #c13232;
+    border-radius: 4px;
   }
   .l_u_com_but:hover{
     color: #fff;
@@ -161,6 +171,57 @@ input[type="checkbox"] {
   top: -13px;
   position: absolute;
 }
+.login_error{
+      background-color: #FFFBEF;
+      border: 1px solid #C13232;
+      padding: 6px 12px;
+      z-index: 1;
+      box-shadow: 0 1px 1px #eee;
+      color: #C13232;
+      position: absolute;
+      right: -165px;
+      left: 295px;
+      top: -19px;
+      opacity: 1;
+    }
+    .login_error:after,.login_error:before{
+      border: 6px solid transparent;
+      content: ' ';
+      position: absolute;
+      left: 1em;
+    }
+    .login_error:before{
+      border-top-color: #C13232;
+      bottom: -13px;
+    }
+    .login_error:after{
+      border-top-color: #fffbef;
+      bottom: -12px;
+    }
+    .login_x{
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+      margin-right: 5px;
+      background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
+    }
+    .top_400{
+      width: 12px;
+      height: 12px;
+
+    }
+    .text_shu{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #C13232;
+      color: #fff;
+      position: absolute;
+      top: 0px;
+      left: -16px;
+      text-align: center;
+      line-height: 18px;
+    }
 </style>
 <!-- 登录 -->
 <div class="l_u" id="l_u" style="display: none;height: 500px;">
@@ -172,6 +233,7 @@ input[type="checkbox"] {
       <div class="form-group inputtext_isr" style="position: relative;">
         <input type="text" class="form-control l_u_com_phone" placeholder="请输入手机号" id="phone" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确"/>
         <i style="color: #999;position: absolute;top: 14px;width: 12px;left: 8px" class="iconfont">&#xe679;</i>
+        <span class="login_error" id="login_e_phone" style="display: none;"><i class="login_x"></i><em id="login_error_text">请输入手机号</em></span>
       </div>
       <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
         <input placeholder="填写图形验证码" type="text" id="tupian" class="form-control l_u_com_yan" required data-vaild="^\d{6}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
@@ -253,10 +315,14 @@ input[type="checkbox"] {
 </div>
 <script>
   $(function() {
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     var user_type;
     if (login_nickname == null) {
-      var val = '<div class="dui-layout-lg top-con">'+
+      var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-left" style="display: inline-block;width: 50%;">'+
+                '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">'+
+                '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
                 '<div class="top-con-right">'+
                 '<span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
@@ -265,7 +331,11 @@ input[type="checkbox"] {
                 '</div>'
       $(".top").append(val);
     } else {
-      var val = '<div class="dui-layout-lg top-con">'+
+      var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-left" style="display: inline-block;width: 40%;">'+
+                '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400" style="margin-right: 3px;">'+
+                '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
                 '<div class="top-con-right">'+
                 '<ul>';
       if (login_nickname.usertype == 1) {
@@ -285,11 +355,6 @@ input[type="checkbox"] {
 
   })
 </script>
-<script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
-<script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
-<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/top.js"></script>
 
 
 {#{% if login_nickname == '' %}

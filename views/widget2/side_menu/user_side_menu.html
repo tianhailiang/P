@@ -29,7 +29,7 @@
             {% if mItem.li_name == menu_name %}
             <li class="checked">
                 <div class="title">
-                    <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                    <a class="opc" href="{{helper.urlgen(mItem.li_url)}}">
                         <i class="iconfont">
                             {% if mItem.li_name == '收到的消息' %}
                             &#xe6a9;
@@ -55,7 +55,7 @@
             {% else %}
             <li>
                 <div class="title">
-                    <a target="_blank" class="opc" href="{{helper.urlgen(mItem.li_url)}}">
+                    <a  class="opc" href="{{helper.urlgen(mItem.li_url)}}">
                         <i class="iconfont">
                             {% if mItem.li_name == '收到的消息' %}
                             &#xe6a9;

@@ -2,14 +2,7 @@
 <html lang="en">
 <head>
 {% include "header_new.html" %}
-<!--
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_ninth.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_tenth.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/layout.css" >
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/expertunscramble.css">
--->
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/about.css">
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/about.css">
 <!--
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy3.css"/>
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/corporate_events.css">
@@ -42,5 +35,10 @@
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script>
+  $(function(){
+    show_guanggao()
+  })
+</script>
 </body>
 </html>

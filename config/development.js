@@ -29,8 +29,9 @@ var shequ_prefix = apiconfig.shequ_prefix;
 var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
 var apis = {
-  
-  "login_user":  uc_prefix + 'index.php?m=login',// 普通用户登录
+  "user_register": uc_prefix + 'index.php?m=user_register',//普通用户快速注册
+  "user_login": uc_prefix + 'index.php?m=user_login',//普通用户密码登录
+  "login_user":  uc_prefix + 'index.php?m=login',// 普通用户验证码登录
   "oauth": uc_prefix + 'index.php',
   "bind_phone": uc_prefix + 'index.php?m=bind_phone',// 绑定手机号
   "forget": uc_prefix + 'index.php?m=forgetpassword',//忘记密码
@@ -234,7 +235,8 @@ var apis = {
   //收藏列表
   "get_collection_list":shequ_prefix + 'account/favorite_list/',
   //站内消息
-  "get_msg_list": prefix + 'webmailList',
+  // "get_msg_list": prefix + 'webmailList',
+  "get_msg_list": prefix + 'messages_list',
   //图片库
   "get_attachment":prefix + 'attachment',
   //删除评论接口
@@ -268,6 +270,8 @@ var apis = {
   "get_user_description":shequ_prefix + 'account/get_user_description/',
   //表单提交
   "get_save_feedback":prefix +'save_feedback',
+  //意见反馈
+  "userFeedback":prefix +'userFeedback',
   //文章置顶
   "article_top": shequ_prefix + 'article/article_top/',
   //专题接口

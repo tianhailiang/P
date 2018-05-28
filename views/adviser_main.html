@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head >
   {% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
-  <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6.js"></script>
-  <style>
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
+  <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
+  <style type="text/css">
     .canzanps p {
       font-size: 14px;
       line-height: 26px;
@@ -74,19 +74,19 @@
     </div>
   </div>
   <div class="dui-layout-div"></div>
-  <div class="dui-layout-con left dui-box-shadow" style="border: 1px solid #eee;margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
+  <div class="dui-layout-con left dui-box-shadow" style="margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
     <div class="" style="margin-top: 20px">
       <div>
         {% import "widget2/community_nav/community_nav.html" as community_nav %}
-        {% if userinfo.status == 1 %} {#离职顾问#}
+        {#{% if userinfo.status == 1 %}
         {{community_nav.adviser_nav_leave('主页', userinfo.uid, helper)}}
-        {% else %} {#在职顾问#}
+        {% else %}#}
         {% if userinfo.usertype == 2 %}
-        {{community_nav.adviser_nav('主页', userinfo.uid, helper)}}
+        {{community_nav.adviser_nav('主页', userinfo, helper)}}
         {% elif userinfo.usertype == 3 %}
         {{community_nav.canzan_nav('主页', userinfo.uid, helper)}}
         {% endif %}
-        {% endif %}
+        {#% endif %#}
       </div>
       {% if userinfo.usertype == 2 %}
       {% if guwen_list.list.length > 0 %}
@@ -111,8 +111,8 @@
       {% include "widget2/blank/blank.html" %}
       {% endif %}
       {% else %}{# 参赞介绍 #}
-      <h2 style="font-size: 18px; margin: 20px">参赞介绍：</h2>
-      <div class="canzanps" style="padding-bottom: 20px;margin: 0 20px">{{ canzan_jianjie.description | safe }}</div>
+      <h2 style="font-size: 18px; margin: 20px;font-weight: normal">参赞介绍：</h2>
+      <div class="canzanps" style="padding-bottom: 20px;margin: 0 20px;">{{ canzan_jianjie.description | safe }}</div>
       {% endif %}
     </div>
   </div>
@@ -128,28 +128,27 @@
 {{slide.leyu_slide(userinfo,login_info,helper) }}
 {% endif %}
 {% include "widget/new_footer/common_footer.html" %}
-<script>
-  var login_ss = null;
-  if($.cookie('login_ss') != undefined){
-    login_ss = JSON.parse($.cookie('login_ss'));
-  }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>-->
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js"></script>
 {% if userinfo.usertype==3 %}
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
-{% else %}
+{% elseif userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide2_yimin.js"></script>
 {% endif %}
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
 <script>
   $(function() {
+    var login_ss = null;
+    if(cookie('login_ss') != undefined){
+      login_ss = JSON.parse(cookie('login_ss'));
+    }
     window._bd_share_config = {
       "common": {
         "bdSnsKey": {},
@@ -207,7 +206,6 @@
             uid: thisObj.attr("data-uid")
           },
           success: function (revmsg) {
-            console.log(revmsg)
             if (revmsg.code == 0) {
               var revList = revmsg.data.list;
               var len = revList.length;
@@ -240,10 +238,10 @@
           }
         })
       }
-      
+
     })
     $('.report-btn').on("click", report); //点击举报
-  
+
   //明星顾问轮播
   function appendArticleItem(aitem) {
     var artUrl = '';
@@ -370,10 +368,10 @@
   function report() {
     //举报调取函数
     if (login_ss == undefined) {
-      layer.msg('你还没有登录')
-      window.setTimeout(function () {
+      // layer.msg('你还没有登录')
+      // window.setTimeout(function () {
         getlogin();
-      }, 1000);
+      // }, 1000);
       return false;
     }
     var report_content = null;
@@ -429,7 +427,6 @@
           },
           dataType: 'json',
           success: function (result) {
-            console.log(result)
             if (result.code == 0) {
               layer.msg('举报成功');
               layer.close(index);

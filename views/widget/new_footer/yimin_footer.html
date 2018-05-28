@@ -1,6 +1,12 @@
 <div class="liuxue-footer"  style="min-width:1200px;">
     <div class="liuxue-footer-content" style="margin-bottom: 0;">
-        <div class="foot-map clearfix">
+        <div class="footer-top" style="height: 40px;position: relative">
+            <h2>友情链接:</h2>
+            <div style="float: left;width: 1057px;height: 40px;overflow: hidden">
+                {% esi helper.include(esikey,'fragment/linkList','c=1') %}
+            </div>
+        </div>
+        <div class="foot-map clearfix" style="padding-left: 20px">
             <div class="sitemap sitemap01">
                 <h2>关于金吉列</h2>
                 <ul class="left-ul">
@@ -13,6 +19,7 @@
                     <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/events') }}">大事记</a></li>
                     <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/cooperation') }}">商务合作</a></li>
                     <li><a target="_blank"  rel="nofollow"   href="http://www.jjl.cn/zt/zhaopin/employment.html">诚聘英才</a></li>
+                    <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/contact') }}#Suggestions">意见反馈</a></li>
                 </ul>
             </div>
             <div class="sitemap sitemap02">
@@ -36,20 +43,25 @@
                 </div>
             </div>
         </div>
-        <div class="address clearfix">
+        <div class="address clearfix" style="padding-left: 20px">
             <h2>欢迎来访</h2>
             <ol class="xiangxi-address one" id="qita-city">
                 <li><i class="iconfont">&#xe679;</i><span>400-010-8000</span></li>
                 <li><i class="iconfont">&#xe611;</i><span id="tel">010-65685656</span></li>
                 <li><i class="iconfont">&#xe603;</i><span id="address">北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米) </span></li>
             </ol>
-            <p class="copyright">©2009金吉列出入境咨询服务有限公司 &nbsp;版权所有&nbsp;京ICP备05010035号&nbsp;&nbsp;移民投诉电话：4006-213-315&nbsp;&nbsp;投诉邮箱：315@jjl.cn</p>
+            <p class="copyright" style="padding-left: 0">©2009金吉列出入境咨询服务有限公司 &nbsp;版权所有&nbsp;京ICP备05010035号&nbsp;&nbsp;移民投诉电话：4006-213-315&nbsp;&nbsp;投诉邮箱：315@jjl.cn</p>
             <div class="adviser-login" onclick="adviserlogin()">
                 咨询顾问登录
             </div>
         </div>
     </div>
 </div>
+
+<script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{helper.cdnhost}}/dep/js/layer-1.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/top.js"></script>
+
 <script>
     function adviserlogin () {
         var h = window.location.href;

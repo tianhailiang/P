@@ -5,8 +5,8 @@
  <!--[if lt IE 10]>
   <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
   <![endif]-->
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/upload_photo.css"/>
-<style>
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/upload_photo.css"/>
+<style type="text/css">
 	.rel-case-map{
 	 	width:100%;
 	 	height:130px;
@@ -89,7 +89,7 @@
             {% if login_info.usertype == 1 %} {#用户#}
             {{ community_advisor.user(userinfo,helper) }}
             {% elif login_info.usertype == 2 %} {#顾问#}
-            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {{ community_advisor.advisor_center(userinfo,helper,login_info) }}
             {% elif login_info.usertype == 3 %} {#参赞#}
             {{ community_advisor.counsellor(userinfo,helper,login_info) }}
             {% endif %}
@@ -151,24 +151,24 @@
   {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
   {{slide.leyu_slide(helper) }}
   {% endif %}
-  <script>
-    var login_ss = null;
-    if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));  
-    }
-  </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+  {% if userinfo.adviser_type==1 %}
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+  {% elseif  userinfo.adviser_type==2 %}
+  <script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+  {% endif %}
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/select.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/upload_photoFile.js"></script>
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script>
     $(function () {
+        var login_ss = null;
+        if(cookie('login_ss') != undefined){
+            login_ss = JSON.parse(cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
@@ -409,6 +409,7 @@
           
             if (flag) { //符合要求,请求后台接口
                 to_album_add(login_ss.uid,needSavePhotoArr);
+                $("#save-photos").unbind('click');
             }
             else {
                 layer.msg('第' + descWarn.substring(0,descWarn.length-1)+ '张照片的描述不能为空！')

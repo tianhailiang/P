@@ -5,6 +5,7 @@ var config = require('../config/config');
 var log4js = require('../log/log');
 var log = log4js.getLogger();
 var redis = require('redis');
+var redis_db =  redis.createClient(config.redisCache.port, config.redisCache.host);
 
 function _api_url_path(data, url) {
 
@@ -978,6 +979,16 @@ exports.login_ss = function (data, callback) {
   api.apiRequest_post(url ,data ,callback);
 }
 
+/*顾问登录*/
+exports.register_ss = function (data, callback) {
+  var url = config.apis.user_register;
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url ,data ,callback);
+}
+
 /**
  * 第三方登录接口调用封装
  * @param data
@@ -993,9 +1004,19 @@ exports.oauth = function (data, callback) {
   log.debug('url', url)
 }
 
-/*普通用户登录*/
+/*普通用户验证码登录*/
 exports.login_user = function (data, callback) {
   var url = config.apis.login_user;
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url ,data ,callback);
+}
+
+/*普通用户密码登录*/
+exports.user_login = function (data, callback) {
+  var url = config.apis.user_login;
   if (url == null){
     callback('404');
     return;
@@ -1126,7 +1147,19 @@ exports.yimin_shouye = function (data, callback) {
       }
     })
 };
-
+exports.link = function (data, callback) {
+    //redis 缓存友情链接·
+    redis_db.select('2', function(error){
+        var key = 'WEB:LINK:linkCity:'+data.city_id+'pc';
+        redis_db.zrange(key, 0, -1, function (err, req) {
+            if(req){
+                callback(null, req);
+            }else{
+                callback(null, '暂无数据');
+            }
+        });
+    });
+};
 /*在线评估*/
 exports.assessment = function(data,callback){
   var url = config.apis.assessment;
@@ -1293,6 +1326,16 @@ exports.advert = function(data,callback){
     return;
   }
   api.apiRequest(url, callback);
+};
+
+exports.userFeedback = function(data,callback){
+  var url = _api_url_path(data,config.apis.userFeedback)
+  console.log(url)
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest_post(url ,data ,callback);
 };
 
 var redisPool_views = require('redis-connection-pool')('viewNumberCache', {

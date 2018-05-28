@@ -11,7 +11,7 @@
         <use xlink:href="#icon-article"></use>
       </svg></i><span>文章</span><em>{{item.article_count}}</em></p>
     </div>
-    <div class="so_advisor_top_right"><a style="color: #FFFFFF" onclick="openchat_new('{{ item.job_number}}')">立即咨询</a></div>
+    <div class="so_advisor_top_right"><a style="color: #FFFFFF" onclick="openchat_new('{{ item.new_job_number}}')">立即咨询</a></div>
   </div>
   <div class="so_advisor_bottom" style="text-align: justify"><p>{{ item.introduce | ellipsis(80) }}<a target="_blank" href="{{helper.urlgen(item.id | string)}}">【看看TA的主页】</a></p></div>
 </div>
