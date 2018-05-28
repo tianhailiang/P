@@ -201,9 +201,10 @@
       }
     });
     var geren = $('#gerenjieshao').data('geren');
-    geren = geren.substring(0, 150);
+    console.log('geren',geren)
+    // geren = geren.substring(0, 150);
     $('#gerenjieshao').html(geren);
-    $("#word-num").html(150-geren.length);
+    $("#word-num").html(150-$.trim(geren).length);
   });
   function baocunSubmit () {
     if ($('#gerenjieshao').val() == '') {
