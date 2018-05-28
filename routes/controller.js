@@ -8,7 +8,6 @@ var log4js = require('../log/log');
 var log = log4js.getLogger();
 var config = require('../config/config');
 var esihelper = require('../middleware/esihelper');
-var code = '1220000006'; // not found 
 var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
 var helperfunc = require('../common/helper');
@@ -1932,7 +1931,7 @@ exports.case_detail = function(req,res,next){
     },function(err,result){
         // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        if(result.article.code == code){
+        if(result.article.code != 0){
             //文章不存在的时候  跳到404
             return next();
         }
@@ -2035,11 +2034,10 @@ exports.article_detail= function(req,res,next){
   },function(err,result){
         // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        if(result.article.code == code){
+        if(result.article.code != 0){
           //文章不存在的时候  跳到404
             return next();
         }
-      console.log('next~~~~~~~~~~~~~~~~~')
         data.article =returnData(result.article,'article');
         if(data.article.article_info.img_info){
             data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
