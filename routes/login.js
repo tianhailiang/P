@@ -161,7 +161,7 @@ exports.user_login = function (req, res, next) {
     
     //res.render('login', data)
     if (result.user_login.code == 0) {
-      if (data.login_user.data != null) {
+      if (data.login_user.data != undefined) {
         data.login_user.data.usertype = 1;
       }
       async.parallel({
@@ -227,7 +227,7 @@ exports.login_s = function (req, res, next) {
 
     //res.render('login', data)
     if (result.login_ss.code === 0) {
-      if (data.login_ss.data) {
+      if (data.login_ss.data != undefined) {
         console.log('datatatta---------------')
         data.login_ss.data.usertype = 2;
         data.login_ss.data.adviser = adviser;
@@ -352,7 +352,43 @@ exports.register_s = function (req, res, next) {
 
     data.register_ss = result.register_ss;
     log.debug('result.login_ss----------', result.register_ss);
-      res.send(result.register_ss)
+
+    if (result.register_ss.code == 0) {
+      if (data.register_ss.data != undefined) {
+        data.register_ss.data.usertype = 1;
+      }
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.register_ss.data.uid,
+              "to_uid":result.register_ss.data.uid
+          },callback);
+        }
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo.data);
+        data.register_ss.data.status = result.userinfo.data.status;
+        data.register_ss.data.version = result.userinfo.data.version;
+        log.debug('result.login_user----------', data.login_user.data);
+      
+        if (config.version == 'development') {//开发环境
+          log.debug('result.login_user----------development');
+          res.cookie("login_ss", JSON.stringify(data.register_ss.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          log.debug('result.login_user----------production');
+          res.cookie("login_ss", JSON.stringify(data.register_ss.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+        }
+      
+        res.send(data.register_ss);
+      })
+      
+      //log.debug('config', config.wwhost);
+      //res.redirect(301,config.wwhost);
+      //res.end()
+    }else {
+      res.send(result.register_ss);
+    }
+
+      // res.send(result.register_ss)
 
   });
 

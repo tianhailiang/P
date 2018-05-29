@@ -155,7 +155,7 @@
 	            type: 1,
 	            shade: [0.4,'#000'],
 	            shadeClose: true,
-	            closeBtn: false,
+	            closeBtn: true,
 	            area: ['421px', '500px'],
 	            title: false,
 	            border: [0],
