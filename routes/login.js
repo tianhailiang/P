@@ -156,33 +156,33 @@ exports.user_login = function (req, res, next) {
     }
   }, function (err, result) {
 
-    data.login_user = result.user_login;
+    data.user_login = result.user_login;
     console.log('data.login_user',result.user_login.code)
     
     //res.render('login', data)
     if (result.user_login.code == 0) {
-      if (data.login_user.data != undefined) {
-        data.login_user.data.usertype = 1;
+      if (data.user_login.data != undefined) {
+        data.user_login.data.usertype = 1;
       }
       async.parallel({
         userinfo:function(callback){
           wec.userinfo({
-              "u_id":result.login_user.data.uid,
-              "to_uid":result.login_user.data.uid
+              "u_id":result.user_login.data.uid,
+              "to_uid":result.user_login.data.uid
           },callback);
         }
       },function (err, result){
         log.debug('result.userinfo', result.userinfo.data);
-        data.login_user.data.status = result.userinfo.data.status;
-        data.login_user.data.version = result.userinfo.data.version;
-        log.debug('result.login_user----------', data.login_user.data);
+        data.user_login.data.status = result.userinfo.data.status;
+        data.user_login.data.version = result.userinfo.data.version;
+        log.debug('result.user_login----------', data.user_login.data);
       
         if (config.version == 'development') {//开发环境
-          log.debug('result.login_user----------development');
-          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+          log.debug('result.user_login----------development');
+          res.cookie("login_ss", JSON.stringify(data.user_login.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
         } else {
-          log.debug('result.login_user----------production');
-          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+          log.debug('result.user_login----------production');
+          res.cookie("login_ss", JSON.stringify(data.user_login.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
         }
       
         res.send(data.login_user);
