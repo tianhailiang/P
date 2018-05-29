@@ -171,13 +171,13 @@ exports.activity = function (req, res, next) {
     activitylist:function (callback) {
       cms.activity_list({"city_id":area,"page":"1","perpage":8},callback);
     },
-    other_activitylist:function (callback) {
-      cms.other_activity_list({"city_id":area,"page":"1","perpage":30},callback);
+    end_activitylist:function (callback) {
+      cms.end_activity_list({"city_id":area,"page":"1","perpage":10},callback);
     }
   }, function (err, result){
     data.userinfo = returnData(result.userinfo,'userinfo');
     data.activitylist = returnData(result.activitylist,'activitylist');
-    data.other_activitylist = returnData(result.other_activitylist,'other_activitylist');
+    data.end_activitylist = returnData(result.end_activitylist,'other_activitylist');
   /*  data.country=country;
     data.route = 'team';
     data.pageType = '文案团队';

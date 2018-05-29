@@ -197,18 +197,7 @@
     </div>
     <div class="new-activity-content">
       <div class="clearfix">
-        {% for item in other_activitylist.list %}
-        {% if loop.index<=6 %}
-        {% if loop.index%2==1 %}
-        <div class="new-activity-item new-activity-qita">
-          <h2  style="font-weight: normal;"><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank"  class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(10)}}</a><i>最新</i></h2>
-        </div>
-        {% else %}
-        <div class="new-activity-item new-activity-qita" style="margin-left: 20px;">
-          <h2  style="font-weight: normal;"><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(10)}}</a><i>最新</i></h2>
-        </div>
-        {% endif %}
-        {% else %}
+        {% for item in end_activitylist.list %}
         {% if loop.index%2==1 %}
         <div class="new-activity-item new-activity-qita">
           <h2  style="font-weight: normal;"><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(12)}}</a></h2>
@@ -217,7 +206,6 @@
         <div class="new-activity-item new-activity-qita" style="margin-left: 20px;">
           <h2  style="font-weight: normal;"><a target="_blank" class="know" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">了解详情</a><span>【{{item.hold_city | getCity}}{{item.start_time | sliceShorten(5,7)}}.{{item.start_time | sliceShorten(8,11)}}】</span><a target="_blank" class="know-title" href="{{helper.active_urlgen('activity', item.id | string,'c='+item.hold_city)}}">{{item.country | getCountry }}-{{item.title | ellipsis(12)}}</a></h2>
         </div>
-        {% endif %}
         {% endif %}
         {% endfor %}
 
