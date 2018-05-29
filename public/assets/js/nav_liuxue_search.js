@@ -370,6 +370,7 @@ function change_city_show (cId) {
     if (cId == 14) { //武汉（显示两个地址）
         $('.wuhan').show();
         $('.whole-city').hide();
+        $('.useMap').show();
     }
     else if (cId == 49 || cId == 50 || cId == 51) {
         $('#city-address-text').text(address);
@@ -383,6 +384,7 @@ function change_city_show (cId) {
         $('#city-phone-text').text(phone);
         $('.whole-city').show();
         $('.wuhan').hide();
+        $('.useMap').show();
     }
 }
 $(document).ready(function(){
@@ -427,11 +429,9 @@ $(document).ready(function(){
     function changeCity (chooseId) {
         var currentUrl = window.location.href;
         var hrefUrl = '';
-        if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(\/*)$/g) ) {
-            hrefUrl = fn.urlgen('branch_home','c='+chooseId);
-        }
-        else if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)$/g) ) {
-            hrefUrl = fn.active_urlgen('activity','c='+chooseId);
+        if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(.*)$/g) ) {
+            var rpReg = /\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)/;
+            hrefUrl = currentUrl.replace(rpReg,'/'+fn.getCityEn(chooseId));
         }
         else {
             hrefUrl = currentUrl;
