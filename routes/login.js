@@ -830,6 +830,7 @@ exports.ad_tongji = function (req,res,next){
         // 已登录
 
         // ad广告统计redis
+        console.log('data.url',data.url)
         var login_a = JSON.parse(req.cookies.login_ss)
         cms.ad_tongji(login_a.uid, login_a.username);
 
@@ -841,6 +842,7 @@ exports.ad_tongji = function (req,res,next){
 
       console.log('config.wwhost', config.wwhost);
       console.log('req.url', req.url);
+      console.log('data.url',data.url);
       res.redirect('loginUser?h='+config.wwhost+'/ad_tongji?href='+data.url);
     }
   // res.render('login/forget', data)
