@@ -1270,7 +1270,42 @@ exports.center_comment = function (req, res, next) {
 
     });
 };
-
+//个人中心-数据中心
+exports.data_center = function (req, res, next) {
+    log.info('个人中心-数据中心');
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    if ( req.cookies.login_ss !== undefined) {
+        data.login_info = JSON.parse(req.cookies.login_ss);
+    }else{
+        res.redirect(config.wwhost+'/login');
+        return false;
+    }
+    async.parallel({
+        //获取用户信息（普通用户，顾问，参赞）
+        userinfo:function(callback){
+            wec.userinfo({
+                "u_id":data.login_info.uid,
+                "to_uid":data.login_info.uid
+            },callback);
+        }
+    },function (err, result) {
+        data.userinfo = returnData(result.userinfo,'userinfo');
+        data.tdk = {
+            pagekey:'data_center',
+            cityid: area
+        };
+        data.esikey = esihelper.esikey();
+        res.render('data_center', data);
+    });
+}
 //普通用户中心-收到的评论
 exports.user_comment = function (req, res, next) {
     log.debug('普通用户中心-收到的评论');

@@ -82,6 +82,8 @@ exports = module.exports = function (app) {// routes
   app.get('/soapi/advisor_list', controller.advisor_list);
   //顾问中心 收到的评论
   app.get('/advisor_center/revcomment', controller.center_comment);
+  //顾问中心 数据中心
+  app.get('/advisor_center/data_center', controller.data_center);
   //参赞中心 收到的评论
   app.get('/canzan_center/revcomment', controller.center_comment);
   //顾问 收到的消息
