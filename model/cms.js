@@ -1189,7 +1189,7 @@ exports.activity_list = function (data, callback) {
   }
   api.apiRequest(url, callback);
 }
-//其他城市活动列表
+//历届城市活动列表
 exports.end_activity_list = function (data, callback) {
   var url = _api_url_path(data, config.apis.get_end_activity_list);
   if (url == null) {

@@ -261,7 +261,7 @@ var apis = {
   "get_culture_detail":prefix + 'detail',
   //新活动列表
   "get_activity_list":prefix+'activity_list',
-  //其他城市活动列表
+  //历届城市活动列表
   "get_end_activity_list":prefix+'end_activity_list',
   //新活动底页
   "get_activity_detail":prefix+'detail',
