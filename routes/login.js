@@ -185,7 +185,7 @@ exports.user_login = function (req, res, next) {
           res.cookie("login_ss", JSON.stringify(data.user_login.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
         }
       
-        res.send(data.login_user);
+        res.send(data.user_login);
       })
       
       //log.debug('config', config.wwhost);
