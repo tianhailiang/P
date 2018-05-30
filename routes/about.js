@@ -169,10 +169,10 @@ exports.activity = function (req, res, next) {
         "u_id":data.login_info.uid, "to_uid":data.login_info.uid},callback);
     },
     activitylist:function (callback) {
-      cms.activity_list({"city_id":area,"page":"1","perpage":8},callback);
+      cms.activity_list({"city_id":area,"type":0,"page":"1","perpage":8},callback);
     },
     end_activitylist:function (callback) {
-      cms.end_activity_list({"city_id":area,"page":"1","perpage":10},callback);
+      cms.activity_list({"city_id":area,"type":3,"page":"1","perpage":10},callback);
     }
   }, function (err, result){
     data.userinfo = returnData(result.userinfo,'userinfo');
