@@ -92,30 +92,30 @@
         </div>
         {% if login_info.usertype == 1 %} {#用户#}
         {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
-        {{ user_side_menu.user_side_menu('数据中心', helper) }}
+        {{ user_side_menu.user_side_menu('用户热搜榜', helper) }}
         {% elif login_info.usertype == 2 %} {#顾问#}
         {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
-        {{ adviser_side_menu.adviser_side_menu('数据中心', ' ', helper) }}
+        {{ adviser_side_menu.adviser_side_menu('用户热搜榜', ' ', helper) }}
         {% elif login_info.usertype == 3 %} {#参赞#}
         {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
-        {{ canzan_side_menu.canzan_side_menu('数据中心', ' ', helper) }}
+        {{ canzan_side_menu.canzan_side_menu('用户热搜榜', ' ', helper) }}
         {% endif %}
     </div>
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con dui-box-shadow">
         <div class="right-cont" style="border: none">
-            <div class="right-title" style="background: #f3f3f3;"><div class="tit" style="width: 202px;">最新热搜关键词汇总</div></div>
-            {% if 1 %}
+            <div class="right-title" style="background: #f3f3f3;"><div class="tit" style="width: 202px;">用户热搜榜</div></div>
+            {% if datalist.length > 0 %}
             <div class="right-main clearfix">
-                <div class="yindao">如何让自己的文章更吸引人？试试在文章/标题中加入下面的热搜关键词吧！</div>
-                {% set lis=[111,222,333,444,555,666,777,888,999,1000,1111,1222,1333,1444,1555,1666,1777,1888] %}
+                <div class="yindao">{{datacenter_title}}</div>
+                
                  <table class="data-table table-left">
                     <tr>
                         <th>序号</th>
                         <th>关键词</th>
                     </tr>
-                     {% for item in lis %}
-                     {% if loop.index <= 10 %}
+                     {% for item in datalist %}
+                     {% if loop.index <= 50 %}
                         <tr>
                             <td>{{loop.index}}</td>
                             <td>{{item}}</td>
@@ -124,14 +124,14 @@
                      {% endif %}
                      {% endfor %}
                 </table>
-                {% if lis.length > 10 %}
+                {% if datalist.length > 50 %}
                 <table class="data-table table-right">
                     <tr>
                         <th>序号</th>
                         <th>关键词</th>
                     </tr>
-                    {% for item in lis %}
-                    {% if loop.index >10 %}
+                    {% for item in datalist %}
+                    {% if loop.index >50 %}
                     <tr>
                         <td>{{loop.index}}</td>
                         <td>{{item}}</td>

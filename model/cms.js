@@ -1160,6 +1160,36 @@ exports.link = function (data, callback) {
         });
     });
 };
+//数据中心-关键词汇总
+exports.datacenter = function (callback) {
+  //redis 读缓存·
+  redis_db.select('2', function(error){
+      var key = 'adviserCommKey';
+      redis_db.get(key, function (err, req) {
+          if(req){
+              callback(null, req);
+          }else{
+              callback(null, '暂无数据');
+          }
+      });
+  });
+};
+
+//数据中心-介绍
+exports.datacenter_title = function (callback) {
+  //redis 读缓存·
+  redis_db.select('2', function(error){
+      var key = 'adviserCommDesc';
+      redis_db.get(key, function (err, req) {
+          if(req){
+              callback(null, req);
+          }else{
+              callback(null, '暂无数据');
+          }
+      });
+  });
+};
+
 /*在线评估*/
 exports.assessment = function(data,callback){
   var url = config.apis.assessment;

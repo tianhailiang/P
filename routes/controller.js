@@ -1294,9 +1294,26 @@ exports.data_center = function (req, res, next) {
                 "u_id":data.login_info.uid,
                 "to_uid":data.login_info.uid
             },callback);
+        },
+        datacenter: function (callback) {
+            cms.datacenter(callback)
+        },
+        datacenter_title: function (callback) {
+            cms.datacenter_title(callback)
         }
     },function (err, result) {
         data.userinfo = returnData(result.userinfo,'userinfo');
+        data.datalist = [];
+        if (result.datacenter != '暂无数据') {
+            data.datacenter = JSON.parse(result.datacenter);
+            // console.log('data.datacenter',data.datacenter);
+            for (var key in data.datacenter) {
+                data.datalist.push(data.datacenter[key]);
+            }
+        }
+        // console.log('data.datalist',data.datalist)
+        data.datacenter_title = result.datacenter_title
+        // console.log('title',data.datacenter_title)
         data.tdk = {
             pagekey:'data_center',
             cityid: area
