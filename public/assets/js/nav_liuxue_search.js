@@ -429,11 +429,10 @@ $(document).ready(function(){
     function changeCity (chooseId) {
         var currentUrl = window.location.href;
         var hrefUrl = '';
-        if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(\/*)$/g) ) {
-            hrefUrl = fn.urlgen('branch_home','c='+chooseId);
-        }
-        else if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)$/g) ) {
-            hrefUrl = fn.active_urlgen('activity','c='+chooseId);
+        if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sy|sjz|shz|sh|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|ych|yc|zz)(.*)$/g) ) {
+            var cityReg = /\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sy|sjz|shz|sh|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|ych|yc|zz)/;
+            var hashReg = /\#(.*)/;
+            hrefUrl = currentUrl.replace(cityReg,'/'+fn.getCityEn(chooseId)).replace(hashReg,'');
         }
         else {
             hrefUrl = currentUrl;
