@@ -429,8 +429,8 @@ $(document).ready(function(){
     function changeCity (chooseId) {
         var currentUrl = window.location.href;
         var hrefUrl = '';
-        if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(.*)$/g) ) {
-            var cityReg = /\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)/;
+        if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sy|sjz|shz|sh|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|ych|yc|zz)(.*)$/g) ) {
+            var cityReg = /\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sy|sjz|shz|sh|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|ych|yc|zz)/;
             var hashReg = /\#(.*)/;
             hrefUrl = currentUrl.replace(cityReg,'/'+fn.getCityEn(chooseId)).replace(hashReg,'');
         }
