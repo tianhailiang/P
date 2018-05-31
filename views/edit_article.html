@@ -154,13 +154,20 @@
                   {'name':'行前指导','val':'行前指导'},
                   {'name':'就业指导','val':'就业指导'},
                   {'name':'签证指导','val':'签证指导'},
+                  {'name':'院校资讯','val':'院校资讯'},
+                  {'name':'留学方案','val':'留学方案'},
+                  {'name':'背景提升','val':'背景提升'},
+                  {'name':'海外生活','val':'海外生活'},
+                  {'name':'备考资讯','val':'备考资讯'},
+                  {'name':'文书准备','val':'文书准备'},
+                  {'name':'难点解析','val':'难点解析'},
+                  {'name':'省钱攻略','val':'省钱攻略'},
                   {'name':'留学案例','val':'留学案例'},
                   {'name':'自定义标签','val':article.article_info.custom_tags}
                 ]  %}
                 {% for item in recommendList %}
-                  {{helper.tagChecked(loop.index0,item.val,article.article_info.tag_list,article.article_info.custom_tags) |safe }}              
+                  {{helper.tagChecked(item.name,item.val,article.article_info.tag_list) |safe }}
                 {% endfor %}
-        
                 <span class="numTip" style="color:#c13232;display:block;margin-top: 10px;">
                   推荐标签最多选择2个
                 </span>
@@ -327,7 +334,6 @@
         }
         recNumber =$('.recommend-sel[checked=checked]').length;
       });
-  
       //编辑器
       var E = window.wangEditor;
       var editor = new E('#editor','#editor1');
@@ -381,7 +387,25 @@
         layer.msg(info)
       }
       editor.create();
-      
+      var taglist=[
+            {'name':'专业解析','val':'专业解析'},
+            {'name':'申请规划','val':'申请规划'},
+            {'name':'留学费用','val':'留学费用'},
+            {'name':'留学条件','val':'留学条件'},
+            {'name':'大学排名','val':'大学排名'},
+            {'name':'行前指导','val':'行前指导'},
+            {'name':'就业指导','val':'就业指导'},
+            {'name':'签证指导','val':'签证指导'},
+            {'name':'院校资讯','val':'院校资讯'},
+            {'name':'留学方案','val':'留学方案'},
+            {'name':'背景提升','val':'背景提升'},
+            {'name':'海外生活','val':'海外生活'},
+            {'name':'备考资讯','val':'备考资讯'},
+            {'name':'文书准备','val':'文书准备'},
+            {'name':'难点解析','val':'难点解析'},
+            {'name':'省钱攻略','val':'省钱攻略'},
+            {'name':'留学案例','val':'留学案例'}
+        ];
       $('#sureBtn').on('click',surePublish); //发布文章
       $("#save-draft").on("click",savePublish); //保存草稿箱
       $("#article-preview").on("click",function(){
@@ -391,27 +415,23 @@
           $("#rel-case-title").focus();
           return false;
         }
-
         if($("#art_abs").val()==''){
           // 判断文章摘要
           $("#art_abs").focus();
           return false;
         }
-
         if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
           return false;
         }    
         //跳转预览详情页
-
           if(login_ss.usertype ==2){
             if(artType == 1){
                 window.open('/advisor_center/case/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
             }else {
                 window.open('/advisor_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
             }
-
         }else if(login_ss.usertype ==3){
           window.open('/canzan_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
         }
@@ -441,7 +461,7 @@
               tagStr+=$('#recommend-input').val()+',';
             }
           });
-          if($('.recommend-sel').eq(8).attr('checked')){
+          if($('#recommend-sel-case').attr('checked')){
            artType = 1;
           }else{
             artType = 2;
@@ -451,16 +471,27 @@
             return false;
           }
           newTagStr =tagStr.substring(0,tagStr.length-1);
-          if($('.recommend-sel').eq(9).attr('checked')){
+          if($('#recommend-sel-custom').attr('checked')){
             //选中自定义标签
             if($('#recommend-input').val()==''){
               layer.msg('请输入您的自定义标签');
               return false;
-            }else if ($('#recommend-input').val() == '专业解析' || $('#recommend-input').val()=='申请规划' || $('#recommend-input').val() =='留学费用'||$('#recommend-input').val()=='留学条件'||$('#recommend-input').val()=='大学排名'||$('#recommend-input').val()=='行前指导'||$('#recommend-input').val()=='就业指导'||$('#recommend-input').val()=='签证指导'||$('#recommend-input').val()=='留学案例'){
-                layer.msg('您输入的自定义标签不能与推荐标签相同');
-                return false;
-              }else{
-              custom_tags =$('#recommend-input').val();
+            }else{
+                var custom_tags_flag = '';
+                for(var i =0;i<taglist.length;i++){
+                    if($.trim($('#recommend-input').val())==taglist[i].val){
+                        custom_tags_flag =false;
+                        break;
+                    }else{
+                        custom_tags_flag = true;
+                    }
+                }
+                if(custom_tags_flag){
+                    custom_tags =$.trim($('#recommend-input').val());
+                }else{
+                    layer.msg('您输入的自定义标签不能与推荐标签相同');
+                    return false;
+                }
             }
           }
         }
@@ -559,7 +590,7 @@
               tagStr+=$('#recommend-input').val()+',';
             }
           });
-          if($('.recommend-sel').eq(8).attr('checked')){
+          if($('#recommend-sel-case').attr('checked')){
             artType = 1;
           }else{
             artType = 2;
@@ -569,32 +600,40 @@
             return false;
           }
           newTagStr =tagStr.substring(0,tagStr.length-1);
-          if($('.recommend-sel').eq(9).attr('checked')){
+          if($('#recommend-sel-custom').attr('checked')){
             //选中自定义标签
             if($('#recommend-input').val()==''){
               layer.msg('请输入您的自定义标签');
               return false;
-            }else if ($('#recommend-input').val() == '专业解析' || $('#recommend-input').val()=='申请规划' || $('#recommend-input').val() =='留学费用'||$('#recommend-input').val()=='留学条件'||$('#recommend-input').val()=='大学排名'||$('#recommend-input').val()=='行前指导'||$('#recommend-input').val()=='就业指导'||$('#recommend-input').val()=='签证指导'||$('#recommend-input').val()=='留学案例'){
-                layer.msg('您输入的自定义标签不能与推荐标签相同');
-                return false;
-              }else{
-              custom_tags =$('#recommend-input').val();
+            }else{
+                var custom_tags_flag = '';
+                for(var i =0;i<taglist.length;i++){
+                    if($.trim($('#recommend-input').val())==taglist[i].val){
+                        custom_tags_flag =false;
+                        break;
+                    }else{
+                        custom_tags_flag = true;
+                    }
+                }
+                if(custom_tags_flag){
+                    custom_tags =$.trim($('#recommend-input').val());
+                }else{
+                    layer.msg('您输入的自定义标签不能与推荐标签相同');
+                    return false;
+                }
             }
           }
         }
-
         if($("#rel-case-title").val()==''){
           // 判断title
           $("#rel-case-title").focus();
           return false;
         }
-        
         if($("#art_abs").val()==''){
           // 判断文章摘要
           $("#art_abs").focus();
           return false;
         }
-
         if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
