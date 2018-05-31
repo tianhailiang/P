@@ -161,7 +161,7 @@
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left">
         <div class="login_nei_top clearfix">
           <div class="login_nei_title active">账号密码登录</div>
-          <div class="login_nei_title">验证码登录</div>
+          <div class="login_nei_title" style="border-right: none;">验证码登录</div>
         </div>
         {#<h3 class="login_nei_title" style="font-weight: 400">验证码登录<!--<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a>--></h3>
         <!--<div class=" clearfix" id="guwen_login" style="margin-left: -15px;font-size: 18px;">
@@ -178,9 +178,9 @@
                   <span class="login_error" id="login_e_phone_p" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_p">请输入手机号</em></span>
                 </div>
                 <div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
-                  <input type="password" style="border-radius: inherit;" class="form-control" placeholder="请输入密码" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
+                  <input type="password" style="border-radius: inherit;" class="form-control" placeholder="请输入8-16位数字+字母组成" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
                   <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
-                  <span class="login_error" id="login_e_phone_pp" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_pp">请输入6-12位数字+字母组成</em></span>
+                  <span class="login_error" id="login_e_phone_pp" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_pp">请输入8-16位数字+字母组成</em></span>
                 </div>
 
                   <div class="login_check clearfix" style="margin-top: 20px">
@@ -260,6 +260,7 @@
     </div>
   </div>
   <!-- <script src="{{helper.cdnhost}}/assets/js/top.js"></script> -->
+  <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script>
     $(document).ready(function () {
@@ -593,9 +594,9 @@ function loginS_pass () {
     $('#login_e_phone_pp').css('display','block');
     return
   }
-  if (!/^[a-zA-Z0-9]{6,12}$/.test($("#password").val())) {
+  if (!/^[a-zA-Z0-9]{8,16}$/.test($("#password").val())) {
     $('#login_e_phone_pp').css('display','block');
-    $('#login_error_text_phone_pp').html('请输入6-12位数字+字母组成');
+    $('#login_error_text_phone_pp').html('请输入8-16位数字+字母组成');
     return
   } else {
     $('#login_e_phone_pp').css('display','none');
@@ -604,14 +605,14 @@ function loginS_pass () {
     layer.msg('请同意注册协议');
     return
   }
-  if ($('#newEmail_pass').val() !== '' && /^1\d{10}$/.test($("#newEmail_pass").val()) && $('#password').val() !== '' && /^[a-zA-Z0-9]{6,12}$/.test($("#password").val())) {
+  if ($('#newEmail_pass').val() !== '' && /^1\d{10}$/.test($("#newEmail_pass").val()) && $('#password').val() !== '' && /^[a-zA-Z0-9]{8,16}$/.test($("#password").val())) {
     console.log('ajax');
     $.ajax({
       url: '/user_login',
       type:'POST',
       data:{
         phone: $('#newEmail_pass').val(),
-        password: $('#password').val(),
+        password: hex_sha1($('#password').val()),
       },
       dataType:'json',
       success:function(msg){
