@@ -284,9 +284,9 @@
           </div>
           <div class="form-group inputtext_isr clearfix" style="position: relative;height: 28px;margin-top: 20px">
 
-            <input type="password" style="border-radius: inherit;height: 30px;" class="form-control" placeholder="请输入6-12位数字+字母组成" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" >
+            <input type="password" style="border-radius: inherit;height: 30px;" class="form-control" placeholder="请输入8-16位数字+字母组成" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" >
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
-            <span class="login_error" id="login_e_phone_p" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_p">请输入6-12位数字+字母组成</em></span>
+            <span class="login_error" id="login_e_phone_p" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_p">请输入8-16位数字+字母组成</em></span>
           </div>
 
           <div class="form-group text-left" id="login_user" style="color: #999;margin-top: 20px;margin-left: -0px;">
@@ -560,13 +560,13 @@
     }
     if ($('#password').val() === '') {
       $('#login_e_phone_p').css('display','block');
-      $('#login_error_text_phone_p').html('请输入6-12位数字+字母组成');
+      $('#login_error_text_phone_p').html('请输入8-16位数字+字母组成');
     } else {
       $('#login_e_phone_p').css('display','none');
     }
-    if (!/^[a-zA-Z0-9]{6,12}$/.test($("#password").val())) {
+    if (!/^[a-zA-Z0-9]{8,16}$/.test($("#password").val())) {
       $('#login_e_phone_p').css('display','block');
-      $('#login_error_text_phone_p').html('请输入6-12位数字+字母组成');
+      $('#login_error_text_phone_p').html('请输入8-16位数字+字母组成');
     } else {
       $('#login_e_phone_p').css('display','none');
     }
@@ -576,7 +576,7 @@
     }
     var sha1 = hex_sha1($('#password').val());
     console.log('sha1'+sha1);
-    if ($('#newEmail').val() !== '' && $('#password').val() !== '' && $('#reg_verify').val() !== '' && /^\d{6}$/.test($('#reg_verify').val()) && /^[a-zA-Z0-9]{6,12}$/.test($("#password").val()) && /^1\d{10}$/.test($("#newEmail").val())) {
+    if ($('#newEmail').val() !== '' && $('#password').val() !== '' && $('#reg_verify').val() !== '' && /^\d{6}$/.test($('#reg_verify').val()) && /^[a-zA-Z0-9]{8,16}$/.test($("#password").val()) && /^1\d{10}$/.test($("#newEmail").val())) {
       console.log('ajax')
       $.ajax({
         url: '/register_s',

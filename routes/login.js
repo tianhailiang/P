@@ -156,36 +156,36 @@ exports.user_login = function (req, res, next) {
     }
   }, function (err, result) {
 
-    data.login_user = result.user_login;
+    data.user_login = result.user_login;
     console.log('data.login_user',result.user_login.code)
     
     //res.render('login', data)
     if (result.user_login.code == 0) {
-      if (data.login_user.data != null) {
-        data.login_user.data.usertype = 1;
+      if (data.user_login.data != undefined) {
+        data.user_login.data.usertype = 1;
       }
       async.parallel({
         userinfo:function(callback){
           wec.userinfo({
-              "u_id":result.login_user.data.uid,
-              "to_uid":result.login_user.data.uid
+              "u_id":result.user_login.data.uid,
+              "to_uid":result.user_login.data.uid
           },callback);
         }
       },function (err, result){
         log.debug('result.userinfo', result.userinfo.data);
-        data.login_user.data.status = result.userinfo.data.status;
-        data.login_user.data.version = result.userinfo.data.version;
-        log.debug('result.login_user----------', data.login_user.data);
+        data.user_login.data.status = result.userinfo.data.status;
+        data.user_login.data.version = result.userinfo.data.version;
+        log.debug('result.user_login----------', data.user_login.data);
       
         if (config.version == 'development') {//开发环境
-          log.debug('result.login_user----------development');
-          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+          log.debug('result.user_login----------development');
+          res.cookie("login_ss", JSON.stringify(data.user_login.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
         } else {
-          log.debug('result.login_user----------production');
-          res.cookie("login_ss", JSON.stringify(data.login_user.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+          log.debug('result.user_login----------production');
+          res.cookie("login_ss", JSON.stringify(data.user_login.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
         }
       
-        res.send(data.login_user);
+        res.send(data.user_login);
       })
       
       //log.debug('config', config.wwhost);
@@ -227,7 +227,7 @@ exports.login_s = function (req, res, next) {
 
     //res.render('login', data)
     if (result.login_ss.code === 0) {
-      if (data.login_ss.data) {
+      if (data.login_ss.data != undefined) {
         console.log('datatatta---------------')
         data.login_ss.data.usertype = 2;
         data.login_ss.data.adviser = adviser;
@@ -352,7 +352,43 @@ exports.register_s = function (req, res, next) {
 
     data.register_ss = result.register_ss;
     log.debug('result.login_ss----------', result.register_ss);
-      res.send(result.register_ss)
+
+    if (result.register_ss.code == 0) {
+      if (data.register_ss.data != undefined) {
+        data.register_ss.data.usertype = 1;
+      }
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.register_ss.data.uid,
+              "to_uid":result.register_ss.data.uid
+          },callback);
+        }
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo.data);
+        data.register_ss.data.status = result.userinfo.data.status;
+        data.register_ss.data.version = result.userinfo.data.version;
+        log.debug('result.login_user----------', data.login_user.data);
+      
+        if (config.version == 'development') {//开发环境
+          log.debug('result.login_user----------development');
+          res.cookie("login_ss", JSON.stringify(data.register_ss.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          log.debug('result.login_user----------production');
+          res.cookie("login_ss", JSON.stringify(data.register_ss.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+        }
+      
+        res.send(data.register_ss);
+      })
+      
+      //log.debug('config', config.wwhost);
+      //res.redirect(301,config.wwhost);
+      //res.end()
+    }else {
+      res.send(result.register_ss);
+    }
+
+      // res.send(result.register_ss)
 
   });
 
@@ -794,6 +830,7 @@ exports.ad_tongji = function (req,res,next){
         // 已登录
 
         // ad广告统计redis
+        console.log('data.url',data.url)
         var login_a = JSON.parse(req.cookies.login_ss)
         cms.ad_tongji(login_a.uid, login_a.username);
 
@@ -805,6 +842,7 @@ exports.ad_tongji = function (req,res,next){
 
       console.log('config.wwhost', config.wwhost);
       console.log('req.url', req.url);
+      console.log('data.url',data.url);
       res.redirect('loginUser?h='+config.wwhost+'/ad_tongji?href='+data.url);
     }
   // res.render('login/forget', data)
