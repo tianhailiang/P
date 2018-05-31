@@ -123,8 +123,9 @@ var ZXXFILE = {
     }
     //上传按钮提交
     if (this.upButton) {
+      var _that = this;
       var uploadfn = function (e) {
-        self.onSureBtnCb();
+        self.onSureBtnCb(_that.fileFilter);
         self.funUploadFile(e);
       };
       if(document.addEventListener){

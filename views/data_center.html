@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% include "header_new.html" %}
+    <!--[if lt IE 10]>
+    <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
+    <![endif]-->
+    <style type="text/css">
+        .right-title div{
+            width: 115px;
+            height: 40px;
+            background: #C13232;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            line-height: 40px;
+        }
+        .pagination-box{
+            float: left;
+            position: relative;
+            left: 50%;
+            margin-top: 54px;
+            margin-bottom: 54px;
+        }
+        .list-h{
+            height:130px;
+        }
+        .list-h img{
+            display: block;
+            width:100%;
+            height:100%;
+        }
+        .right-main {
+            background-color: #fff;
+            padding: 0 18px 20px;
+        }
+        .yindao {
+            font-size: 16px;
+            color: #333;
+            padding: 30px 2px 20px;
+        }
+        .data-table {
+            float: left;
+            border-top: 1px solid #DCDCDC;
+            border-collapse: collapse;
+        }
+        .table-left {
+            border-left: 1px solid #DCDCDC;
+        }
+        .data-table th,.data-table td  {
+            border-right: 1px solid #DCDCDC;
+            border-bottom: 1px solid #DCDCDC;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+        }
+        .data-table th:first-of-type,.data-table td:first-of-type {
+            width: 109px;
+        }
+        .data-table th:last-of-type,.data-table td:last-of-type {
+            width: 305px;
+        }
+        .data-table tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+<body style="background: #f5f5f5">
+
+
+{% include "widget/common_hide/common_hide.html"%}
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
+<div class="dui-layout-lg clearfix banner-box">
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider2.html" %}</div>
+</div>
+<div class="dui-layout-lg clearfix" style="margin-top: 20px;">
+    <div class="dui-layout-silde">
+        <div class="clearfix">
+            {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+            {% if login_info.usertype == 1 %} {#用户#}
+            {{ community_advisor.user(userinfo,helper) }}
+            {% elif login_info.usertype == 2 %} {#顾问#}
+            {{ community_advisor.advisor_center(userinfo,helper,login_info) }}
+            {% elif login_info.usertype == 3 %} {#参赞#}
+            {{ community_advisor.counsellor(userinfo,helper,login_info) }}
+            {% endif %}
+        </div>
+        {% if login_info.usertype == 1 %} {#用户#}
+        {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
+        {{ user_side_menu.user_side_menu('用户热搜榜', helper) }}
+        {% elif login_info.usertype == 2 %} {#顾问#}
+        {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
+        {{ adviser_side_menu.adviser_side_menu('用户热搜榜', ' ', helper) }}
+        {% elif login_info.usertype == 3 %} {#参赞#}
+        {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
+        {{ canzan_side_menu.canzan_side_menu('用户热搜榜', ' ', helper) }}
+        {% endif %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-con dui-box-shadow">
+        <div class="right-cont" style="border: none">
+            <div class="right-title" style="background: #f3f3f3;"><div class="tit" style="width: 202px;">用户热搜榜</div></div>
+            {% if datalist.length > 0 %}
+            <div class="right-main clearfix">
+                <div class="yindao">{{datacenter_title}}</div>
+                
+                 <table class="data-table table-left">
+                    <tr>
+                        <th>序号</th>
+                        <th>关键词</th>
+                    </tr>
+                     {% for item in datalist %}
+                     {% if loop.index <= 50 %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{item}}</td>
+                        </tr>
+                     {% else %}
+                     {% endif %}
+                     {% endfor %}
+                </table>
+                {% if datalist.length > 50 %}
+                <table class="data-table table-right">
+                    <tr>
+                        <th>序号</th>
+                        <th>关键词</th>
+                    </tr>
+                    {% for item in datalist %}
+                    {% if loop.index >50 %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{item}}</td>
+                    </tr>
+                    {% else %}
+                    {% endif %}
+                    {% endfor %}
+                </table>
+                {% endif %}
+            </div>
+            {% else %}
+            {% include "widget2/blank/blank.html" %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% include "widget/new_footer/common_footer.html" %}
+{% if userinfo.usertype == 1 %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
+{% elseif userinfo.usertype == 2 %}
+{% if userinfo.adviser_type==1 %}
+{% import "widget/new_slide/new_slide2.html" as  slide %}
+{{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
+{% elseif  userinfo.adviser_type==2 %}
+{% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
+{{slide.leyu_slide(helper) }}
+{% endif %}
+{% endif %}
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+{% if userinfo.usertype == 1 %}
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+{% elseif userinfo.usertype == 2 %}
+{% if userinfo.adviser_type==1 %}
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+{% elseif  userinfo.adviser_type==2 %}
+<script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+{% endif %}
+{% endif %}
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+<script>
+    $(function () {
+        if(cookie('login_ss') != undefined){
+            login_ss = JSON.parse(cookie('login_ss'));
+        }
+        $('.banner-box-left .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+            current: 0,
+            speed: 500,
+            intervalTime: 5000,
+            pagination: true,
+            dotPostion:'right'
+        });
+        $('.banner-box-right .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+            current: 0,
+            speed: 1000,
+            intervalTime: 5000,
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+            pagination: true
+        });
+    })
+</script>
+</body>
+</html>

@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-{% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
-  <!--<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/bootstrap.min.css?v=3.3.6">-->
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/style.css?v=4.1.0">
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/custom.css">
 
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-  <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+  {% include "header_new.html" %}
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
+  
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/custom.css">
+
+  <script src="{{helper.cdnhost}}/dep/js/layer/layer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/icheck.min.js"></script>
-  <style>
+  <style type="text/css">
     .xy{
       width: 650px;
       height: 590px;
@@ -35,6 +33,51 @@
       margin-right: 10px;
       cursor:pointer;
     }
+    .form-group input {
+      width: 100%;
+      height: 34px;
+      color: #999;
+      margin-bottom: 15px;
+      border-radius: inherit;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      background-image: none;
+    }
+    .form-group .login_error{
+      background-color: #FFFBEF;
+      border: 1px solid #C13232;
+      padding: 6px 12px;
+      z-index: 1;
+      box-shadow: 0 1px 1px #eee;
+      color: #C13232;
+      position: absolute;
+      right: -40px;
+      left: 250px;
+      top: -19px;
+      opacity: 1;
+    }
+    .form-group .login_error:after,.login_error:before{
+      border: 6px solid transparent;
+      content: ' ';
+      position: absolute;
+      left: 1em;
+    }
+    .form-group .login_error:before{
+      border-top-color: #C13232;
+      bottom: -13px;
+    }
+    .form-group .login_error:after{
+      border-top-color: #fffbef;
+      bottom: -12px;
+    }
+    .form-group .login_x{
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+      margin-right: 5px;
+      background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
+    }
   </style>
 </head>
 <body>
@@ -56,6 +99,7 @@
             <div class="title"><span>*&nbsp;</span>手&nbsp;机&nbsp;号&nbsp;：</div>
             <input type="text" class="form-control" id="newEmail" required data-vaild="^1\d{10}$" data-errmsg="手机号不正确" />
             <div class="ti">请输入手机号</div>
+            <span class="login_error" id="login_e_phone_u" style="display: none"><i class="login_x"></i><em id="login_error_text_phone_u">请输入手机号</em></span>
           </div>
           <div class="form-group clearfix" style="margin-left: -20px;">
             <div class="title"><span>*&nbsp;</span>图形验证码&nbsp;：</div>
@@ -74,15 +118,17 @@
               <input type="button" class="btn btn-primary" style="width: 100px;text-align: center;padding: 6px 2px;background: #fff;color: #c6a770;border: 1px solid #c6a770;border-radius: 3px;line-height: 0px" id="sendcun_forget" value="发送验证码"/>
             </div>
           </div>
-          <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
+          <div class="form-group clearfix" style="position: relative;height: 28px;">
             <div class="title"><span>*</span>设置密码：</div>
             <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{6,16}$" id="password" data-errmsg="密码不正确，请输入8-16位数字或字母">
             <div class="ti"  style="margin-top: -5px">密码8-16位，数字、字母字符至少包含两种</div>
+            <span class="login_error" id="login_e_password_u" style="display: none"><i class="login_x"></i><em id="login_error_text_password_u">密码不正确，请输入8-16位数字或字母</em></span>
           </div>
           <div class="form-group clearfix" style="position: relative;height: 28px;margin-top: 20px">
             <div class="title"><span>*</span>确认密码：</div>
             <input type="password" class="form-control" required="" data-vaild="^[a-zA-Z0-9]{6,16}$" id="qie_password" data-errmsg="确认密码不正确，请输入8-16位数字或字母">
             <div class="ti">请再次输入密码</div>
+            <span class="login_error" id="login_e_que_password_u" style="display: none"><i class="login_x"></i><em id="login_error_text_que_password_u">确认密码不正确，请输入8-16位数字或字母</em></span>
           </div>
 
           <!--<div class="text-muted text-center clearfix" style="margin-top: -10px;margin-left: 80px">
@@ -95,7 +141,7 @@
             <a target="_blank"  href="javascript:void(0)" style="float: left;line-height: 36px" id="xieyi"><small>《用户服务条款》</small></a>
           </div>-->
 
-          <input type="button" class="btn login-primary" id="forgetSubmit" value="修改密码" style="margin-left: 85px;margin-top: 0px"/>
+          <input type="button" class="btn login-primary" id="forgetSubmit" value="修改密码" style="width: 224px;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;margin-left: 85px;margin-top: 0px"/>
 
         </form>
         <!--<div class="fen clearfix" style="float: left;margin-left: 80px">
@@ -182,11 +228,12 @@
 <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/nav_forget.js" type="text/javascript" charset="utf-8"></script>-->
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/top.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script>
   $(document).ready(function () {
-
-    $("form").Vaild();
+    show_guanggao();
+    // $("form").Vaild();
 
     //图片验证码
     $.ajax({
@@ -268,8 +315,9 @@
   function forgetS () {
     console.log('forget_ssssss')
     if ($('#newEmail').val() === '') {
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
       return
     }
     if ($('#verify_forget').val() === '') {
@@ -277,38 +325,55 @@
       return
     }
     if (!/^\d{6}$/.test($("#verify_forget").val())) {
-      layer.msg('验证位数不足6位');
+      layer.msg('请输入6位验证码');
       return
     }
     if ($('#password').val() === '') {
-      $('#password').parent().addClass("has-error").removeClass("has-success");
-      $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入密码').popover({"trigger":"manual"}).popover("show");
+      // $('#password').parent().addClass("has-error").removeClass("has-success");
+      // $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入密码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_password_u').css('display','block');
       return
     }
     if ($('#que_password').val() === '') {
-      $('#que_password').parent().addClass("has-error").removeClass("has-success");
-      $('#que_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入确认密码').popover({"trigger":"manual"}).popover("show");
+      // $('#que_password').parent().addClass("has-error").removeClass("has-success");
+      // $('#que_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入确认密码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_que_password_u').css('display','block');
       return
     }
     console.log('qie_password', $('#qie_password').val())
     console.log('password', $('#password').val())
     if ($('#qie_password').val() !== $('#password').val()) {
       console.log('dddddddd');
-      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
-      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次密码输入不一致').popover({"trigger":"manual"}).popover("show");
-      $('#password').parent().addClass("has-error").removeClass("has-success");
-      $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次密码输入不一致').popover({"trigger":"manual"}).popover("show");
+      // $('#qie_password').parent().addClass("has-error").removeClass("has-success");
+      // $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次密码输入不一致').popover({"trigger":"manual"}).popover("show");
+      // $('#password').parent().addClass("has-error").removeClass("has-success");
+      // $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次密码输入不一致').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_password_u').css('display','block');
+      $('#login_e_que_password_u').css('display','block');
+      $('#login_e_password_u').html('两次密码输入不一致');
+      $('#login_e_que_password_u').html('两次密码输入不一致');
       return
+    } else {
+      $('#login_e_password_u').css('display','none');
+      $('#login_e_que_password_u').css('display','none');
     }
     if (!/^[a-zA-Z0-9]{8,16}$/.test($("#password").val())) {
-      $('#password').parent().addClass("has-error").removeClass("has-success");
-      $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '密码8-16位').popover({"trigger":"manual"}).popover("show");
+      // $('#password').parent().addClass("has-error").removeClass("has-success");
+      // $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '密码8-16位').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_password_u').css('display','block');
+      $('#login_e_password_u').html('密码8-16位');
       return
+    } else {
+      $('#login_e_password_u').css('display','none');
     }
     if (!/^[a-zA-Z0-9]{8,16}$/.test($("#qie_password").val())) {
-      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
-      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '密码8-16位').popover({"trigger":"manual"}).popover("show");
+      // $('#qie_password').parent().addClass("has-error").removeClass("has-success");
+      // $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '密码8-16位').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_que_password_u').css('display','block');
+      $('#login_e_que_password_u').html('密码8-16位');
       return
+    } else {
+      $('#login_e_que_password_u').css('display','none');
     }
     /*if (!$("input[type='checkbox']").is(':checked')) {
       layer.msg('请同意注册协议');
@@ -349,15 +414,20 @@
   function sendphone_for () {
     if ($('#newEmail').val() === '') {
 //            let butp = document.getElementById('phone')
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
       return
     }
     if (!/^1\d{10}$/.test($("#newEmail").val())) {
 //            let butp = document.getElementById('phone')
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
+      $('#login_error_text_phone_u').html('请输入正确手机号码');
       return
+    } else {
+      $('#login_e_phone_u').css('display','none');
     }
     if ($('#tupian_bin').val() == '') {
       layer.msg('请输入图片验证码');

@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head >
   <meta charset="UTF-8">
   <title></title>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_sec.css" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/side_menu.css"/>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/community_advisor.css"/>
-
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget/top.css" >
   {% include "header_new.html" %}
-<style>
+<style type="text/css">
   .content_title{
     margin-top: 20px;margin-left: 20px;margin-bottom: 30px;background: #f3f3f3;width: 840px;height: 40px
   }
@@ -109,7 +105,7 @@
   <div class="dui-layout-silde right">
     <div class="clearfix" style="margin-top: 20px">
       {% import "widget2/community_advisor/community_advisor.html" as advisor %}
-      {{ advisor.advisor(userinfo,helper,login_info) }}
+      {{ advisor.advisor_center(userinfo,helper,login_info) }}
     </div>
     {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
     {{ adviser_side_menu.adviser_side_menu('个人信息设置', ' ', helper) }}
@@ -142,7 +138,7 @@
     <div class="content_title_bbb clearfix">
       <span>个 人 介 绍： </span>
       <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}"></textarea>
-      <div class="word-num">还可以输入<span id="word-num">80</span>字</div>
+      <div class="word-num">还可以输入<span id="word-num">150</span>字</div>
     </div>
 
     <input type="button" style="border:none;font-size: 14px;color: #fff;width: 80px;height: 30px;float: right;background: #C13232;color: #fff;text-align: center;line-height: 30px;margin-right: 80px" onclick="baocunSubmit()" value="确定保存"/>
@@ -157,14 +153,12 @@
 {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
 {{slide.leyu_slide(helper) }}
 {% endif %}
-<script>
-  var login_ss = null; 
-  if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));  
-  }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
@@ -193,25 +187,30 @@
           pagination: true
       });
     $("#gerenjieshao").on("change",function(){
-      this.value = this.value.substring(0, 80);
+      this.value = this.value.substring(0, 150);
     });
     $("#gerenjieshao").on("keydown",function(){
-      this.value  = this.value.substring(0, 80);
+      this.value  = this.value.substring(0, 150);
     });
     $("#gerenjieshao").on("keyup",function(){
       var strLength = $.trim($(this).val()).length;
-      $("#word-num").html(80-strLength);
-      if(strLength > 80){
+      $("#word-num").html(150-strLength);
+      if(strLength > 150){
         $("#word-num").html(0);
-        this.value  = this.value.substring(0, 80);
+        this.value  = this.value.substring(0, 150);
       }
     });
     var geren = $('#gerenjieshao').data('geren');
-    geren = geren.substring(0, 80);
+    console.log('geren',geren)
+    // geren = geren.substring(0, 150);
     $('#gerenjieshao').html(geren);
-    $("#word-num").html(80-geren.length);
+    $("#word-num").html(150-$.trim(geren).length);
   });
   function baocunSubmit () {
+    if ($('#gerenjieshao').val() == '') {
+      layer.msg('个人简介不能为空');
+      return false;
+    }
     $.ajax({
       url: '/soapi/user_ziliao',
       type:'POST',

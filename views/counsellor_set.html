@@ -1,14 +1,11 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head >
   <meta charset="UTF-8">
   <title></title>
-  <link rel="stylesheet" href="/{{helper.cdnhost}}/assets/css/widget/top.css" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_sec.css" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/side_menu.css"/>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget2/community_advisor.css"/>
-  <link href="{{helper.cdnhost}}/assets/css/widget/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-  <link href="{{helper.cdnhost}}/assets/css/widget/style.css?v=4.1.0" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/{{helper.cdnhost}}/assets/css/widget/top.css" >
+  <link type="text/css" href="{{helper.cdnhost}}/assets/css/widget/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+  <link type="text/css" href="{{helper.cdnhost}}/assets/css/widget/style.css?v=4.1.0" rel="stylesheet">
 
   {% include "header_new.html" %}
   <!--[if lt IE 10]>
@@ -18,7 +15,7 @@
   <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
   <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
 
-  <style>
+  <style type="text/css">
     .content_title{
       margin-top: 20px;margin-left: 20px;margin-bottom: 30px;background: #f3f3f3;width: 840px;height: 40px
     }
@@ -182,18 +179,16 @@
     }
   }
 </script>
-
-<script>
-  var login_ss = null; 
-  if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));  
-  }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_seventh.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script>
+  $(function(){
+    show_guanggao()
+  })
+</script>
 </body>
 </html>

@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 {% include "header_new.html" %}
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/activity_detail.css">
-<style>
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/activity_detail.css">
+<style type="text/css">
   /* .jjl-jiangzuo{
      position: relative;
      z-index: 3;
@@ -97,8 +97,8 @@
 <body>
 {% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
-{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
-{{ new_nav_red.new_nav_red(tdk,helper) }}
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
 <div class="dui-layout-lg clearfix banner-box">
   <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
   <div class="dui-layout-div"></div>
@@ -172,12 +172,12 @@
 </div>
 
 
-{% include "widget/new_footer/new_footer.html" %}
+{% include "widget/new_footer/common_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("XC_ACTIVITYDETAIL_SEAT10",helper) }}
 
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js"></script>-->
-<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/quick_application2.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
@@ -185,26 +185,28 @@
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script>
-  $('.banner-box-left .slider').xSlider({
-    //轮播图配置
+  $(function(){
+    $('.banner-box-left .slider').xSlider({
+      //轮播图配置
 //          autoplay : 500,
-    current: 0,
-    speed: 500,
-    intervalTime: 5000,
-    pagination: true,
-    dotPostion:'right'
-  });
-  $('.banner-box-right .slider').xSlider({
-    //轮播图配置
+      current: 0,
+      speed: 500,
+      intervalTime: 5000,
+      pagination: true,
+      dotPostion:'right'
+    });
+    $('.banner-box-right .slider').xSlider({
+      //轮播图配置
 //          autoplay : 500,
 //            mode:'vertical',
-    current: 0,
-    speed: 1000,
-    intervalTime: 5000,
-    slidesPerView: 2,
-    slidesPerGroup: 2,
-    pagination: true
-  });
+      current: 0,
+      speed: 1000,
+      intervalTime: 5000,
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+      pagination: true
+    });
+  })
 </script>
 </body>
 </html>

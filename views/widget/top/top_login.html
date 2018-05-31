@@ -1,6 +1,6 @@
 <div class="top" style="position:relative;z-index: 1002;">
 </div>
-<style>
+<style type="text/css">
   .l_u{
     width: 421px;
     height: 434px;
@@ -49,18 +49,26 @@
     line-height: 25px;
   }
   .l_u_com_phone{
-    width: 281px;
-    height: 26px;
+    width: 295px;
+    height: 40px;
     padding-left: 35px;
     font-size: 14px;
     color: #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
   }
   .l_u_com_yan{
     width: 182px;
-    height: 26px;
+    height: 40px;
     padding-left: 34px;
     font-size: 14px;
     color: #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
   }
   .l_u_com_bang{
     width: 90px;
@@ -75,6 +83,8 @@
     height: 40px;
     background-color: #c13232;
     color: #fff;
+    border: 1px solid #c13232;
+    border-radius: 4px;
   }
   .l_u_com_but:hover{
     color: #fff;
@@ -161,6 +171,22 @@ input[type="checkbox"] {
   top: -13px;
   position: absolute;
 }
+.top_400{
+      width: 12px;
+      height: 12px;
+    }
+    .text_shu{
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #C13232;
+      color: #fff;
+      position: absolute;
+      top: 0px;
+      left: -16px;
+      text-align: center;
+      line-height: 18px;
+    }
 </style>
 <!-- 登录 -->
 <div class="l_u" id="l_u" style="display: none;">
@@ -244,10 +270,14 @@ input[type="checkbox"] {
 </div>
 <script>
   $(function() {
-    var login_nickname = JSON.parse($.cookie('login_ss'));
+    var login_nickname = JSON.parse(cookie('login_ss'));
     var user_type;
     if (login_nickname == null) {
       var val = '<div class="dui-layout-lg top-con">'+
+                '<div class="top-con-left" style="display: inline-block;width: 50%;">'+
+                '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">'+
+                '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
                 '<div class="top-con-right">'+
                 '<span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>'+
@@ -256,7 +286,11 @@ input[type="checkbox"] {
                 '</div>'
       $(".top").append(val);
     } else {
-      var val = '<div class="dui-layout-lg top-con">'+
+      var val = '<div class="dui-layout-lg top-con" style="position: relative;">'+
+                '<div class="top-con-left" style="display: inline-block;width: 40%;">'+
+                '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400" style="margin-right: 3px;">'+
+                '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
                 '<div class="top-con-right">'+
                 '<ul>';
       if (login_nickname.usertype == 1) {
@@ -277,14 +311,13 @@ input[type="checkbox"] {
   })
 </script>
 <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
-<script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-<script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
-<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/layer/layer.js"></script>
+
 
 <script>
     $(function() {
 
-    $("form").Vaild();
+    // $("form").Vaild();
     //登录
     var pac_d = document.getElementById('getloginUser_deng');
     if (pac_d) {
@@ -298,9 +331,9 @@ input[type="checkbox"] {
     var pac = document.getElementById('getloginUser');
     if (pac) {
       if (pac.addEventListener) {
-        pac.addEventListener('click', loginUser, false)
+        pac.addEventListener('click', getregisterUser, false)
       }else {
-        pac.attachEvent('onclick', loginUser, false)
+        pac.attachEvent('onclick', getregisterUser, false)
       }
     }
     
@@ -403,12 +436,12 @@ input[type="checkbox"] {
 	            	
               },
               cancel:function(){
-                $("#phone").parent().removeClass("has-error").addClass("has-success");
-                $("#phone").popover("destroy");
+                // $("#phone").parent().removeClass("has-error").addClass("has-success");
+                // $("#phone").popover("destroy");
               },
               end:function() {
-                $("#phone").parent().removeClass("has-error").addClass("has-success");
-                $("#phone").popover("destroy");
+                // $("#phone").parent().removeClass("has-error").addClass("has-success");
+                // $("#phone").popover("destroy");
               }
 	      });
   }
@@ -437,6 +470,36 @@ input[type="checkbox"] {
             $("#phone_reg").popover("destroy");
           }
     });
+  }
+
+function getregisterUser () {
+    var h = window.location.href;
+    console.log('h', h);
+    var hh = h.split("/");
+    console.log('hh[1]', hh[3]);
+    var hhh = h.split("?");
+    console.log('hhh', hhh[1])
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'loginUser' && hh[3] != 'loginUser?h=http:' && hh[3] != 'register?h=http:') {
+      console.log('11111')
+//      window.location.href = '/login?h=' + h
+      // window.open('/loginUser?h=' + h);
+      window.open(fn.urlgen("register")+'?h='+hhh[1]);
+    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser') {
+      console.log('aaaa')
+      window.location.reload();
+    } else if (hhh[1] == undefined && hh[3] == 'loginUser') {
+      console.log('22222');
+      window.location.reload();
+//      window.location.href = '/login'
+      // window.open('/loginUser?h=');
+      // window.open(fn.urlgen('loginUser')+'?h=');
+    } else if (hhh[1] == undefined && hh[3] == 'forget') {
+      console.log('forget');
+      window.open(fn.urlgen("login"));
+    } else if (hhh[1] != undefined && hh[3] == 'register') {
+      console.log('rrrrrr')
+      window.open(fn.urlgen("loginUser"));
+    }
   }
 
   function loginUser () {
@@ -560,7 +623,7 @@ input[type="checkbox"] {
   }
 //普通用户退出
 function outlogin () {
-  var login_info = JSON.parse($.cookie('login_ss'));
+  var login_info = JSON.parse(cookie('login_ss'));
     $.ajax({
       url: js_api_config.wwhost+'/login_out',
       type: 'GET',

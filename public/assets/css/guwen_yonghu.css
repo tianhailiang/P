@@ -38,6 +38,7 @@
 .homepagecon h3 {
   line-height: 77px;
   font-size: 14px;
+  font-weight: normal;
   color: #333;
   float: left;
 }
@@ -58,6 +59,15 @@
   color: #333;
   margin-left: 20px;
   float: left;
+}
+.homepage-title p .dui-text-warning:link{
+  color: #666;
+}
+.homepage-title p .dui-text-warning:visited{
+  color: #999;
+}
+.homepage-title p .dui-text-warning:hover{
+  color: #C13232;
 }
 .homepage-title div {
   padding: 0 10px;
@@ -118,6 +128,7 @@
   background-size: 20px 20px;
   width: 4px;
   height: 20px;
+  display: none;
 }
 
 

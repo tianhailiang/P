@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head >
     {% include "header_new.html" %}
-    <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
-    <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6.js"></script>
-    <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
+    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
+    <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
 </head>
-<style>
+<style type="text/css">
     .right-cont .loadMore{
         width: 100%;
         height: 40px;
@@ -78,18 +78,18 @@
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con dui-box-shadow" style="background-color: #fff;">
         <div class="right-cont case-cont">
-            {% if userinfo.status == 1 %} {#离职顾问#}
+            {#% if userinfo.status == 1 %}
             {% import "widget2/community_nav/community_nav.html" as adviser_nav_leave %}
             {{adviser_nav_leave.adviser_nav_leave('案例', userinfo.uid, helper)}}
-            {% else %} {#在职顾问#}
+            {% else %#}
             {% if userinfo.usertype == 2 %}
             {% import "widget2/community_nav/community_nav.html" as adviser_nav %}
-            {{adviser_nav.adviser_nav('案例', userinfo.uid, helper)}}
+            {{adviser_nav.adviser_nav('案例', userinfo, helper)}}
             {% elif userinfo.usertype == 3 %}
             {% import "widget2/community_nav/community_nav.html" as canzan_nav %}
             {{canzan_nav.canzan_nav('案例', userinfo.uid, helper)}}
             {% endif %}
-            {% endif %}
+            {#% endif %#}
             {% if case_data.list.length > 0 %}
           <div class="right-main clearfix">
                     {% for item in case_data.list %}
@@ -121,23 +121,24 @@
 {{slide.leyu_slide(userinfo,login_info,helper) }}
 {% endif %}
 {% include "widget/new_footer/common_footer.html" %}
-<script>
-  var login_ss = null; 
-  if($.cookie('login_ss') != undefined){
-    login_ss = JSON.parse($.cookie('login_ss'));
-  }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide2_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-<script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script>
   $(function(){
+  var login_ss = null;
+  if(cookie('login_ss') != undefined){
+      login_ss = JSON.parse(cookie('login_ss'));
+  }
     window._bd_share_config = {
       "common": {
         "bdSnsKey": {},
@@ -245,7 +246,7 @@
           '<span id="shoucang_span_'+item.id+'">收藏<em id="shoucang_em_'+ item.id +'">'+ item.favorites +'</em></span>'+
           '</li>'+
           '<li onclick="showbottom(3, '+item.id+')" id="pinglun_li_'+item.id+'">'+
-          '<a target="_blank" href="' + fn.urlgen("case", item.id.toString()) + '">'+
+          '<a target="_blank" href="' + fn.urlgen("case", item.id.toString()) + '#cmt">'+
           '<li onclick="" id="pinglun_li_'+item.id+'">'+
           '<i class="iconfont " id="pinglun_'+item.id+'" style="color: #666">&#xe61f;</i>'+
           '<span id="pinglun_span_'+item.id+'">评论<em id="pinglun_em_'+item.id+'">'+item.comments+'</em></span>'+
@@ -323,11 +324,11 @@
     function report(){
       //举报调取函数
       if(login_ss == undefined){
-        layer.msg('你还没有登录')
-        window.setTimeout(function(){
+        // layer.msg('你还没有登录')
+        // window.setTimeout(function(){
           // window.location.href =fn.curlgen('login','h='+window.location.href);
           getlogin();
-        },1000);
+        // },1000);
         return false;
       }
       var report_content = null;

@@ -5,7 +5,7 @@
   <!--[if lt IE 10]>
   <script src="{{helper.cdnhost}}/assets/js/upgrade.js"></script>
   <![endif]-->
-<style>
+<style type="text/css">
     .pagination-box{
         float: left;
         position: relative;
@@ -59,7 +59,7 @@
         <div class="clearfix">
             {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
             {% if login_info.usertype == 2 %} {#顾问#}
-            {{ community_advisor.advisor(userinfo,helper,login_info) }}
+            {{ community_advisor.advisor_center(userinfo,helper,login_info) }}
             {% elif login_info.usertype == 3 %} {#参赞#}
             {{ community_advisor.counsellor(userinfo,helper,login_info) }}
             {% endif %}
@@ -74,8 +74,8 @@
     </div>
 
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-con left">
-        <div class="right-cont dui-box-shadow">
+    <div class="dui-layout-con left dui-box-shadow">
+        <div class="right-cont">
             <div class="right-title"><div class="tit">关注我的</div></div>
             {% if follow_data and follow_data.list.length > 0 %}
             <div class="right-main clearfix">
@@ -93,20 +93,19 @@
                 {% endif %}
                 {% endfor %}
             </div>
+            <!--分页器 start-->
+            <div class="pagination-box" data-pagenum="{{follow_data.totalpage}}">
+                {% import "widget2/pagtion/pagtion.html" as pagtion %}
+                {{pagtion.pagtion(pagination)}}
+            </div>
+            <!--分页器 end-->
             {% else %}
             {% include "widget2/blank/blank.html" %}
             {% endif %}
-            <!--分页器 start-->
-            <div class="pagination-box" data-pagenum="{% if follow_data %}{{follow_data.totalpage}}{% endif %}">
-                <div class="dui-pagination pagination-large">
-
-                </div>
-            </div>
-            <!--分页器 end-->
         </div>
     </div>
-
 </div>
+
 {% include "widget/new_footer/common_footer.html" %}
 {% if userinfo.adviser_type==1 %}
 {% import "widget/new_slide/new_slide2.html" as  slide %}
@@ -115,22 +114,23 @@
 {% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
 {{slide.leyu_slide(helper) }}
 {% endif %}
-<script>
-    var login_ss = null; 
-    if($.cookie('login_ss') != undefined){
-        login_ss = JSON.parse($.cookie('login_ss'));  
-    }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+{% elseif  userinfo.adviser_type==2 %}
+<script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/select.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script>
     $(function () {
+        var login_ss = null;
+        if(cookie('login_ss') != undefined){
+            login_ss = JSON.parse(cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
@@ -151,21 +151,8 @@
             slidesPerGroup : 2,
           pagination: true
         });
-        if (total_num > 1) {
-            /*分页器*/
-            $('.pagination-box').pagination({
-                pages: followNum/16,
-                styleClass: ['pagination-large'],
-                showCtrl: true,
-                currentPage: cur_page,
-                displayPage: 7,
-                onSelect: function (num) {
-                    window.location.href = fn.curlgen(path, 'n=' + cur_country, 'order=' + cur_order, 'page=' + num);
-                }
-            });
-            //让分页器居中显示
-            $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
-        }
+        //让分页器居中显示
+        $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
     })
 </script>
 </body>

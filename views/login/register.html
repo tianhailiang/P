@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-{% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/top.css"/>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/bootstrap.min.css?v=3.3.6" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/style.css?v=4.1.0" >
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/custom.css">
 
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/bootstrap.min.js?v=3.3.6"></script>
-  <script src="{{helper.cdnhost}}/assets/js/Bootstrap_popover.js"></script>
+  {% include "header_new.html" %}
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
+  
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/custom.css">
+
+  <script src="{{helper.cdnhost}}/dep/js/layer-1.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/icheck.min.js"></script>
-  <style>
+  <style type="text/css">
     .xy{
       width: 650px;
       height: 590px;
@@ -36,15 +33,156 @@
       margin-right: 10px;
       cursor:pointer;
     }
+    .inputtext_isr{
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      -o-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+    .form-control{
+      display: inline-block;
+      line-height: 25px;
+    }
+
+    .fen img{
+      width: 22px;
+      height: 22px;
+      margin-right: 10px;
+      cursor:pointer;
+    }
+    .inputtext_isr input {
+      width: 100%;
+      height: 34px;
+      color: #999;
+      margin-bottom: 15px;
+      border-radius: inherit;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      background-color: #fff;
+      background-image: none;
+      font-size: 14px;
+    }
+    .inputtext_isr .login_error{
+      background-color: #FFFBEF;
+      border: 1px solid #C13232;
+      padding: 6px 12px;
+      z-index: 1;
+      box-shadow: 0 1px 1px #eee;
+      color: #C13232;
+      position: absolute;
+      right: -75px;
+      left: 205px;
+      top: -19px;
+      opacity: 1;
+    }
+    .inputtext_isr .login_error:after,.login_error:before{
+      border: 6px solid transparent;
+      content: ' ';
+      position: absolute;
+      left: 1em;
+    }
+    .inputtext_isr .login_error:before{
+      border-top-color: #C13232;
+      bottom: -13px;
+    }
+    .inputtext_isr .login_error:after{
+      border-top-color: #fffbef;
+      bottom: -12px;
+    }
+    .inputtext_isr .login_x{
+      width: 9px;
+      height: 9px;
+      display: inline-block;
+      margin-right: 5px;
+      background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
+    }
+    .login_nei{
+      width: 440px;
+      height: 335px;
+      float: right;
+      background: #fcf4ef;
+      margin-top: -390px;
+      margin-right: 5px;
+      z-index: 10000;
+      padding: 0px;
+    }
+    .login_nei_top{
+      width: 100%;
+      height: 40px;
+      text-align: center;
+      line-height: 40px;
+    }
+    .login_nei_top .active{
+      border-bottom: none;
+      background: #fcf4ef;
+      color: #c13232;
+    }
+    .login_nei_title{
+      width: 220px;
+      height: 40px;
+      font-size: 18px;
+      color: #333;
+      background: #f5f5f5;
+      border-bottom: 1px solid #dcdcdc;
+      border-right: 1px solid #dcdcdc;
+      float: left;
+      cursor: pointer;
+    }
+    .login_nei_title_new{
+      width: 220px;
+      margin-top: 20px;
+      font-size: 18px;
+      color: #c13232;
+    }
+    .login_form{
+      width: 440px;
+      height: auto;
+      margin-right: 5px;
+      padding: 0 72px 0 72px;
+      text-align: left;
+    }
+    .phone_q{
+      color: #999;
+      position: absolute;
+      top: 6px;
+      width: 55px;
+      left: 30px;
+      text-align: center;
+    }
+    .l_u_com_yan{
+    width: 182px;
+    height: 40px;
+    padding-left: 34px;
+    font-size: 14px;
+    color: #999;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    background-image: none;
+  }
+  .l_u_com_bang{
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    float: right;
+    margin-right: 45px;
+    margin-top: -2px;
+  }
   </style>
 </head>
 <body>
 {% include "widget/common_hide/common_hide.html"%}
-  {% include "widget/top/top.html" %}
-  {% include "widget/nav_login/nav_login.html" %}
+  {#{% include "widget/top/top.html" %}#}
+  <div class="top" style="position:relative;z-index: 1002;">
+  </div>
+  <div class="main" style="margin: 0 auto;">
+    {% import "widget/new_nav_first/nav_login.html" as nav_login %}
+    {{ nav_login.nav_login(tdk,helper) }}
+  </div>
 
-  <div class="register_overseas clearfix" style="margin-top: 30px">
-    <div class="register_content">
+  <div class="register_overseas clearfix" style="padding-top: 0px;">
+    {#<div class="register_content">
       <div class="register_nei login_nei">
         <div class="register_nei_title">用户注册<i>已经注册，现在 <a target="_blank"  href="{{helper.urlgen('login')}}">登录</a></i></div>
 
@@ -101,10 +239,83 @@
           </div>
 
         </div>
-        <div class="register_r" id="XC_REGISTER_SEAT1"></div>
-        <!--<div class="register_r">
+        <!--<div class="register_r" id="XC_REGISTER_SEAT1"></div>
+        <div class="register_r">
           <img src="{{helper.cdnhost}}/assets/img/r_reg.png" alt=""/>
         </div>-->
+      </div>
+    </div>#}
+    <div style="margin: 0px auto;height: 550px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png);
+    background-repeat: no-repeat;background-size: cover;background-position-x: -50px;">{# #}
+      {# <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/> #}
+    </div>
+    
+    <div class="login_content">
+      <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left;height: 430px;margin-top: -450px;">
+
+          
+        <div class="login_form">     
+        <h3 class="login_nei_title_new" style="font-weight: 400">快速注册</h3>
+        <form class="form-group m-t" role="form" style="margin-top: 20px;">
+          
+          <div class="form-group inputtext_isr clearfix" style="position: relative;height: 28px">
+            
+            <input type="text" style="border-radius: inherit;height: 30px;padding-left: 90px;" class="form-control" placeholder="请输入手机号" id="newEmail" required data-vaild="^1[3|4|5|7|8]\d{9}$" data-errmsg="手机号不正确" />
+            <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
+            <i class="phone_q">+86</i>
+            <span class="login_error" id="login_e_phone_u" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_u">请输入手机号</em></span>
+          </div>
+          <div class="form-group clearfix" style="height: 28px;margin-top: 20px;position: relative;margin-bottom: 0px;">
+            <input placeholder="填写图形验证码" type="text" id="tupian_user" class="form-control l_u_com_yan" required data-vaild="^[a-zA-Z0-9]{4}$" style="padding-left: 5px;text-indent: 30px;border-radius: inherit;height: 30px;line-heigth: 30px;float:left;"/><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
+            <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;">
+            <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+            <!--<img class="" style="width: 90px;height: 30px;" id="tupiancun_user" />-->
+            <div id="param_code_user" style="width: 90px;height: 35px;margin-top: -7px;cursor: pointer;"></div>
+            </div>
+          </div>
+          <div class="form-group clearfix" style="margin-top: 20px;position: relative;">
+            <input  type="text" id="reg_verify" class="form-control l_u_com_yan" placeholder="请输入手机验证码" style="padding-left: 5px;text-indent: 30px;border-radius: inherit;height: 30px;line-heigth: 30px;float:left;" required data-vaild="^\d{4}$" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
+            <div class="l_u_com_bang" style="margin-right: 0px;height: 30px;line-heigth: 30px;margin-top: -7px;float: right;">
+              <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
+              <input type="button" class="btn btn-primary" style="width: 90px;height: 30px;text-align: center;padding: 6px 2px;background: #fff;color: #c13232;border: 1px solid #c13232;border-radius: 3px;line-height: 0px;border-radius: inherit;" id="reg_sendcun" value="发送验证码"/>
+            </div>
+          </div>
+          <div class="form-group inputtext_isr clearfix" style="position: relative;height: 28px;margin-top: 20px">
+
+            <input type="password" style="border-radius: inherit;height: 30px;" class="form-control" placeholder="请输入8-16位数字+字母组成" required="" data-vaild="^[a-zA-Z0-9]{8,16}$" id="password" >
+            <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
+            <span class="login_error" id="login_e_phone_p" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_p">请输入8-16位数字+字母组成</em></span>
+          </div>
+
+          <div class="form-group text-left" id="login_user" style="color: #999;margin-top: 20px;margin-left: -0px;">
+            <div class="checkbox i-checks" style="color: #999;">
+              <label class="no-padding">
+                <input type="checkbox" checked><i></i> 我已阅读并同意</label>
+                <a target="_blank"  href="{{helper.urlgen('agreement', '')}}" style="color: #c13232">金吉列用户使用协议</a>
+            </div>
+          </div>
+
+          <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;" id="loginSubmit" value="注 册" data-url='{{url}}'/>
+          </form>
+
+          <div class="login_check clearfix" style="margin-top: 10px">
+              <a href="{{helper.urlgen('loginUser')}}?h={{url}}" style="float: right;color: #333">已有账号？<small style="color: #c13232">登录</small></a>
+            </div>
+        <div class="fen" style="margin-top: 10px;">
+          <h4 style="line-height: 37px;">第三方快速登录：</h4>
+          <div class="bdsharebuttonbox" id="fx" style="float: left;margin-top: 7px">
+            <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo_user" style="float: left;" data-url="{{url}}"/>
+
+            <a target="_blank"  href="{{helper.wwhost}}/weixin_login?h={{url}}" style="float: left;">
+              <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
+            </a>
+            <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq_user" style="float: left;" data-url="{{url}}"/>
+          </div>
+        </div>
+
+        </div>
       </div>
     </div>
     <div class="login_footer">
@@ -170,30 +381,81 @@
     </div>
   </div>
   <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="{{helper.cdnhost}}/assets/js/top.js"></script> -->
+  <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <!--<script src="{{helper.cdnhost}}/assets/js/nav_register.js" charset="utf-8"></script>-->
-  <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script>
   $(document).ready(function () {
+        var login_nickname = JSON.parse(cookie('login_ss'));
+        var h = window.location.href;
+        var hhh = h.split("?");
+        var user_type;
+        if (login_nickname == null) {
+          var val = '<div class="dui-layout-lg top-con">'+
+                '<div class="top-con-right">'+
+                '<span><a onclick="window.location.reload();" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
+                '<span class="bor"></span>';
+                if (hhh[1]) {
+                  val += '<span ><a style="background: #fff;" href="' + fn.urlgen("loginUser")+"?"+hhh[1] + '" class="dui-text-warning-ss" rel="nofollow">登录</a></span>';
+                } else {
+                  val += '<span ><a style="background: #fff;" href="' + fn.urlgen("loginUser") + '" class="dui-text-warning-ss" rel="nofollow">登录</a></span>';
+                }
+                val +='</div>'+
+                '</div>'
+          $(".top").append(val);
+        } else {
+          var val = '<div class="dui-layout-lg top-con">'+
+                '<div class="top-con-right">'+
+                '<ul>';
+          if (login_nickname.usertype == 1) {
+            val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("user_center", "revcomment") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+          } else if (login_nickname.usertype == 2) {
+            val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("advisor_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+          }else if (login_nickname.usertype == 3) {
+            val += '<li><i class="msg-icon iconfont nav-name">&#xe675;</i><span><a target="_blank" href="' + fn.urlgen("canzan_center") + '" rel="nofollow">'+ login_nickname.nickname +'</a></span></li>';
+          }
+          val += '<li><span class="bor">|</span></li>'+
+              '<li ><a href="javascript:void(0)" style="background: #fff;" onclick="outlogin()" rel="nofollow">退出</a></li>'+
+                '</ul>'+
+                '</div>'+
+                '</div>';
+          $(".top").append(val);
+        }
+    //图片验证码
 
-    $("form").Vaild();
+    $.ajax({
+      url:"/param_code",
+      type: "get",
+      success: function(result){
+        $('#param_code_user').html(result)
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+
+    // $("form").Vaild();
     $('.i-checks').iCheck({
       checkboxClass: 'icheckbox_square-green',
       radioClass: 'iradio_square-green'
     });
     var lS = document.getElementById('loginSubmit');
-    console.log('loginS', lS);
     if (lS.addEventListener) {
-      console.log('ffff');
       lS.addEventListener('click', loginS, false);
     } else {
-      console.log('eeeee');
       lS.attachEvent('onclick', loginS, false);
     }
-    var sP = document.getElementById('sendcun');
+    var sP = document.getElementById('reg_sendcun');
     if (sP.addEventListener) {
       sP.addEventListener('click', sendphone, false)
     }else {
       sP.attachEvent('onclick', sendphone, false)
+    }
+    var pc = document.getElementById('param_code_user');
+    if (pc.addEventListener) {
+      pc.addEventListener('click', showcode, false);
+    } else {
+      pc.attachEvent('onclick', showcode, false);
     }
     $('#xieyi').on('click', function () {
       var xy = $(".xy");
@@ -213,59 +475,108 @@
       });
     })
 
-    $('#weibo').on('click', function () {
-      var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+    $('#weibo_user').on('click', function () {
+      var url = $(this).attr('data-url')
+      //var h = window.location.href;//获取全部的url
+      //console.log('h', h);
+      //var hh = h.split("?");
+      //console.log('hh', hh[1])
+      if (url !== undefined) {
+        //var str = hh[1].substr(1);
+        //var strs = str.split("=");
+        //console.log('strs', strs)
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + url, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      } else {
+        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      }
     })
-    $('#qq').on('click', function () {
-      //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
-      //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
-      var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+    $('#qq_user').on('click', function () {
+    //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
+    //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
+      var url = $(this).attr('data-url')
+      //var h = window.location.href;//获取全部的url
+      //console.log('h', h);
+      //var hh = h.split("?");
+      //console.log('hh', hh)
+      if (url !== undefined) {
+        //var str = hh[1].substr(1);
+        //var strs = str.split("=");
+        //console.log('strs', strs)
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + url, "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      } else {
+        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + js_api_config.wwhost, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      }
     })
 
   })
 
+  function showcode () {
+    $.ajax({
+      url:"/param_code?time="+new Date().getTime(),
+      type: "get",
+      success: function(result){
+        //$('#param_code_user').html(result)
+        $("#param_code_user")[0].innerHTML = result;
+      },
+      error:function(XMLHttpRequest, textStatus, errorThrown){
+        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+      }
+    });
+  }
+
   function loginS () {
-    console.log('login_ssssss')
+    var url = $(this).attr('data-url')
+    console.log('url',url);
     if ($('#newEmail').val() === '') {
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
+      $('#login_error_text_phone_u').html('请输入手机号码');
+      return
+    } else {
+      $('#login_e_phone_u').css('display','none');
+    }
+    if (!/^1\d{10}$/.test($('#newEmail').val())) {
+      $('#login_e_phone_u').css('display','block');
+      $('#login_error_text_phone_u').html('请输入正确手机号码');
+      return
+    } else {
+      $('#login_e_phone_u').css('display','none');
+      $('#login_error_text_phone_u').html('请输入正确手机号码');
+    }
+    if ($('#tupian_user').val() == '') {
+      layer.msg('请输入图片验证码');
       return
     }
-    if ($('#password').val() === '') {
-      $('#password').parent().addClass("has-error").removeClass("has-success");
-      $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入密码').popover({"trigger":"manual"}).popover("show");
+    if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian_user").val())) {
+      layer.msg('请输入4位图片验证码');
       return
     }
-    if ($('#que_password').val() === '') {
-      $('#que_password').parent().addClass("has-error").removeClass("has-success");
-      $('#que_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入确认密码').popover({"trigger":"manual"}).popover("show");
-      return
-    }
-    console.log('qie_password', $('#qie_password').val())
-    console.log('password', $('#password').val())
-    if ($('#qie_password').val() !== $('#password').val()) {
-      console.log('dddddddd');
-      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
-      $('#qie_password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次密码输入不一致').popover({"trigger":"manual"}).popover("show");
-      $('#password').parent().addClass("has-error").removeClass("has-success");
-      $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '两次密码输入不一致').popover({"trigger":"manual"}).popover("show");
-      return
-    }else{
-      console.log('qqqqqqq1234')
-      $('#qie_password').parent().addClass("has-error").removeClass("has-success");
-      $('#password').parent().addClass("has-error").removeClass("has-success");
-    }
-    if ($('#verify').val() === '') {
+    if ($('#reg_verify').val() === '') {
       layer.msg('请输入手机验证码');
       return
     }
-    if (!$("input[type='checkbox']").is(':checked')) {
+    if (!/^\d{6}$/.test($('#reg_verify').val())) {
+      layer.msg('请输入手机验证码');
+      return
+    }
+    if ($('#password').val() === '') {
+      $('#login_e_phone_p').css('display','block');
+      $('#login_error_text_phone_p').html('请输入8-16位数字+字母组成');
+    } else {
+      $('#login_e_phone_p').css('display','none');
+    }
+    if (!/^[a-zA-Z0-9]{8,16}$/.test($("#password").val())) {
+      $('#login_e_phone_p').css('display','block');
+      $('#login_error_text_phone_p').html('请输入8-16位数字+字母组成');
+    } else {
+      $('#login_e_phone_p').css('display','none');
+    }
+    if (!$("#login_user input[type='checkbox']").is(':checked')) {
       layer.msg('请同意注册协议');
       return
     }
     var sha1 = hex_sha1($('#password').val());
     console.log('sha1'+sha1);
-    if ($('#newEmail').val() !== '' && $('#password').val() !== ''&& /^[a-zA-Z0-9]{8,16}$/.test($("#password").val()) && /^1[3|4|5|7|8]\d{9}$/.test($("#newEmail").val())) {
+    if ($('#newEmail').val() !== '' && $('#password').val() !== '' && $('#reg_verify').val() !== '' && /^\d{6}$/.test($('#reg_verify').val()) && /^[a-zA-Z0-9]{8,16}$/.test($("#password").val()) && /^1\d{10}$/.test($("#newEmail").val())) {
       console.log('ajax')
       $.ajax({
         url: '/register_s',
@@ -273,7 +584,7 @@
         data:{
           phone: $('#newEmail').val(),
           password: hex_sha1($('#password').val()),
-          code: $('#verify').val()
+          code: $('#reg_verify').val()
         },
         dataType:'json',
         success:function(msg){
@@ -281,8 +592,16 @@
           console.log('msg ajax', msg);
           if(msg.code === 0){
             //window.location= '/';
-            alert('注册成功');
-            window.location = '/login'
+            // window.location = '/login'
+            if (url !== undefined) {
+            //var str = hh[1].substr(1);
+            //console.log('str', str);
+            //var strs = str.split("=");
+            //console.log('strs', strs[1]);
+              window.location= url;
+            } else {
+              window.location = '/';
+            }
           } else {
             alert('金吉列留学提醒您：'+msg.message);
           }
@@ -298,21 +617,39 @@
   function sendphone () {
     if ($('#newEmail').val() === '') {
 //            let butp = document.getElementById('phone')
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
+      $('#login_error_text_phone_u').html('请输入手机号码');
+      return
+    } else {
+      $('#login_e_phone_u').css('display','none');
+    }
+    if (!/^1\d{10}$/.test($('#newEmail').val())) {
+//            let butp = document.getElementById('phone')
+      // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+      // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+      $('#login_e_phone_u').css('display','block');
+      $('#login_error_text_phone_u').html('请输入正确手机号码');
+      return
+    } else {
+      $('#login_e_phone_u').css('display','none');
+      $('#login_error_text_phone_u').html('请输入正确手机号码');
+    }
+    if ($('#tupian_user').val() == '') {
+      layer.msg('请输入图片验证码');
       return
     }
-    if (!/^1[3|4|5|7|8]\d{9}$/.test($("#newEmail").val())) {
-//            let butp = document.getElementById('phone')
-      $('#newEmail').parent().addClass("has-error").removeClass("has-success");
-      $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号码').popover({"trigger":"manual"}).popover("show");
+    if (!/^[a-zA-Z0-9]{4}$/.test($("#tupian_user").val())) {
+      layer.msg('请输入4位图片验证码');
       return
     }
     $.ajax({
 //      url: ajaxUrlPrefix.phone + '/index.php?m=checkphone&phone=' + $('#newEmail').val(),
-      url: '/use_phone_s',
-      type: 'GET',
+      url: '/sendcode_s',
+      type: 'post',
       data: {
+        param_code: $('#tupian_user').val().toLowerCase(),
         phone: $('#newEmail').val()
       },
       dataType:'json',
@@ -323,41 +660,22 @@
           var downcount = 60;
           var time = setInterval(function (){
             if (downcount === 0) {
-              $("#sendcun").attr("value", "发送验证码");
-              $("#sendcun").removeAttr("disabled");
+              $("#reg_sendcun").attr("value", "发送验证码");
+              $("#reg_sendcun").removeAttr("disabled");
               clearInterval(time);
               return
             }else {
-              $("#sendcun").attr("disabled", "disabled");
-              $("#sendcun").attr("value", downcount + "s");
+              $("#reg_sendcun").attr("disabled", "disabled");
+              $("#reg_sendcun").attr("value", downcount + "s");
               downcount--;
             }
           }, 1000);
-          $.ajax({
-//            url: ajaxUrlPrefix.phone + '/index.php?m=sendcode&phone=' + $('#newEmail').val(),
-            url: '/sendcode_s',
-            type:'GET',
-            data: {
-              phone: $('#newEmail').val()
-            },
-            dataType:'json',
-            withCredentials:true,
-            success:function(msg1){
-              console.log('msg', msg1);
-              if (msg1.code === 0) {
-                layer.msg('短信发送成功，请查阅手机');
-              } else {
-                layer.msg('数据错误');
-              }
-            },
-            error:function(XMLHttpRequest, textStatus, errorThrown){
-              console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
-              layer.msg("获取失败，请重试！CODE:"+XMLHttpRequest.status);
-            }
-          });
-        } else {
-          alert('金吉列留学提醒您：'+msg.message);
-
+        } else if (msg == '1') {
+          layer.msg('图片验证码输入错误');
+        } else if (msg.code === '1150013') {
+          layer.msg(msg.message);
+        }else {
+          layer.msg('数据错误');
         }
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
@@ -366,10 +684,7 @@
       }
     })
 
-
   }
 </script>
-
-
 </body>
 </html>

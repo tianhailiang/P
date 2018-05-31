@@ -1,9 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head >
 	{% include "header_new.html" %}
-  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/article_detail.css" >
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/article_detail.css" >
 </head>
 <body style="background:#f5f5f5;">
 {% include "widget/common_hide/common_hide.html"%}
@@ -68,13 +68,13 @@
       <div class="dui-box-shadow" >
         <div class="adviser-case-detail-con" style="margin-top: 0;" >
           {% import "widget2/community_nav/community_nav.html" as community_nav %}
-          {% if userinfo.status == 1 %} {#离职顾问#}
+          {#% if userinfo.status == 1 %}
             {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
-          {% else %} {#在职顾问#}
+          {% else %#}
             {% if userinfo.usertype == 2 %}
-             {{community_nav.adviser_nav('专栏', userinfo.uid, helper)}}
+             {{community_nav.adviser_nav('专栏', userinfo, helper)}}
             {% endif %}
-          {% endif %}
+          {#% endif %#}
           <div class="adviser-top clearfix" style="margin-top: 20px;">
             <div style="float:left;line-height: 50px;" >
               <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
@@ -120,23 +120,26 @@
           </div>
           <div class="userinfo-box clearfix" >
             {% if userinfo.qrcode %}
-              <img class="userinfo-img" src="{{helper.imageThumb(userinfo.qrcode,'76x76')}}" >
+              <img class="userinfo-img" src="{{helper.imageThumb(userinfo.qrcode)}}" >
+              <img class="userinfo-img-shaow" src="{{helper.cdnhost}}/assets/img/my_else_shaow.png" >
             {% endif %}
             <div class="userinfo-right" >
               <div >
-                <i class="userinfo-name">{{userinfo.realname}}</i>
+                <i class="userinfo-name" style="font-weight: normal">{{userinfo.realname}}</i>
                 <i class="adviser-v-i" style="margin-left: 0;"></i>
                 <i style="color:#333;font-size: 14px;">{{userinfo.position_name}}</i>
               </div>
-              <div class="userinfo-information" >
-                邮箱：{{userinfo.email}} | 电话：{{userinfo.tel}}
+              <div class="userinfo-information" style="margin-top: 30px">
+                邮箱：<em>{{userinfo.email}}</em>
               </div>
               <div class="userinfo-information" >
-                {{userinfo.organid | getCity()}}分公司：{{userinfo.organid | getCityAddress()}}
+                电话：<em>{{userinfo.tel}}</em>
+              </div>
+              <div class="userinfo-information" >
+                {{userinfo.organid | getCity()}}分公司：<em>{{userinfo.organid | getCityAddress()}}</em>
               </div>
             </div>
           </div>
-          {% if userinfo.status == 0 %}
           <div class="adviser-case-operation-bar clearfix"  style="padding-top: 40px;padding-bottom: 40px;" id="to_comments">
             <span style="margin-left: 187px;float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" id="collection">
             {% if article.article_info.user_follow_check %}
@@ -153,17 +156,14 @@
                 &#xe651;
               {% endif %} 
               </i>点赞</span> 
-            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" onclick="openchat_new('{{ userinfo.job_number}}')">立即咨询</a>
+            <a  style="float:left;width:115px;height:30px;font-size: 14px;color:#fff;text-align:center;line-height: 30px;background:#c13232;margin-right: 60px;cursor: pointer;" onclick="openchat_new('{{ userinfo.new_job_number}}')">立即咨询</a>
           </div>
-          {% endif %}
           <div class="article_tuijian">
-              <h1><div></div>相关推荐</h1>
+              <h1 style="font-weight: normal"><div></div>相关推荐</h1>
             {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list) %}
           </div>
           <!-- ========评论===== -->
-          {% if userinfo.status == 0 %} 
             {% include "widget2/comment/comment.html" %}
-          {% endif %}
         </div>
       </div>
     </div>
@@ -183,15 +183,22 @@
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+  {% if userinfo.adviser_type==1 %}
   <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
+  {% elseif userinfo.adviser_type==2   %}
+  <script src="{{helper.cdnhost}}/assets/js/slide2_yimin.js"></script>
+  {% endif %}
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/article_detail.js"></script>
   <script>
     $(function(){
+      var login_ss = null;
+      if(cookie('login_ss') != undefined){
+        login_ss = JSON.parse(cookie('login_ss'));
+      }
       $('.banner-box-left .slider').xSlider({
           current: 0,
           speed: 500,
@@ -304,7 +311,7 @@
     function watermark() {
       var oTemp = document.createDocumentFragment();
       var mask_div = document.createElement('div');
-      mask_div.appendChild(document.createTextNode('金吉列 www.jjl.cn 400-010-8000'));
+      mask_div.appendChild(document.createTextNode('金吉列 www.jjl.cn'));
       //设置水印div倾斜显示
       mask_div.style.webkitTransform = "rotate(-" + 30 + "deg)";
       mask_div.style.MozTransform = "rotate(-" + 30 + "deg)";
@@ -313,7 +320,8 @@
       mask_div.style.transform = "rotate(-" + 30 + "deg)";
       mask_div.style.visibility = "";
       mask_div.style.position = "absolute";
-      mask_div.style.left ='80px';
+      mask_div.style.left ='50%';
+      mask_div.style.marginLeft ='-125px';
       mask_div.style.top = '40%';
       mask_div.style.overflow = "hidden";
       mask_div.style.zIndex = "1000";

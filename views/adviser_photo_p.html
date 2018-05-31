@@ -1,11 +1,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head >
     {% include "header_new.html" %}
-    <link rel="stylesheet" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
-    <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6.js"></script>
-    <style>
+    <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/dep/css/idangerous.swiper-2.7.6.css" >
+    <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
+    <style type="text/css">
 		.rel-case-map{
 		 	width:100%;
 		 	height:130px;
@@ -89,7 +89,7 @@
         <div class="photo-cont right-cont" style="background-color: #fff;">
             {% import "widget2/community_nav/community_nav.html" as community_nav %}
             {% if userinfo.usertype == 2 %} {#顾问#}
-            {{community_nav.adviser_nav('相册', userinfo.uid, helper)}}
+            {{community_nav.adviser_nav('相册', userinfo, helper)}}
             {% elif userinfo.usertype == 3 %} {#参赞#}
             {{community_nav.canzan_nav('相册', userinfo.uid, helper)}}
             {% endif %}
@@ -113,23 +113,25 @@
 {{slide.leyu_slide(userinfo,login_info,helper) }}
 {% endif %}
 {% include "widget/new_footer/common_footer.html" %}
-<script>
-    var login_ss = null;
-    if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));
-    }
-</script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+{% if userinfo.adviser_type==1 %}
 <script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
+{% elseif userinfo.adviser_type==2   %}
+<script src="{{helper.cdnhost}}/assets/js/slide2_yimin.js"></script>
+{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bigPhotoSlider.js"></script>
 <script>
     $(function () {
+        var login_ss = null;
+        if(cookie('login_ss') != undefined){
+            login_ss = JSON.parse(cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,

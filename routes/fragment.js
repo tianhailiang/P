@@ -186,3 +186,24 @@ exports.article_xiangguantuijian = function(req,res,next){
     res.render('./fragment/article_xiangguantuijian', data);
   });
 }
+//友情链接
+exports.linkList = function (req, res, next) {
+    var data = {}
+    var area = req.query.c || 1;
+    // console.log('友情链接',area);
+    // var resData = [];
+    async.parallel({
+        link:function(callback){
+            cms.link({
+                "city_id": area
+            },callback);
+        }
+    },function(err, result){
+        data.linkList = [];
+        for (key in result.link) {
+            data.linkList.push(JSON.parse(result.link[key]));
+        }
+        // console.log("友情链接--------------",data.linkList)
+        res.render('./fragment/linkList', data);
+    })
+}

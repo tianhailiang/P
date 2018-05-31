@@ -97,7 +97,7 @@
   text-align: center;
 }
 .community-advisor .advisor-intro{
-  padding:13px 20px;
+  padding:13px 20px 0px;
   font-size: 12px;
   color:#666666;
 }
@@ -122,23 +122,40 @@
 }
 .community-advisor .advisor-btn{
   height: 40px;
-  background: #ff8547;
   font-size:20px;
   color:#ffffff;
   line-height: 40px;
+  padding-bottom: 15px;
+  padding-top: 2px;
 }
-.community-advisor .advisor-btn-gray{
+.community-advisor .advisor-btn-gray .advisor-zixun{
   background:#dcdcdc;
 }
-
-.community-advisor .advisor-zixun,.community-advisor .advisor-guanzhu{
-  font-size: 14px;
-  padding:1px  42px;
-  cursor: pointer;
-  color: #fff
+.community-advisor .advisor-btn-gray .advisor-guanzhu {
+  background:#dcdcdc;
+  border: none;
+  color: #fff;
+  padding: 4px 38px;
 }
 .community-advisor .advisor-zixun{
-  border-right:1px solid #ffffff;
+  font-size: 14px;
+  padding:4px  28px;
+  cursor: pointer;
+  margin-left: 20px;
+  color: #fff;
+  background: #c13232;
+}
+.community-advisor .advisor-guanzhu {
+  font-size: 14px;
+  padding:3px 38px;
+  cursor: pointer;
+  margin-left: 18px;
+  color: #c13232;
+  border: 1px solid #c13232;
+  border-radius: 4px;
+}
+.community-advisor .advisor-zixun{
+  border-radius: 4px;
 }
 .community-advisor .counsellor-guanzhu{
   font-size: 14px;

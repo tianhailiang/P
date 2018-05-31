@@ -67,7 +67,7 @@ exports.loginUser = function (req, res, next) {
   res.render('login/loginUser', data)
 };
 
-//普通用户登录
+//普通用户验证码登录
 exports.login_user = function (req, res, next) {
   log.debug('this router login_s~~');
   var username = req.body.phone;
@@ -90,12 +90,14 @@ exports.login_user = function (req, res, next) {
   }, function (err, result) {
 
     data.login_user = result.login_user;
-    data.login_user.data.usertype = 1;
+    
     log.debug('result.login_user----------', result.login_user);
 
     //res.render('login', data)
     if (result.login_user.code === 0) {
-      //
+      if (data.login_user.data) {
+        data.login_user.data.usertype = 1;
+      }
       async.parallel({
         userinfo:function(callback){
           wec.userinfo({
@@ -132,6 +134,69 @@ exports.login_user = function (req, res, next) {
   });
 }
 
+//普通用户密码登录
+exports.user_login = function (req, res, next) {
+  log.debug('this router user_login~~');
+  // var username = req.body.phone;
+  // var password = req.body.code;
+
+  log.debug(req.body);
+  var data = [];
+  // var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+  //   if(ip.split(',').length>0){
+  //       ip = ip.split(',')[0]
+  //   }
+  //   console.log('ip',ip);
+  var async = require('async');
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
+  async.parallel({
+    //签证指南
+    user_login: function (callback) {
+      cms.user_login(req.body, callback);
+    }
+  }, function (err, result) {
+
+    data.user_login = result.user_login;
+    console.log('data.login_user',result.user_login.code)
+    
+    //res.render('login', data)
+    if (result.user_login.code == 0) {
+      if (data.user_login.data != undefined) {
+        data.user_login.data.usertype = 1;
+      }
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.user_login.data.uid,
+              "to_uid":result.user_login.data.uid
+          },callback);
+        }
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo.data);
+        data.user_login.data.status = result.userinfo.data.status;
+        data.user_login.data.version = result.userinfo.data.version;
+        log.debug('result.user_login----------', data.user_login.data);
+      
+        if (config.version == 'development') {//开发环境
+          log.debug('result.user_login----------development');
+          res.cookie("login_ss", JSON.stringify(data.user_login.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          log.debug('result.user_login----------production');
+          res.cookie("login_ss", JSON.stringify(data.user_login.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+        }
+      
+        res.send(data.user_login);
+      })
+      
+      //log.debug('config', config.wwhost);
+      //res.redirect(301,config.wwhost);
+      //res.end()
+    }else {
+      res.send(result.user_login);
+    }
+  });
+}
+
 //登录
 exports.login_s = function (req, res, next) {
   log.debug('this router login_s~~');
@@ -158,13 +223,15 @@ exports.login_s = function (req, res, next) {
   }, function (err, result) {
     
     data.login_ss = result.login_ss;
-    data.login_ss.data.usertype = 2;
-    data.login_ss.data.adviser = adviser;
-
-    log.debug('result.login_ss----------', data.login_ss.data);
+    log.debug('result.login_ss----------', data.login_ss);
 
     //res.render('login', data)
     if (result.login_ss.code === 0) {
+      if (data.login_ss.data != undefined) {
+        console.log('datatatta---------------')
+        data.login_ss.data.usertype = 2;
+        data.login_ss.data.adviser = adviser;
+      }
       async.parallel({
         userinfo:function(callback){
           wec.userinfo({
@@ -229,12 +296,19 @@ exports.register = function (req, res, next) {
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var data = [];
   data.login_nickname = '';
+  var l = req.query
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
   data.tdk = {
     pagekey: 'REGISTER', //key
     cityid: area, //cityid
     nationid: ''//nationi
   };
-  res.render('register', data)
+  res.render('login/register', data)
 }
 
 exports.binding = function (req, res, next) {
@@ -278,8 +352,43 @@ exports.register_s = function (req, res, next) {
 
     data.register_ss = result.register_ss;
     log.debug('result.login_ss----------', result.register_ss);
-      log.debug('ok', result.register_ss.code)
-      res.send(result.register_ss)
+
+    if (result.register_ss.code == 0) {
+      if (data.register_ss.data != undefined) {
+        data.register_ss.data.usertype = 1;
+      }
+      async.parallel({
+        userinfo:function(callback){
+          wec.userinfo({
+              "u_id":result.register_ss.data.uid,
+              "to_uid":result.register_ss.data.uid
+          },callback);
+        }
+      },function (err, result){
+        log.debug('result.userinfo', result.userinfo.data);
+        data.register_ss.data.status = result.userinfo.data.status;
+        data.register_ss.data.version = result.userinfo.data.version;
+        log.debug('result.login_user----------', data.login_user.data);
+      
+        if (config.version == 'development') {//开发环境
+          log.debug('result.login_user----------development');
+          res.cookie("login_ss", JSON.stringify(data.register_ss.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
+        } else {
+          log.debug('result.login_user----------production');
+          res.cookie("login_ss", JSON.stringify(data.register_ss.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});
+        }
+      
+        res.send(data.register_ss);
+      })
+      
+      //log.debug('config', config.wwhost);
+      //res.redirect(301,config.wwhost);
+      //res.end()
+    }else {
+      res.send(result.register_ss);
+    }
+
+      // res.send(result.register_ss)
 
   });
 
@@ -378,6 +487,26 @@ exports.forget = function (req, res, next) {
   res.render('login/forget', data)
 }
 
+exports.forgetUser = function (req, res, next) {
+  log.debug('this router forgetUser~~');
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var data = [];
+  data.login_nickname = '';
+  var l = req.query
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.tdk = {
+    pagekey: 'FORGETPWD', //key
+    cityid: area, //cityid
+    nationid: ''//nationi
+  };
+  res.render('login/forgetUser', data)
+}
+
 exports.oauth = function (req, res, next) {
   var data = [], oauth_data=[];
   if (req.cookies.oauth_login) {
@@ -416,6 +545,13 @@ exports.qq_login = function (req, res, next) {
           log.debug('result.userinfo', result.userinfo);
           data.oauth.data.status = result.userinfo.data.status;
           data.oauth.data.version = result.userinfo.data.version;
+
+          if(result.userinfo.data.ym_adviser == 2 && result.userinfo.data.lx_adviser == 1){
+            data.oauth.data.adviser = 2;
+          }
+          if(result.userinfo.data.lx_adviser == 2){
+            data.oauth.data.adviser = 1;
+          }
           if (config.version == 'development') {//开发环境
             res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
           } else {
@@ -481,6 +617,13 @@ exports.sina_login = function (req, res, next) {
           log.debug('result.userinfo', result.userinfo);
           data.oauth.data.status = result.userinfo.data.status;
           data.oauth.data.version = result.userinfo.data.version;
+          if(result.userinfo.data.ym_adviser == 2 && result.userinfo.data.lx_adviser == 1){
+            data.oauth.data.adviser = 2;
+          }
+          if(result.userinfo.data.lx_adviser == 2){
+            data.oauth.data.adviser = 1;
+          }
+
           if (config.version == 'development') {//开发环境
             res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
           } else {
@@ -544,6 +687,13 @@ exports.weixin_login = function (req, res, next) {
           log.debug('result.userinfo', result.userinfo);
           data.oauth.data.status = result.userinfo.data.status;
           data.oauth.data.version = result.userinfo.data.version;
+          if(result.userinfo.data.ym_adviser == 2 && result.userinfo.data.lx_adviser == 1){
+            data.oauth.data.adviser = 2;
+          }
+          if(result.userinfo.data.lx_adviser == 2){
+            data.oauth.data.adviser = 1;
+          }
+
           if (config.version == 'development') {//开发环境
             res.cookie("login_ss", JSON.stringify(data.oauth.data), {domain: config.domain, expires: new Date(Date.now() + 90000000)});//保存cookie
           } else {
@@ -680,6 +830,7 @@ exports.ad_tongji = function (req,res,next){
         // 已登录
 
         // ad广告统计redis
+        console.log('data.url',data.url)
         var login_a = JSON.parse(req.cookies.login_ss)
         cms.ad_tongji(login_a.uid, login_a.username);
 
@@ -691,6 +842,7 @@ exports.ad_tongji = function (req,res,next){
 
       console.log('config.wwhost', config.wwhost);
       console.log('req.url', req.url);
+      console.log('data.url',data.url);
       res.redirect('loginUser?h='+config.wwhost+'/ad_tongji?href='+data.url);
     }
   // res.render('login/forget', data)

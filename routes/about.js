@@ -81,6 +81,7 @@ exports.canzan = function (req, res, next) {
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/canzan', data);
 
   });
@@ -123,6 +124,7 @@ exports.lawyer = function (req, res, next) {
     data.tdk = {
       pagekey: 'YIMIN_LAWYER'
     };
+    data.esikey = esihelper.esikey();
     res.render('about/lawyer', data);
 
   });
@@ -167,15 +169,15 @@ exports.activity = function (req, res, next) {
         "u_id":data.login_info.uid, "to_uid":data.login_info.uid},callback);
     },
     activitylist:function (callback) {
-      cms.activity_list({"city_id":area,"page":"1","perpage":8},callback);
+      cms.activity_list({"city_id":area,"type":0,"page":"1","perpage":8},callback);
     },
-    other_activitylist:function (callback) {
-      cms.other_activity_list({"city_id":area,"page":"1","perpage":30},callback);
+    end_activitylist:function (callback) {
+      cms.activity_list({"city_id":area,"type":3,"page":"1","perpage":10},callback);
     }
   }, function (err, result){
     data.userinfo = returnData(result.userinfo,'userinfo');
     data.activitylist = returnData(result.activitylist,'activitylist');
-    data.other_activitylist = returnData(result.other_activitylist,'other_activitylist');
+    data.end_activitylist = returnData(result.end_activitylist,'other_activitylist');
   /*  data.country=country;
     data.route = 'team';
     data.pageType = '文案团队';
@@ -187,6 +189,7 @@ exports.activity = function (req, res, next) {
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/activity', data);
 
   });
@@ -194,7 +197,7 @@ exports.activity = function (req, res, next) {
 //活动底页
 exports.activity_detail = function (req, res, next){
   var data = [];
-  var area = 1;
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var urlcity=''
   if (req.params[0]) {
     var cityId = comfunc.getCityId(req.params[0]);
@@ -309,6 +312,7 @@ exports.culture = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/culture', data);
   
     });
@@ -344,6 +348,7 @@ exports.about = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/about', data);
   
     });
@@ -387,6 +392,7 @@ exports.events = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/events', data);
   
     });
@@ -441,6 +447,7 @@ exports.cooperation = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/cooperation', data);
   
     });
@@ -529,6 +536,7 @@ exports.contact = function (req, res, next){
         cityid: area, //cityid
         nationid: country//nationi
       };
+      data.esikey = esihelper.esikey();
       res.render('about/contact', data);
   
     });
@@ -563,6 +571,7 @@ exports.cultures = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/cultures', data);
 
   });
@@ -607,6 +616,7 @@ exports.culture_detail = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/culture_detail', data);
 
   });
@@ -641,6 +651,7 @@ exports.employment = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/employment', data);
 
   });
@@ -683,6 +694,7 @@ exports.schooltopic = function (req, res, next){
       cityid: area, //cityid
       nationid: country//nationi
     };
+    data.esikey = esihelper.esikey();
     res.render('about/schooltopic', data);
 
   });

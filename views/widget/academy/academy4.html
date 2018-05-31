@@ -1,9 +1,0 @@
-<div class="dui-layout-border dui-layout-padding clearfix">
-    {% for item in remenyuanxiao %}
-    <div class="dui-layout-col5">
-      <div><a href=""><img class="col5-p1-p2-a1" src="{{ item.thumb }}" alt=""></a></div>
-      <p class="col5-p1-p2-a2"><a class="dui-text-warning-s" href="">{{ item.title | shorten(15)  }}</a></p>
-      <p class="col5-p1-p2-a3"><a class="dui-text-warning-ss" href="">{{ item.description | shorten(34) }}</a></p>
-    </div>
-    {% endfor %}
-</div>

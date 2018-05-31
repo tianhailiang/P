@@ -2,8 +2,8 @@
 <html>
 <head>
 {% include "header_new.html" %}
-<link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/search_result.css"/>
-<style>
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/search_result.css"/>
+<style type="text/css">
     .pagination-box{
         float: left;
         position: relative;
@@ -246,6 +246,30 @@
       },
       {
       "type": "留学案例"
+      },
+      {
+      "type": "院校资讯"
+      },
+      {
+      "type": "留学方案"
+      },
+      {
+      "type": "背景提升"
+      },
+      {
+      "type": "海外生活"
+      },
+      {
+      "type": "备考资讯"
+      },
+      {
+      "type": "文书准备"
+      },
+      {
+      "type": "难点解析"
+      },
+      {
+      "type": "省钱攻略"
       }
       ]
       %}
@@ -360,7 +384,7 @@
           pagination: true
         });
 
-/*        var area = $.cookie('currentarea') ? $.cookie('currentarea') : 1;
+/*        var area = cookie('currentarea') ? cookie('currentarea') : 1;
         var keyword = $('#result-keyword').text();
         var load_page = $('#load-more-article').attr('data-cur_page')*1+1;
         function more_artice (art_list) {

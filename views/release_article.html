@@ -25,7 +25,7 @@
 	    <!-- =======顾问头像关注====== -->
       {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
       {% if userinfo.usertype == 2 %}
-        {{community_advisor.advisor(userinfo, helper,login_info)}}
+        {{community_advisor.advisor_center(userinfo, helper,login_info)}}
       {% elif userinfo.usertype == 3 %}  
         {{community_advisor.counsellor(userinfo, helper,login_info)}}
       {% else %}  
@@ -222,24 +222,20 @@
   {% include "widget/new_footer/common_footer.html" %}
   {% import "widget/new_slide/new_slide2.html" as  slide %}
   {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
-  <script>
-    var login_ss = null; //获取用户信息
-    if($.cookie('login_ss') != undefined){
-      login_ss = JSON.parse($.cookie('login_ss'));  
-    }
-    console.log(login_ss)
-  </script>
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
-  <script src="{{helper.cdnhost}}/dep/js/layer.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script >
     $(function(){
+        var login_ss = null; //获取用户信息
+        if(cookie('login_ss') != undefined){
+            login_ss = JSON.parse(cookie('login_ss'));
+        }
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
 //          autoplay : 500,
@@ -276,7 +272,7 @@
         this.value  = this.value.substring(0, 200);
       }); 
       $("#art_abs").on("keyup",function(){
-        var strLength = $.trim($(this).val()).length; 
+        var strLength = this.value.length; 
         $("#word-num").html(200-strLength);
         if(strLength > 200){
           $("#word-num").html(0);
@@ -449,6 +445,9 @@
               if($('#recommend-input').val()==''){
                 layer.msg('请输入您的自定义标签');
                 return false;
+              }else if ($('#recommend-input').val() == '专业解析' || $('#recommend-input').val()=='申请规划' || $('#recommend-input').val() =='留学费用'||$('#recommend-input').val()=='留学条件'||$('#recommend-input').val()=='大学排名'||$('#recommend-input').val()=='行前指导'||$('#recommend-input').val()=='就业指导'||$('#recommend-input').val()=='签证指导'||$('#recommend-input').val()=='留学案例'){
+                layer.msg('您输入的自定义标签不能与推荐标签相同');
+                return false;
               }else{
                 custom_tags =$('#recommend-input').val();
               }
@@ -577,6 +576,9 @@
               //选中自定义标签
               if($('#recommend-input').val()==''){
                 layer.msg('请输入您的自定义标签');
+                return false;
+              }else if ($('#recommend-input').val() == '专业解析' || $('#recommend-input').val()=='申请规划' || $('#recommend-input').val() =='留学费用'||$('#recommend-input').val()=='留学条件'||$('#recommend-input').val()=='大学排名'||$('#recommend-input').val()=='行前指导'||$('#recommend-input').val()=='就业指导'||$('#recommend-input').val()=='签证指导'||$('#recommend-input').val()=='留学案例'){
+                layer.msg('您输入的自定义标签不能与推荐标签相同');
                 return false;
               }else{
                 custom_tags =$('#recommend-input').val();

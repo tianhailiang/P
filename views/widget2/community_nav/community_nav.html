@@ -1,5 +1,5 @@
 <!--顾问导航-->
-{% macro adviser_nav(type,id,helper) %}
+{% macro adviser_nav(type,userinfo,helper) %}
 {%
 set adviserNav = [
 {
@@ -27,15 +27,15 @@ set adviserNav = [
   <div class="community-nav-con">
     {% for item in adviserNav %}
       {% if type == item.nav_name %}
-      <a href="{{helper.urlgen(id | string, item.nav_url_type)}}" class="community-nav-list nav-active">{{item.nav_name}}</a>
+      <a href="{{helper.urlgen(userinfo.uid | string, item.nav_url_type)}}" class="community-nav-list nav-active">{{item.nav_name}}</a>
       {% else %}
-      <a href="{{helper.urlgen(id | string, item.nav_url_type)}}" class="community-nav-list">{{item.nav_name}}</a>
+      <a href="{{helper.urlgen(userinfo.uid | string, item.nav_url_type)}}" class="community-nav-list">{{item.nav_name}}</a>
       {% endif %}
     {% endfor %}
     <div class="nav-phone">
       <span class="phone-bg"><i class="iconfont">&#xe618;</i></span>
       <span class="community-zixun" >留学咨询热线：</span>
-      <span class="community-tel">400-010-8000</span>
+      <span class="community-tel">{{ userinfo.tel }}</span>
     </div>
   </div>
 {% endmacro %}

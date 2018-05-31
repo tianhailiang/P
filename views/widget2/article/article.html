@@ -134,7 +134,7 @@
         <i class="iconfont">&#xe8c1;</i><span>删除</span>
       </div>
       <div class="opt-btn edit">
-        <i class="iconfont">&#xe61c;</i><a target="_blank" href="{% if item.user_info.usertype == 2 %}{{helper.urlgen('advisor_center/postarticle', item.id | string)}}{% elif item.user_info.usertype == 3 %}{{helper.urlgen('canzan_center/postarticle', item.id | string)}}{% endif %}">编辑</a>
+       <a target="_blank" href="{% if item.user_info.usertype == 2 %}{{helper.urlgen('advisor_center/postarticle', item.id | string)}}{% elif item.user_info.usertype == 3 %}{{helper.urlgen('canzan_center/postarticle', item.id | string)}}{% endif %}"> <i class="iconfont" style="margin-right: 6px;float: left">&#xe61c;</i>编辑</a>
       </div>
     </div>
     <p class="adviser-info-p">
@@ -158,9 +158,12 @@
   </div>
 </div>
 <script>
+  var art_box_edit = true;
   function deleteOffer (thisObj, uId, articleId) { //删除文章
     // console.log('删除文章' + uId + articleId);
-    $.ajax({
+    if(art_box_edit){
+      art_box_edit = false;
+      $.ajax({
       url: '/soapi/delete_article',
       type: 'POST',
       datatype: 'json',
@@ -174,16 +177,20 @@
           layer.msg('删除成功');
           window.setTimeout(function(){
             window.location.reload();
-          },2000);
+          },1000);
+          $('#art_box_' + articleId).css('display','none')
         }else{
           layer.msg('删除失败')
         }
-        
+        art_box_edit = true;
       },
       error: function(XMLHttpRequest, textStatus, errorThrown) {
         console.log(errorThrown)
+        art_box_edit = true;
       }
-    })
+      })
+    }
+    
   }
   function stick (thisObj, uId, articleId) {
     var parent = $(thisObj).parents('.article-list-item');
@@ -275,34 +282,40 @@
   </div>
 </div>
 <script>
+  var art_box_ = true;
   function cancelFav (thisObj, articleId) { //取消案例收藏
-    $.ajax({
-      url: '/soapi/favorite_article',
-      type: 'POST',
-      datatype: 'json',
-      data: {
-        article_id: articleId
-      },
-      dataType:'jsonp',
-      jsonpCallback:'cb',
-      success: function (result) {
+    if(art_box_){
+      art_box_ = false;
+      $.ajax({
+        url: '/soapi/favorite_article',
+        type: 'POST',
+        datatype: 'json',
+        data: {
+          article_id: articleId
+        },
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success: function (result) {
 //        var msg = JSON.parse(result)
 //        console.log(msg)
-        console.log('fav', result);
-        if(result.code == 0){
-          layer.msg('删除收藏成功');
-          // window.setTimeout(function(){
-          //   window.location.reload();
-          // },2000);
-          $('#art_box_' + articleId).css('display','none')
-        }else{
-          layer.msg('删除失败')
+          console.log('fav', result);
+          if(result.code == 0){
+            layer.msg('删除收藏成功');
+            // window.setTimeout(function(){
+            window.location.reload();
+            // },2000);
+            $('#art_box_' + articleId).css('display','none')
+          }else{
+            layer.msg('删除失败')
+          }
+          art_box_ = true;
+        },
+        error: function(XMLHttpRequest, textStatus, errorThrown) {
+          console.log(errorThrown)
+          art_box_ = true;
         }
-      },
-      error: function(XMLHttpRequest, textStatus, errorThrown) {
-        console.log(errorThrown)
-      }
-    })
+      })
+    }
   }
 </script>
 {% endmacro %}

@@ -7,8 +7,10 @@
 
       <div class="quick_links_panel">
         <ul>
-
-          <li class="on zixun message_list current" id="zxzx" style="background: #c13232;cursor: default;{% if user.uid !== login_info.uid and user.status!=1 %} cursor: pointer;  {% endif %}"  {% if user.uid !== login_info.uid  and user.status!=1 %} onclick="openchat_new('{{ user.job_number}}')" {% endif %}>
+          <li class="slide-phone"><img src="{{helper.cdnhost}}/assets/img/slide_phone.png" alt="" style="width: 18px;height: 28px;padding-left: 5px;">
+            <p class="phone-number">{{user.tel}}</p>
+          </li>
+          <li class="on zixun message_list current" id="zxzx" style="background: #c13232;cursor: default;{% if user.uid !== login_info.uid %} cursor: pointer;  {% endif %}"  {% if user.uid !== login_info.uid  %} onclick="openchat_new('{{ user.new_job_number}}')" {% endif %}>
 
             <img src="{{helper.cdnhost}}/assets/img/phone.gif" alt="立即咨询" class="quick-img">
             <span>立<br>即<br>咨<br>询</span>

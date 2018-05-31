@@ -59,13 +59,17 @@ var iDcity2 = {
 
 $(document).ready(function(){
   showcity2()
+  var leg = $(".footer-top a").length;
+  if(leg<1){
+      $(".footer-top").css('display','none')
+  }
 
 });
 function showcity2(){
-  if($.cookie('currentarea')){
-    if($.cookie('currentarea')!=14){
-      $('#address').html(iDcity2[$.cookie('currentarea')][1]);
-      $('#tel').html(iDcity2[$.cookie('currentarea')][2]);
+  if(cookie('currentarea')){
+    if(cookie('currentarea')!=14){
+      $('#address').html(iDcity2[cookie('currentarea')][1]);
+      $('#tel').html(iDcity2[cookie('currentarea')][2]);
       $("#wc-hk").css("display","none");
     }
     else{
