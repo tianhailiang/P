@@ -1308,7 +1308,9 @@ exports.data_center = function (req, res, next) {
             data.datacenter = JSON.parse(result.datacenter);
             // console.log('data.datacenter',data.datacenter);
             for (var key in data.datacenter) {
-                data.datalist.push(data.datacenter[key]);
+                if (data.datacenter[key] != null) {
+                    data.datalist.push(data.datacenter[key]);
+                }
             }
         }
         // console.log('data.datalist',data.datalist)

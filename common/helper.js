@@ -490,14 +490,13 @@ function eduChecked(val,checkedList){
   return html;
 }
 //推荐标签选中函数
-function tagChecked(index,val,checkedList){
-  // console.log(custom_tags)
+function tagChecked(name,val,checkedList){
   var html =`<span class="recommend-sel" data-str="${val}">
               <i class="level-sel-i iconfont"></i>
               <i>${val}</i>
             </span>`;
-  if(index==8){
-    html =`<span class="recommend-sel" style="display: block;" data-str="${val}" >
+  if(name=="留学案例"){
+    html =`<span class="recommend-sel" style="display: block;" data-str="${val}" id="recommend-sel-case">
             <i class="level-sel-i iconfont"></i>
             <i>${val}</i>
             <i class="numTip" style="margin-left:30px;">
@@ -505,9 +504,9 @@ function tagChecked(index,val,checkedList){
             </i>
           </span>`;
   }
-  if(index==9){
+  if(name=="自定义标签"){
     html =`<div  style="display: block;">
-            <span class="recommend-sel" style="margin-right: 0px;" data-str="${val}" >
+            <span class="recommend-sel" style="margin-right: 0px;" data-str="${val}" id="recommend-sel-custom">
               <i class="level-sel-i iconfont"></i>
               <i>自定义标签</i>
             </span>
@@ -526,8 +525,8 @@ function tagChecked(index,val,checkedList){
                 margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
                 <i>${val}</i>
               </span>`;
-      if(index==8){
-        html =`<span class="recommend-sel" style="display: block;" data-str="${val}" checked="checked" >
+      if(name=="留学案例"){
+        html =`<span class="recommend-sel" style="display: block;" data-str="${val}" checked="checked" id="recommend-sel-case">
                 <i class="level-sel-i iconfont" style="border:none;color:#c13232;
                 margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
                 <i>${val}</i>
@@ -536,10 +535,10 @@ function tagChecked(index,val,checkedList){
                 </i>
               </span>`;
       }
-      if(index==9){
+      if(name=="自定义标签"){
         console.log(val)
         html =`<div  style="display: block;">
-            <span class="recommend-sel" style="margin-right: 0px;" data-str="" checked="checked" >
+            <span class="recommend-sel" style="margin-right: 0px;" data-str="" checked="checked" id="recommend-sel-custom">
               <i class="level-sel-i iconfont" style="border:none;color:#c13232;
                 margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
               <i>自定义标签</i>

@@ -429,13 +429,14 @@ $(document).ready(function(){
     function changeCity (chooseId) {
         var currentUrl = window.location.href;
         var hrefUrl = '';
+        var pageReg = /(\__page-\d*)/;
         if ( currentUrl.match(/^(.*)\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sy|sjz|shz|sh|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|ych|yc|zz)(.*)$/g) ) {
             var cityReg = /\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sy|sjz|shz|sh|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|ych|yc|zz)/;
             var hashReg = /\#(.*)/;
-            hrefUrl = currentUrl.replace(cityReg,'/'+fn.getCityEn(chooseId)).replace(hashReg,'');
+            hrefUrl = currentUrl.replace(cityReg,'/'+fn.getCityEn(chooseId)).replace(hashReg,'').replace(pageReg,'');
         }
         else {
-            hrefUrl = currentUrl;
+            hrefUrl = currentUrl.replace(pageReg,'');
         }
         var date = new Date();
         date.setTime(date.getTime() + (1 * 24 * 60 * 60 * 1000));
