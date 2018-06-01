@@ -368,7 +368,7 @@ exports.register_s = function (req, res, next) {
         log.debug('result.userinfo', result.userinfo.data);
         data.register_ss.data.status = result.userinfo.data.status;
         data.register_ss.data.version = result.userinfo.data.version;
-        log.debug('result.login_user----------', data.login_user.data);
+        log.debug('result.login_user----------', data.register_ss.data);
       
         if (config.version == 'development') {//开发环境
           log.debug('result.login_user----------development');
