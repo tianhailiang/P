@@ -137,7 +137,7 @@
 
     <div class="content_title_bbb clearfix">
       <span>个 人 介 绍： </span>
-      <textarea id="gerenjieshao" maxlength="500" data-geren="{{userinfo.introduce}}"></textarea>
+      <textarea id="gerenjieshao" maxlength="150" data-geren="{{userinfo.introduce}}"></textarea>
       <div class="word-num">还可以输入<span id="word-num">150</span>字</div>
     </div>
 
@@ -202,12 +202,16 @@
     });
     var geren = $('#gerenjieshao').data('geren');
     console.log('geren',geren)
+    if(geren > 150){
+        $("#word-num").html(0);
+        geren = geren.substring(0, 150);
+    }
     // geren = geren.substring(0, 150);
     $('#gerenjieshao').html(geren);
     $("#word-num").html(150-$.trim(geren).length);
   });
   function baocunSubmit () {
-    if ($('#gerenjieshao').val() == '') {
+    if ($('#gerenjieshao').val() == '' || /^\s*$/.test($("#gerenjieshao").val())) {
       layer.msg('个人简介不能为空');
       return false;
     }
