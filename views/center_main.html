@@ -268,9 +268,15 @@
             console.log('1111')
             $('#zhezhaoy').show();
             $('body').css('overflow','hidden');
-            var h = document.documentElement.clientHeight || document.body.clientHeight;
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            if(sUserAgent .match(/ipad/i) == "ipad"){
+                var h = document.body.offsetHeight
+            } else {
+                var h = document.documentElement.clientHeight || document.body.clientHeight;
+            }
+            
             h = h*0.7
-            console.log('h',h)
+            alert(h)
             var $scrolltop = $('#yhrs_1').offset().top;
             $('html,body').animate({//$('html,body')兼容问题body属于chrome
               scrollTop:$scrolltop-h

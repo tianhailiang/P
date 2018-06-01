@@ -1184,7 +1184,7 @@ exports.datacenter_title = function (callback) {
           if(req){
               callback(null, req);
           }else{
-              callback(null, '暂无数据');
+              callback(null, '暂无简介');
           }
       });
   });
