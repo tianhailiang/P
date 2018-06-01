@@ -267,6 +267,7 @@
         if (!cookie('yhrs')) {
             console.log('1111')
             $('#zhezhaoy').show();
+            $('body').css('overflow','hidden');
             var h = document.documentElement.clientHeight || document.body.clientHeight;
             h = h*0.7
             console.log('h',h)
@@ -278,6 +279,7 @@
         $('#zhezhaoy').click(function () {
             cookie('yhrs', '1', {path: "/", domain: js_api_config.domain, expires: 36500});
             $(this).hide();
+            $('body').css('overflow','auto');
         });
         $('.banner-box-left .slider').xSlider({
             //轮播图配置
