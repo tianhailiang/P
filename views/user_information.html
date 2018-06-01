@@ -277,7 +277,7 @@
                       fileInput: $("#upload-btn").get(0),
                       upButton: $("#fileSubmit").get(0),
                       url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
-                      onSureBtnCb: function () {
+                      onSureBtnCb: function (files) {
                           if (files.length == 0) {
                               layer.msg('还未选择要上传的文件');
                               return false;

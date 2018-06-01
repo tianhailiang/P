@@ -97,6 +97,7 @@ var ZXXFILE = {
   },
   init: function() {
     var self = this;
+    self.fileFilter = [];
     if (this.dragDrop) {
       this.dragDrop.addEventListener("dragover", function(e) { self.funDragHover(e); }, false);
       this.dragDrop.addEventListener("dragleave", function(e) { self.funDragHover(e); }, false);

@@ -1411,6 +1411,7 @@ exports.detail_count = function (data, callback) {
               var viewNumKey = "WEB:HITS:"+data.id;
               redisPool_views.get(viewNumKey, function(err, reply){
                 if(reply){
+                  log.info('!!!!view_count!!!!',viewNumKey,reply);
                   callback(null, {"uuid":data.uuid, "num":reply});
                 }
               });
@@ -1444,6 +1445,7 @@ function update_viewnum(catid, id, uuid, callback){
         redisHits.sadd(viewListKey, id);
       });
       if(callback){
+        log.info('!!!!view_count!!!!',viewNumKey,reply);
         callback(null, {"uuid":uuid, "num":reply});
       }
     }
