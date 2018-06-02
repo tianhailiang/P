@@ -1300,6 +1300,20 @@ exports.data_center = function (req, res, next) {
         },
         datacenter_title: function (callback) {
             cms.datacenter_title(callback)
+        },
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": 'ADVISOR_DATA_CENTER',
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": 'ADVISOR_DATA_CENTER',
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
         }
     },function (err, result) {
         data.userinfo = returnData(result.userinfo,'userinfo');
@@ -1316,8 +1330,10 @@ exports.data_center = function (req, res, next) {
         // console.log('data.datalist',data.datalist)
         data.datacenter_title = result.datacenter_title
         // console.log('title',data.datacenter_title)
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.tdk = {
-            pagekey:'data_center',
+            pagekey:'ADVISOR_DATA_CENTER',
             cityid: area
         };
         data.esikey = esihelper.esikey();

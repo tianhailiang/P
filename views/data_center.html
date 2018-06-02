@@ -66,6 +66,26 @@
         .data-table tr:nth-child(even) {
             background-color: #f8f8f8;
         }
+        /* 轮播 */
+        .banner-box{
+            margin-top: 20px;
+            height: 130px;
+        /*background-color: yellow;*/
+        }
+        .banner-box-left{
+            background: #dcdcdc;
+            height: 130px;
+        }
+        .banner-box-right{
+            background: #dcdcdc;
+            height: 130px;
+        }
+        .slider .slider-dot ul li{
+            border-radius: 50%;
+        }
+        .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
+            margin-top: -33px
+        }
     </style>
 </head>
 <body style="background: #f5f5f5">
@@ -104,7 +124,7 @@
         {% endif %}
     </div>
     <div class="dui-layout-div"></div>
-    <div class="dui-layout-con dui-box-shadow">
+    <div class="dui-layout-con dui-box-shadow" style="background: #fff;">
         <div class="right-cont" style="border: none">
             <div class="right-title" style="background: #f3f3f3;"><div class="tit" style="width: 202px;">用户热搜榜</div></div>
             {% if datalist.length > 0 %}
