@@ -195,13 +195,7 @@
         <div class="login_form">     
         <h3 class="login_nei_title_new" style="font-weight: 400">快速注册</h3>
         <form class="form-group m-t" autocomplete="off" role="form" style="margin-top: 20px;">
-          
-          <!-- 额外增加的内容 -->
-          <form style="display:none">
-            <input type="password" style="display: none"/>
-          </form>
-          <input type="password" style="width:0;height:0;float:left;visibility:hidden;display: none"/>
-          <!-- 额外增加的内容 end -->
+        
           <div class="form-group inputtext_isr clearfix" style="position: relative;height: 28px">
             
             <input type="text" style="border-radius: inherit;height: 30px;padding-left: 90px;" autocomplete="off" value="" class="form-control" placeholder="请输入手机号" id="newEmail"/>
@@ -226,13 +220,20 @@
               <input type="button" class="btn btn-primary" style="width: 90px;height: 30px;text-align: center;padding: 6px 2px;background: #fff;color: #c13232;border: 1px solid #c13232;border-radius: 3px;line-height: 0px;border-radius: inherit;" id="reg_sendcun" value="发送验证码"/>
             </div>
           </div>
+          <!-- 额外增加的内容 -->
+          <!-- <form style="display:none">
+            <input type="password" style="display: none"/>
+          </form> -->
+          <input type="password" style="width:0;height:0;float:left;visibility:hidden;display: none"/>
+          <!-- 额外增加的内容 end -->
           <div class="form-group inputtext_isr clearfix" style="position: relative;height: 28px;margin-top: 20px">
 
-            <input type="password" style="border-radius: inherit;height: 30px;" autocomplete="off" value="" class="form-control" placeholder="请输入8-16位数字+字母组成" id="password" >
+            <input type="password" style="border-radius: inherit;height: 30px;" autocomplete="" value="" class="form-control" placeholder="请输入8-16位数字+字母组成" id="password" >
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 10px" class="iconfont">&#xe606;</i>
             <span class="login_error" id="login_e_phone_p" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone_p">请输入8-16位数字+字母组成</em></span>
           </div>
-
+        </form>
+        
           <div class="form-group text-left" id="login_user" style="color: #999;margin-top: 20px;margin-left: -0px;">
             <div class="checkbox i-checks" style="color: #999;">
               <label class="no-padding">
@@ -242,7 +243,7 @@
           </div>
 
           <input type="button" class="btn login-primary" style="margin-top: 20px;width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;" id="loginSubmit" value="注 册" data-url='{{url}}'/>
-          </form>
+          
 
           <div class="login_check clearfix" style="margin-top: 10px">
               <a href="{{helper.urlgen('loginUser')}}?h={{url}}" style="float: right;color: #333">已有账号？<small style="color: #c13232">登录</small></a>
