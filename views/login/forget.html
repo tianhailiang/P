@@ -97,13 +97,13 @@
         <form class="m-t register_nei_form" role="form" autocomplete="off">
           <div class="form-group clearfix" style="position: relative;height: 28px;margin-bottom: 20px">
             <div class="title"><span>*&nbsp;</span>手&nbsp;机&nbsp;号&nbsp;：</div>
-            <input type="text" class="form-control" autocomplete="off" id="newEmail" required />
+            <input type="text" class="form-control" autocomplete="off" id="newEmail" />
             <div class="ti">请输入手机号</div>
             <span class="login_error" id="login_e_phone_u" style="display: none"><i class="login_x"></i><em id="login_error_text_phone_u">请输入手机号</em></span>
           </div>
           <div class="form-group clearfix" style="margin-left: -20px;">
             <div class="title"><span>*&nbsp;</span>图形验证码&nbsp;：</div>
-            <input  type="text" id="tupian_bin" autocomplete="off" class="form-control" style="width: 114px;display: inline-block;" required /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <input  type="text" id="tupian_bin" autocomplete="off" class="form-control" style="width: 114px;display: inline-block;" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
             <div class="bind-button" style="width: 100px;float: left">
               <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
               <!--<input type="button" class="btn btn-primary" style="width: 100px;text-align: center;padding: 6px 2px;background: #fff;color: #c6a770;border: 1px solid #c6a770;border-radius: 3px;line-height: 0px" id="sendcun_binding" value="发送验证码"/>-->
@@ -112,7 +112,7 @@
           </div>
           <div class="form-group clearfix">
             <div class="title"><span>*&nbsp;</span>验&nbsp;证&nbsp;码&nbsp;：</div>
-            <input  type="text" id="verify_forget" autocomplete="off" class="form-control" style="width: 114px;display: inline-block;" required /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
+            <input  type="text" id="verify_forget" autocomplete="off" class="form-control" style="width: 114px;display: inline-block;" /><!--data-errmsg="验证码号码不正确，仅能包含4位数字"-->
             <div class="bind-button" style="width: 100px;float: left">
               <!--<input type="button" class="button" id="sendcun" style="color: #999;border: 1px solid #999;font-size: .6rem;width: 3.5rem;padding: 0 .2rem" @click.stop.prevent="sendphone()" value="发送验证码"/>-->
               <input type="button" class="btn btn-primary" style="width: 100px;text-align: center;padding: 6px 2px;background: #fff;color: #c6a770;border: 1px solid #c6a770;border-radius: 3px;line-height: 0px" id="sendcun_forget" value="发送验证码"/>
