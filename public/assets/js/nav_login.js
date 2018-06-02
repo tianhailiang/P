@@ -94,4 +94,10 @@ $(document).ready(function () {
 
     }
   };
+
+  //清除记录密码功能
+  window.load =function(){  　
+    document.getElementById('newEmail').value='';
+    document.getElementById('password').value='';
+  };
 })
