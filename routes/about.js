@@ -11,6 +11,8 @@ var code = '1220000006'; // not found
 var comfunc = require('../common/common');
 var tokenfunc = require('./token.js');
 var helperfunc = require('../common/helper');
+var request = require('request');
+var get_area_code = require('./ip_poll');
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -193,6 +195,35 @@ exports.activity = function (req, res, next) {
     res.render('about/activity', data);
 
   });
+}
+//留学活动--中间页面
+exports.activity_ip = function (req, res, next) {
+  var area = req.cookies.currentarea;
+  if(area){
+    res.redirect(helperfunc.active_urlgen('activity','c='+area));
+  }else{
+    var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+    if(ip.split(',').length>0){
+      ip = ip.split(',')[0]
+    }
+     ip = '175.190.80.79'; //我的外网ip地址
+    log.info(ip)
+    request.get('http://api.map.baidu.com/location/ip?ip='+ip+'&ak=oTtUZr04m9vPgBZ1XOFzjmDpb7GCOhQw&coor=bd09ll',function (error, response, body){
+      if(!error && response.statusCode == 200){
+        log.info(body)
+        var b =JSON.parse(body);
+        var cityCode ='';
+        if(b.content){
+          cityCode = get_area_code(b.content.address_detail.city);
+          res.redirect(helperfunc.active_urlgen('activity','c='+cityCode));
+        }
+      }else{
+        res.redirect(helperfunc.active_urlgen('activity','c='+1));
+      }
+    })
+  }
+
+
 }
 //活动底页
 exports.activity_detail = function (req, res, next){

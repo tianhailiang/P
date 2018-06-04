@@ -195,6 +195,7 @@ exports = module.exports = function (app) {// routes
   app.get('/lawyer', about.lawyer);
   app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|hd|heb|hs|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)((?![0-9])[0-9A-Za-z\-_]*)$/, about.activity);
   app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|hd|heb|hs|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)\/activity\/(\d+)/, about.activity_detail);
+  app.get('/activity', about.activity_ip);
   //关于我们
   app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化
