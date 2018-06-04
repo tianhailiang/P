@@ -206,7 +206,7 @@ exports.activity_ip = function (req, res, next) {
     if(ip.split(',').length>0){
       ip = ip.split(',')[0]
     }
-     ip = '175.190.80.79'; //我的外网ip地址
+     //ip = '175.190.80.79'; //我的外网ip地址
     log.info(ip)
     request.get('http://api.map.baidu.com/location/ip?ip='+ip+'&ak=oTtUZr04m9vPgBZ1XOFzjmDpb7GCOhQw&coor=bd09ll',function (error, response, body){
       if(!error && response.statusCode == 200){
