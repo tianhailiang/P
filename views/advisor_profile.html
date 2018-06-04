@@ -202,7 +202,7 @@
     });
     var geren = $('#gerenjieshao').data('geren');
     console.log('geren',geren)
-    if(geren > 150){
+    if(geren.length > 150){
         $("#word-num").html(0);
         geren = geren.substring(0, 150);
     }
