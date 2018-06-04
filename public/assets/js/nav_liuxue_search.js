@@ -427,6 +427,7 @@ $(document).ready(function(){
     });
     //点击切换城市
     function changeCity (chooseId) {
+        $("#city-on").text(fn.getCityChinese(chooseId));
         var currentUrl = window.location.href;
         var hrefUrl = '';
         var pageReg = /(\__page-\d*)/;
