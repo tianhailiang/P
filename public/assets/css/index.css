@@ -40,18 +40,29 @@
 .branch_company_img{
     width: 190px;
     height: 146px;
+    margin-right: 10px;
     /*background: #007aff;*/
     float: left;
+    position: relative;
+    z-index: 2;
 }
 .branch_company_img img{
     width: 100%;
     height: 100%;
 }
 .branch_company_text{
-    width:1010px;
+    /* width:1010px;
+    height: 146px;
+    background: #fafafa;
+    float: left; */
+    width: 190px;
     height: 146px;
     background: #fafafa;
     float: left;
+    overflow: hidden;
+    position: absolute;
+    z-index: 1;
+    left: 55px;
 }
 .branch_company_text_tilte{
     width: 58px;
@@ -251,4 +262,181 @@
    background-image: url("../img/guoqi_ios.png");
    background-repeat: no-repeat;
    background-position: -1140px -72px;
+}
+/* ===========2018.6.8================ */
+.gg-group{ overflow: hidden;}
+.gg-group ul{ margin-right: -10px; overflow: hidden;height: 146px;}
+.gg-group ul li{width:242px;margin-right: 10px;float: left;background: red;height: 146px;}
+.dialog-modal{ 
+    position: fixed;
+     top:0;
+     right:0;
+     bottom: 0;
+     left:0;
+     background: rgba(0,0,0,.7);
+     z-index: 9999998
+}
+.modal-content{ 
+    width: 1112px; 
+    height: 98%; 
+    margin:auto; 
+    background:url(../img/bcg@2x.png) no-repeat center center;
+    z-index: 9999999;
+    background-size: 100% 100%;
+    position: relative;
+}
+.close{
+    position: absolute;
+    right: 25.33%;
+    top: 10%;
+    height: 52px;
+    width: 52px;
+    background: url(../img/close_icon@2x.png) no-repeat center;
+}
+.formContent{
+    width:450px;
+    position: absolute;
+    top:48%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.form-group div{
+    margin-bottom: 10px;
+}
+.error{
+    height: 40px;
+    width: 146px;
+    background: url(../img/tlips_bcg@2x.png) no-repeat;
+    position: absolute;
+    top: -54px;
+    right: -65px;
+    line-height: 30px;
+    text-align: center;
+    display: none;
+}
+.error > i{
+    display: inline-block;
+    height:14px;
+    width:14px;
+    background: url(../img/tan_icon@2x.png) no-repeat;
+    vertical-align: middle;
+    margin-right: 3px;
+}
+.name,.iphone,.pass-code,.send-code{
+    height: 52px;
+    border-radius: 4px;
+    border:none;
+}
+.name,.iphone{
+    width:400px;
+    text-indent: 22px;
+    font-size: 16px;
+    color: #772c61;
+}
+.pass-code{
+    width: 252px;
+    text-indent: 22px;
+    margin-right: 5px;
+}
+.send-code{
+    width: 140px;
+    font-size: 16px;
+    color: #772c61;
+    background-color: #fff;
+}
+.select{
+    height: 52px;
+    position: relative;
+    width: 400px;
+    border-radius: 4px;
+    background:#fff url(../img/tog-icon@2x.png) no-repeat right 10px center;
+}
+.select.selecttoggle{
+    background:#fff url(../img/togtop-icon@2x.png) no-repeat right 10px center;
+}
+.select .placeholder{
+    display: inline-block;
+    width: 100px;
+    line-height: 52px;
+    text-align: center;
+    font-size: 16px;
+    color: #dc0006;
+    height: 52px;
+    border-top-left-radius:4px;
+    border-bottom-left-radius:4px;
+    background-image: -o-linear-gradient(#ffe3bf,#f6b366);
+    background-image: -moz-linear-gradient(#ffe3bf,#f6b366);
+    background-image: -webkit-linear-gradient(#ffe3bf,#f6b366);
+    background-image: linear-gradient(#ffe3bf,#f6b366);
+}
+.checkbtn{ position: relative;}
+.checkbtn label{
+    margin-left:7px;
+    vertical-align: middle;
+    color: #fff;
+    font-size: 14px;
+}
+.checkbtn input[type='checkbox']{
+    background: #fff;
+    height: 16px;
+    width: 16px;
+    position: absolute;
+    clip:auto;
+    left: 7px;
+    top: 4px;
+}
+.checkbtn input[type='checkbox']:checked{background:#fff url(../img/gou@2x.png) no-repeat center;}
+.checkbtn input[type="checkbox"]:checked + label{color: #fff;}
+.contry-list{
+    position: absolute;
+    top: 59px;
+    width: 480px;
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    left: -47px;
+    font-size: 0;
+    display: none;
+    z-index: 2;
+}
+.contry-list .endright{margin-right: 0;}
+.contry-list .contry-active{color: #c13232;border:solid 1px #c13232;}
+.contry-list::after{
+    display: block;
+    content: "";
+    width: 0;
+    height: 0;
+    border-width: 7px;
+    border-style: solid;
+    border-color: transparent transparent #fff transparent;
+    position: absolute;
+    right: 63px;
+    top: -14px;
+}
+.contry-list li{
+    display: inline-block;
+    border:solid 1px #999;
+    width:69px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 10px;
+}
+.huoqu-button{
+    height: 58px;
+    display: inline-block;
+    width:376px;
+    border-radius: 32px;
+    color: #dc0006;
+    font-size: 22px;
+    border:none;
+    text-align: center;
+    background-image: -moz-linear-gradient(#ffe3bf,#f6b366);
+    background-image: -o-linear-gradient(#ffe3bf,#f6b366);
+    background-image: -webkit-linear-gradient(#ffe3bf,#f6b366);
+    background-image: linear-gradient(#ffe3bf,#f6b366);
+    box-shadow: 2px 2px 3px 0px #ba0000;
+    margin-left: 15px;
 }

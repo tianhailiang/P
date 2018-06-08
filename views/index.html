@@ -16,6 +16,56 @@
 </style>
 </head>
 <body>
+  <div class="dialog-modal" style="display: none;">
+    <div class="modal-content">
+      <a href="javascript:;" class="close"></a>
+      <form class="formContent">
+        <div class="form-group">
+          <div><input type="text" placeholder="请输入姓名" class="name"></div>
+          <div><input type="text" placeholder="请输入手机号" class="iphone"></div>
+          <div style="position: relative;">
+            <input type="text" class="pass-code">
+            <button type="button" class="send-code">点击发送验证码</button>
+            <span class="error"><i></i>手机号格式不正确</span>
+          </div>
+          <div class="select">
+              <span class="placeholder">意向国家</span>
+              <em style="font-size: 16px;padding-left: 8px;color: #772c61;">请选择意向国家</em>
+              <ul class="contry-list">
+                  <li class="contry-active">美国</li>
+                  <li>英国</li>
+                  <li>澳大利亚</li>
+                  <li>加拿大</li>
+                  <li>新西兰</li>
+                  <li class="endright">日本</li>
+                  <li>韩国</li>
+                  <li>中国香港</li>
+                  <li>俄罗斯</li>
+                  <li>乌克兰</li>
+                  <li>爱尔兰</li>
+                  <li class="endright">意大利</li>
+                  <li>西班牙</li>
+                  <li>白俄罗斯</li>
+                  <li>新加坡</li>
+                  <li>马来西亚</li>
+                  <li>丹麦</li>
+                  <li class="endright">德国</li>
+                  <li>法国</li>
+                  <li>挪威</li>
+                  <li>瑞典</li>
+                  <li>芬兰</li>
+                  <li>荷兰</li>
+                  <li class="endright">瑞士</li>
+              </ul>
+          </div>
+          <div class="checkbtn">
+            <input type="checkbox" id="female" checked="checked"/><label for="female">注册JJL网站账号</label>
+          </div>
+        </div>
+        <button class="huoqu-button">点击获取优惠券</button>
+      </form>
+    </div>
+  </div>
 {% include "widget/common_hide/common_hide.html"%}
 <div class="zhezhao" id="zhezhaox" style="display: none">
 </div>
@@ -373,8 +423,16 @@
         <div class="branch_company_text_tilte" data-id="{{cityList[48].companyId}}">
           <a  href="http://www.jjl.cn/zt/overseas/vancouver/index.html" data-id="{{cityList[48].companyId}}" >{{cityList[48].companyName}}</a>
         </div>
-      </div>
     </div>
+    </div>
+      <!-- 广告位 -->
+      <div class="gg-group">
+        <ul>
+          {% for pictuer in liuxueguanggao %}
+            <li><a href="{{pictuer.linkurl}}"><img src="{{pictuer.imageurl}}" alt="{{pictuer.alt}}"></a></li>
+          {% endfor %}
+        </ul>
+      </div>
   </div>
   {% include "widget/liuxue_item/liuxue_item.html" %}
 </div>
@@ -388,6 +446,7 @@
 <script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/guanggao_slider.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/symodal.js"></script>
 <script>
   $(function () {
     var nowLocation = window.location.href;

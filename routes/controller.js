@@ -106,11 +106,19 @@ exports.index = function (req, res, next) {
                 "ad_page": "HOME"
             },callback);
         },
+        liuxueguanggao:function(callback){
+            cms.lunbo_list({
+                "ad_page": "HOME",
+                "ad_seat": "SEAT3",
+                "cityid":area
+            }, callback);
+        },
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.shouye = JSON.parse(result.shouye);
         data.guanggao = returnData(result.guanggao,'guanggao');
+        data.liuxueguanggao = returnData(result.liuxueguanggao,'liuxueguanggao')
         if (data.login_info.uid != 0) {
             async.parallel({
                 //获取用户信息（普通用户，顾问，参赞）
@@ -199,10 +207,18 @@ exports.index_page = function (req, res, next) {
                 "ad_page": "HOME"
             },callback);
         },
+        liuxueguanggao:function(callback){
+            cms.lunbo_list({
+                "ad_page": "HOME",
+                "ad_seat": "SEAT3",
+                "cityid":area
+            }, callback);
+        },
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.guanggao = returnData(result.guanggao,'guanggao');
+        data.liuxueguanggao = returnData(result.liuxueguanggao,'liuxueguanggao')
         data.shouye = JSON.parse(result.shouye);
         if (data.login_info.uid != 0) {
             async.parallel({
