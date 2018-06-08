@@ -557,6 +557,13 @@ function adseatCompare(seat,dest){
     return false
   }
 }
+//生成6位随机数
+function rndNum(){
+  var rnd = "";
+  for(let i = 0;i < 6; i++)
+    rnd += Math.floor(Math.random()*9);
+  return rnd;
+}
 module.exports = {
   cut: strcut ,
   getDefault: getDefaultFormat,
@@ -574,5 +581,6 @@ module.exports = {
   articleUrlgen:articleUrlgen,
   eduChecked:eduChecked,
   tagChecked:tagChecked,
-  adseatCompare:adseatCompare
+  adseatCompare:adseatCompare,
+  rndNum:rndNum
 };
