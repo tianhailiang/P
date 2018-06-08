@@ -1,0 +1,362 @@
+<style>
+    .act-pop-box{
+        width:100%;
+        height:130px;
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:800;
+        background:url(../assets/img/popup_bg.png) no-repeat center center;
+        background-size: cover;
+    }
+    .act-pop-info-box{
+        margin-left: 35%;
+        margin-top:50px;
+        width:583px;
+    }
+    .act-pop-input{
+        width:274px;
+        height:32px;
+        border-radius: 4px;
+        border:2px solid #ea8333;
+        margin-right:3px;
+        padding-left:8px;
+    }
+    .act-pop-input::-webkit-input-placeholder { /* WebKit browsers */
+        color:#d75d26;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:#d75d26;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: #d75d26;
+    }
+    .act-pop-sel{
+        width:274px;
+        height:32px;
+        border-radius: 4px;
+        border:2px solid #ea8333;
+        margin-right:3px;
+        padding-left:8px;
+        margin-top:4px;
+        line-height: 32px;
+        color:#d75d26;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        background:#fff;
+    }
+    .act-code-input{
+        width:160px;
+        height:32px;
+        border-radius: 4px;
+        border:2px solid #ea8333;
+        margin-right:3px;
+        padding-left:8px;
+        color:#d75d26;
+        margin-top: -4px;
+    }
+    .act-code-btn{
+        width:108px;
+        height:32px;
+        border-radius: 4px;
+        border:2px solid #ea8333;
+        color:#333;
+        margin-top: -4px;
+        display:inline-block;
+        text-align: center;
+        line-height: 32px;
+        margin-left:-1px;
+        cursor: pointer;
+        background:#fff;
+    }
+    .act-pop-gift{
+        position: absolute;
+        width:129px;
+        height:122px;
+        right:11.5%;
+        top:8px;
+        cursor: pointer;
+    }
+    .act-pop-detail{
+        display: block;
+        width:66px;
+        height:55px;
+        position: absolute;
+        right: 7.5%;
+        top: 27px;
+        cursor: pointer;
+    }
+    .act-pop-x-btn{
+        width:36px;
+        height:36px;
+        background:url(../assets/img/popup_x.png) no-repeat 0 0;
+        position:absolute;
+        right: 4%;
+        top: 8px;
+        cursor: pointer;
+    }
+    .act-pop-left{
+        position: fixed;
+        width:170px;
+        height:130px;
+        bottom:160px;
+        z-index:800;
+        left:-100%;
+        cursor: pointer;
+    }
+    .act-pop-country{
+        border:1px solid #f18e52;
+        border-radius: 4px;
+        position: absolute;
+        padding:8px 12px 3px;
+        background:#fff;
+        left:-197px;
+        top: -88px;
+        width: 518px;
+    }
+    .act-pop-country li{
+        float:left;
+        width:61px;
+        height:20px;
+        border:1px solid #c4c4c4;
+        text-align:center;
+        line-height:20px;
+        font-size: 14px;
+        color:#858585;
+        margin-bottom:5px;
+        margin-right:2px;
+    }
+    .act-pop-country li:nth-of-type(8n){
+        margin-right:0;
+    }
+    .act-pop-country li:hover{
+        background:#c13232;
+        color:#fff;
+    }
+    .act-pop-triangle{
+        width:0;
+        height:0;
+        line-height: 0;  /* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+        border-width:10px;
+        border-style:solid dashed dashed dashed;/*IE6下, 设置余下三条边的border-style为dashed,即可达到透明的效果*/
+        border-color:#f30 transparent transparent transparent;
+        position: absolute;
+        right: 38px;
+        top: 5px;
+    }
+    .act-pop-triangle-white{
+        width:0;
+        height:0;
+        line-height: 0;  /* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+        border-width:9px;
+        border-style:solid dashed dashed dashed;/*IE6下, 设置余下三条边的border-style为dashed,即可达到透明的效果*/
+        border-color:#fff transparent transparent transparent;
+        position: absolute;
+        right: 39px;
+        top: 5px;
+    }
+    .act-pop-sel-country{
+        display: none;
+    }
+   
+</style>
+<div class="act-pop-left" >
+    <img src="{{helper.cdnhost}}/assets/img/popup_left.png" />
+</div>
+<div class="act-pop-box">
+    <div class="act-pop-info-box">
+        <input class="act-pop-input" placeholder="请输入姓名" >
+        <input class="act-pop-input" placeholder="请输入手机" id="act-phone" >
+        <div class="act-pop-sel" >
+            <span class="act-pop-sel-val">意向国家</span>
+            <i class="iconfont" style="position:absolute;right:20px;" >&#xe60b;</i>
+            {% set countryList = [
+                {
+                    name:"美国",
+                    id:"1"
+                },
+                {
+                    name:"英国",
+                    id:"2"
+                },
+                {
+                    name:"加拿大",
+                    id:"3"
+                },
+                {
+                    name:"澳大利亚",
+                    id:"4"
+                },
+                {
+                    name:"新西兰",
+                    id:"5"
+                },
+                {
+                    name:"日本",
+                    id:"51"
+                },
+                {
+                    name:"韩国",
+                    id:"50"
+                },
+                {
+                    name:"中国香港",
+                    id:"54"
+                },
+                {
+                    name:"俄罗斯",
+                    id:"100"
+                },
+                {
+                    name:"乌克兰",
+                    id:"101"
+                },
+                {
+                    name:"爱尔兰",
+                    id:"108"
+                },
+                {
+                    name:"意大利",
+                    id:"111"
+                },
+                {
+                    name:"西班牙",
+                    id:"112"
+                },
+                {
+                    name:"白俄罗斯",
+                    id:"102"
+                },
+                {
+                    name:"新加坡",
+                    id:"52"
+                },
+                {
+                    name:"马来西亚",
+                    id:"53"
+                },
+                {
+                    name:"丹麦",
+                    id:"110"
+                },
+                {
+                    name:"德国",
+                    id:"103"
+                },
+                {
+                    name:"法国",
+                    id:"104"
+                },
+                {
+                    name:"挪威",
+                    id:"105"
+                },
+                {
+                    name:"瑞典",
+                    id:"106"
+                },
+                {
+                    name:"芬兰",
+                    id:"107"
+                },
+                {
+                    name:"荷兰",
+                    id:"109"
+                },
+                {
+                    name:"瑞士",
+                    id:"113"
+                }
+            ] %}
+            <div class="act-pop-sel-country" >
+                <ul class="act-pop-country clearfix">
+                    {% for item in countryList %}
+                        <li >
+                            {{item.name}}
+                        </li>
+                    {% endfor %}
+                </ul>
+                <div class="act-pop-triangle"></div>
+                <div class="act-pop-triangle-white"></div>
+            </div>
+        </div>
+        <input class="act-code-input"  >
+        <div class="act-code-btn" >
+            点击发送验证码
+        </div>
+    </div>
+    <img src="{{helper.cdnhost}}/assets/img/popup_gift.png" class="act-pop-gift" />
+    <a href="" class="act-pop-detail" >
+        <img src="{{helper.cdnhost}}/assets/img/popup_detail.png" />
+    </a>
+    <div class="act-pop-x-btn" ></div>
+</div>
+<script>
+    $(function(){
+        $(".act-pop-country li:nth-child(8n)").css({'marginRight':'0'});
+        $('.act-pop-x-btn').on('click',function(){
+            $(this).parent().animate({'left':'-100%'});
+            $('.act-pop-left').animate({'left':'0'});
+        });
+        $('.act-pop-left').on('click',function(){
+            $(this).animate({'left':'-100%'});
+            $('.act-pop-box').animate({'left':'0'});
+        });
+        $('.act-pop-sel').on('click',function(){
+            //选择国家
+            $('.act-pop-sel-country').show();
+        });
+        $('.act-pop-country li').on('click',function(e){
+            e.stopPropagation();
+            $('.act-pop-sel-country').hide();
+            $('.act-pop-sel-val').text($(this).text());
+        })
+        $('.act-code-btn').on('click',getCode);
+        $('.act-pop-gift').on('click',function(){
+            //点击领取
+            
+        });
+        var timer;
+        function countDown() {
+            // 60s倒计时
+            $(".act-code-btn").unbind("click");
+            var countDownTime = 60;
+            timer = window.setInterval(function () {
+                countDownTime--;
+                $(".act-code-btn").html('（'+countDownTime+'）s');
+                if (countDownTime == 0) {
+                    clearInterval(timer);
+                    $(".act-code-btn").html('点击发送验证码');
+                    $(".act-code-btn").bind("click",getCode);
+                }
+            }, 1000);
+        }
+        function getCode(){
+            //点击获取验证码
+            if(!/^1\d{10}$/.test($.trim($('#act-phone').val()))){
+                layer.msg('请输入正确的手机号格式');
+                return false;
+            }
+            $.ajax({
+                url: ajaxUrlPrefix.nodeapi+'/ucapi/ucapi_agent',
+                type:'get',
+                data:{
+                    m:'sendcode',
+                    phone:$.trim($('#act-phone').val())
+                },
+                dataType:'json',
+                success:function(msg){
+                    if(msg.code == 0){
+                        countDown();
+                    } else {
+                        layer.msg(msg.message);
+                    }
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+                    console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+                }
+            });
+        }
+    })
+</script>

@@ -13,6 +13,7 @@ var tokenfunc = require('./token.js');
 var helperfunc = require('../common/helper');
 var svgCaptcha = require("svg-captcha");
 var fs = require('fs');
+const sha1 = require('sha1');
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -2202,20 +2203,6 @@ exports.adviser_main = function (req, res, next) {
   }
 
   async.parallel({
-      // lunbo_list:function(callback) {
-      //     cms.lunbo_list({
-      //         "ad_page": "ADVISOR_P_MAIN",
-      //         "cityid":area,
-      //         "ad_seat": "SEAT1"
-      //     }, callback);
-      // },
-      // lunbo_list2:function(callback) {
-      //     cms.lunbo_list({
-      //         "ad_page": "ADVISOR_P_MAIN",
-      //         "cityid":area,
-      //         "ad_seat": "SEAT2"
-      //     }, callback);
-      // },
     //获取用户信息（普通用户，顾问，参赞）
     userinfo:function(callback){
       wec.userinfo({
@@ -2225,41 +2212,15 @@ exports.adviser_main = function (req, res, next) {
       wec.adviser_main({
         "per_page":6, "order": encodeURI("add_time desc"), "uid": data.uid}, callback)
     },
-    likelist:function (callback){ //猜你喜欢
-      wec.likelist({
-        "country_id":1,
-        "city_id":1,
-        "per_page":5,
-        "order":"views desc"
-    },callback)
-    },
-    xiangguan_guwen:function (callback){ //相关顾问
-          wec.xiangguan_guwen({
-              "country_id":1,
-              "city_id":1,
-              "per_page":5
-          },callback)
-      },
-      canzan_jianjie:function (callback){ //相关顾问
-          cms.canzan_jianjie({
-              "uid":data.uid
-          },callback)
-      },
   },function(err, result){
-      // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
-      // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
     data.userinfo =returnData(result.userinfo,'userinfo');
     if(result.userinfo.code == '1210000006'){
       //顾问不存在的时候  跳到404
         return next();
     }
-    data.canzan_jianjie = returnData(result.canzan_jianjie, 'canzan_jianjie');
-    data.guwen_list = returnData(result.guwen_list, 'guwen_list');
-    data.likelist = returnData(result.likelist,'likelist');
-    data.xiangguan_guwen = returnData(result.xiangguan_guwen,'xiangguan_guwen');
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
-      log.info(data.canzan_jianjie)
+    log.info(data.canzan_jianjie)
     var pagekey = '';
     pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_MAIN');
       async.parallel({
@@ -2280,13 +2241,14 @@ exports.adviser_main = function (req, res, next) {
       },function (err, result) {
           data.xSlider = returnData(result.lunbo_list,'lunbo_list');
           data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+          //生成验证码
+          data.param_code = sha1(helperfunc.rndNum() + moment().format('YYYY-MM-DD'))
           data.tdk = {
               pagekey: pagekey,
               cityid: area,
               realname: data.userinfo.realname,
           };
           data.esikey = esihelper.esikey();
-        // log.info(data.userinfo)
           res.render('adviser_main', data);
       })
   });
