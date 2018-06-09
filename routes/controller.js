@@ -2211,12 +2211,19 @@ exports.adviser_main = function (req, res, next) {
       wec.adviser_main({
         "per_page":6, "order": encodeURI("add_time desc"), "uid": data.uid}, callback)
     },
+    canzan_jianjie:function (callback){ //相关顾问
+        cms.canzan_jianjie({
+            "uid":data.uid
+        },callback)
+    },
   },function(err, result){
     data.userinfo =returnData(result.userinfo,'userinfo');
     if(result.userinfo.code == '1210000006'){
       //顾问不存在的时候  跳到404
         return next();
     }
+    data.canzan_jianjie = returnData(result.canzan_jianjie, 'canzan_jianjie');
+    data.guwen_list = returnData(result.guwen_list, 'guwen_list');
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
     var pagekey = '';
