@@ -19,7 +19,6 @@
 .page-blank{padding:40px 0;width:880px;height:200px}
 .page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
 .page-blank .blank-img{display:block;width:200px;margin:0 auto}
-
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
 .sub-btn-box{margin-top:20px;margin-bottom:20px}
@@ -50,6 +49,7 @@
 .reply-list-info-top{word-break:break-all}
 .reply-list-info-top span{color:#c13232}
 .load-more{height:53px;border-top:1px solid #dcdcdc;cursor:pointer;text-align:center;line-height:53px;font-size:14px;color:#333}
+
 .community-advisor{border-top:2px solid #c13232;box-shadow:1px 0 5px rgba(0,0,0,.4);width:100%;background:#fff}
 .community-advisor ul{height:37px;border-bottom:1px solid #dcdcdc}
 .community-advisor ul li{float:left;width:139.5px;text-align:center;margin-top:12px;font-size:14px;color:#666}
@@ -222,40 +222,6 @@
 .list-se li{position:relative;text-indent:110px;height:54px;line-height:54px}
 .list-se li a{color:#666;height:54px;line-height:54px;font-size:14px}
 .list-se li.choose a{color:#C13232;text-decoration:underline}
-.col3-t-p1-p2-a1{width:366.5px;margin-bottom:20px;height:206px;display:block}
-.col3-t-p1-p2-a3{width:366px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-.col3-t-p1-p2-a2{font-size:14px;margin-bottom:12px}
-.col3-t-p1-p2-a6{width:366px;line-height:24px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:14px}
-.moment .jincai a{display:block;width:366px;height:276px}
-.moment .dui-layout-col3-img{width:366px;height:276px}
-.moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
-.moment .jincai-con{font-size:14px;color:#333}
-.gw-list{width:280px;list-style:none;background:#fff}
-.gw-list li{border-bottom:solid 1px #dcdcdc;margin-bottom:18px;margin-left:10px;margin-right:10px}
-.gw-list li:first-child{padding-top:16px}
-.gw-list a{color:#333;text-decoration:none;display:block}
-.likes-item{overflow:hidden}
-.likes-item span{display:inline-block;margin-top:18px}
-.likes-item+.article{font-size:16px;margin:8px 0 18px;color:#333}
-.likes-item img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%;float:left}
-.gw-list .people-action{float:right;font-size:12px;color:#c13232;background:#fdf3f2;height:24px;line-height:24px;width:80px;text-align:center;-webkit-border-radius:10px;border-radius:10px;*float:none}
-.gw-list .user-infos .people-name{font-size:14px;margin-left:10px;display:inline-block;background:url(/assets/img/1v.png) no-repeat;background-position:right center;padding-right:20px}
-.gw-list img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%;float:left}
-.artical-info{margin-left:60px;overflow:hidden;font-size:14px;margin-bottom:20px;*position:relative;top:-10px}
-.guwen-info{overflow:hidden;margin-left:10px;margin-top:15px;position:relative}
-.guwen-info span{height:14px;line-height:14px;*height:16px;*line-height:16px}
-.guwen-info .pull-left{float:left;border-right:1px solid #d6d6d6;width:90px}
-.guwen-info .pull-right{float:right;margin-right:22px}
-.guwen-info em{display:inline-block;font-style:normal;margin-left:10px}
-.gw-list .bg-span{float:left;height:51px;width:51px;-webkit-border-radius:50%;border-radius:50%}
-.contact{width:270px;height:153px;border:1px solid #C13232;border-radius:5px;margin-bottom:20px;float:left}
-.contact h2{font-size:16px;font-weight:600;margin-top:8px}
-.contact p{font-size:14px}
-.contactcs,.contactp1,.contactp2{margin:0 8px;float:left}
-.contactpp{margin:9px 0 9px 0}
-.contacting p{width:210px;line-height:20px;font-size:14px;float:left}
-.contacting p a{color:#C13232;margin-left:10px}
-.contact-vv{color:#C13232}
 .year-box{padding:0 20px 0 20px}
 .year-box .year-num{font-size:20px;color:#333;width:56px;float:left;font-weight:400}
 .month-box .down,.year-box .down{color:#c13232;font-size:14px;padding:0 10px}
@@ -274,6 +240,14 @@
 .curyear .kong,.curyear .month-box{display:none}
 .dashiji-con{display:none;width:737px;float:left;margin-left:20px;margin-right:30px;font-size:14px;line-height:24px}
 .con-btn{color:#999;padding-left:10px;font-size:10px}
+.contact{width:270px;height:153px;border:1px solid #C13232;border-radius:5px;margin-bottom:20px;float:left}
+.contact h2{font-size:16px;font-weight:600;margin-top:8px}
+.contact p{font-size:14px}
+.contactcs,.contactp1,.contactp2{margin:0 8px;float:left}
+.contactpp{margin:9px 0 9px 0}
+.contacting p{width:210px;line-height:20px;font-size:14px;float:left}
+.contacting p a{color:#C13232;margin-left:10px}
+.contact-vv{color:#C13232}
 .detail_bar{width:100%;height:60px;background-color:#fff;position:fixed;top:0;z-index:10000;-moz-box-shadow:0 0 5px 1px #eee;-webkit-box-shadow:0 0 5px 1px #eee;box-shadow:0 0 5px 1px #eee;display:none}
 .detail_bar .detail_bar_in{width:1180px;height:60px;margin:0 auto;padding:0 10px}
 .detail_bar .detail_bar_in .bar_title{width:844px;float:left;line-height:60px;font-size:30px;color:#333;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -996,3 +970,29 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .quick-get-phone-code,.quick-get-phone-code-act{display:inline-block;width:108px;height:28px;color:#c13232;text-align:center;line-height:28px;margin-left:10px;vertical-align:middle}
 .quick-btn-box{width:100%;margin-top:30px}
 .quick-btn{position:relative;width:160px;height:30px;background:#d21b29;color:#fff;text-align:center;line-height:30px;left:50%;margin-left:-80px}
+.col3-t-p1-p2-a1{width:366.5px;margin-bottom:20px;height:206px;display:block}
+.col3-t-p1-p2-a3{width:366px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.col3-t-p1-p2-a2{font-size:14px;margin-bottom:12px}
+.col3-t-p1-p2-a6{width:366px;line-height:24px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:14px}
+.moment .jincai a{display:block;width:366px;height:276px}
+.moment .dui-layout-col3-img{width:366px;height:276px}
+.moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
+.moment .jincai-con{font-size:14px;color:#333}
+.gw-list{width:280px;list-style:none;background:#fff}
+.gw-list li{border-bottom:solid 1px #dcdcdc;margin-bottom:18px;margin-left:10px;margin-right:10px}
+.gw-list li:first-child{padding-top:16px}
+.gw-list a{color:#333;text-decoration:none;display:block}
+.likes-item{overflow:hidden}
+.likes-item span{display:inline-block;margin-top:18px}
+.likes-item+.article{font-size:16px;margin:8px 0 18px;color:#333}
+.likes-item img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%;float:left}
+.gw-list .people-action{float:right;font-size:12px;color:#c13232;background:#fdf3f2;height:24px;line-height:24px;width:80px;text-align:center;-webkit-border-radius:10px;border-radius:10px;*float:none}
+.gw-list .user-infos .people-name{font-size:14px;margin-left:10px;display:inline-block;background:url(/assets/img/1v.png) no-repeat;background-position:right center;padding-right:20px}
+.gw-list img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%;float:left}
+.artical-info{margin-left:60px;overflow:hidden;font-size:14px;margin-bottom:20px;*position:relative;top:-10px}
+.guwen-info{overflow:hidden;margin-left:10px;margin-top:15px;position:relative}
+.guwen-info span{height:14px;line-height:14px;*height:16px;*line-height:16px}
+.guwen-info .pull-left{float:left;border-right:1px solid #d6d6d6;width:90px}
+.guwen-info .pull-right{float:right;margin-right:22px}
+.guwen-info em{display:inline-block;font-style:normal;margin-left:10px}
+.gw-list .bg-span{float:left;height:51px;width:51px;-webkit-border-radius:50%;border-radius:50%}

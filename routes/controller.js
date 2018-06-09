@@ -13,7 +13,7 @@ var tokenfunc = require('./token.js');
 var helperfunc = require('../common/helper');
 var svgCaptcha = require("svg-captcha");
 var fs = require('fs');
-const sha1 = require('sha1');
+var request = require('request');
 function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
@@ -2184,7 +2184,6 @@ exports.adviser_main = function (req, res, next) {
   log.debug('this adviser_main-----------------------',req.params);
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  //data.uid = req.params.id;
     data.uid = req.params[0];
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
@@ -2220,7 +2219,6 @@ exports.adviser_main = function (req, res, next) {
     }
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
-    log.info(data.canzan_jianjie)
     var pagekey = '';
     pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_MAIN');
       async.parallel({
@@ -2241,8 +2239,6 @@ exports.adviser_main = function (req, res, next) {
       },function (err, result) {
           data.xSlider = returnData(result.lunbo_list,'lunbo_list');
           data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-          //生成验证码
-          data.param_code = sha1(helperfunc.rndNum() + moment().format('YYYY-MM-DD'))
           data.tdk = {
               pagekey: pagekey,
               cityid: area,
@@ -3901,4 +3897,71 @@ exports.liuxue_item_nunjucks = function (req, res, next) {
         resData.edu_item = result;
         res.render('widget/liuxue_item/liuxue_item_nunjucks', resData);
     })
+}
+//发送短信验证码
+exports.sendsms = function (req, res, next) {
+    log.debug('活动短信验证码');
+    cms.sendSms({
+        mobile: req.query.phone
+    }, function (err,result) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.send(result);
+        }
+    })
+}
+//获取优惠券
+exports.getCoupons = function (req, res, next) {
+    log.debug('获取优惠券')
+    var data = req.query;
+    //获取本地ip
+    var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+    if(ip.split(',').length>0){
+        ip = ip.split(',')[0]
+    }
+    request.get('http://api.map.baidu.com/location/ip?ip='+ip+'&ak=oTtUZr04m9vPgBZ1XOFzjmDpb7GCOhQw&coor=bd09ll',function (error, response, body){
+        if(response.statusCode == 200){
+            var b =JSON.parse(body);
+            var city = '北京';
+            if(b.content){
+                city = b.content.address_detail.city;
+            }
+            cms.getCoupons({
+                user_name: data.user_name,
+                mobile: data.mobile,
+                country_id: data.country_id,
+                code: data.code,
+                ip: ip,
+                city: city
+            }, function (err,result) {
+                if (err) {
+                    res.send(err);
+                } else {
+                    res.send(result);
+                    if (result.code == 0) {
+                        cms.login_ss({
+                            phone: data.mobile,
+                            code: data.code
+                        }, function (err,result) {
+                            if (err) {
+                                log.info('注册失败');
+                            } else {
+                                log.info('注册成功');
+                            }
+                        })
+                        cms.sendCoupons({
+                            mobile:data.mobile,
+                            source: 1, 
+                            coupon: result.data
+                        }, function (result) {
+                            log.info('发送优惠券',result);
+                        })
+                    }
+                }
+            })
+        }else{
+            res.send(error);
+        }
+    });
 }

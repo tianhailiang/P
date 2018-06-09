@@ -252,4 +252,6 @@ exports = module.exports = function (app) {// routes
 
   //意见反馈
   app.post('/userFeedback',controller.userFeedback)
+  app.get('/sendSms',controller.sendsms);//活动 发送短信验证码
+  app.get('/getCoupons',controller.getCoupons);//获取优惠券
 };
