@@ -1,12 +1,13 @@
 $(function () {
 	//首页弹层
-	$(".dialog-modal").fadeIn();
+	// $(".dialog-modal").fadeIn();
 
-	$(".modal-content a").on('click',function () {
+	$(".modal-content .close").on('click',function () {
 		$(".dialog-modal").fadeOut(150)
 	})
 	//51家分公司鼠标悬停效果
 	var timers = null
+	var timer;
 	$(".branch_company_img").on('mouseover',function () {
 	  clearTimeout(timers)
 	  $(this).next(".branch_company_text").animate({
@@ -41,16 +42,117 @@ $(function () {
 	  } else {
 		 $(this).removeClass('selecttoggle')
 		 $(this).find(".contry-list").hide()
+		 $(".contry-list li").removeClass('contry-active')
+		 $(".contry-list li").eq(0).addClass('contry-active')
 	  }
 	})
 	//选择具体国家列表项
 	$(".contry-list li").on('click',function(){
 	  $(".contry-list li").removeClass('contry-active')
 	  $(this).addClass('contry-active')
-	  $(".select").find('em').text($(this).text())
+		$(".select").find('em').text($(this).text())
+		$(".select").find('em').attr('data-id',$(this).attr('data-id'));
 	})
 	//提交表单信息
-	$("#handelSub").on('click',function () {
-		console.log(123456)
+	$("#handelSub").on('click',function (e) {
+		e.preventDefault();
+		getGift()
 	})
+	//点击获取验证码
+	$('.send-code').on('click',getCode);
+	function countDown() {
+			// 60s倒计时
+			$(".send-code").unbind("click");
+			var countDownTime = 60;
+			timer = window.setInterval(function () {
+					countDownTime--;
+					$(".send-code").html('（'+countDownTime+'）s');
+					if (countDownTime == 0) {
+							clearInterval(timer);
+							$(".send-code").html('点击发送验证码');
+							$(".send-code").bind("click",getCode);
+					}
+			}, 1000);
+	}
+		function getCode(){
+			if(!/^1\d{10}$/.test($.trim($('.iphone').val()))){
+					// alert('请输入正确的手机号格式');
+					$(".error").show()
+					return false;
+			} else {
+				$(".error").hide()
+			}
+			$.ajax({
+					url:'/sendSms',
+					type:'get',
+					data:{
+							param_code:$(this).attr('data-coupon'),
+							phone:$.trim($('.iphone').val())
+					},
+					dataType:'json',
+					success:function(msg){
+							console.log(msg)
+							if(msg.code == 0){
+									countDown();
+							} else {
+									alert(msg.message);
+							}
+					},
+					error:function(XMLHttpRequest, textStatus, errorThrown){
+							console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+					}
+			});
+	};
+	function getGift(){
+		//点击领取
+		var actName = $.trim($('#myname').val());
+		var phone = $.trim($(".iphone").val());
+		var country = $('.select em').attr('data-id');
+		var code = $.trim($('.pass-code').val());
+		if(actName== ''){
+				alert('请输入姓名');
+				return false;
+		}
+		if(!/^1\d{10}$/.test(phone)){
+				$(".error").show()
+				return false;
+		} else{
+				$(".error").hide()
+		}
+		if(country == ''){
+				alert('请选择意向国家');
+				return false;
+		}
+		if(code == ''){
+				alert('请输入验证码');
+				return false;
+		}
+		var that = this;
+		$(this).unbind('click');
+		$.ajax({
+				url: '/getCoupons',
+				type: 'get',
+				data: {
+						user_name: actName,
+						mobile: phone,
+						country_id: country,
+						code:code
+				},
+				dataType:'json',
+				success:function(msg){
+						console.log(msg)
+						$(that).bind('click',getGift);
+						if(msg.code === 0){
+								alert('优惠码发送成功');
+								$(".dialog-modal").fadeOut();
+						} else {
+								alert(msg.massage);
+						}
+				},
+				error:function(XMLHttpRequest, textStatus, errorThrown){
+						console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
+						$(that).bind('click',getGift);
+				}
+		})
+	}
 })

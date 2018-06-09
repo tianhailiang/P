@@ -57,7 +57,7 @@
     "gulp-rev-collector": "^1.2.4",
     "gulp-sequence": "^0.4.6",
     "log4js": "^2.3.11",
-    "moment": "^2.18.1"
+    "moment": "^2.22.2"
   },
   "repository": {
     "type": "git",

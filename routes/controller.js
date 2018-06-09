@@ -3920,20 +3920,21 @@ exports.getCoupons = function (req, res, next) {
     if(ip.split(',').length>0){
         ip = ip.split(',')[0]
     }
+    log.info(data)
     request.get('http://api.map.baidu.com/location/ip?ip='+ip+'&ak=oTtUZr04m9vPgBZ1XOFzjmDpb7GCOhQw&coor=bd09ll',function (error, response, body){
         if(response.statusCode == 200){
             var b =JSON.parse(body);
-            var city = '北京';
+            var city = '北京市';
             if(b.content){
                 city = b.content.address_detail.city;
             }
             cms.getCoupons({
-                user_name: data.user_name,
+                user_name:encodeURI(encodeURI(data.user_name)),
                 mobile: data.mobile,
                 country_id: data.country_id,
                 code: data.code,
                 ip: ip,
-                city: city
+                city: encodeURI(encodeURI(city))
             }, function (err,result) {
                 if (err) {
                     res.send(err);
