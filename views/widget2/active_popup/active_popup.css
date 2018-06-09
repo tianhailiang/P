@@ -1,0 +1,170 @@
+
+    .act-pop-box{
+        width:100%;
+        height:130px;
+        position:fixed;
+        left:0;
+        bottom:0;
+        z-index:800;
+        background:url(../../assets/img/popup_bg.png) no-repeat center center;
+        background-size: cover;
+    }
+    .act-pop-info-box{
+        margin-top:50px;
+        width: 42%;
+        margin-left: 35%;
+    }
+    .act-pop-input{
+        /* width:274px; */
+        height:32px;
+        border-radius: 4px;
+        border:2px solid #ea8333;
+        margin-right:3px;
+        padding-left:8px;
+        width: 46.7%;
+    }
+    .act-pop-input::-webkit-input-placeholder { /* WebKit browsers */
+        color:#d75d26;
+    }
+    ::-moz-placeholder { /* Mozilla Firefox 19+ */
+        color:#d75d26;
+    }
+    :-ms-input-placeholder { /* Internet Explorer 10+ */
+        color: #d75d26;
+    }
+    .act-pop-sel{
+        /* width:274px; */
+        height:32px;
+        border-radius: 4px;
+        border:2px solid #ea8333;
+        margin-right:3px;
+        padding-left:8px;
+        margin-top:4px;
+        line-height: 32px;
+        color:#d75d26;
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+        background:#fff;
+        width: 46.7%;
+    }
+    .act-code-input{
+        /* width:160px; */
+        height:32px;
+        border-radius: 4px;
+        border:2px solid #ea8333;
+        margin-right:3px;
+        padding-left:8px;
+        color:#d75d26;
+        margin-top: -4px;
+        width: 27.6%;
+    }
+    .act-code-btn{
+        /* width:108px; */
+        height:32px;
+        border-radius: 4px;
+        border:2px solid #ea8333;
+        color:#333;
+        margin-top: -4px;
+        display:inline-block;
+        text-align: center;
+        line-height: 32px;
+        margin-left:-1px;
+        cursor: pointer;
+        background:#fff;
+        width: 17.5%;
+    }
+    .act-pop-gift{
+        position: absolute;
+        width:129px;
+        height:122px;
+        right:11.5%;
+        top:8px;
+        cursor: pointer;
+        width:9.6%;
+        right:13.5%;
+    }
+    .act-pop-detail{
+        display: block;
+        width:66px;
+        height:55px;
+        position: absolute;
+        right: 7.5%;
+        top: 27px;
+        cursor: pointer;
+        width:4.9%;
+        right:8.5%;
+    }
+    .act-pop-x-btn{
+        width:36px;
+        height:36px;
+        background:url(../../assets/img/popup_x.png) no-repeat 0 0;
+        position:absolute;
+        right: 4%;
+        top: 8px;
+        cursor: pointer;
+    }
+    .act-pop-left{
+        position: fixed;
+        width:170px;
+        height:130px;
+        bottom:160px;
+        z-index:800;
+        left:-100%;
+        cursor: pointer;
+    }
+    .act-pop-country{
+        border:1px solid #f18e52;
+        border-radius: 4px;
+        position: absolute;
+        padding:8px 12px 3px;
+        background:#fff;
+        left:-197px;
+        top: -88px;
+        width: 518px;
+    }
+    .act-pop-country li{
+        float:left;
+        width:61px;
+        height:20px;
+        border:1px solid #c4c4c4;
+        text-align:center;
+        line-height:20px;
+        font-size: 14px;
+        color:#858585;
+        margin-bottom:5px;
+        margin-right:2px;
+    }
+    .act-pop-country li:nth-of-type(8n){
+        margin-right:0;
+    }
+    .act-pop-country li:hover{
+        background:#c13232;
+        color:#fff;
+    }
+    .act-pop-triangle{
+        width:0;
+        height:0;
+        line-height: 0;  /* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+        border-width:10px;
+        border-style:solid dashed dashed dashed;/*IE6下, 设置余下三条边的border-style为dashed,即可达到透明的效果*/
+        border-color:#f30 transparent transparent transparent;
+        position: absolute;
+        right: 38px;
+        top: 5px;
+    }
+    .act-pop-triangle-white{
+        width:0;
+        height:0;
+        line-height: 0;  /* 字体大小和行高, 导致盒子呈现被撑开的长矩形 */
+        border-width:9px;
+        border-style:solid dashed dashed dashed;/*IE6下, 设置余下三条边的border-style为dashed,即可达到透明的效果*/
+        border-color:#fff transparent transparent transparent;
+        position: absolute;
+        right: 39px;
+        top: 5px;
+    }
+    .act-pop-sel-country{
+        display: none;
+    }
+   
