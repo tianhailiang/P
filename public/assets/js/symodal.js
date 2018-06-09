@@ -1,11 +1,9 @@
 $(function () {
 	//首页弹层
-
 	$(".dialog-modal").fadeIn();
-	
-	
+
 	$(".modal-content a").on('click',function () {
-		$(".dialog-modal").fadeOut(200)
+		$(".dialog-modal").fadeOut(150)
 	})
 	//51家分公司鼠标悬停效果
 	var timers = null
@@ -13,15 +11,14 @@ $(function () {
 	  clearTimeout(timers)
 	  $(this).next(".branch_company_text").animate({
 		 width:"1010px",
-		 left:"263px"
+		 left:"190px"
 	  },200)
-	});
-	$(".branch_company_img").on('mouseout',function () {
+	}).mouseout(function () {
 	  var _this = $(this)
 	  timers = setTimeout(function () {
 		 _this.next(".branch_company_text").animate({
 			width:"190px",
-			left:"75px"
+			left:0
 		 },200)
 	  },300)
 	});
@@ -32,7 +29,7 @@ $(function () {
 	  timers = setTimeout(function () {
 		 _this.animate({
 			width:"190px",
-			left:"75px"
+			left:0
 		 },200)
 	  },300)
 	});
@@ -51,5 +48,9 @@ $(function () {
 	  $(".contry-list li").removeClass('contry-active')
 	  $(this).addClass('contry-active')
 	  $(".select").find('em').text($(this).text())
+	})
+	//提交表单信息
+	$("#handelSub").on('click',function () {
+		console.log(123456)
 	})
 })

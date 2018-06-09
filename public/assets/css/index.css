@@ -36,6 +36,7 @@
 }
 .branch_company{
     height: 146px;
+    position: relative;
 }
 .branch_company_img{
     width: 190px;
@@ -62,7 +63,7 @@
     overflow: hidden;
     position: absolute;
     z-index: 1;
-    left: 55px;
+    left: 0
 }
 .branch_company_text_tilte{
     width: 58px;
@@ -267,6 +268,7 @@
 .gg-group{ overflow: hidden;}
 .gg-group ul{ margin-right: -10px; overflow: hidden;height: 146px;}
 .gg-group ul li{width:242px;margin-right: 10px;float: left;background: red;height: 146px;}
+.gg-group ul li a{ display: block;}
 .dialog-modal{ 
     position: fixed;
      top:0;
@@ -278,32 +280,24 @@
 }
 .modal-content{ 
     width: 1112px; 
-    height: 98%; 
+    height: 100%;
     margin:auto; 
     background:url(../img/bcg@2x.png) no-repeat center center;
     z-index: 9999999;
-    background-size: 100% 100%;
+    background-size: contain;
     position: relative;
+    padding-bottom: 25px;
 }
+.formContent{width:436px;position: absolute;top:48%;right: 0;bottom: 0;left: 0;margin: auto;}
+.form-group div{margin-bottom: 10px;}
+.formposirion{ position: relative;}
 .close{
     position: absolute;
-    right: 25.33%;
-    top: 10%;
+    right: 0;
+    top: -70%;
     height: 52px;
     width: 52px;
     background: url(../img/close_icon@2x.png) no-repeat center;
-}
-.formContent{
-    width:450px;
-    position: absolute;
-    top:48%;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-}
-.form-group div{
-    margin-bottom: 10px;
 }
 .error{
     height: 40px;
@@ -325,7 +319,7 @@
     margin-right: 3px;
 }
 .name,.iphone,.pass-code,.send-code{
-    height: 52px;
+    height: 50px;
     border-radius: 4px;
     border:none;
 }
@@ -347,7 +341,7 @@
     background-color: #fff;
 }
 .select{
-    height: 52px;
+    height: 50px;
     position: relative;
     width: 400px;
     border-radius: 4px;
@@ -359,11 +353,11 @@
 .select .placeholder{
     display: inline-block;
     width: 100px;
-    line-height: 52px;
+    line-height: 50px;
     text-align: center;
     font-size: 16px;
     color: #dc0006;
-    height: 52px;
+    height: 50px;
     border-top-left-radius:4px;
     border-bottom-left-radius:4px;
     background-image: -o-linear-gradient(#ffe3bf,#f6b366);
@@ -392,7 +386,7 @@
 .contry-list{
     position: absolute;
     top: 59px;
-    width: 480px;
+    width: 476px;
     background: #fff;
     border-radius: 4px;
     padding: 10px;
@@ -412,7 +406,7 @@
     border-style: solid;
     border-color: transparent transparent #fff transparent;
     position: absolute;
-    right: 63px;
+    right: 59px;
     top: -14px;
 }
 .contry-list li{
@@ -425,7 +419,7 @@
     margin-right: 10px;
 }
 .huoqu-button{
-    height: 58px;
+    height: 55px;
     display: inline-block;
     width:376px;
     border-radius: 32px;
@@ -439,4 +433,9 @@
     background-image: linear-gradient(#ffe3bf,#f6b366);
     box-shadow: 2px 2px 3px 0px #ba0000;
     margin-left: 15px;
+}
+@media screen and (min-width:768px){
+    .formContent{top:50%;}
+    .close{position: absolute;right: -30px;top: -85%;}
+    .modal-content{top:-6%;}
 }
