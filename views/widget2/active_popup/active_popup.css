@@ -135,6 +135,10 @@
         margin-bottom:5px;
         margin-right:2px;
     }
+    .act-pop-country li.active{
+        background:#c13232;
+        color:#fff;
+    }
     .act-pop-country li:nth-of-type(8n){
         margin-right:0;
     }

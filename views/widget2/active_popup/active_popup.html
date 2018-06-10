@@ -8,7 +8,7 @@
         <input class="act-pop-input" placeholder="请输入手机号" id="act-phone" >
         <div class="act-pop-sel" >
             <span class="act-pop-sel-val" data-id="" >意向国家</span>
-            <i class="iconfont" style="position:absolute;right:20px;" >&#xe60b;</i>
+            <i class="iconfont" style="position:absolute;right:20px;" id="icon_arrow">&#xe60b;</i>
             {% set countryList = [
                 {
                     name:"美国",
@@ -143,13 +143,25 @@
         });
         $('.act-pop-sel').on('click',function(){
             //选择国家
-            $('.act-pop-sel-country').show();
+            if($('.act-pop-sel-country').css('display')=='block'){
+                $('.act-pop-sel-country').hide();
+                document.getElementById('icon_arrow').style.transform="rotate(0deg)";
+                document.getElementById('icon_arrow').style.webkitTransform="rotate(0deg)";
+                document.getElementById('icon_arrow').style.msTransform="rotate(0deg)";
+            }else{
+                $('.act-pop-sel-country').show();
+                document.getElementById('icon_arrow').style.transform="rotate(180deg)";
+                document.getElementById('icon_arrow').style.webkitTransform="rotate(180deg)";
+                document.getElementById('icon_arrow').style.msTransform="rotate(180deg)";
+            }
         });
         $('.act-pop-country li').on('click',function(e){
             e.stopPropagation();
             $('.act-pop-sel-country').hide();
             $('.act-pop-sel-val').text($(this).text());
             $('.act-pop-sel-val').attr('data-id',$(this).attr('data-id'));
+            $('.act-pop-country li').removeClass('active');
+            $(this).addClass('active');
         })
         $('.act-code-btn').on('click',getCode);//点击获取验证码
         $('.act-pop-gift').on('click',getGift);// 点击领取优惠码
