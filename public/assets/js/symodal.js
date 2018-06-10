@@ -8,8 +8,6 @@ $(function () {
 
 	if(!cookie('currentarea')){
 		$(".dialog-modal").fadeIn()
-	} else {
-		return false
 	}
 	
 	$("body").on('click',function (e) {e.stopPropagation()})
@@ -111,12 +109,12 @@ $(function () {
 									countDown();
 							} else {
 								layer.msg(msg.message);
-									$('.send-code').on('click',getCode);
+								$('.send-code').bind('click',getCode);
 							}
 					},
 					error:function(XMLHttpRequest, textStatus, errorThrown){
 							console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
-							$('.send-code').on('click',getCode);
+							$('.send-code').bind('click',getCode);
 					}
 			});
 	};
@@ -161,7 +159,12 @@ $(function () {
 						$(that).bind('click',getGift);
 						if(msg.code === 0){
 							layer.msg('优惠码发送成功');
-								$(".dialog-modal").fadeOut();
+							$('#myname').val('')
+							$(".iphone").val('')
+							$(".select").find('em').text('请选择意向国家')
+							$(".select").find('em').attr('data-id','')
+							$('.pass-code').val('')
+							$(".dialog-modal").fadeOut()
 						} else {
 							layer.msg(msg.massage);
 						}
