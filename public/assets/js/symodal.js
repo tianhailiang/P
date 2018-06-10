@@ -1,21 +1,22 @@
 $(function () {
 	//首页弹层
-
-	var cookie_cityId = cookie('currentarea') ? cookie('currentarea') : 1;
-	var login_ss = null;
-
-	// if(!cookie('currentarea')) {
-	// 	$(".dialog-modal").fadeIn()
-	// } else {
-		
+	// var cookie_cityId = cookie('currentarea') ? cookie('currentarea') : 1;
+	// var login_ss = null;
+	// if(cookie('login_ss') != undefined){
+	//   login_ss = JSON.parse(cookie('login_ss'));
 	// }
-	$(".dialog-modal").fadeIn()
 
+	if(!cookie('currentarea')){
+		$(".dialog-modal").fadeIn()
+	} else {
+		return false
+	}
+	
 	$("body").on('click',function (e) {e.stopPropagation()})
 	
 	$(".modal-content .close").on('click',function () {
 		$(".dialog-modal").fadeOut(150)
-		
+		cookie('currentarea')
 	})
 	//51家分公司鼠标悬停效果
 	var timers = null
@@ -70,6 +71,7 @@ $(function () {
 	$("#handelSub").on('click',function (e) {
 		e.preventDefault();
 		getGift()
+		cookie('currentarea')
 	})
 	//点击获取验证码
 	$('.send-code').on('click',getCode);
@@ -80,7 +82,7 @@ $(function () {
 			timer = window.setInterval(function () {
 					countDownTime--;
 					$(".send-code").html('（'+countDownTime+'）s');
-					if (countDownTime == 0) {
+					if (countDownTime <= 0) {
 							clearInterval(timer);
 							$(".send-code").html('点击发送验证码');
 							$(".send-code").bind("click",getCode);
@@ -108,11 +110,13 @@ $(function () {
 							if(msg.code == 0){
 									countDown();
 							} else {
-									alert(msg.message);
+								layer.msg(msg.message);
+									$('.send-code').on('click',getCode);
 							}
 					},
 					error:function(XMLHttpRequest, textStatus, errorThrown){
 							console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+							$('.send-code').on('click',getCode);
 					}
 			});
 	};
@@ -123,7 +127,7 @@ $(function () {
 		var country = $('.select em').attr('data-id');
 		var code = $.trim($('.pass-code').val());
 		if(actName== ''){
-				alert('请输入姓名');
+				layer.msg('请输入姓名');
 				return false;
 		}
 		if(!/^1\d{10}$/.test(phone)){
@@ -133,11 +137,11 @@ $(function () {
 				$(".error").hide()
 		}
 		if(country == ''){
-				alert('请选择意向国家');
+			layer.msg('请选择意向国家');
 				return false;
 		}
 		if(code == ''){
-				alert('请输入验证码');
+			layer.msg('请输入验证码');
 				return false;
 		}
 		var that = this;
@@ -156,10 +160,10 @@ $(function () {
 						console.log(msg)
 						$(that).bind('click',getGift);
 						if(msg.code === 0){
-								alert('优惠码发送成功');
+							layer.msg('优惠码发送成功');
 								$(".dialog-modal").fadeOut();
 						} else {
-								alert(msg.massage);
+							layer.msg(msg.massage);
 						}
 				},
 				error:function(XMLHttpRequest, textStatus, errorThrown){

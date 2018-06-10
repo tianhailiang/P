@@ -276,14 +276,14 @@
      bottom: 0;
      left:0;
      background: rgba(0,0,0,.7);
-     z-index: 9999998
+     z-index: 1005
 }
 .modal-content{ 
     width: 1112px; 
     height: 100%;
     margin:auto; 
     background:url(../img/bcg@2x.png) no-repeat center center;
-    z-index: 9999999;
+    z-index: 1006;
     background-size: contain;
     position: relative;
     padding-bottom: 25px;
