@@ -102,7 +102,7 @@ $(function () {
 							if(msg.code == 0){
 								countDown();
 							} else {
-								layer.msg(msg.message);
+								layer.msg(msg.massage);
 								$('.send-code').bind('click',getCode);
 							}
 					},
