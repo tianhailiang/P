@@ -335,7 +335,7 @@
     margin-right: 5px;
 }
 .send-code{
-    width: 140px;
+    min-width: 140px;
     font-size: 16px;
     color: #772c61;
     background-color: #fff;
