@@ -156,7 +156,9 @@ $(function () {
 							$(".iphone").val('')
 							$(".select").find('em').text('请选择意向国家')
 							$(".select").find('em').attr('data-id','')
-							$('.pass-code').val('')
+							$(".pass-code").val('')
+							clearInterval(timer)
+							$(".send-code").html('点击发送验证码');
 							$(".dialog-modal").fadeOut()
 						} else {
 							layer.msg(msg.massage);
