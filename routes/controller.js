@@ -3927,7 +3927,6 @@ exports.getCoupons = function (req, res, next) {
     if(ip.split(',').length>0){
         ip = ip.split(',')[0]
     }
-    log.info(data)
     request.get('http://api.map.baidu.com/location/ip?ip='+ip+'&ak=oTtUZr04m9vPgBZ1XOFzjmDpb7GCOhQw&coor=bd09ll',function (error, response, body){
         if(response.statusCode == 200){
             var b =JSON.parse(body);
