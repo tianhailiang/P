@@ -235,6 +235,11 @@
                     $(that).bind('click',getGift);
                     if(msg.code === 0){
                         layer.msg('优惠码发送成功');
+                        $('#act-name').val('');
+                        $("#act-phone").val('');
+                        $('.act-pop-sel-val').attr('data-id','');
+                        $('.act-pop-sel-val').text('意向国家');
+                        $('#act-code').val('');
                     } else {
                         layer.msg(msg.massage);
                     }
