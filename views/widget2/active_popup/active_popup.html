@@ -156,12 +156,11 @@
         var timer;
         function countDown() {
             // 60s倒计时
-            $(".act-code-btn").unbind("click");
             var countDownTime = 60;
             timer = window.setInterval(function () {
                 countDownTime--;
                 $(".act-code-btn").html('（'+countDownTime+'）s');
-                if (countDownTime == 0) {
+                if (countDownTime <= 0) {
                     clearInterval(timer);
                     $(".act-code-btn").html('点击发送验证码');
                     $(".act-code-btn").bind("click",getCode);
@@ -173,6 +172,7 @@
                 layer.msg('请输入正确的手机号格式');
                 return false;
             }
+            $(".act-code-btn").unbind("click");
             $.ajax({
                 url:'/sendSms',
                 type:'get',
@@ -187,10 +187,12 @@
                         countDown();
                     } else {
                         layer.msg(msg.message);
+                        $(".act-code-btn").bind("click",getCode);
                     }
                 },
                 error:function(XMLHttpRequest, textStatus, errorThrown){
-                    console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+                    console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
+                    $(".act-code-btn").bind("click",getCode);
                 }
             });
         }
