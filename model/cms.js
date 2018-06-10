@@ -1432,7 +1432,6 @@ exports.detail_count = function (data, callback) {
 
 };
 
-
 function update_viewnum(catid, id, uuid, callback){
   var viewNumKey = "WEB:HITS:"+id;
   redisPool_views.incr(viewNumKey, function(err, reply){
@@ -1450,4 +1449,31 @@ function update_viewnum(catid, id, uuid, callback){
       }
     }
   });
-};
+}
+//发送短信验证码
+exports.sendSms = function (data, callback) {
+  var url = _api_url_path(data, config.apis.sendSms);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
+//获取优惠卷
+exports.getCoupons = function (data, callback) {
+  var url = _api_url_path(data, config.apis.getCoupons);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
+//发送优惠券
+exports.sendCoupons = function (data, callback) {
+  var url = _api_url_path(data, config.apis.sendCoupons);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}

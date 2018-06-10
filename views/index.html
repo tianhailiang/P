@@ -16,6 +16,133 @@
 </style>
 </head>
 <body>
+  <div class="dialog-modal" style="_display: none;">
+    <div class="modal-content">
+      <div class="formContent formposirion">
+          <a href="javascript:;" class="close"></a>
+        <div class="form-group">
+          <div><input type="text" placeholder="请输入姓名" class="name" id="myname"></div>
+          <div><input type="text" placeholder="请输入手机号" class="iphone"></div>
+          <div style="position: relative;">
+            <input type="text" class="pass-code">
+            <button type="button" class="send-code" data-coupon="">点击发送验证码</button>
+            <span class="error"><i></i>手机号格式不正确</span>
+          </div>
+          <div class="select">
+              <span class="placeholder">意向国家</span>
+              <em style="font-size: 16px;padding-left: 8px;color: #772c61;" data-id="">请选择意向国家</em>
+              <ul class="contry-list">
+                  {% set countryList = [
+                    {
+                        name:"美国",
+                        id:"1"
+                    },
+                    {
+                        name:"英国",
+                        id:"2"
+                    },
+                    {
+                        name:"加拿大",
+                        id:"3"
+                    },
+                    {
+                        name:"澳大利亚",
+                        id:"4"
+                    },
+                    {
+                        name:"新西兰",
+                        id:"5"
+                    },
+                    {
+                        name:"日本",
+                        id:"51"
+                    },
+                    {
+                        name:"韩国",
+                        id:"50"
+                    },
+                    {
+                        name:"中国香港",
+                        id:"54"
+                    },
+                    {
+                        name:"俄罗斯",
+                        id:"100"
+                    },
+                    {
+                        name:"乌克兰",
+                        id:"101"
+                    },
+                    {
+                        name:"爱尔兰",
+                        id:"108"
+                    },
+                    {
+                        name:"意大利",
+                        id:"111"
+                    },
+                    {
+                        name:"西班牙",
+                        id:"112"
+                    },
+                    {
+                        name:"白俄罗斯",
+                        id:"102"
+                    },
+                    {
+                        name:"新加坡",
+                        id:"52"
+                    },
+                    {
+                        name:"马来西亚",
+                        id:"53"
+                    },
+                    {
+                        name:"丹麦",
+                        id:"110"
+                    },
+                    {
+                        name:"德国",
+                        id:"103"
+                    },
+                    {
+                        name:"法国",
+                        id:"104"
+                    },
+                    {
+                        name:"挪威",
+                        id:"105"
+                    },
+                    {
+                        name:"瑞典",
+                        id:"106"
+                    },
+                    {
+                        name:"芬兰",
+                        id:"107"
+                    },
+                    {
+                        name:"荷兰",
+                        id:"109"
+                    },
+                    {
+                        name:"瑞士",
+                        id:"113"
+                    }
+                ] %}
+                {% for items in countryList%}
+                <li data-id="{{items.id}}">{{items.name}}</li>
+                {% endfor %}
+              </ul>
+          </div>
+          <div class="checkbtn">
+            <input type="checkbox" id="female" checked="checked"/><label for="female">注册JJL网站账号</label>
+          </div>
+        </div>
+        <button class="huoqu-button" id="handelSub">点击获取优惠券</button>
+      </div>
+    </div>
+  </div>
 {% include "widget/common_hide/common_hide.html"%}
 <div class="zhezhao" id="zhezhaox" style="display: none">
 </div>
@@ -373,8 +500,16 @@
         <div class="branch_company_text_tilte" data-id="{{cityList[48].companyId}}">
           <a  href="http://www.jjl.cn/zt/overseas/vancouver/index.html" data-id="{{cityList[48].companyId}}" >{{cityList[48].companyName}}</a>
         </div>
-      </div>
     </div>
+    </div>
+      <!-- 广告位 -->
+      <div class="gg-group">
+        <ul>
+          {% for pictuer in liuxueguanggao %}
+            <li><a href="{{pictuer.linkurl}}"><img src="{{pictuer.imageurl}}" alt="{{pictuer.alt}}"></a></li>
+          {% endfor %}
+        </ul>
+      </div>
   </div>
   {% include "widget/liuxue_item/liuxue_item.html" %}
 </div>
@@ -388,6 +523,7 @@
 <script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/guanggao_slider.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/symodal.js"></script>
 <script>
   $(function () {
     var nowLocation = window.location.href;

@@ -4,19 +4,6 @@
  */
 'use strict';
 var apiconfig = require('../config/interface_config');
-/*const redisCache = {
- "host": "jjl-redis.3p6fml.0001.cnn1.cache.amazonaws.com.cn",
- "port":6379
- };
- var domain = '.jjl.cn';
- var wwhost = 'http://www.jjl.cn';
- var yiminhost = 'http://yimin.jjl.cn';
- var cdnhost = 'http://www.jjl.cn:4000';
- var prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/cms/api/';
- var uc_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/uc/api/';
- var shequ_prefix = 'http://internal-jjl-elb-api-1494687011.cn-north-1.elb.amazonaws.com.cn/so/?/api/';
- var imageshost = 'http://images.jjl.cn';
- var cms_out_prefix = prefix;*/
 const redisCache = apiconfig.redisCache;
 var domain = apiconfig.domain;
 console.log('1234567890!!!!!!!!~~',apiconfig)
@@ -28,6 +15,7 @@ var uc_prefix = apiconfig.uc_prefix;
 var shequ_prefix = apiconfig.shequ_prefix;
 var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
+var coupon = apiconfig.coupon;
 var apis = {
   "user_register": uc_prefix + 'index.php?m=user_register',//普通用户快速注册
   "user_login": uc_prefix + 'index.php?m=user_login',//普通用户密码登录
@@ -280,6 +268,9 @@ var apis = {
   "advert":prefix + 'advert',
   //编辑文章详情接口
   "get_article_info":shequ_prefix + 'article/info/',
+  "sendCoupons": coupon + 'sendCoupon',//发送优惠券
+  "getCoupons": coupon + 'getCoupons',//获取优惠券
+  "sendSms": coupon + 'sendSms', //发送手机验证码（活动页）
 };
 module.exports = {
   redisCache: redisCache,
