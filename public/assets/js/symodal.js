@@ -71,6 +71,7 @@ $(function () {
 	$("#handelSub").on('click',function (e) {
 		e.preventDefault();
 		getGift()
+		cookie('currentarea')
 	})
 	//点击获取验证码
 	$('.send-code').on('click',getCode);
