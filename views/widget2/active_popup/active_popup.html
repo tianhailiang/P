@@ -255,6 +255,9 @@
                         $('.act-pop-sel-val').attr('data-id','');
                         $('.act-pop-sel-val').text('意向国家');
                         $('#act-code').val('');
+                        clearInterval(timer);
+                        $(".act-code-btn").html('点击发送验证码');
+                        $('.act-pop-country li').removeClass('active');
                     } else {
                         layer.msg(msg.massage);
                     }
