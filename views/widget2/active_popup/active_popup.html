@@ -4,8 +4,8 @@
 </div>
 <div class="act-pop-box">
     <div class="act-pop-info-box">
-        <input class="act-pop-input" placeholder="请输入姓名" id="act-name" >
-        <input class="act-pop-input" placeholder="请输入手机" id="act-phone" >
+        <input class="act-pop-input" placeholder="请输入姓名" id="act-name" maxlength="10" >
+        <input class="act-pop-input" placeholder="请输入手机号" id="act-phone" >
         <div class="act-pop-sel" >
             <span class="act-pop-sel-val" data-id="" >意向国家</span>
             <i class="iconfont" style="position:absolute;right:20px;" >&#xe60b;</i>
@@ -19,12 +19,12 @@
                     id:"2"
                 },
                 {
-                    name:"加拿大",
-                    id:"3"
-                },
-                {
                     name:"澳大利亚",
                     id:"4"
+                },
+                {
+                    name:"加拿大",
+                    id:"3"
                 },
                 {
                     name:"新西兰",
@@ -235,6 +235,11 @@
                     $(that).bind('click',getGift);
                     if(msg.code === 0){
                         layer.msg('优惠码发送成功');
+                        $('#act-name').val('');
+                        $("#act-phone").val('');
+                        $('.act-pop-sel-val').attr('data-id','');
+                        $('.act-pop-sel-val').text('意向国家');
+                        $('#act-code').val('');
                     } else {
                         layer.msg(msg.massage);
                     }
