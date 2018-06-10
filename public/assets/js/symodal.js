@@ -1,9 +1,21 @@
 $(function () {
 	//首页弹层
-	// $(".dialog-modal").fadeIn();
 
+	var cookie_cityId = cookie('currentarea') ? cookie('currentarea') : 1;
+	var login_ss = null;
+
+	// if(!cookie('currentarea')) {
+	// 	$(".dialog-modal").fadeIn()
+	// } else {
+		
+	// }
+	$(".dialog-modal").fadeIn()
+
+	$("body").on('click',function (e) {e.stopPropagation()})
+	
 	$(".modal-content .close").on('click',function () {
 		$(".dialog-modal").fadeOut(150)
+		
 	})
 	//51家分公司鼠标悬停效果
 	var timers = null
@@ -42,14 +54,15 @@ $(function () {
 	  } else {
 		 $(this).removeClass('selecttoggle')
 		 $(this).find(".contry-list").hide()
-		 $(".contry-list li").removeClass('contry-active')
-		 $(".contry-list li").eq(0).addClass('contry-active')
+		//  $(".contry-list li").removeClass('contry-active')
+		//  $(".contry-list li").eq(0).addClass('contry-active')
 	  }
 	})
 	//选择具体国家列表项
+	// $(".contry-list li").eq(0).addClass('contry-active')
 	$(".contry-list li").on('click',function(){
 	  $(".contry-list li").removeClass('contry-active')
-	  $(this).addClass('contry-active')
+	  	$(this).addClass('contry-active')
 		$(".select").find('em').text($(this).text())
 		$(".select").find('em').attr('data-id',$(this).attr('data-id'));
 	})
@@ -74,11 +87,11 @@ $(function () {
 					}
 			}, 1000);
 	}
-		function getCode(){
+	function getCode(){
 			if(!/^1\d{10}$/.test($.trim($('.iphone').val()))){
-					// alert('请输入正确的手机号格式');
-					$(".error").show()
-					return false;
+				// alert('请输入正确的手机号格式');
+				$(".error").show()
+				return false;
 			} else {
 				$(".error").hide()
 			}
