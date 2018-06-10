@@ -162,6 +162,9 @@
             $('.act-pop-sel-val').attr('data-id',$(this).attr('data-id'));
             $('.act-pop-country li').removeClass('active');
             $(this).addClass('active');
+            document.getElementById('icon_arrow').style.transform="rotate(0deg)";
+            document.getElementById('icon_arrow').style.webkitTransform="rotate(0deg)";
+            document.getElementById('icon_arrow').style.msTransform="rotate(0deg)";
         })
         $('.act-code-btn').on('click',getCode);//点击获取验证码
         $('.act-pop-gift').on('click',getGift);// 点击领取优惠码
