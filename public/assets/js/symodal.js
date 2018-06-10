@@ -1,20 +1,13 @@
 $(function () {
 	//首页弹层
-	// var cookie_cityId = cookie('currentarea') ? cookie('currentarea') : 1;
-	// var login_ss = null;
-	// if(cookie('login_ss') != undefined){
-	//   login_ss = JSON.parse(cookie('login_ss'));
-	// }
-
-	if(!cookie('currentarea')){
+	if(!cookie('mask_tag')){
 		$(".dialog-modal").fadeIn()
 	}
-	
 	$("body").on('click',function (e) {e.stopPropagation()})
 	
 	$(".modal-content .close").on('click',function () {
+		cookie('mask_tag',1,{path: "/", domain: js_api_config.domain, expires: 36500});
 		$(".dialog-modal").fadeOut(150)
-		cookie('currentarea')
 	})
 	//51家分公司鼠标悬停效果
 	var timers = null
@@ -67,9 +60,9 @@ $(function () {
 	})
 	//提交表单信息
 	$("#handelSub").on('click',function (e) {
-		e.preventDefault();
+		e.preventDefault()
+		cookie('mask_tag',1,{path: "/", domain: js_api_config.domain, expires: 36500})
 		getGift()
-		cookie('currentarea')
 	})
 	//点击获取验证码
 	$('.send-code').on('click',getCode);
