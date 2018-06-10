@@ -88,18 +88,19 @@ $(function () {
 			} else {
 				$(".error").hide()
 			}
+			$('.send-code').unbind('click')
 			$.ajax({
 					url:'/sendSms',
 					type:'get',
 					data:{
-							param_code:$(this).attr('data-coupon'),
-							phone:$.trim($('.iphone').val())
+						param_code:$(this).attr('data-coupon'),
+						phone:$.trim($('.iphone').val())
 					},
 					dataType:'json',
 					success:function(msg){
 							console.log(msg)
 							if(msg.code == 0){
-									countDown();
+								countDown();
 							} else {
 								layer.msg(msg.message);
 								$('.send-code').bind('click',getCode);
