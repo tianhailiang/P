@@ -1,4 +1,5 @@
 $(function () {
+	// var onbtn = false
 	//首页弹层
 	if(!cookie('mask_tag')){
 		$(".dialog-modal").fadeIn()
@@ -62,7 +63,8 @@ $(function () {
 	$("#handelSub").on('click',function (e) {
 		e.preventDefault()
 		cookie('mask_tag',1);
-		getGift()
+		getGift(this)
+		
 	})
 	//点击获取验证码
 	$('.send-code').on('click',getCode);
@@ -112,7 +114,7 @@ $(function () {
 					}
 			});
 	};
-	function getGift(){
+	function getGift(obj){
 		//点击领取
 		var actName = $.trim($('#myname').val());
 		var phone = $.trim($(".iphone").val());
@@ -136,8 +138,8 @@ $(function () {
 			layer.msg('请输入验证码');
 				return false;
 		}
-		var that = this;
-		$(this).unbind('click');
+		var that = obj;
+		$(obj).unbind('click');
 		$.ajax({
 				url: '/getCoupons',
 				type: 'get',
