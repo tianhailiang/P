@@ -2,7 +2,7 @@
 <div class="act-pop-left" >
     <img src="{{helper.cdnhost}}/assets/img/popup_left.png" />
 </div>
-<div class="act-pop-box">
+<div class="act-pop-box" >
     <div class="act-pop-info-box">
         <input class="act-pop-input" placeholder="请输入姓名" id="act-name" maxlength="10" >
         <input class="act-pop-input" placeholder="请输入手机号" id="act-phone" >
@@ -259,6 +259,9 @@
                         $(".act-code-btn").html('点击发送验证码');
                         $('.act-pop-country li').removeClass('active');
                         $(".act-code-btn").bind("click",getCode);
+                        window.setTimeout(function(){
+                            window.location.reload();
+                        },1000);
                     } else {
                         layer.msg(msg.massage);
                     }
