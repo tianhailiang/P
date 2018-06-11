@@ -6,7 +6,7 @@ $(function () {
 	$("body").on('click',function (e) {e.stopPropagation()})
 	
 	$(".modal-content .close").on('click',function () {
-		cookie('mask_tag',1,{path: "/", domain: js_api_config.domain, expires: 36500});
+		cookie('mask_tag',1);
 		$(".dialog-modal").fadeOut(150)
 	})
 	//51家分公司鼠标悬停效果
@@ -51,7 +51,7 @@ $(function () {
 	  }
 	})
 	//选择具体国家列表项
-	// $(".contry-list li").eq(0).addClass('contry-active')
+	$(".contry-list li:nth-child(6n)").css('margin-right','0')
 	$(".contry-list li").on('click',function(){
 	  $(".contry-list li").removeClass('contry-active')
 	  	$(this).addClass('contry-active')
@@ -61,7 +61,7 @@ $(function () {
 	//提交表单信息
 	$("#handelSub").on('click',function (e) {
 		e.preventDefault()
-		cookie('mask_tag',1,{path: "/", domain: js_api_config.domain, expires: 36500})
+		cookie('mask_tag',1);
 		getGift()
 	})
 	//点击获取验证码
@@ -171,4 +171,5 @@ $(function () {
 				}
 		})
 	}
-})
+});
+
