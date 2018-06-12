@@ -120,7 +120,7 @@
             </div>
         </div>
         <input class="act-code-input" id="act-code" >
-        <div class="act-code-btn" data-coupon="{{param_code}}" >
+        <div class="act-code-btn" >
             点击发送验证码
         </div>
     </div>
@@ -189,8 +189,8 @@
             }
             $(".act-code-btn").unbind("click");
             $.ajax({
-                url:'/sendSms',
-                type:'get',
+                url:'/sendcode_s',
+                type:'post',
                 data:{
                     param_code:$(this).attr('data-coupon'),
                     phone:$.trim($('#act-phone').val())
