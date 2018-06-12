@@ -3947,7 +3947,7 @@ exports.getCoupons = function (req, res, next) {
                 } else {
                     res.send(result);
                     if (result.code == 0) {
-                        cms.login_ss({
+                        cms.login_user({
                             phone: data.mobile,
                             code: data.code
                         }, function (err,result) {
