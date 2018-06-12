@@ -216,6 +216,8 @@ exports = module.exports = function (app) {// routes
   app.get('/binding', login.binding);
   //手机验证码
   app.post('/sendcode_s', login.sendcode_s);
+  //手机验证码-优惠券
+  app.post('/sendcode_s_coupon',login.sendcode_s_coupon);
   //忘记密码
   app.post('/forget_s', login.forget_s);
   //绑定手机号

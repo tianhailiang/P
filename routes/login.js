@@ -444,6 +444,48 @@ exports.sendcode_s = function (req, res, next) {
   
 }
 
+//发送验证码-优惠券
+exports.sendcode_s_coupon = function (req, res, next) {
+  log.debug('this router sendcode_s~~');
+  var data = [];
+  var async = require('async');
+  var phone = req.body.phone;
+  log.debug('phone', phone);
+  var page_param_code = req.body.param_code;
+    // res.send('0');
+    //res.send(JSON.parse({"code":0}));
+    console.log('0--------------');
+    async.parallel({
+      //验证码
+      sendcode_ss: function (callback) {
+        cms.sendcode_ss({m: 'sendcode',phone: phone}, callback);
+      }
+    }, function (err, result) {
+  
+      data.sendcode_ss = result.sendcode_ss;
+      log.debug('result.login_ss----------', result.sendcode_ss.code);
+      if (result.sendcode_ss.code == 0) {
+        log.debug('ok', result.sendcode_ss);
+        // res.send("cb("+JSON.stringify(result.sendcode_ss)+")");
+        res.send(result.sendcode_ss)
+
+        //清除session
+        req.session.destroy(function(err) {
+          log.debug('session destroy err',err);
+        })
+      } else {
+        res.send(result.sendcode_ss)
+      }
+
+    });
+  //log.debug(JSON.stringify(req.body));
+  //res.render('login', '')
+  
+  // res.setHeader("Access-Control-Allow-Methods","GET,POST");
+  
+  
+}
+
 //验证手机是否已被使用
 exports.use_phone_s = function (req, res, next) {
   log.debug('this router register_s~~');

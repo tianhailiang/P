@@ -92,7 +92,7 @@ $(function () {
 			}
 			$('.send-code').unbind('click')
 			$.ajax({
-					url:'/sendcode_s',
+					url:'/sendcode_s_coupon',
 					type:'post',
 					data:{
 						phone:$.trim($('.iphone').val())
