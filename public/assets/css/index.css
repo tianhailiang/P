@@ -275,12 +275,12 @@
 .form-group div{margin-bottom:9px;}
 .formposirion{position:relative;}
 .close{position:absolute;top:-70%;right:0;width:36px;height:36px;background:url(../img/close_icon@2x.png) no-repeat center;background-size: cover;}
-.error{position:absolute;top:-54px;right:-65px;display:none;width:146px;height:40px;background:url(../img/tlips_bcg@2x.png) no-repeat;text-align:center;line-height:30px;}
+.error{position:absolute;top:-54px;right:-65px;font-size:12px;display:none;width:146px;height:40px;background:url(../img/tlips_bcg@2x.png) no-repeat;text-align:center;line-height:30px;}
 .error>i{display:inline-block;margin-right:3px;width:14px;height:14px;background:url(../img/tan_icon@2x.png) no-repeat;vertical-align:middle;}
 .iphone,.name,.pass-code,.send-code{height:36px;border:none;border-radius:4px;}
 .iphone,.name{width:285px;color:#772c61;text-indent:22px;font-size:14px;}
 .pass-code{margin-right:5px;width:170px;text-indent:22px;font-size:14px;}
-.send-code{background-color:#fff;color:#772c61;font-size:14px;min-width:108px;}
+.send-code{background-color:#fff;color:#772c61;font-size:14px;min-width:108px;padding-left: 0;padding-right: 0;}
 .select{position:relative;width:285px;height:36px;border-radius:4px;background:#fff url(../img/tog-icon@2x.png) no-repeat right 10px center;}
 .select.selecttoggle{background:#fff url(../img/togtop-icon@2x.png) no-repeat right 10px center;}
 .select .placeholder{display:inline-block;width:100px;height:36px;border-bottom-left-radius:4px;border-top-left-radius:4px;background-image:-o-linear-gradient(#ffe3bf,#f6b366);background-image:-moz-linear-gradient(#ffe3bf,#f6b366);background-image:-webkit-linear-gradient(#ffe3bf,#f6b366);background-image:linear-gradient(#ffe3bf,#f6b366);color:#dc0006;text-align:center;font-size:14px;line-height:36px;}
