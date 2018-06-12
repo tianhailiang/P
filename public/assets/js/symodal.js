@@ -95,7 +95,6 @@ $(function () {
 					url:'/sendcode_s',
 					type:'post',
 					data:{
-						param_code:$(this).attr('data-coupon'),
 						phone:$.trim($('.iphone').val())
 					},
 					dataType:'json',
