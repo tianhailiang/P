@@ -3719,7 +3719,6 @@ exports.hot = function (req, res, next) {
               realname: data.userinfo.realname,
           };
           data.esikey = esihelper.esikey();
-          //log.info(data.xiangguan_guwen)
           res.render('adviser_hot', data);
       })
   });
