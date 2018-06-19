@@ -65,7 +65,7 @@ $(function () {
 		e.preventDefault()
 		cookie('mask_tag',1);
 		getGift(this)
-		
+		$(".close-btn").fadeIn()
 	})
 	//点击获取验证码
 	$('.send-code').on('click',getCode);
