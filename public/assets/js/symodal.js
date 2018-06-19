@@ -65,7 +65,7 @@ $(function () {
 		e.preventDefault()
 		cookie('mask_tag',1);
 		getGift(this)
-		
+		$(".close-btn").fadeIn()
 	})
 	//点击获取验证码
 	$('.send-code').on('click',getCode);
@@ -173,6 +173,7 @@ $(function () {
 				}
 		})
 	}
+	//关闭弹窗按钮
 	$(".close-btn").on('click',function () {
 		$(this).fadeOut()
 		$(".dialog-modal").fadeIn()
