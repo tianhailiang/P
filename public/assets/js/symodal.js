@@ -173,6 +173,7 @@ $(function () {
 				}
 		})
 	}
+	//关闭弹窗按钮
 	$(".close-btn").on('click',function () {
 		$(this).fadeOut()
 		$(".dialog-modal").fadeIn()
