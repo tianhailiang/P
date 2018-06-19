@@ -1,5 +1,5 @@
 $(function () {
-
+	$(".close-btn").fadeIn()
 	//首页弹层
 	if(!cookie('mask_tag')){
 		$(".dialog-modal").fadeIn()
