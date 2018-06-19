@@ -1,5 +1,5 @@
 $(function () {
-	// var onbtn = false
+
 	//首页弹层
 	if(!cookie('mask_tag')){
 		$(".dialog-modal").fadeIn()
@@ -8,7 +8,8 @@ $(function () {
 	
 	$(".modal-content .close").on('click',function () {
 		cookie('mask_tag',1);
-		$(".dialog-modal").fadeOut(150)
+		$(".dialog-modal").fadeOut()
+		$(".close-btn").fadeIn()
 	})
 	//51家分公司鼠标悬停效果
 	var timers = null
@@ -172,5 +173,9 @@ $(function () {
 				}
 		})
 	}
+	$(".close-btn").on('click',function () {
+		$(this).fadeOut()
+		$(".dialog-modal").fadeIn()
+	})
 });
 
