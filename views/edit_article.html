@@ -425,13 +425,18 @@
           layer.msg("请输入正文内容");
           return false;
         }    
+        if(editor.txt.text().match(/^1\d{10}$/)){
+          //过滤手机号
+          layer.msg("文章内容不能带手机号");
+          return false;
+        }
         //跳转预览详情页
-          if(login_ss.usertype ==2){
-            if(artType == 1){
-                window.open('/advisor_center/case/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
-            }else {
-                window.open('/advisor_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
-            }
+        if(login_ss.usertype ==2){
+          if(artType == 1){
+              window.open('/advisor_center/case/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
+          }else {
+              window.open('/advisor_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
+          }
         }else if(login_ss.usertype ==3){
           window.open('/canzan_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
         }
@@ -508,6 +513,11 @@
         if(editor.txt.text()== ''){
           //判断正文
           layer.msg("请输入正文内容");
+          return false;
+        }
+        if(editor.txt.text().match(/^1\d{10}$/)){
+          //过滤手机号
+          layer.msg("文章内容不能带手机号");
           return false;
         }
         $(this).unbind('click');
@@ -639,6 +649,11 @@
           layer.msg("请输入正文内容");
           return false;
         }   
+        if(editor.txt.text().match(/^1\d{10}$/)){
+          //过滤手机号
+          layer.msg("文章内容不能带手机号");
+          return false;
+        }
         $(this).unbind('click');
         var that = this;
         $.ajax({
