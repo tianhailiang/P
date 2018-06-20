@@ -3582,6 +3582,15 @@ exports.article_count = function (req, res, next) {
     if (req.cookies.uuid) {
         data.uuid = req.cookies.uuid
     }
+    var spider = ["Baiduspider","Googlebot","360Spider","Sosospider","sogou spider"];
+    var deviceAgent = req.headers['user-agent'].toLowerCase();
+    for (var item in deviceAgent) {
+        if (deviceAgent.indexOf(item) != -1) {
+            log.info('爬虫正在访问网站');
+            res.send('I am spider');
+            return false;
+        }
+    }
     var resErr = [];
     if(!tokenfunc.checkToken(data.token)){ //token验证不通过
         res.send(comfunc.api_return('100001', 'token check fail', ''));
