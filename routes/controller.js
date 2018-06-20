@@ -3585,7 +3585,7 @@ exports.article_count = function (req, res, next) {
     var spider = ["Baiduspider","Googlebot","360Spider","Sosospider","sogou spider"];
     var deviceAgent = req.headers['user-agent'].toLowerCase();
     for (var item in spider) {
-        if (deviceAgent.indexOf(item) != -1) {
+        if (deviceAgent.indexOf(spider[item]) != -1) {
             log.info('爬虫正在访问网站');
             res.send('I am spider');
             return false;
