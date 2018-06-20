@@ -1,12 +1,19 @@
 
 <div class="act-pop-left" >
-    <img src="{{helper.cdnhost}}/assets/img/popup_left.png" />
+    <img src="{{helper.cdnhost}}/assets/img/popup_left_b.png" />
 </div>
 <div class="act-pop-box" >
-    <div class="act-pop-info-box">
+    <div class="act-pop-info-box clearfix">
         <input class="act-pop-input" placeholder="请输入姓名" id="act-name" maxlength="10" >
         <input class="act-pop-input" placeholder="请输入手机号" id="act-phone" >
-        <div class="act-pop-sel" >
+        <div class="act-code-box">
+            <input class="act-code-input" id="act-code" placeholder="请输入验证码" >
+            <span style="color:#dcdcdc;">|</span>
+            <div class="act-code-btn" >
+                点击发送验证码
+            </div>
+        </div>
+         <div class="act-pop-sel" >
             <span class="act-pop-sel-val" data-id="" >意向国家</span>
             <i class="iconfont" style="position:absolute;right:20px;" id="icon_arrow">&#xe60b;</i>
             {% set countryList = [
@@ -119,16 +126,17 @@
                 <div class="act-pop-triangle-white"></div>
             </div>
         </div>
-        <input class="act-code-input" id="act-code" >
-        <div class="act-code-btn" >
-            点击发送验证码
-        </div>
     </div>
-    <img src="{{helper.cdnhost}}/assets/img/popup_gift.png" class="act-pop-gift" />
+    <div class="act-pop-gift" >
+        获取优惠券
+    </div>
     <a href="http://www.jjl.cn/zt/2018/20180528_xiazhan/beijing.shtml" class="act-pop-detail" >
-        <img src="{{helper.cdnhost}}/assets/img/popup_detail.png" />
+        <img src="{{helper.cdnhost}}/assets/img/popup_detail_b.png" />
     </a>
     <div class="act-pop-x-btn" ></div>
+    <span class="act-pop-time">
+        活动时间：2018年6月23日至2018年8月25日
+    </span>
 </div>
 <script>
     $(function(){
