@@ -364,8 +364,8 @@ var cityJson = {"1":{
     "lng": null,
     "lat": null
 }, "52":{
-    "companyAddress": "墨尔本分公司：139 Franklin Street, Melbourne, 3000",
-    "companyTel": "服务专线：038-319-9956",
+    "companyAddress": "墨尔本分公司：139 Franklin Street, Melbourne CBD, VIC 3000, Australia",
+    "companyTel": "服务专线：0061-3-83199955",
     "companyName": "m-墨尔本",
     "companyId": "52",
     "lng": null,
