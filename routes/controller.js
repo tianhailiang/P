@@ -428,7 +428,6 @@ exports.so_article = function (req, res, next) {
         console.log('aaaaa333~~', helperfunc.paramurlgen('so_article','order='+order,'page=2'))
         data.esikey = esihelper.esikey();
         res.render('so_article', data);
-
     });
 };
 //留学顾问搜索页
