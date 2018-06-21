@@ -363,6 +363,13 @@ var cityJson = {"1":{
     "companyId": "51",
     "lng": null,
     "lat": null
+}, "52":{
+    "companyAddress": "墨尔本分公司：139 Franklin Street, Melbourne, 3000",
+    "companyTel": "服务专线：038-319-9956",
+    "companyName": "m-墨尔本",
+    "companyId": "52",
+    "lng": null,
+    "lat": null
 }};
 function change_city_show (cId) {
     var address = cityJson[cId]['companyAddress'];
@@ -372,7 +379,7 @@ function change_city_show (cId) {
         $('.whole-city').hide();
         $('.useMap').show();
     }
-    else if (cId == 49 || cId == 50 || cId == 51) {
+    else if (cId == 49 || cId == 50 || cId == 51 ||cId == 52) {
         $('#city-address-text').text(address);
         $('#city-phone-text').text(phone);
         $('.useMap').hide();
