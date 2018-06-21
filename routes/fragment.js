@@ -29,9 +29,11 @@ exports.searchlikelist = function(req,res,next){
   log.debug('search猜你喜欢')
   var data = {};
   var area = req.query.c || 1;
+  var country = req.query.n ? req.query.n:0;
   async.parallel({
     guess_like: function (callback) {
       cms.channel_list({
+         "country_id":country,
           order: 'comments desc',
           city_id:area,
           "per_page": "10",

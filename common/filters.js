@@ -32,6 +32,10 @@ var customFilters = {
     }
     return resultStr;
   },
+  //去掉回车
+  nl2br: function(str) {
+    return str.replace(/\r|\n|\r\n/g, '<br />')
+  },
   getDefaultFormat: function (str, count) {
     return moment.unix(str).format(count || 'YYYY-MM-DD');
   },

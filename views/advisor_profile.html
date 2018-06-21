@@ -215,6 +215,10 @@
       layer.msg('个人简介不能为空');
       return false;
     }
+    if ($("#gerenjieshao").val().match(/1\d{10}/)) {
+      layer.msg('个人简介不能包含手机号')
+      return false;
+    }
     $.ajax({
       url: '/soapi/user_ziliao',
       type:'POST',
@@ -224,8 +228,6 @@
       dataType:'jsonp',
       jsonpCallback:'cb',
       success:function(msg){
-        console.log('aaaaaaaaa');
-        console.log('msg ajax', msg);
         if(msg.code === 0){
 //          alert('成功');
 //          window.location.reload();

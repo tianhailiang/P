@@ -491,6 +491,11 @@
           layer.msg("请输入正文内容");
           return false;
         }
+        if(editor.txt.text().match(/1\d{10}/)){
+          //过滤手机号
+          layer.msg("文章内容不能带手机号");
+          return false;
+        }
         $(this).unbind('click');
         var that = this;
         $.ajax({
@@ -632,7 +637,12 @@
           //判断正文
           layer.msg("请输入正文内容");
           return false;
-        }   
+        }
+        if(editor.txt.text().match(/1\d{10}/)){
+          //过滤手机号
+          layer.msg("文章内容不能带手机号");
+          return false;
+        }
         $(this).unbind('click');
         var that = this;
         $.ajax({
