@@ -50,7 +50,7 @@
    $('.expand2').on('click','.expand3',function(){
      var tex = $(this).parent('.expand2').data('tex');
      /* $('.expand1').hide();*/
-     $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
+     $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce | nl2br }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
    });
    $('.advisor-img').on('click',function(){
      if($(".tan_tupian").css("display")=="block"){
@@ -130,7 +130,7 @@
     $('.expand2').on('click','.expand3',function(){
       var tex = $(this).parent('.expand2').data('tex');
       /* $('.expand1').hide();*/
-      $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
+      $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce | nl2br }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
     });
     $('.advisor-img').on('click',function(){
       if($(".tan_tupian").css("display")=="block"){
@@ -218,7 +218,7 @@
     $('.expand2').on('click','.expand3',function(){
       var tex = $(this).parent('.expand2').data('tex');
       /* $('.expand1').hide();*/
-      $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
+      $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce | nl2br }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
     });
   })
 </script>
