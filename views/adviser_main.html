@@ -283,7 +283,7 @@
       aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
           '</a>' ;
     }else if(aitem.type==2){
-      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article", aitem.id.toString()) + '" class="dui-text-warning">' +
+      aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article", aitem.id.toString()) + '" class="dui-text-warning">' + aitem.introduce + '...<span style="color: #C13232">【查看详情】</span>' +
           '</a>' ;
     }
     aItemHtml+=  '</p>' +
