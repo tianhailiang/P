@@ -48,8 +48,6 @@ $(function () {
 	  } else {
 		 $(this).removeClass('selecttoggle')
 		 $(this).find(".contry-list").hide()
-		//  $(".contry-list li").removeClass('contry-active')
-		//  $(".contry-list li").eq(0).addClass('contry-active')
 	  }
 	})
 	//选择具体国家列表项
@@ -104,7 +102,7 @@ $(function () {
 							if(msg.code == 0){
 								countDown();
 							} else {
-								layer.msg(msg.massage);
+								layer.msg(msg.message);
 								$('.send-code').bind('click',getCode);
 							}
 					},
