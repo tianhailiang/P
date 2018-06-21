@@ -297,6 +297,14 @@
 .contry-list li{display:inline-block;margin-right:10px;width:64px;box-sizing:border-box; border:solid 1px #999;border-radius:4px;text-align:center;font-size:12px;cursor:default;}
 .huoqu-button{display:inline-block;margin-left:10px;width:270px;height:36px;border:none;border-radius:32px;background-image:-moz-linear-gradient(#ffe3bf,#f6b366);background-image:-o-linear-gradient(#ffe3bf,#f6b366);background-image:-webkit-linear-gradient(#ffe3bf,#f6b366);background-image:linear-gradient(#ffe3bf,#f6b366);box-shadow:2px 2px 3px 0 #ba0000;color:#dc0006;text-align:center;font-size:16px;}
 .close-btn{background:url(../img/rotate.gif) no-repeat center center;width: 208px;height: 163px;position: fixed;left: 0;bottom: 30px;z-index: 1100;cursor: pointer;}
+.more-look{position: absolute;
+    top: -70px;
+    font-size: 12px;
+    background: #FF5722;
+    border-radius: 22px;
+    padding: 4px 20px;
+    left: 70px;}
+.more-look:hover{ color: #fff;}
 @media screen and (min-width:768px){
     .formContent{top:51%;}
     .close{position: absolute;right: -30px;top: -80%;}
