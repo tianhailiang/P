@@ -90,7 +90,7 @@
     <div class="xuanze-haiwai-bikuang"></div>
     <div class="xuanze-haiwai">
       <h2><i class="iconfont icon-top" style="margin: 26px 6px 0px 14px;color: #C13232;">&#xe6bd;</i>海外分公司：
-        <a href="http://www.jjl.cn/zt/overseas/2018_auckland/index.html">奥克兰</a><a href="http://www.jjl.cn/zt/overseas/2018_toronto/index.html">多伦多</a><a href="http://www.jjl.cn/specialrank/zt/overseas/vancouver/index.html">温哥华</a></h2>
+        <a href="http://www.jjl.cn/zt/overseas/2018_Melbourne/index.html">墨尔本</a><a href="http://www.jjl.cn/zt/overseas/2018_auckland/index.html">奥克兰</a><a href="http://www.jjl.cn/zt/overseas/2018_toronto/index.html">多伦多</a><a href="http://www.jjl.cn/specialrank/zt/overseas/vancouver/index.html">温哥华</a></h2>
     </div>
   </div>
 
@@ -149,7 +149,7 @@
   <!--50家分公司-->
   <div class="branch_company">
     <div class="branch_company_img">
-      <img src="{{helper.cdnhost}}/assets/img/branch-company.png" alt="五十家分公司">
+      <img src="{{helper.cdnhost}}/assets/img/branch-company52.png" alt="五十家分公司">
     </div>
     <div class="branch_company_text">
       <div style="margin: 5px 15px">
@@ -356,6 +356,10 @@
         {
         "companyName": "奥克兰",
         "companyId": "51"
+        },
+        {
+        "companyName": "墨尔本",
+        "companyId": "52"
         }
         ] %}
         {% for item in cityList %}
@@ -365,6 +369,9 @@
         </div>
         {% endif %}
         {% endfor %}
+        <div class="branch_company_text_tilte" data-id="{{cityList[51].companyId}}">
+          <a  href="http://www.jjl.cn/zt/overseas/2018_Melbourne/index.html" data-id="{{cityList[51].companyId}}" >{{cityList[51].companyName}}</a>
+        </div>
         <div class="branch_company_text_tilte" data-id="{{cityList[50].companyId}}">
           <a  href="http://www.jjl.cn/zt/overseas/2018_auckland/index.html" data-id="{{cityList[50].companyId}}" >{{cityList[50].companyName}}</a>
         </div>
