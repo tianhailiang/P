@@ -1,3 +1,29 @@
+.page-blank{padding:40px 0;width:880px;height:200px}
+.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
+.page-blank .blank-img{display:block;width:200px;margin:0 auto}
+.act-pop-box{width:100%;height:130px;position:fixed;bottom:0;z-index:800;background:url(../../assets/img/popup_bg_b.png);background-size:100% 100%;background-position-x:-105px;min-width:1200px}
+.act-pop-info-box{margin-top:70px;width:46.1%;margin-left:33%;float:left}
+.act-pop-input{height:30px;border-radius:4px;margin-right:10px;padding-left:10px;width:17.7%;border:none;float:left}
+.act-pop-input::-webkit-input-placeholder{color:#999}
+::-moz-placeholder{color:#999}
+:-ms-input-placeholder{color:#999}
+.act-code-box{width:35.4%;margin-right:10px;background:#fff;border-radius:4px;float:left}
+.act-code-input{height:30px;border:none;padding-left:10px;width:48.1%;border-top-left-radius:4px;border-bottom-left-radius:4px}
+.act-code-btn{color:#77162b;text-align:center;line-height:30px;cursor:pointer;width:44%;float:right}
+.act-pop-sel{height:30px;border-radius:4px;padding-left:10px;line-height:30px;color:#999;position:relative;cursor:pointer;background:#fff;width:17.7%;float:left}
+.act-pop-gift{height:30px;cursor:pointer;width:150px;background:url(../../assets/img/popup_gift_b.png) no-repeat 0 0;background-size:150px 30px;float:left;margin-top:70px;font-size:18px;color:#fff;line-height:30px;text-align:center;text-indent:1px;z-index:100}
+.act-pop-detail{display:block;height:20px;position:absolute;right:7.5%;top:30%;cursor:pointer;width:12.1%;right:28.5%}
+.act-pop-x-btn{width:30px;height:30px;background:url(../../assets/img/popup_x_b.png) no-repeat 0 0;background-size:30px 30px;position:absolute;right:6%;top:23%;cursor:pointer}
+.act-pop-left{position:fixed;width:124px;height:120px;bottom:160px;z-index:800;left:-100%;cursor:pointer}
+.act-pop-country{border:1px solid #77162b;border-radius:4px;position:absolute;padding:8px 12px 3px;background:#fff;width:518px;right:0;top:-109px;z-index:100}
+.act-pop-country li{float:left;width:61px;height:20px;border:1px solid #dcdcdc;text-align:center;line-height:20px;font-size:14px;color:#999;margin-bottom:5px;margin-right:2px;border-radius:4px}
+.act-pop-country li.active{border-color:#77162b;color:#77162b}
+.act-pop-country li:nth-of-type(8n){margin-right:0}
+.act-pop-country li:hover{border-color:#771d2b;color:#771d2b}
+.act-pop-triangle{width:0;height:0;line-height:0;border-width:10px;border-style:solid dashed dashed dashed;border-color:#77162b transparent transparent transparent;position:absolute;right:16px;top:-16px}
+.act-pop-triangle-white{width:0;height:0;line-height:0;border-width:9px;border-style:solid dashed dashed dashed;border-color:#fff transparent transparent transparent;position:absolute;right:17px;top:-17px}
+.act-pop-sel-country{display:none}
+.act-pop-time{font-size:14px;color:#fff;position:absolute;left:10%;bottom:23px}
 .art-box{padding:20px}
 .art-box .adviser-head{width:50px;height:50px;float:left;margin-right:20px;border-radius:50%}
 .art-box .adviser-info{float:left;position:relative;width:768px}
@@ -16,32 +42,6 @@
 .art-box .offer-xiala li a{display:block;text-align:center;margin-top:13px}
 .art-box .offer-xialas:hover .offer-xiala{display:block}
 .art-box .offer-opt-bar{top:10px;right:0}
-.act-pop-box{width:100%;height:130px;position:fixed;bottom:0;z-index:800;background:url(../../assets/img/popup_bg_b.png);background-size:100% 100%;background-position-x:-105px;min-width:1200px}
-.act-pop-info-box{margin-top:70px;width:46.1%;margin-left:33%;float:left}
-.act-pop-input{height:30px;border-radius:4px;margin-right:10px;padding-left:10px;width:17.7%;border:none;float:left}
-.act-pop-input::-webkit-input-placeholder{color:#999}
-::-moz-placeholder{color:#999}
-:-ms-input-placeholder{color:#999}
-.act-code-box{width:35.4%;margin-right:10px;background:#fff;border-radius:4px;float:left}
-.act-code-input{height:30px;border:none;padding-left:10px;width:48.1%;border-top-left-radius:4px;border-bottom-left-radius:4px}
-.act-code-btn{color:#77162b;text-align:center;line-height:30px;cursor:pointer;width:44%;float:right}
-.act-pop-sel{height:30px;border-radius:4px;padding-left:10px;line-height:30px;color:#999;position:relative;cursor:pointer;background:#fff;width:17.7%;float:left}
-.act-pop-gift{height:30px;cursor:pointer;width:150px;background:url(../../assets/img/popup_gift_b.png) no-repeat 0 0;background-size:150px 30px;float:left;margin-top:70px;font-size:18px;color:#fff;line-height:30px;text-align:center;text-indent:1px;z-index:100}
-.act-pop-detail{display:block;height:20px;position:absolute;right:7.5%;top:30%;cursor:pointer;width:12.1%;right:28.5%}
-.act-pop-x-btn{width:30px;height:30px;background:url(../../assets/img/popup_x_b.png) no-repeat 0 0;background-size:30px 30px;position:absolute;right:6%;top:23%;cursor:pointer}
-.act-pop-left{position:fixed;width:124px;height:120px;bottom:160px;z-index:800;left:-100%;cursor:pointer}
-.act-pop-country{border:1px solid #77162b;border-radius:4px;position:absolute;padding:8px 12px 3px;background:#fff;width:518px;left:-422px;top:-109px;z-index:100}
-.act-pop-country li{float:left;width:61px;height:20px;border:1px solid #dcdcdc;text-align:center;line-height:20px;font-size:14px;color:#999;margin-bottom:5px;margin-right:2px;border-radius:4px}
-.act-pop-country li.active{border-color:#77162b;color:#77162b}
-.act-pop-country li:nth-of-type(8n){margin-right:0}
-.act-pop-country li:hover{border-color:#771d2b;color:#771d2b}
-.act-pop-triangle{width:0;height:0;line-height:0;border-width:10px;border-style:solid dashed dashed dashed;border-color:#77162b transparent transparent transparent;position:absolute;right:16px;top:-16px}
-.act-pop-triangle-white{width:0;height:0;line-height:0;border-width:9px;border-style:solid dashed dashed dashed;border-color:#fff transparent transparent transparent;position:absolute;right:17px;top:-17px}
-.act-pop-sel-country{display:none}
-.act-pop-time{font-size:14px;color:#fff;position:absolute;left:10%;bottom:23px}
-.page-blank{padding:40px 0;width:880px;height:200px}
-.page-blank .blank-info{font-size:14px;line-height:14px;color:#333;display:block;margin-top:20px;text-align:center}
-.page-blank .blank-img{display:block;width:200px;margin:0 auto}
 
 .saytext-box{position:relative}
 .saytext1{width:100%;height:115px;resize:none;padding:0;overflow:hidden}
