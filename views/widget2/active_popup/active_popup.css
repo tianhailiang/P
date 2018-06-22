@@ -121,7 +121,8 @@
         padding:8px 12px 3px;
         background:#fff;
         width: 518px;
-        left: -422px;
+        /* left: -422px; */
+        right: 0px;
         top: -109px;
         z-index: 100;
     }
