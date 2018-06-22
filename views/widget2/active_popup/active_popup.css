@@ -1,18 +1,28 @@
 
+    
     .act-pop-box{
         width:100%;
         height:130px;
         position:fixed;
         /* left:0; */
         bottom:0;
-        z-index:800;
+        z-index:11002;
         background:url(../../assets/img/popup_bg_b.png);
         background-size: 100% 100%;
         background-position-x: -105px;
         min-width:1200px;
     }
+    .act-pop-box-con{
+        width: 1200px;
+        height: 158px;
+        margin: 0 auto;
+        background:url(../../assets/img/popup_bg_b1.png);
+        background-size: 100% 100%;
+        position: relative;
+        top: -28px;
+    }
     .act-pop-info-box{
-        margin-top:70px;
+        margin-top:98px;
         width: 46.1%;
         margin-left:33%;
         float:left;
@@ -77,7 +87,8 @@
         background:url(../../assets/img/popup_gift_b.png) no-repeat 0 0;
         background-size: 150px 30px;    
         float: left;
-        margin-top: 70px;
+        margin-top: 98px;
+        margin-left: 20px;
         font-size: 18px;
         color:#fff;
         line-height: 30px;
@@ -90,7 +101,7 @@
         height:20px;
         position: absolute;
         right: 7.5%;
-        top: 30%;
+        top: 35%;
         cursor: pointer;
         width:12.1%;
         right:28.5%;
@@ -101,8 +112,8 @@
         background:url(../../assets/img/popup_x_b.png) no-repeat 0 0;
         background-size: 30px 30px;
         position:absolute;
-        right: 6%;
-        top: 23%;
+        right: -30px;
+        top: 25%;
         cursor: pointer;
     }
     .act-pop-left{
