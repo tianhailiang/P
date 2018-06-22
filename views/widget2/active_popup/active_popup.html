@@ -153,7 +153,7 @@
     $(function(){
         $(".act-pop-country li:nth-child(8n)").css({'marginRight':'0'});
         $('.act-pop-x-btn').on('click',function(){
-            $(this).parent().animate({'left':'-100%'});
+            $('.act-pop-box').animate({'left':'-100%'});
             $('.act-pop-left').animate({'left':'0'});
         });
         $('.act-pop-left').on('click',function(){
