@@ -8,13 +8,13 @@
         z-index:800;
         background:url(../../assets/img/popup_bg_b.png);
         background-size: 100% 100%;
-        background-position-x: -10px;
+        background-position-x: -105px;
         min-width:1200px;
     }
     .act-pop-info-box{
         margin-top:70px;
         width: 46.1%;
-        margin-left:36.5%;
+        margin-left:33%;
         float:left;
     }
     .act-pop-input{
@@ -101,7 +101,7 @@
         background:url(../../assets/img/popup_x_b.png) no-repeat 0 0;
         background-size: 30px 30px;
         position:absolute;
-        right: 4%;
+        right: 6%;
         top: 23%;
         cursor: pointer;
     }
