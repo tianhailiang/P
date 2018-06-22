@@ -387,15 +387,15 @@
       $('#login_e_nicheng_u').css('display', 'none')
     }
     console.log('username', $('#username').val().length)
-    if ($('#username').val().length > 10) {
+    if ($('#username').val().length > 11) {
       layer.msg('姓名请输入10个字以内');
       return
     }
-    if ($('#nicheng').val().length > 10) {
+    if ($('#nicheng').val().length > 11) {
       layer.msg('昵称请输入10个字以内');
       return
     }
-    if ($('#username').val() !== '' && $('#nicheng').val() !== '' && $('#username').val().length <= 10 && $('#nicheng').val().length <= 10) {
+    if ($('#username').val() !== '' && $('#nicheng').val() !== '' && $('#username').val().length <= 11 && $('#nicheng').val().length <= 11) {
       $.ajax({
         url: '/soapi/user_info',
         type:'POST',

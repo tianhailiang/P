@@ -12,8 +12,10 @@ $.fn.checkItem=function()
         //$('.list-se').children('li').removeClass('choose');
         //$(this).parents('li').addClass('checked').siblings().removeClass('checked');
         if ($(this).parents('li').hasClass('checked')) {
-            e.preventDefault();
-            window.location.reload();
+            var clickedIndex = $(this).parents('li').index();
+            if (clickedIndex == 0) {
+                e.preventDefault();
+            }
         }
         if ($(this).parents('li').hasClass('up')) {
             $(this).find('span').html('&#xe60b;');
