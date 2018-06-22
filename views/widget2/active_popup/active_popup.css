@@ -6,8 +6,9 @@
         /* left:0; */
         bottom:0;
         z-index:800;
-        background:url(../../assets/img/popup_bg_b.png) no-repeat center center;
-        background-size: cover;
+        background:url(../../assets/img/popup_bg_b.png);
+        background-size: 100% 100%;
+        background-position-x: -10px;
         min-width:1200px;
     }
     .act-pop-info-box{
@@ -72,7 +73,7 @@
     .act-pop-gift{
         height:30px;
         cursor: pointer;
-        width:11.5%;
+        width: 150px;
         background:url(../../assets/img/popup_gift_b.png) no-repeat 0 0;
         background-size: 150px 30px;    
         float: left;
@@ -82,13 +83,14 @@
         line-height: 30px;
         text-align: center;
         text-indent: 1px;
+        z-index: 100;
     }
     .act-pop-detail{
         display: block;
         height:20px;
         position: absolute;
         right: 7.5%;
-        top: 27px;
+        top: 30%;
         cursor: pointer;
         width:12.1%;
         right:28.5%;
@@ -100,7 +102,7 @@
         background-size: 30px 30px;
         position:absolute;
         right: 4%;
-        top: 20px;
+        top: 23%;
         cursor: pointer;
     }
     .act-pop-left{
