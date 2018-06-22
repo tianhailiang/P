@@ -112,7 +112,7 @@
         background:url(../../assets/img/popup_x_b.png) no-repeat 0 0;
         background-size: 30px 30px;
         position:absolute;
-        right: -30px;
+        right: 10px;
         top: 25%;
         cursor: pointer;
     }
