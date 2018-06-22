@@ -18,6 +18,7 @@
         margin: 0 auto;
         background:url(../../assets/img/popup_bg_b1.png);
         background-size: 100% 100%;
+        background-position-x: 10px;
         position: relative;
         top: -28px;
     }
@@ -112,7 +113,7 @@
         background:url(../../assets/img/popup_x_b.png) no-repeat 0 0;
         background-size: 30px 30px;
         position:absolute;
-        right: -30px;
+        right: 10px;
         top: 25%;
         cursor: pointer;
     }
