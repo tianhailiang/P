@@ -137,6 +137,18 @@ $(function () {
 				return false;
 		}
 		var that = obj;
+		var h = window.location.href;
+        var hh = h.split("?");
+        var sou = [];
+        if (hh[1]) {
+                var hhh = hh[1].split("&");
+                for (var i = 0;i < hhh.length;i++) {
+                    if (hhh[i].split("cmpid=")[1] != null) {
+                        sou = hhh[i].split("cmpid=")
+                        console.log('sou',sou)
+                    }
+                }
+        }
 		$(obj).unbind('click');
 		$.ajax({
 				url: '/getCoupons',
@@ -145,7 +157,8 @@ $(function () {
 						user_name: actName,
 						mobile: phone,
 						country_id: country,
-						code:code
+						code:code,
+						source: sou[1]
 				},
 				dataType:'json',
 				success:function(msg){

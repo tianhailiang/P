@@ -3929,6 +3929,10 @@ exports.sendsms = function (req, res, next) {
 exports.getCoupons = function (req, res, next) {
     log.debug('获取优惠券')
     var data = req.query;
+    var source = req.query.source;
+    if (source == undefined) {
+        source = null;
+    }
     //获取本地ip
     var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
     if(ip.split(',').length>0){
@@ -3947,7 +3951,8 @@ exports.getCoupons = function (req, res, next) {
                 country_id: data.country_id,
                 code: data.code,
                 ip: ip,
-                city: encodeURI(encodeURI(city))
+                city: encodeURI(encodeURI(city)),
+                source: source
             }, function (err,result) {
                 if (err) {
                     res.send(err);
