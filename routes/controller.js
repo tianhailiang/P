@@ -1229,10 +1229,10 @@ exports.center_comment = function (req, res, next) {
         console.log('data.comment_data', data.comment_data)
       var pagekey =null;
       var route = '';
-        if(data.userinfo.usertype == 1){
+        if(data.login_info.usertype == 1){
           pagekey = 'USER_CENTER_REVCOMMENT';
           route = '/user_center/revcomment';
-        }else if(data.userinfo.usertype == 2){
+        }else if(data.login_info.usertype == 2){
             if(data.login_info.adviser==1){
                 pagekey = 'ADVISOR_CENTER_REVCOMMENT';
             }else {
@@ -1240,7 +1240,7 @@ exports.center_comment = function (req, res, next) {
             }
           // pagekey = 'ADVISOR_CENTER_REVCOMMENT';
           route = '/advisor_center/revcomment';
-        }else if(data.userinfo.usertype == 3){
+        }else if(data.login_info.usertype == 3){
           pagekey = 'CANZAN_CENTER_REVCOMMENT';
           route = '/canzan_center/revcomment';
         }
