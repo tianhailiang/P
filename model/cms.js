@@ -907,7 +907,7 @@ var adRedisPool = require('redis-connection-pool')('pageAdvertCache', {
   port: config.redisCache.port || 6379,
   max_clients: config.redisCache.max || 30,
   perform_checks: false,
-  database: 7 // database number to use
+  database: 8 // database number to use
 });
 exports.lunbo_list = function (data,callback) {
   var liuxue_search_page_key = ['SEARCHNEWS','SEARCHADVISER'];
@@ -927,9 +927,13 @@ exports.lunbo_list = function (data,callback) {
   else if (isInArray(yimin_search_page_key,data.ad_page)) {
     ad_page_val = 'YIMIN_SEARCH';
   }
-  adRedisPool.get('WEB:ADVERT:LUNBO:'+data.cityid+'_'+ad_page_val+'_'+data.ad_seat, function (err, reply) {
+  else {
+    ad_page_val = data.ad_page;
+  }
+  adRedisPool.get('WEB:ADVERT:'+data.cityid+'_'+ad_page_val+'_'+data.ad_seat, function (err, reply) {
     if (reply) {
-      var res = JSON.parse(reply);
+      var resData = JSON.parse(reply);
+      var res = {'code':0,'message':'success','data':resData};
       callback(null, res);
     }
     else {
