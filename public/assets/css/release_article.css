@@ -204,7 +204,12 @@
 .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
     margin-top: -33px
 }
-
+.edit-p-rule{
+  margin-left: 94.52px;
+  color: #333;
+  margin-top: 5px;
+  font-size: 12px;
+}
 
 /*==================移民=====================*/
 .project-div{
