@@ -8,14 +8,11 @@ log4js.configure({
       filename: './logdata/community',
       pattern: '-yyyy-MM-dd.log',
       alwaysIncludePattern: true,
-      maxLogSize: 1024,
-      backups: 7
+      daysToKeep:7
     },
     emergencies: { 
       type: 'dateFile',
-      filename: './logdata/panic-now.log',
-      maxLogSize: 1024,
-      backups: 7
+      filename: './logdata/panic-now.log'
     },
     'just-errors': { 
       type: 'logLevelFilter',
