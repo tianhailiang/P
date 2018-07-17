@@ -245,7 +245,7 @@
                 <i>项目优势</i>
               </span>
               <span class="recommend-sel" style="display: inline-block;
-    margin-left: 130px;">
+    margin-left: 132px;">
                 <i class="level-sel-i iconfont"></i>
                 <i>移民案例</i>
               </span>
@@ -253,8 +253,8 @@
                 注：选中【移民案例】标签即发布至顾问个人主页-案例中
               </span>
               <span class="numTip" style="display:block;
-    margin-left: 130px;margin-top:5px;">
-                推荐标签最多选择3个
+    margin-left: 132px;margin-top:5px;">
+                推荐标签最多选择2个
               </span>
             </div>
   	        <div class="rel-case-text1" style="margin-top: 20px;">
@@ -404,13 +404,13 @@
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
           // console.log('false');
-          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px','lineHeight':'none'}).html('');
           $(this).find('.level-sel-i').next().css({'color':'#333'});
           $(this).attr('checked',false);
         }else{
           // console.log('true')
-          if(recNumber<3){
-            $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
+          if(recNumber<2){
+            $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px','lineHeight':'18px'}).html('&#xe640;');
             $(this).find('.level-sel-i').next().css({'color':'#c13232'});
             $(this).attr('checked',true);
           }
@@ -474,9 +474,7 @@
       }
       editor.create();
       $('#sureBtn').on('click',surePublish);// 发布文章
-      $("#save-draft").on("click",function(){
-        
-      });
+      $("#save-draft").on("click",savePublish);
       function surePublish(){
         // 读取 html
         var data = editor.txt.html();
@@ -499,7 +497,7 @@
             $('.level-sel[checked=checked]').each(function(){
               eduList+=$(this).find('i').eq(1).text()+',';
             });
-            console.log(eduList)
+            // console.log(eduList)
             if(eduList == ''){
               layer.msg('请选择项目标签');
               return false;
