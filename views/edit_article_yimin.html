@@ -245,23 +245,23 @@
                 <span>*</span> 选择推荐标签：
               </label>
               {% set recommendList = [
-                {'name':'移民资讯'},
-                {'name':'政策解读'},
-                {'name':'项目解析'},
-                {'name':'风土人情'},
-                {'name':'费用周期'},
-                {'name':'项目优势'},
-                {'name':'移民案例'}
+                {'name':'移民资讯','val':'移民资讯'},
+                {'name':'政策解读','val':'政策解读'},
+                {'name':'项目解析','val':'项目解析'},
+                {'name':'风土人情','val':'风土人情'},
+                {'name':'费用周期','val':'费用周期'},
+                {'name':'项目优势','val':'项目优势'},
+                {'name':'移民案例','val':'移民案例'}
               ]  %}
               {% for item in recommendList %}
-                {{helper.tagChecked(item.name,article.article_info.tag_list) |safe }}              
+                {{helper.tagChecked(item.name,item.val,article.article_info.tag_list) |safe }}              
               {% endfor %}
               <span class="numTip">
                 注：选中【移民案例】标签即发布至顾问个人主页-案例中
               </span>
               <span class="numTip" style="display:block;
     margin-left: 130px;margin-top:5px;">
-                推荐标签最多选择3个
+                推荐标签最多选择2个
               </span>
             </div>
   	        <div class="rel-case-text1" style="margin-top: 20px;">
@@ -418,13 +418,13 @@
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
           // console.log('false');
-          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px','lineHeight':'none'}).html('');
           $(this).find('.level-sel-i').next().css({'color':'#333'});
           $(this).attr('checked',false);
         }else{
           // console.log('true')
-          if(recNumber<3){
-            $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
+          if(recNumber<2){
+            $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px','lineHeight':'18px'}).html('&#xe640;');
             $(this).find('.level-sel-i').next().css({'color':'#c13232'});
             $(this).attr('checked',true);
           }
