@@ -651,6 +651,7 @@
           return false;
         }   
         $(this).unbind('click');
+        var that = this;
         $.ajax({
           url: '/soapi/publish_article',
           type:'POST',
