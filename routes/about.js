@@ -719,7 +719,13 @@ exports.schooltopic = function (req, res, next){
   }, function (err, result){
     log.info(result)
     data.pageroute="about";
-    data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    // data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    data.schooltopic = result.schooltopic.data;
+    // console.log('data.schooltopic', data.schooltopic);
+    if(result.schooltopic.code != 0){
+      //顾问不存在的时候  跳到404
+      return next();
+    }
     data.tdk = {
       pagekey: 'SCHOOLTOPIC', //key
       cityid: area, //cityid
