@@ -44,7 +44,31 @@
         <div class="rel-case-con" >
 	        <div class="main-title gray-bg">
 		        <h3 style="font-size: 18px;">发布我的文章</h3>
-	        </div>
+          </div>
+          <div class="assistant">
+            <ul class="assistant-tab">
+              <li class="img-tab active">
+                <span class="pic"></span>
+                <span>图片处理助手</span>
+              </li>
+              <li class="h5-tab">
+                  <span class="pic"></span>
+                  <span>H5制作助手</span>
+              </li>
+              <li class="article-tab">
+                  <span class="pic"></span>
+                  <span>文章发布助手</span>
+              </li>
+            </ul>
+            <div class="assistant-cont">
+              <div class="img-content active"></div>
+              <div class="h5-content"></div>
+              <div class="article-content"></div>
+              <div class="fold-btn">
+                <img src="{{helper.cdnhost}}/assets/img/pdfImg/article_icon_SQ@2x.png" alt="">
+              </div>
+            </div>
+          </div>
   	      <div class="rel-case-list" >
             <div class="rel-case-text1" style="margin-top: 20px;">
               <label class="title active" for="apply-country">
@@ -309,8 +333,16 @@
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+  <script src="{{helper.cdnhost}}/dep/js/jquery.media.js"></script>
   <script >
     $(function(){
+      $('.assistant-cont').find('.active').media({
+        width: '100%',
+        height: '300px',
+        autoplay: true,
+        src:'http://storage.xuetangx.com/public_assets/xuetangx/PDF/PlayerAPI_v1.0.6.pdf',
+      }); 
+
       var login_ss = null; //获取用户信息
       if(cookie('login_ss') != undefined){
         login_ss = JSON.parse(cookie('login_ss'));
