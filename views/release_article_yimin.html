@@ -60,10 +60,8 @@
                   <span>文章发布助手</span>
               </li>
             </ul>
-            <div class="assistant-cont">
-              <div class="img-content active"></div>
-              <div class="h5-content"></div>
-              <div class="article-content"></div>
+            <div class="assistant-cont" data-pdf="{{getpdf}}">
+              <div class="img-content"></div>
               <div class="fold-btn">
                 <img src="{{helper.cdnhost}}/assets/img/pdfImg/article_icon_SQ@2x.png" alt="">
               </div>
@@ -336,12 +334,30 @@
   <script src="{{helper.cdnhost}}/dep/js/jquery.media.js"></script>
   <script >
     $(function(){
-      $('.assistant-cont').find('.active').media({
+      var pdfList = JSON.parse($('.assistant-cont').attr('data-pdf'))||[];
+      $('.img-content').media({
         width: '100%',
-        height: '300px',
+        height: '500px',
         autoplay: true,
-        src:'http://storage.xuetangx.com/public_assets/xuetangx/PDF/PlayerAPI_v1.0.6.pdf',
-      }); 
+        src:pdfList[1].file_path,
+      });
+      $('.assistant-tab li').on('click',function(){
+        $('.assistant-tab li').removeClass('active');
+        $(this).addClass('active');
+        $('.assistant-cont').slideDown();
+        var index = $(this).index()+1;
+        if(pdfList[index]){
+          $('.img-content').media({
+            width: '100%',
+            height: '500px',
+            autoplay: true,
+            src:pdfList[index].file_path
+          });
+        }
+      })
+      $('.fold-btn').on('click',function(){
+        $('.assistant-cont').slideUp();
+      })
       var login_ss = null; //获取用户信息
       if(cookie('login_ss') != undefined){
         login_ss = JSON.parse(cookie('login_ss'));
