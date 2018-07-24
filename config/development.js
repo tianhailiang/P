@@ -271,6 +271,8 @@ var apis = {
   "sendCoupons": coupon + 'sendCoupon',//发送优惠券
   "getCoupons": coupon + 'getCoupons',//获取优惠券
   "sendSms": coupon + 'sendSms', //发送手机验证码（活动页）
+  //获取pdf
+  "get_pdf":prefix+'article_des',
 };
 module.exports = {
   redisCache: redisCache,

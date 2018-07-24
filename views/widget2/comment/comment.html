@@ -755,6 +755,8 @@
             if(result.code == 0){
               layer.msg('举报成功');
               layer.close(index); 
+            }else{
+              layer.msg(result.message);
             }
           },
           error:function(XMLHttpRequest, textStatus, errorThrown){

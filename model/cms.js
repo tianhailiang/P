@@ -1481,3 +1481,12 @@ exports.sendCoupons = function (data, callback) {
   }
   api.apiRequest(url, callback);
 }
+//获取pdf
+exports.getPdf = function (data, callback) {
+  var url = _api_url_path(data, config.apis.get_pdf);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
