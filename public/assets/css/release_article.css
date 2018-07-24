@@ -251,7 +251,7 @@
 .assistant-tab {
   width: 100%;
   height: 104px;
-  background: url('/assets/img/pdfImg/article_else_bg@2x.png') no-repeat;
+  background: url('/assets/img/article_else_bg@2x.png') no-repeat;
   display: flex;
   padding: 0 5px 0 70px;
   margin-bottom: 6px;
@@ -275,22 +275,22 @@
   margin-right: 20px;
 }
 .assistant-tab li.img-tab .pic {
-  background: url('/assets/img/pdfImg/article_icon_picture_n@2x.png')
+  background: url('/assets/img/article_icon_picture_n@2x.png')
 }
 .assistant-tab li.img-tab.active .pic {
-  background: url('/assets/img/pdfImg/article_icon_picture@2x.png')
+  background: url('/assets/img/article_icon_picture@2x.png')
 }
 .assistant-tab li.h5-tab .pic {
-  background: url('/assets/img/pdfImg/article_icon_H5_n@2x.png')
+  background: url('/assets/img/article_icon_H5_n@2x.png')
 }
 .assistant-tab li.h5-tab.active .pic {
-  background: url('/assets/img/pdfImg/article_icon_H5@2x.png')
+  background: url('/assets/img/article_icon_H5@2x.png')
 }
 .assistant-tab li.article-tab .pic {
-  background: url('/assets/img/pdfImg/article_icon_WZ_n@2x.png')
+  background: url('/assets/img/article_icon_WZ_n@2x.png')
 }
 .assistant-tab li.article-tab.active .pic {
-  background: url('/assets/img/pdfImg/article_icon_WZ@2x.png')
+  background: url('/assets/img/article_icon_WZ@2x.png')
 }
 .assistant-cont {
   width: 760px;
