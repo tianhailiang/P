@@ -270,7 +270,7 @@
             aItemHtml += '<a target="_blank" href="'+fn.urlgen("article", item.id.toString())+'" class="dui-text-warning" rel="nofollow">'+item.introduce+' <span>【查看详情】</span></a>'
         }
             aItemHtml += '</p>'
-            aItemHtml += addArticleImg(item.img_list)
+            aItemHtml += addArticleImg(item.img_list,item.is_immi)
             aItemHtml += '</div>'
             aItemHtml += '</div>'
 
@@ -302,10 +302,10 @@
             }
             return html;
         }
-        function addArticleImg (imgList) {
+        function addArticleImg (imgList,isyimin) {
             var html = '<ul id="adviser-info-ul" class="adviser-info-ul clearfix" >';
             for (var j=0; j<imgList.length; j++) {
-                html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+                html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150',isyimin) +'" ></li>';
             }
             html += '</ul>';
             return html;

@@ -243,7 +243,7 @@
         }
             aItemHtml += '</p>'
             if (item.img_list) {
-                aItemHtml += addArticleImg(item.img_list)
+                aItemHtml += addArticleImg(item.img_list,item.is_immi)
             }
             aItemHtml += '</div>'
             aItemHtml += '</div>'
@@ -252,10 +252,10 @@
             aItemHtml += '</div>';
             return aItemHtml;
         }
-        function addArticleImg (imgList) {
+        function addArticleImg (imgList,isyimin) {
             var html = '<ul id="adviser-info-ul" class="adviser-info-ul clearfix" >';
             for (var j=0; j<imgList.length; j++) {
-                html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+                html += '<li><img src="'+ fn.imageThumb(imgList[j],'150x150',isyimin) +'" ></li>';
             }
             html += '</ul>';
             return html;
