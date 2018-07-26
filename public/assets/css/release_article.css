@@ -273,6 +273,7 @@
   width: 40px;
   height: 34px;
   margin-right: 20px;
+  display:inline-block;
 }
 .assistant-tab li.img-tab .pic {
   background: url('/assets/img/article_icon_picture_n@2x.png')
