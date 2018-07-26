@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="the-canvas"></canvas>
+    <script  src="{{helper.cdnhost}}/dep/js/jquery-1.9.1.min.js"></script>
+    <script src="https://unpkg.com/pdfjs-dist@2.0.489/build/pdf.js" ></script>
+    <script>
+        pdfjsLib.getDocument('../assets/js/135.pdf').then(function(pdf) {
+            // you can now use *pdf* here
+            console.log(pdf)
+            pdf.getPage(1).then(function(page) {
+            // you can now use *page* here
+                console.log(page)
+                var scale = 1.5;
+                var viewport = page.getViewport(scale);
+                var canvas = document.getElementById('the-canvas');
+                var context = canvas.getContext('2d');
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+                var renderContext = {
+                canvasContext: context,
+                viewport: viewport
+                };
+                page.render(renderContext);
+            });
+        });
+    </script>
+</body>
+</html>
