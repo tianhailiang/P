@@ -45,11 +45,11 @@
     <li>
       {% if item.type == 1 %}
       <a target="_blank" href="{{helper.urlgen('case',item.id | string)}}" class="dui-text-warning" rel="nofollow">
-        <img src="{{helper.imageThumb(val,'150x150')}}" >
+        <img src="{{helper.imageThumb(val,'150x150',item.is_immi)}}" >
       </a>
       {% elif item.type == 2 %}
       <a target="_blank" href="{{helper.urlgen('article',item.id | string)}}" class="dui-text-warning" rel="nofollow">
-        <img src="{{helper.imageThumb(val,'150x150')}}" >
+        <img src="{{helper.imageThumb(val,'150x150',item.is_immi)}}" >
       </a>
       {% endif %}
     </li>
@@ -97,7 +97,7 @@
       <ul id="adviser-info-ul" class="adviser-info-ul clearfix" >
         {% for val in item.img_list %}
           <li>
-          	<img src="{{helper.imageThumb(val,'150x150')}}" >
+          	<img src="{{helper.imageThumb(val,'150x150',item.is_immi)}}" >
           </li>
         {% endfor %}
       </ul>
@@ -151,7 +151,7 @@
     <ul id="adviser-info-ul" class="adviser-info-ul clearfix" >
       {% for val in item.img_list %}
       <li>
-        <img src="{{helper.imageThumb(val,'150x150')}}" >
+        <img src="{{helper.imageThumb(val,'150x150',item.is_immi)}}" >
       </li>
       {% endfor %}
     </ul>
@@ -275,7 +275,7 @@
     <ul id="adviser-info-ul" class="adviser-info-ul clearfix" >
       {% for val in item.img_list %}
       <li>
-        <img src="{{helper.imageThumb(val,'150x150')}}" >
+        <img src="{{helper.imageThumb(val,'150x150',item.is_immi)}}" >
       </li>
       {% endfor %}
     </ul>
