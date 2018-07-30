@@ -263,10 +263,12 @@
             })
         }
         //图片上传
+        var uploadDir = login_ss.adviser == 2 ? 'yimin_upload':'upload';
         var params = {
             fileInput: $("#photoImage").get(0),
             upButton: $("#fileSubmit").get(0),
             url: ajaxUrlPrefix.nodeapi + "/cmsapi/input_upload",
+            uploadDir: uploadDir,
             filter: function(files) {
                 var arrFiles = [];
                 for (var i = 0, file; file = files[i]; i++) {
@@ -353,7 +355,7 @@
                 // console.log($(".photo-cell[data-index="+ZXXFILE.num+"]"))
                 $(".photo-cell[data-index="+ZXXFILE.num+"]").each(function(){
                   if($(this).attr('data-file') == file.name){
-                    $(this).find('img').attr('src',fn.imageThumb(JSON.parse(response).data[0],'150x150'));
+                    $(this).find('img').attr('src',fn.imageThumb(JSON.parse(response).data[0],'150x150',login_ss.adviser));
                     $(this).find('img').attr('data-src',JSON.parse(response).data[0]);
                   }
                 });

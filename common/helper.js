@@ -428,7 +428,6 @@ function imageThumb(imageUrl, spec, isyimin) {
       else {
         return imageUrl + "!" + spec;
       }
-      
     }else {
       return imageUrl;
     }
