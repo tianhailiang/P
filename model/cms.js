@@ -966,7 +966,8 @@ exports.search_article_list = function (data,callback) {
 }
 //搜索结果页so_adviser_list
 exports.so_adviser_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_so_adviser_adviser);
+  var url = _api_url_path(data, config.apis.get_so_adviser_adviser);
+  console.log('顾问搜索页url',url);
   if (url == null){
     callback('404');
     return;
