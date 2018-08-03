@@ -243,7 +243,7 @@ var apis = {
   //国家文章列表
   "get_search_article_list": shequ_prefix + 'search/search_article_list/',
   //搜索结果页（顾问）
-  "get_so_adviser_adviser": shequ_prefix + 'search/search_adviser/',
+  "get_so_adviser_adviser": shequ_prefix + 'searchAdviser/',
   //根据ip 获取城市code码
   "get_ip_geter":prefix + 'ip_geter',
   //金色力量底页
