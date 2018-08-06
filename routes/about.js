@@ -416,7 +416,22 @@ exports.events = function (req, res, next){
   
     }, function (err, result){
       log.info(result)
-      data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
+      // data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
+      var eventList = returnData(result.memorabilia_list,'memorabilia_list');//返回大事记的未处理列表
+      var event = {};
+      for (let i = 0;i<eventList.length;i++) {
+        let y = eventList[i].years;
+        let m = eventList[i].month;
+
+        if (!event[y+'年'] || y !== eventList[i-1].years) {
+          event[y+'年'] = {};
+        }
+        if (!event[y+'年'][m+'月'] || m !== eventList[i-1].month) {
+          event[y+'年'][m+'月'] = new Array();
+        }
+        event[y+'年'][m+'月'].push(eventList[i]);
+      }
+      data.memorabilia_list = event; //event 是处理后的大事记有序列表
       data.pageroute="about/events";
       data.tdk = {
         pagekey: 'EVENTS', //key
