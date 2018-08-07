@@ -94,7 +94,7 @@ var apis = {
    //明星顾问
   "get_mingxingguwen": prefix + 'common_recommend',
   //栏目列表
-  "get_channel_list": so_prefix + 'article/list/',
+  "get_channel_list": so_prefix + 'article/list',
   //成功案例侧栏
   "get_chenggonganli": prefix + 'common_recommend',
   //专家解读
@@ -240,11 +240,11 @@ var apis = {
   "assessment": cms_out_prefix +'assessment',
   //顾问主页 个人视角
   //get_so_article_list
-  "get_so_article_list": so_prefix + 'search/search_article/',
+  "get_so_article_list": so_prefix + 'search/search_article',
   //国家文章列表
-  "get_search_article_list": so_prefix + 'search/search_article_list/',
+  "get_search_article_list": so_prefix + 'search/search_article_list',
   //搜索结果页（顾问）
-  "get_so_adviser_adviser": so_prefix + 'search/search_adviser/',
+  "get_so_adviser_adviser": so_prefix + 'search/search_adviser',
   //根据ip 获取城市code码
   "get_ip_geter":prefix + 'ip_geter',
   //金色力量底页
