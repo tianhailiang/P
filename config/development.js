@@ -37,7 +37,7 @@ var apis = {
   "xiangguan_guwen": shequ_prefix + 'article/related_adviser/', // 社区 相关顾问
   "yimin_xiangguanguwen": shequ_prefix + 'article/immi_related_adviser/', // 社区 相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
-  "xiugai_info": shequ_prefix + 'account/edit_user_info/', //社区 修改用户信息
+  "xiugai_info": so_prefix + 'account/edit_user_info', //社区 修改用户信息
   "favorite_article": shequ_prefix + 'article/favorite_article/',//社区 文章收藏
   "article_vote": shequ_prefix + 'article/article_vote/',//社区 文章点赞
   "user_article_list": shequ_prefix + 'account/user_article_list/',//社区 专栏列表
@@ -190,7 +190,7 @@ var apis = {
   //文章评论
   "get_reviewArticle": so_prefix + 'article/save_comment',
   // 获取用户信息（普通用户，顾问，参赞）
-  "get_userinfo": shequ_prefix + 'account/info/',
+  "get_userinfo": so_prefix + 'account/info/',
   //用户中心-我的关注
   "get_user_follow": shequ_prefix + 'account/friends/',
   //顾问中心-关注我的
