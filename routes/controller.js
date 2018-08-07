@@ -2082,7 +2082,6 @@ exports.article_detail= function(req,res,next){
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
-  // console.log('url', l.h);
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
@@ -2096,20 +2095,6 @@ exports.article_detail= function(req,res,next){
   }
   data.article_id = req.params.id; //获取文章id
   async.parallel({
-      // lunbo_list:function(callback) {
-      //     cms.lunbo_list({
-      //         "ad_page": "ADVISOR_P_ARTICLE_DETAIL",
-      //         "cityid":area,
-      //         "ad_seat": "SEAT1"
-      //     }, callback);
-      // },
-      // lunbo_list2:function(callback) {
-      //     cms.lunbo_list({
-      //         "ad_page": "ADVISOR_P_ARTICLE_DETAIL",
-      //         "cityid":area,
-      //         "ad_seat": "SEAT2"
-      //     }, callback);
-      // },
     //文章详情
     article:function(callback){
       wec.article({
@@ -2118,11 +2103,9 @@ exports.article_detail= function(req,res,next){
       },callback);
     },
   },function(err,result){
-        // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
-        // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         if(result.article.code != 0){
           //文章不存在的时候  跳到404
-            return next();
+          return next();
         }
         data.article =returnData(result.article,'article');
         if(data.article.article_info.img_info){
@@ -2172,7 +2155,10 @@ exports.article_detail= function(req,res,next){
                     keywords: data.article.article_info.title
                 };
                 data.esikey = esihelper.esikey();
+                log.info(data.login_info)
+                log.info(data.userinfo)
                 res.render('article_detail', data);
+                // res.render('pdf', data);
             })
         });
     });
