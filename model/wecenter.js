@@ -349,7 +349,7 @@ exports.likelist=function(data,callback){
 }
 // 顾问主页-相关顾问
 exports.xiangguan_guwen=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.xiangguan_guwen);
+  var url = _api_url_path(data, config.apis.xiangguan_guwen);
   if (url == null) {
     callback('404');
     return;

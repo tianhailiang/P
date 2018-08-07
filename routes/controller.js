@@ -2155,10 +2155,8 @@ exports.article_detail= function(req,res,next){
                     keywords: data.article.article_info.title
                 };
                 data.esikey = esihelper.esikey();
-                log.info(data.login_info)
-                log.info(data.userinfo)
                 res.render('article_detail', data);
-                // res.render('pdf', data);
+            
             })
         });
     });
@@ -3693,7 +3691,7 @@ exports.hot = function (req, res, next) {
     // console.info("userinfo======================",data.userinfo )
     // console.info("pagekey======================",data.userinfo.usertype )
     // console.info("pagekey======================",data.userinfo.adviser_type )
-    // console.info("pagekey======================",pagekey )
+    // console.info("xiangguan_guwen======================",data.xiangguan_guwen )
       async.parallel({
           lunbo_list: function (callback) {
               cms.lunbo_list({
