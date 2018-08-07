@@ -511,7 +511,7 @@ exports.shengqinganli_list = function (data, callback) {
 }
 //栏目列表页---->栏目
 exports.channel_list = function (data, callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_channel_list);
+  var url = _api_url_path(data, config.apis.get_channel_list);
   if (url == null){
     callback('404');
     return;
@@ -948,7 +948,7 @@ exports.lunbo_list = function (data,callback) {
 }
 //搜索结果页so_article_list
 exports.so_article_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_so_article_list);
+  var url = _api_url_path(data, config.apis.get_so_article_list);
   if (url == null){
     callback('404');
     return;
@@ -957,7 +957,7 @@ exports.so_article_list = function (data,callback) {
 }
 //国家文章结果页search_article_list
 exports.search_article_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_search_article_list);
+  var url = _api_url_path(data, config.apis.get_search_article_list);
   if (url == null){
     callback('404');
     return;
@@ -1207,7 +1207,7 @@ exports.assessment = function(data,callback){
 
 //参赞列表
 exports.canzanlist = function (data, callback) {
-  var url = _api_url_path2(data, config.apis.get_canzanlist);
+  var url = _api_url_path(data, config.apis.get_canzanlist);
   if (url == null) {
     callback('404');
     return;
