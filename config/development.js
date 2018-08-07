@@ -27,13 +27,13 @@ var apis = {
   "sendcode": uc_prefix + 'index.php',//发送手机验证码
   "get_contact": prefix + 'contact_way_list',//关于我们(联系我们)
   "get_media_broadcast": prefix + 'common_recommend',//企业文化--媒体播报
-  "get_canzanlist":shequ_prefix+'account/get_canzan_list/',//参赞列表
+  "get_canzanlist":so_prefix+'account/get_canzan_list/',//参赞列表
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
   "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
   "likelist": shequ_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
-  "relation_recommend": shequ_prefix + 'article/correlation/',//相关推荐
+  "relation_recommend": so_prefix + 'article/correlation/',//相关推荐
   "xiangguan_guwen": shequ_prefix + 'article/related_adviser/', // 社区 相关顾问
   "yimin_xiangguanguwen": shequ_prefix + 'article/immi_related_adviser/', // 社区 相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
@@ -188,7 +188,7 @@ var apis = {
   //首页推荐位－>l大学排名推荐位
   "get_daxuepaiming_recommend": prefix + 'daxuepaiming_recommend',
   //文章评论
-  "get_reviewArticle": shequ_prefix + 'article/save_comment/',
+  "get_reviewArticle": so_prefix + 'article/save_comment',
   // 获取用户信息（普通用户，顾问，参赞）
   "get_userinfo": shequ_prefix + 'account/info/',
   //用户中心-我的关注
@@ -212,7 +212,7 @@ var apis = {
   //回复列表
   "get_comment_ans":shequ_prefix + 'article/comment_ans/',
   //分页获取评论article_comments
-  "get_article_comments":shequ_prefix +'article/article_comments/',
+  "get_article_comments":so_prefix +'article/article_comments/',
   //添加相册接口
   "post_album_add": shequ_prefix + 'account/album_add/',
   //编辑相册接口

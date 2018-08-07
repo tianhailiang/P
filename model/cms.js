@@ -1207,7 +1207,7 @@ exports.assessment = function(data,callback){
 
 //参赞列表
 exports.canzanlist = function (data, callback) {
-  var url = _api_url_path2(data, config.apis.get_canzanlist);
+  var url = _api_url_path(data, config.apis.get_canzanlist);
   if (url == null) {
     callback('404');
     return;

@@ -82,7 +82,6 @@ exports.favorite_article = function (data, callback) {
 //文章评论
 exports.reviewArticle = function(data,callback){
   var url = config.apis.get_reviewArticle;
-
   if (url == null){
     callback('404');
     return;
@@ -262,7 +261,7 @@ exports.comment_ans =function(data,callback){
 
 //分页获取评论
 exports.article_comments = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_article_comments);
+  var url = _api_url_path(data, config.apis.get_article_comments);
   if (url == null){
     callback('404');
     return;
@@ -359,7 +358,7 @@ exports.xiangguan_guwen=function(data,callback){
 }
 // 顾问主页-相关推荐
 exports.relation_recommend=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.relation_recommend);
+  var url = _api_url_path(data, config.apis.relation_recommend);
   if (url == null) {
     callback('404');
     return;
