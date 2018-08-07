@@ -198,7 +198,7 @@ var apis = {
   //个人中心-收到的评论
   "get_comment_list": shequ_prefix + 'account/comments_to_me/',
   //文章详情
-  "get_article":shequ_prefix + 'article/',
+  "get_article":so_prefix + 'article',
   //用户相册
   "get_album_list": shequ_prefix + 'account/album_list/',
   //发布文章

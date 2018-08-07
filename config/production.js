@@ -94,7 +94,7 @@ var apis = {
   //明星顾问
   "get_mingxingguwen": prefix + 'common_recommend',
   //栏目列表
-  "get_channel_list": so_prefix + 'article/list/',
+  "get_channel_list": so_prefix + 'article/list',
   //成功案例侧栏
   "get_chenggonganli": prefix + 'common_recommend',
   //专家解读
@@ -198,7 +198,7 @@ var apis = {
   //个人中心-收到的评论
   "get_comment_list": shequ_prefix + 'account/comments_to_me/',
   //文章详情
-  "get_article":shequ_prefix + 'article/',
+  "get_article":so_prefix + 'article',
   //用户相册
   "get_album_list": shequ_prefix + 'account/album_list/',
   //发布文章
