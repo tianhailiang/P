@@ -64,10 +64,10 @@
         {% if userinfo.adviser_type == 2 %}
           {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
         {% else %}
-          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid) %}
+          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
         {% endif %}
       {% elseif userinfo.usertype==3 %}
-        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c=1') %}
+        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c=1','uid='+userinfo.uid) %}
       {% endif %}
     </div>
   </div>

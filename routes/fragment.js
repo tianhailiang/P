@@ -85,7 +85,7 @@ exports.guess_like = function(req,res,next){
     }
   },function(err,result){
     data.likelist = returnData(result.guess_like,'guess_like');
-      // log.debug(data)
+    // console.log(data.likelist)
     res.render('./fragment/guess_like', data);
   });
 }
@@ -109,7 +109,7 @@ exports.yimin_guess_like = function(req,res,next){
   },function(err,result){
     data.likelist = returnData(result.guess_like,'guess_like');
       // log.debug(data)
-    //console.log(data.likelist)
+    // console.log('猜你喜欢=====' + data.likelist)
     res.render('./fragment/guess_like', data);
   });
 }
@@ -118,20 +118,23 @@ exports.yimin_guess_like = function(req,res,next){
 exports.xiangguanguwen = function(req,res,next){
   log.debug('相关顾问.......')
   var data = {};
-  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var country = req.query.isArticle ? req.query.n : req.query.n.split(',').join('_');
+  var isArticle = req.query.isArticle ? req.query.isArticle : 0;
+  var uid = req.query.uid;
   var area = req.query.c || 1;
+
   async.parallel({
     xiangguan_guwen: function (callback) {
       wec.xiangguan_guwen({
         "country_id":country,
         "city_id":area,
         "per_page":5,
-        "order":"comments desc"
+        "isArticle":isArticle,
+        "uid": uid
       }, callback)
     }
   },function(err,result){
     data.xiangguan_guwen = returnData(result.xiangguan_guwen,'xiangguan_guwen');
-    //console.log(data.xiangguan_guwen);
     res.render('./fragment/xiangguanguwen', data);
   });
 }
