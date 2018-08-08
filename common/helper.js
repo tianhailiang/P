@@ -167,7 +167,7 @@ function urlgen() {
       isyimin = true;
       continue;
     }
-    if(arguments[i] == '' || arguments[i].split('=').length > 1)
+    if(arguments[i] == '' || arguments[i].toString().split('=').length > 1)
     {
       break;
     }
