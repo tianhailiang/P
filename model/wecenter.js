@@ -198,7 +198,7 @@ exports.follow_people = function (data, callback) {
 
 //个人中心-收到的评论
 exports.comment_list = function (data, callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_comment_list);
+  var url = _api_url_path(data, config.apis.get_comment_list);
   if (url == null){
     callback('404');
     return;

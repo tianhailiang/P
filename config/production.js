@@ -196,7 +196,7 @@ var apis = {
   //顾问中心-关注我的
   "get_follow_list": shequ_prefix + 'account/fans/',
   //个人中心-收到的评论
-  "get_comment_list": shequ_prefix + 'account/comments_to_me/',
+  "get_comment_list": so_prefix + 'account/comments_to_me/',
   //文章详情
   "get_article":so_prefix + 'article',
   //用户相册
