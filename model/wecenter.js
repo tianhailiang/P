@@ -161,7 +161,7 @@ exports.article_info = function(data,callback){
  *
  */
 exports.album_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_album_list);
+  var url = _api_url_path(data, config.apis.get_album_list);
   if (url == null){
     callback('404');
     return;
