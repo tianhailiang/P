@@ -30,7 +30,7 @@ var apis = {
   "get_canzanlist":so_prefix+'account/get_canzan_list/',//参赞列表
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
-  "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
+  "get_answer_list": so_prefix + 'account/comment_ans_to_me/',
   "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
   "likelist": shequ_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
   "xiangguan_guwen": so_prefix + 'article/related_adviser/', // 社区 相关顾问
@@ -256,7 +256,7 @@ var apis = {
   //新活动底页
   "get_activity_detail":prefix+'detail',
   //参赞介绍
-  "get_user_description":shequ_prefix + 'account/get_user_description/',
+  "get_user_description":so_prefix + 'account/get_user_description/',
   //表单提交
   "get_save_feedback":prefix +'save_feedback',
   //意见反馈
