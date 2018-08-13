@@ -230,9 +230,9 @@ var apis = {
   //图片库
   "get_attachment":prefix + 'attachment',
   //删除评论接口
-  "post_remove_comment":shequ_prefix+'article/remove_comment/',
+  "post_remove_comment":so_prefix+'article/remove_comment',
   //删除回复接口
-  "post_remove_comment_ans":shequ_prefix+'article/remove_comment_ans/',
+  "post_remove_comment_ans":so_prefix+'article/remove_comment_ans',
   //院校搜索
   "get_search_school":shequ_prefix+'search/search_school/',
   //举报接口
