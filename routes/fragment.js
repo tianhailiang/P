@@ -122,7 +122,6 @@ exports.xiangguanguwen = function(req,res,next){
   var isArticle = req.query.isArticle ? req.query.isArticle : 0;
   var uid = req.query.uid;
   var area = req.query.c || 1;
-
   async.parallel({
     xiangguan_guwen: function (callback) {
       wec.xiangguan_guwen({
