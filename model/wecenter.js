@@ -198,7 +198,7 @@ exports.follow_people = function (data, callback) {
 
 //个人中心-收到的评论
 exports.comment_list = function (data, callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_comment_list);
+  var url = _api_url_path(data, config.apis.get_comment_list);
   if (url == null){
     callback('404');
     return;
@@ -208,14 +208,12 @@ exports.comment_list = function (data, callback) {
 
 //普通用户中心-收到的评论（又名：回复）
 exports.answer_list = function (data, callback) {
-
-  var url = _api_path_url_shequ(data, config.apis.get_answer_list);
+  var url = _api_url_path(data, config.apis.get_answer_list);
   if (url == null){
     callback('404');
     return;
   }
   api.apiRequest(url ,callback);
-  console.log('url+++++', url)
 }
 
 //回复文章评论

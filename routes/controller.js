@@ -1226,7 +1226,6 @@ exports.center_comment = function (req, res, next) {
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.comment_data =returnData(result.comment_list,'comment_list');
         data.userinfo = returnData(result.userinfo,'userinfo');
-        console.log('data.comment_data', data.comment_data)
       var pagekey =null;
       var route = '';
         if(data.userinfo.usertype == 1){

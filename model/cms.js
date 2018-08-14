@@ -1300,7 +1300,7 @@ exports.culture_detail =function(data,callback){
 }
 //参赞简介
 exports.canzan_jianjie =function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_user_description);
+  var url = _api_url_path(data, config.apis.get_user_description);
   if (url == null){
     callback('404');
     return;

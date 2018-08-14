@@ -359,44 +359,46 @@
     //回复html
     var ahtml = '';
     var color = ''; //设置点赞颜色
-    for(var j =0;j<ans_list.length;j++){
-      if(ans_list[j].is_vote){
-        color = 'c13212';
-      }else{
-        color = 'b2b8c2';
+    if(ans_list){
+      for(var j =0;j<ans_list.length;j++){
+        if(ans_list[j].is_vote){
+          color = 'c13212';
+        }else{
+          color = 'b2b8c2';
+        }
+        var delHtml = '';
+        if( login_ss!=null && login_ss.uid == adviserId){
+          delHtml = '<span class="delete-btn2" ><i class="iconfont" >&#xe61e;</i>删除</span>';
+        }
+        ahtml += '<div class="reply-list-info" >'+
+                      '<div class="reply-list-info-top">'+
+                        '<span >'+ans_list[j].nickname+'</span>：'+
+                        replace_em(ans_list[j].message)+
+                      '</div>'+
+                      '<div class="comment-btn-bar" style="margin-top: 10px;">'+
+                        '<span>'+ moment.unix(ans_list[j].add_time).format('YYYY年MM月D日 HH:mm') + '</span>'+
+                        '<span class="fabulous" onclick="fabulous1(this)">'+
+                          '<i class="iconfont" style="color:#'+color+'">&#xe604;</i>点赞'+
+                        '</span>'+
+                        '<span data-uid = "'+ans_list[j].uid+'" onclick="reply2(this);" data-commentId="'+ans_list[j].comment_id+'" data-replyId ="'+ans_list[j].id+'">'+
+                          '<i class="iconfont" >&#xe601;</i>回复'+
+                        '</span>'+
+                        '<span class="report-btn" onclick="report(this,3)">'+
+                          '<i class="iconfont" >&#xe629;</i>举报'+
+                        '</span>'+
+                        delHtml+
+                      '</div>'+
+                      '<div class="reply-box" >'+
+                        '<textarea class="reply-text" maxlength="250" >'+
+                        '</textarea>'+
+                        '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
+                          '<span class="emotion"></span>'+
+                          '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+ans_list[j].comment_id+'" onclick="replyComment2(this)">评论'+
+                          '</a>'+
+                       '</div>'+
+                      '</div>'+
+                '</div>'; 
       }
-      var delHtml = '';
-      if( login_ss!=null && login_ss.uid == adviserId){
-        delHtml = '<span class="delete-btn2" ><i class="iconfont" >&#xe61e;</i>删除</span>';
-      }
-     ahtml += '<div class="reply-list-info" >'+
-                    '<div class="reply-list-info-top">'+
-                      '<span >'+ans_list[j].nickname+'</span>：'+
-                      replace_em(ans_list[j].message)+
-                    '</div>'+
-                    '<div class="comment-btn-bar" style="margin-top: 10px;">'+
-                      '<span>'+ moment.unix(ans_list[j].add_time).format('YYYY年MM月D日 HH:mm') + '</span>'+
-                      '<span class="fabulous" onclick="fabulous1(this)">'+
-                        '<i class="iconfont" style="color:#'+color+'">&#xe604;</i>点赞'+
-                      '</span>'+
-                      '<span data-uid = "'+ans_list[j].uid+'" onclick="reply2(this);" data-commentId="'+ans_list[j].comment_id+'" data-replyId ="'+ans_list[j].id+'">'+
-                        '<i class="iconfont" >&#xe601;</i>回复'+
-                      '</span>'+
-                      '<span class="report-btn" onclick="report(this,3)">'+
-                        '<i class="iconfont" >&#xe629;</i>举报'+
-                      '</span>'+
-                      delHtml+
-                    '</div>'+
-                    '<div class="reply-box" >'+
-                      '<textarea class="reply-text" maxlength="250" >'+
-                      '</textarea>'+
-                      '<div class="clearfix emotion-box" style="margin-top: 10px;">'+
-                        '<span class="emotion"></span>'+
-                        '<a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-consult_ylw sub-btn2" data-commentId = "'+ans_list[j].comment_id+'" onclick="replyComment2(this)">评论'+
-                        '</a>'+
-                     '</div>'+
-                    '</div>'+
-              '</div>'; 
     }
     return ahtml;
   }

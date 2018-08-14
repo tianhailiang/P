@@ -30,7 +30,7 @@ var apis = {
   "get_canzanlist":so_prefix+'account/get_canzan_list/',//参赞列表
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
-  "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
+  "get_answer_list": so_prefix + 'account/comment_ans_to_me/',
   "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
   "likelist": so_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
   "xiangguan_guwen": so_prefix + 'article/related_adviser',// 社区 相关顾问
@@ -38,7 +38,7 @@ var apis = {
   "yimin_xiangguanguwen": so_prefix + 'article/immi_related_adviser/', // 社区 移民相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
   "xiugai_info": so_prefix + 'account/edit_user_info', //社区 修改用户信息
-  "favorite_article": shequ_prefix + 'article/favorite_article/',//社区 文章收藏
+  "favorite_article": so_prefix + 'article/favorite_article',//社区 文章收藏
   "article_vote": shequ_prefix + 'article/article_vote/',//社区 文章点赞
   "user_article_list": shequ_prefix + 'account/user_article_list/',//社区 专栏列表
   "post_login": uc_prefix + 'index.php?m=adviserLogin',//顾问登录
@@ -196,7 +196,7 @@ var apis = {
   //顾问中心-关注我的
   "get_follow_list": shequ_prefix + 'account/fans/',
   //个人中心-收到的评论
-  "get_comment_list": shequ_prefix + 'account/comments_to_me/',
+  "get_comment_list": so_prefix + 'account/comments_to_me/',
   //文章详情
   "get_article":so_prefix + 'article',
   //用户相册
@@ -206,7 +206,7 @@ var apis = {
   //关注用户
   "follow_people": shequ_prefix + 'account/follow_people/',
   //回复文章评论
-  "post_save_comment_ans":shequ_prefix + 'article/save_comment_ans/',
+  "post_save_comment_ans":so_prefix + 'article/save_comment_ans',
   //删除文章接口
   "post_delete_article": shequ_prefix + 'article/remove_article/',
   //回复列表
@@ -229,9 +229,9 @@ var apis = {
   //图片库
   "get_attachment":prefix + 'attachment',
   //删除评论接口
-  "post_remove_comment":shequ_prefix+'article/remove_comment/',
+  "post_remove_comment":so_prefix+'article/remove_comment',
   //删除回复接口
-  "post_remove_comment_ans":shequ_prefix+'article/remove_comment_ans/',
+  "post_remove_comment_ans":so_prefix+'article/remove_comment_ans',
   //院校搜索
   "get_search_school":shequ_prefix+'search/search_school/',
   //举报接口
@@ -256,7 +256,7 @@ var apis = {
   //新活动底页
   "get_activity_detail":prefix+'detail',
   //参赞介绍
-  "get_user_description":shequ_prefix + 'account/get_user_description/',
+  "get_user_description":so_prefix + 'account/get_user_description/',
   //表单提交
   "get_save_feedback":prefix +'save_feedback',
   //意见反馈
