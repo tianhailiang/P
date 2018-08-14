@@ -214,11 +214,11 @@ var apis = {
   //分页获取评论article_comments
   "get_article_comments":so_prefix +'article/article_comments/',
   //添加相册接口
-  "post_album_add": shequ_prefix + 'account/album_add/',
+  "post_album_add": so_prefix + 'account/album_add',
   //编辑相册接口
-  "post_album_update": shequ_prefix + 'account/album_update/',
+  "post_album_update": so_prefix + 'account/album_update',
   //删除相册接口
-  "post_album_del": shequ_prefix + 'account/album_del/',
+  "post_album_del": so_prefix + 'account/album_del',
   //草稿箱发布接口
   "post_draft_to_article":shequ_prefix +'article/draft_to_article/',
   //收藏列表
