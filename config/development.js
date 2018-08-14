@@ -32,11 +32,10 @@ var apis = {
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
   "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
-  "likelist": shequ_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
-  // "xiangguan_guwen": shequ_prefix + 'article/related_adviser/', // 社区 相关顾问
-  "xiangguan_guwen": so_prefix + 'article/related_adviser',
+  "likelist": so_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
+  "xiangguan_guwen": so_prefix + 'article/related_adviser',// 社区 相关顾问
   "relation_recommend": so_prefix + 'article/correlation/',//相关推荐
-  "yimin_xiangguanguwen": shequ_prefix + 'article/immi_related_adviser/', // 社区 相关顾问
+  "yimin_xiangguanguwen": so_prefix + 'article/immi_related_adviser/', // 社区 移民相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
   "xiugai_info": so_prefix + 'account/edit_user_info', //社区 修改用户信息
   "favorite_article": shequ_prefix + 'article/favorite_article/',//社区 文章收藏

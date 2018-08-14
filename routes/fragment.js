@@ -157,7 +157,7 @@ exports.yimin_xiangguanguwen = function(req,res,next){
     }
   },function(err,result){
     data.xiangguan_guwen = returnData(result.xiangguanguwen,'xiangguanguwen');
-    //console.log(data.xiangguanguwen)
+    // console.log(data.xiangguan_guwen)
     res.render('./fragment/xiangguanguwen', data);
   });
 }

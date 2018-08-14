@@ -338,9 +338,9 @@ exports.adviser_main=function(data,callback){
   api.apiRequest(url, callback);
   console.log('url-----', url);
 }
-// 顾问主页列表踩你喜欢
+// 顾问主页列表猜你喜欢
 exports.likelist=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.likelist);
+  var url = _api_url_path(data, config.apis.likelist);
   if (url == null) {
     callback('404');
     return;
@@ -367,7 +367,7 @@ exports.relation_recommend=function(data,callback){
 }
 // 移民踩你喜欢
 exports.yimin_likelist=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.yimin_likelist);
+  var url = _api_url_path(data, config.apis.yimin_likelist);
   if (url == null) {
     callback('404');
     return;
@@ -376,7 +376,7 @@ exports.yimin_likelist=function(data,callback){
 }
 // 移民相关顾问
 exports.yimin_xiangguanguwen=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.yimin_xiangguanguwen);
+  var url = _api_url_path(data, config.apis.yimin_xiangguanguwen);
   if (url == null) {
     callback('404');
     return;
