@@ -147,6 +147,18 @@ exports.article = function(data,callback){
 };
 
 /*
+ *  文章id获取顾问
+ */
+exports.article_getUid = function(data,callback){
+  var url = _api_url_path(data, config.apis.get_article_uid);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
+};
+
+/*
  *  编辑文章详情
  */
 exports.article_info = function(data,callback){
