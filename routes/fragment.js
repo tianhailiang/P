@@ -149,9 +149,9 @@ exports.yimin_xiangguanguwen = function(req,res,next){
   async.parallel({
     xiangguanguwen: function (callback) {
       wec.yimin_xiangguanguwen({
-        "country_id":country,
-        "city_id":1,
-        "per_page":5,
+        "countryId":country,
+        "cityId":1,
+        "perPage":5,
         "uid":uid,
         "isArticle":isArticle
       }, callback)
