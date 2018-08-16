@@ -146,14 +146,16 @@ exports.yimin_xiangguanguwen = function(req,res,next){
   var isArticle = req.query.isArticle ? req.query.isArticle : 0;
   var area = req.query.c || 1;
   var uid = req.query.uid;
+  var isIm = req.query.isIm ? req.query.isIm : 0;
   async.parallel({
     xiangguanguwen: function (callback) {
       wec.yimin_xiangguanguwen({
-        "countryId":country,
-        "cityId":1,
-        "perPage":5,
+        "country_id":country,
+        "city_id":1,
+        "per_page":5,
         "uid":uid,
-        "isArticle":isArticle
+        "isArticle":isArticle,
+        "isIm":isIm
       }, callback)
     }
   },function(err,result){
