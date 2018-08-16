@@ -18,6 +18,9 @@ exports.login = function (req, res, next) {
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
   console.log('url', l.h);
+  if (/\/zt\//.test(l.h)) {
+    l.h += '.html'
+  }
   if (l.h !== undefined) {
     data.url = l.h;
   } else {
@@ -47,6 +50,9 @@ exports.loginUser = function (req, res, next) {
   // var l = url.parse(req.url, true).query;
   var l = req.query
   console.log('url', l.h);
+  if (/\/zt\//.test(l.h)) {
+    l.h += '.html'
+  }
   if (l.h !== undefined) {
     data.url = l.h;
   } else {
