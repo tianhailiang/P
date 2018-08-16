@@ -2013,10 +2013,20 @@ exports.case_detail = function(req,res,next){
           "u_id":data.login_info.uid,
           "article_id":data.article_id
         },callback);
-      }
+      },
+      article_getUid:function(callback){
+        wec.article_getUid({
+          "aid":data.article_id
+        },callback);
+      },
     },function(err,result){
         // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.article_getUid =returnData(result.article_getUid,'article');
+        // console.log('article_getUid',data.article_getUid);
+        if (data.article_getUid != null) {
+          global.article_getUid = data.article_getUid;
+        }
         if(result.article.code != 0){
             //文章不存在的时候  跳到404
             return next();
@@ -2117,9 +2127,19 @@ exports.article_detail= function(req,res,next){
         "article_id":data.article_id
       },callback);
     },
+    article_getUid:function(callback){
+        wec.article_getUid({
+          "aid":data.article_id
+        },callback);
+      },
   },function(err,result){
         // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.article_getUid =returnData(result.article_getUid,'article');
+        // console.log('article_getUid',data.article_getUid);
+        if (data.article_getUid != null) {
+          global.article_getUid = data.article_getUid;
+        }
         if(result.article.code != 0){
           //文章不存在的时候  跳到404
             return next();

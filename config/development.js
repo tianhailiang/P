@@ -13,6 +13,7 @@ var cdnhost = apiconfig.cdnhost;
 var prefix = apiconfig.prefix;
 var uc_prefix = apiconfig.uc_prefix;
 var shequ_prefix = apiconfig.shequ_prefix;
+var so_prefix = apiconfig.so_prefix;
 var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
 var coupon = apiconfig.coupon;
@@ -33,7 +34,7 @@ var apis = {
   "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
   "likelist": shequ_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
   "relation_recommend": shequ_prefix + 'article/correlation/',//相关推荐
-  "xiangguan_guwen": shequ_prefix + 'article/related_adviser/', // 社区 相关顾问
+  "xiangguan_guwen": so_prefix + 'article/related_adviser/', // 社区 相关顾问
   "yimin_xiangguanguwen": shequ_prefix + 'article/immi_related_adviser/', // 社区 相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
   "xiugai_info": shequ_prefix + 'account/edit_user_info/', //社区 修改用户信息
@@ -198,6 +199,8 @@ var apis = {
   "get_comment_list": shequ_prefix + 'account/comments_to_me/',
   //文章详情
   "get_article":shequ_prefix + 'article/',
+  //文章id获取顾问
+  "get_article_uid": so_prefix + 'article/getUid',
   //用户相册
   "get_album_list": shequ_prefix + 'account/album_list/',
   //发布文章
