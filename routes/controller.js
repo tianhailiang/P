@@ -2917,10 +2917,16 @@ exports.release_article = function(req,res,next){
                 "u_id":data.login_info.uid,
                 "to_uid":data.login_info.uid
             },callback);
+        },
+        getpdf:function(callback){
+            cms.getPdf({},callback);
         }
-
     },function (err, result) {
         data.userinfo = returnData(result.userinfo,'userinfo');
+        data.getpdf = returnData(result.getpdf,'getpdf');
+        // log.info(data.getpdf)
+        // log.info(data.getpdf[1])
+        data.getpdf = JSON.stringify(data.getpdf);
         var pagekey = null;
         if(data.userinfo.usertype ==2){
             if(data.login_info.adviser==1){
@@ -2928,7 +2934,6 @@ exports.release_article = function(req,res,next){
             }else {
                 pagekey = 'ADVISOR_CENTER_POSTARTICLE';
             }
-            // pagekey = 'ADVISOR_CENTER_POSTARTICLE';
         }else if(data.userinfo.usertype == 3){
             pagekey = 'CANZAN_CENTER_POSTARTICLE';
         }

@@ -368,55 +368,6 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script>
   $(function () {
-    var nowLocation = window.location.href;
-    var endFix = nowLocation.split('?')[1];
-    $.ajax({
-      type: "get",
-      async: false,
-      url:ajaxUrlPrefix.nodeapi+"/ip_geter",
-      dataType: "json",
-      success: function(result){
-        var iparea = result.data;
-        if(!cookie('currentarea')){
-          console.log('sss');
-          $('#zhezhaox').show();
-          $('#zhezhaos').show();
-          $('#fengongsi').html(fn.getCityChinese(iparea));
-        }
-        else {
-          console.log('9999');
-        }
-        //正确
-        $('#selByIp').on('click',function (e) {
-          e.preventDefault();
-          cookie('currentarea', iparea, { path: "/",domain: js_api_config.domain});
-          if (endFix) {
-            window.location.href = fn.urlgen('branch_home','c='+ result.data)+'?'+endFix;
-          }
-          else {
-            window.location.href = fn.urlgen('branch_home','c='+ result.data);
-          }
-        })
-      },
-      error: function(error){
-        console.log(error)
-      }
-    });
-    $('.xuanze-chengshi').on('click',"a", function(e){
-      var currentarea = $(this).attr("data-id");
-      if (currentarea) {
-        e.preventDefault();
-      }
-      cookie('currentarea', currentarea, { path: "/",domain: js_api_config.domain});
-      if (endFix) {
-        window.location.href = $(this).attr("href")+'?'+endFix;
-      }
-      else {
-        window.location.href = $(this).attr("href");
-      }
-
-    });
-      //
       $(window).on('scroll', function () {
           var $scroll = $(this).scrollTop();
           if ($scroll >= 250) {

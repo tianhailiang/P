@@ -389,10 +389,15 @@
             }
         },
         //图片缩略图 拼装
-        imageThumb:function (imageUrl, spec) {
+        imageThumb:function (imageUrl, spec, isyimin) {
           if(imageUrl !=undefined && imageUrl != ''){
             if(spec){
-              return imageUrl + "!" + spec;
+                if (isyimin && isyimin == 2) {
+                    return imageUrl + "!ym" + spec;
+                  }
+                  else {
+                    return imageUrl + "!" + spec;
+                  }
             }else {
               return imageUrl;
             }

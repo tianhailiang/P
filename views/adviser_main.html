@@ -290,11 +290,11 @@
         '<p>' ;
     if(aitem.type==1){
       aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' +
-          addArticleImg(aitem.img_list) +
+          addArticleImg(aitem.img_list,aitem.is_immi) +
           '</a>' ;
     }else if(aitem.type==2){
       aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article", aitem.id.toString()) + '" class="dui-text-warning">' +
-          addArticleImg(aitem.img_list) +
+          addArticleImg(aitem.img_list,aitem.is_immi) +
           '</a>' ;
     }
     aItemHtml+=  '</p>' +
@@ -319,13 +319,13 @@
     window._bd_share_main.init();
   }
 
-  function addArticleImg(imgList) {
+  function addArticleImg(imgList,isyimin) {
     if (imgList == undefined) {
       return '';
     }
     var html = '<ul class="homepage-li" style="float: left;">';
     for (var j=0; j<imgList.length; j++) {
-      html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+      html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150',isyimin) +'" ></li>';
     }
     html += '</ul>';
     return html;
@@ -430,6 +430,8 @@
             if (result.code == 0) {
               layer.msg('举报成功');
               layer.close(index);
+            }else{
+              layer.msg(result.message);
             }
           },
           error: function (XMLHttpRequest, textStatus, errorThrown) {

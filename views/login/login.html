@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
   {% include "header_new.html" %}
-  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
-  
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css" />
+
   <script src="{{helper.cdnhost}}/assets/js/icheck.min.js"></script>
   <style type="text/css">
-    .inputtext_isr{
+    .inputtext_isr {
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
       -o-box-sizing: border-box;
       -ms-box-sizing: border-box;
       box-sizing: border-box;
     }
-    .form-control{
+
+    .form-control {
       display: inline-block;
       line-height: 25px;
     }
-    .fen img{
+
+    .fen img {
       width: 20px;
       height: 20px;
       margin-right: 10px;
-      cursor:pointer;
+      cursor: pointer;
     }
+
     .inputtext_isr input {
       width: 100%;
       height: 34px;
@@ -34,7 +38,8 @@
       background-color: #fff;
       background-image: none;
     }
-    .login_error{
+
+    .login_error {
       background-color: #FFFBEF;
       border: 1px solid #C13232;
       padding: 6px 12px;
@@ -47,21 +52,26 @@
       top: -19px;
       opacity: 1;
     }
-    .login_error:after,.login_error:before{
+
+    .login_error:after,
+    .login_error:before {
       border: 6px solid transparent;
       content: ' ';
       position: absolute;
       left: 1em;
     }
-    .login_error:before{
+
+    .login_error:before {
       border-top-color: #C13232;
       bottom: -13px;
     }
-    .login_error:after{
+
+    .login_error:after {
       border-top-color: #fffbef;
       bottom: -12px;
     }
-    .login_x{
+
+    .login_x {
       width: 9px;
       height: 9px;
       display: inline-block;
@@ -70,51 +80,69 @@
     }
   </style>
 </head>
+
 <body>
-{% include "widget/common_hide/common_hide.html"%}
-  {% include "widget/top/top_login.html" %}
+  {% include "widget/common_hide/common_hide.html"%} {% include "widget/top/top_login.html" %}
 
   <div class="main" style="margin: 0 auto;">
-    {% import "widget/new_nav_first/nav_login.html" as nav_login %}
-    {{ nav_login.nav_login(tdk,helper) }}
+    {% import "widget/new_nav_first/nav_login.html" as nav_login %} {{ nav_login.nav_login(tdk,helper) }}
   </div>
 
   <div class="login_overseas clearfix">
-    <div style="margin: 0px auto;height: 550px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png) no-repeat;background-size: cover;background-position-x: -50px;">{##}
-      {# <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/> #}
+    <div style="margin: 0px auto;height: 550px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background.png) no-repeat;background-size: cover;background-position-x: -50px;">{##} {#
+      <img src="{{helper.cdnhost}}/assets/img/login_background.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"
+      /> #}
     </div>
-    
+
     <div class="login_content" style="position: relative;">
       <div class="login_nei text-center loginscreen  animated fadeInDown" style="text-align: left;height: 280px;">
         <!-- <h3 class="login_nei_title">登录金吉列<a target="_blank"  href="{{helper.urlgen('register')}}">注册一个新账号</a></h3> -->
         <div class="payMethod clearfix" id="guwen_login" style="margin-left: -15px;font-size: 18px;">
-            <input class="checked" type="radio" name="payMethod" value="1" checked="checked" id="liu"/>&nbsp;&nbsp;&nbsp;&nbsp;<label for="liu"><span><i></i></span>留学顾问</label> 
-            <input class="" type="radio" name="payMethod" value="2" id="yi"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="yi"><span><i></i></span>移民顾问</label>
+          <input class="checked" type="radio" name="payMethod" value="1" checked="checked" id="liu" />&nbsp;&nbsp;&nbsp;&nbsp;
+          <label for="liu">
+            <span>
+              <i></i>
+            </span>留学顾问</label>
+          <input class="" type="radio" name="payMethod" value="2" id="yi" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <label for="yi">
+            <span>
+              <i></i>
+            </span>移民顾问</label>
         </div>
         <form class="m-t" role="form" style="margin-top: 20px;" autocomplete="off">
           <div class="form-group inputtext_isr" style="position: relative;height: 28px">
-            <input type="text" style="border-radius: inherit;" class="form-control" placeholder="请输入手机号/员工号" id="newEmail" autocomplete="off"/>
+            <input type="text" style="border-radius: inherit;" class="form-control" placeholder="请输入手机号/员工号" id="newEmail" autocomplete="off"
+            />
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 8px" class="iconfont">&#xe619;</i>
-            <span class="login_error" id="login_e_phone" style="display: none;"><i class="login_x"></i><em id="login_error_text_phone">请输入手机号</em></span>
+            <span class="login_error" id="login_e_phone" style="display: none;">
+              <i class="login_x"></i>
+              <em id="login_error_text_phone">请输入手机号</em>
+            </span>
           </div>
           <div class="form-group inputtext_isr" style="position: relative;height: 28px;margin-top: 20px">
             <input type="password" style="border-radius: inherit;" class="form-control" placeholder="密码" required="" id="password" autocomplete="new-password">
             <i style="color: #999;position: absolute;top: 8px;width: 12px;left: 13px" class="iconfont">&#xe606;</i>
-            <span class="login_error" id="login_e_pass" style="display: none;"><i class="login_x"></i><em id="login_error_text_pass">密码不正确，请输入8-16位数字或字母</em></span>
+            <span class="login_error" id="login_e_pass" style="display: none;">
+              <i class="login_x"></i>
+              <em id="login_error_text_pass">密码不正确，请输入8-16位数字或字母</em>
+            </span>
           </div>
         </form>
 
-            <!--<div class="form-group text-left" style="float: left;color: #999;margin-top: -10px">
+        <!--<div class="form-group text-left" style="float: left;color: #999;margin-top: -10px">
               <div class="checkbox i-checks" style="">
                 <label class="no-padding">
                   <input type="checkbox"><i></i> 我同意注册协议</label>
               </div>
             </div>-->
-            <div class="login_check clearfix" style="margin-top: 15px;">
-              <a target="_blank"  href="{{helper.urlgen('forget')}}" style="float: right"><small>忘记密码了？</small></a>
-            </div>
+        <div class="login_check clearfix" style="margin-top: 15px;">
+          <a target="_blank" href="{{helper.urlgen('forget')}}" style="float: right">
+            <small>忘记密码了？</small>
+          </a>
+        </div>
 
-          <input type="button" class="btn login-primary" style="width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;" id="loginSubmit" value="立 即 登 录"/>
+        <input type="button" class="btn login-primary" style="width: 100%;height: 34px;padding-left: 0;padding-right: 0;border-radius: inherit;border: 1px solid #c13232;border-radius: 4px;"
+          id="loginSubmit" value="立 即 登 录" />
 
 
 
@@ -138,16 +166,108 @@
   </div>
   <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
-  <script src="{{helper.cdnhost}}/assets/js/nav_login.js" type="text/javascript" charset="utf-8"></script>
+  <!-- <script src="{{helper.cdnhost}}/assets/js/nav_login.js" type="text/javascript" charset="utf-8"></script> -->
 
   <script>
-    $(function () {
+    $(document).ready(function () {
+
+      // $("form").Vaild();
+      // $('.i-checks').iCheck({
+      //   checkboxClass: 'icheckbox_square-green',
+      //   radioClass: 'iradio_square-green'
+      // });
       //清除记录密码浏览器自带功能
-        　
-        document.getElementById('newEmail').value='';
-        document.getElementById('password').value='';
-      
+      document.getElementById('newEmail').value = '';
+      document.getElementById('password').value = '';
+      var lS = document.getElementById('loginSubmit');
+      if (lS.addEventListener) {
+        lS.addEventListener('click', loginS, false);
+      } else {
+        lS.attachEvent('onclick', loginS, false);
+      }
+      $(".payMethod").find("input[type^='radio']").on('click', function () {
+        $(this).addClass('checked').siblings('input').removeClass('checked');
+      });
     })
+      function loginS() {
+        console.log('login_ssssss')
+        if ($('#newEmail').val() === '') {
+          // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+          // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入手机号').popover({"trigger":"manual"}).popover("show");
+          $('#login_e_phone').css('display', 'block');
+          return
+        }
+        if (!/^[A-Za-z0-9]{6}$/.test($('#newEmail').val()) && !/^1\d{10}$/.test($('#newEmail').val())) {
+          // $('#newEmail').parent().addClass("has-error").removeClass("has-success");
+          // $('#newEmail').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入正确手机号或工号后六位').popover({"trigger":"manual"}).popover("show");
+          $('#login_e_phone').css('display', 'block');
+          $('#login_error_text_phone').html('请输入正确手机号或工号后六位')
+          return
+        } else {
+          $('#login_e_phone').css('display', 'none');
+        }
+        if ($('#password').val() === '') {
+          // $('#password').parent().addClass("has-error").removeClass("has-success");
+          // $('#password').data("toogle", "left").data("placement", "right").data("container", "body").data("content", '请输入密码').popover({"trigger":"manual"}).popover("show");
+          $('#login_e_pass').css('display', 'block')
+          return
+        }
+        if (!/^[a-zA-Z0-9]{8,16}$/.test($("#password").val())) {
+          $('#login_e_pass').css('display', 'block')
+          return
+        } else {
+          $('#login_e_pass').css('display', 'none')
+        }
+        /*if (!$("input[type='checkbox']").is(':checked')) {
+         layer.msg('请同意注册协议');
+         return
+         }*/
+        var sha1 = hex_sha1($('#password').val());
+        console.log('sha1' + sha1);
+        if ($('#newEmail').val() !== '' && $('#password').val() !== '' && /^[a-zA-Z0-9]{8,16}$/.test($("#password").val()) && /^1\d{10}$/.test($("#newEmail").val()) || /^[A-Za-z0-9]{6}$/.test($('#newEmail').val())) {
+          console.log('ajax');
+          $.ajax({
+            url: '/login_s',
+            type: 'POST',
+            data: {
+              username: $('#newEmail').val(),
+              password: hex_sha1($('#password').val()),
+              adviser_type: $('#guwen_login input[name="payMethod"]:checked ').val()//1 留学，2 移民
+            },
+            dataType: 'json',
+            success: function (msg) {
+              console.log('aaaaaaaaa')
+              console.log('msg ajax', msg);
+              if (msg.code === 0) {
+                //var h = location.search;//获取？后面的字符串
+                var h = window.location.href;//获取全部的url
+                console.log('h', h);
+                var hh = h.split("?");
+                console.log('hh', hh)
+                if (hh[1] !== undefined) {
+                  var str = hh[1].substr(1);
+                  console.log('str', str);
+                  var strs = str.split("=");
+                  console.log('strs', strs[1]);
+                  window.location = strs[1];
+                } else {
+                  window.location = '/';
+                }
+                //alert('成功');
+              } else {
+                alert('金吉列留学提醒您：' + msg.message);
+              }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+              console.log("获取失败，请重试！CODE:" + XMLHttpRequest.status)
+            }
+          });
+
+        }
+      };
+
+
   </script>
 </body>
+
 </html>
