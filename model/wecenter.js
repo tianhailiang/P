@@ -389,7 +389,7 @@ exports.yimin_likelist=function(data,callback){
 }
 // 移民相关顾问
 exports.yimin_xiangguanguwen=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.yimin_xiangguanguwen);
+  var url = _api_url_path(data, config.apis.yimin_xiangguanguwen);
   if (url == null) {
     callback('404');
     return;
