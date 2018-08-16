@@ -262,7 +262,7 @@ var apis = {
   //意见反馈
   "userFeedback":prefix +'userFeedback',
   //文章置顶
-  "article_top": shequ_prefix + 'article/article_top/',
+  "article_top": so_prefix + 'article/article_top',
   //专题接口
   "get_schooltopic": prefix + 'colleges_detail/',
   //首页楼层广告
