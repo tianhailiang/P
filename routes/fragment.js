@@ -11,7 +11,7 @@ function  returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
   }else{
-    log.error(urlName,obj);
+    log.debug(urlName,obj);
     return {};
   }
 }
