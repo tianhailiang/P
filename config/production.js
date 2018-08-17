@@ -192,9 +192,9 @@ var apis = {
   // 获取用户信息（普通用户，顾问，参赞）
   "get_userinfo": so_prefix + 'account/info/',
   //用户中心-我的关注
-  "get_user_follow": shequ_prefix + 'account/friends/',
+  "get_user_follow": so_prefix + 'account/friends',
   //顾问中心-关注我的
-  "get_follow_list": shequ_prefix + 'account/fans/',
+  "get_follow_list": so_prefix + 'account/fans',
   //个人中心-收到的评论
   "get_comment_list": so_prefix + 'account/comments_to_me/',
   //文章详情
@@ -222,7 +222,7 @@ var apis = {
   //草稿箱发布接口
   "post_draft_to_article":shequ_prefix +'article/draft_to_article/',
   //收藏列表
-  "get_collection_list":shequ_prefix + 'account/favorite_list/',
+  "get_collection_list":so_prefix + 'account/favorite_list',
   //站内消息
   // "get_msg_list": prefix + 'webmailList',
   "get_msg_list": prefix + 'messages_list',

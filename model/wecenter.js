@@ -101,7 +101,7 @@ exports.user_article_list = function (data, callback) {
 
 //用户中心-我的关注
 exports.user_follow = function (data, callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_user_follow);
+  var url = _api_url_path(data, config.apis.get_user_follow);
   if (url == null){
     callback('404');
     return;
@@ -112,7 +112,7 @@ exports.user_follow = function (data, callback) {
 //顾问中心-关注我的
 exports.follow_list = function (data, callback) {
 
-  var url = _api_path_url_shequ(data, config.apis.get_follow_list);
+  var url = _api_url_path(data, config.apis.get_follow_list);
   if (url == null){
     callback('404');
     return;
@@ -269,7 +269,7 @@ exports.article_comments = function(data,callback){
 
 //收藏列表
 exports.collection_list = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_collection_list);
+  var url = _api_url_path(data, config.apis.get_collection_list);
   if (url == null){
     callback('404');
     return;
