@@ -19,10 +19,10 @@ function returnData(obj,urlName){
     return obj.data;
   }else{
     if (urlName == 'userinfo') {
-        log.debug(urlName,obj);
+        log.error(urlName,obj);
     }  
     else {
-        log.error(urlName,obj);
+        log.debug(urlName,obj);
     }
     return {};
   }
