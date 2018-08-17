@@ -7,11 +7,10 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <div style="position: relative;">
-      <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
+    <!-- <div style="position: relative;">
       <img src="{{helper.cdnhost}}/assets/img/tou_guwen.png" alt="" style="position: absolute;right: 0px;bottom: 0px;width: 34px;height: 34px;">
-    </div>
-    
+    </div> -->
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
@@ -182,10 +181,11 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <div style="position: relative;">
-      <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
+    <!-- <div style="position: relative;">
+      
       <img src="{{helper.cdnhost}}/assets/img/tou_guwen.png" alt="" style="position: absolute;right: 0px;bottom: 0px;width: 34px;height: 34px;">
-    </div>
+    </div> -->
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
