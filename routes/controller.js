@@ -18,7 +18,12 @@ function returnData(obj,urlName){
   if(obj.code==0){
     return obj.data;
   }else{
-    log.error(urlName,obj);
+    if (urlName == 'userinfo') {
+        log.debug(urlName,obj);
+    }  
+    else {
+        log.error(urlName,obj);
+    }
     return {};
   }
 }
