@@ -208,7 +208,7 @@ var apis = {
   //回复文章评论
   "post_save_comment_ans":so_prefix + 'article/save_comment_ans',
   //删除文章接口
-  "post_delete_article": shequ_prefix + 'article/remove_article/',
+  "post_delete_article": so_prefix + 'article/remove_article',
   //回复列表
   "get_comment_ans":shequ_prefix + 'article/comment_ans/',
   //分页获取评论article_comments
