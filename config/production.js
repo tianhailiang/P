@@ -31,7 +31,7 @@ var apis = {
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
   "get_answer_list": so_prefix + 'account/comment_ans_to_me/',
-  "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
+  "adviser_main": so_prefix + 'article/list', // 社区 首页
   "likelist": so_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
   "xiangguan_guwen": so_prefix + 'article/related_adviser/', // 社区 相关顾问
   "relation_recommend": so_prefix + 'article/correlation/',//相关推荐
@@ -204,7 +204,7 @@ var apis = {
   //发布文章
   "post_publish_article": shequ_prefix + 'publish/publish_article/',
   //关注用户
-  "follow_people": shequ_prefix + 'account/follow_people/',
+  "follow_people": so_prefix + 'account/follow_people',
   //回复文章评论
   "post_save_comment_ans":so_prefix + 'article/save_comment_ans',
   //删除文章接口
