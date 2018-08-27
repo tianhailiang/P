@@ -44,7 +44,29 @@
         <div class="rel-case-con" >
 	        <div class="main-title gray-bg">
 		        <h3 style="font-size: 18px;">发布我的文章</h3>
-	        </div>
+          </div>
+          <div class="assistant">
+            <ul class="assistant-tab">
+              <li class="img-tab">
+                <span class="pic"></span>
+                <span>图片处理助手</span>
+              </li>
+              <li class="h5-tab">
+                  <span class="pic"></span>
+                  <span>H5制作助手</span>
+              </li>
+              <li class="article-tab">
+                  <span class="pic"></span>
+                  <span>文章发布助手</span>
+              </li>
+            </ul>
+            <div class="assistant-cont" data-pdf="{{getpdf}}" style="display:none;">
+              <div class="img-content"></div>
+              <div class="fold-btn">
+                <img src="{{helper.cdnhost}}/assets/img/article_icon_SQ@2x.png" alt="">
+              </div>
+            </div>
+          </div>
   	      <div class="rel-case-list" >
             <div class="rel-case-text1" style="margin-top: 20px;">
               <label class="title active" for="apply-country">
@@ -309,8 +331,39 @@
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+  <script src="{{helper.cdnhost}}/dep/js/jquery.media.js"></script>
   <script >
     $(function(){
+      var pdfList = JSON.parse($('.assistant-cont').attr('data-pdf'))||[];
+      $('.img-content').media({
+        width: '100%',
+        height: '500px',
+        autoplay: true,
+        src:pdfList[1].file_path,
+      });
+      $('.assistant-tab li').on('click',function(){
+        if(!$(this).hasClass('active')){
+          $('.assistant-tab li').removeClass('active');
+          $(this).addClass('active');
+          $('.assistant-cont').slideDown();
+          var index = $(this).index()+1;
+          if(pdfList[index]){
+            $('.img-content').media({
+              width: '100%',
+              height: '500px',
+              autoplay: true,
+              src:pdfList[index].file_path
+            });
+          }
+        }else{
+          $('.assistant-tab li').removeClass('active');
+          $('.assistant-cont').slideUp();
+        }
+      })
+      $('.fold-btn').on('click',function(){
+        $('.assistant-tab li').removeClass('active');
+        $('.assistant-cont').slideUp();
+      })
       var login_ss = null; //获取用户信息
       if(cookie('login_ss') != undefined){
         login_ss = JSON.parse(cookie('login_ss'));
@@ -442,7 +495,7 @@
       editor.customConfig.debug = false;
       // 关闭粘贴样式的过滤
       editor.customConfig.pasteFilterStyle = false;
-      editor.customConfig.uploadFileName = 'upload';
+      editor.customConfig.uploadFileName = 'yimin_upload';
       // 将图片大小限制为 500K
       editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
       // 限制一次最多上传 5 张图片

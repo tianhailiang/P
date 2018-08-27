@@ -256,4 +256,9 @@ exports = module.exports = function (app) {// routes
   app.post('/userFeedback',controller.userFeedback)
   app.get('/sendSms',controller.sendsms);//活动 发送短信验证码
   app.get('/getCoupons',controller.getCoupons);//获取优惠券
+  app.get('/pdf',function(req,res,next){
+    console.log('pdf')
+    var data ={};
+    res.render('pdf',data)
+  })
 };

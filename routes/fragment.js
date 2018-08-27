@@ -118,7 +118,9 @@ exports.yimin_guess_like = function(req,res,next){
 exports.xiangguanguwen = function(req,res,next){
   log.debug('相关顾问.......')
   var data = {};
-  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var country = req.query.isArticle ? req.query.n : req.query.n.split(',').join('_');
+  var isArticle = req.query.isArticle ? req.query.isArticle : 0;
+  var uid = req.query.uid;
   var area = req.query.c || 1;
   async.parallel({
     xiangguan_guwen: function (callback) {
@@ -126,12 +128,12 @@ exports.xiangguanguwen = function(req,res,next){
         "country_id":country,
         "city_id":area,
         "per_page":5,
-        "order":"comments desc"
+        "isArticle":isArticle,
+        "uid": uid
       }, callback)
     }
   },function(err,result){
     data.xiangguan_guwen = returnData(result.xiangguan_guwen,'xiangguan_guwen');
-    //console.log(data.xiangguan_guwen);
     res.render('./fragment/xiangguanguwen', data);
   });
 }
@@ -139,9 +141,12 @@ exports.xiangguanguwen = function(req,res,next){
 exports.yimin_xiangguanguwen = function(req,res,next){
   log.debug('移民相关顾问.......')
   var data = {};
-  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  // var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var country = req.query.isArticle ? req.query.n : req.query.n.split(',').join('_');
+  var isArticle = req.query.isArticle ? req.query.isArticle : 0;
   var area = req.query.c || 1;
   var uid = req.query.uid;
+  var isIm = req.query.isIm ? req.query.isIm : 0;
   async.parallel({
     xiangguanguwen: function (callback) {
       wec.yimin_xiangguanguwen({
@@ -149,7 +154,8 @@ exports.yimin_xiangguanguwen = function(req,res,next){
         "city_id":1,
         "per_page":5,
         "uid":uid,
-        "order":"comments desc",
+        "isArticle":isArticle,
+        "isIm":isIm
       }, callback)
     }
   },function(err,result){

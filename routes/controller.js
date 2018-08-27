@@ -2013,10 +2013,20 @@ exports.case_detail = function(req,res,next){
           "u_id":data.login_info.uid,
           "article_id":data.article_id
         },callback);
-      }
+      },
+      article_getUid:function(callback){
+        wec.article_getUid({
+          "aid":data.article_id
+        },callback);
+      },
     },function(err,result){
         // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.article_getUid =returnData(result.article_getUid,'article');
+        // console.log('article_getUid',data.article_getUid);
+        if (data.article_getUid != null) {
+          global.article_getUid = data.article_getUid;
+        }
         if(result.article.code != 0){
             //文章不存在的时候  跳到404
             return next();
@@ -2117,9 +2127,19 @@ exports.article_detail= function(req,res,next){
         "article_id":data.article_id
       },callback);
     },
+    article_getUid:function(callback){
+        wec.article_getUid({
+          "aid":data.article_id
+        },callback);
+      },
   },function(err,result){
         // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.article_getUid =returnData(result.article_getUid,'article');
+        // console.log('article_getUid',data.article_getUid);
+        if (data.article_getUid != null) {
+          global.article_getUid = data.article_getUid;
+        }
         if(result.article.code != 0){
           //文章不存在的时候  跳到404
             return next();
@@ -2897,10 +2917,16 @@ exports.release_article = function(req,res,next){
                 "u_id":data.login_info.uid,
                 "to_uid":data.login_info.uid
             },callback);
+        },
+        getpdf:function(callback){
+            cms.getPdf({},callback);
         }
-
     },function (err, result) {
         data.userinfo = returnData(result.userinfo,'userinfo');
+        data.getpdf = returnData(result.getpdf,'getpdf');
+        // log.info(data.getpdf)
+        // log.info(data.getpdf[1])
+        data.getpdf = JSON.stringify(data.getpdf);
         var pagekey = null;
         if(data.userinfo.usertype ==2){
             if(data.login_info.adviser==1){
@@ -2908,7 +2934,6 @@ exports.release_article = function(req,res,next){
             }else {
                 pagekey = 'ADVISOR_CENTER_POSTARTICLE';
             }
-            // pagekey = 'ADVISOR_CENTER_POSTARTICLE';
         }else if(data.userinfo.usertype == 3){
             pagekey = 'CANZAN_CENTER_POSTARTICLE';
         }
@@ -3677,13 +3702,13 @@ exports.hot = function (req, res, next) {
         "per_page": 5
       }, callback)
     },
-    xiangguan_guwen: function (callback) { //相关顾问
-      wec.xiangguan_guwen({
-        "country_id": 1,
-        "city_id": 1,
-        "per_page": 5
-      }, callback)
-    },
+    // xiangguan_guwen: function (callback) { //相关顾问
+    //   wec.xiangguan_guwen({
+    //     "country_id": 1,
+    //     "city_id": 1,
+    //     "per_page": 5
+    //   }, callback)
+    // },
   }, function (err, result) {
     // data.xSlider = returnData(result.lunbo_list, 'lunbo_list');
     // data.xSlider2 = returnData(result.lunbo_list2, 'lunbo_list2');
@@ -3694,7 +3719,6 @@ exports.hot = function (req, res, next) {
     }
     data.guwen_list = returnData(result.guwen_list, 'guwen_list');
     data.likelist = returnData(result.likelist, 'likelist');
-    data.xiangguan_guwen = returnData(result.xiangguan_guwen, 'xiangguan_guwen');
     data.country = data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
     var pagekey = '';

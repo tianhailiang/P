@@ -19,6 +19,14 @@ $(function(){
       return true;
     }
   };
+  $("#quickName-act").on('keyup',function(){
+    // 姓名输入框 失去焦点事件
+    var nowVal = $(this).val();
+    if(nowVal.length>12){
+      $(this).val(nowVal.substr(0,12));
+    }
+  });
+
   $("#quickName-act").on('blur',function(){
     // 姓名输入框 失去焦点事件
     console.log(2000)

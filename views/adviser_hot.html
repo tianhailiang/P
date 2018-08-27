@@ -46,9 +46,9 @@
         <h3>相关顾问</h3>
       </div>
         {% if userinfo.adviser_type == 2 %}
-          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
+          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid,'isIm=1') %}
         {% else %}
-          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid) %}
+          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
         {% endif %}
     </div>
   </div>
@@ -215,6 +215,8 @@
               if (result.code == 0) {
                 layer.msg('举报成功');
                 layer.close(index);
+              }else{
+                layer.msg(result.message);
               }
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {

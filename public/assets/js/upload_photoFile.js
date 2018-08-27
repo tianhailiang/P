@@ -4,6 +4,7 @@
  */
 
 var ZXXFILE = {
+    uploadDir:'', //上传图片移民还是留学进行区分
     num:0,
     uploadNum: 0,
     fileInput: null,				//html file控件
@@ -94,7 +95,8 @@ var ZXXFILE = {
                     // 开始上传
                     xhr.open("POST", self.url, true);
                     var formData = new FormData();
-                    formData.append("upload", file);//设置key为avartar,value为上述的File对象
+                    console.log('11111',self.uploadDir)
+                    formData.append(self.uploadDir, file);//设置key为avartar,value为上述的File对象
                     xhr.send(formData);
                 }
             })(file);

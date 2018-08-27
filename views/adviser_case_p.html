@@ -67,9 +67,9 @@
           <h3>相关顾问</h3>
         </div>
           {% if userinfo.adviser_type == 2 %}
-            {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
+            {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid,'isIm=1') %}
           {% else %}
-            {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid) %}
+            {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
           {% endif %}
       </div>
     </div>
@@ -202,7 +202,7 @@
           '</a>'+
           '</p>'+
           '<a  target="_blank" href="'+ fn.urlgen("case",aitem.id.toString()) +'" class="dui-text-warning">'+
-          addArticleImg(aitem.img_list)+
+          addArticleImg(aitem.img_list, aitem.is_immi)+
           '</a>'+
           '<div style="width: 200px;line-height: 38px;float: left;position: relative">'+
           '<div style="float: left;position: absolute;">'+aitem.add_time+'</div>'+
@@ -222,13 +222,13 @@
       $('.report-btn').unbind('click');
       $('.report-btn').on("click",report); //点击举报
     }
-    function addArticleImg (imgList) {
+    function addArticleImg (imgList,isyimin) {
       if(imgList==undefined){
         return '';
       }
       var html = '<ul class="homepage-li" style="float: left;">';
       for (var j=0; j<imgList.length; j++) {
-        html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+        html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150',isyimin) +'" ></li>';
       }
       html += '</ul>';
       return html;
@@ -388,6 +388,8 @@
               if(result.code == 0){
                 layer.msg('举报成功');
                 layer.close(index);
+              }else{
+                layer.msg(result.message);
               }
             },
             error:function(XMLHttpRequest, textStatus, errorThrown){

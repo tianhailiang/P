@@ -105,10 +105,12 @@ app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     var data = [];
     data.esikey = esihelper.esikey();
+    data.article_getUid = global.article_getUid;
     data.tdk = {
         pagekey: 'ERROR'
     };
     res.render('error',data);
+    global.article_getUid = '';
 });
 
 module.exports = app;
