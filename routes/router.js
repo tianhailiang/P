@@ -19,6 +19,10 @@ exports = module.exports = function (app) {// routes
   app.get('/blog', controller.community_index);
   //国家列表页
   app.get(/articles(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.country_list);
+  //留学攻略
+  app.get(/glue(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.glue);
+  //顾问聚合页
+  app.get(/adviser(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.adviser);
   //用户视角 顾问主页
   app.get(/^\/(\d+)(\/*)$/, controller.adviser_main);
   //用户视角 参赞主页

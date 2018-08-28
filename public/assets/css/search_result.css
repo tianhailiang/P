@@ -41,11 +41,18 @@
 .main-left .result-bar span{
     color: #C13232;
 }
-.main-left .result-type-bar {
+.result-type-bar.adviser-list-bar {/*顾问列表页特别样式*/
+    padding-top: 19px;
+    padding-left: 20px;
+}
+.adviser-list-content {/*顾问列表页特别样式*/
+    padding: 0 20px;
+}
+.result-type-bar {
     border-bottom: 1px solid #dcdcdc;
     padding-bottom: 16px;
 }
-.main-left .result-type-bar a {
+.result-type-bar a {
     display: inline-block;
     width: 78px;
     height: 24px;
@@ -55,7 +62,7 @@
     line-height: 24px;
     color: #C13232;
 }
-.main-left .result-type-bar a.active {
+.result-type-bar a.active {
     color: #fff;
     background-color: #C13232;
 }

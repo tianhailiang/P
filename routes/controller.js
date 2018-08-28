@@ -353,6 +353,179 @@ exports.country_list = function (req, res, next) {
         res.render('country_list', data);
     });
 };
+//留学攻略
+exports.glue = function (req, res, next) {
+    log.debug('留学攻略');
+    var data = {};
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var country = nquery && nquery.n ? nquery.n : "";
+    var type = nquery && nquery.type ? nquery.type : '';
+    var tag = nquery && nquery.tag ? nquery.tag : '';
+    var order = nquery && nquery.order ? nquery.order : "score";
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var newsFlag = 1;
+    if (type == '时讯') {
+        newsFlag = 2;
+        tag = ''
+    }
+    if(tag != ''){
+        newsFlag = 1;
+    }else if (tag == '' && type == '') {
+        newsFlag = '';
+    }
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ARTICLELIST",
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "ARTICLELIST",
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
+        so_article_list:function(callback) {
+            cms.search_article_list({
+                order: order,
+                is_immi:1,
+                city_id:area,
+                "tag_list": encodeURI(tag),
+                "country_id": country,
+                "is_news": newsFlag,
+                "edu_id":(type=='时讯')?'':encodeURI(type),
+                "per_page": "15",
+                "page": page
+            }, callback);
+        },
+        // guess_like: function (callback) {
+        //     cms.channel_list({
+        //         order: 'comments desc',
+        //         city_id:area,
+        //         "per_page": "10",
+        //         "page": 1
+        //     }, callback)
+        // }
+    }, function (err, result) {
+        data.article_list = returnData(result.so_article_list,'so_article_list');
+        // data.likelist = returnData(result.guess_like,'guess_like');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.country = country;
+        data.type=(type== '')?'全部':type;
+        data.tag = (tag== '')?'全部':tag;
+        data.order = order;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'ARTICLELIST', //key
+            cityid: area,
+            // keywords: keyword
+        };
+        data.pagination = {
+            pages:Number.parseInt(data.article_list.totalpage),
+            hrefFormer:helperfunc.active_urlgen('articles','n='+country,'type='+type,'tag='+tag,'order='+order,'page='),
+            currentPage:Number.parseInt(page)
+        }
+        // console.log('aaaaa333~~', helperfunc.active_urlgen('articles','n='+country,'type='+type,'tag='+tag,'order='+order,'page='))
+        data.esikey = esihelper.esikey();
+        res.render('country_list', data);
+    });
+};
+//留学顾问聚合页
+exports.adviser = function (req, res, next) {
+    log.debug('留学顾问聚合页');
+    var data = {};
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
+    }
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
+    var order = nquery && nquery.order ? nquery.order : "";
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "SEARCHADVISER",
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "SEARCHADVISER",
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
+        so_adviser_list:function(callback) {
+            cms.so_adviser_list({
+                order: order,
+                key_word:encodeURI('王'),
+                city_id:area,
+                "adviser_type":"1",
+                "per_page": "16",
+                "page": page
+            }, callback);
+        },
+        guess_like: function (callback) {
+            cms.channel_list({
+                order: 'comments desc',
+                city_id:area,
+                "per_page": "10",
+                "page": 1
+            }, callback)
+        }
+    }, function (err, result) {
+        data.so_adviser_list = returnData(result.so_adviser_list,'so_adviser_list');
+        data.likelist = returnData(result.guess_like,'guess_like');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.order = order;
+        data.keyword=keyword;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'SEARCHADVISER', //key
+            cityid: area,
+            keywords: keyword
+        };
+        data.pagination = {
+            pages:Number.parseInt(data.so_adviser_list.totalpage),
+            hrefFormer:helperfunc.paramurlgen('so_advisor','q='+keyword,order ? 'order='+order : '','page='),
+            currentPage:Number.parseInt(page)
+        }
+        data.esikey = esihelper.esikey();
+        res.render('adviser', data);
+
+    });
+};
 //搜索页
 exports.so_article = function (req, res, next) {
     log.debug('搜索结果文章');
