@@ -149,21 +149,22 @@
               <div class="recommend-tag" >
                 {% set recommendList = [
                 {'name':'专业解析','val':'专业解析'},
-                {'name':'申请规划','val':'申请规划'},
+                {'name':'留学申请','val':'留学申请'},
                 {'name':'留学费用','val':'留学费用'},
                 {'name':'留学条件','val':'留学条件'},
-                {'name':'大学排名','val':'大学排名'},
-                {'name':'行前指导','val':'行前指导'},
-                {'name':'就业指导','val':'就业指导'},
-                {'name':'签证指导','val':'签证指导'},
+                {'name':'学校排名','val':'学校排名'},
+                {'name':'行前准备','val':'行前准备'},
+                {'name':'就业解析','val':'就业解析'},
+                {'name':'签证准备','val':'签证准备'},
                 {'name':'院校资讯','val':'院校资讯'},
                 {'name':'留学方案','val':'留学方案'},
                 {'name':'背景提升','val':'背景提升'},
-                {'name':'海外生活','val':'海外生活'},
+                {'name':'留学生活','val':'留学生活'},
                 {'name':'备考资讯','val':'备考资讯'},
-                {'name':'文书准备','val':'文书准备'},
+                {'name':'文书攻略','val':'文书攻略'},
                 {'name':'难点解析','val':'难点解析'},
-                {'name':'省钱攻略','val':'省钱攻略'}
+                {'name':'省钱攻略','val':'省钱攻略'},
+                {'name':'留学启蒙','val':'留学启蒙'}
                 ]  %}
                 {% for item in recommendList%}
                   <span class="recommend-sel" data-str="{{item.name}}" >
@@ -173,8 +174,8 @@
                 {% endfor %}
                 <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
                   <i class="level-sel-i iconfont"></i>
-                  <i>留学案例</i>
-                  <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                  <i>成功案例</i>
+                  <i class="numTip" style="margin-left:30px;">注：选中【成功案例】标签即发布至顾问个人主页-案例中
                   </i>
                 </span>
                 <div  style="display: block;">
