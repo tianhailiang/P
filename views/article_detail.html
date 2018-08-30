@@ -223,7 +223,10 @@
                 "bdStyle":"0",
                 "bdSize":"16",
                 "bdUrl":window.location.href,
-                "bdDesc":''
+                "bdDesc":'',
+                onAfterClick: function (cmd) {
+                    console.log('onAfterClick',cmd,article_id)
+                }
             },
             "share":{}
         };

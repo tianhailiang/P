@@ -445,7 +445,7 @@ exports.glue = function (req, res, next) {
         }
         // console.log('aaaaa333~~', helperfunc.active_urlgen('articles','n='+country,'type='+type,'tag='+tag,'order='+order,'page='))
         data.esikey = esihelper.esikey();
-        res.render('country_list', data);
+        res.render('glue', data);
     });
 };
 //留学顾问聚合页
