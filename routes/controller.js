@@ -4187,6 +4187,7 @@ exports.chief = function (req, res, next) {
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var qianzhengzhinan_currentPage=req.query.page || 1;
     var country = req.query.n || 0;
+    var page = req.query.page || 1;
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
     console.log('url', l.h);
@@ -4221,6 +4222,21 @@ exports.chief = function (req, res, next) {
             cityid: area,
             realname: data.userinfo.realname,
         };
+
+        //分页
+        data.pagination = {
+            // pages:Number.parseInt(data.msg_data.totalpage),
+            pages: 1,
+            displayPage: 5,
+            showCtrl:true,
+            hrefFormer:'/chief' + '?page=',
+            //hrefLatter:'',//链接尾部 .html
+            currentPage:Number.parseInt(page),
+            //查询条件 在page分页之前
+            order:{
+
+            }
+        }
         res.render('chief', data);
     });
 

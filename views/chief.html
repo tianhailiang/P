@@ -3,6 +3,7 @@
 <head >
   {% include "header_new.html" %}
   <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/draft.css" >
   <style type="text/css">
     .canzanps p {
       font-size: 14px;
@@ -15,6 +16,27 @@
     .canzanps em {
       font-style: italic;
     }
+    .guwen_main{
+      width: 100%;
+      height: 30px;
+      background: #f5f5f5;
+    }
+    .guwen {
+      width: 170px;
+      height: 30px;
+      background: #C13232;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      line-height: 30px;
+      margin-bottom: 20px;
+      float: left;
+    }
+    .guwen_ge {
+      float: left;
+      margin-right: 13px;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body style="background: #f5f5f5">
@@ -22,7 +44,155 @@
 {% include "widget/top/top.html" %}
 {% import "widget/new_nav_first/common_nav.html" as common_nav %}
 {{ common_nav.common_nav(tdk,helper) }}
+<div class="dui-layout-lg clearfix" style="width: 1140px;background: #fff;margin-top: 20px;padding: 20px;">
+  <!--国家-->
+  {%
+    set countryList = [
+    {
+    "id": 0,
+    "country": "全部"
+    },
+    {
+    "id": 1,
+    "country": "美国"
+    },
+    {
+    "id": 2,
+    "country": "英国"
+    },
+    {
+    "id": 4,
+    "country": "澳大利亚"
+    },
+    {
+    "id": 3,
+    "country": "加拿大"
+    },
+    {
+    "id": 5,
+    "country": "新西兰"
+    },
+    {
+    "id": 51,
+    "country": "日本"
+    },
+    {
+    "id": 50,
+    "country": "韩国"
+    },
+    {
+    "id": 54,
+    "country": "中国香港"
+    },
+    {
+    "id": 100,
+    "country": "俄罗斯"
+    },
+    {
+    "id": 101,
+    "country": "乌克兰"
+    },
+    {
+    "id": 108,
+    "country": "爱尔兰"
+    },
+    {
+    "id": 111,
+    "country": "意大利"
+    },
+    {
+    "id": 112,
+    "country": "西班牙"
+    },
+    {
+    "id": 102,
+    "country": "白俄罗斯"
+    },
+    {
+    "id": 52,
+    "country": "新加坡"
+    },
+    {
+    "id": 53,
+    "country": "马来西亚"
+    },
+    {
+    "id": 110,
+    "country": "丹麦"
+    },
+    {
+    "id": 103,
+    "country": "德国"
+    },
+    {
+    "id": 104,
+    "country": "法国"
+    },
+    {
+    "id": 105,
+    "country": "挪威"
+    },
+    {
+    "id": 106,
+    "country": "瑞典"
+    },
+    {
+    "id": 107,
+    "country": "芬兰"
+    },
+    {
+    "id": 109,
+    "country": "荷兰"
+    },
+    {
+    "id": 113,
+    "country": "瑞士"
+    }
+    ]
+    %}
+    <div class="dui-layout-con  study-focus" style="width: 1140px;float: none;">
+      <div class="select-country  foucus-public foucus-public-d clearfix" style="margin-left: 0px;width: 1140px;border-bottom: none;">
+        <p><span>国家及地区：</span></p>
+        <ul class="select-list" style="width: 1016px;">
+          {% for cItem in countryList %}
+          <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('articles','n=' + cItem.id, ('type=' + type) if type else '',('tag=' + tag) if tag else '',('order=' + order) if order else '')}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  
+  <div class="guwen_main"><div class="guwen">首席咨询顾问专区</div></div> 
+  <div class="clearfix">
+    <div class="dui-layout-silde guwen_ge">
+      {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+      {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
+    </div>
+    <div class="dui-layout-silde guwen_ge">
+        {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+        {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
+    </div>
+    <div class="dui-layout-silde guwen_ge">
+        {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+        {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
+    </div>
+    <div class="dui-layout-silde guwen_ge">
+        {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+        {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
+    </div>
+    <div class="dui-layout-silde guwen_ge">
+        {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+        {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
+    </div>
+  </div>
 
+  <!-- ===分页器=== -->
+  <div class="pagination-box" data-pagenum="1">
+      <!--<div class="dui-pagination pagination-large">
+      </div>-->
+    {% import "widget2/pagtion/pagtion.html" as pagtion %}
+    {{pagtion.pagtion(pagination)}}
+  </div>
+</div>
 
 
 
@@ -45,4 +215,10 @@
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 </body>
+
+<script>
+//让分页器居中显示
+$(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
+
+</script>
 </html>
