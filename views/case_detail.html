@@ -71,7 +71,7 @@
               {{userinfo.realname}}<i class="adviser-v-i"></i>
             </span>
           </div>
-          <div class="bdsharebuttonbox page_share_buttons" style="margin-top: 15px;float:right;">
+          <div class="bdsharebuttonbox page_share_buttons" style="margin-top: 15px;float:right;" data-uid='userinfo.uid'>
             <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
             <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
             <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
@@ -212,7 +212,34 @@
           "bdPic":$("#get-share-img").attr('data-img'),
           "bdStyle":"0",
           "bdSize":"16",
-          "bdUrl":window.location.href
+          "bdUrl":window.location.href,
+          onAfterClick: function (cmd) {
+                  var authorUId = $('.bdsharebuttonbox').attr('data-uid');
+                  var shareUId = login_ss ? login_ss.uid : '';
+                  var count_data = {
+                    'type': cmd,
+                    'shareUId': shareUId,
+                    'authorUId': authorUId,
+                    'articleId': article_id
+                  }
+                  // console.log('onAfterClick',count_data)
+                  $.ajax({
+                    url: ajaxUrlPrefix.nodeapi+'/share_count',
+                    type:'get',
+                    data:count_data,
+                    dataType:'json',
+                    success:function(msg){
+                      if(msg.code === 0){
+                        console.log('转发统计成功');
+                      } else {
+                        console.log('转发未统计');
+                      }
+                    },
+                    error:function(XMLHttpRequest, textStatus, errorThrown){
+                      console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+                    }
+                  });
+                }
       },
       "share":{}
     };

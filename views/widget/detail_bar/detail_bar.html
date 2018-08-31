@@ -3,7 +3,7 @@
     <div class="detail_bar_in clearfix">
         <div class="bar_title">{{article.article_info.title}}</div>
         <div class="bar_options">
-            <div class="bdsharebuttonbox share_buttons clearfix">
+            <div class="bdsharebuttonbox share_buttons clearfix" data-uid='{{userinfo.uid}}'>
                 <a href="#" class="bds_tsina sina" data-cmd="tsina" title="分享到新浪微博" style="background-size: cover;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{helper.cdnhost}}/assets/img/xl.png',sizingMethod='scale'"></a>
                 <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信" style="background-size: cover;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{helper.cdnhost}}/assets/img/wx.png',sizingMethod='scale'"></a>
                 <a href="#" class="bds_qzone space" data-cmd="qzone" title="分享到QQ空间" style="background-size: cover;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{helper.cdnhost}}/assets/img/qqspace.png',sizingMethod='scale'"></a>
