@@ -25,56 +25,10 @@
     </div>
   </div>
   <div class="dui-layout-lg clearfix dui-layout-padding" >
-    <div class="dui-layout-silde">
-      <!-- =======顾问头像关注====== -->
-      <div data-usertype="{{userinfo.usertype}}" id="userinfo">
-        {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
-        {% if userinfo.status == 1 %} {#离职#}
-          {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
-        {% else %} {#在职#}
-          {% if userinfo.usertype == 2 %}
-            {{community_advisor.advisor(userinfo,helper,login_info)}}
-          {% elif userinfo.usertype == 3 %}
-            {{community_advisor.counsellor(userinfo,helper,login_info)}}
-          {% endif %}
-        {% endif %}
-      </div>
-      <!-- ========猜你喜欢======= -->
-      <div style="margin-top: 20px;" class="dui-box-shadow">
-        <div class="common-title" style="border:1px solid #dcdcdc;">
-          <i></i>
-          <h3>猜你喜欢</h3>
-        </div>
-      {% if userinfo.adviser_type == 1 %}
-        {% esi helper.include(esikey,'fragment/guess_like','n='+userinfo.country,'c='+userinfo.organid) %}
-      {% else %}
-        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+userinfo.country,'c='+userinfo.organid) %}
-      {% endif %}
-      </div>
-      <div style="margin-top: 20px;" class="dui-box-shadow">
-        <div class="common-title" style="border:1px solid #dcdcdc;">
-          <i></i><h3>相关顾问</h3>
-        </div>
-        {% if userinfo.adviser_type == 2 %}
-          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+article.article_info.country_id,'c='+userinfo.organid,'uid='+userinfo.uid,'isArticle=1','isIm=1') %}
-        {% else %}
-          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+article.article_info.country_id,'c='+userinfo.organid,'isArticle=1','uid='+userinfo.uid) %}
-        {% endif %}
-      </div>
-    </div>
-    <div class="dui-layout-div"></div>
     <div class="dui-layout-con" >
       <div class="dui-box-shadow" >
         <div class="adviser-case-detail-con" style="margin-top: 0;" >
-          {% import "widget2/community_nav/community_nav.html" as community_nav %}
-          {#% if userinfo.status == 1 %}
-            {{community_nav.adviser_nav_leave('专栏', userinfo.uid, helper)}}
-          {% else %#}
-            {% if userinfo.usertype == 2 %}
-             {{community_nav.adviser_nav('专栏', userinfo, helper)}}
-            {% endif %}
-          {#% endif %#}
-          <div class="adviser-top clearfix" style="margin-top: 20px;">
+          <div class="adviser-top clearfix">
             <div style="float:left;line-height: 50px;" >
               <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
               </div>
@@ -164,6 +118,46 @@
           <!-- ========评论===== -->
             {% include "widget2/comment/comment.html" %}
         </div>
+      </div>
+    </div>
+    
+    <div class="dui-layout-div"></div>
+
+    <div class="dui-layout-silde">
+      <!-- =======顾问头像关注====== -->
+      <div data-usertype="{{userinfo.usertype}}" id="userinfo">
+        {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+        {% if userinfo.status == 1 %} {#离职#}
+          {{ community_advisor.advisor_leave(userinfo,helper,login_info) }}
+        {% else %} {#在职#}
+          {% if userinfo.usertype == 2 %}
+            {{community_advisor.advisor(userinfo,helper,login_info)}}
+          {% elif userinfo.usertype == 3 %}
+            {{community_advisor.counsellor(userinfo,helper,login_info)}}
+          {% endif %}
+        {% endif %}
+      </div>
+      <!-- ========猜你喜欢======= -->
+      <div style="margin-top: 20px;" class="dui-box-shadow">
+        <div class="common-title" style="border:1px solid #dcdcdc;">
+          <i></i>
+          <h3>猜你喜欢</h3>
+        </div>
+      {% if userinfo.adviser_type == 1 %}
+        {% esi helper.include(esikey,'fragment/guess_like','n='+userinfo.country,'c='+userinfo.organid) %}
+      {% else %}
+        {% esi helper.include(esikey,'fragment/yimin_guess_like','n='+userinfo.country,'c='+userinfo.organid) %}
+      {% endif %}
+      </div>
+      <div style="margin-top: 20px;" class="dui-box-shadow">
+        <div class="common-title" style="border:1px solid #dcdcdc;">
+          <i></i><h3>相关顾问</h3>
+        </div>
+        {% if userinfo.adviser_type == 2 %}
+          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+article.article_info.country_id,'c='+userinfo.organid,'uid='+userinfo.uid,'isArticle=1','isIm=1') %}
+        {% else %}
+          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+article.article_info.country_id,'c='+userinfo.organid,'isArticle=1','uid='+userinfo.uid) %}
+        {% endif %}
       </div>
     </div>
   </div>
