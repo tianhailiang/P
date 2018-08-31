@@ -343,7 +343,7 @@ exports.draft_to_article = function(data,callback){
 
 // 顾问主页列表
 exports.adviser_main=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.adviser_main);
+  var url = _api_url_path(data, config.apis.adviser_main);
   if (url == null) {
     callback('404');
     return;
@@ -353,7 +353,7 @@ exports.adviser_main=function(data,callback){
 }
 // 顾问主页列表踩你喜欢
 exports.likelist=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.likelist);
+  var url = _api_url_path(data, config.apis.likelist);
   if (url == null) {
     callback('404');
     return;
