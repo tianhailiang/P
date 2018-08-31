@@ -255,6 +255,7 @@ exports = module.exports = function (app) {// routes
   app.get('/ad_tongji', login.ad_tongji);//广告位统计登录
   app.get("/schooltopic/:id",about.schooltopic);//金色力量底页
   app.get("/liuxue_item_nunjucks",controller.liuxue_item_nunjucks);//首页代码段落
+  app.get('/chief',controller.chief); //首席顾问
 
   //意见反馈
   app.post('/userFeedback',controller.userFeedback)
