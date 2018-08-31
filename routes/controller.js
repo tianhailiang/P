@@ -4181,3 +4181,49 @@ exports.getCoupons = function (req, res, next) {
         }
     });
 }
+//首席顾问
+exports.chief = function (req, res, next) {
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var qianzhengzhinan_currentPage=req.query.page || 1;
+    var country = req.query.n || 0;
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        log.debug('存储的用户信息' + req.cookies.login_ss);
+    }else{
+        data.login_info = {};
+        data.login_info.uid = 0;
+    }
+
+    async.parallel({
+        //获取用户信息（普通用户，顾问，参赞）
+        userinfo: function (callback) {
+            wec.userinfo({
+                "u_id": data.login_info.uid, "to_uid": data.login_info.uid
+            }, callback)
+        }
+    }, function (err, result) {
+        data.userinfo = returnData(result.userinfo, 'userinfo');
+
+        var pagekey = '';
+        pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_MAIN');
+        data.tdk = {
+            pagekey: pagekey,
+            cityid: area,
+            realname: data.userinfo.realname,
+        };
+        res.render('chief', data);
+    });
+
+
+    
+}
