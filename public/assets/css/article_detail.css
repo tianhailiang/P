@@ -14,6 +14,20 @@
    background:#fff;
    margin-top: 20px;
 }
+.adviser-case-detail-con .adviser-top .zixun {
+  float:left;
+  width:120px;
+  height:30px;
+  font-size: 14px;
+  color:#fff;
+  text-align:center;
+  line-height: 30px;
+  background:#c13232;
+  margin-top: 7.5px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
 .adviser-case-detail-h3{
   font-weight: normal;
   font-size: 18px;
