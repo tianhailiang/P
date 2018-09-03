@@ -201,6 +201,8 @@ var apis = {
   "get_article":shequ_prefix + 'article/',
   //文章id获取顾问
   "get_article_uid": so_prefix + 'article/getUid',
+  //首席顾问列表
+  "top_adviser_list": so_prefix + 'top_adviser_list',
   //用户相册
   "get_album_list": shequ_prefix + 'account/album_list/',
   //发布文章

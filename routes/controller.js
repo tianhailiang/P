@@ -4211,9 +4211,17 @@ exports.chief = function (req, res, next) {
             wec.userinfo({
                 "u_id": data.login_info.uid, "to_uid": data.login_info.uid
             }, callback)
+        },
+        //首席顾问列表
+        top_adviser_list: function (callback) {
+            wec.top_adviser_list({
+                "cityid": area, "page": page, "per_page": 8
+            }, callback)
         }
     }, function (err, result) {
         data.userinfo = returnData(result.userinfo, 'userinfo');
+        data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
+        console.log('top_adviser_list', data.top_adviser_list)
 
         var pagekey = '';
         pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_MAIN');
@@ -4225,7 +4233,7 @@ exports.chief = function (req, res, next) {
 
         //分页
         data.pagination = {
-            // pages:Number.parseInt(data.msg_data.totalpage),
+            pages:Number.parseInt(data.top_adviser_list.totalpage),
             pages: 1,
             displayPage: 5,
             showCtrl:true,
