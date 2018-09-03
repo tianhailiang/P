@@ -198,7 +198,7 @@ var apis = {
   //个人中心-收到的评论
   "get_comment_list": shequ_prefix + 'account/comments_to_me/',
   //文章详情
-  "get_article":shequ_prefix + 'article/',
+  "get_article":so_prefix + 'article',
   //文章id获取顾问
   "get_article_uid": so_prefix + 'article/getUid',
   //用户相册
@@ -270,7 +270,7 @@ var apis = {
   //首页楼层广告
   "advert":prefix + 'advert',
   //编辑文章详情接口
-  "get_article_info":shequ_prefix + 'article/info/',
+  "get_article_info":so_prefix + 'article/info',
   "sendCoupons": coupon + 'sendCoupon',//发送优惠券
   "getCoupons": coupon + 'getCoupons',//获取优惠券
   "sendSms": coupon + 'sendSms', //发送手机验证码（活动页）

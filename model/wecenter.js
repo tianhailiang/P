@@ -138,7 +138,7 @@ exports.userinfo = function(data,callback){
  *  文章详情
  */
 exports.article = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_article);
+  var url = _api_url_path(data, config.apis.get_article);
   if (url == null){
     callback('404');
     return;
@@ -162,7 +162,7 @@ exports.article_getUid = function(data,callback){
  *  编辑文章详情
  */
 exports.article_info = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_article_info);
+  var url = _api_url_path(data, config.apis.get_article_info);
   if (url == null){
     callback('404');
     return;
