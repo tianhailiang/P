@@ -31,8 +31,8 @@ var apis = {
   "community_index": shequ_prefix + 'article/home_page/', //社区首页list
   "modify_portrait": uc_prefix + 'index.php?m=user_edit_avatar',//社区修改头像
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
-  "adviser_main": shequ_prefix + 'article/list/', // 社区 首页
-  "likelist": shequ_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
+  "adviser_main": so_prefix + 'article/list', // 社区 首页
+  "likelist": so_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
   "relation_recommend": shequ_prefix + 'article/correlation/',//相关推荐
   "xiangguan_guwen": so_prefix + 'article/related_adviser/', // 社区 相关顾问
   "yimin_xiangguanguwen": so_prefix + 'article/related_adviser/', // 社区 移民相关顾问
@@ -94,7 +94,7 @@ var apis = {
    //明星顾问
   "get_mingxingguwen": prefix + 'common_recommend',
   //栏目列表
-  "get_channel_list": shequ_prefix + 'article/list/',
+  "get_channel_list": so_prefix + 'article/list',
   //成功案例侧栏
   "get_chenggonganli": prefix + 'common_recommend',
   //专家解读
@@ -198,7 +198,7 @@ var apis = {
   //个人中心-收到的评论
   "get_comment_list": shequ_prefix + 'account/comments_to_me/',
   //文章详情
-  "get_article":shequ_prefix + 'article/',
+  "get_article":so_prefix + 'article',
   //文章id获取顾问
   "get_article_uid": so_prefix + 'article/getUid',
   //首席顾问列表
@@ -272,7 +272,7 @@ var apis = {
   //首页楼层广告
   "advert":prefix + 'advert',
   //编辑文章详情接口
-  "get_article_info":shequ_prefix + 'article/info/',
+  "get_article_info":so_prefix + 'article/info',
   "sendCoupons": coupon + 'sendCoupon',//发送优惠券
   "getCoupons": coupon + 'getCoupons',//获取优惠券
   "sendSms": coupon + 'sendSms', //发送手机验证码（活动页）

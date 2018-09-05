@@ -511,7 +511,7 @@ exports.shengqinganli_list = function (data, callback) {
 }
 //栏目列表页---->栏目
 exports.channel_list = function (data, callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_channel_list);
+  var url = _api_url_path(data, config.apis.get_channel_list);
   if (url == null){
     callback('404');
     return;
