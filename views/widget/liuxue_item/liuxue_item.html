@@ -33,8 +33,8 @@
 .lx-hovertarg li{ display: inline-block; margin-right: 20px; *float: left}
 .lx-hovertarg li a{font-size: 14px;color: #666;	transition: .2s ease;-webkit-transition: .2s ease;}
 .lx-hovertarg > li a:hover{color: #c13232;font-weight: bold;transform: scale(1.1);-webkit-transform: scale(1.1);}
-.lx-hovertarg .slide-icon{position: absolute;top:6px;height: 16px;width: 16px;cursor: pointer;background: url(../assets/img/home-jiantou.gif);}
-.slide-menu{ position: absolute; width: 872px; min-height: 43px; background: #fff;box-shadow: 1px 2px 5px rgba(61, 55, 55, 0.26);left:-215px;top:37px;z-index: 5;padding-bottom: 12px;display:none;}
+.lx-hovertarg .slide-icon{position: absolute;top:6px;height: 16px;width: 16px;cursor: pointer;}
+.slide-menu{ position: absolute; width: 872px; min-height: 43px; background: #fff;box-shadow: 1px 2px 5px rgba(61, 55, 55, 0.26);left:-215px;top:37px;z-index: 999;padding-bottom: 12px;display:none;}
 .slide-menu li{ width:56px; margin-left: 16px; margin-right: 15px;margin-top: 12px;}
 .slide-menu li a:hover{ color: #c13232; text-decoration: underline;}
 #guItems .atities-top{position:absolute;top:65px;}
@@ -99,7 +99,7 @@
 					{% endif %}
 				{% endfor %}
 			</ul>
-			<i class="slide-icon"></i>
+			<i class="slide-icon" style="background:url({{helper.cdnhost}}/assets/img/home-jiantou.gif)"></i>
 		</ul>
 		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区</a>
 	</div>
