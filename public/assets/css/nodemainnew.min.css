@@ -410,15 +410,19 @@ form,input{margin:0;padding:0}
 .new_nav_first_red .new_nav_first{width:1180px}
 .new_nav_first{margin:0 auto;height:82px}
 .new_nav_first .new-logo-left{height:62px;float:left;margin-right:40px}
+.new_nav_first_red .new_nav_first .new-logo-left{margin-right:35px}
 .new_nav_first .new-logo-left img{display:block;float:left;margin-top:10px}
 .new_nav_first .page-type{width:542px;margin-top:26px;float:left}
-.new_nav_first .page-type .type-nav{float:left;height:28px;border-radius:60px;text-align:center;line-height:28px;background-color:#fff;border:1px solid #fff}
+.new_nav_first .page-type .type-nav{float:left;height:28px;border-radius:60px;text-align:center;line-height:28px;background-color:transparent;border:1px solid transparent}
 .new_nav_first .page-type .type-nav.small-nav{width:74px}
 .new_nav_first .page-type .type-nav.middle-nav{width:110px}
 .new_nav_first .page-type .type-nav.big-nav{width:128px;margin-right:0}
-.new_nav_first .page-type li.active{background-color:#C13232;border:1px solid #c13232;color:#fff}
+.new_nav_first .page-type li.active{background-color:#C13232;border:1px solid #c13232}
+.new_nav_first_red .new_nav_first .page-type li.active{background-color:#fff;border:1px solid #fff}
 .new_nav_first .page-type li a{font-size:18px;color:#333}
+.new_nav_first_red .new_nav_first .page-type li a{font-size:18px;color:#fff}
 .new_nav_first .page-type li.active a{color:#fff}
+.new_nav_first_red .new_nav_first .page-type li.active a{color:#c13232}
 .new_nav_first .page-type{float:left}
 .new_nav_first .nav-right{float:right;width:438px}
 .new_nav_first .new-city{float:left;position:relative;z-index:1000;cursor:pointer}
@@ -473,10 +477,10 @@ form,input{margin:0;padding:0}
 .new_nav_first_red .new_nav_first .new-home-search .search-btn{background-color:#821313}
 .new_nav_first .new-home-search .search-btn{width:44px;height:30px;float:right;border:none;outline-style:none;line-height:30px;text-align:center}
 .new_nav_first .search-btn i{font-size:16px;color:#fff;line-height:30px}
-.new_nav_first .new-home-search .hot-tags-box{width:348px;height:132px;position:absolute;z-index:2;background-color:#fff;top:32px;right:0;border:1px solid #DCDCDC;display:none}
+.new_nav_first .new-home-search .hot-tags-box{width:324px;height:132px;position:absolute;z-index:2;background-color:#fff;top:32px;right:0;border:1px solid #DCDCDC;display:none}
 .new_nav_first .new-home-search .hot-tags-box .hot-tags-title{margin:0 10px;height:30px;line-height:30px;border-bottom:1px solid #DCDCDC;font-size:12px;color:#999}
 .new_nav_first .new-home-search .hot-tags-box .hot-tags-cont{font-size:0;padding:10px 23px}
-.new_nav_first .new-home-search .hot-tags-box .hot-tags-cont span{display:inline-block;height:20px;line-height:20px;padding:0 10px;border-radius:10px;background-color:rgba(193,50,50,.06);cursor:pointer;font-size:12px;color:#C13232;margin:10px 11px}
+.new_nav_first .new-home-search .hot-tags-box .hot-tags-cont span{display:inline-block;height:20px;line-height:20px;padding:0 10px;border-radius:10px;background-color:rgba(193,50,50,.06);cursor:pointer;font-size:12px;color:#C13232;margin:10px 8px}
 .new_nav_first .top-div{width:560px;margin:0 auto;height:54px;border-bottom:1px dashed #dcdcdc;font-size:14px;color:#333;line-height:18px;text-align:left}
 .new_nav_first .top-div-1{height:20px;margin-bottom:10px;overflow:hidden;display:-webkit-box;text-overflow:ellipsis;-webkit-line-clamp:2;-webkit-box-orient:vertical}
 .new_nav_first .top-div-1 i{font-size:16px;color:#C13232;margin-right:2px}

@@ -27,6 +27,9 @@ form, input {
     float: left;
     margin-right: 40px;
 }
+.new_nav_first_red .new_nav_first .new-logo-left {
+    margin-right: 35px;
+}
 .new_nav_first .new-logo-left img{
     display: block;
     float: left;
@@ -45,8 +48,8 @@ form, input {
     border-radius: 60px;
     text-align: center;
     line-height: 28px;
-    background-color: #fff;
-    border: 1px solid #fff;
+    background-color: transparent;
+    border: 1px solid transparent;
 }
 .new_nav_first .page-type .type-nav.small-nav {
     width: 74px;
@@ -61,14 +64,24 @@ form, input {
 .new_nav_first .page-type li.active{
     background-color: #C13232;
     border: 1px solid #c13232;
-    color: #fff;
+}
+.new_nav_first_red .new_nav_first .page-type li.active{
+    background-color: #fff;
+    border: 1px solid #fff;
 }
 .new_nav_first .page-type li a{
     font-size: 18px;
     color: #333;
 }
+.new_nav_first_red .new_nav_first .page-type li a{
+    font-size: 18px;
+    color: #fff;
+}
 .new_nav_first .page-type li.active a{
     color: #fff;
+}
+.new_nav_first_red .new_nav_first .page-type li.active a{
+    color: #c13232;
 }
 .new_nav_first .page-type{
     float: left;
@@ -378,7 +391,7 @@ form, input {
     line-height: 30px;
 }
 .new_nav_first .new-home-search .hot-tags-box {
-    width: 348px;
+    width: 324px;
     height: 132px;
     position: absolute;
     z-index: 2;
@@ -410,7 +423,7 @@ form, input {
     cursor: pointer;
     font-size: 12px;
     color: #C13232;
-    margin: 10px 11px;
+    margin: 10px 8px;
 }
 .new_nav_first .top-div{
     width: 560px;
