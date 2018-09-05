@@ -1,11 +1,11 @@
 <style type="text/css">
 .lxContaniner{margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
 .lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc;}
-.lx-head h1{float:left;margin-right:80px;color:#333;font-size:22px}
+.lx-head h1{float:left;width:132px;overflow: hidden; margin-right:40px;color:#333;font-size:22px}
 .lx-tabitems{float:left;margin-top:5px}
 .lx-tabitems li{position:relative;float:left;color:#666;margin-right:14px;text-align:center;font-size:14px;cursor:pointer}
 .lx-tabitems li.active{color:#c13232;font-size: 14px;}
-.lx-tabitems li:first-child{margin-right: 25px;}
+/* .lx-tabitems li:first-child{margin-right: 25px;} */
 .lx-tabitems li.active em{position:absolute;bottom:-14px;left:0;display:block;width:100%;height:2px;background:#c13232}
 .gw-items li{float:left;margin-right:20px;margin-bottom:10px;padding-bottom:30px; position: relative; width:385px;*width:380px;width:380px\0;border-bottom:solid 1px #dcdcdc}
 .gw-topitems{position:relative;overflow:hidden;margin-bottom:20px;box-shadow:0 3px 5px #e2e5e6;background:#f1f4f6;}
@@ -27,16 +27,15 @@
 #guItems li:nth-child(3) .gw-people{margin-left: 26px;}
 .home-guanggao a{float: left;margin-right: 20px;background-color: #dcdcdc;}
 #guItems li{ color: #c13232;}
-.lx-head a{ font-size: 14px;color: #c13232;float: left;margin-top: 5px}
-.lx-head .enter{ font-size: 14px;color: #c13232;float: right;margin-top: 5px;font-weight: bold;}
+.lx-head a{ font-size: 14px;color: #c13232;float: left;margin-top: 5px;}
+.lx-head .enter{ font-size: 14px;color: #c13232;float: right;margin-top: 5px;padding-right:20px;font-weight: bold;background:url(../assets/img/home_icon_arrow.png) no-repeat;background-position:right center}
 .lx-hovertarg{ float: left;font-size: 0; position: relative; }
-.lx-hovertarg li{ display: inline-block; margin-right: 14px; *float: left}
-.lx-hovertarg li a{font-size: 14px;color: #999;	transition: .2s ease;-webkit-transition: .2s ease;}
+.lx-hovertarg li{ display: inline-block; margin-right: 20px; *float: left}
+.lx-hovertarg li a{font-size: 14px;color: #666;	transition: .2s ease;-webkit-transition: .2s ease;}
 .lx-hovertarg > li a:hover{color: #c13232;font-weight: bold;transform: scale(1.1);-webkit-transform: scale(1.1);}
-.lx-hovertarg .slide-icon,.lx-hovertarg .slide-toggle-icon {position: absolute;top:2px;height: 24px;width: 24px;background: url(../assets/img/home-icon.png) no-repeat;background-position: center;background-size:100%;cursor: pointer;}
-.lx-hovertarg .slide-toggle-icon{background: url(../assets/img/icon_toggle.png) no-repeat;background-position: center;background-size:100%;}
-.slide-menu{ position: absolute; width: 851px; min-height: 43px; background: #fff;box-shadow: 1px 2px 5px rgba(61, 55, 55, 0.26);left:-215px;top:37px;z-index: 5;padding-bottom: 12px;display:none;}
-.slide-menu li{ margin-left: 19px; margin-right: 19px;margin-top: 12px;}
+.lx-hovertarg .slide-icon{position: absolute;top:6px;right:-20px;height: 16px;width: 16px;cursor: pointer;}
+.slide-menu{ position: absolute; width: 872px; height:88px; background: #fff;box-shadow: 1px 2px 5px rgba(61, 55, 55, 0.26);left:-215px;top:37px;z-index: 999;padding-bottom: 12px;display:none;}
+.slide-menu li{ width:56px; margin-left: 16px; margin-right: 15px;margin-top: 12px;}
 .slide-menu li a:hover{ color: #c13232; text-decoration: underline;}
 #guItems .atities-top{position:absolute;top:65px;}
 .atities{color: #333;font-size: 16px;text-indent: 20px;display: block;position: absolute;top: 57px;}
@@ -100,9 +99,9 @@
 					{% endif %}
 				{% endfor %}
 			</ul>
-			<i class="slide-icon"></i>
+			<i class="slide-icon" style="background:url({{helper.cdnhost}}/assets/img/home-jiantou.gif)"></i>
 		</ul>
-		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区&nbsp;&nbsp;></a>
+		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区</a>
 	</div>
 	{% for type in  floor.list %}{#类别#}
 	{% if loop.index == 1 and type.edu_name == '推荐'%}
@@ -157,14 +156,12 @@
 	})
 	//折叠菜单
 	$(".lx-hovertarg .slide-icon").on('click',function () {
-
+		console.log('aa')
 		if(!$(this).hasClass('slide-toggle-icon')){
-			$(this).removeClass('slide-icon')
 			$(this).addClass('slide-toggle-icon')
 			$(this).prev().slideDown(90)
 		}else{
 			$(this).removeClass('slide-toggle-icon')
-			$(this).addClass('slide-icon')
 			$(this).prev().slideUp(90)
 		}
 	})
