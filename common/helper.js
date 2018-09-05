@@ -500,6 +500,7 @@ function tagChecked(name,val,checkedList){
               <i class="level-sel-i iconfont"></i>
               <i>${val}</i>
             </span>`;
+  var specialStyle = '';          
   if(name=="留学案例"){
     html =`<span class="recommend-sel" style="display: block;" data-str="${val}" id="recommend-sel-case">
             <i class="level-sel-i iconfont"></i>
@@ -525,7 +526,10 @@ function tagChecked(name,val,checkedList){
   }
   for (let item of checkedList) {
     if(val == item){
-      html = `<span class="recommend-sel" checked="checked" data-str="${val}">
+      if (name == "QS排名") {
+        specialStyle ="style='margin-right:38px;'"
+      }
+      html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle}>
                 <i class="level-sel-i iconfont" style="border:none;color:#c13232;
                 margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
                 <i>${val}</i>
