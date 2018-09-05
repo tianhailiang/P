@@ -175,7 +175,7 @@
                       { "name":"备考资讯","val":"备考资讯" }
                 ]  %}
                 {% for item in recommendList%}
-                  <span class="recommend-sel" data-str="{{item.name}}" >
+                  <span class="recommend-sel" data-str="{{item.name}}" style={{ 'margin-right:37px;' if item.name== 'QS排名' else ''}}>
                     <i class="level-sel-i iconfont"></i>
                     <i>{{item.name}}</i>
                   </span>
