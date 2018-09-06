@@ -32,12 +32,6 @@
             </span>
           </div>
           <div style='float:right;'>
-            <a onclick="openchat_new('{{ userinfo.new_job_number}}')" class="zixun">立即咨询</a>
-            <div class="nav-phone" style="float:left;margin-top: 3px;">
-              <span class="phone-bg"><i class="iconfont">&#xe618;</i></span>
-              <span class="community-zixun" >留学咨询热线：</span>
-              <span class="community-tel">{{ userinfo.tel }}</span>
-            </div>
             <div class="bdsharebuttonbox page_share_buttons" style="margin-top: 15px;float: left;" data-uid='{{userinfo.uid}}'>
               <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
               <a href="#" class="bds_weixin weixin-pengyouquan" data-cmd="weixin" title="分享到微信朋友圈"></a>
@@ -56,20 +50,27 @@
             <span class="art-tag-list">{{article.article_info.tag_list}}</span>
           </div>
         </div>
-        <div class="adviser-case-detail-come" >
-          <span>时间：{{article.article_info.add_time}}</span>
-          <span style="float:right;margin-left:20px;">
-            点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
-          </span>
-          <span style="float:right;margin-left:20px;">
-            评论{{article.article_info.comments}}
-          </span>
-          <span style="float:right;margin-left:20px;">
-            收藏<i id="collection-num">{{article.article_info.favorites}}</i>
-          </span>
-          <span style="float:right;margin-left: 20px;">
-            阅读<i style="font-style: normal;" id="detail_views_num" data-viesNum="{{article.article_info.views}}"></i>
-          </span>
+        <div class="detail-info-bar clearfix">
+          <div class="adviser-case-detail-come" >
+            <span>时间：{{article.article_info.add_time}}</span>
+            <span>
+              收藏<i id="collection-num">{{article.article_info.favorites}}</i>
+            </span>
+            <span>
+              阅读<i style="font-style: normal;" id="detail_views_num" data-viesNum="{{article.article_info.views}}"></i>
+            </span>
+            <span>
+              评论{{article.article_info.comments}}
+            </span>
+            <span>
+              点赞<i id="fabulous-num">{{article.article_info.votes}}</i>
+            </span>
+          </div>
+          <div class="connect-info">
+            <img src="{{helper.cdnhost}}/assets/img/main_icon_phone.png" alt="">
+            <span><i class="zixun-info">留学咨询热线</i><i class="zixun-phone">：{{userinfo.tel}}</i></span>
+            <span class="zixun-btn" onclick="openchat_new('{{ userinfo.new_job_number}}')">立即咨询</span>
+          </div>
         </div>
         <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
           {{article.article_info.message | safe}}
