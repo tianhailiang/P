@@ -1,32 +1,12 @@
 <style type="text/css">
-.lxContaniner{margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
-.lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc;}
+.lxContaniner{margin-top:26px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
+.lx-head{padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc;}
 .lx-head h1{float:left;width:132px;overflow: hidden; margin-right:40px;color:#333;font-size:22px}
 .lx-tabitems{float:left;margin-top:5px}
 .lx-tabitems li{position:relative;float:left;color:#666;margin-right:14px;text-align:center;font-size:14px;cursor:pointer}
 .lx-tabitems li.active{color:#c13232;font-size: 14px;}
 /* .lx-tabitems li:first-child{margin-right: 25px;} */
 .lx-tabitems li.active em{position:absolute;bottom:-14px;left:0;display:block;width:100%;height:2px;background:#c13232}
-.gw-items li{float:left;margin-right:20px;margin-bottom:10px;padding-bottom:30px; position: relative; width:385px;*width:380px;width:380px\0;border-bottom:solid 1px #dcdcdc}
-.gw-topitems{position:relative;overflow:hidden;margin-bottom:20px;box-shadow:0 3px 5px #e2e5e6;background:#f1f4f6;}
-.gw-topitems li{margin-right:0;margin-bottom:0;padding-top:10px;width:400px;border-bottom:none;background-color:#f1f4f6;}
-.triangle{position:absolute;top:0;right:0;width:0;height:0;border-top:20px solid #c13232;border-left:20px solid transparent}
-.gw-topitems .gw-people{margin-left:20px}
-.gw-topitems .gw-news{ margin-right: 16px;}
-.gw-items{ width: 1200px; overflow: hidden; }
-.gw-items li:nth-child(3n){margin-right:0}
-.gw-people{position:relative;float:left;margin-left:20px}
-.lx-groupitems .gw-people a{background-position:0 0;background-position:-18px -18px\0;}
-:root .lx-groupitems .gw-people a{background-position:0 0\0;}
-.gw-people img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
-.gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
-.gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
-.gw-legend{float:right;margin-top:18px;padding:2px 8px;-webkit-border-radius:8px;border-radius:8px;background:rgba(193, 50, 50,.06);color:#c13232;font-size:12px}
-.gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
-.gw-people .bg-peopel,.gw-people a{float:left;height: 51px; width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
-#guItems li:nth-child(3) .gw-people{margin-left: 26px;}
-.home-guanggao a{float: left;margin-right: 20px;background-color: #dcdcdc;}
-#guItems li{ color: #c13232;}
 .lx-head a{ font-size: 14px;color: #c13232;float: left;margin-top: 5px;}
 .lx-head .enter{ font-size: 14px;color: #c13232;float: right;margin-top: 5px;padding-right:20px;font-weight: bold;background:url(../assets/img/home_icon_arrow.png) no-repeat;background-position:right center}
 .lx-hovertarg{ float: left;font-size: 0; position: relative; }
@@ -37,11 +17,65 @@
 .slide-menu{ position: absolute; width: 872px; height:88px; background: #fff;box-shadow: 1px 2px 5px rgba(61, 55, 55, 0.26);left:-215px;top:37px;z-index: 999;padding-bottom: 12px;display:none;}
 .slide-menu li{ width:56px; margin-left: 16px; margin-right: 15px;margin-top: 12px;}
 .slide-menu li a:hover{ color: #c13232; text-decoration: underline;}
-#guItems .atities-top{position:absolute;top:65px;}
-.atities{color: #333;font-size: 16px;text-indent: 20px;display: block;position: absolute;top: 57px;}
-.atities:link{color: #333;}
-.atities:visited{color: #999;}
-.atities:hover{color: #c13232;}
+
+
+.gw-items li {
+	width: 366px;
+	float: left;
+	padding-left: 20px;
+}
+.gw-items li:nth-child(2n),.gw-items li:nth-child(3n){
+	padding-left: 41px;
+}
+.gw-items li .article-title {
+	display: block;
+	padding: 16px 0;
+	font-size: 16px;
+	line-height: 24px;
+	color: #333;
+}
+.gw-items li .article-title:link{color: #333;}
+.gw-items li .article-title:visited{color: #999;}
+.gw-items li .article-title:hover{color: #c13232;}
+
+.article-info {
+	margin-bottom: 20px;
+}
+.article-info .adviser-info {
+	float: left;
+}
+.article-info .adviser-info .avatar{
+	float: left;
+	width: 51px;
+	height: 51px;
+	-webkit-border-radius:50%;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.article-info .adviser-info .adviser-icon {
+	float: left;
+	padding-right: 24px;
+	margin-top: 18.5px;
+	font-size: 14px;
+	line-height: 1;
+	color: #333;
+	background: url(../assets/img/1v.png) no-repeat right center;
+}
+.article-info .article-tag {
+	float: right;
+	margin-top: 14.5px;
+	padding: 0 19px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	border-radius: 60px;
+	border: 1px solid #c13232;
+	color: #c13232;
+}
+.article-info .article-tag.special {
+	background-color: #c13232;
+	color: #fff;
+}
 </style>
 {% for floor in shouye %} {#国家#}
 {% set ad_seat_index = loop.index + 10 %}
@@ -107,8 +141,43 @@
 	{% if loop.index == 1 and type.edu_name == '推荐'%}
 	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %} data-id="{{type.edu_id}}"><!--推荐-->
 		{% for line in type.list %} {#行数#}
-			{% if loop.index == 1 %} {#第一行#}<ul class="gw-items gw-topitems" id="guItems">	{% for item in line %}	{% if item.uid != null %}	<li>		<div class="gw-people">			<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></a>			<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>		</div>		{#<p>{{item.type}}</p>#}		<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" style="display:block;height:50px;">			<div class="gw-legend gw-news">留学时讯</div>			<a class="atities atities-top" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{ item.title | ellipsis(21) }}</a>		</a>	</li>	{% endif %}	{% endfor %}	<em class="triangle"></em></ul>
-			{% else %}<ul class="gw-items">		{% for item in line %}			{% if item.uid != null %}			<li class="gw-newslist">				<div class="gw-people">					<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover;"></a>					<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>				</div>				{#<p>{{item.type}}</p>#}				<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" style="display:block;height:50px;">					<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>					<a class="atities" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(21)}}</a>				</a>			</li>			{% endif %}		{% endfor %}</ul>
+			{% if loop.index == 1 %} {#第一行#}
+			<ul class="gw-items clearfix" id="guItems" style="{{'border-bottom:1px solid #dcdcdc' if line.length>0 else ''}}">	
+				{% for item in line %}	
+				{% if item.uid != null %}	
+				<li>
+					<a class="article-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(30)}}</a>
+					<div class="article-info clearfix">
+						<a class="adviser-info clearfix">
+							<div target="_blank" class="avatar" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
+							<div class="adviser-icon">ss{{item.user_info.realname}}<i></i></div>		
+						</a>	
+						<div class="article-tag special">留学时讯</div>	
+					</div>			
+				</li>
+
+				{% endif %}	
+				{% endfor %}
+			</ul>
+			{% else %}
+			<ul class="gw-items clearfix" style="{{'border-bottom:1px solid #dcdcdc' if line.length>0 else ''}}">		
+				{% for item in line %}			
+				{% if item.uid != null %}			
+				<li>
+					<a class="article-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(30)}}</a>
+					<div class="article-info clearfix">
+						<a class="adviser-info clearfix">
+							<div target="_blank" class="avatar" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
+							<div class="adviser-icon">ss{{item.user_info.realname}}<i></i></div>		
+						</a>	
+						{% if item.tag_list %}
+						<div class="article-tag">{{item.tag_list | ellipsis(14)}}</div>	
+						{% endif %}
+					</div>			
+				</li>	
+				{% endif %}		
+				{% endfor %}
+			</ul>
 			{% endif %}
 		{% endfor %}
 	</div>

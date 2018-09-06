@@ -1,7 +1,7 @@
  <div class="lx-groupitems" data-id="{{edu_item.edu_id}}">
     {% for line in edu_item.list %} {#行数#}
     {% if loop.index == 1 %} {#第一行#}
-    <ul class="gw-items gw-topitems" id="guItems">
+    <ul class="gw-items clearfix" id="guItems">
       {% for item in line %}
       {% if item.uid != null %}
       <li>
@@ -20,7 +20,7 @@
       <em class="triangle"></em>
     </ul>
     {% else %}
-    <ul class="gw-items">
+    <ul class="gw-items clearfix">
       {% for item in line %}
       {% if item.uid != null %}
       <li class="gw-newslist">
