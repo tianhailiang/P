@@ -66,10 +66,10 @@
 </script>
 {% endmacro %}
 <!-- 首席顾问 -->
-{% macro chief_advisor(advisor, helper,login_info) %}
-<div class="community-advisor dui-box-shadow" style="position: relative">
+{% macro chief_advisor(advisor, helper,login_info, index) %}
+<div class="community-advisor dui-box-shadow" style="position: relative;height: 440px;">
   <ul style="height: 40px">
-    <li class="guanzhu">粉丝<span class="guanzhu-num">{{ advisor.fans_count }}</span></li>
+    <li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_{{advisor.uid}}" data-fans="{{advisor.fans_count}}">{{ advisor.fans_count }}</span></li>
     <li style="width: 135px">文章<span class="article-num">{{ advisor.article_count }}</span></li>
   </ul>
   <dl>
@@ -79,53 +79,42 @@
     </div> -->#}
     <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
-      <p class="advisor-name" >{{ advisor.realname }}</p>
+      <p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
       <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >金吉列{{ advisor.organid | getCity() }}分公司</p>
       {% else %}
       <p class="advisor-bumen" data-cityId ="" >金吉列分公司</p>
       {% endif %}
-      <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else '咨询顾问'
-}}</p>
+      <p class="advisor-enjoy">{{ advisor.position_name }}咨询顾问</p>
     </dd>
   </dl>
   <div class="advisor-intro">
     {% if advisor.introduce.length > 74 %}
-    <p class="expand2" data-tex="{{ advisor.introduce | ellipsis(74) }}">{{ advisor.introduce | ellipsis(74) }}<span class="expand"  data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span></p>
+    <p class="expand2_{{advisor.uid}}" data-tex="{{ advisor.introduce | ellipsis(74) }}" data-text="{{ advisor.introduce }}">{{ advisor.introduce | ellipsis(74) }}</p><!--<span class="expand_{{advisor.uid}}" onclick="text_show({{advisor.uid}})" data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>-->
     {% else %}
     <p class="expand1">{{ advisor.introduce }}</p>
     {% endif %}
   </div>
   <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}">
-    <a {% if login_info.uid !== advisor.uid %} data-new_job_number="{{ advisor.new_job_number}}" {% endif %}class="advisor-zixun "  rel="nofollow">立即咨询</a>
-    {#{% if advisor.is_follow %}
-      <span class="advisor-guanzhu guanzhu-btn" style="padding: 3px 31px;" data-uid="{{advisor.uid}}">已关注</span>
+    <a {% if login_info.uid !== advisor.uid %} data-new_job_number="{{ advisor.new_job_number}}" {% endif %}class="advisor-zixun " style="padding: 4px 24px;" rel="nofollow">立即咨询</a>
+    {% if advisor.is_follow %}
+      <span class="advisor-guanzhu guanzhu-btn_{{advisor.uid}}" style="padding: 3px 31px;" data-uid="{{advisor.uid}}" onclick="guanzhu({{advisor.uid}})">已关注</span>
     {% else %}
-      <span class="advisor-guanzhu guanzhu-btn" data-uid="{{advisor.uid}}">关注</span>
-    {% endif %}#}  
+      <span class="advisor-guanzhu guanzhu-btn_{{advisor.uid}}" data-uid="{{advisor.uid}}" onclick="guanzhu({{advisor.uid}})">关注</span>
+    {% endif %}  
   </div>
 {% if advisor.header_avatar_big %}
   <div class="tan_tupian" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="{{ advisor.header_avatar_big }}" alt=""></div>
 {% endif %}
 </div>
 <script>
+  
  $(function(){
    //立即咨询
-   $('.advisor-zixun').on("click", openchat_new); 
+   $('.advisor-btn').on("click", ".advisor-zixun", openchat_new); 
    function openchat_new(){
      var jobnum = $(this).attr('data-new_job_number')
      openJesongChatByCus(1,jobnum)
-   }
-   $('.expand').on("click", text_show); 
-   function text_show(){
-     var text = $(this).data('text');
-     $('.expand2').html(text+'<span class="expand3" style="color: #c13232;margin-left: 6px;cursor: pointer">收起</span>');
-   }
-   $('.expand3').on("click", text_hide); 
-   function text_hide(){
-     var tex = $(this).parent('.expand2').data('tex');
-     /* $('.expand1').hide();*/
-     $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce | nl2br }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
    }
    $('.advisor-img').on("click", advisor_img); 
    function advisor_img(){
