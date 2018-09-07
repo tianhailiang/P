@@ -94,7 +94,7 @@ var apis = {
    //明星顾问
   "get_mingxingguwen": prefix + 'common_recommend',
   //栏目列表
-  "get_channel_list": so_prefix + '/article/guessLovely',
+  "get_channel_list": so_prefix + 'article/guessLovely',
   //成功案例侧栏
   "get_chenggonganli": prefix + 'common_recommend',
   //专家解读
