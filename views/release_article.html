@@ -72,7 +72,9 @@
               <label class="title active" for="apply-country">
                 <span>*</span> 选择对应国家：
               </label>
-              {% set countryList = [
+              {% set selectedId = '' %}
+              {% 
+                set countryList = [
                 {"countryId":"1","txt":"美国"},
                 {"countryId":"2","txt":"英国"},
                 {"countryId":"3","txt":"加拿大"},
@@ -98,7 +100,7 @@
                 {"countryId":"109","txt":"荷兰"},
                 {"countryId":"113","txt":"瑞士"}
               ] %}
-              <select id="apply-country" >
+              <select id="apply-country" onchange="changeForm(this.value)">
                 <option value="">请选择</option>
                 {% for item in countryList %}
                   <option value="{{item.countryId}}">{{item.txt}}</option>
@@ -153,6 +155,7 @@
                       { "name":"硕士选校","val":"硕士选校" },
                       { "name":"留学打工","val":"留学打工" },
                       { "name":"本硕连读","val":"本硕连读" },
+                      { "name":"动漫留学","val":"动漫留学" },
                       { "name":"留学时间","val":"留学时间" },
                       { "name":"接机住宿","val":"接机住宿" },
                       { "name":"艺术留学","val":"艺术留学" },
@@ -175,7 +178,7 @@
                       { "name":"备考资讯","val":"备考资讯" }
                 ]  %}
                 {% for item in recommendList%}
-                  <span class="recommend-sel" data-str="{{item.name}}" style={{ 'margin-right:38px;' if item.name== 'QS排名' else ''}}>
+                  <span class="recommend-sel" data-str="{{item.name}}" style="{{ 'margin-right:38px;' if item.name== 'QS排名'}}{{'display: none;' if item.name == '动漫留学'}}"  id="{{ 'special-tag' if item.name== '动漫留学' else ''}}">
                     <i class="level-sel-i iconfont"></i>
                     <i>{{item.name}}</i>
                   </span>
@@ -254,6 +257,18 @@
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script src="{{helper.cdnhost}}/dep/js/jquery.media.js"></script>
   <script >
+    function changeForm (val) {
+      var specialTag = $('#special-tag');
+        if (val == 51) {
+          specialTag.show();
+        }
+        else {
+          specialTag.find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          specialTag.find('.level-sel-i').next().css({'color':'#333'});
+          specialTag.attr('checked',false);
+          specialTag.hide();
+        } 
+    }
     $(function(){
       var pdfList = JSON.parse($('.assistant-cont').attr('data-pdf'))|| [];
       console.log('pdf',pdfList)
@@ -484,6 +499,7 @@
           { "name":"硕士选校","val":"硕士选校" },
           { "name":"留学打工","val":"留学打工" },
           { "name":"本硕连读","val":"本硕连读" },
+          { "name":"动漫留学","val":"动漫留学" },
           { "name":"留学时间","val":"留学时间" },
           { "name":"接机住宿","val":"接机住宿" },
           { "name":"艺术留学","val":"艺术留学" },

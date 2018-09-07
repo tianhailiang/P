@@ -495,12 +495,35 @@ function eduChecked(val,checkedList){
   return html;
 }
 //推荐标签选中函数
-function tagChecked(name,val,checkedList){
-  var html =`<span class="recommend-sel" data-str="${val}">
-              <i class="level-sel-i iconfont"></i>
-              <i>${val}</i>
-            </span>`;
-  var specialStyle = '';          
+function tagChecked(name,val,checkedList,checkedCountryId){
+  console.log('tagcheckedtag',name,checkedCountryId)
+  var html ='';
+  var specialStyle = '';  
+  var specialId = '';
+  if (name == "QS排名") {
+    specialStyle ="style='margin-right:38px;'"
+  }
+  else if (name == '动漫留学') {
+    specialId = "id='special-tag'";
+    if (checkedCountryId != 51) {
+      html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;
+    }
+    else {
+      html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId}>
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;
+    }    
+  }
+  else {
+    html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId}>
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;       
+  }
   if(name=="留学案例"){
     html =`<span class="recommend-sel" style="display: block;" data-str="${val}" id="recommend-sel-case">
             <i class="level-sel-i iconfont"></i>
@@ -529,11 +552,30 @@ function tagChecked(name,val,checkedList){
       if (name == "QS排名") {
         specialStyle ="style='margin-right:38px;'"
       }
-      html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle}>
-                <i class="level-sel-i iconfont" style="border:none;color:#c13232;
-                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
-                <i>${val}</i>
-              </span>`;
+      else if (name == '动漫留学') {
+        specialId = "id='special-tag'";
+        if (checkedCountryId != 51) {
+          html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+        }
+        else {
+          html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId}>
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+        }
+      }
+      else {
+        html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId}>
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+      }
       if(name=="留学案例"){
         html =`<span class="recommend-sel" style="display: block;" data-str="${val}" checked="checked" id="recommend-sel-case">
                 <i class="level-sel-i iconfont" style="border:none;color:#c13232;

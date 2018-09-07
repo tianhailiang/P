@@ -76,7 +76,7 @@
                 {"countryId":"109","txt":"荷兰"},
                 {"countryId":"113","txt":"瑞士"}
               ] %}
-              <select id="apply-country" >
+              <select id="apply-country" onchange="changeForm(this.value)">
                 {% for item in countryList %}
                   {% if item.countryId == article.article_info.country_id %}
                     <option value="{{item.countryId}}">{{item.txt}}</option>
@@ -134,7 +134,7 @@
                 }
               ] %}
               {% for item in levelList %}
-                {{helper.eduChecked(item.name,article.article_info.edu_id) |safe }}
+                {{helper.eduChecked(item.name,article.article_info.edu_id,article.article_info.country_id) |safe }}
               {% endfor %}
               <span class="numTip" style="display: block;margin-left: 128px;">
                 学历标签可多选
@@ -151,6 +151,7 @@
                   { "name":"硕士选校","val":"硕士选校" },
                   { "name":"留学打工","val":"留学打工" },
                   { "name":"本硕连读","val":"本硕连读" },
+                  { "name":"动漫留学","val":"动漫留学" },
                   { "name":"留学时间","val":"留学时间" },
                   { "name":"接机住宿","val":"接机住宿" },
                   { "name":"艺术留学","val":"艺术留学" },
@@ -175,7 +176,7 @@
                   {"name":"自定义标签","val":article.article_info.custom_tags}
                 ]  %}
                 {% for item in recommendList %}
-                  {{helper.tagChecked(item.name,item.val,article.article_info.tag_list) |safe }}
+                  {{helper.tagChecked(item.name,item.val,article.article_info.tag_list,article.article_info.country_id) |safe }}
                 {% endfor %}
                 <span class="numTip" style="color:#c13232;display:block;margin-top: 10px;">
                   推荐标签最多选择2个
@@ -240,6 +241,18 @@
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script >
+    function changeForm (val) {
+      var specialTag = $('#special-tag');
+        if (val == 51) {
+          specialTag.show();
+        }
+        else {
+          specialTag.find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          specialTag.find('.level-sel-i').next().css({'color':'#333'});
+          specialTag.attr('checked',false);
+          specialTag.hide();
+        } 
+    }
     $(function(){
         var login_ss = null; //获取用户信息
         if(cookie('login_ss') != undefined){
@@ -405,6 +418,7 @@
           { "name":"硕士选校","val":"硕士选校" },
           { "name":"留学打工","val":"留学打工" },
           { "name":"本硕连读","val":"本硕连读" },
+          { "name":"动漫留学","val":"动漫留学" },
           { "name":"留学时间","val":"留学时间" },
           { "name":"接机住宿","val":"接机住宿" },
           { "name":"艺术留学","val":"艺术留学" },
