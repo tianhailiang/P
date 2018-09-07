@@ -77,7 +77,7 @@
     <!-- <div style="position: relative;">
       <img src="{{helper.cdnhost}}/assets/img/tou_guwen.png" alt="" style="position: absolute;right: 0px;bottom: 0px;width: 34px;height: 34px;">
     </div> -->#}
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
+    <dt class="advisor-img" onclick="advisor_img({{advisor.uid}})" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
       <p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
@@ -104,7 +104,7 @@
     {% endif %}  
   </div>
 {% if advisor.header_avatar_big %}
-  <div class="tan_tupian" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="{{ advisor.header_avatar_big }}" alt=""></div>
+  <div class="tan_tupian_{{advisor.uid}}" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="{{ advisor.header_avatar_big }}" alt=""></div>
 {% endif %}
 </div>
 <script>
@@ -116,14 +116,7 @@
      var jobnum = $(this).attr('data-new_job_number')
      openJesongChatByCus(1,jobnum)
    }
-   $('.advisor-img').on("click", advisor_img); 
-   function advisor_img(){
-     if($(".tan_tupian").css("display")=="block"){
-       $(".tan_tupian").css("display","none");
-     }else{
-       $(".tan_tupian").css("display","block");
-     }
-   }
+   
  })
 </script>
 {% endmacro %}

@@ -227,6 +227,13 @@ $(function(){
   $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
 
 })
+  function advisor_img(id){
+    if($(".tan_tupian_"+id).css("display")=="block"){
+      $(".tan_tupian_"+id).css("display","none");
+    }else{
+      $(".tan_tupian_"+id).css("display","block");
+    }
+  }
   function text_show(id){
      var text = $('.expand2_' + id).attr('data-text');
      $('.expand2_' + id).html(text+'<span class="expand_'+id+'" onclick="text_hide('+id+')" style="color: #c13232;margin-left: 6px;cursor: pointer">收起</span>');
@@ -356,9 +363,11 @@ function chiefmore () {
   })
 }
 function additem(item) {
-  var login_ss = null;
+  var login_ss = {};
   if(cookie('login_ss') != undefined){
     login_ss = JSON.parse(cookie('login_ss'));
+  } else {
+    login_ss.uid = 0;
   }
   var html = '<div class="community-advisor dui-box-shadow" style="position: relative;height: 440px;">'+
             '<ul style="height: 40px">'+
