@@ -16,12 +16,12 @@
   {{ common_nav.common_nav(tdk,helper) }}
   <!--轮播图广告-->
   <div class="dui-layout-lg clearfix banner-box">
-    <div class="dui-layout-silde banner-box-right">
-      {% include "widget/xSlider/xSlider.html" %}
-    </div>
-    <div class="dui-layout-div"></div>
     <div class="dui-layout-con banner-box-left">
       {% include "widget/xSlider/xSlider2.html" %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-silde banner-box-right">
+      {% include "widget/xSlider/xSlider.html" %}
     </div>
   </div>
   <div class="dui-layout-lg clearfix dui-layout-padding" >
@@ -50,10 +50,9 @@
             <h1 class="adviser-case-detail-h3">
               {{article.article_info.title}}
             </h1>
-            <div class="art-tag">
-              <span class="art-tag-bg" ></span>
-              <span class="art-tag-list">{{article.article_info.tag_list}}</span>
-            </div>
+            {% if article.article_info.tag_list %}
+              <div class="tag article-tag" style="float:left;margin:19px 0 0 20px;">{{article.article_info.tag_list}}</div>
+            {% endif %}
           </div>
           <div class="detail-info-bar clearfix">
             <div class="adviser-case-detail-come" >

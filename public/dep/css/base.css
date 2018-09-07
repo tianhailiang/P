@@ -93,3 +93,17 @@ a,button,input,optgroup,select,textarea {
   overflow: hidden;
 }
 .dui-box-shadow {box-shadow: 0px 1px 7px 3px rgba(0,0,0,0.1);}
+.tag.article-tag {
+  display: inline-block;
+	padding: 0 15px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	border-radius: 60px;
+	border: 1px solid #c13232;
+	color: #c13232;
+}
+.tag.article-tag.special {
+	background-color: #c13232;
+	color: #fff;
+}

@@ -29,6 +29,7 @@
 }
 .gw-items li .article-title {
 	display: block;
+	height: 48px;
 	padding: 16px 0;
 	font-size: 16px;
 	line-height: 24px;
@@ -64,17 +65,6 @@
 .article-info .article-tag {
 	float: right;
 	margin-top: 14.5px;
-	padding: 0 19px;
-	height: 20px;
-	line-height: 20px;
-	font-size: 12px;
-	border-radius: 60px;
-	border: 1px solid #c13232;
-	color: #c13232;
-}
-.article-info .article-tag.special {
-	background-color: #c13232;
-	color: #fff;
 }
 </style>
 {% for floor in shouye %} {#国家#}
@@ -148,11 +138,11 @@
 				<li>
 					<a class="article-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(30)}}</a>
 					<div class="article-info clearfix">
-						<a class="adviser-info clearfix">
-							<div target="_blank" class="avatar" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
+						<a class="adviser-info clearfix" href="{{helper.urlgen(item.uid | string)}}">
+							<div target="_blank" class="avatar" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
 							<div class="adviser-icon">ss{{item.user_info.realname}}<i></i></div>		
 						</a>	
-						<div class="article-tag special">留学时讯</div>	
+						<div class="tag article-tag special">留学时讯</div>	
 					</div>			
 				</li>
 
@@ -166,12 +156,12 @@
 				<li>
 					<a class="article-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(30)}}</a>
 					<div class="article-info clearfix">
-						<a class="adviser-info clearfix">
-							<div target="_blank" class="avatar" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
+						<a class="adviser-info clearfix" href="{{helper.urlgen(item.uid | string)}}">
+							<div target="_blank" class="avatar" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
 							<div class="adviser-icon">ss{{item.user_info.realname}}<i></i></div>		
 						</a>	
 						{% if item.tag_list %}
-						<div class="article-tag">{{item.tag_list | ellipsis(14)}}</div>	
+						<div class="tag article-tag">{{item.tag_list | ellipsis(14)}}</div>	
 						{% endif %}
 					</div>			
 				</li>	

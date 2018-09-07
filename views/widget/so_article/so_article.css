@@ -52,19 +52,6 @@
 .result-item .item-info .info-top .info-tags{
     float: left;
 }
-.result-item .item-info .info-top .info-tags span {
-    display: inline-block;
-    height: 20px;
-    padding: 0 10px;
-    background-color: #ff8547;
-    color: #fff;
-    text-align: center;
-    line-height: 20px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    font-size: 12px;
-}
 .result-item .item-info{
     position: relative;
 }

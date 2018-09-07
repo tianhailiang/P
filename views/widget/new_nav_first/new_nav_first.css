@@ -83,6 +83,9 @@ form, input {
 .new_nav_first_red .new_nav_first .page-type li.active a{
     color: #fff;
 }
+.new_nav_first_white.yimin_nav .page-type,.new_nav_first_red.yimin_nav .page-type {
+    width: 206px;
+}
 .new_nav_first .page-type{
     float: left;
 }

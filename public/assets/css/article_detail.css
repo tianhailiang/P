@@ -32,10 +32,13 @@
   font-weight: normal;
   font-size: 18px;
   line-height: 18px;
-  color:#c13232;
+  color:#333;
   padding-top:20px;
   padding-bottom: 10px;
   float:left;
+}
+.adviser-case-detail-h3:hover {
+  color: #c13232;
 }
 .art-tag{
   float:left;
@@ -97,6 +100,7 @@
 .connect-info .zixun-phone {
   font-size: 14px;
   color: #333;
+  cursor: pointer;
 }
 .connect-info .zixun-btn {
   display: inline-block;
