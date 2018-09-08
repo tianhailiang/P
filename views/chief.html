@@ -172,7 +172,7 @@
         <p><span>国家及地区：</span></p>
         <ul class="select-list" style="width: 1016px;">
           {% for cItem in countryList %}
-          <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('articles','n=' + cItem.id, ('type=' + type) if type else '',('tag=' + tag) if tag else '',('order=' + order) if order else '')}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+          <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('chief','n=' + cItem.id, ('type=' + type) if type else '',('tag=' + tag) if tag else '',('order=' + order) if order else '')}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
           {% endfor %}
         </ul>
       </div>
