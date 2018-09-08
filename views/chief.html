@@ -172,7 +172,7 @@
         <p><span>国家及地区：</span></p>
         <ul class="select-list" style="width: 1016px;">
           {% for cItem in countryList %}
-          <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('chief','n=' + cItem.id)}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+          <li id="" data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('chief','n=' + cItem.id)}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
           {% endfor %}
         </ul>
       </div>
@@ -306,8 +306,16 @@ $(document).ready(function (){
 })
 var listpage =1;
 function chiefmore () {
+  var login_ss = {};
+  if(cookie('login_ss') != undefined){
+    login_ss = JSON.parse(cookie('login_ss'));
+  } else {
+    login_ss.uid = 0;
+  }
   var page = $('#main_con').data('page') + 1;
   var pageall = $('#main_con').data('page-all');
+  var countryid = $('.focus-on').parent().attr('data-id');
+  console.log('country',countryid)
   if(pageall == 1 || pageall == listpage ){
     // $('.guwen_more').hide();
     // return false;
@@ -321,21 +329,24 @@ function chiefmore () {
     type: 'GET',
     datatype: 'json',
     data: {
+      "uid": login_ss.uid,
       "cityid": area, 
       "page": page, 
-      "per_page": 20
+      "per_page": 20,
+      "countryid": countryid
     },
     success: function (msg) {
-      if (msg.data.list == null){
+      console.log(msg);
+      if (msg.list == null){
         $('.guwen_more').hide();
         loadMoreFlag = false;
-      } else if (msg.data.list.length <= 20) {
+      } else if (msg.list.length <= 20) {
         $('.guwen_more').hide();
         loadMoreFlag = true;
         $('#main_con').data('page', page)
-        // console.log(msg);
+        console.log(msg);
         var mainhtml = ''
-        for (var i = 0; i < msg.data.list.length;i++) {
+        for (var i = 0; i < msg.list.length;i++) {
           if ((i+1) % 4 == 0 ) {
             if (i == 0) {
               mainhtml += '<div class="guwen_ge" id="main_add">';
