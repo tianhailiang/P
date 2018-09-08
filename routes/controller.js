@@ -4223,28 +4223,11 @@ exports.chief = function (req, res, next) {
         data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
         console.log('top_adviser_list', data.top_adviser_list)
 
-        var pagekey = '';
-        pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_MAIN');
         data.tdk = {
-            pagekey: pagekey,
+            pagekey: 'CHIEF',
             cityid: area,
             realname: data.userinfo.realname,
         };
-
-        //分页
-        data.pagination = {
-            pages:Number.parseInt(data.top_adviser_list.totalpage),
-            pages: 1,
-            displayPage: 5,
-            showCtrl:true,
-            hrefFormer:'/chief' + '?page=',
-            //hrefLatter:'',//链接尾部 .html
-            currentPage:Number.parseInt(page),
-            //查询条件 在page分页之前
-            order:{
-
-            }
-        }
         res.render('chief', data);
     });
 }
