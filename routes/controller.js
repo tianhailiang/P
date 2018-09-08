@@ -4204,7 +4204,7 @@ exports.chief = function (req, res, next) {
         //首席顾问列表
         top_adviser_list: function (callback) {
             wec.top_adviser_list({
-                "cityid": area, "page": page, "per_page": 20
+                "cityid": area, "page": page, "per_page": 20,'countryid': country
             }, callback)
         }
     }, function (err, result) {
