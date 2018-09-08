@@ -94,7 +94,7 @@ var apis = {
   //明星顾问
   "get_mingxingguwen": prefix + 'common_recommend',
   //栏目列表
-  "get_channel_list": so_prefix + 'article/list',
+  "get_channel_list": so_prefix + 'article/guessLovely',
   //成功案例侧栏
   "get_chenggonganli": prefix + 'common_recommend',
   //专家解读
@@ -278,6 +278,7 @@ var apis = {
   "sendSms": coupon + 'sendSms', //发送手机验证码（活动页）
   //获取pdf
   "get_pdf":prefix+'article_des',
+  "get_adviser_list": so_prefix + 'article/convergeAdviserList'//顾问聚合页
 };
 module.exports = {
   redisCache: redisCache,

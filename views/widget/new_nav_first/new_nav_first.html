@@ -5,11 +5,11 @@
             <a  target="_blank" href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}"><img src="{{helper.cdnhost}}/assets/img/logo_red.png" alt="金吉列留学官网"/></a>
         </div>
         <ul class="page-type">
-            <li class="type-nav small-nav active"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li>
-            <li class="type-nav middle-nav"><a href="">留学攻略</a></li>
+            <li class="type-nav small-nav {{'active' if tdk.pagekey == 'HOME'}}"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li>
+            <li class="type-nav middle-nav {{'active' if tdk.pagekey == 'ARTICLELIST'}}"><a href="{{helper.urlgen('articles')}}">留学攻略</a></li>
             <!-- <li class="type-nav middle-nav"><a href="">首席顾问</a></li> -->
-            <li class="type-nav middle-nav"><a href="">留学顾问</a></li>
-            <li class="type-nav big-nav"><a href="{{ helper.urlgen('about') }}">关于金吉列</a></li>
+            <li class="type-nav middle-nav {{'active' if tdk.pagekey == 'CONVERGE_ADVISER'}}"><a href="{{helper.urlgen('adviser')}}">留学顾问</a></li>
+            <li class="type-nav big-nav {{'active' if tdk.pagekey == 'PROFILE'}}"><a href="{{ helper.urlgen('about') }}">关于金吉列</a></li>
         </ul>
         <div class="nav-right">
             <div class="new-city" id="new-city">
