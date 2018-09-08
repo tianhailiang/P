@@ -156,20 +156,25 @@
                     <p><span>国家及地区：</span></p>
                     <ul class="select-list">
                     {% for cItem in countryList %}
-                    <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('articles','n=' + cItem.id, ('type=' + type) if type else '',('tag=' + tag) if tag else '',('order=' + order) if order else '')}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+                    <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('adviser','n=' + cItem.id,('order=' + order) if order else '')}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
                     {% endfor %}
                     </ul>
                 </div>
                 <div class="result-type-bar adviser-list-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
-                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=fans_count')}}" {% if order == 'fans_count' %}class="active"{% else %}{% endif %}>最热</a>
-                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=article_count')}}" {% if order == 'article_count' %}class="active"{% else %}{% endif %}>文章数</a>
+                    <a href="{{helper.active_urlgen('adviser','n='+ country)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.active_urlgen('adviser','n='+ country, 'order=fans_count')}}" {% if order == 'fans_count' %}class="active"{% else %}{% endif %}>最热</a>
+                    <a href="{{helper.active_urlgen('adviser','n='+ country, 'order=article_count')}}" {% if order == 'article_count' %}class="active"{% else %}{% endif %}>文章数</a>
                 </div>
                 <div class="result-conent adviser-list-content" id="result-content">
                     {% include "widget/so_advisor/so_advisor.html" %}
                 </div>
             </div>
         {% if so_adviser_list.total == 0 or so_adviser_list.total == null %}
+        <!--没有搜索到数据-->
+        <div class="no-result page-blank">
+            <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
+            <span class="blank-info">没有找到到相关内容，换个关键词试试吧</span>
+        </div>
         {% else %}
         <div class="dui-layout-con page">
             <div class="pagination-box">

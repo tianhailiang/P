@@ -462,8 +462,8 @@ exports.adviser = function (req, res, next) {
     }
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
+    var country = nquery && nquery.n ? nquery.n : '';
     var page = nquery && nquery.page ? nquery.page : 1;
-    var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
     var order = nquery && nquery.order ? nquery.order : "";
     data.login_nickname = '';
     if ( req.cookies.login_ss !== undefined) {
@@ -473,52 +473,41 @@ exports.adviser = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "SEARCHADVISER",
+                "ad_page": "CONVERGE_ADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "SEARCHADVISER",
+                "ad_page": "CONVERGE_ADVISER",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
         },
-        so_adviser_list:function(callback) {
-            cms.so_adviser_list({
-                order: order,
-                key_word:encodeURI('王'),
-                city_id:area,
-                "adviser_type":"1",
-                "per_page": "16",
-                "page": page
+        adviser_list:function(callback) {
+            cms.adviser_list({
+                countryId: country,
+                cityId:area,
+                "perPage": "16",
+                "page": page,
+                "order": order,
             }, callback);
-        },
-        guess_like: function (callback) {
-            cms.channel_list({
-                order: 'comments desc',
-                city_id:area,
-                "per_page": "10",
-                "page": 1
-            }, callback)
         }
     }, function (err, result) {
-        data.so_adviser_list = returnData(result.so_adviser_list,'so_adviser_list');
-        data.likelist = returnData(result.guess_like,'guess_like');
+        data.so_adviser_list = returnData(result.adviser_list,'adviser_list');
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.order = order;
-        data.keyword=keyword;
+        data.country=country;
         data.cur_page = page;
         data.tdk = {
-            pagekey: 'ADVISER', //key
-            cityid: area,
-            keywords: keyword
+            pagekey: 'CONVERGE_ADVISER', //key
+            cityid: area
         };
         data.pagination = {
             pages:Number.parseInt(data.so_adviser_list.totalpage),
-            hrefFormer:helperfunc.paramurlgen('so_advisor','q='+keyword,order ? 'order='+order : '','page='),
+            hrefFormer:helperfunc.active_urlgen('advisor','n='+country,order ? 'order='+order : '','page='),
             currentPage:Number.parseInt(page)
         }
         data.esikey = esihelper.esikey();
