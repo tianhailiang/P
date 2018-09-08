@@ -4215,7 +4215,7 @@ exports.chief = function (req, res, next) {
         //首席顾问列表
         top_adviser_list: function (callback) {
             wec.top_adviser_list({
-                "cityid": area, "page": page, "per_page": 8
+                "cityid": area, "page": page, "per_page": 20
             }, callback)
         }
     }, function (err, result) {
@@ -4247,7 +4247,16 @@ exports.chief = function (req, res, next) {
         }
         res.render('chief', data);
     });
-
-
-    
 }
+// 首席顾问加载更多
+exports.chiefmore =function(req,res,next){
+    var data = req.query;
+    wec.top_adviser_list(data,function(err,result){
+       if(err){
+         res.send(err);
+       }else{
+           console.log(result)
+         res.send(result);
+       }
+     })
+ }
