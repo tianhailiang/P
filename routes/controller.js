@@ -4174,9 +4174,9 @@ exports.getCoupons = function (req, res, next) {
 exports.chief = function (req, res, next) {
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-    var qianzhengzhinan_currentPage=req.query.page || 1;
-    var country = req.query.n || 0;
-    var page = req.query.page || 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var country = nquery && nquery.n ? nquery.n : '';
+    var page = nquery && nquery.page ? nquery.page : 1;
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
     console.log('url', l.h);
@@ -4211,7 +4211,7 @@ exports.chief = function (req, res, next) {
         data.userinfo = returnData(result.userinfo, 'userinfo');
         data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
         console.log('top_adviser_list', data.top_adviser_list)
-
+        data.country = country;
         data.tdk = {
             pagekey: 'CHIEF',
             cityid: area,

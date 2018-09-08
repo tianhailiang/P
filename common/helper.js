@@ -267,7 +267,7 @@ function seo_to_url(arguments, agtype) {
  * 区分静态和伪静态， 伪静态中n变量需要存在不能去掉
  */
 function exits_static_page(path) {
-  var reg_list = path.match(/^((?!yimin).*)\/(glue|news|countrynews|focus|visa|prereq|cost|nation|recommand|interpret|scholarship|media|eduquestion|school|adviser|activity|case|schoollib|yimin|product|special)(\/*)((?![0-9])[0-9A-Za-z\-_%]*).html$/g);
+  var reg_list = path.match(/^((?!yimin).*)\/(glue|news|countrynews|focus|visa|prereq|cost|nation|recommand|interpret|scholarship|media|eduquestion|school|adviser|activity|case|schoollib|yimin|product|special|chief)(\/*)((?![0-9])[0-9A-Za-z\-_%]*).html$/g);
 
   var rank = path.match(/^(.*)\/(nationrank|productrank|schoolrank).html$/g);
   var edu = path.match(/^(.*)\/(under|middle|master|team|canzan|blog).html$/g);
