@@ -13,7 +13,7 @@
 /* .lx-tabitems li:first-child{margin-right: 25px;} */
 .lx-tabitems li.active em{position:absolute;bottom:-14px;left:0;display:block;width:100%;height:2px;background:#c13232}
 .lx-head a{ font-size: 14px;color: #c13232;float: left;margin-top: 5px;}
-.lx-head .enter{ font-size: 14px;color: #c13232;float: right;margin-top: 5px;padding-right:20px;font-weight: bold;background:url(../assets/img/home_icon_arrow.png) no-repeat;background-position:right center}
+.lx-head .enter{ font-size: 14px;color: #c13232;float: right;margin-top: 5px;padding-right:20px;font-weight: bold;background-repeat:no-repeat;background-position:right center;}
 .lx-hovertarg{ float: left;font-size: 0;}
 .lx-hovertarg li{ display: inline-block; margin-right: 20px; *float: left}
 .lx-hovertarg li:last-of-type {margin-right: 0;}
@@ -78,7 +78,8 @@
 	font-size: 14px;
 	line-height: 1;
 	color: #333;
-	background: url(../assets/img/1v.png) no-repeat right center;
+	background-repeat: no-repeat;
+	background-position: right center;
 }
 .article-info .article-tag {
 	float: right;
@@ -147,7 +148,7 @@
 		<div class="slide-icon-area">
 			<i class="slide-icon" style="background:url({{helper.cdnhost}}/assets/img/home-slidedown.gif)"></i>
 		</div>
-		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">查看详情</a>
+		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter" style="background-image:url({{helper.cdnhost}}/assets/img/home_icon_arrow.png)">查看详情</a>
 	</div>
 	{% for type in  floor.list %}{#类别#}
 	{% if loop.index == 1 and type.edu_name == '推荐'%}
@@ -162,7 +163,7 @@
 					<div class="article-info clearfix">
 						<a class="adviser-info clearfix" href="{{helper.urlgen(item.uid | string)}}">
 							<div target="_blank" class="avatar" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
-							<div class="adviser-icon">{{item.user_info.realname}}<i></i></div>		
+							<div class="adviser-icon" style="background-image:url({{helper.cdnhost}}/assets/img/1v.png)">{{item.user_info.realname}}</div>		
 						</a>	
 						<div class="tag article-tag special">留学时讯</div>	
 					</div>			
