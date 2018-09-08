@@ -34,7 +34,7 @@ exports.searchlikelist = function(req,res,next){
     guess_like: function (callback) {
       cms.channel_list({
          "country_id":country,
-          order: 'comments desc',
+          order: 'views desc',
           city_id:area,
           "per_page": "10",
           "page": 1,
