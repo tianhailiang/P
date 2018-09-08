@@ -512,7 +512,7 @@ exports.adviser = function (req, res, next) {
         data.keyword=keyword;
         data.cur_page = page;
         data.tdk = {
-            pagekey: 'SEARCHADVISER', //key
+            pagekey: 'ADVISER', //key
             cityid: area,
             keywords: keyword
         };
