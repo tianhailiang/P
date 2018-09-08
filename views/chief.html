@@ -179,18 +179,16 @@
     </div>
   
   <div class="guwen_main"><div class="guwen">首席咨询顾问专区</div></div> 
-  <div class="clearfix" id="main_con" data-page="1" data-page-all="{{top_adviser_list.list.totalpage}}">
+  <div class="clearfix" id="main_con" data-page="1" data-page-all="{{top_adviser_list.totalpage}}">
       {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
       {% for item in top_adviser_list.list %}
       <div class="guwen_ge" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %} id="main_add">
         {{ community_advisor.chief_advisor(item,helper,login_info,loop.index) }}
       </div>
       {% endfor %}
-    </div>
   </div>
-  <div class="dui-layout-lg guwen_more clearfix" style="display: none;"><img src="{{helper.cdnhost}}/assets/img/loading-2.gif" alt=""><span>加载更多</span></div>
 </div>
-
+<div class="dui-layout-lg guwen_more clearfix" style="display: none;"><img src="{{helper.cdnhost}}/assets/img/loading-2.gif" alt=""><span>加载更多</span></div>
 {% if userinfo.usertype==3 %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
@@ -222,11 +220,11 @@
 </body>
 
 <script>
-$(function(){
-  //让分页器居中显示
-  $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
-
-})
+  function openchat_new(id){
+     var jobnum = $('#openchat_'+id).attr('data-new_job_number')
+     console.log('job',jobnum)
+     openJesongChatByCus(1,jobnum)
+   }
   function advisor_img(id){
     if($(".tan_tupian_"+id).css("display")=="block"){
       $(".tan_tupian_"+id).css("display","none");
@@ -316,8 +314,8 @@ function chiefmore () {
   }
   var per_page = 20;
   var area = cookie('currentarea');
-  console.log('area',area)
-  var thisObj = $(this);
+  // console.log('area',area)
+  // var thisObj = $(this);
   $.ajax({
     url: '/soapi/chiefmore',
     type: 'GET',
@@ -335,23 +333,23 @@ function chiefmore () {
         $('.guwen_more').hide();
         loadMoreFlag = true;
         $('#main_con').data('page', page)
-        console.log(msg);
-        var html = ''
+        // console.log(msg);
+        var mainhtml = ''
         for (var i = 0; i < msg.data.list.length;i++) {
           if ((i+1) % 4 == 0 ) {
             if (i == 0) {
-              html += '<div class="guwen_ge" id="main_add">';
+              mainhtml += '<div class="guwen_ge" id="main_add">';
             } else {
-              html += '<div class="guwen_ge" style="margin-right: 0px;" id="main_add">';
+              mainhtml += '<div class="guwen_ge" style="margin-right: 0px;" id="main_add">';
             }
           } else {
-            html += '<div class="guwen_ge" id="main_add">';
+            mainhtml += '<div class="guwen_ge" id="main_add">';
           }
-          html += additem(msg.data.list[i]);
-          html += '</div>';
+          mainhtml += additem(msg.data.list[i]);
+          mainhtml += '</div>';
         }
-        html += '</div>'
-        $('#main_con').append($(html));
+        mainhtml += '</div>';
+        $('#main_con').append($(mainhtml));
       } else {
         $('.guwen_more').hide();
         loadMoreFlag = false;
@@ -371,49 +369,49 @@ function additem(item) {
   }
   var html = '<div class="community-advisor dui-box-shadow" style="position: relative;height: 440px;">'+
             '<ul style="height: 40px">'+
-            '<li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_" data-fans="'+item.fans_count+'">'+item.fans_count+'</span></li>'+
+            '<li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_'+item.uid+'" data-fans="'+item.fans_count+'">'+item.fans_count+'</span></li>'+
             '<li style="width: 135px">文章<span class="article-num">'+ item.article_count +'</span></li>'+
             '</ul>'+
             '<dl>'+
-            '<dt class="advisor-img" style="background-image: url('+fn.avaterimg(item.uid, 'small', 0,item.version)+');background-position: 0 0;cursor: pointer;"></dt>'+
+            '<dt class="advisor-img" style="background-image: url('+fn.avaterimg(item.uid, 'small', item.status,item.version)+');background-position: 0 0;cursor: pointer;"></dt>'+
             '<dd>'+
-            '<p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+ item.realname +'</p>'
+            '<p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+ item.realname +'</p>';
   if (item.organid != null) {
-    html += '<p class="advisor-bumen" data-cityId ="'+item.organid+'" >金吉列'+ fn.getCityChinese(item.organid) +'分公司</p>'
+    html += '<p class="advisor-bumen" data-cityId ="'+item.organid+'" >金吉列'+ fn.getCityChinese(item.organid) +'分公司</p>';
   } else {
-    html += '<p class="advisor-bumen" data-cityId ="" >金吉列分公司</p>'
+    html += '<p class="advisor-bumen" data-cityId ="" >金吉列分公司</p>';
   }
   html += '<p class="advisor-enjoy">'+ item.position_name+'咨询顾问</p>'+
           '</dd>'+
           '</dl>'+
-          '<div class="advisor-intro">'
+          '<div class="advisor-intro">';
   if (item.introduce.length > 74) {
     // html += '<p class="expand2_'+item.uid+'" data-tex="'+ fn.ellipsis(item.introduce, 74) +'" data-text="'+ item.introduce +'">'+ fn.ellipsis(item.introduce,74) +'<span class="expand_'+item.uid+'" onclick="text_show('+item.uid+')" data-text="'+ item.introduce +'" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span></p>'
-    html += '<p class="expand2_'+item.uid+'" data-tex="'+ fn.ellipsis(item.introduce, 74) +'" data-text="'+ item.introduce +'">'+ fn.ellipsis(item.introduce,74) +'</p>'
+    html += '<p class="expand2_'+item.uid+'" data-tex="'+ fn.ellipsis(item.introduce, 74) +'" data-text="'+ item.introduce +'">'+ fn.ellipsis(item.introduce, 74) +'</p>';
   } else {
-    html += '<p class="expand1">'+ item.introduce +'</p>'
+    html += '<p class="expand1">'+ item.introduce +'</p>';
   }
-  html += '</div>'
+  html += '</div>';
   if (login_ss.uid == item.uid){
-    html += '<div class="advisor-btn advisor-btn-gray">'
+    html += '<div class="advisor-btn advisor-btn-gray" style="position: absolute;bottom: 1px;">';
   } else {
-    html += '<div class="advisor-btn">'
+    html += '<div class="advisor-btn" style="position: absolute;bottom: 1px;">';
   }
   if (login_ss.uid !== item.uid) {
-    html += '<a  data-new_job_number="'+ item.new_job_number+'" class="advisor-zixun " style="padding: 4px 24px;" rel="nofollow">立即咨询</a>'
+    html += '<a onclick="openchat_new('+item.uid+')" id="openchat_'+item.uid+'" data-new_job_number="'+ item.new_job_number+'" class="advisor-zixun " style="padding: 4px 24px;" rel="nofollow">立即咨询</a>';
   } else {
-    html += '<a class="advisor-zixun " style="padding: 4px 24px;" rel="nofollow">立即咨询</a>'
+    html += '<a class="advisor-zixun " style="padding: 4px 24px;" rel="nofollow">立即咨询</a>';
   }
   if (item.is_follow) {
-    html += '<span class="advisor-guanzhu guanzhu-btn_'+item.uid+'" style="padding: 3px 31px;" data-uid="'+item.uid+'" onclick="guanzhu('+item.uid+')">已关注</span>'
+    html += '<span class="advisor-guanzhu guanzhu-btn_'+item.uid+'" style="padding: 3px 31px;" data-uid="'+item.uid+'" onclick="guanzhu('+item.uid+')">已关注</span>';
   } else {
-    html += '<span class="advisor-guanzhu guanzhu-btn_'+item.uid+'" data-uid="'+item.uid+'" onclick="guanzhu('+item.uid+')">关注</span>'
+    html += '<span class="advisor-guanzhu guanzhu-btn_'+item.uid+'" data-uid="'+item.uid+'" onclick="guanzhu('+item.uid+')">关注</span>';
   }  
-  html += '</div>'
+  html += '</div>';
   if (item.header_avatar_big) {
-    html += '<div class="tan_tupian" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="'+ advisor.header_avatar_big +'" alt=""></div>'
+    html += '<div class="tan_tupian" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="'+ advisor.header_avatar_big +'" alt=""></div>';
   }
-  html += '</div>'
+  html += '</div>';
   return html
 }
 </script>
