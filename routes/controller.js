@@ -507,7 +507,7 @@ exports.adviser = function (req, res, next) {
         };
         data.pagination = {
             pages:Number.parseInt(data.so_adviser_list.totalpage),
-            hrefFormer:helperfunc.active_urlgen('advisor','n='+country,order ? 'order='+order : '','page='),
+            hrefFormer:helperfunc.active_urlgen('adviser','n='+country,order ? 'order='+order : '','page='),
             currentPage:Number.parseInt(page)
         }
         data.esikey = esihelper.esikey();
