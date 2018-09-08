@@ -4204,7 +4204,7 @@ exports.chief = function (req, res, next) {
         //首席顾问列表
         top_adviser_list: function (callback) {
             wec.top_adviser_list({
-                "uid": data.login_info.uid,"cityid": area, "page": page, "per_page": 20,'countryid': country
+                "uid": data.login_info.uid,"cityid": area, "page": page, "per_page": 20, "countryid": country
             }, callback)
         }
     }, function (err, result) {
@@ -4223,6 +4223,7 @@ exports.chief = function (req, res, next) {
 // 首席顾问加载更多
 exports.chiefmore =function(req,res,next){
     var data = req.query;
+    console.log('data',req.query)
     wec.top_adviser_list(data,function(err,result){
        if(err){
          res.send(err);
