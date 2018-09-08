@@ -102,6 +102,7 @@
 <div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
 	<div class="lx-head">
 		<h1 style="font-weight: normal">{{floor.country_name}}留学</h1>
+		<div class="lx-tags-tab">
 		<ul class="lx-tabitems" data-country_id="{{floor.country_id}}">
 			{% for tagitem in floor.list %}
 				{% if loop.index == 1 %}
@@ -126,6 +127,7 @@
 			</ul>
 			<i class="slide-icon" style="background:url({{helper.cdnhost}}/assets/img/home-slidedown.gif)"></i>
 		</ul>
+		</div>
 		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区</a>
 	</div>
 	{% for type in  floor.list %}{#类别#}
