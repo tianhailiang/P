@@ -4211,6 +4211,7 @@ exports.chief = function (req, res, next) {
         data.userinfo = returnData(result.userinfo, 'userinfo');
         data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
         console.log('top_adviser_list', data.top_adviser_list)
+        console.log('totalpage',data.top_adviser_list.totalpage)
         data.country = country;
         data.tdk = {
             pagekey: 'CHIEF',

@@ -289,7 +289,9 @@
         });
    }
 var loadMoreFlag = true;
+var page
 $(document).ready(function (){
+    page = $('#main_con').data('page') + 1;
     $(window).on('scroll', function () {
         var $scroll = $(window).scrollTop();
         var con = document.getElementById('main_con').offsetHeight;
@@ -312,13 +314,14 @@ function chiefmore () {
   } else {
     login_ss.uid = 0;
   }
-  var page = $('#main_con').data('page') + 1;
+  // var page = $('#main_con').data('page') + 1;
   var pageall = $('#main_con').data('page-all');
+  console.log('totalpage',pageall)
   var countryid = $('.focus-on').parent().attr('data-id');
-  console.log('country',countryid)
-  if(pageall == 1 || pageall == listpage ){
-    // $('.guwen_more').hide();
-    // return false;
+  console.log('page',page)
+  if(pageall == 1 || pageall < page ){
+    $('.guwen_more').hide();
+    return false;
   }
   var per_page = 20;
   var area = cookie('currentarea');
@@ -336,17 +339,18 @@ function chiefmore () {
       "countryid": countryid
     },
     success: function (msg) {
-      console.log(msg);
-      if (msg.list == null){
+      if (msg.data.list == null){
         $('.guwen_more').hide();
         loadMoreFlag = false;
-      } else if (msg.list.length <= 20) {
+      } else if (msg.data.list.length <= 20) {
         $('.guwen_more').hide();
         loadMoreFlag = true;
-        $('#main_con').data('page', page)
+        // $('#main_con').data('page', page)
+        page ++;
+        console.log('page',page)
         console.log(msg);
         var mainhtml = ''
-        for (var i = 0; i < msg.list.length;i++) {
+        for (var i = 0; i < msg.data.list.length;i++) {
           if ((i+1) % 4 == 0 ) {
             if (i == 0) {
               mainhtml += '<div class="guwen_ge" id="main_add">';
