@@ -272,8 +272,8 @@
             <div class="has-result">
                 <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
                     <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
-                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
-                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
+                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新</a>
+                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热</a>
                 </div>
                 <div class="result-conent" id="result-content">
                     {% for item in article_list.list %}

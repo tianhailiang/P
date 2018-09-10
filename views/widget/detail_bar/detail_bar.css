@@ -40,6 +40,7 @@
     background-color: #c13232;
     margin-right: 70px;
     margin-top: 10px;
+    cursor: pointer;
 }
 .detail_bar .detail_bar_in .bar_options .share_buttons {
     float: left;

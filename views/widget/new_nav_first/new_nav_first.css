@@ -292,7 +292,7 @@ form, input {
 }
 /*搜索*/
 .new_nav_first .nav-right .new-searchs{
-    width: 326px;
+    width: 303px;
     height: 30px;
     position: relative;
     z-index: 2; /*热门搜索签儿盖住轮播图*/
@@ -360,7 +360,7 @@ form, input {
     outline-style: none;
 }
 .new_nav_first .new-home-search .text-nav{
-    width: 223px;
+    width: 200px;
     height: 28px;
     line-height: 28px;
     border:1px solid #dcdcdc;
