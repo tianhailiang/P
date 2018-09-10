@@ -226,11 +226,7 @@
      openJesongChatByCus(1,jobnum)
    }
   function advisor_img(id){
-    if($(".tan_tupian_"+id).css("display")=="block"){
-      $(".tan_tupian_"+id).css("display","none");
-    }else{
-      $(".tan_tupian_"+id).css("display","block");
-    }
+    window.open('/' + id);
   }
   function text_show(id){
      var text = $('.expand2_' + id).attr('data-text');
