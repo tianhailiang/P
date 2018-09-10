@@ -178,7 +178,8 @@
       </div>
     </div>
   
-  <div class="guwen_main"><div class="guwen">首席咨询顾问专区</div></div> 
+    <div class="guwen_main"><div class="guwen">首席咨询顾问专区</div></div> 
+  {% if top_adviser_list.list %}
   <div class="clearfix" id="main_con" data-page="1" data-page-all="{{top_adviser_list.totalpage}}">
       {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
       {% for item in top_adviser_list.list %}
@@ -187,6 +188,13 @@
       </div>
       {% endfor %}
   </div>
+  {% else %}
+  <!--没有搜索到数据-->
+  <div class="no-result page-blank clearfix" style="width:100%;">
+      <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
+      <span class="blank-info">没有找到顾问，换个条件吧</span>
+  </div>
+  {% endif %}
 </div>
 <div class="dui-layout-lg guwen_more clearfix" style="display: none;"><img src="{{helper.cdnhost}}/assets/img/loading-2.gif" alt=""><span>加载更多</span></div>
 {% import "widget/new_slide/new_slide.html" as  slide %}
@@ -194,7 +202,7 @@
 
 {% include "widget/new_footer/common_footer.html" %}
 <!-- =====活动弹窗===== -->
-<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>-->
