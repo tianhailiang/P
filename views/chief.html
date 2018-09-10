@@ -189,16 +189,8 @@
   </div>
 </div>
 <div class="dui-layout-lg guwen_more clearfix" style="display: none;"><img src="{{helper.cdnhost}}/assets/img/loading-2.gif" alt=""><span>加载更多</span></div>
-{% if userinfo.usertype==3 %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
-{% elseif userinfo.adviser_type==1 %}
-{% import "widget/new_slide/new_slide3.html" as  slide %}
-{{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
-{% elseif userinfo.adviser_type==2   %}
-{% import "widget/new_slide_yimin/new_slide3.html" as  slide %}
-{{slide.leyu_slide(userinfo,login_info,helper) }}
-{% endif %}
 
 {% include "widget/new_footer/common_footer.html" %}
 <!-- =====活动弹窗===== -->
@@ -208,13 +200,7 @@
 <!--<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>-->
 <!-- <script src="{{helper.cdnhost}}/assets/js/follow.js"></script> -->
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js"></script>
-{% if userinfo.usertype==3 %}
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
-{% elseif userinfo.adviser_type==1 %}
-<script src="{{helper.cdnhost}}/assets/js/slide2.js"></script>
-{% elseif userinfo.adviser_type==2   %}
-<script src="{{helper.cdnhost}}/assets/js/slide2_yimin.js"></script>
-{% endif %}
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 </body>
