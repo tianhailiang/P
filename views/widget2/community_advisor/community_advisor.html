@@ -79,7 +79,7 @@
     </div> -->#}
     <dt class="advisor-img" onclick="advisor_img({{advisor.uid}})" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advisor.status,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
-      <p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">{{ advisor.realname }}</p>
+      <p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;line-height: 20px;">{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
       <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >金吉列{{ advisor.organid | getCity() }}分公司</p>
       {% else %}

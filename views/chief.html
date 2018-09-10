@@ -385,7 +385,7 @@ function additem(item) {
             '<dl>'+
             '<dt class="advisor-img" onclick="advisor_img('+item.uid+')" style="background-image: url('+fn.avaterimg(item.uid, 'small', item.status,item.version)+');background-position: 0 0;cursor: pointer;"></dt>'+
             '<dd>'+
-            '<p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+ item.realname +'</p>';
+            '<p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;line-height: 20px;">'+ item.realname +'</p>';
   if (item.organid != null) {
     html += '<p class="advisor-bumen" data-cityId ="'+item.organid+'" >金吉列'+ fn.getCityChinese(item.organid) +'分公司</p>';
   } else {
