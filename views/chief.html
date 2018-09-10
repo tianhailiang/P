@@ -207,20 +207,20 @@
 
 <script>
   function openchat_new(id){
-      var login_ss = null;
-      if(cookie('login_ss') != undefined){
-        login_ss = JSON.parse(cookie('login_ss'));
-      }
-      if($(this).parent().hasClass('advisor-btn-gray')){
-          return false;
-      }
-      if(login_ss == undefined){
-          //layer.msg('你还没有登录')
-          //   window.setTimeout(function(){
-          getlogin();
-          //   },1000);
-          return false;
-      }
+      // var login_ss = null;
+      // if(cookie('login_ss') != undefined){
+      //   login_ss = JSON.parse(cookie('login_ss'));
+      // }
+      // if($(this).parent().hasClass('advisor-btn-gray')){
+      //     return false;
+      // }
+      // if(login_ss == undefined){
+      //     //layer.msg('你还没有登录')
+      //     //   window.setTimeout(function(){
+      //     getlogin();
+      //     //   },1000);
+      //     return false;
+      // }
      var jobnum = $('#openchat_'+id).attr('data-new_job_number')
      console.log('job',jobnum)
      openJesongChatByCus(1,jobnum)
