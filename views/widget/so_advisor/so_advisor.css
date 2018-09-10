@@ -50,6 +50,11 @@
     line-height: 24px;
     color: #666;
 }
+.so_advisor_bottom p {
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+}
 .so_advisor_bottom p a{
     color: #c13232;
 }

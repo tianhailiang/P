@@ -394,7 +394,7 @@ form, input {
     line-height: 30px;
 }
 .new_nav_first .new-home-search .hot-tags-box {
-    width: 324px;
+    width: 301px;
     height: 132px;
     position: absolute;
     z-index: 2;
@@ -414,7 +414,7 @@ form, input {
 }
 .new_nav_first .new-home-search .hot-tags-box .hot-tags-cont {
     font-size: 0;
-    padding: 10px 23px;
+    padding: 10px 14px;
 }
 .new_nav_first .new-home-search .hot-tags-box .hot-tags-cont span {
     display: inline-block;
@@ -426,7 +426,7 @@ form, input {
     cursor: pointer;
     font-size: 12px;
     color: #C13232;
-    margin: 10px 8px;
+    margin: 10px 7px;
 }
 .new_nav_first .top-div{
     width: 560px;
