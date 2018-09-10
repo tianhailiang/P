@@ -4210,8 +4210,8 @@ exports.chief = function (req, res, next) {
     }, function (err, result) {
         data.userinfo = returnData(result.userinfo, 'userinfo');
         data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
-        console.log('top_adviser_list', data.top_adviser_list)
-        console.log('totalpage',data.top_adviser_list.totalpage)
+        // console.log('top_adviser_list', data.top_adviser_list)
+        // console.log('totalpage',data.top_adviser_list.totalpage)
         data.country = country;
         data.tdk = {
             pagekey: 'CHIEF',
@@ -4229,7 +4229,7 @@ exports.chiefmore =function(req,res,next){
        if(err){
          res.send(err);
        }else{
-           console.log(result)
+        //    console.log(result)
          res.send(result);
        }
      })
