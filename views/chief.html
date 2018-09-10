@@ -383,7 +383,7 @@ function additem(item) {
             '<li style="width: 135px">文章<span class="article-num">'+ item.article_count +'</span></li>'+
             '</ul>'+
             '<dl>'+
-            '<dt class="advisor-img" style="background-image: url('+fn.avaterimg(item.uid, 'small', item.status,item.version)+');background-position: 0 0;cursor: pointer;"></dt>'+
+            '<dt class="advisor-img" onclick="advisor_img('+item.uid+')" style="background-image: url('+fn.avaterimg(item.uid, 'small', item.status,item.version)+');background-position: 0 0;cursor: pointer;"></dt>'+
             '<dd>'+
             '<p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;">'+ item.realname +'</p>';
   if (item.organid != null) {
