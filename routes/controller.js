@@ -1285,7 +1285,8 @@ exports.center_case = function (req, res, next) {
                 "page": 1,
                 "per_page": 4,
                 "type": 1,
-                "order":"add_time desc"
+                "order":"add_time desc",
+                "delCache": 1
             }, callback);
         }
     }, function (err, result) {
