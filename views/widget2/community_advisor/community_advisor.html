@@ -69,7 +69,7 @@
 {% macro chief_advisor(advisor, helper,login_info, index) %}
 <div class="community-advisor dui-box-shadow" style="position: relative;height: 440px;">
   <ul style="height: 40px">
-    <li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_{{advisor.uid}}" data-fans="{{advisor.fans_count}}">{{ advisor.fans_count }}</span></li>
+    <li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_{{advisor.uid}}" data-fans="{{advisor.fans_count}}" style="padding-left: 10px;">{{ advisor.fans_count }}</span></li>
     <li style="width: 135px">文章<span class="article-num">{{ advisor.article_count }}</span></li>
   </ul>
   <dl>
