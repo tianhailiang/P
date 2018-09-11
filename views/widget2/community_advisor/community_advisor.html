@@ -14,9 +14,9 @@
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
-      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >金吉列{{ advisor.organid | getCity() }}分公司</p>
+      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" style="width: 200px;margin-left: -40px;">金吉列{{ advisor.organid | getCity() }}分公司</p>
       {% else %}
-      <p class="advisor-bumen" data-cityId ="" >金吉列分公司</p>
+      <p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -40px;">金吉列分公司</p>
       {% endif %}
       <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else '咨询顾问'
 }}</p>
@@ -232,9 +232,9 @@
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
-      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >金吉列{{ advisor.organid | getCity() }}分公司</p>
+      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" style="width: 200px;margin-left: -40px;">金吉列{{ advisor.organid | getCity() }}分公司</p>
       {% else %}
-      <p class="advisor-bumen" data-cityId ="" >金吉列分公司</p>
+      <p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -40px;">金吉列分公司</p>
       {% endif %}
       <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else '咨询顾问'
         }}</p>
