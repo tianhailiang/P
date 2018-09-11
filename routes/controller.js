@@ -1869,7 +1869,8 @@ exports.center_article = function (req, res, next) {
                 "page": 1,
                 "per_page": 4,
                 "type": 2,
-                "order":"add_time desc"
+                "order":"add_time desc",
+                "delCache": 1
             }, callback);
         }
     }, function (err, result) {
