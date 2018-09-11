@@ -2173,7 +2173,7 @@ exports.case_detail = function(req,res,next){
         // },
       //文章详情
       article:function(callback){
-        wec.article_info({
+        wec.article({
           "u_id":data.login_info.uid,
           "article_id":data.article_id
         },callback);
@@ -2286,7 +2286,7 @@ exports.article_detail= function(req,res,next){
       // },
     //文章详情
     article:function(callback){
-      wec.article_info({
+      wec.article({
         "u_id":data.login_info.uid,
         "article_id":data.article_id
       },callback);
