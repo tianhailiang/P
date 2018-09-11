@@ -496,7 +496,6 @@ function eduChecked(val,checkedList){
 }
 //推荐标签选中函数
 function tagChecked(name,val,checkedList,checkedCountryId){
-  console.log('tagcheckedtag',name,checkedCountryId)
   var html ='';
   var specialStyle = '';  
   var specialId = '';
