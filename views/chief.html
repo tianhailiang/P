@@ -395,9 +395,9 @@ function additem(item) {
             '<dd>'+
             '<p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;line-height: 20px;">'+ item.realname +'</p>';
   if (item.organid != null) {
-    html += '<p class="advisor-bumen" data-cityId ="'+item.organid+'" >金吉列'+ fn.getCityChinese(item.organid) +'分公司</p>';
+    html += '<p class="advisor-bumen" data-cityId ="'+item.organid+'" style="width: 200px;margin-left: -48px;">金吉列'+ fn.getCityChinese(item.organid) +'分公司</p>';
   } else {
-    html += '<p class="advisor-bumen" data-cityId ="" >金吉列分公司</p>';
+    html += '<p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -48px;">金吉列分公司</p>';
   }
   html += '<p class="advisor-enjoy">'+ item.position_name+'咨询顾问</p>'+
           '</dd>'+
