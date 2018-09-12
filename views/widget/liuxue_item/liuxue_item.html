@@ -195,7 +195,7 @@
 					<div class="article-info clearfix">
 						<a class="adviser-info clearfix" href="{{helper.urlgen(item.uid | string)}}">
 							<div target="_blank" class="avatar" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
-							<div class="adviser-icon">{{item.user_info.realname| ellipsis(10)}}<i></i></div>		
+							<div class="adviser-icon" style="background-image:url({{helper.cdnhost}}/assets/img/1v.png)">{{item.user_info.realname| ellipsis(10)}}<i></i></div>		
 						</a>	
 						{% if item.tag_list %}
 						<div class="tag article-tag">{{item.tag_list | ellipsis(14)}}</div>	
