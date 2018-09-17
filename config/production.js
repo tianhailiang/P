@@ -14,6 +14,7 @@ var prefix = apiconfig.prefix;
 var uc_prefix = apiconfig.uc_prefix;
 var shequ_prefix = apiconfig.shequ_prefix;
 var so_prefix = apiconfig.so_prefix;
+var so_server = apiconfig.so_server;
 var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
 var coupon = apiconfig.coupon;
@@ -246,7 +247,8 @@ var apis = {
   //get_so_article_list
   "get_so_article_list": shequ_prefix + 'search/search_article/',
   //国家文章列表
-  "get_search_article_list": shequ_prefix + 'search/search_article_list/',
+  // "get_search_article_list": shequ_prefix + 'search/search_article_list/',
+  "get_search_article_list": so_prefix + 'search/search_article_list',
   //搜索结果页（顾问）
   "get_so_adviser_adviser": shequ_prefix + 'search/search_adviser/',
   //根据ip 获取城市code码
