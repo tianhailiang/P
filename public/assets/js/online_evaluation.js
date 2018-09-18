@@ -44,6 +44,7 @@ $(function(){
 
 
   $("#evaluation-btn").on('click',function(){
+    var nowObj = $(this);
     if($("#name").val()==''){
       //判断姓名
       $("#name-num").html('请填写您的称呼');
@@ -99,6 +100,7 @@ $(function(){
       success:function(msg){
         console.log(msg);
         if(msg.code === 0){
+          nowObj.parents('#comment_con').hide();
           alert('老师将为您做专业评估。');
         } else {
           alert(msg.message);
