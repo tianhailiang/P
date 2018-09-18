@@ -41,7 +41,11 @@ $(function(){
     }
   });
 
-
+  //重置事件
+  $('#reset-btn').on('click', function () {
+    $('#department').val('');
+    $('#slide-area').val('');
+  })
 
   $("#evaluation-btn").on('click',function(){
     var nowObj = $(this);
