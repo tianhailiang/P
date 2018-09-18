@@ -100,6 +100,7 @@ $(function(){
       success:function(msg){
         console.log(msg);
         if(msg.code === 0){
+          $('#reset-btn').trigger('click');
           nowObj.parents('#comment_con').hide();
           alert('老师将为您做专业评估。');
         } else {
