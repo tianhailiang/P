@@ -41,13 +41,10 @@ $(function(){
     }
   });
 
-  //重置事件
-  $('#reset-btn').on('click', function () {
-    $('#department')[0].options[0].selected = true;
-    $('#slide-area')[0].options[0].selected = true;
-  })
 
-  $("#evaluation-btn").on('click',function(){
+  $("#evaluation-btn").on('click',function(e){
+    e.stopPropagation();
+    e.cancelBubble = true;
     var nowObj = $(this);
     if($("#name").val()==''){
       //判断姓名
@@ -119,12 +116,16 @@ $(function(){
 
   });
 
-  $("#reset-btn").on("click",function(){
+  $("#reset-btn").on("click",function(e){
+    e.stopPropagation();
+    e.cancelBubble = true;
     $("#name").val("");
     $('#name-num').html("");
     $("#phone-slide").val("");
     $('#phoneTip').html('');
-    $("#context").val("")
+    $("#context").val("");
+    $('#department')[0].options[0].selected = true;
+    $('#slide-area')[0].options[0].selected = true;
   })
 
 });
