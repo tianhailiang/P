@@ -43,8 +43,8 @@ $(function(){
 
   //重置事件
   $('#reset-btn').on('click', function () {
-    $('#department').val('');
-    $('#slide-area').val('');
+    $('#department')[0].options[0].selected = true;
+    $('#slide-area')[0].options[0].selected = true;
   })
 
   $("#evaluation-btn").on('click',function(){
