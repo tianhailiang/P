@@ -103,7 +103,9 @@ $(function(){
         if(msg.code === 0){
           $('#reset-btn').trigger('click');
           nowObj.parents('#comment_con').hide();
-          alert('老师将为您做专业评估。');
+          setTimeout(function(){ //先关闭弹框再提示成功必须使用timeout，否则alert会提前执行
+            alert('老师将为您做专业评估。');
+          },0)
         } else {
           alert(msg.message);
 
