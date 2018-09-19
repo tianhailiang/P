@@ -105,7 +105,7 @@ $(function(){
           nowObj.parents('#comment_con').hide();
           setTimeout(function(){ //先关闭弹框再提示成功必须使用timeout，否则alert会提前执行
             alert('老师将为您做专业评估。');
-          },0)
+          },10)
         } else {
           alert(msg.message);
 
