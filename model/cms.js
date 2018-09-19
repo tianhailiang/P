@@ -957,7 +957,7 @@ exports.so_article_list = function (data,callback) {
 }
 //国家文章结果页search_article_list
 exports.search_article_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_search_article_list);
+  var url = _api_url_path(data, config.apis.get_search_article_list);
   if (url == null){
     callback('404');
     return;
