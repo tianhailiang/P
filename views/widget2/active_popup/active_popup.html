@@ -2,7 +2,6 @@
 <div class="act-pop-left" >
     <img src="{{helper.cdnhost}}/assets/img/popup_left_b.png" />
 </div>
-
 <div class="act-pop-box" >
   <div class="act-pop-box-con">
     <div class="act-pop-info-box clearfix">
@@ -11,7 +10,6 @@
             <input type="text"/>
             <input type="password"/> 
         </form>
-        
         {# end清除表单自动添加 #}
         <input class="act-pop-input" placeholder="请输入姓名" id="act-name" maxlength="10" autocomplete="off">
         <input class="act-pop-input" placeholder="请输入手机号" id="act-phone" autocomplete="off">
@@ -151,14 +149,23 @@
 
 <script>
     $(function(){
+        if(cookie('act_flag')=='on' || cookie('act_flag')==null||cookie('act_flag')==undefined){
+          $('.act-pop-box').show().animate({'left':'0'});
+          $('.act-pop-left').animate({'left':'-100%'});
+        }else{
+          $('.act-pop-box').hide().animate({'left':'-100%'});
+          $('.act-pop-left').animate({'left':'0'});  
+        }
         $(".act-pop-country li:nth-child(8n)").css({'marginRight':'0'});
         $('.act-pop-x-btn').on('click',function(){
-            $('.act-pop-box').animate({'left':'-100%'});
+            $('.act-pop-box').hide().animate({'left':'-100%'});
             $('.act-pop-left').animate({'left':'0'});
+            cookie('act_flag','off',{expires: 1,path:'/'});
         });
         $('.act-pop-left').on('click',function(){
             $(this).animate({'left':'-100%'});
-            $('.act-pop-box').animate({'left':'0'});
+            $('.act-pop-box').show().animate({'left':'0'});
+            cookie('act_flag','on',{expires: 1,path:'/'});
         });
         $('.act-pop-sel').on('click',function(){
             //选择国家

@@ -273,6 +273,7 @@
   width: 40px;
   height: 34px;
   margin-right: 20px;
+  display:inline-block;
 }
 .assistant-tab li.img-tab .pic {
   background: url('/assets/img/article_icon_picture_n@2x.png')
@@ -290,6 +291,18 @@
   background: url('/assets/img/article_icon_WZ_n@2x.png')
 }
 .assistant-tab li.article-tab.active .pic {
+  background: url('/assets/img/article_icon_WZ@2x.png')
+}
+.assistant-tab li:hover{
+  color: #c13232;
+}
+.assistant-tab .img-tab:hover .pic{
+  background: url('/assets/img/article_icon_picture@2x.png')
+}
+.assistant-tab .h5-tab:hover .pic {
+  background: url('/assets/img/article_icon_H5@2x.png')
+}
+.assistant-tab .article-tab:hover .pic {
   background: url('/assets/img/article_icon_WZ@2x.png')
 }
 .assistant-cont {

@@ -62,12 +62,12 @@
       </div>
       {% if userinfo.usertype==2 %}
         {% if userinfo.adviser_type == 2 %}
-          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
+          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid,'isIm=1') %}
         {% else %}
-          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid) %}
+          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
         {% endif %}
       {% elseif userinfo.usertype==3 %}
-        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c=1') %}
+        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c=1','uid='+userinfo.uid) %}
       {% endif %}
     </div>
   </div>
@@ -116,10 +116,10 @@
   </div>
 </div>
 {% if userinfo.usertype==3 %}
-{% import "widget/new_slide/new_slide.html" as  slide %}
+{% import "widget/new_slide/new_slide.html" as slide %}
 {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
 {% elseif userinfo.adviser_type==1 %}
-{% import "widget/new_slide/new_slide3.html" as  slide %}
+{% import "widget/new_slide/new_slide3.html" as slide %}
 {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",userinfo,login_info,helper) }}
 {% elseif userinfo.adviser_type==2   %}
 {% import "widget/new_slide_yimin/new_slide3.html" as  slide %}
@@ -127,7 +127,6 @@
 {% endif %}
 {% include "widget/new_footer/common_footer.html" %}
 <!-- =====活动弹窗===== -->
-{% include "widget2/active_popup/active_popup.html" %}
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
@@ -290,11 +289,11 @@
         '<p>' ;
     if(aitem.type==1){
       aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("case", aitem.id.toString()) + '" class="dui-text-warning">' +
-          addArticleImg(aitem.img_list) +
+          addArticleImg(aitem.img_list,aitem.is_immi) +
           '</a>' ;
     }else if(aitem.type==2){
       aItemHtml+= '<a  target="_blank" href="' + fn.urlgen("article", aitem.id.toString()) + '" class="dui-text-warning">' +
-          addArticleImg(aitem.img_list) +
+          addArticleImg(aitem.img_list,aitem.is_immi) +
           '</a>' ;
     }
     aItemHtml+=  '</p>' +
@@ -319,13 +318,13 @@
     window._bd_share_main.init();
   }
 
-  function addArticleImg(imgList) {
+  function addArticleImg(imgList,isyimin) {
     if (imgList == undefined) {
       return '';
     }
     var html = '<ul class="homepage-li" style="float: left;">';
     for (var j=0; j<imgList.length; j++) {
-      html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150') +'" ></li>';
+      html += '<li style="margin-top: 14px"><img src="'+ fn.imageThumb(imgList[j],'150x150',isyimin) +'" ></li>';
     }
     html += '</ul>';
     return html;

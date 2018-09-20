@@ -171,15 +171,14 @@
   <script>
     $(document).ready(function () {
 
+      // $("form").Vaild();
+      // $('.i-checks').iCheck({
+      //   checkboxClass: 'icheckbox_square-green',
+      //   radioClass: 'iradio_square-green'
+      // });
       //清除记录密码浏览器自带功能
-
       document.getElementById('newEmail').value = '';
       document.getElementById('password').value = '';
-      // $("form").Vaild();
-      $('.i-checks').iCheck({
-        checkboxClass: 'icheckbox_square-green',
-        radioClass: 'iradio_square-green'
-      });
       var lS = document.getElementById('loginSubmit');
       if (lS.addEventListener) {
         lS.addEventListener('click', loginS, false);
@@ -189,6 +188,7 @@
       $(".payMethod").find("input[type^='radio']").on('click', function () {
         $(this).addClass('checked').siblings('input').removeClass('checked');
       });
+    })
       function loginS() {
         console.log('login_ssssss')
         if ($('#newEmail').val() === '') {
@@ -264,9 +264,8 @@
           });
 
         }
-      };
+      }
 
-    })
 
   </script>
 </body>

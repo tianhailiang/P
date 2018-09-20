@@ -23,10 +23,12 @@ form, input {
     height: 82px;
 }
 .new_nav_first .new-logo-left{
-    width:217px;
     height: 62px;
     float: left;
-
+    margin-right: 40px;
+}
+.new_nav_first_red .new_nav_first .new-logo-left {
+    margin-right: 30px;
 }
 .new_nav_first .new-logo-left img{
     display: block;
@@ -34,38 +36,62 @@ form, input {
     margin-top: 10px;
 }
 .new_nav_first .page-type{
-    width: 460px;
+    width: 542px;
     margin-top: 26px;
     float: left;
 }
-.new_nav_first .page-type li{
+.new_nav_first .page-type .type-nav{
     float: left;
-    margin-left: 60px;
-    width: 78px;
     height: 28px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
     text-align: center;
     line-height: 28px;
-    background-color: #fff;
-    border: 1px solid #C13232;
+    background-color: transparent;
+    border: 1px solid transparent;
+}
+.new_nav_first .page-type .type-nav.small-nav {
+    width: 74px;
+}
+.new_nav_first .page-type .type-nav.middle-nav {
+    width: 110px;
+}
+.new_nav_first .page-type .type-nav.big-nav {
+    width: 128px;
+    margin-right: 0;
 }
 .new_nav_first .page-type li.active{
     background-color: #C13232;
+    border: 1px solid #c13232;
+}
+.new_nav_first_red .new_nav_first .page-type li.active{
+    background-color: #a31212;
+    border: 1px solid #a31212;
 }
 .new_nav_first .page-type li a{
-    color: #C13232;
     font-size: 18px;
+    color: #333;
+}
+.new_nav_first_red .new_nav_first .page-type li a{
+    font-size: 18px;
+    color: #fff;
 }
 .new_nav_first .page-type li.active a{
     color: #fff;
+}
+.new_nav_first_red .new_nav_first .page-type li.active a{
+    color: #fff;
+}
+.new_nav_first_white.yimin_nav .page-type,.new_nav_first_red.yimin_nav .page-type {
+    width: 206px;
 }
 .new_nav_first .page-type{
     float: left;
 }
 .new_nav_first .nav-right{
     float: right;
+    width: 438px;
 }
 .new_nav_first .new-city{
     float:left;
@@ -74,7 +100,7 @@ form, input {
     cursor: pointer;
 }
 .new_nav_first .new-city .citynames {
-    width:122px;
+    /* width:122px; */
     height: 82px;
     text-align: right;
     line-height: 82px;
@@ -266,7 +292,7 @@ form, input {
 }
 /*搜索*/
 .new_nav_first .nav-right .new-searchs{
-    width: 350px;
+    width: 303px;
     height: 30px;
     position: relative;
     z-index: 2; /*热门搜索签儿盖住轮播图*/
@@ -283,13 +309,13 @@ form, input {
 }
 .new_nav_first .nav-right .search-type-box .search-type {
     position: absolute;
-    width: 40px;
+    width: 49px;
     height: 28px;
     left: 0;
     top: 0;
     z-index: 999;
     background-color: #fff;
-    padding-left: 10px;
+    text-align: center;
     line-height: 28px;
     border: 1px solid #dcdcdc;
     border-right: none;
@@ -334,7 +360,7 @@ form, input {
     outline-style: none;
 }
 .new_nav_first .new-home-search .text-nav{
-    width: 245px;
+    width: 200px;
     height: 28px;
     line-height: 28px;
     border:1px solid #dcdcdc;
@@ -368,7 +394,7 @@ form, input {
     line-height: 30px;
 }
 .new_nav_first .new-home-search .hot-tags-box {
-    width: 348px;
+    width: 301px;
     height: 132px;
     position: absolute;
     z-index: 2;
@@ -388,7 +414,7 @@ form, input {
 }
 .new_nav_first .new-home-search .hot-tags-box .hot-tags-cont {
     font-size: 0;
-    padding: 10px 23px;
+    padding: 10px 14px;
 }
 .new_nav_first .new-home-search .hot-tags-box .hot-tags-cont span {
     display: inline-block;
@@ -400,7 +426,7 @@ form, input {
     cursor: pointer;
     font-size: 12px;
     color: #C13232;
-    margin: 10px 11px;
+    margin: 10px 7px;
 }
 .new_nav_first .top-div{
     width: 560px;

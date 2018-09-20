@@ -27,7 +27,7 @@
 .bold{font-weight:bold;} .f11{ font-size:11px;} .f14{ font-size:14px;}
 .tl {text-align:left;}.tc {text-align:center;} .tr, .a-right{text-align:right;} .nowrap,.nobr{white-space:nowrap; word-wrap:normal;}
 /* quick_links */
-.quick_links_wrap,.mui-mbar-tabs{ width:40px; position:fixed;right:4px;bottom:0; z-index:1000;-webkit-transition:width linear .4s; -moz-transition:width linear .4s; -ms-transition:width linear .4s; transition:width linear .4s; _position:fixed; _bottom:auto; _top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-10);}
+.quick_links_wrap,.mui-mbar-tabs{ width:40px; position:fixed;left:4px;bottom:0; z-index:1000;-webkit-transition:width linear .4s; -moz-transition:width linear .4s; -ms-transition:width linear .4s; transition:width linear .4s; _position:fixed; _bottom:auto; _top:expression(documentElement.scrollTop+documentElement.clientHeight-this.offsetHeight-10);}
 .quick_links_wraper.quick_links_dockright{ margin-left:0; left:auto; right:4px;}
 .mui-mbar-tabs i,.ibar_closebtn,.login_order,.login_favorite{display: inline-block;cursor: pointer;height: 19px;width: 18px;vertical-align: top;position:absolute;}
 #quick_links_panel{
@@ -36,7 +36,7 @@
   position: fixed;
   z-index: 2;
   top: 0;
-  right:0;
+  left:0;
   font-family: 'microsoft yahei',arial;
 
 }
@@ -235,6 +235,7 @@
   position: absolute;
   color:#676767;
   font-size:18px;
+  right: 0;
 }
 .ibar_plugin_content{
   position: absolute;
@@ -634,6 +635,7 @@ i.ibar_recharge-arrow {
   background:#C13232;
   position: fixed;
   top:344px;
+  left: 47px;
 }
 #quick_links_pop .ibar_closebtn{
   color: #ffffff;
@@ -723,7 +725,11 @@ i.ibar_recharge-arrow {
   font-size: 16px;
   text-align: center;
   line-height: 44px;
-  left:-144px;
-  top:1px;
+  left:44px;
+  top:0;
   display: none;
+}
+#comment_close {
+  text-align: right;
+  margin-right: 5px;
 }

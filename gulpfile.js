@@ -1,7 +1,6 @@
 /**
  * Created by DXZ-Weijiu.Wang on 2017/7/24.
  */
-
 var gulp = require('gulp');
 var htmlmin = require('gulp-htmlmin');
 var minify = require('gulp-minify-css');
@@ -22,6 +21,7 @@ var nodemon = require('gulp-nodemon');
 var revCollector = require('gulp-rev-collector');//替换版本号
 var revclean = require('gulp-clean');//清空文件夹
 var gulpSequence = require('gulp-sequence');
+const autoprefixer = require('gulp-autoprefixer');
 //这个可以让express启动
 gulp.task("node", function() {
   nodemon({
@@ -48,7 +48,10 @@ gulp.task("node_yimin", function() {
 
 gulp.task('minifycss', function() {
   return gulp.src(['views/widget2/*/*.css', 'views/widget/*/*.css']) //压缩的文件
-    //.pipe(minify())
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(minify({
       advanced: false,//类型：Boolean 默认：true [是否开启高级优化（合并选择器等）]
       compatibility: 'ie7',//保留ie7及以下兼容写法 类型：String 默认：''or'*' [启用兼容模式； 'ie7'：IE7兼容模式，'ie8'：IE8兼容模式，'*'：IE9+兼容模式]
@@ -110,6 +113,10 @@ gulp.task('server_yimin', ["node_yimin"], function() {
 //css generate verison in dist/rev/css/*.json
 gulp.task('revCss',function(){
   return gulp.src(['public/**/*.css','!' + 'public/dep{,/**}'])
+    .pipe(autoprefixer({
+      browsers: ['last 2 versions'],
+      cascade: false
+    }))
     .pipe(minify({
       advanced: false,//类型：Boolean 默认：true [是否开启高级优化（合并选择器等）]
       compatibility: 'ie7',//保留ie7及以下兼容写法 类型：String 默认：''or'*' [启用兼容模式； 'ie7'：IE7兼容模式，'ie8'：IE8兼容模式，'*'：IE9+兼容模式]

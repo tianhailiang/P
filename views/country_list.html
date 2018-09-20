@@ -217,60 +217,33 @@
       <!--文章标签-->
       {%
       set arcType = [
-      {
-      "type": "全部"
-      },
-      {
-      "type": "专业解析"
-      },
-      {
-      "type": "申请规划"
-      },
-      {
-      "type": "留学费用"
-      },
-      {
-      "type": "留学条件"
-      },
-      {
-      "type": "大学排名"
-      },
-      {
-      "type": "行前指导"
-      },
-      {
-      "type": "就业指导"
-      },
-      {
-      "type": "签证指导"
-      },
-      {
-      "type": "留学案例"
-      },
-      {
-      "type": "院校资讯"
-      },
-      {
-      "type": "留学方案"
-      },
-      {
-      "type": "背景提升"
-      },
-      {
-      "type": "海外生活"
-      },
-      {
-      "type": "备考资讯"
-      },
-      {
-      "type": "文书准备"
-      },
-      {
-      "type": "难点解析"
-      },
-      {
-      "type": "省钱攻略"
-      }
+        {"type": "全部"},
+        { "type":"留学初识" },
+        { "type":"本科选校" },
+        { "type":"硕士选校" },
+        { "type":"留学打工" },
+        { "type":"本硕连读" },
+        { "type":"留学时间" },
+        { "type":"接机住宿" },
+        { "type":"艺术留学" },
+        { "type":"QS排名" },
+        { "type":"留学费用" },
+        { "type":"大学排名" },
+        { "type":"留学条件" },
+        { "type":"留学案例" },
+        { "type":"专业解析" },
+        { "type":"签证指导" },
+        { "type":"就业指导" },
+        { "type":"申请规划" },
+        { "type":"行前指导" },
+        { "type":"省钱攻略" },
+        { "type":"文书准备" },
+        { "type":"海外生活" },
+        { "type":"院校资讯" },
+        { "type":"背景提升" },
+        { "type":"留学方案" },
+        { "type":"难点解析" },
+        { "type":"备考资讯" }
       ]
       %}
       {% if type != '时讯' %}
@@ -299,29 +272,12 @@
             <div class="has-result">
                 <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
                     <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
-                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
-                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
+                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新</a>
+                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热</a>
                 </div>
                 <div class="result-conent" id="result-content">
                     {% for item in article_list.list %}
-                    <div class="result-item clearfix">
-                        <div class="item-adviser">
-<!--                            <a href="{{helper.articleUrlgen(item.user_info.uid | string)}}"><img src="{{helper.avaterimg(item.user_info.uid, 'small', 0,item.user_info.version)}}" alt="" class="adviser-avatar"/><span>{{item.user_info.nickname | shorten(6)}}</span><img src="../assets/img/1v.png" alt="" class="flag"/></a>-->
-                            <a target="_blank" href="{{helper.urlgen(item.user_info.uid | string)}}"><div class="adviser-avatar" style="background-image: url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}})"></div><div class="adviser-info"><span>{{item.user_info.realname | shorten(6)}}</span><img src="{{helper.cdnhost}}/assets/img/1v.png" alt="" class="flag"/></div></a>
-                        </div>
-                        <div class="item-info">
-                            <div class="info-top clearfix">
-                                <a target="_blank" class="info-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">{{item.title}}</a>
-                                <div class="info-tags">
-                                    {% if item.tag_list %}
-                                    <span>{{item.tag_list}}</span>
-                                    {% endif %}
-                                </div>
-                            </div>
-                            <div class="info-desc">{{item.introduce|ellipsis(90)}}<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">【查看详情】</a></div>
-                            <div class="time">{{item.add_time | getDefaultFormat('YYYY-MM-DD HH:mm:ss')}}</div>
-                        </div>
-                    </div>
+                    {% include "widget/so_article/so_article.html" %}
                     {% endfor %}
                 </div>
                <!-- <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">

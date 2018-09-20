@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+  {% include "header_new.html" %}
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/draft.css" >
+  <style type="text/css">
+    .canzanps p {
+      font-size: 14px;
+      line-height: 26px;
+      color: #333333;
+    }
+    .canzanps i {
+      font-style:italic;
+    }
+    .canzanps em {
+      font-style: italic;
+    }
+    .guwen_main{
+      width: 100%;
+      height: 30px;
+      background: #f5f5f5;
+      margin-top: 20px;
+    }
+    .guwen {
+      width: 170px;
+      height: 30px;
+      background: #C13232;
+      color: #fff;
+      font-size: 16px;
+      text-align: center;
+      line-height: 30px;
+      margin-bottom: 20px;
+      float: left;
+    }
+    .guwen_ge {
+      width: 270px;
+      height: 440px;
+      float: left;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
+    .guwen_more{
+      width: 1140px;
+      text-align: center;
+      padding: 20px;
+    }
+    .guwen_more img {
+      width: 24px;
+      height: 24px;
+      margin-right: 20px;
+    }
+    .guwen_more span{
+      font-size: 16px;
+      color: #666;
+    }
+  </style>
+</head>
+<body style="background: #f5f5f5">
+{% include "widget/common_hide/common_hide.html"%}
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
+<div class="dui-layout-lg clearfix" style="width: 1140px;background: #fff;margin-top: 20px;padding: 20px;">
+  <!--国家-->
+  {%
+    set countryList = [
+    {
+    "id": 0,
+    "country": "全部"
+    },
+    {
+    "id": 1,
+    "country": "美国"
+    },
+    {
+    "id": 2,
+    "country": "英国"
+    },
+    {
+    "id": 4,
+    "country": "澳大利亚"
+    },
+    {
+    "id": 3,
+    "country": "加拿大"
+    },
+    {
+    "id": 5,
+    "country": "新西兰"
+    },
+    {
+    "id": 51,
+    "country": "日本"
+    },
+    {
+    "id": 50,
+    "country": "韩国"
+    },
+    {
+    "id": 54,
+    "country": "中国香港"
+    },
+    {
+    "id": 100,
+    "country": "俄罗斯"
+    },
+    {
+    "id": 101,
+    "country": "乌克兰"
+    },
+    {
+    "id": 108,
+    "country": "爱尔兰"
+    },
+    {
+    "id": 111,
+    "country": "意大利"
+    },
+    {
+    "id": 112,
+    "country": "西班牙"
+    },
+    {
+    "id": 102,
+    "country": "白俄罗斯"
+    },
+    {
+    "id": 52,
+    "country": "新加坡"
+    },
+    {
+    "id": 53,
+    "country": "马来西亚"
+    },
+    {
+    "id": 110,
+    "country": "丹麦"
+    },
+    {
+    "id": 103,
+    "country": "德国"
+    },
+    {
+    "id": 104,
+    "country": "法国"
+    },
+    {
+    "id": 105,
+    "country": "挪威"
+    },
+    {
+    "id": 106,
+    "country": "瑞典"
+    },
+    {
+    "id": 107,
+    "country": "芬兰"
+    },
+    {
+    "id": 109,
+    "country": "荷兰"
+    },
+    {
+    "id": 113,
+    "country": "瑞士"
+    }
+    ]
+    %}
+    <div class="dui-layout-con  study-focus" style="width: 1140px;float: none;">
+      <div class="select-country  foucus-public foucus-public-d clearfix" style="margin-left: 0px;width: 1140px;">
+        <p><span>国家及地区：</span></p>
+        <ul class="select-list" style="width: 1016px;">
+          {% for cItem in countryList %}
+          <li id="" data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('chief','n=' + cItem.id)}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  
+    <div class="guwen_main"><div class="guwen">首席咨询顾问专区</div></div> 
+  {% if top_adviser_list.list %}
+  <div class="clearfix" id="main_con" data-page="1" data-page-all="{{top_adviser_list.totalpage}}">
+      {% import "widget2/community_advisor/community_advisor.html" as community_advisor %}
+      {% for item in top_adviser_list.list %}
+      <div class="guwen_ge" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %} id="main_add">
+        {{ community_advisor.chief_advisor(item,helper,login_info,loop.index) }}
+      </div>
+      {% endfor %}
+  </div>
+  {% else %}
+  <!--没有搜索到数据-->
+  <div class="no-result page-blank clearfix" style="width:100%;">
+      <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
+      <span class="blank-info">没有找到顾问，换个条件吧</span>
+  </div>
+  {% endif %}
+</div>
+<div class="dui-layout-lg guwen_more clearfix" style="display: none;"><img src="{{helper.cdnhost}}/assets/img/loading-2.gif" alt=""><span>加载更多</span></div>
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
+
+{% include "widget/new_footer/common_footer.html" %}
+<!-- =====活动弹窗===== -->
+<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
+<!--<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>-->
+<!-- <script src="{{helper.cdnhost}}/assets/js/follow.js"></script> -->
+<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+</body>
+
+<script>
+  function openchat_new(id){
+      // var login_ss = null;
+      // if(cookie('login_ss') != undefined){
+      //   login_ss = JSON.parse(cookie('login_ss'));
+      // }
+      // if($(this).parent().hasClass('advisor-btn-gray')){
+      //     return false;
+      // }
+      // if(login_ss == undefined){
+      //     //layer.msg('你还没有登录')
+      //     //   window.setTimeout(function(){
+      //     getlogin();
+      //     //   },1000);
+      //     return false;
+      // }
+     var jobnum = $('#openchat_'+id).attr('data-new_job_number')
+     console.log('job',jobnum)
+     openJesongChatByCus(1,jobnum)
+   }
+  function advisor_img(id){
+    window.open('/' + id);
+  }
+  function text_show(id){
+     var text = $('.expand2_' + id).attr('data-text');
+     $('.expand2_' + id).html(text+'<span class="expand_'+id+'" onclick="text_hide('+id+')" style="color: #c13232;margin-left: 6px;cursor: pointer">收起</span>');
+   }
+   function text_hide(id){
+     var text = $('.expand2_' + id).attr('data-tex');
+     $('.expand2_'+id).html(text+'<span class="expand_'+id+'" onclick="text_show('+id+')" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
+   }
+   function guanzhu (id) {
+        var login_ss = null;
+        if(cookie('login_ss') != undefined){
+          login_ss = JSON.parse(cookie('login_ss'));
+        }
+        if($(this).parent().hasClass('advisor-btn-gray')){
+            return false;
+        }
+        if(login_ss == undefined){
+            //layer.msg('你还没有登录')
+            //   window.setTimeout(function(){
+            getlogin();
+            //   },1000);
+            return false;
+        }
+        var uid = login_ss.uid;
+        var to_uid = $('.guanzhu-btn_'+id).data('uid');
+        var guanzhu_num_box = $('.guanzhu-num_'+id).data('fans');
+        // console.log('guanzhu_num_box',guanzhu_num_box)
+        // var guanzhu_num = guanzhu_num_box.text();
+        // var thisObj = $(this);
+        $.ajax({
+            url: '/soapi/follow_people',
+            type:'POST',
+            data:{
+                u_id: uid,
+                to_uid: to_uid
+            },
+            dataType:'json',
+            success:function(msg){
+                if (msg.code == 0) {
+                    if (msg.data.type == 'add') {
+                        $('.guanzhu-btn_'+id).text('已关注');
+                        $('.guanzhu-btn_'+id).css('padding', '3px 31px');
+                        $('.guanzhu-num_'+id).text(guanzhu_num_box+1);
+                    }
+                    else if ( msg.data.type == 'remove') {
+                      $('.guanzhu-btn_'+id).text('关注');
+                      $('.guanzhu-btn_'+id).css('padding', '3px 38px');
+                      $('.guanzhu-num_'+id).text(guanzhu_num_box);
+                    }
+                }
+            },
+            error:function(XMLHttpRequest, textStatus, errorThrown){
+                console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+            }
+        });
+   }
+var loadMoreFlag = true;
+var page
+$(document).ready(function (){
+    page = $('#main_con').data('page') + 1;
+    $(window).on('scroll', function () {
+        var $scroll = $(window).scrollTop();
+        var con = document.getElementById('main_con').offsetHeight;
+        var doc = $(document).height()
+        var win = $(window).height()
+        if ($scroll >= (doc - win) - 500) {
+          if (loadMoreFlag) {
+            loadMoreFlag = false;
+            $('.guwen_more').show();
+            setTimeout(chiefmore, 2000);
+          }
+        }
+    });
+})
+function chiefmore () {
+  var login_ss = {};
+  if(cookie('login_ss') != undefined){
+    login_ss = JSON.parse(cookie('login_ss'));
+  } else {
+    login_ss.uid = 0;
+  }
+  // var page = $('#main_con').data('page') + 1;
+  var pageall = $('#main_con').data('page-all');
+  console.log('totalpage',pageall)
+  var countryid = $('.focus-on').parent().attr('data-id');
+  console.log('page',page)
+  if(pageall == 1 || pageall < page ){
+    $('.guwen_more').hide();
+    return false;
+  }
+  var per_page = 20;
+  var area = cookie('currentarea');
+  // console.log('area',area)
+  // var thisObj = $(this);
+  $.ajax({
+    url: '/soapi/chiefmore',
+    type: 'GET',
+    datatype: 'json',
+    data: {
+      "uid": login_ss.uid,
+      "cityid": area, 
+      "page": page, 
+      "per_page": 20,
+      "countryid": countryid
+    },
+    success: function (msg) {
+      if (msg.data.list == null){
+        $('.guwen_more').hide();
+        loadMoreFlag = false;
+      } else if (msg.data.list.length <= 20) {
+        $('.guwen_more').hide();
+        loadMoreFlag = true;
+        // $('#main_con').data('page', page)
+        page ++;
+        console.log('page',page)
+        console.log(msg);
+        var mainhtml = ''
+        for (var i = 0; i < msg.data.list.length;i++) {
+          if ((i+1) % 4 == 0 ) {
+            if (i == 0) {
+              mainhtml += '<div class="guwen_ge" id="main_add">';
+            } else {
+              mainhtml += '<div class="guwen_ge" style="margin-right: 0px;" id="main_add">';
+            }
+          } else {
+            mainhtml += '<div class="guwen_ge" id="main_add">';
+          }
+          mainhtml += additem(msg.data.list[i]);
+          mainhtml += '</div>';
+        }
+        mainhtml += '</div>';
+        $('#main_con').append($(mainhtml));
+      } else {
+        $('.guwen_more').hide();
+        loadMoreFlag = false;
+      }
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+      console.log(errorThrown)
+    }
+  })
+}
+function additem(item) {
+  var login_ss = {};
+  if(cookie('login_ss') != undefined){
+    login_ss = JSON.parse(cookie('login_ss'));
+  } else {
+    login_ss.uid = 0;
+  }
+  var html = '<div class="community-advisor dui-box-shadow" style="position: relative;height: 440px;">'+
+            '<ul style="height: 40px">'+
+            '<li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_'+item.uid+'" data-fans="'+item.fans_count+'">'+item.fans_count+'</span></li>'+
+            '<li style="width: 135px">文章<span class="article-num">'+ item.article_count +'</span></li>'+
+            '</ul>'+
+            '<dl>'+
+            '<dt class="advisor-img" onclick="advisor_img('+item.uid+')" style="background-image: url('+fn.avaterimg(item.uid, 'small', item.status,item.version)+');background-position: 0 0;cursor: pointer;"></dt>'+
+            '<dd>'+
+            '<p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;line-height: 20px;">'+ item.realname +'</p>';
+  if (item.organid != null) {
+    html += '<p class="advisor-bumen" data-cityId ="'+item.organid+'" style="width: 200px;margin-left: -48px;">金吉列'+ fn.getCityChinese(item.organid) +'分公司</p>';
+  } else {
+    html += '<p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -48px;">金吉列分公司</p>';
+  }
+  html += '<p class="advisor-enjoy">'+ item.position_name+'咨询顾问</p>'+
+          '</dd>'+
+          '</dl>'+
+          '<div class="advisor-intro">';
+  if (item.introduce.length > 74) {
+    // html += '<p class="expand2_'+item.uid+'" data-tex="'+ fn.ellipsis(item.introduce, 74) +'" data-text="'+ item.introduce +'">'+ fn.ellipsis(item.introduce,74) +'<span class="expand_'+item.uid+'" onclick="text_show('+item.uid+')" data-text="'+ item.introduce +'" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span></p>'
+    html += '<p class="expand2_'+item.uid+'" data-tex="'+ fn.ellipsis(item.introduce, 74) +'" data-text="'+ item.introduce +'">'+ fn.ellipsis(item.introduce, 74) +'</p>';
+  } else {
+    html += '<p class="expand1">'+ item.introduce +'</p>';
+  }
+  html += '</div>';
+  if (login_ss.uid == item.uid){
+    html += '<div class="advisor-btn advisor-btn-gray" style="position: absolute;bottom: 1px;">';
+  } else {
+    html += '<div class="advisor-btn" style="position: absolute;bottom: 1px;">';
+  }
+  if (login_ss.uid !== item.uid) {
+    html += '<a onclick="openchat_new('+item.uid+')" id="openchat_'+item.uid+'" data-new_job_number="'+ item.new_job_number+'" class="advisor-zixun " style="padding: 4px 24px;" rel="nofollow">立即咨询</a>';
+  } else {
+    html += '<a class="advisor-zixun " style="padding: 4px 24px;" rel="nofollow">立即咨询</a>';
+  }
+  if (item.is_follow) {
+    html += '<span class="advisor-guanzhu guanzhu-btn_'+item.uid+'" style="padding: 3px 31px;" data-uid="'+item.uid+'" onclick="guanzhu('+item.uid+')">已关注</span>';
+  } else {
+    html += '<span class="advisor-guanzhu guanzhu-btn_'+item.uid+'" data-uid="'+item.uid+'" onclick="guanzhu('+item.uid+')">关注</span>';
+  }  
+  html += '</div>';
+  if (item.header_avatar_big) {
+    html += '<div class="tan_tupian" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="'+ advisor.header_avatar_big +'" alt=""></div>';
+  }
+  html += '</div>';
+  return html
+}
+</script>
+</html>

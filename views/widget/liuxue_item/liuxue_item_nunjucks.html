@@ -1,44 +1,44 @@
- <div class="lx-groupitems" data-id="{{edu_item.edu_id}}">
-    {% for line in edu_item.list %} {#行数#}
+<div class="lx-groupitems"  data-id="{{edu_item.edu_id}}" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %} data-id="{{type.edu_id}}"><!--推荐-->
+  {% for line in edu_item.list %} {#行数#}
     {% if loop.index == 1 %} {#第一行#}
-    <ul class="gw-items gw-topitems" id="guItems">
-      {% for item in line %}
-      {% if item.uid != null %}
+    <ul class="gw-items clearfix" id="guItems" style="{{'border-bottom:1px solid #dcdcdc' if line.length>0 else ''}}">	
+      {% for item in line %}	
+      {% if item.uid != null %}	
       <li>
-        <div class="gw-people">
-          <a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></a>
-          <span class="pepple-icon">{{item.user_info.realname}}<i></i></span>
-        </div>
-        {#<p>{{item.type}}</p>#}
-        <a target="_blank" style="display:block;height:50px;" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
-          <div class="gw-legend gw-news">留学时讯</div>
-          <a class="atities atities-top" target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">{{ item.title | ellipsis(21) }}</a>
-        </a>
+        <a class="article-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(30)}}</a>
+        <div class="article-info clearfix">
+          <a class="adviser-info clearfix" href="{{helper.urlgen(item.uid | string)}}">
+            <div target="_blank" class="avatar" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
+            <div class="adviser-icon" style="background-image:url({{helper.cdnhost}}/assets/img/1v.png)">{{item.user_info.realname| ellipsis(10)}}<i></i></div>		
+          </a>	
+          <div class="tag article-tag special">留学时讯</div>	
+        </div>			
       </li>
-      {% endif %}
+
+      {% endif %}	
       {% endfor %}
-      <em class="triangle"></em>
     </ul>
     {% else %}
-    <ul class="gw-items">
-      {% for item in line %}
-      {% if item.uid != null %}
-      <li class="gw-newslist">
-        <div class="gw-people">
-          <a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover;"></a>
-          <span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>
-        </div>
-        {#<p>{{item.type}}</p>#}
-        <a target="_blank" style="display:block;height:50px;" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">
-          <div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>
-          <a class="atities" target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}">{{item.title | ellipsis(21)}}</a>
-        </a>
-      </li>
-      {% endif %}
+    <ul class="gw-items clearfix" style="{{'border-bottom:1px solid #dcdcdc' if line.length>0 else ''}}">		
+      {% for item in line %}			
+      {% if item.uid != null %}			
+      <li>
+        <a class="article-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(30)}}</a>
+        <div class="article-info clearfix">
+          <a class="adviser-info clearfix" href="{{helper.urlgen(item.uid | string)}}">
+            <div target="_blank" class="avatar" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
+            <div class="adviser-icon" style="background-image:url({{helper.cdnhost}}/assets/img/1v.png)">{{item.user_info.realname| ellipsis(10)}}</div>		
+          </a>	
+          {% if item.tag_list %}
+          <div class="tag article-tag">{{item.tag_list | ellipsis(14)}}</div>	
+          {% endif %}
+        </div>			
+      </li>	
+      {% endif %}		
       {% endfor %}
     </ul>
     {% endif %}
-    {% endfor %}
-  </div>
+  {% endfor %}
+</div>
 
 

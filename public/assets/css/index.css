@@ -267,14 +267,23 @@
 /* ===========2018.6.8----rongfa================= */
 .gg-group{overflow:hidden;}
 .gg-group ul{overflow:hidden;margin-right:-10px;height:146px;}
-.gg-group ul li{float:left;margin-right:10px;width:242px;height:146px;background:red;}
+.gg-group ul li{float:left;margin-right:10px;width:242px;height:146px;background:#d5d2d2;}
 .gg-group ul li a{display:block;}
 .dialog-modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1005;background:rgba(0,0,0,.7);}
-.modal-content{position:relative;z-index:1006;margin:auto;padding-bottom:25px;min-width:750px;max-width:750px;height:100%;background:url(../img/bcg@2x.png) no-repeat center center;background-size:contain;}
-.formContent{position:absolute;top:50%;right:0;bottom:0;left:0;margin:auto;width:312px;}
+/* .modal-content{position:relative;z-index:1006;margin:auto;padding-bottom:25px;min-width:750px;max-width:750px;height:100%;background:url(../img/dailog.png) no-repeat center center;background-size:contain;} */
+.formContent{
+    position:absolute;
+    top:50%;
+    left: 50%;
+    width:436px; 
+    height:580px;
+    margin-top:-250px;
+    margin-left:-218px;
+    background:url(../img/dailog.png) no-repeat center center;
+}
 .form-group div{margin-bottom:9px;}
-.formposirion{position:relative;}
-.close{-webkit-transition:.2s linear;transition:.2s linear;position:absolute;top:-70%;right:0;width:36px;height:36px;background:url(../img/close_icon@2x.png) no-repeat center;background-size: cover;}
+/* .formposirion{position:relative;} */
+.close{-webkit-transition:.2s linear;transition:.2s linear;position:absolute;right:53px;top:24px;width:28px;height:28px;background-size: cover;}
 .close:hover{ -webkit-transform: rotate(180deg);transform: rotate(180deg);}
 .error{position:absolute;top:-54px;right:-65px;font-size:12px;display:none;width:146px;height:40px;background:url(../img/tlips_bcg@2x.png) no-repeat;text-align:center;line-height:30px;}
 .error>i{display:inline-block;margin-right:3px;width:14px;height:14px;background:url(../img/tan_icon@2x.png) no-repeat;vertical-align:middle;}
@@ -304,8 +313,8 @@
     width: 127px;
     left: 80px;
 }
-@media screen and (min-width:768px){
+/* @media screen and (min-width:768px){
     .formContent{top:51%;}
     .close{position: absolute;right: -30px;top: -80%;}
     .modal-content{top:-4%;}
-}
+} */

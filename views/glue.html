@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+<head>
+{% include "header_new.html" %}
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/search_result.css"/>
+<style type="text/css">
+    .pagination-box{
+        float: left;
+        position: relative;
+        left: 50%;
+        margin-top: 54px;
+        margin-bottom: 54px;
+    }
+    .banner-box{
+        margin-top: 20px;
+        height: 130px;
+        /*background-color: yellow;*/
+    }
+    .banner-box-left{
+        background: #dcdcdc;
+        height: 130px;
+    }
+    .banner-box-right{
+        background: #dcdcdc;
+        height: 130px;
+    }
+    .slider .slider-dot ul li{
+        border-radius: 50%;
+    }
+    .slider .slider-btn.slider-btn-right,.slider .slider-btn.slider-btn-left{
+        margin-top: -33px
+    }
+  .select-list{
+    width: 756px;
+  }
+  .foucus-public-d li{
+    margin: 5px 2px 5px 0;
+  }
+  .main-left{
+    padding: 0 20px;
+  }
+  .main-left .result-bar{
+    border-top: 0;
+    border-bottom: 1px solid #dcdcdc;
+  }
+    .main-left .result-type-bar{
+      padding-top: 16px;
+    }
+</style>
+</head>
+<body style="background: #f5f5f5">
+{% include "widget/common_hide/common_hide.html"%}
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
+<div class="dui-layout-lg clearfix banner-box">
+    <div class="dui-layout-con banner-box-left">{% include "widget/xSlider/xSlider.html" %}</div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-silde banner-box-right">{% include "widget/xSlider/xSlider2.html" %}</div>
+</div>
+<div class="dui-layout-lg clearfix">
+    <div class="dui-layout-con" style="background-color: #fff;">
+      <!--国家-->
+      {%
+      set countryList = [
+      {
+      "id": 0,
+      "country": "全部"
+      },
+      {
+      "id": 1,
+      "country": "美国"
+      },
+      {
+      "id": 2,
+      "country": "英国"
+      },
+      {
+      "id": 4,
+      "country": "澳大利亚"
+      },
+      {
+      "id": 3,
+      "country": "加拿大"
+      },
+      {
+      "id": 5,
+      "country": "新西兰"
+      },
+      {
+      "id": 51,
+      "country": "日本"
+      },
+      {
+      "id": 50,
+      "country": "韩国"
+      },
+      {
+      "id": 54,
+      "country": "中国香港"
+      },
+      {
+      "id": 100,
+      "country": "俄罗斯"
+      },
+      {
+      "id": 101,
+      "country": "乌克兰"
+      },
+      {
+      "id": 108,
+      "country": "爱尔兰"
+      },
+      {
+      "id": 111,
+      "country": "意大利"
+      },
+      {
+      "id": 112,
+      "country": "西班牙"
+      },
+      {
+      "id": 102,
+      "country": "白俄罗斯"
+      },
+      {
+      "id": 52,
+      "country": "新加坡"
+      },
+      {
+      "id": 53,
+      "country": "马来西亚"
+      },
+      {
+      "id": 110,
+      "country": "丹麦"
+      },
+      {
+      "id": 103,
+      "country": "德国"
+      },
+      {
+      "id": 104,
+      "country": "法国"
+      },
+      {
+      "id": 105,
+      "country": "挪威"
+      },
+      {
+      "id": 106,
+      "country": "瑞典"
+      },
+      {
+      "id": 107,
+      "country": "芬兰"
+      },
+      {
+      "id": 109,
+      "country": "荷兰"
+      },
+      {
+      "id": 113,
+      "country": "瑞士"
+      }
+      ]
+      %}
+      <div class="dui-layout-con  study-focus">
+        <div class="select-country  foucus-public foucus-public-d clearfix">
+          <p><span>国家及地区：</span></p>
+          <ul class="select-list">
+            {% for cItem in countryList %}
+            <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('articles','n=' + cItem.id, ('type=' + type) if type else '',('tag=' + tag) if tag else '',('order=' + order) if order else '')}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <!--文章类别-->
+      {%
+      set crowdType = [
+      {
+      "id": 0,
+      "type": "全部"
+      },
+      {
+      "id": 5,
+      "type": "时讯"
+      },
+      {
+      "id": 1,
+      "type": "中学"
+      },
+      {
+      "id": 2,
+      "type": "本科"
+      },
+      {
+      "id": 3,
+      "type": "硕士"
+      },
+      {
+      "id": 4,
+      "type": "博士"
+      }
+      ]
+      %}
+      <div class="dui-layout-con study-focus">
+        <div class="select-crowd  foucus-public foucus-public-h clearfix">
+          <p><span>文章类别：</span></p>
+          <ul class="select-list">
+            {% for item in crowdType %}
+            <li data-id="{{item.id}}"><a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', 'type='+ item.type,('tag=' + tag) if (tag and item.type != '时讯') else '',('order=' + order) if order else '')}}" class={{'focus-on' if item.type == type else ""}}>{{item.type}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <!--文章标签-->
+      {%
+      set arcType = [
+      {
+      "type": "全部"
+      },
+      {
+      "type": "专业解析"
+      },
+      {
+      "type": "留学申请"
+      },
+      {
+      "type": "留学费用"
+      },
+      {
+      "type": "留学条件"
+      },
+      {
+      "type": "学校排名"
+      },
+      {
+      "type": "行前准备"
+      },
+      {
+      "type": "就业解析"
+      },
+      {
+      "type": "签证准备"
+      },
+      {
+      "type": "成功案例"
+      },
+      {
+      "type": "院校资讯"
+      },
+      {
+      "type": "留学方案"
+      },
+      {
+      "type": "背景提升"
+      },
+      {
+      "type": "留学生活"
+      },
+      {
+      "type": "备考资讯"
+      },
+      {
+      "type": "文书攻略"
+      },
+      {
+      "type": "难点解析"
+      },
+      {
+      "type": "省钱攻略"
+      },
+      {
+        "type": "留学启蒙"
+      }
+      ]
+      %}
+      {% if type != '时讯' %}
+      <div class="dui-layout-con study-focus" >
+        <div class="select-article-type  foucus-public foucus-public-d clearfix">
+          <p><span>文章标签：</span></p>
+          <ul class="select-list">
+            {% for item in arcType %}
+            <li data-id="{{item.id}}"><a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '','tag='+ item.type,('order=' + order) if order else '')}}" class={{'focus-on' if item.type == tag else ""}}>{{item.type}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+        {% endif %}
+        <div class="main-left clearfix">
+          <div class="result-bar">
+           <span id="result-keyword">{{country |getCountry}}留学</span>共检索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
+          </div>
+            {% if article_list.total == 0 or article_list.total == null %}
+            <!--没有搜索到数据-->
+            <div class="no-result page-blank">
+                <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
+                <span class="blank-info">没有搜索到相关内容，换个关键词试试吧</span>
+            </div>
+            {% else %}
+            <div class="has-result">
+                <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
+                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
+                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
+                </div>
+                <div class="result-conent" id="result-content">
+                    {% for item in article_list.list %}
+                    {% include "widget/so_article/so_article.html" %}
+                    {% endfor %}
+                </div>
+               <!-- <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
+                    加载更多
+                    <i class="city-icon iconfont">&#xe60b;</i>
+                </div>-->
+            </div>
+            {% endif %}
+        </div>
+        {% if article_list.total == 0 or article_list.total == null %}
+        {% else %}
+        <div class="dui-layout-con page">
+            <div class="pagination-box">
+                {% import "widget/pagtion/pagtion.html" as pagtion %}
+                {{pagtion.pagtion(pagination)}}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    <div class="dui-layout-div"></div>
+    <div class="dui-layout-silde">
+        <div class="guess-like-right" style="margin-top: 20px;background-color: #fff;">
+            <div class="common-title" style="border:1px solid #dcdcdc;">
+                <i></i>
+                <h3>猜你喜欢</h3>
+              </div>
+            {% esi helper.include(esikey,'fragment/searchguess_like','c='+tdk.cityid, 'n='+country) %}
+        </div>
+    </div>
+</div>
+{% include "widget/new_footer/new_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
+<script>
+    $(function () {
+        //让分页器居中显示
+        $(".pagination-box").css({"marginLeft":"-"+$(".pagination-box").width()/2+"px"});
+        $('.banner-box-left .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+            current: 0,
+            speed: 500,
+            intervalTime: 5000,
+            pagination: true,
+            dotPostion:'right'
+        });
+        $('.banner-box-right .slider').xSlider({
+            //轮播图配置
+//          autoplay : 500,
+//            mode:'vertical',
+            current: 0,
+            speed: 1000,
+            intervalTime: 5000,
+            slidesPerView : 2,
+            slidesPerGroup : 2,
+          pagination: true
+        });
+
+    })
+
+</script>
+</body>
+<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+</html>

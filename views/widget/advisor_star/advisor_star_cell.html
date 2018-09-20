@@ -1,18 +1,18 @@
 <!--相关顾问侧栏五个-->
 {% macro advisor_starblock(xiangguan_guwen,helper) %}
 <ul class="gw-list">
-	{% for gw_item in xiangguan_guwen %}
+	{% for gw_item in xiangguan_guwen.list %}
 		<li>
-				<a href="{{helper.urlgen(gw_item.user_info.uid|string)}}" target="_blank">
-					<span class="bg-span" style="background:url({{helper.avaterimg(gw_item.user_info.uid, 'small', gw_item.user_info.status,gw_item.user_info.version)}}) no-repeat 0 0;background-size: cover;"></span>
+				<a href="{{helper.urlgen(gw_item.uid|string)}}" target="_blank">
+					<span class="bg-span" style="background:url({{helper.avaterimg(gw_item.uid, 'small', gw_item.status,gw_item.version)}}) no-repeat 0 0;background-size: cover;"></span>
 					 <div class="artical-info">
 						  <div class="user-infos">
-								<span class="people-name">{{gw_item.user_info.realname}}</span>
-								<span class="people-action">{{gw_item.user_info.dept}}</span>
+								<span class="people-name">{{gw_item.realname}}</span>
+								<span class="people-action">{{gw_item.dept}}</span>
 						  </div>
 						  <div class="guwen-info">
-								<span class="pull-left">粉丝<em>{{gw_item.user_info.fans_count}}</em></span>
-								<span class="pull-right">文章<em>{{gw_item.user_info.article_count}}</em></span>
+								<span class="pull-left">粉丝<em>{{gw_item.fans_count}}</em></span>
+								<span class="pull-right">文章<em>{{gw_item.article_count}}</em></span>
 						  </div>
 					 </div>
 				</a>

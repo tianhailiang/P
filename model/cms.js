@@ -511,7 +511,7 @@ exports.shengqinganli_list = function (data, callback) {
 }
 //栏目列表页---->栏目
 exports.channel_list = function (data, callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_channel_list);
+  var url = _api_url_path(data, config.apis.get_channel_list);
   if (url == null){
     callback('404');
     return;
@@ -957,7 +957,7 @@ exports.so_article_list = function (data,callback) {
 }
 //国家文章结果页search_article_list
 exports.search_article_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_search_article_list);
+  var url = _api_url_path(data, config.apis.get_search_article_list);
   if (url == null){
     callback('404');
     return;
@@ -1489,4 +1489,14 @@ exports.getPdf = function (data, callback) {
     return;
   }
   api.apiRequest(url, callback);
+}
+//顾问聚合页
+//搜索结果页so_adviser_list
+exports.adviser_list = function (data,callback) {
+  var url = _api_url_path(data, config.apis.get_adviser_list);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
 }
