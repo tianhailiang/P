@@ -394,6 +394,14 @@ if($('.swiper-container_34').data('slider') > 3){
 	$(".lunbo_right").mouseleave(function(){
 		mySwiper.startAutoplay();
 	})
+	$(document).on('mousemove',function(){
+		if ($('.lunbo_right')[0].contains(window.event.srcElement)) {
+			mySwiper.stopAutoplay();
+		}
+		else {
+			mySwiper.startAutoplay();
+		}
+	})
 })
 
 

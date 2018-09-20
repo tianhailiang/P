@@ -134,6 +134,14 @@
       slider_img_ul.on('mouseout', function () {
           sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
       });
+      $(document).on('mousemove',function(){
+        if ($('.lunbo_lift')[0].contains(window.event.srcElement)) {
+          clearInterval(sliderInt);
+        }
+        else {
+          sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
+        }
+      })
     // 判断图片切换
     function sliderInterval() {
       if (_this.config.current < slider_img_length - 2) {
