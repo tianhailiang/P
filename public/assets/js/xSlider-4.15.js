@@ -128,14 +128,14 @@
     })
       // 自动切换
       var sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
-       this.el.on('mouseover', function () {
+       this.el.on('mouseenter', function () {
           clearInterval(sliderInt);
       });
-      this.el.on('mouseout', function () {
+      this.el.on('mouseleave', function () {
           sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
       });
       $(document).on('mousemove',function(){
-        if ($('.lunbo_lift')[0].contains(window.event.srcElement)) {
+        if ($('.lunbo_lift')[0] && $('.lunbo_lift')[0].contains(window.event.srcElement)) {
           clearInterval(sliderInt);
         }
       })
