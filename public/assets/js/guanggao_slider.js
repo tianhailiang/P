@@ -398,9 +398,6 @@ if($('.swiper-container_34').data('slider') > 3){
 		if ($('.lunbo_right')[0].contains(window.event.srcElement)) {
 			mySwiper.stopAutoplay();
 		}
-		else {
-			mySwiper.startAutoplay();
-		}
 	})
 })
 
