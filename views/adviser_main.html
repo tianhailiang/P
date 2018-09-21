@@ -55,21 +55,23 @@
       {% endif %}
     </div>
     {% endif %}
+    
+    {% if userinfo.usertype==2 %}
     <div style="margin-top: 20px;" class="dui-box-shadow">
       <div class="common-title" style="border:1px solid #dcdcdc;">
         <i></i>
         <h3>相关顾问</h3>
       </div>
-      {% if userinfo.usertype==2 %}
-        {% if userinfo.adviser_type == 2 %}
-          {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid,'isIm=1') %}
-        {% else %}
-          {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
-        {% endif %}
-      {% elseif userinfo.usertype==3 %}
-        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c=1','uid='+userinfo.uid) %}
+      {% if userinfo.adviser_type == 2 %}
+        {% esi helper.include(esikey,'fragment/yimin_xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid,'isIm=1') %}
+      {% else %}
+        {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c='+userinfo.organid,'uid='+userinfo.uid) %}
       {% endif %}
+    {#{% elseif userinfo.usertype==3 %}
+      {% esi helper.include(esikey,'fragment/xiangguanguwen','n='+userinfo.country,'c=1','uid='+userinfo.uid) %}#}
     </div>
+    {% endif %}
+    
   </div>
   <div class="dui-layout-div"></div>
   <div class="dui-layout-con left dui-box-shadow" style="margin-left: 20px;margin-top: 20px;width: 878px;background: #fff">
