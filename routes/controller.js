@@ -4199,11 +4199,11 @@ exports.chief = function (req, res, next) {
 
     async.parallel({
         //获取用户信息（普通用户，顾问，参赞）
-        userinfo: function (callback) {
-            wec.userinfo({
-                "u_id": data.login_info.uid, "to_uid": data.login_info.uid
-            }, callback)
-        },
+        // userinfo: function (callback) {
+        //     wec.userinfo({
+        //         "u_id": data.login_info.uid, "to_uid": data.login_info.uid
+        //     }, callback)
+        // },
         //首席顾问列表
         top_adviser_list: function (callback) {
             wec.top_adviser_list({
@@ -4211,7 +4211,7 @@ exports.chief = function (req, res, next) {
             }, callback)
         }
     }, function (err, result) {
-        data.userinfo = returnData(result.userinfo, 'userinfo');
+        // data.userinfo = returnData(result.userinfo, 'userinfo');
         data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
         // console.log('top_adviser_list', data.top_adviser_list)
         // console.log('totalpage',data.top_adviser_list.totalpage)
@@ -4219,7 +4219,7 @@ exports.chief = function (req, res, next) {
         data.tdk = {
             pagekey: 'CHIEF',
             cityid: area,
-            realname: data.userinfo.realname,
+            realname: 'chief'
         };
         res.render('chief', data);
     });
