@@ -3441,18 +3441,19 @@ exports.draft =function(req,res,next){
       },callback);
     },
     //文章列表
-    channel_list:function(callback){
-      cms.channel_list({
+    adviser_main:function(callback){
+      wec.adviser_main({
         "uid":data.login_info.uid,
         "per_page":8,
         "is_draft":data.is_draft,
         "order-update_time%20desc":'',
-        "page":page
+        "page":page,
+        "delCache": 1
       },callback)
     }
   },function(err, result){
     data.userinfo = returnData(result.userinfo,'userinfo');
-    data.channel_list = returnData(result.channel_list,'channel_list');
+    data.channel_list = returnData(result.adviser_main,'adviser_main');
     var pagekey = null;
     var route = '';
     if(data.userinfo.usertype == 2){
