@@ -502,7 +502,7 @@ function tagChecked(name,val,checkedList,checkedCountryId){
   if (name == "QS排名") {
     specialStyle ="style='margin-right:38px;'"
   }
-  else if (name == '动漫留学') {
+  if (name == '动漫留学') {
     specialId = "id='special-tag'";
     if (checkedCountryId != 51) {
       html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
@@ -551,7 +551,7 @@ function tagChecked(name,val,checkedList,checkedCountryId){
       if (name == "QS排名") {
         specialStyle ="style='margin-right:38px;'"
       }
-      else if (name == '动漫留学') {
+      if (name == '动漫留学') {
         specialId = "id='special-tag'";
         if (checkedCountryId != 51) {
           html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
