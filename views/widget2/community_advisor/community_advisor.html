@@ -133,7 +133,7 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
+    <a href="{{helper.urlgen(item.uid | string)}}"><dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt></a>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
@@ -178,13 +178,13 @@
       /* $('.expand1').hide();*/
       $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce | nl2br }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
     });
-    $('.advisor-img').on('click',function(){
-      if($(".tan_tupian").css("display")=="block"){
-        $(".tan_tupian").css("display","none");
-      }else{
-        $(".tan_tupian").css("display","block");
-      }
-    })
+    // $('.advisor-img').on('click',function(){
+    //   if($(".tan_tupian").css("display")=="block"){
+    //     $(".tan_tupian").css("display","none");
+    //   }else{
+    //     $(".tan_tupian").css("display","block");
+    //   }
+    // })
   })
 </script>
 {% endmacro %}
@@ -228,7 +228,7 @@
       
       <img src="{{helper.cdnhost}}/assets/img/tou_guwen.png" alt="" style="position: absolute;right: 0px;bottom: 0px;width: 34px;height: 34px;">
     </div> -->
-    <a href="{{helper.urlgen(item.uid | string)}}"></a><dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt></a>
+    <a href="{{helper.urlgen(item.uid | string)}}"><dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt></a>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
