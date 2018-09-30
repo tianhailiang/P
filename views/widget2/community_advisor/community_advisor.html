@@ -234,7 +234,7 @@
       
       <img src="{{helper.cdnhost}}/assets/img/tou_guwen.png" alt="" style="position: absolute;right: 0px;bottom: 0px;width: 34px;height: 34px;">
     </div> -->
-    <a href="{{helper.urlgen(item.uid | string)}}"><dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt></a>
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
