@@ -29,7 +29,7 @@
       <div class="dui-box-shadow" >
         <div class="adviser-case-detail-con" style="margin-top: 0;" >
           <div class="adviser-top clearfix">
-            <div style="float:left;line-height: 50px;" >
+            <div style="float:left;line-height: 50px;cursor: pointer;" onclick="open_main('{{userinfo.uid}}')">
               <div class="adviser-touxiang" style="background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover;">
               </div>
               <span style="font-size: 14px;color:#333;">
@@ -195,6 +195,9 @@
   <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/article_detail.js"></script>
   <script>
+    function open_main(uid){
+      window.open('/' + uid);
+    }
     $(function(){
       var login_ss = null;
       if(cookie('login_ss') != undefined){
