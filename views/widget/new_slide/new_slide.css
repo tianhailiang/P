@@ -684,9 +684,10 @@ i.ibar_recharge-arrow {
   border-top:14px solid #f8f8f8;
   border-bottom:14px solid #f8f8f8;
   background: #ffffff;
-  right:44px;
+  /* right:44px; */
   top:-184px;
   display: none;
+  left: 44px;
 }
 .weixin-slide-img img{
   width: 226px;
@@ -697,9 +698,10 @@ i.ibar_recharge-arrow {
   height:296px;
   border:12px solid #f8f8f8;
   background: #ffffff;
-  right:44px;
+  /* right:44px; */
   top:-230px;
   display: none;
+  left: 44px;
 }
 .qq-slide-img img{
   width: 216px;
