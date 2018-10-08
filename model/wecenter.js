@@ -274,7 +274,7 @@ exports.comment_ans =function(data,callback){
 
 //分页获取评论
 exports.article_comments = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_article_comments);
+  var url = _api_url_path(data, config.apis.get_article_comments);
   if (url == null){
     callback('404');
     return;

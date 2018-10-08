@@ -217,7 +217,7 @@ var apis = {
   //回复列表
   "get_comment_ans":shequ_prefix + 'article/comment_ans/',
   //分页获取评论article_comments
-  "get_article_comments":shequ_prefix +'article/article_comments/',
+  "get_article_comments":so_prefix +'article/article_comments/',
   //添加相册接口
   "post_album_add": shequ_prefix + 'account/album_add/',
   //编辑相册接口
