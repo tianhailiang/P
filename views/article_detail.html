@@ -36,6 +36,7 @@
                 {{userinfo.realname}}<i class="adviser-v-i"></i>
               </span>
             </div>
+            <div class="title-guide-text detail-guide-text" onclick="open_main('{{userinfo.uid}}')">去主页浏览TA的更多精彩内容<img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow@2x.png" alt=""><img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow@2x.png" alt="" class="small-dis"></div>
             <div style='float:right;'>
                 <div class="bdsharebuttonbox page_share_buttons" style="margin-top: 15px;float: left;" data-uid='{{userinfo.uid}}'>
                   <a href="#" class="bds_weixin wx" data-cmd="weixin" title="分享到微信"></a>
@@ -78,6 +79,10 @@
           </div>
           <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
             {{article.article_info.message | safe}}
+          </div>
+          <!-- 引导进入顾问主页 -->
+          <div class="content-guide-box">
+            <div class="detail-guide-text" onclick="open_main('{{userinfo.uid}}')">去主页浏览TA的更多精彩内容<img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow@2x.png" alt=""><img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow@2x.png" alt="" class="small-dis"></div>
           </div>
           <div class="userinfo-box clearfix" >
             {% if userinfo.qrcode %}

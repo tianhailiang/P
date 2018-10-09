@@ -1,7 +1,14 @@
 <!--<link rel="stylesheet" href="{{helper.cdnhost}}/views/widget/detail_bar/detail_bar.css" >-->
 <div class="detail_bar" id="detail_bar">
     <div class="detail_bar_in clearfix">
-        <div class="bar_title">{{article.article_info.title|ellipsis(30)}}</div>
+        <div style="float:left;cursor: pointer;margin-top: 10px;margin-right: 20px;" onclick="open_main('{{userinfo.uid}}')">
+            <div class="adviser-touxiang" style="width:30px;height:30px;background:url({{helper.avaterimg(userinfo.uid,'small',userinfo.status,userinfo.version)}}) no-repeat 0 0;background-size:cover">
+            </div>
+            <span style="font-size: 14px;color:#333;line-height: 30px;">
+                {{userinfo.realname}}<i class="adviser-v-i"></i>
+            </span>
+        </div>
+        <div class="bar_title">{{article.article_info.title|ellipsis(28)}}</div>
         <div class="bar_options">
             <div class="bar-zixun-btn" onclick="openchat_new('{{ userinfo.new_job_number}}')">立即咨询</div>
             <div class="bdsharebuttonbox share_buttons" data-uid='{{userinfo.uid}}'>

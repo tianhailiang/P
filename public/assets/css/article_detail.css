@@ -28,6 +28,25 @@
   cursor: pointer;
   border-radius: 4px;
 }
+.title-guide-text {
+  float:left;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+}
+.detail-guide-text {
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+}
+.detail-guide-text img {
+  margin-bottom:2px;
+  height:10px;
+  margin-left: 4px;
+}
+.detail-guide-text img.small-dis {
+  margin-left: 2px;
+}
 .adviser-case-detail-h3{
   font-weight: normal;
   font-size: 18px;
@@ -117,8 +136,15 @@
   border-top:1px solid #dcdcdc;
   /*border-bottom: 1px solid #dcdcdc;*/
   padding-top:20px;
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
   position: relative;
+}
+.content-guide-box {
+  width: 100%;
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
 }
 .adviser-case-offer-h4{
   font-size: 16px;
