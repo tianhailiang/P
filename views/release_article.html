@@ -462,7 +462,7 @@
       ];
       editor.customConfig.debug = false;
       // 关闭粘贴样式的过滤
-      editor.customConfig.pasteFilterStyle = true;//false;
+      editor.customConfig.pasteFilterStyle = false;
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
       editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
@@ -529,6 +529,8 @@
       function surePublish(){
         // 读取 html
         var data = editor.txt.html();
+        console.log(data);
+        return false;
         if($("#apply-country").val()==''){
           // 判断国家
           $("#apply-country").focus();
@@ -819,6 +821,29 @@
             $(that).bind('click',savePublish);
           }
         });
+      };
+      function dataFilter (originData) {
+        var returnData = '';
+        var filterArr = [
+          {
+            reg: /^<style[\S\s]+?<\/style>$/,
+            str:''
+          },
+          {
+            reg: /^<img[^>]*?(src=\"[^\"]*?\")[^>]*?(style=\"[^\"]*?\")*?[^>]*?>$/,
+            str: '<img $1 $2/>'
+          },
+          {
+            reg: /^<o:p[\S\s]*?>$/,
+            str: ''
+          }
+        ]; 
+        filterArr.forEach(function(val,index) {
+          console.log(val,index);
+          originData = originData.replace(val.reg,val.str);
+        })       
+        console.log('过滤后的原始数据'+originData);
+        return returnData;
       }
     })
  </script>
