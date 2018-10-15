@@ -2415,14 +2415,14 @@ exports.adviser_main = function (req, res, next) {
           lunbo_list:function(callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
-                  "cityid":area,
+                  "cityid":data.userinfo.organid,
                   "ad_seat": "SEAT1"
               }, callback);
           },
           lunbo_list2:function(callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
-                  "cityid":area,
+                  "cityid":data.userinfo.organid,
                   "ad_seat": "SEAT2"
               }, callback);
           },
