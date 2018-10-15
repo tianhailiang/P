@@ -2411,19 +2411,20 @@ exports.adviser_main = function (req, res, next) {
     data.country =data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
     var pagekey = '';
+    var guwenId = data.userinfo.organid;
     pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_MAIN');
       async.parallel({
           lunbo_list:function(callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
-                  "cityid":area,
+                  "cityid":guwenId,
                   "ad_seat": "SEAT1"
               }, callback);
           },
           lunbo_list2:function(callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
-                  "cityid":area,
+                  "cityid":guwenId,
                   "ad_seat": "SEAT2"
               }, callback);
           },
