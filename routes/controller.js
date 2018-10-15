@@ -2221,14 +2221,14 @@ exports.case_detail = function(req,res,next){
                 lunbo_list:function(callback) {
                     cms.lunbo_list({
                         "ad_page": pagekey,
-                        "cityid":area,
+                        "cityid":data.article.article_info.city_id,
                         "ad_seat": "SEAT1"
                     }, callback);
                 },
                 lunbo_list2:function(callback) {
                     cms.lunbo_list({
                         "ad_page": pagekey,
-                        "cityid":area,
+                        "cityid":data.article.article_info.city_id,
                         "ad_seat": "SEAT2"
                     }, callback);
                 },
@@ -2333,14 +2333,14 @@ exports.article_detail= function(req,res,next){
                 lunbo_list:function(callback) {
                     cms.lunbo_list({
                         "ad_page": pagekey,
-                        "cityid":area,
+                        "cityid":data.article.article_info.city_id,
                         "ad_seat": "SEAT1"
                     }, callback);
                 },
                 lunbo_list2:function(callback) {
                     cms.lunbo_list({
                         "ad_page": pagekey,
-                        "cityid":area,
+                        "cityid":data.article.article_info.city_id,
                         "ad_seat": "SEAT2"
                     }, callback);
                 },
@@ -2429,6 +2429,7 @@ exports.adviser_main = function (req, res, next) {
       },function (err, result) {
           data.xSlider = returnData(result.lunbo_list,'lunbo_list');
           data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+          console.log('!!!',data.xSlider2);
           data.tdk = {
               pagekey: pagekey,
               cityid: area,
