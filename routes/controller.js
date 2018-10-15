@@ -2079,19 +2079,20 @@ exports.adviser_photo_p = function(req,res,next){
         data.country =data.userinfo.country || '1';
         data.hcountry = (data.userinfo.country || '1,').split(',')[0];
         var pagekey =null;
+        var guwenId = data.userinfo.organid;
         pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_ALBUM');
         async.parallel({
             lunbo_list:function(callback) {
                 cms.lunbo_list({
                     "ad_page": pagekey,
-                    "cityid":area,
+                    "cityid":guwenId,
                     "ad_seat": "SEAT1"
                 }, callback);
             },
             lunbo_list2:function(callback) {
                 cms.lunbo_list({
                     "ad_page": pagekey,
-                    "cityid":area,
+                    "cityid":guwenId,
                     "ad_seat": "SEAT2"
                 }, callback);
             },
@@ -2415,14 +2416,14 @@ exports.adviser_main = function (req, res, next) {
           lunbo_list:function(callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
-                  "cityid":data.userinfo.organid,
+                  "cityid":area,
                   "ad_seat": "SEAT1"
               }, callback);
           },
           lunbo_list2:function(callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
-                  "cityid":data.userinfo.organid,
+                  "cityid":area,
                   "ad_seat": "SEAT2"
               }, callback);
           },
@@ -2515,19 +2516,20 @@ exports.adviser_special = function (req, res, next) {
       data.country =data.userinfo.country || '1';
       data.hcountry = (data.userinfo.country || '1,').split(',')[0];
       var pagekey = null;
+      var guwenId = data.userinfo.organid;
       pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_ARTICLE');
       async.parallel({
           lunbo_list:function(callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
-                  "cityid":area,
+                  "cityid":guwenId,
                   "ad_seat": "SEAT1"
               }, callback);
           },
           lunbo_list2:function(callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
-                  "cityid":area,
+                  "cityid":guwenId,
                   "ad_seat": "SEAT2"
               }, callback);
           },
@@ -2647,19 +2649,20 @@ exports.adviser_case = function (req, res, next) {
         data.country =data.userinfo.country || '1';
         data.hcountry = (data.userinfo.country || '1,').split(',')[0];
         var pagekey = null;
+        var guwenId = data.userinfo.organid;
         pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_CASE');
         async.parallel({
             lunbo_list:function(callback) {
                 cms.lunbo_list({
                     "ad_page": pagekey,
-                    "cityid":area,
+                    "cityid":guwenId,
                     "ad_seat": "SEAT1"
                 }, callback);
             },
             lunbo_list2:function(callback) {
                 cms.lunbo_list({
                     "ad_page": pagekey,
-                    "cityid":area,
+                    "cityid":guwenId,
                     "ad_seat": "SEAT2"
                 }, callback);
             },
@@ -3888,6 +3891,7 @@ exports.hot = function (req, res, next) {
     data.country = data.userinfo.country || '1';
     data.hcountry = (data.userinfo.country || '1,').split(',')[0];
     var pagekey = '';
+    var guwenId = data.userinfo.organid;
     pagekey  = get_page_key(data.userinfo.usertype, data.userinfo.adviser_type, 'ADVISOR_P_ARTICLE_HOT');
     // console.info("userinfo======================",data.userinfo )
     // console.info("pagekey======================",data.userinfo.usertype )
@@ -3898,14 +3902,14 @@ exports.hot = function (req, res, next) {
               cms.lunbo_list({
                   "ad_page": pagekey,
                   "ad_seat": "SEAT1",
-                  "cityid":area
+                  "cityid":guwenId
               }, callback);
           },
           lunbo_list2: function (callback) {
               cms.lunbo_list({
                   "ad_page": pagekey,
                   "ad_seat": "SEAT2",
-                  "cityid":area
+                  "cityid":guwenId
               }, callback);
           },
       },function (err, result) {
