@@ -445,7 +445,8 @@
       var editor = new E('#editor','#editor1');
       // 或者 var editor = new E( document.getElementById('#editor') )
       // 自定义菜单配置
-      editor.customConfig.menus = [   
+      editor.customConfig.menus = [ 
+        'head',  
         'bold',  // 粗体
         'italic',  // 斜体
         'underline',  // 下划线
@@ -462,7 +463,9 @@
       ];
       editor.customConfig.debug = false;
       // 关闭粘贴样式的过滤
-      editor.customConfig.pasteFilterStyle = false;
+      editor.customConfig.pasteFilterStyle = true;//false;
+      editor.customConfig.pasteIgnoreImg = true;
+
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
       editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
@@ -529,8 +532,9 @@
       function surePublish(){
         // 读取 html
         var data = editor.txt.html();
-        console.log(data);
-        return false;
+        var dataText = editor.txt.text();
+        console.log(dataText);
+        // return false;
         if($("#apply-country").val()==''){
           // 判断国家
           $("#apply-country").focus();
@@ -826,23 +830,27 @@
         var returnData = '';
         var filterArr = [
           {
-            reg: /^<style[\S\s]+?<\/style>$/,
+            reg: /<style[\S\s]+?<\/style>/g,
             str:''
           },
           {
-            reg: /^<img[^>]*?(src=\"[^\"]*?\")[^>]*?(style=\"[^\"]*?\")*?[^>]*?>$/,
+            reg: /<img[^>]*?(src=\"[^\"]*?\")[^>]*?(style=\"[^\"]*?\")*?[^>]*?>/g,
             str: '<img $1 $2/>'
           },
           {
-            reg: /^<o:p[\S\s]*?>$/,
+            reg: /<o:p[\S\s]*?>/g,
+            str: ''
+          },
+          {
+            reg: /\<section135[\S\s]+\<\/section135[\S\s]+?\\\>/g,
             str: ''
           }
         ]; 
         filterArr.forEach(function(val,index) {
-          console.log(val,index);
           originData = originData.replace(val.reg,val.str);
         })       
         console.log('过滤后的原始数据'+originData);
+        returnData =  originData;
         return returnData;
       }
     })
