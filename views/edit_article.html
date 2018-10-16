@@ -753,6 +753,41 @@
           }
         });
       }
+      function dataFilter (originData) {
+        var returnData = '';
+        var filterArr = [
+            {
+              reg: /<p \-[\S\s]+?<\/p>/,
+              str:''
+            },
+            {
+              reg: /<style[\S\s]+?<\/style>/g,
+              str:''
+            },
+            {
+              reg: /<img[^>]*?(src=\"[^\"]*?\")[^>]*?(style=\"[^\"]*?\")*?[^>]*?>/g,
+              str: '<img $1 $2/>'
+            },
+            {
+              reg: /<o:p[\S\s]*?>/g,
+              str: ''
+            },
+            {
+              reg: /<section[^ ].+<\/section[^ ].+?>/g,
+              str: ''
+            },
+            {
+              reg: /<spanmargin[\S\s]+<\/spanmargin[\S\s]*?>/,
+              str: ''
+            }
+        ]; 
+        filterArr.forEach(function(val,index) {
+          originData = originData.replace(val.reg,val.str);
+        })       
+        console.log('过滤后的原始数据'+originData);
+        returnData =  originData;
+        return returnData;
+      }
     })  
   </script>
 </body>
