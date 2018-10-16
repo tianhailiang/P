@@ -381,7 +381,9 @@
       ];
       editor.customConfig.debug = false;
       // 关闭粘贴样式的过滤
-      editor.customConfig.pasteFilterStyle = false;
+      editor.customConfig.pasteFilterStyle = true;//false;
+      editor.customConfig.pasteIgnoreImg = true;
+
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
       editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
@@ -480,7 +482,14 @@
       });
       function surePublish(){
         // 读取 html
-        var data = editor.txt.html();
+        // 读取 html
+        var readData = editor.txt.html();
+        // var dataText = editor.txt.text();
+        // console.log(data);
+        // console.log(dataText);
+        // return false;
+        var data = dataFilter(readData);
+        console.log(readData == data);
         if(newsletterType==1){
           //选择非时讯
           //判断学历

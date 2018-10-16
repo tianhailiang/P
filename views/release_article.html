@@ -531,10 +531,13 @@
       $("#save-draft").on("click",savePublish); //保存草稿箱
       function surePublish(){
         // 读取 html
-        var data = editor.txt.html();
-        var dataText = editor.txt.text();
-        console.log(dataText);
+        var readData = editor.txt.html();
+        // var dataText = editor.txt.text();
+        // console.log(data);
+        // console.log(dataText);
         // return false;
+        var data = dataFilter(readData);
+        console.log(readData == data);
         if($("#apply-country").val()==''){
           // 判断国家
           $("#apply-country").focus();
