@@ -1,9 +1,9 @@
 .customization2 {
-  width: 314px;
+  width: 312px;
   height: 350px;
   background: #f8f8f8;
   position: relative;
-  left: -1px;
+  /* left: -1px; */
 }
 .quick_links_panel ul .customization2 .quick-text11 span{
   padding:0;
