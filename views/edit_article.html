@@ -781,6 +781,10 @@
             {
               reg: /<spanmargin[\S\s]+<\/spanmargin[\S\s]*?>/,
               str: ''
+            },
+            {
+              reg: /<font[.*]>(.*?)<\/font>/g,
+              str: ''
             }
         ]; 
         filterArr.forEach(function(val,index) {
