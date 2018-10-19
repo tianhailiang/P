@@ -773,8 +773,8 @@
               str: ''
             },
             {
-              reg: /<section[^ ].+<\/section[^ ].+?>/g,
-              str: ''
+              reg: /<section([\s\S]+?)>/g,
+              str: '<section>'
             },
             {
               reg: /<spanmargin[\S\s]+<\/spanmargin[\S\s]*?>/,
