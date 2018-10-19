@@ -853,8 +853,12 @@
               str: ''
             },
             {
-              reg: /<section([\s\S]+?)>/g,
+              reg: /<section[\s\S]*?>/g,
               str: '<section>'
+            },
+            {
+              reg: /<\/section[\s\S]*?>/g,
+              str: '</section>'
             },
             {
               reg: /<spanmargin[\S\s]+<\/spanmargin[\S\s]*?>/,
