@@ -539,7 +539,9 @@
         // console.log(dataText);
         // return false;
         var data = dataFilter(readData);
+        // console.log(readData);
         console.log(readData == data);
+        // return false;
         if($("#apply-country").val()==''){
           // 判断国家
           $("#apply-country").focus();
@@ -659,13 +661,13 @@
             if(result.code == 0){
               layer.msg('发布成功')
               if(login_ss.usertype == 2){
-                window.setTimeout(function(){
-                    if(artType == 1){
-                        window.location.href=fn.urlgen('case',result.data.article_id.toString());
-                    }else {
-                        window.location.href=fn.urlgen('article',result.data.article_id.toString());
-                    }
-                },1000);
+                // window.setTimeout(function(){
+                //     if(artType == 1){
+                //         window.location.href=fn.urlgen('case',result.data.article_id.toString());
+                //     }else {
+                //         window.location.href=fn.urlgen('article',result.data.article_id.toString());
+                //     }
+                // },1000);
               }
             }else if(result.code == '1210000011'){
               layer.msg('标题已存在，请更换标题');
@@ -851,8 +853,8 @@
               str: ''
             },
             {
-              reg: /<section[^ ].+<\/section[^ ].+?>/g,
-              str: ''
+              reg: /<section([\s\S]+?)>/g,
+              str: '<section>'
             },
             {
               reg: /<spanmargin[\S\s]+<\/spanmargin[\S\s]*?>/,
