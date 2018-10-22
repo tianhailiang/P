@@ -72,7 +72,9 @@
               <label class="title active" for="apply-country">
                 <span>*</span> 选择对应国家：
               </label>
-              {% set countryList = [
+              {% set selectedId = '' %}
+              {% 
+                set countryList = [
                 {"countryId":"1","txt":"美国"},
                 {"countryId":"2","txt":"英国"},
                 {"countryId":"3","txt":"加拿大"},
@@ -81,6 +83,7 @@
                 {"countryId":"51","txt":"日本"},
                 {"countryId":"50","txt":"韩国"},
                 {"countryId":"54","txt":"中国香港"},
+                {"countryId":"55","txt":"中国澳门"},
                 {"countryId":"100","txt":"俄罗斯"},
                 {"countryId":"101","txt":"乌克兰"},
                 {"countryId":"108","txt":"爱尔兰"},
@@ -96,9 +99,10 @@
                 {"countryId":"106","txt":"瑞典"},
                 {"countryId":"107","txt":"芬兰"},
                 {"countryId":"109","txt":"荷兰"},
-                {"countryId":"113","txt":"瑞士"}
+                {"countryId":"113","txt":"瑞士"},
+                {"countryId":"114","txt":"奥地利"}
               ] %}
-              <select id="apply-country" >
+              <select id="apply-country" onchange="changeForm(this.value)">
                 <option value="">请选择</option>
                 {% for item in countryList %}
                   <option value="{{item.countryId}}">{{item.txt}}</option>
@@ -148,33 +152,44 @@
               </label>
               <div class="recommend-tag" >
                 {% set recommendList = [
-                {'name':'专业解析','val':'专业解析'},
-                {'name':'申请规划','val':'申请规划'},
-                {'name':'留学费用','val':'留学费用'},
-                {'name':'留学条件','val':'留学条件'},
-                {'name':'大学排名','val':'大学排名'},
-                {'name':'行前指导','val':'行前指导'},
-                {'name':'就业指导','val':'就业指导'},
-                {'name':'签证指导','val':'签证指导'},
-                {'name':'院校资讯','val':'院校资讯'},
-                {'name':'留学方案','val':'留学方案'},
-                {'name':'背景提升','val':'背景提升'},
-                {'name':'海外生活','val':'海外生活'},
-                {'name':'备考资讯','val':'备考资讯'},
-                {'name':'文书准备','val':'文书准备'},
-                {'name':'难点解析','val':'难点解析'},
-                {'name':'省钱攻略','val':'省钱攻略'}
+                      { "name":"留学初识","val":"留学初识" },
+                      { "name":"本科选校","val":"本科选校" },
+                      { "name":"硕士选校","val":"硕士选校" },
+                      { "name":"留学打工","val":"留学打工" },
+                      { "name":"本硕连读","val":"本硕连读" },
+                      { "name":"动漫留学","val":"动漫留学" },
+                      { "name":"留学时间","val":"留学时间" },
+                      { "name":"接机住宿","val":"接机住宿" },
+                      { "name":"艺术留学","val":"艺术留学" },
+                      { "name":"QS排名","val":"QS排名" },
+                      { "name":"留学费用","val":"留学费用" },
+                      { "name":"大学排名","val":"大学排名" },
+                      { "name":"留学条件","val":"留学条件" },
+                      { "name":"专业解析","val":"专业解析" },
+                      { "name":"签证指导","val":"签证指导" },
+                      { "name":"就业指导","val":"就业指导" },
+                      { "name":"申请规划","val":"申请规划" },
+                      { "name":"行前指导","val":"行前指导" },
+                      { "name":"省钱攻略","val":"省钱攻略" },
+                      { "name":"文书准备","val":"文书准备" },
+                      { "name":"海外生活","val":"海外生活" },
+                      { "name":"院校资讯","val":"院校资讯" },
+                      { "name":"背景提升","val":"背景提升" },
+                      { "name":"留学方案","val":"留学方案" },
+                      { "name":"难点解析","val":"难点解析" },
+                      { "name":"备考资讯","val":"备考资讯" },
+                      { "name":"院校百科","val":"院校百科" }
                 ]  %}
                 {% for item in recommendList%}
-                  <span class="recommend-sel" data-str="{{item.name}}" >
+                  <span class="recommend-sel" data-str="{{item.name}}" style="{{ 'margin-right:38px;' if item.name== 'QS排名'}}{{'display: none;' if item.name == '动漫留学'}}"  id="{{ 'special-tag' if item.name== '动漫留学' else ''}}">
                     <i class="level-sel-i iconfont"></i>
                     <i>{{item.name}}</i>
                   </span>
                 {% endfor %}
                 <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
                   <i class="level-sel-i iconfont"></i>
-                  <i>留学案例</i>
-                  <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                  <i>成功案例</i>
+                  <i class="numTip" style="margin-left:30px;">注：选中【成功案例】标签即发布至顾问个人主页-案例中
                   </i>
                 </span>
                 <div  style="display: block;">
@@ -245,8 +260,21 @@
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script src="{{helper.cdnhost}}/dep/js/jquery.media.js"></script>
   <script >
+    function changeForm (val) {
+      var specialTag = $('#special-tag');
+        if (val == 51) {
+          specialTag.show();
+        }
+        else {
+          specialTag.find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          specialTag.find('.level-sel-i').next().css({'color':'#333'});
+          specialTag.attr('checked',false);
+          specialTag.hide();
+        } 
+    }
     $(function(){
       var pdfList = JSON.parse($('.assistant-cont').attr('data-pdf'))|| [];
+      console.log('pdf',pdfList)
       if (window.ActiveXObject || "ActiveXObject" in window) {
         //判断是否为IE浏览器，"ActiveXObject" in window判断是否为IE11 // 下面代码都是处理IE浏览器的情况 
         //判断是否安装了adobe Reader
@@ -469,23 +497,34 @@
       }
       editor.create();
       var taglist=[
-            {'name':'专业解析','val':'专业解析'},
-            {'name':'申请规划','val':'申请规划'},
-            {'name':'留学费用','val':'留学费用'},
-            {'name':'留学条件','val':'留学条件'},
-            {'name':'大学排名','val':'大学排名'},
-            {'name':'行前指导','val':'行前指导'},
-            {'name':'就业指导','val':'就业指导'},
-            {'name':'签证指导','val':'签证指导'},
-            {'name':'院校资讯','val':'院校资讯'},
-            {'name':'留学方案','val':'留学方案'},
-            {'name':'背景提升','val':'背景提升'},
-            {'name':'海外生活','val':'海外生活'},
-            {'name':'备考资讯','val':'备考资讯'},
-            {'name':'文书准备','val':'文书准备'},
-            {'name':'难点解析','val':'难点解析'},
-            {'name':'省钱攻略','val':'省钱攻略'},
-            {'name':'留学案例','val':'留学案例'}
+          { "name":"留学初识","val":"留学初识" },
+          { "name":"本科选校","val":"本科选校" },
+          { "name":"硕士选校","val":"硕士选校" },
+          { "name":"留学打工","val":"留学打工" },
+          { "name":"本硕连读","val":"本硕连读" },
+          { "name":"动漫留学","val":"动漫留学" },
+          { "name":"留学时间","val":"留学时间" },
+          { "name":"接机住宿","val":"接机住宿" },
+          { "name":"艺术留学","val":"艺术留学" },
+          { "name":"QS排名","val":"QS排名" },
+          { "name":"留学费用","val":"留学费用" },
+          { "name":"大学排名","val":"大学排名" },
+          { "name":"留学条件","val":"留学条件" },
+          { "name":"留学案例","val":"留学案例" },
+          { "name":"专业解析","val":"专业解析" },
+          { "name":"签证指导","val":"签证指导" },
+          { "name":"就业指导","val":"就业指导" },
+          { "name":"申请规划","val":"申请规划" },
+          { "name":"行前指导","val":"行前指导" },
+          { "name":"省钱攻略","val":"省钱攻略" },
+          { "name":"文书准备","val":"文书准备" },
+          { "name":"海外生活","val":"海外生活" },
+          { "name":"院校资讯","val":"院校资讯" },
+          { "name":"背景提升","val":"背景提升" },
+          { "name":"留学方案","val":"留学方案" },
+          { "name":"难点解析","val":"难点解析" },
+          { "name":"备考资讯","val":"备考资讯" },
+          { "name":"院校百科","val":"院校百科" }
         ];
       $('#sureBtn').on('click',surePublish); //发布文章
       $("#save-draft").on("click",savePublish); //保存草稿箱

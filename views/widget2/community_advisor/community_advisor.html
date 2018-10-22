@@ -7,13 +7,16 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
+    <!-- <div style="position: relative;">
+      <img src="{{helper.cdnhost}}/assets/img/tou_guwen.png" alt="" style="position: absolute;right: 0px;bottom: 0px;width: 34px;height: 34px;">
+    </div> -->
+    <dt class="advisor-img" onclick="open_main('{{advisor.uid}}')" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
-      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >{{ advisor.organid | getCity() }}分公司</p>
+      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" style="width: 200px;margin-left: -40px;">金吉列{{ advisor.organid | getCity() }}分公司</p>
       {% else %}
-      <p class="advisor-bumen" data-cityId ="" >分公司</p>
+      <p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -40px;">金吉列分公司</p>
       {% endif %}
       <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else '咨询顾问'
 }}</p>
@@ -39,8 +42,11 @@
 {% endif %}
 </div>
 <script>
+  function open_main(uid){
+    window.open('/' + uid);
+  }
  $(function(){
-   function  openchat_new(jobnum){
+   function openchat_new(jobnum){
      openJesongChatByCus(1,jobnum)
    }
    $('.expand2').on('click','.expand',function(){
@@ -52,15 +58,58 @@
      /* $('.expand1').hide();*/
      $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce | nl2br }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
    });
-   $('.advisor-img').on('click',function(){
-     if($(".tan_tupian").css("display")=="block"){
-       $(".tan_tupian").css("display","none");
-     }else{
-       $(".tan_tupian").css("display","block");
-     }
-   })
+  //  $('.advisor-img').on('click',function(){
+    //  if($(".tan_tupian").css("display")=="block"){
+    //    $(".tan_tupian").css("display","none");
+    //  }else{
+    //    $(".tan_tupian").css("display","block");
+    //  }
+  //  })
  })
 </script>
+{% endmacro %}
+<!-- 首席顾问 -->
+{% macro chief_advisor(advisor, helper,login_info, index) %}
+<div class="community-advisor dui-box-shadow" style="position: relative;height: 440px;">
+  <ul style="height: 40px">
+    <li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_{{advisor.uid}}" data-fans="{{advisor.fans_count}}" style="padding-left: 10px;">{{ advisor.fans_count }}</span></li>
+    <li style="width: 135px">文章<span class="article-num">{{ advisor.article_count }}</span></li>
+  </ul>
+  <dl>
+    {#<!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
+    <!-- <div style="position: relative;">
+      <img src="{{helper.cdnhost}}/assets/img/tou_guwen.png" alt="" style="position: absolute;right: 0px;bottom: 0px;width: 34px;height: 34px;">
+    </div> -->#}
+    <dt class="advisor-img" onclick="advisor_img({{advisor.uid}})" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advisor.status,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
+    <dd>
+      <p class="advisor-name" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;line-height: 20px;">{{ advisor.realname }}</p>
+      {% if advisor.organid != null %}
+      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" style="width: 200px;margin-left: -48px;">金吉列{{ advisor.organid | getCity() }}分公司</p>
+      {% else %}
+      <p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -48px;">金吉列分公司</p>
+      {% endif %}
+      <p class="advisor-enjoy">{{ advisor.position_name }}咨询顾问</p>
+    </dd>
+  </dl>
+  <div class="advisor-intro">
+    {% if advisor.introduce.length > 74 %}
+    <p class="expand2_{{advisor.uid}}" data-tex="{{ advisor.introduce | ellipsis(74) }}" data-text="{{ advisor.introduce }}">{{ advisor.introduce | ellipsis(74) }}</p><!--<span class="expand_{{advisor.uid}}" onclick="text_show({{advisor.uid}})" data-text="{{ advisor.introduce }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>-->
+    {% else %}
+    <p class="expand1">{{ advisor.introduce }}</p>
+    {% endif %}
+  </div>
+  <div class="advisor-btn {% if login_info.uid ==advisor.uid %}advisor-btn-gray{% endif %}" style="position: absolute;bottom: 1px;">
+    <span {% if login_info.uid !== advisor.uid %} data-new_job_number="{{ advisor.new_job_number}}" onclick="openchat_new({{advisor.uid}})" id="openchat_{{advisor.uid}}" {% endif %} class="advisor-zixun"  style="padding: 4px 24px;" rel="nofollow">立即咨询</span>
+    {% if advisor.is_follow %}
+      <span class="advisor-guanzhu guanzhu-btn_{{advisor.uid}}" style="padding: 3px 31px;" data-uid="{{advisor.uid}}" onclick="guanzhu({{advisor.uid}})">已关注</span>
+    {% else %}
+      <span class="advisor-guanzhu guanzhu-btn_{{advisor.uid}}" data-uid="{{advisor.uid}}" onclick="guanzhu({{advisor.uid}})">关注</span>
+    {% endif %}  
+  </div>
+{% if advisor.header_avatar_big %}
+  <div class="tan_tupian_{{advisor.uid}}" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="{{ advisor.header_avatar_big }}" alt=""></div>
+{% endif %}
+</div>
 {% endmacro %}
 <!--离职顾问-->
 {% macro advisor_leave(advisor, helper,login_info) %}
@@ -87,13 +136,13 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
+    <dt class="advisor-img" onclick="open_main('{{advisor.uid}}')" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
-      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >{{ advisor.organid | getCity() }}分公司</p>
+      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >金吉列{{ advisor.organid | getCity() }}分公司</p>
       {% else %}
-      <p class="advisor-bumen" data-cityId ="" >分公司</p>
+      <p class="advisor-bumen" data-cityId ="" >金吉列分公司</p>
       {% endif %}
       <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else '咨询顾问'
         }}</p>
@@ -119,6 +168,9 @@
   {% endif %}
 </div>
 <script>
+  function open_main(uid){
+    window.open('/' + uid);
+  }
   $(function(){
     function  openchat_new(jobnum){
       openJesongChatByCus(1,jobnum)
@@ -132,13 +184,13 @@
       /* $('.expand1').hide();*/
       $('.expand2').html(tex +'<span class="expand"  data-text="{{ advisor.introduce | nl2br }}" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span>')
     });
-    $('.advisor-img').on('click',function(){
-      if($(".tan_tupian").css("display")=="block"){
-        $(".tan_tupian").css("display","none");
-      }else{
-        $(".tan_tupian").css("display","block");
-      }
-    })
+    // $('.advisor-img').on('click',function(){
+    //   if($(".tan_tupian").css("display")=="block"){
+    //     $(".tan_tupian").css("display","none");
+    //   }else{
+    //     $(".tan_tupian").css("display","block");
+    //   }
+    // })
   })
 </script>
 {% endmacro %}
@@ -178,13 +230,17 @@
   </ul>
   <dl>
     <!--<dt class="advisor-img"><a target="_blank" href="{{helper.urlgen('blog', advisor.uid)}}"><img src="{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}" alt="{{advisor.realname}}" title="{{advisor.realname}}"></a></dt>-->
-    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', 0,advisor.version)}}');background-position: 0 0;"><a target="_blank" href="{{helper.urlgen( advisor.uid)}}"></a></dt>
+    <!-- <div style="position: relative;">
+      
+      <img src="{{helper.cdnhost}}/assets/img/tou_guwen.png" alt="" style="position: absolute;right: 0px;bottom: 0px;width: 34px;height: 34px;">
+    </div> -->
+    <dt class="advisor-img" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
     <dd>
       <p class="advisor-name" >{{ advisor.realname }}</p>
       {% if advisor.organid != null %}
-      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" >{{ advisor.organid | getCity() }}分公司</p>
+      <p class="advisor-bumen" data-cityId ="{{advisor.organid}}" style="width: 200px;margin-left: -40px;">金吉列{{ advisor.organid | getCity() }}分公司</p>
       {% else %}
-      <p class="advisor-bumen" data-cityId ="" >分公司</p>
+      <p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -40px;">金吉列分公司</p>
       {% endif %}
       <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else '咨询顾问'
         }}</p>

@@ -1,7 +1,7 @@
 {% macro slideMove(guanggao,helper,ad_seat_index) %}
 		{% for picitem in guanggao %}
 			{% if helper.adseatCompare(picitem.ad_seat,ad_seat_index) %}
-			<div class="dui-layout-lg clearfix" style="margin-top:5px;width:1200px;overflow:hidden;">
+			<div class="dui-layout-lg clearfix" style="margin-top:20px;width:1200px;overflow:hidden;">
 				<div class="swiper-container_{{ad_seat_index}}" data-slider="{{picitem.setting.length}}" style="min-width:1220px;">
 					{% if picitem.setting.length > 3 %}
 						<div class="home-guanggao swiper-wrapper" style="overflow:hidden;margin-right:-20px;height:120px;">
@@ -17,7 +17,7 @@
 					{% else %}
 					<div class="home-guanggao" style="float:left;overflow:hidden;margin-right:-20px;line-height: 0">
 						{% for ad_pic in picitem.setting %}
-							<a rel="nofollow" data-pid="{{ad_pic.pid}}" data-seat="{{ad_seat_index}}"  href="{{ad_pic.linkurl}}" target="_blank">
+							<a rel="nofollow" data-pid="{{ad_pic.pid}}" data-seat="{{ad_seat_index}}"  href="{{ad_pic.linkurl}}" target="_blank" style="margin-right:20px;">
 									<img src='{{ad_pic.imageurl}}' alt='{{picitem.alt}}' style="width:386px;height:120px"/>
 							</a>
 						{% endfor %}

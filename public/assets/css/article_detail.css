@@ -14,14 +14,50 @@
    background:#fff;
    margin-top: 20px;
 }
+.adviser-case-detail-con .adviser-top .zixun {
+  float:left;
+  width:120px;
+  height:30px;
+  font-size: 14px;
+  color:#fff;
+  text-align:center;
+  line-height: 30px;
+  background:#c13232;
+  margin-top: 7.5px;
+  margin-right: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.title-guide-text {
+  float:left;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 20px;
+}
+.detail-guide-text {
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+}
+.detail-guide-text img {
+  margin-bottom:2px;
+  height:10px;
+  margin-left: 4px;
+}
+.detail-guide-text img.small-dis {
+  margin-left: 2px;
+}
 .adviser-case-detail-h3{
   font-weight: normal;
   font-size: 18px;
   line-height: 18px;
-  color:#c13232;
+  color:#333;
   padding-top:20px;
-  padding-bottom: 16px;
+  padding-bottom: 10px;
   float:left;
+}
+.adviser-case-detail-h3:hover {
+  color: #c13232;
 }
 .art-tag{
   float:left;
@@ -47,18 +83,68 @@
   color:#c13232;
   line-height: 24px;
 }
+.detail-info-bar {
+  width: 100%;
+}
 .adviser-case-detail-come{
-  font-size:12px;
+  float: left;
+  font-size:0;
   line-height: 12px;
   color:#666;
-  padding-bottom:16px;
+  padding-top: 10px;
+  padding-bottom:19px;
+  line-height: 1;
+}
+.adviser-case-detail-come span {
+  font-size: 12px;
+  display: inline-block;
+  margin-right: 20px;
+}
+.connect-info {
+  float: right;
+  font-size: 0px;
+  height: 24px;
+  margin-top: 4px;
+}
+.connect-info img {
+  vertical-align: super;
+  margin-right: 10px;
+  position: relative;
+  top: 3px;
+}
+.connect-info .zixun-info {
+  font-size: 12px;
+  color: #666;
+}
+.connect-info .zixun-phone {
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+}
+.connect-info .zixun-btn {
+  display: inline-block;
+  width: 76px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  background-color: #c13232;
+  color: #fff;
+  font-size: 14px;
+  margin-left: 20px;
 }
 .adviser-case-detail-offer{
   border-top:1px solid #dcdcdc;
   /*border-bottom: 1px solid #dcdcdc;*/
   padding-top:20px;
-  padding-bottom: 40px;
+  /* padding-bottom: 40px; */
   position: relative;
+}
+.content-guide-box {
+  width: 100%;
+  padding: 30px 0;
+  text-align: center;
+  position: relative;
+  z-index: 10;
 }
 .adviser-case-offer-h4{
   font-size: 16px;

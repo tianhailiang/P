@@ -138,7 +138,19 @@ exports.userinfo = function(data,callback){
  *  文章详情
  */
 exports.article = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_article);
+  var url = _api_url_path(data, config.apis.get_article);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
+};
+
+/*
+ *  文章id获取顾问
+ */
+exports.article_getUid = function(data,callback){
+  var url = _api_url_path(data, config.apis.get_article_uid);
   if (url == null){
     callback('404');
     return;
@@ -150,7 +162,7 @@ exports.article = function(data,callback){
  *  编辑文章详情
  */
 exports.article_info = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_article_info);
+  var url = _api_url_path(data, config.apis.get_article_info);
   if (url == null){
     callback('404');
     return;
@@ -262,7 +274,7 @@ exports.comment_ans =function(data,callback){
 
 //分页获取评论
 exports.article_comments = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_article_comments);
+  var url = _api_url_path(data, config.apis.get_article_comments);
   if (url == null){
     callback('404');
     return;
@@ -331,7 +343,7 @@ exports.draft_to_article = function(data,callback){
 
 // 顾问主页列表
 exports.adviser_main=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.adviser_main);
+  var url = _api_url_path(data, config.apis.adviser_main);
   if (url == null) {
     callback('404');
     return;
@@ -341,7 +353,7 @@ exports.adviser_main=function(data,callback){
 }
 // 顾问主页列表踩你喜欢
 exports.likelist=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.likelist);
+  var url = _api_url_path(data, config.apis.likelist);
   if (url == null) {
     callback('404');
     return;
@@ -350,7 +362,7 @@ exports.likelist=function(data,callback){
 }
 // 顾问主页-相关顾问
 exports.xiangguan_guwen=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.xiangguan_guwen);
+  var url = _api_url_path(data, config.apis.xiangguan_guwen);
   if (url == null) {
     callback('404');
     return;
@@ -377,7 +389,7 @@ exports.yimin_likelist=function(data,callback){
 }
 // 移民相关顾问
 exports.yimin_xiangguanguwen=function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.yimin_xiangguanguwen);
+  var url = _api_url_path(data, config.apis.yimin_xiangguanguwen);
   if (url == null) {
     callback('404');
     return;
@@ -430,4 +442,14 @@ exports.community_index = function(data,callback){
     return;
   }
   api.apiRequest(url ,callback);
+}
+//首席顾问
+exports.top_adviser_list = function (data,callback){
+  var url = _api_url_path(data, config.apis.top_adviser_list);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+  console.log('url-----', url);
 }

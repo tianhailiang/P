@@ -407,16 +407,48 @@ $("#zxzx").hover(function(){
 },function(){
   /*  $("#quick_links_pop").css("display", "none");*/
 });
-
-$(".weixin-slide").hover(function(){
-  /*$(".weixin-slide-img").css("display","block");
-  $("#quick_links_pop").css("display", "none");
-  $("#comment_con").css("display", "none");*/
-  $("#r_comment").css("background", "#9a9a9a");
-  $(".phone-number").css("display","none");
-},function(){
-  $(".weixin-slide-img").css("display","none")
-});
+var sUserAgent = navigator.userAgent.toLowerCase();
+if(sUserAgent.match(/ipad/i) == "ipad"){
+  $(".weixin-slide").on("touchstart",function(){
+    var login_nickname = JSON.parse(cookie('login_ss'));
+    if(login_nickname){
+      if( $(".weixin-slide-img").css("display")=="block"){
+        $(this).css("backgroundColor","#9a9a9a");
+      }else{
+        $(this).css("backgroundColor","#c13232");
+      }
+    }
+  })
+  $(".qq-slide").on("touchstart",function(){
+    var login_nickname = JSON.parse(cookie('login_ss'));
+    if(login_nickname){
+      if($(".qq-slide-img").css("display")=="block"){
+        $(this).css("backgroundColor","#9a9a9a");
+      }else{
+        $(this).css("backgroundColor","#c13232");
+      }
+    }
+  })
+} else {
+  $(".weixin-slide").hover(function(){
+    $(".weixin-slide-img").css("display","block");
+    $("#quick_links_pop").css("display", "none");
+    $("#comment_con").css("display", "none");
+    $("#r_comment").css("background", "#9a9a9a");
+    $(".phone-number").css("display","none");
+  },function(){
+    $(".weixin-slide-img").css("display","none")
+  });
+  $(".qq-slide").hover(function(){
+    $(".qq-slide-img").css("display","block");
+    $("#quick_links_pop").css("display", "none");
+    $("#comment_con").css("display", "none");
+    $("#r_comment").css("background", "#9a9a9a");
+    $(".phone-number").css("display","none");
+  },function(){
+    $(".qq-slide-img").css("display","none")
+  });
+}
 
 $(".weixin-slide").on("click",function(){
   var login_nickname = JSON.parse(cookie('login_ss'));
@@ -431,25 +463,7 @@ $(".weixin-slide").on("click",function(){
     getlogin();
   }
 })
-$(".weixin-slide").on("touchstart",function(){
-  var login_nickname = JSON.parse(cookie('login_ss'));
-  if(login_nickname){
-    if( $(".weixin-slide-img").css("display")=="block"){
-      $(this).css("backgroundColor","#9a9a9a");
-    }else{
-      $(this).css("backgroundColor","#c13232");
-    }
-  }
-})
-$(".qq-slide").hover(function(){
-/*  $(".qq-slide-img").css("display","block");
-  $("#quick_links_pop").css("display", "none");
-  $("#comment_con").css("display", "none");*/
-  $("#r_comment").css("background", "#9a9a9a");
-  $(".phone-number").css("display","none");
-},function(){
-  $(".qq-slide-img").css("display","none")
-});
+
   $(".qq-slide").on("click",function(){
     var login_nickname = JSON.parse(cookie('login_ss'));
     if(login_nickname){
@@ -463,16 +477,7 @@ $(".qq-slide").hover(function(){
       getlogin();
     }
   })
-  $(".qq-slide").on("touchstart",function(){
-    var login_nickname = JSON.parse(cookie('login_ss'));
-    if(login_nickname){
-      if($(".qq-slide-img").css("display")=="block"){
-        $(this).css("backgroundColor","#9a9a9a");
-      }else{
-        $(this).css("backgroundColor","#c13232");
-      }
-    }
-  })
+
 $(".slide-phone").on("click",function(){
   if( $(".phone-number").css("display")=="block"){
     $(".phone-number").css("display","none");
