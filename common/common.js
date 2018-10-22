@@ -80,6 +80,15 @@ function getCountryEn(id) {
 }
 
 /*
+ * param：国家id，
+ * return：国家英文缩写
+ */
+function getCountryChinese(id) {
+    var obj = normalize(__countryArr_[id],__countryArr_[0]);
+    return obj[0];
+}
+
+/*
  * param：国家英文缩写
  * return：国家id
  * INvalid: -1
@@ -424,6 +433,7 @@ module.exports = {
   getCountryChinese: getCountryChinese ,
   getCountryId: getCountryId,
   getCountryEn: getCountryEn,
+  getCountryChinese: getCountryChinese,
   getCityChinese: getCityChinese,
   getCityId: getCityId,
   getCityEn:getCityEn,
