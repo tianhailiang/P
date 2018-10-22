@@ -335,6 +335,8 @@ function pageTDK(flag, tdkParam) {
   var keywords = tdkParam.keywords;
   var pageNum = tdkParam.pageNum;
   var realname = tdkParam.realname;
+  var edu = tdkParam.edu;
+  var tagList = tdkParam.tagList;
 
   if(!page_name){
     //console.log("page_name is null !");
@@ -363,10 +365,10 @@ function pageTDK(flag, tdkParam) {
   if(cityid){
     var cityName = common.getCityChinese(cityid);
   }
-  return tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname);
+  return tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname, edu, tagList);
 }
 
-function tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname) {
+function tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname, edu, tagList) {
   var ret = tdk_string;
   if(nationName){
     ret = ret.replace(/\{nationName\}/g, nationName);
@@ -392,6 +394,18 @@ function tdk_param_replace(tdk_string, nationName, cityName, title, description,
     ret = ret.replace(/\{keywords\}/g, keywords);
   }else{
     ret = ret.replace(/\{keywords\}/g, "");
+  }
+
+  if(edu){
+      ret = ret.replace(/\{edu\}/g, edu);
+  }else{
+      ret = ret.replace(/\{edu\}/g, "");
+  }
+
+  if(tagList){
+      ret = ret.replace(/\{tagList\}/g, tagList);
+  }else{
+      ret = ret.replace(/\{tagList\}/g, "");
   }
 
   //替换字符串中的{realname}
