@@ -336,7 +336,7 @@ function pageTDK(flag, tdkParam) {
   var pageNum = tdkParam.pageNum;
   var realname = tdkParam.realname;
   var edu = tdkParam.edu;
-  var tagList = tdkParam.tagList;
+  var tag = tdkParam.tag;
 
   if(!page_name){
     //console.log("page_name is null !");
@@ -365,10 +365,10 @@ function pageTDK(flag, tdkParam) {
   if(cityid){
     var cityName = common.getCityChinese(cityid);
   }
-  return tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname, edu, tagList);
+  return tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname, edu, tag);
 }
 
-function tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname, edu, tagList) {
+function tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname, edu, tag) {
   var ret = tdk_string;
   if(nationName){
     ret = ret.replace(/\{nationName\}/g, nationName);
@@ -402,10 +402,10 @@ function tdk_param_replace(tdk_string, nationName, cityName, title, description,
       ret = ret.replace(/\{edu\}/g, "");
   }
 
-  if(tagList){
-      ret = ret.replace(/\{tagList\}/g, tagList);
+  if(tag){
+      ret = ret.replace(/\{tag\}/g, tag);
   }else{
-      ret = ret.replace(/\{tagList\}/g, "");
+      ret = ret.replace(/\{tag\}/g, "");
   }
 
   //替换字符串中的{realname}
