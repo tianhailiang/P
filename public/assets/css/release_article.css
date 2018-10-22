@@ -90,7 +90,13 @@
   border:1px solid #dcdcdc;
   width:598px;
 }
-
+/*恢复ul ol li table的默认样式*/
+#editor1 ul,#editor1 ul li {
+  list-style: disc;
+}
+#editor1 ol,#editor1 ol li {
+  list-style: decimal;
+}
 #editor1{
   height:500px;
 }
