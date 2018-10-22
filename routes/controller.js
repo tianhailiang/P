@@ -341,7 +341,9 @@ exports.country_list = function (req, res, next) {
         data.tdk = {
             pagekey: 'ARTICLELIST', //key
             cityid: area,
-            // keywords: keyword
+            nationid: country,
+            edu: type,
+            tag: tag,
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
