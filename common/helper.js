@@ -360,7 +360,7 @@ function pageTDK(flag, tdkParam) {
   }
   var nationName = '', cityName = '';
   if(nationid){
-    var nationName = common.getCountryEn(nationid);
+    var nationName = common.getCountryChinese(nationid);
   }
   if(cityid){
     var cityName = common.getCityChinese(cityid);
