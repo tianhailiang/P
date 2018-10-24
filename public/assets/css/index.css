@@ -89,13 +89,12 @@
     z-index: 999;
     display: none;
     border-top: 2px solid #c13232;
+    overflow: hidden;
 }
 .nationality_guoqi{
-    /*display: flex;*/
-    width: 1112px;
+    width: 1164px;
     height: 134px;
     background: #fff;
-    padding: 0 26px;
     position: relative;
     margin: 0 auto;
     float: left;
@@ -109,6 +108,7 @@
     width: 100%;
     height: auto;
     font-size: 0;
+    margin-left: 26px;
 }
 .liuxue-guoqi p{
     width: 54px;
@@ -120,7 +120,7 @@
     /*margin-top: 5px;*/
 }
 .liuxue-guoqi a{
-    margin: 5px 42px 0px 0;
+    margin: 5px 34px 0px 0;
     height:60px;
     position: relative;
     /*display: inline-block;*/
@@ -263,6 +263,14 @@
    background-image: url("../img/guoqi_ios.png");
    background-repeat: no-repeat;
    background-position: -1140px -72px;
+}
+.guoqi_ios25{
+  background-image: url("../img/home_icon_adl.png");
+  background-repeat: no-repeat;
+}
+.guoqi_ios26{
+  background-image: url("../img/home_icon_am.png");
+  background-repeat: no-repeat;
 }
 /* ===========2018.6.8----rongfa================= */
 .gg-group{overflow:hidden;}
