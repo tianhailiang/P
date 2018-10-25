@@ -68,7 +68,7 @@
 .branch_company_text_tilte{
     width: 58px;
     height: 22px;
-    border: 1px solid #333333;
+    border: 1px solid #333;
     border-radius: 12px;
     margin:5px;
     text-align: center;
@@ -123,9 +123,7 @@
     margin: 5px 34px 0px 0;
     height:60px;
     position: relative;
-    /*display: inline-block;*/
     float: left;
-    /*border:solid 1px transparent;*/
 }
 .liuxue-guojia-title{
     width: 23px;
@@ -136,8 +134,6 @@
     line-height: 13px;
     background: #fff;
     padding: 10px 6px;
-    /*border-right: solid #eeeeee;*/
-    /*border-right-width: 1px;*/
     float: left;
 }
 .liuxue-guojia-line{
@@ -188,27 +184,22 @@
     background-image: url("../img/guoqi_ios.png");
     background-repeat: no-repeat;
     background-position: -1041px -10px;
-    /*background-position: -847px -10px;*/
 }.guoqi_ios10{
      background-image: url("../img/guoqi_ios.png");
      background-repeat: no-repeat;
      background-position: -1140px -10px;
-    /*background-position: -943px -10px;*/
 }.guoqi_ios11{
       background-image: url("../img/guoqi_ios.png");
       background-repeat: no-repeat;
       background-position: -454px -72px;
-    /*background-position: -1041px -10px;*/
 }.guoqi_ios12{
     background-image: url("../img/guoqi_ios.png");
     background-repeat: no-repeat;
     background-position: -943px -72px;
-    /*background-position: -1140px -10px;*/
 }.guoqi_ios13{
     background-image: url("../img/guoqi_ios.png");
     background-repeat: no-repeat;
     background-position: -1041px -72px;
-    /*background-position: -62px -72px;*/
 }.guoqi_ios14{
     background-image: url("../img/guoqi_ios.png");
     background-repeat: no-repeat;
