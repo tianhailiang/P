@@ -242,7 +242,7 @@ $(function(){
       '<li><a onclick="onclick_ly(\'g\',\'48\')"target="_blank">德国/奥地利咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'54\')"target="_blank">移民咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'174\')"target="_blank">境外升转学</a></li>'+
-      '<li style="border:0px; height:124px; margin-top:6px;"><img src="http://vip.jjl.cn/statics/jjlyx/images/weixin.png" width="112" height="114"></li>';
+      '<li style="border:0px; height:124px; margin-top:6px;text-align: center"><img src="http://vip.jjl.cn/statics/jjlyx/images/weixin.png" width="112" height="114"></li>';
 
     var _listStr='';
     if(_areaCode==1){
@@ -361,7 +361,7 @@ $(function(){
   }
 // right: 40px; margin-top: -200px; display: block; width: 170px;
   $(".zixun").on("click", function () {
-    $("#quick_links_pop").css({"display": "block", "right": "40px", "margin-top": "-300px", "width": "170px"})
+    $("#quick_links_pop").css({"display": "block", "right": "40px", "margin-top": "-300px", "width": "200px"})
   })
 
 //关闭弹框
