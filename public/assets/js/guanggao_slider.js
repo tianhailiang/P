@@ -371,6 +371,36 @@ if($('.swiper-container_34').data('slider') > 3){
 		mySwiper34.startAutoplay();
 	})
 }
+if($('.swiper-container_35').data('slider') > 3){
+	var mySwiper34 = new Swiper('.swiper-container_34',{
+		autoplay : 4000,
+		loop : true,
+		mode : 'horizontal',
+		speed:1300,
+		slidesPerView : 3
+	})
+	$(".swiper-container_35").mouseenter(function(){
+		mySwiper34.stopAutoplay();
+	})
+	$(".swiper-container_35").mouseleave(function(){
+		mySwiper34.startAutoplay();
+	})
+}
+if($('.swiper-container_36').data('slider') > 3){
+	var mySwiper34 = new Swiper('.swiper-container_34',{
+		autoplay : 4000,
+		loop : true,
+		mode : 'horizontal',
+		speed:1300,
+		slidesPerView : 3
+	})
+	$(".swiper-container_36").mouseenter(function(){
+		mySwiper34.stopAutoplay();
+	})
+	$(".swiper-container_36").mouseleave(function(){
+		mySwiper34.startAutoplay();
+	})
+}
 //首页右侧轮播
 	var mySwiper = new Swiper('.swiper-container',{
 		autoplay : 4000,
