@@ -372,7 +372,7 @@ if($('.swiper-container_34').data('slider') > 3){
 	})
 }
 if($('.swiper-container_35').data('slider') > 3){
-	var mySwiper35 = new Swiper('.swiper-container_34',{
+	var mySwiper35 = new Swiper('.swiper-container_35',{
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
@@ -387,7 +387,7 @@ if($('.swiper-container_35').data('slider') > 3){
 	})
 }
 if($('.swiper-container_36').data('slider') > 3){
-	var mySwiper36 = new Swiper('.swiper-container_34',{
+	var mySwiper36 = new Swiper('.swiper-container_36',{
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
