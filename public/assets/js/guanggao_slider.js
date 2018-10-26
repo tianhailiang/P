@@ -372,7 +372,7 @@ if($('.swiper-container_34').data('slider') > 3){
 	})
 }
 if($('.swiper-container_35').data('slider') > 3){
-	var mySwiper34 = new Swiper('.swiper-container_34',{
+	var mySwiper35 = new Swiper('.swiper-container_34',{
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
@@ -380,14 +380,14 @@ if($('.swiper-container_35').data('slider') > 3){
 		slidesPerView : 3
 	})
 	$(".swiper-container_35").mouseenter(function(){
-		mySwiper34.stopAutoplay();
+		mySwiper35.stopAutoplay();
 	})
 	$(".swiper-container_35").mouseleave(function(){
-		mySwiper34.startAutoplay();
+		mySwiper35.startAutoplay();
 	})
 }
 if($('.swiper-container_36').data('slider') > 3){
-	var mySwiper34 = new Swiper('.swiper-container_34',{
+	var mySwiper36 = new Swiper('.swiper-container_34',{
 		autoplay : 4000,
 		loop : true,
 		mode : 'horizontal',
@@ -395,10 +395,10 @@ if($('.swiper-container_36').data('slider') > 3){
 		slidesPerView : 3
 	})
 	$(".swiper-container_36").mouseenter(function(){
-		mySwiper34.stopAutoplay();
+		mySwiper36.stopAutoplay();
 	})
 	$(".swiper-container_36").mouseleave(function(){
-		mySwiper34.startAutoplay();
+		mySwiper36.startAutoplay();
 	})
 }
 //首页右侧轮播
