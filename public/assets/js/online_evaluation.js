@@ -85,7 +85,7 @@ $(function(){
     }else{
       $("#context-num").html('');
     };
-
+    var h = window.location.href;
     $.ajax({
       url: ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
       type:'GET',
@@ -96,7 +96,9 @@ $(function(){
         phone: $("#phone-slide").val(),
         country: $('#department').val(),
         city: $('#slide-area').val(),
-        need:$("#context").val()
+        need:$("#context").val(),
+        dataType: '3',
+        source: h
       },
       success:function(msg){
         console.log(msg);
