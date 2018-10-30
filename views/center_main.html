@@ -88,7 +88,7 @@
             height: 100%;
             min-width: 1180px;
 	        background: #000000;
-	        opacity: 0.8;
+	        opacity: 0.6;
 	        position: fixed;
 	        z-index: 1003;
         }
@@ -104,6 +104,7 @@
             text-align: center;
             padding: 30px;
             border-radius: 4px;
+            margin-top: 20%;
         }
         .wenzhangshu{
             margin: 30px 0;
@@ -140,14 +141,13 @@
             
         </div>
         <div class="zhezhao_wenzhang" id="gwzs" style="display: none;">
-            <div style="width:1180px;height: 100%;margin: 0 auto;position: relative;">
-                <div class="zhezhaof_wenzhang">
-                    <div class="wenzhangshu">发文章数：<span>9999</span></div>
-                    <div class="wenzhangshu">有效数：<span>9999</span></div>
-                    <div class="wenzhangshu">下架数：<span>9999</span></div>
-                    <input type="button" class="btn login-primary" value="确 认" id="submit_wenzhang">
-                </div>
-                
+        </div>
+        <div style="width:1180px;height: 100%;margin: 0 auto;position: relative;display: none;" id="gwzs1">
+            <div class="zhezhaof_wenzhang">
+                <div class="wenzhangshu">发文章数：<span>{{gwzs.pub_count}}</span></div>
+                <div class="wenzhangshu">有效数：<span>{{gwzs.article_count}}</span></div>
+                <div class="wenzhangshu">下架数：<span>{{gwzs.lock_count}}</span></div>
+                <input type="button" class="btn login-primary" value="确 认" id="submit_wenzhang">
             </div>
             
         </div>
@@ -340,6 +340,7 @@
         }
         if (!cookie('gwzs')) {
             $('#gwzs').show();
+            $('#gwzs1').show();
             $('body').css('overflow','hidden');
         }
         $('#submit_wenzhang').click(function () {
@@ -348,6 +349,7 @@
             console.log('time', time)
             cookie('gwzs_time', time, {path: "/", domain: js_api_config.domain, expires: 36500});
             $('#gwzs').hide();
+            $('#gwzs1').hide();
             $('body').css('overflow','auto');
             // $.ajax({
             //     url: '/gwzs',

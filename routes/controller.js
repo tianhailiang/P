@@ -1120,13 +1120,19 @@ exports.center_main = function (req, res, next) {
                 "page": 1,
                 "per_page": 2
             },callback)
+        },
+        gwzs: function (callback) {
+            wec.gwzs({
+                "uid":data.login_info.uid
+            },callback)
         }
     }, function (err, result) {
         data.userinfo =returnData(result.userinfo,'userinfo');
         data.follow_list = returnData(result.follow_list,'follow_list');
         data.comment_list =returnData(result.comment_list,'comment_list');
         data.collection_list = returnData(result.collection_list,'collection_list');
-        console.log('data.collection_list', data.collection_list);
+        data.gwzs = returnData(result.gwzs,'gwzs');
+        console.log('data.gwzs', data.gwzs);
         var pagekey = null;
         if(data.userinfo.usertype == 2){
             if(data.login_info.adviser==1){
