@@ -539,10 +539,7 @@
       $("#save-draft").on("click",savePublish); //保存草稿箱
       function surePublish(){
         // 读取 html
-        var readData = editor.txt.html();
-        console.log(readData);
-        console.log('---------------==========================-------------')
-        return false;
+        var data = editor.txt.html();
         if($("#apply-country").val()==''){
           // 判断国家
           $("#apply-country").focus();
@@ -835,6 +832,7 @@
         });
       };
       function dataFilter (originData) {
+        // console.log('前',originData);
         var returnData = '';
         var filterArr = [
             {
@@ -876,9 +874,10 @@
         ]; 
         filterArr.forEach(function(val,index) {
           originData = originData.replace(val.reg,val.str);
-        })       
-        console.log('过滤后的原始数据'+originData);
+        })      
+        // console.log('---------------------------==================------------------') 
         returnData =  originData;
+        // console.log('后',returnData);
         return returnData;
       }
     })
