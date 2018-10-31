@@ -144,6 +144,7 @@
         </div>
         <div style="width:1180px;height: 100%;margin: 0 auto;position: relative;display: none;" id="gwzs1">
             <div class="zhezhaof_wenzhang">
+                <div class="wenzhangshu">当前月</div>
                 <div class="wenzhangshu">发文章数：<span>{{gwzs.pub_count}}</span></div>
                 <div class="wenzhangshu">有效数：<span>{{gwzs.article_count}}</span></div>
                 <div class="wenzhangshu">下架数：<span>{{gwzs.lock_count}}</span></div>
@@ -319,29 +320,30 @@
         if(cookie('login_ss') != undefined){
             login_ss = JSON.parse(cookie('login_ss'));
         }
-        if (!cookie('yhrs')) {
-            console.log('1111')
-            $('#zhezhaoy').show();
-            $('body').css('overflow','hidden');
-            var h = document.documentElement.clientHeight || document.body.clientHeight;
-            var sUserAgent = navigator.userAgent.toLowerCase();
-            if(sUserAgent.match(/ipad/i) == "ipad"){
-                console.log('ipad')
-                h = h*0.85
-            } else {
-                h = h*0.7
-            }
-            // alert(h)
-            console.log('h',h)
-            var $scrolltop = $('#yhrs_1').offset().top;
-            $('html,body').animate({//$('html,body')兼容问题body属于chrome
-              scrollTop:$scrolltop-h
-            })
-        }
         if (!cookie('gwzs')) {
             $('#gwzs').show();
             $('#gwzs1').show();
             $('body').css('overflow','hidden');
+        } else {
+            if (!cookie('yhrs')) {
+                console.log('1111')
+                $('#zhezhaoy').show();
+                $('body').css('overflow','hidden');
+                var h = document.documentElement.clientHeight || document.body.clientHeight;
+                var sUserAgent = navigator.userAgent.toLowerCase();
+                if(sUserAgent.match(/ipad/i) == "ipad"){
+                    console.log('ipad')
+                    h = h*0.85
+                } else {
+                    h = h*0.7
+                }
+                // alert(h)
+                console.log('h',h)
+                var $scrolltop = $('#yhrs_1').offset().top;
+                $('html,body').animate({//$('html,body')兼容问题body属于chrome
+                scrollTop:$scrolltop-h
+                })
+            }
         }
         $('#submit_wenzhang').click(function () {
             cookie('gwzs', '1', {path: "/", domain: js_api_config.domain});
@@ -351,6 +353,25 @@
             $('#gwzs').hide();
             $('#gwzs1').hide();
             $('body').css('overflow','auto');
+            if (!cookie('yhrs')) {
+                console.log('1111')
+                $('#zhezhaoy').show();
+                $('body').css('overflow','hidden');
+                var h = document.documentElement.clientHeight || document.body.clientHeight;
+                var sUserAgent = navigator.userAgent.toLowerCase();
+                if(sUserAgent.match(/ipad/i) == "ipad"){
+                    console.log('ipad')
+                    h = h*0.85
+                } else {
+                    h = h*0.7
+                }
+                // alert(h)
+                console.log('h',h)
+                var $scrolltop = $('#yhrs_1').offset().top;
+                $('html,body').animate({//$('html,body')兼容问题body属于chrome
+                scrollTop:$scrolltop-h
+                })
+            }
             // $.ajax({
             //     url: '/gwzs',
             //     type:'GET',
