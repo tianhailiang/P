@@ -267,4 +267,5 @@ exports = module.exports = function (app) {// routes
     var data ={};
     res.render('pdf',data)
   })
+  app.get('/gwzs', login.gwzs); // 顾问个人主页确认文章数
 };
