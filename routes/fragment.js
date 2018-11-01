@@ -34,7 +34,7 @@ exports.searchlikelist = function(req,res,next){
     guess_like: function (callback) {
       cms.channel_list({
          "country_id":country,
-          order: 'comments desc',
+          order: 'views desc',
           city_id:area,
           "per_page": "10",
           "page": 1,
@@ -141,9 +141,12 @@ exports.xiangguanguwen = function(req,res,next){
 exports.yimin_xiangguanguwen = function(req,res,next){
   log.debug('移民相关顾问.......')
   var data = {};
-  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  // var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var country = req.query.isArticle ? req.query.n : req.query.n.split(',').join('_');
+  var isArticle = req.query.isArticle ? req.query.isArticle : 0;
   var area = req.query.c || 1;
   var uid = req.query.uid;
+  var isIm = req.query.isIm ? req.query.isIm : 0;
   async.parallel({
     xiangguanguwen: function (callback) {
       wec.yimin_xiangguanguwen({
@@ -151,7 +154,8 @@ exports.yimin_xiangguanguwen = function(req,res,next){
         "city_id":1,
         "per_page":5,
         "uid":uid,
-        "order":"comments desc",
+        "isArticle":isArticle,
+        "isIm":isIm
       }, callback)
     }
   },function(err,result){

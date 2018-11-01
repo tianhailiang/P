@@ -33,6 +33,7 @@ var __countryArr_ = {
   "52": ["新加坡", "singapore"],
   "53": ["马来西亚", "malaysia"],
   "54": ["中国香港", "hongkong"],
+  "55": ["中国澳门", "macau"],
   "100": ["俄罗斯", "russion"],
   "101": ["乌克兰", "ukraine"],
   "102": ["白俄罗斯", "belarus"],
@@ -47,6 +48,7 @@ var __countryArr_ = {
   "111": ["意大利", "italy"],
   "112": ["西班牙", "spain"],
   "113": ["瑞士", "switzerland"],
+  "114": ["奥地利", "austria"],
   "7": ["希腊", "greece"],
   //移民新增（澳洲用网站的澳大利亚）
   "8": ["马耳他", "malta"],
@@ -75,6 +77,15 @@ function getCountryChinese(id) {
 function getCountryEn(id) {
   var obj = normalize(__countryArr_[id],__countryArr_[0]);
   return obj[1];
+}
+
+/*
+ * param：国家id，
+ * return：国家英文缩写
+ */
+function getCountryChinese(id) {
+    var obj = normalize(__countryArr_[id],__countryArr_[0]);
+    return obj[0];
 }
 
 /*
@@ -422,6 +433,7 @@ module.exports = {
   getCountryChinese: getCountryChinese ,
   getCountryId: getCountryId,
   getCountryEn: getCountryEn,
+  getCountryChinese: getCountryChinese,
   getCityChinese: getCityChinese,
   getCityId: getCityId,
   getCityEn:getCityEn,

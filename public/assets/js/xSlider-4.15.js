@@ -128,12 +128,17 @@
     })
       // 自动切换
       var sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
-      slider_img_ul.on('mouseover', function () {
+       this.el.on('mouseenter', function () {
           clearInterval(sliderInt);
       });
-      slider_img_ul.on('mouseout', function () {
+      this.el.on('mouseleave', function () {
           sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
       });
+      $(document).on('mousemove',function(){
+        if ($('.lunbo_lift')[0] && $('.lunbo_lift')[0].contains(window.event.srcElement)) {
+          clearInterval(sliderInt);
+        }
+      })
     // 判断图片切换
     function sliderInterval() {
       if (_this.config.current < slider_img_length - 2) {

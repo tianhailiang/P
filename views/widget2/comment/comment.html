@@ -357,6 +357,9 @@
   });
 
   function ansHtml(ans_list){
+    if (ans_list == null) {
+      return '';
+    }
     //回复html
     var ahtml = '';
     var color = ''; //设置点赞颜色

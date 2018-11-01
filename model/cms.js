@@ -511,7 +511,7 @@ exports.shengqinganli_list = function (data, callback) {
 }
 //栏目列表页---->栏目
 exports.channel_list = function (data, callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_channel_list);
+  var url = _api_url_path(data, config.apis.get_channel_list);
   if (url == null){
     callback('404');
     return;
@@ -957,7 +957,7 @@ exports.so_article_list = function (data,callback) {
 }
 //国家文章结果页search_article_list
 exports.search_article_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_search_article_list);
+  var url = _api_url_path(data, config.apis.get_search_article_list);
   if (url == null){
     callback('404');
     return;
@@ -1326,7 +1326,7 @@ exports.article_top = function(data,callback){
   api.apiRequest_post(url ,data ,callback);
 };
 
-//ad广告统计redis
+// ad广告统计redis
 exports.ad_tongji = function(uid, phone){
   var moment = require('moment');
   var redis = require('redis');
@@ -1337,6 +1337,19 @@ exports.ad_tongji = function(uid, phone){
   redisHits.select('3', function(error){
     var key = "ad_tongji:"+moment().format('YYYY-MM-DD');
     redisHits.sadd(key, "{'uid':"+uid+", 'phone':"+phone+"}");
+  });
+  
+}
+// 顾问个人主页确认文章数
+exports.gwzs = function(uid){
+  var moment = require('moment');
+  var redis = require('redis');
+  var redisHits =  redis.createClient(config.redisCache.port, config.redisCache.host);
+  
+  console.log('gwzs---------uid', uid);
+  redisHits.select('3', function(error){
+    var key = "gwzs:"+moment().format('YYYY-MM-DD');
+    redisHits.set(key, "{'uid':"+uid+", 'time':"+moment().format('YYYY-MM-DD')+"}");
   });
   
 }
@@ -1489,4 +1502,14 @@ exports.getPdf = function (data, callback) {
     return;
   }
   api.apiRequest(url, callback);
+}
+//顾问聚合页
+//搜索结果页so_adviser_list
+exports.adviser_list = function (data,callback) {
+  var url = _api_url_path(data, config.apis.get_adviser_list);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url ,callback);
 }

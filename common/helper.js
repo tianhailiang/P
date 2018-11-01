@@ -267,7 +267,7 @@ function seo_to_url(arguments, agtype) {
  * 区分静态和伪静态， 伪静态中n变量需要存在不能去掉
  */
 function exits_static_page(path) {
-  var reg_list = path.match(/^((?!yimin).*)\/(glue|news|countrynews|focus|visa|prereq|cost|nation|recommand|interpret|scholarship|media|eduquestion|school|adviser|activity|case|schoollib|yimin|product|special)(\/*)((?![0-9])[0-9A-Za-z\-_%]*).html$/g);
+  var reg_list = path.match(/^((?!yimin).*)\/(glue|news|countrynews|focus|visa|prereq|cost|nation|recommand|interpret|scholarship|media|eduquestion|school|adviser|activity|case|schoollib|yimin|product|special|chief)(\/*)((?![0-9])[0-9A-Za-z\-_%]*).html$/g);
 
   var rank = path.match(/^(.*)\/(nationrank|productrank|schoolrank).html$/g);
   var edu = path.match(/^(.*)\/(under|middle|master|team|canzan|blog).html$/g);
@@ -335,6 +335,8 @@ function pageTDK(flag, tdkParam) {
   var keywords = tdkParam.keywords;
   var pageNum = tdkParam.pageNum;
   var realname = tdkParam.realname;
+  var edu = tdkParam.edu;
+  var tag = tdkParam.tag;
 
   if(!page_name){
     //console.log("page_name is null !");
@@ -358,15 +360,15 @@ function pageTDK(flag, tdkParam) {
   }
   var nationName = '', cityName = '';
   if(nationid){
-    var nationName = common.getCountryEn(nationid);
+    var nationName = common.getCountryChinese(nationid);
   }
   if(cityid){
     var cityName = common.getCityChinese(cityid);
   }
-  return tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname);
+  return tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname, edu, tag);
 }
 
-function tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname) {
+function tdk_param_replace(tdk_string, nationName, cityName, title, description, keywords, pageNum, realname, edu, tag) {
   var ret = tdk_string;
   if(nationName){
     ret = ret.replace(/\{nationName\}/g, nationName);
@@ -392,6 +394,18 @@ function tdk_param_replace(tdk_string, nationName, cityName, title, description,
     ret = ret.replace(/\{keywords\}/g, keywords);
   }else{
     ret = ret.replace(/\{keywords\}/g, "");
+  }
+
+  if(edu){
+      ret = ret.replace(/\{edu\}/g, edu);
+  }else{
+      ret = ret.replace(/\{edu\}/g, "");
+  }
+
+  if(tag){
+      ret = ret.replace(/\{tag\}/g, tag);
+  }else{
+      ret = ret.replace(/\{tag\}/g, "");
   }
 
   //替换字符串中的{realname}
@@ -495,11 +509,34 @@ function eduChecked(val,checkedList){
   return html;
 }
 //推荐标签选中函数
-function tagChecked(name,val,checkedList){
-  var html =`<span class="recommend-sel" data-str="${val}">
-              <i class="level-sel-i iconfont"></i>
-              <i>${val}</i>
-            </span>`;
+function tagChecked(name,val,checkedList,checkedCountryId){
+  var html ='';
+  var specialStyle = '';  
+  var specialId = '';
+  if (name == "QS排名") {
+    specialStyle ="style='margin-right:38px;'"
+  }
+  if (name == '动漫留学') {
+    specialId = "id='special-tag'";
+    if (checkedCountryId != 51) {
+      html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;
+    }
+    else {
+      html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId}>
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;
+    }    
+  }
+  else {
+    html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId}>
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;       
+  }
   if(name=="留学案例"){
     html =`<span class="recommend-sel" style="display: block;" data-str="${val}" id="recommend-sel-case">
             <i class="level-sel-i iconfont"></i>
@@ -525,11 +562,33 @@ function tagChecked(name,val,checkedList){
   }
   for (let item of checkedList) {
     if(val == item){
-      html = `<span class="recommend-sel" checked="checked" data-str="${val}">
-                <i class="level-sel-i iconfont" style="border:none;color:#c13232;
-                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
-                <i>${val}</i>
-              </span>`;
+      if (name == "QS排名") {
+        specialStyle ="style='margin-right:38px;'"
+      }
+      if (name == '动漫留学') {
+        specialId = "id='special-tag'";
+        if (checkedCountryId != 51) {
+          html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+        }
+        else {
+          html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId}>
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+        }
+      }
+      else {
+        html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId}>
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+      }
       if(name=="留学案例"){
         html =`<span class="recommend-sel" style="display: block;" data-str="${val}" checked="checked" id="recommend-sel-case">
                 <i class="level-sel-i iconfont" style="border:none;color:#c13232;

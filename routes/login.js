@@ -18,6 +18,9 @@ exports.login = function (req, res, next) {
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
   console.log('url', l.h);
+  if (/\/zt\//.test(l.h)) {
+    l.h += '.html'
+  }
   if (l.h !== undefined) {
     data.url = l.h;
   } else {
@@ -47,6 +50,9 @@ exports.loginUser = function (req, res, next) {
   // var l = url.parse(req.url, true).query;
   var l = req.query
   console.log('url', l.h);
+  if (/\/zt\//.test(l.h)) {
+    l.h += '.html'
+  }
   if (l.h !== undefined) {
     data.url = l.h;
   } else {
@@ -888,4 +894,32 @@ exports.ad_tongji = function (req,res,next){
       res.redirect('loginUser?h='+config.wwhost+'/ad_tongji?href='+data.url);
     }
   // res.render('login/forget', data)
+}
+
+// 顾问个人主页确认文章数
+exports.gwzs = function (req,res,next){
+  var data = {}
+  data.login_nickname = '';
+  // var l = url.parse(req.url, true).query;
+  var l = req.query;
+  console.log('url', config.wwhost+req.url);
+  if (l.href !== undefined) {
+      data.url = l.href;
+  } else {
+      data.url = config.wwhost+req.url;
+  }
+  if ( req.cookies.login_ss !== undefined) {
+    // 已登录
+
+    // ad广告统计redis
+    console.log('已登录')
+    // var login_a = JSON.parse(req.cookies.login_ss) 暂时不需要记录redis数据库
+    // cms.gwzs(login_a.uid);
+    res.send('0');
+  } else {
+    // 未登录
+    console.log('未登录')
+    res.send('1')
+
+  }
 }

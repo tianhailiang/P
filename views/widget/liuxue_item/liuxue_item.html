@@ -1,106 +1,213 @@
 <style type="text/css">
-.lxContaniner{margin-top:30px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
-.lx-head{margin-bottom:20px;padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc;}
-.lx-head h1{float:left;margin-right:80px;color:#333;font-size:22px}
+.lxContaniner{margin-top:26px;width:1200px;overflow: hidden;margin-left: auto;margin-right: auto;}
+.lx-head{padding-bottom:10px;height:27px;border-bottom:solid 1px #dcdcdc;}
+.lx-head h1{float:left;width:132px;overflow: hidden; margin-right:40px;color:#333;font-size:22px}
+.lx-head .lx-tags-tab {
+	height: 38px;
+	float: left;
+	position: relative;
+	margin-right: 10px;
+}
 .lx-tabitems{float:left;margin-top:5px}
-.lx-tabitems li{position:relative;float:left;color:#666;margin-right:14px;text-align:center;font-size:12px;cursor:pointer}
+.lx-tabitems li{position:relative;float:left;color:#666;margin-right:28px;text-align:center;font-size:14px;cursor:pointer}
 .lx-tabitems li.active{color:#c13232;font-size: 14px;}
-.lx-tabitems li:first-child{margin-right: 25px;}
+/* .lx-tabitems li:first-child{margin-right: 25px;} */
 .lx-tabitems li.active em{position:absolute;bottom:-14px;left:0;display:block;width:100%;height:2px;background:#c13232}
-.gw-items li{float:left;margin-right:20px;margin-bottom:10px;padding-bottom:30px; position: relative; width:385px;*width:380px;width:380px\0;border-bottom:solid 1px #dcdcdc}
-.gw-topitems{position:relative;overflow:hidden;margin-bottom:20px;box-shadow:0 3px 5px #e2e5e6;background:#f1f4f6;}
-.gw-topitems li{margin-right:0;margin-bottom:0;padding-top:10px;width:400px;border-bottom:none;background-color:#f1f4f6;}
-.triangle{position:absolute;top:0;right:0;width:0;height:0;border-top:20px solid #c13232;border-left:20px solid transparent}
-.gw-topitems .gw-people{margin-left:20px}
-.gw-topitems .gw-news{ margin-right: 16px;}
-.gw-items{ width: 1200px; overflow: hidden; }
-.gw-items li:nth-child(3n){margin-right:0}
-.gw-people{position:relative;float:left;margin-left:20px}
-.lx-groupitems .gw-people a{background-position:0 0;background-position:-18px -18px\0;}
-:root .lx-groupitems .gw-people a{background-position:0 0\0;}
-.gw-people img{width:51px;height:51px;-webkit-border-radius:50%;border-radius:50%}
-.gw-people span{color:#333;font-size:14px;margin-top: 15px;display: inline-block;margin-left: 10px;}
-.gw-people .pepple-icon > i{ vertical-align:middle; display:inline-block;width: 20px;height: 20px; background:url(../assets/img/1v.png) no-repeat;background-position:right center}
-.gw-legend{float:right;margin-top:18px;padding:2px 8px;-webkit-border-radius:8px;border-radius:8px;background:rgba(193, 50, 50,.06);color:#c13232;font-size:12px}
-.gw-news{width:76px;height:20px;-webkit-border-radius:10px;border-radius:10px;background-color:#ff8547;color:#fff;text-align:center;line-height:20px}
-.gw-people .bg-peopel,.gw-people a{float:left;height: 51px; width: 51px;border-radius: 50%;-webkit-border-radius:50%;}
-#guItems li:nth-child(3) .gw-people{margin-left: 26px;}
-.home-guanggao a{float: left;margin-right: 20px;background-color: #dcdcdc;}
-#guItems li{ color: #c13232;}
-.lx-head a{ font-size: 12px;color: #c13232;float: left;margin-top: 5px}
-.lx-head .enter{ font-size: 12px;color: #c13232;float: right;margin-top: 5px}
-.lx-hovertarg{ float: left;font-size: 0; position: relative; }
-.lx-hovertarg li{ display: inline-block; margin-right: 14px; *float: left}
-.lx-hovertarg li a{font-size: 12px;color: #999;	transition: .2s ease;-webkit-transition: .2s ease;}
+.lx-head .lx-hovertarg a{ font-size: 14px;float: left;margin-top: 5px;}
+.lx-head .enter{ font-size: 14px;color: #c13232;float: right;margin-top: 5px;padding-right:20px;font-weight: bold;background-repeat:no-repeat;background-position:right center;}
+.lx-hovertarg{ float: left;font-size: 0;}
+.lx-hovertarg li{ display: inline-block; margin-right: 26px; *float: left}
+.lx-hovertarg li:last-of-type {margin-right: 0;}
+.lx-hovertarg li a{font-size: 14px;color: #666;	transition: .2s ease;-webkit-transition: .2s ease;}
 .lx-hovertarg > li a:hover{color: #c13232;font-weight: bold;transform: scale(1.1);-webkit-transform: scale(1.1);}
-.lx-hovertarg .slide-icon,.lx-hovertarg .slide-toggle-icon {display: inline-block;height: 12px;width: 12px;background: url(../assets/img/home-icon.png) no-repeat;background-position: 0 -7px;cursor: pointer;}
-.lx-hovertarg .slide-toggle-icon{background: url(../assets/img/icon_toggle.png) no-repeat;}
-.slide-menu{ position: absolute; width: 795px; min-height: 43px; background: #fff;box-shadow: 1px 2px 5px rgba(61, 55, 55, 0.26);left:-215px;top:37px;z-index: 5;padding-bottom: 12px;display:none;}
-.slide-menu li{ margin-left: 25px; margin-right: 25px;margin-top: 12px;}
-.slide-menu li a:hover{ color: #c13232; text-decoration: underline;}
-#guItems .atities-top{position:absolute;top:65px;}
-.atities{color: #333;font-size: 16px;text-indent: 20px;display: block;position: absolute;top: 57px;}
-.atities:link{color: #333;}
-.atities:visited{color: #999;}
-.atities:hover{color: #c13232;}
+.slide-icon-area {
+	float: left;
+	cursor: pointer;
+	width: 62px;
+	height: 37px;
+	text-align: center;
+}
+.slide-icon-area .slide-icon{display:inline-block;height: 20px;width: 20px;margin-top: 4px;background-size: 100%;}
+.lx-tags-tab .slide-menu{ position: absolute; width: 860px; background: #fff;box-shadow: 1px 2px 5px rgba(61, 55, 55, 0.26);left:-20px;top:37px;z-index: 999;font-size: 0;padding: 0 5px 20px;display: none;}
+.lx-tags-tab .slide-menu li{ width:56px; margin-left: 15px; margin-right: 15px;margin-top: 20px;display: inline-block;float: left;*float: left;line-height: 1;}
+.lx-tags-tab .slide-menu li a {
+	font-size: 14px;
+	color: #666;
+	margin-top: 0;
+}
+.lx-tags-tab .slide-menu li a:hover{ color: #c13232; text-decoration: underline;}
+
+
+.gw-items li {
+	width: 366px;
+	float: left;
+	padding-left: 20px;
+}
+.gw-items li:nth-child(2n),.gw-items li:nth-child(3n){
+	padding-left: 41px;
+}
+.gw-items li .article-title {
+	display: block;
+	height: 48px;
+	padding: 16px 0;
+	font-size: 16px;
+	line-height: 24px;
+	color: #333;
+	overflow: hidden;
+}
+.gw-items li .article-title:link{color: #333;}
+.gw-items li .article-title:visited{color: #999;}
+.gw-items li .article-title:hover{color: #c13232;}
+
+.article-info {
+	margin-bottom: 20px;
+}
+.article-info .adviser-info {
+	float: left;
+}
+.article-info .adviser-info .avatar{
+	float: left;
+	width: 51px;
+	height: 51px;
+	-webkit-border-radius:50%;
+	border-radius: 50%;
+	margin-right: 10px;
+}
+.article-info .adviser-info .adviser-icon {
+	float: left;
+	padding-right: 24px;
+	margin-top: 18.5px;
+	font-size: 14px;
+	line-height: 1;
+	color: #333;
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+.article-info .article-tag {
+	float: right;
+	margin-top: 14.5px;
+}
+.tag.article-tag {
+  display: inline-block;
+	padding: 0 15px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	border-radius: 60px;
+	border: 1px solid #c13232;
+	color: #c13232;
+}
+.tag.article-tag.special {
+	background-color: #c13232;
+	color: #fff;
+}
 </style>
 {% for floor in shouye %} {#国家#}
 {% set ad_seat_index = loop.index + 10 %}
 {% set targlist = [
-	{ "type":"专业解析" },
-	{ "type":"申请规划" },
+	{ "type":"留学初识" },
+	{ "type":"本科选校" },
+	{ "type":"硕士选校" },
+	{ "type":"留学打工" },
+	{ "type":"本硕连读" },
+	{ "type":"留学时间" },
+	{ "type":"接机住宿" },
+	{ "type":"艺术留学" },
+	{ "type":"QS排名" },
 	{ "type":"留学费用" },
-	{ "type":"留学条件" },
 	{ "type":"大学排名" },
-	{ "type":"行前指导" },
-	{ "type":"就业指导" },
-	{ "type":"签证指导" },
+	{ "type":"留学条件" },
 	{ "type":"留学案例" },
-	{ "type":"院校资讯" },
-	{ "type":"留学方案" },
-	{ "type":"背景提升" },
-	{ "type":"海外生活" },
-	{ "type":"备考资讯" },
+	{ "type":"专业解析" },
+	{ "type":"签证指导" },
+	{ "type":"就业指导" },
+	{ "type":"申请规划" },
+	{ "type":"行前指导" },
+	{ "type":"省钱攻略" },
 	{ "type":"文书准备" },
+	{ "type":"海外生活" },
+	{ "type":"院校资讯" },
+	{ "type":"背景提升" },
+	{ "type":"留学方案" },
 	{ "type":"难点解析" },
-	{ "type":"省钱攻略" }
+	{ "type":"备考资讯" },
+	{ "type":"院校百科" }
 	]
 %}
 <div class="lxContaniner" style="overflow:hidden" id="country{{floor.country_id}}">
 	<div class="lx-head">
 		<h1 style="font-weight: normal">{{floor.country_name}}留学</h1>
-		<ul class="lx-tabitems" data-country_id="{{floor.country_id}}">
-			{% for tagitem in floor.list %}
-				{% if loop.index == 1 %}
-				<li class="active" data-edu_id="{{tagitem.edu_id}}">{{tagitem.edu_name}}<em></em></li>
-				{% else %}
-				<li data-edu_id="{{tagitem.edu_id}}">{{tagitem.edu_name}}<em></em></li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-		<ul class="lx-hovertarg">
-			{% for targitems in targlist%}
-				{% if loop.index <= 9 %}
-					<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=' + targitems.type)}}" target="_blank">{{targitems.type}}</a></li>
-				{% endif %}
-			{% endfor %}
-			<ul class="slide-menu">
-				{% for targitems in targlist %}
-				 	{% if loop.index > 9%}
+		<div class="lx-tags-tab">
+			<ul class="lx-tabitems" data-country_id="{{floor.country_id}}">
+				{% for tagitem in floor.list %}
+					{% if loop.index == 1 %}
+					<li class="active" data-edu_id="{{tagitem.edu_id}}">{{tagitem.edu_name}}<em></em></li>
+					{% else %}
+					<li data-edu_id="{{tagitem.edu_id}}">{{tagitem.edu_name}}<em></em></li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+			<ul class="lx-hovertarg">
+				{% for targitems in targlist%}
+					{% if loop.index <= 7 %}
 						<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=' + targitems.type)}}" target="_blank">{{targitems.type}}</a></li>
 					{% endif %}
 				{% endfor %}
 			</ul>
-			<i class="slide-icon"></i>
-		</ul>
-		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter">进入专区&nbsp;&nbsp;></a>
+			<ul class="slide-menu clearfix">
+				{% for targitems in targlist %}
+					{% if loop.index > 7%}
+						<li><a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id, 'tag=' + targitems.type)}}" target="_blank">{{targitems.type}}</a></li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+		<div class="slide-icon-area">
+			<i class="slide-icon" style="background-image:url({{helper.cdnhost}}/assets/img/home_slide_down.gif);filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='{{helper.cdnhost}}/assets/img/home_slide_down.gif',  sizingMethod='scale');background-repeat: no-repeat;"></i>
+		</div>
+		<a href="{{helper.active_urlgen('articles', 'n=' + floor.country_id)}}" target="_blank" class="enter" style="background-image:url({{helper.cdnhost}}/assets/img/home_icon_arrow.png)">查看详情</a>
 	</div>
 	{% for type in  floor.list %}{#类别#}
 	{% if loop.index == 1 and type.edu_name == '推荐'%}
 	<div class="lx-groupitems" {% if loop.index == 1 %} style="display:block;" {% else %} style="display:none;" {% endif %} data-id="{{type.edu_id}}"><!--推荐-->
 		{% for line in type.list %} {#行数#}
-			{% if loop.index == 1 %} {#第一行#}<ul class="gw-items gw-topitems" id="guItems">	{% for item in line %}	{% if item.uid != null %}	<li>		<div class="gw-people">			<a target="_blank" href="{{helper.urlgen(item.uid | string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></a>			<span class="pepple-icon">{{item.user_info.realname}}<i></i></span>		</div>		{#<p>{{item.type}}</p>#}		<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" style="display:block;height:50px;">			<div class="gw-legend gw-news">留学时讯</div>			<a class="atities atities-top" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{ item.title | ellipsis(21) }}</a>		</a>	</li>	{% endif %}	{% endfor %}	<em class="triangle"></em></ul>
-			{% else %}<ul class="gw-items">		{% for item in line %}			{% if item.uid != null %}			<li class="gw-newslist">				<div class="gw-people">					<a target="_blank" href="{{helper.urlgen(item.uid|string)}}" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover;"></a>					<span class="pepple-icon"><em>{{item.user_info.realname}}</em><i></i></span>				</div>				{#<p>{{item.type}}</p>#}				<a target="_blank" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" style="display:block;height:50px;">					<div class="gw-legend">{{item.tag_list | ellipsis(14)}}</div>					<a class="atities" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(21)}}</a>				</a>			</li>			{% endif %}		{% endfor %}</ul>
+			{% if loop.index == 1 %} {#第一行#}
+			<ul class="gw-items clearfix" id="guItems" style="{{'border-bottom:1px solid #dcdcdc' if line.length>0 else ''}}">	
+				{% for item in line %}	
+				{% if item.uid != null %}	
+				<li>
+					<a class="article-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(30)}}</a>
+					<div class="article-info clearfix">
+						<a class="adviser-info clearfix" href="{{helper.urlgen(item.uid | string)}}">
+							<div target="_blank" class="avatar" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
+							<div class="adviser-icon" style="background-image:url({{helper.cdnhost}}/assets/img/1v.png)">{{item.user_info.realname| ellipsis(10)}}</div>		
+						</a>	
+						<div class="tag article-tag special">留学时讯</div>	
+					</div>			
+				</li>
+
+				{% endif %}	
+				{% endfor %}
+			</ul>
+			{% else %}
+			<ul class="gw-items clearfix" style="{{'border-bottom:1px solid #dcdcdc' if line.length>0 else ''}}">		
+				{% for item in line %}			
+				{% if item.uid != null %}			
+				<li>
+					<a class="article-title" href="{{helper.urlgen('case',item.id | string) if item.type == 1 else helper.urlgen('article',item.id | string)}}" target="_blank">{{item.title | ellipsis(30)}}</a>
+					<div class="article-info clearfix">
+						<a class="adviser-info clearfix" href="{{helper.urlgen(item.uid | string)}}">
+							<div target="_blank" class="avatar" style="background-image:url({{helper.avaterimg(item.user_info.uid, 'small', item.user_info.status,item.user_info.version)}});background-size:cover"></div>
+							<div class="adviser-icon" style="background-image:url({{helper.cdnhost}}/assets/img/1v.png)">{{item.user_info.realname| ellipsis(10)}}<i></i></div>		
+						</a>	
+						{% if item.tag_list %}
+						<div class="tag article-tag">{{item.tag_list | ellipsis(14)}}</div>	
+						{% endif %}
+					</div>			
+				</li>	
+				{% endif %}		
+				{% endfor %}
+			</ul>
 			{% endif %}
 		{% endfor %}
 	</div>
@@ -147,23 +254,26 @@
 		$(this).addClass('active').siblings().removeClass('active');
 	})
 	//折叠菜单
-	$(".lx-hovertarg .slide-icon").on('click',function () {
-
-		if(!$(this).hasClass('slide-toggle-icon')){
-			$(this).removeClass('slide-icon')
-			$(this).addClass('slide-toggle-icon')
-			$(this).prev().slideDown(90)
-		}else{
-			$(this).removeClass('slide-toggle-icon')
-			$(this).addClass('slide-icon')
-			$(this).prev().slideUp(90)
+	var sUserAgent = navigator.userAgent.toLowerCase();
+    if(sUserAgent .match(/ipad/i) != "ipad"){		
+		$('.lx-tags-tab').on('mouseenter',function () {
+			$('.slide-icon-area').addClass('slide-down');
+			$(this).find('.slide-menu').slideDown(90);
+		})
+		$('.lx-tags-tab').on('mouseleave', function () {
+			$('.slide-icon-area').removeClass('slide-down');
+			$(this).find('.slide-menu').slideUp(90);
+		})
+	}
+	$('.slide-icon-area').on('click', function (e) {
+		if (!$(this).hasClass('slide-down')) {	
+			$(this).addClass('slide-down');
+			$(this).siblings('.lx-tags-tab').find('.slide-menu').slideDown(90);
 		}
-	})
-
-	$(".slide-menu a").click(function () {
-		$(this).parent().parent().slideUp(90)
-		$(".lx-hovertarg i").removeClass('slide-toggle-icon')
-		$(".lx-hovertarg i").addClass('slide-icon')
+		else {
+			$(this).removeClass('slide-down');
+			$(this).siblings('.lx-tags-tab').find('.slide-menu').slideUp(90);
+		}
 	})
 
   })

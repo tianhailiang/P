@@ -59,6 +59,7 @@
                 {"countryId":"51","txt":"日本"},
                 {"countryId":"50","txt":"韩国"},
                 {"countryId":"54","txt":"中国香港"},
+                {"countryId":"55","txt":"中国澳门"},
                 {"countryId":"100","txt":"俄罗斯"},
                 {"countryId":"101","txt":"乌克兰"},
                 {"countryId":"108","txt":"爱尔兰"},
@@ -74,9 +75,10 @@
                 {"countryId":"106","txt":"瑞典"},
                 {"countryId":"107","txt":"芬兰"},
                 {"countryId":"109","txt":"荷兰"},
-                {"countryId":"113","txt":"瑞士"}
+                {"countryId":"113","txt":"瑞士"},
+                {"countryId":"114","txt":"奥地利"}
               ] %}
-              <select id="apply-country" >
+              <select id="apply-country" onchange="changeForm(this.value)">
                 {% for item in countryList %}
                   {% if item.countryId == article.article_info.country_id %}
                     <option value="{{item.countryId}}">{{item.txt}}</option>
@@ -134,7 +136,7 @@
                 }
               ] %}
               {% for item in levelList %}
-                {{helper.eduChecked(item.name,article.article_info.edu_id) |safe }}
+                {{helper.eduChecked(item.name,article.article_info.edu_id,article.article_info.country_id) |safe }}
               {% endfor %}
               <span class="numTip" style="display: block;margin-left: 128px;">
                 学历标签可多选
@@ -146,27 +148,38 @@
               </label>
               <div class="recommend-tag" >
                 {% set recommendList = [
-                  {'name':'专业解析','val':'专业解析'},
-                  {'name':'申请规划','val':'申请规划'},
-                  {'name':'留学费用','val':'留学费用'},
-                  {'name':'留学条件','val':'留学条件'},
-                  {'name':'大学排名','val':'大学排名'},
-                  {'name':'行前指导','val':'行前指导'},
-                  {'name':'就业指导','val':'就业指导'},
-                  {'name':'签证指导','val':'签证指导'},
-                  {'name':'院校资讯','val':'院校资讯'},
-                  {'name':'留学方案','val':'留学方案'},
-                  {'name':'背景提升','val':'背景提升'},
-                  {'name':'海外生活','val':'海外生活'},
-                  {'name':'备考资讯','val':'备考资讯'},
-                  {'name':'文书准备','val':'文书准备'},
-                  {'name':'难点解析','val':'难点解析'},
-                  {'name':'省钱攻略','val':'省钱攻略'},
-                  {'name':'留学案例','val':'留学案例'},
-                  {'name':'自定义标签','val':article.article_info.custom_tags}
+                  { "name":"留学初识","val":"留学初识" },
+                  { "name":"本科选校","val":"本科选校" },
+                  { "name":"硕士选校","val":"硕士选校" },
+                  { "name":"留学打工","val":"留学打工" },
+                  { "name":"本硕连读","val":"本硕连读" },
+                  { "name":"动漫留学","val":"动漫留学" },
+                  { "name":"留学时间","val":"留学时间" },
+                  { "name":"接机住宿","val":"接机住宿" },
+                  { "name":"艺术留学","val":"艺术留学" },
+                  { "name":"QS排名","val":"QS排名" },
+                  { "name":"留学费用","val":"留学费用" },
+                  { "name":"大学排名","val":"大学排名" },
+                  { "name":"留学条件","val":"留学条件" },
+                  { "name":"专业解析","val":"专业解析" },
+                  { "name":"签证指导","val":"签证指导" },
+                  { "name":"就业指导","val":"就业指导" },
+                  { "name":"申请规划","val":"申请规划" },
+                  { "name":"行前指导","val":"行前指导" },
+                  { "name":"省钱攻略","val":"省钱攻略" },
+                  { "name":"文书准备","val":"文书准备" },
+                  { "name":"海外生活","val":"海外生活" },
+                  { "name":"院校资讯","val":"院校资讯" },
+                  { "name":"背景提升","val":"背景提升" },
+                  { "name":"留学方案","val":"留学方案" },
+                  { "name":"难点解析","val":"难点解析" },
+                  { "name":"备考资讯","val":"备考资讯" },
+                  { "name":"院校百科","val":"院校百科" },
+                  { "name":"留学案例","val":"留学案例" }, 
+                  {"name":"自定义标签","val":article.article_info.custom_tags}
                 ]  %}
                 {% for item in recommendList %}
-                  {{helper.tagChecked(item.name,item.val,article.article_info.tag_list) |safe }}
+                  {{helper.tagChecked(item.name,item.val,article.article_info.tag_list,article.article_info.country_id) |safe }}
                 {% endfor %}
                 <span class="numTip" style="color:#c13232;display:block;margin-top: 10px;">
                   推荐标签最多选择2个
@@ -228,9 +241,22 @@
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
-  <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
+  <!-- <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script> -->
+  <script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script >
+    function changeForm (val) {
+      var specialTag = $('#special-tag');
+        if (val == 51) {
+          specialTag.show();
+        }
+        else {
+          specialTag.find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+          specialTag.find('.level-sel-i').next().css({'color':'#333'});
+          specialTag.attr('checked',false);
+          specialTag.hide();
+        } 
+    }
     $(function(){
         var login_ss = null; //获取用户信息
         if(cookie('login_ss') != undefined){
@@ -342,6 +368,7 @@
       var editor = new E('#editor','#editor1');
       // 自定义菜单配置
       editor.customConfig.menus = [   
+        'head',  
         'bold',  // 粗体
         'italic',  // 斜体
         'underline',  // 下划线
@@ -358,7 +385,15 @@
       ];
       editor.customConfig.debug = false;
       // 关闭粘贴样式的过滤
-      editor.customConfig.pasteFilterStyle = false;
+      // 关闭粘贴样式的过滤
+      editor.customConfig.pasteFilterStyle = true;
+      editor.customConfig.pasteIgnoreImg = true;
+      // 自定义处理粘贴的文本内容
+      editor.customConfig.pasteTextHandle = function (content) {
+          // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
+          return dataFilter(content);
+      }
+
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
       editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
@@ -391,23 +426,34 @@
       }
       editor.create();
       var taglist=[
-            {'name':'专业解析','val':'专业解析'},
-            {'name':'申请规划','val':'申请规划'},
-            {'name':'留学费用','val':'留学费用'},
-            {'name':'留学条件','val':'留学条件'},
-            {'name':'大学排名','val':'大学排名'},
-            {'name':'行前指导','val':'行前指导'},
-            {'name':'就业指导','val':'就业指导'},
-            {'name':'签证指导','val':'签证指导'},
-            {'name':'院校资讯','val':'院校资讯'},
-            {'name':'留学方案','val':'留学方案'},
-            {'name':'背景提升','val':'背景提升'},
-            {'name':'海外生活','val':'海外生活'},
-            {'name':'备考资讯','val':'备考资讯'},
-            {'name':'文书准备','val':'文书准备'},
-            {'name':'难点解析','val':'难点解析'},
-            {'name':'省钱攻略','val':'省钱攻略'},
-            {'name':'留学案例','val':'留学案例'}
+          { "name":"留学初识","val":"留学初识" },
+          { "name":"本科选校","val":"本科选校" },
+          { "name":"硕士选校","val":"硕士选校" },
+          { "name":"留学打工","val":"留学打工" },
+          { "name":"本硕连读","val":"本硕连读" },
+          { "name":"动漫留学","val":"动漫留学" },
+          { "name":"留学时间","val":"留学时间" },
+          { "name":"接机住宿","val":"接机住宿" },
+          { "name":"艺术留学","val":"艺术留学" },
+          { "name":"QS排名","val":"QS排名" },
+          { "name":"留学费用","val":"留学费用" },
+          { "name":"大学排名","val":"大学排名" },
+          { "name":"留学条件","val":"留学条件" },
+          { "name":"留学案例","val":"留学案例" },
+          { "name":"专业解析","val":"专业解析" },
+          { "name":"签证指导","val":"签证指导" },
+          { "name":"就业指导","val":"就业指导" },
+          { "name":"申请规划","val":"申请规划" },
+          { "name":"行前指导","val":"行前指导" },
+          { "name":"省钱攻略","val":"省钱攻略" },
+          { "name":"文书准备","val":"文书准备" },
+          { "name":"海外生活","val":"海外生活" },
+          { "name":"院校资讯","val":"院校资讯" },
+          { "name":"背景提升","val":"背景提升" },
+          { "name":"留学方案","val":"留学方案" },
+          { "name":"难点解析","val":"难点解析" },
+          { "name":"备考资讯","val":"备考资讯" },
+          { "name":"院校百科","val":"院校百科" }
         ];
       $('#sureBtn').on('click',surePublish); //发布文章
       $("#save-draft").on("click",savePublish); //保存草稿箱
@@ -709,6 +755,55 @@
             $(that).bind('click',savePublish);
           }
         });
+      }
+      function dataFilter (originData) {
+        // console.log('前',originData);
+        var returnData = '';
+        var filterArr = [
+            {
+              reg: /<style[\S\s]+?<\/style>/g,
+              str:''
+            },
+            {
+              reg: /<img[^>]*?(src=\"[^\"]*?\")[^>]*?(style=\"[^\"]*?\")*?[^>]*?>/g,
+              str: '<img $1 $2/>'
+            },
+            {
+              reg: /<o:p[\S\s]*?>/g,
+              str: ''
+            },
+            {
+              reg: /<p[\s\S]*?>/g,
+              str: '<p>'
+            },
+            {
+              reg: /<span[\s\S]*?>/g,
+              str: '<span>'
+            },
+            {
+              reg: /<section[\s\S]*?>/g,
+              str: '<section>'
+            },
+            {
+              reg: /<\/section[\s\S]*?>/g,
+              str: '</section>'
+            },
+            {
+              reg: /<spanmargin[\S\s]+<\/spanmargin[\S\s]*?>/,
+              str: ''
+            },
+            {
+              reg:  /<font.*?<\/font>/g,
+              str: ''
+            }
+        ]; 
+        filterArr.forEach(function(val,index) {
+          originData = originData.replace(val.reg,val.str);
+        })      
+        // console.log('---------------------------==================------------------') 
+        returnData =  originData;
+        // console.log('后',returnData);
+        return returnData;
       }
     })  
   </script>
