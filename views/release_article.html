@@ -869,8 +869,12 @@
               str: ''
             },
             {
-              reg:  /<font.*?<\/font>/g,
-              str: ''
+              reg:  /<font.*?>/g,
+              str: '<span>'
+            },
+            {
+              reg:  /<\/font>/g,
+              str: '</span>'
             }
         ]; 
         filterArr.forEach(function(val,index) {
