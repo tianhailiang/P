@@ -453,3 +453,13 @@ exports.top_adviser_list = function (data,callback){
   api.apiRequest(url, callback);
   console.log('url-----', url);
 }
+// 顾问个人主页文章统计
+exports.gwzs = function (data,callback){
+  var url = _api_url_path(data, config.apis.article_count);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+  console.log('url-----', url);
+}
