@@ -370,8 +370,12 @@ exports.about = function (req, res, next){
       data.login_nickname = login_a;
     }
     async.parallel({
-  
+      lunbo_list: function (callback) {
+        // 轮播图接口
+        cms.lunbo_list({"ad_page":"CULTURE","ad_seat":"SEAT5","cityid":area},callback);
+      }
     }, function (err, result){
+      data.xSlider =returnData(result.lunbo_list,'lunbo_list');
       log.info(result)
       data.pageroute="about";
       data.tdk = {
