@@ -380,7 +380,7 @@ exports.about = function (req, res, next){
         nationid: country//nationi
       };
       data.esikey = esihelper.esikey();
-      res.render('about/about', data);
+      res.render('about/new_about', data);
   
     });
   }
