@@ -422,6 +422,7 @@ exports.events = function (req, res, next){
       log.info(result)
       // data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
       var eventList = returnData(result.memorabilia_list,'memorabilia_list');//返回大事记的未处理列表
+      console.log('event', eventList)
       var event = {};
       for (let i = 0;i<eventList.length;i++) {
         let y = eventList[i].years;
@@ -447,6 +448,66 @@ exports.events = function (req, res, next){
   
     });
   }
+
+  // 新金吉列大事记
+exports.new_events = function (req, res, next){
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+//node获取地址栏url
+var l = url.parse(req.url, true).query;
+console.log('url', l.h);
+if (l.h !== undefined) {
+    data.url = l.h;
+} else {
+    data.url = config.wwhost;
+}
+  data.login_nickname = '';
+  if ( req.cookies.login_ss !== undefined) {
+    var login_a = JSON.parse(req.cookies.login_ss);
+    //log.debug("login_a-------" + login_a.nickname)
+    data.login_nickname = login_a;
+  }
+  async.parallel({
+
+    memorabilia_list:function(callback){
+      cms.memorabilia_list({
+        "page":1,
+        "pagesize": 100
+      }, callback);
+    },
+
+  }, function (err, result){
+    log.info(result)
+    // data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
+    var eventList = returnData(result.memorabilia_list,'memorabilia_list');//返回大事记的未处理列表
+    console.log('event', eventList)
+    var event = {};
+    for (let i = 0;i<eventList.length;i++) {
+      let y = eventList[i].years;
+      let m = eventList[i].month;
+
+      if (!event[y+'年'] || y !== eventList[i-1].years) {
+        event[y+'年'] = {};
+      }
+      if (!event[y+'年'][m+'月'] || m !== eventList[i-1].month) {
+        event[y+'年'][m+'月'] = new Array();
+      }
+      event[y+'年'][m+'月'].push(eventList[i]);
+    }
+    data.memorabilia_list = event; //event 是处理后的大事记有序列表
+    data.pageroute="about/events";
+    data.tdk = {
+      pagekey: 'EVENTS', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    data.esikey = esihelper.esikey();
+    res.render('about/new_events', data);
+
+  });
+}
 
   //商务合作
 exports.cooperation = function (req, res, next){

@@ -1,0 +1,282 @@
+<style>
+  .month-box .down, .year-box .down{
+    width: 82px;
+    height: 82px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/nian_bei.png) no-repeat;
+    color: #fff;
+    line-height: 82px;
+    font-size: 18px;
+    padding: 0;
+    text-align: center;
+    margin-left: 60px;
+  }
+  .month-box .month-left .month-num{
+    display: inline-block;
+    margin-right: 30px;
+    width: 92px;
+    height: 64px;
+    background: url({{helper.cdnhost}}/assets/img/events/01.png) no-repeat;
+  }
+  .month-box .month-left .yue2{
+    background: url({{helper.cdnhost}}/assets/img/events/02.png) no-repeat;
+  }
+  .month-box .month-left .yue3{
+    background: url({{helper.cdnhost}}/assets/img/events/03.png) no-repeat;
+  }
+  .month-box .month-left .yue4{
+    background: url({{helper.cdnhost}}/assets/img/events/04.png) no-repeat;
+  }
+  .month-box .month-left .yue5{
+    background: url({{helper.cdnhost}}/assets/img/events/05.png) no-repeat;
+  }
+  .month-box .month-left .yue6{
+    background: url({{helper.cdnhost}}/assets/img/events/06.png) no-repeat;
+  }
+  .month-box .month-left .yue7{
+    background: url({{helper.cdnhost}}/assets/img/events/07.png) no-repeat;
+  }
+  .month-box .month-left .yue8{
+    background: url({{helper.cdnhost}}/assets/img/events/08.png) no-repeat;
+  }
+  .month-box .month-left .yue9{
+    background: url({{helper.cdnhost}}/assets/img/events/09.png) no-repeat;
+  }
+  .month-box .month-left .yue10{
+    background: url({{helper.cdnhost}}/assets/img/events/10.png) no-repeat;
+  }
+  .month-box .month-left .yue11{
+    background: url({{helper.cdnhost}}/assets/img/events/11.png) no-repeat;
+  }
+  .month-box .month-left .yue12{
+    background: url({{helper.cdnhost}}/assets/img/events/12.png) no-repeat;
+  }
+  .month-box .dian{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url({{helper.cdnhost}}/assets/img/events/jie.png) no-repeat;
+    left: -55px;
+    top: 30px;
+  }
+  .month-box .dian1{
+    display: inline-block;
+    width: 54px;
+    height: 54px;
+    background: url({{helper.cdnhost}}/assets/img/events/jie_zhong.png) no-repeat;
+    position: absolute;
+    left: -28px;
+    top: 50px;
+  }
+  .dashiji-con{
+    width: 810px;
+    padding: 30px 40px;
+    font-size: 20px;
+    color: #333;
+    border: 1px #ccc solid;
+    border-radius: 8px;
+    position: relative;
+  }
+  .dashiji-con .kuang_jiao{
+    display: inline-block;
+    width: 11px;
+    height: 26px;
+    background: url({{helper.cdnhost}}/assets/img/events/hui_jiao.png) no-repeat;
+    position: absolute;
+    left: -11px;
+    top: 32px;
+  }
+  .dashiji-con1{
+    width: 810px;
+    padding: 30px 40px;
+    font-size: 20px;
+    color: #333;
+    border: 1px #c13232 solid;
+    border-radius: 8px;
+    position: relative;
+  }
+  .dashiji-con1 .kuang_jiao1{
+    display: inline-block;
+    width: 11px;
+    height: 26px;
+    background: url({{helper.cdnhost}}/assets/img/events/hong_jiao.png) no-repeat;
+    position: absolute;
+    left: -11px;
+    top: 45px;
+  }
+  .shiji-pic{
+    width: 810px;
+    height: 380px;
+    float: left;
+    margin-top: 32px;
+  }
+  .shiji-pic img{
+    width: 810px;
+    height: 380px;
+    border-radius: 5px;
+  }
+  .shiji-pic3{
+    margin-top: 32px;
+    display: inline-block;
+  }
+  .shiji-pic3 img{
+    width: 256px;
+    height: 210px;
+    float: left;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+</style>
+{% for yearnum, yearamount in memorabilia_list %}
+<div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">
+  <div class="year-box clearfix"><i class="down xiangxia" style="cursor: pointer;">{{ yearnum | shorten(-1)}}</i></div>
+  <div class="kong" style="display: block"></div>
+  {% for monthnum, monthamount in yearamount %}
+
+  <div class="month-box clearfix">
+    <div class="month-left">
+      {% if monthnum | shorten(-1) == 1 %}
+      <p class="month-num"></p>
+      {% elif monthnum | shorten(-1) == 2 %}
+      <p class="month-num yue2"></p>
+      {% elif monthnum | shorten(-1) == 3 %}
+      <p class="month-num yue3"></p>
+      {% elif monthnum | shorten(-1) == 4 %}
+      <p class="month-num yue4"></p>
+      {% elif monthnum | shorten(-1) == 5 %}
+      <p class="month-num yue5"></p>
+      {% elif monthnum | shorten(-1) == 6 %}
+      <p class="month-num yue6"></p>
+      {% elif monthnum | shorten(-1) == 7 %}
+      <p class="month-num yue7"></p>
+      {% elif monthnum | shorten(-1) == 8 %}
+      <p class="month-num yue8"></p>
+      {% elif monthnum | shorten(-1) == 9 %}
+      <p class="month-num yue9"></p>
+      {% elif monthnum | shorten(-1) == 10 %}
+      <p class="month-num yue10"></p>
+      {% elif monthnum | shorten(-1) == 11 %}
+      <p class="month-num yue11"></p>
+      {% elif monthnum | shorten(-1) == 12 %}
+      <p class="month-num yue12"></p>
+      {% endif %}
+    </div>
+    <div class="month-right">
+      
+      {% if monthamount.length == 1 %}
+      <i class="dian1"></i>
+        {# 只一条 #}
+        <div class="dashiji-con1" style="display: block;margin: 20px 0px 60px 36px;">
+            <i class="kuang_jiao1"></i>
+           {{ loop.index }}. {{ item.description }}
+           <div class="shiji-pic3 clearfix">
+              {% for item in monthamount %}
+                {% if loop.index <= 3 %}
+                {% if loop.index == 3 %}
+                <img style="margin-right: 0px;" src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+                {% else %}
+                <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+              </div>
+          </div>
+      {% else %}
+      {% for item in monthamount %}
+      <p style="display: none;">{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe636;</i></p>
+      {% if loop.index==loop.length %}
+      <div class="dashiji-con" style="display: block;margin: 20px 0px 60px 36px;">
+        <i class="dian"></i>
+        <i class="kuang_jiao"></i>
+       {{ loop.index }}. {{ item.description }}
+       <div class="shiji-pic3 clearfix">
+          {% for item in monthamount %}
+            {% if loop.index <= 3 %}
+            {% if loop.index == 3 %}
+            <img style="margin-right: 0px;" src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+            {% else %}
+            <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+          </div>
+      </div>
+      {% else %}
+      <div class="dashiji-con" style="display: block;margin: 20px 0px 0px 36px;">
+        <i class="dian"></i>
+        <i class="kuang_jiao"></i>
+        {{ loop.index }}. {{ item.description }}
+        <div class="shiji-pic3 clearfix">
+            {% for item in monthamount %}
+            {% if loop.index <= 3 %}
+            {% if loop.index == 3 %}
+            <img style="margin-right: 0px;" src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+            {% else %}
+            <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            </div>
+      </div>
+      
+      {% endif %}
+      {% endfor %}
+      {% endif %}
+    
+      {#<div class="shiji-pic3">
+      {% for item in monthamount %}
+      {% if loop.index==1 %}
+      <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+      {% endif %}
+      {% endfor %}
+      </div>#}
+    </div>
+  </div>
+ <div class="kong"></div>
+  {% endfor %}
+  </div>
+{% endfor %}
+<script>
+  $(document).ready(function(){
+    $(".curyear").eq(0).children(".month-box").css("display","block");
+    $(".curyear").eq(0).children(".kong").css("display","block");
+    // $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe635;")
+    // $(".curyear").eq(0).children(".year-box").find(".down").css("color","#c13232");
+    // $(".curyear").eq(0).siblings().children(".year-box").find(".down").css("color","#999999");
+    // $(".curyear").eq(1).children(".month-box").css("display","block");
+    // $(".curyear").eq(1).children(".year-box").find(".down").html("&#xe635;").css("color","#c13232");
+    // $(".curyear").eq(1).children(".kong").css("display","block");
+    $.each($(".curyear").siblings(".curyear"),function(){
+      $(this).find(".kong").eq(0).css("display","block");
+    });
+    if($(".curyear").length>2){
+      $(".curyear:last").find(".kong").eq(0).css("display","none");
+    }else{
+      $(".curyear:last").find(".kong").eq(0).css("display","block");
+    }
+
+    $(".year-box").eq(0).css("padding-top","20px");
+    $(document).scrollTop(0);
+    $(".down").on("click",function(){
+      // $(this).html("&#xe635;");
+      // $(this).css({"color":"#c13232","cursor":"default"});
+      $(this) .parents(".curyear").children(".month-box").css("display","block");
+      $(document).scrollTop(500);
+      $(this).parents(".curyear").children(".kong").css("display","block");
+      $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
+      $(this).parents(".curyear").siblings().children(".kong").css("display","none");
+      // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
+      // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
+      $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+        $(this).find(".kong").eq(0).css("display","block");
+      });
+      $(".curyear:last").find(".kong").eq(0).css("display","none");
+      $(".curyear:last").find(".kong:last").css("display","none");
+    })
+    $(".curyear:last").find(".down").on("click",function(){
+      $(this).parents(".curyear").find(".kong").eq(0).css("display","block");
+    })
+  });
+
+</script>
+
