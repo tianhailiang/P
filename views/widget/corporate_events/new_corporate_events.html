@@ -69,7 +69,7 @@
     top: 50px;
   }
   .dashiji-con{
-    width: 810px;
+    width: 880px;
     padding: 30px 40px;
     font-size: 20px;
     color: #333;
@@ -87,7 +87,7 @@
     top: 32px;
   }
   .dashiji-con1{
-    width: 810px;
+    width: 880px;
     padding: 30px 40px;
     font-size: 20px;
     color: #333;
@@ -126,10 +126,34 @@
     border-radius: 5px;
     margin-right: 20px;
   }
+  .eve_more{
+    width: 82px;
+    height: 82px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/eve_more.png) no-repeat;
+    color: #fff;
+    line-height: 82px;
+    font-size: 18px;
+    padding: 0;
+    text-align: center;
+    margin-left: 60px;
+  }
+  .eve_more1{
+    width: 2px;
+    height: 72px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/eve_more1.png) no-repeat;
+    color: #fff;
+    line-height: 82px;
+    font-size: 18px;
+    padding: 0;
+    text-align: center;
+    margin-left: 60px;
+  }
 </style>
 {% for yearnum, yearamount in memorabilia_list %}
 <div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">
-  <div class="year-box clearfix"><i class="down xiangxia" style="cursor: pointer;">{{ yearnum | shorten(-1)}}</i></div>
+  <div class="year-box clearfix" id="{{yearnum | shorten(-1)}}"><i class="down xiangxia" style="cursor: pointer;">{{ yearnum | shorten(-1)}}</i></div>
   <div class="kong" style="display: block"></div>
   {% for monthnum, monthamount in yearamount %}
 
@@ -236,8 +260,11 @@
   {% endfor %}
   </div>
 {% endfor %}
+  <div class="year-box clearfix" style="margin-left: 120px;" id="eve_more"><i class="eve_more xiangxia" style="cursor: pointer;"></i></div>
+  <div class="year-box clearfix" style="margin-left: 160px;" id="eve_more"><i class="eve_more1 xiangxia" style="cursor: pointer;"></i></div>
 <script>
   $(document).ready(function(){
+
     $(".curyear").eq(0).children(".month-box").css("display","block");
     $(".curyear").eq(0).children(".kong").css("display","block");
     // $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe635;")

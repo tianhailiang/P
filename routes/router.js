@@ -204,7 +204,7 @@ exports = module.exports = function (app) {// routes
   app.get('/about', about.about);//金吉列简介
   app.get('/about/culture',about.culture);//企业文化
   // app.get('/about/events',about.events);//金吉列大事记
-  app.get('/about/events',about.new_events);// 新金吉列大事记
+  app.get('/events',about.new_events);// 新金吉列大事记
   app.get('/about/cooperation',about.cooperation);//商务合作
   app.get('/about/contact',about.contact);//联系我们
   //顾问登录

@@ -7,10 +7,10 @@
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/academy3.css"/>
 <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/widget/corporate_events.css">
 -->
-<style>
+<style type="text/css">
   .events-guanggao img{
-      margin: 0 auto;
-      height: 450px;
+    margin: 0 auto;
+    height: 450px;
   }
 </style>
 </head>
@@ -37,10 +37,12 @@
   {% include "widget/corporate_events/new_corporate_events.html" %}
 </div>
 
-
 {% include "widget/new_footer/common_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("XC_EVENTS_SEAT10",helper) }}
+{# 年份标尺 #}
+{% import "widget/new_slide/events_slide.html" as  events %}
+{{events.events_slide(memorabilia_list,helper) }}
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js" ></script>-->

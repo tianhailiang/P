@@ -1,0 +1,89 @@
+
+<!-- 大事记右侧标尺 -->
+
+{% macro events_slide(memorabilia_list,helper) %}
+<style>
+.eve-mbar-tabs, .eve_links_dockright{
+    width: 75px;
+    position: fixed;
+    right: 3%;
+    bottom: 0;
+    z-index: 1000;
+    -webkit-transition: width linear .4s;
+    transition: width linear .4s;
+  }
+  .eve_links_panel ul li{
+    width: 75px;
+    height: 30px;
+    display: block;
+    background: none;
+    padding: 8px;
+    margin-top: 2px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .eve_links_panel ul li:hover h6{
+    color: #c13232;
+  }
+  .eve_links_panel ul li:hover .down{
+    width: 32px;
+    height: 32px;
+    background: url({{helper.cdnhost}}/assets/img/events/jie.png) no-repeat;
+    margin-left: -35px;
+    margin-top: -7px;
+  }
+  .eve-box{
+  }
+  .eve-box .down{
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/jie_nian.png) no-repeat;
+    margin-left: -30px;
+    margin-top: -3px;
+  }
+  .year-num{
+    font-size: 22px;
+    color: #999;
+  }
+  .eve_links_dockright .kong{
+    height: 12px;
+    margin-left: -20px;
+    border-left: 1px solid #c13232;
+  }
+</style>
+<div class="mui-mbar-tabs eve-mbar-tabs" style="z-index:999;">
+  <div class="eve_links_dockright"  style="top:100px;">
+    <div class="quick_link_mian">
+
+      <div class="eve_links_panel">
+        <ul>
+            {% for yearnum, yearamount in memorabilia_list %}
+              <li>
+                  <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><i class="down xiangxia" style="cursor: pointer;"></i><h6 class="year-num" style="cursor: pointer;">{{ yearnum | shorten(-1)}}</h6></div></a> 
+                  {% if loop.index!=loop.length %}
+                    <div class="kong"></div>
+                  {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function showyear (year) {
+    window.location.href = '/events#' + year
+    $('#' + year) .parents(".curyear").children(".month-box").css("display","block");
+    $('#' + year).parents(".curyear").children(".kong").css("display","block");
+    $('#' + year) .parents(".curyear").siblings().children(".month-box").css("display","none");
+    $('#' + year).parents(".curyear").siblings().children(".kong").css("display","none");
+    $.each($('#' + year).parents(".curyear").siblings(".curyear"),function(){
+      console.log('sssss', year)
+      $(this).find(".kong").eq(0).css("display","block");
+    });
+    $(".curyear:last").find(".kong").eq(0).css("display","none");
+    $(".curyear:last").find(".kong:last").css("display","none");
+  }
+</script>
+{% endmacro %}
