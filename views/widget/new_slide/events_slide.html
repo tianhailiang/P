@@ -73,13 +73,13 @@
 </div>
 <script>
   function showyear (year) {
-    window.location.href = '/events#' + year
+    window.location.href = '/about/events.html#' + year
     $('#' + year) .parents(".curyear").children(".month-box").css("display","block");
     $('#' + year).parents(".curyear").children(".kong").css("display","block");
     $('#' + year) .parents(".curyear").siblings().children(".month-box").css("display","none");
     $('#' + year).parents(".curyear").siblings().children(".kong").css("display","none");
     $.each($('#' + year).parents(".curyear").siblings(".curyear"),function(){
-      console.log('sssss', year)
+      // console.log('sssss', year)
       $(this).find(".kong").eq(0).css("display","block");
     });
     $(".curyear:last").find(".kong").eq(0).css("display","none");

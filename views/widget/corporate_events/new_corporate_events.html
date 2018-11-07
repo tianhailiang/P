@@ -65,8 +65,8 @@
     height: 54px;
     background: url({{helper.cdnhost}}/assets/img/events/jie_zhong.png) no-repeat;
     position: absolute;
-    left: -28px;
-    top: 50px;
+    left: -66px;
+    top: 18px;
   }
   .dashiji-con{
     width: 880px;
@@ -76,6 +76,7 @@
     border: 1px #ccc solid;
     border-radius: 8px;
     position: relative;
+    line-height: 25px;
   }
   .dashiji-con .kuang_jiao{
     display: inline-block;
@@ -94,6 +95,7 @@
     border: 1px #c13232 solid;
     border-radius: 8px;
     position: relative;
+    line-height: 25px;
   }
   .dashiji-con1 .kuang_jiao1{
     display: inline-block;
@@ -102,7 +104,7 @@
     background: url({{helper.cdnhost}}/assets/img/events/hong_jiao.png) no-repeat;
     position: absolute;
     left: -11px;
-    top: 45px;
+    top: 30px;
   }
   .shiji-pic{
     width: 810px;
@@ -148,9 +150,15 @@
     font-size: 18px;
     padding: 0;
     text-align: center;
-    margin-left: 60px;
+    margin-left: 100px;
+  }
+  .kong2{
+    height: 30px;
+    margin-left: 98px;
+    border-left: 2px solid #c13232;
   }
 </style>
+<div id="evemain">
 {% for yearnum, yearamount in memorabilia_list %}
 <div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">
   <div class="year-box clearfix" id="{{yearnum | shorten(-1)}}"><i class="down xiangxia" style="cursor: pointer;">{{ yearnum | shorten(-1)}}</i></div>
@@ -186,43 +194,37 @@
       {% endif %}
     </div>
     <div class="month-right">
-      
-      {% if monthamount.length == 1 %}
-      <i class="dian1"></i>
-        {# 只一条 #}
-        <div class="dashiji-con1" style="display: block;margin: 20px 0px 60px 36px;">
-            <i class="kuang_jiao1"></i>
-           {{ loop.index }}. {{ item.description }}
-           <div class="shiji-pic3 clearfix">
-              {% for item in monthamount %}
-                {% if loop.index <= 3 %}
-                {% if loop.index == 3 %}
-                <img style="margin-right: 0px;" src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
-                {% else %}
-                <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
-                {% endif %}
-                {% endif %}
-                {% endfor %}
-              </div>
-          </div>
-      {% else %}
       {% for item in monthamount %}
       <p style="display: none;">{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe636;</i></p>
+      {% if item.thumb3 == '' or item.thumb3 == null %}
+      {% if item.thumb == '' or item.thumb == null %}
+      {# 无图 #}
+      <div class="dashiji-con" style="display: block;margin: 20px 0px 60px 36px;">
+        <i class="dian"></i>
+        <i class="kuang_jiao"></i>
+       {{ loop.index }}. {{ item.description }}
+      </div>
+      {% else %}
+      {# 只一条 #}
+      <div class="dashiji-con1 clearfix" style="display: block;margin: 20px 0px 60px 36px;">
+          <i class="dian1"></i>
+          <i class="kuang_jiao1"></i>
+         {{ loop.index }}. {{ item.description }}
+         <div class="shiji-pic clearfix">
+              <img src="{{ helper.imageThumb(item.thumb) }}" alt="">
+            </div>
+        </div>
+        {% endif %}
+      {% else %}
       {% if loop.index==loop.length %}
       <div class="dashiji-con" style="display: block;margin: 20px 0px 60px 36px;">
         <i class="dian"></i>
         <i class="kuang_jiao"></i>
        {{ loop.index }}. {{ item.description }}
        <div class="shiji-pic3 clearfix">
-          {% for item in monthamount %}
-            {% if loop.index <= 3 %}
-            {% if loop.index == 3 %}
-            <img style="margin-right: 0px;" src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
-            {% else %}
             <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+            <img src="{{ helper.imageThumb(item.thumb2,'280x210') }}" alt="">
+            <img src="{{ helper.imageThumb(item.thumb3,'280x210') }}" alt="">
           </div>
       </div>
       {% else %}
@@ -231,40 +233,40 @@
         <i class="kuang_jiao"></i>
         {{ loop.index }}. {{ item.description }}
         <div class="shiji-pic3 clearfix">
-            {% for item in monthamount %}
-            {% if loop.index <= 3 %}
-            {% if loop.index == 3 %}
-            <img style="margin-right: 0px;" src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
-            {% else %}
-            <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
-            {% endif %}
-            {% endif %}
-            {% endfor %}
+          <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+          <img src="{{ helper.imageThumb(item.thumb2,'280x210') }}" alt="">
+          <img src="{{ helper.imageThumb(item.thumb3,'280x210') }}" alt="">
             </div>
       </div>
-      
+      {% endif %}
       {% endif %}
       {% endfor %}
-      {% endif %}
+      
     
-      {#<div class="shiji-pic3">
+      <!-- {#<div class="shiji-pic3">
       {% for item in monthamount %}
       {% if loop.index==1 %}
       <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
       {% endif %}
       {% endfor %}
-      </div>#}
+      </div>#} -->
     </div>
   </div>
  <div class="kong"></div>
   {% endfor %}
   </div>
-{% endfor %}
-  <div class="year-box clearfix" style="margin-left: 120px;" id="eve_more"><i class="eve_more xiangxia" style="cursor: pointer;"></i></div>
-  <div class="year-box clearfix" style="margin-left: 160px;" id="eve_more"><i class="eve_more1 xiangxia" style="cursor: pointer;"></i></div>
+  
+  {% endfor %}
+</div>
+
+  <div class="curyear1" id="eve_more" data-year="{{yearnum | shorten(-1)}}" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">
+  <div class="year-box clearfix" ><div class="kong2"></div></div>
+  <div class="year-box clearfix" ><i class="eve_more xiangxia" style="cursor: pointer;"></i></div>
+  <div class="year-box clearfix" ><i class="eve_more1 xiangxia" style="cursor: pointer;"></i></div>
+  </div>
+  
 <script>
   $(document).ready(function(){
-
     $(".curyear").eq(0).children(".month-box").css("display","block");
     $(".curyear").eq(0).children(".kong").css("display","block");
     // $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe635;")
@@ -281,10 +283,10 @@
     }else{
       $(".curyear:last").find(".kong").eq(0).css("display","block");
     }
-
     $(".year-box").eq(0).css("padding-top","20px");
     $(document).scrollTop(0);
     $(".down").on("click",function(){
+      console.log('aaaaaa111111')
       // $(this).html("&#xe635;");
       // $(this).css({"color":"#c13232","cursor":"default"});
       $(this) .parents(".curyear").children(".month-box").css("display","block");
@@ -300,10 +302,143 @@
       $(".curyear:last").find(".kong").eq(0).css("display","none");
       $(".curyear:last").find(".kong:last").css("display","none");
     })
+    var page = 1
+    $('#eve_more').on("click",function () {
+      $.ajax({
+        url: '/soapi/eventsmore',
+        type:'GET',
+        data:{
+          "page": ++page
+        },
+        dataType:'json',
+        success:function(msg){
+          console.log('msg', msg)
+          evemore(msg)
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+            console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
+        }
+      });
+    })
     $(".curyear:last").find(".down").on("click",function(){
       $(this).parents(".curyear").find(".kong").eq(0).css("display","block");
     })
+    console.log('year',$('#eve_more').attr('data-year'))
+    if ($('#eve_more').attr('data-year') == '2001') {
+      console.log('aaaaaaa')
+      $('#eve_more').css("display","none");
+    }
+
   });
 
+  function evemore (msg) {
+    var html = ''
+    for (var key in msg) {
+      html += '<div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">'
+      html += '<div class="year-box clearfix" id="'+key+'"><i class="down xiangxia" style="cursor: pointer;">'+key+'</i></div>'
+      html += '<div class="kong" style="display: block"></div>'
+      for (var key1 in msg[key]) {
+        html += '<div class="month-box clearfix">'
+        html += '<div class="month-left">'
+        if (key1 == 1)
+        html += '<p class="month-num"></p>'
+        else if (key1 == 2)
+        html += '<p class="month-num yue2"></p>'
+        else if (key1 == 3)
+        html += '<p class="month-num yue3"></p>'
+        else if (key1 == 4)
+        html += '<p class="month-num yue4"></p>'
+        else if (key1 == 5)
+        html += '<p class="month-num yue5"></p>'
+        else if (key1 == 6)
+        html += '<p class="month-num yue6"></p>'
+        else if (key1 == 7)
+        html += '<p class="month-num yue7"></p>'
+        else if (key1 == 8)
+        html += '<p class="month-num yue8"></p>'
+        else if (key1 == 9)
+        html += '<p class="month-num yue9"></p>'
+        else if (key1 == 10)
+        html += '<p class="month-num yue10"></p>'
+        else if (key1 == 11)
+        html += '<p class="month-num yue11"></p>'
+        else if (key1 == 12)
+        html += '<p class="month-num yue12"></p>'
+        html += '</div>'
+        html += '<div class="month-right">'
+        for (var key11 in msg[key][key1]) {
+          html += '<p style="display: none;">'+msg[key][key1][key11].title+'<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe636;</i></p>'
+          if (msg[key][key1][key11].thumb3 == '' || msg[key][key1][key11].thumb3 == null) {
+            if (msg[key][key1][key11].thumb == '' || msg[key][key1][key11].thumb == null) {
+              //{# 无图 #}
+              html += '<div class="dashiji-con" style="display: block;margin: 20px 0px 60px 36px;">'
+              html += '<i class="dian"></i>'
+              html += '<i class="kuang_jiao"></i>'+ key11+'. '+ msg[key][key1][key11].description +'</div>'
+            } else {
+              //{# 只一条 #}
+              html += '<div class="dashiji-con1 clearfix" style="display: block;margin: 20px 0px 60px 36px;">'
+              html += '<i class="dian1"></i>'
+              html += '<i class="kuang_jiao1"></i>'+ key11+'. '+ msg[key][key1][key11].description +'<div class="shiji-pic clearfix">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb,'280x210')+'" alt="">'
+              html += '</div>'
+              html += '</div>'
+            }
+          } else {
+            if (key11 == msg[key][key1].length) {
+              html += '<div class="dashiji-con" style="display: block;margin: 20px 0px 60px 36px;">'
+              html += '<i class="dian"></i>'
+              html += '<i class="kuang_jiao"></i>'+ key11+'. '+ msg[key][key1][key11].description
+              html += '<div class="shiji-pic3 clearfix">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb,'280x210')+'" alt="">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb2,'280x210')+'" alt="">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb3,'280x210')+'" alt="">'
+              html += '</div>'
+              html += '</div>'
+            } else {
+              html += '<div class="dashiji-con" style="display: block;margin: 20px 0px 0px 36px;">'
+              html += '<i class="dian"></i>'
+              html += '<i class="kuang_jiao"></i>'+ key11+'. '+ msg[key][key1][key11].description
+              html += '<div class="shiji-pic3 clearfix">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb,'280x210')+'" alt="">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb2,'280x210')+'" alt="">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb3,'280x210')+'" alt="">'
+              html += '</div>'
+              html += '</div>'
+            }
+          }
+        }
+        html += '</div>'
+        html += '</div>'
+        html += '<div class="kong"></div>'
+      }
+      html += '</div>'
+      if (key == msg.length) {
+        html += '<div class="curyear1" id="eve_more" data-year="'+key+'" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">'
+        html += '<div class="year-box clearfix" ><i class="eve_more xiangxia" style="cursor: pointer;"></i></div>'
+        //html += '<div class="year-box clearfix" ><i class="eve_more1 xiangxia" style="cursor: pointer;"></i></div>'
+        html += '</div>'
+      }
+    }
+    $('#evemain').append($(html));
+    $('.down').unbind('click');
+    $(".down").on("click",function(){
+      console.log('aaaaaa111111')
+      // $(this).html("&#xe635;");
+      // $(this).css({"color":"#c13232","cursor":"default"});
+      $(this) .parents(".curyear").children(".month-box").css("display","block");
+      $(document).scrollTop(500);
+      $(this).parents(".curyear").children(".kong").css("display","block");
+      $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
+      $(this).parents(".curyear").siblings().children(".kong").css("display","none");
+      // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
+      // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
+      $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+        $(this).find(".kong").eq(0).css("display","block");
+      });
+      $(".curyear:last").find(".kong").eq(0).css("display","none");
+      $(".curyear:last").find(".kong:last").css("display","none");
+    })
+  }
+  
 </script>
 

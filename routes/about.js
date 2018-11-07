@@ -422,7 +422,7 @@ exports.events = function (req, res, next){
       log.info(result)
       // data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
       var eventList = returnData(result.memorabilia_list,'memorabilia_list');//返回大事记的未处理列表
-      console.log('event', eventList)
+      // console.log('event', eventList)
       var event = {};
       for (let i = 0;i<eventList.length;i++) {
         let y = eventList[i].years;
@@ -437,6 +437,7 @@ exports.events = function (req, res, next){
         event[y+'年'][m+'月'].push(eventList[i]);
       }
       data.memorabilia_list = event; //event 是处理后的大事记有序列表
+      console.log('evnt', data.memorabilia_list)
       data.pageroute="about/events";
       data.tdk = {
         pagekey: 'EVENTS', //key
@@ -507,6 +508,35 @@ if (l.h !== undefined) {
     res.render('about/new_events', data);
 
   });
+}
+
+// 大事记加载更多
+exports.eventsfmore =function(req,res,next){
+  var data = req.query;
+  console.log('data',req.query)
+    cms.memorabilia_list(data, function(err,result){
+      if(err){
+        res.send(err);
+      }else{
+        console.log(result)
+        var event = {};
+        for (let i = 0;i<result.data.length;i++) {
+          let y = result.data[i].years;
+          let m = result.data[i].month;
+
+          if (!event[y+'年'] || y !== result.data[i-1].years) {
+            event[y+'年'] = {};
+          }
+          if (!event[y+'年'][m+'月'] || m !== result.data[i-1].month) {
+            event[y+'年'][m+'月'] = new Array();
+          }
+          event[y+'年'][m+'月'].push(result.data[i]);
+        }
+        data.memorabilia_list = event; //event 是处理后的大事记有序列表
+        console.log('events', data.memorabilia_list)
+        res.send(event);
+      }
+    });
 }
 
   //商务合作
