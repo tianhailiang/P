@@ -57,7 +57,7 @@
     <div class="quick_link_mian">
 
       <div class="eve_links_panel">
-        <ul>
+        <ul id="eve_slide">
             {% for yearnum, yearamount in memorabilia_list %}
               <li>
                   <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><i class="down xiangxia" style="cursor: pointer;"></i><h6 class="year-num" style="cursor: pointer;">{{ yearnum | shorten(-1)}}</h6></div></a> 
@@ -73,6 +73,7 @@
 </div>
 <script>
   function showyear (year) {
+    console.log('key',year)
     window.location.href = '/about/events.html#' + year
     $('#' + year) .parents(".curyear").children(".month-box").css("display","block");
     $('#' + year).parents(".curyear").children(".kong").css("display","block");
