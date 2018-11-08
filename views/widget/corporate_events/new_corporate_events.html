@@ -272,7 +272,7 @@
   </div>
   
 <script>
-  $(document).ready(function(){
+  $(function(){
     $(".curyear").eq(0).children(".month-box").css("display","block");
     $(".curyear").eq(0).children(".kong").css("display","block");
     // $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe635;")
@@ -330,11 +330,6 @@
     $(".curyear:last").find(".down").on("click",function(){
       $(this).parents(".curyear").find(".kong").eq(0).css("display","block");
     })
-    console.log('year',$('#eve_more').attr('data-year'))
-    if ($('#eve_more').attr('data-year') == '2001') {
-      console.log('aaaaaaa');
-      $('#eve_more').css("display","none");
-    }
 
   });
 
@@ -358,14 +353,12 @@
 
   function evemore (msg) {
     var html = '';
+    html += '<div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;"><div class="kong" style="display: block;margin-left: 118px;"></div></div>'
     var s = 0;
     var a = Object.keys(msg);
     for (var key in msg) {
-      ++s;
+      s++;
       html += '<div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">'
-      if (s == 1) {
-        html += '<div class="kong" style="display: block"></div>'
-      }
       html += '<div class="year-box clearfix" id="'+key.substring(0,4)+'"><i class="down xiangxia" style="cursor: pointer;">'+key.substring(0,4)+'</i></div>'
       html += '<div class="kong" style="display: block"></div>'
       for (var key1 in msg[key]) {
@@ -448,7 +441,6 @@
       }
     }
     $('#evemain').append($(html));
-    $('.down').unbind('click');
     $(".down").on("click",function(){
       console.log('aaaaaa111111')
       // $(this).html("&#xe635;");
