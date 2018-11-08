@@ -254,7 +254,8 @@
   <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
   <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
-  <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script>
+  <!-- <script  src="{{helper.cdnhost}}/assets/js/wangEditor.js"></script> -->
+  <script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
@@ -455,7 +456,7 @@
         'strikeThrough',  // 删除线
         'foreColor',  // 文字颜色
         'backColor',  // 背景颜色
-        'link',  // 插入链接
+        // 'link',  // 插入链接
         'list',  // 列表
         'justify',  // 对齐方式
         'image',  // 插入图片
@@ -465,8 +466,13 @@
       ];
       editor.customConfig.debug = false;
       // 关闭粘贴样式的过滤
-      editor.customConfig.pasteFilterStyle = true;//false;
+      editor.customConfig.pasteFilterStyle = true;
       editor.customConfig.pasteIgnoreImg = true;
+      // 自定义处理粘贴的文本内容
+      editor.customConfig.pasteTextHandle = function (content) {
+          // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
+          return dataFilter(content);
+      }
 
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
@@ -533,15 +539,8 @@
       $("#save-draft").on("click",savePublish); //保存草稿箱
       function surePublish(){
         // 读取 html
-        var readData = editor.txt.html();
-        // var dataText = editor.txt.text();
-        // console.log(data);
-        // console.log(dataText);
-        // return false;
-        var data = dataFilter(readData);
-        // console.log(readData);
-        console.log(readData == data);
-        // return false;
+        var data = editor.txt.html();
+        console.log(data)
         if($("#apply-country").val()==''){
           // 判断国家
           $("#apply-country").focus();
@@ -834,12 +833,9 @@
         });
       };
       function dataFilter (originData) {
+        // console.log('前',originData);
         var returnData = '';
         var filterArr = [
-            {
-              reg: /<p \-[\S\s]+?<\/p>/,
-              str:''
-            },
             {
               reg: /<style[\S\s]+?<\/style>/g,
               str:''
@@ -851,6 +847,14 @@
             {
               reg: /<o:p[\S\s]*?>/g,
               str: ''
+            },
+            {
+              reg: /<p[\s\S]*?>/g,
+              str: '<p>'
+            },
+            {
+              reg: /<span[\s\S]*?>/g,
+              str: '<span>'
             },
             {
               reg: /<section[\s\S]*?>/g,
@@ -865,15 +869,20 @@
               str: ''
             },
             {
-              reg:  /<font.*?<\/font>/g,
-              str: ''
+              reg:  /<font.*?>/g,
+              str: '<span>'
+            },
+            {
+              reg:  /<\/font>/g,
+              str: '</span>'
             }
         ]; 
         filterArr.forEach(function(val,index) {
           originData = originData.replace(val.reg,val.str);
-        })       
-        console.log('过滤后的原始数据'+originData);
+        })      
+        // console.log('---------------------------==================------------------') 
         returnData =  originData;
+        // console.log('后',returnData);
         return returnData;
       }
     })
