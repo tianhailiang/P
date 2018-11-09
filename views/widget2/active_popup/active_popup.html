@@ -155,12 +155,12 @@
           var $wheight = $(window).height();
 
           if($scrolltop >= 500 ) {
-            $('.act-pop-box').addClass('active-fade')
+            $('.act-pop-box').css('display', 'block')
           } else {
-            $('.act-pop-box').removeClass('active-fade')
+            $('.act-pop-box').css('display', 'none')
           }
           if( $scrolltop == $height - $wheight) {
-            $('.act-pop-box').removeClass('active-fade')
+            $('.act-pop-box').css('display', 'none')
           }
         });
 
