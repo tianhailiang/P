@@ -353,14 +353,16 @@
 
   function evemore (msg) {
     var html = '';
-    html += '<div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;"><div class="kong" style="display: block;margin-left: 118px;"></div></div>'
+    html += '<div id="tian" class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;"><div class="kong" style="display: block;margin-left: 118px;"></div></div>'
     var s = 0;
     var a = Object.keys(msg);
     for (var key in msg) {
       s++;
       html += '<div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">'
       html += '<div class="year-box clearfix" id="'+key.substring(0,4)+'"><i class="down xiangxia" style="cursor: pointer;">'+key.substring(0,4)+'</i></div>'
-      html += '<div class="kong" style="display: block"></div>'
+      if (s != a.length) {
+        html += '<div class="kong" style="display: block"></div>'
+      }
       for (var key1 in msg[key]) {
         html += '<div class="month-box clearfix">'
         html += '<div class="month-left">'
@@ -448,8 +450,10 @@
       $(this) .parents(".curyear").children(".month-box").css("display","block");
       $(document).scrollTop(500);
       $(this).parents(".curyear").children(".kong").css("display","block");
-      $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
+      $(this).parents(".curyear").siblings().children(".month-box").css("display","none");
       $(this).parents(".curyear").siblings().children(".kong").css("display","none");
+      $(this).parents(".curyear").siblings("#tian").css("display","none");
+      console.log('down', $(this).parents(".curyear").siblings("#tian"))
       // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
       // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
       $.each($(this).parents(".curyear").siblings(".curyear"),function(){
@@ -461,6 +465,7 @@
     console.log('yeareve', $('#zuihou').attr('data-year'))
     if ($('#zuihou').attr('data-year') == 1999) {
       console.log('aaaaaaa');
+      $('.curyear:last').find(".kong").eq(0).css("display","none");
       $('#eve_more').css("display","none");
     }
   }
