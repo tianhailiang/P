@@ -564,7 +564,7 @@ exports.cooperation = function (req, res, next){
     async.parallel({
       lunbo_list: function (callback) {
         // 轮播图接口
-        cms.lunbo_list({"ad_page":"COOPERATION","ad_seat":"SEAT5","cityid":area},callback);
+        cms.lunbo_list({"ad_page":"COOPERATION","ad_seat":"SEAT1","cityid":area},callback);
       },
       company_culture1:function(callback){
         cms.company_culture_list({
@@ -615,6 +615,10 @@ exports.contact = function (req, res, next){
       data.login_nickname = login_a;
     }
     async.parallel({
+      lunbo_list: function (callback) {
+        // 轮播图接口
+        cms.lunbo_list({"ad_page":"CONTACT","ad_seat":"SEAT5","cityid":area},callback);
+      },
       contact: function (callback) {
         cms.contact( {
           "area_type":1,
@@ -662,6 +666,7 @@ exports.contact = function (req, res, next){
       },
     }, function (err, result){
       log.info(result)
+      data.xSlider =returnData(result.lunbo_list,'lunbo_list');
       data.contact =returnData(result.contact,'contact');
       data.contact2 =returnData(result.contact2,'contact2');
       data.contact3 =returnData(result.contact3,'contact3');
