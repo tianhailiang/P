@@ -7,7 +7,7 @@
         z-index:11002;
         background:url(../../assets/img/add-footer.png);
         background-size: 100% 100%;
-        background-position-x: -105px;
+        /* background-position-x: -105px; */
         min-width:1200px;
         opacity: 0;
 
