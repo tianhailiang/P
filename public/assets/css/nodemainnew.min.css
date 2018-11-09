@@ -13,7 +13,7 @@
 .act-pop-detail{display:block;height:20px;position:absolute;right:7.5%;top:35%;cursor:pointer;width:12.1%;right:28.5%}
 .act-pop-x-btn{width:30px;height:30px;background:url(../../assets/img/popup_x_b.png) no-repeat 0 0;background-size:30px 30px;position:absolute;right:10px;top:25%;cursor:pointer}
 .act-pop-left{position:fixed;width:124px;height:120px;bottom:160px;z-index:800;left:-100%;cursor:pointer}
-.act-pop-country{border:1px solid #77162b;border-radius:4px;position:absolute;padding:8px 12px 3px;background:#fff;width:518px;right:0;top:-109px;z-index:100}
+.act-pop-country{border:1px solid #77162b;border-radius:4px;position:absolute;padding:8px 12px 3px;background:#fff;width:518px;right:0;top:-135px;z-index:100}
 .act-pop-country li{float:left;width:61px;height:20px;border:1px solid #dcdcdc;text-align:center;line-height:20px;font-size:14px;color:#999;margin-bottom:5px;margin-right:2px;border-radius:4px}
 .act-pop-country li.active{border-color:#77162b;color:#77162b}
 .act-pop-country li:nth-of-type(8n){margin-right:0}
@@ -130,21 +130,6 @@ to{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .right-title{width:840px;height:40px;background:#eee;margin-top:20px;margin-left:20px}
 .right-title .tit{width:115px;height:40px;background:#C13232;font-size:18px;color:#fff;text-align:center;line-height:40px}
 .right-cont .right-main{padding-bottom:20px}
-.gw-likelist{width:280px;list-style:none;padding-bottom:10px;background:#fff}
-.gw-likelist li{padding-top:14px;border-bottom:solid 1px #dcdcdc;margin-left:10px;margin-right:10px}
-.gw-likelist a{color:#333;text-decoration:none}
-.likes-item{overflow:hidden}
-.likes-item span{display:inline-block;margin-top:18px}
-.likes-item+.article{margin:8px 0 10px;color:#333;font-size:16px}
-.likes-item img{float:left;width:51px;height:51px}
-.likes-item .people-action{width:80px;height:24px;border-radius:8px;background:#fdf3f2;color:#c13232;text-align:center;font-size:12px;line-height:24px}
-.likes-item .people-name{margin-right:34px;margin-left:10px;padding-right:20px;background:url(/assets/img/1v.png) no-repeat;background-position:right center;font-size:14px}
-.likeItem{width:280px;border:solid 1px #dbdbdb}
-.likeItem>h2{height:50px;line-height:50px;font-size:18px;color:#333;background:#f3f3f3}
-.likeItem>h2>em{display:inline-block;width:2px;height:22px;background:#c13232;vertical-align:middle;margin-right:16px}
-.gw-likelist .img-responsive{display:inline-block;height:51px;width:51px;border-radius:50%;-webkit-border-radius:50%}
-.gw-likelist .article{margin-top:5px;margin-bottom:8px;font-size:16px;color:#333}
-.gw-likelist .like-title:hover .article{color:#c13232}
 .msg-item{width:840px;margin:0 19px;border-bottom:1px solid #dcdcdc}
 .msg-item .msg-img{width:60px;height:60px;overflow:hidden;float:left;margin-right:20px;margin-top:20px;margin-bottom:19px;background-color:#ffb6c1}
 .msg-item .msg-info{width:840px;float:right;padding:15px 0 19px}
@@ -169,6 +154,21 @@ to{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .right-cont{width:878px;border:1px #eee solid}
 .right-title{width:840px;height:40px;background:#eee;margin-top:20px;margin-left:20px}
 .right-title .tit{width:115px;height:40px;background:#C13232;font-size:18px;color:#fff;text-align:center;line-height:40px}
+.gw-likelist{width:280px;list-style:none;padding-bottom:10px;background:#fff}
+.gw-likelist li{padding-top:14px;border-bottom:solid 1px #dcdcdc;margin-left:10px;margin-right:10px}
+.gw-likelist a{color:#333;text-decoration:none}
+.likes-item{overflow:hidden}
+.likes-item span{display:inline-block;margin-top:18px}
+.likes-item+.article{margin:8px 0 10px;color:#333;font-size:16px}
+.likes-item img{float:left;width:51px;height:51px}
+.likes-item .people-action{width:80px;height:24px;border-radius:8px;background:#fdf3f2;color:#c13232;text-align:center;font-size:12px;line-height:24px}
+.likes-item .people-name{margin-right:34px;margin-left:10px;padding-right:20px;background:url(/assets/img/1v.png) no-repeat;background-position:right center;font-size:14px}
+.likeItem{width:280px;border:solid 1px #dbdbdb}
+.likeItem>h2{height:50px;line-height:50px;font-size:18px;color:#333;background:#f3f3f3}
+.likeItem>h2>em{display:inline-block;width:2px;height:22px;background:#c13232;vertical-align:middle;margin-right:16px}
+.gw-likelist .img-responsive{display:inline-block;height:51px;width:51px;border-radius:50%;-webkit-border-radius:50%}
+.gw-likelist .article{margin-top:5px;margin-bottom:8px;font-size:16px;color:#333}
+.gw-likelist .like-title:hover .article{color:#c13232}
 .offers{width:880px;position:relative;margin-bottom:10px}
 .offers-left{width:448px;height:100%;float:left}
 .offers-left-img{width:60px;height:100%;float:left;margin:0 20px}
