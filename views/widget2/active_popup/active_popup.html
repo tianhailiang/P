@@ -202,56 +202,29 @@
             document.getElementById('icon_arrow').style.msTransform="rotate(0deg)";
         })
         $('.act-code-btn').on('click',getCode);//点击获取验证码
-        $('.act-pop-gift').on('click',getGift);// 点击领取优惠码
+        // $('.act-pop-gift').on('click',getGift);// 点击领取优惠码
 
         // 60s倒计时
-        var timer;
-        function countDown() {
-            var countDownTime = 60;
-            timer = window.setInterval(function () {
-                countDownTime--;
-                $(".act-code-btn").html('（'+countDownTime+'）s');
-                if (countDownTime <= 0) {
-                    clearInterval(timer);
-                    $(".act-code-btn").html('点击发送验证码');
-                    $(".act-code-btn").bind("click",getCode);
-                }
-            }, 1000);
-        }
+        // var timer;
+        // function countDown() {
+        //     var countDownTime = 60;
+        //     timer = window.setInterval(function () {
+        //         countDownTime--;
+        //         $(".act-code-btn").html('（'+countDownTime+'）s');
+        //         if (countDownTime <= 0) {
+        //             clearInterval(timer);
+        //             $(".act-code-btn").html('点击发送验证码');
+        //             $(".act-code-btn").bind("click",getCode);
+        //         }
+        //     }, 1000);
+        // }
         function getCode(){
-            if(!/^1\d{10}$/.test($.trim($('#act-phone').val()))){
-                layer.msg('请输入正确的手机号格式');
-                return false;
-            }
-            $(".act-code-btn").unbind("click");
-            $.ajax({
-                url:'/assessment',
-                type:'post',
-                data:{
-                    phone:$.trim($('#act-phone').val())
-                },
-                dataType:'json',
-                success:function(msg){
-                    console.log(msg)
-                    if(msg.code == 0){
-                        countDown();
-                    } else {
-                        layer.msg(msg.message);
-                        $(".act-code-btn").bind("click",getCode);
-                    }
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
-                    console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
-                    $(".act-code-btn").bind("click",getCode);
-                }
-            });
-        }
-        function getGift(){
             //点击领取
             var actName = $.trim($('#act-name').val());
             var phone = $.trim($("#act-phone").val());
             var country = $('.act-pop-sel-val').attr('data-id');
-            var code = $.trim($('#act-code').val());
+            var city = cookie('currentarea');
+            var h = window.location.href;
             if(actName== ''){
                 layer.msg('请输入姓名');
                 return false;
@@ -264,66 +237,113 @@
                 layer.msg('请选择意向国家');
                 return false;
             }
-            if(code == ''){
-                layer.msg('请输入验证码');
-                return false;
-            }
-            var that = this;
-            var h = window.location.href;
-            var hh = h.split("?");
-            var sou = [];
-            if (hh[1]) {
-                var hhh = hh[1].split("&");
-                for (var i = 0;i < hhh.length;i++) {
-                    if (hhh[i].split("cmpid=")[1] != null) {
-                        console.log('hhh',hhh[i])
-                        if (hhh[i].match(/[~|《|<|>|'|!|@|#|$|%|^|&|*|(|)|+|:]/)) {
-                            console.log('含有特殊字符')
-                        }else {
-                            sou = hhh[i].split("cmpid=")
-                            console.log('sou',sou)
-                        }
-                    }
-                }
-            }
-            $(this).unbind('click');
             $.ajax({
-                url: '/cmsapi/assessment',
-                type: 'get',
-                data: {
-                    user_name: actName,
-                    mobile: phone,
-                    country_id: country,
-                    code:code,
-                    source: sou[1]
+                url:ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
+                type:'GET',
+                dataType:'json',
+                data:{
+                    name: actName,
+                    phone: phone,
+                    country: country,
+                    city: city,
+                    dataType: '1',
+                    source: h
                 },
                 dataType:'json',
                 success:function(msg){
                     console.log(msg)
-                    $(that).bind('click',getGift);
-                    if(msg.code === 0){
-                        layer.msg('优惠码发送成功');
-                        $('#act-name').val('');
-                        $("#act-phone").val('');
-                        $('.act-pop-sel-val').attr('data-id','');
-                        $('.act-pop-sel-val').text('意向国家');
-                        $('#act-code').val('');
-                        clearInterval(timer);
-                        $(".act-code-btn").html('点击发送验证码');
-                        $('.act-pop-country li').removeClass('active');
-                        $(".act-code-btn").bind("click",getCode);
-                        window.setTimeout(function(){
-                            window.location.reload();
-                        },1000);
+                    if(msg.code == 0){
+                        setTimeout(function(){ //先关闭弹框再提示成功必须使用timeout，否则alert会提前执行
+                            alert('老师将为您做专业评估。');
+                        },10)
                     } else {
-                        layer.msg(msg.massage);
+                        alert(msg.message);
                     }
                 },
                 error:function(XMLHttpRequest, textStatus, errorThrown){
                     console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
-                    $(that).bind('click',getGift);
+                    $(".act-code-btn").bind("click",getCode);
                 }
-            })
+            });
         }
+        // function getGift(){
+        //     //点击领取
+        //     var actName = $.trim($('#act-name').val());
+        //     var phone = $.trim($("#act-phone").val());
+        //     var country = $('.act-pop-sel-val').attr('data-id');
+        //     var code = $.trim($('#act-code').val());
+        //     if(actName== ''){
+        //         layer.msg('请输入姓名');
+        //         return false;
+        //     }
+        //     if(!/^1\d{10}$/.test(phone)){
+        //         layer.msg('请输入正确的手机号格式');
+        //         return false;
+        //     }
+        //     if(country == ''){
+        //         layer.msg('请选择意向国家');
+        //         return false;
+        //     }
+        //     if(code == ''){
+        //         layer.msg('请输入验证码');
+        //         return false;
+        //     }
+        //     var that = this;
+        //     var h = window.location.href;
+        //     var hh = h.split("?");
+        //     var sou = [];
+        //     if (hh[1]) {
+        //         var hhh = hh[1].split("&");
+        //         for (var i = 0;i < hhh.length;i++) {
+        //             if (hhh[i].split("cmpid=")[1] != null) {
+        //                 console.log('hhh',hhh[i])
+        //                 if (hhh[i].match(/[~|《|<|>|'|!|@|#|$|%|^|&|*|(|)|+|:]/)) {
+        //                     console.log('含有特殊字符')
+        //                 }else {
+        //                     sou = hhh[i].split("cmpid=")
+        //                     console.log('sou',sou)
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     $(this).unbind('click');
+        //     $.ajax({
+        //         url: '/cmsapi/assessment',
+        //         type: 'get',
+        //         data: {
+        //             user_name: actName,
+        //             mobile: phone,
+        //             country_id: country,
+        //             code:code,
+        //             source: sou[1]
+        //         },
+        //         dataType:'json',
+        //         success:function(msg){
+        //             console.log(msg)
+        //             $(that).bind('click',getGift);
+        //             if(msg.code === 0){
+        //                 layer.msg('优惠码发送成功');
+        //                 $('#act-name').val('');
+        //                 $("#act-phone").val('');
+        //                 $('.act-pop-sel-val').attr('data-id','');
+        //                 $('.act-pop-sel-val').text('意向国家');
+        //                 $('#act-code').val('');
+        //                 clearInterval(timer);
+        //                 $(".act-code-btn").html('点击发送验证码');
+        //                 $('.act-pop-country li').removeClass('active');
+        //                 $(".act-code-btn").bind("click",getCode);
+        //                 window.setTimeout(function(){
+        //                     window.location.reload();
+        //                 },1000);
+        //             } else {
+        //                 layer.msg(msg.massage);
+        //             }
+        //         },
+        //         error:function(XMLHttpRequest, textStatus, errorThrown){
+        //             console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
+        //             $(that).bind('click',getGift);
+        //         }
+        //     })
+        // }
     })
 </script>
