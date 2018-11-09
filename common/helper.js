@@ -496,7 +496,7 @@ function eduChecked(val,checkedList){
   if(checkedList==undefined){
      checkedList = []
   }else{
-    checkedList =checkedList.split('/');
+    checkedList =checkedList.split(',');
   }
   for (let item of checkedList) {
     if(val == item){
