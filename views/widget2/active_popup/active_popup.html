@@ -264,6 +264,10 @@
                         setTimeout(function(){ //先关闭弹框再提示成功必须使用timeout，否则alert会提前执行
                             alert('老师将为您做专业评估。');
                         },10)
+                        $('#act-name').val('');
+                        $("#act-phone").val('');
+                        $('.act-pop-sel-val').attr('data-id','');
+                        $('.act-pop-sel-val').text('意向国家');
                     } else {
                         alert(msg.message);
                     }
