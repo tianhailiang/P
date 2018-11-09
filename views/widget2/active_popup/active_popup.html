@@ -1,8 +1,7 @@
-
-<div class="act-pop-left" >
+<!-- <div class="act-pop-left" >
     <img src="{{helper.cdnhost}}/assets/img/popup_left_b.png" />
-</div>
-<div class="act-pop-box" >
+</div> -->
+<div class="act-pop-box">
   <div class="act-pop-box-con">
     <div class="act-pop-info-box clearfix">
         {# 清除表单自动添加 #}
@@ -13,13 +12,6 @@
         {# end清除表单自动添加 #}
         <input class="act-pop-input" placeholder="请输入姓名" id="act-name" maxlength="10" autocomplete="off">
         <input class="act-pop-input" placeholder="请输入手机号" id="act-phone" autocomplete="off">
-        <div class="act-code-box">
-            <input class="act-code-input" id="act-code" placeholder="请输入验证码" style="width: 47.1%" autocomplete="off">
-            <span style="color:#dcdcdc;">|</span>
-            <div class="act-code-btn" >
-                点击发送验证码
-            </div>
-        </div>
          <div class="act-pop-sel" >
             <span class="act-pop-sel-val" data-id="" >意向国家</span>
             <i class="iconfont" style="position:absolute;right:20px;" id="icon_arrow">&#xe60b;</i>
@@ -119,6 +111,14 @@
                 {
                     name:"瑞士",
                     id:"113"
+                },
+                {
+                  name:"中国澳门",
+                  id:"55"
+                },
+                {
+                  name:"奥地利",
+                  id:"114"
                 }
             ] %}
             <div class="act-pop-sel-country" >
@@ -133,14 +133,13 @@
                 <div class="act-pop-triangle-white"></div>
             </div>
         </div>
+          <div class="act-code-btn">预约报名</div>
     </div>
-    <div class="act-pop-gift" >
-        获取优惠券
-    </div>
-    <a href="http://www.jjl.cn/zt/2018/20180528_xiazhan/beijing.shtml" class="act-pop-detail" >
+    <!-- <div class="act-pop-gift" >获取优惠券</div> -->
+    <!-- <a href="http://www.jjl.cn/zt/2018/20180528_xiazhan/beijing.shtml" class="act-pop-detail" >
         <img src="{{helper.cdnhost}}/assets/img/popup_detail_b.png" />
-    </a>
-    <div class="act-pop-x-btn" ></div>
+    </a> -->
+    <!-- <div class="act-pop-x-btn" ></div> -->
     {#<span class="act-pop-time">
         活动时间：2018年6月23日至2018年8月25日
     </span>#}
@@ -149,26 +148,43 @@
 
 <script>
     $(function(){
-        if(cookie('act_flag')=='on' || cookie('act_flag')==null||cookie('act_flag')==undefined){
-          $('.act-pop-box').show().animate({'left':'0'});
-          $('.act-pop-left').animate({'left':'-100%'});
-        }else{
-          $('.act-pop-box').hide().animate({'left':'-100%'});
-          $('.act-pop-left').animate({'left':'0'});  
-        }
-        $(".act-pop-country li:nth-child(8n)").css({'marginRight':'0'});
-        $('.act-pop-x-btn').on('click',function(){
-            $('.act-pop-box').hide().animate({'left':'-100%'});
-            $('.act-pop-left').animate({'left':'0'});
-            cookie('act_flag','off',{expires: 1,path:'/'});
+        //
+        $(window).scroll(function(){
+          var $scrolltop = $(window).scrollTop();
+          var $height = $(document).height();
+          var $wheight = $(window).height();
+
+          if($scrolltop >= 500 ) {
+            $('.act-pop-box').addClass('active-fade')
+          } else {
+            $('.act-pop-box').removeClass('active-fade')
+          }
+          if( $scrolltop == $height - $wheight) {
+            $('.act-pop-box').removeClass('active-fade')
+          }
         });
-        $('.act-pop-left').on('click',function(){
-            $(this).animate({'left':'-100%'});
-            $('.act-pop-box').show().animate({'left':'0'});
-            cookie('act_flag','on',{expires: 1,path:'/'});
-        });
+
+        // if(cookie('act_flag')=='on' || cookie('act_flag')==null||cookie('act_flag')==undefined){
+        //   $('.act-pop-box').show().animate({'left':'0'});
+        //   $('.act-pop-left').animate({'left':'-100%'});
+        // }else{
+        //   $('.act-pop-box').hide().animate({'left':'-100%'});
+        //   $('.act-pop-left').animate({'left':'0'});  
+        // }
+        // $(".act-pop-country li:nth-child(8n)").css({'marginRight':'0'});
+        // $('.act-pop-x-btn').on('click',function(){
+        //     $('.act-pop-box').hide().animate({'left':'-100%'});
+        //     $('.act-pop-left').animate({'left':'0'});
+        //     cookie('act_flag','off',{expires: 1,path:'/'});
+        // });
+        // $('.act-pop-left').on('click',function(){ //点击关闭
+        //     $(this).animate({'left':'-100%'});
+        //     $('.act-pop-box').show().animate({'left':'0'});
+        //     cookie('act_flag','on',{expires: 1,path:'/'});
+        // });
+
+        //选择国家
         $('.act-pop-sel').on('click',function(){
-            //选择国家
             if($('.act-pop-sel-country').css('display')=='block'){
                 $('.act-pop-sel-country').hide();
                 document.getElementById('icon_arrow').style.transform="rotate(0deg)";
@@ -181,6 +197,7 @@
                 document.getElementById('icon_arrow').style.msTransform="rotate(180deg)";
             }
         });
+
         $('.act-pop-country li').on('click',function(e){
             e.stopPropagation();
             $('.act-pop-sel-country').hide();
@@ -193,55 +210,29 @@
             document.getElementById('icon_arrow').style.msTransform="rotate(0deg)";
         })
         $('.act-code-btn').on('click',getCode);//点击获取验证码
-        $('.act-pop-gift').on('click',getGift);// 点击领取优惠码
-        var timer;
-        function countDown() {
-            // 60s倒计时
-            var countDownTime = 60;
-            timer = window.setInterval(function () {
-                countDownTime--;
-                $(".act-code-btn").html('（'+countDownTime+'）s');
-                if (countDownTime <= 0) {
-                    clearInterval(timer);
-                    $(".act-code-btn").html('点击发送验证码');
-                    $(".act-code-btn").bind("click",getCode);
-                }
-            }, 1000);
-        }
+        // $('.act-pop-gift').on('click',getGift);// 点击领取优惠码
+
+        // 60s倒计时
+        // var timer;
+        // function countDown() {
+        //     var countDownTime = 60;
+        //     timer = window.setInterval(function () {
+        //         countDownTime--;
+        //         $(".act-code-btn").html('（'+countDownTime+'）s');
+        //         if (countDownTime <= 0) {
+        //             clearInterval(timer);
+        //             $(".act-code-btn").html('点击发送验证码');
+        //             $(".act-code-btn").bind("click",getCode);
+        //         }
+        //     }, 1000);
+        // }
         function getCode(){
-            if(!/^1\d{10}$/.test($.trim($('#act-phone').val()))){
-                layer.msg('请输入正确的手机号格式');
-                return false;
-            }
-            $(".act-code-btn").unbind("click");
-            $.ajax({
-                url:'/sendcode_s_coupon',
-                type:'post',
-                data:{
-                    phone:$.trim($('#act-phone').val())
-                },
-                dataType:'json',
-                success:function(msg){
-                    console.log(msg)
-                    if(msg.code == 0){
-                        countDown();
-                    } else {
-                        layer.msg(msg.message);
-                        $(".act-code-btn").bind("click",getCode);
-                    }
-                },
-                error:function(XMLHttpRequest, textStatus, errorThrown){
-                    console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
-                    $(".act-code-btn").bind("click",getCode);
-                }
-            });
-        }
-        function getGift(){
             //点击领取
             var actName = $.trim($('#act-name').val());
             var phone = $.trim($("#act-phone").val());
             var country = $('.act-pop-sel-val').attr('data-id');
-            var code = $.trim($('#act-code').val());
+            var city = cookie('currentarea');
+            var h = window.location.href;
             if(actName== ''){
                 layer.msg('请输入姓名');
                 return false;
@@ -254,66 +245,116 @@
                 layer.msg('请选择意向国家');
                 return false;
             }
-            if(code == ''){
-                layer.msg('请输入验证码');
-                return false;
-            }
-            var that = this;
-            var h = window.location.href;
-            var hh = h.split("?");
-            var sou = [];
-            if (hh[1]) {
-                var hhh = hh[1].split("&");
-                for (var i = 0;i < hhh.length;i++) {
-                    if (hhh[i].split("cmpid=")[1] != null) {
-                        console.log('hhh',hhh[i])
-                        if (hhh[i].match(/[~|《|<|>|'|!|@|#|$|%|^|&|*|(|)|+|:]/)) {
-                            console.log('含有特殊字符')
-                        }else {
-                            sou = hhh[i].split("cmpid=")
-                            console.log('sou',sou)
-                        }
-                    }
-                }
-            }
-            $(this).unbind('click');
             $.ajax({
-                url: '/getCoupons',
-                type: 'get',
-                data: {
-                    user_name: actName,
-                    mobile: phone,
-                    country_id: country,
-                    code:code,
-                    source: sou[1]
-                },
+                url:ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
+                type:'GET',
                 dataType:'json',
+                data:{
+                    name: actName,
+                    phone: phone,
+                    country: country,
+                    city: city,
+                    dataType: '12',
+                    source: h
+                },
                 success:function(msg){
                     console.log(msg)
-                    $(that).bind('click',getGift);
-                    if(msg.code === 0){
-                        layer.msg('优惠码发送成功');
+                    if(msg.code == 0){
+                        setTimeout(function(){ //先关闭弹框再提示成功必须使用timeout，否则alert会提前执行
+                            alert('老师将为您做专业评估。');
+                        },10)
                         $('#act-name').val('');
                         $("#act-phone").val('');
                         $('.act-pop-sel-val').attr('data-id','');
                         $('.act-pop-sel-val').text('意向国家');
-                        $('#act-code').val('');
-                        clearInterval(timer);
-                        $(".act-code-btn").html('点击发送验证码');
-                        $('.act-pop-country li').removeClass('active');
-                        $(".act-code-btn").bind("click",getCode);
-                        window.setTimeout(function(){
-                            window.location.reload();
-                        },1000);
                     } else {
-                        layer.msg(msg.massage);
+                        alert(msg.message);
                     }
                 },
                 error:function(XMLHttpRequest, textStatus, errorThrown){
                     console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
-                    $(that).bind('click',getGift);
+                    $(".act-code-btn").bind("click",getCode);
                 }
-            })
+            });
         }
+        // function getGift(){
+        //     //点击领取
+        //     var actName = $.trim($('#act-name').val());
+        //     var phone = $.trim($("#act-phone").val());
+        //     var country = $('.act-pop-sel-val').attr('data-id');
+        //     var code = $.trim($('#act-code').val());
+        //     if(actName== ''){
+        //         layer.msg('请输入姓名');
+        //         return false;
+        //     }
+        //     if(!/^1\d{10}$/.test(phone)){
+        //         layer.msg('请输入正确的手机号格式');
+        //         return false;
+        //     }
+        //     if(country == ''){
+        //         layer.msg('请选择意向国家');
+        //         return false;
+        //     }
+        //     if(code == ''){
+        //         layer.msg('请输入验证码');
+        //         return false;
+        //     }
+        //     var that = this;
+        //     var h = window.location.href;
+        //     var hh = h.split("?");
+        //     var sou = [];
+        //     if (hh[1]) {
+        //         var hhh = hh[1].split("&");
+        //         for (var i = 0;i < hhh.length;i++) {
+        //             if (hhh[i].split("cmpid=")[1] != null) {
+        //                 console.log('hhh',hhh[i])
+        //                 if (hhh[i].match(/[~|《|<|>|'|!|@|#|$|%|^|&|*|(|)|+|:]/)) {
+        //                     console.log('含有特殊字符')
+        //                 }else {
+        //                     sou = hhh[i].split("cmpid=")
+        //                     console.log('sou',sou)
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     $(this).unbind('click');
+        //     $.ajax({
+        //         url: '/cmsapi/assessment',
+        //         type: 'get',
+        //         data: {
+        //             user_name: actName,
+        //             mobile: phone,
+        //             country_id: country,
+        //             code:code,
+        //             source: sou[1]
+        //         },
+        //         dataType:'json',
+        //         success:function(msg){
+        //             console.log(msg)
+        //             $(that).bind('click',getGift);
+        //             if(msg.code === 0){
+        //                 layer.msg('优惠码发送成功');
+        //                 $('#act-name').val('');
+        //                 $("#act-phone").val('');
+        //                 $('.act-pop-sel-val').attr('data-id','');
+        //                 $('.act-pop-sel-val').text('意向国家');
+        //                 $('#act-code').val('');
+        //                 clearInterval(timer);
+        //                 $(".act-code-btn").html('点击发送验证码');
+        //                 $('.act-pop-country li').removeClass('active');
+        //                 $(".act-code-btn").bind("click",getCode);
+        //                 window.setTimeout(function(){
+        //                     window.location.reload();
+        //                 },1000);
+        //             } else {
+        //                 layer.msg(msg.massage);
+        //             }
+        //         },
+        //         error:function(XMLHttpRequest, textStatus, errorThrown){
+        //             console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
+        //             $(that).bind('click',getGift);
+        //         }
+        //     })
+        // }
     })
 </script>

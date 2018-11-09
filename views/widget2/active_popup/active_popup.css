@@ -1,18 +1,15 @@
-
-    
     .act-pop-box{
-        width:100%;
-        height:130px;
-        position:fixed;
-        /* left:0; */
-        bottom:0;
-        z-index:11002;
-        background:url(../../assets/img/popup_bg_b.png);
-        background-size: 100% 100%;
-        background-position-x: -105px;
-        min-width:1200px;
+      width: 100%;
+      height: 140px;
+      position: fixed;
+      bottom: 0;
+      z-index: 998;
+      background: url(../../assets/img/add-footer.png);
+      background-position: center center;
+      min-width: 1200px;
+      opacity: 0;
     }
-    .act-pop-box-con{
+    /* .act-pop-box-con{
         width: 1200px;
         height: 158px;
         margin: 0 auto;
@@ -21,21 +18,23 @@
         background-position-x: 10px;
         position: relative;
         top: -28px;
-    }
+    } */
     .act-pop-info-box{
-        margin-top:90px;
-        width: 46.1%;
-        margin-left:33%;
-        float:left;
+      margin-top: 90px;
+      width: 45%;
+      margin-left: 49%;
+      float: left;
     }
     .act-pop-input{
-        height:30px;
+        height:35px;
         border-radius: 4px;
         margin-right:10px;
         padding-left:10px;
-        width: 17.7%;
+        width: 22.5%;
         border:none;
         float:left;
+        -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.2)
     }
     .act-pop-input::-webkit-input-placeholder { /* WebKit browsers */
         color:#999;
@@ -62,24 +61,37 @@
         border-bottom-left-radius: 4px;
     }
     .act-code-btn{
-        color:#77162b;
+        color:#932003;
         text-align: center;
-        line-height: 30px;
+        line-height: 35px;
+        font-size:14px;
         cursor: pointer;
-        width: 44%;
-        float: right;
+        margin-left:15px;
+        width: 20%;
+        float: left;
+        -webkit-border-radius:4px;
+        border-radius: 4px;
+        background: #f9ef1c;
+        -webkit-transition: .3s linear;
+        transition: .3s linear;
+    }
+    .act-code-btn:hover{
+      color: #fff;
+      background: #eda906;
     }
     .act-pop-sel{
-        height:30px;
+        height:35px;
         border-radius: 4px;
         padding-left:10px;
-        line-height: 30px;
+        line-height: 35px;
         color:#999;
         position: relative;
         cursor: pointer;
         background:#fff;
         width: 17.7%;
         float:left;
+        -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.28);
+        box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.28);
     }
     .act-pop-gift{
         height:30px;
@@ -135,7 +147,7 @@
         width: 518px;
         /* left: -422px; */
         right: 0px;
-        top: -109px;
+        top: -135px;
         z-index: 100;
     }
     .act-pop-country li{
@@ -193,5 +205,32 @@
         position: absolute;
         left: 10%;
         bottom: 23px;
+    }
+    .act-pop-box.active-fade{
+      animation: fadeInUp .35s cubic-bezier(0,.88,.5,.96) forwards;
+    }
+    @-webkit-keyframes fadeInUp {
+      from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+      }
+      to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+      }
+      to {
+        opacity: 1;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
     }
    
