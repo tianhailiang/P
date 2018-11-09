@@ -239,10 +239,10 @@ $(function(){
     var _listStrAll='<li><a onclick="onclick_ly(\'g\',\'55\')"target="_blank">法国咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'49\')"target="_blank">爱荷北欧咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'123\')"target="_blank">西意瑞咨询</a></li>'+
-      '<li><a onclick="onclick_ly(\'g\',\'48\')"target="_blank">德国咨询</a></li>'+
+      '<li><a onclick="onclick_ly(\'g\',\'48\')"target="_blank">德国/奥地利咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'54\')"target="_blank">移民咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'174\')"target="_blank">境外升转学</a></li>'+
-      '<li style="border:0px; height:124px; margin-top:6px;"><img src="http://vip.jjl.cn/statics/jjlyx/images/weixin.png" width="112" height="114"></li>';
+      '<li style="border:0px; height:124px; margin-top:6px;text-align: center"><img src="http://vip.jjl.cn/statics/jjlyx/images/weixin.png" width="112" height="114"></li>';
 
     var _listStr='';
     if(_areaCode==1){
@@ -256,7 +256,7 @@ $(function(){
         '<li><a onclick="onclick_ly(\'g\',\'852\')"target="_blank">('+_areaName+')加拿大签证</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'50\')"target="_blank">('+_areaName+')澳大利亚咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'57\')"target="_blank">('+_areaName+')新西兰咨询</a></li>'+
-        '<li><a onclick="onclick_ly(\'g\',\'472\')"target="_blank">('+_areaName+')香港咨询</a></li>'+
+        '<li><a onclick="onclick_ly(\'g\',\'472\')"target="_blank">('+_areaName+')中国香港/中国澳门咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'52\')"target="_blank">('+_areaName+')新加坡/马来西亚</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'56\')"target="_blank">('+_areaName+')日本咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'572\')"target="_blank">('+_areaName+')日本研究生</a></li>'+
@@ -264,7 +264,7 @@ $(function(){
         '<li><a onclick="onclick_ly(\'g\',\'51\')"target="_blank">('+_areaName+')俄罗斯咨询</a></li>';
 
     }else if(_areaCode==100){
-      _listStr='<li><a onclick="onclick_ly(\'g\',\'40\')"target="_blank">('+_areaName+')英国、香港咨询</a></li>'+
+      _listStr='<li><a onclick="onclick_ly(\'g\',\'40\')"target="_blank">('+_areaName+')英国/中国香港/中国澳门咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'41\')"target="_blank">('+_areaName+')美国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'39\')"target="_blank">('+_areaName+')澳洲咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'503\')"target="_blank">('+_areaName+')新西兰咨询</a></li>'+
@@ -273,7 +273,7 @@ $(function(){
         '<li><a onclick="onclick_ly(\'g\',\'161\')"target="_blank">('+_areaName+')韩国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'162\')"target="_blank">('+_areaName+')新马俄乌咨询</a></li>';
     }else{
-      _listStr='<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_uk+'\')"target="_blank">('+_areaName+')英国、香港咨询</a></li>'+
+      _listStr='<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_uk+'\')"target="_blank">('+_areaName+')英国/中国香港/中国澳门咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_us+'\')"target="_blank">('+_areaName+')美国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_au+'\')"target="_blank">('+_areaName+')澳洲咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_xxl+'\')"target="_blank">('+_areaName+')新西兰咨询</a></li>'+
@@ -361,7 +361,7 @@ $(function(){
   }
 // right: 40px; margin-top: -200px; display: block; width: 170px;
   $(".zixun").on("click", function () {
-    $("#quick_links_pop").css({"display": "block", "right": "40px", "margin-top": "-300px", "width": "170px"})
+    $("#quick_links_pop").css({"display": "block", "right": "40px", "margin-top": "-300px", "width": "200px"})
   })
 
 //关闭弹框
