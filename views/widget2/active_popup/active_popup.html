@@ -153,16 +153,21 @@
           var $scrolltop = $(window).scrollTop();
           var $height = $(document).height();
           var $wheight = $(window).height();
-        console.log('$height', $height)
-        console.log('$wheight', $wheight)
-        console.log('$scrolltop', $scrolltop)
           if($scrolltop >= 250 ) {
             $('.act-pop-box').css('display', 'block')
           } else {
             $('.act-pop-box').css('display', 'none')
           }
-          if( $scrolltop >= ($height - $wheight) - 200 ) {
-            $('.act-pop-box').css('display', 'none')
+          var sUserAgent = navigator.userAgent.toLowerCase();
+          if(sUserAgent.match(/ipad/i) == "ipad"){
+            if( $scrolltop >= ($height - $wheight) - 500 ) {
+                alert('ipad')
+                $('.act-pop-box').css('display', 'none')
+            }    
+          } else {
+            if( $scrolltop >= ($height - $wheight) - 200 ) {
+                $('.act-pop-box').css('display', 'none')
+            }
           }
         });
 
