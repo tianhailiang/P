@@ -139,7 +139,7 @@
     <!-- <a href="http://www.jjl.cn/zt/2018/20180528_xiazhan/beijing.shtml" class="act-pop-detail" >
         <img src="{{helper.cdnhost}}/assets/img/popup_detail_b.png" />
     </a> -->
-    <!-- <div class="act-pop-x-btn" ></div> -->
+    <div class="act-pop-x-btn" ></div>
     {#<span class="act-pop-time">
         活动时间：2018年6月23日至2018年8月25日
     </span>#}
@@ -153,16 +153,22 @@
           var $scrolltop = $(window).scrollTop();
           var $height = $(document).height();
           var $wheight = $(window).height();
-
-          if($scrolltop >= 500 ) {
+        console.log('$height', $height)
+        console.log('$wheight', $wheight)
+        console.log('$scrolltop', $scrolltop)
+          if($scrolltop >= 250 ) {
             $('.act-pop-box').css('display', 'block')
           } else {
             $('.act-pop-box').css('display', 'none')
           }
-          if( $scrolltop == $height - $wheight) {
+          if( $scrolltop >= ($height - $wheight) - 200 ) {
             $('.act-pop-box').css('display', 'none')
           }
         });
+
+        $('.act-pop-x-btn').on('click', function () {
+            $('.act-pop-box').css('display', 'none')
+        })
 
         // if(cookie('act_flag')=='on' || cookie('act_flag')==null||cookie('act_flag')==undefined){
         //   $('.act-pop-box').show().animate({'left':'0'});
