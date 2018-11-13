@@ -166,10 +166,16 @@ gulp.task('gif', function(cb) {
 });
 gulp.task('about', function(cb) {
   return gulp.src('public/assets/img/about/*')
+    .pipe(rev())
+    .pipe(gulp.dest('dist/public/assets/img/about/'))
+    .pipe(rev.manifest())
     .pipe(gulp.dest('dist/public/assets/img/about/'));
 });
 gulp.task('events', function(cb) {
   return gulp.src('public/assets/img/events/*')
+    .pipe(rev())
+    .pipe(gulp.dest('dist/public/assets/img/events/'))
+    .pipe(rev.manifest())
     .pipe(gulp.dest('dist/public/assets/img/events/'));
 });
 gulp.task('revClean', function(cb) {
