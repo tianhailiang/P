@@ -34,7 +34,7 @@ var apis = {
   "get_answer_list": shequ_prefix + 'account/comment_ans_to_me/',
   "adviser_main": so_prefix + 'article/list', // 社区 首页
   "likelist": so_prefix + 'article/list/is_news-1', // 社区 猜你喜欢
-  "relation_recommend": shequ_prefix + 'article/correlation/',//相关推荐
+  "relation_recommend": so_prefix + 'article/correlation',//相关推荐
   "xiangguan_guwen": so_prefix + 'article/related_adviser/', // 社区 相关顾问
   "yimin_xiangguanguwen": so_prefix + 'article/related_adviser/', // 社区 移民相关顾问
   "xiugai_password": uc_prefix + 'index.php?m=editpassword',//社区 修改密码
