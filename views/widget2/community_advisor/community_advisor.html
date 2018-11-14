@@ -7,7 +7,7 @@
   </ul>
   <div class="advisor-info-box">
     <dl>
-      <dt class="advisor-img" onclick="open_main('{{advisor.uid}}')" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advi,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
+      <dt class="advisor-img" onclick="open_main('{{advisor.uid}}')" style="background-image: url('{{helper.avaterimg(advisor.uid, 'small', advisor.status,advisor.version)}}');background-position: 0 0;cursor: pointer;"></dt>
       <dd>
         <p class="advisor-name" >{{ advisor.realname }}</p>
         {% if advisor.organid != null %}
