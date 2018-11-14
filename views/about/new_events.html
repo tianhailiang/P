@@ -53,6 +53,14 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script>
   $(function(){
+    $(window).on('scroll', function () {
+          var $scroll = $(this).scrollTop();
+          if ($scroll >= 400) {
+              $('.eve-mbar-tabs').show();
+          } else {
+              $('.eve-mbar-tabs').hide();
+          }
+      });
     var sUserAgent = navigator.userAgent.toLowerCase();
     if(sUserAgent.match(/ipad/i) == "ipad"){
       $('.eve_links_dockright').css('right', '4%')
