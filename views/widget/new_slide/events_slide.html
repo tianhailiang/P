@@ -6,7 +6,7 @@
 .eve-mbar-tabs, .eve_links_dockright{
     width: 75px;
     position: fixed;
-    right: 3%;
+    right: 3.5%;
     bottom: 0;
     z-index: 1000;
     -webkit-transition: width linear .4s;
@@ -55,7 +55,7 @@
   }
 </style>
 <div class="mui-mbar-tabs eve-mbar-tabs" style="z-index:999;">
-  <div class="eve_links_dockright"  style="top: 25px;">
+  <div class="eve_links_dockright"  style="top: 200px;">
     <div class="quick_link_mian">
 
       <div class="eve_links_panel">
@@ -75,7 +75,7 @@
             {% endfor %}
             {% for yearnum, yearamount in memorabilia_list %}
               {% if loop.index == 1 %}
-              <div id="year_{{ yearnum | shorten(-1)}}" style="display: block;">
+              <div id="{{ yearnum | shorten(-1)}}_year" style="display: block;">
               {% endif %}
               <li>
                   <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><h6 class="year-num" style="cursor: pointer;font-weight: normal;">{{ yearnum | shorten(-1)}}</h6></div></a> 
@@ -92,11 +92,9 @@
 </div>
 <script>
   function showd (year) {
-    if ($('#year_'+ year).css('display') == 'block') {
-      $('#year_'+ year).css('display', 'none')
-    } else {
-      $('#year_'+ year).css('display', 'block')
-    }
+    console.log(year+'showd')
+    $("div[id$='_year']").css('display', 'none')
+    $('#'+ year + '_year').css('display', 'block')
   }
   function showyear (year) {
     console.log('key',year)
