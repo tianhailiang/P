@@ -389,8 +389,10 @@
 }
 
 .fans-block {
-  padding: 0 0 30px 6px;
   line-height: 34px;
+}
+.avatar-block {
+  padding: 0 0 30px 6px;
 }
 .fans-block img {
   float: left;
