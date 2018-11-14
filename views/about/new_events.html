@@ -53,6 +53,10 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script>
   $(function(){
+    var sUserAgent = navigator.userAgent.toLowerCase();
+    if(sUserAgent.match(/ipad/i) == "ipad"){
+      $('.eve_links_dockright').css('right', '-2%')
+    }
     show_guanggao()
   })
 </script>
