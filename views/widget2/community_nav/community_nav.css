@@ -36,7 +36,8 @@
 }
 .connect-info .zixun-phone {
   font-size: 14px;
-  color: #333;
+  color: #c13232;
+  font-weight: bold;
 }
 .connect-info .zixun-btn {
   display: inline-block;

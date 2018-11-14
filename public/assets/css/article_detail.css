@@ -112,15 +112,6 @@
   position: relative;
   top: 3px;
 }
-.connect-info .zixun-info {
-  font-size: 12px;
-  color: #666;
-}
-.connect-info .zixun-phone {
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-}
 .connect-info .zixun-btn {
   display: inline-block;
   width: 76px;

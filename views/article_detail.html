@@ -279,7 +279,6 @@
           dataType:'jsonp',
           jsonpCallback:'cb',
           success:function(result){
-           console.log(result)
             if(result.code == 0){
               if(result.data.action=='add'){
                 layer.msg('收藏成功');
@@ -320,7 +319,6 @@
           dataType:'jsonp',
           jsonpCallback:'cb',
           success:function(result){
-           console.log(result)
             if(result.code == 0){
               if(result.data.action=='add'){
                 layer.msg('点赞成功');
