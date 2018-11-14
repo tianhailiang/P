@@ -178,7 +178,7 @@
 .advisor-code-open {
   position: absolute;
   display: none;
-  width:280px;
+  width:100%;
   top:0;
   height:100%;
 }
