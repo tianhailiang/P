@@ -303,20 +303,31 @@
 var loadMoreFlag = true;
 var page
 $(document).ready(function (){
-    page = $('#main_con').data('page') + 1;
-    $(window).on('scroll', function () {
-        var $scroll = $(window).scrollTop();
-        // var con = document.getElementById('main_con').offsetHeight;
-        var doc = $(document).height()
-        var win = $(window).height()
-        if ($scroll >= (doc - win) - 500) {
-          if (loadMoreFlag) {
-            loadMoreFlag = false;
-            $('.guwen_more').show();
-            setTimeout(chiefmore, 2000);
-          }
-        }
-    });
+  page = $('#main_con').data('page') + 1;
+  $(window).on('scroll', function () {
+    var $scroll = $(window).scrollTop();
+    // var con = document.getElementById('main_con').offsetHeight;
+    var doc = $(document).height()
+    var win = $(window).height()
+    if ($scroll >= (doc - win) - 500) {
+      if (loadMoreFlag) {
+        loadMoreFlag = false;
+        $('.guwen_more').show();
+        setTimeout(chiefmore, 2000);
+      }
+    }
+  });
+  $(".advisor-code").on('click',function(){
+    if($(this).next().css("display")=="block"){
+      $(this).next().css("display","none");
+      $(this).css({'background':'url(../assets/img/erweima@2x.png) no-repeat 0 0',
+      'background-size':'70px 70px'})
+    }else{
+      $(this).next().css("display","block");
+      $(this).css({'background':'url(../assets/img/personal@2x.png) no-repeat 0 0',
+      'background-size':'70px 70px'})
+    }
+  })
 })
 function chiefmore () {
   var login_ss = {};
@@ -376,6 +387,17 @@ function chiefmore () {
         }
         mainhtml += '</div>';
         $('#main_con').append($(mainhtml));
+        $(".advisor-code").on('click',function(){
+          if($(this).next().css("display")=="block"){
+            $(this).next().css("display","none");
+            $(this).css({'background':'url(../assets/img/erweima@2x.png) no-repeat 0 0',
+            'background-size':'70px 70px'})
+          }else{
+            $(this).next().css("display","block");
+            $(this).css({'background':'url(../assets/img/personal@2x.png) no-repeat 0 0',
+            'background-size':'70px 70px'})
+          }
+        })
       } else {
         $('.guwen_more').hide();
         loadMoreFlag = false;
@@ -398,6 +420,7 @@ function additem(item) {
             '<li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_'+item.uid+'" data-fans="'+item.fans_count+'" style="padding-left: 10px;">'+item.fans_count+'</span></li>'+
             '<li style="width: 135px">文章<span class="article-num">'+ item.article_count +'</span></li>'+
             '</ul>'+
+            '<div class="advisor-info-box" style="height:400px">'+
             '<dl>'+
             '<dt class="advisor-img" onclick="advisor_img('+item.uid+')" style="background-image: url('+fn.avaterimg(item.uid, 'small', item.status,item.version)+');background-position: 0 0;cursor: pointer;"></dt>'+
             '<dd>'+
@@ -433,11 +456,17 @@ function additem(item) {
   } else {
     html += '<span class="advisor-guanzhu guanzhu-btn_'+item.uid+'" data-uid="'+item.uid+'" onclick="guanzhu('+item.uid+')">关注</span>';
   }  
-  html += '</div>';
-  if (item.header_avatar_big) {
-    html += '<div class="tan_tupian" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="'+ advisor.header_avatar_big +'" alt=""></div>';
-  }
-  html += '</div>';
+  html += '</div>'+
+          '<div class="advisor-code"></div>'+
+          '<div class="advisor-code-open">'+
+            '<div class="advisor-code-open-top">'+
+              '<img class="advisor-code-open-img" src="'+fn.imageThumb(item.qrcode)+'" />'+
+            '</div>'+
+            '<div class="advisor-code-open-bottom">扫一扫，免费咨询'+
+            '</div>'+
+          '</div>'+
+          '</div>'+
+          '</div>';
   return html
 }
 </script>
