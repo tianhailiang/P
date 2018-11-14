@@ -471,7 +471,10 @@ if (l.h !== undefined) {
     data.login_nickname = login_a;
   }
   async.parallel({
-
+    lunbo_list: function (callback) {
+      // 轮播图接口
+      cms.lunbo_list({"ad_page":"EVENTS","ad_seat":"SEAT1","cityid":area},callback);
+    },
     memorabilia_list:function(callback){
       cms.memorabilia_list({
         "page":1,
@@ -482,6 +485,7 @@ if (l.h !== undefined) {
   }, function (err, result){
     log.info(result)
     // data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
+    data.xSlider =returnData(result.lunbo_list,'lunbo_list');
     var eventList = returnData(result.memorabilia_list,'memorabilia_list');//返回大事记的未处理列表
     console.log('event', eventList)
     var event = {};
