@@ -53,14 +53,14 @@
   }
 </style>
 <div class="mui-mbar-tabs eve-mbar-tabs" style="z-index:999;">
-  <div class="eve_links_dockright"  style="top:100px;">
+  <div class="eve_links_dockright"  style="top:200px;">
     <div class="quick_link_mian">
 
       <div class="eve_links_panel">
         <ul id="eve_slide">
             {% for yearnum, yearamount in memorabilia_list %}
               <li>
-                  <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><i class="down xiangxia" style="cursor: pointer;"></i><h6 class="year-num" style="cursor: pointer;">{{ yearnum | shorten(-1)}}</h6></div></a> 
+                  <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><i class="down xiangxia" style="cursor: pointer;"></i><h6 class="year-num" style="cursor: pointer;font-weight: normal;">{{ yearnum | shorten(-1)}}</h6></div></a> 
                   {% if loop.index!=loop.length %}
                     <div class="kong"></div>
                   {% endif %}
@@ -77,15 +77,15 @@
     window.location.href = '/about/events.html#' + year
     $('#' + year) .parents(".curyear").children(".month-box").css("display","block");
     $('#' + year).parents(".curyear").children(".kong").css("display","block");
-    $('#' + year) .parents(".curyear").siblings().children(".month-box").css("display","none");
-    $('#' + year).parents(".curyear").siblings().children(".kong").css("display","none");
-    $('#' + year).parents(".curyear").siblings("#tian").css("display","none");
+    // $('#' + year) .parents(".curyear").siblings().children(".month-box").css("display","none");
+    // $('#' + year).parents(".curyear").siblings().children(".kong").css("display","none");
+    // $('#' + year).parents(".curyear").siblings("#tian").css("display","none");
     $.each($('#' + year).parents(".curyear").siblings(".curyear"),function(){
       // console.log('sssss', year)
       $(this).find(".kong").eq(0).css("display","block");
     });
-    $(".curyear:last").find(".kong").eq(0).css("display","none");
-    $(".curyear:last").find(".kong:last").css("display","none");
+    // $(".curyear:last").find(".kong").eq(0).css("display","none");
+    // $(".curyear:last").find(".kong:last").css("display","none");
   }
 </script>
 {% endmacro %}
