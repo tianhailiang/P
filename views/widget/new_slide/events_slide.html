@@ -6,7 +6,7 @@
 .eve-mbar-tabs, .eve_links_dockright{
     width: 75px;
     position: fixed;
-    right: -1%;
+    right: 3%;
     bottom: 0;
     z-index: 1000;
     -webkit-transition: width linear .4s;
@@ -22,8 +22,9 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
-  .eve_links_panel ul li:hover h6{
+  .eve_links_panel ul li:hover h6, .eve_links_panel ul li:hover span{
     color: #c13232;
+
   }
   .eve_links_panel ul li:hover .down{
     width: 32px;
@@ -47,8 +48,9 @@
     color: #999;
   }
   .eve_links_dockright .kong{
-    height: 12px;
+    height: 50px;
     margin-left: -20px;
+    margin-top: -20px;
     border-left: 1px solid #c13232;
   }
 </style>
@@ -59,20 +61,43 @@
       <div class="eve_links_panel">
         <ul id="eve_slide">
             {% for yearnum, yearamount in memorabilia_list %}
-              <!-- <li></li> -->
+            {% if loop.index == 1 %}
+            <li id="{{ yearnum | shorten(-1)}}" onclick="showd({{ yearnum | shorten(-1)}})">
+            <div class="eve-box clearfix" style="cursor: pointer;width: 120px;">
+            <i class="down xiangxia" style="cursor: pointer;"></i><span class="year-num">{{ yearnum | shorten(-1)}}</span>
+            {% else %}
+            {% if loop.index == loop.length %}
+            <span class="year-num"> -- {{ yearnum | shorten(-1)}}</span>
+            </div>
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% for yearnum, yearamount in memorabilia_list %}
+              {% if loop.index == 1 %}
+              <div id="year_{{ yearnum | shorten(-1)}}" style="display: block;">
+              {% endif %}
               <li>
-                  <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><i class="down xiangxia" style="cursor: pointer;"></i><h6 class="year-num" style="cursor: pointer;font-weight: normal;">{{ yearnum | shorten(-1)}}</h6></div></a> 
+                  <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><h6 class="year-num" style="cursor: pointer;font-weight: normal;">{{ yearnum | shorten(-1)}}</h6></div></a> 
                   {% if loop.index!=loop.length %}
                     <div class="kong"></div>
                   {% endif %}
                 </li>
             {% endfor %}
+            </div>
         </ul>
       </div>
     </div>
   </div>
 </div>
 <script>
+  function showd (year) {
+    if ($('#year_'+ year).css('display') == 'block') {
+      $('#year_'+ year).css('display', 'none')
+    } else {
+      $('#year_'+ year).css('display', 'block')
+    }
+  }
   function showyear (year) {
     console.log('key',year)
     window.location.href = '/about/events.html#' + year
