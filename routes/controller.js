@@ -2213,6 +2213,7 @@ exports.case_detail = function(req,res,next){
         }else{
             data.article.article_info.img_info=[];
         }
+        data.area = data.article.article_info.city_id
         data.is_news = data.article.article_info.is_news
         data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
@@ -2235,6 +2236,11 @@ exports.case_detail = function(req,res,next){
               }
         },function(err,result){
             data.relation_recommend = returnData(result.relation_recommend,'relation_recommend');
+            for (let index in data.relation_recommend) {
+                if (data.relation_recommend[index].id == data.article.article_info.id) {
+                    data.relation_recommend.splice(index, 1);
+                }
+            }
             data.userinfo = returnData(result.userinfo,'userinfo');
             data.country =data.userinfo.country || '1';
             data.hcountry = (data.userinfo.country || '1,').split(',')[0];
@@ -2335,11 +2341,13 @@ exports.article_detail= function(req,res,next){
             return next();
         }
         data.article =returnData(result.article,'article');
+        console.log('data.article', data.article)
         if(data.article.article_info.img_info){
             data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
         }else{
             data.article.article_info.img_info = [];
         }
+        data.area = data.article.article_info.city_id
         data.is_news = data.article.article_info.is_news
         data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
@@ -2353,7 +2361,7 @@ exports.article_detail= function(req,res,next){
           relation_recommend: function (callback) {
             wec.relation_recommend({
               "country_id":country,
-              "city_id":area,
+              "city_id":data.area,
               //"is_immi":2,
               "is_news": data.is_news,
               "tag_list": data.tag_list,
@@ -2362,6 +2370,11 @@ exports.article_detail= function(req,res,next){
           }
         },function(err,result) {
           data.relation_recommend = returnData(result.relation_recommend, 'relation_recommend');
+          for (let index in data.relation_recommend) {
+           if (data.relation_recommend[index].id == data.article.article_info.id) {
+             data.relation_recommend.splice(index, 1);
+           }
+          }
           console.log('relation_recommend',data.relation_recommend)
           data.userinfo = returnData(result.userinfo, 'userinfo');
           data.country = data.userinfo.country || '1';
