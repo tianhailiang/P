@@ -2362,6 +2362,7 @@ exports.case_detail = function(req,res,next){
         }else{
             data.article.article_info.img_info=[];
         }
+        data.country = data.article.article_info.country_id
         data.area = data.article.article_info.city_id
         data.is_news = data.article.article_info.is_news
         data.tag_list = encodeURI(data.article.article_info.tag_list)
@@ -2375,8 +2376,8 @@ exports.case_detail = function(req,res,next){
             },
             relation_recommend: function (callback) {
                 wec.relation_recommend({
-                  "country_id":country,
-                  "city_id":area,
+                  "country_id":data.country,
+                  "city_id":data.area,
                   //"is_immi":2,
                   "is_news": data.is_news,
                   "tag_list": data.tag_list,
@@ -2496,6 +2497,7 @@ exports.article_detail= function(req,res,next){
         }else{
             data.article.article_info.img_info = [];
         }
+        data.country = data.article.article_info.country_id
         data.area = data.article.article_info.city_id
         data.is_news = data.article.article_info.is_news
         data.tag_list = encodeURI(data.article.article_info.tag_list)
@@ -2509,7 +2511,7 @@ exports.article_detail= function(req,res,next){
           },
           relation_recommend: function (callback) {
             wec.relation_recommend({
-              "country_id":country,
+              "country_id":data.country,
               "city_id":data.area,
               //"is_immi":2,
               "is_news": data.is_news,
