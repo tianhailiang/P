@@ -361,12 +361,12 @@
     for (var key in msg) {
       i++;
       if (i == 1) {
-        html += '<li id="'+key.substring(0,4)+'"style="margin-top: 20px;" onclick="showd('+key.substring(0,4)+')">'
-        html += '<div class="eve-box clearfix" style="cursor: pointer;width: 120px;">'
-        html += '<i class="down xiangxia" style="cursor: pointer;"></i><span class="year-num">'+key.substring(0,4)+'</span>'
+        html += '<li id="'+key.substring(0,4)+'" style="margin-top: 30px;" onclick="showd('+key.substring(0,4)+')">'
+        html += '<div class="eve-box clearfix" style="cursor: pointer;width: 140px;">'
+        html += '<i class="down xiangxia" style="cursor: pointer;"></i><span class="year-num" style="font-size: 22px;">'+key.substring(0,4)+'</span>'
       } else {
         if ( i == a.length ) {
-          html += '<span class="year-num"> -- '+key.substring(0,4)+'</span>'
+          html += '<span class="year-num" style="font-size: 22px;"> -- '+key.substring(0,4)+'</span>'
           html += '</div>'
           html += '</li>'
         }

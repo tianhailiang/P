@@ -483,11 +483,11 @@ if (l.h !== undefined) {
     },
 
   }, function (err, result){
-    log.info(result)
+    // log.info(result)
     // data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
     data.xSlider =returnData(result.lunbo_list,'lunbo_list');
     var eventList = returnData(result.memorabilia_list,'memorabilia_list');//返回大事记的未处理列表
-    console.log('event', eventList)
+    // console.log('event', eventList)
     var event = {};
     for (let i = 0;i<eventList.length;i++) {
       let y = eventList[i].years;
@@ -502,6 +502,7 @@ if (l.h !== undefined) {
       event[y+'年'][m+'月'].push(eventList[i]);
     }
     data.memorabilia_list = event; //event 是处理后的大事记有序列表
+    console.log('data.memorabilia_list',data.memorabilia_list)
     data.pageroute="about/events";
     data.tdk = {
       pagekey: 'EVENTS', //key
