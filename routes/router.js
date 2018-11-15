@@ -22,7 +22,7 @@ exports = module.exports = function (app) {// routes
   //国家列表页
   app.get(/articles(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.country_list);
   //留学案例
-  app.get(/case(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.case_list);
+  app.get(/^\/case(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.case_list);
   //留学攻略
   app.get(/glue(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.glue);
   //顾问聚合页
