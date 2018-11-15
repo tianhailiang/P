@@ -343,7 +343,7 @@ exports.country_list = function (req, res, next) {
             cityid: area,
             nationid: country,
             edu: type,
-            tagList: tag
+            tag: tag
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),
@@ -420,7 +420,7 @@ exports.case_list = function (req, res, next) {
             cityid: area,
             nationid: country,
             edu: type,
-            tagList: tag,
+            tag: tag,
         };
         data.pagination = {
             pages:Number.parseInt(data.article_list.totalpage),

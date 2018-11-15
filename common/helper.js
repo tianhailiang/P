@@ -421,12 +421,6 @@ function tdk_param_replace(tdk_string, nationName, cityName, title, description,
       ret = ret.replace(/\{edu\}/g, "");
   }
 
-  if(tagList){
-      ret = ret.replace(/\{tagList\}/g, tagList);
-  }else{
-      ret = ret.replace(/\{tagList\}/g, "");
-  }
-
   //替换year
   var date=new Date;
   var year=date.getFullYear();
