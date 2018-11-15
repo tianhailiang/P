@@ -355,6 +355,83 @@ exports.country_list = function (req, res, next) {
         res.render('country_list', data);
     });
 };
+//留学案例
+exports.case_list = function (req, res, next) {
+    log.debug('留学案例',helperfunc.getDefault(new Date().getTime()));
+    var data = {};
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var country = nquery && nquery.n ? nquery.n : "";
+    var type = nquery && nquery.type ? nquery.type : '';
+    var tag = '留学案例';
+    var order = nquery && nquery.order ? nquery.order : "score";
+    var page = nquery && nquery.page ? nquery.page : 1;
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "CASELIST",
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "CASELIST",
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
+        so_article_list:function(callback) {
+            cms.search_article_list({
+                order: order,
+                is_immi:1,
+                city_id:area,
+                "tag_list": encodeURI(tag),
+                "country_id": country,
+                "is_news": 1,
+                "edu_id":encodeURI(type),
+                "per_page": "15",
+                "page": page
+            }, callback);
+        }
+    }, function (err, result) {
+        data.article_list = returnData(result.so_article_list,'so_article_list');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.country = country;
+        data.type=(type== '')?'全部':type;
+        data.order = order;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'CASE', //key
+            cityid: area,
+            nationid: country,
+            edu: type,
+            tag: tag,
+        };
+        data.pagination = {
+            pages:Number.parseInt(data.article_list.totalpage),
+            hrefFormer:helperfunc.active_urlgen('case','n='+country,'type='+type,'tag='+tag,'order='+order,'page='),
+            currentPage:Number.parseInt(page)
+        }
+        // console.log('aaaaa333~~', helperfunc.active_urlgen('articles','n='+country,'type='+type,'tag='+tag,'order='+order,'page='))
+        data.esikey = esihelper.esikey();
+        res.render('case', data);
+    });
+};
 //留学攻略
 exports.glue = function (req, res, next) {
     log.debug('留学攻略');
@@ -669,6 +746,78 @@ exports.so_adviser = function (req, res, next) {
         }
         data.esikey = esihelper.esikey();
         res.render('so_adviser', data);
+
+    });
+};
+//留学案例搜索页
+exports.so_case = function (req, res, next) {
+    log.debug('搜索案例');
+    var data = {};
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
+    }
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var nquery = comfunc.getReqQuery(req.params[1]);
+    var page = nquery && nquery.page ? nquery.page : 1;
+    var keyword = nquery && nquery.q ? decodeURI(nquery.q) : '';
+    var order = nquery && nquery.order ? nquery.order : "score";
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "SEARCHCASE",
+                "cityid":area,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        lunbo_list2:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "SEARCHCASE",
+                "cityid":area,
+                "ad_seat": "SEAT2"
+            }, callback);
+        },
+        so_article_list:function(callback) {
+            cms.so_article_list({
+                order: order,
+                key_word:encodeURI(keyword),
+                city_id:area,
+                is_immi: 1,
+                is_news: 1,
+                tag_list: encodeURI('留学案例'),
+                typeId:1,
+                "per_page": "15",
+                "page": page
+            }, callback);
+        }
+    }, function (err, result) {
+        data.article_list = returnData(result.so_article_list,'so_article_list');
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
+        data.order = order;
+        data.keyword=keyword;
+        data.cur_page = page;
+        data.tdk = {
+            pagekey: 'SEARCHCASE', //key
+            cityid: area,
+            keywords: keyword
+        };
+        data.pagination = {
+            pages:Number.parseInt(data.article_list.totalpage),
+            hrefFormer:helperfunc.paramurlgen('so_case','q='+keyword,order ? 'order='+order : '','page='),
+            currentPage:Number.parseInt(page)
+        }
+        data.esikey = esihelper.esikey();
+        res.render('so_case', data);
 
     });
 };

@@ -247,7 +247,7 @@ var apis = {
   "assessment": cms_out_prefix +'assessment',
   //顾问主页 个人视角
   //get_so_article_list
-  "get_so_article_list": shequ_prefix + 'search/search_article/',
+  "get_so_article_list": so_prefix + 'search/search_article',
   //国家文章列表
   // "get_search_article_list": shequ_prefix + 'search/search_article_list/',
   "get_search_article_list": so_prefix + 'search/search_article_list',

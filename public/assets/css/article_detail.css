@@ -112,15 +112,6 @@
   position: relative;
   top: 3px;
 }
-.connect-info .zixun-info {
-  font-size: 12px;
-  color: #666;
-}
-.connect-info .zixun-phone {
-  font-size: 14px;
-  color: #333;
-  cursor: pointer;
-}
 .connect-info .zixun-btn {
   display: inline-block;
   width: 76px;
@@ -141,7 +132,7 @@
 }
 .content-guide-box {
   width: 100%;
-  padding: 30px 0;
+  padding: 30px 0 38px;
   text-align: center;
   position: relative;
   z-index: 10;
@@ -395,4 +386,25 @@
 .community-tel{
   display: block;
   font-size:14px;
+}
+
+.fans-block {
+  line-height: 34px;
+}
+.avatar-block {
+  padding: 0 0 30px 6px;
+}
+.fans-block img {
+  float: left;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.fans-block .fans-info {
+  float: left;
+  height: 34px;
+  line-height: 34px;
+  font-size: 14px;
+  color: #333;
 }

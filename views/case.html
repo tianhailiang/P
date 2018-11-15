@@ -162,6 +162,14 @@
       {
       "id": 113,
       "country": "瑞士"
+      },
+      {
+      "id": 55,
+      "country": "中国澳门"
+      },
+      {
+      "id": 114,
+      "country": "奥地利"
       }
       ]
       %}
@@ -170,7 +178,7 @@
           <p><span>国家及地区：</span></p>
           <ul class="select-list">
             {% for cItem in countryList %}
-            <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('articles','n=' + cItem.id, ('type=' + type) if type else '',('tag=' + tag) if tag else '',('order=' + order) if order else '')}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+            <li data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('case','n=' + cItem.id, ('type=' + type) if type else '',('tag=' + tag) if tag else '',('order=' + order) if order else '')}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
             {% endfor %}
           </ul>
         </div>
@@ -181,10 +189,6 @@
       {
       "id": 0,
       "type": "全部"
-      },
-      {
-      "id": 5,
-      "type": "时讯"
       },
       {
       "id": 1,
@@ -209,89 +213,12 @@
           <p><span>文章类别：</span></p>
           <ul class="select-list">
             {% for item in crowdType %}
-            <li data-id="{{item.id}}"><a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', 'type='+ item.type,('tag=' + tag) if (tag and item.type != '时讯') else '',('order=' + order) if order else '')}}" class={{'focus-on' if item.type == type else ""}}>{{item.type}}</a></li>
+            <li data-id="{{item.id}}"><a href="{{helper.active_urlgen('case',('n=' + country) if country else '', 'type='+ item.type,('tag=' + tag) if (tag and item.type != '时讯') else '',('order=' + order) if order else '')}}" class={{'focus-on' if item.type == type else ""}}>{{item.type}}</a></li>
             {% endfor %}
           </ul>
         </div>
       </div>
-      <!--文章标签-->
-      {%
-      set arcType = [
-      {
-      "type": "全部"
-      },
-      {
-      "type": "专业解析"
-      },
-      {
-      "type": "留学申请"
-      },
-      {
-      "type": "留学费用"
-      },
-      {
-      "type": "留学条件"
-      },
-      {
-      "type": "学校排名"
-      },
-      {
-      "type": "行前准备"
-      },
-      {
-      "type": "就业解析"
-      },
-      {
-      "type": "签证准备"
-      },
-      {
-      "type": "成功案例"
-      },
-      {
-      "type": "院校资讯"
-      },
-      {
-      "type": "留学方案"
-      },
-      {
-      "type": "背景提升"
-      },
-      {
-      "type": "留学生活"
-      },
-      {
-      "type": "备考资讯"
-      },
-      {
-      "type": "文书攻略"
-      },
-      {
-      "type": "难点解析"
-      },
-      {
-      "type": "省钱攻略"
-      },
-      {
-        "type": "留学启蒙"
-      }
-      ]
-      %}
-      {% if type != '时讯' %}
-      <div class="dui-layout-con study-focus" >
-        <div class="select-article-type  foucus-public foucus-public-d clearfix">
-          <p><span>文章标签：</span></p>
-          <ul class="select-list">
-            {% for item in arcType %}
-            <li data-id="{{item.id}}"><a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '','tag='+ item.type,('order=' + order) if order else '')}}" class={{'focus-on' if item.type == tag else ""}}>{{item.type}}</a></li>
-            {% endfor %}
-          </ul>
-        </div>
-      </div>
-        {% endif %}
         <div class="main-left clearfix">
-          <div class="result-bar">
-           <span id="result-keyword">{{country |getCountry}}留学</span>共检索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
-          </div>
             {% if article_list.total == 0 or article_list.total == null %}
             <!--没有搜索到数据-->
             <div class="no-result page-blank">
@@ -300,20 +227,22 @@
             </div>
             {% else %}
             <div class="has-result">
-                <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
-                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新new</a>
-                    <a href="{{helper.active_urlgen('articles',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热hot</a>
+                <div class="result-type-bar clearfix" data-order="{{order}}" id="result-type-bar">
+                    <div class="cases-filter-tags">
+                        <a href="{{helper.active_urlgen('case',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
+                        <a href="{{helper.active_urlgen('case',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新</a>
+                        <a href="{{helper.active_urlgen('case',('n=' + country) if country else '', ('type=' + type) if type else '',('tag=' + tag) if tag else '','order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热</a>
+                    </div>
+                    <div class="cases-search-bar" id='cases-search-bar'>
+                        <input type="text" id="cases-page-input" placeholder="请输入要搜索的院校名称" class="search-text">
+                        <div class="search-btn" id="cases-page-btn" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
+                    </div>
                 </div>
                 <div class="result-conent" id="result-content">
                     {% for item in article_list.list %}
                     {% include "widget/so_article/so_article.html" %}
                     {% endfor %}
                 </div>
-               <!-- <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
-                    加载更多
-                    <i class="city-icon iconfont">&#xe60b;</i>
-                </div>-->
             </div>
             {% endif %}
         </div>
@@ -371,7 +300,6 @@
             slidesPerGroup : 2,
           pagination: true
         });
-
     })
 
 </script>

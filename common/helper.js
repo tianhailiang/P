@@ -278,7 +278,7 @@ function exits_static_page(path) {
   var yimin_list_reg = path.match(/^\/(news|interpret|activity|case).html$/g);
 
   var schoolrank_list = path.match(/^\/(schoolrank)[0-9A-Za-z\-_/]*.html$/g);
-  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article|yimin_so_advisor|articles)(.*).html$/g);
+  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article|yimin_so_advisor|articles|case)(.*).html$/g);
   if((reg_list || so_reg || so_center || yimin_reg || yimin_list_reg || schoolrank_list || so_pigination || edu) && !rank){
     return false;
   }
@@ -496,7 +496,7 @@ function eduChecked(val,checkedList){
   if(checkedList==undefined){
      checkedList = []
   }else{
-    checkedList =checkedList.split('/');
+    checkedList =checkedList.split(',');
   }
   for (let item of checkedList) {
     if(val == item){
