@@ -85,7 +85,7 @@ exports.guess_like = function(req,res,next){
     }
   },function(err,result){
     data.likelist = returnData(result.guess_like,'guess_like');
-      // log.debug(data)
+    // console.log(data.likelist)
     res.render('./fragment/guess_like', data);
   });
 }
@@ -109,7 +109,7 @@ exports.yimin_guess_like = function(req,res,next){
   },function(err,result){
     data.likelist = returnData(result.guess_like,'guess_like');
       // log.debug(data)
-    //console.log(data.likelist)
+    // console.log('猜你喜欢=====' + data.likelist)
     res.render('./fragment/guess_like', data);
   });
 }
@@ -122,6 +122,7 @@ exports.xiangguanguwen = function(req,res,next){
   var isArticle = req.query.isArticle ? req.query.isArticle : 0;
   var uid = req.query.uid;
   var area = req.query.c || 1;
+
   async.parallel({
     xiangguan_guwen: function (callback) {
       wec.xiangguan_guwen({
@@ -160,7 +161,7 @@ exports.yimin_xiangguanguwen = function(req,res,next){
     }
   },function(err,result){
     data.xiangguan_guwen = returnData(result.xiangguanguwen,'xiangguanguwen');
-    //console.log(data.xiangguanguwen)
+    // console.log(data.xiangguan_guwen)
     res.render('./fragment/xiangguanguwen', data);
   });
 }
@@ -186,11 +187,6 @@ exports.article_xiangguantuijian = function(req,res,next){
     }
   },function(err,result){
     data.relation_recommend = returnData(result.relation_recommend,'relation_recommend');
-    //for (let index in data.relation_recommend.list) {
-    //  if (data.relation_recommend.list[index].id == now_articleId) {
-    //    data.relation_recommend.list.splice(index, 1);
-    //  }
-    //}
     res.render('./fragment/article_xiangguantuijian', data);
   });
 }
