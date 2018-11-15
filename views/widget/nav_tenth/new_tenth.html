@@ -1,0 +1,73 @@
+<style>
+    .new_tenth{
+        background: #000;
+        opacity: 0.3;
+        position: relative;
+        height: 50px;
+    }
+    .new-tenth-con{
+        position: absolute;
+        top: 0px;
+        width: 100%;
+        height: 50px;
+        min-width: 1180px;
+    }
+    .new-tenth-con a {
+        display: inline-block;
+        height: 50px;
+        margin: 0 -2px;
+        line-height: 50px;
+        font-size: 18px;
+        color: #fff;
+        padding: 0 43px;
+    }
+</style>
+{% set aboutone=[
+    {
+    "pageroute": "about",
+    "navtext": "金吉列简介"
+    },
+    {
+    "pageroute": "about/culture",
+    "navtext": "金吉列文化"
+    }
+    ] %}
+    {%
+      set aboutUs=[
+      {
+      "pageroute": "about/events",
+      "navtext": "金吉列大事记"
+      },
+      {
+      "pageroute": "about/cooperation",
+      "navtext": "商务合作"
+      },
+      {
+      "pageroute": "about/contact",
+      "navtext": "联系我们"
+      }
+    ]
+    %}
+      <div class="new_tenth nav-tenth">
+      </div>
+      <div class="nav-tenth-con new-tenth-con">
+          <div class="dui-layout-lg" style="height: 50px;">
+                {% for item in aboutone %}
+                {% if item.pageroute != pageroute  %}
+                <a href="{{ helper.urlgen(item.pageroute) }}" rel="nofollow">{{ item.navtext }}</a>
+                {% else %}
+                <a href="{{ helper.urlgen(item.pageroute) }}" rel="nofollow" class="nav-tenth-on" style="color:#ffffff;">{{ item.navtext }}</a>
+                {% endif %}
+                {% endfor %}
+                <a href="{{ helper.urlgen('about') }}#honor" rel="nofollow">企业荣誉</a>
+                {% for item in aboutUs %}
+                  {% if item.pageroute != pageroute  %}
+                  <a href="{{ helper.urlgen(item.pageroute) }}" rel="nofollow">{{ item.navtext }}</a>
+                  {% else %}
+                  <a href="{{ helper.urlgen(item.pageroute) }}" rel="nofollow" class="nav-tenth-on" style="color:#ffffff;">{{ item.navtext }}</a>
+                  {% endif %}
+                {% endfor %}
+                <a  href="http://www.jjl.cn/zt/zhaopin/employment.html" rel="nofollow">诚聘英才</a>
+          </div>
+        
+      </div>

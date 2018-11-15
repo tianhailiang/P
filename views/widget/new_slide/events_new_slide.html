@@ -1,0 +1,47 @@
+<!--右侧在线咨询-->
+
+{% macro leyu_slide(path,helper) %}
+<div class="mui-mbar-tabs" style="z-index:999">
+  <div class="quick_links_wrap quick_links_dockright"  style="top: 25px;">
+    <div class="quick_link_mian">
+
+      <div class="quick_links_panel">
+        <ul>
+          <li style="height: 118px;padding:0;position: relative;display: none" class="jiang"><img src="{{helper.cdnhost}}/assets/img/jiang.gif" alt="" style="max-width: none;position: absolute;left:50%;margin-left: -22px;"></li>
+          <li class="on zixun message_list current" id="zxzx" style="background: #c13232;">
+            <img src="{{helper.cdnhost}}/assets/img/phone.gif" alt="立即咨询" class="quick-img" style="width: 26px;">
+            <span>立<br>即<br>咨<br>询</span>
+          </li>
+          <li class="on" id="r_comment">
+            <img src="{{helper.cdnhost}}/assets/img/yijian.png" alt="在线评估" class="quick-img">
+            <span>在<br>线<br>评<br>估</span>
+            <div id="comment_con"
+                 style="width: 280px;background: #fff;left:44px;top: -120px;position: absolute;border: 1px solid #dcdcdc;display: none;">
+              <div id="comment_close" style="font-size: 15px;cursor: pointer;color:#333333;">x</div>
+              {% import '../online_evaluation/online_evaluation.html' as online_evaluation%}
+              {{ online_evaluation.online_evaluation(path) }}
+            </div>
+          </li>
+          <li class="weixin_ewm my">
+            <img src="{{helper.cdnhost}}/assets/img/geren.png" alt="" class="quick-img">
+            <p class="mine" style="">我的</p>
+          </li>
+          <li id="to_top">
+            <img src="{{helper.cdnhost}}/assets/img/top.png" alt="" class="quick-img">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="quick_links_pop" class="quick_links_pop quick_message_list"
+     style="right: 40px; margin-top: -345px; display: none; width: 170px;z-index:99999;">
+  <a href="javascript:void(0);" class="ibar_closebtn" title="关闭">×</a>
+  <div>
+    <ul id="lylist">
+
+    </ul>
+  </div>
+</div>
+<script src="http://jesong.jjl.cn/js/jjl.js"></script>
+{% endmacro %}

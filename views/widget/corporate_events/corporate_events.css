@@ -6,7 +6,7 @@
   color:#333333;
   width: 56px;
   float:left;
-  font-weight:normal;;
+  font-weight:normal;
 }
 .year-box .down,.month-box .down{
   color:#c13232;
@@ -19,8 +19,8 @@
 }
 .kong{
   height: 30px;
-  margin-left:119px;
-  border-left:1px dashed #dcdcdc;
+  margin-left:118px;
+  border-left:2px solid #c13232;
 }
 .month-box{
   height: 216px;
@@ -38,12 +38,13 @@
 }
 .month-box .month-right{
   float:left;
-  border:1px dashed #dcdcdc;
-  border-right:none;
+  border-left:2px solid #c13232;
+  /* border-right:none; */
 }
 .month-box .month-right{
   position: relative;
   width: 737px;
+  min-height: 216px;
 }
 .month-box .dian{
   position: absolute;

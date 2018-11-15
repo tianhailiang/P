@@ -1,0 +1,115 @@
+
+<!-- 大事记右侧标尺 -->
+
+{% macro events_slide(memorabilia_list,helper) %}
+<style>
+.eve-mbar-tabs, .eve_links_dockright{
+    width: 75px;
+    position: fixed;
+    right: 7.5%;
+    bottom: 0;
+    z-index: 1000;
+    -webkit-transition: width linear .4s;
+    transition: width linear .4s;
+  }
+  .eve_links_panel ul li{
+    width: 75px;
+    height: 25px;
+    display: block;
+    background: none;
+    padding: 8px;
+    margin-top: 2px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  .eve_links_panel ul li:hover h6, .eve_links_panel ul li:hover span{
+    color: #c13232;
+
+  }
+  .eve_links_panel ul li:hover .down{
+    width: 32px;
+    height: 32px;
+    background: url({{helper.cdnhost}}/assets/img/events/jie.png) no-repeat;
+    margin-left: -35px;
+    margin-top: -7px;
+  }
+  .eve-box{
+  }
+  .eve-box .down{
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/jie_nian.png) no-repeat;
+    margin-left: -30px;
+    margin-top: -3px;
+  }
+  .year-num{
+    font-size: 18px;
+    color: #999;
+  }
+  .eve_links_dockright .kong{
+    height: 50px;
+    margin-left: -20px;
+    margin-top: -20px;
+    border-left: 1px solid #c13232;
+  }
+</style>
+<div class="mui-mbar-tabs eve-mbar-tabs" style="z-index:999;display: none;">
+  <div class="eve_links_dockright"  style="top: 200px;">
+    <div class="quick_link_mian">
+
+      <div class="eve_links_panel">
+        <ul id="eve_slide">
+            {% for yearnum, yearamount in memorabilia_list %}
+            {% if loop.index == 1 %}
+            <li id="{{ yearnum | shorten(-1)}}" onclick="showd({{ yearnum | shorten(-1)}})">
+            <div class="eve-box clearfix" style="cursor: pointer;width: 120px;">
+            <i class="down xiangxia" style="cursor: pointer;"></i><span class="year-num">{{ yearnum | shorten(-1)}}</span>
+            {% else %}
+            {% if loop.index == loop.length %}
+            <span class="year-num"> -- {{ yearnum | shorten(-1)}}</span>
+            </div>
+            </li>
+            {% endif %}
+            {% endif %}
+            {% endfor %}
+            {% for yearnum, yearamount in memorabilia_list %}
+              {% if loop.index == 1 %}
+              <div id="{{ yearnum | shorten(-1)}}_year" style="display: block;">
+              {% endif %}
+              <li>
+                  <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><h6 class="year-num" style="cursor: pointer;font-weight: normal;">{{ yearnum | shorten(-1)}}</h6></div></a> 
+                  {% if loop.index!=loop.length %}
+                    <div class="kong"></div>
+                  {% endif %}
+                </li>
+            {% endfor %}
+            </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  function showd (year) {
+    console.log(year+'showd')
+    $("div[id$='_year']").css('display', 'none')
+    $('#'+ year + '_year').css('display', 'block')
+  }
+  function showyear (year) {
+    console.log('key',year)
+    window.location.href = '/about/events.html#' + year
+    $('#' + year) .parents(".curyear").children(".month-box").css("display","block");
+    $('#' + year).parents(".curyear").children(".kong").css("display","block");
+    // $('#' + year) .parents(".curyear").siblings().children(".month-box").css("display","none");
+    // $('#' + year).parents(".curyear").siblings().children(".kong").css("display","none");
+    // $('#' + year).parents(".curyear").siblings("#tian").css("display","none");
+    $.each($('#' + year).parents(".curyear").siblings(".curyear"),function(){
+      // console.log('sssss', year)
+      $(this).find(".kong").eq(0).css("display","block");
+    });
+    // $(".curyear:last").find(".kong").eq(0).css("display","none");
+    // $(".curyear:last").find(".kong:last").css("display","none");
+  }
+</script>
+{% endmacro %}
