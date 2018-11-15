@@ -129,7 +129,8 @@
           </div>
           <div class="article_tuijian">
               <h1 style="font-weight: normal"><div></div>相关推荐</h1>
-            {% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list) %}
+            {#{% esi helper.include(esikey,'fragment/article_xiangguantuijian','n='+article.article_info.country_id,'c='+article.article_info.city_id,'is_news='+article.article_info.is_news,'tag_list='+ tag_list) %}#}
+            {% include "fragment/detail_xiangguantuijian.html" %}
           </div>
           <!-- ========评论===== -->
             {% include "widget2/comment/comment.html" %}

@@ -187,6 +187,12 @@ exports.article_xiangguantuijian = function(req,res,next){
     }
   },function(err,result){
     data.relation_recommend = returnData(result.relation_recommend,'relation_recommend');
+    console.log('relation_recommend', data.relation_recommend)
+    for (let index in data.relation_recommend.list) {
+     if (data.relation_recommend.list[index].id == now_articleId) {
+       data.relation_recommend.list.splice(index, 1);
+     }
+    }
     res.render('./fragment/article_xiangguantuijian', data);
   });
 }

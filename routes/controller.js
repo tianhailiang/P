@@ -2299,6 +2299,9 @@ exports.case_detail = function(req,res,next){
     log.debug('顾问案列底页 (用户视角)~~~thl');
 	var data = {};
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var country = req.query.n ? req.query.n.split(',')[0] : 1;
+    var is_news = req.query.is_news || '';
+    var tag_list = encodeURI(req.query.tag_list) || '';
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
     console.log('url', l.h);
@@ -2359,7 +2362,8 @@ exports.case_detail = function(req,res,next){
         }else{
             data.article.article_info.img_info=[];
         }
-
+        data.area = data.article.article_info.city_id
+        data.is_news = data.article.article_info.is_news
         data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
             //获取用户信息（普通用户，顾问，参赞）
@@ -2368,8 +2372,24 @@ exports.case_detail = function(req,res,next){
                   "u_id":data.login_info.uid,
                   "to_uid":data.article.article_info.uid
                 },callback);
-            }
+            },
+            relation_recommend: function (callback) {
+                wec.relation_recommend({
+                  "country_id":country,
+                  "city_id":area,
+                  //"is_immi":2,
+                  "is_news": data.is_news,
+                  "tag_list": data.tag_list,
+                  "per_page":5
+                }, callback)
+              }
         },function(err,result){
+            data.relation_recommend = returnData(result.relation_recommend,'relation_recommend');
+            for (let index in data.relation_recommend) {
+                if (data.relation_recommend[index].id == data.article.article_info.id) {
+                    data.relation_recommend.splice(index, 1);
+                }
+            }
             data.userinfo = returnData(result.userinfo,'userinfo');
             data.country =data.userinfo.country || '1';
             data.hcountry = (data.userinfo.country || '1,').split(',')[0];
@@ -2412,6 +2432,9 @@ exports.article_detail= function(req,res,next){
   log.debug('专栏底页 (用户视角)~~~thl');
   var data = {};
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var country = req.query.n ? req.query.n.split(',')[0] : 1;
+  var is_news = req.query.is_news || '';
+  var tag_list = encodeURI(req.query.tag_list) || '';
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
   // console.log('url', l.h);
@@ -2453,7 +2476,7 @@ exports.article_detail= function(req,res,next){
         wec.article_getUid({
           "aid":data.article_id
         },callback);
-      },
+      }
   },function(err,result){
         // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
@@ -2467,11 +2490,14 @@ exports.article_detail= function(req,res,next){
             return next();
         }
         data.article =returnData(result.article,'article');
+        console.log('data.article', data.article)
         if(data.article.article_info.img_info){
             data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
         }else{
             data.article.article_info.img_info = [];
         }
+        data.area = data.article.article_info.city_id
+        data.is_news = data.article.article_info.is_news
         data.tag_list = encodeURI(data.article.article_info.tag_list)
         async.parallel({
           //获取用户信息（普通用户，顾问，参赞）
@@ -2480,8 +2506,25 @@ exports.article_detail= function(req,res,next){
                   "u_id":data.login_info.uid,
                   "to_uid":data.article.article_info.uid
               },callback);
+          },
+          relation_recommend: function (callback) {
+            wec.relation_recommend({
+              "country_id":country,
+              "city_id":data.area,
+              //"is_immi":2,
+              "is_news": data.is_news,
+              "tag_list": data.tag_list,
+              "per_page":5
+            }, callback)
           }
         },function(err,result) {
+          data.relation_recommend = returnData(result.relation_recommend, 'relation_recommend');
+          for (let index in data.relation_recommend) {
+           if (data.relation_recommend[index].id == data.article.article_info.id) {
+             data.relation_recommend.splice(index, 1);
+           }
+          }
+          console.log('relation_recommend',data.relation_recommend)
           data.userinfo = returnData(result.userinfo, 'userinfo');
           data.country = data.userinfo.country || '1';
           data.hcountry = (data.userinfo.country || '1,').split(',')[0];
