@@ -74,7 +74,7 @@
             {% for yearnum, yearamount in memorabilia_list %}
             {% if loop.index == 1 %}
             <li id="{{ yearnum | shorten(-1)}}_down" onclick="showd('{{ yearnum | shorten(-1)}}')">
-            <div class="eve-box clearfix" style="cursor: pointer;width: 140px;" onmousemove="over(this);" onmouseout="out(this);">
+            <div class="eve-box clearfix" style="cursor: pointer;width: 140px;">
             <i class="down down1 xiangxia" style="cursor: pointer;"></i><span class="year-num redtitle"  style="font-size: 22px;">{{ yearnum | shorten(-1)}}</span>
             {% else %}
             {% if loop.index == loop.length %}
