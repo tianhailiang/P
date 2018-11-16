@@ -354,14 +354,14 @@
   });
 
   function evemore_slide (msg) {
-    var html = '<li style="padding: 0px;margin-top: -3px;width: 75px;height: 0px;margin-left: 8px;margin-bottom: 6px;"><div class="kong" style="height: 12px;"></div></li>';
+    var html = '<li style="padding: 0px;margin-top: -3px;width: 75px;height: 0px;margin-left: 8px;margin-bottom: 6px;"><div class="kong" style="height: 0px;"></div></li>';
     var s = 0;
     var i = 0
     var a = Object.keys(msg);
     for (var key in msg) {
       i++;
       if (i == 1) {
-        html += '<li id="'+key.substring(0,4)+'" style="margin-top: 30px;" onclick="showd('+key.substring(0,4)+')">'
+        html += '<li id="'+key.substring(0,4)+'_down" style="margin-top: 30px;" onclick="showd('+key.substring(0,4)+')">'
         html += '<div class="eve-box clearfix" style="cursor: pointer;width: 140px;">'
         html += '<i class="down xiangxia" style="cursor: pointer;"></i><span class="year-num" style="font-size: 22px;">'+key.substring(0,4)+'</span>'
       } else {
@@ -369,15 +369,14 @@
           html += '<span class="year-num" style="font-size: 22px;"> -- '+key.substring(0,4)+'</span>'
         }
       }
-      html += '</div>'
-      html += '</li>'
     }
+    html += '</div>'
+    html += '</li>'
     for (var key in msg) {
       s++;
       if (s == 1) {
         console.log('sss',s)
         html += '<div id="'+key.substring(0,4)+'_year" style="display: none;">'
-        console.log('html',html)
       }
       html += '<li>';
       html += '<a href="javascript:void(0);" onclick="showyear('+key.substring(0,4)+')"><div class="eve-box clearfix"><h6 class="year-num" style="cursor: pointer;font-weight: normal;">'+key.substring(0,4)+'</h6></div></a>';
@@ -389,7 +388,6 @@
       html += '</li>';
     }
     html += '</div>'
-    console.log('html1',html)
     $('#eve_slide').append($(html));
   }
 

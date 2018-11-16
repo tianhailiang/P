@@ -22,6 +22,9 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
   }
+  .eve_links_panel ul li .redtitle{
+    color: #c13232;
+  }
   .eve_links_panel ul li:hover h6, .eve_links_panel ul li:hover span{
     color: #c13232;
 
@@ -43,6 +46,14 @@
     margin-left: -30px;
     margin-top: -3px;
   }
+  .eve-box .down1{
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/jie.png) no-repeat;
+    margin-left: -35px;
+    margin-top: -7px;
+  }
   .year-num{
     font-size: 18px;
     color: #999;
@@ -62,12 +73,12 @@
         <ul id="eve_slide">
             {% for yearnum, yearamount in memorabilia_list %}
             {% if loop.index == 1 %}
-            <li onclick="showd('{{ yearnum | shorten(-1)}}')">
-            <div class="eve-box clearfix" style="cursor: pointer;width: 140px;">
-            <i class="down xiangxia" id="{{ yearnum | shorten(-1)}}" style="cursor: pointer;"></i><span class="year-num" style="font-size: 22px;">{{ yearnum | shorten(-1)}}</span>
+            <li id="{{ yearnum | shorten(-1)}}_down" onclick="showd('{{ yearnum | shorten(-1)}}')">
+            <div class="eve-box clearfix" style="cursor: pointer;width: 140px;" onmousemove="over(this);" onmouseout="out(this);">
+            <i class="down down1 xiangxia" style="cursor: pointer;"></i><span class="year-num redtitle"  style="font-size: 22px;">{{ yearnum | shorten(-1)}}</span>
             {% else %}
             {% if loop.index == loop.length %}
-            <span class="year-num" style="font-size: 22px;"> -- {{ yearnum | shorten(-1)}}</span>
+            <span class="year-num redtitle" style="font-size: 22px;"> -- {{ yearnum | shorten(-1)}}</span>
             </div>
             </li>
             {% endif %}
@@ -91,10 +102,15 @@
   </div>
 </div>
 <script>
+
   function showd (year) {
     console.log(year+'showd')
     $("div[id$='_year']").css('display', 'none')
     $('#'+ year+ '_year').css('display', 'block')
+    $("li[id$='_down']").find("div").find("i").removeClass('down1')
+    $("li[id$='_down']").find("div").find("span").removeClass('redtitle')
+    $('#' + year + '_down').find("div").find("i").addClass('down1')
+    $('#' + year + '_down').find("div").find("span").addClass('redtitle')
   }
   function showyear (year) {
     console.log('key',year)
