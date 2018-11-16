@@ -320,11 +320,11 @@ $(document).ready(function (){
   $(".advisor-code").on('click',function(){
     if($(this).next().css("display")=="block"){
       $(this).next().css("display","none");
-      $(this).css({'background':'url(../assets/img/erweima@2x.png) no-repeat 0 0',
+      $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/erweima@2x.png) no-repeat 0 0',
       'background-size':'70px 70px'})
     }else{
       $(this).next().css("display","block");
-      $(this).css({'background':'url(../assets/img/personal@2x.png) no-repeat 0 0',
+      $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/personal@2x.png) no-repeat 0 0',
       'background-size':'70px 70px'})
     }
   })
@@ -391,11 +391,11 @@ function chiefmore () {
         $(".advisor-code").on('click',function(){
           if($(this).next().css("display")=="block"){
             $(this).next().css("display","none");
-            $(this).css({'background':'url(../assets/img/erweima@2x.png) no-repeat 0 0',
+            $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/erweima@2x.png) no-repeat 0 0',
             'background-size':'70px 70px'})
           }else{
             $(this).next().css("display","block");
-            $(this).css({'background':'url(../assets/img/personal@2x.png) no-repeat 0 0',
+            $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/personal@2x.png) no-repeat 0 0',
             'background-size':'70px 70px'})
           }
         })
