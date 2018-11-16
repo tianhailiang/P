@@ -45,6 +45,8 @@
 {# 年份标尺 #}
 {% import "widget/new_slide/events_slide.html" as  events %}
 {{events.events_slide(memorabilia_list,helper) }}
+<!-- 秋展浮层 -->
+{% include "widget2/active_popup/active_popup.html" %}
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <!--<script src="{{helper.cdnhost}}/assets/js/common.js" ></script>-->
