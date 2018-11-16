@@ -4383,6 +4383,7 @@ exports.getCoupons = function (req, res, next) {
 }
 //首席顾问
 exports.chief = function (req, res, next) {
+    log.debug('首席顾问')
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
@@ -4390,7 +4391,6 @@ exports.chief = function (req, res, next) {
     var page = nquery && nquery.page ? nquery.page : 1;
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
-    console.log('url', l.h);
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
@@ -4404,25 +4404,14 @@ exports.chief = function (req, res, next) {
         data.login_info = {};
         data.login_info.uid = 0;
     }
-
     async.parallel({
-        //获取用户信息（普通用户，顾问，参赞）
-        // userinfo: function (callback) {
-        //     wec.userinfo({
-        //         "u_id": data.login_info.uid, "to_uid": data.login_info.uid
-        //     }, callback)
-        // },
-        //首席顾问列表
         top_adviser_list: function (callback) {
             wec.top_adviser_list({
                 "uid": data.login_info.uid,"cityid": area, "page": page, "per_page": 20, "countryid": country
             }, callback)
         }
     }, function (err, result) {
-        // data.userinfo = returnData(result.userinfo, 'userinfo');
         data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
-        // console.log('top_adviser_list', data.top_adviser_list)
-        // console.log('totalpage',data.top_adviser_list.totalpage)
         data.country = country;
         data.tdk = {
             pagekey: 'CHIEF',
@@ -4440,7 +4429,6 @@ exports.chiefmore =function(req,res,next){
        if(err){
          res.send(err);
        }else{
-        //    console.log(result)
          res.send(result);
        }
      })

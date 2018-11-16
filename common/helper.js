@@ -309,7 +309,6 @@ function avaterimg(uid, size, status, version,usertype){
       return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substring(uid.length-2)+"_avatar_"+size+"_"+ version +".jpg";//ie8不兼容uid.substr(-2)
     }
   }
-
 }
 //成功案例院校logo
 function school_logo (school_id) {

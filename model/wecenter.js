@@ -451,7 +451,6 @@ exports.top_adviser_list = function (data,callback){
     return;
   }
   api.apiRequest(url, callback);
-  console.log('url-----', url);
 }
 // 顾问个人主页文章统计
 exports.gwzs = function (data,callback){
