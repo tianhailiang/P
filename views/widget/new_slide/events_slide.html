@@ -62,7 +62,7 @@
         <ul id="eve_slide">
             {% for yearnum, yearamount in memorabilia_list %}
             {% if loop.index == 1 %}
-            <li onclick="showd({{ yearnum | shorten(-1)}})">
+            <li onclick="showd('{{ yearnum | shorten(-1)}}')">
             <div class="eve-box clearfix" style="cursor: pointer;width: 140px;">
             <i class="down xiangxia" id="{{ yearnum | shorten(-1)}}" style="cursor: pointer;"></i><span class="year-num" style="font-size: 22px;">{{ yearnum | shorten(-1)}}</span>
             {% else %}
@@ -78,7 +78,7 @@
               <div id="{{ yearnum | shorten(-1)}}_year" style="display: block;">
               {% endif %}
               <li>
-                  <a href="javascript:void(0);" onclick="showyear({{ yearnum | shorten(-1)}})"><div class="eve-box clearfix"><h6 class="year-num" style="cursor: pointer;font-weight: normal;">{{ yearnum | shorten(-1)}}</h6></div></a> 
+                  <a href="javascript:void(0);" onclick="showyear('{{ yearnum | shorten(-1)}}')"><div class="eve-box clearfix"><h6 class="year-num" style="cursor: pointer;font-weight: normal;">{{ yearnum | shorten(-1)}}</h6></div></a> 
                   {% if loop.index!=loop.length %}
                     <div class="kong"></div>
                   {% endif %}
