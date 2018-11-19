@@ -115,10 +115,11 @@ to{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .community-nav-con .community-nav-list{display:inline-block;font-size:16px;color:#666;line-height:40px;width:96px;height:40px;text-align:center}
 .community-nav-con .nav-active{background:#c13232;color:#fff}
 .community-nav-con .connect-info{float:right;font-size:0;height:24px;margin-top:8px}
-.connect-info img{vertical-align:super;margin-right:10px;position:relative;top:3px}
-.connect-info .zixun-info{font-size:12px;color:#666}
-.connect-info .zixun-phone{font-size:14px;color:#c13232;font-weight:700}
-.connect-info .zixun-btn{display:inline-block;width:76px;height:24px;text-align:center;line-height:24px;background-color:#c13232;color:#fff;font-size:14px;margin-left:20px;cursor:pointer}
+.connect-info img{margin-right:10px;float:left;margin-top:6px}
+.connect-info span{float:left;line-height:24px}
+.connect-info .zixun-info{font-size:16px;color:#666}
+.connect-info .zixun-phone{font-size:18px;color:#c13232;font-weight:700}
+.connect-info .zixun-btn{float:left;width:76px;height:24px;text-align:center;line-height:24px;background-color:#c13232;color:#fff;font-size:14px;margin-left:20px;cursor:pointer}
 .follow-con{width:369px;height:82px;border-left:1px solid #C13232;background:#fafafa;padding:20px;margin-top:20px}
 .follow-con:hover{background:#f0f4f6;-webkit-box-shadow:0 3px 7px 0 rgba(0,0,0 ,.14);box-shadow:0 3px 7px 0 rgba(0,0,0 ,.14)}
 .follow-con .img-left{width:60px;height:60px;float:left;margin-right:20px;border-radius:50%;background-repeat:no-repeat;background-position:0 0;background-size:cover}
