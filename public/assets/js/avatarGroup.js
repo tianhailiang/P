@@ -1,4 +1,3 @@
-console.log('avatarGroup.js')
 $(function(){
     var articleid = $("#detail_id").val();
     $.ajax({
@@ -22,7 +21,7 @@ $(function(){
 function avatarGroup (arr) {
     var html = '<div class="avatar-block">';
     var fansNum = arr.length;
-    for (var i = 0; i<fansNum;i++) {
+    for (var i = 0; i<25;i++) {
         html+='<img src="'+ arr[i].avatar_file +'" alt="" style="margin-left:-8px;">';
     }
     return html+'<span style="padding-left:2px;">等'+ fansNum +'人点赞</span></div>';
