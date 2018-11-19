@@ -382,14 +382,14 @@ exports.case_list = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "CASELIST",
+                "ad_page": "CASE",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "CASELIST",
+                "ad_page": "CASE",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
