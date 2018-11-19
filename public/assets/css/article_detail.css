@@ -107,13 +107,28 @@
   margin-top: 4px;
 }
 .connect-info img {
-  vertical-align: super;
+  /* vertical-align: super;
   margin-right: 10px;
   position: relative;
-  top: 3px;
+  top: 3px; */
+  float: left;
+  margin-top: 3px;
+}
+.connect-info span {
+  float: left;
+  line-height: 24px;
+}
+.connect-info .zixun-info {
+  font-size: 16px;
+  color: #666;
+}
+.connect-info .zixun-phone {
+  font-size: 18px;
+  color: #c13232;
 }
 .connect-info .zixun-btn {
-  display: inline-block;
+  /* display: inline-block; */
+  float: left;
   width: 76px;
   height: 24px;
   text-align: center;
