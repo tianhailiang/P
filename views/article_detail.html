@@ -79,12 +79,26 @@
           </div>
           <!-- 摘要 -->
           <div class="summary-cont">
-            <div class="summary-text"></div>
-            <div class="zixun-text"></div>
+            <div class="summary-text">去美国读新生或转学都给孩子打开一扇窗！敬请关注！去美国读新生或转学都给孩子打开一扇窗！敬请关注！去美国读新生或转学都给孩子打开一扇窗！敬请关注！去美国读新生或转学都给孩子打开一扇窗！敬请关注！</div>
+            <div class="zixun-text clearfix">
+                <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="">
+                <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="" style='margin-left: 4px;'>
+                <span onclick="openchat_new('{{ userinfo.new_job_number}}')"> 想留学，没方向？还不点我快点了？！</span>
+                <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="">
+                <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="" style='margin-left: 4px;'>
+            </div>
           </div>
           <!-- 正文 -->
           <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
             {{article.article_info.message | safe}}
+          </div>
+          <!-- 文字链 -->
+          <div class="zixun-text clearfix article-bot-zixuntext">
+            <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="">
+            <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="" style='margin-left: 4px;'>
+            <span onclick="openchat_new('{{ userinfo.new_job_number}}')"> 想留学，没方向？还不点我快点了？！</span>
+            <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="">
+            <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="" style='margin-left: 4px;'>
           </div>
           <!-- 引导进入顾问主页 -->
           <div class="content-guide-box">
