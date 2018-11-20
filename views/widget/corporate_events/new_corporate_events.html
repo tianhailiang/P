@@ -414,7 +414,7 @@
       for (var key1 in msg[key]) {
         html += '<div class="month-box clearfix">'
         html += '<div class="month-left">'
-        if (key1.substring(0,1) == 1 || key1.length == 1)
+        if (key1.substring(0,1) == 1 && key1.substring(0,2) != 10 && key1.substring(0,2) != 11 && key1.substring(0,2) != 12)
         html += '<p class="month-num"></p>'
         else if (key1.substring(0,1) == 2)
         html += '<p class="month-num yue2"></p>'
