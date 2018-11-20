@@ -66,11 +66,11 @@
     $(".advisor-code").on('click',function(){
       if($(".advisor-code-open").css("display")=="block"){
         $(".advisor-code-open").css("display","none");
-        $(this).css({'background':'url(../assets/img/erweima@2x.png) no-repeat 0 0',
+        $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/erweima@2x.png) no-repeat 0 0',
         'background-size':'70px 70px'})
       }else{
         $(".advisor-code-open").css("display","block");
-        $(this).css({'background':'url(../assets/img/personal@2x.png) no-repeat 0 0',
+        $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/personal@2x.png) no-repeat 0 0',
         'background-size':'70px 70px'})
       }
     })
