@@ -1,0 +1,532 @@
+<style>
+  .month-box .down, .year-box .down{
+    width: 82px;
+    height: 82px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/nian_bei.png) no-repeat;
+    color: #fff;
+    line-height: 82px;
+    font-size: 18px;
+    padding: 0;
+    text-align: center;
+    margin-left: 60px;
+  }
+  .month-box .month-left .month-num{
+    display: inline-block;
+    margin-right: 30px;
+    width: 92px;
+    height: 64px;
+    background: url({{helper.cdnhost}}/assets/img/events/01.png) no-repeat;
+  }
+  .month-box .month-left .yue2{
+    background: url({{helper.cdnhost}}/assets/img/events/02.png) no-repeat;
+  }
+  .month-box .month-left .yue3{
+    background: url({{helper.cdnhost}}/assets/img/events/03.png) no-repeat;
+  }
+  .month-box .month-left .yue4{
+    background: url({{helper.cdnhost}}/assets/img/events/04.png) no-repeat;
+  }
+  .month-box .month-left .yue5{
+    background: url({{helper.cdnhost}}/assets/img/events/05.png) no-repeat;
+  }
+  .month-box .month-left .yue6{
+    background: url({{helper.cdnhost}}/assets/img/events/06.png) no-repeat;
+  }
+  .month-box .month-left .yue7{
+    background: url({{helper.cdnhost}}/assets/img/events/07.png) no-repeat;
+  }
+  .month-box .month-left .yue8{
+    background: url({{helper.cdnhost}}/assets/img/events/08.png) no-repeat;
+  }
+  .month-box .month-left .yue9{
+    background: url({{helper.cdnhost}}/assets/img/events/09.png) no-repeat;
+  }
+  .month-box .month-left .yue10{
+    background: url({{helper.cdnhost}}/assets/img/events/10.png) no-repeat;
+  }
+  .month-box .month-left .yue11{
+    background: url({{helper.cdnhost}}/assets/img/events/11.png) no-repeat;
+  }
+  .month-box .month-left .yue12{
+    background: url({{helper.cdnhost}}/assets/img/events/12.png) no-repeat;
+  }
+  .month-box .dian{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    background: url({{helper.cdnhost}}/assets/img/events/jie.png) no-repeat;
+    left: -85px;
+    top: 30px;
+  }
+  .month-box .dian1{
+    display: inline-block;
+    width: 54px;
+    height: 54px;
+    background: url({{helper.cdnhost}}/assets/img/events/jie_zhong.png) no-repeat;
+    position: absolute;
+    left: -95px;
+    top: 18px;
+  }
+  .dashiji-con{
+    width: 810px;
+    padding: 30px 40px;
+    font-size: 20px;
+    color: #333;
+    border: 1px #ccc solid;
+    border-radius: 8px;
+    position: relative;
+    line-height: 25px;
+    left: 30px;
+  }
+  .dashiji-con .kuang_jiao{
+    display: inline-block;
+    width: 11px;
+    height: 26px;
+    background: url({{helper.cdnhost}}/assets/img/events/hui_jiao.png) no-repeat;
+    position: absolute;
+    left: -11px;
+    top: 32px;
+  }
+  .dashiji-con1{
+    width: 810px;
+    padding: 30px 40px;
+    font-size: 20px;
+    color: #333;
+    border: 1px #c13232 solid;
+    border-radius: 8px;
+    position: relative;
+    line-height: 25px;
+    left: 30px;
+  }
+  .dashiji-con1 .kuang_jiao1{
+    display: inline-block;
+    width: 11px;
+    height: 26px;
+    background: url({{helper.cdnhost}}/assets/img/events/hong_jiao.png) no-repeat;
+    position: absolute;
+    left: -11px;
+    top: 30px;
+  }
+  .shiji-pic{
+    width: 810px;
+    height: 380px;
+    float: left;
+    margin-top: 32px;
+    border-radius: 5px;
+  }
+  .shiji-pic img{
+    width: 810px;
+    height: 380px;
+    border-radius: 5px;
+  }
+  .shiji-pic3{
+    margin-top: 32px;
+    display: inline-block;
+    border-radius: 5px;
+  }
+  .shiji-pic3 img{
+    width: 256px;
+    height: 210px;
+    float: left;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+  .eve_more{
+    width: 82px;
+    height: 82px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/eve_more.png) no-repeat;
+    color: #fff;
+    line-height: 82px;
+    font-size: 18px;
+    padding: 0;
+    text-align: center;
+    margin-left: 60px;
+  }
+  .eve_more1{
+    width: 2px;
+    height: 72px;
+    display: inline-block;
+    background: url({{helper.cdnhost}}/assets/img/events/eve_more1.png) no-repeat;
+    color: #fff;
+    line-height: 82px;
+    font-size: 18px;
+    padding: 0;
+    text-align: center;
+    margin-left: 100px;
+  }
+  .kong2{
+    height: 30px;
+    margin-left: 98px;
+    border-left: 2px solid #c13232;
+  }
+</style>
+<div id="evemain">
+{% for yearnum, yearamount in memorabilia_list %}
+<div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">
+  <div class="year-box clearfix" id="{{yearnum | shorten(-1)}}"><i class="down xiangxia" style="cursor: pointer;">{{ yearnum | shorten(-1)}}</i></div>
+  {% if loop.index!=loop.length %}
+  <div class="kong" style="display: block"></div>
+  {% endif %}
+  {% for monthnum, monthamount in yearamount %}
+
+  <div class="month-box clearfix">
+    <div class="month-left">
+      {% if monthnum | shorten(-1) == 1 %}
+      <p class="month-num"></p>
+      {% elif monthnum | shorten(-1) == 2 %}
+      <p class="month-num yue2"></p>
+      {% elif monthnum | shorten(-1) == 3 %}
+      <p class="month-num yue3"></p>
+      {% elif monthnum | shorten(-1) == 4 %}
+      <p class="month-num yue4"></p>
+      {% elif monthnum | shorten(-1) == 5 %}
+      <p class="month-num yue5"></p>
+      {% elif monthnum | shorten(-1) == 6 %}
+      <p class="month-num yue6"></p>
+      {% elif monthnum | shorten(-1) == 7 %}
+      <p class="month-num yue7"></p>
+      {% elif monthnum | shorten(-1) == 8 %}
+      <p class="month-num yue8"></p>
+      {% elif monthnum | shorten(-1) == 9 %}
+      <p class="month-num yue9"></p>
+      {% elif monthnum | shorten(-1) == 10 %}
+      <p class="month-num yue10"></p>
+      {% elif monthnum | shorten(-1) == 11 %}
+      <p class="month-num yue11"></p>
+      {% elif monthnum | shorten(-1) == 12 %}
+      <p class="month-num yue12"></p>
+      {% endif %}
+    </div>
+    <div class="month-right">
+      {% for item in monthamount %}
+      <p style="display: none;">{{ item.title }}<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe636;</i></p>
+      {% if item.thumb3 == '' or item.thumb3 == null %}
+      {% if item.thumb == '' or item.thumb == null %}
+      {# 无图 #}
+      <div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">
+        <i class="dian"></i>
+        <i class="kuang_jiao"></i>
+       {{ loop.index }}. {{ item.description }}
+      </div>
+      {% else %}
+      {# 只一条 #}
+      <div class="dashiji-con1 clearfix" style="display: block;margin: 20px 35px 60px 36px;">
+          <i class="dian1"></i>
+          <i class="kuang_jiao1"></i>
+         {{ loop.index }}. {{ item.description }}
+         <div class="shiji-pic clearfix">
+              <img src="{{ helper.imageThumb(item.thumb) }}" alt="">
+            </div>
+        </div>
+        {% endif %}
+      {% else %}
+      {% if loop.index==loop.length %}
+      <div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">
+        <i class="dian"></i>
+        <i class="kuang_jiao"></i>
+       {{ loop.index }}. {{ item.description }}
+       <div class="shiji-pic3 clearfix">
+            <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+            <img src="{{ helper.imageThumb(item.thumb2,'280x210') }}" alt="">
+            <img src="{{ helper.imageThumb(item.thumb3,'280x210') }}" alt=""  style="margin-right: 0px;">
+          </div>
+      </div>
+      {% else %}
+      <div class="dashiji-con" style="display: block;margin: 20px 35px 0px 36px;">
+        <i class="dian"></i>
+        <i class="kuang_jiao"></i>
+        {{ loop.index }}. {{ item.description }}
+        <div class="shiji-pic3 clearfix">
+          <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+          <img src="{{ helper.imageThumb(item.thumb2,'280x210') }}" alt="">
+          <img src="{{ helper.imageThumb(item.thumb3,'280x210') }}" alt="" style="margin-right: 0px;">
+            </div>
+      </div>
+      {% endif %}
+      {% endif %}
+      {% endfor %}
+      
+    
+      <!-- {#<div class="shiji-pic3">
+      {% for item in monthamount %}
+      {% if loop.index==1 %}
+      <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
+      {% endif %}
+      {% endfor %}
+      </div>#} -->
+    </div>
+  </div>
+ <div class="kong"></div>
+  {% endfor %}
+  </div>
+  {% if loop.index==loop.length %}
+  <div id="zuihou" data-year="{{yearnum | shorten(-1)}}"></div>
+  {% endif %}
+  {% endfor %}
+</div>
+
+  <div class="curyear1" id="eve_more" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">
+  <div class="year-box clearfix" ><div class="kong2"></div></div>
+  <div class="year-box clearfix" ><i class="eve_more xiangxia" style="cursor: pointer;"></i></div>
+  <div class="year-box clearfix" ><i class="eve_more1 xiangxia" style="cursor: pointer;"></i></div>
+  </div>
+  
+<script>
+  $(function(){
+    $(".curyear").eq(0).children(".month-box").css("display","block");
+    $(".curyear").eq(0).children(".kong").css("display","block");
+    // $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe635;")
+    // $(".curyear").eq(0).children(".year-box").find(".down").css("color","#c13232");
+    // $(".curyear").eq(0).siblings().children(".year-box").find(".down").css("color","#999999");
+    // $(".curyear").eq(1).children(".month-box").css("display","block");
+    // $(".curyear").eq(1).children(".year-box").find(".down").html("&#xe635;").css("color","#c13232");
+    // $(".curyear").eq(1).children(".kong").css("display","block");
+    $.each($(".curyear").siblings(".curyear"),function(){
+      $(this).find(".kong").eq(0).css("display","block");
+    });
+    if($(".curyear").length>2){
+      $(".curyear:last").find(".kong").eq(0).css("display","none");
+    }else{
+      $(".curyear:last").find(".kong").eq(0).css("display","block");
+    }
+    $(".year-box").eq(0).css("padding-top","20px");
+    $(document).scrollTop(0);
+    $(".down").on("click",function(){
+      console.log('aaaaaa111111')
+      if ($(this).parents(".curyear").children(".month-box").css('display') == 'block') {
+        console.log('aaaablock')
+        $(this).parents(".curyear").children(".month-box").css("display","none");
+        // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+        // $(this).find(".kong:last").eq(0).css("display","none");
+        // });
+        $(this).parents(".curyear").children(".kong").css("display","none");
+        $(this).parents(".curyear:last").children(".kong").eq(0).css("display","block");
+        // $(this).parents(".curyear:last").children(".kong:last").css("display","block");
+      } else {
+        console.log('bbbbnone')
+        $(this).parents(".curyear").children(".month-box").css("display","block");
+        $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+          $(this).find(".kong").eq(0).css("display","block");
+        });
+        $(this).parents(".curyear:last").children(".kong").eq(0).css("display","none");
+        $(this).parents(".curyear:last").children(".kong:last").css("display","none");
+      }
+      // $(this).html("&#xe635;");
+      // $(this).css({"color":"#c13232","cursor":"default"});
+      // $(this).parents(".curyear").children(".month-box").css("display","block");
+      // $(document).scrollTop(500);
+      // $(this).parents(".curyear").children(".kong").css("display","block");
+      // $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
+      // $(this).parents(".curyear").siblings().children(".kong").css("display","none");
+      // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
+      // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
+      // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+      //   $(this).find(".kong").eq(0).css("display","block");
+      // });
+      $(".curyear:last").find(".kong").eq(0).css("display","none");
+      $(".curyear:last").find(".kong:last").css("display","none");
+    })
+    var page = 1
+    $('#eve_more').on("click",function () {
+      $.ajax({
+        url: '/soapi/eventsmore',
+        type:'GET',
+        data:{
+          "page": ++page
+        },
+        dataType:'json',
+        success:function(msg){
+          console.log('msg', msg);
+          evemore(msg);
+          evemore_slide(msg);
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
+        }
+      });
+    })
+    $(".curyear:last").find(".down").on("click",function(){
+      $(this).parents(".curyear").find(".kong").eq(0).css("display","block");
+    })
+
+  });
+
+  function evemore_slide (msg) {
+    var html = '<li style="padding: 0px;margin-top: -3px;width: 75px;height: 0px;margin-left: 8px;margin-bottom: 6px;"><div class="kong" style="height: 0px;"></div></li>';
+    var s = 0;
+    var i = 0
+    var a = Object.keys(msg);
+    for (var key in msg) {
+      i++;
+      if (i == 1) {
+        html += '<li id="'+key.substring(0,4)+'_down" style="margin-top: 30px;" onclick="showd('+key.substring(0,4)+')">'
+        html += '<div class="eve-box clearfix" style="cursor: pointer;width: 140px;">'
+        html += '<i class="down xiangxia" style="cursor: pointer;"></i><span class="year-num" style="font-size: 22px;">'+key.substring(0,4)+'</span>'
+      } else {
+        if ( i == a.length ) {
+          html += '<span class="year-num" style="font-size: 22px;"> -- '+key.substring(0,4)+'</span>'
+        }
+      }
+    }
+    html += '</div>'
+    html += '</li>'
+    for (var key in msg) {
+      s++;
+      if (s == 1) {
+        console.log('sss',s)
+        html += '<div id="'+key.substring(0,4)+'_year" style="display: none;">'
+      }
+      html += '<li>';
+      html += '<a href="javascript:void(0);" onclick="showyear('+key.substring(0,4)+')"><div class="eve-box clearfix"><h6 class="year-num" style="cursor: pointer;font-weight: normal;">'+key.substring(0,4)+'</h6></div></a>';
+      console.log('s',s);
+      if (s != a.length) {
+        html += '<div class="kong"></div>';
+      }
+      if (a.length == 1) html += '<div class="kong" style="height: 22px;"></div>';
+      html += '</li>';
+    }
+    html += '</div>'
+    $('#eve_slide').append($(html));
+  }
+
+  function evemore (msg) {
+    var html = '';
+    html += '<div id="tian" class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;"><div class="kong" style="display: block;margin-left: 118px;"></div></div>'
+    var s = 0;
+    var a = Object.keys(msg);
+    for (var key in msg) {
+      s++;
+      html += '<div class="curyear" style="background:#fafafa;width: 1180px;height: auto;margin: 0 auto;">'
+      html += '<div class="year-box clearfix" id="'+key.substring(0,4)+'"><i class="down xiangxia" style="cursor: pointer;">'+key.substring(0,4)+'</i></div>'
+      if (s != a.length) {
+        html += '<div class="kong" style="display: block"></div>'
+      }
+      for (var key1 in msg[key]) {
+        html += '<div class="month-box clearfix">'
+        html += '<div class="month-left">'
+        if (key1.substring(0,1) == 1 && key1.length == 1)
+        html += '<p class="month-num"></p>'
+        else if (key1.substring(0,1) == 2)
+        html += '<p class="month-num yue2"></p>'
+        else if (key1.substring(0,1) == 3)
+        html += '<p class="month-num yue3"></p>'
+        else if (key1.substring(0,1) == 4)
+        html += '<p class="month-num yue4"></p>'
+        else if (key1.substring(0,1) == 5)
+        html += '<p class="month-num yue5"></p>'
+        else if (key1.substring(0,1) == 6)
+        html += '<p class="month-num yue6"></p>'
+        else if (key1.substring(0,1) == 7)
+        html += '<p class="month-num yue7"></p>'
+        else if (key1.substring(0,1) == 8)
+        html += '<p class="month-num yue8"></p>'
+        else if (key1.substring(0,1) == 9)
+        html += '<p class="month-num yue9"></p>'
+        else if (key1.substring(0,2) == 10)
+        html += '<p class="month-num yue10"></p>'
+        else if (key1.substring(0,2) == 11)
+        html += '<p class="month-num yue11"></p>'
+        else if (key1.substring(0,2) == 12)
+        html += '<p class="month-num yue12"></p>'
+        html += '</div>'
+        html += '<div class="month-right">'
+        for (var key11 = 0; key11 < msg[key][key1].length; key11++) {
+          html += '<p style="display: none;">'+msg[key][key1][key11].title+'<i class="city-icon iconfont con-btn con-up" style="font-size: 14px;">&#xe636;</i></p>'
+          if (msg[key][key1][key11].thumb3 == '' || msg[key][key1][key11].thumb3 == null) {
+            if (msg[key][key1][key11].thumb == '' || msg[key][key1][key11].thumb == null) {
+              //{# 无图 #}
+              html += '<div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">'
+              html += '<i class="dian"></i>'
+              html += '<i class="kuang_jiao"></i>'+ (key11+1) +'. '+ msg[key][key1][key11].description +'</div>'
+            } else {
+              //{# 只一条 #}
+              html += '<div class="dashiji-con1 clearfix" style="display: block;margin: 20px 35px 60px 36px;">'
+              html += '<i class="dian1"></i>'
+              html += '<i class="kuang_jiao1"></i>'+ (key11+1) +'. '+ msg[key][key1][key11].description +'<div class="shiji-pic clearfix">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb)+'" alt="">'
+              html += '</div>'
+              html += '</div>'
+            }
+          } else {
+            if (key11 == msg[key][key1].length) {
+              html += '<div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">'
+              html += '<i class="dian"></i>'
+              html += '<i class="kuang_jiao"></i>'+ (key11+1) +'. '+ msg[key][key1][key11].description
+              html += '<div class="shiji-pic3 clearfix">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb,'280x210')+'" alt="">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb2,'280x210')+'" alt="">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb3,'280x210')+'" alt="" style="margin-right: 0px;">'
+              html += '</div>'
+              html += '</div>'
+            } else {
+              html += '<div class="dashiji-con" style="display: block;margin: 20px 35px 0px 36px;">'
+              html += '<i class="dian"></i>'
+              html += '<i class="kuang_jiao"></i>'+ (key11+1) +'. '+ msg[key][key1][key11].description
+              html += '<div class="shiji-pic3 clearfix">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb,'280x210')+'" alt="">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb2,'280x210')+'" alt="">'
+              html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb3,'280x210')+'" alt="" style="margin-right: 0px;">'
+              html += '</div>'
+              html += '</div>'
+            }
+          }
+        }
+        html += '</div>'
+        html += '</div>'
+        html += '<div class="kong"></div>'
+      }
+      html += '</div>'
+      if (s == a.length) {
+        $('#zuihou').attr('data-year', a[s-1].substring(0, 4))
+      }
+    }
+    $('#evemain').append($(html));
+    $('.down').unbind('click');
+    $(".down").on("click",function(){
+      console.log('aaaaaa111111')
+      $(this).parents(".curyear").siblings("#tian").css("display","none");
+      if ($(this).parents(".curyear").children(".month-box").css('display') == 'block') {
+        console.log('aaaablock')
+        $(this).parents(".curyear").children(".month-box").css("display","none");
+        // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+        // $(this).find(".kong:last").eq(0).css("display","none");
+        // });
+        $(this).parents(".curyear").children(".kong").css("display","none");
+        $(this).parents(".curyear:last").children(".kong").eq(0).css("display","block");
+        // $(this).parents(".curyear:last").children(".kong:last").css("display","block");
+      } else {
+        console.log('bbbbnone')
+        $(this).parents(".curyear").children(".month-box").css("display","block");
+        $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+          $(this).find(".kong").eq(0).css("display","block");
+        });
+        $(this).parents(".curyear:last").children(".kong").eq(0).css("display","none");
+        $(this).parents(".curyear:last").children(".kong:last").css("display","none");
+      }
+      // // $(this).html("&#xe635;");
+      // // $(this).css({"color":"#c13232","cursor":"default"});
+      // $(this).parents(".curyear").children(".month-box").css("display","block");
+      // // $(document).scrollTop(500);
+      // $(this).parents(".curyear").children(".kong").css("display","block");
+      // // $(this).parents(".curyear").siblings().children(".month-box").css("display","none");
+      // // $(this).parents(".curyear").siblings().children(".kong").css("display","none");
+      // // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
+      // // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
+      // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+      //   $(this).find(".kong").eq(0).css("display","block");
+      // });
+      $(".curyear:last").find(".kong").eq(0).css("display","none");
+      $(".curyear:last").find(".kong:last").css("display","none");
+    })
+    console.log('yeareve', $('#zuihou').attr('data-year'))
+    if ($('#zuihou').attr('data-year') == 1999) {
+      console.log('aaaaaaa');
+      $('.curyear:last').find(".kong").eq(0).css("display","none");
+      $('#eve_more').css("display","none");
+    }
+  }
+  
+</script>
+

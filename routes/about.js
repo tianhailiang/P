@@ -370,8 +370,12 @@ exports.about = function (req, res, next){
       data.login_nickname = login_a;
     }
     async.parallel({
-  
+      lunbo_list: function (callback) {
+        // 轮播图接口
+        cms.lunbo_list({"ad_page":"CULTURE","ad_seat":"SEAT5","cityid":area},callback);
+      }
     }, function (err, result){
+      data.xSlider =returnData(result.lunbo_list,'lunbo_list');
       log.info(result)
       data.pageroute="about";
       data.tdk = {
@@ -380,7 +384,7 @@ exports.about = function (req, res, next){
         nationid: country//nationi
       };
       data.esikey = esihelper.esikey();
-      res.render('about/about', data);
+      res.render('about/new_about', data);
   
     });
   }
@@ -418,6 +422,7 @@ exports.events = function (req, res, next){
       log.info(result)
       // data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
       var eventList = returnData(result.memorabilia_list,'memorabilia_list');//返回大事记的未处理列表
+      // console.log('event', eventList)
       var event = {};
       for (let i = 0;i<eventList.length;i++) {
         let y = eventList[i].years;
@@ -432,6 +437,7 @@ exports.events = function (req, res, next){
         event[y+'年'][m+'月'].push(eventList[i]);
       }
       data.memorabilia_list = event; //event 是处理后的大事记有序列表
+      console.log('evnt', data.memorabilia_list)
       data.pageroute="about/events";
       data.tdk = {
         pagekey: 'EVENTS', //key
@@ -443,6 +449,100 @@ exports.events = function (req, res, next){
   
     });
   }
+
+  // 新金吉列大事记
+exports.new_events = function (req, res, next){
+  var data = [];
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  var qianzhengzhinan_currentPage=req.query.page || 1;
+  var country = req.query.n || 0;
+//node获取地址栏url
+var l = url.parse(req.url, true).query;
+console.log('url', l.h);
+if (l.h !== undefined) {
+    data.url = l.h;
+} else {
+    data.url = config.wwhost;
+}
+  data.login_nickname = '';
+  if ( req.cookies.login_ss !== undefined) {
+    var login_a = JSON.parse(req.cookies.login_ss);
+    //log.debug("login_a-------" + login_a.nickname)
+    data.login_nickname = login_a;
+  }
+  async.parallel({
+    lunbo_list: function (callback) {
+      // 轮播图接口
+      cms.lunbo_list({"ad_page":"EVENTS","ad_seat":"SEAT1","cityid":area},callback);
+    },
+    memorabilia_list:function(callback){
+      cms.memorabilia_list({
+        "page":1,
+        "pagesize": 100
+      }, callback);
+    },
+
+  }, function (err, result){
+    // log.info(result)
+    // data.memorabilia_list=returnData(result.memorabilia_list,'memorabilia_list');
+    data.xSlider =returnData(result.lunbo_list,'lunbo_list');
+    var eventList = returnData(result.memorabilia_list,'memorabilia_list');//返回大事记的未处理列表
+    // console.log('event', eventList)
+    var event = {};
+    for (let i = 0;i<eventList.length;i++) {
+      let y = eventList[i].years;
+      let m = eventList[i].month;
+
+      if (!event[y+'年'] || y !== eventList[i-1].years) {
+        event[y+'年'] = {};
+      }
+      if (!event[y+'年'][m+'月'] || m !== eventList[i-1].month) {
+        event[y+'年'][m+'月'] = new Array();
+      }
+      event[y+'年'][m+'月'].push(eventList[i]);
+    }
+    data.memorabilia_list = event; //event 是处理后的大事记有序列表
+    console.log('data.memorabilia_list',data.memorabilia_list)
+    data.pageroute="about/events";
+    data.tdk = {
+      pagekey: 'EVENTS', //key
+      cityid: area, //cityid
+      nationid: country//nationi
+    };
+    data.esikey = esihelper.esikey();
+    res.render('about/new_events', data);
+
+  });
+}
+
+// 大事记加载更多
+exports.eventsfmore =function(req,res,next){
+  var data = req.query;
+  console.log('data',req.query)
+    cms.memorabilia_list(data, function(err,result){
+      if(err){
+        res.send(err);
+      }else{
+        console.log(result)
+        var event = {};
+        for (let i = 0;i<result.data.length;i++) {
+          let y = result.data[i].years;
+          let m = result.data[i].month;
+
+          if (!event[y+'年'] || y !== result.data[i-1].years) {
+            event[y+'年'] = {};
+          }
+          if (!event[y+'年'][m+'月'] || m !== result.data[i-1].month) {
+            event[y+'年'][m+'月'] = new Array();
+          }
+          event[y+'年'][m+'月'].push(result.data[i]);
+        }
+        data.memorabilia_list = event; //event 是处理后的大事记有序列表
+        console.log('events', data.memorabilia_list)
+        res.send(event);
+      }
+    });
+}
 
   //商务合作
 exports.cooperation = function (req, res, next){
@@ -520,6 +620,10 @@ exports.contact = function (req, res, next){
       data.login_nickname = login_a;
     }
     async.parallel({
+      lunbo_list: function (callback) {
+        // 轮播图接口
+        cms.lunbo_list({"ad_page":"CONTACT","ad_seat":"SEAT1","cityid":area},callback);
+      },
       contact: function (callback) {
         cms.contact( {
           "area_type":1,
@@ -567,6 +671,7 @@ exports.contact = function (req, res, next){
       },
     }, function (err, result){
       log.info(result)
+      data.xSlider =returnData(result.lunbo_list,'lunbo_list');
       data.contact =returnData(result.contact,'contact');
       data.contact2 =returnData(result.contact2,'contact2');
       data.contact3 =returnData(result.contact3,'contact3');

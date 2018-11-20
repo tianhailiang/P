@@ -34,16 +34,19 @@
 {% import "widget/new_nav_first/common_nav.html" as common_nav %}
 {{ common_nav.common_nav(tdk,helper) }}
 
-<div style="margin:20px 0">
+{#<div style="margin:20px 0">
   {% include "widget/nav_tenth/nav_tenth.html" %}
-</div>
+</div>#}
 
-<div class="dui-layout-lg clearfix">
-  <div class="branch-lunbo-slider" style="width:100%;height: 360px;" >
+<div class=" clearfix">
+  <div class="branch-lunbo-slider" style="width:100%;height: 450px;">
     {% include "widget/xSlider/xSlider.html" %}
   </div>
 </div>
-<div class="dui-layout-lg clearfix dui-box-shadow" style="background: #ffffff;margin-top:20px;    padding-bottom: 20px;">
+<div class="clearfix" style="position: relative;top: -50px;">
+    {% include "widget/nav_tenth/new_tenth.html" %}
+  </div>
+<div class="dui-layout-lg clearfix dui-box-shadow" style="background: #ffffff;margin-top:-30px;    padding-bottom: 20px;">
   <div class="common-title  white-bg clearfix" style="border-bottom: 1px solid #c13232;width: 1140px; margin: 0 20px;">
     <div ></div>
     <i></i>
