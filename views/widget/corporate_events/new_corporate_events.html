@@ -114,20 +114,26 @@
     float: left;
     margin-top: 32px;
     border-radius: 5px;
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle;
   }
   .shiji-pic img{
     width: 810px;
-    height: 380px;
+    height: auto;
     border-radius: 5px;
   }
   .shiji-pic3{
     margin-top: 32px;
     display: inline-block;
     border-radius: 5px;
+    overflow: hidden;
+    display: table-cell;
+    vertical-align: middle;
   }
   .shiji-pic3 img{
     width: 256px;
-    height: 210px;
+    height: auto;
     float: left;
     border-radius: 5px;
     margin-right: 20px;
@@ -275,8 +281,10 @@
   
 <script>
   $(function(){
-    $(".curyear").eq(0).children(".month-box").css("display","block");
-    $(".curyear").eq(0).children(".kong").css("display","block");
+    $(".curyear").children(".month-box").css("display","block");
+    $(".curyear").children(".kong").css("display","block");
+    // $(".curyear").eq(0).children(".month-box").css("display","block");
+    // $(".curyear").eq(0).children(".kong").css("display","block");
     // $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe635;")
     // $(".curyear").eq(0).children(".year-box").find(".down").css("color","#c13232");
     // $(".curyear").eq(0).siblings().children(".year-box").find(".down").css("color","#999999");
@@ -293,41 +301,41 @@
     }
     $(".year-box").eq(0).css("padding-top","20px");
     $(document).scrollTop(0);
-    $(".down").on("click",function(){
-      console.log('aaaaaa111111')
-      if ($(this).parents(".curyear").children(".month-box").css('display') == 'block') {
-        console.log('aaaablock')
-        $(this).parents(".curyear").children(".month-box").css("display","none");
-        // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
-        // $(this).find(".kong:last").eq(0).css("display","none");
-        // });
-        $(this).parents(".curyear").children(".kong").css("display","none");
-        $(this).parents(".curyear:last").children(".kong").eq(0).css("display","block");
-        // $(this).parents(".curyear:last").children(".kong:last").css("display","block");
-      } else {
-        console.log('bbbbnone')
-        $(this).parents(".curyear").children(".month-box").css("display","block");
-        $.each($(this).parents(".curyear").siblings(".curyear"),function(){
-          $(this).find(".kong").eq(0).css("display","block");
-        });
-        $(this).parents(".curyear:last").children(".kong").eq(0).css("display","none");
-        $(this).parents(".curyear:last").children(".kong:last").css("display","none");
-      }
-      // $(this).html("&#xe635;");
-      // $(this).css({"color":"#c13232","cursor":"default"});
-      // $(this).parents(".curyear").children(".month-box").css("display","block");
-      // $(document).scrollTop(500);
-      // $(this).parents(".curyear").children(".kong").css("display","block");
-      // $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
-      // $(this).parents(".curyear").siblings().children(".kong").css("display","none");
-      // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
-      // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
-      // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
-      //   $(this).find(".kong").eq(0).css("display","block");
-      // });
-      $(".curyear:last").find(".kong").eq(0).css("display","none");
-      $(".curyear:last").find(".kong:last").css("display","none");
-    })
+    // $(".down").on("click",function(){
+    //   console.log('aaaaaa111111')
+    //   if ($(this).parents(".curyear").children(".month-box").css('display') == 'block') {
+    //     console.log('aaaablock')
+    //     $(this).parents(".curyear").children(".month-box").css("display","none");
+    //     // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+    //     // $(this).find(".kong:last").eq(0).css("display","none");
+    //     // });
+    //     $(this).parents(".curyear").children(".kong").css("display","none");
+    //     $(this).parents(".curyear:last").children(".kong").eq(0).css("display","block");
+    //     // $(this).parents(".curyear:last").children(".kong:last").css("display","block");
+    //   } else {
+    //     console.log('bbbbnone')
+    //     $(this).parents(".curyear").children(".month-box").css("display","block");
+    //     $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+    //       $(this).find(".kong").eq(0).css("display","block");
+    //     });
+    //     $(this).parents(".curyear:last").children(".kong").eq(0).css("display","none");
+    //     $(this).parents(".curyear:last").children(".kong:last").css("display","none");
+    //   }
+    //   // $(this).html("&#xe635;");
+    //   // $(this).css({"color":"#c13232","cursor":"default"});
+    //   // $(this).parents(".curyear").children(".month-box").css("display","block");
+    //   // $(document).scrollTop(500);
+    //   // $(this).parents(".curyear").children(".kong").css("display","block");
+    //   // $(this) .parents(".curyear").siblings().children(".month-box").css("display","none");
+    //   // $(this).parents(".curyear").siblings().children(".kong").css("display","none");
+    //   // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
+    //   // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
+    //   // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+    //   //   $(this).find(".kong").eq(0).css("display","block");
+    //   // });
+    //   $(".curyear:last").find(".kong").eq(0).css("display","none");
+    //   $(".curyear:last").find(".kong:last").css("display","none");
+    // })
     var page = 1
     $('#eve_more').on("click",function () {
       $.ajax({
@@ -362,7 +370,7 @@
       i++;
       if (i == 1) {
         html += '<li id="'+key.substring(0,4)+'_down" style="margin-top: 30px;" onclick="showd('+key.substring(0,4)+')">'
-        html += '<div class="eve-box clearfix" style="cursor: pointer;width: 140px;">'
+        html += '<div class="eve-box clearfix" style="cursor: pointer;width: 150px;">'
         html += '<i class="down xiangxia" style="cursor: pointer;"></i><span class="year-num" style="font-size: 22px;">'+key.substring(0,4)+'</span>'
       } else {
         if ( i == a.length ) {
@@ -406,7 +414,7 @@
       for (var key1 in msg[key]) {
         html += '<div class="month-box clearfix">'
         html += '<div class="month-left">'
-        if (key1.substring(0,1) == 1 && key1.length == 1)
+        if (key1.substring(0,1) == 1 && key1.substring(0,2) != 10 && key1.substring(0,2) != 11 && key1.substring(0,2) != 12)
         html += '<p class="month-num"></p>'
         else if (key1.substring(0,1) == 2)
         html += '<p class="month-num yue2"></p>'
@@ -483,43 +491,62 @@
       }
     }
     $('#evemain').append($(html));
-    $('.down').unbind('click');
-    $(".down").on("click",function(){
-      console.log('aaaaaa111111')
-      $(this).parents(".curyear").siblings("#tian").css("display","none");
-      if ($(this).parents(".curyear").children(".month-box").css('display') == 'block') {
-        console.log('aaaablock')
-        $(this).parents(".curyear").children(".month-box").css("display","none");
-        // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
-        // $(this).find(".kong:last").eq(0).css("display","none");
-        // });
-        $(this).parents(".curyear").children(".kong").css("display","none");
-        $(this).parents(".curyear:last").children(".kong").eq(0).css("display","block");
-        // $(this).parents(".curyear:last").children(".kong:last").css("display","block");
-      } else {
-        console.log('bbbbnone')
-        $(this).parents(".curyear").children(".month-box").css("display","block");
-        $.each($(this).parents(".curyear").siblings(".curyear"),function(){
-          $(this).find(".kong").eq(0).css("display","block");
-        });
-        $(this).parents(".curyear:last").children(".kong").eq(0).css("display","none");
-        $(this).parents(".curyear:last").children(".kong:last").css("display","none");
-      }
-      // // $(this).html("&#xe635;");
-      // // $(this).css({"color":"#c13232","cursor":"default"});
-      // $(this).parents(".curyear").children(".month-box").css("display","block");
-      // // $(document).scrollTop(500);
-      // $(this).parents(".curyear").children(".kong").css("display","block");
-      // // $(this).parents(".curyear").siblings().children(".month-box").css("display","none");
-      // // $(this).parents(".curyear").siblings().children(".kong").css("display","none");
-      // // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
-      // // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
-      // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
-      //   $(this).find(".kong").eq(0).css("display","block");
-      // });
+    $(".curyear").children(".month-box").css("display","block");
+    $(".curyear").children(".kong").css("display","block");
+    // $(".curyear").eq(0).children(".month-box").css("display","block");
+    // $(".curyear").eq(0).children(".kong").css("display","block");
+    // $(".curyear").eq(0).children(".year-box").find(".down").html("&#xe635;")
+    // $(".curyear").eq(0).children(".year-box").find(".down").css("color","#c13232");
+    // $(".curyear").eq(0).siblings().children(".year-box").find(".down").css("color","#999999");
+    // $(".curyear").eq(1).children(".month-box").css("display","block");
+    // $(".curyear").eq(1).children(".year-box").find(".down").html("&#xe635;").css("color","#c13232");
+    // $(".curyear").eq(1).children(".kong").css("display","block");
+    $.each($(".curyear").siblings(".curyear"),function(){
+      $(this).find(".kong").eq(0).css("display","block");
+    });
+    if($(".curyear").length>2){
       $(".curyear:last").find(".kong").eq(0).css("display","none");
-      $(".curyear:last").find(".kong:last").css("display","none");
-    })
+    }else{
+      $(".curyear:last").find(".kong").eq(0).css("display","block");
+    }
+    $(".year-box").eq(0).css("padding-top","20px");
+    // $('.down').unbind('click');
+    // $(".down").on("click",function(){
+    //   console.log('aaaaaa111111')
+    //   $(this).parents(".curyear").siblings("#tian").css("display","none");
+    //   if ($(this).parents(".curyear").children(".month-box").css('display') == 'block') {
+    //     console.log('aaaablock')
+    //     $(this).parents(".curyear").children(".month-box").css("display","none");
+    //     // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+    //     // $(this).find(".kong:last").eq(0).css("display","none");
+    //     // });
+    //     $(this).parents(".curyear").children(".kong").css("display","none");
+    //     $(this).parents(".curyear:last").children(".kong").eq(0).css("display","block");
+    //     // $(this).parents(".curyear:last").children(".kong:last").css("display","block");
+    //   } else {
+    //     console.log('bbbbnone')
+    //     $(this).parents(".curyear").children(".month-box").css("display","block");
+    //     $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+    //       $(this).find(".kong").eq(0).css("display","block");
+    //     });
+    //     $(this).parents(".curyear:last").children(".kong").eq(0).css("display","none");
+    //     $(this).parents(".curyear:last").children(".kong:last").css("display","none");
+    //   }
+    //   // // $(this).html("&#xe635;");
+    //   // // $(this).css({"color":"#c13232","cursor":"default"});
+    //   // $(this).parents(".curyear").children(".month-box").css("display","block");
+    //   // // $(document).scrollTop(500);
+    //   // $(this).parents(".curyear").children(".kong").css("display","block");
+    //   // // $(this).parents(".curyear").siblings().children(".month-box").css("display","none");
+    //   // // $(this).parents(".curyear").siblings().children(".kong").css("display","none");
+    //   // // $(this).parents(".curyear").siblings().children(".year-box").find(".down").html("&#xe636;");
+    //   // // $(this).parents(".curyear").siblings().children(".year-box").find(".down").css({"color":"#999999","cursor":"pointer"});
+    //   // $.each($(this).parents(".curyear").siblings(".curyear"),function(){
+    //   //   $(this).find(".kong").eq(0).css("display","block");
+    //   // });
+    //   $(".curyear:last").find(".kong").eq(0).css("display","none");
+    //   $(".curyear:last").find(".kong:last").css("display","none");
+    // })
     console.log('yeareve', $('#zuihou').attr('data-year'))
     if ($('#zuihou').attr('data-year') == 1999) {
       console.log('aaaaaaa');
