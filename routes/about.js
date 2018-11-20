@@ -352,7 +352,7 @@ exports.about = function (req, res, next){
     async.parallel({
       lunbo_list: function (callback) {
         // 轮播图接口
-        cms.lunbo_list({"ad_page":"PROFILE","ad_seat":"SEAT5","cityid":area},callback);
+        cms.lunbo_list({"ad_page":"PROFILE","ad_seat":"SEAT1","cityid":area},callback);
       }
     }, function (err, result){
       data.xSlider =returnData(result.lunbo_list,'lunbo_list');
