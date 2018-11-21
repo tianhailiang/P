@@ -190,8 +190,8 @@ var apis = {
   "get_daxuepaiming_recommend": prefix + 'daxuepaiming_recommend',
   //文章评论
   "get_reviewArticle": shequ_prefix + 'article/save_comment/',
-  // 获取用户信息（普通用户，顾问，参赞）
-  "get_userinfo": so_prefix + 'account/info/',
+  // 获取用户信息（普通用户，顾问，参赞） http://192.168.201.111:8080/so/api/account/info/
+  "get_userinfo": so_prefix + 'account/info',
   //用户中心-我的关注
   "get_user_follow": shequ_prefix + 'account/friends/',
   //顾问中心-关注我的
