@@ -126,7 +126,7 @@ exports.follow_list = function (data, callback) {
  */
 
 exports.userinfo = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_userinfo);
+  var url = _api_url_path(data, config.apis.get_userinfo);
   if (url == null){
     callback('404');
     return;
