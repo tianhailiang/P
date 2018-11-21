@@ -78,6 +78,7 @@
     position: relative;
     line-height: 25px;
     left: 30px;
+    float: none;
   }
   .dashiji-con .kuang_jiao{
     display: inline-block;
@@ -85,7 +86,7 @@
     height: 26px;
     background: url({{helper.cdnhost}}/assets/img/events/hui_jiao.png) no-repeat;
     position: absolute;
-    left: -11px;
+    left: -10px;
     top: 32px;
   }
   .dashiji-con1{
@@ -105,7 +106,7 @@
     height: 26px;
     background: url({{helper.cdnhost}}/assets/img/events/hong_jiao.png) no-repeat;
     position: absolute;
-    left: -11px;
+    left: -10px;
     top: 30px;
   }
   .shiji-pic{
@@ -128,7 +129,6 @@
     display: inline-block;
     border-radius: 5px;
     overflow: hidden;
-    display: table-cell;
     vertical-align: middle;
   }
   .shiji-pic3 img{
@@ -211,7 +211,7 @@
       {% if item.thumb3 == '' or item.thumb3 == null %}
       {% if item.thumb == '' or item.thumb == null %}
       {# 无图 #}
-      <div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">
+      <div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 60px 36px;">
         <i class="dian"></i>
         <i class="kuang_jiao"></i>
        {{ loop.index }}. {{ item.description }}
@@ -229,7 +229,7 @@
         {% endif %}
       {% else %}
       {% if loop.index==loop.length %}
-      <div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">
+      <div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 60px 36px;">
         <i class="dian"></i>
         <i class="kuang_jiao"></i>
        {{ loop.index }}. {{ item.description }}
@@ -240,7 +240,7 @@
           </div>
       </div>
       {% else %}
-      <div class="dashiji-con" style="display: block;margin: 20px 35px 0px 36px;">
+      <div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 60px 36px;">
         <i class="dian"></i>
         <i class="kuang_jiao"></i>
         {{ loop.index }}. {{ item.description }}
@@ -397,6 +397,13 @@
     }
     html += '</div>'
     $('#eve_slide').append($(html));
+    var year = a[0].substring(0,4);
+    $("div[id$='_year']").css('display', 'none')
+    $('#'+ year+ '_year').css('display', 'block')
+    $("li[id$='_down']").find("div").find("i").removeClass('down1')
+    $("li[id$='_down']").find("div").find("span").removeClass('redtitle')
+    $('#' + year + '_down').find("div").find("i").addClass('down1')
+    $('#' + year + '_down').find("div").find("span").addClass('redtitle')
   }
 
   function evemore (msg) {
