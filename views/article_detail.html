@@ -79,11 +79,11 @@
           </div>
           <!-- 摘要 -->
           <div class="summary-cont">
-            <div class="summary-text">去美国读新生或转学都给孩子打开一扇窗！敬请关注！去美国读新生或转学都给孩子打开一扇窗！敬请关注！去美国读新生或转学都给孩子打开一扇窗！敬请关注！去美国读新生或转学都给孩子打开一扇窗！敬请关注！</div>
+            <div class="summary-text">{{article.article_info.introduce}}</div>
             <div class="zixun-text clearfix">
                 <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="">
                 <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="" style='margin-left: 4px;'>
-                <span onclick="openchat_new('{{ userinfo.new_job_number}}')"> 想留学，没方向？还不点我快点了？！</span>
+                <span onclick="openchat_new('{{ userinfo.new_job_number}}')">{{article.article_info.top_chain}}</span>
                 <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="">
                 <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="" style='margin-left: 4px;'>
             </div>
@@ -96,7 +96,7 @@
           <div class="zixun-text clearfix article-bot-zixuntext">
             <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="">
             <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="" style='margin-left: 4px;'>
-            <span onclick="openchat_new('{{ userinfo.new_job_number}}')"> 想留学，没方向？还不点我快点了？！</span>
+            <span onclick="openchat_new('{{ userinfo.new_job_number}}')">{{article.article_info.bottom_chain}}</span>
             <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="">
             <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="" style='margin-left: 4px;'>
           </div>
