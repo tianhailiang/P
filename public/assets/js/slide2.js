@@ -204,7 +204,7 @@ $(function(){
 
   function openChat(c){
     //console.log(c)
-    var url = "http://jesong.jjl.cn/live/" +'chat.do?c=1';
+    var url = "https://jesong.jjl.cn/live/" +'chat.do?c=1';
     url = url +"&chatUrl="+window.encodeURIComponent(window.location.href);
     if(cookie("im_refer")){
       url = url +"&refer="+window.encodeURIComponent(cookie("im_refer"));
@@ -242,7 +242,7 @@ $(function(){
       '<li><a onclick="onclick_ly(\'g\',\'48\')"target="_blank">德国/奥地利咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'54\')"target="_blank">移民咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'174\')"target="_blank">境外升转学</a></li>'+
-      '<li style="border:0px; height:124px; margin-top:6px;text-align: center"><img src="http://vip.jjl.cn/statics/jjlyx/images/weixin.png" width="112" height="114"></li>';
+      '<li style="border:0px; height:124px; margin-top:6px;text-align: center"><img src="https://vip.jjl.cn/statics/jjlyx/images/weixin.png" width="112" height="114"></li>';
 
     var _listStr='';
     if(_areaCode==1){

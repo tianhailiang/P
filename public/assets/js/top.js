@@ -109,7 +109,7 @@
   })
   var portname;
   var hostname = window.location.hostname;
-  portname = 'http://'+ window.location.hostname;
+  portname = '//'+ window.location.hostname;
   if (hostname == 'www.jjl.cn') {
     if (js_api_config.version == 'development') {
       portname += ':4000'
@@ -227,7 +227,7 @@
     console.log('hh[1]', hh[3]);
     var hhh = h.split("?");
     console.log('hhh', hhh[1])
-    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:' && hh[3] != 'register?h=http:') {
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=//' && hh[3] != 'loginUser?h=//' && hh[3] != 'register?h=//') {
       console.log('11111')
 //      window.location.href = '/login?h=' + h
       // window.open('/loginUser?h=' + h);
@@ -257,7 +257,7 @@
     console.log('hh[1]', hh[3]);
     var hhh = h.split("?");
     console.log('hhh', hhh[1])
-    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=http:' && hh[3] != 'loginUser?h=http:' ) {
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'loginUser' && hh[3] != 'login?h=//' && hh[3] != 'loginUser?h=//' ) {
       console.log('11111')
 //      window.location.href = '/login?h=' + h
       // window.open('/loginUser?h=' + h);
@@ -274,7 +274,7 @@
     } else if (hhh[1] == undefined && hh[3] == 'forget') {
       // console.log('forget');
       window.open(fn.urlgen("login"));
-    } else if (hhh[1] != undefined && hh[3] == 'register?h=http:'){
+    } else if (hhh[1] != undefined && hh[3] == 'register?h=//'){
       console.log('rrrrrr')
       window.open(fn.urlgen("loginUser"));
     }

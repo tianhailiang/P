@@ -1,8 +1,6 @@
 /**
  * Created by DXZ-Hui.Cao on 2017/8/24.
  */
-//$('.foot-eweima-x')._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["tsina","weixin","renren","qzone"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","weixin","renren","qzone"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-
 var iDcity2 = {
   1:['北京','北京分公司：北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米)','服务专线：010-65685656'],
   5:['成都','成都分公司：成都市总府路2号时代广场A座18层','服务专线：028-85595757'],
