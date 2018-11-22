@@ -136,7 +136,7 @@
   margin-left: 20px;
 }
 .adviser-case-detail-offer{
-  border-top:1px solid #dcdcdc;
+  /* border-top:1px solid #dcdcdc; */
   /*border-bottom: 1px solid #dcdcdc;*/
   padding-top:20px;
   /* padding-bottom: 40px; */
@@ -419,4 +419,38 @@
   line-height: 34px;
   font-size: 14px;
   color: #333;
+}
+
+/* 摘要 */
+.summary-cont {
+  background-color: #fafafa;
+  padding: 0 20px;
+}
+.summary-cont .summary-text {
+  padding: 14px 0;
+  font-size: 14px;
+  color: #333;
+  line-height: 26px;
+}
+.summary-cont .zixun-text {
+  padding-bottom: 20px;
+}
+.article-bot-zixuntext {
+  padding-top: 20px;
+}
+.zixun-text {
+  font-size: 0;
+  line-height: 1;
+}
+.zixun-text img {
+  vertical-align: middle;
+  float: left;
+  margin-top: 2px;
+}
+.zixun-text span {
+  padding: 0  10px;
+  font-size: 14px;
+  color: #c13232;
+  float: left;
+  cursor: pointer;
 }
