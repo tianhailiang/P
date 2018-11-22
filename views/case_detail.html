@@ -99,6 +99,9 @@
         <div class="content-guide-box">
           <div class="detail-guide-text" onclick="open_main('{{userinfo.uid}}')">去主页浏览TA的更多精彩内容<img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow@2x.png" alt=""><img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow@2x.png" alt="" class="small-dis"></div>
         </div>
+        <!-- 点赞用户头像合集 -->
+        <div class="fans-block clearfix" id='fans-block'>
+        </div>
         <div class="userinfo-box clearfix" >
           {% if userinfo.qrcode %}
             <img class="userinfo-img" src="{{helper.imageThumb(userinfo.qrcode)}}" >
@@ -211,6 +214,7 @@
 <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script src="{{helper.cdnhost}}/assets/js/article_detail.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/avatarGroup.js"></script>
 <script>
   function open_main(uid){
     window.open('/' + uid);
