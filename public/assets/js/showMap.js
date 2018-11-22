@@ -392,18 +392,32 @@ $(function () {
             '</div>' +
             '</div>';
         $(mapMaskHtml).appendTo($('body'));
-        new BaiduMap({
-            id: "container1",
-            title: {
-                text: address,
-                className: "title"
-            },
-            point: {
-                lng: lng,
-                lat: lat
-            },
-            zoom:true
-        });
+        // new BaiduMap({
+        //     id: "container1",
+        //     title: {
+        //         text: address,
+        //         className: "title"
+        //     },
+        //     point: {
+        //         lng: lng,
+        //         lat: lat
+        //     },
+        //     zoom:true
+        // });
+        var map = new BMap.Map("container1");
+        var point = new BMap.Point(lng, lat);
+        map.centerAndZoom(point, 15);
+        // map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
+        map.addControl(new BMap.NavigationControl());    
+        map.addControl(new BMap.ScaleControl());    
+        map.addControl(new BMap.OverviewMapControl());   
+        var opts = {    
+            width : 400,     // 信息窗口宽度    
+            height: 50,     // 信息窗口高度    
+            title : address  // 信息窗口标题   
+        }    
+        var infoWindow = new BMap.InfoWindow("", opts);  // 创建信息窗口对象    
+        map.openInfoWindow(infoWindow, map.getCenter());      // 打开信息窗口
         $('body').find(".voucherclose").click(function(e){
             var e = e || event;
             e.stopPropagation();
