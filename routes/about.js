@@ -200,9 +200,12 @@ exports.activity = function (req, res, next) {
 }
 //留学活动--中间页面
 exports.activity_ip = function (req, res, next) {
+  console.log('area--------', req.url)
   var area = req.cookies.currentarea;
+  var url = req.url.substring(9)
+  console.log('area--------', url)
   if(area){
-    res.redirect(helperfunc.active_urlgen('activity','c='+area));
+    res.redirect(helperfunc.active_urlgen('activity','c='+area, url));
   }else{
     var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
     if(ip.split(',').length>0){
@@ -217,10 +220,10 @@ exports.activity_ip = function (req, res, next) {
         var cityCode ='';
         if(b.content){
           cityCode = get_area_code(b.content.address_detail.city);
-          res.redirect(helperfunc.active_urlgen('activity','c='+cityCode));
+          res.redirect(helperfunc.active_urlgen('activity','c='+cityCode, url));
         }
       }else{
-        res.redirect(helperfunc.active_urlgen('activity','c='+1));
+        res.redirect(helperfunc.active_urlgen('activity','c='+1, url));
       }
     })
   }
