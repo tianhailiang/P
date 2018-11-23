@@ -410,9 +410,10 @@ $(function () {
         // map.enableScrollWheelZoom(true);//开启鼠标滚轮缩放
         map.addControl(new BMap.NavigationControl());    
         map.addControl(new BMap.ScaleControl());    
-        map.addControl(new BMap.OverviewMapControl());   
-        var opts = {    
-            width : 400,     // 信息窗口宽度    
+        map.addControl(new BMap.OverviewMapControl());  
+        var marker = new BMap.Marker(point);        // 创建标注    
+        map.addOverlay(marker); 
+        var opts = {      
             height: 50,     // 信息窗口高度    
             title : address  // 信息窗口标题   
         }    

@@ -83,8 +83,6 @@
 <script src="{{helper.cdnhost}}/dep/js/layer-1.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/top.js"></script>
 <script src="http://api.map.baidu.com/api?v=2.0&ak=oTtUZr04m9vPgBZ1XOFzjmDpb7GCOhQw"></script>
-<!-- <script src="https://api.map.baidu.com/getscript?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script> -->
-<!-- <script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script> -->
 <script src="{{helper.cdnhost}}/assets/js/showMap.js"></script>
 <script>
   function adviserlogin () {
@@ -125,10 +123,10 @@
         var bp = document.createElement('script');
         var curProtocol = window.location.protocol.split(':')[0];
         if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            bp.src = '//zz.bdstatic.com/linksubmit/push.js';
         }
         else {
-            bp.src = 'https://push.zhanzhang.baidu.com/push.js';
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
         }
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(bp, s);
