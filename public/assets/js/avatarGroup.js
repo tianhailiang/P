@@ -21,7 +21,8 @@ $(function(){
 function avatarGroup (arr) {
     var html = '<div class="avatar-block">';
     var fansNum = arr.length;
-    for (var i = 0; i<25;i++) {
+    var maxNum = fansNum < 25 ? fansNum : 25;//限制显示25个
+    for (var i = 0; i<maxNum;i++) {
         html+='<img src="'+ arr[i].avatar_file +'" alt="" style="margin-left:-8px;">';
     }
     return html+'<span style="padding-left:2px;">等'+ fansNum +'人点赞</span></div>';
