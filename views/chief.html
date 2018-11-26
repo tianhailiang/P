@@ -63,7 +63,7 @@
 {{ new_nav_red.new_nav_red(tdk,helper) }}
 <div class="dui-layout-lg clearfix" style="width: 1140px;background: #fff;margin-top: 20px;padding: 20px;">
   <!--国家-->
-  {%
+  {#{%
     set countryList = [
     {
     "id": 0,
@@ -174,13 +174,13 @@
     "country": "奥地利"
     }
     ]
-    %}
+    %}#}
     <div class="dui-layout-con  study-focus" style="width: 1140px;float: none;">
       <div class="select-country  foucus-public foucus-public-d clearfix" style="margin-left: 0px;width: 1140px;">
         <p><span>国家及地区：</span></p>
         <ul class="select-list" style="width: 1016px;">
           {% for cItem in countryList %}
-          <li id="" data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('chief','n=' + cItem.id)}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+          <li id="" data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('chief','n=' + cItem.id)}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country_name}}</a></li>
           {% endfor %}
         </ul>
       </div>
