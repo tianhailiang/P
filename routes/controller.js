@@ -4268,10 +4268,19 @@ exports.chief = function (req, res, next) {
             wec.top_adviser_list({
                 "uid": data.login_info.uid,"cityid": area, "page": page, "per_page": 20, "countryid": country
             }, callback)
-        }
+        },
+        //首席顾问国家tab
+        "getChiefCountryList": function (callback) {
+            wec.getChiefCountryList({
+                "cityId": area
+            }, callback)
+        },
     }, function (err, result) {
         // data.userinfo = returnData(result.userinfo, 'userinfo');
         data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
+        data.countryList = returnData(result.getChiefCountryList, 'getChiefCountryList');
+        data.countryList.unshift({"id": 0, "country_name": "全部"})
+        console.log('getChiefCountryList', data.countryList)
         // console.log('top_adviser_list', data.top_adviser_list)
         // console.log('totalpage',data.top_adviser_list.totalpage)
         data.country = country;
