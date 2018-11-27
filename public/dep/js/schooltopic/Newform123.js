@@ -6,7 +6,8 @@
 		var tel = $.trim($("#tel").val());
 		var email = $.trim($("#email").val());
 		var birthday = $.trim($("#birthday").val());
-		var city = $.trim($("#city").val());
+		var city = getCookie('currentarea');
+		var country = $.trim($("#city").val());
 		var shenfen = "";
 		var firstCountry = $.trim($("#firstCountry").val());
 		var secondCountry = $.trim($("#secondCountry").val());
@@ -48,7 +49,7 @@
 			return false;
 		}
 
-		var subData = {name:username,sex:sex,phone:tel,email:email,birthday:birthday,country:city,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,source:fromUrl,activityTitle:activityTitle,relationId:18};
+		var subData = {name:username,sex:sex,phone:tel,email:email,birthday:birthday,city:city,country:country,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,source:fromUrl,activityTitle:activityTitle,relationId:18};
 		$.ajax({
 			type:"get",
 			data:subData,
