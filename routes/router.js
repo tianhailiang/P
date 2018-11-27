@@ -119,8 +119,6 @@ exports = module.exports = function (app) {// routes
   app.get('/article/:id', controller.article_detail);
   //文章评论接口
   app.post('/soapi/reviewArticle',controller.reviewArticle);
-  //案列发布页面
-  app.get('/advisor_center/postcase',controller.release_case);
   //参赞 我的相册
   app.get('/canzan_center/album', controller.center_photo);
   //顾问 我的相册

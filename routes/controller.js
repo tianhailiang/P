@@ -3054,48 +3054,6 @@ exports.reviewArticle =function(req,res,next){
 	}
   });
 }
-
-//案列发布页
-exports.release_case = function(req,res,next){
-  log.debug('案列发布页~~thl')
-  var data = {};
-  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  //node获取地址栏url
-  var l = url.parse(req.url, true).query;
-  console.log('url', l.h);
-  if (l.h !== undefined) {
-      data.url = l.h;
-  } else {
-      data.url = config.wwhost+req.url;
-  }
-  if(req.cookies.login_ss != undefined){
-    data.login_info = JSON.parse(req.cookies.login_ss);
-    if(data.login_info.usertype ==1){
-        return next();
-    }
-  }else{
-    res.redirect(config.wwhost+'/login')
-    return false;
-  }
-  async.parallel({
-    //获取用户信息（普通用户，顾问，参赞）
-    userinfo:function(callback){
-      wec.userinfo({
-        "u_id":data.login_info.uid,
-        "to_uid":data.login_info.uid
-      },callback);
-     }
-  },function(err, result){
-    data.userinfo = returnData(result.userinfo,'userinfo');
-    data.tdk = {
-      pagekey: 'ADVISOR_CENTER_POSTCASE',
-      cityid: area,
-    };
-    data.esikey = esihelper.esikey();
-    res.render('release_case', data);
-  });
-}
-
 //文本编辑器发布接口
 exports.publish_article = function (req, res, next) {
   log.debug('文本编辑器发布接口~~thl')
