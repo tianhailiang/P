@@ -99,7 +99,7 @@ $(function(){
         need:$("#context").val(),
         dataType: '3',
         source: h,
-        relation_id: 21
+        relationId: 21
       },
       success:function(msg){
         console.log(msg);
