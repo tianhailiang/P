@@ -48,7 +48,7 @@
 			return false;
 		}
 
-		var subData = {username:username,sex:sex,tel:tel,email:email,birthday:birthday,country:city,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,fromUrl:fromUrl,activityTitle:activityTitle,relationId:18};
+		var subData = {name:username,sex:sex,phone:tel,email:email,birthday:birthday,country:city,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,source:fromUrl,activityTitle:activityTitle,relationId:18};
 		$.ajax({
 			type:"get",
 			data:subData,
