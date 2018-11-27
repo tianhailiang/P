@@ -98,7 +98,8 @@ $(function(){
         city: $('#slide-area').val(),
         need:$("#context").val(),
         dataType: '3',
-        source: h
+        source: h,
+        relationId: 21
       },
       success:function(msg){
         console.log(msg);
