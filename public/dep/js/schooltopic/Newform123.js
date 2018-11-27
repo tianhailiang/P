@@ -48,14 +48,12 @@
 			return false;
 		}
 
-		var subData = {username:username,sex:sex,tel:tel,email:email,birthday:birthday,city:city,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,fromUrl:fromUrl,activityTitle:activityTitle };
+		var subData = {username:username,sex:sex,tel:tel,email:email,birthday:birthday,country:city,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,fromUrl:fromUrl,activityTitle:activityTitle,relation_id:18};
 		$.ajax({
 			type:"get",
 			data:subData,
-			url:"http://old.jjl.cn/c/c.php",
-			dataType:"jsonp",
-			jsonp: "callbackparam",
-			jsonpCallback:"jsonpCallback",
+			url:ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
+			dataType:'json',
 			success : function(backData){
 				alert("您已报名成功！");
 			},
