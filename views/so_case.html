@@ -48,21 +48,21 @@
     <div class="dui-layout-con" style="background-color: #fff;">
         <div class="main-left">
             <div class="main-searchbox clearfix">
-                <input type="text" id="search-page" placeholder="请输入您感兴趣的顾问姓名" class="search-text" value="{{keyword}}">
+                <input type="text" id="search-page" placeholder="请输入您感兴趣的文章关键词" class="search-text" value="{{keyword}}">
                 <div class="search-btn" id="searchBtn-page" style="cursor: pointer;"><i class="city-icon iconfont">&#xe60c;</i></div>
             </div>
             <div class="page-search-type" id="page-search-type">
                 <input type="radio" name="page-search-type" id="article" value="文章"/>
                 <label for="article" style="margin-right: 20px;"><span><i></i></span>搜文章</label>
-                <input type="radio" name="page-search-type" id="adviser" value="顾问" checked class="checked"/>
+                <input type="radio" name="page-search-type" id="adviser" value="顾问"/>
                 <label for="adviser" style="margin-right: 20px;"><span><i></i></span>搜顾问</label>
-                <input type="radio" name="page-search-type" id="case" value="案例"/>
+                <input type="radio" name="page-search-type" id="case" value="案例" checked class="checked"/>
                 <label for="case"><span><i></i></span>搜案例</label>
             </div>
             <div class="result-bar">
-                搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{so_adviser_list.total if so_adviser_list.total else 0}}</span>个结果
+                搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
             </div>
-            {% if so_adviser_list.total == 0 or so_adviser_list.total == null %}
+            {% if article_list.total == 0 or article_list.total == null %}
             <!--没有搜索到数据-->
             <div class="no-result page-blank">
                 <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
@@ -71,21 +71,23 @@
             {% else %}
             <div class="has-result">
                 <div class="result-type-bar" data-order="{{order}}" id="result-type-bar">
-                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword)}}" {% if order == '' %}class="active"{% else %}{% endif %}>综合</a>
-                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=fans_count')}}" {% if order == 'fans_count' %}class="active"{% else %}{% endif %}>最热</a>
-                    <a href="{{helper.paramurlgen('so_advisor','q='+ keyword, 'order=article_count')}}" {% if order == 'article_count' %}class="active"{% else %}{% endif %}>文章数</a>
+                    <a href="{{helper.paramurlgen('so_case','q='+ keyword, 'order=score')}}" {% if order == 'score' %}class="active"{% else %}{% endif %}>综合</a>
+                    <a href="{{helper.paramurlgen('so_case','q='+ keyword, 'order=add_time')}}" {% if order == 'add_time' %}class="active"{% else %}{% endif %}>最新</a>
+                    <a href="{{helper.paramurlgen('so_case','q='+ keyword, 'order=views')}}" {% if order == 'views' %}class="active"{% else %}{% endif %}>最热</a>
                 </div>
                 <div class="result-conent" id="result-content">
-                    {% include "widget/so_advisor/so_advisor.html" %}
+                    {% for item in article_list.list %}
+                    {% include "widget/so_article/so_article.html" %}
+                    {% endfor %}
                 </div>
-                <!-- <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
-                     加载更多
-                     <i class="city-icon iconfont">&#xe60b;</i>
-                 </div>-->
+               <!-- <div class="load-more-article" id="load-more-article" data-page="{{cur_page}}">
+                    加载更多
+                    <i class="city-icon iconfont">&#xe60b;</i>
+                </div>-->
             </div>
             {% endif %}
         </div>
-        {% if so_adviser_list.total == 0 or so_adviser_list.total == null %}
+        {% if article_list.total == 0 or article_list.total == null %}
         {% else %}
         <div class="dui-layout-con page">
             <div class="pagination-box">
@@ -101,7 +103,7 @@
             <div class="common-title" style="border:1px solid #dcdcdc;">
                 <i></i>
                 <h3>猜你喜欢</h3>
-            </div>
+              </div>
             {% esi helper.include(esikey,'fragment/searchguess_like','c='+tdk.cityid) %}
         </div>
     </div>
@@ -137,7 +139,7 @@
             intervalTime: 5000,
             slidesPerView : 2,
             slidesPerGroup : 2,
-            pagination: true
+          pagination: true
         });
     })
 

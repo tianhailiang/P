@@ -1,0 +1,5 @@
+User-agent:*
+Disallow:/get_ip_geter
+Disallow:/favicon.ico
+
+Sitemap:http://www.jjl.cn/sitemap_pc.xml
