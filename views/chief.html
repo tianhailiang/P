@@ -63,7 +63,7 @@
 {{ new_nav_red.new_nav_red(tdk,helper) }}
 <div class="dui-layout-lg clearfix" style="width: 1140px;background: #fff;margin-top: 20px;padding: 20px;">
   <!--国家-->
-  {%
+  {#{%
     set countryList = [
     {
     "id": 0,
@@ -174,13 +174,13 @@
     "country": "奥地利"
     }
     ]
-    %}
+    %}#}
     <div class="dui-layout-con  study-focus" style="width: 1140px;float: none;">
       <div class="select-country  foucus-public foucus-public-d clearfix" style="margin-left: 0px;width: 1140px;">
         <p><span>国家及地区：</span></p>
         <ul class="select-list" style="width: 1016px;">
           {% for cItem in countryList %}
-          <li id="" data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('chief','n=' + cItem.id)}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country}}</a></li>
+          <li id="" data-id="{{cItem.id}}"><a href="{{helper.active_urlgen('chief','n=' + cItem.id)}}" class={{'focus-on' if cItem.id == country else ""}}>{{cItem.country_name}}</a></li>
           {% endfor %}
         </ul>
       </div>
@@ -210,6 +210,7 @@
 
 {% include "widget/new_footer/common_footer.html" %}
 <!-- =====活动弹窗===== -->
+{% include "widget2/active_popup/active_popup.html" %}
 <script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
@@ -303,20 +304,31 @@
 var loadMoreFlag = true;
 var page
 $(document).ready(function (){
-    page = $('#main_con').data('page') + 1;
-    $(window).on('scroll', function () {
-        var $scroll = $(window).scrollTop();
-        // var con = document.getElementById('main_con').offsetHeight;
-        var doc = $(document).height()
-        var win = $(window).height()
-        if ($scroll >= (doc - win) - 500) {
-          if (loadMoreFlag) {
-            loadMoreFlag = false;
-            $('.guwen_more').show();
-            setTimeout(chiefmore, 2000);
-          }
-        }
-    });
+  page = $('#main_con').data('page') + 1;
+  $(window).on('scroll', function () {
+    var $scroll = $(window).scrollTop();
+    // var con = document.getElementById('main_con').offsetHeight;
+    var doc = $(document).height()
+    var win = $(window).height()
+    if ($scroll >= (doc - win) - 500) {
+      if (loadMoreFlag) {
+        loadMoreFlag = false;
+        $('.guwen_more').show();
+        setTimeout(chiefmore, 2000);
+      }
+    }
+  });
+  $(".advisor-code").on('click',function(){
+    if($(this).next().css("display")=="block"){
+      $(this).next().css("display","none");
+      $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/erweima@2x.png) no-repeat 0 0',
+      'background-size':'70px 70px'})
+    }else{
+      $(this).next().css("display","block");
+      $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/personal@2x.png) no-repeat 0 0',
+      'background-size':'70px 70px'})
+    }
+  })
 })
 function chiefmore () {
   var login_ss = {};
@@ -376,6 +388,18 @@ function chiefmore () {
         }
         mainhtml += '</div>';
         $('#main_con').append($(mainhtml));
+        $(".advisor-code").unbind('click');
+        $(".advisor-code").on('click',function(){
+          if($(this).next().css("display")=="block"){
+            $(this).next().css("display","none");
+            $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/erweima@2x.png) no-repeat 0 0',
+            'background-size':'70px 70px'})
+          }else{
+            $(this).next().css("display","block");
+            $(this).css({'background':'url('+ajaxUrlPrefix.cdnhost+'/assets/img/personal@2x.png) no-repeat 0 0',
+            'background-size':'70px 70px'})
+          }
+        })
       } else {
         $('.guwen_more').hide();
         loadMoreFlag = false;
@@ -398,6 +422,7 @@ function additem(item) {
             '<li class="guanzhu" style="width: 131px">粉丝<span class="guanzhu-num_'+item.uid+'" data-fans="'+item.fans_count+'" style="padding-left: 10px;">'+item.fans_count+'</span></li>'+
             '<li style="width: 135px">文章<span class="article-num">'+ item.article_count +'</span></li>'+
             '</ul>'+
+            '<div class="advisor-info-box" style="height:400px">'+
             '<dl>'+
             '<dt class="advisor-img" onclick="advisor_img('+item.uid+')" style="background-image: url('+fn.avaterimg(item.uid, 'small', item.status,item.version)+');background-position: 0 0;cursor: pointer;"></dt>'+
             '<dd>'+
@@ -433,11 +458,17 @@ function additem(item) {
   } else {
     html += '<span class="advisor-guanzhu guanzhu-btn_'+item.uid+'" data-uid="'+item.uid+'" onclick="guanzhu('+item.uid+')">关注</span>';
   }  
-  html += '</div>';
-  if (item.header_avatar_big) {
-    html += '<div class="tan_tupian" style="width: 220px;height: 276px;position: absolute;top: 0;left: 236px;z-index: 999;display: none"><img src="'+ advisor.header_avatar_big +'" alt=""></div>';
-  }
-  html += '</div>';
+  html += '</div>'+
+          '<div class="advisor-code"></div>'+
+          '<div class="advisor-code-open">'+
+            '<div class="advisor-code-open-top">'+
+              '<img class="advisor-code-open-img" src="'+fn.imageThumb(item.qrcode)+'" />'+
+            '</div>'+
+            '<div class="advisor-code-open-bottom">扫一扫，免费咨询'+
+            '</div>'+
+          '</div>'+
+          '</div>'+
+          '</div>';
   return html
 }
 </script>

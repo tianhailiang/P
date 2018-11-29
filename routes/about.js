@@ -33,17 +33,11 @@ function split_array(arr, len) {
 
 //参赞聚合页面
 exports.canzan = function (req, res, next) {
-  log.info('参赞聚合页',req.params);
+  log.debug('参赞聚合页');
   var data = [];
-  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
-  var qianzhengzhinan_currentPage=req.query.page || 1;
   var country = req.query.n || 0;
-  var articleId = req.params.id;
-  var page =req.query.page || 1;
-  var order =req.query.article || 1;
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
-  console.log('url', l.h);
   if (l.h !== undefined) {
       data.url = l.h;
   } else {
@@ -51,14 +45,10 @@ exports.canzan = function (req, res, next) {
   }
   data.login_info = ''
   if ( req.cookies.login_ss !== undefined) {
-    console.log('aaaaaa');
     data.login_info = JSON.parse(req.cookies.login_ss);
-    console.log('data.login_info', data.login_info);
   }else{
     data.login_info ={};
     data.login_info.uid = 0;
-    //res.redirect(config.wwhost+'/login');
-    //return false;
   }
   async.parallel({
     userinfo:function(callback){
@@ -71,19 +61,9 @@ exports.canzan = function (req, res, next) {
   }, function (err, result){
     data.userinfo = returnData(result.userinfo,'userinfo');
     data.canzanlist = returnData(result.canzanlist,'canzanlist');
-    log.info('个人信息',data.userinfo)
-    data.country=country;
-    data.route = 'team';
-    data.pageType = '文案团队';
-    data.path = 'TEAMDETAIL';
-    data.pageroute='team';
-    data.area=area;
     data.tdk = {
       pagekey: 'COUNSELLER', //key
-      cityid: area, //cityid
-      nationid: country//nationi
     };
-    data.esikey = esihelper.esikey();
     res.render('about/canzan', data);
 
   });

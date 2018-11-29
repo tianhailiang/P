@@ -461,7 +461,8 @@ $(document).ready(function(){
         var soUrlObj = {
             "留学": {
                 "文章": 'so_article',
-                "顾问": 'so_advisor'
+                "顾问": 'so_advisor',
+                "案例": 'so_case'
             },
             "移民": {
                 "文章": 'yimin_so_article',
@@ -528,6 +529,10 @@ $(document).ready(function(){
             $("#search-page").val('');
             $("#search-page").attr('placeholder','请输入您感兴趣的顾问姓名');
         }
+        else if (chooseType == '案例') {
+            $("#search-page").val('');
+            $("#search-page").attr('placeholder','请输入要搜索的院校名称');
+        }
     });
     $("#searchBtn-page").click(function () {
         var so_key_word = $.trim($("#search-page").val());
@@ -542,6 +547,19 @@ $(document).ready(function(){
             }
         }
     });
+    $('#cases-page-btn').click(function(){
+        var so_key_word = $.trim($("#cases-page-input").val());
+        var so_type = '案例';
+        if (so_key_word.length == 0 || so_key_word == '请输入你想了解的关键字') {
+            alert($("#cases-page-input").attr('placeholder'));
+            $('#cases-page-input').focus();
+        }
+        else {
+            if (!checkSpecialCode(so_key_word)){
+                window.open(fn.no_urlgen(getSoUrl('留学',so_type), 'q=' + so_key_word));
+            }
+        }
+    })
 //回车键搜索
     $(document).keyup(function(event){
         if(event.keyCode ==13){
@@ -551,6 +569,9 @@ $(document).ready(function(){
             }
             else if (curIdName == 'search-page') {
                 $("#searchBtn-page").trigger("click");
+            }
+            else if (curIdName == 'cases-page-input') {
+                $("#cases-page-btn").trigger('click');
             }
         }
     });

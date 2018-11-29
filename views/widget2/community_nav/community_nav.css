@@ -25,21 +25,26 @@
   margin-top: 8px;
 }
 .connect-info img {
-  vertical-align: super;
   margin-right: 10px;
-  position: relative;
-  top: 3px;
+  float: left;
+  margin-top: 6px;
+}
+.connect-info span {
+  float: left;
+  line-height: 24px;
 }
 .connect-info .zixun-info {
-  font-size: 12px;
+  font-size: 16px;
   color: #666;
 }
 .connect-info .zixun-phone {
-  font-size: 14px;
-  color: #333;
+  font-size: 18px;
+  color: #c13232;
+  font-weight: bold;
 }
 .connect-info .zixun-btn {
-  display: inline-block;
+  /* display: inline-block; */
+  float: left;
   width: 76px;
   height: 24px;
   text-align: center;

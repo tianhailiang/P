@@ -190,8 +190,8 @@ var apis = {
   "get_daxuepaiming_recommend": prefix + 'daxuepaiming_recommend',
   //文章评论
   "get_reviewArticle": shequ_prefix + 'article/save_comment/',
-  // 获取用户信息（普通用户，顾问，参赞）
-  "get_userinfo": shequ_prefix + 'account/info/',
+  // 获取用户信息（普通用户，顾问，参赞） http://192.168.201.111:8080/so/api/account/info/
+  "get_userinfo": so_prefix + 'account/info',
   //用户中心-我的关注
   "get_user_follow": shequ_prefix + 'account/friends/',
   //顾问中心-关注我的
@@ -204,6 +204,8 @@ var apis = {
   "get_article_uid": so_prefix + 'article/getUid',
   //首席顾问列表
   "top_adviser_list": so_prefix + 'top_adviser_list',
+  //首席顾问国家tab
+  "getChiefCountryList": so_prefix + 'getChiefCountryList',
   // 顾问个人主页文章统计
   "article_count": so_prefix + 'user/article_count',
   //用户相册
@@ -247,7 +249,7 @@ var apis = {
   "assessment": cms_out_prefix +'assessment',
   //顾问主页 个人视角
   //get_so_article_list
-  "get_so_article_list": shequ_prefix + 'search/search_article/',
+  "get_so_article_list": so_prefix + 'search/search_article',
   //国家文章列表
   // "get_search_article_list": shequ_prefix + 'search/search_article_list/',
   "get_search_article_list": so_prefix + 'search/search_article_list',

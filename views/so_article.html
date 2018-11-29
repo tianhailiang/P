@@ -55,14 +55,17 @@
                 <input type="radio" name="page-search-type" id="article" value="文章" checked class="checked"/>
                 <label for="article" style="margin-right: 20px;"><span><i></i></span>搜文章</label>
                 <input type="radio" name="page-search-type" id="adviser" value="顾问"/>
-                <label for="adviser"><span><i></i></span>搜顾问</label>
+                <label for="adviser" style="margin-right: 20px;"><span><i></i></span>搜顾问</label>
+                <input type="radio" name="page-search-type" id="case" value="案例"/>
+                <label for="case"><span><i></i></span>搜案例</label>
             </div>
             <div class="result-bar">
                 搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{article_list.total if article_list.total else 0}}</span>个结果
             </div>
             {% if article_list.total == 0 or article_list.total == null %}
             <!--没有搜索到数据-->
-            <div class="no-result page-blank">
+            <div class="no-result page-bl
+            ank">
                 <img src="{{helper.cdnhost}}/assets/img/blank.png" alt="" class="blank-img"/>
                 <span class="blank-info">没有搜索到相关内容，换个关键词试试吧</span>
             </div>
