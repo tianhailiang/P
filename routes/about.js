@@ -215,8 +215,37 @@ exports.middle = function (req, res, next) {
 }
 // 大学
 exports.colleges = function (req, res, next) {
-  var id = req.params.id;
-  res.render('about/colleges');
+  var articleId = req.params.id;
+  //node获取地址栏url
+  var data = []
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_nickname = '';
+  async.parallel({
+    schooltopic: function (callback) {
+      cms.schooltopic({
+        id:articleId,
+      }, callback);
+    },
+  }, function (err, result){
+    // log.info(result)
+    // data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    data.schooltopic = result.schooltopic.data;
+    console.log('data.schooltopic', data.schooltopic);
+    data.pageroute="colleges";
+    data.tdk = {
+      pagekey: 'COLLEGES', //key
+      cityid: '', //cityid
+      nationid: '' //nationi
+    };
+
+    res.render('about/colleges', data);
+  })
 }
 //留学活动--中间页面
 exports.activity_ip = function (req, res, next) {
