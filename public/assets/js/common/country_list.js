@@ -118,12 +118,6 @@ var tag_list = [{
     104,105,106,107,108,109,110,111,112,113,114],
   edu: [1,2,3,4]
 }, {
-  tagId : 13,
-  tagName: '留学案例',
-  country: [1,2,3,4,5,50,51,52,54,55,100,101,102,103,
-    104,105,106,107,108,109,110,111,112,113,114],
-  edu: [1,2,3,4]
-}, {
   tagId : 14,
   tagName: '专业解析',
   country: [1,2,3,4,5,50,51,52,54,55,100,101,102,103,
@@ -236,19 +230,59 @@ var tag_list = [{
   country: [1,2,3,4,5,50,51,52,54,55,100,101,102,103,
     104,105,106,107,108,109,110,111,112,113,114],
   edu: [1,2,3,4]
+}, {
+  tagId : 13,
+  tagName: '留学案例',
+  country: [1,2,3,4,5,50,51,52,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
 }]
 function screenTag (country,...eduList) {
   //根据国家 学历参数筛选标签
   console.log('country ',country)
   console.log('eduList ',eduList)
+  let eHtml = '';
+  let tHtml = '';
   if (country == 0 && eduList[0] == 0) {
     //默认国家全部 学历全部 循环所有标签
     for (let eItem of edu_list) {
       console.log('全部学历 ',eItem.eduName)
+      eHtml += `
+        <span class="level-sel" >
+          <i class="level-sel-i iconfont"></i>
+          <i>${eItem.eduName}</i>
+        </span>
+      `;
     }
+    $("#eduTag").html(eHtml);
+    let style = '';
     for (let tItem of tag_list) {
-      console.log('全部标签 ',tItem.tagName)
+      // console.log('全部标签 ',tItem.tagName)
+      if (tItem.tagId == 9) {
+        style = 'margin-right:38px;';
+      } else {
+        style = '';
+      }
+      if (tItem.tagId != 13) {
+        tHtml += `
+          <span class="recommend-sel" data-str="${tItem.tagName}"
+            style="${style}">
+            <i class="level-sel-i iconfont"></i>
+            <i>${tItem.tagName}</i>
+          </span>
+        `;
+      } else {
+        tHtml += `
+          <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
+            <i class="level-sel-i iconfont"></i>
+            <i>留学案例</i>
+            <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+            </i>
+          </span>
+        `;
+      }
     }
+    $('#tag').html(tHtml);
   } else if(country == 0 && eduList[0] != 0) {
     //在国家没选择情况下 勾选学历
     console.log('请先选择国家')
@@ -259,20 +293,51 @@ function screenTag (country,...eduList) {
     for (let eItem of edu_list) {
       if (eItem.country.includes(country)) {
         console.log('选择国家时学历 ',eItem.eduName)
+        eHtml += `
+          <span class="level-sel" >
+            <i class="level-sel-i iconfont"></i>
+            <i>${eItem.eduName}</i>
+          </span>
+        `;
         edu_id_List.push(eItem.eduId)
       }
     }
+    $("#eduTag").html(eHtml);
     console.log('选择国家时学历数组ID ',edu_id_List)
     for (let tItem of tag_list) {
       if(tItem.country.includes(country)) {
         for (let eduId of edu_id_List) {
           if (tItem.edu.includes(eduId)) {
-            console.log('选择国家时标签 '+tItem.tagId,tItem.tagName)
+            // console.log('选择国家时标签 '+tItem.tagId,tItem.tagName)
+            if (tItem.tagId == 9) {
+              style = 'margin-right:38px;';
+            } else {
+              style = '';
+            }
+            if (tItem.tagId != 13) {
+              tHtml += `
+                <span class="recommend-sel" data-str="${tItem.tagName}"
+                  style="${style}">
+                  <i class="level-sel-i iconfont"></i>
+                  <i>${tItem.tagName}</i>
+                </span>
+              `;
+            } else {
+              tHtml += `
+                <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>留学案例</i>
+                  <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                  </i>
+                </span>
+              `;
+            }
             break;
           }
         }
       }
     }
+    $('#tag').html(tHtml);
   } else if (country !=0 && eduList[0] != 0) {
     //点击学历时 变换所有标签
     for (let tItem of tag_list) {

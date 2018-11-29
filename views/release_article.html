@@ -100,7 +100,6 @@
                 {"countryId":"113","txt":"瑞士"},
                 {"countryId":"114","txt":"奥地利"}]
               %}
-              <!-- <select id="apply-country" onchange="changeForm(this.value)"> -->
               <select id="apply-country">
                 <option value="0">请选择</option>
                 {% for item in countryList %}
@@ -125,75 +124,18 @@
               <label class="title" for="level" style="padding-left: 14px;">
                 <!-- <span>*</span> --> 选择学历标签：
               </label>
-              <div style="display: inline-block">
-                <!-- <span class="level-sel" >
-                  <i class="level-sel-i iconfont"></i>
-                  <i>中学</i>
-                </span>
-                <span class="level-sel">
-                  <i class="level-sel-i iconfont"></i>
-                  <i>本科</i>
-                </span>
-                <span class="level-sel">
-                  <i class="level-sel-i iconfont"></i>
-                  <i>硕士</i>
-                </span>
-                <span class="level-sel">
-                  <i class="level-sel-i iconfont"></i>
-                  <i>博士</i>
-                </span> -->
-              </div>
-               <span class="numTip" style="display: block;margin-left: 128px;">
-                  学历标签可多选
-               </span>
+              <div id="eduTag" style="display:inline-block;"></div>
+              <span class="numTip" style="display: block;margin-left: 128px;">
+                学历标签可多选
+              </span>
             </div>
             <div class="rel-case-text1 newsletter-hide clearfix" style="margin-top: 20px;">
               <label class="title active" for="recommend" style="float:left;">
                 <span>*</span> 选择推荐标签：
               </label>
               <div class="recommend-tag" >
-                {% set recommendList = [
-                      { "name":"留学初识","val":"留学初识" },
-                      { "name":"本科选校","val":"本科选校" },
-                      { "name":"硕士选校","val":"硕士选校" },
-                      { "name":"留学打工","val":"留学打工" },
-                      { "name":"本硕连读","val":"本硕连读" },
-                      { "name":"动漫留学","val":"动漫留学" },
-                      { "name":"留学时间","val":"留学时间" },
-                      { "name":"接机住宿","val":"接机住宿" },
-                      { "name":"艺术留学","val":"艺术留学" },
-                      { "name":"QS排名","val":"QS排名" },
-                      { "name":"留学费用","val":"留学费用" },
-                      { "name":"大学排名","val":"大学排名" },
-                      { "name":"留学条件","val":"留学条件" },
-                      { "name":"专业解析","val":"专业解析" },
-                      { "name":"签证指导","val":"签证指导" },
-                      { "name":"就业指导","val":"就业指导" },
-                      { "name":"申请规划","val":"申请规划" },
-                      { "name":"行前指导","val":"行前指导" },
-                      { "name":"省钱攻略","val":"省钱攻略" },
-                      { "name":"文书准备","val":"文书准备" },
-                      { "name":"海外生活","val":"海外生活" },
-                      { "name":"院校资讯","val":"院校资讯" },
-                      { "name":"背景提升","val":"背景提升" },
-                      { "name":"留学方案","val":"留学方案" },
-                      { "name":"难点解析","val":"难点解析" },
-                      { "name":"备考资讯","val":"备考资讯" },
-                      { "name":"院校百科","val":"院校百科" }
-                ]  %}
-                {% for item in recommendList%}
-                  <span class="recommend-sel" data-str="{{item.name}}" style="{{ 'margin-right:38px;' if item.name== 'QS排名'}}{{'display: none;' if item.name == '动漫留学'}}"  id="{{ 'special-tag' if item.name== '动漫留学' else ''}}">
-                    <i class="level-sel-i iconfont"></i>
-                    <i>{{item.name}}</i>
-                  </span>
-                {% endfor %}
-                <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
-                  <i class="level-sel-i iconfont"></i>
-                  <i>留学案例</i>
-                  <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
-                  </i>
-                </span>
                 <div  style="display: block;">
+                  <div id="tag"></div>
                   <span class="recommend-sel" style="margin-right: 0px;" data-str="" id="recommend-sel-custom">
                     <i class="level-sel-i iconfont"></i>
                     <i>自定义标签</i>
@@ -265,20 +207,6 @@
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/showdown.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/common/country_list.js"></script>
   <script >
-    // function changeForm (val) {
-    //   var specialTag = $('#special-tag');
-    //   if (val == 51) {
-    //     specialTag.show();
-    //   }
-    //   else {
-    //     specialTag.find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
-    //     specialTag.find('.level-sel-i').next().css({'color':'#333'});
-    //     specialTag.attr('checked',false);
-    //     specialTag.hide();
-    //   } 
-    // }
-
-
     $(function(){
       var pdfList = JSON.parse($('.assistant-cont').attr('data-pdf'))|| [];
       if (window.ActiveXObject || "ActiveXObject" in window) {
@@ -408,7 +336,7 @@
           $('.newsletter-hide').slideDown();
           newTagStr = '';
           countryFlag = true;
-          screenTag($('#apply-country').val(),0) //点击非时讯加载学历和标签 默认学历为0
+          screenTag(Number($('#apply-country').val()),0) //点击非时讯加载学历和标签 默认学历为0
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '留学时讯';
@@ -419,7 +347,7 @@
       $('#apply-country').on('change',function(){
         //选择国家
         if (countryFlag) {
-          console.log('111')
+          screenTag(Number($('#apply-country').val()),0)
         }
       })
       //选择学历标签
