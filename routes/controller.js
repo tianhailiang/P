@@ -4443,3 +4443,7 @@ exports.chiefmore =function(req,res,next){
        }
      })
  }
+ //
+ exports.grouptemplate = function(req,res,next){
+  res.render('about/group-template');
+ }
