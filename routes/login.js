@@ -297,6 +297,7 @@ exports.bind_phone = function (req, res, next) {
   });
 }
 
+//用户注册
 exports.register = function (req, res, next) {
   log.debug('this router register~~');
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
@@ -350,7 +351,7 @@ exports.register_s = function (req, res, next) {
   //var qianzhengzhinan_pagesizee=req.query.pagesize || 12;
   //var country = req.query.country || 1;
   async.parallel({
-    //签证指南
+    //普通用户快速注册
     register_ss: function (callback) {
       cms.register_ss(req.body, callback);
     }
