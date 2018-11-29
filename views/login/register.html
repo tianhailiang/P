@@ -507,7 +507,7 @@ function outlogin () {
 
   function loginS () {
     var url = $(this).attr('data-url')
-    console.log('url',url);
+//    console.log('url',url);
     if ($('#newEmail').val() === '') {
       $('#login_e_phone_u').css('display','block');
       $('#login_error_text_phone_u').html('请输入手机号码');
@@ -556,9 +556,9 @@ function outlogin () {
       return
     }
     var sha1 = hex_sha1($('#password').val());
-    console.log('sha1'+sha1);
+//    console.log('sha1'+sha1);
     if ($('#newEmail').val() !== '' && $('#password').val() !== '' && $('#reg_verify').val() !== '' && /^\d{6}$/.test($('#reg_verify').val()) && /^[a-zA-Z0-9]{8,16}$/.test($("#password").val()) && /^1\d{10}$/.test($("#newEmail").val())) {
-      console.log('ajax')
+//      console.log('ajax')
       $.ajax({
         url: '/register_s',
         type:'POST',
@@ -569,8 +569,8 @@ function outlogin () {
         },
         dataType:'json',
         success:function(msg){
-          console.log('aaaaaaaaa')
-          console.log('msg ajax', msg);
+//          console.log('aaaaaaaaa')
+//          console.log('msg ajax', msg);
           if(msg.code === 0){
             //window.location= '/';
             // window.location = '/login'
@@ -636,7 +636,7 @@ function outlogin () {
       dataType:'json',
       withCredentials:true,
       success: function (msg) {
-        console.log('msg', msg);
+//        console.log('msg', msg);
         if (msg.code === 0) {
           var downcount = 60;
           var time = setInterval(function (){
@@ -660,7 +660,7 @@ function outlogin () {
         }
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
-        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
+//        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
         layer.msg("获取失败，请重试！CODE:"+XMLHttpRequest.status);
       }
     })
