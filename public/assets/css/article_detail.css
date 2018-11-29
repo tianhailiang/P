@@ -200,6 +200,8 @@
   font-size: 14px;
   line-height: 26px;
   color:#333;
+  margin-bottom: 12px;
+  text-align: justify;
   /* text-indent: 2em; */
 }
 .adviser-case-detail-offer i{
@@ -216,7 +218,7 @@
   list-style: decimal;
 }
 .adviser-case-detail-offer table {
-  margin: 10px 0;
+  margin: 10px auto;
 }
 .adviser-case-detail-offer table td,.adviser-case-detail-offer table th{
   border: 1px solid #dcdcdc;
