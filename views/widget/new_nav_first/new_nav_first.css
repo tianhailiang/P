@@ -92,7 +92,7 @@ form, input {
 }
 .new_nav_first .nav-right{
     float: right;
-    width: 382px;/*438px;*/
+    width: 400px;/*438px;*/
 }
 .new_nav_first .new-city{
     float:left;
@@ -395,7 +395,7 @@ form, input {
     line-height: 30px;
 }
 .new_nav_first .new-home-search .hot-tags-box {
-    width: 301px;
+    width: 278px;
     height: 132px;
     position: absolute;
     z-index: 2;
@@ -415,7 +415,7 @@ form, input {
 }
 .new_nav_first .new-home-search .hot-tags-box .hot-tags-cont {
     font-size: 0;
-    padding: 10px 14px;
+    padding: 10px 12px;
 }
 .new_nav_first .new-home-search .hot-tags-box .hot-tags-cont span {
     display: inline-block;
@@ -427,7 +427,7 @@ form, input {
     cursor: pointer;
     font-size: 12px;
     color: #C13232;
-    margin: 10px 7px;
+    margin: 10px 4px;
 }
 .new_nav_first .top-div{
     width: 560px;
