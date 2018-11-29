@@ -94,6 +94,9 @@ form, input {
     float: right;
     width: 400px;/*438px;*/
 }
+.new_nav_first_red .nav-right {
+    width: 390px;
+}
 .new_nav_first .new-city{
     float:left;
     position: relative;
