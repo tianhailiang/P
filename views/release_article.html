@@ -72,9 +72,7 @@
               <label class="title active" for="apply-country">
                 <span>*</span> 选择对应国家：
               </label>
-              {% set selectedId = '' %}
-              {% 
-                set countryList = [
+              {% set countryList = [
                 {"countryId":"1","txt":"美国"},
                 {"countryId":"2","txt":"英国"},
                 {"countryId":"3","txt":"加拿大"},
@@ -100,10 +98,11 @@
                 {"countryId":"107","txt":"芬兰"},
                 {"countryId":"109","txt":"荷兰"},
                 {"countryId":"113","txt":"瑞士"},
-                {"countryId":"114","txt":"奥地利"}
-              ] %}
-              <select id="apply-country" onchange="changeForm(this.value)">
-                <option value="">请选择</option>
+                {"countryId":"114","txt":"奥地利"}]
+              %}
+              <!-- <select id="apply-country" onchange="changeForm(this.value)"> -->
+              <select id="apply-country">
+                <option value="0">请选择</option>
                 {% for item in countryList %}
                   <option value="{{item.countryId}}">{{item.txt}}</option>
                 {% endfor %}
@@ -126,22 +125,24 @@
               <label class="title" for="level" style="padding-left: 14px;">
                 <!-- <span>*</span> --> 选择学历标签：
               </label>
-              <span class="level-sel" >
-                <i class="level-sel-i iconfont"></i>
-                <i>中学</i>
-              </span>
-              <span class="level-sel">
-                <i class="level-sel-i iconfont"></i>
-                <i>本科</i>
-              </span>
-              <span class="level-sel">
-                <i class="level-sel-i iconfont"></i>
-                <i>硕士</i>
-              </span>
-              <span class="level-sel">
-                <i class="level-sel-i iconfont"></i>
-                <i>博士</i>
-              </span>
+              <div style="display: inline-block">
+                <!-- <span class="level-sel" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>中学</i>
+                </span>
+                <span class="level-sel">
+                  <i class="level-sel-i iconfont"></i>
+                  <i>本科</i>
+                </span>
+                <span class="level-sel">
+                  <i class="level-sel-i iconfont"></i>
+                  <i>硕士</i>
+                </span>
+                <span class="level-sel">
+                  <i class="level-sel-i iconfont"></i>
+                  <i>博士</i>
+                </span> -->
+              </div>
                <span class="numTip" style="display: block;margin-left: 128px;">
                   学历标签可多选
                </span>
@@ -262,19 +263,22 @@
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/html2markdown.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/markdown_dom_parser.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/showdown.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/common/country_list.js"></script>
   <script >
-    function changeForm (val) {
-      var specialTag = $('#special-tag');
-        if (val == 51) {
-          specialTag.show();
-        }
-        else {
-          specialTag.find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
-          specialTag.find('.level-sel-i').next().css({'color':'#333'});
-          specialTag.attr('checked',false);
-          specialTag.hide();
-        } 
-    }
+    // function changeForm (val) {
+    //   var specialTag = $('#special-tag');
+    //   if (val == 51) {
+    //     specialTag.show();
+    //   }
+    //   else {
+    //     specialTag.find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+    //     specialTag.find('.level-sel-i').next().css({'color':'#333'});
+    //     specialTag.attr('checked',false);
+    //     specialTag.hide();
+    //   } 
+    // }
+
+
     $(function(){
       var pdfList = JSON.parse($('.assistant-cont').attr('data-pdf'))|| [];
       if (window.ActiveXObject || "ActiveXObject" in window) {
@@ -308,12 +312,12 @@
         }
         if (flag) {//支持
           pdfShow(pdfList[1].file_path);//调用显示的方法
-        }else {//不支持
+        } else {//不支持
           $(".img-content").append("对不起,您还没有安装PDF阅读器软件呢,为了方便预览PDF文档,请选择安装！");
           alert("对不起,您还没有安装PDF阅读器软件呢,为了方便预览PDF文档,请选择安装！");
           location = "http://ardownload.adobe.com/pub/adobe/reader/win/9.x/9.3/chs/AdbeRdr930_zh_CN.exe";
         }
-      }else {
+      } else {
         pdfShow(pdfList[1].file_path);//调用显示的方法
       }
       function pdfShow(url){
@@ -388,38 +392,12 @@
           $("#word-num").html(0);
           this.value  = this.value.substring(0, 200);
         }
-      }); 
-      //国家筛选学历、标签表
-        // {"countryId":"1","txt":"美国"},
-        // {"countryId":"2","txt":"英国"},
-        // {"countryId":"3","txt":"加拿大"},
-        // {"countryId":"4","txt":"澳大利亚"},
-        // {"countryId":"5","txt":"新西兰"},
-        // {"countryId":"51","txt":"日本"},
-        // {"countryId":"50","txt":"韩国"},
-        // {"countryId":"54","txt":"中国香港"},
-        // {"countryId":"55","txt":"中国澳门"},
-        // {"countryId":"100","txt":"俄罗斯"},
-        // {"countryId":"101","txt":"乌克兰"},
-        // {"countryId":"108","txt":"爱尔兰"},
-        // {"countryId":"111","txt":"意大利"},
-        // {"countryId":"112","txt":"西班牙"},
-        // {"countryId":"102","txt":"白俄罗斯"},
-        // {"countryId":"52","txt":"新加坡"},
-        // {"countryId":"53","txt":"马来西亚"},
-        // {"countryId":"110","txt":"丹麦"},
-        // {"countryId":"103","txt":"德国"},
-        // {"countryId":"104","txt":"法国"},
-        // {"countryId":"105","txt":"挪威"},
-        // {"countryId":"106","txt":"瑞典"},
-        // {"countryId":"107","txt":"芬兰"},
-        // {"countryId":"109","txt":"荷兰"},
-        // {"countryId":"113","txt":"瑞士"},
-        // {"countryId":"114","txt":"奥地利"}
+      });
       //选择文章类型
       var newsletterType = null;
       var newTagStr = '';
       var artType = 2;  // 1 是案例 2是专栏
+      var countryFlag = false;
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
         $('.art-type-i').html('').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'});
@@ -429,12 +407,21 @@
         if($(this).index()==2){
           $('.newsletter-hide').slideDown();
           newTagStr = '';
+          countryFlag = true;
+          screenTag($('#apply-country').val(),0) //点击非时讯加载学历和标签 默认学历为0
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '留学时讯';
           artType = 2 ;
+          countryFlag = false;
         }
       });
+      $('#apply-country').on('change',function(){
+        //选择国家
+        if (countryFlag) {
+          console.log('111')
+        }
+      })
       //选择学历标签
       $('.level-sel').on('click',function(){
         // console.log($(this).attr('checked'))
