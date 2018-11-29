@@ -114,21 +114,23 @@ exports.lawyer = function (req, res, next) {
 //留学活动
 exports.activity = function (req, res, next) {
   var data = [];
-  var area = 1;
-  if (req.params[0]) {
-    var cityId = comfunc.getCityId(req.params[0]);
-    if(cityId && cityId !== comfunc.INVALID_ID){
-      area = cityId;
-      res.cookie("currentarea", cityId, {domain: config.domain});
-    }
-  }
+  // var area = 1;
+  //node获取地址栏url
+  console.log('url---------', req.url);
+  var l = url.parse(req.url, true).query;
+  console.log('url++++++++++', l);
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+  // if (req.params[0]) {
+  //   var cityId = comfunc.getCityId(req.params[0]);
+  //   if(cityId && cityId !== comfunc.INVALID_ID){
+  //     area = cityId;
+  //     res.cookie("currentarea", cityId, {domain: config.domain});
+  //   }
+  // }
   var country = req.query.n || 0;
   var articleId = req.params.id;
   var page =req.query.page || 1;
   var order =req.query.article || 1;
-  //node获取地址栏url
-  var l = url.parse(req.url, true).query;
-  console.log('url', l.h);
   if (l.h !== undefined) {
     data.url = l.h;
   } else {
@@ -178,9 +180,12 @@ exports.activity = function (req, res, next) {
 }
 //留学活动--中间页面
 exports.activity_ip = function (req, res, next) {
+  console.log('area--------', req.url)
   var area = req.cookies.currentarea;
+  var url = req.url.substring(9)
+  console.log('area--------', url)
   if(area){
-    res.redirect(helperfunc.active_urlgen('activity','c='+area));
+    res.redirect(helperfunc.active_urlgen('activity','c='+area, url));
   }else{
     var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
     if(ip.split(',').length>0){
@@ -195,10 +200,10 @@ exports.activity_ip = function (req, res, next) {
         var cityCode ='';
         if(b.content){
           cityCode = get_area_code(b.content.address_detail.city);
-          res.redirect(helperfunc.active_urlgen('activity','c='+cityCode));
+          res.redirect(helperfunc.active_urlgen('activity','c='+cityCode, url));
         }
       }else{
-        res.redirect(helperfunc.active_urlgen('activity','c='+1));
+        res.redirect(helperfunc.active_urlgen('activity','c='+1, url));
       }
     })
   }

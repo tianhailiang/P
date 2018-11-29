@@ -104,7 +104,7 @@
 <script>
 
   function showd (year) {
-    console.log(year+'showd')
+    // console.log(year+'showd')
     $("div[id$='_year']").css('display', 'none')
     $('#'+ year+ '_year').css('display', 'block')
     $("li[id$='_down']").find("div").find("i").removeClass('down1')
@@ -114,7 +114,7 @@
     window.location.href = '/about/events.html#' + year
   }
   function showyear (year) {
-    console.log('key',year)
+    // console.log('key',year)
     window.location.href = '/about/events.html#' + year
     $('#' + year) .parents(".curyear").children(".month-box").css("display","block");
     $('#' + year).parents(".curyear").children(".kong").css("display","block");

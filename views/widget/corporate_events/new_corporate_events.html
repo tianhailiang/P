@@ -348,7 +348,7 @@
         },
         dataType:'json',
         success:function(msg){
-          console.log('msg', msg);
+          // console.log('msg', msg);
           evemore(msg);
           evemore_slide(msg);
         },
@@ -385,7 +385,7 @@
     for (var key in msg) {
       s++;
       if (s == 1) {
-        console.log('sss',s)
+        // console.log('sss',s)
         html += '<div id="'+key.substring(0,4)+'_year" style="display: none;">'
       }
       html += '<li>';
@@ -558,7 +558,7 @@
     // })
     console.log('yeareve', $('#zuihou').attr('data-year'))
     if ($('#zuihou').attr('data-year') == 1999) {
-      console.log('aaaaaaa');
+      // console.log('aaaaaaa');
       $('.curyear:last').find(".kong").eq(0).css("display","none");
       $('#eve_more').css("display","none");
     }
