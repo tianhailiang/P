@@ -94,7 +94,7 @@
         {% else %}
         <p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -48px;">金吉列分公司</p>
         {% endif %}
-        <p class="advisor-enjoy">{{ advisor.position_name }}咨询顾问</p>
+        <p class="advisor-enjoy">{{ advisor.position_name if advisor.position_name else '咨询顾问'}}</p>
       </dd>
     </dl>
     <div class="advisor-intro">
