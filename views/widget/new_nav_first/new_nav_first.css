@@ -94,7 +94,7 @@ form, input {
     float: right;
     width: 400px;/*438px;*/
 }
-.new_nav_first_red .nav-right {
+.new_nav_first_red .nav-right-short {
     width: 390px;
 }
 .new_nav_first .new-city{
@@ -111,7 +111,7 @@ form, input {
 }
 #city-on{
     font-size: 18px;
-    padding: 0 2px;
+    padding: 0 4px;
 }
 .new_nav_first_white .new-city .icon-top {
     color: #C13232;
@@ -121,14 +121,15 @@ form, input {
 }
 .new_nav_first .new-city  .icon-top{
     font-size: 20px;
+    float: left;
     /*position: absolute;
     top: 1px;
     left: -24px;*/
-    top: 1px;
-    line-height: 20px;
+    /* top: 1px;
+    line-height: 20px; */
 }
 .new_nav_first .new-city  .city-icon {
-    top: -1px;
+    /* top: -1px; */
 }
 .new_nav_first .new-city .city-cc{
     width:100px;
