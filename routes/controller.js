@@ -3104,8 +3104,6 @@ exports.release_article = function(req,res,next){
     },function (err, result) {
         data.userinfo = returnData(result.userinfo,'userinfo');
         data.getpdf = returnData(result.getpdf,'getpdf');
-        // log.info(data.getpdf)
-        // log.info(data.getpdf[1])
         data.getpdf = JSON.stringify(data.getpdf);
         var pagekey = null;
         if(data.userinfo.usertype ==2){
@@ -3142,10 +3140,8 @@ exports.release_article = function(req,res,next){
             };
             data.esikey = esihelper.esikey();
             if(data.login_info.adviser == 1){
-                log.info('留学')
                 res.render('release_article',data);
             }else if(data.login_info.adviser == 2){
-                log.info('移民')
                 res.render('release_article_yimin',data);
             }
         })

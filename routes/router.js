@@ -268,4 +268,7 @@ exports = module.exports = function (app) {// routes
     res.render('pdf',data)
   })
   app.get('/gwzs', login.gwzs); // 顾问个人主页确认文章数
+  app.get('/tag',function (req,res,next){
+    res.render('tag','')
+  })
 };
