@@ -1,5 +1,68 @@
+.banner {
+	width: 100%;
+	height: 500px;
+	overflow: hidden;
+	background: #333
+}
 
+.banner .btn-box {
+	width: 450px;
+	height: 100px;
+	margin: 420px auto
+}
 
+.banner .btn-box a {
+	display: block;
+	font-size: 16px;
+	text-align: center;
+	line-height: 40px;
+	color: #fff;
+	float: left;
+	width: 136px;
+	height: 40px;
+	box-sizing: border-box;
+	border-radius: 5px
+}
+
+.banner .btn-box .md-btn {
+	margin-left: 150px
+}
+
+.content-title {
+	width: 1000px;
+	margin: 20px auto;
+	text-align: center;
+	color: #bf3436;
+	height: 40px;
+	line-height: 40px
+}
+
+.content-title p {
+	font-size: 28px
+}
+
+.content-title span {
+	display: inline-block;
+	border-bottom: 1px solid #bf3436;
+	width: 245px;
+	vertical-align: middle;
+	margin: 0 10px
+}
+
+.content-title .gray-title {
+	font-size: 16px;
+	color: #bbb;
+	height: 20px;
+	line-height: 20px
+}
+.new_nav_first .nav-right .search-type-box .search-type .search-type-text {
+	font-size: 12px;
+}
+/* 2018-11-30 */
+*{
+  margin:0;
+  padding: 0;
+}
 .clearfix:after {
 	clear: both;
 	display: block;
@@ -18,25 +81,28 @@ ul {
 	padding-left: 0;
 	list-style: none;
 }
-
+.item-body-list{
+  margin-top: 120px;
+}
 .item-body-list li {
 	float: left;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 	margin-right: 22px;
 	padding: 26px 20px;
-	width: 278px;
+  width: 278px;
+  height: 254px;
 	border-top: solid 3px #c13232;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
-	border-radius: 4px;
 	-webkit-box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
-	-moz-box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
+  -moz-box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
 	box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
 	text-align: center;
 	cursor: default;
-	-ms-border-radius: 4px;
-	-ms-box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+
 }
 
 .item-body-list li:last-child {
@@ -133,7 +199,7 @@ ul {
 .item-plane-text li {
 	padding-left: 15px;
 	height: 30px;
-	background: url(C:/Users/DXZ-Rongfa.Huang/Desktop/arrow.png) no-repeat left center;
+	background: url(/assets/img/about/arrow.png) no-repeat left center;
 	color: #666;
 	font-size: 16px;
 	line-height: 30px;
@@ -143,7 +209,8 @@ ul {
 	margin-bottom: 80px;
 	height: 524px;
 	max-height: 524px;
-	background: rgba(193, 50, 50, 0.02);
+  background: rgba(193, 50, 50, 0.02);
+  overflow: hidden;
 }
 
 .sort-left {
@@ -174,10 +241,27 @@ ul {
 }
 
 .sort-right {
-	overflow: hidden;
-	padding-top: 38px;
+	overflow: auto;
+  padding-top: 38px;
+  height: 524px;
+}
+/* 处理滚动条 */
+.sort-right::-webkit-scrollbar {
+  width: 6px;
+  height: 10px;
+}
+.sort-right::-webkit-scrollbar-thumb {
+  background-color: #ababab;
+  border-radius: 10px;
 }
 
+.sort-right::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+.sort-right::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+  border-radius: 10px;
+}
 .jieshao-item h1 {
 	position: relative;
 	margin-bottom: 66px;
@@ -198,7 +282,8 @@ ul {
 	margin-bottom: 24px;
 	padding-right: 20px;
 	color: #666;
-	line-height: 30px;
+  line-height: 30px;
+  font-size: 16px;
 }
 
 .sort-right .sort-title span {
@@ -265,7 +350,8 @@ ul {
 	padding: 52px 0 0 152px;
 	width: 100%;
 	height: 460px;
-	background: url(https://imgsa.baidu.com/news/q%3D100/sign=7dd63a14d0c451daf0f608eb86fd52a5/a8773912b31bb0519e1a11623b7adab44aede0ba.jpg) no-repeat;
+  /* background: url() no-repeat; */
+  background:#ccc;
 	background-size: cover;
 }
 
@@ -291,9 +377,12 @@ ul {
 	height: 34px;
 	outline: 0;
 	border: solid 1px #e5e5e5;
-	text-indent: 10px;
+  text-indent: 10px;
+  /* transition: 2s border */
 }
-
+.input-control:focus{
+  /* border:solid 1px red; */
+}
 .control-label {
 	margin-right: 12px;
 	color: #666;
@@ -338,4 +427,47 @@ ul {
 	font-size: 16px;
 	line-height: 1.42857143;
 	cursor: pointer;
+}
+
+#carouselContent{
+  position: relative;
+  overflow: hidden;
+}
+.arrow-left{
+  left: 10px;
+  background: url(/assets/img/zuo1.png) no-repeat
+}
+.arrow-right{
+  right: 10px;
+  background: url(/assets/img/you1.png) no-repeat
+}
+.carousel-slide{
+  width: 998px;
+}
+.pic-lengtend{
+  height: 120px;
+  padding-top:10px;
+  background: rgba(0, 0, 0, .50);
+  position: absolute;
+  bottom: 0;
+  width: 998px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center;
+}
+.swiper-slide img{
+  height: 560px;
+  width: 998px;
+}
+.progress{
+  position: fixed;
+  height: 2px;
+  top: 0;
+  left: 0;
+  background: #c13232;
+  z-index: 1005;
+  -webkit-transition: opacity .3s linear;
+  -moz-transition: opacity .3s linear;
+  transition: opacity .3s linear;
 }

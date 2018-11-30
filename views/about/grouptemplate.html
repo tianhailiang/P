@@ -1,31 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  {% include "header_new.html" %}
   <link href="{{helper.cdnhost}}/assets/css/animate.css" rel="stylesheet">
+  <link href="{{helper.cdnhost}}/assets/css/swiper-3.3.1.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/special_page.css">
-  {% import "widget/new_nav_first/common_nav.html" as common_nav %}
-  {{ common_nav.common_nav(tdk,helper) }}
+  <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/about.css">
+  <style>
+  .swiper-container{height: 560px;}
+  </style>
 </head>
 <body style="overflow-x:hidden;">
-  <!-- 专题模板body -->
-  <div class="main">
+    <div class="progress"></div>
+    {% include "widget/common_hide/common_hide.html"%}
+    {% include "widget/top/top.html" %}
+                                                                                                                                                   
+    {% import "widget/new_nav_first/common_nav.html" as common_nav %}
+    {{ common_nav.common_nav(tdk,helper) }}
     <div class="banner" style="background-image:url({{schooltopic.list.sch_background_map}});height: 500px; overflow:hidden;background-size:cover;background-position: center center">
-      <div class="wrap1">
-        <div class="btn-box">
-          <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
-          <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
+        <div class="wrap1">
+          <div class="btn-box">
+            <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
+            <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
+          </div>
         </div>
       </div>
-    </div>
+  <!-- 专题模板body -->
+  <div class="main">
     <!-- 集团简介 -->
     <div class="jt-summary clearfix">
       <div class="jt-summary-left">
-        <h2 class="wow fadeInLeft" data-wow-delay=".2s">集团简介</h2>
-        <p class="wow fadeInLeft" data-wow-delay=".4s">新华社马德里11月28日电（记者郝薇薇）当地时间11月28日，国家主席习近平在马德里出席西班牙国王
+        <h2 class="wow fadeInLeft" data-wow-delay=".1s">集团简介</h2>
+        <p class="wow fadeInLeft" data-wow-delay=".3s">新华社马德里11月28日电（记者郝薇薇）当地时间11月28日，国家主席习近平在马德里出席西班牙国王
           费利佩六世举行的隆重、盛大的欢迎仪式.新华社马德里11月28日电（记者郝薇薇）当地时间11月28日，国家主席习近平在马德里出席西班牙国王
           费利佩六世举行的隆重、盛大的欢迎仪式</p>
       </div>
@@ -50,7 +56,7 @@
             <dl>
                 <dt class="sort-title"><span>2</span>先进的住宿条件</dt>
                 <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
-              </dl>
+            </dl>
           </div>
         </div>
         <div class="item-body">
@@ -74,17 +80,37 @@
               </dl>
             </div>
           </div>
-          <!--  -->
+          <!-- 图片轮播 -->
+          <div id="carouselContent">
+            <div class="swiper-button-prev arrow-left"></div>
+            <div class="swiper-button-next arrow-right"></div>
+            <div class="swiper-container" style="width:998px;">
+              <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
+                    <p class="pic-lengtend">曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
+                  </div>
+                  <div class="swiper-slide">
+                      <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
+                      <p class="pic-lengtend">曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
+                    </div>
+                  <div class="swiper-slide">
+                      <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
+                      <p class="pic-lengtend">曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
+                    </div>
+              </div>
+            </div>
+          </div>
           <ul class="item-body-list clearfix">
-            <li class="wow bounceIn" data-wow-delay=".2s">
+            <li class="wow bounceInUp" data-wow-delay=".1s">
               <h2>项目介绍</h2>
               <p class="list-text">随时解决各种问题随时解决各种问题随时解决各种问题</p>
             </li>
-            <li class="wow bounceIn" data-wow-delay=".4s"><h2>学费信息</h2>
+            <li class="wow bounceInUp" data-wow-delay=".3s"><h2>学费信息</h2>
               <p class="list-text">随时解决各种问题随时解决各种问题随时解决各种问题</p>
             </li>
-            <li class="wow bounceIn" data-wow-delay=".6s"><h2>奖学金信息</h2></li>
-            <li class="wow bounceIn" data-wow-delay=".8s"><h2>金吉列申请优势</h2></li>
+            <li class="wow bounceInUp" data-wow-delay=".5s"><h2>奖学金信息</h2></li>
+            <li class="wow bounceInUp" data-wow-delay=".7s"><h2>金吉列申请优势</h2></li>
           </ul>
         </div>
       </div>
@@ -119,21 +145,18 @@
     </div>
   </div>
   {% include "widget/new_footer/common_footer.html" %}
-<script src="https://cdn.bootcss.com/wow/1.1.2/wow.min.js"></script>
-<script  src="{{helper.cdnhost}}/dep/js/jquery-1.9.1.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/wow.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/index.js"></script>
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/jquery.bxslider.js"></script>
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/swiper.min.js"></script>
 <script>
   $(function(){
-    //初始化
-    new WOW().init();
-    //
+     //
     isBrowser()
     function isBrowser(){
       if (navigator.appName === 'Microsoft Internet Explorer') { //是否是IE浏览器
@@ -142,6 +165,17 @@
         }
       }
     }
+    //初始化
+    new WOW().init();
+    //轮播图初始化
+    var mySwiper = new Swiper ('.swiper-container', {
+      loop: true,
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+      autoplay : 4000,
+    });
+    $('.progress').animate({ width: '100%', opacity: 0})
+
   })
 </script>
 </body>

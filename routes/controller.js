@@ -4444,6 +4444,37 @@ exports.chiefmore =function(req,res,next){
      })
  }
  //
- exports.grouptemplate = function(req,res,next){
-  res.render('about/group-template');
+ exports.grouptemplate = function(req,res,next){  ////院校模板-集团
+  var articleId = req.params.id;
+  //node获取地址栏url
+  var data = []
+  var l = url.parse(req.url, true).query;
+  console.log('url', l.h);
+  if (l.h !== undefined) {
+    data.url = l.h;
+  } else {
+    data.url = config.wwhost;
+  }
+  data.login_nickname = '';
+  async.parallel({
+    schooltopic: function (callback) {
+      cms.schooltopic({
+        id:articleId,
+      }, callback);
+    },
+  }, function (err, result){
+    // log.info(result)
+    // data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    data.schooltopic = result.schooltopic.data;
+    console.log('data.schooltopic', data.schooltopic);
+    data.pageroute="GROUTEMPLATE";
+    data.tdk = {
+      pagekey: 'GROUTEMPLATE', //key
+      cityid: '', //cityid
+      nationid: '' //nationi
+    };
+    res.render('about/grouptemplate', data);
+    
+  })
+  
  }
