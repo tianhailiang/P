@@ -433,7 +433,7 @@ function additem(item) {
     html += '<p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -48px;">金吉列分公司</p>';
   }
   html += '<p class="advisor-enjoy">';
-  if (item.position_name == null) {
+  if (item.position_name == null || item.position_name == '') {
     html += '咨询顾问</p>';
   } else {
     html += item.position_name+'</p>';
