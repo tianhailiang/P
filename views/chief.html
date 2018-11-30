@@ -432,10 +432,15 @@ function additem(item) {
   } else {
     html += '<p class="advisor-bumen" data-cityId ="" style="width: 200px;margin-left: -48px;">金吉列分公司</p>';
   }
-  html += '<p class="advisor-enjoy">'+ item.position_name+'咨询顾问</p>'+
-          '</dd>'+
-          '</dl>'+
-          '<div class="advisor-intro">';
+  html += '<p class="advisor-enjoy">';
+  if (item.position_name == null) {
+    html += '咨询顾问</p>';
+  } else {
+    html += item.position_name+'</p>';
+  }
+  html += '</dd>'+
+    '</dl>'+
+    '<div class="advisor-intro">';
   if (item.introduce.length > 74) {
     // html += '<p class="expand2_'+item.uid+'" data-tex="'+ fn.ellipsis(item.introduce, 74) +'" data-text="'+ item.introduce +'">'+ fn.ellipsis(item.introduce,74) +'<span class="expand_'+item.uid+'" onclick="text_show('+item.uid+')" data-text="'+ item.introduce +'" style="color: #c13232;margin-left: 6px;cursor: pointer">展开全部</span></p>'
     html += '<p class="expand2_'+item.uid+'" data-tex="'+ fn.ellipsis(item.introduce, 74) +'" data-text="'+ item.introduce +'">'+ fn.ellipsis(item.introduce, 74) +'</p>';
