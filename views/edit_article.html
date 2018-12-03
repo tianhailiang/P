@@ -78,7 +78,7 @@
                 {"countryId":"113","txt":"瑞士"},
                 {"countryId":"114","txt":"奥地利"}
               ] %}
-              <select id="apply-country" onchange="changeForm(this.value)">
+              <select id="apply-country">
                 {% for item in countryList %}
                   {% if item.countryId == article.article_info.country_id %}
                     <option value="{{item.countryId}}">{{item.txt}}</option>
@@ -135,9 +135,11 @@
                   "name":"博士"
                 }
               ] %}
-              {% for item in levelList %}
-                {{helper.eduChecked(item.name,article.article_info.edu_id,article.article_info.country_id) |safe }}
-              {% endfor %}
+              <div id="eduTag" style="display:inline-block;">
+                {% for item in levelList %}
+                  {{helper.eduChecked(item.name,article.article_info.edu_id,article.article_info.country_id) |safe }}
+                {% endfor %}
+              </div>
               <span class="numTip" style="display: block;margin-left: 128px;">
                 学历标签可多选
               </span>
@@ -236,57 +238,42 @@
   {% import "widget/new_slide/new_slide.html" as  slide %}
   {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
   <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
-    <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
-    <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+  <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/follow.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script  src="{{helper.cdnhost}}/assets/js/wangEditor.min.js"></script>
-  <!-- <script src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script> -->
-
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
-
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/html2markdown.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/markdown_dom_parser.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/showdown.js"></script>
-  <script >
-    function changeForm (val) {
-      var specialTag = $('#special-tag');
-        if (val == 51) {
-          specialTag.show();
-        }
-        else {
-          specialTag.find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
-          specialTag.find('.level-sel-i').next().css({'color':'#333'});
-          specialTag.attr('checked',false);
-          specialTag.hide();
-        } 
+  <script id="release_artcile_js">
+    if (!!window.ActiveXObject || "ActiveXObject" in window){
+      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list_ie.js"'+'></'+'script>');
+    } else {
+      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list_edit.js"'+'></'+'script>');
     }
     $(function(){
-        var login_ss = null; //获取用户信息
-        if(cookie('login_ss') != undefined){
-            login_ss = JSON.parse(cookie('login_ss'));
-        }
-        $('.banner-box-left .slider').xSlider({
-            //轮播图配置
-//          autoplay : 500,
-            current: 0,
-            speed: 500,
-            intervalTime: 5000,
-            pagination: true,
-            dotPostion:'right'
-        });
-        $('.banner-box-right .slider').xSlider({
-            //轮播图配置
-//          autoplay : 500,
-//            mode:'vertical',
-            current: 0,
-            speed: 1000,
-            intervalTime: 5000,
-            slidesPerView : 2,
-            slidesPerGroup : 2,
-            pagination: true
-        });
+      var login_ss = null; //获取用户信息
+      if(cookie('login_ss') != undefined){
+        login_ss = JSON.parse(cookie('login_ss'));
+      }
+      $('.banner-box-left .slider').xSlider({
+        current: 0,
+        speed: 500,
+        intervalTime: 5000,
+        pagination: true,
+        dotPostion:'right'
+      });
+      $('.banner-box-right .slider').xSlider({
+        current: 0,
+        speed: 1000,
+        intervalTime: 5000,
+        slidesPerView : 2,
+        slidesPerGroup : 2,
+        pagination: true
+      });
       var city_id =null;
       if(login_ss.usertype ==2){
         //获取顾问的组织id
@@ -314,10 +301,14 @@
       var newsletterType = $("#art-type").attr('data-id');
       var newTagStr = '';
       var artType = $("#art-type").attr('data-type');
+      var countryFlag = null;
+      var custom_tags = $("#recommend-input").val(); //自定义标签内容
       if(newsletterType ==2){
         newTagStr = '留学时讯';
+        countryFlag = false;
       }else{
         newTagStr ='';
+        countryFlag = true;
       }
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
@@ -328,30 +319,39 @@
         if($(this).index()==2){
           $('.newsletter-hide').slideDown();
           newTagStr = '';
+          countryFlag = true;
+          screenTag(Number($('#apply-country').val()), 0) //点击非时讯加载学历和标签 默认学历为0
         }else{
           $('.newsletter-hide').slideUp();
           newTagStr = '留学时讯';
           artType = 2;
+          countryFlag = false;
         }
       });
-       //选择学历标签
-      $('.level-sel').on('click',function(){
-        // console.log($(this).attr('checked'))
-        if($(this).attr('checked')){
-          // console.log('false');
-          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
-          $(this).find('.level-sel-i').next().css({'color':'#333'});
-          $(this).attr('checked',false);
-        }else{
-          // console.log('true')
-          $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
-          $(this).find('.level-sel-i').next().css({'color':'#c13232'});
-          $(this).attr('checked',true);
+      $('#apply-country').on('change',function(){
+        //选择国家
+        if (countryFlag) {
+          screenTag(Number($('#apply-country').val()), 0)
         }
-      });
+      })
+      // //选择学历标签
+      // $('.level-sel').on('click',function(){
+      //   // console.log($(this).attr('checked'))
+      //   if($(this).attr('checked')){
+      //     // console.log('false');
+      //     $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
+      //     $(this).find('.level-sel-i').next().css({'color':'#333'});
+      //     $(this).attr('checked',false);
+      //   }else{
+      //     // console.log('true')
+      //     $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
+      //     $(this).find('.level-sel-i').next().css({'color':'#c13232'});
+      //     $(this).attr('checked',true);
+      //   }
+      // });
       //选择推荐标签
       var recNumber = $('.recommend-sel[checked=checked]').length;
-      var custom_tags = $("#recommend-input").val(); //自定义标签内容
+      
       $('.recommend-sel').on('click',function(){
         if($(this).attr('checked')){
           // console.log('false');

@@ -163,10 +163,6 @@ exports = module.exports = function (app) {// routes
   app.get("/canzan_center/postarticle/:id",controller.edit_article);
   //草稿发布文章接口
   app.post("/soapi/draft_to_article",controller.draft_to_article);
-  //顾问编辑案列
-  app.get("/advisor_center/postcase/:id",controller.edit_case);
-  //参赞编辑案列
-  app.get("/advisor_center/postcase/:id",controller.edit_case);
   //收藏加载更多
   app.get('/soapi/favList',controller.favList);
   //图片库接口
@@ -262,13 +258,5 @@ exports = module.exports = function (app) {// routes
   app.post('/userFeedback',controller.userFeedback)
   app.get('/sendSms',controller.sendsms);//活动 发送短信验证码
   app.get('/getCoupons',controller.getCoupons);//获取优惠券
-  app.get('/pdf',function(req,res,next){
-    console.log('pdf')
-    var data ={};
-    res.render('pdf',data)
-  })
   app.get('/gwzs', login.gwzs); // 顾问个人主页确认文章数
-  app.get('/tag',function (req,res,next){
-    res.render('tag','')
-  })
 };

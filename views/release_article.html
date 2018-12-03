@@ -134,8 +134,8 @@
                 <span>*</span> 选择推荐标签：
               </label>
               <div class="recommend-tag" >
-                <div  style="display: block;">
-                  <div id="tag"></div>
+                <div id="tag" style="width:645px;"></div>
+                <div style="display: block">
                   <span class="recommend-sel" style="margin-right: 0px;" data-str="" id="recommend-sel-custom">
                     <i class="level-sel-i iconfont"></i>
                     <i>自定义标签</i>
@@ -207,7 +207,7 @@
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/showdown.js"></script>
   <script id="release_artcile_js">
     if (!!window.ActiveXObject || "ActiveXObject" in window){
-      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list_ie1.js"'+'></'+'script>');
+      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list_ie.js"'+'></'+'script>');
     } else {
       $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list.js"'+'></'+'script>');
     }
@@ -352,7 +352,7 @@
       $('#apply-country').on('change',function(){
         //选择国家
         if (countryFlag) {
-          screenTag(Number($('#apply-country').val()),0)
+          screenTag(Number($('#apply-country').val()), 0)
         }
       })
       //编辑器

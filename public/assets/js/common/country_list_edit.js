@@ -211,44 +211,51 @@ var tag_list = [{
     104,105,106,107,108,109,110,111,112,113,114],
   edu: [1,2,3,4]
 }]
-function screenTag (country) {
+function screenTag (country,...eduList) {
   //根据国家 学历参数筛选标签
-  var eduList = Array.prototype.slice.call(arguments, screenTag.length);
   console.log('参数country ',country)
   console.log('参数学历集合eduList ',eduList)
-  var eHtml = '';
-  var tHtml = '';
+  let eHtml = '';
+  let tHtml = '';
   if (country == 0 && eduList[0] == 0) {
     //默认国家全部 学历全部 循环所有标签
     console.log('默认国家全部 学历全部 循环所有标签')
-    for (var eItem = 0; eItem < edu_list.length; eItem++) {
-      // console.log('全部学历 ',edu_list[eItem].eduName)
-      eHtml += '<span class="level-sel" >'+
-          '<i class="level-sel-i iconfont"></i>'+
-          '<i>'+edu_list[eItem].eduName+'</i>'+
-        '</span>';
+    for (let eItem of edu_list) {
+      // console.log('全部学历 ',eItem.eduName)
+      eHtml += `
+        <span class="level-sel" >
+          <i class="level-sel-i iconfont"></i>
+          <i>${eItem.eduName}</i>
+        </span>
+      `;
     }
     $("#eduTag").html(eHtml);
     checkEdu()
-    var style = '';
-    for (var tItem = 0; tItem < tag_list.length; tItem++) {
-      // console.log('全部标签 ',tag_list[tItem].tagName)
-      if (tag_list[tItem].tagId == 9) {
+    let style = '';
+    for (let tItem of tag_list) {
+      // console.log('全部标签 ',tItem.tagName)
+      if (tItem.tagId == 9) {
         style = 'margin-right:38px;';
       } else {
         style = '';
       }
-      if (tag_list[tItem].tagId != 13) {
-        tHtml += '<span class="recommend-sel" data-str="'+tag_list[tItem].tagName+'" style="'+style+'">'+
-          '<i class="level-sel-i iconfont"></i>'+
-          '<i>'+tag_list[tItem].tagName+'</i>'+
-        '</span>';
+      if (tItem.tagId != 13) {
+        tHtml += `
+          <span class="recommend-sel" data-str="${tItem.tagName}"
+            style="${style}">
+            <i class="level-sel-i iconfont"></i>
+            <i>${tItem.tagName}</i>
+          </span>
+        `;
       } else {
-        tHtml += '<span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >'+
-          '<i class="level-sel-i iconfont"></i>'+
-          '<i>留学案例</i>'+
-          '<i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中</i>'+
-        '</span>';
+        tHtml += `
+          <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
+            <i class="level-sel-i iconfont"></i>
+            <i>留学案例</i>
+            <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+            </i>
+          </span>
+        `;
       }
     }
     $('#tag').html(tHtml);
@@ -263,38 +270,49 @@ function screenTag (country) {
   } else if (country !=0 && eduList[0] == 0) {
     //在选择国家时变换学历这时默认学历为 0
     console.log('在选择国家时变换学历这时默认学历为0')
-    var edu_id_List = [];
-    for (var eItem = 0; eItem < edu_list.length; eItem++) {
-      eHtml += '<span class="level-sel" >'+
-          '<i class="level-sel-i iconfont"></i>'+
-          '<i>'+edu_list[eItem].eduName+'</i>'+
-        '</span>';
-      edu_id_List.push(edu_list[eItem].eduId)
+    let edu_id_List = [];
+    for (let eItem of edu_list) {
+      if (eItem.country.includes(country)) {
+        // console.log('选择国家时学历 ',eItem.eduName)
+        eHtml += `
+          <span class="level-sel" >
+            <i class="level-sel-i iconfont"></i>
+            <i>${eItem.eduName}</i>
+          </span>
+        `;
+        edu_id_List.push(eItem.eduId)
+      }
     }
     $("#eduTag").html(eHtml);
     checkEdu()
     // console.log('选择国家时学历数组ID ',edu_id_List)
-    for (var tItem = 0; tItem < tag_list.length; tItem++) {
-      if(tag_list[tItem].country.indexOf(country) !== -1) {
-        for (var eduId = 0; eduId < edu_id_List.length; eduId++) {
-          if (tag_list[tItem].edu.indexOf(edu_id_List[eduId])) {
-            // console.log('选择国家时标签 '+tag_list[tItem.tagId],tag_list[tItem].tagName)
-            if (tag_list[tItem].tagId == 9) {
+    for (let tItem of tag_list) {
+      if(tItem.country.includes(country)) {
+        for (let eduId of edu_id_List) {
+          if (tItem.edu.includes(eduId)) {
+            // console.log('选择国家时标签 '+tItem.tagId,tItem.tagName)
+            if (tItem.tagId == 9) {
               style = 'margin-right:38px;';
             } else {
               style = '';
             }
-            if (tag_list[tItem].tagId != 13) {
-              tHtml += '<span class="recommend-sel" data-str="'+tag_list[tItem].tagName+'" style="'+style+'">'+
-                  '<i class="level-sel-i iconfont"></i>'+
-                  '<i>'+tag_list[tItem].tagName+'</i>'+
-                '</span>';
+            if (tItem.tagId != 13) {
+              tHtml += `
+                <span class="recommend-sel" data-str="${tItem.tagName}"
+                  style="${style}">
+                  <i class="level-sel-i iconfont"></i>
+                  <i>${tItem.tagName}</i>
+                </span>
+              `;
             } else {
-              tHtml += '<span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >'+
-                  '<i class="level-sel-i iconfont"></i>'+
-                  '<i>留学案例</i>'+
-                  '<i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中</i>'+
-                '</span>';
+              tHtml += `
+                <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>留学案例</i>
+                  <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                  </i>
+                </span>
+              `;
             }
             break;
           }
@@ -306,28 +324,34 @@ function screenTag (country) {
   } else if (country !=0 && eduList[0] != 0) {
     //有国家时 有学历时 变换所有标签
     console.log('有国家时 有学历时 变换所有标签')
-    var style = '';
-    for (var tItem = 0; tItem < tag_list.length; tItem++) {
-      if(tag_list[tItem].country.indexOf(country) !== -1) {
-        for (var eduId = 0; eduId < eduList.length; eduId++) {
-          if (tag_list[tItem].edu.indexOf(eduList[eduId]) !== -1) {
+    let style = '';
+    for (let tItem of tag_list) {
+      if(tItem.country.includes(country)) {
+        for (let eduId of eduList) {
+          if (tItem.edu.includes(eduId)) {
             // console.log('点击学历时出所有标签 '+tItem.tagId,tItem.tagName)
-            if (tag_list[tItem].tagId == 9) {
+            if (tItem.tagId == 9) {
               style = 'margin-right:38px;';
             } else {
               style = '';
             }
-            if (tag_list[tItem].tagId != 13) {
-              tHtml += '<span class="recommend-sel" data-str="'+tag_list[tItem].tagName+'" style="'+style+'">'+
-                  '<i class="level-sel-i iconfont"></i>'+
-                  '<i>'+tag_list[tItem].tagName+'</i>'+
-                '</span>';
+            if (tItem.tagId != 13) {
+              tHtml += `
+                <span class="recommend-sel" data-str="${tItem.tagName}"
+                  style="${style}">
+                  <i class="level-sel-i iconfont"></i>
+                  <i>${tItem.tagName}</i>
+                </span>
+              `;
             } else {
-              tHtml += '<span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >'+
-                  '<i class="level-sel-i iconfont"></i>'+
-                  '<i>留学案例</i>'+
-                  '<i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中</i>'+
-                '</span>';
+              tHtml += `
+                <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
+                  <i class="level-sel-i iconfont"></i>
+                  <i>留学案例</i>
+                  <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                  </i>
+                </span>
+              `;
             }
             $('#tag').html(tHtml);
             checkTag()
@@ -339,16 +363,22 @@ function screenTag (country) {
   }
 }
 function checkEdu () {
-  var eduId_list = [Number($('#apply-country').val())];
+  let eduId_list = [];
   $('.level-sel').on('click',function(){
     //选择学历标签
-    var that = this;
+    // console.log($(this).attr('checked'))
+    // console.log($('#apply-country').val())
+    let that = this;
     if($(this).attr('checked')){
       // console.log('false');
       $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
       $(this).find('.level-sel-i').next().css({'color':'#333'});
       $(this).attr('checked',false);
-      eduId_list.splice(eduId_list.indexOf(Number($(that).index()+1)),1);
+      eduId_list.findIndex(function(value, index, arr) {
+        if(value == Number($(that).index()+1)) {
+          arr.splice(index,1);
+        }
+      })
     }else{
       // console.log('true')
       $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
@@ -356,16 +386,16 @@ function checkEdu () {
       $(this).attr('checked',true);
       eduId_list.push(Number($(this).index()+1))
     }
-    console.log('学历集合',eduId_list)
-    if(eduId_list.length == 1) {
-      screenTag(eduId_list[0], 0)
+    console.log(eduId_list)
+    if(eduId_list.length == 0) {
+      screenTag(Number($('#apply-country').val()), 0)
     } else {
-      screenTag.apply(null, eduId_list);
+      screenTag(Number($('#apply-country').val()), ...eduId_list)
     }
   })
 }
 function checkTag () {
-  var recNumber = 0;
+  let recNumber = 0;
   $('.recommend-sel').on('click',function(){
     //选择推荐标签
     if($(this).attr('checked')){
