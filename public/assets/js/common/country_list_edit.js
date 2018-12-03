@@ -362,12 +362,13 @@ function screenTag (country,...eduList) {
     }
   }
 }
-function checkEdu () {
+function checkEdu (eduIdArr) {
   let eduId_list = [];
+  if (eduIdArr) {
+    eduId_list = eduIdArr;
+  }
   $('.level-sel').on('click',function(){
     //选择学历标签
-    // console.log($(this).attr('checked'))
-    // console.log($('#apply-country').val())
     let that = this;
     if($(this).attr('checked')){
       // console.log('false');

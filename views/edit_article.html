@@ -78,7 +78,7 @@
                 {"countryId":"113","txt":"瑞士"},
                 {"countryId":"114","txt":"奥地利"}
               ] %}
-              <select id="apply-country">
+              <select id="apply-country" data-eduId="{{article.article_info.edu_id}}">
                 {% for item in countryList %}
                   {% if item.countryId == article.article_info.country_id %}
                     <option value="{{item.countryId}}">{{item.txt}}</option>
@@ -121,6 +121,7 @@
               <label class="title" for="level" style="padding-left: 14px;">
                 <!-- <span>*</span> --> 选择学历标签：
               </label>
+              <div id="eduTag" style="display:inline-block;"></div>
               {% set levelList = [
                 {
                   "name":"中学"
@@ -137,7 +138,7 @@
               ] %}
               <div id="eduTag" style="display:inline-block;">
                 {% for item in levelList %}
-                  {{helper.eduChecked(item.name,article.article_info.edu_id,article.article_info.country_id) |safe }}
+                  {{helper.eduChecked(item.name,article.article_info.edu_id) |safe }}
                 {% endfor %}
               </div>
               <span class="numTip" style="display: block;margin-left: 128px;">
@@ -150,39 +151,58 @@
               </label>
               <div class="recommend-tag" >
                 {% set recommendList = [
-                  { "name":"留学初识","val":"留学初识" },
-                  { "name":"本科选校","val":"本科选校" },
-                  { "name":"硕士选校","val":"硕士选校" },
-                  { "name":"留学打工","val":"留学打工" },
-                  { "name":"本硕连读","val":"本硕连读" },
-                  { "name":"动漫留学","val":"动漫留学" },
-                  { "name":"留学时间","val":"留学时间" },
-                  { "name":"接机住宿","val":"接机住宿" },
-                  { "name":"艺术留学","val":"艺术留学" },
-                  { "name":"QS排名","val":"QS排名" },
-                  { "name":"留学费用","val":"留学费用" },
-                  { "name":"大学排名","val":"大学排名" },
-                  { "name":"留学条件","val":"留学条件" },
-                  { "name":"专业解析","val":"专业解析" },
-                  { "name":"签证指导","val":"签证指导" },
-                  { "name":"就业指导","val":"就业指导" },
-                  { "name":"申请规划","val":"申请规划" },
-                  { "name":"行前指导","val":"行前指导" },
-                  { "name":"省钱攻略","val":"省钱攻略" },
-                  { "name":"文书准备","val":"文书准备" },
-                  { "name":"海外生活","val":"海外生活" },
-                  { "name":"院校资讯","val":"院校资讯" },
-                  { "name":"背景提升","val":"背景提升" },
-                  { "name":"留学方案","val":"留学方案" },
-                  { "name":"难点解析","val":"难点解析" },
-                  { "name":"备考资讯","val":"备考资讯" },
-                  { "name":"院校百科","val":"院校百科" },
-                  { "name":"留学案例","val":"留学案例" }, 
-                  {"name":"自定义标签","val":article.article_info.custom_tags}
+                  {"val":"留学初识","id":1},
+                  {"val":"本科选校","id":2},
+                  {"val":"硕士选校","id":3},
+                  {"val":"留学打工","id":4},
+                  {"val":"本硕连读","id":5},
+                  {"val":"留学时间","id":6},
+                  {"val":"接机住宿","id":7},
+                  {"val":"艺术留学","id":8},
+                  {"val":"QS排名","id":9},
+                  {"val":"留学费用","id":10},
+                  {"val":"大学排名","id":11},
+                  {"val":"留学条件","id":12},
+                  {"val":"专业解析","id":14},
+                  {"val":"签证指导","id":15},
+                  {"val":"就业指导","id":16},
+                  {"val":"申请规划","id":17},
+                  {"val":"行前指导","id":18},
+                  {"val":"省钱攻略","id":19},
+                  {"val":"文书准备","id":20},
+                  {"val":"海外生活","id":21},
+                  {"val":"院校资讯","id":22},
+                  {"val":"背景提升","id":23},
+                  {"val":"留学方案","id":24},
+                  {"val":"难点解析","id":25},
+                  {"val":"备考资讯","id":26},
+                  {"val":"院校百科","id":27},
+                  {"val":"动漫留学","id":28},
+                  {"val":"本科预科","id":29},
+                  {"val":"硕士预科","id":30},
+                  {"val":"留学考试","id":31},
+                  {"val":"留学考试","id":32},
+                  {"val":"留学案例","id":13 }
                 ]  %}
                 {% for item in recommendList %}
-                  {{helper.tagChecked(item.name,item.val,article.article_info.tag_list,article.article_info.country_id) |safe }}
+                  {{helper.tagChecked(item,article.article_info.tag_list,article.article_info.country_id) |safe }}
                 {% endfor %}
+                <div  style="display: block;">
+                  {% if article.article_info.custom_tags != '' %}
+                    <span class="recommend-sel" style="margin-right: 0px;" data-str="" checked="checked" id="recommend-sel-custom">
+                      <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                        margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                      <i>自定义标签</i>
+                    </span>
+                    <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" value= "{{article.article_info.custom_tags}}" />
+                  {% else %}
+                    <span class="recommend-sel" style="margin-right: 0px;" data-str="{{article.article_info.custom_tags}}" id="recommend-sel-custom">
+                      <i class="level-sel-i iconfont"></i>
+                      <i>自定义标签</i>
+                    </span>
+                    <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" />
+                  {% endif %}
+                </div>
                 <span class="numTip" style="color:#c13232;display:block;margin-top: 10px;">
                   推荐标签最多选择2个
                 </span>
@@ -309,6 +329,24 @@
       }else{
         newTagStr ='';
         countryFlag = true;
+        if ($('#apply-country').attr('data-eduId') != '') {
+          var eduStrArr = $('#apply-country').attr('data-eduId').split(',');
+          var eduIdArr = [];
+          for (var i = 0; i < eduStrArr.length; i++) {
+            if (eduStrArr[i] == '中学') {
+              eduIdArr[i] = 1;
+            } else if (eduStrArr[i] == '本科') {
+              eduIdArr[i] = 2;
+            } else if (eduStrArr[i] == '硕士') {
+              eduIdArr[i] = 3;
+            } else if (eduStrArr[i] == '博士') {
+              eduIdArr[i] = 4; 
+            }
+          }
+          checkEdu(eduIdArr)
+        } else {
+          checkEdu()
+        }
       }
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
