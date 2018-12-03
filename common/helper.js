@@ -289,14 +289,15 @@ function prefixInteger(num, length) {
   return (Array(length).join('0') + num).slice(-length);
 }
 //用户头像url组装
-function avaterimg(uid, size, status, version,usertype){
+function avaterimg(uid, size, status, version,usertype, headimg){
   uid = prefixInteger(uid, 9);
   var dir1 = uid.substr(0, 3);
   var dir2 = uid.substr(3, 2);
   var dir3 = uid.substr(5, 2);
   if(version == 0 || version == null){
     if (usertype == 1) {
-      return 'http://images.jjl.cn/avatar/default_avatar_small.jpg'
+      // return 'http://images.jjl.cn/avatar/default_avatar_small.jpg'
+      return headimg
     }
     else {
       return 'http://images.jjl.cn/avatar/default_jjl.png'
