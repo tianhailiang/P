@@ -134,8 +134,9 @@
       this.el.on('mouseleave', function () {
           sliderInt = setInterval(sliderInterval, _this.config.intervalTime)
       });
-      $(document).on('mousemove',function(){
-        if ($('.lunbo_lift')[0] && $('.lunbo_lift')[0].contains(window.event.srcElement)) {
+      $(document).on('mousemove',function(e){
+        var obj = e.srcElement || e.target;
+        if ($('.lunbo_lift')[0] && $('.lunbo_lift')[0].contains(obj)) {
           clearInterval(sliderInt);
         }
       })

@@ -76,8 +76,10 @@
     border: 1px #ccc solid;
     border-radius: 8px;
     position: relative;
-    line-height: 25px;
+    line-height: 35px;
     left: 30px;
+    float: none;
+    background: #fff;
   }
   .dashiji-con .kuang_jiao{
     display: inline-block;
@@ -85,7 +87,7 @@
     height: 26px;
     background: url({{helper.cdnhost}}/assets/img/events/hui_jiao.png) no-repeat;
     position: absolute;
-    left: -11px;
+    left: -10px;
     top: 32px;
   }
   .dashiji-con1{
@@ -96,8 +98,9 @@
     border: 1px #c13232 solid;
     border-radius: 8px;
     position: relative;
-    line-height: 25px;
+    line-height: 35px;
     left: 30px;
+    background: #fff;
   }
   .dashiji-con1 .kuang_jiao1{
     display: inline-block;
@@ -105,7 +108,7 @@
     height: 26px;
     background: url({{helper.cdnhost}}/assets/img/events/hong_jiao.png) no-repeat;
     position: absolute;
-    left: -11px;
+    left: -10px;
     top: 30px;
   }
   .shiji-pic{
@@ -128,7 +131,6 @@
     display: inline-block;
     border-radius: 5px;
     overflow: hidden;
-    display: table-cell;
     vertical-align: middle;
   }
   .shiji-pic3 img{
@@ -211,17 +213,17 @@
       {% if item.thumb3 == '' or item.thumb3 == null %}
       {% if item.thumb == '' or item.thumb == null %}
       {# 无图 #}
-      <div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">
+      <div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 60px 36px;">
         <i class="dian"></i>
         <i class="kuang_jiao"></i>
-       {{ loop.index }}. {{ item.description }}
+        {{ item.description }}
       </div>
       {% else %}
       {# 只一条 #}
       <div class="dashiji-con1 clearfix" style="display: block;margin: 20px 35px 60px 36px;">
           <i class="dian1"></i>
           <i class="kuang_jiao1"></i>
-         {{ loop.index }}. {{ item.description }}
+          {{ item.description }}
          <div class="shiji-pic clearfix">
               <img src="{{ helper.imageThumb(item.thumb) }}" alt="">
             </div>
@@ -229,10 +231,10 @@
         {% endif %}
       {% else %}
       {% if loop.index==loop.length %}
-      <div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">
+      <div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 60px 36px;">
         <i class="dian"></i>
         <i class="kuang_jiao"></i>
-       {{ loop.index }}. {{ item.description }}
+        {{ item.description }}
        <div class="shiji-pic3 clearfix">
             <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
             <img src="{{ helper.imageThumb(item.thumb2,'280x210') }}" alt="">
@@ -240,10 +242,10 @@
           </div>
       </div>
       {% else %}
-      <div class="dashiji-con" style="display: block;margin: 20px 35px 0px 36px;">
+      <div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 60px 36px;">
         <i class="dian"></i>
         <i class="kuang_jiao"></i>
-        {{ loop.index }}. {{ item.description }}
+        {{ item.description }}
         <div class="shiji-pic3 clearfix">
           <img src="{{ helper.imageThumb(item.thumb,'280x210') }}" alt="">
           <img src="{{ helper.imageThumb(item.thumb2,'280x210') }}" alt="">
@@ -346,7 +348,7 @@
         },
         dataType:'json',
         success:function(msg){
-          console.log('msg', msg);
+          // console.log('msg', msg);
           evemore(msg);
           evemore_slide(msg);
         },
@@ -383,7 +385,7 @@
     for (var key in msg) {
       s++;
       if (s == 1) {
-        console.log('sss',s)
+        // console.log('sss',s)
         html += '<div id="'+key.substring(0,4)+'_year" style="display: none;">'
       }
       html += '<li>';
@@ -397,6 +399,13 @@
     }
     html += '</div>'
     $('#eve_slide').append($(html));
+    var year = a[0].substring(0,4);
+    $("div[id$='_year']").css('display', 'none')
+    $('#'+ year+ '_year').css('display', 'block')
+    $("li[id$='_down']").find("div").find("i").removeClass('down1')
+    $("li[id$='_down']").find("div").find("span").removeClass('redtitle')
+    $('#' + year + '_down').find("div").find("i").addClass('down1')
+    $('#' + year + '_down').find("div").find("span").addClass('redtitle')
   }
 
   function evemore (msg) {
@@ -445,23 +454,23 @@
           if (msg[key][key1][key11].thumb3 == '' || msg[key][key1][key11].thumb3 == null) {
             if (msg[key][key1][key11].thumb == '' || msg[key][key1][key11].thumb == null) {
               //{# 无图 #}
-              html += '<div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">'
+              html += '<div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 60px 36px;">'
               html += '<i class="dian"></i>'
-              html += '<i class="kuang_jiao"></i>'+ (key11+1) +'. '+ msg[key][key1][key11].description +'</div>'
+              html += '<i class="kuang_jiao"></i>'+ msg[key][key1][key11].description +'</div>'
             } else {
               //{# 只一条 #}
               html += '<div class="dashiji-con1 clearfix" style="display: block;margin: 20px 35px 60px 36px;">'
               html += '<i class="dian1"></i>'
-              html += '<i class="kuang_jiao1"></i>'+ (key11+1) +'. '+ msg[key][key1][key11].description +'<div class="shiji-pic clearfix">'
+              html += '<i class="kuang_jiao1"></i>'+ msg[key][key1][key11].description +'<div class="shiji-pic clearfix">'
               html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb)+'" alt="">'
               html += '</div>'
               html += '</div>'
             }
           } else {
             if (key11 == msg[key][key1].length) {
-              html += '<div class="dashiji-con" style="display: block;margin: 20px 35px 60px 36px;">'
+              html += '<div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 60px 36px;">'
               html += '<i class="dian"></i>'
-              html += '<i class="kuang_jiao"></i>'+ (key11+1) +'. '+ msg[key][key1][key11].description
+              html += '<i class="kuang_jiao"></i>'+ msg[key][key1][key11].description
               html += '<div class="shiji-pic3 clearfix">'
               html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb,'280x210')+'" alt="">'
               html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb2,'280x210')+'" alt="">'
@@ -469,9 +478,9 @@
               html += '</div>'
               html += '</div>'
             } else {
-              html += '<div class="dashiji-con" style="display: block;margin: 20px 35px 0px 36px;">'
+              html += '<div class="dashiji-con clearfix" style="display: block;margin: 20px 35px 0px 36px;">'
               html += '<i class="dian"></i>'
-              html += '<i class="kuang_jiao"></i>'+ (key11+1) +'. '+ msg[key][key1][key11].description
+              html += '<i class="kuang_jiao"></i>'+ msg[key][key1][key11].description
               html += '<div class="shiji-pic3 clearfix">'
               html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb,'280x210')+'" alt="">'
               html += '<img src="'+fn.imageThumb(msg[key][key1][key11].thumb2,'280x210')+'" alt="">'
@@ -549,7 +558,7 @@
     // })
     console.log('yeareve', $('#zuihou').attr('data-year'))
     if ($('#zuihou').attr('data-year') == 1999) {
-      console.log('aaaaaaa');
+      // console.log('aaaaaaa');
       $('.curyear:last').find(".kong").eq(0).css("display","none");
       $('#eve_more').css("display","none");
     }

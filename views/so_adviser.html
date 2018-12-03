@@ -55,7 +55,9 @@
                 <input type="radio" name="page-search-type" id="article" value="文章"/>
                 <label for="article" style="margin-right: 20px;"><span><i></i></span>搜文章</label>
                 <input type="radio" name="page-search-type" id="adviser" value="顾问" checked class="checked"/>
-                <label for="adviser"><span><i></i></span>搜顾问</label>
+                <label for="adviser" style="margin-right: 20px;"><span><i></i></span>搜顾问</label>
+                <!-- <input type="radio" name="page-search-type" id="case" value="案例"/>
+                <label for="case"><span><i></i></span>搜案例</label> -->
             </div>
             <div class="result-bar">
                 搜索<span id="result-keyword">{{keyword | ellipsis(45)}}</span>共搜索到<span id="result-num">{{so_adviser_list.total if so_adviser_list.total else 0}}</span>个结果

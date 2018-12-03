@@ -167,7 +167,7 @@ function urlgen() {
       isyimin = true;
       continue;
     }
-    if(arguments[i] == '' || arguments[i].split('=').length > 1)
+    if(arguments[i] == '' || arguments[i].toString().split('=').length > 1)
     {
       break;
     }
@@ -278,7 +278,7 @@ function exits_static_page(path) {
   var yimin_list_reg = path.match(/^\/(news|interpret|activity|case).html$/g);
 
   var schoolrank_list = path.match(/^\/(schoolrank)[0-9A-Za-z\-_/]*.html$/g);
-  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article|yimin_so_advisor|articles)(.*).html$/g);
+  var so_pigination = path.match(/^((?!yimin).*)\/(so_activity|so_case|so_news|so_school|so_advisor|so_article|yimin_so_article|yimin_so_advisor|articles|case)(.*).html$/g);
   if((reg_list || so_reg || so_center || yimin_reg || yimin_list_reg || schoolrank_list || so_pigination || edu) && !rank){
     return false;
   }
@@ -289,14 +289,19 @@ function prefixInteger(num, length) {
   return (Array(length).join('0') + num).slice(-length);
 }
 //用户头像url组装
-function avaterimg(uid, size, status, version,usertype){
+function avaterimg(uid, size, status, version,usertype, headimg){
   uid = prefixInteger(uid, 9);
   var dir1 = uid.substr(0, 3);
   var dir2 = uid.substr(3, 2);
   var dir3 = uid.substr(5, 2);
   if(version == 0 || version == null){
     if (usertype == 1) {
+<<<<<<< HEAD
       return 'https://images.jjl.cn/avatar/default_avatar_small.jpg'
+=======
+      // return 'http://images.jjl.cn/avatar/default_avatar_small.jpg'
+      return headimg
+>>>>>>> master
     }
     else {
       return 'https://images.jjl.cn/avatar/default_jjl.png'
@@ -309,7 +314,6 @@ function avaterimg(uid, size, status, version,usertype){
       return config.imageshost + '/avatar/' + dir1+'/'+dir2+'/'+dir3+'/'+uid.substring(uid.length-2)+"_avatar_"+size+"_"+ version +".jpg";//ie8不兼容uid.substr(-2)
     }
   }
-
 }
 //成功案例院校logo
 function school_logo (school_id) {
@@ -413,6 +417,12 @@ function tdk_param_replace(tdk_string, nationName, cityName, title, description,
     ret = ret.replace(/\{realname\}/g, realname);
   }else{
     ret = ret.replace(/\{realname\}/g, "");
+  }
+
+  if(edu){
+      ret = ret.replace(/\{edu\}/g, edu);
+  }else{
+      ret = ret.replace(/\{edu\}/g, "");
   }
 
   //替换year

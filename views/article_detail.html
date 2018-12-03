@@ -73,16 +73,39 @@
             </div>
             <div class="connect-info">
               <img src="{{helper.cdnhost}}/assets/img/main_icon_phone.png" alt="">
-              <span><i class="zixun-info">留学咨询热线</i><i class="zixun-phone">：{{userinfo.tel}}</i></span>
+              <span><i class="zixun-info">留学咨询热线：</i><i class="zixun-phone">{{userinfo.tel}}</i></span>
               <span class="zixun-btn" onclick="openchat_new('{{ userinfo.new_job_number}}')">立即咨询</span>
             </div>
           </div>
+          <!-- 摘要 -->
+          <div class="summary-cont">
+            <div class="summary-text">{{article.article_info.introduce}}</div>
+            <div class="zixun-text clearfix">
+                <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="">
+                <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="" style='margin-left: 4px;'>
+                <span onclick="openchat_new('{{ userinfo.new_job_number}}')">{{article.article_info.top_chain}}</span>
+                <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="">
+                <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="" style='margin-left: 4px;'>
+            </div>
+          </div>
+          <!-- 正文 -->
           <div class="adviser-case-detail-offer" data-img="{{article.article_info.img_info[0]}}" id="get-share-img">
             {{article.article_info.message | safe}}
+          </div>
+          <!-- 文字链 -->
+          <div class="zixun-text clearfix article-bot-zixuntext">
+            <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="">
+            <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_right.png" alt="" style='margin-left: 4px;'>
+            <span onclick="openchat_new('{{ userinfo.new_job_number}}')">{{article.article_info.bottom_chain}}</span>
+            <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="">
+            <img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow_left.png" alt="" style='margin-left: 4px;'>
           </div>
           <!-- 引导进入顾问主页 -->
           <div class="content-guide-box">
             <div class="detail-guide-text" onclick="open_main('{{userinfo.uid}}')">去主页浏览TA的更多精彩内容<img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow@2x.png" alt=""><img src="{{helper.cdnhost}}/assets/img/diye_icon_arrow@2x.png" alt="" class="small-dis"></div>
+          </div>
+          <!-- 点赞用户头像合集 -->
+          <div class="fans-block clearfix" id='fans-block'>
           </div>
           <div class="userinfo-box clearfix" >
             {% if userinfo.qrcode %}
@@ -201,6 +224,7 @@
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/view_count_min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/article_detail.js"></script>
+  <script src="{{helper.cdnhost}}/assets/js/avatarGroup.js"></script>
   <script>
     function open_main(uid){
       window.open('/' + uid);
@@ -235,34 +259,7 @@
                 "bdStyle":"0",
                 "bdSize":"16",
                 "bdUrl":window.location.href,
-                "bdDesc":'',
-                onAfterClick: function (cmd) {
-                  var authorUId = $('.bdsharebuttonbox').attr('data-uid');
-                  var shareUId = login_ss ? login_ss.uid : '';
-                  var count_data = {
-                    'type': cmd,
-                    'shareUId': shareUId,
-                    'authorUId': authorUId,
-                    'articleId': article_id
-                  }
-                  // console.log('onAfterClick',count_data)
-                  $.ajax({
-                    url: ajaxUrlPrefix.nodeapi+'/share_count',
-                    type:'get',
-                    data:count_data,
-                    dataType:'json',
-                    success:function(msg){
-                      if(msg.code === 0){
-                        console.log('转发统计成功');
-                      } else {
-                        console.log('转发未统计');
-                      }
-                    },
-                    error:function(XMLHttpRequest, textStatus, errorThrown){
-                      console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
-                    }
-                  });
-                }
+                "bdDesc":''
             },
             "share":{}
         };
@@ -280,7 +277,6 @@
           dataType:'jsonp',
           jsonpCallback:'cb',
           success:function(result){
-           console.log(result)
             if(result.code == 0){
               if(result.data.action=='add'){
                 layer.msg('收藏成功');
@@ -321,7 +317,6 @@
           dataType:'jsonp',
           jsonpCallback:'cb',
           success:function(result){
-           console.log(result)
             if(result.code == 0){
               if(result.data.action=='add'){
                 layer.msg('点赞成功');

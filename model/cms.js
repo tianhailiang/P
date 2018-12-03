@@ -948,7 +948,7 @@ exports.lunbo_list = function (data,callback) {
 }
 //搜索结果页so_article_list
 exports.so_article_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_so_article_list);
+  var url = _api_url_path(data, config.apis.get_so_article_list);
   if (url == null){
     callback('404');
     return;
@@ -966,7 +966,8 @@ exports.search_article_list = function (data,callback) {
 }
 //搜索结果页so_adviser_list
 exports.so_adviser_list = function (data,callback) {
-  var url = _api_path_url_shequ(data, config.apis.get_so_adviser_adviser);
+  var url = _api_url_path(data, config.apis.get_so_adviser_adviser);
+  console.log('顾问搜索页url',url);
   if (url == null){
     callback('404');
     return;
@@ -1206,7 +1207,7 @@ exports.assessment = function(data,callback){
 
 //参赞列表
 exports.canzanlist = function (data, callback) {
-  var url = _api_url_path2(data, config.apis.get_canzanlist);
+  var url = _api_url_path(data, config.apis.get_canzanlist);
   if (url == null) {
     callback('404');
     return;
@@ -1299,7 +1300,7 @@ exports.culture_detail =function(data,callback){
 }
 //参赞简介
 exports.canzan_jianjie =function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_user_description);
+  var url = _api_url_path(data, config.apis.get_user_description);
   if (url == null){
     callback('404');
     return;

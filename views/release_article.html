@@ -260,6 +260,10 @@
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
   <script src="{{helper.cdnhost}}/dep/js/jquery.media.js"></script>
+
+  <script src="{{helper.cdnhost}}/dep/js/html2markdown/html2markdown.js"></script>
+  <script src="{{helper.cdnhost}}/dep/js/html2markdown/markdown_dom_parser.js"></script>
+  <script src="{{helper.cdnhost}}/dep/js/html2markdown/showdown.js"></script>
   <script >
     function changeForm (val) {
       var specialTag = $('#special-tag');
@@ -471,7 +475,9 @@
       // 自定义处理粘贴的文本内容
       editor.customConfig.pasteTextHandle = function (content) {
           // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
-          return dataFilter(content);
+          var converter = new showdown.Converter();
+          converter.setOption('tables', true);
+          return converter.makeHtml(html2markdown(content));
       }
 
       editor.customConfig.uploadFileName = 'upload';

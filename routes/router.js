@@ -11,6 +11,8 @@ exports = module.exports = function (app) {// routes
   app.get(/^\/so_article(\/*)(.*)+$/,controller.so_article);
   //顾问搜索页
   app.get(/^\/so_advisor(\/*)(.*)+$/,controller.so_adviser);
+  //案例搜索页
+  app.get(/^\/so_case(\/*)(.*)+$/,controller.so_case);
   //移民顾问搜索页
   app.get(/^\/yimin_so_advisor(\/*)(.*)+$/,controller.so_adviser_yimin);
   //移民搜索页
@@ -19,6 +21,8 @@ exports = module.exports = function (app) {// routes
   app.get('/blog', controller.community_index);
   //国家列表页
   app.get(/articles(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.country_list);
+  //留学案例
+  app.get(/^\/case(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.case_list);
   //留学攻略
   app.get(/glue(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/, controller.glue);
   //顾问聚合页
@@ -197,7 +201,7 @@ exports = module.exports = function (app) {// routes
   app.get('/canzan', about.canzan);
   //海外律师团队
   app.get('/lawyer', about.lawyer);
-  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|hd|heb|hs|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)((?![0-9])[0-9A-Za-z\-_]*)$/, about.activity);
+  app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|hd|heb|hs|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)\/activity(\/*)$/, about.activity);
   app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|hd|heb|hs|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)\/activity\/(\d+)/, about.activity_detail);
   app.get('/activity', about.activity_ip);
   //关于我们

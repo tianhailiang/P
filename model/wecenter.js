@@ -126,7 +126,7 @@ exports.follow_list = function (data, callback) {
  */
 
 exports.userinfo = function(data,callback){
-  var url = _api_path_url_shequ(data, config.apis.get_userinfo);
+  var url = _api_url_path(data, config.apis.get_userinfo);
   if (url == null){
     callback('404');
     return;
@@ -446,6 +446,15 @@ exports.community_index = function(data,callback){
 //首席顾问
 exports.top_adviser_list = function (data,callback){
   var url = _api_url_path(data, config.apis.top_adviser_list);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+}
+//首席顾问国家tab
+exports.getChiefCountryList = function (data,callback){
+  var url = _api_url_path(data, config.apis.getChiefCountryList);
   if (url == null) {
     callback('404');
     return;
