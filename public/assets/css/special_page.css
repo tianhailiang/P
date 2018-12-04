@@ -1,6 +1,6 @@
 .banner {
 	width: 100%;
-	height: 500px;
+	height: 450px;
 	overflow: hidden;
 	background: #333
 }
@@ -8,7 +8,7 @@
 .banner .btn-box {
 	width: 450px;
 	height: 100px;
-	margin: 420px auto
+	margin: 390px auto 0;
 }
 
 .banner .btn-box a {
@@ -58,11 +58,6 @@
 .new_nav_first .nav-right .search-type-box .search-type .search-type-text {
 	font-size: 12px;
 }
-/* 2018-11-30 */
-*{
-  margin:0;
-  padding: 0;
-}
 .clearfix:after {
 	clear: both;
 	display: block;
@@ -83,6 +78,10 @@ ul {
 }
 .item-body-list{
   margin-top: 120px;
+  overflow: hidden;
+  height: 265px;
+  width: 100%;
+  padding-left: 10px;
 }
 .item-body-list li {
 	float: left;
@@ -90,7 +89,7 @@ ul {
 	box-sizing: border-box;
 	margin-right: 22px;
 	padding: 26px 20px;
-  width: 278px;
+  width: 276px;
   height: 254px;
 	border-top: solid 3px #c13232;
 	-webkit-border-radius: 4px;
@@ -100,9 +99,6 @@ ul {
 	box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
 	text-align: center;
 	cursor: default;
-  -webkit-border-radius: 4px;
-  border-radius: 4px;
-
 }
 
 .item-body-list li:last-child {
@@ -180,7 +176,10 @@ ul {
 	padding-top: 40px;
 	padding-bottom: 40px;
 	padding-left: 30px;
-	background: #f5f5f5;
+  background: #f5f5f5;
+  overflow: auto;
+  height: 350px;
+  max-height: 350px;
 }
 
 .yk-title {
@@ -233,7 +232,10 @@ ul {
 
 .sort-left .pictuer-des {
 	position: absolute;
-	top: 260px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
 	width: 100%;
 	color: #fff;
 	text-align: center;
@@ -246,19 +248,19 @@ ul {
   height: 524px;
 }
 /* 处理滚动条 */
-.sort-right::-webkit-scrollbar {
+.sort-right::-webkit-scrollbar,.item-plane-text::-webkit-scrollbar {
   width: 6px;
   height: 10px;
 }
-.sort-right::-webkit-scrollbar-thumb {
+.sort-right::-webkit-scrollbar-thumb,.item-plane-text::-webkit-scrollbar-thumb {
   background-color: #ababab;
   border-radius: 10px;
 }
 
-.sort-right::-webkit-scrollbar-thumb:hover {
+.sort-right::-webkit-scrollbar-thumb:hover,.item-plane-text::-webkit-scrollbar-thumb:hover {
   background-color: #999;
 }
-.sort-right::-webkit-scrollbar-track {
+.sort-right::-webkit-scrollbar-track,.item-plane-text::-webkit-scrollbar-track {
   background-color: #f5f5f5;
   border-radius: 10px;
 }
@@ -303,7 +305,6 @@ ul {
 }
 
 .jt-summary {
-	margin-bottom: 120px;
 	height: 490px;
 	max-height: 490px;
 }
@@ -361,7 +362,7 @@ ul {
 }
 
 .from-inline {
-	overflow: hidden;
+	margin-left: 320px;
 	box-sizing: border-box;
 	width: 548px;
 	height: 356px;
@@ -369,7 +370,9 @@ ul {
 }
 
 .items-from {
-	margin-bottom: 30px;
+  margin-bottom: 30px;
+  position: relative;
+  width: 320px;
 }
 
 .input-control {
@@ -378,10 +381,23 @@ ul {
 	outline: 0;
 	border: solid 1px #e5e5e5;
   text-indent: 10px;
-  /* transition: 2s border */
 }
-.input-control:focus{
-  /* border:solid 1px red; */
+.items-from-active::after{
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  left: 80px;
+  width: 0;
+  bottom: 0;
+  background: #c13232;
+  height: 2px;
+  -webkit-transition: .2s ease-out width;
+  transition: .2s ease-out left width;
+}
+.add-animate-active::after{
+  left: 80px;
+  width: 74.33%;
 }
 .control-label {
 	margin-right: 12px;
@@ -412,8 +428,7 @@ ul {
 
 .btn-default {
 	display: inline-block;
-	margin-bottom: 0;
-	margin-left: 128px;
+  margin: 0 0 0 128px;
 	width: 118px;
 	height: 34px;
 	outline: 0;
@@ -423,12 +438,14 @@ ul {
 	color: #fff;
 	vertical-align: middle;
 	text-align: center;
-	font-weight: 400;
 	font-size: 16px;
-	line-height: 1.42857143;
-	cursor: pointer;
+	line-height: 1.428571;
+  cursor: pointer;
+  transition: .2s linear;
 }
-
+.btn-default:hover{
+  background-color: #d44141
+}
 #carouselContent{
   position: relative;
   overflow: hidden;
@@ -467,7 +484,33 @@ ul {
   left: 0;
   background: #c13232;
   z-index: 1005;
+  width: 0%;
   -webkit-transition: opacity .3s linear;
   -moz-transition: opacity .3s linear;
   transition: opacity .3s linear;
 }
+.from-items{
+  position: absolute;
+  left: 79px;
+  top: 38px;
+  width: 239px;
+  background: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, .14);
+  z-index: 1;
+  display: none;
+}
+.country-group li{
+  background: #fff;
+  height: 20px;
+  line-height: 1.414;
+  cursor: default;
+  font-size: 14px;
+  text-indent: 10px;
+  /* pointer-events: none; */
+}
+.country-group li:hover{
+  background-color: #e5e5e5;
+}
+/* .select-city input[type='text']:focus + .from-items{
+  display: block;
+} */

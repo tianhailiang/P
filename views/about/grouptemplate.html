@@ -17,7 +17,8 @@
                                                                                                                                                    
     {% import "widget/new_nav_first/common_nav.html" as common_nav %}
     {{ common_nav.common_nav(tdk,helper) }}
-    <div class="banner" style="background-image:url({{schooltopic.list.sch_background_map}});height: 500px; overflow:hidden;background-size:cover;background-position: center center">
+    <script>$('.progress').animate({ width: '25%'},200)</script>
+    <div class="banner" style="background-image:url({{schooltopic.list.sch_background_map}});height: 450px; overflow:hidden;background-size:cover;background-position: center center">
         <div class="wrap1">
           <div class="btn-box">
             <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
@@ -39,6 +40,7 @@
         <img src="https://imgsa.baidu.com/news/q%3D100/sign=50d9e78a8f025aafd5327acbcbecab8d/6f061d950a7b0208fa3e9eab6fd9f2d3562cc881.jpg" alt="" style="height:290px;width:386px;">
       </div>
     </div>
+    <script>$('.progress').animate({ width: '50%'},200)</script>
     <!-- 优势介绍 -->
     <div class="jt-super">
       <div class="jieshao-item">
@@ -59,6 +61,7 @@
             </dl>
           </div>
         </div>
+        <script>$('.progress').animate({ width: '70%'},200)</script>
         <div class="item-body">
           <!--  -->
           <div class="item-plane">
@@ -76,7 +79,16 @@
               </ul>
               <dl>
                 <dt class="yk-title">预科方向</dt>
-                <dd class="yk-des">英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区</dd>
+                <dd class="yk-des">英世企学院创建于1976年，位于便捷的市中心，接
+                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火
+                    车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区近悉尼的主要景点和设施。
+                    市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
+                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
+                    市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
+                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
+                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
+                    市区的主要火车站-中央火车站非常靠近校园，6年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
+                  </dd>
               </dl>
             </div>
           </div>
@@ -102,15 +114,30 @@
             </div>
           </div>
           <ul class="item-body-list clearfix">
-            <li class="wow bounceInUp" data-wow-delay=".1s">
-              <h2>项目介绍</h2>
-              <p class="list-text">随时解决各种问题随时解决各种问题随时解决各种问题</p>
-            </li>
-            <li class="wow bounceInUp" data-wow-delay=".3s"><h2>学费信息</h2>
-              <p class="list-text">随时解决各种问题随时解决各种问题随时解决各种问题</p>
-            </li>
-            <li class="wow bounceInUp" data-wow-delay=".5s"><h2>奖学金信息</h2></li>
-            <li class="wow bounceInUp" data-wow-delay=".7s"><h2>金吉列申请优势</h2></li>
+              {% set projectlist = [
+                {
+                  "title": "项目介绍",
+                  "des": "随时解决各种问题随时解决各种问题随时解决各种问题"
+                },
+                {
+                  "title": "学费信息",
+                  "des": "随时解决各种问题随时解决各种问题随时解决各种问题"
+                },
+                {
+                  "title": "奖学金信息",
+                  "des": "随时解决各种问题随时解决各种问题随时解决各种问题"
+                },
+                {
+                  "title": "金吉列申请优势",
+                  "des": "随时解决各种问题随时解决各种问题随时解决各种问题"
+                }
+              ] %}
+              {% for item in projectlist %}
+                <li>
+                  <h2>{{item.title}}</h2>
+                  <p class="list-text">{{item.des}}</p>
+                </li>
+              {% endfor %}
           </ul>
         </div>
       </div>
@@ -123,17 +150,132 @@
           <div class="from-inline">
             <h2 class="from-bm">我想报名</h2>
             <from class="form-horizontal">
-                <div class="items-from">
+                <div class="items-from items-from-active">
                   <label for="" class="control-label">您的姓名</label>
                   <input type="text" class="input-control">
                 </div>
-                <div class="items-from">
+                <div class="items-from items-from-active">
                   <label for="" class="control-label">您的手机</label>
                   <input type="text" class="input-control">
                 </div>
-                <div class="items-from">
+                <div class="items-from items-from-active select-city">
                   <label for="" class="control-label">所在城市</label>
                   <input type="text" class="input-control">
+                  <div class="from-items">
+                    {% set countryList = [
+                      {
+                          name:"美国",
+                          id:"1"
+                      },
+                      {
+                          name:"英国",
+                          id:"2"
+                      },
+                      {
+                          name:"澳大利亚",
+                          id:"4"
+                      },
+                      {
+                          name:"加拿大",
+                          id:"3"
+                      },
+                      {
+                          name:"新西兰",
+                          id:"5"
+                      },
+                      {
+                          name:"日本",
+                          id:"51"
+                      },
+                      {
+                          name:"韩国",
+                          id:"50"
+                      },
+                      {
+                          name:"中国香港",
+                          id:"54"
+                      },
+                      {
+                          name:"俄罗斯",
+                          id:"100"
+                      },
+                      {
+                          name:"乌克兰",
+                          id:"101"
+                      },
+                      {
+                          name:"爱尔兰",
+                          id:"108"
+                      },
+                      {
+                          name:"意大利",
+                          id:"111"
+                      },
+                      {
+                          name:"西班牙",
+                          id:"112"
+                      },
+                      {
+                          name:"白俄罗斯",
+                          id:"102"
+                      },
+                      {
+                          name:"新加坡",
+                          id:"52"
+                      },
+                      {
+                          name:"马来西亚",
+                          id:"53"
+                      },
+                      {
+                          name:"丹麦",
+                          id:"110"
+                      },
+                      {
+                          name:"德国",
+                          id:"103"
+                      },
+                      {
+                          name:"法国",
+                          id:"104"
+                      },
+                      {
+                          name:"挪威",
+                          id:"105"
+                      },
+                      {
+                          name:"瑞典",
+                          id:"106"
+                      },
+                      {
+                          name:"芬兰",
+                          id:"107"
+                      },
+                      {
+                          name:"荷兰",
+                          id:"109"
+                      },
+                      {
+                          name:"瑞士",
+                          id:"113"
+                      },
+                      {
+                        name:"中国澳门",
+                        id:"55"
+                      },
+                      {
+                        name:"奥地利",
+                        id:"114"
+                      }
+                  ] %}
+                  <ul class="country-group">
+                    {% for item in countryList %}
+                    <li data-id="{{item.id}}" >
+                        {{item.name}}
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  </div>
                 </div>
                 <div class="items-from">
                   <button type="button" class="btn-default">立即预约</button>
@@ -155,13 +297,17 @@
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/swiper.min.js"></script>
 <script>
+$('.progress').animate({ width: '100%'},200,function(){
+  $('.progress').css('opacity', 0)
+})</script>
+<script>
   $(function(){
      //
     isBrowser()
     function isBrowser(){
       if (navigator.appName === 'Microsoft Internet Explorer') { //是否是IE浏览器
         if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) { //浏览器内核是否为Trident内核IE8.0
-          alert('很抱歉！当前浏览器版本过低，建议您更换或者升级！')
+          alert('很抱歉！当前浏览器版本过低，如若获得良好的用户体验，建议更换或者升级！')
         }
       }
     }
@@ -172,10 +318,24 @@
       loop: true,
       nextButton: '.swiper-button-next',
       prevButton: '.swiper-button-prev',
-      autoplay : 4000,
+      autoplay : 5000,
     });
-    $('.progress').animate({ width: '100%', opacity: 0})
+    //
+    $('.input-control').focus(function(){
+      $(this).parents('.items-from').addClass('add-animate-active')
+    })
+    $('.input-control').blur(function(){
+      $(this).parents('.items-from').removeClass('add-animate-active')
+    })
 
+    $('.select-city .input-control').focus(function(){
+        $('.from-items').css('display', 'block')
+        $('.country-group li').on('click', function(){
+        var oval = $.trim($(this).text())
+        $('.select-city .input-control').val(oval)
+        $('.from-items').css('display', 'none')
+      })
+    })
   })
 </script>
 </body>
