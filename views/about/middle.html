@@ -99,9 +99,10 @@
   }
   .form-content{
     margin: 0 auto;
-    width: 955px;
+    width: 1180px;
     height: 80px;
-    background: #fff;
+    margin-left: 11px;
+    /* background: #fff; */
   }
   .form-content input{
     width: 130px;
@@ -109,18 +110,20 @@
     border: 1px solid #acacac;
   }
   .form-content>div{
-    display: inline-block;
     margin-top: 25px;
     margin-left: 40px;
+    float: left;
   }
   .submitId{
     display: inline-block;
-    width: 90px;
-    height: 35px;
+    width: 140px;
+    height: 34px;
     background: #f61546;
     text-align: center;
     color: #fff;
     line-height: 35px;
+    border-radius: 60px;
+    font-size: 16px;
   }
   .jie {
       background: url({{helper.cdnhost}}/assets/img/about/middle_1.png);
@@ -271,6 +274,17 @@
       line-height: 36px;
       margin-top: 30px;
   }
+  .form-content span {
+      font-size: 16px;
+      color: #333;
+      margin-right: 14px;
+  }
+  .form-content input, .form-content select{
+      width: 180px;
+      height: 34px;
+      border: 1px #dcdcdc solid;
+      border-radius: 4px;
+  }
 </style>
 </head>
 <body style="background: #fff;">
@@ -386,29 +400,29 @@
                 <div class="canzan-slide" onmousemove="onshow('1');" onmouseout="onhide('1');">
                     <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
                         <img src="{{ item.imageurl }}" alt="{{ item.alt }}"/>
-                        <div id="kai_con_1" class="kai_con" style="display:block;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
-                        <div id="kai_con_chang_1" class="kai_con_chang" style="display:none;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
+                        <div id="kai_con_1" class="kai_con" style="display:block;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程......</div>
+                        <div id="kai_con_chang_1" class="kai_con_chang" style="display:none;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
                     </a>
                 </div>
                 <div class="canzan-slide" onmousemove="onshow('2');" onmouseout="onhide('2');">
                     <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
                         <img src="{{ item.imageurl }}" alt="{{ item.alt }}"/>
-                        <div id="kai_con_2" class="kai_con" style="display:block;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
-                        <div id="kai_con_chang_2" class="kai_con_chang" style="display:none;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
+                        <div id="kai_con_2" class="kai_con" style="display:block;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程......</div>
+                        <div id="kai_con_chang_2" class="kai_con_chang" style="display:none;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
                     </a>
                 </div>
                 <div class="canzan-slide" onmousemove="onshow('3');" onmouseout="onhide('3');">
                     <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
                         <img src="{{ item.imageurl }}" alt="{{ item.alt }}"/>
-                        <div id="kai_con_3" class="kai_con" style="display:block;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
-                        <div id="kai_con_chang_3" class="kai_con_chang" style="display:none;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
+                        <div id="kai_con_3" class="kai_con" style="display:block;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程......</div>
+                        <div id="kai_con_chang_3" class="kai_con_chang" style="display:none;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
                     </a>
                 </div>
                 <div class="canzan-slide" style="margin-right: 0px;" onmousemove="onshow('4');" onmouseout="onhide('4');">
                     <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
                         <img src="{{ item.imageurl }}" alt="{{ item.alt }}"/>
-                        <div id="kai_con_4" class="kai_con" style="display:block;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
-                        <div id="kai_con_chang_4" class="kai_con_chang" style="display:none;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
+                        <div id="kai_con_4" class="kai_con" style="display:block;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程......</div>
+                        <div id="kai_con_chang_4" class="kai_con_chang" style="display:none;">开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程开设课程</div>
                     </a>
                 </div>
                 </div>
@@ -438,12 +452,12 @@
 <div class="bg" style="margin-top: 50px;">
   <div class="baoming" style="background: url({{helper.cdnhost}}/assets/img/about/middle_5_title.png);width: 151px;height: 35px;margin: 0 auto;padding: 0"></div>
   <div class="baoming-form" style="background: url({{helper.cdnhost}}/assets/img/about/middle_5.png);width: 1200px;height: 132px;margin-top: 65px;">
-    <div class="form-content">
+    <div class="form-content clearfix">
       <div><span>您的姓名：</span><input type="text"  id="username" name="username"/></div>
       <div><span>您的手机：</span><input type="tel" id="tel" name="tel"/></div>
       <div>
         <span>意向国家：</span>
-        <select id="city" name="city" style="overflow-y:auto;padding: 0 20px 0 10px;">
+        <select id="firstCountry" name="city" style="overflow-y:auto;padding: 0 20px 0 10px;height: 37px;">
             <option value='1'>美国</option>
             <option value='2'>英国</option>
             <option value='3'>加拿大</option>
@@ -474,7 +488,7 @@
       </div>
       <div class="submitId" id="submitId" style="cursor: pointer">在线预约</div>
       <div style="display: none;">
-        <input type="hidden" name="activityTitle" id="activityTitle" value="马凯特大学" />
+        <input type="hidden" id="relationId" value="34">
       </div>
     </div>
   </div>
