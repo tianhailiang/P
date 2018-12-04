@@ -770,7 +770,8 @@
 {% include "widget/new_footer/common_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("XC_SCHOOLTOPIC_SEAT10",helper) }}
-
+<!-- 秋展浮层 -->
+{% include "widget2/active_popup/active_popup.html" %}
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
@@ -783,8 +784,8 @@
 <script>
 $(function() {
     $('.pai_con_left .slider').xSlider({
-      //轮播图配置
-//          autoplay : 500,
+      //  轮播图配置
+      //  autoplay : 500,
       current: 0,
       speed: 500,
       intervalTime: 5000,
