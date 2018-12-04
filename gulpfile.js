@@ -130,7 +130,7 @@ gulp.task('revCss',function(){
 
 //js generate verison in dist/rev/js/*.json
 gulp.task('revJs',function(){
-  return gulp.src(['public/**/*.js','!' + 'public/dep{,/**}'])
+  return gulp.src(['public/**/*.js','!' + 'public/dep{,/**}','!' + 'public/assets/js/common/*.js'])
     .pipe(uglify())
     .pipe(rev())
     .pipe(gulp.dest('dist/public'))
