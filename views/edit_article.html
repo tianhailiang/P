@@ -121,25 +121,8 @@
               <label class="title" for="level" style="padding-left: 14px;">
                 <!-- <span>*</span> --> 选择学历标签：
               </label>
-              <div id="eduTag" style="display:inline-block;"></div>
-              {% set levelList = [
-                {
-                  "name":"中学"
-                },
-                {
-                  "name":"本科"
-                },
-                {
-                  "name":"硕士"
-                },
-                {
-                  "name":"博士"
-                }
-              ] %}
               <div id="eduTag" style="display:inline-block;">
-                {% for item in levelList %}
-                  {{helper.eduChecked(item.name,article.article_info.edu_id) |safe }}
-                {% endfor %}
+                {{helper.eduChecked(article.article_info.country_id, article.article_info.edu_id) |safe }}
               </div>
               <span class="numTip" style="display: block;margin-left: 128px;">
                 学历标签可多选
@@ -150,43 +133,9 @@
                 <span>*</span> 选择推荐标签：
               </label>
               <div class="recommend-tag" >
-                {% set recommendList = [
-                  {"val":"留学初识","id":1},
-                  {"val":"本科选校","id":2},
-                  {"val":"硕士选校","id":3},
-                  {"val":"留学打工","id":4},
-                  {"val":"本硕连读","id":5},
-                  {"val":"留学时间","id":6},
-                  {"val":"接机住宿","id":7},
-                  {"val":"艺术留学","id":8},
-                  {"val":"QS排名","id":9},
-                  {"val":"留学费用","id":10},
-                  {"val":"大学排名","id":11},
-                  {"val":"留学条件","id":12},
-                  {"val":"专业解析","id":14},
-                  {"val":"签证指导","id":15},
-                  {"val":"就业指导","id":16},
-                  {"val":"申请规划","id":17},
-                  {"val":"行前指导","id":18},
-                  {"val":"省钱攻略","id":19},
-                  {"val":"文书准备","id":20},
-                  {"val":"海外生活","id":21},
-                  {"val":"院校资讯","id":22},
-                  {"val":"背景提升","id":23},
-                  {"val":"留学方案","id":24},
-                  {"val":"难点解析","id":25},
-                  {"val":"备考资讯","id":26},
-                  {"val":"院校百科","id":27},
-                  {"val":"动漫留学","id":28},
-                  {"val":"本科预科","id":29},
-                  {"val":"硕士预科","id":30},
-                  {"val":"留学考试","id":31},
-                  {"val":"留学考试","id":32},
-                  {"val":"留学案例","id":13 }
-                ]  %}
-                {% for item in recommendList %}
-                  {{helper.tagChecked(item,article.article_info.tag_list,article.article_info.country_id) |safe }}
-                {% endfor %}
+                <div id="tag">
+                  {{helper.tagChecked(article.article_info.country_id, article.article_info.edu_id, article.article_info.tag_list) |safe }}
+                </div>
                 <div  style="display: block;">
                   {% if article.article_info.custom_tags != '' %}
                     <span class="recommend-sel" style="margin-right: 0px;" data-str="" checked="checked" id="recommend-sel-custom">
@@ -240,13 +189,13 @@
             </p>
             <div class="editor-btn-box" data-articleId ="{{article.article_info.id}}">
               <a href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" style="margin-right: 7px;" id="article-preview">
-                   	文章预览
+                文章预览
               </a>
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment {% if article.article_info.is_draft == 1 %}disabled{% endif %}" style="margin-right: 7px;" id="{% if article.article_info.is_draft != 1 %}save-draft{% endif %}" >
-                    保存到草稿
+                保存到草稿
               </a>
               <a  href="javascript:void(0);" class="dui-btn btn-xlarge btn-appointment" id="sureBtn">
-                   	立即发布
+                立即发布
               </a>
             </div>
           </div>  
@@ -270,7 +219,7 @@
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/showdown.js"></script>
   <script id="release_artcile_js">
     if (!!window.ActiveXObject || "ActiveXObject" in window){
-      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list_ie.js"'+'></'+'script>');
+      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list_ie_edit.js"'+'></'+'script>');
     } else {
       $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list_edit.js"'+'></'+'script>');
     }
@@ -347,6 +296,7 @@
         } else {
           checkEdu()
         }
+        checkTag ()
       }
       $(".art-type-sel").on("click",function(){
         newsletterType = $(this).attr('data-id');
@@ -372,40 +322,6 @@
           screenTag(Number($('#apply-country').val()), 0)
         }
       })
-      // //选择学历标签
-      // $('.level-sel').on('click',function(){
-      //   // console.log($(this).attr('checked'))
-      //   if($(this).attr('checked')){
-      //     // console.log('false');
-      //     $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
-      //     $(this).find('.level-sel-i').next().css({'color':'#333'});
-      //     $(this).attr('checked',false);
-      //   }else{
-      //     // console.log('true')
-      //     $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
-      //     $(this).find('.level-sel-i').next().css({'color':'#c13232'});
-      //     $(this).attr('checked',true);
-      //   }
-      // });
-      //选择推荐标签
-      var recNumber = $('.recommend-sel[checked=checked]').length;
-      
-      $('.recommend-sel').on('click',function(){
-        if($(this).attr('checked')){
-          // console.log('false');
-          $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
-          $(this).find('.level-sel-i').next().css({'color':'#333'});
-          $(this).attr('checked',false);
-        }else{
-          // console.log('true')
-          if(recNumber<2){
-            $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px','lineHeight':'18px'}).html('&#xe640;');
-            $(this).find('.level-sel-i').next().css({'color':'#c13232'});
-            $(this).attr('checked',true);
-          }
-        }
-        recNumber =$('.recommend-sel[checked=checked]').length;
-      });
       //编辑器
       var E = window.wangEditor;
       var editor = new E('#editor','#editor1');
@@ -433,12 +349,11 @@
       editor.customConfig.pasteIgnoreImg = true;
       // 自定义处理粘贴的文本内容
       editor.customConfig.pasteTextHandle = function (content) {
-          // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
-          var converter = new showdown.Converter();
-          converter.setOption('tables', true);
-          return converter.makeHtml(html2markdown(content));
+        // content 即粘贴过来的内容（html 或 纯文本），可进行自定义处理然后返回
+        var converter = new showdown.Converter();
+        converter.setOption('tables', true);
+        return converter.makeHtml(html2markdown(content));
       }
-
       editor.customConfig.uploadFileName = 'upload';
       // 将图片大小限制为 500K
       editor.customConfig.uploadImgMaxSize = 2*1024 * 1024;
@@ -470,36 +385,6 @@
         layer.msg(info)
       }
       editor.create();
-      var taglist=[
-          { "name":"留学初识","val":"留学初识" },
-          { "name":"本科选校","val":"本科选校" },
-          { "name":"硕士选校","val":"硕士选校" },
-          { "name":"留学打工","val":"留学打工" },
-          { "name":"本硕连读","val":"本硕连读" },
-          { "name":"动漫留学","val":"动漫留学" },
-          { "name":"留学时间","val":"留学时间" },
-          { "name":"接机住宿","val":"接机住宿" },
-          { "name":"艺术留学","val":"艺术留学" },
-          { "name":"QS排名","val":"QS排名" },
-          { "name":"留学费用","val":"留学费用" },
-          { "name":"大学排名","val":"大学排名" },
-          { "name":"留学条件","val":"留学条件" },
-          { "name":"留学案例","val":"留学案例" },
-          { "name":"专业解析","val":"专业解析" },
-          { "name":"签证指导","val":"签证指导" },
-          { "name":"就业指导","val":"就业指导" },
-          { "name":"申请规划","val":"申请规划" },
-          { "name":"行前指导","val":"行前指导" },
-          { "name":"省钱攻略","val":"省钱攻略" },
-          { "name":"文书准备","val":"文书准备" },
-          { "name":"海外生活","val":"海外生活" },
-          { "name":"院校资讯","val":"院校资讯" },
-          { "name":"背景提升","val":"背景提升" },
-          { "name":"留学方案","val":"留学方案" },
-          { "name":"难点解析","val":"难点解析" },
-          { "name":"备考资讯","val":"备考资讯" },
-          { "name":"院校百科","val":"院校百科" }
-        ];
       $('#sureBtn').on('click',surePublish); //发布文章
       $("#save-draft").on("click",savePublish); //保存草稿箱
       $("#article-preview").on("click",function(){
@@ -527,9 +412,9 @@
         //跳转预览详情页
         if(login_ss.usertype ==2){
           if(artType == 1){
-              window.open('/advisor_center/case/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
+            window.open('/advisor_center/case/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
           }else {
-              window.open('/advisor_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
+            window.open('/advisor_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
           }
         }else if(login_ss.usertype ==3){
           window.open('/canzan_center/article/'+$(".editor-btn-box").attr("data-articleId")+'?preview=1');
@@ -576,21 +461,21 @@
               layer.msg('请输入您的自定义标签');
               return false;
             }else{
-                var custom_tags_flag = '';
-                for(var i =0;i<taglist.length;i++){
-                    if($.trim($('#recommend-input').val())==taglist[i].val){
-                        custom_tags_flag =false;
-                        break;
-                    }else{
-                        custom_tags_flag = true;
-                    }
-                }
-                if(custom_tags_flag){
-                    custom_tags =$.trim($('#recommend-input').val());
+              var custom_tags_flag = '';
+              for(var i =0;i<tag_list.length;i++){
+                if($.trim($('#recommend-input').val())==tag_list[i].tagName){
+                  custom_tags_flag =false;
+                  break;
                 }else{
-                    layer.msg('您输入的自定义标签不能与推荐标签相同');
-                    return false;
+                  custom_tags_flag = true;
                 }
+              }
+              if(custom_tags_flag){
+                custom_tags =$.trim($('#recommend-input').val());
+              }else{
+                layer.msg('您输入的自定义标签不能与推荐标签相同');
+                return false;
+              }
             }
           }
         }
@@ -643,11 +528,11 @@
               layer.msg('发布成功');
               if(login_ss.usertype == 2){
                 window.setTimeout(function(){
-                    if(artType==1){
-                      window.location.href=fn.urlgen('case',result.data.article_id.toString());
-                    }else {
-                      window.location.href=fn.urlgen('article',result.data.article_id.toString());
-                    }
+                  if(artType==1){
+                    window.location.href=fn.urlgen('case',result.data.article_id.toString());
+                  }else {
+                    window.location.href=fn.urlgen('article',result.data.article_id.toString());
+                  }
                 },1000);
               }
             }else if(result.code == '1210000011'){
@@ -710,21 +595,21 @@
               layer.msg('请输入您的自定义标签');
               return false;
             }else{
-                var custom_tags_flag = '';
-                for(var i =0;i<taglist.length;i++){
-                    if($.trim($('#recommend-input').val())==taglist[i].val){
-                        custom_tags_flag =false;
-                        break;
-                    }else{
-                        custom_tags_flag = true;
-                    }
-                }
-                if(custom_tags_flag){
-                    custom_tags =$.trim($('#recommend-input').val());
+              var custom_tags_flag = '';
+              for(var i =0;i<tag_list.length;i++){
+                if($.trim($('#recommend-input').val())==tag_list[i].tagName){
+                  custom_tags_flag =false;
+                  break;
                 }else{
-                    layer.msg('您输入的自定义标签不能与推荐标签相同');
-                    return false;
+                  custom_tags_flag = true;
                 }
+              }
+              if(custom_tags_flag){
+                custom_tags =$.trim($('#recommend-input').val());
+              }else{
+                layer.msg('您输入的自定义标签不能与推荐标签相同');
+                return false;
+              }
             }
           }
         }
@@ -802,7 +687,6 @@
         });
       }
       function dataFilter (originData) {
-        // console.log('前',originData);
         var returnData = '';
         var filterArr = [
             {
@@ -848,10 +732,8 @@
         ]; 
         filterArr.forEach(function(val,index) {
           originData = originData.replace(val.reg,val.str);
-        })      
-        // console.log('---------------------------==================------------------') 
+        })       
         returnData =  originData;
-        // console.log('后',returnData);
         return returnData;
       }
     })  

@@ -417,36 +417,6 @@
         layer.msg(info)
       }
       editor.create();
-      var taglist=[
-          { "name":"留学初识","val":"留学初识" },
-          { "name":"本科选校","val":"本科选校" },
-          { "name":"硕士选校","val":"硕士选校" },
-          { "name":"留学打工","val":"留学打工" },
-          { "name":"本硕连读","val":"本硕连读" },
-          { "name":"动漫留学","val":"动漫留学" },
-          { "name":"留学时间","val":"留学时间" },
-          { "name":"接机住宿","val":"接机住宿" },
-          { "name":"艺术留学","val":"艺术留学" },
-          { "name":"QS排名","val":"QS排名" },
-          { "name":"留学费用","val":"留学费用" },
-          { "name":"大学排名","val":"大学排名" },
-          { "name":"留学条件","val":"留学条件" },
-          { "name":"留学案例","val":"留学案例" },
-          { "name":"专业解析","val":"专业解析" },
-          { "name":"签证指导","val":"签证指导" },
-          { "name":"就业指导","val":"就业指导" },
-          { "name":"申请规划","val":"申请规划" },
-          { "name":"行前指导","val":"行前指导" },
-          { "name":"省钱攻略","val":"省钱攻略" },
-          { "name":"文书准备","val":"文书准备" },
-          { "name":"海外生活","val":"海外生活" },
-          { "name":"院校资讯","val":"院校资讯" },
-          { "name":"背景提升","val":"背景提升" },
-          { "name":"留学方案","val":"留学方案" },
-          { "name":"难点解析","val":"难点解析" },
-          { "name":"备考资讯","val":"备考资讯" },
-          { "name":"院校百科","val":"院校百科" }
-        ];
       $('#sureBtn').on('click',surePublish); //发布文章
       $("#save-draft").on("click",savePublish); //保存草稿箱
       function surePublish(){
@@ -501,8 +471,8 @@
                 return false;
               }else{
                 var custom_tags_flag = '';
-                for(var i =0;i<taglist.length;i++){
-                  if($.trim($('#recommend-input').val())==taglist[i].val){
+                for(var i =0;i<tag_list.length;i++){
+                  if($.trim($('#recommend-input').val())==tag_list[i].tagName){
                     custom_tags_flag =false;
                     break;
                   }else{
@@ -647,21 +617,21 @@
                 layer.msg('请输入您的自定义标签');
                 return false;
               }else{
-                  var custom_tags_flag = '';
-                  for(var i =0;i<taglist.length;i++){
-                      if($.trim($('#recommend-input').val())==taglist[i].val){
-                          custom_tags_flag =false;
-                          break;
-                      }else{
-                          custom_tags_flag = true;
-                      }
-                  }
-                  if(custom_tags_flag){
-                      custom_tags =$.trim($('#recommend-input').val());
+                var custom_tags_flag = '';
+                for(var i =0;i<tag_list.length;i++){
+                  if($.trim($('#recommend-input').val())==tag_list[i].tagName){
+                    custom_tags_flag =false;
+                    break;
                   }else{
-                      layer.msg('您输入的自定义标签不能与推荐标签相同');
-                      return false;
+                    custom_tags_flag = true;
                   }
+                }
+                if(custom_tags_flag){
+                  custom_tags =$.trim($('#recommend-input').val());
+                }else{
+                  layer.msg('您输入的自定义标签不能与推荐标签相同');
+                  return false;
+                }
               }
             }
           }
@@ -739,7 +709,6 @@
         });
       };
       function dataFilter (originData) {
-        // console.log('前',originData);
         var returnData = '';
         var filterArr = [
             {
@@ -786,9 +755,7 @@
         filterArr.forEach(function(val,index) {
           originData = originData.replace(val.reg,val.str);
         })      
-        // console.log('---------------------------==================------------------') 
         returnData =  originData;
-        // console.log('后',returnData);
         return returnData;
       }
     })
