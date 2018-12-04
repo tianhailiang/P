@@ -207,9 +207,9 @@
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/showdown.js"></script>
   <script id="release_artcile_js">
     if (!!window.ActiveXObject || "ActiveXObject" in window){
-      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list_ie.js"'+'></'+'script>');
+      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/dep/js/common/country_list_ie.js"'+'></'+'script>');
     } else {
-      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/assets/js/common/country_list.js"'+'></'+'script>');
+      $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/dep/js/common/country_list.js"'+'></'+'script>');
     }
     $(function(){
       var pdfList = JSON.parse($('.assistant-cont').attr('data-pdf'))|| [];
