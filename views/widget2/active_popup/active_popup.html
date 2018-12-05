@@ -248,6 +248,7 @@
             var country = $('.act-pop-sel-val').attr('data-id');
             var city = cookie('currentarea');
             var h = window.location.href;
+            var grUserId = cookie('gr_user_id');
             if(actName== ''){
                 layer.msg('请输入姓名');
                 return false;
@@ -271,7 +272,8 @@
                     city: city,
                     dataType: '12',
                     source: h,
-                    relationId: 22
+                    relationId: 22,
+                    grUserId: grUserId
                 },
                 success:function(msg){
                     console.log(msg)
