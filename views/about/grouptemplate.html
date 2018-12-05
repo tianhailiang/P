@@ -3,7 +3,7 @@
 <head>
   {% include "header_new.html" %}
   <link href="{{helper.cdnhost}}/assets/css/animate.css" rel="stylesheet">
-  <link href="{{helper.cdnhost}}/assets/css/swiper-3.3.1.min.css" rel="stylesheet">
+  <link href="{{helper.cdnhost}}/assets/css/owl.carousel.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/special_page.css">
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/about.css">
   <style>
@@ -37,7 +37,7 @@
           费利佩六世举行的隆重、盛大的欢迎仪式</p>
       </div>
       <div class="jt-summary-right">
-        <img src="https://imgsa.baidu.com/news/q%3D100/sign=50d9e78a8f025aafd5327acbcbecab8d/6f061d950a7b0208fa3e9eab6fd9f2d3562cc881.jpg" alt="" style="height:290px;width:386px;">
+        <img src="" alt="" style="height:290px;width:386px;">
       </div>
     </div>
     <script>$('.progress').animate({ width: '50%'},200)</script>
@@ -47,7 +47,7 @@
         <h1>各类排名及优势介绍</h1>
         <div class="sort-container clearfix">
           <div class="sort-left wow fadeInLeft">
-            <img src="https://imgsa.baidu.com/news/q%3D100/sign=4913e99723738bd4c221b631918a876c/0df3d7ca7bcb0a4661b81d736663f6246a60afe6.jpg" alt="" style="height:524px;width:600px;">
+            <img src="" alt="" style="height:524px;width:600px;">
             <p class="pictuer-des">剑桥文理学院</p>
           </div>
           <div class="sort-right wow fadeInRight">
@@ -96,22 +96,20 @@
           <div id="carouselContent">
             <div class="swiper-button-prev arrow-left"></div>
             <div class="swiper-button-next arrow-right"></div>
-            <div class="swiper-container" style="width:998px;">
-              <div class="swiper-wrapper">
-                  <div class="swiper-slide">
+              <div id="owl-demo" class="owl-carousel">
+                <div class="item carousel-item">
+                  <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
+                  <p class="pic-lengtend">1曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
+                </div>
+                <div class="item carousel-item">
                     <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
-                    <p class="pic-lengtend">曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
+                    <p class="pic-lengtend">2曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
                   </div>
-                  <div class="swiper-slide">
-                      <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
-                      <p class="pic-lengtend">曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
-                    </div>
-                  <div class="swiper-slide">
-                      <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
-                      <p class="pic-lengtend">曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
-                    </div>
+                  <div class="item carousel-item">
+                    <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
+                    <p class="pic-lengtend">3曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
+                  </div>
               </div>
-            </div>
           </div>
           <ul class="item-body-list clearfix">
               {% set projectlist = [
@@ -143,164 +141,99 @@
       </div>
       <!-- 表单 -->
       <div class="from-contorl">
-        <div class="from-group">
+        <div class="from-group" style="_background: {{schooltopic.list.button_background}}">
           <div class="from-pic">
             <img class="wow zoomIn" src="http://es6.ruanyifeng.com/images/cover_thumbnail_3rd.jpg" alt="" style="height:356px;width:320px;">
           </div>
           <div class="from-inline">
             <h2 class="from-bm">我想报名</h2>
-            <from class="form-horizontal">
-                <div class="items-from items-from-active">
-                  <label for="" class="control-label">您的姓名</label>
-                  <input type="text" class="input-control user-name">
-                </div>
-                <div class="items-from items-from-active">
-                  <label for="" class="control-label">您的手机</label>
-                  <input type="text" class="input-control user-ipone">
-                </div>
-                <div class="items-from items-from-active select-city">
-                  <label for="" class="control-label">所在城市</label>
-                  <input type="text" class="input-control city-val">
-                  <em class="icon-arrow"></em>
-                  <div class="from-items">
-                    {% set countryList = [
-                      {
-                          name:"美国",
-                          id:"1"
-                      },
-                      {
-                          name:"英国",
-                          id:"2"
-                      },
-                      {
-                          name:"澳大利亚",
-                          id:"4"
-                      },
-                      {
-                          name:"加拿大",
-                          id:"3"
-                      },
-                      {
-                          name:"新西兰",
-                          id:"5"
-                      },
-                      {
-                          name:"日本",
-                          id:"51"
-                      },
-                      {
-                          name:"韩国",
-                          id:"50"
-                      },
-                      {
-                          name:"中国香港",
-                          id:"54"
-                      },
-                      {
-                          name:"俄罗斯",
-                          id:"100"
-                      },
-                      {
-                          name:"乌克兰",
-                          id:"101"
-                      },
-                      {
-                          name:"爱尔兰",
-                          id:"108"
-                      },
-                      {
-                          name:"意大利",
-                          id:"111"
-                      },
-                      {
-                          name:"西班牙",
-                          id:"112"
-                      },
-                      {
-                          name:"白俄罗斯",
-                          id:"102"
-                      },
-                      {
-                          name:"新加坡",
-                          id:"52"
-                      },
-                      {
-                          name:"马来西亚",
-                          id:"53"
-                      },
-                      {
-                          name:"丹麦",
-                          id:"110"
-                      },
-                      {
-                          name:"德国",
-                          id:"103"
-                      },
-                      {
-                          name:"法国",
-                          id:"104"
-                      },
-                      {
-                          name:"挪威",
-                          id:"105"
-                      },
-                      {
-                          name:"瑞典",
-                          id:"106"
-                      },
-                      {
-                          name:"芬兰",
-                          id:"107"
-                      },
-                      {
-                          name:"荷兰",
-                          id:"109"
-                      },
-                      {
-                          name:"瑞士",
-                          id:"113"
-                      },
-                      {
-                        name:"中国澳门",
-                        id:"55"
-                      },
-                      {
-                        name:"奥地利",
-                        id:"114"
-                      }
-                  ] %}
-                  <ul class="country-group">
-                    {% for item in countryList %}
-                    <li data-id="{{item.id}}" >
-                        {{item.name}}
-                    </li>
-                    {% endfor %}
-                  </ul>
-                  </div>
-                </div>
-                <div class="items-from">
-                  <input type="button" value="立即预约" class="btn-default handleSubmit">
-                </div>
-            </from>
+            <div class="items-from items-from-active">
+              <label for="" class="control-label">您的姓名</label><input type="text"  id="username" name="username" class="input-control"/></div>
+            <div class="items-from items-from-active">
+              <label for="" class="control-label">您的手机</label><input type="tel" id="tel" name="tel" class="input-control"/></div>
+            <div class="items-from items-from-active">
+              <label for="" class="control-label">意向城市</label>
+              <select id="firstCountry" name="city" class="input-control" style="overflow-y:auto;">
+                  <option value='1'>美国</option>
+                  <option value='2'>英国</option>
+                  <option value='3'>加拿大</option>
+                  <option value='4'>澳大利亚</option>
+                  <option value='5'>新西兰</option>
+                  <option value='50'>韩国</option>
+                  <option value='51'>日本</option>
+                  <option value='101'>乌克兰</option>
+                  <option value='100'>俄罗斯</option>
+                  <option value='108'>爱尔兰</option>
+                  <option value='111'>意大利</option>
+                  <option value='112'>西班牙</option>
+                  <option value='102'>白俄罗斯</option>
+                  <option value='52'>新加坡</option>
+                  <option value='53'>马来西亚</option>
+                  <option value='54'>中国香港</option>
+                  <option value='55'>中国澳门</option>
+                  <option value='110'>丹麦</option>
+                  <option value='103'>德国</option>
+                  <option value='104'>法国</option>
+                  <option value='105'>挪威</option>
+                  <option value='106'>瑞典</option>
+                  <option value='107'>芬兰</option>
+                  <option value='109'>荷兰</option>
+                  <option value='113'>瑞士</option>
+                  <option value='114'>奥地利</option>
+              </select>
+            </div>
+            <div class="submitId btn-default" id="submitId">立即预约</div>
+            <div style="display: none;">
+              <input type="hidden" name="activityTitle" id="activityTitle" value="马凯特大学" />
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
   {% include "widget/new_footer/common_footer.html" %}
-<script src="{{helper.cdnhost}}/assets/js/wow.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/owl.carousel.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
-<script src="{{helper.cdnhost}}/dep/js/schooltopic/index.js"></script>
+<!-- <script src="{{helper.cdnhost}}/dep/js/schooltopic/index.js"></script> -->
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/jquery.bxslider.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/wow.min.js"></script>
+<!-- <script src="{{helper.cdnhost}}/assets/js/signupFrom.js"></script> -->
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/signupFrom.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/swiper.min.js"></script>
 <script>
-$('.progress').animate({ width: '100%'},200,function(){
-  $('.progress').css('opacity', 0)
-})</script>
+  $('.progress').animate({ width: '100%'},200,function(){
+    $('.progress').css('opacity', 0)
+  })
+  function isBrowser(){
+      if (navigator.appName === 'Microsoft Internet Explorer') { //是否是IE浏览器
+        if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) { //浏览器内核是否为Trident内核IE8.0
+          alert('很抱歉！当前浏览器版本过低，如若获得良好的用户体验，建议更换或者升级！')
+        }
+      }
+    }
+  isBrowser()
+  $(function(){
+    //初始化
+    new WOW().init();
+    //轮播图初始化
+    $('#owl-demo').owlCarousel({
+      items: 1,
+      loop: true,
+      autoplay: true,
+      autoplayTimeout: 4000,
+      navigationText: ["",""],
+      dots: false
+    });
+    //
+    $('.input-control').focus(function(){
+      $(this).parents('.items-from').addClass('add-animate-active')
+    })
+    $('.input-control').blur(function(){
+      $(this).parents('.items-from').removeClass('add-animate-active')
+    })
+  })
+</script>
 </body>
 </html>

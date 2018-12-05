@@ -65,7 +65,7 @@
 	height: 0;
 	content: "";
 }
-
+/* 2018-11-30 */
 .main {
 	margin: 100px auto;
 	width: 1180px;
@@ -373,6 +373,7 @@ ul {
   margin-bottom: 30px;
   position: relative;
   width: 320px;
+  margin-left: 114px;
 }
 
 .input-control {
@@ -388,7 +389,7 @@ ul {
   display: block;
   position: absolute;
   z-index: 1;
-  left: 80px;
+  left: 77px;
   width: 0;
   bottom: 0;
   background: #c13232;
@@ -397,7 +398,7 @@ ul {
   transition: .2s ease-out width;
 }
 .add-animate-active::after{
-  left: 80px;
+  left: 77px;
   width: 74.33%;
 }
 .control-label {
@@ -429,9 +430,10 @@ ul {
 
 .btn-default {
 	display: inline-block;
-  margin: 0 0 0 128px;
+  margin: 0 0 0 195px;
 	width: 118px;
-	height: 34px;
+  height: 34px;
+  line-height: 34px;
 	outline: 0;
 	border: 1px solid transparent;
 	border-radius: 4px;
@@ -440,7 +442,6 @@ ul {
 	vertical-align: middle;
 	text-align: center;
 	font-size: 16px;
-	line-height: 1.428571;
   cursor: pointer;
   transition: .2s linear;
 }
@@ -449,15 +450,36 @@ ul {
 }
 #carouselContent{
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
-.arrow-left{
-  left: 10px;
+#owl-demo {
+  width: 998px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#owl-demo .carousel-item,#owl-demo .carousel-item img{
+  height: 520px;
+  width: 998px;
+}
+.owl-prev,.owl-next{
+  height: 60px;
+  width: 30px;
+  color: transparent;
+}
+.owl-prev{
+  position: absolute;
+  left: -55px;
   background: url(/assets/img/zuo1.png) no-repeat
 }
-.arrow-right{
-  right: 10px;
+.owl-next{
+  position: absolute;
+  left: 1025px;
   background: url(/assets/img/you1.png) no-repeat
+}
+.owl-carousel .owl-nav.disabled{
+  position: absolute;
+  top: 50%;
+  display: block;
 }
 .carousel-slide{
   width: 998px;
@@ -532,7 +554,6 @@ ul {
   cursor: default;
   font-size: 14px;
   text-indent: 10px;
-  /* pointer-events: none; */
 }
 .country-group li:hover{
   background-color: #e5e5e5;
