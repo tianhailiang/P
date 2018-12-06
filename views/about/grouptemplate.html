@@ -6,9 +6,6 @@
   <link href="{{helper.cdnhost}}/assets/css/owl.carousel.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/special_page.css">
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/about.css">
-  <style>
-  .swiper-container{height: 560px;}
-  </style>
 </head>
 <body style="overflow-x:hidden;">
     <div class="progress"></div>
@@ -17,7 +14,7 @@
                                                                                                                                                    
     {% import "widget/new_nav_first/common_nav.html" as common_nav %}
     {{ common_nav.common_nav(tdk,helper) }}
-    <script>$('.progress').animate({ width: '20%'},200)</script>
+    <!-- banner区域 -->
     <div class="banner" style="background-image:url({{schooltopic.list.sch_background_map}});height: 450px; overflow:hidden;background-size:cover;background-position: center center">
         <div class="wrap1">
           <div class="btn-box">
@@ -25,8 +22,8 @@
             <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
           </div>
         </div>
-      </div>
-  <!-- 专题模板body -->
+    </div>
+    <script>$('.progress').animate({ width: '20%'},200)</script>
   <div class="main">
     <!-- 集团简介 -->
     <div class="jt-summary clearfix">
@@ -46,11 +43,11 @@
       <div class="jieshao-item">
         <h1>各类排名及优势介绍</h1>
         <div class="sort-container clearfix">
-          <div class="sort-left wow fadeInLeft">
+          <div class="sort-left wow fadeInLeft" data-wow-delay=".1s">
             <img src="" alt="" style="height:524px;width:600px;">
             <p class="pictuer-des">剑桥文理学院</p>
           </div>
-          <div class="sort-right wow fadeInRight">
+          <div class="sort-right wow fadeInRight" data-wow-delay=".3s">
             <dl>
               <dt class="sort-title"><span class="list-item">1</span>卓越的地理位置</dt>
               <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
@@ -59,11 +56,15 @@
                 <dt class="sort-title"><span>2</span>先进的住宿条件</dt>
                 <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
             </dl>
+            <dl>
+                <dt class="sort-title"><span>3</span>先进的住宿条件</dt>
+                <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
+            </dl>
           </div>
         </div>
         <script>$('.progress').animate({ width: '70%'},200)</script>
         <div class="item-body">
-          <!--  -->
+          <!-- 大学介绍 -->
           <div class="item-plane">
             <div class="item-plane-top">
               <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="" style="height:300px;width:1180px;">
@@ -78,7 +79,20 @@
                 <li>深度合作学院深度合作学院深度合作学院深度合作学院</li>
               </ul>
               <dl>
-                <dt class="yk-title">预科方向</dt>
+                <dt class="yk-title">预科方向：</dt>
+                <dd class="yk-des">英世企学院创建于1976年，位于便捷的市中心，接
+                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火
+                    车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区近悉尼的主要景点和设施。
+                    市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
+                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
+                    市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
+                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
+                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
+                    市区的主要火车站-中央火车站非常靠近校园，6年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
+                  </dd>
+              </dl>
+              <dl>
+                <dt class="yk-title">升学率：</dt>
                 <dd class="yk-des">英世企学院创建于1976年，位于便捷的市中心，接
                     英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火
                     车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区近悉尼的主要景点和设施。
@@ -94,8 +108,6 @@
           </div>
           <!-- 图片轮播 -->
           <div id="carouselContent">
-            <div class="swiper-button-prev arrow-left"></div>
-            <div class="swiper-button-next arrow-right"></div>
               <div id="owl-demo" class="owl-carousel">
                 <div class="item carousel-item">
                   <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
@@ -197,7 +209,6 @@
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
-<!-- <script src="{{helper.cdnhost}}/dep/js/schooltopic/index.js"></script> -->
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/jquery.bxslider.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/wow.min.js"></script>
 <!-- <script src="{{helper.cdnhost}}/assets/js/signupFrom.js"></script> -->
@@ -206,13 +217,13 @@
   $('.progress').animate({ width: '100%'},200,function(){
     $('.progress').css('opacity', 0)
   })
-  function isBrowser(){
-      if (navigator.appName === 'Microsoft Internet Explorer') { //是否是IE浏览器
-        if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) { //浏览器内核是否为Trident内核IE8.0
-          alert('很抱歉！当前浏览器版本过低，如若获得良好的用户体验，建议更换或者升级！')
-        }
+  function isBrowser() {
+    if (navigator.appName === 'Microsoft Internet Explorer') { //是否是IE浏览器
+      if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) { //浏览器内核是否为Trident内核IE8.0
+        alert('抱歉！当前浏览器版本过低，如若获得良好的用户体验，建议更换或者升级！')
       }
     }
+  }
   isBrowser()
   $(function(){
     //初始化

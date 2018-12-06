@@ -6,18 +6,16 @@
 }
 
 .banner .btn-box {
-	width: 450px;
-	height: 100px;
+	width: 428px;
 	margin: 390px auto 0;
 }
 
 .banner .btn-box a {
-	display: block;
+	display: inline-block;
 	font-size: 16px;
 	text-align: center;
 	line-height: 40px;
 	color: #fff;
-	float: left;
 	width: 136px;
 	height: 40px;
 	box-sizing: border-box;
@@ -87,13 +85,15 @@ ul {
 	float: left;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	margin-right: 22px;
+  margin-right: 22px;
+  margin-right: 19px\9;
 	padding: 26px 20px;
   width: 276px;
   height: 254px;
 	border-top: solid 3px #c13232;
 	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius:4px;
 	-webkit-box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
   -moz-box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
 	box-shadow: 3px 3px 16px rgba(0, 0, 0, .14);
@@ -173,13 +173,15 @@ ul {
 }
 
 .item-plane-text {
-	padding-top: 40px;
-	padding-bottom: 40px;
-	padding-left: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  padding-left: 30px;
   background: #f5f5f5;
   overflow: auto;
   height: 350px;
   max-height: 350px;
+  box-sizing: border-box;
+  padding-right: 20px;
 }
 
 .yk-title {
@@ -249,7 +251,7 @@ ul {
 }
 /* 处理滚动条 */
 .sort-right::-webkit-scrollbar,.item-plane-text::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
   height: 10px;
 }
 .sort-right::-webkit-scrollbar-thumb,.item-plane-text::-webkit-scrollbar-thumb {
@@ -277,7 +279,8 @@ ul {
 .sort-title {
 	margin-bottom: 14px;
 	color: #333;
-	font-size: 16px;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .sort-des {
@@ -443,6 +446,8 @@ ul {
 	text-align: center;
 	font-size: 16px;
   cursor: pointer;
+  -webkit-transition: .2s linear;
+  -moz-transition: .2s linear;
   transition: .2s linear;
 }
 .btn-default:hover{
@@ -458,11 +463,11 @@ ul {
   margin-right: auto;
 }
 #owl-demo .carousel-item,#owl-demo .carousel-item img{
-  height: 520px;
+  height: 560px;
   width: 998px;
 }
 .owl-prev,.owl-next{
-  height: 60px;
+  height: 45px;
   width: 30px;
   color: transparent;
 }
