@@ -61,8 +61,12 @@
 <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
 <script src="{{helper.cdnhost}}/dep/js/layer-1.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/top.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/refer.js"></script>
 
 <script>
+    $(function() {
+        getPageReferweb();
+    });
     function adviserlogin () {
         var h = window.location.href;
         console.log('h', h);
