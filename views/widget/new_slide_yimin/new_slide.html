@@ -57,8 +57,11 @@
     </ul>
   </div>
 </div>
+<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
 <script>
   function  openchat(jobnum){
+    var grUserId = cookie('gr_user_id');
+    getUrlSetCookieByParam ('growingioId',grUserId);
     openJesongChatByCus(1,jobnum)
   }
   $('#to_top').click(function(){
