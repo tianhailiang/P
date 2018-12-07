@@ -85,7 +85,11 @@
 <script src="http://api.map.baidu.com/getscript?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
 <script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/showMap.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/refer.js"></script>
 <script>
+  $(function() {
+    getPageReferweb();
+  });
   function adviserlogin () {
     var h = window.location.href;
     console.log('h', h);

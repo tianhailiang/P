@@ -21,7 +21,7 @@
 		var firstCountry = $.trim($("#firstCountry").val());
 		var secondCountry = $.trim($("#secondCountry").val());
 		var activityTitle = $.trim($("#activityTitle").val());	
-		var fromUrl = window.location.href;
+		// var fromUrl = window.location.href;
 		var company = $.trim($("#company").val());
 
 		var year = $.trim($("#year").val());
@@ -31,6 +31,7 @@
 		var shenfen = String($.trim($("#specialty").val())); 
 		var relationId = $.trim($("#relationId").val()); // 获取页面种植的relationId
 		var grUserId = getCookie('gr_user_id');
+		var fromUrl = getCookie('referweb'); // 获取来源url
 		
 		var sexs = document.getElementsByName("sex");
 		for(var i=0; i<sexs.length; i++){
