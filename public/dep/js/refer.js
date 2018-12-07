@@ -31,7 +31,8 @@ function jesongGetDomain (url){
 	}
 }
 function getPageReferweb(){
-	if (cookie('referweb')) {
+	console.log('cookie(referweb)', cookie('referweb'))
+	if (cookie('referweb') != null) {
 		console.log(1111);
 		return false;
 	} else {
@@ -74,14 +75,14 @@ function getPageReferweb(){
 			var urll = window.location.href;
 			var main = urll.match(/(\w+):\/\/([^\:|\/]+)(\:\d*)?(.*\/)([^#|\?|\n]+)?(#.*)?(\?.*)?/i);
 			console.log('main', main[7])
-			if (main[7] != 'undefined') {
+			// if (main[7] != 'undefined') {
 				console.log('refer写入cookie成功')
                 setCook('referweb', urll, 1000*60*60);
                 return false;
-			} else {
-                console.log('非法注入');
-                return false;
-			}
+			// } else {
+            //     console.log('非法注入');
+            //     return false;
+			// }
 		}
 	}
 }
