@@ -247,6 +247,9 @@
             var phone = $.trim($("#act-phone").val());
             var country = $('.act-pop-sel-val').attr('data-id');
             var city = cookie('currentarea');
+            if (city == null) {
+                city = 1;
+            }
             // var h = window.location.href;
             var h = cookie('referweb'); // 获取来源url
             var grUserId = cookie('gr_user_id');
