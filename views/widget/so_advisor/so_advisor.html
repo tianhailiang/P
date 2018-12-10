@@ -16,11 +16,8 @@
   <div class="so_advisor_bottom" style="text-align: justify"><p>{{ item.introduce | ellipsis(80) }}<a target="_blank" href="{{helper.urlgen(item.id | string)}}">【看看TA的主页】</a></p></div>
 </div>
 {% endfor %}
-<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
 <script>
     function  openchat_new(jobnum){
-      var grUserId = cookie('gr_user_id');
-      getUrlSetCookieByParam ('growingioId',grUserId);
       openJesongChatByCus(1,jobnum)
     }
 </script>

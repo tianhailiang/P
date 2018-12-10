@@ -46,15 +46,12 @@
     </div>
   </div>
 </div>
-<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
 <script>
   function open_main(uid){
     window.open('/' + uid);
   }
   $(function(){
     function openchat_new(jobnum){
-      var grUserId = cookie('gr_user_id');
-      getUrlSetCookieByParam ('growingioId',grUserId);
       openJesongChatByCus(1,jobnum)
     }
     $('.expand2').on('click','.expand',function(){
