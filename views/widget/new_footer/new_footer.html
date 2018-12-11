@@ -86,6 +86,14 @@
 <script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/showMap.js"></script>
 <script src="{{helper.cdnhost}}/dep/js/refer.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
+<script>
+$(function(){
+    var grUserId = cookie('gr_user_id');
+    getUrlSetCookieByParam ('growingioId',grUserId);
+})
+</script>
+
 <script>
   $(function() {
     getPageReferweb();

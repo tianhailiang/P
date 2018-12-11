@@ -62,6 +62,13 @@
 <script src="{{helper.cdnhost}}/dep/js/layer-1.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/top.js"></script>
 <script src="{{helper.cdnhost}}/dep/js/refer.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
+<script>
+$(function(){
+    var grUserId = cookie('gr_user_id');
+    getUrlSetCookieByParam ('growingioId',grUserId);
+})
+</script>
 
 <script>
     $(function() {
