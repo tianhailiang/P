@@ -1366,6 +1366,18 @@ exports.schooltopic =function(data,callback){
 
 }
 
+// 新专题页面
+exports.schooltopic_new =function(data,callback){
+  var url = _api_url_path(data, config.apis.get_new_schooltopic);
+  if (url == null){
+    callback('404');
+    return;
+  }
+
+  api.apiRequest(url ,callback);
+
+}
+
 //首页广告楼层
 exports.advert = function(data,callback){
   var url = _api_url_path(data, config.apis.advert);

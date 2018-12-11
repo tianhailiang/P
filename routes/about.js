@@ -193,14 +193,14 @@ exports.middle = function (req, res, next) {
   data.login_nickname = '';
   async.parallel({
     schooltopic: function (callback) {
-      cms.schooltopic({
-        id:articleId,
+      cms.schooltopic_new({
+        id:articleId + '_m',
       }, callback);
     },
   }, function (err, result){
     // log.info(result)
     // data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    data.schooltopic = result.schooltopic.data;
+    data.schooltopic = result.schooltopic;
     console.log('data.schooltopic', data.schooltopic);
     data.pageroute="middle";
     data.tdk = {
