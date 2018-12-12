@@ -277,7 +277,7 @@ var apis = {
   //专题接口
   "get_schooltopic": prefix + 'colleges_detail/',
   //新专题接口
-  "get_new_schooltopic": prefix_111 + 'colleges',
+  "get_new_schooltopic": prefix + 'colleges',
   //首页楼层广告
   "advert":prefix + 'advert',
   //编辑文章详情接口

@@ -194,14 +194,36 @@ exports.middle = function (req, res, next) {
   async.parallel({
     schooltopic: function (callback) {
       cms.schooltopic_new({
-        id:articleId + '_m',
+        id:articleId,
       }, callback);
     },
   }, function (err, result){
     // log.info(result)
-    // data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    data.schooltopic = result.schooltopic;
-    console.log('data.schooltopic', data.schooltopic);
+    data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    // data.schooltopic = result.schooltopic;
+    data.advantage = JSON.parse(data.schooltopic.list.advantage);
+    data.course_des = JSON.parse(data.schooltopic.list.course_des);
+    if (data.schooltopic.list.course_images != null || data.schooltopic.list.course_images != '') {
+      data.course_images = JSON.parse(data.schooltopic.list.course_images);
+      data.course_as = [];
+      for (var cou in data.course_images) {
+        data.course_as.push(data.course_images[cou])
+      }
+      console.log('data.course_images', data.course_as[0])
+      data.coures = new Array();
+      for (var i = 0; i < data.course_as.length; i++) {
+        console.log('data.coures', data.course_as[i]);
+        if (data.course_des[i] != undefined) {
+          data.coures.push({des: data.course_des[i], images: data.course_as[i]})
+        }else {
+          data.coures.push({images: data.course_as[i]})
+        }
+        console.log('data.couresiiiiiii', data.coures[i]);
+      }
+    }
+    console.log('data.schooltopic', data.schooltopic)
+    console.log('data.schooltopic', data.advantage[0]);
+    console.log('data.coures', data.coures[0]);
     data.pageroute="middle";
     data.tdk = {
       pagekey: 'MIDDLE', //key
