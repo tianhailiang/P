@@ -256,8 +256,8 @@ exports.colleges = function (req, res, next) {
     },
   }, function (err, result){
     // log.info(result)
-    // data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    data.schooltopic = result.schooltopic;
+    data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    // data.schooltopic = result.schooltopic;
     console.log('data.schooltopic', data.schooltopic);
     data.pageroute="colleges";
     data.tdk = {
@@ -265,7 +265,6 @@ exports.colleges = function (req, res, next) {
       cityid: '', //cityid
       nationid: '' //nationi
     };
-
     res.render('about/colleges', data);
   })
 }
