@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{helper.cdnhost}}/assets/css/about.css">
 </head>
 <body style="overflow-x:hidden;">
-    <div class="progress"></div>
+    <!-- <div class="progress"></div> -->
     {% include "widget/common_hide/common_hide.html"%}
     {% include "widget/top/top.html" %}
                                                                                                                                                    
@@ -214,20 +214,20 @@
 <!-- <script src="{{helper.cdnhost}}/assets/js/signupFrom.js"></script> -->
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
 <script>
-  $('.progress').animate({ width: '100%'},200,function(){
-    $('.progress').css('opacity', 0)
-  })
-  function isBrowser() {
-    if (navigator.appName === 'Microsoft Internet Explorer') { //是否是IE浏览器
-      if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) { //浏览器内核是否为Trident内核IE8.0
-        alert('抱歉！当前浏览器版本过低，如若获得良好的用户体验，建议更换或者升级！')
-      }
-    }
-  }
-  isBrowser()
+  // $('.progress').animate({ width: '100%'},200,function(){
+  //   $('.progress').css('opacity', 0)
+  // })
+  // function isBrowser() {
+  //   if (navigator.appName === 'Microsoft Internet Explorer') { //是否是IE浏览器
+  //     if (navigator.userAgent.match(/Trident/i) && navigator.userAgent.match(/MSIE 8.0/i)) { //浏览器内核是否为Trident内核IE8.0
+  //       alert('抱歉！当前浏览器版本过低，如若获得良好的用户体验，建议更换或者升级！')
+  //     }
+  //   }
+  // }
+  // isBrowser()
   $(function(){
     //初始化
-    new WOW().init();
+    // new WOW().init();
     //轮播图初始化
     $('#owl-demo').owlCarousel({
       items: 1,
