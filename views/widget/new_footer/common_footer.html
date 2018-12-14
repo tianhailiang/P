@@ -33,7 +33,7 @@
     <div style="width: 708px;float: left;padding-left: 20px">
       <div class="foot-map clearfix" style="width: 708px;">
         <div class="sitemap sitemap01">
-          <h2>关于金吉列</h2>
+          <h2>关于我们</h2>
           <ul class="left-ul">
             <li><a target="_blank"  rel="nofollow"  href="{{ helper.urlgen('about') }}"> 公司简介</a></li>
             <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/culture') }}">企业文化</a></li>
@@ -115,7 +115,18 @@
 <script src="http://api.map.baidu.com/getscript?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
 <script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/showMap.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/refer.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
 <script>
+$(function(){
+    var grUserId = cookie('gr_user_id');
+    getUrlSetCookieByParam ('growingioId',grUserId);
+})
+</script>
+<script>
+  $(function() {
+    getPageReferweb();
+  });
   function adviserlogin () {
     var h = window.location.href;
     console.log('h', h);

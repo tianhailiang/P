@@ -53,6 +53,10 @@
             height: 30px;
             text-align: center;
             line-height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
         }
         .data-table th:first-of-type,.data-table td:first-of-type {
             width: 108px;
@@ -137,7 +141,7 @@
                         <th>关键词</th>
                     </tr>
                      {% for item in datalist %}
-                     {% if loop.index <= 50 %}
+                     {% if loop.index <= 100 %}
                         <tr>
                             <td>{{loop.index}}</td>
                             <td>{{item}}</td>
@@ -146,14 +150,14 @@
                      {% endif %}
                      {% endfor %}
                 </table>
-                {% if datalist.length > 50 %}
+                {% if datalist.length > 100 %}
                 <table class="data-table table-right">
                     <tr>
                         <th>序号</th>
                         <th>关键词</th>
                     </tr>
                     {% for item in datalist %}
-                    {% if loop.index >50 %}
+                    {% if loop.index > 100 %}
                     <tr>
                         <td>{{loop.index}}</td>
                         <td>{{item}}</td>

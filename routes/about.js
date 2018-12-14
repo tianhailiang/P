@@ -185,7 +185,7 @@ exports.activity_ip = function (req, res, next) {
   var url = req.url.substring(9)
   console.log('area--------', url)
   if(area){
-    res.redirect(helperfunc.active_urlgen('activity','c='+area, url));
+    res.redirect(helperfunc.active_urlgen_activity('activity','c='+area, url));
   }else{
     var ip = req.headers['x-forwarded-for'] || req.ip || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
     if(ip.split(',').length>0){
@@ -200,10 +200,10 @@ exports.activity_ip = function (req, res, next) {
         var cityCode ='';
         if(b.content){
           cityCode = get_area_code(b.content.address_detail.city);
-          res.redirect(helperfunc.active_urlgen('activity','c='+cityCode, url));
+          res.redirect(helperfunc.active_urlgen_activity('activity','c='+cityCode, url));
         }
       }else{
-        res.redirect(helperfunc.active_urlgen('activity','c='+1, url));
+        res.redirect(helperfunc.active_urlgen_activity('activity','c='+1, url));
       }
     })
   }
