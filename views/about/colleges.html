@@ -512,16 +512,16 @@
     <div class="jian_title">学校简介</div>
     <div class="jian_con">
         <div class="jian_con_top">
-            <div class="jian_con_top_s">{{schooltopic.list.description}}</div>
+            <div class="jian_con_top_s">{{schooltopic.list.content}}</div>
         </div>
         <div class="jian_con_rigth">
             <img src="{{schooltopic.list.des_images}}" alt="">
         </div>
         <div class="jian_con_bottom clearfix">
-            <img src="{{schooltopic.list.ranking_images}}" alt="">
-            <img src="{{schooltopic.list.ranking_images}}" alt="">
-            <img src="{{schooltopic.list.ranking_images}}" alt="">
-            <img src="{{schooltopic.list.ranking_images}}" alt="">
+            <img src="{{schooltopic.list.des_images}}" alt="">
+            <img src="{{schooltopic.list.des_images}}" alt="">
+            <img src="{{schooltopic.list.des_images}}" alt="">
+            <img src="{{schooltopic.list.des_images}}" alt="">
         </div>
     </div>
 </div>
@@ -535,90 +535,32 @@
                 <div class="slider">
                     <div class="slider-img">
                         <ul class="slider-img-ul">
+                        {% for item in university_ranking %}
                         <li>
                             <a href="javacript:void(0);" target="_blank" style="height: 30px;">
                                 <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>
-                                </div>
-                            </a>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>
-                                </div>
-                            </a>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
                                     <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>
                                 </div>
                             </a>
                         </li>
-                        <li>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第99位</span></span>
-                                </div>
-                            </a>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第99位</span></span>
-                                </div>
-                            </a>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第99位</span></span>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第999位</span></span>
-                                </div>
-                            </a>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第999位</span></span>
-                                </div>
-                            </a>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l">2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年2018年</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第999位</span></span>
-                                </div>
-                            </a>
-                        </li>
+                        {% endfor %}
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div class="pai_con_rigth">
-            <div style="background: #fafafa"><span>教育学：</span><span>14位</span></div>
-            <div><span>教育学：</span><span>14位</span></div>
-            <div style="background: #fafafa"><span>教育学：</span><span>14位</span></div>
-            <div><span>教育学：</span><span>14位</span></div>
-            <div style="background: #fafafa"><span>教育学：</span><span>14位</span></div>
-            <div><span>教育学：</span><span>14位</span></div>
-            <div style="background: #fafafa"><span>教育学：</span><span>14位</span></div>
-            <div><span>教育学：</span><span>14位</span></div>
-            <div style="background: #fafafa"><span>教育学：</span><span>14位</span></div>
-            <div><span>教育学：</span><span>14位</span></div>
-            <div style="background: #fafafa"><span>教育学：</span><span>14位</span></div>
-            <div><span>教育学：</span><span>14位</span></div>
-            <div style="background: #fafafa"><span>教育学：</span><span>14位</span></div>
-            <div><span>教育学：</span><span>14位</span></div>
-            <div style="background: #fafafa"><span>教育学：</span><span>14位</span></div>
+            {% for item in colleges_ranking %}
+            {% if loop.index%2 != 0 %}
+            <div style="background: #fafafa">{{item}}</div>
+            {% else %}
+            <div>{{item}}</div>
+            {% endif %}
+            {% endfor %}
         </div>
         <div class="pai_con_tu">
-            <img src="" alt="">
+            <img src="{{schooltopic.list.ranking_images}}" alt="">
         </div>
     </div>
 </div>
@@ -628,22 +570,16 @@
     <div class="jian_title" style="margin-bottom: 80px;">大学优势</div>
     <div class="you_con">
         <div class="you_con_left">
+            {% for item in advantage %}
             <div class="you_con_left_h">
-                <span class="you_con_left_h_tu">1</span>
-                <span class="you_con_left_h_con">为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界</span>
+                <span class="you_con_left_h_tu">{{loop.index}}</span>
+                <span class="you_con_left_h_con">{{item}}</span>
             </div>
-            <div class="you_con_left_h">
-                <span class="you_con_left_h_tu">1</span>
-                <span class="you_con_left_h_con">为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界</span>
-            </div>
-            <div class="you_con_left_h">
-                <span class="you_con_left_h_tu">1</span>
-                <span class="you_con_left_h_con">为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界为世界</span>
-            </div>
+            {% endfor %}
         </div>
         <div class="you_con_rigth"></div>
         <div class="you_con_rigth1">
-            <img src="" alt="">
+            <img src="{{schooltopic.list.advantage_map}}" alt="">
         </div>
     </div>
 </div>
@@ -651,56 +587,36 @@
 <!-- 大学课程特点 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 80px;">大学课程特点</div>
+    {% for item in curriculum %}
     <div class="te_con">
         <div class="te_con_left"></div>
         <div class="te_con_left1">
-            <img src="" alt="">
+            <img src="{{item.images}}" alt="">
         </div>
         <div class="te_con_rigth">
-            <div class="te_con_rigth_title">课程课程课程课程课程课程课程课程课程课程</div>
-            <div class="te_con_rigth_con">课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程</div>
+            <div class="te_con_rigth_title">{{item.title}}</div>
+            <div class="te_con_rigth_con">{{item.des}}</div>
             <div class="te_con_rigth_bottom"></div>
         </div>
     </div>
-    <div class="te_con">
-        <div class="te_con_left"></div>
-        <div class="te_con_left1">
-            <img src="" alt="">
-        </div>
-        <div class="te_con_rigth">
-            <div class="te_con_rigth_title">课程课程课程课程课程课程课程课程课程课程</div>
-            <div class="te_con_rigth_con">课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程</div>
-            <div class="te_con_rigth_bottom"></div>
-        </div>
-    </div>
-    <div class="te_con">
-            <div class="te_con_left"></div>
-            <div class="te_con_left1">
-                <img src="" alt="">
-            </div>
-            <div class="te_con_rigth">
-                <div class="te_con_rigth_title">课程课程课程课程课程课程课程课程课程课程</div>
-                <div class="te_con_rigth_con">课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程课程</div>
-                <div class="te_con_rigth_bottom"></div>
-            </div>
-        </div>
+    {% endfor %}
 </div>
 
 <!-- 校友网络 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">校友网络</div>
-    <div class="xiao_con">校友网络校友网络校友网络校友网络校友网络校友网络校友网络校友网络校友网络校友网络校友网络校友网络</div>
+    <div class="xiao_con">{{schooltopic.list.alumni_network}}</div>
 </div>
 
 <!-- 校区介绍 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">校区介绍</div>
-    <div class="qu_con">校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍校区介绍</div>
+    <div class="qu_con">{{schooltopic.list.campus_info}}</div>
     <div class="qu_tu clearfix">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="" style="margin-right: 0;">
+        <img src="{{schooltopic.list.campus_info_images}}" alt="">
+        <img src="{{schooltopic.list.campus_info_images}}" alt="">
+        <img src="{{schooltopic.list.campus_info_images}}" alt="">
+        <img src="{{schooltopic.list.campus_info_images}}" alt="" style="margin-right: 0;">
     </div>
 </div>
 
@@ -712,7 +628,7 @@
             <div class="ping_tu">
                 <img src="" alt="">
             </div>
-            <p>微信</p>
+            <p>{{schooltopic.list.social_title}}</p>
         </div>
         <div class="ping_y">
             <div class="ping_tu">
@@ -732,7 +648,7 @@
 <!-- 金吉列申请优势 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">金吉列申请优势</div>
-    <div class="xiao_con">优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势优势</div>
+    <div class="xiao_con">{{schooltopic.list.apply_advantage}}</div>
 </div>
 
 <!--报名表单-->

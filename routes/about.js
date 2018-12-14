@@ -203,7 +203,7 @@ exports.middle = function (req, res, next) {
     // data.schooltopic = result.schooltopic;
     data.advantage = JSON.parse(data.schooltopic.list.advantage);
     data.course_des = JSON.parse(data.schooltopic.list.course_des);
-    if (data.schooltopic.list.course_images != null || data.schooltopic.list.course_images != '') {
+    if (data.schooltopic.list.course_images != null && data.schooltopic.list.course_images != '') {
       data.course_images = JSON.parse(data.schooltopic.list.course_images);
       data.course_as = [];
       for (var cou in data.course_images) {
@@ -258,6 +258,62 @@ exports.colleges = function (req, res, next) {
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
     // data.schooltopic = result.schooltopic;
+    data.university_ranking = JSON.parse(data.schooltopic.list.university_ranking);
+    data.colleges_ranking = JSON.parse(data.schooltopic.list.colleges_ranking);
+    data.advantage = JSON.parse(data.schooltopic.list.advantage);
+    data.curriculum_title = JSON.parse(data.schooltopic.list.curriculum_title);
+    data.curriculum_des = JSON.parse(data.schooltopic.list.curriculum_des);
+    data.curriculum = new Array();
+    if (data.schooltopic.list.curriculum_images != null && data.schooltopic.list.curriculum_images != '') {
+      data.curriculum_images = JSON.parse(data.schooltopic.list.curriculum_images);
+      data.curriculum_im = [];
+      for (var cur in data.curriculum_images) {
+        data.curriculum_im.push(data.curriculum_images[cur])
+      }
+      console.log('data.course_images', data.curriculum_im[0])
+      for (var i = 0; i < data.curriculum_im.length; i++) {
+        console.log('data.coures', data.curriculum_im[i]);
+        if (data.curriculum_title[i] != undefined && data.curriculum_des[i] != undefined) {
+          data.curriculum.push({des: data.curriculum_des[i], title: data.curriculum_title[i], images: data.curriculum_im[i]})
+        } else if (data.curriculum_title[i] != undefined) {
+          data.curriculum.push({title: data.curriculum_title[i], images: data.curriculum_im[i]})
+        } else if (data.curriculum_des[i] != undefined) {
+          data.curriculum.push({des: data.curriculum_des[i], images: data.curriculum_im[i]})
+        } else {
+          data.curriculum.push({images: data.curriculum_im[i]})
+        }
+        console.log('data.couresiiiiiii', data.curriculum[i]);
+      }
+    } else {
+      for (var i = 0; i < data.curriculum_title.length; i++) {
+        console.log('data.coures', data.curriculum_title[i]);
+        if (data.curriculum_des[i] != undefined) {
+          data.curriculum.push({des: data.curriculum_des[i], title: data.curriculum_title[i]})
+        } else {
+          data.curriculum.push({images: data.curriculum_im[i]})
+        }
+        console.log('data.couresiiiiiii', data.curriculum[i]);
+      }
+    }
+    // data.social_title = JSON.parse(data.schooltopic.list.social_title);
+    data.social = new Array();
+    if (data.schooltopic.list.social_images != null && data.schooltopic.list.social_images != '') {
+      data.social_images = JSON.parse(data.schooltopic.list.social_images);
+      data.social_im = []
+      for (var soc in data.social_images) {
+        data.social_im.push(data.social_images[soc])
+      }
+      console.log('data.course_images', data.social_im[0])
+      for (var i = 0; i < data.social_im.length; i++) {
+        console.log('data.coures', data.social_im[i]);
+        if (data.social_title[i] != undefined) {
+          data.social.push({title: data.social_title[i], images: data.social_im[i]})
+        } else {
+          data.social.push({images: data.social_im[i]})
+        }
+        console.log('data.couresiiiiiii', data.social[i]);
+      }
+    }
     console.log('data.schooltopic', data.schooltopic);
     data.pageroute="colleges";
     data.tdk = {
