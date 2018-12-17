@@ -1375,6 +1375,7 @@ exports.schooltopic_new =function(data,callback){
   }
 
   api.apiRequest(url ,callback);
+  console.log('url-----', url)
 
 }
 

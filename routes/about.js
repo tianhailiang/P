@@ -237,8 +237,9 @@ exports.colleges = function (req, res, next) {
   }, function (err, result){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-      console.log(data.schooltopic);
-    data.schooltopic.list.des_images = JSON.parse(data.schooltopic.list.des_images) //大学图片
+    console.log(data.schooltopic);
+    data.schooltopic.list = data.schooltopic.list
+    // data.schooltopic.list.des_images = JSON.parse(data.schooltopic.list.des_images) //大学图片
     data.schooltopic.list.university_ranking = JSON.parse(data.schooltopic.list.university_ranking) //大学排名
     data.schooltopic.list.colleges_ranking = JSON.parse(data.schooltopic.list.colleges_ranking) //院校排名
     data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //优势介绍
