@@ -223,7 +223,7 @@ exports.middle = function (req, res, next) {
     }
     console.log('data.schooltopic', data.schooltopic)
     console.log('data.schooltopic', data.advantage[0]);
-    console.log('data.coures', data.coures[0]);
+    // console.log('data.coures', data.coures[0]);
     data.pageroute="middle";
     data.tdk = {
       pagekey: 'MIDDLE', //key

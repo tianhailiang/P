@@ -4444,7 +4444,7 @@ exports.chiefmore =function(req,res,next){
      })
  }
  //
- exports.grouptemplate = function(req,res,next){  ////院校模板-集团
+ exports.grouptemplate = function(req,res,next){  // 院校模板-集团
   var articleId = req.params.id;
   //node获取地址栏url
   var data = []
@@ -4466,6 +4466,25 @@ exports.chiefmore =function(req,res,next){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
     // data.schooltopic = result.schooltopic.data;
+    // data.case_des = JSON.parse(data.schooltopic.list.case_des);
+    if (data.schooltopic.list.case_images != null && data.schooltopic.list.case_images != '') {
+        data.case_images = JSON.parse(data.schooltopic.list.case_images);
+        data.case_as = [];
+        for (var cou in data.case_images) {
+            data.case_as.push(data.case_images[cou])
+        }
+        console.log('data.course_images', data.case_as[0])
+        data.case = new Array();
+        for (var i = 0; i < data.case_as.length; i++) {
+            console.log('data.coures', data.case_as[i]);
+            // if (data.case_des[i] != undefined) {
+            //     data.case.push({des: data.case_des[i], images: data.case_as[i]})
+            // }else {
+                data.case.push({images: data.case_as[i]})
+            // }
+            console.log('data.couresiiiiiii', data.case[i]);
+        }
+    }
     console.log('data.schooltopic', data.schooltopic);
     data.pageroute="GROUTEMPLATE";
     data.tdk = {

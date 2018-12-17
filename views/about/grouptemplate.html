@@ -29,12 +29,10 @@
     <div class="jt-summary clearfix">
       <div class="jt-summary-left">
         <h2 class="wow fadeInLeft" data-wow-delay=".1s">集团简介</h2>
-        <p class="wow fadeInLeft" data-wow-delay=".3s">新华社马德里11月28日电（记者郝薇薇）当地时间11月28日，国家主席习近平在马德里出席西班牙国王
-          费利佩六世举行的隆重、盛大的欢迎仪式.新华社马德里11月28日电（记者郝薇薇）当地时间11月28日，国家主席习近平在马德里出席西班牙国王
-          费利佩六世举行的隆重、盛大的欢迎仪式</p>
+        <p class="wow fadeInLeft" data-wow-delay=".3s">{{schooltopic.list.content | safe}}</p>
       </div>
       <div class="jt-summary-right">
-        <img src="" alt="" style="height:290px;width:386px;">
+        <img src="{{schooltopic.list.des_images}}" alt="" style="height:290px;width:386px;">
       </div>
     </div>
     <script>$('.progress').animate({ width: '50%'},200)</script>
@@ -44,22 +42,22 @@
         <h1>各类排名及优势介绍</h1>
         <div class="sort-container clearfix">
           <div class="sort-left wow fadeInLeft" data-wow-delay=".1s">
-            <img src="" alt="" style="height:524px;width:600px;">
+            <img src="{{schooltopic.list.advantage_map}}" alt="" style="height:524px;width:600px;">
             <p class="pictuer-des">剑桥文理学院</p>
           </div>
           <div class="sort-right wow fadeInRight" data-wow-delay=".3s">
             <dl>
-              <dt class="sort-title"><span class="list-item">1</span>卓越的地理位置</dt>
-              <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
+              <!--<dt class="sort-title"><span class="list-item">1</span>卓越的地理位置</dt>-->
+              <dd class="sort-des">{{schooltopic.list.advantage}}</dd>
             </dl>
-            <dl>
+            <!-- <dl>
                 <dt class="sort-title"><span>2</span>先进的住宿条件</dt>
                 <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
             </dl>
             <dl>
                 <dt class="sort-title"><span>3</span>先进的住宿条件</dt>
                 <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
-            </dl>
+            </dl> -->
           </div>
         </div>
         <script>$('.progress').animate({ width: '70%'},200)</script>
@@ -67,14 +65,15 @@
           <!-- 大学介绍 -->
           <div class="item-plane">
             <div class="item-plane-top">
-              <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="" style="height:300px;width:1180px;">
+              <img src="{{schooltopic.list.prep_images}}" alt="" style="height:300px;width:1180px;">
               <div class="item-pic-lengend">
-                <h2 class="wow fadeInUp" data-wow-delay=".2s">图片标题</h2>
-                <p class="wow fadeInUp"data-wow-delay=".5s">图片说明图片说明图片说明图片说明图片说明图片说明图片说明图片说明图片说明图片说明图片说明图片说明</p>
+                <h2 class="wow fadeInUp" data-wow-delay=".2s">{{schooltopic.list.prep_title}}</h2>
+                <p class="wow fadeInUp"data-wow-delay=".5s">{{schooltopic.list.prep_des}}</p>
               </div>
             </div>
             <div class="item-plane-text">
-              <ul style="margin-bottom:60px;">
+              {{schooltopic.list.prep_content | safe}}
+              <!-- <ul style="margin-bottom:60px;">
                 <li>深度合作学院深度合作学院深度合作学院深度合作学院</li>
                 <li>深度合作学院深度合作学院深度合作学院深度合作学院</li>
               </ul>
@@ -103,51 +102,37 @@
                     英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
                     市区的主要火车站-中央火车站非常靠近校园，6年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
                   </dd>
-              </dl>
+              </dl> -->
             </div>
           </div>
           <!-- 图片轮播 -->
           <div id="carouselContent">
               <div id="owl-demo" class="owl-carousel">
+                {% for item in case %}
                 <div class="item carousel-item">
-                  <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
-                  <p class="pic-lengtend">1曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
+                  <img src="{{item.images.url}}" alt="{{item.images.alt}}">
+                  <p class="pic-lengtend">{{item.des}}</p>
                 </div>
-                <div class="item carousel-item">
-                    <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
-                    <p class="pic-lengtend">2曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
-                  </div>
-                  <div class="item carousel-item">
-                    <img src="https://v4.51eduline.com/data/upload/2018/1121/16/5bf51ba726022_1920_420_1920_420.png" alt="">
-                    <p class="pic-lengtend">3曾经我们都以为自己可以为爱情死，其实爱情我们百炼成钢。你不是风儿，我也不是沙，再缠绵也到不了天涯</p>
-                  </div>
+                {% endfor %}
               </div>
           </div>
           <ul class="item-body-list clearfix">
-              {% set projectlist = [
-                {
-                  "title": "项目介绍",
-                  "des": "随时解决各种问题随时解决各种问题随时解决各种问题"
-                },
-                {
-                  "title": "学费信息",
-                  "des": "随时解决各种问题随时解决各种问题随时解决各种问题"
-                },
-                {
-                  "title": "奖学金信息",
-                  "des": "随时解决各种问题随时解决各种问题随时解决各种问题"
-                },
-                {
-                  "title": "金吉列申请优势",
-                  "des": "随时解决各种问题随时解决各种问题随时解决各种问题"
-                }
-              ] %}
-              {% for item in projectlist %}
                 <li>
-                  <h2>{{item.title}}</h2>
-                  <p class="list-text">{{item.des}}</p>
+                  <h2>项目介绍</h2>
+                  <p class="list-text">{{schooltopic.list.project_into}}</p>
                 </li>
-              {% endfor %}
+                <li>
+                  <h2>学费信息</h2>
+                  <p class="list-text">{{schooltopic.list.tuition_info}}</p>
+                </li>
+                <li>
+                  <h2>奖学金信息</h2>
+                  <p class="list-text">{{schooltopic.list.scholarship_info}}</p>
+                </li>
+                <li>
+                  <h2>金吉列申请优势</h2>
+                  <p class="list-text">{{schooltopic.list.apply_advantage}}</p>
+                </li>
           </ul>
         </div>
       </div>
