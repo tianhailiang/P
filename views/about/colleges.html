@@ -397,10 +397,6 @@
       color: #333;
       overflow: hidden;
       margin-bottom: 20px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      line-height: 28px;
   }
   .te_con_rigth_con {
       width: 860px;
@@ -430,7 +426,7 @@
       text-align: left;
       font-size: 16px;
       color: #333;
-      line-height: 28px;
+      line-height: 30px;
   }
   .qu_tu {
       width: 1180px;
@@ -455,7 +451,7 @@
   .ping_y {
       width: 210px;
       height: 242px;
-      margin-right: 60px;
+      margin: 0 20px;
       text-align: center;
       float: left;
   }
@@ -522,10 +518,9 @@
             <img src="{{schooltopic.list.des_images}}" alt="">
         </div>
         <div class="jian_con_bottom clearfix">
-            <img src="{{schooltopic.list.des_images}}" alt="">
-            <img src="{{schooltopic.list.des_images}}" alt="">
-            <img src="{{schooltopic.list.des_images}}" alt="">
-            <img src="{{schooltopic.list.des_images}}" alt="">
+            {% for k, item in schooltopic.list.des_images %}
+            <img src="{{ item.url }}" alt="{{ item.alt }}">
+            {% endfor %}
         </div>
     </div>
 </div>
@@ -539,7 +534,7 @@
                 <div class="slider">
                     <div class="slider-img">
                         <ul class="slider-img-ul">
-                        {% for item in university_ranking %}
+                        {% for item in schooltopic.list.university_ranking %}
                         <li>
                             <a href="javacript:void(0);" target="_blank" style="height: 30px;">
                                 <div class="pai_con_left_con_h clearfix">
@@ -555,7 +550,7 @@
             </div>
         </div>
         <div class="pai_con_rigth">
-            {% for item in colleges_ranking %}
+            {% for item in schooltopic.list.colleges_ranking %}
             {% if loop.index%2 != 0 %}
             <div style="background: #fafafa">{{item}}</div>
             {% else %}
@@ -573,8 +568,8 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 80px;">大学优势</div>
     <div class="you_con">
-        <div class="you_con_left" style="overflow-y: scroll;overflow-x: hidden;">
-            {% for item in advantage %}
+        <div class="you_con_left">
+            {% for item in schooltopic.list.advantage %}
             <div class="you_con_left_h">
                 <span class="you_con_left_h_tu">{{loop.index}}</span>
                 <span class="you_con_left_h_con">{{item}}</span>
@@ -591,15 +586,15 @@
 <!-- 大学课程特点 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 80px;">大学课程特点</div>
-    {% for item in curriculum %}
+    {% for k, item in schooltopic.list.curriculum_images %}
     <div class="te_con">
         <div class="te_con_left"></div>
         <div class="te_con_left1">
-            <img src="{{item.images}}" alt="">
+            <img src="{{ item.url }}" alt="{{ item.alt }}">
         </div>
         <div class="te_con_rigth">
-            <div class="te_con_rigth_title">{{item.title}}</div>
-            <div class="te_con_rigth_con">{{item.des}}</div>
+            <div class="te_con_rigth_title">{{ schooltopic.list.curriculum_title[k] }}</div>
+            <div class="te_con_rigth_con">{{ schooltopic.list.curriculum_des[k] }}</div>
             <div class="te_con_rigth_bottom"></div>
         </div>
     </div>
@@ -617,10 +612,9 @@
     <div class="jian_title" style="margin-bottom: 50px;">校区介绍</div>
     <div class="qu_con">{{schooltopic.list.campus_info}}</div>
     <div class="qu_tu clearfix">
-        <img src="{{schooltopic.list.campus_info_images}}" alt="">
-        <img src="{{schooltopic.list.campus_info_images}}" alt="">
-        <img src="{{schooltopic.list.campus_info_images}}" alt="">
-        <img src="{{schooltopic.list.campus_info_images}}" alt="" style="margin-right: 0;">
+        {% for k, item in schooltopic.list.campus_info_images %}
+        <img src="{{ item.url }}" alt="{{ item.alt }}" {% if k == 3 %} style="margin-right: 0;" {% endif %}>
+        {% endfor %}
     </div>
 </div>
 
@@ -628,24 +622,14 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">大学社交平台</div>
     <div class="ping_con clearfix">
+        {% for k, item in schooltopic.list.social_images %}
         <div class="ping_y">
             <div class="ping_tu">
-                <img src="" alt="">
+                <img src="{{ item.url }}" alt="{{ item.alt }}">
             </div>
-            <p>{{schooltopic.list.social_title}}</p>
+            <p>{{ schooltopic.list.social_title[k] }}</p>
         </div>
-        <div class="ping_y">
-            <div class="ping_tu">
-                <img src="" alt="">
-            </div>
-            <p>微博</p>
-        </div>
-        <div class="ping_y" style="margin-right: 0px;">
-            <div class="ping_tu">
-                <img src="" alt="">
-            </div>
-            <p>优酷</p>
-        </div>
+        {% endfor %}
     </div>
 </div>
 
