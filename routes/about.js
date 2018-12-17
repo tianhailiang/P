@@ -258,6 +258,7 @@ exports.colleges = function (req, res, next) {
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
     // data.schooltopic = result.schooltopic;
+    console.log('data.schooltopic', data.schooltopic);
     data.university_ranking = JSON.parse(data.schooltopic.list.university_ranking);
     data.colleges_ranking = JSON.parse(data.schooltopic.list.colleges_ranking);
     data.advantage = JSON.parse(data.schooltopic.list.advantage);
@@ -295,7 +296,7 @@ exports.colleges = function (req, res, next) {
         console.log('data.couresiiiiiii', data.curriculum[i]);
       }
     }
-    // data.social_title = JSON.parse(data.schooltopic.list.social_title);
+    data.social_title = JSON.parse(data.schooltopic.list.social_title);
     data.social = new Array();
     if (data.schooltopic.list.social_images != null && data.schooltopic.list.social_images != '') {
       data.social_images = JSON.parse(data.schooltopic.list.social_images);
@@ -314,7 +315,7 @@ exports.colleges = function (req, res, next) {
         console.log('data.couresiiiiiii', data.social[i]);
       }
     }
-    console.log('data.schooltopic', data.schooltopic);
+    // console.log('data.schooltopic', data.schooltopic);
     data.pageroute="colleges";
     data.tdk = {
       pagekey: 'COLLEGES', //key

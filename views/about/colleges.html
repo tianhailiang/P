@@ -397,6 +397,10 @@
       color: #333;
       overflow: hidden;
       margin-bottom: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 28px;
   }
   .te_con_rigth_con {
       width: 860px;
@@ -426,7 +430,7 @@
       text-align: left;
       font-size: 16px;
       color: #333;
-      line-height: 30px;
+      line-height: 28px;
   }
   .qu_tu {
       width: 1180px;
@@ -569,7 +573,7 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 80px;">大学优势</div>
     <div class="you_con">
-        <div class="you_con_left">
+        <div class="you_con_left" style="overflow-y: scroll;overflow-x: hidden;">
             {% for item in advantage %}
             <div class="you_con_left_h">
                 <span class="you_con_left_h_tu">{{loop.index}}</span>
