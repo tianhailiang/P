@@ -192,6 +192,7 @@ exports.middle = function (req, res, next) {
   }
   data.login_nickname = '';
   async.parallel({
+    //获取院校数据
     schooltopic: function (callback) {
       cms.schooltopic_new({
         id:articleId,
@@ -200,30 +201,9 @@ exports.middle = function (req, res, next) {
   }, function (err, result){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    // data.schooltopic = result.schooltopic;
-    data.advantage = JSON.parse(data.schooltopic.list.advantage);
-    data.course_des = JSON.parse(data.schooltopic.list.course_des);
-    if (data.schooltopic.list.course_images != null && data.schooltopic.list.course_images != '') {
-      data.course_images = JSON.parse(data.schooltopic.list.course_images);
-      data.course_as = [];
-      for (var cou in data.course_images) {
-        data.course_as.push(data.course_images[cou])
-      }
-      console.log('data.course_images', data.course_as[0])
-      data.coures = new Array();
-      for (var i = 0; i < data.course_as.length; i++) {
-        console.log('data.coures', data.course_as[i]);
-        if (data.course_des[i] != undefined) {
-          data.coures.push({des: data.course_des[i], images: data.course_as[i]})
-        }else {
-          data.coures.push({images: data.course_as[i]})
-        }
-        console.log('data.couresiiiiiii', data.coures[i]);
-      }
-    }
-    console.log('data.schooltopic', data.schooltopic)
-    console.log('data.schooltopic', data.advantage[0]);
-    // console.log('data.coures', data.coures[0]);
+    data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
+    data.schooltopic.list.course_images = JSON.parse(data.schooltopic.list.course_images) //开设课程图片
+    data.schooltopic.list.course_des = JSON.parse(data.schooltopic.list.course_des) //开设课程简介
     data.pageroute="middle";
     data.tdk = {
       pagekey: 'MIDDLE', //key
@@ -257,7 +237,21 @@ exports.colleges = function (req, res, next) {
   }, function (err, result){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    // data.schooltopic = result.schooltopic;
+      console.log(data.schooltopic);
+    data.schooltopic.list.des_images = JSON.parse(data.schooltopic.list.des_images) //大学图片
+    data.schooltopic.list.university_ranking = JSON.parse(data.schooltopic.list.university_ranking) //大学排名
+    data.schooltopic.list.colleges_ranking = JSON.parse(data.schooltopic.list.colleges_ranking) //院校排名
+    data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //优势介绍
+    data.schooltopic.list.curriculum_images = JSON.parse(data.schooltopic.list.curriculum_images) //课程图片
+    data.schooltopic.list.curriculum_title = JSON.parse(data.schooltopic.list.curriculum_title) //课程标题
+    data.schooltopic.list.curriculum_des = JSON.parse(data.schooltopic.list.curriculum_des) //课程描述
+    data.schooltopic.list.social_images = JSON.parse(data.schooltopic.list.social_images) //社交平台二维码
+    data.schooltopic.list.social_title = JSON.parse(data.schooltopic.list.social_title) //社交平台标题
+    data.schooltopic.list.campus_info_images = JSON.parse(data.schooltopic.list.campus_info_images) //校区介绍图
+
+
+      // data.schooltopic = result.schooltopic;
+      /*
     data.university_ranking = JSON.parse(data.schooltopic.list.university_ranking);
     data.colleges_ranking = JSON.parse(data.schooltopic.list.colleges_ranking);
     data.advantage = JSON.parse(data.schooltopic.list.advantage);
@@ -315,6 +309,8 @@ exports.colleges = function (req, res, next) {
       }
     }
     console.log('data.schooltopic', data.schooltopic);
+
+    */
     data.pageroute="colleges";
     data.tdk = {
       pagekey: 'COLLEGES', //key
