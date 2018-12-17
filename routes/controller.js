@@ -4466,7 +4466,8 @@ exports.chiefmore =function(req,res,next){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
     // data.schooltopic = result.schooltopic.data;
-    // data.case_des = JSON.parse(data.schooltopic.list.case_des);
+    data.advantage = JSON.parse(data.schooltopic.list.advantage);
+    data.case_des = JSON.parse(data.schooltopic.list.case_des);
     if (data.schooltopic.list.case_images != null && data.schooltopic.list.case_images != '') {
         data.case_images = JSON.parse(data.schooltopic.list.case_images);
         data.case_as = [];
@@ -4477,11 +4478,11 @@ exports.chiefmore =function(req,res,next){
         data.case = new Array();
         for (var i = 0; i < data.case_as.length; i++) {
             console.log('data.coures', data.case_as[i]);
-            // if (data.case_des[i] != undefined) {
-            //     data.case.push({des: data.case_des[i], images: data.case_as[i]})
-            // }else {
+            if (data.case_des[i] != undefined) {
+                data.case.push({des: data.case_des[i], images: data.case_as[i]})
+            }else {
                 data.case.push({images: data.case_as[i]})
-            // }
+            }
             console.log('data.couresiiiiiii', data.case[i]);
         }
     }
