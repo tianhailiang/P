@@ -12,8 +12,8 @@
   /* banner */
   .banner{width:100%;height: 500px; overflow:hidden;}
   .banner .btn-box{width:450px;height:100px;margin:420px auto;}
-  .banner .btn-box a{display: block; font-size: 16px; text-align: center; line-height:40px;color:#fff; float:left; width:136px; height:40px;box-sizing: border-box; border-radius: 5px;}
-  /*.banner .btn-box a:hover{background: #efcd68; border: 1px solid #efcd68}*/
+  .banner .btn-box a{display: block; font-size: 16px; text-align: center; line-height:37px;color:#fff; float:left; width:136px; height:40px;box-sizing: border-box; border-radius: 5px;background: #fff;border: 1px solid #fff;color: #333;}
+  .banner .btn-box a:hover{background: #d31a29; border: 1px solid #d31a29;color: #fff;}
   .banner .btn-box .md-btn{margin-left:150px;}
   /*标题*/
   .content-title{
@@ -150,10 +150,12 @@
       margin: 0 auto;
   }
   .jie_rigth_con {
+      width: 655px;
       margin-top: 30px;
       font-size: 16px;
       color: #333;
       line-height: 36px;
+      overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:9;
   }
   .you_title {
       background: url({{helper.cdnhost}}/assets/img/about/middle_2_title.png);
@@ -246,6 +248,7 @@
       background: url({{helper.cdnhost}}/assets/img/about/middle_4.png);
       margin-right: 30px;
       padding: 0 20px;
+      text-align: center;
   }
   .xue_con1 {
     background: url({{helper.cdnhost}}/assets/img/about/middle_44_1.png);
@@ -278,10 +281,12 @@
       margin-top: 100px;
   }
   .xue_con_con {
+      width: 332px;
       font-size: 16px;
       color: #333;
       line-height: 36px;
       margin-top: 30px;
+      overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;
   }
   .form-content span {
       font-size: 16px;
@@ -313,8 +318,8 @@
 <div class="banner" style="background-image:url({{schooltopic.list.sch_background_map}});height: 500px; overflow:hidden;background-size:cover;background-position: center center">
   <div class="wrap1">
     <div class="btn-box">
-      <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
-      <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
+      <a href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
+      <a class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
     </div>
   </div>
 </div>
@@ -353,48 +358,50 @@
             autoplay : 5000,
         });
     });
-        function onshow(id) {
-            var addEvent = function(element,type,callback){
+    function onshow(id) {
+        var addEvent = function(element,type,callback){
+        if(element.addEventListener){
+            element.addEventListener(type,callback,false);
+        }else if(element.attachEvent){
+            element.attachEvent('on' + type,callback)
+        }
+        }
+        var canzan_slide = document.getElementsByClassName('canzan-slide');
+        addEvent(canzan_slide,'touchstart',function(){
+            if ($('#kai_con_' + id).css('display') == 'block') {
+                $("#kai_con_chang_" + id).css("display", "none");
+            }
+            else {
+                $("#kai_con_chang_" + id).css("display", "block");
+            }
+        });
+        console.log('show++++++++++', id)
+        $("#kai_con_chang_" + id).css("display", "block");
+        $("#kai_con_" + id).css("display", "none");
+    }
+    function onhide(id) {
+        var addEvent = function(element,type,callback){
             if(element.addEventListener){
                 element.addEventListener(type,callback,false);
             }else if(element.attachEvent){
                 element.attachEvent('on' + type,callback)
             }
-            }
-            var canzan_slide = document.getElementsByClassName('canzan-slide');
-            addEvent(canzan_slide,'touchstart',function(){
-                if ($('#kai_con_' + id).css('display') == 'block') {
-                    $("#kai_con_chang_" + id).css("display", "none");
-                }
-                else {
-                    $("#kai_con_chang_" + id).css("display", "block");
-                }
-            });
-            $("#kai_con_chang_" + id).css("display", "block");
-            $("#kai_con_" + id).css("display", "none");
         }
-        function onhide(id) {
-            var addEvent = function(element,type,callback){
-            if(element.addEventListener){
-                element.addEventListener(type,callback,false);
-            }else if(element.attachEvent){
-                element.attachEvent('on' + type,callback)
+        var canzan_slide = document.getElementsByClassName('canzan-slide');
+        addEvent(canzan_slide,'touchstart',function(){
+            if ($('#kai_con_' + id).css('display') == 'block') {
+                $("#kai_con_chang_" + id).css("display", "none");
+                $("#kai_con_" + id).css("display", "block");
             }
+            else {
+                $("#kai_con_chang_" + id).css("display", "block");
+                $("#kai_con_" + id).css("display", "none");
             }
-            var canzan_slide = document.getElementsByClassName('canzan-slide');
-            addEvent(canzan_slide,'touchstart',function(){
-                if ($('#kai_con_' + id).css('display') == 'block') {
-                    $("#kai_con_chang_" + id).css("display", "none");
-                    $("#kai_con_" + id).css("display", "block");
-                }
-                else {
-                    $("#kai_con_chang_" + id).css("display", "block");
-                    $("#kai_con_" + id).css("display", "none");
-                }
-            });
-            $("#kai_con_chang_" + id).css("display", "none");
-            $("#kai_con_" + id).css("display", "block");
-        }
+        });
+        console.log('hide++++++++++', id)
+        $("#kai_con_chang_" + id).css("display", "none");
+        $("#kai_con_" + id).css("display", "block");
+    }
     
     
     </script>
@@ -404,15 +411,19 @@
     <div class="branch-expert-lunbo" style="position: relative;height:270px;">
         <a class="arrow-left arrow-btn" href="javascript:void(0);" style="display:block;"></a>
         <a class="arrow-right arrow-btn" href="javascript:void(0);" style="display:block;"></a>
-        <div class="swiper-container" style="width:1055px;margin: 0 auto;height:270px;">
+        <div class="swiper-container" style="margin: 0 auto;height:270px;margin-left: 65px;">
             <div class="swiper-wrapper">
                 <div class="swiper-slide clearfix">
                     {% for k, init in schooltopic.list.course_images %}
-                    <div class="canzan-slide" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %}onmousemove="onshow('{{loop.index}}');" onmouseout="onhide('{{loop.index}}');">
+                    <div class="canzan-slide" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %} onmousemove="onshow('{{loop.index}}');" onmouseout="onhide('{{loop.index}}');">
                         <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
                             <img src="{{ init.url }}" alt="{{ init.alt }}"/>
-                            <div id="kai_con_1" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] }}......</div>
-                            <div id="kai_con_chang_1" class="kai_con_chang" style="display:none;">{{ schooltopic.list.course_des[k] }}......</div>
+                            {% if schooltopic.list.course_des[k].length > 32 %}
+                            <div id="kai_con_{{loop.index}}" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] | ellipsis(32) }}......</div>
+                            {% else %}
+                            <div id="kai_con_{{loop.index}}" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] }}</div>
+                            {% endif %}
+                            <div id="kai_con_chang_{{loop.index}}" class="kai_con_chang" style="display:none;">{{ schooltopic.list.course_des[k] }}</div>
                         </a>
                     </div>
                     {% endfor %}

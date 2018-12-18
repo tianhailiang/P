@@ -10,18 +10,8 @@
 	margin: 390px auto 0;
 }
 
-.banner .btn-box a {
-	display: inline-block;
-	font-size: 16px;
-	text-align: center;
-	line-height: 40px;
-	color: #fff;
-	width: 136px;
-	height: 40px;
-	box-sizing: border-box;
-	border-radius: 5px
-}
-
+.banner .btn-box a{display: block; font-size: 16px; text-align: center; line-height:37px;color:#fff; float:left; width:136px; height:40px;box-sizing: border-box; border-radius: 5px;background: #fff;border: 1px solid #fff;color: #333;}
+.banner .btn-box a:hover{background: #d31a29; border: 1px solid #d31a29;color: #fff;}
 .banner .btn-box .md-btn {
 	margin-left: 150px
 }

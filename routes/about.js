@@ -201,11 +201,14 @@ exports.middle = function (req, res, next) {
   }, function (err, result){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    console.log('schooltopic', data.schooltopic.list.course_images);
     if (data.schooltopic.list.advantage) {
       data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
     }
     if (data.schooltopic.list.course_images) {
       data.schooltopic.list.course_images = JSON.parse(data.schooltopic.list.course_images) //开设课程图片
+      data.imgs = Object.keys(data.schooltopic.list.course_images);
+      console.log('imgs', data.imgs.length);
     }
     if (data.schooltopic.list.course_images) {
       data.schooltopic.list.course_des = JSON.parse(data.schooltopic.list.course_des) //开设课程简介
