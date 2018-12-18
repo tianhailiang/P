@@ -269,7 +269,17 @@
 .gg-group ul li{float:left;margin-right:10px;width:242px;height:146px;background:red;}
 .gg-group ul li a{display:block;}
 .dialog-modal{position:fixed;top:0;right:0;bottom:0;left:0;z-index:1005;background:rgba(0,0,0,.7);}
-.modal-content{position:relative;z-index:1006;margin:auto;padding-bottom:25px;min-width:750px;max-width:750px;height:100%;background:url(../img/bcg@2x.png) no-repeat center center;background-size:contain;}
+.modal-content {
+    position:relative;
+    z-index:1006;
+    margin:auto;
+    padding-bottom:25px;
+    min-width:750px;
+    max-width:750px;
+    height:100%;
+    background:url(../img/home_else_bg@2x.png) no-repeat center center;
+    background-size:contain;
+}
 .formContent{position:absolute;top:50%;right:0;bottom:0;left:0;margin:auto;width:312px;}
 .form-group div{margin-bottom:9px;}
 .formposirion{position:relative;}
