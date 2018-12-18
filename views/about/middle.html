@@ -352,7 +352,10 @@
     $(function () {
         //轮播图初始化
         var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical',
             loop: true,
+            slidesPerView: 4,
+            
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             autoplay : 5000,
@@ -413,8 +416,9 @@
         <a class="arrow-right arrow-btn" href="javascript:void(0);" style="display:block;"></a>
         <div class="swiper-container" style="margin: 0 auto;height:270px;margin-left: 65px;">
             <div class="swiper-wrapper">
-                <div class="swiper-slide clearfix">
                     {% for k, init in schooltopic.list.course_images %}
+                <div class="swiper-slide clearfix">
+                    
                     <div class="canzan-slide" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %} onmousemove="onshow('{{loop.index}}');" onmouseout="onhide('{{loop.index}}');">
                         <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
                             <img src="{{ init.url }}" alt="{{ init.alt }}"/>
@@ -426,8 +430,9 @@
                             <div id="kai_con_chang_{{loop.index}}" class="kai_con_chang" style="display:none;">{{ schooltopic.list.course_des[k] }}</div>
                         </a>
                     </div>
-                    {% endfor %}
+                   
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
