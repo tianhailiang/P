@@ -201,6 +201,7 @@ exports.middle = function (req, res, next) {
   }, function (err, result){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    console.log('schooltopic', data.schooltopic)
     data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
     data.schooltopic.list.course_images = JSON.parse(data.schooltopic.list.course_images) //开设课程图片
     data.schooltopic.list.course_des = JSON.parse(data.schooltopic.list.course_des) //开设课程简介

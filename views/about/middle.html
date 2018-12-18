@@ -241,11 +241,20 @@
   }
   .xue_con {
       width: 332px;
-      height: 480px;
+      height: 495px;
       float: left;
       background: url({{helper.cdnhost}}/assets/img/about/middle_4.png);
       margin-right: 30px;
       padding: 0 20px;
+  }
+  .xue_con1 {
+    background: url({{helper.cdnhost}}/assets/img/about/middle_44_1.png);
+  }
+  .xue_con2 {
+    background: url({{helper.cdnhost}}/assets/img/about/middle_44_2.png);
+  }
+  .xue_con3 {
+    background: url({{helper.cdnhost}}/assets/img/about/middle_44_3.png);
   }
   .xue_con_title{
       background: url({{helper.cdnhost}}/assets/img/about/middle_4_1.png);
@@ -396,14 +405,14 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide clearfix">
                     {% for k, init in schooltopic.list.course_images %}
-                <div class="canzan-slide" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %}onmousemove="onshow('{{loop.index}}');" onmouseout="onhide('{{loop.index}}');">
-                    <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
-                        <img src="{{ init.url }}" alt="{{ init.alt }}"/>
-                        <div id="kai_con_1" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] }}......</div>
-                        <div id="kai_con_chang_1" class="kai_con_chang" style="display:none;">{{ schooltopic.list.course_des[k] }}......</div>
-                    </a>
-                </div>
-            {% endfor %}
+                    <div class="canzan-slide" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %}onmousemove="onshow('{{loop.index}}');" onmouseout="onhide('{{loop.index}}');">
+                        <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
+                            <img src="{{ init.url }}" alt="{{ init.alt }}"/>
+                            <div id="kai_con_1" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] }}......</div>
+                            <div id="kai_con_chang_1" class="kai_con_chang" style="display:none;">{{ schooltopic.list.course_des[k] }}......</div>
+                        </a>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -413,15 +422,15 @@
 <!-- 学费信息 -->
 <div class="dui-layout-lg" style="margin-top: 50px;">
     <div class="clearfix" style="width:1200px;margin: 0 auto;">
-        <div class="xue_con">
+        <div class="xue_con xue_con1">
             <div class="xue_con_title"></div>
             <div class="xue_con_con">{{schooltopic.list.tuition_info}}</div>
         </div>
-        <div class="xue_con">
+        <div class="xue_con xue_con2">
             <div class="xue_con_title2"></div>
             <div class="xue_con_con">{{schooltopic.list.scholarship_info}}</div>
         </div>
-        <div class="xue_con" style="margin-right: 0px;">
+        <div class="xue_con xue_con3" style="margin-right: 0px;">
             <div class="xue_con_title"></div>
             <div class="xue_con_con">{{schooltopic.list.apply_advantage}}</div>
         </div>
