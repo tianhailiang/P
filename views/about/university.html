@@ -508,11 +508,11 @@
 
 <!-- banner图 -->
 
-<div class="banner" style="background-image:url({{schooltopic.list.sch_background_map}});height: 500px; overflow:hidden;background-size:cover;background-position: center center">
+<div class="banner" style="background-image:url({{schooltopic.sch_background_map}});height: 500px; overflow:hidden;background-size:cover;background-position: center center">
   <div class="wrap1">
     <div class="btn-box">
-      <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
-      <a style="background:{{schooltopic.list.button_background}};border: 1px solid {{schooltopic.list.button_background}};" class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
+      <a style="background:{{schooltopic.button_background}};border: 1px solid {{schooltopic.button_background}};" href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
+      <a style="background:{{schooltopic.button_background}};border: 1px solid {{schooltopic.button_background}};" class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
     </div>
   </div>
 </div>
@@ -522,13 +522,13 @@
     <div class="jian_title">学校简介</div>
     <div class="jian_con">
         <div class="jian_con_top">
-            <div class="jian_con_top_s">{{schooltopic.list.content | safe}}</div>
+            <div class="jian_con_top_s">{{schooltopic.content | safe}}</div>
         </div>
         <div class="jian_con_rigth">
-            <img src="{{schooltopic.list.des_images}}" alt="">
+            <img src="" alt="">
         </div>
         <div class="jian_con_bottom clearfix">
-            {% for k, item in schooltopic.list.des_images %}
+            {% for k, item in schooltopic.des_images %}
             <img src="{{ item.url }}" alt="{{ item.alt }}">
             {% endfor %}
         </div>
@@ -544,12 +544,12 @@
                 <div class="slider">
                     <div class="slider-img">
                         <ul class="slider-img-ul">
-                        {% for item in schooltopic.list.university_ranking %}
+                        {% for item in schooltopic.university_ranking %}
                         <li>
                             <a href="javacript:void(0);" target="_blank" style="height: 30px;">
                                 <div class="pai_con_left_con_h clearfix">
                                     <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
-                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>
+                                    <!--<span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>-->
                                 </div>
                             </a>
                         </li>
@@ -560,7 +560,7 @@
             </div>
         </div>
         <div class="pai_con_rigth">
-            {% for item in schooltopic.list.colleges_ranking %}
+            {% for item in schooltopic.colleges_ranking %}
             {% if loop.index%2 != 0 %}
             <div style="background: #fafafa">{{item}}</div>
             {% else %}
@@ -569,7 +569,7 @@
             {% endfor %}
         </div>
         <div class="pai_con_tu">
-            <img src="{{schooltopic.list.ranking_images}}" alt="">
+            <img src="{{schooltopic.ranking_images}}" alt="">
         </div>
     </div>
 </div>
@@ -578,8 +578,13 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 80px;">大学优势</div>
     <div class="you_con">
+<<<<<<< HEAD:views/about/university.html
+        <div class="you_con_left">
+            {% for item in schooltopic.advantage %}
+=======
         <div class="you_con_left" style="">
             {% for item in schooltopic.list.advantage %}
+>>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
             <div class="you_con_left_h">
                 <span class="you_con_left_h_tu">{{loop.index}}</span>
                 <span class="you_con_left_h_con">{{item}}</span>
@@ -588,7 +593,7 @@
         </div>
         <div class="you_con_rigth"></div>
         <div class="you_con_rigth1">
-            <img src="{{schooltopic.list.advantage_map}}" alt="">
+            <img src="{{schooltopic.advantage_map}}" alt="">
         </div>
     </div>
 </div>
@@ -596,15 +601,15 @@
 <!-- 大学课程特点 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 80px;">大学课程特点</div>
-    {% for k, item in schooltopic.list.curriculum_images %}
+    {% for k, item in schooltopic.curriculum_images %}
     <div class="te_con">
         <div class="te_con_left"></div>
         <div class="te_con_left1">
             <img src="{{ item.url }}" alt="{{ item.alt }}">
         </div>
         <div class="te_con_rigth">
-            <div class="te_con_rigth_title">{{ schooltopic.list.curriculum_title[k] }}</div>
-            <div class="te_con_rigth_con">{{ schooltopic.list.curriculum_des[k] }}</div>
+            <div class="te_con_rigth_title">{{ schooltopic.curriculum_title[k] }}</div>
+            <div class="te_con_rigth_con">{{ schooltopic.curriculum_des[k] }}</div>
             <div class="te_con_rigth_bottom"></div>
         </div>
     </div>
@@ -614,16 +619,20 @@
 <!-- 校友网络 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">校友网络</div>
-    <div class="xiao_con">{{schooltopic.list.alumni_network}}</div>
+    <div class="xiao_con">{{schooltopic.alumni_network}}</div>
 </div>
 
 <!-- 校区介绍 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">校区介绍</div>
-    <div class="qu_con">{{schooltopic.list.campus_info}}</div>
+    <div class="qu_con">{{schooltopic.campus_info}}</div>
     <div class="qu_tu clearfix">
+<<<<<<< HEAD:views/about/university.html
+        {% for k, item in schooltopic.campus_info_images %}
+=======
         {% for k, item in schooltopic.list.campus_info_images %}
         {% if loop.index <= 4 %}
+>>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
         <img src="{{ item.url }}" alt="{{ item.alt }}" {% if k == 3 %} style="margin-right: 0;" {% endif %}>
         {% endif %}
         {% endfor %}
@@ -634,13 +643,17 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">大学社交平台</div>
     <div class="ping_con clearfix">
+<<<<<<< HEAD:views/about/university.html
+        {% for k, item in schooltopic.social_images %}
+=======
         {% for k, item in schooltopic.list.social_images %}
         {% if loop.index <= 3 %}
+>>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
         <div class="ping_y">
             <div class="ping_tu">
                 <img src="{{ item.url }}" alt="{{ item.alt }}">
             </div>
-            <p>{{ schooltopic.list.social_title[k] }}</p>
+            <p>{{ schooltopic.social_title[k] }}</p>
         </div>
         {% endif %}
         {% endfor %}
@@ -650,7 +663,7 @@
 <!-- 金吉列申请优势 -->
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">金吉列申请优势</div>
-    <div class="xiao_con">{{schooltopic.list.apply_advantage}}</div>
+    <div class="xiao_con">{{schooltopic.apply_advantage}}</div>
 </div>
 
 <!--报名表单-->

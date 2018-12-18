@@ -201,10 +201,15 @@ exports.middle = function (req, res, next) {
   }, function (err, result){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    console.log('schooltopic', data.schooltopic)
-    data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
-    data.schooltopic.list.course_images = JSON.parse(data.schooltopic.list.course_images) //开设课程图片
-    data.schooltopic.list.course_des = JSON.parse(data.schooltopic.list.course_des) //开设课程简介
+    if (data.schooltopic.list.advantage) {
+      data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
+    }
+    if (data.schooltopic.list.course_images) {
+      data.schooltopic.list.course_images = JSON.parse(data.schooltopic.list.course_images) //开设课程图片
+    }
+    if (data.schooltopic.list.course_images) {
+      data.schooltopic.list.course_des = JSON.parse(data.schooltopic.list.course_des) //开设课程简介
+    }
     data.pageroute="middle";
     data.tdk = {
       pagekey: 'MIDDLE', //key
@@ -217,7 +222,7 @@ exports.middle = function (req, res, next) {
   
 }
 // 大学
-exports.colleges = function (req, res, next) {
+exports.university = function (req, res, next) {
   var articleId = req.params.id;
   //node获取地址栏url
   var data = []
@@ -236,6 +241,12 @@ exports.colleges = function (req, res, next) {
       }, callback);
     },
   }, function (err, result){
+<<<<<<< HEAD
+    data.schooltopic = returnData(result.schooltopic).list;
+
+    if (data.schooltopic.des_images) {
+      data.schooltopic.des_images = JSON.parse(data.schooltopic.des_images) //大学图片
+=======
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
     console.log(data.schooltopic);
@@ -290,38 +301,111 @@ exports.colleges = function (req, res, next) {
         }
         console.log('data.couresiiiiiii', data.curriculum[i]);
       }
+>>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e
     }
-    // data.social_title = JSON.parse(data.schooltopic.list.social_title);
-    data.social = new Array();
-    if (data.schooltopic.list.social_images != null && data.schooltopic.list.social_images != '') {
-      data.social_images = JSON.parse(data.schooltopic.list.social_images);
-      data.social_im = []
-      for (var soc in data.social_images) {
-        data.social_im.push(data.social_images[soc])
-      }
-      console.log('data.course_images', data.social_im[0])
-      for (var i = 0; i < data.social_im.length; i++) {
-        console.log('data.coures', data.social_im[i]);
-        if (data.social_title[i] != undefined) {
-          data.social.push({title: data.social_title[i], images: data.social_im[i]})
-        } else {
-          data.social.push({images: data.social_im[i]})
-        }
-        console.log('data.couresiiiiiii', data.social[i]);
-      }
+    if (data.schooltopic.university_ranking) {
+      data.schooltopic.university_ranking = JSON.parse(data.schooltopic.university_ranking) //大学排名
     }
-    console.log('data.schooltopic', data.schooltopic);
-
-    */
+    if (data.schooltopic.colleges_ranking) {
+      data.schooltopic.colleges_ranking = JSON.parse(data.schooltopic.colleges_ranking) //院校排名
+    }
+    if (data.schooltopic.advantage) {
+      data.schooltopic.advantage = JSON.parse(data.schooltopic.advantage) //优势介绍
+    }
+    if (data.schooltopic.curriculum_images) {
+      data.schooltopic.curriculum_images = JSON.parse(data.schooltopic.curriculum_images) //课程图片
+    }
+    if (data.schooltopic.curriculum_title) {
+      data.schooltopic.curriculum_title = JSON.parse(data.schooltopic.curriculum_title) //课程标题
+    }
+    if (data.schooltopic.curriculum_des) {
+      data.schooltopic.curriculum_des = JSON.parse(data.schooltopic.curriculum_des) //课程描述
+    }
+    if (data.schooltopic.social_images) {
+      data.schooltopic.social_images = JSON.parse(data.schooltopic.social_images) //社交平台二维码
+    }
+    if (data.schooltopic.social_title) {
+      data.schooltopic.social_title = JSON.parse(data.schooltopic.social_title) //社交平台标题
+    }
+    if (data.schooltopic.campus_info_images) {
+      data.schooltopic.campus_info_images = JSON.parse(data.schooltopic.campus_info_images) //校区介绍图
+    }
     data.pageroute="colleges";
     data.tdk = {
       pagekey: 'COLLEGES', //key
       cityid: '', //cityid
       nationid: '' //nationi
     };
-    res.render('about/colleges', data);
+    res.render('about/university', data);
+
   })
 }
+
+//
+exports.grouptemplate = function(req,res,next){  // 院校模板-集团
+    var articleId = req.params.id;
+    //node获取地址栏url
+    var data = []
+    var l = url.parse(req.url, true).query;
+    console.log('url', l.h);
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost;
+    }
+    data.login_nickname = '';
+    async.parallel({
+        schooltopic: function (callback) {
+            cms.schooltopic_new({
+                id:articleId,
+            }, callback);
+        },
+    }, function (err, result){
+      // log.info(result)
+      data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+
+      if (data.schooltopic.list.case_images) {
+        data.schooltopic.list.case_images = JSON.parse(data.schooltopic.list.case_images) //案例
+      }
+      console.log(data.schooltopic.list.case_images)
+      if (data.schooltopic.list.case_des) {
+        data.schooltopic.list.case_des = JSON.parse(data.schooltopic.list.case_des) //案例
+      }
+
+        // data.schooltopic = result.schooltopic.data;
+      /*
+       data.advantage = JSON.parse(data.schooltopic.list.advantage);
+       data.case_des = JSON.parse(data.schooltopic.list.case_des);
+       if (data.schooltopic.list.case_images != null && data.schooltopic.list.case_images != '') {
+       data.case_images = JSON.parse(data.schooltopic.list.case_images);
+       data.case_as = [];
+       for (var cou in data.case_images) {
+       data.case_as.push(data.case_images[cou])
+       }
+       console.log('data.course_images', data.case_as[0])
+       data.case = new Array();
+       for (var i = 0; i < data.case_as.length; i++) {
+       console.log('data.coures', data.case_as[i]);
+       if (data.case_des[i] != undefined) {
+       data.case.push({des: data.case_des[i], images: data.case_as[i]})
+       }else {
+       data.case.push({images: data.case_as[i]})
+       }
+       console.log('data.couresiiiiiii', data.case[i]);
+       }
+       }
+       console.log('data.schooltopic', data.schooltopic);
+       */
+        data.pageroute="GROUTEMPLATE";
+        data.tdk = {
+            pagekey: 'GROUTEMPLATE', //key
+            cityid: '', //cityid
+            nationid: '' //nationi
+        };
+        res.render('about/grouptemplate', data);
+    })
+}
+
 //留学活动--中间页面
 exports.activity_ip = function (req, res, next) {
   console.log('area--------', req.url)

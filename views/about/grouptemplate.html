@@ -43,21 +43,11 @@
         <div class="sort-container clearfix">
           <div class="sort-left wow fadeInLeft" data-wow-delay=".1s">
             <img src="{{schooltopic.list.advantage_map}}" alt="" style="height:524px;width:600px;">
-            <!-- <p class="pictuer-des">剑桥文理学院</p> -->
           </div>
           <div class="sort-right wow fadeInRight" data-wow-delay=".3s">
             <dl>
-              <!--<dt class="sort-title"><span class="list-item">1</span>卓越的地理位置</dt>-->
-              <dd class="sort-des">{{advantage}}</dd>
+              <dd class="sort-des">{{ schooltopic.list.advantage }}</dd>
             </dl>
-            <!-- <dl>
-                <dt class="sort-title"><span>2</span>先进的住宿条件</dt>
-                <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
-            </dl>
-            <dl>
-                <dt class="sort-title"><span>3</span>先进的住宿条件</dt>
-                <dd class="sort-des">在校史低于50年的大学排名中位居澳大利亚首位，全球第14位（《泰晤士高等教育》）。同时，是前50名的全球最具国际化大学。便捷的地理位置——位于悉尼中央商务区的中心，是唯一一所位于市区的大学。与行业紧密联系，提供建立关系和联络的机会，从而增加学生的就业机会</dd>
-            </dl> -->
           </div>
         </div>
         <script>$('.progress').animate({ width: '70%'},200)</script>
@@ -73,45 +63,15 @@
             </div>
             <div class="item-plane-text">
               {{schooltopic.list.prep_content | safe}}
-              <!-- <ul style="margin-bottom:60px;">
-                <li>深度合作学院深度合作学院深度合作学院深度合作学院</li>
-                <li>深度合作学院深度合作学院深度合作学院深度合作学院</li>
-              </ul>
-              <dl>
-                <dt class="yk-title">预科方向：</dt>
-                <dd class="yk-des">英世企学院创建于1976年，位于便捷的市中心，接
-                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火
-                    车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区近悉尼的主要景点和设施。
-                    市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
-                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
-                    市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
-                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
-                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
-                    市区的主要火车站-中央火车站非常靠近校园，6年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
-                  </dd>
-              </dl>
-              <dl>
-                <dt class="yk-title">升学率：</dt>
-                <dd class="yk-des">英世企学院创建于1976年，位于便捷的市中心，接
-                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火
-                    车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区近悉尼的主要景点和设施。
-                    市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
-                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
-                    市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
-                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
-                    英世企学院创建于1976年，位于便捷的市中心，接近悉尼的主要景点和设施。
-                    市区的主要火车站-中央火车站非常靠近校园，6年，位于便捷的市中心，接近悉尼的主要景点和设施。市区的主要火车站-中央火车站非常靠近校园，可以轻松的往返市区和郊区
-                  </dd>
-              </dl> -->
             </div>
           </div>
           <!-- 图片轮播 -->
           <div id="carouselContent">
               <div id="owl-demo" class="owl-carousel">
-                {% for item in case %}
+                {% for k, item in schooltopic.list.case_images %}
                 <div class="item carousel-item">
-                  <img src="{{item.images.url}}" alt="{{item.images.alt}}">
-                  <p class="pic-lengtend">{{item.des}}</p>
+                  <img src="{{ item.url }}" alt="{{ item.alt }}">
+                  <p class="pic-lengtend">{{ schooltopic.list.case_des[k] }}</p>
                 </div>
                 {% endfor %}
               </div>

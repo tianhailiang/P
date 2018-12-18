@@ -254,7 +254,8 @@ exports = module.exports = function (app) {// routes
   app.get("/act_form",controller.act_form);//活动表单
   app.get('/employment',about.employment);//招聘页面
   app.get('/middle/:id', about.middle); // 中学页面
-  app.get('/colleges/:id', about.colleges); // 大学页面
+  app.get('/university/:id', about.university); // 大学页面
+  app.get('/grouptemplate/:id',about.grouptemplate) //院校模板-集团
 
   //文章置顶接口
   app.post('/article_top', controller.article_top);
@@ -276,5 +277,4 @@ exports = module.exports = function (app) {// routes
     res.render('pdf',data)
   })
   app.get('/gwzs', login.gwzs); // 顾问个人主页确认文章数
-  app.get('/grouptemplate/:id',controller.grouptemplate) //院校模板-集团
 };
