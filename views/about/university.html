@@ -168,6 +168,7 @@
       left: -20px;
       top: -30px;
       text-align: left;
+      overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:8;
   }
   .jian_con_top_s {
       font-size: 16px;
@@ -228,9 +229,12 @@
       top: 17px;
   }
   .pai_con_rigth div {
-      width: 326px;
+      width: 310px;
       height: 30px;
       line-height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
   }
   .pai_con_tu {
       background: #c13232;
@@ -296,12 +300,14 @@
       background: url({{helper.cdnhost}}/assets/img/about/colleges_3.png);
       background-size: 100% 100%;
       padding: 32px 40px 0px 26px;
-      width: 807px;
+      width: 780px;
       height: 227px;
       position: absolute;
       left: 0px;
       bottom: 30px;
       text-align: left;
+      overflow-y: scroll;
+      overflow-x: hidden;
   }
   .you_con_left_h {
       width: 807px;
@@ -397,6 +403,10 @@
       color: #333;
       overflow: hidden;
       margin-bottom: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 28px;
   }
   .te_con_rigth_con {
       width: 860px;
@@ -568,8 +578,13 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 80px;">大学优势</div>
     <div class="you_con">
+<<<<<<< HEAD:views/about/university.html
         <div class="you_con_left">
             {% for item in schooltopic.advantage %}
+=======
+        <div class="you_con_left" style="">
+            {% for item in schooltopic.list.advantage %}
+>>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
             <div class="you_con_left_h">
                 <span class="you_con_left_h_tu">{{loop.index}}</span>
                 <span class="you_con_left_h_con">{{item}}</span>
@@ -612,8 +627,14 @@
     <div class="jian_title" style="margin-bottom: 50px;">校区介绍</div>
     <div class="qu_con">{{schooltopic.campus_info}}</div>
     <div class="qu_tu clearfix">
+<<<<<<< HEAD:views/about/university.html
         {% for k, item in schooltopic.campus_info_images %}
+=======
+        {% for k, item in schooltopic.list.campus_info_images %}
+        {% if loop.index <= 4 %}
+>>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
         <img src="{{ item.url }}" alt="{{ item.alt }}" {% if k == 3 %} style="margin-right: 0;" {% endif %}>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
@@ -622,13 +643,19 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">大学社交平台</div>
     <div class="ping_con clearfix">
+<<<<<<< HEAD:views/about/university.html
         {% for k, item in schooltopic.social_images %}
+=======
+        {% for k, item in schooltopic.list.social_images %}
+        {% if loop.index <= 3 %}
+>>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
         <div class="ping_y">
             <div class="ping_tu">
                 <img src="{{ item.url }}" alt="{{ item.alt }}">
             </div>
             <p>{{ schooltopic.social_title[k] }}</p>
         </div>
+        {% endif %}
         {% endfor %}
     </div>
 </div>
