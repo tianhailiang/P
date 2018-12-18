@@ -525,7 +525,7 @@
             <div class="jian_con_top_s">{{schooltopic.content | safe}}</div>
         </div>
         <div class="jian_con_rigth">
-            <img src="" alt="">
+            <img src="{{ schooltopic.des_img }}" alt="">
         </div>
         <div class="jian_con_bottom clearfix">
             {% for k, item in schooltopic.des_images %}
@@ -623,7 +623,7 @@
     <div class="qu_con">{{schooltopic.campus_info}}</div>
     <div class="qu_tu clearfix">
         {% for k, item in schooltopic.campus_info_images %}
-
+        {% if loop.index <= 4 %}
         <img src="{{ item.url }}" alt="{{ item.alt }}" {% if k == 3 %} style="margin-right: 0;" {% endif %}>
         {% endif %}
         {% endfor %}
@@ -635,6 +635,7 @@
     <div class="jian_title" style="margin-bottom: 50px;">大学社交平台</div>
     <div class="ping_con clearfix">
         {% for k, item in schooltopic.social_images %}
+        {% if loop.index <= 3 %}
         <div class="ping_y">
             <div class="ping_tu">
                 <img src="{{ item.url }}" alt="{{ item.alt }}">
