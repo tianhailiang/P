@@ -578,13 +578,8 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 80px;">大学优势</div>
     <div class="you_con">
-<<<<<<< HEAD:views/about/university.html
         <div class="you_con_left">
             {% for item in schooltopic.advantage %}
-=======
-        <div class="you_con_left" style="">
-            {% for item in schooltopic.list.advantage %}
->>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
             <div class="you_con_left_h">
                 <span class="you_con_left_h_tu">{{loop.index}}</span>
                 <span class="you_con_left_h_con">{{item}}</span>
@@ -627,12 +622,8 @@
     <div class="jian_title" style="margin-bottom: 50px;">校区介绍</div>
     <div class="qu_con">{{schooltopic.campus_info}}</div>
     <div class="qu_tu clearfix">
-<<<<<<< HEAD:views/about/university.html
         {% for k, item in schooltopic.campus_info_images %}
-=======
-        {% for k, item in schooltopic.list.campus_info_images %}
-        {% if loop.index <= 4 %}
->>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
+
         <img src="{{ item.url }}" alt="{{ item.alt }}" {% if k == 3 %} style="margin-right: 0;" {% endif %}>
         {% endif %}
         {% endfor %}
@@ -643,12 +634,7 @@
 <div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
     <div class="jian_title" style="margin-bottom: 50px;">大学社交平台</div>
     <div class="ping_con clearfix">
-<<<<<<< HEAD:views/about/university.html
         {% for k, item in schooltopic.social_images %}
-=======
-        {% for k, item in schooltopic.list.social_images %}
-        {% if loop.index <= 3 %}
->>>>>>> 5eaa22b4ba2aeabf140ef334cf2b656fa8a0be5e:views/about/colleges.html
         <div class="ping_y">
             <div class="ping_tu">
                 <img src="{{ item.url }}" alt="{{ item.alt }}">
