@@ -67,6 +67,13 @@
 			alert("请在页面添加relationId标签<input type='hidden' id='relationId' value='18'>value根据不同主题编写，谢谢")
 			return false;
 		}
+		if (relationId == null || relationId == '') {
+			relationId = 22;
+		} else {
+			relationId = relationId.split('_');
+			relationId = relationId[0]
+			console.log('relationId', relationId)
+		}
 		if (/&bd_vid=/.test(fromUrl)) {
             var dataType = 7;
         } else {

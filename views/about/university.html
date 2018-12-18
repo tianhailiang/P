@@ -247,7 +247,7 @@
   }
   .pai_con_left_con {
       width: 585px;
-      height: 245px;
+      height: 290px;
       border: 1px solid #000;
       float: right;
       margin-right: 40px;
@@ -482,6 +482,9 @@
       font-size: 16px;
       color: #333;
   }
+  .slider .slider-img {
+      height: 87%;
+  }
   .slider-dot { 
       margin-top: 0px;
       z-index: 1000;
@@ -489,7 +492,7 @@
       height: 30px;
   }
   .slider .slider-dot ul {
-      bottom: -30px;
+      bottom: 0px;
       height: 30px;
   }
   .slider .slider-dot ul li {
@@ -498,6 +501,9 @@
 </style>
 </head>
 <body style="background: #fff;">
+<div style="display: none;">
+    <input type="hidden" id="relationId" value="18_站内院校_college_form">
+</div>
 {% include "widget/common_hide/common_hide.html"%}
 {% include "widget/top/top.html" %}
 
@@ -623,9 +629,9 @@
     <div class="qu_con">{{schooltopic.campus_info}}</div>
     <div class="qu_tu clearfix">
         {% for k, item in schooltopic.campus_info_images %}
-        {% if loop.index <= 4 %}
-        <img src="{{ item.url }}" alt="{{ item.alt }}" {% if k == 3 %} style="margin-right: 0;" {% endif %}>
-        {% endif %}
+            {% if loop.index <= 4 %}
+            <img src="{{ item.url }}" alt="{{ item.alt }}" {% if k == 3 %} style="margin-right: 0;" {% endif %}>
+            {% endif %}
         {% endfor %}
     </div>
 </div>
@@ -723,7 +729,8 @@ $(function() {
       intervalTime: 5000,
       slidesPerView: 2,
       slidesPerGroup: 2,
-      pagination: true
+      pagination: true,
+      dotPostion: 'center'
     });
 })
 
