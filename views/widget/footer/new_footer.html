@@ -1,0 +1,260 @@
+<div class="liuxue-footer" style="min-width:1200px;">
+  <div class="liuxue-footer-content lx-footer-content" style="margin-bottom: 0;">
+    <div class="footer-top" style="height: 40px;position: relative">
+      <h2>友情链接:</h2>
+      <div style="float: left;width: 1057px;height: 40px;overflow: hidden">
+        {% esi helper.include(esikey,'fragment/linkList','c='+tdk.cityid) %}
+      </div>
+    </div>
+    <div class="foot-map clearfix" style="padding-left: 20px">
+      <div class="sitemap sitemap01">
+        <h2>关于我们</h2>
+        <ul class="left-ul">
+          <li><a target="_blank"  rel="nofollow"  href="{{ helper.urlgen('about') }}"> 公司简介</a></li>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/culture') }}">企业文化</a></li>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about') }}#honor">企业荣誉</a></li>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/contact') }}">联系我们</a></li>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/contact') }}#Suggestions">意见反馈</a></li>
+        </ul>
+        <ul>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/events') }}">大事记</a></li>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/cooperation') }}">商务合作</a></li>
+          <li><a target="_blank"  rel="nofollow"   href="http://www.jjl.cn/zt/zhaopin/employment.html">诚聘英才</a></li>
+          <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('agreement') }}">使用协议</a></li>
+        </ul>
+      </div>
+      <div class="sitemap sitemap02">
+        <h2>专家团队</h2>
+        <ul>
+          <li style="width: 312px;"><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('canzan') }}">25位留学消费教育学校指导专家</a></li>
+        </ul>
+      </div>
+      {% set footerCountry=[
+           {
+             "id": 1,
+             "country": "美国"
+           },
+           {
+             "id": 2,
+             "country": "英国"
+           },
+           {
+            "id": 4,
+            "country": "澳大利亚"
+          },
+          {
+            "id": 3,
+            "country": "加拿大"
+          },
+          {
+            "id": 5,
+            "country": "新西兰"
+          },
+          {
+            "id": 51,
+            "country": "日本"
+          },
+          {
+            "id": 50,
+            "country": "韩国"
+          },
+          {
+            "id": 54,
+            "country": "中国香港"
+          },
+          {
+            "id": 100,
+            "country": "俄罗斯"
+          },
+          {
+            "id": 101,
+            "country": "乌克兰"
+          },
+          {
+            "id": 108,
+            "country": "爱尔兰"
+          },
+          {
+            "id": 111,
+            "country": "意大利"
+          },
+          {
+            "id": 112,
+            "country": "西班牙"
+          },
+          {
+            "id": 102,
+            "country": "白俄罗斯"
+          },
+          {
+            "id": 52,
+            "country": "新加坡"
+          },
+          {
+            "id": 53,
+            "country": "马来西亚"
+          },
+          {
+            "id": 110,
+            "country": "丹麦"
+          },
+          {
+            "id": 103,
+            "country": "德国"
+          },
+          {
+            "id": 104,
+            "country": "法国"
+          },
+          {
+            "id": 105,
+            "country": "挪威"
+          },
+          {
+            "id": 106,
+            "country": "瑞典"
+          },
+          {
+            "id": 107,
+            "country": "芬兰"
+          },
+          {
+            "id": 109,
+            "country": "荷兰"
+          },
+          {
+            "id": 113,
+            "country": "瑞士"
+          },
+          {
+            "id": 55,
+            "country": "中国澳门"
+          },
+          {
+            "id": 114,
+            "country": "奥地利"
+          }
+        ]
+      %}
+      <div class="sitemap sitemap03">
+        <h2>出国留学</h2>
+        <ul class="footer-country">
+          {% for cItem in footerCountry %}
+          <li><a href="{{helper.active_urlgen('articles','n=' + cItem.id)}}" target="_blank">{{cItem.country}}留学</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="sitemap sitemap04">
+        <h2 class="guanzhu">关注金吉列:</h2>
+          <div class="clearfix">
+            <dl class="foot-weibo">
+              <dt><img src="{{helper.cdnhost}}/assets/img/weibo.png" alt="微博"></dt>
+              <dd>官方微博</dd>
+            </dl>
+            <dl>
+              <dt><img src="{{helper.cdnhost}}/assets/img/weixin.png" alt="微信"></dt>
+              <dd>官方微信</dd>
+            </dl>
+          </div>
+      </div>
+    </div>
+    <div class="address clearfix" style="padding-left: 20px">
+      <h2>欢迎来访</h2>
+      <ol class="xiangxi-address one" id="qita-city">
+        <li><i class="iconfont">&#xe679;</i><span>400-010-8000</span></li>
+        <li><i class="iconfont">&#xe611;</i><span id="tel">010-65685656</span></li>
+        <li><i class="iconfont">&#xe603;</i><span id="address">北京市建国门外大街永安东里米阳大厦5层（永安里地铁C口向南50米) </span><span class="useMap" style="color: #fff;margin-left: 20px;text-decoration: underline;cursor: pointer;">【点击查看地图】</span></li>
+      </ol>
+      <ul class="xiangxi-address one clearfix" id="wc-hk" style="display: none;margin-bottom: 34px;" >
+        <li><i class="iconfont">&#xe679;</i><span>400-010-8000</span></li>
+        <li class="wuhan-address"style="width: 550px">
+          <ul>
+            <li><i class="iconfont">&#xe611;</i><span>027-67811600</span></li>
+            <li><i class="iconfont">&#xe603;</i><span>武昌分公司：武汉市洪山区珞瑜路10号群光中心百脑汇23层 </span>
+              <span class="useMap wc" style="color: #fff;margin-left: 20px;text-decoration: underline;cursor: pointer;">【点击查看地图】</span></li>
+          </ul>
+
+        </li>
+       <li  class="wuhan-address" style="width: 550px">
+        <ul>
+          <li><i class="iconfont">&#xe611;</i><span>027-83805656</span></li>
+          <li><i class="iconfont">&#xe603;</i><span>汉口分公司：武汉市航空路新世界中心C座20层 </span><span class="useMap wh" style="color: #fff;margin-left: 20px;text-decoration: underline;cursor: pointer;">【点击查看地图】</span></li>
+        </ul>
+
+       </li>
+
+      </ul>
+      <p class="copyright" style="padding-left: 0">©2009金吉列出国留学咨询服务有限公司 &nbsp;版权所有&nbsp;京ICP备05010035号&nbsp;&nbsp;留学投诉电话：4006-213-315&nbsp;&nbsp;投诉邮箱：315@jjl.cn</p>
+      <div class="adviser-login" onclick="adviserlogin()">
+        咨询顾问登录
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
+<script src="{{helper.cdnhost}}/dep/js/layer-1.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/top.js"></script>
+<script src="http://api.map.baidu.com/getscript?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
+<script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/showMap.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/refer.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
+<script>
+$(function(){
+    var grUserId = cookie('gr_user_id');
+    getUrlSetCookieByParam ('growingioId',grUserId);
+})
+</script>
+<script>
+  $(function() {
+    getPageReferweb();
+  });
+  function adviserlogin () {
+    var h = window.location.href;
+    console.log('h', h);
+    var hh = h.split("/");
+    console.log('hh[1]', hh[3]);
+    var hhh = h.split("?");
+    console.log('hhh', hhh[1])
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'login?h=http:') {
+      console.log('11111')
+//      window.location.href = '/login?h=' + h
+      window.open('/login?h=' + h);
+      //window.open(fn.urlgen("login")+'?h='+h);
+    } else if (hhh[1] != undefined && hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login') {
+      console.log('aaaa')
+      window.location.reload();
+    } else {
+      console.log('22222');
+//      window.location.href = '/login'
+      window.open('/login?h=');
+      //window.open(fn.urlgen('login')+'?h=');
+    }
+  }
+</script>
+<script src="http://jesong.jjl.cn/skin.jsp?comp=1&config=181" type="text/javascript"></script>
+<script>
+  var _hmt = _hmt || [];
+  (function() {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?27e9cf6d25e8551a8ad30712057bde86";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+  })();
+</script>
+<script>
+    (function(){
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
