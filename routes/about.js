@@ -201,14 +201,12 @@ exports.middle = function (req, res, next) {
   }, function (err, result){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    console.log('schooltopic', data.schooltopic.list.course_images);
     if (data.schooltopic.list.advantage) {
       data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
     }
     if (data.schooltopic.list.course_images) {
       data.schooltopic.list.course_images = JSON.parse(data.schooltopic.list.course_images) //开设课程图片
       data.imgs = Object.keys(data.schooltopic.list.course_images);
-      console.log('imgs', data.imgs.length);
     }
     if (data.schooltopic.list.course_images) {
       data.schooltopic.list.course_des = JSON.parse(data.schooltopic.list.course_des) //开设课程简介
@@ -245,13 +243,10 @@ exports.university = function (req, res, next) {
     },
   }, function (err, result){
     data.schooltopic = returnData(result.schooltopic).list;
-    console.log('schooltopic', data.schooltopic);
     if (data.schooltopic.des_images) {
-      console.log('aaaaaaaaaaa--------------------');
       data.schooltopic.des_images = JSON.parse(data.schooltopic.des_images) //大学图片
     }
     if (data.schooltopic.university_ranking) {
-      console.log('bbbbbbb-------------------------');
       data.schooltopic.university_ranking = JSON.parse(data.schooltopic.university_ranking) //大学排名
     }
     if (data.schooltopic.colleges_ranking) {
@@ -315,35 +310,9 @@ exports.grouptemplate = function(req,res,next){  // 院校模板-集团
       if (data.schooltopic.list.case_images) {
         data.schooltopic.list.case_images = JSON.parse(data.schooltopic.list.case_images) //案例
       }
-      console.log(data.schooltopic.list.case_images)
       if (data.schooltopic.list.case_des) {
         data.schooltopic.list.case_des = JSON.parse(data.schooltopic.list.case_des) //案例
       }
-
-        // data.schooltopic = result.schooltopic.data;
-      /*
-       data.advantage = JSON.parse(data.schooltopic.list.advantage);
-       data.case_des = JSON.parse(data.schooltopic.list.case_des);
-       if (data.schooltopic.list.case_images != null && data.schooltopic.list.case_images != '') {
-       data.case_images = JSON.parse(data.schooltopic.list.case_images);
-       data.case_as = [];
-       for (var cou in data.case_images) {
-       data.case_as.push(data.case_images[cou])
-       }
-       console.log('data.course_images', data.case_as[0])
-       data.case = new Array();
-       for (var i = 0; i < data.case_as.length; i++) {
-       console.log('data.coures', data.case_as[i]);
-       if (data.case_des[i] != undefined) {
-       data.case.push({des: data.case_des[i], images: data.case_as[i]})
-       }else {
-       data.case.push({images: data.case_as[i]})
-       }
-       console.log('data.couresiiiiiii', data.case[i]);
-       }
-       }
-       console.log('data.schooltopic', data.schooltopic);
-       */
         data.pageroute="GROUTEMPLATE";
         data.tdk = {
           pagekey: 'GROUTEMPLATE', //key
