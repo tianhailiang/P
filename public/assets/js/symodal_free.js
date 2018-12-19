@@ -145,7 +145,7 @@ $(function () {
 				country: country,
 				city: cookie('currentarea') || 1,
 				source: h,
-				relationId: 21,
+				relationId: 118,
         grUserId: grUserId
       },
 			dataType:'json',
