@@ -201,6 +201,7 @@ exports.middle = function (req, res, next) {
   }, function (err, result){
     // log.info(result)
     data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+    console.log('data.sch', data.schooltopic)
     if (data.schooltopic.list.advantage) {
       data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
     }

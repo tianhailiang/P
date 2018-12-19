@@ -352,7 +352,7 @@
     $(function () {
         //轮播图初始化
         var mySwiper = new Swiper ('.swiper-container', {
-            
+            direction: 'vertical',
             loop: true,
             slidesPerView: 4,
             autoplay : 5000,
@@ -427,7 +427,7 @@
     <div class="branch-expert-lunbo" style="position: relative;height:270px;">
         <a class="arrow-left arrow-btn" style="display:block;"></a>
         <a class="arrow-right arrow-btn" style="display:block;"></a>
-        <div class="swiper-container" style="margin: 0 auto;height:270px;margin-left: 65px;">
+        <div class="swiper-container" style="width: 1055px;margin: 0 auto;height:270px;">
             <div class="swiper-wrapper">
                     {% for k, init in schooltopic.list.course_images %}
                 <div class="swiper-slide clearfix">
