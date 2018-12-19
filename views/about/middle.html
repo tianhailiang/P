@@ -352,15 +352,21 @@
     $(function () {
         //轮播图初始化
         var mySwiper = new Swiper ('.swiper-container', {
-            direction: 'vertical',
+            
             loop: true,
             slidesPerView: 4,
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
             autoplay : 5000,
         });
+        $('.arrow-right').click(function(){
+            // console.log('arrow-right')
+            mySwiper.swipePrev();
+        })
+        $('.arrow-left').click(function(){
+            // console.log('arrow-left')
+            mySwiper.swipeNext(); 
+        })
     });
-    function onshow(id) {
+    function onshow(id, des) {
         var addEvent = function(element,type,callback){
         if(element.addEventListener){
             element.addEventListener(type,callback,false);
@@ -377,11 +383,19 @@
                 $("#kai_con_chang_" + id).css("display", "block");
             }
         });
-        console.log('show++++++++++', id)
-        $("#kai_con_chang_" + id).css("display", "block");
-        $("#kai_con_" + id).css("display", "none");
+        var des = $('#kai_con_' + id).attr('data-des')
+        // console.log('66666666666',des)
+        var blen = des.replace(/[\u0391-\uFFE5]/g,"aa").length;
+        // console.log('show++++++++++', blen)
+        if (blen > 32) {
+            console.log('aaaa')
+            $("#kai_con_chang_" + id).css("display", "block");
+            $("#kai_con_" + id).css("display", "none");
+        }
+        
+        
     }
-    function onhide(id) {
+    function onhide(id, des) {
         var addEvent = function(element,type,callback){
             if(element.addEventListener){
                 element.addEventListener(type,callback,false);
@@ -400,7 +414,7 @@
                 $("#kai_con_" + id).css("display", "none");
             }
         });
-        console.log('hide++++++++++', id)
+        
         $("#kai_con_chang_" + id).css("display", "none");
         $("#kai_con_" + id).css("display", "block");
     }
@@ -411,8 +425,8 @@
 <div class="dui-layout-lg" style="margin-top: 50px;">
     <div class="kai_title"></div>
     <div class="branch-expert-lunbo" style="position: relative;height:270px;">
-        <a class="arrow-left arrow-btn" href="javascript:void(0);" style="display:block;"></a>
-        <a class="arrow-right arrow-btn" href="javascript:void(0);" style="display:block;"></a>
+        <a class="arrow-left arrow-btn" style="display:block;"></a>
+        <a class="arrow-right arrow-btn" style="display:block;"></a>
         <div class="swiper-container" style="margin: 0 auto;height:270px;margin-left: 65px;">
             <div class="swiper-wrapper">
                     {% for k, init in schooltopic.list.course_images %}
@@ -449,7 +463,7 @@
             <div class="xue_con_con">{{schooltopic.list.scholarship_info}}</div>
         </div>
         <div class="xue_con xue_con3" style="margin-right: 0px;">
-            <div class="xue_con_title"></div>
+            <div class="xue_con_title3"></div>
             <div class="xue_con_con">{{schooltopic.list.apply_advantage}}</div>
         </div>
     </div>
