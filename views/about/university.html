@@ -453,7 +453,7 @@
       margin-right: 20px;
   }
   .ping_con {
-      width: 750px;
+      width: 1180px;
       min-height: 210px;
       margin: 0 auto;
       text-align: center;
@@ -463,7 +463,7 @@
       height: 242px;
       margin: 0 20px;
       text-align: center;
-      float: left;
+      display: inline-block;
   }
   .ping_tu {
       width: 210px;
@@ -497,6 +497,16 @@
   }
   .slider .slider-dot ul li {
       z-index: 1000;
+  }
+  .slider-img-ul li {
+    float: left;
+    height: 100%;
+  }
+  .slider .slider-btn.slider-btn-left {
+    background-image: none;
+  }
+  .slider .slider-btn.slider-btn-right {
+    background-image: none;
   }
 </style>
 </head>
@@ -535,7 +545,9 @@
         </div>
         <div class="jian_con_bottom clearfix">
             {% for k, item in schooltopic.des_images %}
+            {% if loop.index <= 4 %}
             <img src="{{ item.url }}" alt="{{ item.alt }}">
+            {% endif %}
             {% endfor %}
         </div>
     </div>
@@ -549,17 +561,31 @@
             <div class="pai_con_left_con">
                 <div class="slider">
                     <div class="slider-img">
-                        <ul class="slider-img-ul">
-                        {% for item in schooltopic.university_ranking %}
+                        <ul class="slider-img-ul clearfix">
                         <li>
-                            <a href="javacript:void(0);" target="_blank" style="height: 30px;">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 0 and loop.index <= 8 %}
+                            <a href="javascript:void(0);" target="_blank" style="height: 30px;">
                                 <div class="pai_con_left_con_h clearfix">
                                     <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
                                     <!--<span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>-->
                                 </div>
                             </a>
+                            {% endif %}
+                            {% endfor %}
                         </li>
-                        {% endfor %}
+                        <li>
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 8 and loop.index <= 16 %}
+                            <a href="javascript:void(0);" target="_blank" style="height: 30px;">
+                                <div class="pai_con_left_con_h clearfix">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                    <!--<span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>-->
+                                </div>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                        </li>
                         </ul>
                     </div>
                 </div>
@@ -641,7 +667,7 @@
     <div class="jian_title" style="margin-bottom: 50px;">大学社交平台</div>
     <div class="ping_con clearfix">
         {% for k, item in schooltopic.social_images %}
-        {% if loop.index <= 3 %}
+        {% if loop.index <= 4 %}
         <div class="ping_y">
             <div class="ping_tu">
                 <img src="{{ item.url }}" alt="{{ item.alt }}">
@@ -711,26 +737,27 @@
 {{slide.leyu_slide("XC_SCHOOLTOPIC_SEAT10",helper) }}
 <!-- 秋展浮层 -->
 {% include "widget2/active_popup/active_popup.html" %}
-<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/xSlider_university.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
-<script src="{{helper.cdnhost}}/dep/js/schooltopic/jquery.bxslider.js"></script>
+
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
 <script>
 $(function() {
     $('.pai_con_left .slider').xSlider({
       //  轮播图配置
       //  autoplay : 500,
+      autoplay: 2000,
       current: 0,
       speed: 500,
       intervalTime: 5000,
-      slidesPerView: 2,
-      slidesPerGroup: 2,
+      slidesPerView: 6,
       pagination: true,
-      dotPostion: 'center'
+      dotPostion: 'center',
+      slider_left: false
     });
 })
 

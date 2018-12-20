@@ -244,6 +244,7 @@ exports.university = function (req, res, next) {
     },
   }, function (err, result){
     data.schooltopic = returnData(result.schooltopic).list;
+    console.log('data.sch', data.schooltopic)
     if (data.schooltopic.des_images) {
       data.schooltopic.des_images = JSON.parse(data.schooltopic.des_images) //大学图片
     }
