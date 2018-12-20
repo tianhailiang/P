@@ -1,5 +1,5 @@
 <div class="liuxue-footer" style="min-width:1200px;">
-  <div class="liuxue-footer-content" style="margin-bottom: 0;">
+  <div class="liuxue-footer-content lx-footer-content" style="margin-bottom: 0;">
     <div class="footer-top" style="height: 40px;position: relative">
       <h2>友情链接:</h2>
       <div style="float: left;width: 1057px;height: 40px;overflow: hidden">
@@ -29,7 +29,121 @@
           <li style="width: 312px;"><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('canzan') }}">25位留学消费教育学校指导专家</a></li>
         </ul>
       </div>
-
+      {% set footerCountry=[
+           {
+             "id": 1,
+             "country": "美国"
+           },
+           {
+             "id": 2,
+             "country": "英国"
+           },
+           {
+            "id": 4,
+            "country": "澳大利亚"
+          },
+          {
+            "id": 3,
+            "country": "加拿大"
+          },
+          {
+            "id": 5,
+            "country": "新西兰"
+          },
+          {
+            "id": 51,
+            "country": "日本"
+          },
+          {
+            "id": 50,
+            "country": "韩国"
+          },
+          {
+            "id": 54,
+            "country": "中国香港"
+          },
+          {
+            "id": 100,
+            "country": "俄罗斯"
+          },
+          {
+            "id": 101,
+            "country": "乌克兰"
+          },
+          {
+            "id": 108,
+            "country": "爱尔兰"
+          },
+          {
+            "id": 111,
+            "country": "意大利"
+          },
+          {
+            "id": 112,
+            "country": "西班牙"
+          },
+          {
+            "id": 102,
+            "country": "白俄罗斯"
+          },
+          {
+            "id": 52,
+            "country": "新加坡"
+          },
+          {
+            "id": 53,
+            "country": "马来西亚"
+          },
+          {
+            "id": 110,
+            "country": "丹麦"
+          },
+          {
+            "id": 103,
+            "country": "德国"
+          },
+          {
+            "id": 104,
+            "country": "法国"
+          },
+          {
+            "id": 105,
+            "country": "挪威"
+          },
+          {
+            "id": 106,
+            "country": "瑞典"
+          },
+          {
+            "id": 107,
+            "country": "芬兰"
+          },
+          {
+            "id": 109,
+            "country": "荷兰"
+          },
+          {
+            "id": 113,
+            "country": "瑞士"
+          },
+          {
+            "id": 55,
+            "country": "中国澳门"
+          },
+          {
+            "id": 114,
+            "country": "奥地利"
+          }
+        ]
+      %}
+      <div class="sitemap sitemap03">
+        <h2>出国留学</h2>
+        <ul class="footer-country">
+          {% for cItem in footerCountry %}
+          <li><a href="{{helper.active_urlgen('articles','n=' + cItem.id)}}" target="_blank">{{cItem.country}}留学</a></li>
+          {% endfor %}
+        </ul>
+      </div>
       <div class="sitemap sitemap04">
         <h2 class="guanzhu">关注金吉列:</h2>
           <div class="clearfix">

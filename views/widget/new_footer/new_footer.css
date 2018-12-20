@@ -12,8 +12,17 @@
   color:#ffffff;
   position: relative;
 }
+.lx-footer-content {
+  padding-bottom: 150px;
+}
+.common-footer-content {
+  padding-bottom: 120px;
+}
 .liuxue-footer-content .foot-map {
   padding: 40px 0 31px;
+}
+.lx-footer-content .foot-map {
+  padding: 30px 0 0;
 }
 .foot-map a:hover{
   font-size: 14px;
@@ -37,10 +46,26 @@
   color: #fff;
 }
 .liuxue-footer-content .foot-map .sitemap01 {
-  width: 320px;
+  width: 165px;
+  margin-right: 80px;
 }
 .liuxue-footer-content .foot-map .sitemap02 {
   width: 420px;
+}
+.lx-footer-content .foot-map .sitemap02 {
+  width: 170px;
+  margin-right: 80px;
+}
+.liuxue-footer-content .foot-map .sitemap03 {
+  width: 450px;
+}
+.liuxue-footer-content .foot-map .sitemap03 .footer-country {
+  width: 450px;
+  background-color: red;
+}
+.liuxue-footer-content .foot-map .sitemap03 .footer-country li {
+  width: 103px;
+  float: left;
 }
 .liuxue-footer-content .foot-map .sitemap01 ul{
   float: left;
@@ -52,12 +77,24 @@
 .liuxue-footer-content .foot-map .sitemap04 dl {
   float: left;
   text-align: center;
+  margin-bottom: 15px;
 }
 .liuxue-footer-content .foot-map .sitemap04 dl dt{
   margin-bottom: 10px;
 }
+.liuxue-footer-content .foot-map .sitemap04 dl dd{
+  line-height: 1;
+}
 .liuxue-footer-content .foot-map .sitemap04 dl.foot-weibo {
   margin-right: 50px;
+}
+.lx-footer-content .address {
+  position: absolute;
+  bottom: 0;
+}
+.common-footer-content .address {
+  position: absolute;
+  bottom: 0;
 }
 .liuxue-footer-content .address h2{
   font-size: 16px;
@@ -101,7 +138,7 @@
   font-size: 14px;
   position: absolute;
   bottom: 0px;
-  right: 232px;
+  right: -160px;
   cursor: pointer;
 }
 /*友情链接*/
