@@ -61,7 +61,6 @@ $(function () {
 	//提交表单信息
 	$("#handelSub").on('click',function (e) {
 		e.preventDefault()
-		cookie('mask_tag',1);
 		getGift()
 	})
 	//点击获取验证码
@@ -82,7 +81,6 @@ $(function () {
 	}
 	function getCode(){
     if(!/^1\d{10}$/.test($.trim($('.iphone').val()))){
-      // alert('请输入正确的手机号格式');
       $(".error").show()
       return false;
     } else {
@@ -115,7 +113,7 @@ $(function () {
 		var actName = $.trim($('#myname').val());
 		var phone = $.trim($(".iphone").val());
 		var country = $('.select em').attr('data-id');
-		var code = $.trim($('.pass-code').val());
+		// var code = $.trim($('.pass-code').val());
 		if(actName== ''){
       layer.msg('请输入姓名');
       return false;
@@ -130,36 +128,42 @@ $(function () {
 			layer.msg('请选择意向国家');
 			return false;
 		}
-		if(code == ''){
-			layer.msg('请输入验证码');
-			return false;
-		}
+		// if(code == ''){
+		// 	layer.msg('请输入验证码');
+		// 	return false;
+		// }
+		var h = cookie('referweb'); // 获取来源url
+		var grUserId = cookie('gr_user_id');
 		var that = this;
 		$(this).unbind('click');
 		$.ajax({
-      url: '/getCoupons',
+      url: ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
       type: 'get',
       data: {
-        user_name: actName,
-        mobile: phone,
-        country_id: country,
-        code:code
+        name: actName,
+        phone: phone,
+				country: country,
+				city: cookie('currentarea') || 1,
+				source: h,
+				relationId: 118,
+        grUserId: grUserId
       },
 			dataType:'json',
 			success:function(msg){
         $(that).bind('click',getGift);
         if(msg.code === 0){
-          layer.msg('优惠码发送成功');
+          layer.msg('发送成功');
           $('#myname').val('')
           $(".iphone").val('')
           $(".select").find('em').text('请选择意向国家')
           $(".select").find('em').attr('data-id','')
-          $(".pass-code").val('')
-          clearInterval(timer)
-          $(".send-code").html('点击发送验证码');
-          $(".dialog-modal").fadeOut()
+          // $(".pass-code").val('')
+          // clearInterval(timer)
+          // $(".send-code").html('点击发送验证码');
+					$(".dialog-modal").fadeOut()
+					cookie('mask_tag',1)
         } else {
-          layer.msg(msg.massage);
+          layer.msg(msg.message);
         }
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
