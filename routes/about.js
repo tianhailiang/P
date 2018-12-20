@@ -181,6 +181,7 @@ exports.activity = function (req, res, next) {
 // 中学
 exports.middle = function (req, res, next) {
   var articleId = req.params.id;
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   //node获取地址栏url
   var data = []
   var l = url.parse(req.url, true).query;
@@ -215,7 +216,7 @@ exports.middle = function (req, res, next) {
     data.pageroute="middle";
     data.tdk = {
       pagekey: 'MIDDLE', //key
-      cityid: '', //cityid
+      cityid: area, //cityid
       nationid: '' //nationi
     };
 

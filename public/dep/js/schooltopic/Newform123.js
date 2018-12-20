@@ -63,12 +63,12 @@
 			alert("请选择意向国家，谢谢！");
 			return false;
 		}
-		if (isNull(relationId)) {
-			alert("请在页面添加relationId标签<input type='hidden' id='relationId' value='18'>value根据不同主题编写，谢谢")
-			return false;
-		}
+		// if (isNull(relationId)) {
+		// 	alert("请在页面添加relationId标签<input type='hidden' id='relationId' value='18'>value根据不同主题编写，谢谢")
+		// 	return false;
+		// }
 		if (relationId == null || relationId == '') {
-			relationId = 22;
+			relationId = 18;
 		} else {
 			relationId = relationId.split('_');
 			relationId = relationId[0]
