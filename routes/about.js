@@ -205,6 +205,7 @@ exports.middle = function (req, res, next) {
     console.log('data.sch', data.schooltopic)
     if (data.schooltopic.list.advantage) {
       data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
+      console.log('advantage', data.schooltopic.list.advantage)
     }
     if (data.schooltopic.list.course_images) {
       data.schooltopic.list.course_images = JSON.parse(data.schooltopic.list.course_images) //开设课程图片
@@ -212,6 +213,7 @@ exports.middle = function (req, res, next) {
     }
     if (data.schooltopic.list.course_images) {
       data.schooltopic.list.course_des = JSON.parse(data.schooltopic.list.course_des) //开设课程简介
+      console.log('course_des', data.schooltopic.list.course_des)
     }
     data.pageroute="middle";
     data.tdk = {
@@ -227,6 +229,7 @@ exports.middle = function (req, res, next) {
 // 大学
 exports.university = function (req, res, next) {
   var articleId = req.params.id;
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   //node获取地址栏url
   var data = []
   var l = url.parse(req.url, true).query;
@@ -257,15 +260,18 @@ exports.university = function (req, res, next) {
     }
     if (data.schooltopic.advantage) {
       data.schooltopic.advantage = JSON.parse(data.schooltopic.advantage) //优势介绍
+      console.log('advantage', data.schooltopic.advantage)
     }
     if (data.schooltopic.curriculum_images) {
       data.schooltopic.curriculum_images = JSON.parse(data.schooltopic.curriculum_images) //课程图片
     }
     if (data.schooltopic.curriculum_title) {
       data.schooltopic.curriculum_title = JSON.parse(data.schooltopic.curriculum_title) //课程标题
+      console.log('curriculum_title', data.schooltopic.curriculum_title)
     }
     if (data.schooltopic.curriculum_des) {
       data.schooltopic.curriculum_des = JSON.parse(data.schooltopic.curriculum_des) //课程描述
+      console.log('curriculum_des', data.schooltopic.curriculum_des)
     }
     if (data.schooltopic.social_images) {
       data.schooltopic.social_images = JSON.parse(data.schooltopic.social_images) //社交平台二维码
@@ -279,7 +285,7 @@ exports.university = function (req, res, next) {
     // data.pageroute="colleges";
     data.tdk = {
       pagekey: 'UNIVERSITY', //key
-      cityid: '', //cityid
+      cityid: area, //cityid
       nationid: '' //nationi
     };
     res.render('about/university', data);
@@ -290,6 +296,7 @@ exports.university = function (req, res, next) {
 //
 exports.grouptemplate = function(req,res,next){  // 院校模板-集团
     var articleId = req.params.id;
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     //node获取地址栏url
     var data = []
     var l = url.parse(req.url, true).query;
@@ -309,17 +316,18 @@ exports.grouptemplate = function(req,res,next){  // 院校模板-集团
     }, function (err, result){
       // log.info(result)
       data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-
+      console.log('schooltopic', data.schooltopic)
       if (data.schooltopic.list.case_images) {
         data.schooltopic.list.case_images = JSON.parse(data.schooltopic.list.case_images) //案例
       }
       if (data.schooltopic.list.case_des) {
         data.schooltopic.list.case_des = JSON.parse(data.schooltopic.list.case_des) //案例
+        console.log('case_des', data.schooltopic.list.case_des)
       }
         data.pageroute="GROUTEMPLATE";
         data.tdk = {
           pagekey: 'GROUTEMPLATE', //key
-          cityid: '', //cityid
+          cityid: area, //cityid
           nationid: '' //nationi
         };
         res.render('about/grouptemplate', data);
