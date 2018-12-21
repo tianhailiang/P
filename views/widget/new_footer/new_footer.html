@@ -138,7 +138,7 @@
       %}
       <div class="sitemap sitemap03">
         <h2>出国留学</h2>
-        <ul class="footer-country">
+        <ul class="footer-country clearfix">
           {% for cItem in footerCountry %}
           <li><a href="{{helper.active_urlgen('articles','n=' + cItem.id)}}" target="_blank">{{cItem.country}}留学</a></li>
           {% endfor %}

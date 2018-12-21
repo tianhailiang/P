@@ -61,11 +61,15 @@
 }
 .liuxue-footer-content .foot-map .sitemap03 .footer-country {
   width: 450px;
-  background-color: red;
 }
 .liuxue-footer-content .foot-map .sitemap03 .footer-country li {
   width: 103px;
+  height:30px;
   float: left;
+}
+.liuxue-footer-content .foot-map .sitemap03 .footer-country li a{
+  display: block;
+  height: 100%;
 }
 .liuxue-footer-content .foot-map .sitemap01 ul{
   float: left;
