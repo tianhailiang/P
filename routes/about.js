@@ -947,14 +947,17 @@ exports.employment = function (req, res, next){
   });
 }
 
-
-//专题页面
+//院校专题页面
 exports.schooltopic = function (req, res, next){
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var qianzhengzhinan_currentPage=req.query.page || 1;
   var country = req.query.n || 0;
   var articleId = req.params.id;
+
+  //兼容中,本,集团3大栏目
+  var ids = articleId.split("_")
+
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
   console.log('url', l.h);
@@ -964,34 +967,94 @@ exports.schooltopic = function (req, res, next){
     data.url = config.wwhost;
   }
   data.login_nickname = '';
-  //if ( req.cookies.login_ss !== undefined) {
-  //  var login_a = JSON.parse(req.cookies.login_ss);
-  //  //log.debug("login_a-------" + login_a.nickname)
-  //  data.login_nickname = login_a;
-  //}
+
   async.parallel({
     schooltopic: function (callback) {
-      cms.schooltopic({
-        id:articleId,
-      }, callback);
+      if (ids[1] != undefined) {
+        cms.schooltopic_new({
+          id:articleId,
+        }, callback);
+      } else {
+        cms.schooltopic({
+          id:articleId,
+        }, callback);
+      }
     },
   }, function (err, result){
-    log.info(result)
-    data.pageroute="about";
-    // data.schooltopic = returnData(result.schooltopic, 'schooltopic');
-    data.schooltopic = result.schooltopic.data;
-    // console.log('data.schooltopic', data.schooltopic);
     if(result.schooltopic.code != 0){
       //顾问不存在的时候  跳到404
       return next();
     }
+
     data.tdk = {
       pagekey: 'SCHOOLTOPIC', //key
       cityid: area, //cityid
       nationid: country//nationi
     };
-    data.esikey = esihelper.esikey();
-    res.render('about/schooltopic', data);
 
+    //中学
+    if (ids[1] == "m") {
+      data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+      if (data.schooltopic.list.advantage != "" || data.schooltopic.list.advantage != undefined) {
+        data.schooltopic.list.advantage = JSON.parse(data.schooltopic.list.advantage) //各类排名及优势介绍
+      }
+      if (data.schooltopic.list.course_images) {
+        data.schooltopic.list.course_images = JSON.parse(data.schooltopic.list.course_images) //开设课程图片
+        data.imgs = Object.keys(data.schooltopic.list.course_images);
+      }
+      if (data.schooltopic.list.course_images) {
+        data.schooltopic.list.course_des = JSON.parse(data.schooltopic.list.course_des) //开设课程简介
+      }
+      res.render('about/middle', data);
+    //大学
+    } else if (ids[1] == "u") {
+      data.schooltopic = returnData(result.schooltopic).list;
+      if (data.schooltopic.des_images) {
+        data.schooltopic.des_images = JSON.parse(data.schooltopic.des_images) //大学图片
+      }
+      if (data.schooltopic.university_ranking) {
+        data.schooltopic.university_ranking = JSON.parse(data.schooltopic.university_ranking) //大学排名
+      }
+      if (data.schooltopic.colleges_ranking) {
+        data.schooltopic.colleges_ranking = JSON.parse(data.schooltopic.colleges_ranking) //院校排名
+      }
+      if (data.schooltopic.advantage) {
+        data.schooltopic.advantage = JSON.parse(data.schooltopic.advantage) //优势介绍
+      }
+      if (data.schooltopic.curriculum_images) {
+        data.schooltopic.curriculum_images = JSON.parse(data.schooltopic.curriculum_images) //课程图片
+      }
+      if (data.schooltopic.curriculum_title) {
+        data.schooltopic.curriculum_title = JSON.parse(data.schooltopic.curriculum_title) //课程标题
+      }
+      if (data.schooltopic.curriculum_des) {
+        data.schooltopic.curriculum_des = JSON.parse(data.schooltopic.curriculum_des) //课程描述
+      }
+      if (data.schooltopic.social_images) {
+        data.schooltopic.social_images = JSON.parse(data.schooltopic.social_images) //社交平台二维码
+      }
+      if (data.schooltopic.social_title) {
+        data.schooltopic.social_title = JSON.parse(data.schooltopic.social_title) //社交平台标题
+      }
+      if (data.schooltopic.campus_info_images) {
+        data.schooltopic.campus_info_images = JSON.parse(data.schooltopic.campus_info_images) //校区介绍图
+      }
+      res.render('about/university', data);
+    //集团
+    } else if (ids[1] == "g") {
+      data.schooltopic = returnData(result.schooltopic, 'schooltopic');
+
+      if (data.schooltopic.list.case_images) {
+        data.schooltopic.list.case_images = JSON.parse(data.schooltopic.list.case_images) //案例
+      }
+      if (data.schooltopic.list.case_des) {
+        data.schooltopic.list.case_des = JSON.parse(data.schooltopic.list.case_des) //案例
+      }
+      res.render('about/group', data);
+    } else {
+      data.schooltopic = result.schooltopic.data;
+      // data.esikey = esihelper.esikey();
+      res.render('about/schooltopic', data);
+    }
   });
 }
