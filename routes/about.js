@@ -254,7 +254,72 @@ exports.university = function (req, res, next) {
     }
     if (data.schooltopic.university_ranking) {
       data.schooltopic.university_ranking = JSON.parse(data.schooltopic.university_ranking) //大学排名
-    }
+      data.university = new Array();
+      console.log('university_ranking', data.schooltopic.university_ranking)
+     
+        if (data.schooltopic.university_ranking.length > 0 && data.schooltopic.university_ranking.length <= 8) {
+          data.university.push(1)
+        } else if (data.schooltopic.university_ranking.length > 8 && data.schooltopic.university_ranking.length<= 16) {
+          for (var i = 1; i <= 2 ; i++) {
+            data.university.push(i)
+            console.log('data.schooltopic.university[i]', data.university[i-1])
+          }
+          console.log('data.schooltopic.university', data.university.length)
+        } else if (data.schooltopic.university_ranking.length > 16 && data.schooltopic.university_ranking.length <= 24) {
+          for (var i = 1; i <= 3; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 24 && data.schooltopic.university_ranking.length <= 32) {
+          for (var i = 1; i <= 4; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 32 && data.schooltopic.university_ranking.length <= 40) {
+          for (var i = 1; i <= 5; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 40 && data.schooltopic.university_ranking.length <= 48) {
+          for (var i = 1; i <= 6; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 48 && data.schooltopic.university_ranking.length <= 56) {
+          for (var i = 1; i <= 7; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 56 && data.schooltopic.university_ranking.length <= 64) {
+          for (var i = 1; i <= 8; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 64 && data.schooltopic.university_ranking.length <= 72) {
+          for (var i = 1; i <= 9; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 72 && data.schooltopic.university_ranking.length <= 80) {
+          for (var i = 1; i <= 10; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 80 && data.schooltopic.university_ranking.length <= 88) {
+          for (var i = 1; i <= 11; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 88 && data.schooltopic.university_ranking.length <= 96) {
+          for (var i = 1; i <= 12; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 96 && data.schooltopic.university_ranking.length <= 104) {
+          for (var i = 1; i <= 13; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 104 && data.schooltopic.university_ranking.length <= 112) {
+          for (var i = 1; i <= 14; i++) {
+            data.university.push(i)
+          }
+        } else if (data.schooltopic.university_ranking.length > 112 && data.schooltopic.university_ranking.length <= 120) {
+          for (var i = 1; i <= 15; i++) {
+            data.university.push(i)
+          }
+        }
+      }
+    
     if (data.schooltopic.colleges_ranking) {
       data.schooltopic.colleges_ranking = JSON.parse(data.schooltopic.colleges_ranking) //院校排名
     }

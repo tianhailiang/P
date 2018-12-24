@@ -266,6 +266,7 @@
       height: 30px;
       overflow: hidden;
       margin-right: 20px;
+      line-height: 28px;
   }
   .pai_con_left_con_h_r {
       float: right;
@@ -509,6 +510,40 @@
   .slider .slider-btn.slider-btn-right {
     background-image: none;
   }
+  .swiper-slide {
+      width: 585px;
+      height: 30px;
+      font-size: 16px;
+  }
+  .canzan-slide{
+    width: 585px;
+    height: 30px;
+  }
+  .canzan-slide a {
+    width: 585px;
+    height: 30px;
+  }
+  .pagination {
+  position: absolute;
+  z-index: 20;
+  bottom: 10px;
+  width: 525px;
+  text-align: center;
+}
+.swiper-pagination-switch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: #fff;
+  margin: 0 5px;
+  opacity: 0.8;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.swiper-active-switch {
+  background: #c13232;
+}
 </style>
 </head>
 <body style="background: #fff;">
@@ -560,35 +595,230 @@
     <div class="pai_con">
         <div class="pai_con_left">
             <div class="pai_con_left_con">
-                <div class="slider">
+                <!-- <div class="slider">
                     <div class="slider-img">
                         <ul class="slider-img-ul clearfix">
+                        {% for i in university %}
+                        {% if i== 0 %}
                         <li>
                             {% for item in schooltopic.university_ranking %}
                             {% if loop.index > 0 and loop.index <= 8 %}
                             <a href="javascript:void(0);" target="_blank" style="height: 30px;">
                                 <div class="pai_con_left_con_h clearfix">
                                     <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
-                                    <!--<span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>-->
+                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>
                                 </div>
                             </a>
                             {% endif %}
                             {% endfor %}
                         </li>
-                        <li>
-                            {% for item in schooltopic.university_ranking %}
-                            {% if loop.index > 8 and loop.index <= 16 %}
-                            <a href="javascript:void(0);" target="_blank" style="height: 30px;">
-                                <div class="pai_con_left_con_h clearfix">
-                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
-                                    <!--<span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>-->
-                                </div>
-                            </a>
-                            {% endif %}
-                            {% endfor %}
-                        </li>
+                        {% endif %}
+                        {% endfor %}
                         </ul>
                     </div>
+                </div> -->
+
+                <div class="swiper-container" style="width: 585px;margin: 0 auto;height:290px;">
+                    <div class="swiper-wrapper">
+                        {% for i in university %}
+                        {% if i== 1 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 0 and loop.index <= 8 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 2 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 8 and loop.index <= 16 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 3 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 16 and loop.index <= 24 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 4 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 24 and loop.index <= 32 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 5 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 32 and loop.index <= 40 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 6 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 40 and loop.index <= 48 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 7 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 48 and loop.index <= 56 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 8 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 56 and loop.index <= 64 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 9 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 64 and loop.index <= 72 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 10 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 72 and loop.index <= 80 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 11 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 80 and loop.index <= 88 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 12 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 88 and loop.index <= 96 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 13 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 96 and loop.index <= 104 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 14 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 104 and loop.index <= 112 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 15 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 112 and loop.index <= 120 %}
+                            <div class="canzan-slide" >
+                                <a target="_blank"  href="{{ item.linkurl }}"data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="pagination"></div>
                 </div>
             </div>
         </div>
@@ -738,27 +968,35 @@
 {{slide.leyu_slide("XC_SCHOOLTOPIC_SEAT10",helper) }}
 <!-- 秋展浮层 -->
 {% include "widget2/active_popup/active_popup.html" %}
-<script src="{{helper.cdnhost}}/assets/js/xSlider_university.js"></script>
+<!-- <script src="{{helper.cdnhost}}/assets/js/xSlider_university.js"></script> -->
 <script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
-
+<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
 <script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
 <script>
 $(function() {
-    $('.pai_con_left .slider').xSlider({
-      //  轮播图配置
-      //  autoplay : 500,
-      autoplay: 2000,
-      current: 0,
-      speed: 500,
-      intervalTime: 5000,
-      slidesPerView: 6,
-      pagination: true,
-      dotPostion: 'center',
-      slider_left: false
+    // $('.pai_con_left .slider').xSlider({
+    //   //  轮播图配置
+    //   //  autoplay : 500,
+    //   autoplay: 2000,
+    //   current: 0,
+    //   speed: 500,
+    //   intervalTime: 5000,
+    //   slidesPerView: 6,
+    //   pagination: true,
+    //   dotPostion: 'center',
+    //   slider_left: false
+    // });
+    var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'vertical',
+        loop: true,
+        slidesPerView: 1,
+        pagination : '.pagination',
+        paginationClickable :true,
+        autoplay : 5000,
     });
 })
 
