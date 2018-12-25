@@ -1,4 +1,4 @@
-
+/*
 .liuxue-footer{
   width: 100%;
   height: auto;
@@ -12,17 +12,8 @@
   color:#ffffff;
   position: relative;
 }
-.lx-footer-content {
-  padding-bottom: 150px;
-}
-.common-footer-content {
-  padding-bottom: 120px;
-}
 .liuxue-footer-content .foot-map {
   padding: 40px 0 31px;
-}
-.lx-footer-content .foot-map {
-  padding: 30px 0 0;
 }
 .foot-map a:hover{
   font-size: 14px;
@@ -46,59 +37,26 @@
   color: #fff;
 }
 .liuxue-footer-content .foot-map .sitemap01 {
-  width: 165px;
-  margin-right: 80px;
+  width: 320px;
 }
 .liuxue-footer-content .foot-map .sitemap02 {
   width: 420px;
-}
-.lx-footer-content .foot-map .sitemap02 {
-  width: 170px;
-  margin-right: 80px;
-}
-.liuxue-footer-content .foot-map .sitemap03 {
-  width: 450px;
-}
-.liuxue-footer-content .foot-map .sitemap03 .footer-country {
-  width: 450px;
-}
-.liuxue-footer-content .foot-map .sitemap03 .footer-country li {
-  width: 103px;
-  height:30px;
-  float: left;
-}
-.liuxue-footer-content .foot-map .sitemap03 .footer-country li a{
-  display: block;
-  height: 100%;
 }
 .liuxue-footer-content .foot-map .sitemap01 ul{
   float: left;
 }
 .liuxue-footer-content .foot-map .sitemap01 .left-ul{
-  /*margin-right: 58px;*/
   width:106px;
 }
 .liuxue-footer-content .foot-map .sitemap04 dl {
   float: left;
   text-align: center;
-  margin-bottom: 15px;
 }
 .liuxue-footer-content .foot-map .sitemap04 dl dt{
   margin-bottom: 10px;
 }
-.liuxue-footer-content .foot-map .sitemap04 dl dd{
-  line-height: 1;
-}
 .liuxue-footer-content .foot-map .sitemap04 dl.foot-weibo {
   margin-right: 50px;
-}
-.lx-footer-content .address {
-  position: absolute;
-  bottom: 0;
-}
-.common-footer-content .address {
-  position: absolute;
-  bottom: 0;
 }
 .liuxue-footer-content .address h2{
   font-size: 16px;
@@ -142,12 +100,12 @@
   font-size: 14px;
   position: absolute;
   bottom: 0px;
-  right: -160px;
+  right: 232px;
   cursor: pointer;
-}
+}*/
 /*友情链接*/
+/*
 .footer-top h2{
-  /*width: 120px;*/
   float: left;
   font-size: 16px;
   width: 80px;
@@ -159,7 +117,6 @@
   color: #fff;
 }
 .footer-top a{
-  /*padding:0 14px;*/
   color:#ffffff;
   font-size: 16px;
   display: inline-block;
@@ -173,8 +130,9 @@
   border-bottom: 1px solid #333;
   bottom: -20px;
   width:100%;
-}
+}*/
 /*地图样式*/
+/*
 .mapBg {
   width: 100%;
   height: 100%;
@@ -186,3 +144,4 @@
 .voucherLink{position:fixed;top:50%;left:50%;z-index:100010;margin:-250px 0 0 -382px;width:766px;height:500px;}
 .voucherLink .voucherclose{display:block;background:url(../img/indexpop_close.png) no-repeat 50% 50%;position:absolute;top:0;right:0;height:50px;cursor:pointer;
   width:50px;}
+  */

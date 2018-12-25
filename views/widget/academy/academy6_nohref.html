@@ -1,0 +1,11 @@
+{% macro culture(channel,helper)%}
+<div class="dui-layout-padding clearfix moment">
+  {% for item in channel %}
+  <div class="dui-layout-col3">
+    <div class="jincai"><img class="dui-layout-col3-img" src="{{ helper.imageThumb(item.thumb,'365x275')}}" alt=""></div>
+    <p class="jincai-tit">{{ item.title |ellipsis(22)   }}</p>
+    <p class="jincai-con">{{ item.description |ellipsis(62) }}</p>
+  </div>
+  {% endfor %}
+</div>
+{% endmacro %}
