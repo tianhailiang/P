@@ -154,7 +154,7 @@ $(function () {
 			success:function(msg){
         $(that).bind('click',getGift);
         if(msg.code === 0){
-          layer.msg('发送成功');
+          layer.msg('提交成功');
           $('#myname').val('')
           $(".iphone").val('')
           $(".select").find('em').text('请选择意向国家')
