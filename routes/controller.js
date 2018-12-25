@@ -46,7 +46,7 @@ function get_page_key(usertype, adviser_type, page_key) {
 }
 
 exports.index = function (req, res, next) {
-    console.log('branch_home',helperfunc.urlgen('branch_home','c='+req.cookies.currentarea))
+    // console.log('branch_home',helperfunc.urlgen('branch_home','c='+req.cookies.currentarea))
     if (req.cookies.currentarea) {
         res.cookie("currentareast", comfunc.getCityEn(req.cookies.currentarea), {domain: config.domain,expires: new Date(Date.now() + 90000000000)});
         res.redirect(helperfunc.urlgen('branch_home','c='+req.cookies.currentarea));
@@ -117,7 +117,7 @@ exports.index = function (req, res, next) {
     },function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
-        console.log(result.shouye)
+        // console.log(result.shouye)
         if (result.shouye != "暂无数据") {
             data.shouye = JSON.parse(result.shouye);
         }
