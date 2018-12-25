@@ -13,10 +13,10 @@
   position: relative;
 }
 .lx-footer-content {
-  padding-bottom: 150px;
+  padding-bottom: 144px;
 }
 .common-footer-content {
-  padding-bottom: 120px;
+  padding-bottom: 106px;
 }
 .liuxue-footer-content .foot-map {
   padding: 40px 0 31px;
@@ -95,6 +95,7 @@
 .lx-footer-content .address {
   position: absolute;
   bottom: 0;
+  width: 100px;
 }
 .common-footer-content .address {
   position: absolute;
@@ -125,8 +126,13 @@
   width: 500px;
   float:left;
 }
-
-.liuxue-footer-content .copyright{
+.liuxue-footer-content .address h2 {
+  width: 80px;
+}
+.xiangxi-address {
+  width: 1200px;
+}
+/* .liuxue-footer-content .copyright{
   font-size: 14px;
   color: #B4B4B4;
   margin-top: 34px;
@@ -144,6 +150,30 @@
   bottom: 0px;
   right: -160px;
   cursor: pointer;
+} */
+.footer-copy-right {
+  width: 1200px;
+  font-size: 14px;
+  color: #B4B4B4;
+  margin-top: 34px;
+  position: relative;
+}
+.footer-copy-right p {
+  float: left;
+}
+.footer-copy-right .login-btn {
+  float: left;
+  width: 98px;
+  height: 24px;
+  text-align: center;
+  line-height: 24px;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  right: 180px;
 }
 /*友情链接*/
 .footer-top h2{
