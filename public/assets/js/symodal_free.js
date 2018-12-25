@@ -50,15 +50,13 @@ $(function () {
 	  } else {
 		 $(this).removeClass('selecttoggle')
 		 $(this).find(".contry-list").hide()
-		//  $(".contry-list li").removeClass('contry-active')
-		//  $(".contry-list li").eq(0).addClass('contry-active')
 	  }
 	})
 	//选择具体国家列表项
 	$(".contry-list li:nth-child(6n)").css('margin-right','0')
 	$(".contry-list li").on('click',function(){
 	  $(".contry-list li").removeClass('contry-active')
-	  	$(this).addClass('contry-active')
+	  $(this).addClass('contry-active')
 		$(".select").find('em').text($(this).text())
 		$(".select").find('em').attr('data-id',$(this).attr('data-id'));
 	})
@@ -160,7 +158,8 @@ $(function () {
           $('#myname').val('')
           $(".iphone").val('')
           $(".select").find('em').text('请选择意向国家')
-          $(".select").find('em').attr('data-id','')
+					$(".select").find('em').attr('data-id','')
+					$(".contry-list li").removeClass('contry-active')
           // $(".pass-code").val('')
           // clearInterval(timer)
           // $(".send-code").html('点击发送验证码');
