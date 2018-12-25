@@ -134,8 +134,8 @@
   </div>
 </div>
 {% include "widget/top/top_liuxue.html" %}
-{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(tdk,helper) }}
+{% import "widget/new_nav_first/home_nav.html" as home_nav %}
+{{ home_nav.home_nav(tdk,helper) }}
 <div class="main" style="width: 1200px;margin: 0 auto;">
   <!--轮播图-->
   <div class="lunbo">
@@ -151,7 +151,7 @@
   <!--50家分公司-->
   <div class="branch_company">
     <div class="branch_company_img">
-      <img src="{{helper.cdnhost}}/assets/img/branch-company52.png" alt="五十家分公司">
+      <img src="{{helper.cdnhost}}/assets/img/branch-company52_1.png" alt="五十家分公司">
     </div>
     <div class="branch_company_text">
       <div style="margin: 5px 15px">

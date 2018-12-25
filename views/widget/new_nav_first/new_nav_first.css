@@ -40,6 +40,12 @@ form, input {
     margin-top: 26px;
     float: left;
 }
+.new_nav_first .page-type .back-home-nav {
+    width: 80px;
+    height: 30px;
+    float: left;
+    margin-right: 20px;
+}
 .new_nav_first .page-type .type-nav{
     float: left;
     height: 28px;

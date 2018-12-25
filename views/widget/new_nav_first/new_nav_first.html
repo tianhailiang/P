@@ -6,6 +6,7 @@
         </div>
         <ul class="page-type">
             <!-- <li class="type-nav small-nav {{'active' if tdk.pagekey == 'HOME'}}"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">留学</a></li> -->
+            <li class="back-home-nav"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}"><img src="{{helper.cdnhost}}/assets/img/back_to_home_page_ic@2x.png" alt=""></a></li>
             <li class="type-nav middle-nav {{'active' if tdk.pagekey == 'ARTICLELIST'}}"><a href="{{helper.urlgen('articles')}}">留学攻略</a></li>
             <li class="type-nav middle-nav {{'active' if tdk.pagekey == 'CHIEF'}}"><a href="{{helper.urlgen('chief')}}">首席顾问</a></li>
             <li class="type-nav middle-nav {{'active' if tdk.pagekey == 'CONVERGE_ADVISER'}}"><a href="{{helper.urlgen('adviser')}}">留学顾问</a></li>
