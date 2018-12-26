@@ -2,7 +2,7 @@
 var edu_list = [{
   eduId: 1,
   eduName: '中学',
-  country: [1,2,3,4,5,51,52,53,103]
+  country: [1,2,3,4,5,51,52,103]
 }, {
   eduId: 2,
   eduName: '本科',
@@ -355,6 +355,7 @@ function screenTag (country,...eduList) {
   }
 }
 function checkEdu (eduIdArr) {
+  console.log('我是checkEdu')
   let eduId_list = [];
   if (eduIdArr) {
     eduId_list = eduIdArr;
