@@ -324,7 +324,7 @@ function checkEdu (eduIdArr) {
       $(this).find('.level-sel-i').css({'border':'1px solid #666','color':'none','marginRight':'5px','fontSize':'14px'}).html('');
       $(this).find('.level-sel-i').next().css({'color':'#333'});
       $(this).attr('checked',false);
-      eduId_list.splice(eduId_list.indexOf(Number($(that).attr('data-eduId')),1);
+      eduId_list.splice(eduId_list.indexOf(Number($(that).attr('data-eduId')),1), 1);
     }else{
       $(this).find('.level-sel-i').css({'border':'none','color':'#c13232','marginRight':'7px','fontSize':'16px'}).html('&#xe640;');
       $(this).find('.level-sel-i').next().css({'color':'#c13232'});
