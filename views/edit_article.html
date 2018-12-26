@@ -217,12 +217,14 @@
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/html2markdown.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/markdown_dom_parser.js"></script>
   <script src="{{helper.cdnhost}}/dep/js/html2markdown/showdown.js"></script>
-  <script id="release_artcile_js">
+  <script src="{{helper.cdnhost}}/dep/js/common/country_list_ie_edit.js" ></script>
+  <!-- <script id="release_artcile_js">
     if (!!window.ActiveXObject || "ActiveXObject" in window){
       $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/dep/js/common/country_list_ie_edit.js"'+'></'+'script>');
     } else {
       $('#release_artcile_js').before('<script src="'+ajaxUrlPrefix.cdnhost+'/dep/js/common/country_list_edit.js"'+'></'+'script>');
-    }
+    } -->
+  <script>
     $(function(){
       var login_ss = null; //获取用户信息
       if(cookie('login_ss') != undefined){
