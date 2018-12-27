@@ -61,6 +61,59 @@ exports.canzan = function (req, res, next) {
   }, function (err, result){
     data.userinfo = returnData(result.userinfo,'userinfo');
     data.canzanlist = returnData(result.canzanlist,'canzanlist');
+    for (var i = 0; i < data.canzanlist.list.length; i++) {
+      if (data.canzanlist.list[i].realname == '王百哲') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E7%8E%8B%E7%99%BE%E5%93%B2/8011002?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '王仲达') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E7%8E%8B%E4%BB%B2%E8%BE%BE/3979867?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '李东翔') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E6%9D%8E%E4%B8%9C%E7%BF%94/8011055?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '陈华生') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E9%99%88%E5%8D%8E%E7%94%9F/9902045?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '李振平') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E6%9D%8E%E6%8C%AF%E5%B9%B3/83139';
+      } else if (data.canzanlist.list[i].realname == '邵宗富') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E9%82%B5%E5%AE%97%E5%AF%8C/8011072?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '刘在祥') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E5%88%98%E5%9C%A8%E7%A5%A5/8011107?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '王文选') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E7%8E%8B%E6%96%87%E9%80%89/8248930?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '艾方林') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E8%89%BE%E6%96%B9%E6%9E%97/8011179?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '熊长毅') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E7%86%8A%E9%95%BF%E6%AF%85/8011199?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '张艺华') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E5%BC%A0%E8%89%BA%E5%8D%8E/2214606?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '薛亚霏') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E8%96%9B%E4%BA%9A%E9%9C%8F/8400260?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '裴玉芳') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E8%A3%B4%E7%8E%89%E8%8A%B3/2906311?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '刘疆') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E5%88%98%E7%96%86/4334645#viewPageContent';
+      } else if (data.canzanlist.list[i].realname == '田小刚') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E7%94%B0%E5%B0%8F%E5%88%9A/8153130?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '张利民') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E5%BC%A0%E5%88%A9%E6%B0%91/6781719#viewPageContent';
+      } else if (data.canzanlist.list[i].realname == '师淑云') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E5%B8%88%E6%B7%91%E4%BA%91/8292423';
+      } else if (data.canzanlist.list[i].realname == '金纬') {
+        data.canzanlist.list[i].baiduurl = '1'; // 原创：链接不变
+      } else if (data.canzanlist.list[i].realname == '高建') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E9%AB%98%E5%BB%BA/7341453#viewPageContent';
+      } else if (data.canzanlist.list[i].realname == '陈维嘉') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E9%99%88%E7%BB%B4%E5%98%89';
+      } else if (data.canzanlist.list[i].realname == '朱小玉') {
+        data.canzanlist.list[i].baiduurl = '2'; // 去掉落地页，无链接
+      } else if (data.canzanlist.list[i].realname == '薛浣白') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E8%96%9B%E6%B5%A3%E7%99%BD/12644545?fr=aladdin';
+      } else if (data.canzanlist.list[i].realname == '潘晓景') {
+        data.canzanlist.list[i].baiduurl = '1'; // 原创：链接不变
+      } else if (data.canzanlist.list[i].realname == '左军') {
+        data.canzanlist.list[i].baiduurl = '2'; // 去掉落地页，无链接
+      } else if (data.canzanlist.list[i].realname == '袁东') {
+        data.canzanlist.list[i].baiduurl = 'https://baike.baidu.com/item/%E8%A2%81%E4%B8%9C/18720294#viewPageContent';
+      } 
+    }
     data.tdk = {
       pagekey: 'COUNSELLER', //key
     };
