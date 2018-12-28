@@ -36,6 +36,7 @@ exports.canzan = function (req, res, next) {
   log.debug('参赞聚合页');
   var data = [];
   var country = req.query.n || 0;
+  var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
   if (l.h !== undefined) {
@@ -116,6 +117,8 @@ exports.canzan = function (req, res, next) {
     }
     data.tdk = {
       pagekey: 'COUNSELLER', //key
+      cityid: area, //cityid
+      nationid: country//nationi
     };
     res.render('about/canzan', data);
 
@@ -157,7 +160,9 @@ exports.lawyer = function (req, res, next) {
   }, function (err, result){
     data.userinfo = returnData(result.userinfo,'userinfo');
     data.tdk = {
-      pagekey: 'YIMIN_LAWYER'
+      pagekey: 'YIMIN_LAWYER',
+      cityid: area, //cityid
+      nationid: country//nationi
     };
     data.esikey = esihelper.esikey();
     res.render('about/lawyer', data);
