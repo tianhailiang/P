@@ -16,6 +16,7 @@ var shequ_prefix = apiconfig.shequ_prefix;
 var so_prefix = apiconfig.so_prefix;
 var so_server = apiconfig.so_server;
 var imageshost = apiconfig.imageshost;
+var prefix_111 = apiconfig.prefix_111;
 var cms_out_prefix = prefix;
 var coupon = apiconfig.coupon;
 var apis = {
@@ -275,6 +276,8 @@ var apis = {
   "article_top": shequ_prefix + 'article/article_top/',
   //专题接口
   "get_schooltopic": prefix + 'colleges_detail/',
+  //新专题接口
+  "get_new_schooltopic": prefix + 'colleges',
   //首页楼层广告
   "advert":prefix + 'advert',
   //编辑文章详情接口

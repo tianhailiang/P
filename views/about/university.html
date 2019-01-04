@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "header_new.html" %}
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/about.css">
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/swiper-3.3.1.min.css">
+<style type="text/css">
+.new_nav_first .nav-right .search-type-box .search-type .search-type-text {
+  font-size: 12px;
+}
+
+  /* banner */
+  .banner{width:100%;height: 500px; overflow:hidden;}
+  .banner .btn-box{width:450px;height:100px;margin:420px auto;}
+  .banner .btn-box a{display: block; font-size: 16px; text-align: center; line-height:37px;color:#fff; float:left; width:136px; height:40px;box-sizing: border-box; border-radius: 5px;background: #fff;border: 1px solid #fff;color: #333;}
+  .banner .btn-box a:hover{background: #d31a29; border: 1px solid #d31a29;color: #fff;}
+  .banner .btn-box .md-btn{margin-left:150px;}
+  /*标题*/
+  .content-title{
+    width: 1000px;
+    margin: 20px auto;
+    text-align: center;
+    color: #bf3436;
+    height: 40px;
+    line-height: 40px;
+  }
+  .content-title p{
+    font-size: 28px;
+  }
+  .content-title span{
+    display: inline-block;
+    border-bottom: 1px solid #bf3436;
+    width: 245px;
+    vertical-align: middle;
+    margin: 0 10px;
+  }
+  .content-title .gray-title{
+    font-size: 16px;
+    color: #bbb;
+    height: 20px;
+    line-height: 20px;
+  }
+  /*学校介绍*/
+  .content2{
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 30px;
+  }
+  .content2-img{
+    width: 280px;
+    float: left;
+  }
+  .content2-txt{
+    width: 720px;
+    float: left;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    color: #666;
+  }
+  /*排名优势*/
+  .content1{
+    width: 1000px;
+    margin: 40px auto;
+  }
+  .content1>ul{
+    margin-top: 20px;
+    margin-bottom:20px;
+  }
+  .content1>ul>li{
+    float: left;
+    margin-left: 34px;
+  }
+  .content1 p{
+    font-size: 16px;
+    color: #666;
+    line-height: 25px;
+    padding: 5px 20px;
+  }
+  .content3{
+    width: 1000px;
+    margin: 40px auto;
+    font-size: 16px;
+    line-height: 25px;
+    color: #666;
+  }
+  .baoming{
+    padding-top: 30px;
+    font-size: 40px;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+  }
+  .baoming-form{
+    width: 1000px;
+    height: 180px;
+    margin: 0 auto;
+  }
+  .form-content{
+    margin: 0 auto;
+    width: 1120px;
+    height: 80px;
+    margin-left: 30px;
+    background: #fff;
+    border-radius: 4px;
+  }
+  /* .form-content input{
+    width: 130px;
+    height: 22px;
+    border: 1px solid #acacac;
+  } */
+  .form-content>div{
+    margin-top: 25px;
+    margin-left: 25px;
+    float: left;
+  }
+  .submitId{
+    display: inline-block;
+    width: 174px;
+    height: 40px;
+    background: #f61546;
+    text-align: center;
+    color: #fff;
+    line-height: 40px;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  .form-content span {
+      font-size: 16px;
+      color: #666;
+      margin-right: 10px;
+  }
+  .form-content input, .form-content select{
+      width: 200px;
+      height: 38px;
+      border: 1px #dcdcdc solid;
+      border-radius: 4px;
+  }
+  .jian {
+      background: url({{helper.cdnhost}}/assets/img/about/colleges_1.png);
+      width: 100%;
+      height: 530px;
+      text-align: center;
+      padding-top: 130px;
+  }
+  .jian_title {
+    font-size: 35px;
+    color: #333;
+    font-weight: bold;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+  .jian_con {
+      background: url({{helper.cdnhost}}/assets/img/about/colleges_1_2.png);
+      width: 1140px;
+      height: 394px;
+      margin: 0 auto;
+      position: relative;
+  }
+  .jian_con_top {
+      background: url({{helper.cdnhost}}/assets/img/about/colleges_1_1.png);
+      background-size: 100% 100%;
+      width: 840px;
+      height: 200px;
+      padding: 30px;
+      position: absolute;
+      left: -20px;
+      top: -30px;
+      text-align: left;
+      overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:8;
+  }
+  .jian_con_top_s {
+      font-size: 16px;
+      line-height: 28px;
+      color: #333;
+  }
+  .jian_con_rigth {
+      width: 260px;
+      height: 260px;
+      background: #fff;
+      position: absolute;
+      right: -20px;
+      top: -30px;
+      border: 1px solid #000;
+  }
+  .jian_con_rigth img {
+      width: 260px;
+      height: 260px;
+  }
+  .jian_con_bottom{
+      width: 970px;
+      height: 125px;
+      position: absolute;
+      bottom: 20px;
+      right: 0px;
+  }
+  .jian_con_bottom img{
+      width: 220px;
+      height: 125px;
+      display: block;
+      margin-right: 20px;
+      float: left;
+      border: 1px solid #000;
+  }
+  .pai_con {
+      width: 1164px;
+      height: 338px;
+      margin: 0 auto;
+      position: relative;
+  }
+  .pai_con_left {
+      background: url({{helper.cdnhost}}/assets/img/about/colleges_2.png);
+      width: 838px;
+      height: 338px;
+      position: absolute;
+      left: 0px;
+  }
+  .pai_con_rigth {
+      width: 326px;
+      height: 320px;
+      right: 0;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      text-align: center;
+      font-size: 14px;
+      color: #666;
+      position: absolute;
+      top: 17px;
+  }
+  .pai_con_rigth div {
+      width: 310px;
+      height: 30px;
+      line-height: 30px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+  }
+  .pai_con_tu {
+      background: #c13232;
+      width: 208px;
+      height: 310px;
+      border: 1px solid #333;
+      position: absolute;
+      top: -10px;
+      left: -10px;
+  }
+  .pai_con_left_con {
+      width: 585px;
+      height: 290px;
+      border: 1px solid #000;
+      float: right;
+      margin-right: 40px;
+      margin-top: 45px;
+  }
+  .pai_con_left_con_h{
+      display: inline-block;
+      margin-bottom: 30px;
+      font-size: 16px;
+      color: #fff;
+      line-height: 41px;
+  }
+  .pai_con_left_con_h_l {
+      float: left;
+      width: 455px;
+      height: 30px;
+      overflow: hidden;
+      margin-right: 20px;
+      line-height: 28px;
+  }
+  .pai_con_left_con_h_r {
+      float: right;
+      height: 30px;
+      width: 101px;
+      position: relative;
+  }
+  .pai_con_left_con_h_r i {
+      width: 30px;
+      height: 1px;
+      background: #fff;
+      margin-right: 20px;
+      display: inline-block;
+      position: absolute;
+      top: 20px;
+      right: 55px;
+  }
+  .pai_con_left_con_h_r_d {
+      width: 55px;
+      height: 30px;
+      overflow: hidden;
+      position: absolute;
+      right: 0px;
+  }
+  .you_con {
+      width: 1160px;
+      height: 300px;
+      margin: 0 auto;
+      position: relative;
+  }
+  .you_con_left {
+      background: url({{helper.cdnhost}}/assets/img/about/colleges_3.png);
+      background-size: 100% 100%;
+      padding: 32px 40px 0px 26px;
+      width: 780px;
+      height: 227px;
+      position: absolute;
+      left: 0px;
+      bottom: 30px;
+      text-align: left;
+      overflow-y: scroll;
+      overflow-x: hidden;
+  }
+  .you_con_left_h {
+      width: 807px;
+      min-height: 43px;
+      display: inline-block;
+      position: relative;
+      margin-bottom: 20px;
+  }
+  .you_con_left_h .you_con_left_h_tu {
+      display: inline-block;
+      background: url({{helper.cdnhost}}/assets/img/about/colleges_3_1.png);
+      width: 43px;
+      height: 43px;
+      text-align: center;
+      line-height: 40px;
+      color: #fff;
+      font-size: 18px;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+  }
+  .you_con_left_h_con {
+      font-size: 16px;
+      color: #666;
+      line-height: 30px;
+      width: 760px;
+      height: auto;
+      position: absolute;
+      right: 0px;
+      top: 0px;
+  }
+  .you_con_rigth {
+      width: 300px;
+      height: 300px;
+      background: #d21b29;
+      position: absolute;
+      right: -20px;
+      top: -28px;
+  }
+  .you_con_rigth1 {
+      width: 300px;
+      height: 300px;
+      background: blue;
+      position: absolute;
+      top: -8px;
+      right: 0px;
+  }
+  .you_con_rigth1 img {
+      width: 300px;
+      height: 300px;
+  }
+  .te_con {
+      width: 1180px;
+      height: 280px;
+      background: #fafafa;
+      position: relative;
+      margin: 0 auto;
+      margin-bottom: 60px;
+  }
+  .te_con_left {
+      width: 218px;
+      height: 290px;
+      background: #d31a29;
+      position: absolute;
+      top: -20px;
+      left: 40px;
+  }
+  .te_con_left1 {
+      width: 218px;
+      height: 290px;
+      background: blue;
+      position: absolute;
+      top: -30px;
+      left: 50px;
+  }
+  .te_con_left1 img {
+      width: 218px;
+      height: 290px;
+  }
+  .te_con_rigth {
+      width: 860px;
+      height: 204px;
+      padding: 36px 20px 40px 30px;
+      position: absolute;
+      text-align: left;
+      right: 0px;
+      top: 0px;
+  }
+  .te_con_rigth_title {
+      width: 860px;
+      height: 26px;
+      font-size: 24px;
+      color: #333;
+      overflow: hidden;
+      margin-bottom: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 28px;
+  }
+  .te_con_rigth_con {
+      width: 860px;
+      height: 160px;
+      font-size: 16px;
+      color: #666;
+      line-height: 32px;
+      overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;
+  }
+  .te_con_rigth_bottom {
+      width: 52px;
+      height: 4px;
+      background: #c13232;
+  }
+  .xiao_con {
+      width: 1180px;
+      min-height: 20px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 16px;
+      color: #333;
+      line-height: 30px;
+  }
+  .qu_con {
+      width: 1180px;
+      min-height: 30px;
+      margin: 0 auto;
+      text-align: left;
+      font-size: 16px;
+      color: #333;
+      line-height: 30px;
+  }
+  .qu_tu {
+      width: 1180px;
+      height: 210px;
+      margin: 0 auto;
+      margin-top: 40px;
+  }
+  .qu_tu img {
+      width: 280px;
+      height: 210px;
+      background: blue;
+      display: block;
+      float: left;
+      margin-right: 20px;
+  }
+  .ping_con {
+      width: 1180px;
+      min-height: 210px;
+      margin: 0 auto;
+      text-align: center;
+  }
+  .ping_y {
+      width: 210px;
+      height: 242px;
+      margin: 0 20px;
+      text-align: center;
+      display: inline-block;
+  }
+  .ping_tu {
+      width: 210px;
+      height: 210px;
+      border: 1px solid #333;
+      margin-bottom: 16px;
+  }
+  .ping_tu img {
+      width: 186px;
+      height: 186px;
+      margin: 12px;
+      display: block; 
+      background: blue;
+  }
+  .ping_con p {
+      width: 210px;
+      max-height: 36px;
+      font-size: 16px;
+      color: #333;
+      overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+  }
+  .slider .slider-img {
+      height: 87%;
+  }
+  .slider-dot { 
+      margin-top: 0px;
+      z-index: 1000;
+      width: 585px;
+      height: 30px;
+  }
+  .slider .slider-dot ul {
+      bottom: 0px;
+      height: 30px;
+  }
+  .slider .slider-dot ul li {
+      z-index: 1000;
+  }
+  .slider-img-ul li {
+    float: left;
+    height: 100%;
+  }
+  .slider .slider-btn.slider-btn-left {
+    background-image: none;
+  }
+  .slider .slider-btn.slider-btn-right {
+    background-image: none;
+  }
+  .swiper-slide {
+      width: 585px;
+      height: 30px;
+      font-size: 16px;
+  }
+  .canzan-slide{
+    width: 585px;
+    height: 30px;
+  }
+  .canzan-slide a {
+    width: 585px;
+    height: 30px;
+  }
+  .pagination {
+  position: absolute;
+  z-index: 20;
+  bottom: 10px;
+  width: 525px;
+  text-align: center;
+}
+.swiper-pagination-switch {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+  background: #fff;
+  margin: 0 5px;
+  opacity: 0.8;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.swiper-active-switch {
+  background: #c13232;
+}
+</style>
+</head>
+<body style="background: #fff;">
+<div style="display: none;">
+    <input type="hidden" id="relationId" value="18_站内院校_college_form">
+</div>
+{% include "widget/common_hide/common_hide.html"%}
+{% include "widget/top/top.html" %}
+
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
+
+<!------------------这里写body的所有内容，上下为header,footer公共样式，照如此粘贴即可。-------------------->
+
+<!-- banner图 -->
+
+<div class="banner" style="background-image:url({{schooltopic.sch_background_map}});height: 500px; overflow:hidden;background-size:cover;background-position: center center">
+  <div class="wrap1">
+    <div class="btn-box">
+      <a href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
+      <a class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
+    </div>
+  </div>
+</div>
+
+<!-- 学校简介 -->
+<div class="dui-layout-lg jian" style="margin-top: 0px;">
+    <div class="jian_title">学校简介</div>
+    <div class="jian_con">
+        <div class="jian_con_top">
+            <div class="jian_con_top_s">{{schooltopic.content | safe}}</div>
+        </div>
+        <div class="jian_con_rigth">
+            <img src="{{ schooltopic.des_img }}" alt="">
+        </div>
+        <div class="jian_con_bottom clearfix">
+            {% for k, item in schooltopic.des_images %}
+            {% if loop.index <= 4 %}
+            <img src="{{ item.url }}" alt="{{ item.alt }}">
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<!-- 大学排名 -->
+<div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
+    <div class="jian_title" style="margin-bottom: 50px;">大学排名</div>
+    <div class="pai_con">
+        <div class="pai_con_left">
+            <div class="pai_con_left_con">
+                <!-- <div class="slider">
+                    <div class="slider-img">
+                        <ul class="slider-img-ul clearfix">
+                        {% for i in university %}
+                        {% if i== 0 %}
+                        <li>
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 0 and loop.index <= 8 %}
+                            <a href="javascript:void(0);" target="_blank" style="height: 30px;">
+                                <div class="pai_con_left_con_h clearfix">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                    <span class="pai_con_left_con_h_r"><i></i><span class="pai_con_left_con_h_r_d">第9位</span></span>
+                                </div>
+                            </a>
+                            {% endif %}
+                            {% endfor %}
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                        </ul>
+                    </div>
+                </div> -->
+
+                <div class="swiper-container" style="width: 585px;margin: 0 auto;height:290px;">
+                    <div class="swiper-wrapper">
+                        {% for i in university %}
+                        {% if i== 1 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 0 and loop.index <= 8 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 2 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 8 and loop.index <= 16 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 3 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 16 and loop.index <= 24 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 4 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 24 and loop.index <= 32 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 5 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 32 and loop.index <= 40 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 6 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 40 and loop.index <= 48 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 7 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 48 and loop.index <= 56 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 8 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 56 and loop.index <= 64 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 9 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 64 and loop.index <= 72 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 10 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 72 and loop.index <= 80 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 11 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 80 and loop.index <= 88 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 12 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 88 and loop.index <= 96 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 13 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 96 and loop.index <= 104 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 14 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 104 and loop.index <= 112 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% if i== 15 %}    
+                        <div class="swiper-slide clearfix">
+                            {% for item in schooltopic.university_ranking %}
+                            {% if loop.index > 112 and loop.index <= 120 %}
+                            <div class="canzan-slide" >
+                                <a href="javascript: void(0);" data-pid="{{item.pid}}" class="top-item" style="color: #fff;">
+                                    <span class="pai_con_left_con_h_l" style="text-align: left;">{{item}}</span>
+                                </a>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="pagination"></div>
+                </div>
+            </div>
+        </div>
+        <div class="pai_con_rigth">
+            {% for item in schooltopic.colleges_ranking %}
+            {% if loop.index%2 != 0 %}
+            <div style="background: #fafafa">{{item}}</div>
+            {% else %}
+            <div>{{item}}</div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <div class="pai_con_tu">
+            <img src="{{schooltopic.ranking_images}}" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- 大学优势 -->
+<div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
+    <div class="jian_title" style="margin-bottom: 80px;">大学优势</div>
+    <div class="you_con">
+        <div class="you_con_left">
+            {% for item in schooltopic.advantage %}
+            <div class="you_con_left_h" style="position: initial;">
+                <!-- <span class="you_con_left_h_tu" >{{loop.index}}</span> -->
+                <span class="you_con_left_h_con" style="position: inherit;">{{item}}</span>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="you_con_rigth"></div>
+        <div class="you_con_rigth1">
+            <img src="{{schooltopic.advantage_map}}" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- 大学课程特点 -->
+<div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
+    <div class="jian_title" style="margin-bottom: 80px;">大学课程特点</div>
+    {% for k, item in schooltopic.curriculum_images %}
+    <div class="te_con">
+        <div class="te_con_left"></div>
+        <div class="te_con_left1">
+            <img src="{{ item.url }}" alt="{{ item.alt }}">
+        </div>
+        <div class="te_con_rigth">
+            <div class="te_con_rigth_title">{{ schooltopic.curriculum_title[k] }}</div>
+            <div class="te_con_rigth_con">{{ schooltopic.curriculum_des[k] }}</div>
+            <div class="te_con_rigth_bottom"></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- 校友网络 -->
+<div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
+    <div class="jian_title" style="margin-bottom: 50px;">校友网络</div>
+    <div class="xiao_con">{{schooltopic.alumni_network}}</div>
+</div>
+
+<!-- 校区介绍 -->
+<div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
+    <div class="jian_title" style="margin-bottom: 50px;">校区介绍</div>
+    <div class="qu_con">{{schooltopic.campus_info}}</div>
+    <div class="qu_tu clearfix">
+        {% for k, item in schooltopic.campus_info_images %}
+            {% if loop.index <= 4 %}
+            <img src="{{ item.url }}" alt="{{ item.alt }}" {% if k == 3 %} style="margin-right: 0;" {% endif %}>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 大学社交平台 -->
+<div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
+    <div class="jian_title" style="margin-bottom: 50px;">大学社交平台</div>
+    <div class="ping_con clearfix">
+        {% for k, item in schooltopic.social_images %}
+        {% if loop.index <= 4 %}
+        <div class="ping_y">
+            <div class="ping_tu">
+                <img src="{{ item.url }}" alt="{{ item.alt }}">
+            </div>
+            <p>{{ schooltopic.social_title[k] }}</p>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<!-- 金吉列申请优势 -->
+<div class="dui-layout-lg jian" style="margin-top: 70px;background: none;padding: 0;height: auto;">
+    <div class="jian_title" style="margin-bottom: 50px;">金吉列申请优势</div>
+    <div class="xiao_con">{{schooltopic.apply_advantage}}</div>
+</div>
+
+<!--报名表单-->
+<div class="bg" style="margin-top: 50px;">
+  <div class="baoming-form" style="background: #c13232;width: 1180px;height: 164px;margin-top: 20px;border-radius: 4px;">
+    <div class="baoming" style="width: 151px;height: auto;margin: 0 auto;font-size: 24px;color: #fff;margin-bottom: 20px;padding-top: 20px;">我要报名</div>
+    <div class="form-content clearfix">
+      <div style="margin-left: 20px;"><span>您的姓名</span><input type="text"  id="username" name="username"/></div>
+      <div><span>您的手机</span><input type="tel" id="tel" name="tel"/></div>
+      <div>
+        <span>意向国家</span>
+        <select id="firstCountry" name="city" style="overflow-y:auto;padding: 0 20px 0 10px;height: 40px;">
+            <option value='1'>美国</option>
+            <option value='2'>英国</option>
+            <option value='3'>加拿大</option>
+            <option value='4'>澳大利亚</option>
+            <option value='5'>新西兰</option>
+            <option value='50'>韩国</option>
+            <option value='51'>日本</option>
+            <option value='101'>乌克兰</option>
+            <option value='100'>俄罗斯</option>
+            <option value='108'>爱尔兰</option>
+            <option value='111'>意大利</option>
+            <option value='112'>西班牙</option>
+            <option value='102'>白俄罗斯</option>
+            <option value='52'>新加坡</option>
+            <option value='53'>马来西亚</option>
+            <option value='54'>中国香港</option>
+            <option value='55'>中国澳门</option>
+            <option value='110'>丹麦</option>
+            <option value='103'>德国</option>
+            <option value='104'>法国</option>
+            <option value='105'>挪威</option>
+            <option value='106'>瑞典</option>
+            <option value='107'>芬兰</option>
+            <option value='109'>荷兰</option>
+            <option value='113'>瑞士</option>
+            <option value='114'>奥地利</option>
+        </select>
+      </div>
+      <div class="submitId" id="submitId" style="cursor: pointer">在线预约</div>
+      <div style="display: none;">
+        <input type="hidden" id="relationId" value="34">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% include "widget/new_footer/common_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("XC_SCHOOLTOPIC_SEAT10",helper) }}
+<!-- 秋展浮层 -->
+{% include "widget2/active_popup/active_popup.html" %}
+<!-- <script src="{{helper.cdnhost}}/assets/js/xSlider_university.js"></script> -->
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
+<script>
+$(function() {
+    // $('.pai_con_left .slider').xSlider({
+    //   //  轮播图配置
+    //   //  autoplay : 500,
+    //   autoplay: 2000,
+    //   current: 0,
+    //   speed: 500,
+    //   intervalTime: 5000,
+    //   slidesPerView: 6,
+    //   pagination: true,
+    //   dotPostion: 'center',
+    //   slider_left: false
+    // });
+    var mySwiper = new Swiper ('.swiper-container', {
+        direction: 'vertical',
+        loop: true,
+        slidesPerView: 1,
+        pagination : '.pagination',
+        paginationClickable :true,
+        autoplay : 5000,
+    });
+})
+
+</script>
+</body>
+</html>

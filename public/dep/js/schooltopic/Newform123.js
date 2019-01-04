@@ -31,7 +31,10 @@
 		var shenfen = String($.trim($("#specialty").val())); 
 		var relationId = $.trim($("#relationId").val()); // 获取页面种植的relationId
 		var grUserId = getCookie('gr_user_id');
+<<<<<<< HEAD
 		var fromUrl = getCookie('referweb'); // 获取来源url
+=======
+>>>>>>> colleges_tem
 		
 		var sexs = document.getElementsByName("sex");
 		for(var i=0; i<sexs.length; i++){
@@ -64,9 +67,22 @@
 			alert("请选择意向国家，谢谢！");
 			return false;
 		}
+<<<<<<< HEAD
 		if (isNull(relationId)) {
 			alert("请在页面添加relationId标签<input type='hidden' id='relationId' value='18'>value根据不同主题编写，谢谢")
 			return false;
+=======
+		// if (isNull(relationId)) {
+		// 	alert("请在页面添加relationId标签<input type='hidden' id='relationId' value='18'>value根据不同主题编写，谢谢")
+		// 	return false;
+		// }
+		if (relationId == null || relationId == '') {
+			relationId = 18;
+		} else {
+			relationId = relationId.split('_');
+			relationId = relationId[0]
+			console.log('relationId', relationId)
+>>>>>>> colleges_tem
 		}
 		if (/&bd_vid=/.test(fromUrl)) {
             var dataType = 7;
