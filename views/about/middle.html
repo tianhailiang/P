@@ -367,58 +367,66 @@
             // console.log('arrow-left')
             mySwiper.swipePrev();
         })
+        $('.swiper-wrapper').on('mouseover', '.canzan-slide', function (e) {
+            e.preventDefault();
+            var id = $(this).data('index');
+            var addEvent = function(element,type,callback){
+                if(element.addEventListener){
+                    element.addEventListener(type,callback,false);
+                }else if(element.attachEvent){
+                    element.attachEvent('on' + type,callback)
+                }
+            }
+            var canzan_slide = document.getElementsByClassName('canzan-slide');
+            addEvent(canzan_slide,'touchstart',function(){
+                if ($('#kai_con_' + id).css('display') == 'block') {
+                    $("#kai_con_chang_" + id).css("display", "none");
+                }
+                else {
+                    $("#kai_con_chang_" + id).css("display", "block");
+                }
+            });
+            var des = $('#kai_con_' + id).attr('data-des')
+            // console.log('66666666666',des)
+            var blen = des.replace(/[\u0391-\uFFE5]/g,"aa").length;
+            // console.log('show++++++++++', blen)
+            if (blen > 30) {
+                // console.log('aaaa', id)
+                $(this).find("#kai_con_chang_" + id).show();
+                $(this).find("#kai_con_" + id).hide();
+            }
+        })
+        $('.swiper-wrapper').on('mouseout', '.canzan-slide', function (e) {
+            e.preventDefault();
+            var id = $(this).data('index');
+            var addEvent = function(element,type,callback){
+                if(element.addEventListener){
+                    element.addEventListener(type,callback,false);
+                }else if(element.attachEvent){
+                    element.attachEvent('on' + type,callback)
+                }
+            }
+            var canzan_slide = document.getElementsByClassName('canzan-slide');
+            addEvent(canzan_slide,'touchstart',function(){
+                if ($('#kai_con_' + id).css('display') == 'block') {
+                    $("#kai_con_chang_" + id).css("display", "none");
+                    $("#kai_con_" + id).css("display", "block");
+                }
+                else {
+                    $("#kai_con_chang_" + id).css("display", "block");
+                    $("#kai_con_" + id).css("display", "none");
+                }
+            });
+            console.log('hide')
+            $(this).find("#kai_con_chang_" + id).hide();
+            $(this).find("#kai_con_" + id).show();
+        })
     });
     function onshow(id) {
-        var addEvent = function(element,type,callback){
-        if(element.addEventListener){
-            element.addEventListener(type,callback,false);
-        }else if(element.attachEvent){
-            element.attachEvent('on' + type,callback)
-        }
-        }
-        var canzan_slide = document.getElementsByClassName('canzan-slide');
-        addEvent(canzan_slide,'touchstart',function(){
-            if ($('#kai_con_' + id).css('display') == 'block') {
-                $("#kai_con_chang_" + id).css("display", "none");
-            }
-            else {
-                $("#kai_con_chang_" + id).css("display", "block");
-            }
-        });
-        var des = $('#kai_con_' + id).attr('data-des')
-        // console.log('66666666666',des)
-        var blen = des.replace(/[\u0391-\uFFE5]/g,"aa").length;
-        // console.log('show++++++++++', blen)
-        if (blen > 32) {
-            // console.log('aaaa')
-            $("#kai_con_chang_" + id).css("display", "block");
-            $("#kai_con_" + id).css("display", "none");
-        }
-        
         
     }
     function onhide(id) {
-        var addEvent = function(element,type,callback){
-            if(element.addEventListener){
-                element.addEventListener(type,callback,false);
-            }else if(element.attachEvent){
-                element.attachEvent('on' + type,callback)
-            }
-        }
-        var canzan_slide = document.getElementsByClassName('canzan-slide');
-        addEvent(canzan_slide,'touchstart',function(){
-            if ($('#kai_con_' + id).css('display') == 'block') {
-                $("#kai_con_chang_" + id).css("display", "none");
-                $("#kai_con_" + id).css("display", "block");
-            }
-            else {
-                $("#kai_con_chang_" + id).css("display", "block");
-                $("#kai_con_" + id).css("display", "none");
-            }
-        });
         
-        $("#kai_con_chang_" + id).css("display", "none");
-        $("#kai_con_" + id).css("display", "block");
     }
     
     
@@ -434,11 +442,11 @@
                 {% for k, init in schooltopic.list.course_images %}
                 <div class="swiper-slide clearfix">
                     
-                    <div class="canzan-slide" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %} onmousemove="onshow('{{loop.index}}');" onmouseout="onhide('{{loop.index}}');">
+                    <div class="canzan-slide" data-index="{{loop.index}}" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %}>
                         <a href="javascript: void(0);"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
                             <img src="{{ init.url }}" alt="{{ init.alt }}"/>
-                            {% if schooltopic.list.course_des[k].length > 32 %}
-                            <div id="kai_con_{{loop.index}}" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] | ellipsis(32) }}......</div>
+                            {% if schooltopic.list.course_des[k].length > 30 %}
+                            <div id="kai_con_{{loop.index}}" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] | ellipsis(30) }}</div>
                             {% else %}
                             <div id="kai_con_{{loop.index}}" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] }}</div>
                             {% endif %}
