@@ -453,7 +453,7 @@ exports.grouptemplate = function(req,res,next){  // 院校模板-集团
           cityid: area, //cityid
           nationid: '' //nationi
         };
-        res.render('about/grouptemplate', data);
+        res.render('about/group', data);
     })
 }
 
