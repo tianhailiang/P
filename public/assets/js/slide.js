@@ -311,9 +311,15 @@ $(function(){
   $(".quick_toggle li").mouseleave(function () {
     $(this).children(".mp_qrcode").hide();
   });
-
   var sUserAgent = navigator.userAgent.toLowerCase();
   if(sUserAgent .match(/ipad/i) == "ipad"){
+    $(".jiang").on("touchstart",function(){
+      if( $(".jiang").css("display")=="block"){
+        $("#jisuanqi").css("display", "none");
+      }else{
+        $("#jisuanqi").css("display", "block");
+      }
+    })
     $(".my").hover(function () {
       $(this).find("img").css("display","none");
       $(this).find("p").css("display","block");
@@ -336,6 +342,11 @@ $(function(){
       $(this).find("img").css("display","block");
     });
   }else{
+    $(".jiang").hover(function () {
+      $("#jisuanqi").css("display", "block");
+    }, function () {
+      $("#jisuanqi").css("display", "none");
+    });
     $(".my").hover(function () {
       $(this).find("img").css("display","none");
       $(this).find("p").css("display","block");
@@ -435,7 +446,7 @@ $(function(){
     $('html , body').animate({scrollTop: 0},'slow');
   });
   $(".jiang").click(function(){
-    window.open(fn.no_urlgen('act_form'));
+    window.open(fn.no_urlgen('zt/2019/20190121_liuxuejisuanqi/index.html'));
   })
 
 //====================弹窗==============

@@ -7,7 +7,12 @@
 
       <div class="quick_links_panel">
         <ul>
-          <li class="slide-phone"><img src="{{helper.cdnhost}}/assets/img/slide_phone.png" alt="" style="width: 18px;height: 28px;padding-left: 5px;">
+          <li style="height: 44px;padding:0;position: relative;" class="jiang">
+            <img src="{{helper.cdnhost}}/assets/img/liuxuejisuanqi.gif" alt="" style="max-width: none;position: absolute;left:50%;margin-left: -22px;">
+            <div id="jisuanqi" style="background: url({{helper.cdnhost}}/assets/img/liuxuejisuanqi_01.png);width: 114px;height: 44px;position: absolute;left: 50%;margin-left: -137px;font-size: 16px;text-align: center;color: #fff;line-height: 44px;display: none;">留学计算器</div>
+          </li>
+          <li class="slide-phone">
+            <img src="{{helper.cdnhost}}/assets/img/slide_phone.png" alt="" style="width: 18px;height: 28px;padding-left: 5px;">
           <p class="phone-number">{{user.tel}}</p>
           </li>
           <li class="on zixun message_list current" id="zxzx" style="background: #c13232;cursor: default;{% if user.uid !== login_info.uid %} cursor: pointer;  {% endif %}"  {% if user.uid !== login_info.uid  %}  onclick="openchat_new('{{ user.new_job_number}}')" {% endif %}>
