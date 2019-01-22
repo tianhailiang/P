@@ -4371,3 +4371,15 @@ exports.chiefmore =function(req,res,next){
     };
     res.render('news', data);
  }
+ // 品牌共振-新闻列表加载更多
+ exports.newsmore = function (req, res, next) {
+    var data = req.query;
+    console.log('data',req.query)
+    wec.top_adviser_list(data,function(err,result){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    })
+ }

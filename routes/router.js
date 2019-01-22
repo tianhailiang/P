@@ -261,6 +261,7 @@ exports = module.exports = function (app) {// routes
   app.get('/soapi/chiefmore',controller.chiefmore); // 首席顾问加载更多
   app.get(/chief(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.chief); //首席顾问
   app.get('/news', controller.news); // 品牌共振-新闻列表
+  app.get('/soapi/newsmore', controller.newsmore); // 品牌共振-新闻列表加载更多
 
   //意见反馈
   app.post('/userFeedback',controller.userFeedback)
