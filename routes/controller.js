@@ -4344,3 +4344,30 @@ exports.chiefmore =function(req,res,next){
        }
      })
  }
+ // 品牌共振-新闻列表
+ exports.news = function (req, res, next) {
+    log.debug('品牌共振-新闻列表')
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        log.debug('存储的用户信息' + req.cookies.login_ss);
+    }else{
+        data.login_info = {};
+        data.login_info.uid = 0;
+    }
+    data.tdk = {
+        pagekey: 'NEWS',
+        cityid: area,
+        realname: 'NEWS'
+    };
+    res.render('news', data);
+ }
