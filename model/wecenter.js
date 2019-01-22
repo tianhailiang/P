@@ -443,7 +443,7 @@ exports.community_index = function(data,callback){
   }
   api.apiRequest(url ,callback);
 }
-//首席顾问
+//推荐顾问
 exports.top_adviser_list = function (data,callback){
   var url = _api_url_path(data, config.apis.top_adviser_list);
   if (url == null) {
@@ -452,7 +452,7 @@ exports.top_adviser_list = function (data,callback){
   }
   api.apiRequest(url, callback);
 }
-//首席顾问国家tab
+//推荐顾问国家tab
 exports.getChiefCountryList = function (data,callback){
   var url = _api_url_path(data, config.apis.getChiefCountryList);
   if (url == null) {

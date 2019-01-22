@@ -4282,9 +4282,9 @@ exports.getCoupons = function (req, res, next) {
         }
     });
 }
-//首席顾问
+//推荐顾问
 exports.chief = function (req, res, next) {
-    log.debug('首席顾问')
+    log.debug('推荐顾问')
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     var nquery = comfunc.getReqQuery(req.params[1]);
@@ -4311,7 +4311,7 @@ exports.chief = function (req, res, next) {
                 "uid": data.login_info.uid,"cityid": area, "page": page, "per_page": 20, "countryid": country
             }, callback)
         },
-        //首席顾问国家tab
+        //推荐顾问国家tab
         "getChiefCountryList": function (callback) {
             wec.getChiefCountryList({
                 "cityId": area
@@ -4332,7 +4332,7 @@ exports.chief = function (req, res, next) {
         res.render('chief', data);
     });
 }
-// 首席顾问加载更多
+// 推荐顾问加载更多
 exports.chiefmore =function(req,res,next){
     var data = req.query;
     console.log('data',req.query)

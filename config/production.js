@@ -203,9 +203,9 @@ var apis = {
   "get_article":so_prefix + 'article',
   //文章id获取顾问
   "get_article_uid": so_prefix + 'article/getUid',
-  //首席顾问列表
+  //推荐顾问列表
   "top_adviser_list": so_prefix + 'top_adviser_list',
-  //首席顾问国家tab
+  //推荐顾问国家tab
   "getChiefCountryList": so_prefix + 'getChiefCountryList',
   // 顾问个人主页文章统计
   "article_count": so_prefix + 'user/article_count',
