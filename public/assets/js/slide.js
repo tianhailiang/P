@@ -320,6 +320,9 @@ $(function(){
         $("#jisuanqi").css("display", "block");
       }
     })
+    $(".jiang").click(function(){
+      window.open(fn.no_urlgen('zt/2019/20190121_liuxuejisuanqi/index.html'));
+    })
     $(".my").hover(function () {
       $(this).find("img").css("display","none");
       $(this).find("p").css("display","block");
@@ -347,6 +350,9 @@ $(function(){
     }, function () {
       $("#jisuanqi").css("display", "none");
     });
+    $(".jiang").click(function(){
+      window.open(fn.no_urlgen('zt/2019/20190121_liuxuejisuanqi/index.html'));
+    })
     $(".my").hover(function () {
       $(this).find("img").css("display","none");
       $(this).find("p").css("display","block");
@@ -445,9 +451,6 @@ $(function(){
   $('#to_top').click(function(){
     $('html , body').animate({scrollTop: 0},'slow');
   });
-  $(".jiang").click(function(){
-    window.open(fn.no_urlgen('zt/2019/20190121_liuxuejisuanqi/index.html'));
-  })
 
 //====================弹窗==============
 
