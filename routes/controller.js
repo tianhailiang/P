@@ -4368,7 +4368,7 @@ exports.chiefmore =function(req,res,next){
     async.parallel({
         news_list: function (callback) {
             wec.news_list({
-                "page": page, "pagesize": 1
+                "page": page, "pagesize": 6
             }, callback)
         }
     }, function (err, result) {

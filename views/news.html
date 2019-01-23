@@ -92,7 +92,6 @@
     .floorimg {
         width: 380px;
         height: 300px;
-        border: 1px solid #000;
         position: absolute;
         top: 0px;
         left: 14.8%;
@@ -138,7 +137,7 @@
 {{ new_nav_red.new_nav_red(tdk,helper) }}
 
 <!-- banner图 -->
-<div class="banner">
+<div class="banner" style="background:url({{news_list.images}}) no-repeat center center;">
 </div>
 <div class="clearfix" id="main_con" data-page="1" data-page-all="{{news_list.total_count}}">
 {% for item in news_list.list %}
@@ -153,7 +152,7 @@
     <div class="floor-btn-box">
         <a class="floor-detail-btn" href="{{item.islink}}">查看详情</a>
         {% for brand in item.brand_arr  %}
-            {% if loop.index <= 11 %}
+            {% if loop.index <= 10 %}
                 <a style="background: url({{brand.brand}}) no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="{{brand.url}}"></a>
             {% endif %}
         {% endfor %}
@@ -223,7 +222,7 @@ function chiefmore () {
     datatype: 'json',
     data: {
       "page": page,
-      "pagesize": 1
+      "pagesize": 6
     },
     success: function (msg) {
       if (msg.data.list == null){
