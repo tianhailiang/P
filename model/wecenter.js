@@ -452,6 +452,16 @@ exports.top_adviser_list = function (data,callback){
   }
   api.apiRequest(url, callback);
 }
+// 品牌共振-新闻列表
+exports.news_list = function (data,callback){
+  var url = _api_url_path(data, config.apis.news_list);
+  if (url == null) {
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
+  console.log('url-----', url);
+}
 //首席顾问国家tab
 exports.getChiefCountryList = function (data,callback){
   var url = _api_url_path(data, config.apis.getChiefCountryList);

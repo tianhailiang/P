@@ -55,6 +55,7 @@
         width:32px;
         height:32px;
         margin-left:12px;
+        border-radius: 50%;
     }
     .floor-sina-btn {
         background:url({{helper.cdnhost}}/assets/img/sina.png) no-repeat 0 0;
@@ -120,6 +121,7 @@
     }
     .floordes {
         width: 530px;
+        height: 75px;
         line-height: 25px;
         font-size: 14px;
         color: #999;
@@ -138,98 +140,28 @@
 <!-- banner图 -->
 <div class="banner">
 </div>
-<div class="clearfix" id="main_con" data-page="1" data-page-all="2">
+<div class="clearfix" id="main_con" data-page="1" data-page-all="{{news_list.total_count}}">
+{% for item in news_list.list %}
 <div class="floor-2">
     <div class="floor"></div>
     <div class="floorimg">
-        <img src="" alt="">
+        <img src="{{item.thumb}}" alt="">
     </div>
-    <div class="floortitle">改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
+    <div class="floortitle">{{item.title}}</div>
     <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
-    <div class="floordes">改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
+    <div class="floordes">{{item.description}}</div>
     <div class="floor-btn-box">
-        <a class="floor-detail-btn" href="//www.jjl.cn/zt/2018/20181220/index.html">查看详情</a>
-        <a class="floor-icon-btn floor-btv-btn" href="//compaign.tudou.com/v/XMzk3MzYwNjkyMA==?from=groupmessage&isappinstalled=0"></a>
-        <a class="floor-icon-btn floor-china-btn" href="//app.jyb.cn/zjzsnew/zx/zs/201812/t20181220_1269134.html"></a>
-        <a class="floor-icon-btn floor-study-btn" href="//weibo.com/3853952931/H7VRnlmIB?from=page_1002063853952931_profile&wvr=6&mod=weibotime&type=comment#_rnd1546410400247"></a>
-        <a class="floor-icon-btn floor-tencent-btn" href="//xw.qq.com/edu/20181219013418/EDU2018121901341800"></a>
-        <a class="floor-icon-btn floor-sina-btn" href="//edu.sina.cn/2018-12-19/detail-ihmutuee0795243.d.html?from=groupmessage&isappinstalled=0"></a>
-        <a class="floor-icon-btn floor-wangyi-btn" href="//edu.163.com/18/1221/13/E3I9FR6G0029985J.html"></a>
-        <a class="floor-icon-btn floor-sohu-btn" href="//learning.sohu.com/20181219/n558686026.shtml"></a>
+        <a class="floor-detail-btn" href="{{item.islink}}">查看详情</a>
+        {% for brand in item.brand_arr  %}
+            {% if loop.index <= 11 %}
+                <a style="background: url({{brand.brand}}) no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="{{brand.url}}"></a>
+            {% endif %}
+        {% endfor %}
     </div>
 </div>
-<div class="floor-2">
-    <div class="floor"></div>
-    <div class="floorimg">
-        <img src="" alt="">
-    </div>
-    <div class="floortitle">改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
-    <div class="floordes">改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floor-btn-box">
-        <a class="floor-detail-btn" href="//www.jjl.cn/zt/2018/20181114_aus/index.html">查看详情</a>
-        <a class="floor-icon-btn floor-sina-btn" href="//edu.sina.com.cn/a/2018-11-09/doc-ihmutuea8588299.shtml"></a>
-        <a class="floor-icon-btn floor-wangyi-btn" href="//edu.163.com/18/1109/16/E06D7EN500297VV9.html"></a>
-        <a class="floor-icon-btn floor-sohu-btn" href="//learning.sohu.com/20181109/n554868897.shtml"></a>
-    </div>
+{% endfor %}
 </div>
-<div class="floor-2">
-    <div class="floor"></div>
-    <div class="floorimg">
-        <img src="" alt="">
-    </div>
-    <div class="floortitle">改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
-    <div class="floordes">改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floor-btn-box">
-        <a class="floor-detail-btn" href="//www.jjl.cn/zt/2018/20180716_nz/index.html">查看详情</a>
-        <a class="floor-icon-btn floor-sina-btn" href="//edu.sina.com.cn/a/2018-07-17/doc-ihfkffam4710203.shtml"></a>
-        <a class="floor-icon-btn floor-wangyi-btn" href="//edu.163.com/18/0725/10/DNI73K1A00297VV9.html"></a>
-        <a class="floor-icon-btn floor-sohu-btn" href="//learning.sohu.com/20180723/n544238648.shtml"></a>
-    </div>
-</div>
-<div class="floor-2">
-    <div class="floor"></div>
-    <div class="floorimg">
-        <img src="" alt="">
-    </div>
-    <div class="floortitle">改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
-    <div class="floordes">改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floor-btn-box">
-        <a class="floor-detail-btn" href="//www.jjl.cn/zt/2018/20181119/index.html">查看详情</a>
-    </div>
-</div>
-<div class="floor-2">
-    <div class="floor"></div>
-    <div class="floorimg">
-        <img src="" alt="">
-    </div>
-    <div class="floortitle">改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
-    <div class="floordes">改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floor-btn-box">
-        <a class="floor-detail-btn" href="//www.jjl.cn/zt/2018/20180926_belarus/index.html">查看详情</a>
-        <a class="floor-icon-btn floor-sina-btn" href="//edu.sina.com.cn/a/2018-08-27/doc-ihifuvph7835443.shtml"></a>
-        <a class="floor-icon-btn floor-wangyi-btn" href="//edu.163.com/18/1105/14/DVRV1GRF00297VV9.html"></a>
-        <a class="floor-icon-btn floor-sohu-btn" href="//learning.sohu.com/20180827/n547632932.shtml"></a>
-    </div>
-</div>
-<div class="floor-2" style="margin-bottom: 120px;">
-    <div class="floor"></div>
-    <div class="floorimg">
-        <img src="" alt="">
-    </div>
-    <div class="floortitle">改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
-    <div class="floordes">改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开改革开放前40周年中国留学教育与留学人才研讨会在京召开</div>
-    <div class="floor-btn-box">
-        <a class="floor-detail-btn" href="//www.jjl.cn/zt/2018/2018_qz/default.shtml">查看详情</a>
-        <a class="floor-icon-btn floor-weixin-btn" href="//mp.weixin.qq.com/s/Fo_6NAdKQ9HS8gi2pxLveQ"></a>
-    </div>
-</div>
-</div>
-<div class="dui-layout-lg guwen_more clearfix" style="display: block;margin-top: -80px;text-align: center;"><img src="{{helper.cdnhost}}/assets/img/loading-2.gif" alt=""><span>加载更多</span></div>
+<div class="dui-layout-lg guwen_more clearfix" style="display: block;margin-top: 20px;text-align: center;"><img src="{{helper.cdnhost}}/assets/img/loading-2.gif" alt=""><span>加载更多</span></div>
 {% import "widget/new_slide/new_slide.html" as  slide %}
 {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
 {% include "widget/new_footer/common_footer.html" %}
@@ -286,15 +218,12 @@ function chiefmore () {
   // console.log('area',area)
   // var thisObj = $(this);
   $.ajax({
-    url: '/soapi/chiefmore',
+    url: '/soapi/newsmore',
     type: 'GET',
     datatype: 'json',
     data: {
-    //   "uid": login_ss.uid,
-    //   "cityid": area, 
-    //   "page": page, 
-    //   "per_page": 6,
-    //   "countryid": countryid
+      "page": page,
+      "pagesize": 1
     },
     success: function (msg) {
       if (msg.data.list == null){
@@ -310,10 +239,24 @@ function chiefmore () {
         var mainhtml = ''
         for (var i = 0; i < msg.data.list.length;i++) {
           mainhtml += '<div class="floor-2" id="main_add">';
-          mainhtml += additem(msg.data.list[i]);
+          mainhtml += '<div class="floor"></div>'+
+                      '<div class="floorimg">'+
+                      '<img src="' + msg.data.list[i].thumb + '" alt="">'+
+                      '</div>'+
+                      '<div class="floortitle">' + msg.data.list[i].title + '</div>'+
+                      '<div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>'+
+                      '<div class="floordes">' + msg.data.list[i].description + '</div>'+
+                      '<div class="floor-btn-box">'+
+                      '<a class="floor-detail-btn" href="' + msg.data.list[i].islink + '">查看详情</a>';
+                      if (msg.data.list[i].brand_arr)
+                      for (var y = 0; y < msg.data.list[i].brand_arr.length; y++) {
+                        if (y <= 10) {
+                            mainhtml += '<a style="background: url(' + msg.data.list[i].brand_arr[y].brand + ') no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="' + msg.data.list[i].brand_arr[y].url + '"></a>';
+                        }
+                      }
           mainhtml += '</div>';
         }
-        mainhtml += '</div>';
+        // mainhtml += '</div>';
         $('#main_con').append($(mainhtml));
       } else {
         $('.guwen_more').hide();

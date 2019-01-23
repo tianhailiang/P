@@ -4349,6 +4349,7 @@ exports.chiefmore =function(req,res,next){
     log.debug('品牌共振-新闻列表')
     var data = [];
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var page =  req.query.page || 1;
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
     if (l.h !== undefined) {
@@ -4364,21 +4365,32 @@ exports.chiefmore =function(req,res,next){
         data.login_info = {};
         data.login_info.uid = 0;
     }
-    data.tdk = {
-        pagekey: 'NEWS',
-        cityid: area,
-        realname: 'NEWS'
-    };
-    res.render('news', data);
+    async.parallel({
+        news_list: function (callback) {
+            wec.news_list({
+                "page": page, "pagesize": 1
+            }, callback)
+        }
+    }, function (err, result) {
+        data.news_list = returnData(result.news_list, 'news_list');
+        console.log('news_list', data.news_list);
+        data.tdk = {
+            pagekey: 'NEWS',
+            cityid: area,
+            realname: 'news'
+        };
+        res.render('news', data);
+    })
  }
  // 品牌共振-新闻列表加载更多
  exports.newsmore = function (req, res, next) {
     var data = req.query;
     console.log('data',req.query)
-    wec.top_adviser_list(data,function(err,result){
+    wec.news_list(data,function(err,result){
         if(err){
             res.send(err);
         }else{
+            console.log('res', result.data.list[0].brand_arr)
             res.send(result);
         }
     })
