@@ -4390,7 +4390,6 @@ exports.chiefmore =function(req,res,next){
         if(err){
             res.send(err);
         }else{
-            console.log('res', result.data.list[0].brand_arr)
             res.send(result);
         }
     })
