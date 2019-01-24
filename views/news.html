@@ -17,6 +17,7 @@
         height: 300px;
         background: #fff;
         margin: 0 auto;
+        position: relative;
     }
     .floor-2 {
         width: 100%;
@@ -27,7 +28,7 @@
     .floor-btn-box {
         position: absolute;
         bottom:40px;
-        left:44.5%;
+        left:40.5%;
     }
     .floor-detail-btn {
         float:left;
@@ -94,7 +95,7 @@
         height: 300px;
         position: absolute;
         top: 0px;
-        left: 14.8%;
+        left: 0px;
     }
     .floorimg img {
         width: 100%;
@@ -108,7 +109,7 @@
         font-weight: bold;
         position: absolute;
         top: 40px;
-        left: 44.5%;
+        left: 40.5%;
     }
     .floortime {
         font-size: 12px;
@@ -116,7 +117,7 @@
         color: #999;
         position: absolute;
         top: 108px;
-        left: 44.5%;
+        left: 40.5%;
     }
     .floordes {
         width: 530px;
@@ -126,7 +127,7 @@
         color: #999;
         position: absolute;
         top: 140px;
-        left: 44.5%;
+        left: 40.5%;
     }
   </style>
 </head>
@@ -142,12 +143,12 @@
 <div class="clearfix" id="main_con" data-page="1" data-page-all="{{news_list.totalpage}}">
 {% for item in news_list.list %}
 <div class="floor-2">
-    <div class="floor"></div>
+    <div class="floor">
     <div class="floorimg">
         <img src="{{item.thumb}}" alt="">
     </div>
     <div class="floortitle">{{item.title}}</div>
-    <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
+    <div class="floortime">金吉列留学资讯 <span>{{item.inputtime}}</span></div>
     <div class="floordes">{{item.description}}</div>
     <div class="floor-btn-box">
         <a class="floor-detail-btn" href="{{item.url}}">查看详情</a>
@@ -156,6 +157,7 @@
                 <a style="background: url({{brand.brand}}) no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="{{brand.url}}"></a>
             {% endif %}
         {% endfor %}
+    </div>
     </div>
 </div>
 {% endfor %}
@@ -238,12 +240,12 @@ function chiefmore () {
         var mainhtml = ''
         for (var i = 0; i < msg.data.list.length;i++) {
           mainhtml += '<div class="floor-2" id="main_add">';
-          mainhtml += '<div class="floor"></div>'+
+          mainhtml += '<div class="floor">'+
                       '<div class="floorimg">'+
                       '<img src="' + msg.data.list[i].thumb + '" alt="">'+
                       '</div>'+
                       '<div class="floortitle">' + msg.data.list[i].title + '</div>'+
-                      '<div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>'+
+                      '<div class="floortime">金吉列留学资讯 <span>' + msg.data.list[i].inputtime + '</span></div>'+
                       '<div class="floordes">' + msg.data.list[i].description + '</div>'+
                       '<div class="floor-btn-box">'+
                       '<a class="floor-detail-btn" href="' + msg.data.list[i].url + '">查看详情</a>';
@@ -253,6 +255,7 @@ function chiefmore () {
                             mainhtml += '<a style="background: url(' + msg.data.list[i].brand_arr[y].brand + ') no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="' + msg.data.list[i].brand_arr[y].url + '"></a>';
                         }
                       }
+          mainhtml += '</div>';            
           mainhtml += '</div>';
           mainhtml += '</div>';
         }
