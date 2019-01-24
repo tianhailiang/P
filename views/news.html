@@ -150,7 +150,7 @@
     <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
     <div class="floordes">{{item.description}}</div>
     <div class="floor-btn-box">
-        <a class="floor-detail-btn" href="{{item.linkurl}}">查看详情</a>
+        <a class="floor-detail-btn" href="{{item.url}}">查看详情</a>
         {% for brand in item.brand_arr  %}
             {% if loop.index <= 10 %}
                 <a style="background: url({{brand.brand}}) no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="{{brand.url}}"></a>
@@ -246,7 +246,7 @@ function chiefmore () {
                       '<div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>'+
                       '<div class="floordes">' + msg.data.list[i].description + '</div>'+
                       '<div class="floor-btn-box">'+
-                      '<a class="floor-detail-btn" href="' + msg.data.list[i].islink + '">查看详情</a>';
+                      '<a class="floor-detail-btn" href="' + msg.data.list[i].url + '">查看详情</a>';
                       if (msg.data.list[i].brand_arr)
                       for (var y = 0; y < msg.data.list[i].brand_arr.length; y++) {
                         if (y <= 10) {
