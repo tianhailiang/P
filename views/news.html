@@ -139,7 +139,7 @@
 <!-- banner图 -->
 <div class="banner" style="background:url({{news_list.images}}) no-repeat center center;">
 </div>
-<div class="clearfix" id="main_con" data-page="1" data-page-all="{{news_list.total_count}}">
+<div class="clearfix" id="main_con" data-page="1" data-page-all="{{news_list.totalpage}}">
 {% for item in news_list.list %}
 <div class="floor-2">
     <div class="floor"></div>
@@ -254,8 +254,9 @@ function chiefmore () {
                         }
                       }
           mainhtml += '</div>';
+          mainhtml += '</div>';
         }
-        mainhtml += '</div>';
+        // mainhtml += '</div>';
         $('#main_con').append($(mainhtml));
       } else {
         $('.guwen_more').hide();
