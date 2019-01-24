@@ -150,7 +150,7 @@
     <div class="floortime">金吉列留学资讯 <span>2018-12-19</span></div>
     <div class="floordes">{{item.description}}</div>
     <div class="floor-btn-box">
-        <a class="floor-detail-btn" href="{{item.islink}}">查看详情</a>
+        <a class="floor-detail-btn" href="{{item.linkurl}}">查看详情</a>
         {% for brand in item.brand_arr  %}
             {% if loop.index <= 10 %}
                 <a style="background: url({{brand.brand}}) no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="{{brand.url}}"></a>
@@ -255,7 +255,7 @@ function chiefmore () {
                       }
           mainhtml += '</div>';
         }
-        // mainhtml += '</div>';
+        mainhtml += '</div>';
         $('#main_con').append($(mainhtml));
       } else {
         $('.guwen_more').hide();
