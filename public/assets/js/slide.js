@@ -329,7 +329,6 @@ $(function(){
         }
       }else{
         getlogin();
-
       }
     },function(){
       $(this).find("p").css("display","none");

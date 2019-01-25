@@ -1,6 +1,6 @@
 <!--相关顾问侧栏五个-->
 {% macro advisor_starblock(xiangguan_guwen,helper) %}
-<ul class="gw-list">
+<ul class="gw-list" style="background: #fff;">
 	{% for gw_item in xiangguan_guwen.list %}
 		<li>
 				<a href="{{helper.urlgen(gw_item.uid|string)}}" target="_blank">
