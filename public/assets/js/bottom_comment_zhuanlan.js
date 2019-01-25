@@ -98,7 +98,8 @@ function jiazaigengduo (uid) {
   });
 
 }
-
+var favorite = true;
+var article = true;
 function showbottom (type, index, usertype) {
   if (type === 1) {
     // $("#yuedu_" + index).html('&#xe60e');
@@ -116,44 +117,50 @@ function showbottom (type, index, usertype) {
       return false;
     }
     var shoucang = $("#shoucang_em_" + index).html()
-    $.ajax({
-      url: '/soapi/favorite_article',
-      type:'POST',
-      data:{
-        article_id: index
-      },
-      //dataType:'json',
-      dataType:'jsonp',
-      jsonpCallback:'cb',
-      success:function(msg){
-        console.log('aaaaaaaaa')
-        console.log('msg ajax', msg);
-        if(msg.code === 0){
-          //window.location= '/';
-          //alert('成功');
-          //$("#shoucang_" + index).html('&#xe634;');
-          //$("#shoucang_li_" + index).css('color', '#C13232');
-          //$("#shoucang_span_" + index).css('color', '#C13232');
-          if (msg.data.action === 'add') {
-            shoucang = parseInt(shoucang) + 1;
-            $("#shoucang_em_" + index).html(shoucang);
-            //layer.msg('收藏成功');
-            // window.location.reload();
+    if (favorite) {
+      favorite = false;
+      $.ajax({
+        url: '/soapi/favorite_article',
+        type:'POST',
+        data:{
+          article_id: index
+        },
+        //dataType:'json',
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success:function(msg){
+          console.log('aaaaaaaaa')
+          console.log('msg ajax', msg);
+          if(msg.code === 0){
+            //window.location= '/';
+            //alert('成功');
+            //$("#shoucang_" + index).html('&#xe634;');
+            //$("#shoucang_li_" + index).css('color', '#C13232');
+            //$("#shoucang_span_" + index).css('color', '#C13232');
+            if (msg.data.action === 'add') {
+              shoucang = parseInt(shoucang) + 1;
+              $("#shoucang_em_" + index).html(shoucang);
+              //layer.msg('收藏成功');
+              // window.location.reload();
+            } else {
+              shoucang = parseInt(shoucang) - 1;
+              $("#shoucang_em_" + index).html(shoucang);
+              //layer.msg('取消收藏成功');
+              // window.location.reload();
+            }
+            // $("#shoucang_li_" + index).removeAttr('onclick');
           } else {
-            shoucang = parseInt(shoucang) - 1;
-            $("#shoucang_em_" + index).html(shoucang);
-            //layer.msg('取消收藏成功');
-            // window.location.reload();
+            alert(msg.err);
           }
-          // $("#shoucang_li_" + index).removeAttr('onclick');
-        } else {
-          alert(msg.err);
+          favorite = true;
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          favorite = true;
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
         }
-      },
-      error:function(XMLHttpRequest, textStatus, errorThrown){
-        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
-      }
-    });
+      });
+    }
+    
 
   }else if (type === 3) {
     console.log('cccccccc')
@@ -195,45 +202,51 @@ function showbottom (type, index, usertype) {
       return false;
     }
     var dianzan = $("#dianzan_em_" + index).html()
-    $.ajax({
-      url: '/soapi/article_vote',
-      type:'POST',
-      data:{
-        item_id: index,
-        item_type : 'article'
-      },
-      //dataType:'json',
-      dataType:'jsonp',
-      jsonpCallback:'cb',
-      success: function(msg) {
-        console.log('aaaaaaaaa');
-        console.log('msg ajax', msg);
-        if(msg.code === 0){
-          //window.location= '/';
-          //alert('成功');
-          //$("#dianzan_" + index).html('&#xe604;');
-          //$("#dianzan_li_" + index).css('color', '#C13232');
-          //$("#dianzan_span_" + index).css('color', '#C13232');
-          if (msg.data.action === 'add') {
-            dianzan = parseInt(dianzan) + 1;
-            $("#dianzan_em_" + index).html(dianzan);
-            //layer.msg('点赞成功');
-            // window.location.reload();
+    if (article) {
+      article = false;
+      $.ajax({
+        url: '/soapi/article_vote',
+        type:'POST',
+        data:{
+          item_id: index,
+          item_type : 'article'
+        },
+        //dataType:'json',
+        dataType:'jsonp',
+        jsonpCallback:'cb',
+        success: function(msg) {
+          console.log('aaaaaaaaa');
+          console.log('msg ajax', msg);
+          if(msg.code === 0){
+            //window.location= '/';
+            //alert('成功');
+            //$("#dianzan_" + index).html('&#xe604;');
+            //$("#dianzan_li_" + index).css('color', '#C13232');
+            //$("#dianzan_span_" + index).css('color', '#C13232');
+            if (msg.data.action === 'add') {
+              dianzan = parseInt(dianzan) + 1;
+              $("#dianzan_em_" + index).html(dianzan);
+              //layer.msg('点赞成功');
+              // window.location.reload();
+            } else {
+              dianzan = parseInt(dianzan) - 1;
+              $("#dianzan_em_" + index).html(dianzan);
+              //layer.msg('取消点赞成功');
+              // window.location.reload();
+            }
+            // $("#dianzan_li_" + index).removeAttr('onclick');
           } else {
-            dianzan = parseInt(dianzan) - 1;
-            $("#dianzan_em_" + index).html(dianzan);
-            //layer.msg('取消点赞成功');
-            // window.location.reload();
+            alert(msg.err);
           }
-          // $("#dianzan_li_" + index).removeAttr('onclick');
-        } else {
-          alert(msg.err);
+          article = true;
+        },
+        error:function(XMLHttpRequest, textStatus, errorThrown){
+          article = true;
+          console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
         }
-      },
-      error:function(XMLHttpRequest, textStatus, errorThrown){
-        console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status)
-      }
-    });
+      });
+    }
+    
   }
 }
 
