@@ -110,6 +110,7 @@
         position: absolute;
         top: 40px;
         left: 40.5%;
+        overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
     }
     .floortime {
         font-size: 12px;
@@ -208,9 +209,9 @@ function chiefmore () {
   }
   // var page = $('#main_con').data('page') + 1;
   var pageall = $('#main_con').data('page-all');
-  console.log('totalpage',pageall)
+//   console.log('totalpage',pageall)
 //   var countryid = $('.focus-on').parent().attr('data-id');
-  console.log('page',page)
+//   console.log('page',page)
   if(pageall == 1 || pageall < page ){
     $('.guwen_more').hide();
     return false;
@@ -236,7 +237,7 @@ function chiefmore () {
         loadMoreFlag = true;
         // $('#main_con').data('page', page)
         page ++;
-        console.log('page',page)
+        // console.log('page',page)
         // console.log(msg);
         var mainhtml = ''
         for (var i = 0; i < msg.data.list.length;i++) {
