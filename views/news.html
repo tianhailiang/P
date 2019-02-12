@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+  {% include "header_new.html" %}
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/guwen_yonghu.css" >
+  <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/draft.css" >
+  <style type="text/css">
+    .banner {
+        width:100%;
+        background:url("{{helper.cdnhost}}/assets/img/xwjhy_01.jpg") no-repeat center center;
+        height: 276px;
+        overflow:hidden;
+        position: relative;
+    }
+    .floor {
+        width: 1000px;
+        height: 300px;
+        background: #fff;
+        margin: 0 auto;
+        position: relative;
+    }
+    .floor-2 {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        margin-top: 25px;
+    }
+    .floor-btn-box {
+        position: absolute;
+        bottom:40px;
+        left:40.5%;
+    }
+    .floor-detail-btn {
+        float:left;
+        font-size: 14px;
+        text-align: center;
+        font-weight: bold;
+        line-height:32px;
+        color:#fff;
+        width:110px;
+        height:32px;
+        background:#c13232;
+        box-sizing: border-box; 
+        border: 1px solid #fff;
+        letter-spacing: 1px;
+        border-radius: 15px;
+        cursor: pointer;
+    }
+    .floor-detail-btn:hover {
+        color:#c13232;
+        border:1px solid #c13232;
+        background: #fff;
+    }
+    .floor-icon-btn {
+        float:left;
+        width:32px;
+        height:32px;
+        margin-left:12px;
+        border-radius: 50%;
+    }
+    .floor-sina-btn {
+        background:url({{helper.cdnhost}}/assets/img/sina.png) no-repeat 0 0;
+        background-size: 32px 32px;
+    }
+    .floor-wangyi-btn {
+        background:url({{helper.cdnhost}}/assets/img/wangyi.png) no-repeat 0 0;
+        background-size: 32px 32px;
+    }
+    .floor-sohu-btn {
+        background:url({{helper.cdnhost}}/assets/img/sohu.png) no-repeat 0 0;
+        background-size: 32px 32px;
+    }
+    .floor-weixin-btn {
+        background:url({{helper.cdnhost}}/assets/img/weixin.png) no-repeat 0 0;
+        background-size: 32px 32px;
+    }
+    .floor-btv-btn {
+        background:url({{helper.cdnhost}}/assets/img/btv.png) no-repeat 0 0;
+        background-size: 32px 32px;
+    }
+    .floor-china-btn {
+        background:url({{helper.cdnhost}}/assets/img/china_Education_Daily.png) no-repeat 0 0;
+        background-size: 32px 32px;
+    }
+    .floor-study-btn {
+        background:url({{helper.cdnhost}}/assets/img/study_abroad_magazine.png) no-repeat 0 0;
+        background-size: 32px 32px;
+    }
+    .floor-tencent-btn {
+        background:url({{helper.cdnhost}}/assets/img/tencent.png) no-repeat 0 0;
+        background-size: 32px 32px;
+    }
+    .floorimg {
+        width: 380px;
+        height: 300px;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    .floorimg img {
+        width: 100%;
+        height: 100%;
+    }
+    .floortitle {
+        width: 545px;
+        line-height: 36px;
+        font-size: 24px;
+        color: #333;
+        font-weight: bold;
+        position: absolute;
+        top: 40px;
+        left: 40.5%;
+        overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
+    }
+    .floortime {
+        font-size: 12px;
+        line-height: 26px;
+        color: #999;
+        position: absolute;
+        top: 108px;
+        left: 40.5%;
+    }
+    .floordes {
+        width: 530px;
+        height: 75px;
+        line-height: 25px;
+        font-size: 14px;
+        color: #999;
+        position: absolute;
+        top: 140px;
+        left: 40.5%;
+        overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;
+    }
+  </style>
+</head>
+<body style="min-width: 1200px;background: #f5f5f5">
+{% include "widget/common_hide/common_hide.html"%}
+{% include "widget/top/top.html" %}
+{% import "widget/new_nav_first/new_nav_red.html" as new_nav_red %}
+{{ new_nav_red.new_nav_red(tdk,helper) }}
+
+<!-- banner图 -->
+<div class="banner" style="background:url({{news_list.images}}) no-repeat center center;">
+</div>
+<div class="clearfix" id="main_con" data-page="1" data-page-all="{{news_list.totalpage}}">
+{% for item in news_list.list %}
+<div class="floor-2">
+    <div class="floor">
+    <div class="floorimg">
+        <img src="{{item.thumb}}" alt="">
+    </div>
+    <div class="floortitle">{{item.title}}</div>
+    <div class="floortime">金吉列留学资讯 <span>{{item.inputtime}}</span></div>
+    <div class="floordes">{{item.description}}</div>
+    <div class="floor-btn-box">
+        <a class="floor-detail-btn" href="{{item.url}}">查看详情</a>
+        {% for brand in item.brand_arr  %}
+            {% if loop.index <= 10 %}
+                <a style="background: url({{brand.brand}}) no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="{{brand.url}}"></a>
+            {% endif %}
+        {% endfor %}
+    </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+<div class="dui-layout-lg guwen_more clearfix" style="display: block;margin-top: 20px;text-align: center;"><img src="{{helper.cdnhost}}/assets/img/loading-2.gif" alt=""><span>加载更多</span></div>
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
+{% include "widget/new_footer/common_footer.html" %}
+<!-- =====活动弹窗===== -->
+{% include "widget2/active_popup/active_popup.html" %}
+<script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/bottom_comment_zhuanlan_zhuye.js"></script>
+<!--<script src="{{helper.cdnhost}}/assets/js/nav_seventh.js" ></script>-->
+<!-- <script src="{{helper.cdnhost}}/assets/js/follow.js"></script> -->
+<script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
+</body>
+<script>
+var loadMoreFlag = true;
+var page
+$(document).ready(function (){
+  page = $('#main_con').data('page') + 1;
+  $(window).on('scroll', function () {
+    var $scroll = $(window).scrollTop();
+    // var con = document.getElementById('main_con').offsetHeight;
+    var doc = $(document).height()
+    var win = $(window).height()
+    if ($scroll >= (doc - win) - 500) {
+      if (loadMoreFlag) {
+        loadMoreFlag = false;
+        $('.guwen_more').show();
+        setTimeout(chiefmore, 2000);
+      }
+    }
+  });
+})
+function chiefmore () {
+  var login_ss = {};
+  if(cookie('login_ss') != undefined){
+    login_ss = JSON.parse(cookie('login_ss'));
+  } else {
+    login_ss.uid = 0;
+  }
+  // var page = $('#main_con').data('page') + 1;
+  var pageall = $('#main_con').data('page-all');
+//   console.log('totalpage',pageall)
+//   var countryid = $('.focus-on').parent().attr('data-id');
+//   console.log('page',page)
+  if(pageall == 1 || pageall < page ){
+    $('.guwen_more').hide();
+    return false;
+  }
+  var per_page = 20;
+  var area = cookie('currentarea');
+  // console.log('area',area)
+  // var thisObj = $(this);
+  $.ajax({
+    url: '/soapi/newsmore',
+    type: 'GET',
+    datatype: 'json',
+    data: {
+      "page": page,
+      "pagesize": 6
+    },
+    success: function (msg) {
+      if (msg.data.list == null){
+        $('.guwen_more').hide();
+        loadMoreFlag = false;
+      } else if (msg.data.list.length <= 20) {
+        $('.guwen_more').hide();
+        loadMoreFlag = true;
+        // $('#main_con').data('page', page)
+        page ++;
+        // console.log('page',page)
+        // console.log(msg);
+        var mainhtml = ''
+        for (var i = 0; i < msg.data.list.length;i++) {
+          mainhtml += '<div class="floor-2" id="main_add">';
+          mainhtml += '<div class="floor">'+
+                      '<div class="floorimg">'+
+                      '<img src="' + msg.data.list[i].thumb + '" alt="">'+
+                      '</div>'+
+                      '<div class="floortitle">' + msg.data.list[i].title + '</div>'+
+                      '<div class="floortime">金吉列留学资讯 <span>' + msg.data.list[i].inputtime + '</span></div>'+
+                      '<div class="floordes">' + msg.data.list[i].description + '</div>'+
+                      '<div class="floor-btn-box">'+
+                      '<a class="floor-detail-btn" href="' + msg.data.list[i].url + '">查看详情</a>';
+                      if (msg.data.list[i].brand_arr)
+                      for (var y = 0; y < msg.data.list[i].brand_arr.length; y++) {
+                        if (y <= 10) {
+                            mainhtml += '<a style="background: url(' + msg.data.list[i].brand_arr[y].brand + ') no-repeat;background-size: 32px 32px;" class="floor-icon-btn floor-btv-btn" href="' + msg.data.list[i].brand_arr[y].url + '"></a>';
+                        }
+                      }
+          mainhtml += '</div>';            
+          mainhtml += '</div>';
+          mainhtml += '</div>';
+        }
+        // mainhtml += '</div>';
+        $('#main_con').append($(mainhtml));
+      } else {
+        $('.guwen_more').hide();
+        loadMoreFlag = false;
+      }
+    },
+    error: function (XMLHttpRequest, textStatus, errorThrown) {
+      console.log(errorThrown)
+    }
+  })
+}
+</script>
+
+</html>

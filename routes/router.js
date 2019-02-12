@@ -260,6 +260,9 @@ exports = module.exports = function (app) {// routes
   app.get("/liuxue_item_nunjucks",controller.liuxue_item_nunjucks);//首页代码段落
   app.get('/soapi/chiefmore',controller.chiefmore); // 推荐顾问加载更多
   app.get(/chief(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.chief); //推荐顾问
+  app.get('/news', controller.news); // 品牌共振-新闻列表
+  app.get('/soapi/newsmore', controller.newsmore); // 品牌共振-新闻列表加载更多
+
 
   //意见反馈
   app.post('/userFeedback',controller.userFeedback)

@@ -18,7 +18,7 @@ function getCookie(cname) {
 }
 // 写cookie
 function setCook(name,value,t){
-	if(typeof t =='undefined' ||t==null) t =60*30*24*60*60*1000;  
+	if(typeof t =='undefined' ||t==null) t =60*30*24*60*60*1000;
 	var exp  = new Date(); exp.setTime(exp.getTime() + t);
 	document.cookie = name + "="+ escape (value)+ ";expires=" + exp.toGMTString();
 }
@@ -33,14 +33,14 @@ function jesongGetDomain (url){
 function getPageReferweb(){
 	console.log('cookie(referweb)', cookie('referweb'))
 	if (cookie('referweb') != null) {
-		console.log(1111);
+		// console.log(1111);
 		return false;
 	} else {
-		console.log(2222);
+		// console.log(2222);
 		if(document.referrer){
 			try{
 				var refer = document.referrer;
-				console.log(3333);
+				// console.log(3333);
 				if(refer){
 					var referDomain = jesongGetDomain(refer);
 					var currDomain = window.location.host;
@@ -71,12 +71,12 @@ function getPageReferweb(){
 				console.log('获取refer异常');
 			};
 		} else {
-			console.log('不是推广过来的页面，网站调用')
+			// console.log('不是推广过来的页面，网站调用');
 			var urll = window.location.href;
 			var main = urll.match(/(\w+):\/\/([^\:|\/]+)(\:\d*)?(.*\/)([^#|\?|\n]+)?(#.*)?(\?.*)?/i);
 			console.log('main', main[7])
 			// if (main[7] != 'undefined') {
-				console.log('refer写入cookie成功')
+				// console.log('refer写入cookie成功')
                 setCook('referweb', urll, 1000*60*60);
                 return false;
 			// } else {
