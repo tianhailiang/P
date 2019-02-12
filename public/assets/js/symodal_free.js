@@ -135,6 +135,9 @@ $(function () {
 		// 	return false;
 		// }
 		var h = cookie('referweb'); // 获取来源url
+		if (h == null || h == undefined) {
+      h = window.location.href;
+    }
 		var grUserId = cookie('gr_user_id');
 		var that = this;
 		$(this).unbind('click');

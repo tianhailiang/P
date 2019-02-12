@@ -80,7 +80,9 @@
         } else {
             var dataType = 3;
         }
-
+		if (fromUrl == null || fromUrl == undefined) {
+			fromUrl = window.location.href;
+		}
 		// var subData = {name:username,sex:sex,phone:tel,email:email,birthday:birthday,city:city,country:country,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,source:fromUrl,activityTitle:activityTitle,relationId:18};
 		var subData = { grUserId: grUserId, dataType: dataType,relationId: relationId, name: username, phone: tel, city: city, country: firstCountry, source: fromUrl };
         var dataBaidu = JSON.stringify({

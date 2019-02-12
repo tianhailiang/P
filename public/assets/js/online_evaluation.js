@@ -88,6 +88,9 @@ $(function(){
     var grUserId = cookie('gr_user_id');
     // var h = window.location.href;
     var h = cookie('referweb'); // 获取来源url
+    if (h == null || h == undefined) {
+      h = window.location.href;
+    }
     $.ajax({
       url: ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
       type:'GET',
