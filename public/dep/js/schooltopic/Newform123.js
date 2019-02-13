@@ -81,6 +81,7 @@
             var dataType = 3;
         }
 		if (fromUrl == null || fromUrl == undefined) {
+			fromUrl = window.location.href;
 			if (fromUrl.match(/[~|《|<|>|'|!|@|#|$|%|^|*|(|)|-|+|:]/)) {
 				alert('含有特殊字符');
 				return false;

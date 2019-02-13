@@ -31,7 +31,7 @@ function jesongGetDomain (url){
 	}
 }
 function getPageReferweb(){
-	console.log('cookie(referweb)', cookie('referweb'))
+	// console.log('cookie(referweb)', cookie('referweb'))
 	if (cookie('referweb') != null) {
 		console.log(1111);
 		return false;
@@ -74,9 +74,9 @@ function getPageReferweb(){
 			console.log('不是推广过来的页面，网站调用')
 			var urll = window.location.href;
 			var main = urll.match(/(\w+):\/\/([^\:|\/]+)(\:\d*)?(.*\/)([^#|\?|\n]+)?(#.*)?(\?.*)?/i);
-			console.log('main', main[7])
+			// console.log('main', main[7])
 			// if (main[7] != 'undefined') {
-				console.log('refer写入cookie成功')
+				// console.log('refer写入cookie成功')
                 setCook('referweb', urll, 1000*60*60);
                 return false;
 			// } else {
