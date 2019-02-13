@@ -136,7 +136,12 @@ $(function () {
 		// }
 		var h = cookie('referweb'); // 获取来源url
 		if (h == null || h == undefined) {
-      h = window.location.href;
+			if (h.match(/[~|《|<|>|'|!|@|#|$|%|^|*|(|)|-|+|:]/)) {
+				alert('含有特殊字符')
+				return false;
+			} else {
+				h = window.location.href + '&wwj=007';
+			}
     }
 		var grUserId = cookie('gr_user_id');
 		var that = this;
