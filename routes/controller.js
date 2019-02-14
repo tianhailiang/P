@@ -4344,3 +4344,53 @@ exports.chiefmore =function(req,res,next){
        }
      })
  }
+ // 品牌共振-新闻列表
+ exports.news = function (req, res, next) {
+    log.debug('品牌共振-新闻列表')
+    var data = [];
+    var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
+    var page =  req.query.page || 1;
+    //node获取地址栏url
+    var l = url.parse(req.url, true).query;
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        data.login_info = JSON.parse(req.cookies.login_ss);
+        log.debug('存储的用户信息' + req.cookies.login_ss);
+    }else{
+        data.login_info = {};
+        data.login_info.uid = 0;
+    }
+    async.parallel({
+        news_list: function (callback) {
+            wec.news_list({
+                "page": page, "pagesize": 6
+            }, callback)
+        }
+    }, function (err, result) {
+        data.news_list = returnData(result.news_list, 'news_list');
+        console.log('news_list', data.news_list);
+        data.tdk = {
+            pagekey: 'NEWS',
+            cityid: area,
+            realname: 'news'
+        };
+        res.render('news', data);
+    })
+ }
+ // 品牌共振-新闻列表加载更多
+ exports.newsmore = function (req, res, next) {
+    var data = req.query;
+    console.log('data',req.query)
+    wec.news_list(data,function(err,result){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    })
+ }

@@ -18,7 +18,7 @@ function getCookie(cname) {
 }
 // 写cookie
 function setCook(name,value,t){
-	if(typeof t =='undefined' ||t==null) t =60*30*24*60*60*1000;  
+	if(typeof t =='undefined' ||t==null) t =60*30*24*60*60*1000;
 	var exp  = new Date(); exp.setTime(exp.getTime() + t);
 	document.cookie = name + "="+ escape (value)+ ";expires=" + exp.toGMTString();
 }
@@ -71,7 +71,11 @@ function getPageReferweb(){
 				// console.log('获取refer异常');
 			};
 		} else {
+<<<<<<< HEAD
 			// console.log('不是推广过来的页面，网站调用')
+=======
+			// console.log('不是推广过来的页面，网站调用');
+>>>>>>> 0f7ea17abd3c8c67e97b7b5410984a8c67ade656
 			var urll = window.location.href;
 			var main = urll.match(/(\w+):\/\/([^\:|\/]+)(\:\d*)?(.*\/)([^#|\?|\n]+)?(#.*)?(\?.*)?/i);
 			// console.log('main', main[7])

@@ -207,6 +207,8 @@ var apis = {
   "top_adviser_list": so_prefix + 'top_adviser_list',
   //推荐顾问国家tab
   "getChiefCountryList": so_prefix + 'getChiefCountryList',
+  //品牌共振-新闻列表
+  "news_list": prefix_111 + 'brand_res',
   // 顾问个人主页文章统计
   "article_count": so_prefix + 'user/article_count',
   //用户相册
