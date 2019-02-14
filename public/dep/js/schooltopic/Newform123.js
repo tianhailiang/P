@@ -82,11 +82,11 @@
         }
 		if (fromUrl == null || fromUrl == undefined) {
 			fromUrl = window.location.href;
-			if (fromUrl.match(/[~|《|<|>|'|!|@|#|$|%|^|*|(|)|+|:]/)) {
+			if (fromUrl.match(/[~|《|<|>|'|!|@|#|$|%|^|*|(|)|+]/)) {
 				alert('含有特殊字符');
 				return false;
 			} else {
-				fromUrl = window.location.href + '&wwj=007';
+				fromUrl = window.location.href;
 			}
 		}
 		// var subData = {name:username,sex:sex,phone:tel,email:email,birthday:birthday,city:city,country:country,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,source:fromUrl,activityTitle:activityTitle,relationId:18};
