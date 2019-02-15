@@ -86,7 +86,19 @@
 				alert('含有特殊字符');
 				return false;
 			} else {
-				fromUrl = window.location.href;
+				if(document.referrer){
+					try{
+						var refer = document.referrer;
+						console.log(3333);
+						if(refer){
+							fromUrl = refer
+						}
+					}catch(e){
+						console.log('获取refer异常');
+					};
+				} else {
+					fromUrl = window.location.href;
+				}
 			}
 		}
 		// var subData = {name:username,sex:sex,phone:tel,email:email,birthday:birthday,city:city,country:country,shenfen:shenfen,firstCountry:firstCountry,secondCountry:secondCountry,company:company,source:fromUrl,activityTitle:activityTitle,relationId:18};
