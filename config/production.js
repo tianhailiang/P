@@ -15,6 +15,7 @@ var uc_prefix = apiconfig.uc_prefix;
 var shequ_prefix = apiconfig.shequ_prefix;
 var so_prefix = apiconfig.so_prefix;
 var so_server = apiconfig.so_server;
+var prefix_111 = apiconfig.prefix_111;
 var imageshost = apiconfig.imageshost;
 var cms_out_prefix = prefix;
 var coupon = apiconfig.coupon;
@@ -202,10 +203,12 @@ var apis = {
   "get_article":so_prefix + 'article',
   //文章id获取顾问
   "get_article_uid": so_prefix + 'article/getUid',
-  //首席顾问列表
+  //推荐顾问列表
   "top_adviser_list": so_prefix + 'top_adviser_list',
-  //首席顾问国家tab
+  //推荐顾问国家tab
   "getChiefCountryList": so_prefix + 'getChiefCountryList',
+  //品牌共振-新闻列表 http://192.168.201.111:8080/cms/api/brand_res
+  "news_list": prefix_111 + 'brand_res',
   // 顾问个人主页文章统计
   "article_count": so_prefix + 'user/article_count',
   //用户相册
@@ -275,6 +278,8 @@ var apis = {
   "article_top": shequ_prefix + 'article/article_top/',
   //专题接口
   "get_schooltopic": prefix + 'colleges_detail/',
+  //新专题接口
+  "get_new_schooltopic": prefix + 'colleges',
   //首页楼层广告
   "advert":prefix + 'advert',
   //编辑文章详情接口

@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "header_new.html" %}
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/about.css">
+<link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/swiper-3.3.1.min.css">
+<style type="text/css">
+.new_nav_first .nav-right .search-type-box .search-type .search-type-text {
+  font-size: 12px;
+}
+
+  /* banner */
+  .banner{width:100%;height: 500px; overflow:hidden;}
+  .banner .btn-box{width:450px;height:100px;margin:420px auto;}
+  .banner .btn-box a{display: block; font-size: 16px; text-align: center; line-height:37px;color:#fff; float:left; width:136px; height:40px;box-sizing: border-box; border-radius: 5px;background: #fff;border: 1px solid #fff;color: #333;}
+  .banner .btn-box a:hover{background: #d31a29; border: 1px solid #d31a29;color: #fff;}
+  .banner .btn-box .md-btn{margin-left:150px;}
+  /*标题*/
+  .content-title{
+    width: 1000px;
+    margin: 20px auto;
+    text-align: center;
+    color: #bf3436;
+    height: 40px;
+    line-height: 40px;
+  }
+  .content-title p{
+    font-size: 28px;
+  }
+  .content-title span{
+    display: inline-block;
+    border-bottom: 1px solid #bf3436;
+    width: 245px;
+    vertical-align: middle;
+    margin: 0 10px;
+  }
+  .content-title .gray-title{
+    font-size: 16px;
+    color: #bbb;
+    height: 20px;
+    line-height: 20px;
+  }
+  /*学校介绍*/
+  .content2{
+    width: 1000px;
+    margin: 0 auto;
+    padding-top: 30px;
+  }
+  .content2-img{
+    width: 280px;
+    float: left;
+  }
+  .content2-txt{
+    width: 720px;
+    float: left;
+    font-size: 16px;
+    line-height: 25px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    color: #666;
+  }
+  /*排名优势*/
+  .content1{
+    width: 1000px;
+    margin: 40px auto;
+  }
+  .content1>ul{
+    margin-top: 20px;
+    margin-bottom:20px;
+  }
+  .content1>ul>li{
+    float: left;
+    margin-left: 34px;
+  }
+  .content1 p{
+    font-size: 16px;
+    color: #666;
+    line-height: 25px;
+    padding: 5px 20px;
+  }
+  .content3{
+    width: 1000px;
+    margin: 40px auto;
+    font-size: 16px;
+    line-height: 25px;
+    color: #666;
+  }
+  .baoming{
+    padding-top: 30px;
+    font-size: 40px;
+    height: 50px;
+    color: #fff;
+    text-align: center;
+  }
+  .baoming-form{
+    width: 1000px;
+    height: 180px;
+    margin: 0 auto;
+  }
+  .form-content{
+    margin: 0 auto;
+    width: 1180px;
+    height: 80px;
+    margin-left: 11px;
+    /* background: #fff; */
+  }
+  .form-content input{
+    width: 130px;
+    height: 22px;
+    border: 1px solid #acacac;
+  }
+  .form-content>div{
+    margin-top: 25px;
+    margin-left: 40px;
+    float: left;
+  }
+  .submitId{
+    display: inline-block;
+    width: 140px;
+    height: 34px;
+    background: #f61546;
+    text-align: center;
+    color: #fff;
+    line-height: 35px;
+    border-radius: 60px;
+    font-size: 16px;
+  }
+  .jie {
+      background: url({{helper.cdnhost}}/assets/img/about/middle_1.png);
+      width: 1200px;
+      height: 543px;
+      margin: 0 auto;
+  }
+  .jie img{
+      width: 360px;
+      height: 420px;
+      border: 1px solid #000;
+      margin: 40px 80px 40px 60px;
+      float: left;
+  }
+  .jie_rigth {
+      width: 655px;
+      margin: 80px 40px 40px 0px;
+      float: left;
+  } 
+  .jie_rigth_title{
+      background: url({{helper.cdnhost}}/assets/img/about/middle_1_titel.png);
+      width: 155px;
+      height: 36px;
+      margin: 0 auto;
+  }
+  .jie_rigth_con {
+      width: 655px;
+      margin-top: 30px;
+      font-size: 16px;
+      color: #333;
+      line-height: 36px;
+      max-height: 330px;
+      overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:9;
+  }
+  .you_title {
+      background: url({{helper.cdnhost}}/assets/img/about/middle_2_title.png);
+      width: 153px;
+      height: 37px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+  }
+  .you_con {
+      background: #fafafa;
+      width: 1200px;
+      height: 315px;
+      margin: 0 auto;
+  }
+  .you_con img {
+      width: 344px;
+      height: 250px;
+      float: left;
+      margin-top: 30px;
+      border: #000 1px solid;
+  }
+  .you_con_le{
+      width: 730px;
+      height: auto;
+      margin: 40px 30px 40px 40px;
+      float: left;
+  }
+  .you_con_le_ {
+      display: inline-block;
+      font-size: 16px;
+      color: #333;
+      line-height: 28px;
+  }
+  .you_con_le_dian {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: #c13232;
+      border-radius: 50%;
+      margin-right: 6px;
+  }
+  .kai_title {
+      background: url({{helper.cdnhost}}/assets/img/about/middle_3_title.png);
+      width: 155px;
+      height: 34px;
+      margin: 0 auto;
+      margin-bottom: 30px;
+  }
+  .canzan-slide {
+      position: relative;
+      width: 242px;
+      height: 270px;
+      margin-right: 28px;
+      float: left;
+  }
+  .canzan-slide a {
+      width: 242px;
+      height: 270px;
+      margin: 0px;
+  }
+  .canzan-slide a img {
+      width: 240px;
+      height: 188px;
+      border: 1px #000 solid;
+  }
+  .kai_con {
+      width: 202px;
+      height: 40px;
+      background: #c13232;
+      color: #fff;
+      line-height: 20px;
+      position: absolute;
+      bottom: 0px;
+      padding: 20px;
+  }
+  .kai_con_chang {
+      width: 202px;
+      height: auto;
+      background: #c13232;
+      color: #fff;
+      line-height: 20px;
+      position: absolute;
+      bottom: 0px;
+      padding: 20px;
+  }
+  .xue_con {
+      width: 332px;
+      height: 495px;
+      float: left;
+      background: url({{helper.cdnhost}}/assets/img/about/middle_4.png);
+      margin-right: 30px;
+      padding: 0 20px;
+      text-align: center;
+  }
+  .xue_con1 {
+    background: url({{helper.cdnhost}}/assets/img/about/middle_44_1.png);
+  }
+  .xue_con2 {
+    background: url({{helper.cdnhost}}/assets/img/about/middle_44_2.png);
+  }
+  .xue_con3 {
+    background: url({{helper.cdnhost}}/assets/img/about/middle_44_3.png);
+  }
+  .xue_con_title{
+      background: url({{helper.cdnhost}}/assets/img/about/middle_4_1.png);
+      width: 155px;
+      height: 35px;
+      margin: 0 auto;
+      margin-top: 100px;
+  }
+  .xue_con_title2{
+      background: url({{helper.cdnhost}}/assets/img/about/middle_4_2.png);
+      width: 195px;
+      height: 35px;
+      margin: 0 auto;
+      margin-top: 100px;
+  }
+  .xue_con_title3{
+      background: url({{helper.cdnhost}}/assets/img/about/middle_4_3.png);
+      width: 273px;
+      height: 35px;
+      margin: 0 auto;
+      margin-top: 100px;
+  }
+  .xue_con_con {
+      width: 332px;
+      font-size: 16px;
+      color: #333;
+      line-height: 36px;
+      margin-top: 30px;
+      max-height: 208px;
+      overflow: hidden;text-overflow: ellipsis;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;
+  }
+  .form-content span {
+      font-size: 16px;
+      color: #333;
+      margin-right: 14px;
+  }
+  .form-content input, .form-content select{
+      width: 180px;
+      height: 34px;
+      border: 1px #dcdcdc solid;
+      border-radius: 4px;
+  }
+</style>
+</head>
+<body style="background: #fff;">
+<div style="display: none;">
+    <input type="hidden" id="relationId" value="18_站内院校_college_form">
+</div>
+{% include "widget/common_hide/common_hide.html"%}
+{% include "widget/top/top.html" %}
+
+{% import "widget/new_nav_first/common_nav.html" as common_nav %}
+{{ common_nav.common_nav(tdk,helper) }}
+
+<!------------------这里写body的所有内容，上下为header,footer公共样式，照如此粘贴即可。-------------------->
+
+<!-- banner图 -->
+
+<div class="banner" style="background-image:url({{schooltopic.list.sch_background_map}});height: 500px; overflow:hidden;background-size:cover;background-position: center center">
+  <div class="wrap1">
+    <div class="btn-box">
+      <a href="http://vip.jjl.cn/index.php?m=content&c=index&a=consult" target="_blank">在线咨询</a>
+      <a class="md-btn" href="http://www.jjl.cn/about/contact.html" target="_blank">我要面谈</a>
+    </div>
+  </div>
+</div>
+<!-- 学校简介 -->
+<div class="dui-layout-lg" style="margin-top: 50px;">
+    <div class="jie clearfix">
+        <img src="{{schooltopic.list.sch_introduce_map}}" alt="">
+        <div class="jie_rigth">
+            <div class="jie_rigth_title"></div>
+            <div class="jie_rigth_con">{{schooltopic.list.content | safe}}</div>
+        </div>
+    </div>
+</div>
+<!-- 优势介绍 -->
+<div class="dui-layout-lg" style="margin-top: 50px;">
+    <div class="you_title"></div>
+    <div class="you_con clearfix">
+        <div class="you_con_le" style="overflow-y: scroll;overflow-x: hidden;height: 240px;">
+            {% for item in schooltopic.list.advantage %}
+            <div class="you_con_le_">
+                <i class="you_con_le_dian"></i><!--<span style="color: #c13232">性价比高：</span></span>-->
+                <span>{{ item }}</span>
+            </div><br/>
+            {% endfor %}
+        </div>
+        <img src="{{schooltopic.list.advantage_map}}" alt="">
+    </div>
+</div>
+<script>
+    $(function () {
+        //轮播图初始化
+        var mySwiper = new Swiper ('.swiper-container', {
+            direction: 'vertical',
+            loop: true,
+            slidesPerView: 4,
+            autoplay : 5000,
+        });
+        $('.arrow-right').click(function(){
+            // console.log('arrow-right')
+            mySwiper.swipeNext(); 
+        })
+        $('.arrow-left').click(function(){
+            // console.log('arrow-left')
+            mySwiper.swipePrev();
+        })
+        $('.swiper-wrapper').on('mouseover', '.canzan-slide', function (e) {
+            e.preventDefault();
+            var id = $(this).data('index');
+            var addEvent = function(element,type,callback){
+                if(element.addEventListener){
+                    element.addEventListener(type,callback,false);
+                }else if(element.attachEvent){
+                    element.attachEvent('on' + type,callback)
+                }
+            }
+            var canzan_slide = document.getElementsByClassName('canzan-slide');
+            addEvent(canzan_slide,'touchstart',function(){
+                if ($('#kai_con_' + id).css('display') == 'block') {
+                    $("#kai_con_chang_" + id).css("display", "none");
+                }
+                else {
+                    $("#kai_con_chang_" + id).css("display", "block");
+                }
+            });
+            var des = $('#kai_con_' + id).attr('data-des')
+            // console.log('66666666666',des)
+            var blen = des.replace(/[\u0391-\uFFE5]/g,"aa").length;
+            // console.log('show++++++++++', blen)
+            if (blen > 30) {
+                // console.log('aaaa', id)
+                $(this).find("#kai_con_chang_" + id).show();
+                $(this).find("#kai_con_" + id).hide();
+            }
+        })
+        $('.swiper-wrapper').on('mouseout', '.canzan-slide', function (e) {
+            e.preventDefault();
+            var id = $(this).data('index');
+            var addEvent = function(element,type,callback){
+                if(element.addEventListener){
+                    element.addEventListener(type,callback,false);
+                }else if(element.attachEvent){
+                    element.attachEvent('on' + type,callback)
+                }
+            }
+            var canzan_slide = document.getElementsByClassName('canzan-slide');
+            addEvent(canzan_slide,'touchstart',function(){
+                if ($('#kai_con_' + id).css('display') == 'block') {
+                    $("#kai_con_chang_" + id).css("display", "none");
+                    $("#kai_con_" + id).css("display", "block");
+                }
+                else {
+                    $("#kai_con_chang_" + id).css("display", "block");
+                    $("#kai_con_" + id).css("display", "none");
+                }
+            });
+            console.log('hide')
+            $(this).find("#kai_con_chang_" + id).hide();
+            $(this).find("#kai_con_" + id).show();
+        })
+    });
+    function onshow(id) {
+        
+    }
+    function onhide(id) {
+        
+    }
+    
+    
+    </script>
+<!-- 开设课程 -->
+<div class="dui-layout-lg" style="margin-top: 50px;">
+    <div class="kai_title"></div>
+    <div class="branch-expert-lunbo" style="position: relative;height:270px;">
+        <a class="arrow-left arrow-btn" style="display:block;"></a>
+        <a class="arrow-right arrow-btn" style="display:block;"></a>
+        <div class="swiper-container" style="width: 1055px;margin: 0 auto;height:270px;">
+            <div class="swiper-wrapper">
+                {% for k, init in schooltopic.list.course_images %}
+                <div class="swiper-slide clearfix">
+                    
+                    <div class="canzan-slide" data-index="{{loop.index}}" {% if loop.index % 4 == 0 %} style="margin-right: 0px;" {% endif %}>
+                        <a href="javascript: void(0);"data-pid="{{item.pid}}" class="top-item" style="color: #333333;">
+                            <img src="{{ init.url }}" alt="{{ init.alt }}"/>
+                            {% if schooltopic.list.course_des[k].length > 30 %}
+                            <div id="kai_con_{{loop.index}}" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] | ellipsis(30) }}</div>
+                            {% else %}
+                            <div id="kai_con_{{loop.index}}" class="kai_con" style="display:block;" data-des="{{ schooltopic.list.course_des[k] }}">{{ schooltopic.list.course_des[k] }}</div>
+                            {% endif %}
+                            <div id="kai_con_chang_{{loop.index}}" class="kai_con_chang" style="display:none;">{{ schooltopic.list.course_des[k] }}</div>
+                        </a>
+                    </div>
+                   
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 学费信息 -->
+<div class="dui-layout-lg" style="margin-top: 50px;">
+    <div class="clearfix" style="width:1200px;margin: 0 auto;">
+        <div class="xue_con xue_con1">
+            <div class="xue_con_title"></div>
+            <div class="xue_con_con">{{schooltopic.list.tuition_info}}</div>
+        </div>
+        <div class="xue_con xue_con2">
+            <div class="xue_con_title2"></div>
+            <div class="xue_con_con">{{schooltopic.list.scholarship_info}}</div>
+        </div>
+        <div class="xue_con xue_con3" style="margin-right: 0px;">
+            <div class="xue_con_title3"></div>
+            <div class="xue_con_con">{{schooltopic.list.apply_advantage}}</div>
+        </div>
+    </div>
+</div>
+<!--报名表单-->
+<div class="bg" style="margin-top: 50px;">
+  <div class="baoming" style="background: url({{helper.cdnhost}}/assets/img/about/middle_5_title.png);width: 151px;height: 35px;margin: 0 auto;padding: 0"></div>
+  <div class="baoming-form" style="background: url({{helper.cdnhost}}/assets/img/about/middle_5.png);width: 1200px;height: 132px;margin-top: 65px;">
+    <div class="form-content clearfix">
+      <div><span>您的姓名：</span><input type="text"  id="username" name="username"/></div>
+      <div><span>您的手机：</span><input type="tel" id="tel" name="tel"/></div>
+      <div>
+        <span>意向国家：</span>
+        <select id="firstCountry" name="city" style="overflow-y:auto;padding: 0 20px 0 10px;height: 37px;">
+            <option value='1'>美国</option>
+            <option value='2'>英国</option>
+            <option value='3'>加拿大</option>
+            <option value='4'>澳大利亚</option>
+            <option value='5'>新西兰</option>
+            <option value='50'>韩国</option>
+            <option value='51'>日本</option>
+            <option value='101'>乌克兰</option>
+            <option value='100'>俄罗斯</option>
+            <option value='108'>爱尔兰</option>
+            <option value='111'>意大利</option>
+            <option value='112'>西班牙</option>
+            <option value='102'>白俄罗斯</option>
+            <option value='52'>新加坡</option>
+            <option value='53'>马来西亚</option>
+            <option value='54'>中国香港</option>
+            <option value='55'>中国澳门</option>
+            <option value='110'>丹麦</option>
+            <option value='103'>德国</option>
+            <option value='104'>法国</option>
+            <option value='105'>挪威</option>
+            <option value='106'>瑞典</option>
+            <option value='107'>芬兰</option>
+            <option value='109'>荷兰</option>
+            <option value='113'>瑞士</option>
+            <option value='114'>奥地利</option>
+        </select>
+      </div>
+      <div class="submitId" id="submitId" style="cursor: pointer">在线预约</div>
+      <div style="display: none;">
+        <input type="hidden" id="relationId" value="34">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% include "widget/new_footer/common_footer.html" %}
+{% import "widget/new_slide/new_slide.html" as  slide %}
+{{slide.leyu_slide("XC_SCHOOLTOPIC_SEAT10",helper) }}
+<!-- 秋展浮层 -->
+{% include "widget2/active_popup/active_popup.html" %}
+<script src="{{helper.cdnhost}}/assets/js/nav_common.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/online_evaluation.js" ></script>
+<script src="{{helper.cdnhost}}/dep/js/schooltopic/Newform123.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
+
+</body>
+</html>

@@ -54,14 +54,14 @@ $(function(){
     }else{
 
       $("#name-num").html('');
-    };
+    }
     if(!validate_leyu.phone($.trim($("#phone-slide").val()))){
       //判断手机号
       $('#phoneTip').html("您输入的手机号不正确");
       return false;
     }else{
       $('#phoneTip').html('');
-    };
+    }
     //意向国家
     if($("#department").val()==''){
       // 判断国家
@@ -69,14 +69,14 @@ $(function(){
       return false;
     }else{
       $("#department-num").html('');
-    };
+    }
     //所属区域
     if($("#slide-area").val()==''){
       $("#city-num").html("选择所属区域");
       return false;
     }else{
       $("#city-num").html('');
-    };
+    }
 
     //留学需求
     if($("#context").val()==''){
@@ -84,8 +84,31 @@ $(function(){
       return false;
     }else{
       $("#context-num").html('');
-    };
-    var h = window.location.href;
+    }
+    var grUserId = cookie('gr_user_id');
+    // var h = window.location.href;
+    var h = cookie('referweb'); // 获取来源url
+    if (h == null || h == undefined) {
+      h = window.location.href;
+      if (h.match(/[~|《|<|>|'|!|@|#|$|%|^|*|(|)|+]/)) {
+        alert('含有特殊字符')
+        return false;
+      } else {
+        if(document.referrer){
+          try{
+            var refer = document.referrer;
+            console.log(3333);
+            if(refer){
+              h = refer
+            }
+          }catch(e){
+            console.log('获取refer异常');
+          };
+        } else {
+          h = window.location.href;
+        }
+      }
+    }
     $.ajax({
       url: ajaxUrlPrefix.nodeapi + '/cmsapi/assessment',
       type:'GET',
@@ -99,7 +122,8 @@ $(function(){
         need:$("#context").val(),
         dataType: '3',
         source: h,
-        relationId: 21
+        relationId: 21,
+        grUserId: grUserId
       },
       success:function(msg){
         console.log(msg);

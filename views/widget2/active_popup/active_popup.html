@@ -134,12 +134,13 @@
             </div>
         </div>
           <div class="act-code-btn">立即预约</div>
+          <div class="act-pop-x-btn" ></div>
     </div>
     <!-- <div class="act-pop-gift" >获取优惠券</div> -->
     <!-- <a href="http://www.jjl.cn/zt/2018/20180528_xiazhan/beijing.shtml" class="act-pop-detail" >
         <img src="{{helper.cdnhost}}/assets/img/popup_detail_b.png" />
     </a> -->
-    <div class="act-pop-x-btn" ></div>
+    
     {#<span class="act-pop-time">
         活动时间：2018年6月23日至2018年8月25日
     </span>#}
@@ -247,7 +248,33 @@
             var phone = $.trim($("#act-phone").val());
             var country = $('.act-pop-sel-val').attr('data-id');
             var city = cookie('currentarea');
-            var h = window.location.href;
+            if (city == null) {
+                city = 1;
+            }
+            // var h = window.location.href;
+            var h = cookie('referweb'); // 获取来源url
+            var grUserId = cookie('gr_user_id');
+            if (h == null || h == undefined) {
+                h = window.location.href;
+                if (h.match(/[~|《|<|>|'|!|@|#|$|%|^|*|(|)|+]/)) {
+                    alert('含有特殊字符')
+                    return false;
+                } else {
+                    if(document.referrer){
+                        try{
+                            var refer = document.referrer;
+                            console.log(3333);
+                            if(refer){
+                                h = refer
+                            }
+                        }catch(e){
+                            console.log('获取refer异常');
+                        };
+                    } else {
+                        h = window.location.href;
+                    }
+                }
+            }
             if(actName== ''){
                 layer.msg('请输入姓名');
                 return false;
@@ -271,7 +298,8 @@
                     city: city,
                     dataType: '12',
                     source: h,
-                    relationId: 22
+                    relationId: 22,
+                    grUserId: grUserId
                 },
                 success:function(msg){
                     console.log(msg)

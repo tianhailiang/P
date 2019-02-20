@@ -220,6 +220,7 @@
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/online_evaluation.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+<script src="{{helper.cdnhost}}/dep/js/publicParamSubOrther.js"></script>
 </body>
 
 <script>
@@ -238,6 +239,8 @@
       //     //   },1000);
       //     return false;
       // }
+      var grUserId = cookie('gr_user_id');
+      getUrlSetCookieByParam ('growingioId',grUserId);
      var jobnum = $('#openchat_'+id).attr('data-new_job_number')
      console.log('job',jobnum)
      openJesongChatByCus(1,jobnum)

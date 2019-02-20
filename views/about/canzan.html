@@ -46,11 +46,25 @@
 <div class="dui-layout-lg clearfix ">
   {% for item in canzanlist.list %}
    <div class="canzan dui-layout-col4 dui-box-shadow">
+     {% if item.baiduurl == '1' %}
      <a target="_blank"  href="{{ helper.urlgen( item.uid | string ) }}" rel="nofollow">
         <img src="{{ helper.avaterimg(item.uid, 'big', item.status,item.version) }}" alt="{{ item.realname }}">
-      <p class="canzan-p" style="color: #333"><span>{{ item.job_number | ellipsis(17) }}</span></p>
-      <p class="canzan-p2" style="color: #333">简介: {{ item.introduce | ellipsis(49) }}</p>
+        <p class="canzan-p" style="color: #333"><span>{{ item.job_number | ellipsis(17) }}</span></p>
+        <p class="canzan-p2" style="color: #333">简介: {{ item.introduce | ellipsis(49) }}</p>
      </a>
+     {% elif item.baiduurl == '2' %}
+     <a href="javascript:void(0);" rel="nofollow">
+        <img src="{{ helper.avaterimg(item.uid, 'big', item.status,item.version) }}" alt="{{ item.realname }}">
+        <p class="canzan-p" style="color: #333"><span>{{ item.job_number | ellipsis(17) }}</span></p>
+        <p class="canzan-p2" style="color: #333">简介: {{ item.introduce | ellipsis(49) }}</p>
+     </a>
+     {% else %}
+     <a target="_blank"  href="{{ item.baiduurl }}" rel="nofollow">
+        <img src="{{ helper.avaterimg(item.uid, 'big', item.status,item.version) }}" alt="{{ item.realname }}">
+        <p class="canzan-p" style="color: #333"><span>{{ item.job_number | ellipsis(17) }}</span></p>
+        <p class="canzan-p2" style="color: #333">简介: {{ item.introduce | ellipsis(49) }}</p>
+     </a>
+     {% endif %}
    </div>
   {% endfor %}
 </div>

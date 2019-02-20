@@ -123,8 +123,6 @@ exports = module.exports = function (app) {// routes
   app.get('/article/:id', controller.article_detail);
   //文章评论接口
   app.post('/soapi/reviewArticle',controller.reviewArticle);
-  //案列发布页面
-  app.get('/advisor_center/postcase',controller.release_case);
   //参赞 我的相册
   app.get('/canzan_center/album', controller.center_photo);
   //顾问 我的相册
@@ -169,10 +167,6 @@ exports = module.exports = function (app) {// routes
   app.get("/canzan_center/postarticle/:id",controller.edit_article);
   //草稿发布文章接口
   app.post("/soapi/draft_to_article",controller.draft_to_article);
-  //顾问编辑案列
-  app.get("/advisor_center/postcase/:id",controller.edit_case);
-  //参赞编辑案列
-  app.get("/advisor_center/postcase/:id",controller.edit_case);
   //收藏加载更多
   app.get('/soapi/favList',controller.favList);
   //图片库接口
@@ -253,25 +247,26 @@ exports = module.exports = function (app) {// routes
   app.get("/about/culture/:id",about.culture_detail);//金色力量底页
   app.get("/act_form",controller.act_form);//活动表单
   app.get('/employment',about.employment);//招聘页面
+  app.get('/middle/:id', about.middle); // 中学页面
+  app.get('/university/:id', about.university); // 大学页面
+  app.get('/grouptemplate/:id', about.grouptemplate); // 集团页面
 
   //文章置顶接口
   app.post('/article_top', controller.article_top);
   app.get('/param_code',login.param_code);//生成图片验证码
   app.post('/session_param_code',login.check_param_code)//验证图片验证码
   app.get('/ad_tongji', login.ad_tongji);//广告位统计登录
-  app.get("/schooltopic/:id",about.schooltopic);//金色力量底页
+  app.get("/schooltopic/:id",about.schooltopic);//院校专题url
   app.get("/liuxue_item_nunjucks",controller.liuxue_item_nunjucks);//首页代码段落
-  app.get('/soapi/chiefmore',controller.chiefmore); // 首席顾问加载更多
-  app.get(/chief(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.chief); //首席顾问
+  app.get('/soapi/chiefmore',controller.chiefmore); // 推荐顾问加载更多
+  app.get(/chief(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.chief); //推荐顾问
+  app.get('/news', controller.news); // 品牌共振-新闻列表
+  app.get('/soapi/newsmore', controller.newsmore); // 品牌共振-新闻列表加载更多
+
 
   //意见反馈
   app.post('/userFeedback',controller.userFeedback)
   app.get('/sendSms',controller.sendsms);//活动 发送短信验证码
   app.get('/getCoupons',controller.getCoupons);//获取优惠券
-  app.get('/pdf',function(req,res,next){
-    console.log('pdf')
-    var data ={};
-    res.render('pdf',data)
-  })
   app.get('/gwzs', login.gwzs); // 顾问个人主页确认文章数
 };
