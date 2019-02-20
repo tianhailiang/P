@@ -143,7 +143,7 @@ function isHiddenNode(node) {
 	}
 }
 
-//http://blogs.msdn.com/b/aoakley/archive/2003/11/12/49645.aspx
+////blogs.msdn.com/b/aoakley/archive/2003/11/12/49645.aspx
 function HTMLDecode(str) {
 	var div = document.createElement('div');
 	div.style.display="none";
@@ -153,7 +153,7 @@ function HTMLDecode(str) {
 	return decoded;
 }
 
-// HTMLEncode (@author Ulrich Jensen, http://www.htmlescape.net)
+// HTMLEncode (@author Ulrich Jensen, //www.htmlescape.net)
 var hex = new Array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f');
 
 function HTMLEncode(originalText) {

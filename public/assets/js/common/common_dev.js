@@ -3,13 +3,13 @@
  */
 ;(function (global, document) {
     var ajaxUrlPrefix = global.ajaxUrlPrefix = {
-        cdnhost: 'http://www.jjl.cn:4000',
-        imageshost: 'http://images.jjl.cn',
-        nodeapi: 'http://api.jjl.cn:3600'
+        cdnhost: '//www.jjl.cn:4000',
+        imageshost: '//images.jjl.cn',
+        nodeapi: '//api.jjl.cn:3600'
     };
     var js_api_config = global.js_api_config = {
         version: 'development',
-        wwhost: 'http://www.jjl.cn',
+        wwhost: '//www.jjl.cn',
         domain: '.jjl.cn'
     }
 })(this, document);

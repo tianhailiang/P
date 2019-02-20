@@ -1,5 +1,5 @@
 /*! jQuery UI - v1.11.4+CommonJS - 2015-08-28
-* http://jqueryui.com
+* //jqueryui.com
 * Includes: widget.js
 * Copyright 2015 jQuery Foundation and other contributors; Licensed MIT */
 
@@ -22,13 +22,13 @@
 }(function( $ ) {
 /*!
  * jQuery UI Widget 1.11.4
- * http://jqueryui.com
+ * //jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
  * Released under the MIT license.
- * http://jquery.org/license
+ * //jquery.org/license
  *
- * http://api.jqueryui.com/jQuery.widget/
+ * //api.jqueryui.com/jQuery.widget/
  */
 
 
@@ -47,7 +47,7 @@ $.cleanData = (function( orig ) {
 					$( elem ).triggerHandler( "remove" );
 				}
 
-			// http://bugs.jquery.com/ticket/8235
+			// //bugs.jquery.com/ticket/8235
 			} catch ( e ) {}
 		}
 		orig( elems );
@@ -311,7 +311,7 @@ $.Widget.prototype = {
 			.unbind( this.eventNamespace )
 			.removeData( this.widgetFullName )
 			// support: jquery <1.6.3
-			// http://bugs.jquery.com/ticket/9413
+			// //bugs.jquery.com/ticket/9413
 			.removeData( $.camelCase( this.widgetFullName ) );
 		this.widget()
 			.unbind( this.eventNamespace )

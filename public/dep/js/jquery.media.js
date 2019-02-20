@@ -1,11 +1,11 @@
 /*
  * jQuery Media Plugin for converting elements into rich media content.
  *
- * Examples and documentation at: http://malsup.com/jquery/media/
+ * Examples and documentation at: //malsup.com/jquery/media/
  * Copyright (c) 2007-2010 M. Alsup
  * Dual licensed under the MIT and GPL licenses:
- * http://www.opensource.org/licenses/mit-license.php
- * http://www.gnu.org/licenses/gpl.html
+ * //www.opensource.org/licenses/mit-license.php
+ * //www.gnu.org/licenses/gpl.html
  *
  * @author: M. Alsup
  * @version: 0.99 (05-JUN-2013)
@@ -133,11 +133,11 @@ $.fn.media.defaults = {
 	flashVersion:	'7',	// required flash version
 	expressInstaller: null,	// src for express installer
 
-	// default flash video and mp3 player (@see: http://jeroenwijering.com/?item=Flash_Media_Player)
+	// default flash video and mp3 player (@see: //jeroenwijering.com/?item=Flash_Media_Player)
 	flvPlayer:	 'mediaplayer.swf',
 	mp3Player:	 'mediaplayer.swf',
 
-	// @see http://msdn2.microsoft.com/en-us/library/bb412401.aspx
+	// @see //msdn2.microsoft.com/en-us/library/bb412401.aspx
 	silverlight: {
 		inplaceInstallPrompt: 'true', // display in-place install prompt?
 		isWindowless:		  'true', // windowless mode (false for wrapping markup)
@@ -157,22 +157,22 @@ $.fn.media.defaults.players = {
 		title:		 'Flash',
 		types:		 'flv,mp3,swf',
 		mimetype:	 'application/x-shockwave-flash',
-		pluginspage: 'http://www.adobe.com/go/getflashplayer',
+		pluginspage: '//www.adobe.com/go/getflashplayer',
 		ieAttrs: {
 			classid:  'clsid:d27cdb6e-ae6d-11cf-96b8-444553540000',
 			type:	  'application/x-oleobject',
-			codebase: 'http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=' + $.fn.media.defaults.flashVersion
+			codebase: '//fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=' + $.fn.media.defaults.flashVersion
 		}
 	},
 	quicktime: {
 		name:		 'quicktime',
 		title:		 'QuickTime',
 		mimetype:	 'video/quicktime',
-		pluginspage: 'http://www.apple.com/quicktime/download/',
+		pluginspage: '//www.apple.com/quicktime/download/',
 		types:		 'aif,aiff,aac,au,bmp,gsm,mov,mid,midi,mpg,mpeg,mp4,m4a,psd,qt,qtif,qif,qti,snd,tif,tiff,wav,3g2,3gp',
 		ieAttrs: {
 			classid:  'clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B',
-			codebase: 'http://www.apple.com/qtactivex/qtplugin.cab'
+			codebase: '//www.apple.com/qtactivex/qtplugin.cab'
 		}
 	},
 	realplayer: {
@@ -180,7 +180,7 @@ $.fn.media.defaults.players = {
 		title:		  'RealPlayer',
 		types:		  'ra,ram,rm,rpm,rv,smi,smil',
 		mimetype:	  'audio/x-pn-realaudio-plugin',
-		pluginspage:  'http://www.real.com/player/',
+		pluginspage:  '//www.real.com/player/',
 		autoplayAttr: 'autostart',
 		ieAttrs: {
 			classid: 'clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA'
@@ -191,7 +191,7 @@ $.fn.media.defaults.players = {
 		title:		  'Windows Media',
 		types:		  'asx,asf,avi,wma,wmv',
 		mimetype:	  isFirefoxWMPPluginInstalled() ? 'application/x-ms-wmp' : 'application/x-mplayer2',
-		pluginspage:  'http://www.microsoft.com/Windows/MediaPlayer/',
+		pluginspage:  '//www.microsoft.com/Windows/MediaPlayer/',
 		autoplayAttr: 'autostart',
 		oUrl:		  'url',
 		ieAttrs: {
@@ -220,7 +220,7 @@ $.fn.media.defaults.players = {
 //
 
 
-// detection script for FF WMP plugin (http://www.therossman.org/experiments/wmp_play.html)
+// detection script for FF WMP plugin (//www.therossman.org/experiments/wmp_play.html)
 // (hat tip to Mark Ross for this script)
 function isFirefoxWMPPluginInstalled() {
 	var plugs = navigator.plugins || [];

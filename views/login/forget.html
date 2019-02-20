@@ -148,7 +148,7 @@
           <h4>第三方快速登录：</h4>
           <div class="bdsharebuttonbox" id="fx" style="float: left">
             <img src="{{helper.cdnhost}}/assets/img/weibo_login.png" alt="" id="weibo"/>
-            <a target="_blank"  href="http://ucapi.51daxuetong.cn/api/index.php?m=weixin_login&h=http://www.51daxuetong.cn" >
+            <a target="_blank"  href="//ucapi.51daxuetong.cn/api/index.php?m=weixin_login&h=//www.51daxuetong.cn" >
               <img src="{{helper.cdnhost}}/assets/img/weixin_login.png" alt=""/>
             </a>
             <img src="{{helper.cdnhost}}/assets/img/QQ_login.png" alt="" id="qq"/>
@@ -288,12 +288,12 @@
     })
 
     $('#weibo').on('click', function () {
-      var A = window.open("https://ucapi.jjl.cn/api/index.php?m=sina_login&h=https://www.jjl.cn", "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      var A = window.open("//ucapi.jjl.cn/api/index.php?m=sina_login&h=//www.jjl.cn", "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
     })
     $('#qq').on('click', function () {
       //以下为按钮点击事件的逻辑。注意这里要重新打开窗口
       //否则后面跳转到QQ登录，授权页面时会直接缩小当前浏览器的窗口，而不是打开新窗口
-      var A = window.open("https://ucapi.jjl.cn/api/index.php?m=qq_login&h=https://www.jjl.cn", "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+      var A = window.open("//ucapi.jjl.cn/api/index.php?m=qq_login&h=//www.jjl.cn", "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
     })
 
   })

@@ -2564,7 +2564,7 @@ showdown.subParser('makehtml.encodeAmpsAndAngles', function (text, options, glob
   text = globals.converter._dispatch('makehtml.encodeAmpsAndAngles.before', text, options, globals).getText();
 
   // Ampersand-encoding based entirely on Nat Irons's Amputator MT plugin:
-  // http://bumppo.net/projects/amputator/
+  // //bumppo.net/projects/amputator/
   text = text.replace(/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/g, '&amp;');
 
   // Encode naked <'s
@@ -3405,7 +3405,7 @@ showdown.subParser('makehtml.italicsAndBold', function (text, options, globals) 
     // These must come last in case there's a [link text][1] or [link text](/foo)
     text = showdown.subParser('makehtml.links.referenceShortcut')(text, options, globals);
 
-    // 4. Handle angle brackets links -> `<http://example.com/>`
+    // 4. Handle angle brackets links -> `<//example.com/>`
     // Must come after links, because you can use < and > delimiters in inline links like [this](<url>).
     text = showdown.subParser('makehtml.links.angleBrackets')(text, options, globals);
 
@@ -3539,7 +3539,7 @@ showdown.subParser('makehtml.italicsAndBold', function (text, options, globals) 
     var urlRgx  = /<(((?:https?|ftp):\/\/|www\.)[^'">\s]+)>/gi;
     text = text.replace(urlRgx, function (wholeMatch, url, urlStart) {
       var text = url;
-      url = (urlStart === 'www.') ? 'http://' + url : url;
+      url = (urlStart === 'www.') ? '//' + url : url;
       var evt = createEvent(urlRgx, evtRootName + '.captureStart', wholeMatch, text, null, url, null, options, globals);
       return writeAnchorTag(evt, options, globals);
     });
@@ -3629,7 +3629,7 @@ showdown.subParser('makehtml.italicsAndBold', function (text, options, globals) 
       // we copy the treated url to the text variable
       var text = url;
       // finally, if it's a www shortcut, we prepend http
-      url = (urlPrefix === 'www.') ? 'http://' + url : url;
+      url = (urlPrefix === 'www.') ? '//' + url : url;
 
       // url part is done so let's take care of text now
       // we need to escape the text (because of links such as www.example.com/foo__bar__baz)
@@ -3860,7 +3860,7 @@ showdown.subParser('makehtml.lists', function (text, options, globals) {
 
   text = globals.converter._dispatch('lists.before', text, options, globals).getText();
   // add sentinel to hack around khtml/safari bug:
-  // http://bugs.webkit.org/show_bug.cgi?id=11231
+  // //bugs.webkit.org/show_bug.cgi?id=11231
   text += '¨0';
 
   if (globals.gListLevel) {

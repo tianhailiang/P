@@ -4,9 +4,9 @@
 "use strict";
 /*
  jQuery+Bootstrap 校验表单 by Miaoqiyuan.cn
- 原理：http://www.miaoqiyuan.cn/p/jquery-bootstrap-vaild
- 演示：http://www.miaoqiyuan.cn/products/vaild/index.html
- 源码：http://www.miaoqiyuan.cn/products/vaild/jQuery.Vaild.js
+ 原理：//www.miaoqiyuan.cn/p/jquery-bootstrap-vaild
+ 演示：//www.miaoqiyuan.cn/products/vaild/index.html
+ 源码：//www.miaoqiyuan.cn/products/vaild/jQuery.Vaild.js
  */
 (function(jQuery){
   $.extend({

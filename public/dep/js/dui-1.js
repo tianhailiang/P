@@ -820,7 +820,7 @@
 },{}],2:[function(require,module,exports){
 /* ============================================================
  * bootstrap-button.js v2.3.2
- * http://getbootstrap.com/2.3.2/javascript.html#buttons
+ * //getbootstrap.com/2.3.2/javascript.html#buttons
  * ============================================================
  * Copyright 2013 Twitter, Inc.
  *
@@ -828,7 +828,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * //www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -927,7 +927,7 @@
 },{}],3:[function(require,module,exports){
 /* ==========================================================
  * bootstrap-carousel.js v2.3.2
- * http://getbootstrap.com/2.3.2/javascript.html#carousel
+ * //getbootstrap.com/2.3.2/javascript.html#carousel
  * ==========================================================
  * Copyright 2013 Twitter, Inc.
  *
@@ -935,7 +935,7 @@
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * //www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -3942,7 +3942,7 @@ require('./template')
 
   /**
    * Get an element CSS property on the page
-   * Thanks to JavaScript Kit: http://www.javascriptkit.com/dhtmltutors/dhtmlcascade4.shtml
+   * Thanks to JavaScript Kit: //www.javascriptkit.com/dhtmltutors/dhtmlcascade4.shtml
    *
    * @api private
    * @method _getPropValue
@@ -3968,7 +3968,7 @@ require('./template')
 
   /**
    * Provides a cross-browser way to get the screen dimensions
-   * via: http://stackoverflow.com/questions/5864467/internet-explorer-innerheight
+   * via: //stackoverflow.com/questions/5864467/internet-explorer-innerheight
    *
    * @api private
    * @method _getWinSize
@@ -3985,7 +3985,7 @@ require('./template')
 
   /**
    * Add overlay layer to the page
-   * http://stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
+   * //stackoverflow.com/questions/123999/how-to-tell-if-a-dom-element-is-visible-in-the-current-viewport
    *
    * @api private
    * @method _elementInViewport
@@ -4053,7 +4053,7 @@ require('./template')
 
   /**
    * Get an element position on the page
-   * Thanks to `meouw`: http://stackoverflow.com/a/442474/375966
+   * Thanks to `meouw`: //stackoverflow.com/a/442474/375966
    *
    * @api private
    * @method _getOffset
@@ -4087,7 +4087,7 @@ require('./template')
 
   /**
    * Overwrites obj1's values with obj2's and adds obj2's if non existent in obj1
-   * via: http://stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
+   * via: //stackoverflow.com/questions/171251/how-can-i-merge-properties-of-two-javascript-objects-dynamically
    *
    * @param obj1
    * @param obj2
@@ -4243,7 +4243,7 @@ require('./template')
 },{}],10:[function(require,module,exports){
 /* =========================================================
  * bootstrap-modal.js v2.3.2
- * http://getbootstrap.com/2.3.2/javascript.html#modals
+ * //getbootstrap.com/2.3.2/javascript.html#modals
  * =========================================================
  * @file bootstrap-modal.js
  * @brief 弹层dpl，扩展自bootstrap2.3.2
@@ -4882,7 +4882,7 @@ require('./template')
 },{}],13:[function(require,module,exports){
 /* ========================================================
  * bootstrap-tab.js v2.3.2
- * http://getbootstrap.com/2.3.2/javascript.html#tabs
+ * //getbootstrap.com/2.3.2/javascript.html#tabs
  * ========================================================
  * Copyright 2013 Twitter, Inc.
  *
@@ -4890,7 +4890,7 @@ require('./template')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * //www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -5027,7 +5027,7 @@ require('./template')
 
 },{}],14:[function(require,module,exports){
 /*jshint -W054 */
-// use template in underscore: http://underscorejs.org/
+// use template in underscore: //underscorejs.org/
 // By default, Underscore uses ERB-style template delimiters, change the
 // following template settings to use alternative delimiters.
 !function ($) {
@@ -5860,7 +5860,7 @@ require('./template')
 },{}],16:[function(require,module,exports){
 /* ===========================================================
  * bootstrap-tooltip.js v2.3.2
- * http://getbootstrap.com/2.3.2/javascript.html#tooltips
+ * //getbootstrap.com/2.3.2/javascript.html#tooltips
  * Inspired by the original jQuery.tipsy by Jason Frame
  * ===========================================================
  * Copyright 2013 Twitter, Inc.
@@ -5869,7 +5869,7 @@ require('./template')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * //www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -6367,7 +6367,7 @@ require('./template')
 },{}],17:[function(require,module,exports){
 /* ===================================================
  * bootstrap-transition.js v2.3.2
- * http://getbootstrap.com/2.3.2/javascript.html#transitions
+ * //getbootstrap.com/2.3.2/javascript.html#transitions
  * ===================================================
  * Copyright 2013 Twitter, Inc.
  *
@@ -6375,7 +6375,7 @@ require('./template')
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ * //www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -6390,7 +6390,7 @@ require('./template')
   "use strict";
 
 
-  /* CSS TRANSITION SUPPORT (http://www.modernizr.com/)
+  /* CSS TRANSITION SUPPORT (//www.modernizr.com/)
    * ======================================================= */
 
   $(function () {
@@ -6695,7 +6695,7 @@ require('./template')
     value = trim(value);
     urlPattern = /(http|ftp|https):\/\/([\w-]+\.)+[\w-]+\.(com|net|cn|org|me|io|info|xxx)/;
     if (!/^http/.test(value)) {
-      value = 'http://' + value;
+      value = '//' + value;
     }
     return urlPattern.test(value);
   };

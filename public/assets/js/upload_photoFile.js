@@ -1,5 +1,5 @@
 /*
- * zxxFile.js 基于HTML5 文件上传的核心脚本 http://www.zhangxinxu.com/wordpress/?p=1923
+ * zxxFile.js 基于HTML5 文件上传的核心脚本 //www.zhangxinxu.com/wordpress/?p=1923
  * by zhangxinxu 2011-09-12
  */
 

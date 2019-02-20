@@ -44,7 +44,7 @@
           <ul>
             <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/events') }}">大事记</a></li>
             <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('about/cooperation') }}">商务合作</a></li>
-            <li><a target="_blank"  rel="nofollow"   href="http://www.jjl.cn/zt/zhaopin/employment.html">诚聘英才</a></li>
+            <li><a target="_blank"  rel="nofollow"   href="//www.jjl.cn/zt/zhaopin/employment.html">诚聘英才</a></li>
             <li><a target="_blank"  rel="nofollow"   href="{{ helper.urlgen('agreement') }}">使用协议</a></li>
           </ul>
         </div>
@@ -112,7 +112,7 @@
 <script src="{{helper.cdnhost}}/assets/js/sha1.js" type="text/javascript" charset="utf-8"></script>
 <script src="{{helper.cdnhost}}/dep/js/layer-1.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/top.js"></script>
-<script src="http://api.map.baidu.com/getscript?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
+<script src="//api.map.baidu.com/getscript?v=2.0&ak=A1LU7iHS0avqQwPLAxbhKn0UYSQCuRVH"></script>
 <script src="{{helper.cdnhost}}/assets/js/jquery.baiduMap.min.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/showMap.js"></script>
 <script src="{{helper.cdnhost}}/dep/js/refer.js"></script>
@@ -134,7 +134,7 @@ $(function(){
     console.log('hh[1]', hh[3]);
     var hhh = h.split("?");
     console.log('hhh', hhh[1])
-    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'login?h=http:') {
+    if (hh[3] != 'register' && hh[3] != 'forget' && hh[3] != 'login' && hh[3] != 'login?h=') {
       console.log('11111')
 //      window.location.href = '/login?h=' + h
       window.open('/login?h=' + h);
@@ -150,12 +150,12 @@ $(function(){
     }
   }
 </script>
-<script src="http://jesong.jjl.cn/skin.jsp?comp=1&config=181" type="text/javascript"></script>
+<script src="//jesong.jjl.cn/skin.jsp?comp=1&config=181" type="text/javascript"></script>
 <script>
   var _hmt = _hmt || [];
   (function() {
     var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?27e9cf6d25e8551a8ad30712057bde86";
+    hm.src = "//hm.baidu.com/hm.js?27e9cf6d25e8551a8ad30712057bde86";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
   })();
@@ -165,10 +165,10 @@ $(function(){
         var bp = document.createElement('script');
         var curProtocol = window.location.protocol.split(':')[0];
         if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+            bp.src = '//zz.bdstatic.com/linksubmit/push.js';
         }
         else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+            bp.src = '//push.zhanzhang.baidu.com/push.js';
         }
         var s = document.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(bp, s);

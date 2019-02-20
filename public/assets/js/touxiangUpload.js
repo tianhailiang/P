@@ -1,64 +1,64 @@
 /*
- * zxxFile.js »ùÓÚHTML5 ÎÄ¼þÉÏ´«µÄºËÐÄ½Å±¾ http://www.zhangxinxu.com/wordpress/?p=1923
+ * zxxFile.js ï¿½ï¿½ï¿½ï¿½HTML5 ï¿½Ä¼ï¿½ï¿½Ï´ï¿½ï¿½Äºï¿½ï¿½Ä½Å±ï¿½ //www.zhangxinxu.com/wordpress/?p=1923
  * by zhangxinxu 2011-09-12
  */
 
 var ZXXFILE = {
   uid: '',
-  maxfileNum:100, //×î¶àÉÏ´«¼¸ÕÅ
+  maxfileNum:100, //ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½
   num:0,
   uploadNum: 0,
-  fileInput: null,				//html file¿Ø¼þ
-  dragDrop: null,					//ÍÏ×§Ãô¸ÐÇøÓò
-  upButton: null,					//Ìá½»°´Å¥
-  url: "",						//ajaxµØÖ·
-  fileFilter: [],					//¹ýÂËºóµÄÎÄ¼þÊý×é
-  filter: function(files) {		//Ñ¡ÔñÎÄ¼þ×éµÄ¹ýÂË·½·¨
+  fileInput: null,				//html fileï¿½Ø¼ï¿½
+  dragDrop: null,					//ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+  upButton: null,					//ï¿½á½»ï¿½ï¿½Å¥
+  url: "",						//ajaxï¿½ï¿½Ö·
+  fileFilter: [],					//ï¿½ï¿½ï¿½Ëºï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½
+  filter: function(files) {		//Ñ¡ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½Ë·ï¿½ï¿½ï¿½
     return files;
   },
-  onSelect: function() {},		//ÎÄ¼þÑ¡Ôñºó
-  onDelete: function() {},		//ÎÄ¼þÉ¾³ýºó
-  onDragOver: function() {},		//ÎÄ¼þÍÏ×§µ½Ãô¸ÐÇøÓòÊ±
-  onDragLeave: function() {},	//ÎÄ¼þÀë¿ªµ½Ãô¸ÐÇøÓòÊ±
-  onProgress: function() {},		//ÎÄ¼þÉÏ´«½ø¶È
-  onSuccess: function() {},		//ÎÄ¼þÉÏ´«³É¹¦Ê±
-  onFailure: function() {},		//ÎÄ¼þÉÏ´«Ê§°ÜÊ±,
-  onComplete: function() {},		//ÎÄ¼þÈ«²¿ÉÏ´«Íê±ÏÊ±
-  /* ¿ª·¢²ÎÊýºÍÄÚÖÃ·½·¨·Ö½çÏß */
-  //ÎÄ¼þÍÏ·Å
+  onSelect: function() {},		//ï¿½Ä¼ï¿½Ñ¡ï¿½ï¿½ï¿½
+  onDelete: function() {},		//ï¿½Ä¼ï¿½É¾ï¿½ï¿½ï¿½ï¿½
+  onDragOver: function() {},		//ï¿½Ä¼ï¿½ï¿½ï¿½×§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
+  onDragLeave: function() {},	//ï¿½Ä¼ï¿½ï¿½ë¿ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±
+  onProgress: function() {},		//ï¿½Ä¼ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½ï¿½
+  onSuccess: function() {},		//ï¿½Ä¼ï¿½ï¿½Ï´ï¿½ï¿½É¹ï¿½Ê±
+  onFailure: function() {},		//ï¿½Ä¼ï¿½ï¿½Ï´ï¿½Ê§ï¿½ï¿½Ê±,
+  onComplete: function() {},		//ï¿½Ä¼ï¿½È«ï¿½ï¿½ï¿½Ï´ï¿½ï¿½ï¿½ï¿½Ê±
+  /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ */
+  //ï¿½Ä¼ï¿½ï¿½Ï·ï¿½
   funDragHover: function(e) {
     e.stopPropagation();
     e.preventDefault();
     this[e.type === "dragover"? "onDragOver": "onDragLeave"].call(e.target);
     return this;
   },
-  //»ñÈ¡Ñ¡ÔñÎÄ¼þ£¬file¿Ø¼þ»òÍÏ·Å
+  //ï¿½ï¿½È¡Ñ¡ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½fileï¿½Ø¼ï¿½ï¿½ï¿½ï¿½Ï·ï¿½
   funGetFiles: function(e) {
-    // // È¡ÏûÊó±ê¾­¹ýÑùÊ½
+    // // È¡ï¿½ï¿½ï¿½ï¿½ê¾­ï¿½ï¿½ï¿½ï¿½Ê½
     // this.funDragHover(e);
-    // »ñÈ¡ÎÄ¼þÁÐ±í¶ÔÏó
+    // ï¿½ï¿½È¡ï¿½Ä¼ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½
     var files = e.target.files || e.dataTransfer.files;
-    //Ö»ÄÜÉÏ´«Ò»ÕÅ
+    //Ö»ï¿½ï¿½ï¿½Ï´ï¿½Ò»ï¿½ï¿½
     this.fileFilter = this.filter(files);
     this.funDealFiles(this.fileFilter);
     return this;
   },
-  //Ñ¡ÖÐÎÄ¼þµÄ´¦ÀíÓë»Øµ÷
+  //Ñ¡ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ä´ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½
   funDealFiles: function(files) {
-    //Ö´ÐÐÑ¡Ôñ»Øµ÷
+    //Ö´ï¿½ï¿½Ñ¡ï¿½ï¿½Øµï¿½
     for (var i = 0, file; file = this.fileFilter[i]; i++) {
-      //Ôö¼ÓÎ¨Ò»Ë÷ÒýÖµ
+      //ï¿½ï¿½ï¿½ï¿½Î¨Ò»ï¿½ï¿½ï¿½ï¿½Öµ
       file.index = i;
     }
     this.num++;
     this.onSelect(files);
     return this;
   },
-  //ÎÄ¼þÉÏ´«
+  //ï¿½Ä¼ï¿½ï¿½Ï´ï¿½
   funUploadFile: function() {
     var self = this;
     if (location.host.indexOf("sitepointstatic") >= 0) {
-      //·ÇÕ¾µã·þÎñÆ÷ÉÏÔËÐÐ
+      //ï¿½ï¿½Õ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
       return;
     }
     for (var i = 0, file; file = this.fileFilter[i]; i++) {
@@ -74,7 +74,7 @@ var ZXXFILE = {
               self.onProgress(file, e.loaded, e.total);
             }, false);
           }
-          // ÎÄ¼þÉÏ´«³É¹¦»òÊÇÊ§°Ü
+          // ï¿½Ä¼ï¿½ï¿½Ï´ï¿½ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½
           xhr.onreadystatechange = function(e) {
             if (xhr.readyState == 4) {
               if (xhr.status == 200) {
@@ -85,10 +85,10 @@ var ZXXFILE = {
               }
             }
           };
-          // ¿ªÊ¼ÉÏ´«
+          // ï¿½ï¿½Ê¼ï¿½Ï´ï¿½
           xhr.open("POST", self.url, true);
           var formData = new FormData();
-          formData.append("avatar", file);//ÉèÖÃkeyÎªavartar,valueÎªÉÏÊöµÄFile¶ÔÏó
+          formData.append("avatar", file);//ï¿½ï¿½ï¿½ï¿½keyÎªavartar,valueÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Fileï¿½ï¿½ï¿½ï¿½
           formData.append("uid", self.uid);
           xhr.send(formData);
         }
@@ -103,7 +103,7 @@ var ZXXFILE = {
       this.dragDrop.addEventListener("dragleave", function(e) { self.funDragHover(e); }, false);
       this.dragDrop.addEventListener("drop", function(e) { self.funGetFiles(e); }, false);
     }
-    //ÎÄ¼þÑ¡Ôñ¿Ø¼þÑ¡Ôñ
+    //ï¿½Ä¼ï¿½Ñ¡ï¿½ï¿½Ø¼ï¿½Ñ¡ï¿½ï¿½
     if (this.fileInput) {
       var changefn = function (e) {
         self.funGetFiles(e);
@@ -122,7 +122,7 @@ var ZXXFILE = {
         }, false);*/
       }
     }
-    //ÉÏ´«°´Å¥Ìá½»
+    //ï¿½Ï´ï¿½ï¿½ï¿½Å¥ï¿½á½»
     if (this.upButton) {
       var _that = this;
       var uploadfn = function (e) {

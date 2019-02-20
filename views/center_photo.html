@@ -111,7 +111,7 @@
             <div class="right-title clearfix">
                 <div class="tit">我的相册</div>
 <!--                <div class="photo-upload-box">
-                    <form id="uploadForm" method="post" enctype="multipart/form-data" action="http://apis.jjlvip.cn:3600/cmsapi/input_upload">
+                    <form id="uploadForm" method="post" enctype="multipart/form-data" action="//apis.jjlvip.cn:3600/cmsapi/input_upload">
                         <input id="photoImage" type="file" multiple="multiple" name="upload" style="display: none;"/>
                         <label class="album-time tit-time-btn" for="photoImage">
                             <i class="iconfont" style="margin-right: 0px;font-size: 14px;">&#xe6c6;</i>
@@ -540,7 +540,7 @@
         var pageSizeInit = pageLineInit * 4; //第一次请求的相片数量
         var totalCount = '';
         $.ajax({
-            url: '/soapi/get_photos',/*http://test.wecenter.com/?/api/account/album_list*/
+            url: '/soapi/get_photos',/*//test.wecenter.com/?/api/account/album_list*/
             type:'GET',
             data:{
                 u_id: login_ss.uid,

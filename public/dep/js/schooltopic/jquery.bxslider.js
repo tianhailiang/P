@@ -1,11 +1,11 @@
 /**
  * BxSlider v4.1.2 - Fully loaded, responsive content slider
- * http://bxslider.com
+ * //bxslider.com
  *
- * Copyright 2014, Steven Wanderski - http://stevenwanderski.com - http://bxcreative.com
+ * Copyright 2014, Steven Wanderski - //stevenwanderski.com - //bxcreative.com
  * Written while drinking Belgian ales and listening to jazz
  *
- * Released under the MIT license - http://opensource.org/licenses/MIT
+ * Released under the MIT license - //opensource.org/licenses/MIT
  */
 
 ;(function($){

@@ -28,7 +28,7 @@
 		return false;
 	}	
 	function openNoJesongJsChat(cId,params){
-				var url = "http://jesong.jjl.cn/live/" +'chat.do?c='+cId;
+				var url = "//jesong.jjl.cn/live/" +'chat.do?c='+cId;
 				url = url +"&chatUrl="+window.encodeURIComponent(window.location.href);
 				
 				if(typeof params == 'string' &&params.length !=0 ){
