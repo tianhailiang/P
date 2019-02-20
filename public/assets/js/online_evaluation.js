@@ -90,11 +90,23 @@ $(function(){
     var h = cookie('referweb'); // 获取来源url
     if (h == null || h == undefined) {
       h = window.location.href;
-      if (h.match(/[~|《|<|>|'|!|@|#|$|%|^|*|(|)|-|+|:]/)) {
+      if (h.match(/[~|《|<|>|'|!|@|#|$|%|^|*|(|)|+]/)) {
         alert('含有特殊字符')
         return false;
       } else {
-        h = window.location.href + '&wwj=007';
+        if(document.referrer){
+          try{
+            var refer = document.referrer;
+            console.log(3333);
+            if(refer){
+              h = refer
+            }
+          }catch(e){
+            console.log('获取refer异常');
+          };
+        } else {
+          h = window.location.href;
+        }
       }
     }
     $.ajax({
