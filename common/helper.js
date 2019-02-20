@@ -152,6 +152,53 @@ function active_urlgen(){
   }
   return url;
 }
+// activity调转带参数
+function active_urlgen_activity(){
+  var url = '',chan = '',param = '',nation = '',city = '',nationid='',cityid='';
+  if(arguments.length == 0){
+    return ;
+  }
+  //get chan & subchan
+  for(var i= 0 ; i < arguments.length;i++){
+    if(arguments[i] == '' || arguments[i].split('=').length > 1)
+    {
+      break;
+    }
+    else
+    {
+      chan += '/' + arguments[i];
+    }
+  }
+  // i is hold
+  for(i; i < arguments.length;i++){
+    if (cityid = seo_to_url(arguments[i], 'c')) {
+      city = common.getCityEn(cityid);
+    }
+    if(!cityid && arguments[i] != ''){
+      /*过滤默认参数 start*/
+      var can_type = arguments[i].split('=')[0];
+      var can_val = arguments[i].split('=')[1];
+      if (((can_type == 'order') && (can_val == 1 || can_val == 'inputtime' ||  can_val == 'inputtime desc' ||  can_val == 'add_time desc' ||  can_val == 'score')) || ((can_type == 'page') && (can_val == 1)) || ((can_type == 'crowd') && (can_val == 0))  || ((can_type == 'time') && (can_val == 0)) || ((can_type == 'e') && (can_val == 0)) || ((can_type == 'serve') && (can_val == 0)) || ((can_type == 't') && (can_val == 1)) || ((can_type == 'n') && (can_val == 0)) || ((can_type == 'type') && (can_val == '全部' || can_val == '')) || ((can_type == 'tag') && (can_val == '全部'|| can_val == '')) ) {
+        continue;
+      }
+      /*过滤默认参数 end*/
+      if (param == '') {
+        param += '/' + arguments[i]
+      }
+      else {
+        param += '__' + arguments[i]
+      }
+    }
+  }
+  url += ((city && city != 0)?"/"+city:"") + chan + param;
+  if(!exits_static_page(chan + param + ".html")){
+    url = url.replace(/\.html/g, "");
+  }
+  if (config.version == 'development') { //如果是開發環境
+    url = config.wwhost + ':4000' + url;//web
+  }
+  return url;
+}
 /**
  * url拼装  开发、测试区分
  */
@@ -496,133 +543,374 @@ function getLink(pageKey) {
     return "";
   }
 }
-
-//学历标签选中函数
-function eduChecked(val,checkedList){
-  var html =`<span class="level-sel" >
-              <i class="level-sel-i iconfont"></i>
-              <i>${val}</i>
-            </span>`;
-  if(checkedList==undefined){
-     checkedList = []
+var edu_list = [{
+  eduId: 1,
+  eduName: '中学',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114]
+}, {
+  eduId: 2,
+  eduName: '本科',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114]
+}, {
+  eduId: 3,
+  eduName: '硕士',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114]
+}, {
+  eduId: 4,
+  eduName: '博士',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114]
+}]
+var tag_list = [{
+  tagId : 1,
+  tagName: '留学初识',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 2,
+  tagName: '本科选校',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 3,
+  tagName: '硕士选校',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 4,
+  tagName: '留学打工',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 5,
+  tagName: '本硕连读',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 6,
+  tagName: '留学时间',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 7,
+  tagName: '接机住宿',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 8,
+  tagName: '艺术留学',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 9,
+  tagName: 'QS排名',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 10,
+  tagName: '留学费用',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 11,
+  tagName: '大学排名',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 12,
+  tagName: '留学条件',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 14,
+  tagName: '专业解析',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 15,
+  tagName: '签证指导',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 16,
+  tagName: '就业指导',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 17,
+  tagName: '申请规划',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 18,
+  tagName: '行前指导',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 19,
+  tagName: '省钱攻略',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 20,
+  tagName: '文书准备',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 21,
+  tagName: '海外生活',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 22,
+  tagName: '院校资讯',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 23,
+  tagName: '背景提升',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 24,
+  tagName: '留学方案',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 25,
+  tagName: '难点解析',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 26,
+  tagName: '备考资讯',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 27,
+  tagName: '院校百科',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}, {
+  tagId : 28,
+  tagName: '动漫留学',
+  country: [51],
+  edu: [1,2,3,4]
+}, {
+  tagId : 13,
+  tagName: '留学案例',
+  country: [1,2,3,4,5,50,51,52,53,54,55,100,101,102,103,
+    104,105,106,107,108,109,110,111,112,113,114],
+  edu: [1,2,3,4]
+}]
+function eduChecked(country, checkEduList){
+  //学历标签选中函数
+  let eHtml = '';
+  if(checkEduList== undefined || checkEduList == '' || checkEduList == null){
+    checkEduList = [];
   }else{
-    checkedList =checkedList.split(',');
+    checkEduList = checkEduList.split(',');
   }
-  for (let item of checkedList) {
-    if(val == item){
-      html = `<span class="level-sel" checked="checked">
-                <i class="level-sel-i iconfont" style="border:none;color:#c13232;margin-right:7px;font-size:16px;">&#xe640;</i>
-                <i>${val}</i>
-              </span>`;
+  for (let eItem of edu_list) {
+    if (eItem.country.includes(country)) {
+      if (checkEduList.includes(eItem.eduName)) {
+        eHtml += `
+          <span class="level-sel" checked="checked" data-eduId="${eItem.eduId}">
+            <i class="level-sel-i iconfont" style="border:none;color:#c13232;margin-right:7px;font-size:16px;">&#xe640;</i>
+            <i>${eItem.eduName}</i>
+          </span>
+        `;
+      } else {
+        eHtml += `
+          <span class="level-sel" data-eduId="${eItem.eduId}">
+            <i class="level-sel-i iconfont"></i>
+            <i>${eItem.eduName}</i>
+          </span>
+        `;
+      }
     }
   }
-  return html;
+  return eHtml;
 }
-//推荐标签选中函数
-function tagChecked(name,val,checkedList,checkedCountryId){
-  var html ='';
-  var specialStyle = '';  
-  var specialId = '';
-  if (name == "QS排名") {
-    specialStyle ="style='margin-right:38px;'"
-  }
-  if (name == '动漫留学') {
-    specialId = "id='special-tag'";
-    if (checkedCountryId != 51) {
-      html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
-            <i class="level-sel-i iconfont"></i>
-            <i>${val}</i>
-          </span>`;
-    }
-    else {
-      html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId}>
-            <i class="level-sel-i iconfont"></i>
-            <i>${val}</i>
-          </span>`;
-    }    
-  }
-  else {
-    html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId}>
-            <i class="level-sel-i iconfont"></i>
-            <i>${val}</i>
-          </span>`;       
-  }
-  if(name=="留学案例"){
-    html =`<span class="recommend-sel" style="display: block;" data-str="${val}" id="recommend-sel-case">
-            <i class="level-sel-i iconfont"></i>
-            <i>${val}</i>
-            <i class="numTip" style="margin-left:30px;">
-            注：选中【留学案例】标签即发布至顾问个人主页-案例中
-            </i>
-          </span>`;
-  }
-  if(name=="自定义标签"){
-    html =`<div  style="display: block;">
-            <span class="recommend-sel" style="margin-right: 0px;" data-str="${val}" id="recommend-sel-custom">
-              <i class="level-sel-i iconfont"></i>
-              <i>自定义标签</i>
-            </span>
-            <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" />
-          </div>`;
-  }
-  if(checkedList==undefined){
-     checkedList = []
+function tagChecked(country, checkEduList, checkTagList){
+  //推荐标签选中函数
+  let tHtml = '';
+  if(checkEduList == undefined || checkEduList == '' || checkEduList == null){
+    checkEduList  = [];
   }else{
-    checkedList =checkedList.split('/');
+    checkEduList  = checkEduList .split(',');
   }
-  for (let item of checkedList) {
-    if(val == item){
-      if (name == "QS排名") {
-        specialStyle ="style='margin-right:38px;'"
+  if (checkTagList == undefined) {
+    checkTagList = [];
+  } else {
+    checkTagList = checkTagList.split('/');
+  }
+  if (checkEduList.length == 0) {
+    console.log('不选学历时，遍历该国家下所有标签')
+    let edu_id_List = [];
+    for (let eItem of edu_list) {
+      if (eItem.country.includes(country)) {
+        edu_id_List.push(eItem.eduId)
       }
-      if (name == '动漫留学') {
-        specialId = "id='special-tag'";
-        if (checkedCountryId != 51) {
-          html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
-                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
-                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
-                  <i>${val}</i>
-                </span>`;
+    }
+    for (let tItem of tag_list) {
+      if(tItem.country.includes(country)) {
+        for (let eduId of edu_id_List) {
+          if (tItem.edu.includes(eduId)) {
+            if (tItem.tagId == 9) {
+              style = 'margin-right:38px;';
+            } else {
+              style = '';
+            }
+            if (tItem.tagId != 13) {
+              if (checkTagList.includes(tItem.tagName)) {
+                tHtml += `
+                  <span class="recommend-sel" data-str="${tItem.tagName}"
+                    style="${style}" checked="checked">
+                    <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                      margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                    <i>${tItem.tagName}</i>
+                  </span>
+                `;
+              } else {
+                tHtml += `
+                  <span class="recommend-sel" data-str="${tItem.tagName}"
+                    style="${style}">
+                    <i class="level-sel-i iconfont"></i>
+                    <i>${tItem.tagName}</i>
+                  </span>
+                `;
+              }
+            } else {
+              if (checkTagList.includes(tItem.tagName)) {
+                tHtml += `
+                  <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case"
+                    checked="checked">
+                    <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                    margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                    <i>留学案例</i>
+                    <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                    </i>
+                  </span>
+                `;
+              } else {
+                tHtml += `
+                  <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
+                    <i class="level-sel-i iconfont"></i>
+                    <i>留学案例</i>
+                    <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                    </i>
+                  </span>
+                `;
+              }
+            }
+            break;
+          }
         }
-        else {
-          html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId}>
-                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
-                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
-                  <i>${val}</i>
-                </span>`;
+      }
+    }
+  } else {
+    console.log('选学历时，遍历所有标签')
+    let style = '';
+    let eduList = [];
+    for (let i = 0; i< checkEduList.length; i++) {
+      if (checkEduList[i] == '中学') {
+        eduList[i] = 1;
+      } else if (checkEduList[i] == '本科') {
+        eduList[i] = 2;
+      } else if (checkEduList[i] == '硕士') {
+        eduList[i] = 3;
+      } else if (checkEduList[i] == '博士') {
+        eduList[i] = 4; 
+      }
+    }
+    for (let tItem of tag_list) {
+      if(tItem.country.includes(country)) {
+        for (let eduId of eduList) {
+          if (tItem.edu.includes(eduId)) {
+            if (tItem.tagId == 9) {
+              style = 'margin-right:38px;';
+            } else {
+              style = '';
+            }
+            if (tItem.tagId != 13) {
+              if (checkTagList.includes(tItem.tagName)) {
+                tHtml += `
+                  <span class="recommend-sel" data-str="${tItem.tagName}"
+                    style="${style}" checked="checked">
+                    <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                      margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                    <i>${tItem.tagName}</i>
+                  </span>
+                `;
+              } else {
+                tHtml += `
+                  <span class="recommend-sel" data-str="${tItem.tagName}"
+                    style="${style}">
+                    <i class="level-sel-i iconfont"></i>
+                    <i>${tItem.tagName}</i>
+                  </span>
+                `;
+              }
+            } else {
+              if (checkTagList.includes(tItem.tagName)) {
+                tHtml += `
+                  <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case"
+                    checked="checked">
+                    <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                    margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                    <i>留学案例</i>
+                    <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                    </i>
+                  </span>
+                `;
+              } else {
+                tHtml += `
+                  <span class="recommend-sel" style="display: block;" data-str="留学案例" id="recommend-sel-case" >
+                    <i class="level-sel-i iconfont"></i>
+                    <i>留学案例</i>
+                    <i class="numTip" style="margin-left:30px;">注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                    </i>
+                  </span>
+                `;
+              }
+            }
+            break;
+          }
         }
-      }
-      else {
-        html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId}>
-                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
-                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
-                  <i>${val}</i>
-                </span>`;
-      }
-      if(name=="留学案例"){
-        html =`<span class="recommend-sel" style="display: block;" data-str="${val}" checked="checked" id="recommend-sel-case">
-                <i class="level-sel-i iconfont" style="border:none;color:#c13232;
-                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
-                <i>${val}</i>
-                <i class="numTip" style="margin-left:30px;">
-                注：选中【留学案例】标签即发布至顾问个人主页-案例中
-                </i>
-              </span>`;
-      }
-      if(name=="自定义标签"){
-        console.log(val)
-        html =`<div  style="display: block;">
-            <span class="recommend-sel" style="margin-right: 0px;" data-str="" checked="checked" id="recommend-sel-custom">
-              <i class="level-sel-i iconfont" style="border:none;color:#c13232;
-                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
-              <i>自定义标签</i>
-            </span>
-            <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" value= "${val}" />
-          </div>`;
       }
     }
   }
-  return html;
+  return tHtml;
 }
 function adseatCompare(seat,dest){
   if(seat == "SEAT" + dest.toString()){
@@ -656,5 +944,6 @@ module.exports = {
   eduChecked:eduChecked,
   tagChecked:tagChecked,
   adseatCompare:adseatCompare,
-  rndNum:rndNum
+  rndNum:rndNum,
+  active_urlgen_activity: active_urlgen_activity
 };

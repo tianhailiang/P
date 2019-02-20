@@ -166,7 +166,7 @@ $(function(){
     26:['呼市','呼和浩特分公司：内蒙古呼和浩特市中山西路1号海亮大厦A座1801','服务专线：0471-3817676'],
     32:['邯郸','邯郸分公司：邯郸市人民东路350号嘉华大厦806室','服务专线：0310-5709558'],
     46:['海南','海南分公司：海南省海口市龙华区滨海大道103号财富广场28楼A室','服务专线：0898-68635656'],
-    9:['济南','济南分公司：济南市市中区纬二路51号商会大厦33层（大观园南邻）','服务专线：0531-81851155'],
+    9:['济南','济南分公司：济南市市中区纬二路51号商会大厦A座33层（大观园南邻）','服务专线：0531-81851155'],
     30:['吉林','吉林分公司：吉林市昌邑区财富广场B栋8层803-807','服务专线：0432-62885656'],
     21:['昆明','昆明分公司：昆明市东风东路36号建投大厦6楼金吉列留学','服务专线：0871-63536688'],
     27:['兰州','兰州分公司：兰州市城关区张掖路1号保利大厦a座15层','服务专线：0931-8185656'],
@@ -311,9 +311,18 @@ $(function(){
   $(".quick_toggle li").mouseleave(function () {
     $(this).children(".mp_qrcode").hide();
   });
-
   var sUserAgent = navigator.userAgent.toLowerCase();
   if(sUserAgent .match(/ipad/i) == "ipad"){
+    $(".jiang").on("touchstart",function(){
+      if( $(".jiang").css("display")=="block"){
+        $("#jisuanqi").css("display", "none");
+      }else{
+        $("#jisuanqi").css("display", "block");
+      }
+    })
+    $(".jiang").click(function(){
+      window.open(fn.no_urlgen('zt/2019/20190121_liuxuejisuanqi/index.html'));
+    })
     $(".my").hover(function () {
       $(this).find("img").css("display","none");
       $(this).find("p").css("display","block");
@@ -329,13 +338,20 @@ $(function(){
         }
       }else{
         getlogin();
-
       }
     },function(){
       $(this).find("p").css("display","none");
       $(this).find("img").css("display","block");
     });
   }else{
+    $(".jiang").hover(function () {
+      $("#jisuanqi").css("display", "block");
+    }, function () {
+      $("#jisuanqi").css("display", "none");
+    });
+    $(".jiang").click(function(){
+      window.open(fn.no_urlgen('zt/2019/20190121_liuxuejisuanqi/index.html'));
+    })
     $(".my").hover(function () {
       $(this).find("img").css("display","none");
       $(this).find("p").css("display","block");
@@ -434,9 +450,6 @@ $(function(){
   $('#to_top').click(function(){
     $('html , body').animate({scrollTop: 0},'slow');
   });
-  $(".jiang").click(function(){
-    window.open(fn.no_urlgen('act_form'));
-  })
 
 //====================弹窗==============
 

@@ -16,7 +16,7 @@
 </style>
 </head>
 <body>
-{% include "widget/modal/dialog.html"%}
+{% include "widget/modal/dialog_free.html"%}
 {% include "widget/common_hide/common_hide.html"%}
 <div class="zhezhao" id="zhezhaox" style="display: none;z-index: 1003">
 </div>
@@ -134,8 +134,8 @@
   </div>
 </div>
 {% include "widget/top/top_liuxue.html" %}
-{% import "widget/new_nav_first/new_nav_first.html" as new_nav_first %}
-{{ new_nav_first.new_nav_first(tdk,helper) }}
+{% import "widget/new_nav_first/home_nav.html" as home_nav %}
+{{ home_nav.home_nav(tdk,helper) }}
 <div class="main" style="width: 1200px;margin: 0 auto;">
   <!--轮播图-->
   <div class="lunbo">
@@ -151,7 +151,7 @@
   <!--50家分公司-->
   <div class="branch_company">
     <div class="branch_company_img">
-      <img src="{{helper.cdnhost}}/assets/img/branch-company52.png" alt="五十家分公司">
+      <img src="{{helper.cdnhost}}/assets/img/branch-company52_1.png" alt="五十家分公司">
     </div>
     <div class="branch_company_text">
       <div style="margin: 5px 15px">
@@ -365,7 +365,7 @@
         }
         ] %}
         {% for item in cityList %}
-        {% if loop.index<49 %}
+        {% if loop.index < 49 %}
         <div class="branch_company_text_tilte needJump" data-id="{{item.companyId}}">
           <a  href="{{helper.urlgen('branch_home','c='+item.companyId)}}" data-id="{{item.companyId}}">{{item.companyName}}</a>
         </div>
@@ -398,7 +398,7 @@
 </div>
 {% include "widget/new_footer/new_footer.html" %}
 {% import "widget/new_slide/new_slide.html" as  slide %}
-{{slide.leyu_slide("XC_HOME_SEAT10",helper) }}
+{{ slide.leyu_slide("XC_HOME_SEAT10",helper) }}
 {% include "widget2/active_popup/active_popup.html" %}
 <script src="{{helper.cdnhost}}/assets/js/show_advert.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/slide.js"></script>
@@ -407,7 +407,7 @@
 <script src="{{helper.cdnhost}}/assets/js/nav_liuxue_search.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
 <script src="{{helper.cdnhost}}/assets/js/guanggao_slider.js"></script>
-<script src="{{helper.cdnhost}}/assets/js/symodal.js"></script>
+<script src="{{helper.cdnhost}}/assets/js/symodal_free.js"></script>
 <script>
   $(function () {
     var nowLocation = window.location.href;
