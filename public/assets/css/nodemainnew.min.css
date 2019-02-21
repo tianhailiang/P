@@ -208,22 +208,6 @@ to{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .offer-opt-bar .opt-btn a{margin-left:10px;color:#C13232;font-size:12px}
 .case-cont{background-color:#fff}
 .case-cont .right-main{padding-bottom:0}
-.list{width:280px;margin:20px auto;background:#fff}
-.list ul{list-style:none}
-.list ul li{width:100%;cursor:pointer}
-.list ul li .title{height:42px;line-height:42px;padding:6px 0;border:none;position:relative;font-size:16px;text-indent:50px;color:#333;display:block}
-.list ul li .title .opc{position:absolute;height:42px;line-height:42px;width:100%;left:0;top:6px;color:#333;z-index:2}
-.list ul li .title .bg{position:absolute;width:100%;height:54px;left:0;top:0;z-index:1}
-.list ul li.checked{border-bottom:1px solid #dcdcdc}
-.list ul li.checked .title .opc{color:#C13232;opacity:1}
-.list ul li.checked .title .bg{background-color:#C13232;opacity:.3;filter:alpha(opacity=30)}
-.list ul li.checked .title .opc:after{position:absolute;left:0;top:0;content:'';width:2px;height:42px;background-color:#C13232}
-.list ul li .title .opc span{position:absolute;font-size:14px;top:2px;right:20px}
-.list ul li .title .opc i{font-size:18px;margin-right:40px;color:#C13232}
-.list-se{overflow:hidden;display:none}
-.list-se li{position:relative;text-indent:110px;height:54px;line-height:54px}
-.list-se li a{color:#666;height:54px;line-height:54px;font-size:14px}
-.list-se li.choose a{color:#C13232;text-decoration:underline}
 .album-mask{background-color:rgba(0,0,0,.3);position:fixed;left:0;top:0;right:0;bottom:0;z-index:999}
 .album-box{position:absolute;width:860px;height:440px;background-color:#000;left:50%;top:50%;margin-left:-430px;margin-top:-220px}
 .album-box .close-btn{width:30px;height:30px;border-radius:15px;background-color:#fff;position:absolute;right:-15px;top:-15px;font-size:29px;line-height:30px;text-align:center}
@@ -284,7 +268,6 @@ to{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .moment .dui-layout-col3-img{width:366px;height:276px}
 .moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
 .moment .jincai-con{font-size:14px;color:#333}
->>>>>>> 20181218_background
 .gw-list{width:280px;list-style:none;background:#fff}
 .gw-list li{border-bottom:solid 1px #dcdcdc;margin-bottom:18px;margin-left:10px;margin-right:10px}
 .gw-list li:first-child{padding-top:16px}
@@ -303,14 +286,6 @@ to{opacity:1;-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}
 .guwen-info .pull-right{float:right;margin-right:22px}
 .guwen-info em{display:inline-block;font-style:normal;margin-left:10px}
 .gw-list .bg-span{float:left;height:51px;width:51px;border-radius:50%}
-.col3-t-p1-p2-a1{width:366.5px;margin-bottom:20px;height:206px;display:block}
-.col3-t-p1-p2-a3{width:366px;height:36px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
-.col3-t-p1-p2-a2{font-size:14px;margin-bottom:12px}
-.col3-t-p1-p2-a6{width:366px;line-height:24px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;margin-bottom:14px}
-.moment .jincai a{display:block;width:366px;height:276px}
-.moment .dui-layout-col3-img{width:366px;height:276px}
-.moment .jincai-tit{font-size:16px;color:#333;margin:20px 0 14px 0;height:16px}
-.moment .jincai-con{font-size:14px;color:#333}
 .contact{width:270px;height:153px;border:1px solid #C13232;border-radius:5px;margin-bottom:20px;float:left}
 .contact h2{font-size:16px;font-weight:600;margin-top:8px}
 .contact p{font-size:14px}
@@ -735,7 +710,7 @@ i.ibar_recharge-arrow{width:6px;height:3px;background:url(../images/arrow-down.p
 #quick_links_pop li{border-bottom:1px dashed #fff;line-height:24px}
 #quick_links_pop li a{color:#fff}
 .quick_links_panel li{cursor:pointer}
-.box_tanchu{background:url(http://www.jjl.cn/statics/images/tanchu2_bj1129.png) no-repeat top center;border-style:none;z-index:1001;left:50%;top:50%;margin-left:-300px!important;margin-top:-175px!important;margin-top:0;position:fixed!important;position:absolute;_top:expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 : document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2)}
+.box_tanchu{background:url(//www.jjl.cn/statics/images/tanchu2_bj1129.png) no-repeat top center;border-style:none;z-index:1001;left:50%;top:50%;margin-left:-300px!important;margin-top:-175px!important;margin-top:0;position:fixed!important;position:absolute;_top:expression(eval(document.compatMode && document.compatMode=='CSS1Compat') ? documentElement.scrollTop + (document.documentElement.clientHeight-this.offsetHeight)/2 : document.body.scrollTop + (document.body.clientHeight - this.clientHeight)/2)}
 .top_big{width:400px;float:right}
 .anniu_gb{width:40px;float:right;font-size:14px;font-family:Microsoft YaHei;margin:16px 6px 0 0;color:#fff;line-height:15px}
 .anniu_gb a:link{color:#fff;cursor:pointer}
@@ -744,31 +719,31 @@ i.ibar_recharge-arrow{width:6px;height:3px;background:url(../images/arrow-down.p
 .top_zi_tanchu{width:280px;float:right;font-size:23px;font-family:Microsoft YaHei;letter-spacing:2px;color:#bc8d23;margin-top:20px}
 .top_zi_tanchu span{color:#c30e21;font-size:35px;font-family:Microsoft YaHei}
 .anniu_yy{width:150px;float:right;margin:25px 50px 0 0;_margin:25px 25px 0 0}
-.anniu_yy_1{width:50px;float:left;height:25px;background:url(http://www.jjl.cn/images/tanchu/an_2.jpg) no-repeat;font-size:14px;font-weight:700;text-align:center;line-height:25px;color:#fff;margin-left:10px;_margin-left:5px}
+.anniu_yy_1{width:50px;float:left;height:25px;background:url(//www.jjl.cn/images/tanchu/an_2.jpg) no-repeat;font-size:14px;font-weight:700;text-align:center;line-height:25px;color:#fff;margin-left:10px;_margin-left:5px}
 .anniu_yy_1 a:link{color:#fff;cursor:pointer}
 .anniu_yy_1 a:visited{color:#fff}
 .anniu_yy_1 a:hover{color:#075824}
 .hot_tanchu{width:580px;float:left;margin-left:10px;_margin-left:5px;margin-top:50px;_margin-top:30px}
 .hot_tanchu span{float:left;color:#c30d23;font-size:20px;font-family:Microsoft YaHei}
-.hot_5{background:url(http://www.jjl.cn/images/tanchu/red_5.jpg);width:80px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:10px}
+.hot_5{background:url(//www.jjl.cn/images/tanchu/red_5.jpg);width:80px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:10px}
 .hot_5 a:link{color:#fff;cursor:pointer}
 .hot_5 a:visited{color:#fff}
 .hot_5 a:hover{color:#6f2307}
-.hot_4{background:url(http://www.jjl.cn/images/tanchu/red_4.jpg);width:65px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:10px}
+.hot_4{background:url(//www.jjl.cn/images/tanchu/red_4.jpg);width:65px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:10px}
 .hot_4 a:link{color:#fff;cursor:pointer}
 .hot_4 a:visited{color:#fff}
 .hot_4 a:hover{color:#6f2307}
-.hot_2{background:url(http://www.jjl.cn/images/tanchu/red_2.jpg);width:50px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:10px}
+.hot_2{background:url(//www.jjl.cn/images/tanchu/red_2.jpg);width:50px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:10px}
 .hot_2 a:link{color:#fff;cursor:pointer}
 .hot_2 a:visited{color:#fff}
 .hot_2 a:hover{color:#6f2307}
 .ouzhou_tanchu{width:305px;float:left;margin-left:10px;_margin-left:5px;height:60px}
 .ouzhou_tanchu span{width:20px;float:left;color:#c30d23;font-size:20px;font-family:Microsoft YaHei;margin-top:5px}
-.ouzhou_2{background:url(http://www.jjl.cn/images/tanchu/an_2.jpg);width:50px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:4px;margin-top:5px}
+.ouzhou_2{background:url(//www.jjl.cn/images/tanchu/an_2.jpg);width:50px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:4px;margin-top:5px}
 .ouzhou_2 a:link{color:#fff;cursor:pointer}
 .ouzhou_2 a:visited{color:#fff}
 .ouzhou_2 a:hover{color:#075824}
-.ouzhou_4{background:url(http://www.jjl.cn/images/tanchu/anniu_4.jpg);width:65px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:4px;margin-top:5px}
+.ouzhou_4{background:url(//www.jjl.cn/images/tanchu/anniu_4.jpg);width:65px;height:25px;text-align:center;line-height:25px;color:#fff;font-size:14px;font-weight:700;float:left;margin-left:4px;margin-top:5px}
 .ouzhou_4 a:link{color:#fff;cursor:pointer}
 .ouzhou_4 a:visited{color:#fff}
 .ouzhou_4 a:hover{color:#075824}
@@ -778,11 +753,11 @@ i.ibar_recharge-arrow{width:6px;height:3px;background:url(../images/arrow-down.p
 .qita span{width:60px;float:left;color:#c30d23;font-size:20px;font-family:Microsoft YaHei;margin-top:5px}
 .phone_tanchu{width:500px;float:left;color:#c30d23;font-size:16px;font-family:Microsoft YaHei;margin:15px 0 0 60px;_margin:15px 0 0 30px}
 .t_gj{width:67px;float:left;text-align:center;margin-left:12px;_margin-left:6px;margin-top:10px}
-.t_gj_anniu{width:67px;float:left;text-align:center;line-height:42px;height:32px;background:url(http://www.jjl.cn/images/tanchu/t_25.jpg) no-repeat;font-size:14px;font-weight:700;color:#fff;margin-top:5px}
+.t_gj_anniu{width:67px;float:left;text-align:center;line-height:42px;height:32px;background:url(//www.jjl.cn/images/tanchu/t_25.jpg) no-repeat;font-size:14px;font-weight:700;color:#fff;margin-top:5px}
 .t_gj_anniu a:link{color:#fff;cursor:pointer}
 .t_gj_anniu a:visited{color:#fff}
 .t_gj_anniu a:hover{color:#6f2307}
-.t_gj_anniu_ax{width:80px;float:left;text-align:center;line-height:42px;height:32px;background:url(http://www.jjl.cn/images/tanchu/t_25_t.jpg) no-repeat;font-size:14px;font-weight:700;color:#fff;margin-top:5px}
+.t_gj_anniu_ax{width:80px;float:left;text-align:center;line-height:42px;height:32px;background:url(//www.jjl.cn/images/tanchu/t_25_t.jpg) no-repeat;font-size:14px;font-weight:700;color:#fff;margin-top:5px}
 .t_gj_ax{width:80px;float:left;text-align:center;margin-left:14px;_margin-left:10px;margin-top:10px}
 .phone_t{width:300px;float:left;color:#c30d23;font-size:20px;font-family:Microsoft YaHei;margin:25px 0 0 100px;_margin:10px 0 0 50px}
 .hot_fen{width:450px;float:left;margin-left:80px;_margin-left:40px;margin-top:40px}
@@ -805,7 +780,6 @@ a{cursor:pointer}
 .slide-phone{position:relative}
 .slide-phone p{position:absolute;background:#c13232;width:140px;height:44px;color:#fff;font-size:16px;text-align:center;line-height:44px;right:44px;top:0;display:none}
 #comment_close{text-align:right;margin-right:5px}
-
 .clear{clear:both;display:block;height:0;overflow:hidden;font-size:0}
 button,input,select,textarea{font-size:100%;outline:0}
 textarea{overflow-y:auto}
@@ -996,6 +970,7 @@ div.jbox span.jbox-icon-loading{background:url(../images/jbox/jbox-loading1.gif)
 .quick-get-phone-code,.quick-get-phone-code-act{display:inline-block;width:108px;height:28px;border:1px solid #ff7d31;color:#ff7d31;text-align:center;line-height:28px;margin-left:10px;vertical-align:middle}
 .quick-btn-box{width:100%;margin-top:20px;float:left}
 .quick-btn{position:relative;width:140px;height:30px;background:#d21b29;color:#fff;text-align:center;line-height:30px;left:50%;margin-left:-70px}
+
 .so_advisor_warp{width:408px;height:166px;background:#fafafa;margin-top:20px;float:left;border:1px solid #eee}
 .so_advisor_warp:nth-child(2n){float:right}
 .so_advisor_top{height:80px}
