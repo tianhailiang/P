@@ -109,7 +109,7 @@
   })
   var portname;
   var hostname = window.location.hostname;
-  portname = 'http://'+ window.location.hostname;
+  portname = 'https://'+ window.location.hostname;
   if (hostname == 'www.jjl.cn') {
     if (js_api_config.version == 'development') {
       portname += ':4000'
