@@ -144,7 +144,6 @@ $(function () {
 				if(document.referrer){
           try{
 						var refer = document.referrer;
-						console.log(3333);
 						if(refer){
 							h = refer
 						}
