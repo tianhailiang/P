@@ -1,8 +1,8 @@
 $(function () {
 	//首页弹层
-	// if(!cookie('mask_tag')){
-	// 	$(".dialog-modal").fadeIn()
-	// }
+	if(!cookie('mask_tag')){
+		$(".dialog-modal").fadeIn()
+	}
 	$("body").on('click',function (e) {e.stopPropagation()})
 	$(".gg-group ul li").eq(3).on('click', function (e){
 		e.preventDefault()
