@@ -50,7 +50,7 @@ exports.loginUser = function (req, res, next) {
   // var l = url.parse(req.url, true).query;
   var l = req.query
   console.log('url', l.h);
-  if (/\/zt\//.test(l.h) && !l.h.endsWith('shtml')) {
+  if (/\/zt\//.test(l.h)) {
     l.h += '.html'
   }
   if (l.h !== undefined) {
