@@ -1,8 +1,8 @@
 $(function () {
 	//首页弹层
-	// if(!cookie('mask_tag')){
-	// 	$(".dialog-modal").fadeIn()
-	// }
+	if(!cookie('mask_tag')){
+		$(".dialog-modal").fadeIn()
+	}
 	$("body").on('click',function (e) {e.stopPropagation()})
 	$(".gg-group ul li").eq(3).on('click', function (e){
 		e.preventDefault()
@@ -10,7 +10,8 @@ $(function () {
 		$(".dialog-modal").fadeIn()
 	})
 	$(".modal-content .close").on('click',function () {
-		// cookie('mask_tag',1);
+		// cookie('mask_tag' , 1, {path: "/", domain: js_api_config.domain, expires: 1})
+		cookie('mask_tag' , 1)
 		$(".dialog-modal").fadeOut(150)
 	})
 	//51家分公司鼠标悬停效果
@@ -144,7 +145,6 @@ $(function () {
 				if(document.referrer){
           try{
 						var refer = document.referrer;
-						console.log(3333);
 						if(refer){
 							h = refer
 						}
@@ -168,7 +168,7 @@ $(function () {
 				country: country,
 				city: cookie('currentarea') || 1,
 				source: h,
-				relationId: 118,
+				relationId: 142,
         grUserId: grUserId
       },
 			dataType:'json',
@@ -185,7 +185,8 @@ $(function () {
           // clearInterval(timer)
           // $(".send-code").html('点击发送验证码');
 					$(".dialog-modal").fadeOut()
-					// cookie('mask_tag',1)
+					// cookie('mask_tag' , 1, {path: "/", domain: js_api_config.domain, expires: 1})
+					cookie('mask_tag' , 1)
         } else {
           layer.msg(msg.message);
         }
