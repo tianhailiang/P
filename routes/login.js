@@ -19,7 +19,7 @@ exports.login = function (req, res, next) {
   var l = url.parse(req.url, true).query;
   console.log('url', l.h);
   if (/\/zt\//.test(l.h)) {
-    if (l.h.endswith('shtml')) {
+    if (l.h.endsWith('shtml')) {
       l.h += '.shtml'
     } else {
       l.h += '.html'
@@ -55,7 +55,7 @@ exports.loginUser = function (req, res, next) {
   var l = req.query
   console.log('url', l.h);
   if (/\/zt\//.test(l.h)) {
-    if (l.h.endswith('shtml')) {
+    if (l.h.endsWith('shtml')) {
       l.h += '.shtml'
     } else {
       l.h += '.html'
