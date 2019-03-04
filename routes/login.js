@@ -51,7 +51,7 @@ exports.loginUser = function (req, res, next) {
   var l = req.query
   console.log('url', l.h);
   if (/\/zt\//.test(l.h)) {
-    if (/\.shtml/.test(l.h)) {
+    if (l.h.endswith('shtml')) {
       l.h += '.shtml'
     } else {
       l.h += '.html'
