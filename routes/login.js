@@ -19,7 +19,11 @@ exports.login = function (req, res, next) {
   var l = url.parse(req.url, true).query;
   console.log('url', l.h);
   if (/\/zt\//.test(l.h)) {
-    l.h += '.html'
+    if (l.h.endswith('shtml')) {
+      l.h += '.shtml'
+    } else {
+      l.h += '.html'
+    }
   }
   if (l.h !== undefined) {
     data.url = l.h;
