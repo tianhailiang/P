@@ -10,7 +10,8 @@ $(function () {
 		$(".dialog-modal").fadeIn()
 	})
 	$(".modal-content .close").on('click',function () {
-		cookie('mask_tag' , 1, {path: "/", domain: js_api_config.domain, expires: 1})
+		// cookie('mask_tag' , 1, {path: "/", domain: js_api_config.domain, expires: 1})
+		cookie('mask_tag' , 1)
 		$(".dialog-modal").fadeOut(150)
 	})
 	//51家分公司鼠标悬停效果
@@ -184,7 +185,8 @@ $(function () {
           // clearInterval(timer)
           // $(".send-code").html('点击发送验证码');
 					$(".dialog-modal").fadeOut()
-					cookie('mask_tag' , 1, {path: "/", domain: js_api_config.domain, expires: 1})
+					// cookie('mask_tag' , 1, {path: "/", domain: js_api_config.domain, expires: 1})
+					cookie('mask_tag' , 1)
         } else {
           layer.msg(msg.message);
         }
