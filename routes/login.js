@@ -56,9 +56,9 @@ exports.loginUser = function (req, res, next) {
   console.log('url', l.h);
   if (/\/zt\//.test(l.h)) {
     if (l.h.endsWith('shtml')) {
-      l.h += '.shtml'
+      l.h.substring(l.h.length-11)
     } else {
-      l.h += '.html'
+      l.h.substring(l.h.length-10)
     }
   }
   if (l.h !== undefined) {
