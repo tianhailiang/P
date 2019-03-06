@@ -929,14 +929,14 @@ exports.so_article_yimin = function (req, res, next) {
     async.parallel({
         lunbo_list:function(callback) {
             cms.lunbo_list({
-                "ad_page": "YIMIN_SEARCHNEWS",
+                "ad_page": "YIMIN_SEARCH",
                 "cityid":area,
                 "ad_seat": "SEAT1"
             }, callback);
         },
         lunbo_list2:function(callback) {
             cms.lunbo_list({
-                "ad_page": "YIMIN_SEARCHNEWS",
+                "ad_page": "YIMIN_SEARCH",
                 "cityid":area,
                 "ad_seat": "SEAT2"
             }, callback);
@@ -959,7 +959,7 @@ exports.so_article_yimin = function (req, res, next) {
         data.keyword=keyword;
         data.cur_page = page;
         data.tdk = {
-            pagekey: 'YIMIN_SEARCHNEWS', //key
+            pagekey: 'YIMIN_SEARCH', //key
             cityid: area,
             keywords: keyword
         };
@@ -2457,20 +2457,6 @@ exports.article_detail= function(req,res,next){
   }
   data.article_id = req.params.id; //获取文章id
   async.parallel({
-      // lunbo_list:function(callback) {
-      //     cms.lunbo_list({
-      //         "ad_page": "ADVISOR_P_ARTICLE_DETAIL",
-      //         "cityid":area,
-      //         "ad_seat": "SEAT1"
-      //     }, callback);
-      // },
-      // lunbo_list2:function(callback) {
-      //     cms.lunbo_list({
-      //         "ad_page": "ADVISOR_P_ARTICLE_DETAIL",
-      //         "cityid":area,
-      //         "ad_seat": "SEAT2"
-      //     }, callback);
-      // },
     //文章详情
     article:function(callback){
       wec.article({
@@ -2484,10 +2470,7 @@ exports.article_detail= function(req,res,next){
         },callback);
       }
   },function(err,result){
-        // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
-        // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.article_getUid =returnData(result.article_getUid,'article');
-        // console.log('article_getUid',data.article_getUid);
         if (data.article_getUid != null) {
           global.article_getUid = data.article_getUid;
         }
@@ -2496,7 +2479,6 @@ exports.article_detail= function(req,res,next){
             return next();
         }
         data.article =returnData(result.article,'article');
-        console.log('data.article', data.article)
         if(data.article.article_info.img_info){
             data.article.article_info.img_info =JSON.parse(data.article.article_info.img_info);
         }else{
@@ -2531,7 +2513,6 @@ exports.article_detail= function(req,res,next){
              data.relation_recommend.splice(index, 1);
            }
           }
-          console.log('relation_recommend',data.relation_recommend)
           data.userinfo = returnData(result.userinfo, 'userinfo');
           data.country = data.userinfo.country || '1';
           data.hcountry = (data.userinfo.country || '1,').split(',')[0];
