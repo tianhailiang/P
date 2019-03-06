@@ -5,7 +5,8 @@
             <a  target="_blank" href="{{ helper.urlgen('yimin') }}"><img src="{{helper.cdnhost}}/assets/img/yimin_logo_black.png" alt="金吉列移民官网"/></a>
         </div>
         <ul class="page-type">
-            <li class="type-nav small-nav {{'active' if tdk.pagekey == 'YIMIN_HOME'}}"><a href="{{ helper.urlgen('yimin') }}">移民</a></li>
+            <li class="type-nav small-nav {{'active' if tdk.pagekey == 'YIMIN_HOME'}}"><a href="{{ helper.urlgen('yimin') }}">海外移民</a></li>
+            <li class="type-nav small-nav {{'active' if tdk.pagekey == 'HOME'}}"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">出国留学</a></li> -->
             <li class="type-nav big-nav {{'active' if tdk.pagekey == 'PROFILE' or tdk.pagekey == 'CULTURE' or tdk.pagekey == 'EVENTS' or tdk.pagekey == 'COOPERATION' or tdk.pagekey == 'CONTACT'}}"><a href="{{ helper.urlgen('about') }}">关于我们</a></li>
         </ul>
         <div class="nav-right">
