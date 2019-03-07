@@ -55,9 +55,7 @@ exports.loginUser = function (req, res, next) {
   var l = req.query
   console.log('url', l.h);
   if (/\/zt\//.test(l.h)) {
-    if (l.h.endsWith('shtml')) {
-      l.h.substring(l.h.length-11)
-    } else {
+    if (!l.h.endsWith('shtml')) {
       l.h.substring(l.h.length-10)
     }
   }
