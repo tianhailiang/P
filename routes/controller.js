@@ -2323,20 +2323,6 @@ exports.case_detail = function(req,res,next){
     }
     data.article_id = req.params.id; //获取文章id
     async.parallel({
-        // lunbo_list:function(callback) {
-        //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_P_CASE_DETAIL",
-        //         "cityid":area,
-        //         "ad_seat": "SEAT1"
-        //     }, callback);
-        // },
-        // lunbo_list2:function(callback) {
-        //     cms.lunbo_list({
-        //         "ad_page": "ADVISOR_P_CASE_DETAIL",
-        //         "cityid":area,
-        //         "ad_seat": "SEAT2"
-        //     }, callback);
-        // },
       //文章详情
       article:function(callback){
         wec.article({
@@ -2350,10 +2336,7 @@ exports.case_detail = function(req,res,next){
         },callback);
       },
     },function(err,result){
-        // data.xSlider = returnData(result.lunbo_list,'lunbo_list');
-        // data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.article_getUid =returnData(result.article_getUid,'article');
-        // console.log('article_getUid',data.article_getUid);
         if (data.article_getUid != null) {
           global.article_getUid = data.article_getUid;
         }
@@ -2383,7 +2366,7 @@ exports.case_detail = function(req,res,next){
                 wec.relation_recommend({
                   "country_id":data.country,
                   "city_id":data.area,
-                  //"is_immi":2,
+                  "is_immi":data.article.article_info.is_immi,
                   "is_news": data.is_news,
                   "tag_list": data.tag_list,
                   "per_page":5
@@ -2445,9 +2428,9 @@ exports.article_detail= function(req,res,next){
   var l = url.parse(req.url, true).query;
   // console.log('url', l.h);
   if (l.h !== undefined) {
-      data.url = l.h;
+    data.url = l.h;
   } else {
-      data.url = config.wwhost+req.url;
+    data.url = config.wwhost+req.url;
   }
   if(req.cookies.login_ss != undefined){
     data.login_info =JSON.parse(req.cookies.login_ss);
@@ -2500,7 +2483,7 @@ exports.article_detail= function(req,res,next){
             wec.relation_recommend({
               "country_id":data.country,
               "city_id":data.area,
-              //"is_immi":2,
+              "is_immi": data.article.article_info.is_immi,
               "is_news": data.is_news,
               "tag_list": data.tag_list,
               "per_page":5
