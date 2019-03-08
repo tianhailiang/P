@@ -1,17 +1,14 @@
 <!--右侧在线咨询-->
-
 {% macro leyu_slide(user,login_info,helper) %}
 <div class="mui-mbar-tabs" style="z-index:999">
   <div class="quick_links_wrap quick_links_dockright">
     <div class="quick_link_mian">
-
       <div class="quick_links_panel">
         <ul>
           <li class="slide-phone"><img src="{{helper.cdnhost}}/assets/img/slide_phone.png" alt="" style="width: 18px;height: 28px;padding-left: 5px;">
             <p class="phone-number">{{user.tel}}</p>
           </li>
           <li class="on zixun message_list current" id="zxzx" style="background: #c13232;cursor: default;{% if user.uid !== login_info.uid %} cursor: pointer;  {% endif %}"  {% if user.uid !== login_info.uid  %} onclick="openchat_new('{{ user.new_job_number}}')" {% endif %}>
-
             <img src="{{helper.cdnhost}}/assets/img/phone.gif" alt="立即咨询" class="quick-img">
             <span>立<br>即<br>咨<br>询</span>
           </li>
@@ -19,7 +16,7 @@
             <img src="{{helper.cdnhost}}/assets/img/yijian.png" alt="在线评估" class="quick-img">
             <span>在<br>线<br>评<br>估</span>
             <div id="comment_con"
-                 style="width:320px;background: #fff;left:44px;top: 0px;position: absolute;border: 1px solid #dcdcdc;display: none">
+                 style="width:320px;background: #fff;right:44px;top: 0px;position: absolute;border: 1px solid #dcdcdc;display: none">
               <div id="comment_close" style="margin-left: 5px;font-size: 15px;cursor: pointer;color:#333333;">x</div>
               {% include "widget/yimin_customization1/yimin_customization1.html" %}
             </div>
@@ -32,7 +29,6 @@
           <li class="weixin_ewm weixin-slide"  id="weixin-slide">
             <img src="{{helper.cdnhost}}/assets/img/weixin_slide.png" alt="" class="quick-img" style="height: 22px;margin-top: 3px;">
             <div class="weixin-slide-img" style="background-image: url('{{user.weixin_qrcode}}');background-size: contain;background-repeat: no-repeat;background-position: center">
-
             </div>
           </li>
           {% else %}
@@ -60,15 +56,6 @@
     </div>
   </div>
 </div>
-{#<div id="quick_links_pop" class="quick_links_pop quick_message_list"
-     style="right: 40px; margin-top: -344px; display: block; width: 170px;z-index:1002;">
-  <a href="javascript:void(0);" class="ibar_closebtn" title="关闭">×</a>
-  <div>
-    <ul id="lylist">
-
-    </ul>
-  </div>
-</div>#}
 <script src="//jesong.jjl.cn/js/jjl.js"></script>
 <script>
   function  openchat_new(jobnum){

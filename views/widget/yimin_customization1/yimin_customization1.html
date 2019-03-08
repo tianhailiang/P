@@ -1,17 +1,12 @@
 
-
 <div class="customization2" style="padding-left: 8px;">
   <div class="quick-text11" style="padding-top:30px;">
-
     <label class="title" for="yiMinNames" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px"><span style="color:#c13232;">*</span>&nbsp;姓名：</label>
     <input name="quickName" id="yiMinNames" type="text" style="width: 220px;
     height: 28px;border: 1px solid #dcdcdc;padding-left:10px;color:#999999;font-size:12px; " placeholder="输入您的真实姓名" />
-
     <div class="numTip" id="yiMinTips" style="margin-left:74px;height:14px;line-height: 14px;color:#ff7d31;"></div>
   </div>
-
   <div class="quick-text11" style="">
-
     <label class="title" for="yiMinPhones" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px"><span  style="color:#c13232;">*</span>&nbsp;手机：</label>
     <input name="quickPhone" id="yiMinPhones" type="text" style="width: 120px;
     height: 28px;border: 1px solid #dcdcdc;padding-left:10px;color:#999999;font-size:12px; " placeholder="输入您的手机号" />
@@ -19,15 +14,12 @@
     <div class="numTip" id="yiMinPhoneTips" style="margin-left:74px;height:14px;line-height:14px;color:#ff7d31;"></div>
   </div>
   <div class="quick-text11" style="">
-
     <label class="title" for="yiMinPhoneCodes" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px"> &nbsp;&nbsp;手&nbsp;&nbsp;机&nbsp;&nbsp;验&nbsp;&nbsp;证&nbsp;码：</label>
     <input name="quickPhoneCodes" id="yiMinPhoneCodes" type="text" style="width: 152px;
     height:28px;border: 1px solid #dcdcdc;padding-left:10px;color:#999999;font-size:12px; " placeholder="输入手机验证码"/>
-
     <div class="numTip" id="codeNumTip-acts" style="margin-left:136px;height:14px;line-height: 14px;color:#ff7d31;"></div>
   </div>
   <div class="quick-text11" style="">
-
     <label class="title" for="yimin_countrys" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px">&nbsp;&nbsp;意向国家和地区：</label>
     <select id="yimin_countrys" name="yimin_countrys" style="width: 164px;
     height: 28px;color:#999999;border: 1px solid #dcdcdc;padding-left:10px;background:#ffffff url({{helper.cdnhost}}/assets/img/select-down1.png) no-repeat 141px 0">
@@ -48,11 +40,9 @@
       <option value='15'>格林纳达</option>
       <option value='54'>中国香港</option>
     </select>
-
     <div class="numTip" id="departmentNumTip2s"></div>
   </div>
   <div class="quick-text11" style="margin-top:14px;">
-
     <label class="title" for="yimin_projects" style="font-size: 14px;font-weight: 500;line-height: 30px;margin-right: 10px">&nbsp;&nbsp;移&nbsp;&nbsp;&nbsp;&nbsp;民&nbsp;&nbsp;&nbsp;目&nbsp;&nbsp;&nbsp;的：</label>
     <select id="yimin_projects" name="yimin_projects" style="width: 164px;
     height: 28px;color:#999999;border: 1px solid #dcdcdc;padding-left:10px;background:#ffffff url({{helper.cdnhost}}/assets/img/select-down1.png) no-repeat 141px 0">
@@ -66,21 +56,13 @@
       <option value='8'>国债移民</option>
       <option value='9'>护照项目</option>
     </select>
-
     <div class="numTip" id="departmentNumTips"></div>
   </div>
-
-
-
-
-
-
   <div class="quick-btn-box" style="font-size: 14px;" >
     <div class="quick-btn" id="online-btns" style="cursor: pointer">
       点击进行在线评估
     </div>
   </div>
-
 </div>
 <script>
   $(function(){
@@ -100,13 +82,6 @@
       return true;
     }
   };
-  /*$(".quick-text11").each(function(i){
-   //获取.title 的宽度  给numTip 设置padding-left
-   var w = $(this).find(".title").width();
-   $(this).find(".numTip").css({"paddingLeft":w+10+"px"})
-
-   });*/
-
   $("#yiMinNames").on('blur',function(){
     // 姓名输入框 失去焦点事件
     if($(this).val()==''){
@@ -135,7 +110,6 @@
       $('#codeNumTip-acts').html("");
     }
   });
-
   function getCode () {
     //获取验证码
     if (!validate_leyu.phone($.trim($("#yiMinPhones").val()))) {
@@ -174,7 +148,6 @@
     var countDownTime = 60;
      timer = window.setInterval(function () {
       countDownTime--;
-
       $("#yiMin-phone-codes").html('（'+countDownTime+'）s');
       if (countDownTime == 0) {
         clearInterval(timer);
@@ -185,12 +158,9 @@
       }
     }, 1000);
   }
-
-
   $("#yiMin-phone-codes").click(function(){
     getCode();
   });
-
   var customize = function (name, phone, country, project) {
     //发送定制
     $.ajax({
@@ -221,7 +191,6 @@
             getCode();
         });
         $('#customizacon').css({"display":"none"});
-
       },
       error:function(XMLHttpRequest, textStatus, errorThrown){
         console.log("获取失败，请重试！CODE:"+XMLHttpRequest.status);
