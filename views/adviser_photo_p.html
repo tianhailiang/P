@@ -160,6 +160,7 @@
             curM = lastMonth;
             var length = photoArr.length > (kaishi + changdu) ? (kaishi + changdu) : photoArr.length;
             for (var i = kaishi; i < length; i++) {
+                console.log(photoArr[i])
                 if (curM != fn.getFormatDate(photoArr[i].add_time,2) || linePhotoNum == 4) {//换行条件
                     linePhotoNum = 0;
                     line++;
@@ -179,7 +180,7 @@
                         htmlstr += '<div class="album-left-box"></div><ul class="album-list">';
                     }
                 }
-                htmlstr += '<li class="photo-item"><dl><dt><a href="'+photoArr[i]['url']+'" target="_blank"><img src="'+photoArr[i]['url']+'" alt=""/></a></dt>';
+                htmlstr += '<li class="photo-item"><dl><dt><a href="'+photoArr[i]['url']+'" target="_blank"><img src="'+fn.imageThumb(photoArr[i]['url'],'150x150')+'" alt=""/></a></dt>';
                 htmlstr += '<dd>'+photoArr[i]['desc']+'</dd></dl></li>';
                 linePhotoNum++;
                 pNum++;

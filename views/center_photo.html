@@ -441,7 +441,7 @@
                         htmlstr += '<div class="album-left-box"></div><ul class="album-list">';
                     }
                 }
-                htmlstr += '<li class="photo-item"><dl><dt><a href="'+photoArr[i]['url']+'" target="_blank"><img src="'+photoArr[i]['url']+'" alt=""/></a><div class="opt-bar clearfix" data-photo_id="'+ photoArr[i]['id'] +'"><div class="opt-btn btn-border delete-btn"><i class="iconfont">&#xe8c1;</i>';
+                htmlstr += '<li class="photo-item"><dl><dt><a href="'+fn.imageThumb(photoArr[i]['url'],'150x150')+'" target="_blank"><img src="'+photoArr[i]['url']+'" alt=""/></a><div class="opt-bar clearfix" data-photo_id="'+ photoArr[i]['id'] +'"><div class="opt-btn btn-border delete-btn"><i class="iconfont">&#xe8c1;</i>';
                 htmlstr += '<span>删除</span></div>';
                 htmlstr += '<div class="opt-btn edit-btn"><i class="iconfont">&#xe61c;</i><span>编辑</span></div></div></dt>';
                 htmlstr += '<dd>'+photoArr[i]['desc']+'</dd></dl></li>';
