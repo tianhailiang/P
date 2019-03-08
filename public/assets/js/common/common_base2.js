@@ -391,7 +391,7 @@
         //图片缩略图 拼装
         imageThumb:function (imageUrl, spec, isyimin) {
           if(imageUrl !=undefined && imageUrl != ''){
-            if(spec && spec.indexOf('images.jjl.cn')!=-1){
+            if(spec && imageUrl.indexOf('images.jjl.cn')!=-1){
                 if (isyimin && isyimin == 2) {
                     return imageUrl + "!ym" + spec;
                   }

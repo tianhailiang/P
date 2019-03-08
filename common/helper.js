@@ -486,9 +486,9 @@ function tdk_param_replace(tdk_string, nationName, cityName, title, description,
 }
 
 //图片缩略图 拼装
-function imageThumb(imageUrl, spec, isyimin) {
+function imageThumb(imageUrl, spec, isyimin) {  
   if(imageUrl !=undefined && imageUrl != ''){
-    if(spec && spec.indexOf('images.jjl.cn')!=-1){
+    if(spec && imageUrl.indexOf('images.jjl.cn')!=-1){
       if (isyimin && isyimin == 2) {
         return imageUrl + "!ym" + spec;
       }
