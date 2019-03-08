@@ -7,4 +7,3 @@ var default_tdk = {
 module.exports = {
   default_tdk : default_tdk
 }
-

@@ -225,13 +225,13 @@
                 {% if item.id == article.article_info.country_id %}
                   <div class="project-div" data-id="{{item.id}}" style="display: inline-block;">
                     {% for val in item.itemLabel %}
-                      {{helper.eduChecked(val,article.article_info.edu_id) |safe }}
+                      {{helper.yiminEduChecked(val,article.article_info.edu_id) |safe }}
                     {% endfor %}
                   </div>
                 {% else %}
                   <div class="project-div" data-id="{{item.id}}" >
                     {% for val in item.itemLabel %}
-                      {{helper.eduChecked(val,article.article_info.edu_id) |safe }}
+                      {{helper.yiminEduChecked(val,article.article_info.edu_id) |safe }}
                     {% endfor %}
                   </div>
                 {% endif %}
@@ -254,7 +254,7 @@
                 {'name':'移民案例','val':'移民案例'}
               ]  %}
               {% for item in recommendList %}
-                {{helper.tagChecked(item.name,item.val,article.article_info.tag_list) |safe }}              
+                {{helper.yiminTagChecked(item.name,item.val,article.article_info.tag_list) |safe }}              
               {% endfor %}
               <span class="numTip">
                 注：选中【移民案例】标签即发布至顾问个人主页-案例中

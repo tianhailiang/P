@@ -908,6 +908,133 @@ function tagChecked(country, checkEduList, checkTagList){
   }
   return tHtml;
 }
+//学历标签选中函数
+function yiminEduChecked(val,checkedList){
+  var html =`<span class="level-sel" >
+              <i class="level-sel-i iconfont"></i>
+              <i>${val}</i>
+            </span>`;
+  if(checkedList==undefined){
+     checkedList = []
+  }else{
+    checkedList =checkedList.split(',');
+  }
+  for (let item of checkedList) {
+    if(val == item){
+      html = `<span class="level-sel" checked="checked">
+                <i class="level-sel-i iconfont" style="border:none;color:#c13232;margin-right:7px;font-size:16px;">&#xe640;</i>
+                <i>${val}</i>
+              </span>`;
+    }
+  }
+  return html;
+}
+//推荐标签选中函数
+function yiminTagChecked(name,val,checkedList,checkedCountryId){
+  var html ='';
+  var specialStyle = '';  
+  var specialId = '';
+  if (name == "QS排名") {
+    specialStyle ="style='margin-right:38px;'"
+  }
+  if (name == '动漫留学') {
+    specialId = "id='special-tag'";
+    if (checkedCountryId != 51) {
+      html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;
+    }
+    else {
+      html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId}>
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;
+    }    
+  }
+  else {
+    html =`<span class="recommend-sel" data-str="${val}" ${specialStyle} ${specialId}>
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+          </span>`;       
+  }
+  if(name=="留学案例"){
+    html =`<span class="recommend-sel" style="display: block;" data-str="${val}" id="recommend-sel-case">
+            <i class="level-sel-i iconfont"></i>
+            <i>${val}</i>
+            <i class="numTip" style="margin-left:30px;">
+            注：选中【留学案例】标签即发布至顾问个人主页-案例中
+            </i>
+          </span>`;
+  }
+  if(name=="自定义标签"){
+    html =`<div  style="display: block;">
+            <span class="recommend-sel" style="margin-right: 0px;" data-str="${val}" id="recommend-sel-custom">
+              <i class="level-sel-i iconfont"></i>
+              <i>自定义标签</i>
+            </span>
+            <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" />
+          </div>`;
+  }
+  if(checkedList==undefined){
+     checkedList = []
+  }else{
+    checkedList =checkedList.split('/');
+  }
+  for (let item of checkedList) {
+    if(val == item){
+      if (name == "QS排名") {
+        specialStyle ="style='margin-right:38px;'"
+      }
+      if (name == '动漫留学') {
+        specialId = "id='special-tag'";
+        if (checkedCountryId != 51) {
+          html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId} style="display:none;">
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+        }
+        else {
+          html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId}>
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+        }
+      }
+      else {
+        html = `<span class="recommend-sel" checked="checked" data-str="${val}" ${specialStyle} ${specialId}>
+                  <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                  margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                  <i>${val}</i>
+                </span>`;
+      }
+      if(name=="留学案例"){
+        html =`<span class="recommend-sel" style="display: block;" data-str="${val}" checked="checked" id="recommend-sel-case">
+                <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+                <i>${val}</i>
+                <i class="numTip" style="margin-left:30px;">
+                注：选中【留学案例】标签即发布至顾问个人主页-案例中
+                </i>
+              </span>`;
+      }
+      if(name=="自定义标签"){
+        console.log(val)
+        html =`<div  style="display: block;">
+            <span class="recommend-sel" style="margin-right: 0px;" data-str="" checked="checked" id="recommend-sel-custom">
+              <i class="level-sel-i iconfont" style="border:none;color:#c13232;
+                margin-right:7px;font-size:16px;line-height:18px;">&#xe640;</i>
+              <i>自定义标签</i>
+            </span>
+            <input class="recommend-input" maxlength="5" type="text" placeholder="请输入您的自定义标签" id ="recommend-input" value= "${val}" />
+          </div>`;
+      }
+    }
+  }
+  return html;
+}
 function adseatCompare(seat,dest){
   if(seat == "SEAT" + dest.toString()){
     return true
@@ -941,5 +1068,7 @@ module.exports = {
   tagChecked:tagChecked,
   adseatCompare:adseatCompare,
   rndNum:rndNum,
-  active_urlgen_activity: active_urlgen_activity
+  active_urlgen_activity: active_urlgen_activity,
+  yiminEduChecked: yiminEduChecked,
+  yiminTagChecked: yiminTagChecked
 };
