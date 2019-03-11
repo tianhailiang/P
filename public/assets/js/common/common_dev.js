@@ -10,7 +10,7 @@
     var js_api_config = global.js_api_config = {
         version: 'development',
         wwhost: 'http://www.jjl.cn',
-        domain: '.jjl.cn'
+        domain: 'www.jjl.cn'
     }
 })(this, document);
 
