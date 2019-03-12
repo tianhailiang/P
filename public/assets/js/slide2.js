@@ -269,7 +269,7 @@ $(function(){
         '<li><a onclick="onclick_ly(\'g\',\'51\')"target="_blank">('+_areaName+')俄罗斯咨询</a></li>';
 
     }else if(_areaCode==100){
-      _listStr='<li><a onclick="onclick_ly(\'g\',\'40\')"target="_blank">('+_areaName+')英国/爱尔兰/中国香港/中国澳门咨询</a></li>'+
+      _listStr='<li><a onclick="onclick_ly(\'g\',\'40\')"target="_blank">('+_areaName+')英国/爱尔兰/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国香港/中国澳门咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'41\')"target="_blank">('+_areaName+')美国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'39\')"target="_blank">('+_areaName+')澳洲咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'503\')"target="_blank">('+_areaName+')新西兰咨询</a></li>'+
@@ -278,7 +278,7 @@ $(function(){
         '<li><a onclick="onclick_ly(\'g\',\'161\')"target="_blank">('+_areaName+')韩国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'162\')"target="_blank">('+_areaName+')新马俄乌咨询</a></li>';
     }else{
-      _listStr='<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_uk+'\')"target="_blank">('+_areaName+')英国/爱尔兰/中国香港/中国澳门咨询</a></li>'+
+      _listStr='<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_uk+'\')"target="_blank">('+_areaName+')英国/爱尔兰/<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国香港/中国澳门咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_us+'\')"target="_blank">('+_areaName+')美国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_au+'\')"target="_blank">('+_areaName+')澳洲咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_xxl+'\')"target="_blank">('+_areaName+')新西兰咨询</a></li>'+
