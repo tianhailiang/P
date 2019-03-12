@@ -34,8 +34,12 @@ function get_tar(country,type){
       else{
         tar = myjson[area].a_us;
       }
-    } else if(country == '英国' || country == '香港'){
+    // } else if(country == '英国' || country == '香港'){
+    } else if (country == '爱尔兰' || country == '英国' || country == '香港') {
       if(country == '英国' && area == 1){
+        tar = '60';
+      }
+      else if(country == '爱尔兰' && area == 1){
         tar = '60';
       }
       else if(country == '香港' && area == 1){
@@ -71,7 +75,8 @@ function get_tar(country,type){
     else if(country == '法国'){
       tar = '55';
     }
-    else if(country == '爱尔兰' || country == '荷兰' || country == '北欧'){
+    // else if(country == '爱尔兰' || country == '荷兰' || country == '北欧'){
+    else if(country == '荷兰' || country == '北欧'){
       tar = '49';
     }
     else if(country == '意大利' || country == '西班牙' || country == '瑞士'){
@@ -237,7 +242,7 @@ $(function(){
       _areaCode=1;
     }
     var _listStrAll='<li><a onclick="onclick_ly(\'g\',\'55\')"target="_blank">法国咨询</a></li>'+
-      '<li><a onclick="onclick_ly(\'g\',\'49\')"target="_blank">爱荷北欧咨询</a></li>'+
+      '<li><a onclick="onclick_ly(\'g\',\'49\')"target="_blank">荷兰/北欧咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'123\')"target="_blank">西意瑞咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'48\')"target="_blank">德国/奥地利咨询</a></li>'+
       '<li><a onclick="onclick_ly(\'g\',\'54\')"target="_blank">移民咨询</a></li>'+
@@ -249,8 +254,8 @@ $(function(){
       _listStr='<li><a onclick="onclick_ly(\'g\',\'253\')"target="_blank">('+_areaName+')美国中学留学</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'247\')"target="_blank">('+_areaName+')美国本科留学</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'246\')"target="_blank">('+_areaName+')美国研究生留学</a></li>'+
-        '<li><a onclick="onclick_ly(\'g\',\'60\')"target="_blank">('+_areaName+')英国咨询</a></li>'+
-        '<li><a onclick="onclick_ly(\'g\',\'812\')"target="_blank">('+_areaName+')英国高中咨询</a></li>'+
+        '<li><a onclick="onclick_ly(\'g\',\'60\')"target="_blank">('+_areaName+')英国/爱尔兰咨询</a></li>'+
+        '<li><a onclick="onclick_ly(\'g\',\'812\')"target="_blank">('+_areaName+')英国/爱尔兰高中咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'58\')"target="_blank">('+_areaName+')加拿大中小学/本科</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'792\')"target="_blank">('+_areaName+')加拿大学院/研究生</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'852\')"target="_blank">('+_areaName+')加拿大签证</a></li>'+
@@ -264,7 +269,7 @@ $(function(){
         '<li><a onclick="onclick_ly(\'g\',\'51\')"target="_blank">('+_areaName+')俄罗斯咨询</a></li>';
 
     }else if(_areaCode==100){
-      _listStr='<li><a onclick="onclick_ly(\'g\',\'40\')"target="_blank">('+_areaName+')英国/中国香港/中国澳门咨询</a></li>'+
+      _listStr='<li><a onclick="onclick_ly(\'g\',\'40\')"target="_blank">('+_areaName+')英国/爱尔兰/中国香港/中国澳门咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'41\')"target="_blank">('+_areaName+')美国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'39\')"target="_blank">('+_areaName+')澳洲咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'503\')"target="_blank">('+_areaName+')新西兰咨询</a></li>'+
@@ -273,7 +278,7 @@ $(function(){
         '<li><a onclick="onclick_ly(\'g\',\'161\')"target="_blank">('+_areaName+')韩国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\'162\')"target="_blank">('+_areaName+')新马俄乌咨询</a></li>';
     }else{
-      _listStr='<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_uk+'\')"target="_blank">('+_areaName+')英国/中国香港/中国澳门咨询</a></li>'+
+      _listStr='<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_uk+'\')"target="_blank">('+_areaName+')英国/爱尔兰/中国香港/中国澳门咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_us+'\')"target="_blank">('+_areaName+')美国咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_au+'\')"target="_blank">('+_areaName+')澳洲咨询</a></li>'+
         '<li><a onclick="onclick_ly(\'g\',\''+myjson[_areaCode].a_xxl+'\')"target="_blank">('+_areaName+')新西兰咨询</a></li>'+
