@@ -258,7 +258,12 @@ function urlgen() {
     return url;
   }
   else {
-    if(chan=='/branch_home'){
+    if (/\/zt\//.test(url)) {
+      if (/index/.test(url)) {
+        url += '.html'
+      }
+    }
+    else if(chan=='/branch_home'){
       url = ((city && city != 0)?"/"+city:"")+"/";
     }
     if(url.match(/^(.*)\/article\/(\d+)$/g) || url.match(/^(.*)\/case\/(\d+)$/g)|| url.match(/(culture|events|cooperation|contact|canzan|lawyer)/)){
