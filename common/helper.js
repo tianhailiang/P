@@ -79,7 +79,12 @@ function paramurlgen() {
     }
   }
   //url += (city?"/"+city:"") + (nation?"/"+nation:"") + chan + param + ".html";
-  if(url == "/.html"  ||  url=='.html'){
+  if (/\/zt\//.test(url)) {
+    if (/index/.test(url)) {
+      url += '.html'
+    }
+  }
+  else if(url == "/.html"  ||  url=='.html'){
     url = "/";
   }
   if(!exits_static_page(chan + param + ".html")){
