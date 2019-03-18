@@ -56,7 +56,9 @@ exports.loginUser = function (req, res, next) {
   console.log('url', l.h);
   if (/\/zt\//.test(l.h)) {
     if (!/shtml/.test(l.h)) {
-      l.h = l.h.substring(l.h.length-10)
+      // l.h = l.h.substring(l.h.length-10)
+      var hh = l.h.split("/");
+      l.h = hh[0] + '//' + hh[2] + '/' + hh[3] + '/' + hh[4] + '/' + hh[5] + '/'
       console.log('new-l.h', l.h)
     }
   }
