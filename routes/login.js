@@ -55,8 +55,8 @@ exports.loginUser = function (req, res, next) {
   var l = req.query
   console.log('url', l.h);
   if (/\/zt\//.test(l.h)) {
-    if (/index/.test(l.h)) {
-      l.h += '.html'
+    if (/\.html/.test(l.h)) {
+      l.h += l.h.substring(l.h.length-10)
     }
   }
   if (l.h !== undefined) {
