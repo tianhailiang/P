@@ -312,6 +312,14 @@ exports.register = function (req, res, next) {
   var data = [];
   data.login_nickname = '';
   var l = req.query
+  if (/\/zt\//.test(l.h)) {
+    if (!/shtml/.test(l.h)) {
+      // l.h = l.h.substring(l.h.length-10)
+      var hh = l.h.split("/");
+      l.h = hh[0] + '//' + hh[2] + '/' + hh[3] + '/' + hh[4] + '/' + hh[5] + '/'
+      console.log('new-l.h', l.h)
+    }
+  }
   console.log('url', l.h);
   if (l.h !== undefined) {
     data.url = l.h;
