@@ -87,8 +87,20 @@
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        if (strs[0] == 'h') {
+          var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + strs[1], "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        } else {
+          var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        }
       } else {
+        if (/\/zt\//.test(h)) {
+          if (!/shtml/.test(h)) {
+            // l.h = l.h.substring(l.h.length-10)
+            var hh = h.split("/");
+            h = hh[0] + '//' + hh[2] + '/' + hh[3] + '/' + hh[4] + '/' + hh[5] + '/'
+            console.log('new-l.h', h)
+          }
+        }
         var A = window.open(js_api_config.wwhost+ "/sina_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
@@ -100,8 +112,20 @@
       if (hh[1] !== undefined) {
         var str = hh[1].substr(1);
         var strs = str.split("=");
-        var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        if (strs[0] == 'h') {
+          var A = window.open(js_api_config.wwhost+"/qq_login?h=" + strs[1], "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        } else {
+          var A = window.open(js_api_config.wwhost+"/qq_login?h=" + h, "TencentLogin", "width=695,height=475,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
+        }
       } else {
+        if (/\/zt\//.test(h)) {
+          if (!/shtml/.test(h)) {
+            // l.h = l.h.substring(l.h.length-10)
+            var hh = h.split("/");
+            h = hh[0] + '//' + hh[2] + '/' + hh[3] + '/' + hh[4] + '/' + hh[5] + '/'
+            console.log('new-l.h', h)
+          }
+        }
         var A = window.open(js_api_config.wwhost+"/qq_login?h=" + h, "TencentLogin", "width=450,height=320,menubar=0,scrollbars=1,resizable=1,status=1,titlebar=0,toolbar=0,location=1");
       }
     })
