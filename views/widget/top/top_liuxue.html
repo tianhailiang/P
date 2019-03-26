@@ -1,23 +1,28 @@
 <div class="top" style="position:relative;z-index: 1002;" data-uinfo="{{index_userinfo.unread_num}}">
-    <div class="dui-layout-lg top-con clearfix" style="position: relative;width: 1200px;">
-        <div class="top-con-left" style="display: inline-block;width: 50%;">
-            <img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">
-            <span style="font-size: 12px;color: #666;">400-010-8000</span>
-          </div>
-        <div class="top-con-right" style="display: inline-block;width: 180px;">
-        <span class="top_phone"><i></i></span>
-        {#<span style="position: relative;margin-right: 5px;"><a style="font-size: 12px;" target="_blank" id="" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;top: -7px">9</i></span>
-        <span class="bor"></span>#}
-        <span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>
-        <span class="bor"></span>
-        <span ><a href="javascript:void(0);" style="background: #fff;" id="getloginUser_deng" class="dui-text-warning-ss" rel="nofollow">登录</a></span>
-        <span class="bor">|</span>
-        <span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>
-        <span id="weixin_" class="top_weibo" style="background: url({{helper.cdnhost}}/assets/img/top_liuxue_weixin.png);display: none;"></span>
-        <span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>
-        <span id="weibo_"class="top_weibo" style="background: url({{helper.cdnhost}}/assets/img/top_liuxue_weibo.png);display: none;"></span>
-        </div>
-        </div>
+  <div class="dui-layout-lg top-con clearfix" style="position: relative;width: 1200px;">
+    <div class="top-con-left" style="display: inline-block;">
+      <img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">
+      <span style="font-size: 12px;color: #666;">400-010-8000</span>
+    </div>
+    <ul class="top-con-center">
+      <li class="{{'active' if tdk.pagekey == 'HOME'}}"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">出国留学</a></li>
+      <li class="{{'active' if tdk.pagekey == 'YIMIN_HOME'}}"><a href="{{ helper.urlgen('yimin') }}">海外移民</a></li>
+      <li class="{{'active' if tdk.pagekey == 'PROFILE'}}"><a href="{{ helper.urlgen('about') }}">关于我们</a></li>
+    </ul>
+    <div class="top-con-right" style="display: inline-block;width: 180px;">
+      <span class="top_phone"><i></i></span>
+      {#<span style="position: relative;margin-right: 5px;"><a style="font-size: 12px;" target="_blank" id="" rel="nofollow">消息</a><i class="text_shu" style="font-size: 12px;top: -7px">9</i></span>
+      <span class="bor"></span>#}
+      <span><a target="_blank" id="getloginUser" class="dui-text-warning-ss" rel="nofollow">注册</a></span>
+      <span class="bor"></span>
+      <span ><a href="javascript:void(0);" style="background: #fff;" id="getloginUser_deng" class="dui-text-warning-ss" rel="nofollow">登录</a></span>
+      <span class="bor">|</span>
+      <span id="weixin" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weixin.png"/></span>
+      <span id="weixin_" class="top_weibo" style="background: url({{helper.cdnhost}}/assets/img/top_liuxue_weixin.png);display: none;"></span>
+      <span id="weibo_top" class="top_weibo_img"><img src="{{helper.cdnhost}}/assets/img/top_weibo.png"/></span>
+      <span id="weibo_"class="top_weibo" style="background: url({{helper.cdnhost}}/assets/img/top_liuxue_weibo.png);display: none;"></span>
+    </div>
+  </div>
 </div>
 <style type="text/css">
   .l_u{
@@ -138,108 +143,104 @@
     cursor: pointer;
   }
   input[type="checkbox"]:checked+label {color: red;}
-
-input[type="checkbox"] + label:before, #xieyi_reg input[type="checkbox"] + label:before {
-  content: "\a0"; /*不换行空格*/
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 18px;
-  width: 14px;
-  height: 13px;
-  margin-right: 10px;
-  border-radius: 50%;
-  border: 1px solid #958c87;
-  font-weight: normal;
-  line-height: 1; 
-  
-}
-
-input[type="checkbox"]:checked + label:before, #xieyi_reg input[type="checkbox"]:checked + label:before{
-  content: "\a0"; /*不换行空格*/
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 18px;
-  width: 10px;
-  height: 9px;
-  margin-right: 10px;
-  border-radius: 50%;
-  border: 1px solid #d31d2c;
-  background-color: #d31d2c;
-  background-clip: content-box;
-  padding: 2px;
-  color: #d31d2c;
-  
-}
-
-input[type="checkbox"] {
-  position: absolute;
-  clip: rect(0, 0, 0, 0);
-}
-.yonghu{
-  display: inline-block;
-  margin-left: -5px;
-  font-size: 14px;
-  color: #333;
-  position: relative;
-}
-.yonghu a{
-  color: #c13232;
-}
-.yonghu span{
-  width: 235px;
-  top: -13px;
-  position: absolute;
-}
-.login_error{
-      background-color: #FFFBEF;
-      border: 1px solid #C13232;
-      padding: 6px 12px;
-      z-index: 1;
-      box-shadow: 0 1px 1px #eee;
-      color: #C13232;
-      position: absolute;
-      right: -165px;
-      left: 295px;
-      top: -19px;
-      opacity: 1;
-    }
-    .login_error:after,.login_error:before{
-      border: 6px solid transparent;
-      content: ' ';
-      position: absolute;
-      left: 1em;
-    }
-    .login_error:before{
-      border-top-color: #C13232;
-      bottom: -13px;
-    }
-    .login_error:after{
-      border-top-color: #fffbef;
-      bottom: -12px;
-    }
-    .login_x{
-      width: 9px;
-      height: 9px;
-      display: inline-block;
-      margin-right: 5px;
-      background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
-    }
-    .top_400{
-      width: 12px;
-      height: 12px;
-    }
-    .text_shu{
-      width: 18px;
-      height: 18px;
-      border-radius: 50%;
-      background: #C13232;
-      color: #fff;
-      position: absolute;
-      top: 0px;
-      left: -16px;
-      text-align: center;
-      line-height: 18px;
-    }
+  input[type="checkbox"] + label:before, #xieyi_reg input[type="checkbox"] + label:before {
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 14px;
+    height: 13px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid #958c87;
+    font-weight: normal;
+    line-height: 1; 
+  }
+  input[type="checkbox"]:checked + label:before, #xieyi_reg input[type="checkbox"]:checked + label:before{
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 18px;
+    width: 10px;
+    height: 9px;
+    margin-right: 10px;
+    border-radius: 50%;
+    border: 1px solid #d31d2c;
+    background-color: #d31d2c;
+    background-clip: content-box;
+    padding: 2px;
+    color: #d31d2c;
+    
+  }
+  input[type="checkbox"] {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+  }
+  .yonghu{
+    display: inline-block;
+    margin-left: -5px;
+    font-size: 14px;
+    color: #333;
+    position: relative;
+  }
+  .yonghu a{
+    color: #c13232;
+  }
+  .yonghu span{
+    width: 235px;
+    top: -13px;
+    position: absolute;
+  }
+  .login_error{
+    background-color: #FFFBEF;
+    border: 1px solid #C13232;
+    padding: 6px 12px;
+    z-index: 1;
+    box-shadow: 0 1px 1px #eee;
+    color: #C13232;
+    position: absolute;
+    right: -165px;
+    left: 295px;
+    top: -19px;
+    opacity: 1;
+  }
+  .login_error:after,.login_error:before{
+    border: 6px solid transparent;
+    content: ' ';
+    position: absolute;
+    left: 1em;
+  }
+  .login_error:before{
+    border-top-color: #C13232;
+    bottom: -13px;
+  }
+  .login_error:after{
+    border-top-color: #fffbef;
+    bottom: -12px;
+  }
+  .login_x{
+    width: 9px;
+    height: 9px;
+    display: inline-block;
+    margin-right: 5px;
+    background: url({{helper.cdnhost}}/assets/img/login_error_1.png)
+  }
+  .top_400{
+    width: 12px;
+    height: 12px;
+  }
+  .text_shu{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #C13232;
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    left: -16px;
+    text-align: center;
+    line-height: 18px;
+  }
 </style>
 <!-- 登录 -->
 <div class="l_u" id="l_u" style="display: none;height: 500px;">
@@ -331,10 +332,6 @@ input[type="checkbox"] {
       </div>
   </div>
 </div>
-
-
-
-
 {#{% if login_nickname == '' %}
 <div class="top">
   <div class="dui-layout-lg top-con">

@@ -21,7 +21,8 @@
   color:#666666;
 }
 .top-con-left{
-   float:left;
+  float:left;
+  margin-right: 103.66px;
  }
 .top-con-right{
   float:right;
@@ -53,4 +54,26 @@
   position: absolute;
   top: 29px;
   right: 0px;
+}
+.top-con-center {
+  float: left;
+  margin-left: 20px;
+}
+.top-con-center li {
+  float: left;
+  text-align: center;
+  line-height: 30px;
+  height: 30px;
+  padding: 0 25px;
+}
+.top-con-center li a {
+  font-size: 16px;
+  color: #333;
+}
+.top-con-center li.active a {
+  color: #c13232;
+  text-decoration: underline;
+}
+.yimin-con-center {
+  margin-left: 40px;
 }

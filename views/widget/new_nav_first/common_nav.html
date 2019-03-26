@@ -4,20 +4,17 @@
         <div class="new-logo-left">
             <a  target="_blank" href="{{ helper.urlgen('branch_home') }}"><img src="{{helper.cdnhost}}/assets/img/logo_common.png" alt="金吉列留学官网"/></a>
         </div>
-        <ul class="page-type" style="width: 670px;">
-            <!-- <li class="type-nav small-nav"><a href="{{ helper.urlgen('branch_home') }}">留学</a></li> -->
+        <ul class="page-type">
             {% if tdk.pagekey.indexOf('CENTER') == -1 %}
             <li class="back-home-nav"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}"><img src="{{helper.cdnhost}}/assets/img/back_to_home_page_ic@2x.png" alt=""></a></li>
             {% else %}
             <li class="back-home-nav"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}" target="_blank"><img src="{{helper.cdnhost}}/assets/img/back_to_home_page_ic@2x.png" alt=""></a></li>
             {% endif %}
-            
-            <li class="type-nav middle-nav"><a href="{{helper.urlgen('articles')}}">留学攻略</a></li>
-            <li class="type-nav middle-nav {{'active' if tdk.pagekey == 'CHIEF'}}"><a href="{{helper.urlgen('chief')}}">推荐顾问</a></li>
-            <li class="type-nav middle-nav"><a href="{{helper.urlgen('adviser')}}">留学顾问</a></li>
-            <!-- <li class="type-nav middle-nav"><a href="{{helper.urlgen('case')}}">留学案例</a></li> -->
-            <li class="type-nav {{'active' if tdk.pagekey == 'YIMIN_HOME'}}"><a href="{{ helper.urlgen('yimin') }}">海外移民</a></li>
-            <li class="type-nav big-nav {{'active' if tdk.pagekey == 'PROFILE' or tdk.pagekey == 'CULTURE' or tdk.pagekey == 'EVENTS' or tdk.pagekey == 'COOPERATION' or tdk.pagekey == 'CONTACT'}}"><a href="{{ helper.urlgen('about') }}">关于我们</a></li>
+            <li class="type-nav"><a href="{{helper.urlgen('articles')}}">留学攻略</a></li>
+            <li class="type-nav {{'active' if tdk.pagekey == 'CHIEF'}}"><a href="{{helper.urlgen('chief')}}">推荐顾问</a></li>
+            <li class="type-nav"><a href="{{helper.urlgen('adviser')}}">留学顾问</a></li>
+            <li class="type-nav {{'active' if tdk.pagekey == 'YIMIN_HOME'}}"><a href="{{ helper.urlgen('yimin') }}">移民项目</a></li>
+            <li class="type-nav {{'active' if tdk.pagekey == 'HOME'}}"><a href="{{ helper.urlgen('case') }}">移民案列</a></li>
         </ul>
         <div class="nav-right nav-right-short" style="width: auto;">
             <div class="new-searchs new-home-search">

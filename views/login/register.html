@@ -1,12 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-
   {% include "header_new.html" %}
   <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/widget/nav_login.css"/>
-  
   <link rel="stylesheet" type="text/css" href="{{helper.cdnhost}}/assets/css/custom.css">
-
   <script src="{{helper.cdnhost}}/dep/js/layer-1.min.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/icheck.min.js"></script>
   <style type="text/css">
@@ -173,16 +170,13 @@
 </head>
 <body>
 {% include "widget/common_hide/common_hide.html"%}
-  {#{% include "widget/top/top.html" %}#}
   <div class="top" style="position:relative;z-index: 1002;">
   </div>
   <div class="main" style="margin: 0 auto;">
     {% import "widget/new_nav_first/nav_login.html" as nav_login %}
     {{ nav_login.nav_login(tdk,helper) }}
   </div>
-
   <div class="register_overseas clearfix" style="padding-top: 0px;">
-
     <div style="margin: 0px auto;height: 550px;width: 100%;background: url({{helper.cdnhost}}/assets/img/login_background1.png);
     background-repeat: no-repeat;background-size: cover;background-position-x: -200px;">{# #}
       {# <img src="{{helper.cdnhost}}/assets/img/login_background1.png" alt="" style="width: 100%;height: 550px;display:block;overflow:hidden;"/> #}
@@ -337,6 +331,15 @@
         var user_type;
         if (login_nickname == null) {
           var val = '<div class="dui-layout-lg top-con">'+
+                '<div class="top-con-left" style="display: inline-block;">'+
+                  '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">'+
+                  '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
+                '<ul class="top-con-center">'+
+                  '<li class="{{'active' if tdk.pagekey == 'HOME'}}"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">出国留学</a></li>'+
+                  '<li class="{{'active' if tdk.pagekey == 'YIMIN_HOME'}}"><a href="{{ helper.urlgen('yimin') }}">海外移民</a></li>'+
+                  '<li class="{{'active' if tdk.pagekey == 'PROFILE'}}"><a href="{{ helper.urlgen('about') }}">关于我们</a></li>'+
+                '</ul>'+
                 '<div class="top-con-right">'+
                 '<span><a onclick="window.location.reload();" class="dui-text-warning-ss" rel="nofollow">注册</a></span>'+
                 '<span class="bor"></span>';
@@ -350,6 +353,15 @@
           $(".top").append(val);
         } else {
           var val = '<div class="dui-layout-lg top-con">'+
+                '<div class="top-con-left" style="display: inline-block;">'+
+                  '<img src="{{helper.cdnhost}}/assets/img/top_phone.png" alt="" class="top_400">'+
+                  '<span style="font-size: 12px;color: #666;margin-left: 3px">400-010-8000</span>'+
+                '</div>'+
+                '<ul class="top-con-center">'+
+                  '<li class="{{'active' if tdk.pagekey == 'HOME'}}"><a href="{{ helper.urlgen('branch_home','c='+tdk.cityid) }}">出国留学</a></li>'+
+                  '<li class="{{'active' if tdk.pagekey == 'YIMIN_HOME'}}"><a href="{{ helper.urlgen('yimin') }}">海外移民</a></li>'+
+                  '<li class="{{'active' if tdk.pagekey == 'PROFILE'}}"><a href="{{ helper.urlgen('about') }}">关于我们</a></li>'+
+                '</ul>'+
                 '<div class="top-con-right">'+
                 '<ul>';
           if (login_nickname.usertype == 1) {
