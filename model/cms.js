@@ -1512,7 +1512,6 @@ exports.getPdf = function (data, callback) {
   }
   api.apiRequest(url, callback);
 }
-//顾问聚合页
 //搜索结果页so_adviser_list
 exports.adviser_list = function (data,callback) {
   var url = _api_url_path(data, config.apis.get_adviser_list);
@@ -1520,5 +1519,14 @@ exports.adviser_list = function (data,callback) {
     callback('404');
     return;
   }
-  api.apiRequest(url ,callback);
+  api.apiRequest(url, callback);
+}
+//移民案例列表页
+exports.yimin_case_list = function (data, callback) {
+  var url = _api_url_path(data, config.apis.get_yimin_case_list);
+  if (url == null){
+    callback('404');
+    return;
+  }
+  api.apiRequest(url, callback);
 }

@@ -78,16 +78,6 @@ function getCountryEn(id) {
   var obj = normalize(__countryArr_[id],__countryArr_[0]);
   return obj[1];
 }
-
-/*
- * param：国家id，
- * return：国家英文缩写
- */
-function getCountryChinese(id) {
-    var obj = normalize(__countryArr_[id],__countryArr_[0]);
-    return obj[0];
-}
-
 /*
  * param：国家英文缩写
  * return：国家id
@@ -430,7 +420,6 @@ function api_return(code, message, data){
 }
 //获取分公司地址
 module.exports = {
-  getCountryChinese: getCountryChinese ,
   getCountryId: getCountryId,
   getCountryEn: getCountryEn,
   getCountryChinese: getCountryChinese,

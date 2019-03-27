@@ -157,6 +157,7 @@ exports.index = function (req, res, next) {
 };
 //分公司首页
 exports.index_page = function (req, res, next) {
+    log.debug('分公司首页')
     var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
     if (req.params[0]) {
         var cityId = comfunc.getCityId(req.params[0]);
@@ -169,21 +170,16 @@ exports.index_page = function (req, res, next) {
     var data = [];
     //node获取地址栏url
     var l = url.parse(req.url, true).query;
-    console.log('url', l.h);
     if (l.h !== undefined) {
         data.url = l.h;
     } else {
         data.url = config.wwhost+req.url;
     }
     if ( req.cookies.login_ss !== undefined) {
-        console.log('aaaaaa');
         data.login_info = JSON.parse(req.cookies.login_ss);
-        console.log('data.login_info', data.login_info);
     }else{
         data.login_info ={};
         data.login_info.uid = 0;
-        //res.redirect(config.wwhost+'/login');
-        //return false;
     }
     async.parallel({
         lunbo_list:function(callback) {
@@ -223,9 +219,9 @@ exports.index_page = function (req, res, next) {
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');
         data.guanggao = returnData(result.guanggao,'guanggao');
         data.liuxueguanggao = returnData(result.liuxueguanggao,'liuxueguanggao')
-	if (result.shouye != "暂无数据") {
-        data.shouye = JSON.parse(result.shouye);
-	}
+        if (result.shouye != "暂无数据") {
+            data.shouye = JSON.parse(result.shouye);
+        }
         if (data.login_info.uid != 0) {
             async.parallel({
                 //获取用户信息（普通用户，顾问，参赞）
@@ -237,16 +233,12 @@ exports.index_page = function (req, res, next) {
                 }
             },function (err, result) {
                 data.index_userinfo = returnData(result.userinfo,'userinfo');
-                console.log('userinfo',data.index_userinfo);
                 data.tdk = {
                     pagekey: 'HOME',
                     cityid: area,
                     nationid: ''
                 };
-                // console.log(result.shouye);
                 data.esikey = esihelper.esikey();
-                console.log('userinfo',data.index_userinfo);
-                // log.info(data.xSlider2)
                 res.render('index', data);
             })
         } else {
@@ -255,14 +247,11 @@ exports.index_page = function (req, res, next) {
                 cityid: area,
                 nationid: ''
             };
-            // console.log(result.shouye);
             data.esikey = esihelper.esikey();
-            // log.info(data.xSlider2)
             res.render('index', data);
         }
-        
     })
-};
+}
 //国家列表页
 exports.country_list = function (req, res, next) {
     log.debug('国家列表页');
@@ -4356,5 +4345,42 @@ exports.chiefmore =function(req,res,next){
         }else{
             res.send(result);
         }
+    })
+ }
+ exports.yimin_case = function (req, res, next) {
+    log.debug('移民案例')
+    var data = {};
+    var l = url.parse(req.url, true).query;
+    if (l.h !== undefined) {
+        data.url = l.h;
+    } else {
+        data.url = config.wwhost+req.url;
+    }
+    data.login_nickname = '';
+    if ( req.cookies.login_ss !== undefined) {
+        var login_a = JSON.parse(req.cookies.login_ss);
+        data.login_nickname = login_a;
+    }
+    async.parallel({
+        lunbo_list:function(callback) {
+            cms.lunbo_list({
+                "ad_page": "YIMIN_CASE",
+                "cityid": 1,
+                "ad_seat": "SEAT1"
+            }, callback);
+        },
+        yimin_case_list: function (callback) {
+            cms.yimin_case_list({
+
+            }, callback)
+        }
+    }, function (err, result) {
+        data.xSlider = returnData(result.lunbo_list,'lunbo_list');
+        data.yimin_case_list = returnData(result.yimin_case_list,'yimin_case_list');
+        data.tdk = {
+            pagekey: 'YIMIN_CASE',
+            cityid: 1
+        }
+        res.render('yimin_case', data);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
     })
  }

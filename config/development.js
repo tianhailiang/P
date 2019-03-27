@@ -289,7 +289,8 @@ var apis = {
   "sendSms": coupon + 'sendSms', //发送手机验证码（活动页）
   //获取pdf
   "get_pdf":prefix+'article_des',
-  "get_adviser_list": so_prefix + 'article/convergeAdviserList'//顾问聚合页
+  "get_adviser_list": so_prefix + 'article/convergeAdviserList',//顾问聚合页
+  "get_yimin_case_list": prefix + 'yimin_case_list'
 };
 module.exports = {
   redisCache: redisCache,

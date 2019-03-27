@@ -2,11 +2,9 @@ var controller = require('./controller.js');
 var user = require('./user.js');
 var about = require('./about.js');
 var login = require('./login.js');
-exports = module.exports = function (app) {// routes
-  //nav
+exports = module.exports = function (app) {
   app.get('/', controller.index);
   app.get(/^\/(bj|cd|cq|cs|cc|cz|dl|dg|fs|fz|gz|gy|hz|hf|heb|hs|hd|hn|jn|jl|km|lz|ly|nj|nc|nb|nn|qd|sh|sy|sjz|shz|sz|tj|ty|ts|wh|wx|wz|xa|xm|xz|xn|xj|yt|yc|ych|zz)(\/*)$/, controller.index_page);
-  // app.get('/', controller.index);
   //搜索页
   app.get(/^\/so_article(\/*)(.*)+$/,controller.so_article);
   //顾问搜索页
@@ -67,7 +65,6 @@ exports = module.exports = function (app) {// routes
   app.get('/user_center/acount', controller.advisor_acount);
   //用户中心 个人信息
   app.get('/user_center/profile', controller.user_information);
-
   //顾问 关注我的
   app.get('/advisor_center/follow', controller.center_follow);
   //参赞 关注我的
@@ -171,7 +168,6 @@ exports = module.exports = function (app) {// routes
   app.get('/soapi/favList',controller.favList);
   //图片库接口
   app.get('/soapi/attachment',controller.attachment);
-  // app.get('/upload',controller.upload); //上传图片测试
   //分享页面
   app.get('/share',controller.share);
   //删除评论接口
@@ -187,10 +183,8 @@ exports = module.exports = function (app) {// routes
   //浏览量接口
   app.get('/cmsapi/article_count', controller.article_count);
   app.post('/cmsapi/assessment', controller.assessment);//在线评估
-
   //顾问中心 上传我的二维码
   app.get('/advisor_center/post_code', controller.post_code);
-
   //参赞聚合页
   app.get('/canzan', about.canzan);
   //海外律师团队
@@ -250,7 +244,6 @@ exports = module.exports = function (app) {// routes
   app.get('/middle/:id', about.middle); // 中学页面
   app.get('/university/:id', about.university); // 大学页面
   app.get('/grouptemplate/:id', about.grouptemplate); // 集团页面
-
   //文章置顶接口
   app.post('/article_top', controller.article_top);
   app.get('/param_code',login.param_code);//生成图片验证码
@@ -262,11 +255,11 @@ exports = module.exports = function (app) {// routes
   app.get(/chief(\/*)((?![0-9])[0-9A-Za-z\-_%]*)$/,controller.chief); //推荐顾问
   app.get('/news', controller.news); // 品牌共振-新闻列表
   app.get('/soapi/newsmore', controller.newsmore); // 品牌共振-新闻列表加载更多
-
-
   //意见反馈
   app.post('/userFeedback',controller.userFeedback)
   app.get('/sendSms',controller.sendsms);//活动 发送短信验证码
   app.get('/getCoupons',controller.getCoupons);//获取优惠券
   app.get('/gwzs', login.gwzs); // 顾问个人主页确认文章数
-};
+  //移民案例
+  app.get('/yimin_case', controller.yimin_case);
+}
