@@ -4377,6 +4377,7 @@ exports.chiefmore =function(req,res,next){
     }, function (err, result) {
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.yimin_case_list = returnData(result.yimin_case_list,'yimin_case_list');
+        console.log(data.xSlider)
         data.tdk = {
             pagekey: 'YIMIN_CASE',
             cityid: 1

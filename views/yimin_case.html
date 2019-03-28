@@ -6,9 +6,14 @@
   <script src="{{helper.cdnhost}}/dep/js/idangerous.swiper-2.7.6-1.js"></script>
   <style type="text/css">
     .banner {
-      background: url(../images/xwjhy_01.jpg) no-repeat center center;
+      background: url({{xSlider[0].imageurl}}) no-repeat center center;
       height: 270px;
       margin-top: 20px;
+    }
+    .banner a {
+      display: block;
+      height: 100%;
+      cursor: pointer;
     }
     .yimin-content {
       width: 1140px;
@@ -22,7 +27,6 @@
       float: left;
       width: 300px;
       height: 210px;
-      background: yellow;
     }
     .yimin-c-dl dd {
       float: left;
@@ -116,7 +120,10 @@
   {% include "widget/top/top_yimin.html" %}
   {% import "widget/new_nav_first/yimin_search_nav.html" as yimin_search_nav %}
   {{ yimin_search_nav.yimin_search_nav(tdk,helper) }}
-  <div class="banner"></div>
+  <div class="banner">
+    <a href="{{xSlider[0].linkurl}}" target="_blank" data-pid="{{xSlider[0].pid}}"
+      alt="xSlider[0].alt"></a>
+  </div>
   <div class="yimin-content clearfix dui-box-shadow">
     {% if yimin_case_list.list.length > 0 %}
       {% for item in yimin_case_list.list %}
@@ -161,5 +168,9 @@
   <script src="{{helper.cdnhost}}/assets/js/slide_yimin.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/nav_yimin_search.js"></script>
   <script src="{{helper.cdnhost}}/assets/js/footer.js"></script>
+  <script>
+    var ulHeight = $('.yimin-country-ul').height()/2;
+    $('.yimin-country-ul').css('marginTop', '-'+ulHeight+'px');
+  </script>
 </body>
 </html>
