@@ -353,29 +353,38 @@
 <script src="{{helper.cdnhost}}/assets/js/xSlider-4.15.js" ></script>
 <script>
   $(function () {
-      $(window).on('scroll', function () {
-          var $scroll = $(this).scrollTop();
-          if ($scroll >= 250) {
-              $('.nationality_guoqi_warp').show();
-          } else {
-              $('.nationality_guoqi_warp').hide();
-          }
-      });
-      $(".liuxue-guoqi ").on('click','a',function () {
-          var id=$(this).attr('href')
-          var $scrolltop = $(id).offset().top;
-          $('html,body').animate({//$('html,body')兼容问题body属于chrome
-              scrollTop:$scrolltop-174
-          })
-      });
-      $('.lunbo_lift .slider').xSlider({
-          //轮播图配置
-          autoplay: 2000,
-          current: 0,
-          speed: 500,
-          intervalTime: 5000,
-          pagination: true
-      });
+    $(window).on('scroll', function () {
+      var $scroll = $(this).scrollTop();
+      if ($scroll >= 250) {
+        $('.nationality_guoqi_warp').show();
+      } else {
+        $('.nationality_guoqi_warp').hide();
+      }
+    });
+    $(".liuxue-guoqi ").on('click','a',function () {
+      var id=$(this).attr('href')
+      var $scrolltop = $(id).offset().top;
+      $('html,body').animate({//$('html,body')兼容问题body属于chrome
+        scrollTop:$scrolltop-174
+      })
+    });
+    $('.lunbo_lift .slider').xSlider({
+      //轮播图配置
+      autoplay: 2000,
+      current: 0,
+      speed: 500,
+      intervalTime: 5000,
+      pagination: true
+    });
+    //首页右侧轮播
+    var mySwiper = new Swiper('.swiper-container',{
+      autoplay : 4000,
+      loop : true,
+      speed:1000,
+      mode : 'vertical',
+      slidesPerView : 2,
+      slidesPerGroup : 2,
+    })
   })
 </script>
 </body>
