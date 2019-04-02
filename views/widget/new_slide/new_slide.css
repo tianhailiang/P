@@ -565,10 +565,8 @@ i.ibar_recharge-arrow {
   height: 9px;
   background-position: 0 -253px;
 }
-
-
 .quick_links_pop ul { margin-top:32px;}
-.quick_links_pop ul li { height:22px; line-height:24px; color:#FFF; padding-left:4px; font-size:13px; width:180px;margin-left:8px; overflow: hidden}
+.quick_links_pop ul li { height:22px; line-height:24px; color:#FFF; padding-left:4px; font-size:13px;margin-left:8px; overflow: hidden;margin-right:8px;}
 .quick_links_pop ul li a {color:#010101}
 #shopCart{
   border-radius:8px;
