@@ -22,7 +22,7 @@
 }
 .top-con-left{
   float:left;
-  margin-right: 103.66px;
+  width: 200px;
  }
 .top-con-right{
   float:right;
@@ -73,7 +73,4 @@
 .top-con-center li.active a {
   color: #c13232;
   text-decoration: underline;
-}
-.yimin-con-center {
-  margin-left: 40px;
 }
