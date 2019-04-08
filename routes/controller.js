@@ -4273,7 +4273,10 @@ exports.chief = function (req, res, next) {
     }, function (err, result) {
         data.top_adviser_list = returnData(result.top_adviser_list, 'top_adviser_list');
         data.countryList = returnData(result.getChiefCountryList, 'getChiefCountryList');
-        data.countryList.unshift({"id": 0, "country_name": "全部"})
+        console.log(data.countryList[0])
+        if (data.countryList[0]['id']) {
+            data.countryList.unshift({"id": 0, "country_name": "全部"})
+        }
         // console.log('top_adviser_list', data.top_adviser_list)
         // console.log('totalpage',data.top_adviser_list.totalpage)
         data.country = country;
