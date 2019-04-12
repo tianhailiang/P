@@ -9,11 +9,15 @@
         .right-title div{
             width: 115px;
             height: 40px;
-            background: #C13232;
+            background: #dcdcdc;
             font-size: 18px;
-            color: #fff;
+            color: #999999;
             text-align: center;
             line-height: 40px;
+        }
+        .active{
+            color:#fff;
+            background-color: #c13232
         }
         .pagination-box{
             float: left;
@@ -130,7 +134,10 @@
     <div class="dui-layout-div"></div>
     <div class="dui-layout-con dui-box-shadow" style="background: #fff;">
         <div class="right-cont" style="border: none">
-            <div class="right-title" style="background: #f3f3f3;"><div class="tit" style="width: 202px;">用户热搜榜</div></div>
+            <div class="right-title" style="background: #f3f3f3;">
+                <div class="tit active" style="width: 202px;">用户热搜榜</div>
+                <div class="tit" style="width: 202px;">金子榜</div>
+            </div>
             {% if datalist.length > 0 %}
             <div class="right-main clearfix">
                 <div class="yindao">{{datacenter_title}}</div>
