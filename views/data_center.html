@@ -185,25 +185,25 @@
                 {% include "widget2/blank/blank.html" %}
                 {% endif %}
             </div>
-            <div class='show'>
+            <div class='show' style="display: none;">
                 {% if datalist_jinzi.length > 0 %}
                 <div class="right-main clearfix">
                     <div class="yindao">{{datacenter_jinzi_title}}</div>
                     
-                        <table class="data-table table-left">
+                    <table class="data-table table-left">
+                    <tr>
+                        <th>序号</th>
+                        <th>关键词</th>
+                    </tr>
+                        {% for item in datalist_jinzi %}
+                        {% if loop.index <= 50 %}
                         <tr>
-                            <th>序号</th>
-                            <th>关键词</th>
+                            <td>{{loop.index}}</td>
+                            <td>{{item}}</td>
                         </tr>
-                            {% for item in datalist_jinzi %}
-                            {% if loop.index <= 50 %}
-                            <tr>
-                                <td>{{loop.index}}</td>
-                                <td>{{item}}</td>
-                            </tr>
-                            {% else %}
-                            {% endif %}
-                            {% endfor %}
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
                     </table>
                     {% if datalist_jinzi.length > 50 %}
                     <table class="data-table table-right">
@@ -236,10 +236,10 @@
 {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
 {% elseif userinfo.usertype == 2 %}
 {% if userinfo.adviser_type==1 %}
-{% import "widget/new_slide/new_slide2.html" as  slide %}
+{% import "widget/new_slide/new_slide2.html" as slide %}
 {{slide.leyu_slide("XC_"+tdk.pagekey+"_SEAT10",helper) }}
 {% elseif  userinfo.adviser_type==2 %}
-{% import "widget/new_slide_yimin/new_slide2.html" as  slide %}
+{% import "widget/new_slide_yimin/new_slide2.html" as slide %}
 {{slide.leyu_slide(helper) }}
 {% endif %}
 {% endif %}

@@ -1673,7 +1673,8 @@ exports.data_center = function (req, res, next) {
                 }
             }
         }
-        // console.log('data.datalist',data.datalist)
+        // console.log('data.datalist',data.datalist.length)
+        // console.log('data.datalist_jinzi',data.datalist_jinzi.length)
         data.datacenter_title = result.datacenter_title
         data.datacenter_jinzi_title = result.datacenter_jinzi_title
         // console.log('title',data.datacenter_title)
