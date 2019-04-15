@@ -1631,6 +1631,12 @@ exports.data_center = function (req, res, next) {
         datacenter_title: function (callback) {
             cms.datacenter_title(callback)
         },
+        datacenter_jinzi: function (callback) {
+            cms.datacenter_jinzi(callback)
+        },
+        datacenter_jinzi_title: function (callback) {
+            cms.datacenter_jinzi_title(callback)
+        }, 
         lunbo_list:function(callback) {
             cms.lunbo_list({
                 "ad_page": 'ADVISOR_DATA_CENTER',
@@ -1648,6 +1654,7 @@ exports.data_center = function (req, res, next) {
     },function (err, result) {
         data.userinfo = returnData(result.userinfo,'userinfo');
         data.datalist = [];
+        data.datalist_jinzi = [];
         if (result.datacenter != '暂无数据') {
             data.datacenter = JSON.parse(result.datacenter);
             // console.log('data.datacenter',data.datacenter);
@@ -1657,8 +1664,18 @@ exports.data_center = function (req, res, next) {
                 }
             }
         }
+        if (result.datacenter_jinzi != '暂无数据') {
+            data.datacenter_jinzi = JSON.parse(result.datacenter_jinzi);
+            // console.log('data.datacenter_jinzi',data.datacenter_jinzi);
+            for (var key in data.datacenter_jinzi) {
+                if (data.datacenter_jinzi[key] != null) {
+                    data.datalist_jinzi.push(data.datacenter_jinzi[key]);
+                }
+            }
+        }
         // console.log('data.datalist',data.datalist)
         data.datacenter_title = result.datacenter_title
+        data.datacenter_jinzi_title = result.datacenter_jinzi_title
         // console.log('title',data.datacenter_title)
         data.xSlider = returnData(result.lunbo_list,'lunbo_list');
         data.xSlider2 = returnData(result.lunbo_list2,'lunbo_list2');

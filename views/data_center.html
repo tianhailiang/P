@@ -15,7 +15,12 @@
             text-align: center;
             line-height: 40px;
         }
-        .active{
+        .right-title .tit{
+            background: #dcdcdc; 
+            color: #999999;
+            cursor: pointer;
+        }
+        .right-title .active{
             color:#fff;
             background-color: #c13232
         }
@@ -122,13 +127,13 @@
         </div>
         {% if login_info.usertype == 1 %} {#用户#}
         {% import "widget2/side_menu/user_side_menu.html" as user_side_menu %}
-        {{ user_side_menu.user_side_menu('用户热搜榜', helper) }}
+        {{ user_side_menu.user_side_menu('热词榜', helper) }}
         {% elif login_info.usertype == 2 %} {#顾问#}
         {% import "widget2/side_menu/adviser_side_menu.html" as adviser_side_menu %}
-        {{ adviser_side_menu.adviser_side_menu('用户热搜榜', ' ', helper) }}
+        {{ adviser_side_menu.adviser_side_menu('热词榜', ' ', helper) }}
         {% elif login_info.usertype == 3 %} {#参赞#}
         {% import "widget2/side_menu/canzan_side_menu.html" as canzan_side_menu %}
-        {{ canzan_side_menu.canzan_side_menu('用户热搜榜', ' ', helper) }}
+        {{ canzan_side_menu.canzan_side_menu('热词榜', ' ', helper) }}
         {% endif %}
     </div>
     <div class="dui-layout-div"></div>
@@ -138,46 +143,90 @@
                 <div class="tit active" style="width: 202px;">用户热搜榜</div>
                 <div class="tit" style="width: 202px;">金子榜</div>
             </div>
-            {% if datalist.length > 0 %}
-            <div class="right-main clearfix">
-                <div class="yindao">{{datacenter_title}}</div>
-                
-                 <table class="data-table table-left">
-                    <tr>
-                        <th>序号</th>
-                        <th>关键词</th>
-                    </tr>
-                     {% for item in datalist %}
-                     {% if loop.index <= 100 %}
+            <div class="show">
+                {% if datalist.length > 0 %}
+                <div class="right-main clearfix">
+                    <div class="yindao">{{datacenter_title}}</div>
+                    
+                     <table class="data-table table-left">
+                        <tr>
+                            <th>序号</th>
+                            <th>关键词</th>
+                        </tr>
+                         {% for item in datalist %}
+                         {% if loop.index <= 100 %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{item}}</td>
+                            </tr>
+                         {% else %}
+                         {% endif %}
+                         {% endfor %}
+                    </table>
+                    {% if datalist.length > 100 %}
+                    <table class="data-table table-right">
+                        <tr>
+                            <th>序号</th>
+                            <th>关键词</th>
+                        </tr>
+                        {% for item in datalist %}
+                        {% if loop.index > 100 %}
                         <tr>
                             <td>{{loop.index}}</td>
                             <td>{{item}}</td>
                         </tr>
-                     {% else %}
-                     {% endif %}
-                     {% endfor %}
-                </table>
-                {% if datalist.length > 100 %}
-                <table class="data-table table-right">
-                    <tr>
-                        <th>序号</th>
-                        <th>关键词</th>
-                    </tr>
-                    {% for item in datalist %}
-                    {% if loop.index > 100 %}
-                    <tr>
-                        <td>{{loop.index}}</td>
-                        <td>{{item}}</td>
-                    </tr>
-                    {% else %}
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                    </table>
                     {% endif %}
-                    {% endfor %}
-                </table>
+                </div>
+                {% else %}
+                {% include "widget2/blank/blank.html" %}
                 {% endif %}
             </div>
-            {% else %}
-            {% include "widget2/blank/blank.html" %}
-            {% endif %}
+            <div class='show'>
+                {% if datalist_jinzi.length > 0 %}
+                <div class="right-main clearfix">
+                    <div class="yindao">{{datacenter_jinzi_title}}</div>
+                    
+                        <table class="data-table table-left">
+                        <tr>
+                            <th>序号</th>
+                            <th>关键词</th>
+                        </tr>
+                            {% for item in datalist_jinzi %}
+                            {% if loop.index <= 50 %}
+                            <tr>
+                                <td>{{loop.index}}</td>
+                                <td>{{item}}</td>
+                            </tr>
+                            {% else %}
+                            {% endif %}
+                            {% endfor %}
+                    </table>
+                    {% if datalist_jinzi.length > 50 %}
+                    <table class="data-table table-right">
+                        <tr>
+                            <th>序号</th>
+                            <th>关键词</th>
+                        </tr>
+                        {% for item in datalist_jinzi %}
+                        {% if loop.index > 100 %}
+                        <tr>
+                            <td>{{loop.index}}</td>
+                            <td>{{item}}</td>
+                        </tr>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+                </div>
+                {% else %}
+                {% include "widget2/blank/blank.html" %}
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
@@ -234,6 +283,13 @@
             slidesPerGroup : 2,
             pagination: true
         });
+        $('.tit').on('click', function() {
+            var index = $(this).index();
+            $('.tit').removeClass('active');
+            $('.tit').eq(index).addClass('active');
+            $('.show').hide();
+            $('.show').eq(index).show();
+        })
     })
 </script>
 </body>
