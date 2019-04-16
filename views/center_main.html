@@ -75,12 +75,12 @@
         }
         .zhezhao .img3{
             position: absolute;
-            top: 38%;
-            left: 40%;
+            top: 41%;
+            left: 43%;
         }
         .zhezhao .img4{
             position: absolute;
-            top: 65%;
+            top: 63%;
             left: 48%;
         }
         .zhezhao_wenzhang {
@@ -134,8 +134,8 @@
             <div style="width:1180px;height: 100%;margin: 0 auto;position: relative;">
                 <div class="zhezhaof"></div>
                 <img class="img1" src="{{helper.cdnhost}}/assets/img/zhezhao.png" alt="">
-                <img class="img2" src="{{helper.cdnhost}}/assets/img/zhezhao1.png" alt="">
-                <img class="img3" src="{{helper.cdnhost}}/assets/img/zhezhao2.png" alt="">
+                <img class="img2" src="{{helper.cdnhost}}/assets/img/zhezhao_1.png" alt="">
+                <img class="img3" src="{{helper.cdnhost}}/assets/img/zhezhao_2.png" alt="">
                 <img class="img4" src="{{helper.cdnhost}}/assets/img/zhezhao3.png" alt="">
             </div>
             
@@ -325,7 +325,7 @@
             $('#gwzs1').show();
             $('body').css('overflow','hidden');
         } else {
-            if (!cookie('yhrs')) {
+            if (!cookie('yhrs1')) {
                 console.log('1111')
                 $('#zhezhaoy').show();
                 $('body').css('overflow','hidden');
@@ -353,7 +353,7 @@
             $('#gwzs').hide();
             $('#gwzs1').hide();
             $('body').css('overflow','auto');
-            if (!cookie('yhrs')) {
+            if (!cookie('yhrs1')) {
                 console.log('1111')
                 $('#zhezhaoy').show();
                 $('body').css('overflow','hidden');
@@ -382,7 +382,7 @@
             // })
         })
         $('#zhezhaoy').click(function () {
-            cookie('yhrs', '1', {path: "/", domain: js_api_config.domain, expires: 36500});
+            cookie('yhrs1', '1', {path: "/", domain: js_api_config.domain, expires: 36500});
             $(this).hide();
             $('body').css('overflow','auto');
         });
