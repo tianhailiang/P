@@ -1072,15 +1072,14 @@ exports.employment = function (req, res, next){
 
 //院校专题页面
 exports.schooltopic = function (req, res, next){
+  log.info('院校专题模板')
   var data = [];
   var area = req.cookies.currentarea ? req.cookies.currentarea : 1;
   var qianzhengzhinan_currentPage=req.query.page || 1;
   var country = req.query.n || 0;
   var articleId = req.params.id;
-
   //兼容中,本,集团3大栏目
   var ids = articleId.split("_")
-
   //node获取地址栏url
   var l = url.parse(req.url, true).query;
   console.log('url', l.h);
@@ -1090,7 +1089,7 @@ exports.schooltopic = function (req, res, next){
     data.url = config.wwhost;
   }
   data.login_nickname = '';
-
+  
   async.parallel({
     schooltopic: function (callback) {
       if (ids[1] != undefined) {
